@@ -1,0 +1,345 @@
+{
+  "changes": [
+    {
+      "correction_spec_sha256": "2a964471c3e0419f096d3b4e4f52a2265084a71b6eedfa5ba1c1c6330f8b149b",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/bag04_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "2e8ee1ed74763c7a4c73f13ea642c6d2928a3154b7f9a043f3f2b3771495e445"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/bag04_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "0d06a12db2f75b4428d77d0983050e51ed2e56153c24ab74871ab4abca315267"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack_first_frame_lowinfo6_gt_review.jpg",
+          "role": "gt_overlay_contact_sheet",
+          "sha256": "d10489bd2af1dfc34859b9c6429aa20c42e88e5d5ae9affac4759fff6447ac62"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections.py",
+        "sha256": "639dc16aeb028d07e60c0e6b084b612f630e994782a552a210c9d02d019596c8"
+      },
+      "output_record_sha256": "1e05a13e31cac062c6bf8f3139d5e33742b8eb665c89642130971ee3cccc93b3",
+      "reason": "Systematic audit of every color-only first-frame appearance: the GT crop also directly shows the bag's rectangular outline.",
+      "replacement_sha256": "58768331acc33a9fe52be29902a978dd070e7b2d62bfdde519487aeb923d7641",
+      "schema": "depthtrack-first-frame-identity-corrections/v1",
+      "sequence": "bag04_indoor",
+      "source_record_sha256": "2f02aa2f81892f177582795fab419bc2812e6fef3c9aa99729c2f16bb9e4fd90",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "88228199605fcc342edf12f6f99a83dbf981a8a3ef48f6edea1bb6403d0dcbf8",
+          "rich_first_frame_review": "37e44103e6e842cfb38a24609f24cc991bd507ac8fd6e37ff5a7e44612fd4834"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "2a964471c3e0419f096d3b4e4f52a2265084a71b6eedfa5ba1c1c6330f8b149b",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/bag05_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "d9e92ced8cd8d5df39b243eae0d78a96e5754822f756ffea67fb8dc78f2ba172"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/bag05_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "19fac45f89a26ebfc9f3609008139d917dd80c75c825b6fe9c9d085ec55ebf52"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack_first_frame_lowinfo6_gt_review.jpg",
+          "role": "gt_overlay_contact_sheet",
+          "sha256": "d10489bd2af1dfc34859b9c6429aa20c42e88e5d5ae9affac4759fff6447ac62"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections.py",
+        "sha256": "639dc16aeb028d07e60c0e6b084b612f630e994782a552a210c9d02d019596c8"
+      },
+      "output_record_sha256": "c445dbf3405f77debf7ded5645988efd0279582292fa117aaf9c5b59d9355298",
+      "reason": "Systematic audit of every color-only first-frame appearance: the low-light GT crop and independent later crops consistently show a red bag with a white rectangular marking.",
+      "replacement_sha256": "ce3af310b1cad941278559d6cebd86f9bacd67c2462351a647b73e13461969b4",
+      "schema": "depthtrack-first-frame-identity-corrections/v1",
+      "sequence": "bag05_indoor",
+      "source_record_sha256": "54e174f22226b38443f964e52cbb161111a84620fbde45e1784e90343759ac9d",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "ff6c730f6770c85bfbeb0066d93dc38e35aeabe309b8f6061067091b152291b7",
+          "rich_first_frame_review": "7e405bbde90bb9ce4ae928f5f16d2842072518ae64de3f746a41ce97d8634913"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "2a964471c3e0419f096d3b4e4f52a2265084a71b6eedfa5ba1c1c6330f8b149b",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/basket_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "b3cd9f4754ae64ee88c037b9e450800d9dd76de511c201218f97ac338408220b"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/basket_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "d681b5a242bed11da0f5fe714491b49651ef1d1c4b4f43b92cfc6263c9d1e9ca"
+        },
+        {
+          "path": "/root/autodl-tmp/basket_indoor_gt_frames_1_2_8_18.jpg",
+          "role": "gt_overlay_contact_sheet",
+          "sha256": "43b852f2f75a03edf082daa46e12f1d22b4c273407d5b7021b1705d889383796"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections.py",
+        "sha256": "639dc16aeb028d07e60c0e6b084b612f630e994782a552a210c9d02d019596c8"
+      },
+      "output_record_sha256": "57712526c01f969a4b7a9bae746b91d8b27c03a3cded2d18490e10887f0f61fe",
+      "reason": "The GT box encloses the rear black rectangular mesh basket; the foreground metallic cylinder is an occluding distractor and was described by the frozen v2 record.",
+      "replacement_sha256": "3c1486eba7a51f06de494d893812f7e9bccc7a5cf7b7c3c94e01a85f74b1285e",
+      "schema": "depthtrack-first-frame-identity-corrections/v1",
+      "sequence": "basket_indoor",
+      "source_record_sha256": "799698a7e81941d176d6106d6bf4ffb0125b29f9b8cf31b43156b2a0948a16f8",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "65727c4afac49e2ac1582a4cf176d35a046a8181f6aaf62e3f3ac5de08e7bdae",
+          "rich_first_frame_review": "073d794a2b51e86fa3a31c2e366510c51bed7412103db44b58d6a96c9e0f2dce"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "2a964471c3e0419f096d3b4e4f52a2265084a71b6eedfa5ba1c1c6330f8b149b",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat04_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "9afeb96852b86ab54984c9f0e87060a5e05ba01157e11119ec1bb0f0eecccb83"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat04_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "6421ade8ca96dbc2da52ca02cedd69c415f37498775732b0cf780d81f2d292af"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack_first_frame_lowinfo6_gt_review.jpg",
+          "role": "gt_overlay_contact_sheet",
+          "sha256": "d10489bd2af1dfc34859b9c6429aa20c42e88e5d5ae9affac4759fff6447ac62"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections.py",
+        "sha256": "639dc16aeb028d07e60c0e6b084b612f630e994782a552a210c9d02d019596c8"
+      },
+      "output_record_sha256": "aa2e3a5318076b1c896be72d606e5749319ec18744ceccaf6abad5a1852293ae",
+      "reason": "Systematic audit of every color-only first-frame appearance: the GT crop clearly exposes solid fur, pointed ears, and the rounded body silhouette.",
+      "replacement_sha256": "de05f32a52f2fc8c4e72c64b811670ce235a69830867180e48247fa1462205a3",
+      "schema": "depthtrack-first-frame-identity-corrections/v1",
+      "sequence": "cat04_indoor",
+      "source_record_sha256": "28c9a441a6469fc8eacdb6b53297066b1d1f1f2c25234ae5c8198be4384c37e1",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "513307b7ec9ae765b4a1ce5ebd053c0e59e8e4846326afa002a5e6c6dbce1e8e",
+          "rich_first_frame_review": "a3b0cee66c2021980739601af23ce1e453b209729fb53b01fb48876191193e95"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "2a964471c3e0419f096d3b4e4f52a2265084a71b6eedfa5ba1c1c6330f8b149b",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/egg_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "ce38a4f15ec714f4b892b1a60223b49be95e9cbfa2c5723ad9e68d52643d8b9c"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/egg_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "a4010da190dfc37a2c48efdc21c60993e398af6b9df87b91dc3aee813e5bc9bd"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack_first_frame_lowinfo6_gt_review.jpg",
+          "role": "gt_overlay_contact_sheet",
+          "sha256": "d10489bd2af1dfc34859b9c6429aa20c42e88e5d5ae9affac4759fff6447ac62"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections.py",
+        "sha256": "639dc16aeb028d07e60c0e6b084b612f630e994782a552a210c9d02d019596c8"
+      },
+      "output_record_sha256": "574e4fa215cc04e3b04a946b7d91d02c9b32c650d2e7ff3c35874c38397ae861",
+      "reason": "Systematic audit of every color-only first-frame appearance: the GT crop clearly shows the tracked egg's smooth oval shell.",
+      "replacement_sha256": "b0903ff80e448eb549e1ddc551ff1bad10d9ea82e8a49559dff06ae318842255",
+      "schema": "depthtrack-first-frame-identity-corrections/v1",
+      "sequence": "egg_indoor",
+      "source_record_sha256": "a228ddea75ceb7cf30aa50137b21175ffb0031f564e2af248caef9ba972f8305",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "924a7ce987c655b5f8bb0a9439a2bfcd195c4941d284236c7b0086efdc90e510",
+          "rich_first_frame_review": "2e4d6631a1cbcfcb513f6642684fbc920df2869b44b655d09692d97f08dc67b2"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "2a964471c3e0419f096d3b4e4f52a2265084a71b6eedfa5ba1c1c6330f8b149b",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/leaves04_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "f73d952877f05e39030cf7531f7666ac4a7a69e306484d83779704f788d0436f"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/leaves04_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "ede8be7594992f5bd8addd4a22c657ee5fa63857c5b54ac602f88381dd76dffb"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack_first_frame_lowinfo6_gt_review.jpg",
+          "role": "gt_overlay_contact_sheet",
+          "sha256": "d10489bd2af1dfc34859b9c6429aa20c42e88e5d5ae9affac4759fff6447ac62"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections.py",
+        "sha256": "639dc16aeb028d07e60c0e6b084b612f630e994782a552a210c9d02d019596c8"
+      },
+      "output_record_sha256": "be6f5bc14db958b466bc0aacff060e32ac130c70beaa9745a5e1b28c08cfbd9a",
+      "reason": "Systematic audit of every color-only first-frame appearance: the GT crop also directly shows an elongated oval leaf with a serrated edge.",
+      "replacement_sha256": "14c2d97dead7af76469de28763be8b573e1235616fc5fd19db57ac4493e61943",
+      "schema": "depthtrack-first-frame-identity-corrections/v1",
+      "sequence": "leaves04_indoor",
+      "source_record_sha256": "790499dcc338fa16dfc71b9b3da0aeb63a542eacee22102367e18e16dbc429e8",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "081ed30f34bf31eeb9d41d7859bc282d1344a10df53e832aa599a4cdc135e3c0",
+          "rich_first_frame_review": "be99c65757643ca4878e46faf84b7c09be93b60381eddab1bd60ddae8218ea22"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "2a964471c3e0419f096d3b4e4f52a2265084a71b6eedfa5ba1c1c6330f8b149b",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/mobilephone04_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "5e711ad89d1cab005cb970df16ef896553504215e22190c3bdd199dfb329bc28"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/mobilephone04_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "c18af5d30957a339497ba8235ecbf6986dbc7ce66773afcfabdbdb0a3b03d55c"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack_first_frame_lowinfo6_gt_review.jpg",
+          "role": "gt_overlay_contact_sheet",
+          "sha256": "d10489bd2af1dfc34859b9c6429aa20c42e88e5d5ae9affac4759fff6447ac62"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections.py",
+        "sha256": "639dc16aeb028d07e60c0e6b084b612f630e994782a552a210c9d02d019596c8"
+      },
+      "output_record_sha256": "222e9fcfbdeeb89f8ab23c3b817a97a95c724385813e820558f22208ed4647dd",
+      "reason": "Systematic audit of every color-only first-frame appearance: the GT crop clearly shows a slim rectangular phone body and glossy screen.",
+      "replacement_sha256": "870e37d668f1da18585dc2d64cd8f816e3690a7eb6e474fee03004ec3503df8a",
+      "schema": "depthtrack-first-frame-identity-corrections/v1",
+      "sequence": "mobilephone04_indoor",
+      "source_record_sha256": "966b84cc97f8bffb56e918b04accfe29a5f39f43fd71791a3783403c5b5d3b84",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "63715cdcc2199573f8a6041c83ea444934193fb79b9a89ea24e660a438b031b3",
+          "rich_first_frame_review": "90521f219352827c98db36eee7dbf7273df696a4d2bc0af9782804713612cdbd"
+        }
+      }
+    }
+  ],
+  "correction_spec": {
+    "path": "/home/SRTrack_RGBD_L/lib/train/data_specs/depthtrack_first_frame_identity_corrections_v3.json",
+    "records": 7,
+    "sha256": "2a964471c3e0419f096d3b4e4f52a2265084a71b6eedfa5ba1c1c6330f8b149b"
+  },
+  "invariants": {
+    "categories_unchanged": true,
+    "category_manifest_sha256": "a857b9b5fc51d639a070aa36ad9eb3ebaebebd60803461bca0cd25b480830f1d",
+    "sequence_order_unchanged": true
+  },
+  "materializer": {
+    "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections.py",
+    "sha256": "639dc16aeb028d07e60c0e6b084b612f630e994782a552a210c9d02d019596c8"
+  },
+  "output": {
+    "complete": true,
+    "path": "/home/OSTrack_RGBD_L_dataset_modified/annotations/depthtrack_train_first_rich_reviewed_qwen3_v3.jsonl",
+    "records": 152,
+    "sha256": "fab094be4a3611f79c2b87d702a88263f7a2b293ac1532c70987502d2b40b323"
+  },
+  "schema": "depthtrack-first-frame-identity-materialization/v1",
+  "source": {
+    "path": "/home/OSTrack_RGBD_L_dataset_modified/annotations/depthtrack_train_first_rich_reviewed_qwen3_v2.jsonl",
+    "records": 152,
+    "sha256": "52075273b73b562d96cddb89d228924ae69d5279097ca17e27459249bcc977c3"
+  }
+}

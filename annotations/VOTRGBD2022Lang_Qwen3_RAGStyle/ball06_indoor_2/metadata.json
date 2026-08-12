@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "ball06_indoor_2",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\ball06_indoor_2\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\ball06_indoor_2\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    261,
+    289,
+    22,
+    21
+  ],
+  "category_hint": "ball",
+  "depth_stats": {
+    "target_median_depth": 1298.0,
+    "target_mean_depth": 1266.6260986328125,
+    "background_median_depth": 1693.0,
+    "depth_contrast": 395.0,
+    "missing_depth_ratio": 0.038961038961038974,
+    "target_depth_variance": 30316.734375,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "ball",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "small, yellow, spherical (ball)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "not_occluded",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "in motion",
+    "final_description": "small, yellow, spherical (ball), closer than the surrounding background, with reliable depth, no obvious occlusion."
+  },
+  "final_description": "small, yellow, spherical (ball), closer than the surrounding background, with reliable depth, no obvious occlusion.",
+  "raw_model_output": "```json\n{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"small, yellow, spherical\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"in motion\",\n  \"final_description\": \"A small, yellow, spherical object in motion, closer to the camera than the background.\"\n}\n```",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "small, yellow, spherical",
+    "depth_relation": "closer than background",
+    "occlusion_state": "no occlusion",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "in motion",
+    "final_description": "A small, yellow, spherical object in motion, closer to the camera than the background."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"ball\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"small, yellow, spherical\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"in motion\",\n  \"final_description\": \"A small, yellow, spherical ball in motion, closer to the camera than the background.\"\n}",
+  "qwen3_error": ""
+}

@@ -1,0 +1,58 @@
+{
+  "dataset": "CDTB",
+  "split": "vot_eval",
+  "sequence": "robot_human_corridor_noocc_3_B",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\robot_human_corridor_noocc_3_B\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\robot_human_corridor_noocc_3_B\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    95,
+    0,
+    122,
+    328
+  ],
+  "category_hint": "robot",
+  "depth_stats": {
+    "target_median_depth": 2880.0,
+    "target_mean_depth": 2988.88720703125,
+    "background_median_depth": 3051.0,
+    "depth_contrast": 171.0,
+    "missing_depth_ratio": 0.0676729308276689,
+    "target_depth_variance": 264067.9375,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "robot",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "dark clothing (robot)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "not_occluded",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "walking",
+    "final_description": "dark clothing (robot), closer than the surrounding background, with reliable depth, no obvious occlusion."
+  },
+  "final_description": "dark clothing (robot), closer than the surrounding background, with reliable depth, no obvious occlusion.",
+  "raw_model_output": "```json\n{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"dark clothing\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"walking\",\n  \"final_description\": \"A person wearing dark clothing is walking in a corridor. The depth statistics indicate the person is closer to the camera than the background.\"\n}\n```",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "dark clothing",
+    "depth_relation": "closer than background",
+    "occlusion_state": "no occlusion",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "walking",
+    "final_description": "A person wearing dark clothing is walking in a corridor. The depth statistics indicate the person is closer to the camera than the background."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"robot\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"dark clothing\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"walking\",\n  \"final_description\": \"A robot wearing dark clothing is walking in a corridor. The depth statistics indicate the robot is closer to the camera than the background.\"\n}",
+  "qwen3_error": ""
+}

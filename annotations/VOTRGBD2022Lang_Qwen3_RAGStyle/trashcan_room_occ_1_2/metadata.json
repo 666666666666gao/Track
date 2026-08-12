@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "trashcan_room_occ_1_2",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\trashcan_room_occ_1_2\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\trashcan_room_occ_1_2\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    353,
+    206,
+    124,
+    221
+  ],
+  "category_hint": "trashcan",
+  "depth_stats": {
+    "target_median_depth": 2810.0,
+    "target_mean_depth": 3092.3720703125,
+    "background_median_depth": 3767.0,
+    "depth_contrast": 957.0,
+    "missing_depth_ratio": 0.024193548387096753,
+    "target_depth_variance": 767298.6875,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "trashcan",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "green trash can with a lid (trashcan)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "partially_occluded_by_person",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "stationary",
+    "final_description": "green trash can with a lid (trashcan), closer than the surrounding background, with reliable depth, partially occluded by person."
+  },
+  "final_description": "green trash can with a lid (trashcan), closer than the surrounding background, with reliable depth, partially occluded by person.",
+  "raw_model_output": "{\n  \"category\": \"trashcan\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"green trash can with a lid\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"partially occluded by person\",\n  \"distractor_relation\": \"no significant distractors in the bounding box\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"stationary\",\n  \"final_description\": \"A green trash can with a lid, partially occluded by a person standing nearby.\"\n}",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "trashcan",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "green trash can with a lid",
+    "depth_relation": "closer than background",
+    "occlusion_state": "partially occluded by person",
+    "distractor_relation": "no significant distractors in the bounding box",
+    "depth_quality": "reliable",
+    "motion_or_state": "stationary",
+    "final_description": "A green trash can with a lid, partially occluded by a person standing nearby."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"trashcan\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"green trash can with a lid\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"partially occluded by person\",\n  \"distractor_relation\": \"no significant distractors in the bounding box\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"stationary\",\n  \"final_description\": \"A green trash can with a lid, partially occluded by a person standing nearby, with reliable depth quality and closer than background depth relation.\"\n}",
+  "qwen3_error": ""
+}

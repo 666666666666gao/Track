@@ -1,0 +1,28 @@
+class EnvironmentSettings:
+    def __init__(self):
+        self.workspace_dir = '/home/OSTrack_RGBD_L_dataset_modified'    # Base directory for saving network checkpoints.
+        self.tensorboard_dir = '/home/OSTrack_RGBD_L_dataset_modified/tensorboard'    # Directory for tensorboard files.
+        self.pretrained_networks = '/home/OSTrack_RGBD_L_dataset_modified/pretrained_networks'
+        self.lasot_dir = '/root/autodl-tmp/lasot'
+        self.got10k_dir = '/root/autodl-tmp/got10k/train'
+        self.got10k_val_dir = '/root/autodl-tmp/got10k/val'
+        self.lasot_lmdb_dir = '/root/autodl-tmp/lasot_lmdb'
+        self.got10k_lmdb_dir = '/root/autodl-tmp/got10k_lmdb'
+        self.trackingnet_dir = '/root/autodl-tmp/trackingnet'
+        self.trackingnet_lmdb_dir = '/root/autodl-tmp/trackingnet_lmdb'
+        self.depthtrack_dir = '/root/autodl-tmp/depthtrack/train'
+        self.depthtrack_test_dir = '/root/autodl-tmp/depthtrack/test'
+        self.coco_dir = '/root/autodl-tmp/coco'
+        self.coco_lmdb_dir = '/root/autodl-tmp/coco_lmdb'
+        self.lvis_dir = ''
+        self.sbd_dir = ''
+        self.imagenet_dir = '/root/autodl-tmp/vid'
+        self.imagenet_lmdb_dir = '/root/autodl-tmp/vid_lmdb'
+        self.lasher_train_dir = '/root/autodl-tmp/lasher/trainingset'
+        self.lasher_test_dir = '/root/autodl-tmp/lasher/testingset'
+        self.imagenetdet_dir = ''
+        self.ecssd_dir = ''
+        self.hkuis_dir = ''
+        self.msra10k_dir = ''
+        self.davis_dir = ''
+        self.youtubevos_dir = ''

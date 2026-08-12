@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "cube05_indoor_6",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\cube05_indoor_6\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\cube05_indoor_6\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    349,
+    139,
+    46,
+    41
+  ],
+  "category_hint": "cube",
+  "depth_stats": {
+    "target_median_depth": 853.0,
+    "target_mean_depth": 1217.779052734375,
+    "background_median_depth": 3310.0,
+    "depth_contrast": 2457.0,
+    "missing_depth_ratio": 0.08324496288441141,
+    "target_depth_variance": 782413.3125,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "cube",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "small, white, cube-like shape",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "not_occluded",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "small, white, cube-like shape, closer than the surrounding background, with reliable depth, no obvious occlusion."
+  },
+  "final_description": "small, white, cube-like shape, closer than the surrounding background, with reliable depth, no obvious occlusion.",
+  "raw_model_output": "{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"small, white, cube-like shape\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no significant distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"A small, white, cube-like shape located in the foreground, closer than the background objects.\"\n}",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "small, white, cube-like shape",
+    "depth_relation": "closer than background",
+    "occlusion_state": "no occlusion",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "A small, white, cube-like shape located in the foreground, closer than the background objects."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"cube\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"small, white, cube-like shape\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no significant distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"A small, white, cube-like shape located in the foreground, closer than the background objects.\"\n}",
+  "qwen3_error": ""
+}

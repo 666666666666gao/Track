@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "cube05_indoor_2",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\cube05_indoor_2\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\cube05_indoor_2\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    367,
+    237,
+    58,
+    55
+  ],
+  "category_hint": "cube",
+  "depth_stats": {
+    "target_median_depth": 663.0,
+    "target_mean_depth": 982.8812255859375,
+    "background_median_depth": 907.0,
+    "depth_contrast": 244.0,
+    "missing_depth_ratio": 0.16050156739811916,
+    "target_depth_variance": 643348.125,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "cube",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "blurred (cube)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "partially_occluded",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "blurred (cube), closer than the surrounding background, with reliable depth, partially occluded."
+  },
+  "final_description": "blurred (cube), closer than the surrounding background, with reliable depth, partially occluded.",
+  "raw_model_output": "```json\n{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"blurred\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"partially occluded\",\n  \"distractor_relation\": \"no significant distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target appears to be a small, blurred object in the foreground, closer than the background objects. The depth quality is reliable, but the object's identity cannot be determined due to its blurriness.\"\n}\n```",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "blurred",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "partially occluded",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "The target appears to be a small, blurred object in the foreground, closer than the background objects. The depth quality is reliable, but the object's identity cannot be determined due to its blurriness."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"cube\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"blurred\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"partially occluded\",\n  \"distractor_relation\": \"no significant distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target appears to be a small, blurred cube in the foreground, closer than the background objects. The depth quality is reliable, and the object is partially occluded.\"\n}",
+  "qwen3_error": ""
+}

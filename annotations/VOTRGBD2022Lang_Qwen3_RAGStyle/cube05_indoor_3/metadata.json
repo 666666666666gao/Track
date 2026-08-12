@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "cube05_indoor_3",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\cube05_indoor_3\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\cube05_indoor_3\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    372,
+    123,
+    46,
+    43
+  ],
+  "category_hint": "cube",
+  "depth_stats": {
+    "target_median_depth": 799.0,
+    "target_mean_depth": 1368.0894775390625,
+    "background_median_depth": 3325.0,
+    "depth_contrast": 2526.0,
+    "missing_depth_ratio": 0.016683518705763345,
+    "target_depth_variance": 1105066.5,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "cube",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "small, rectangular, possibly metallic (cube)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "partially_occluded_by_the_cat's_tail",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "small, rectangular, possibly metallic (cube), closer than the surrounding background, with reliable depth, partially occluded by the cat's tail."
+  },
+  "final_description": "small, rectangular, possibly metallic (cube), closer than the surrounding background, with reliable depth, partially occluded by the cat's tail.",
+  "raw_model_output": "```json\n{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"small, rectangular, possibly metallic\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"partially occluded by the cat's tail\",\n  \"distractor_relation\": \"no significant distractors in the bounding box\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"A small, rectangular object appears to be partially obscured by the cat's tail, making it difficult to identify its exact nature. The depth information suggests it is closer to the camera than the background.\"\n}\n```",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "small, rectangular, possibly metallic",
+    "depth_relation": "closer than background",
+    "occlusion_state": "partially occluded by the cat's tail",
+    "distractor_relation": "no significant distractors in the bounding box",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "A small, rectangular object appears to be partially obscured by the cat's tail, making it difficult to identify its exact nature. The depth information suggests it is closer to the camera than the background."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"cube\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"small, rectangular, possibly metallic\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"partially occluded by the cat's tail\",\n  \"distractor_relation\": \"no significant distractors in the bounding box\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"A small, rectangular cube appears to be partially obscured by the cat's tail. The depth information suggests it is closer to the camera than the background, with reliable depth quality.\"\n}",
+  "qwen3_error": ""
+}

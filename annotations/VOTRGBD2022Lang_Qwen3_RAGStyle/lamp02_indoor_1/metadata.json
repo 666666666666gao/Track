@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "lamp02_indoor_1",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\lamp02_indoor_1\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\lamp02_indoor_1\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    391,
+    81,
+    58,
+    59
+  ],
+  "category_hint": "lamp",
+  "depth_stats": {
+    "target_median_depth": 1460.0,
+    "target_mean_depth": 1499.604736328125,
+    "background_median_depth": 1965.0,
+    "depth_contrast": 505.0,
+    "missing_depth_ratio": 0.06984219754529519,
+    "target_depth_variance": 89888.453125,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "lamp",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "illuminated, emitting light (lamp)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "partially_occluded_by_person's_hand",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "illuminated, emitting light (lamp), closer than the surrounding background, with reliable depth, partially occluded by person's hand."
+  },
+  "final_description": "illuminated, emitting light (lamp), closer than the surrounding background, with reliable depth, partially occluded by person's hand.",
+  "raw_model_output": "```json\n{\n  \"category\": \"lamp\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"illuminated, emitting light\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"partially occluded by person's hand\",\n  \"distractor_relation\": \"no significant distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"A lamp emitting light, partially obscured by a person's hand.\"\n}\n```",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "lamp",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "illuminated, emitting light",
+    "depth_relation": "closer than background",
+    "occlusion_state": "partially occluded by person's hand",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "A lamp emitting light, partially obscured by a person's hand."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"lamp\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"illuminated, emitting light\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"partially occluded by person's hand\",\n  \"distractor_relation\": \"no significant distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"A lamp emitting light, partially obscured by a person's hand.\"\n}",
+  "qwen3_error": ""
+}

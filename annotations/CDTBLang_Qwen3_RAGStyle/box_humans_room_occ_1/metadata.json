@@ -1,0 +1,58 @@
+{
+  "dataset": "CDTB",
+  "split": "vot_eval",
+  "sequence": "box_humans_room_occ_1",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\box_humans_room_occ_1\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\box_humans_room_occ_1\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    224,
+    108,
+    419,
+    221
+  ],
+  "category_hint": "box",
+  "depth_stats": {
+    "target_median_depth": 1128.0,
+    "target_mean_depth": 1308.5816650390625,
+    "background_median_depth": 4846.0,
+    "depth_contrast": 3718.0,
+    "missing_depth_ratio": 0.011598397390900517,
+    "target_depth_variance": 581952.875,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "box",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "black with green text 'XMG' (box)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "not_occluded",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "black with green text 'XMG' (box), closer than the surrounding background, with reliable depth, no obvious occlusion."
+  },
+  "final_description": "black with green text 'XMG' (box), closer than the surrounding background, with reliable depth, no obvious occlusion.",
+  "raw_model_output": "```json\n{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"black with green text 'XMG'\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target appears to be a black rectangular object with green text 'XMG'. It is closer in depth compared to the background elements.\"\n}\n```",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "black with green text 'XMG'",
+    "depth_relation": "closer than background",
+    "occlusion_state": "no occlusion",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "The target appears to be a black rectangular object with green text 'XMG'. It is closer in depth compared to the background elements."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"box\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"black with green text 'XMG'\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target appears to be a black rectangular box with green text 'XMG'. It is closer in depth compared to the background elements.\"\n}",
+  "qwen3_error": ""
+}

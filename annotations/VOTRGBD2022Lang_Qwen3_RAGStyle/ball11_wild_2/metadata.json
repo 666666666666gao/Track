@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "ball11_wild_2",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\ball11_wild_2\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\ball11_wild_2\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    380,
+    205,
+    27,
+    29
+  ],
+  "category_hint": "ball",
+  "depth_stats": {
+    "target_median_depth": 2926.0,
+    "target_mean_depth": 3008.63671875,
+    "background_median_depth": 5350.0,
+    "depth_contrast": 2424.0,
+    "missing_depth_ratio": 0.019157088122605415,
+    "target_depth_variance": 320759.96875,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "ball",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "small, red (ball)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "not_occluded",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "small, red (ball), closer than the surrounding background, with reliable depth, no obvious occlusion."
+  },
+  "final_description": "small, red (ball), closer than the surrounding background, with reliable depth, no obvious occlusion.",
+  "raw_model_output": "```json\n{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"small, rectangular, red\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"A small, rectangular, red object is located within the bounding box.\"\n}\n```",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "small, rectangular, red",
+    "depth_relation": "closer than background",
+    "occlusion_state": "no occlusion",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "A small, rectangular, red object is located within the bounding box."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"ball\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"small, red\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"A small, red ball is located within the bounding box, closer than the background.\"\n}",
+  "qwen3_error": ""
+}

@@ -1,0 +1,82 @@
+
+=== cdtb_first_qwen3_corrected.jsonl ===
+n 80
+unique 80
+duplicates []
+issues: {'absolute_windows_paths': 80, 'noncanonical_depth_relation': 3, 'bad_term_bounding box': 1, 'noncanonical_depth_quality': 3}
+examples:
+  absolute_windows_paths : [('backpack_blue', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\backpack_blue\\color\\00000001.jpg'), ('backpack_robotarm_lab_occ', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\backpack_robotarm_lab_occ\\color\\00000001.jpg'), ('backpack_room_noocc_1', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\backpack_room_noocc_1\\color\\00000001.jpg'), ('bag_outside', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\bag_outside\\color\\00000001.jpg'), ('bicycle2_outside', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\CDTB\\sequences\\bicycle2_outside\\color\\00000001.jpg')]
+  noncanonical_depth_relation : [('box_darkroom_noocc_7', 'similar_depth'), ('humans_shirts_room_occ_1_A', 'similar_depth'), ('trophy_room_occ_1', 'similar_depth')]
+  bad_term_bounding box : [('box_darkroom_noocc_8', 'A wooden, six-sided box is located within the bounding box, closer than the background, with reliable depth quality and no occlusion.')]
+  noncanonical_depth_quality : [('human_entry_occ_1', 'poor'), ('trashcan_room_occ_1', 'poor'), ('two_mugs', 'poor')]
+categories [('box', 23), ('robot', 8), ('humans', 6), ('boxes', 4), ('backpack', 3), ('bottle', 3), ('trophy', 3), ('bicycle', 2), ('cartman', 2), ('human', 2), ('mug', 2), ('thermos', 2), ('toy', 2), ('trashcans', 2), ('two', 2)]
+qualities {'reliable': 65, 'medium': 12, 'poor': 3}
+rels {'closer_than_background': 70, 'similar_depth': 3, 'farther_than_background': 7}
+len_min 14
+len_max 34
+len_avg 19.61
+
+=== depthtrack_test_first_qwen3_corrected.jsonl ===
+n 50
+unique 50
+duplicates []
+issues: {'absolute_windows_paths': 50, 'bad_term_bounding box': 3, 'noncanonical_depth_quality': 2, 'noncanonical_depth_relation': 5, 'bad_term_red bounding box': 1}
+examples:
+  absolute_windows_paths : [('adapter01_indoor', 'rgb_path', 'E:\\RGB-D-L-work\\data\\DepthTrackTest_first_frames\\adapter01_indoor\\color\\00000001.jpg'), ('backpack_indoor', 'rgb_path', 'E:\\RGB-D-L-work\\data\\DepthTrackTest_first_frames\\backpack_indoor\\color\\00000001.jpg'), ('bag01_indoor', 'rgb_path', 'E:\\RGB-D-L-work\\data\\DepthTrackTest_first_frames\\bag01_indoor\\color\\00000001.jpg'), ('bag02_indoor', 'rgb_path', 'E:\\RGB-D-L-work\\data\\DepthTrackTest_first_frames\\bag02_indoor\\color\\00000001.jpg'), ('ball01_wild', 'rgb_path', 'E:\\RGB-D-L-work\\data\\DepthTrackTest_first_frames\\ball01_wild\\color\\00000001.jpg')]
+  bad_term_bounding box : [('bag02_indoor', "A dark bag within the bounding box, closer than the surrounding background, with reliable depth and partially occluded by the person's arm."), ('pot_indoor', 'A dark, indistinct pot within the bounding box, closer than the surrounding background, with reliable depth and no obvious occlusion.'), ('ukulele01_indoor', 'A brown wooden ukulele with a red bounding box, closer than the surrounding background, with reliable depth and no obvious occlusion.')]
+  noncanonical_depth_quality : [('ball15_wild', 'poor'), ('cube03_indoor', 'poor')]
+  noncanonical_depth_relation : [('cat01_indoor', 'similar_depth'), ('cup12_indoor', 'similar_depth'), ('developmentboard_indoor', 'similar_depth'), ('flag_indoor', 'similar_depth'), ('mobilephone03_indoor', 'similar_depth')]
+  bad_term_red bounding box : [('ukulele01_indoor', 'A brown wooden ukulele with a red bounding box, closer than the surrounding background, with reliable depth and no obvious occlusion.')]
+categories [('ball', 7), ('cup', 4), ('cube', 3), ('pigeon', 3), ('bag', 2), ('toy', 2), ('adapter', 1), ('backpack', 1), ('bandlight', 1), ('beautifullight', 1), ('book', 1), ('bottle', 1), ('card', 1), ('cat', 1), ('colacan', 1)]
+qualities {'medium': 8, 'reliable': 40, 'poor': 2}
+rels {'closer_than_background': 44, 'farther_than_background': 1, 'similar_depth': 5}
+len_min 14
+len_max 24
+len_avg 18.7
+
+=== depthtrack_train_first_qwen3_corrected.jsonl ===
+n 152
+unique 152
+duplicates []
+issues: {'absolute_windows_paths': 152, 'noncanonical_depth_relation': 13, 'noncanonical_depth_quality': 1}
+examples:
+  absolute_windows_paths : [('adapter02_indoor', 'rgb_path', 'D:\\DepthTrackTrain\\adapter02_indoor\\color\\00000001.jpg'), ('bag03_indoor', 'rgb_path', 'D:\\DepthTrackTrain\\bag03_indoor\\color\\00000001.jpg'), ('bag04_indoor', 'rgb_path', 'D:\\DepthTrackTrain\\bag04_indoor\\color\\00000001.jpg'), ('bag05_indoor', 'rgb_path', 'D:\\DepthTrackTrain\\bag05_indoor\\color\\00000001.jpg'), ('ball02_indoor', 'rgb_path', 'D:\\DepthTrackTrain\\ball02_indoor\\color\\00000001.jpg')]
+  noncanonical_depth_relation : [('book04_indoor', 'similar_depth'), ('cup07_indoor', 'similar_depth'), ('cup08_indoor', 'similar_depth'), ('cup09_indoor', 'similar_depth'), ('cup10_indoor', 'similar_depth')]
+  noncanonical_depth_quality : [('colacan04_indoor', 'poor')]
+categories [('ball', 14), ('cup', 10), ('toy', 8), ('leaves', 6), ('book', 5), ('bottle', 5), ('duck', 5), ('human', 5), ('mobilephone', 5), ('mushroom', 5), ('cat', 4), ('glass', 4), ('hat', 4), ('pigeon', 4), ('bag', 3)]
+qualities {'reliable': 132, 'medium': 19, 'poor': 1}
+rels {'closer_than_background': 130, 'farther_than_background': 9, 'similar_depth': 13}
+len_min 14
+len_max 35
+len_avg 18.62
+
+=== vot_rgbd2022_first_qwen3_corrected.jsonl ===
+n 127
+unique 127
+duplicates []
+issues: {'absolute_windows_paths': 127, 'noncanonical_depth_relation': 8, 'bad_term_red bounding box': 1, 'bad_term_bounding box': 2, 'noncanonical_depth_quality': 1}
+examples:
+  absolute_windows_paths : [('adapter01_indoor_1', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\sequences\\adapter01_indoor_1\\color\\00000001.jpg'), ('backpack_blue_1', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\sequences\\backpack_blue_1\\color\\00000001.jpg'), ('backpack_indoor_1', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\sequences\\backpack_indoor_1\\color\\00000001.jpg'), ('backpack_robotarm_lab_occ_1', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\sequences\\backpack_robotarm_lab_occ_1\\color\\00000001.jpg'), ('backpack_room_noocc_1_1', 'rgb_path', 'D:\\steam\\RGB-D-L-work\\sequences\\backpack_room_noocc_1_1\\color\\00000001.jpg')]
+  noncanonical_depth_relation : [('ball11_wild_5', 'similar_depth'), ('box_darkroom_noocc_7_1', 'similar_depth'), ('boxes_backpack_room_occ_1_2', 'similar_depth'), ('boxes_humans_room_occ_1_5', 'similar_depth'), ('cat01_indoor_1', 'similar_depth')]
+  bad_term_red bounding box : [('duck03_wild_1', 'dark, possibly wet, with a red bounding box around it (duck), closer than the surrounding background, with reliable depth and no obvious occlusion.')]
+  bad_term_bounding box : [('duck03_wild_1', 'dark, possibly wet, with a red bounding box around it (duck), closer than the surrounding background, with reliable depth and no obvious occlusion.'), ('pigeon02_wild_1', 'A small, dark, rectangular pigeon located in the center of the bounding box, closer than the background with reliable depth quality.')]
+  noncanonical_depth_quality : [('two_mugs_1', 'poor')]
+categories [('box', 15), ('cube', 8), ('bag', 7), ('ball', 7), ('boxes', 6), ('humans', 5), ('backpack', 4), ('colacan', 3), ('cup', 3), ('human', 3), ('pigeon', 3), ('pot', 3), ('robot', 3), ('roller', 3), ('squirrel', 3)]
+qualities {'medium': 19, 'reliable': 107, 'poor': 1}
+rels {'closer_than_background': 109, 'similar_depth': 8, 'farther_than_background': 10}
+len_min 12
+len_max 38
+len_avg 19.5
+
+=== VOTRGBD2022Lang_Qwen3_RAGStyle ===
+n 127
+issues: {'bad_term_red bounding box': 1, 'bad_term_bounding box': 2}
+examples:
+  bad_term_red bounding box : [('duck03_wild_1', 'dark, possibly wet, with a red bounding box around it (duck), closer than the surrounding background, with reliable depth and no obvious occlusion.')]
+  bad_term_bounding box : [('duck03_wild_1', 'dark, possibly wet, with a red bounding box around it (duck), closer than the surrounding background, with reliable depth and no obvious occlusion.'), ('pigeon02_wild_1', 'A small, dark, rectangular pigeon located in the center of the bounding box, closer than the background with reliable depth quality.')]
+
+=== CDTBLang_Qwen3_RAGStyle ===
+n 80
+issues: {'bad_term_bounding box': 1}
+examples:
+  bad_term_bounding box : [('box_darkroom_noocc_8', 'A wooden, six-sided box is located within the bounding box, closer than the background, with reliable depth quality and no occlusion.')]

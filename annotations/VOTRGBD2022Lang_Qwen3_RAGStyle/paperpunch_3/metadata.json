@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "paperpunch_3",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\paperpunch_3\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\paperpunch_3\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    184,
+    5,
+    93,
+    114
+  ],
+  "category_hint": "paperpunch",
+  "depth_stats": {
+    "target_median_depth": 523.0,
+    "target_mean_depth": 745.4453735351562,
+    "background_median_depth": 1447.0,
+    "depth_contrast": 924.0,
+    "missing_depth_ratio": 0.11054518015468784,
+    "target_depth_variance": 177265.390625,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "paperpunch",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "rectangular shape, dark color (paperpunch)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "not_occluded",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "rectangular shape, dark color (paperpunch), closer than the surrounding background, with reliable depth, no obvious occlusion."
+  },
+  "final_description": "rectangular shape, dark color (paperpunch), closer than the surrounding background, with reliable depth, no obvious occlusion.",
+  "raw_model_output": "{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"rectangular shape, dark color\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target appears to be a rectangular object with a dark color. It is closer in depth compared to the background. There are no visible occlusions or distractors within the bounding box.\"\n}",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "rectangular shape, dark color",
+    "depth_relation": "closer than background",
+    "occlusion_state": "no occlusion",
+    "distractor_relation": "no distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "The target appears to be a rectangular object with a dark color. It is closer in depth compared to the background. There are no visible occlusions or distractors within the bounding box."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"paperpunch\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"rectangular shape, dark color\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target appears to be a paperpunch with a rectangular shape and dark color. It is closer in depth compared to the background. There are no visible occlusions or distractors within the bounding box.\"\n}",
+  "qwen3_error": ""
+}

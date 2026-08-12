@@ -1,0 +1,249 @@
+{
+  "changes": [
+    {
+      "correction_spec_sha256": "422966933e6cca4a7cd9547c7ad53a2c7dc19ccba89d8bec0c1d96d46649d542",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat02_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "92304f674344d98a92fce16fc6b01a9f5b3f406cbb26f14a7d852f9c77e3f87e"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat02_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+        "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+      },
+      "output_record_sha256": "0529711bacbf5b0ba492c440b0f4ea5c431d31f8c6e1cbfa2a8ade7df33d57a3",
+      "reason": "The first-frame GT crop clearly shows a short-coated cat with a black back and distinct white face and legs; hands cover part of the central body.",
+      "reason_class": "low_information_identity_enrichment",
+      "replacement_sha256": "a785cfafdde63c06ac9a43a4950dd5124157b9410ac08b20717ab17d80dcdf60",
+      "schema": "depthtrack-first-frame-identity-correction-record/v2",
+      "sequence": "cat02_indoor",
+      "source_record_sha256": "3c6be778fcb033d223912ff55653b060ac42f4708407527a072f811409e5e9f9",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "f368ff089d975b5a83d84e21efa29a46572fff26273d0374f58799d7e4c7449b",
+          "rich_first_frame_review": "3c32b20d0ef8a73ca5cdb5e6246bb8390aaa0c247e4fa923367f3613a42fca06"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "422966933e6cca4a7cd9547c7ad53a2c7dc19ccba89d8bec0c1d96d46649d542",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat03_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "9f65a9af8ebdc5a489799b343d2131ea572ba5a15243209a10e9c9b6ab98c5f9"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat03_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+        "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+      },
+      "output_record_sha256": "47d50989c6a42c5c394cad01ad2859d84b675914668f3f9419d1aaf6196a122c",
+      "reason": "The low-light first-frame GT crop supports only a mostly black coat and white lower legs; coverage and the presence of similar cats cannot be established confidently.",
+      "reason_class": "low_information_identity_enrichment",
+      "replacement_sha256": "bd81bfe5430daf32a2d8cc170fd93ef8755138f0b8426c4a539d8381a6da965a",
+      "schema": "depthtrack-first-frame-identity-correction-record/v2",
+      "sequence": "cat03_indoor",
+      "source_record_sha256": "2a7299ca2a3e6ea518f19e8420362a06fd239794c3ae7890194b59f0631a3d3e",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "fb9e33a36b06f553bd95531fd81d0fa20d1295253168c42b667cabc3de311543",
+          "rich_first_frame_review": "2918857620927869144e7db2d08d2091ca69f0d1d3f7231a64107107c79efcbf"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "422966933e6cca4a7cd9547c7ad53a2c7dc19ccba89d8bec0c1d96d46649d542",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/duck06_wild/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "73eef3db414847bc2be7f3b69477643317e024ddbc549e4045b7e656bf88fec4"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/duck06_wild/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+        "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+      },
+      "output_record_sha256": "37d4b8b2322a2a68533fee28950d08ec25c14928ed1f8e774d0e0dc80fce73e4",
+      "reason": "Despite the small first-frame GT crop, mottled brown plumage and a compact rounded body are directly visible; the lower body is submerged and several similar ducks are present.",
+      "reason_class": "low_information_identity_enrichment",
+      "replacement_sha256": "dc01d1d478b5adeeec91637dd253003d6880b75238a3b2601e54fe06e6450e2c",
+      "schema": "depthtrack-first-frame-identity-correction-record/v2",
+      "sequence": "duck06_wild",
+      "source_record_sha256": "1094a0951a7561250539a4d8f6c45381f14a86ac6d795586df21d229785afa22",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "d3f1ef1613991462cef80fcc19cf623bfd4ace8d026264faeeb63ab468beeba8",
+          "rich_first_frame_review": "6cdba54d264906ee785766ccbbe762d1fa7b485ebff14e7b88f63d203eeb87b2"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "422966933e6cca4a7cd9547c7ad53a2c7dc19ccba89d8bec0c1d96d46649d542",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/hat02_indoor_320/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "cbe1c00e7738069a2c4a4ec8e435a55cbe2b1950088369efadc429fa3ec5a6e2"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/hat02_indoor_320/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "5851dd6051472626d3b0432e492fae38c4fa7a06d12caaab93f44a6c5c1dbbd5"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+        "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+      },
+      "output_record_sha256": "7fd63699214c786aa1e305d6325ffd8fccae81998177821f381d0393e0ff27bc",
+      "reason": "The first-frame GT crop clearly identifies the broad hat label as a red, black, and white bicycle helmet with an elongated ventilated shell.",
+      "reason_class": "low_information_identity_enrichment",
+      "replacement_sha256": "d03bec4d0823171b5c19ed3f7f10c3a956c233405e1214dea4625c27a03305b2",
+      "schema": "depthtrack-first-frame-identity-correction-record/v2",
+      "sequence": "hat02_indoor_320",
+      "source_record_sha256": "4966927b39d06cd4f8700b447f05baf1839bd2edd84b042f65fb561d9e5895e7",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "702cea783cff627fdfb08ff99d68182a8cb62724cac13fb63960898b5d100418",
+          "rich_first_frame_review": "8c097ae627a921dabcd2f6f175fe7af08f1d4a9664bfbd495d52b46317099c6f"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "422966933e6cca4a7cd9547c7ad53a2c7dc19ccba89d8bec0c1d96d46649d542",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/speaker_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "f43ab72e977644396b3b64f42da6a6c1912a789693db41bd3e0561b05cb1c458"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/speaker_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "1a06abd953cb7833c232576238363cbe6c5248c486b3f221567d18dacf9a9a44"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+        "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+      },
+      "output_record_sha256": "f0e962eb0c025d57854a576fe9acb3b26232fe179e0ffffa7daf1f43a1c024a3",
+      "reason": "The first-frame GT crop shows a gray rectangular speaker with a textured grille and a high-contrast white JBL logo, rather than the generic black-and-white appearance in v3.",
+      "reason_class": "incorrect_color_and_low_information_identity",
+      "replacement_sha256": "e72a63d126bac1e1be9b22a55686e51229a5b4dd3c98b9fc9118ed7062ff8eb9",
+      "schema": "depthtrack-first-frame-identity-correction-record/v2",
+      "sequence": "speaker_indoor",
+      "source_record_sha256": "e258febd2584b74902a2cddf99fd5d6068f2f5fe206019002dd8816dc2b25021",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "qwen3_text_review": "8c2e1219685b648b5cc9c4c3b4be26d55b77eb360ac743f0b4e05e878ed33328",
+          "rich_first_frame_review": "5d6401d5de4df9b62245614aca20003240e2264dc8b7bd79933d5edf2bb752a2"
+        }
+      }
+    }
+  ],
+  "correction_spec": {
+    "path": "/home/SRTrack_RGBD_L/lib/train/data_specs/depthtrack_first_frame_identity_corrections_v4.json",
+    "records": 5,
+    "sha256": "422966933e6cca4a7cd9547c7ad53a2c7dc19ccba89d8bec0c1d96d46649d542"
+  },
+  "invariants": {
+    "categories_unchanged": true,
+    "category_manifest_sha256": "a857b9b5fc51d639a070aa36ad9eb3ebaebebd60803461bca0cd25b480830f1d",
+    "color_only_appearance_sequences": [],
+    "no_color_only_appearances": true,
+    "sequence_order_unchanged": true
+  },
+  "materializer": {
+    "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+    "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+  },
+  "output": {
+    "complete": true,
+    "path": "/home/OSTrack_RGBD_L_dataset_modified/annotations/depthtrack_train_first_rich_reviewed_qwen3_v4.jsonl",
+    "records": 152,
+    "sha256": "6a15cebc05f1bdf677c13577155b09a2ae5c27a7f447dfbcedade21bc37637cc"
+  },
+  "revision": {
+    "output_annotation_version": "depthtrack-rich-first-frame-review/v4",
+    "quality_flag": "corrected_low_information_identity_v4",
+    "review_status": "corrected_after_full_corpus_low_information_audit"
+  },
+  "schema": "depthtrack-first-frame-identity-materialization/v2",
+  "source": {
+    "color_only_appearance_sequences": [
+      "cat02_indoor",
+      "cat03_indoor",
+      "duck06_wild",
+      "hat02_indoor_320",
+      "speaker_indoor"
+    ],
+    "path": "/home/OSTrack_RGBD_L_dataset_modified/annotations/depthtrack_train_first_rich_reviewed_qwen3_v3.jsonl",
+    "records": 152,
+    "sha256": "fab094be4a3611f79c2b87d702a88263f7a2b293ac1532c70987502d2b40b323"
+  }
+}

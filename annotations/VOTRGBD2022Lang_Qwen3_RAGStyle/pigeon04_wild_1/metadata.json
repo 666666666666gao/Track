@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "pigeon04_wild_1",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\pigeon04_wild_1\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\pigeon04_wild_1\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    177,
+    159,
+    117,
+    80
+  ],
+  "category_hint": "pigeon",
+  "depth_stats": {
+    "target_median_depth": 1121.0,
+    "target_mean_depth": 1289.3182373046875,
+    "background_median_depth": 1218.0,
+    "depth_contrast": 97.0,
+    "missing_depth_ratio": 0.16976495726495722,
+    "target_depth_variance": 210038.25,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "pigeon",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "dark, possibly bird-like (pigeon)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "not_occluded",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "stationary",
+    "final_description": "dark, possibly bird-like (pigeon), closer than the surrounding background, with reliable depth, no obvious occlusion."
+  },
+  "final_description": "dark, possibly bird-like (pigeon), closer than the surrounding background, with reliable depth, no obvious occlusion.",
+  "raw_model_output": "{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"dark, possibly bird-like\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no significant distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"stationary\",\n  \"final_description\": \"The target appears to be a dark object, possibly a bird, located in the foreground with a reliable depth measurement.\"\n}",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "dark, possibly bird-like",
+    "depth_relation": "closer than background",
+    "occlusion_state": "no occlusion",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "stationary",
+    "final_description": "The target appears to be a dark object, possibly a bird, located in the foreground with a reliable depth measurement."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"pigeon\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"dark, possibly bird-like\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no occlusion\",\n  \"distractor_relation\": \"no significant distractors\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"stationary\",\n  \"final_description\": \"The target appears to be a dark pigeon, located in the foreground with a reliable depth measurement.\"\n}",
+  "qwen3_error": ""
+}

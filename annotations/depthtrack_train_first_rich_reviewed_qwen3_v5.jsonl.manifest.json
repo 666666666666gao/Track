@@ -1,0 +1,164 @@
+{
+  "changes": [
+    {
+      "correction_spec_sha256": "d9d2d380ed2c2400a700b6177ba166d86598b525fb4c438f4976b51c6cfeefd7",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat02_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "92304f674344d98a92fce16fc6b01a9f5b3f406cbb26f14a7d852f9c77e3f87e"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat02_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+        "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+      },
+      "output_record_sha256": "1098661019e38fda3e1b68ce1398377aba9e8ed3542643f3943ab97805f86461",
+      "reason": "Independent GT-crop review confirmed the short coat and black back but found black facial patches and not-entirely-white legs, requiring more precise wording than v4.",
+      "reason_class": "independent_visual_wording_refinement",
+      "replacement_sha256": "884dd0335c836e7ab953dece891e702a79712953bc5075619788b5dc4350034b",
+      "schema": "depthtrack-first-frame-identity-correction-record/v2",
+      "sequence": "cat02_indoor",
+      "source_record_sha256": "0529711bacbf5b0ba492c440b0f4ea5c431d31f8c6e1cbfa2a8ade7df33d57a3",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "identity_correction": "3f90761caef22cf98e0129aa68f6e0506226339e117613dee7451bb622835edf",
+          "qwen3_text_review": "f368ff089d975b5a83d84e21efa29a46572fff26273d0374f58799d7e4c7449b",
+          "rich_first_frame_review": "3c32b20d0ef8a73ca5cdb5e6246bb8390aaa0c247e4fa923367f3613a42fca06"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "d9d2d380ed2c2400a700b6177ba166d86598b525fb4c438f4976b51c6cfeefd7",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat03_indoor/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "9f65a9af8ebdc5a489799b343d2131ea572ba5a15243209a10e9c9b6ab98c5f9"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/cat03_indoor/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+        "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+      },
+      "output_record_sha256": "e17e878253321f9c2a807f7db30af031968146e67d1d0e5bd801fc93c23ae63c",
+      "reason": "Independent review of the very dark GT crop retained only the visible black-coat and white lower-leg or paw evidence and explicitly downgraded coverage and distractor confidence.",
+      "reason_class": "independent_visual_uncertainty_refinement",
+      "replacement_sha256": "7ba492b6ed9cff9c427f36d293076a8ccd1f8d3324646e080152fbf30425a628",
+      "schema": "depthtrack-first-frame-identity-correction-record/v2",
+      "sequence": "cat03_indoor",
+      "source_record_sha256": "47d50989c6a42c5c394cad01ad2859d84b675914668f3f9419d1aaf6196a122c",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "identity_correction": "bd5f1f75347d2d5c59e0b10561f1740b3684ff34a43c29255a070612ff988e7e",
+          "qwen3_text_review": "fb9e33a36b06f553bd95531fd81d0fa20d1295253168c42b667cabc3de311543",
+          "rich_first_frame_review": "2918857620927869144e7db2d08d2091ca69f0d1d3f7231a64107107c79efcbf"
+        }
+      }
+    },
+    {
+      "correction_spec_sha256": "d9d2d380ed2c2400a700b6177ba166d86598b525fb4c438f4976b51c6cfeefd7",
+      "evidence": [
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/duck06_wild/color/00000001.jpg",
+          "role": "first_rgb",
+          "sha256": "73eef3db414847bc2be7f3b69477643317e024ddbc549e4045b7e656bf88fec4"
+        },
+        {
+          "path": "/root/autodl-tmp/depthtrack/train/sequences/duck06_wild/groundtruth.txt",
+          "role": "groundtruth",
+          "sha256": "dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e"
+        }
+      ],
+      "materializer": {
+        "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+        "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+      },
+      "output_record_sha256": "e5889eadf016e76e5ab5aa4f08e7861ff16110c80d12bcb7acbbb57959c0add1",
+      "reason": "At 37 by 18 pixels, independent review supports a brown compact rounded silhouette but cannot distinguish true mottled plumage or complete boundary visibility from water reflections.",
+      "reason_class": "independent_visual_uncertainty_refinement",
+      "replacement_sha256": "04875804088e635c975cf16f938045611c6dbb9f4f5222d5ff92399e2ad6d4bb",
+      "schema": "depthtrack-first-frame-identity-correction-record/v2",
+      "sequence": "duck06_wild",
+      "source_record_sha256": "37d4b8b2322a2a68533fee28950d08ec25c14928ed1f8e774d0e0dc80fce73e4",
+      "supersedes": {
+        "annotation_fields": [
+          "appearance",
+          "distractor_evidence",
+          "distractor_relation",
+          "final_description",
+          "occlusion_evidence",
+          "occlusion_state",
+          "stable_attributes"
+        ],
+        "source_review_record_sha256": {
+          "identity_correction": "b20ffb4954878e1e5eee4f930be5e1d8c3a349d1c45b2a90bf52b625a3630539",
+          "qwen3_text_review": "d3f1ef1613991462cef80fcc19cf623bfd4ace8d026264faeeb63ab468beeba8",
+          "rich_first_frame_review": "6cdba54d264906ee785766ccbbe762d1fa7b485ebff14e7b88f63d203eeb87b2"
+        }
+      }
+    }
+  ],
+  "correction_spec": {
+    "path": "/home/SRTrack_RGBD_L/lib/train/data_specs/depthtrack_first_frame_identity_corrections_v5.json",
+    "records": 3,
+    "sha256": "d9d2d380ed2c2400a700b6177ba166d86598b525fb4c438f4976b51c6cfeefd7"
+  },
+  "invariants": {
+    "categories_unchanged": true,
+    "category_manifest_sha256": "a857b9b5fc51d639a070aa36ad9eb3ebaebebd60803461bca0cd25b480830f1d",
+    "color_only_appearance_sequences": [],
+    "no_color_only_appearances": true,
+    "sequence_order_unchanged": true
+  },
+  "materializer": {
+    "path": "/home/SRTrack_RGBD_L/tools/materialize_depthtrack_first_frame_corrections_v4.py",
+    "sha256": "35898706bee55768ff8267850b93532e22019d58336baaa267aff04d4f9a13f0"
+  },
+  "output": {
+    "complete": true,
+    "path": "/home/OSTrack_RGBD_L_dataset_modified/annotations/depthtrack_train_first_rich_reviewed_qwen3_v5.jsonl",
+    "records": 152,
+    "sha256": "56c03871b8e2a005bbd9ca12c32ed8821c5445d16af9e2631963267b89785b58"
+  },
+  "revision": {
+    "output_annotation_version": "depthtrack-rich-first-frame-review/v5",
+    "quality_flag": "corrected_independent_visual_adjudication_v5",
+    "review_status": "corrected_after_independent_gt_crop_adjudication"
+  },
+  "schema": "depthtrack-first-frame-identity-materialization/v2",
+  "source": {
+    "color_only_appearance_sequences": [],
+    "path": "/home/OSTrack_RGBD_L_dataset_modified/annotations/depthtrack_train_first_rich_reviewed_qwen3_v4.jsonl",
+    "records": 152,
+    "sha256": "6a15cebc05f1bdf677c13577155b09a2ae5c27a7f447dfbcedade21bc37637cc"
+  }
+}

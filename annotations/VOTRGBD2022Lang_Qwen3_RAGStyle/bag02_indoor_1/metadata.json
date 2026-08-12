@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "bag02_indoor_1",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\bag02_indoor_1\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\bag02_indoor_1\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    234,
+    240,
+    70,
+    74
+  ],
+  "category_hint": "bag",
+  "depth_stats": {
+    "target_median_depth": 871.0,
+    "target_mean_depth": 1343.95849609375,
+    "background_median_depth": 1523.0,
+    "depth_contrast": 652.0,
+    "missing_depth_ratio": 0.15810810810810816,
+    "target_depth_variance": 1256574.375,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "bag",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "dark and indistinct (bag)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "partially_occluded_by_the_person's_arm",
+    "distractor_relation": "no significant distractors",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "dark and indistinct (bag), closer than the surrounding background, with reliable depth, partially occluded by the person's arm."
+  },
+  "final_description": "dark and indistinct (bag), closer than the surrounding background, with reliable depth, partially occluded by the person's arm.",
+  "raw_model_output": "```json\n{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"dark and indistinct\",\n  \"depth_relation\": \"closer than background\",\n  \"occlusion_state\": \"partially occluded by the person's arm\",\n  \"distractor_relation\": \"no significant distractors in the bounding box\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target appears to be a dark, indistinct object within the bounding box, possibly a part of the person's clothing or a small accessory. The depth information suggests it is closer to the camera than the background elements.\"\n}\n```",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "dark and indistinct",
+    "depth_relation": "closer than background",
+    "occlusion_state": "partially occluded by the person's arm",
+    "distractor_relation": "no significant distractors in the bounding box",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "The target appears to be a dark, indistinct object within the bounding box, possibly a part of the person's clothing or a small accessory. The depth information suggests it is closer to the camera than the background elements."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"bag\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"dark and indistinct\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"partially occluded by the person's arm\",\n  \"distractor_relation\": \"no significant distractors in the bounding box\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target appears to be a dark, indistinct bag within the bounding box, possibly a part of the person's clothing or a small accessory. The depth information suggests it is closer to the camera than the background elements.\"\n}",
+  "qwen3_error": ""
+}

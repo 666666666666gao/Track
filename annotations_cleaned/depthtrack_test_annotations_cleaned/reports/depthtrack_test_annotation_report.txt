@@ -1,0 +1,19 @@
+DepthTrack test annotation standardization report
+====================================================
+input: /mnt/data/new_upload_annotations/annotations/depthtrack_test_first_qwen3_corrected.jsonl
+output: /mnt/data/depthtrack_test_annotations_cleaned/annotations_cleaned/depthtrack_test_language.jsonl
+total records: 50
+source records with bbox/annotation leakage: 7
+source records with Windows absolute paths: 50
+records with rewritten text fields: 8
+
+Cleaned validation:
+  empty language: 0
+  empty target category: 0
+  remaining bbox leak: 0
+  remaining absolute path: 0
+  invalid depth_relation: 0
+  invalid occlusion: 0
+  invalid depth_quality: 0
+
+Leak example sequences from source: adapter01_indoor, bag02_indoor, beautifullight02_indoor, duck03_wild, dumbbells01_indoor, pot_indoor, ukulele01_indoor

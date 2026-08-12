@@ -1,0 +1,58 @@
+{
+  "dataset": "VOT-RGBD2022",
+  "split": "vot_eval",
+  "sequence": "cube05_indoor_5",
+  "frame_index": 0,
+  "frame_id": 1,
+  "rgb_path": "D:\\steam\\RGB-D-L-work\\sequences\\cube05_indoor_5\\color\\00000001.jpg",
+  "depth_path": "D:\\steam\\RGB-D-L-work\\sequences\\cube05_indoor_5\\depth\\00000001.png",
+  "dataset_format": "vot",
+  "bbox_source": "groundtruth.txt",
+  "bbox": [
+    375,
+    251,
+    45,
+    39
+  ],
+  "category_hint": "cube",
+  "depth_stats": {
+    "target_median_depth": 745.0,
+    "target_mean_depth": 905.6152954101562,
+    "background_median_depth": 906.0,
+    "depth_contrast": 161.0,
+    "missing_depth_ratio": 0.038746438746438794,
+    "target_depth_variance": 385471.0625,
+    "foreground_relation": "closer_than_background",
+    "depth_quality": "reliable"
+  },
+  "annotation": {
+    "category": "cube",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "The target appears to be a wooden block with a number printed on it. (cube)",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "not_occluded",
+    "distractor_relation": "no",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "the target appears to be a wooden block with a number printed on it. (cube), closer than the surrounding background, with reliable depth, no obvious occlusion."
+  },
+  "final_description": "the target appears to be a wooden block with a number printed on it. (cube), closer than the surrounding background, with reliable depth, no obvious occlusion.",
+  "raw_model_output": "{\n  \"category\": \"unknown object\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"The target appears to be a wooden block with a number printed on it.\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no\",\n  \"distractor_relation\": \"no\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target is a wooden block with a number printed on it, located in the foreground.\"\n}",
+  "parse_ok": true,
+  "qwen3_parse_ok": true,
+  "quality_flags": [],
+  "error": "",
+  "initial_annotation": {
+    "category": "unknown object",
+    "category_source": "sequence_hint_confirmed",
+    "appearance": "The target appears to be a wooden block with a number printed on it.",
+    "depth_relation": "closer_than_background",
+    "occlusion_state": "no",
+    "distractor_relation": "no",
+    "depth_quality": "reliable",
+    "motion_or_state": "static",
+    "final_description": "The target is a wooden block with a number printed on it, located in the foreground."
+  },
+  "qwen3_raw_output": "{\n  \"category\": \"cube\",\n  \"category_source\": \"sequence_hint_confirmed\",\n  \"appearance\": \"The target appears to be a wooden block with a number printed on it.\",\n  \"depth_relation\": \"closer_than_background\",\n  \"occlusion_state\": \"no\",\n  \"distractor_relation\": \"no\",\n  \"depth_quality\": \"reliable\",\n  \"motion_or_state\": \"static\",\n  \"final_description\": \"The target is a wooden block with a number printed on it, located in the foreground.\"\n}",
+  "qwen3_error": ""
+}
