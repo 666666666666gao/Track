@@ -54,9 +54,14 @@ the current safe-template policy increases some failure chains.
 A frozen six-sequence DepthTrack-Train language ON/OFF study also rejected
 unconditional structured language for VOT robustness: language ON improved mean
 single-start IoU by `+0.009006`, but increased proxy failure episodes from `16`
-to `18`, with only `2/6` sequences non-negative. The intended next step is a
-Train-only audited language/template gate, followed by formal VOT only if failure
-and cross-sequence safety gates pass.
+to `18`, with only `2/6` sequences non-negative. A pre-registered short
+appearance+category prompt reduced the mean gain to `+0.004008` and still
+increased failures to `17`, with only `1/6` sequences non-negative. A post-hoc
+OFF/structured/short GT oracle reached `+0.025354` mean IoU but did not reduce
+the `16` OFF failure episodes. It therefore proves overlap capacity, not the
+robustness/recovery capacity needed to justify formal VOT. The next protected
+path keeps language code available but prioritizes a shadow/tentative template
+rollout; formal VOT remains gated on Train-only failure and cross-sequence safety.
 
 DepthTrack Test and CDTB results are protected references and are not included as
 new runs in this publication snapshot.
