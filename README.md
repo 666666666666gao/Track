@@ -60,5 +60,11 @@ Model | Backbone | Pretraining | Precision | Success | FPS |       Checkpoint   
 ## Acknowledgments
 Our project is developed upon [OSTrack](https://github.com/botaoye/OSTrack). Thanks for their contributions which help us to quickly implement our ideas.
 
+## Additional RGB-D experiment code
+
+The source-only SUTrack RGB-D language and safe-template-update overlay is in
+[`projects/sutrack_rgbd_language_template`](projects/sutrack_rgbd_language_template/README.md).
+It does not include checkpoints, datasets, VOT outputs or server handoff records.
+
 ## Citation
 If our work is useful for your research, please consider cite.
