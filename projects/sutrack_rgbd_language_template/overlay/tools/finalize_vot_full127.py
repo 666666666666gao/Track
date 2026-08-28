@@ -116,6 +116,20 @@ def parse_args():
     parser.add_argument('--expected-toolkit', default='0.7.1')
     parser.add_argument('--expected-manifest-sha256', default='')
     parser.add_argument(
+        '--candidate-name',
+        default='SUTrack-L384 + structured language + safe-v1')
+    parser.add_argument(
+        '--comparison-name',
+        default='SRTrack historical formal full-127 reference')
+    parser.add_argument(
+        '--comparison-eao', type=float, default=OLD_METRICS['eao'])
+    parser.add_argument(
+        '--comparison-acc', type=float, default=OLD_METRICS['acc'])
+    parser.add_argument(
+        '--comparison-rob', type=float, default=OLD_METRICS['rob'])
+    parser.add_argument(
+        '--comparison-is-sutrack-baseline', action='store_true')
+    parser.add_argument(
         '--checkpoint', type=Path,
         default=Path('/root/autodl-tmp/sutrack_assets/weights/SUTRACK_ep0180_l384.pth.tar'))
     parser.add_argument(
@@ -127,6 +141,9 @@ def parse_args():
     parser.add_argument(
         '--configuration', type=Path,
         default=Path('/home/SUTrack_RGBD_L/experiments/sutrack/sutrack_l384_rgbd_language_safe_template.yaml'))
+    parser.add_argument(
+        '--source-file', action='append', type=Path, default=[],
+        help='Additional runtime source to freeze; relative paths use repo root')
     parser.add_argument('--update-docs', action='store_true')
     parser.add_argument('--doc', action='append', type=Path, default=[])
     parser.add_argument('--validate-only', action='store_true')
@@ -218,7 +235,34 @@ def source_records(args):
             'size': path.stat().st_size,
             'sha256': sha256_file(path),
         }
+    for raw_path in args.source_file:
+        path = raw_path if raw_path.is_absolute() else repo_root / raw_path
+        path = require_file(path).resolve()
+        try:
+            label = str(path.relative_to(repo_root))
+        except ValueError:
+            label = str(path)
+        key = 'implementation_extra/' + label
+        if key in records:
+            raise ValueError('Duplicate additional source: {}'.format(path))
+        records[key] = {
+            'path': str(path),
+            'size': path.stat().st_size,
+            'sha256': sha256_file(path),
+        }
     return records
+
+
+def comparison_metrics(args):
+    metrics = {
+        'eao': args.comparison_eao,
+        'acc': args.comparison_acc,
+        'rob': args.comparison_rob,
+    }
+    if not all(math.isfinite(value) and 0.0 <= value <= 1.0
+               for value in metrics.values()):
+        raise ValueError('Comparison metrics must be finite fractions in [0, 1]')
+    return metrics
 
 
 def ensure_source_snapshot(args, root, manifest_sha):
@@ -350,6 +394,7 @@ def parse_analysis(args, analysis_path, manifest):
 
 def build_result(args, root, manifest_sha, manifest, merge_path,
                  analysis_path, metrics, snapshot_path):
+    comparison = comparison_metrics(args)
     preseed_path = root / 'preseed_receipt.json'
     preseed = None
     if preseed_path.exists():
@@ -370,11 +415,14 @@ def build_result(args, root, manifest_sha, manifest, merge_path,
         'metrics_fraction': metrics,
         'metrics_percent': {
             name: value * 100.0 for name, value in metrics.items()},
+        'candidate_name': args.candidate_name,
         'historical_formal_percent': {
             name: value * 100.0 for name, value in OLD_METRICS.items()},
+        'comparison_reference_percent': {
+            name: value * 100.0 for name, value in comparison.items()},
         'comparison_reference': {
-            'name': 'SRTrack historical formal full-127 reference',
-            'is_sutrack_baseline': False,
+            'name': args.comparison_name,
+            'is_sutrack_baseline': args.comparison_is_sutrack_baseline,
             'server_measured': True,
         },
         'official_sutrack_reported_percent': {
@@ -384,12 +432,17 @@ def build_result(args, root, manifest_sha, manifest, merge_path,
         'delta_vs_historical_pp': {
             name: (metrics[name] - OLD_METRICS[name]) * 100.0
             for name in metrics},
+        'delta_vs_comparison_pp': {
+            name: (metrics[name] - comparison[name]) * 100.0
+            for name in metrics},
         'targets_percent': {
             name: value * 100.0 for name, value in TARGETS.items()},
         'target_checks': checks,
         'all_targets_met': all(checks.values()),
         'all_historical_metrics_improved': all(
             metrics[name] >= OLD_METRICS[name] for name in metrics),
+        'all_comparison_metrics_improved': all(
+            metrics[name] >= comparison[name] for name in metrics),
         'shard_manifest_sha256': manifest_sha,
         'merge_result': {
             'path': str(merge_path), 'sha256': sha256_file(merge_path)},
@@ -432,8 +485,11 @@ def doc_heading(path):
 
 def render_doc_block(path, result):
     metrics = result['metrics_fraction']
+    comparison = {
+        name: value / 100.0
+        for name, value in result['comparison_reference_percent'].items()}
     deltas = {
-        name: metrics[name] - OLD_METRICS[name] for name in metrics}
+        name: metrics[name] - comparison[name] for name in metrics}
     target_text = '、'.join(
         '{}={}'.format(name.upper(), '通过' if passed else '未通过')
         for name, passed in result['target_checks'].items())
@@ -449,17 +505,19 @@ def render_doc_block(path, result):
         '',
         '| 结果 | EAO | ACC | ROB |',
         '|---|---:|---:|---:|',
-        '| SRTrack 历史正式参考（非 SUTrack baseline） | {} | {} | {} |'.format(
-            percent(OLD_METRICS['eao']), percent(OLD_METRICS['acc']),
-            percent(OLD_METRICS['rob'])),
+        '| {} | {} | {} | {} |'.format(
+            result['comparison_reference']['name'],
+            percent(comparison['eao']), percent(comparison['acc']),
+            percent(comparison['rob'])),
         '| SUTrack 官方论文报告（未在本服务器复测） | {} | {} | {} |'.format(
             percent(OFFICIAL_SUTRACK_REPORTED['eao']),
             percent(OFFICIAL_SUTRACK_REPORTED['acc']),
             percent(OFFICIAL_SUTRACK_REPORTED['rob'])),
-        '| SUTrack-L384 + 结构化语言 + safe-v1（本服务器实测） | **{}** | **{}** | **{}** |'.format(
+        '| {}（本服务器实测） | **{}** | **{}** | **{}** |'.format(
+            result['candidate_name'],
             percent(metrics['eao']), percent(metrics['acc']),
             percent(metrics['rob'])),
-        '| 相对 SRTrack 历史正式参考变化（pp） | {} | {} | {} |'.format(
+        '| 相对冻结对照变化（pp） | {} | {} | {} |'.format(
             signed_pp(deltas['eao']), signed_pp(deltas['acc']),
             signed_pp(deltas['rob'])),
         '| 目标 | 77.900000 | 82.100000 | 93.700000 |',
@@ -467,8 +525,7 @@ def render_doc_block(path, result):
         '权威结果：`{}`；analysis SHA256 `{}`；merge SHA256 `{}`。'.format(
             str(Path(result['analysis']['path']).parents[2] / 'full_result.json'),
             result['analysis']['sha256'], result['merge_result']['sha256']),
-        'SUTrack 官方 baseline 按要求未重跑，因此这里不声称“创新相对 SUTrack baseline 的 full-127 增益”；',
-        '只有 SUTrack+创新的绝对实测指标，以及相对 SRTrack 历史正式参考的变化。',
+        '比较对象由终态artifact显式记录，不能把官方论文值或其他服务器结果替代为同配置对照。',
         '该 full-127 只更新 VOT 证据；DepthTrack/CDTB 未在 SUTrack 移植上重测，原有已达标正式数字保持不变。',
     ))
 

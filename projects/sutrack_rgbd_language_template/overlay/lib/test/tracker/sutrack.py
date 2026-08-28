@@ -1,4 +1,6 @@
 from lib.test.tracker.basetracker import BaseTracker
+import math
+
 import torch
 from lib.test.tracker.utils import sample_target, transform_image_to_crop
 import cv2
@@ -36,6 +38,8 @@ class SUTRACK(BaseTracker):
         self.safe_template_update = bool(safe_template_config.USE)
         self.safe_template_policy = None
         self.safe_template_nms_kernel = int(safe_template_config.NMS_KERNEL)
+        self.safe_template_apply_tensor_blend = bool(
+            safe_template_config.APPLY_TENSOR_BLEND)
         if self.safe_template_update:
             if self.num_template < 2:
                 raise ValueError(
@@ -101,6 +105,10 @@ class SUTRACK(BaseTracker):
                 'RGB-D safe template update requires multi-modal vision')
 
         self.task_index_batch = None
+        online_language_config = self.cfg.TEST.ONLINE_LANGUAGE_UPDATE
+        self.online_language_evidence_enabled = bool(
+            online_language_config.USE)
+        self._last_online_response_margin = None
 
 
     def initialize(self, image, info: dict):
@@ -125,6 +133,7 @@ class SUTRACK(BaseTracker):
         self.template_anno_list = [self.static_template_anno]
         self.frame_id = 0
         self.sequence_name = str(info.get('sequence_name', 'unknown'))
+        self._last_online_response_margin = None
 
         if self.safe_template_update:
             self.safe_template_policy.initialize(
@@ -173,6 +182,12 @@ class SUTRACK(BaseTracker):
             response = self.output_window * pred_score_map
         else:
             response = pred_score_map
+        if self.online_language_evidence_enabled:
+            selected_index = int(
+                response.detach().reshape(-1).argmax().item())
+            self._last_online_response_margin = nms_response_margin(
+                response.detach(), selected_index,
+                kernel=int(self.cfg.TEST.ONLINE_LANGUAGE_UPDATE.NMS_KERNEL))
         if 'size_map' in out_dict.keys():
             pred_boxes, conf_score = self.network.decoder.cal_bbox(response, out_dict['size_map'],
                                                                    out_dict['offset_map'], return_score=True)
@@ -190,6 +205,7 @@ class SUTRACK(BaseTracker):
         # simultaneous temporal, response, immutable-RGB and raw-depth
         # evidence replaces the baseline interval/confidence rule.
         safe_template_decision = None
+        applied_template_blend_weight = None
         candidate_state = list(self.state)
         online_state_evidence = None
         if self.safe_template_update:
@@ -206,7 +222,14 @@ class SUTRACK(BaseTracker):
             if safe_template_decision.rollback_state:
                 self.state = prior_state
             if safe_template_decision.replace_dynamic:
-                self._replace_dynamic_template(image)
+                applied_template_blend_weight = (
+                    float(self.safe_template_policy.blend_weight)
+                    if self.safe_template_apply_tensor_blend else 1.0)
+                self._replace_dynamic_template(
+                    image,
+                    blend_weight=(
+                        applied_template_blend_weight
+                        if self.safe_template_apply_tensor_blend else None))
                 self.safe_template_policy.commit(self.frame_id)
             online_state_evidence = {
                 'frame_id': int(self.frame_id),
@@ -263,6 +286,8 @@ class SUTRACK(BaseTracker):
                   "best_score": conf_score}
         if safe_template_decision is not None:
             output['safe_template_decision'] = safe_template_decision
+            output['applied_template_blend_weight'] = (
+                applied_template_blend_weight)
             # Trace-only consumers may inspect these online quantities, but
             # they do not feed back into tracking and never contain GT.
             output['online_state_evidence'] = online_state_evidence
@@ -273,8 +298,8 @@ class SUTRACK(BaseTracker):
         self.template_list = [self.static_template] * self.num_template
         self.template_anno_list = [self.static_template_anno]
 
-    def _replace_dynamic_template(self, image):
-        """Replace exactly one dynamic template after policy authorization."""
+    def _replace_dynamic_template(self, image, blend_weight=None):
+        """Replace one slot, optionally interpolating with the static tensor."""
         z_patch_arr, resize_factor = sample_target(
             image, self.state, self.params.template_factor,
             output_sz=self.params.template_size)
@@ -287,6 +312,22 @@ class SUTRACK(BaseTracker):
             torch.Tensor([self.params.template_size, self.params.template_size]),
             normalize=True)
         template_anno = prev_box_crop.to(template.device).unsqueeze(0)
+
+        if blend_weight is not None:
+            try:
+                blend_weight = float(blend_weight)
+            except (TypeError, ValueError, OverflowError) as error:
+                raise ValueError('Template blend weight must be finite') from error
+            if (not math.isfinite(blend_weight) or
+                    not 0.0 < blend_weight <= 1.0):
+                raise ValueError('Template blend weight must lie in (0, 1]')
+            if (template.shape != self.static_template.shape or
+                    template_anno.shape != self.static_template_anno.shape):
+                raise ValueError('Static/candidate template shapes differ')
+            template = torch.lerp(
+                self.static_template, template, blend_weight)
+            template_anno = torch.lerp(
+                self.static_template_anno, template_anno, blend_weight)
 
         self.template_list.append(template)
         if len(self.template_list) > self.num_template:

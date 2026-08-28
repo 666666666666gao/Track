@@ -14,7 +14,10 @@ from pathlib import Path
 from lib.test.evaluation import Tracker
 import lib.test.vot.vot as vot
 from lib.test.vot.vot_utils import *
-from lib.test.tracker.rgbd_language_manifest import RGBDLanguageManifest
+from lib.test.tracker.rgbd_language_manifest import (
+    RGBDAnchorLanguageManifest,
+    RGBDLanguageManifest,
+)
 from lib.test.tracker.rgbd_frame import get_rgbd_frame
 
 
@@ -27,12 +30,22 @@ class SUTrack(object):
         params.debug = False
         language_config = params.cfg.TEST.RGBD_LANGUAGE
         self.language_manifest = None
+        self.anchor_specific_language = False
         if language_config.USE:
-            self.language_manifest = RGBDLanguageManifest(
-                language_config.MANIFEST_PATH,
-                language_config.MANIFEST_SHA256,
-                language_config.EXPECTED_DATASET,
-                language_config.EXPECTED_SEQUENCE_COUNT)
+            self.anchor_specific_language = bool(
+                getattr(language_config, 'ANCHOR_SPECIFIC', False))
+            if self.anchor_specific_language:
+                self.language_manifest = RGBDAnchorLanguageManifest(
+                    language_config.MANIFEST_PATH,
+                    language_config.MANIFEST_SHA256,
+                    language_config.EXPECTED_DATASET,
+                    language_config.EXPECTED_RECORD_COUNT)
+            else:
+                self.language_manifest = RGBDLanguageManifest(
+                    language_config.MANIFEST_PATH,
+                    language_config.MANIFEST_SHA256,
+                    language_config.EXPECTED_DATASET,
+                    language_config.EXPECTED_SEQUENCE_COUNT)
         self.tracker = tracker_info.create_tracker(params)
 
     def write(self, str):
@@ -40,7 +53,8 @@ class SUTrack(object):
         file = open(txt_path, 'a')
         file.write(str)
 
-    def initialize(self, img_rgb, selection, sequence_name, depth_path=None):
+    def initialize(self, img_rgb, selection, sequence_name, depth_path=None,
+                   anchor_index=None):
         # init on the 1st frame
         # region = rect_from_mask(mask)
         x, y, w, h = selection
@@ -52,8 +66,12 @@ class SUTrack(object):
             'depth_path': depth_path,
         }
         if self.language_manifest is not None:
-            init_info['init_nlp'] = self.language_manifest.language_for(
-                sequence_name)
+            if self.anchor_specific_language:
+                init_info['init_nlp'] = self.language_manifest.language_for(
+                    sequence_name, anchor_index)
+            else:
+                init_info['init_nlp'] = self.language_manifest.language_for(
+                    sequence_name)
         _ = self.tracker.initialize(img_rgb, init_info)
 
     def track(self, img_rgb, depth_path=None):
@@ -85,6 +103,18 @@ def _sequence_name(rgb_path):
     if not sequence_name:
         raise ValueError('Unable to derive sequence name from {}'.format(rgb_path))
     return sequence_name
+
+
+def _anchor_index(rgb_path):
+    """Map VOT's one-based RGB filename to its zero-based anchor index."""
+    stem = Path(rgb_path).stem
+    if not stem.isdigit():
+        raise ValueError(
+            'Unable to derive numeric VOT anchor index from {}'.format(rgb_path))
+    frame_number = int(stem)
+    if frame_number <= 0:
+        raise ValueError('VOT RGB frame numbers must be one-based')
+    return frame_number - 1
 
 
 def run_vot_exp(tracker_name, para_name, vis=False, out_conf=False, channel_type='color'):
@@ -123,7 +153,9 @@ def run_vot_exp(tracker_name, para_name, vis=False, out_conf=False, channel_type
     else:
         image = cv2.cvtColor(cv2.imread(rgb_path), cv2.COLOR_BGR2RGB) # Right
 
-    tracker.initialize(image, selection, sequence_name, depth_path)
+    tracker.initialize(
+        image, selection, sequence_name, depth_path,
+        anchor_index=_anchor_index(rgb_path))
 
     while True:
         imagefile = handle.frame()
