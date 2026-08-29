@@ -1,12 +1,15 @@
 """SUTrack with protected/tentative dynamic-template transactions.
 
-For a template-only candidate, the public branch accepts the already-gated
-current bbox but keeps the old template; the tentative branch differs only by
-the new template.  For a state-conflict candidate, the public branch keeps the
-last trusted bbox and the tentative branch holds the disputed bbox.  Both
-branches are rolled forward on the next two frames. Only two consecutive,
-identity-anchored advantages promote the complete tentative state; every
-conflict or timeout installs the complete protected state.
+The public branch accepts the already-gated current bbox but keeps the old
+template; the tentative branch differs only by the new template. Both branches
+are rolled forward on the next two frames. Only two consecutive,
+identity-anchored advantages promote the complete tentative snapshot; every
+conflict or timeout installs the complete protected snapshot.
+
+Bounding-box conflicts are deliberately not transactions. The direct
+identity-only baseline has HARD_CONFLICT_STATE_ROLLBACK=False and therefore
+accepts its current prediction even when the template writer rejects an update.
+Preserving that state transition is a hard parity invariant here.
 """
 
 import copy
@@ -35,7 +38,7 @@ from lib.utils.box_ops import clip_box
 
 
 class SUTRACKProtectedTransaction(SUTRACK):
-    """Delay every safe-v1 template write until a two-frame shadow verdict."""
+    """Delay safe-v1 template writes without changing baseline bbox semantics."""
 
     def __init__(self, params, dataset_name):
         super().__init__(params, dataset_name)
@@ -73,6 +76,18 @@ class SUTRACKProtectedTransaction(SUTRACK):
     def _new_transaction(self):
         return ProtectedTentativeTemplateTransaction(
             **copy.deepcopy(self.transaction_settings))
+
+    @staticmethod
+    def _orient_template_transaction_snapshots(
+            old_template_snapshot, new_template_snapshot):
+        """Map semantic branches to the controller's protected/tentative API.
+
+        The historical transaction tracker keeps its original orientation:
+        the old-template branch is public/protected and the newly written
+        template is tentative.  A baseline-first veto tracker can override
+        this seam without duplicating the recursive tracking implementation.
+        """
+        return old_template_snapshot, new_template_snapshot
 
     def initialize(self, image, info):
         output = super().initialize(image, info)
@@ -308,17 +323,11 @@ class SUTRACKProtectedTransaction(SUTRACK):
             annos = [self.static_template_anno]
         if decision.replace_dynamic:
             candidate_policy.cancel(self.frame_id)
-        hard_conflict = self._is_hard_conflict(decision)
-        if hard_conflict:
-            selected_state = materialized['state']
-            selected_policy = prior_policy
-            selected_policy.pending_update_frame = None
-            selected_policy.stable_frames = 0
-            if decision.drop_dynamic:
-                selected_policy.dynamic_active = False
-        else:
-            selected_state = bbox
-            selected_policy = candidate_policy
+        # Match direct SUTRACK.track(): HARD_CONFLICT_STATE_ROLLBACK is off,
+        # so writer conflicts may suppress/drop a template but never freeze the
+        # recursive bbox.  This invariant applies to both shadow branches.
+        selected_state = bbox
+        selected_policy = candidate_policy
         evidence = self._branch_evidence(
             candidate_policy, decision, confidence, margin)
         updated = self._capture_snapshot(
@@ -346,7 +355,7 @@ class SUTRACKProtectedTransaction(SUTRACK):
             self.template_transaction.active_snapshots())
         try:
             protected_prediction = self._infer(
-                image, protected_previous.state,
+                image, list(protected_previous.state),
                 protected_previous.templates,
                 protected_previous.template_annotations,
                 text_src=protected_previous.auxiliary['text_src'],
@@ -379,7 +388,7 @@ class SUTRACKProtectedTransaction(SUTRACK):
 
         try:
             tentative_prediction = self._infer(
-                image, tentative_previous.state,
+                image, list(tentative_previous.state),
                 tentative_previous.templates,
                 tentative_previous.template_annotations,
                 text_src=tentative_previous.auxiliary['text_src'],
@@ -484,10 +493,6 @@ class SUTRACKProtectedTransaction(SUTRACK):
                 candidate_annos = [self.static_template_anno]
 
             hard_conflict = self._is_hard_conflict(writer_decision)
-            protected_state = prior_state
-            protected_templates = prior_templates
-            protected_annos = prior_annos
-            protected_policy = prior_policy
             if writer_decision.replace_dynamic:
                 if hard_conflict:
                     raise ValueError(
@@ -510,17 +515,17 @@ class SUTRACKProtectedTransaction(SUTRACK):
                     self.num_template)
                 candidate_policy.commit(self.frame_id)
                 event_kind = 'template_candidate'
-            elif hard_conflict:
-                candidate_policy.pending_update_frame = None
-                event_kind = 'state_conflict_candidate'
 
             if event_kind is not None:
-                protected_snapshot = self._capture_snapshot(
+                old_template_snapshot = self._capture_snapshot(
                     protected_state, protected_templates, protected_annos,
                     protected_policy)
-                tentative_snapshot = self._capture_snapshot(
+                new_template_snapshot = self._capture_snapshot(
                     bbox, candidate_templates, candidate_annos,
                     candidate_policy)
+                protected_snapshot, tentative_snapshot = (
+                    self._orient_template_transaction_snapshots(
+                        old_template_snapshot, new_template_snapshot))
                 transaction_decision = self.template_transaction.begin(
                     self.frame_id, protected_snapshot, tentative_snapshot,
                     self.identity_anchor)
@@ -563,9 +568,7 @@ class SUTRACKProtectedTransaction(SUTRACK):
 
         output = {
             'target_bbox': self.state,
-            'best_score': (
-                0.0 if event_kind == 'state_conflict_candidate' else
-                confidence_tensor),
+            'best_score': confidence_tensor,
             'protected_transaction': {
                 'active_before': False,
                 'selected_branch': 'protected',

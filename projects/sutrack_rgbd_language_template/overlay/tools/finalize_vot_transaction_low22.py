@@ -17,7 +17,7 @@ if str(REPO_ROOT) not in sys.path:
 from tools import finalize_vot_full127 as common
 
 
-TRACKER = 'sutrack_l384_rgbd_anchor_identity_transaction_low22'
+TRACKER = 'sutrack_l384_rgbd_anchor_identity_template_transaction_low22'
 BASELINE = {
     'eao': 0.43274104354018916,
     'acc': 0.7206551125207067,
@@ -33,12 +33,12 @@ EXPECTED_CHECKPOINT_SHA256 = (
     '2a686e8b55091d3396886de0c9e2d7a46794a5773581b96e37006f851e9dacd4')
 TRANSACTION_SOURCE_FILES = (
     'experiments/sutrack/'
-    'sutrack_l384_rgbd_anchor_identity_transaction_low22.yaml',
+    'sutrack_l384_rgbd_anchor_identity_template_transaction_low22.yaml',
     'lib/test/parameter/sutrack_transaction.py',
     'lib/test/tracker/protected_tentative_transaction.py',
     'lib/test/tracker/sutrack_transaction.py',
     'lib/test/vot/'
-    'sutrack_l384_rgbd_anchor_identity_transaction_low22.py',
+    'sutrack_l384_rgbd_anchor_identity_template_transaction_low22.py',
     'lib/test/vot/sutrack_transaction_class.py',
     'tools/prepare_vot_transaction_low22.py',
     'tools/launch_vot_transaction_low22.sh',
@@ -46,6 +46,8 @@ TRANSACTION_SOURCE_FILES = (
     'tools/finalize_vot_transaction_low22_diagnostics.py',
     'tools/smoke_sutrack_transaction_integration.py',
     'tools/smoke_sutrack_transaction_gpu.py',
+    'tools/smoke_sutrack_template_transaction_parity.py',
+    'tools/diagnose_vot_transaction_failure.py',
 )
 SOURCE_FILES = tuple(dict.fromkeys(
     tuple(common.IMPLEMENTATION_FILES) + TRANSACTION_SOURCE_FILES))
@@ -188,7 +190,8 @@ def failure_progress(overlaps, proxy, grace_frames, threshold):
     return progress
 
 
-def count_confirmed_failures(master, tracker_id):
+def collect_confirmed_failure_outcomes(
+        master, tracker_id, expected_anchors=EXPECTED_ANCHORS):
     from vot.dataset.proxy import FrameMapSequence
     from vot.experiment.multistart import find_anchors
     from vot.region import calculate_overlaps
@@ -204,8 +207,8 @@ def count_confirmed_failures(master, tracker_id):
     tracker = trackers[0]
     experiment = workspace.stack.experiments['baseline']
     settings = analysis_settings(experiment)
+    outcomes = {}
     failures = 0
-    anchors_seen = 0
     per_sequence = {}
     for sequence in experiment.transform(workspace.dataset):
         results = experiment.results(tracker, sequence)
@@ -231,15 +234,33 @@ def count_confirmed_failures(master, tracker_id):
             progress = failure_progress(
                 overlaps, proxy, settings['grace'], settings['threshold'])
             failed = progress < len(overlaps)
+            key = '{}@{}{}'.format(
+                sequence.name, anchor, 'B' if reverse else 'F')
+            if key in outcomes:
+                raise RuntimeError('Duplicate failure outcome {}'.format(key))
+            outcomes[key] = {
+                'anchor_key': key,
+                'sequence': sequence.name,
+                'anchor': int(anchor),
+                'direction': 'backward' if reverse else 'forward',
+                'failed': bool(failed),
+                'progress': int(progress),
+                'run_length': len(overlaps),
+            }
             sequence_failures += int(failed)
             failures += int(failed)
-            anchors_seen += 1
         per_sequence[sequence.name] = {
             'anchors': len(anchors),
             'confirmed_failures': sequence_failures,
         }
-    if anchors_seen != EXPECTED_ANCHORS:
+    if len(outcomes) != expected_anchors:
         raise RuntimeError('Failure audit anchor count differs')
+    return outcomes, failures, per_sequence, settings
+
+
+def count_confirmed_failures(master, tracker_id):
+    _, failures, per_sequence, settings = (
+        collect_confirmed_failure_outcomes(master, tracker_id))
     return failures, per_sequence, settings
 
 

@@ -19,7 +19,7 @@ SCHEMA = 'sutrack_transaction_low22_diagnostics_v1'
 GATE_SCHEMA = 'sutrack_transaction_low22_gate_v1'
 BASELINE_TRACKER = 'sutrack_l384_rgbd_anchor_identity_low22'
 CANDIDATE_TRACKER = (
-    'sutrack_l384_rgbd_anchor_identity_transaction_low22')
+    'sutrack_l384_rgbd_anchor_identity_template_transaction_low22')
 EXPECTED_SEQUENCES = 22
 EXPECTED_ANCHORS = 303
 EXPECTED_CHECKPOINT = (

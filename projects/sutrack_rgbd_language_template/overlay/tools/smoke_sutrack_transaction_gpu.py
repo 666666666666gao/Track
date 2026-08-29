@@ -28,7 +28,7 @@ from lib.test.tracker.sutrack_transaction import (
 
 EXPECTED_CHECKPOINT_SHA256 = (
     '2a686e8b55091d3396886de0c9e2d7a46794a5773581b96e37006f851e9dacd4')
-YAML_NAME = 'sutrack_l384_rgbd_anchor_identity_transaction_low22'
+YAML_NAME = 'sutrack_l384_rgbd_anchor_identity_template_transaction_low22'
 
 
 def sha256_file(path):
@@ -127,6 +127,8 @@ def main():
     trace_root.mkdir(parents=True, exist_ok=True)
     os.environ['SUTRACK_TRANSACTION_TRACE_ROOT'] = str(trace_root)
     params = parameters(YAML_NAME)
+    params.visualization = False
+    params.debug = False
     checkpoint = Path(params.checkpoint).resolve()
     checkpoint_sha = sha256_file(checkpoint)
     if checkpoint_sha != EXPECTED_CHECKPOINT_SHA256:
@@ -140,7 +142,7 @@ def main():
     init_nlp = language_manifest.language_for(
         sequence_name, args.anchor_index)
 
-    tracker = SUTRACKProtectedTransaction(params, 'votrgbd2022')
+    tracker = SUTRACKProtectedTransaction(params, 'depthtrack')
     network_devices = sorted({str(parameter.device)
                               for parameter in tracker.network.parameters()})
     if not network_devices or not all(
@@ -189,6 +191,20 @@ def main():
         })
     torch.cuda.synchronize()
 
+    invalid_event_kinds = sorted({
+        str(frame['event_kind']) for frame in frames
+        if frame['event_kind'] not in (None, 'template_candidate')
+    })
+    if invalid_event_kinds:
+        raise RuntimeError(
+            'Template-only tracker opened a non-template transaction: {}'.format(
+                invalid_event_kinds))
+    if not any(
+            abs(float(current) - float(initial)) > 1.0e-6
+            for current, initial in zip(frames[0]['target_bbox'], init_bbox)):
+        raise RuntimeError(
+            'First recursive bbox was frozen instead of accepting prediction')
+
     if tracker.transaction_trace_path is None:
         raise RuntimeError('Transaction trace path was not initialized')
     trace_path = Path(tracker.transaction_trace_path).resolve()
@@ -204,15 +220,17 @@ def main():
         REPO_ROOT / 'lib/test/tracker/protected_tentative_transaction.py',
         REPO_ROOT / 'lib/test/parameter/sutrack_transaction.py',
         REPO_ROOT / 'experiments/sutrack/'
-        'sutrack_l384_rgbd_anchor_identity_transaction_low22.yaml',
+        'sutrack_l384_rgbd_anchor_identity_template_transaction_low22.yaml',
     )
     payload = {
-        'schema': 'sutrack_transaction_low22_gpu_smoke_v1',
+        'schema': 'sutrack_template_transaction_low22_gpu_smoke_v2',
         'status': 'passed',
         'gpu_inference_exercised': True,
         'public_metric_computed': False,
         'future_ground_truth_read': False,
         'only_initialization_bbox_read': True,
+        'bbox_state_freeze_detected': False,
+        'allowed_transaction_event_kinds': [None, 'template_candidate'],
         'low22_vot_started': False,
         'sequence_name': sequence_name,
         'anchor_index': args.anchor_index,

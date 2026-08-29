@@ -66,7 +66,7 @@ def main():
 
     candidate_yaml = (
         REPO_ROOT / 'experiments' / 'sutrack' /
-        'sutrack_l384_rgbd_anchor_identity_transaction_low22.yaml')
+        'sutrack_l384_rgbd_anchor_identity_template_transaction_low22.yaml')
     baseline_yaml = (
         REPO_ROOT / 'experiments' / 'sutrack' /
         'sutrack_l384_rgbd_anchor_identity_low22.yaml')
@@ -78,7 +78,7 @@ def main():
         'sutrack_transaction.py')
     vot_source = (
         REPO_ROOT / 'lib' / 'test' / 'vot' /
-        'sutrack_l384_rgbd_anchor_identity_transaction_low22.py')
+        'sutrack_l384_rgbd_anchor_identity_template_transaction_low22.py')
     vot_adapter_source = (
         REPO_ROOT / 'lib' / 'test' / 'vot' /
         'sutrack_transaction_class.py')
@@ -96,17 +96,21 @@ def main():
         'finalize_vot_transaction_low22_diagnostics.py')
     gpu_smoke_source = (
         REPO_ROOT / 'tools' / 'smoke_sutrack_transaction_gpu.py')
+    parity_smoke_source = (
+        REPO_ROOT / 'tools' /
+        'smoke_sutrack_template_transaction_parity.py')
+    gpu_smoke_text = gpu_smoke_source.read_text(encoding='utf-8')
     launcher_text = launcher_source.read_text(encoding='utf-8')
     diagnostics_text = diagnostics_source.read_text(encoding='utf-8')
 
     transaction_run_root = Path(
-        '/root/autodl-tmp/sutrack_transaction_low22_v1/run').resolve()
+        '/root/autodl-tmp/sutrack_template_transaction_low22_v2/run').resolve()
     expected_trace_root = transaction_run_root / 'transaction_traces'
     os.environ['SUTRACK_TRANSACTION_TRACE_ROOT'] = str(expected_trace_root)
     parameter_module = importlib.import_module(
         'lib.test.parameter.sutrack_transaction')
     params = parameter_module.parameters(
-        'sutrack_l384_rgbd_anchor_identity_transaction_low22')
+        'sutrack_l384_rgbd_anchor_identity_template_transaction_low22')
     settings = params.protected_tentative_transaction
     controller = ProtectedTentativeTemplateTransaction(**settings)
     checks = {
@@ -140,10 +144,20 @@ def main():
             launcher_text),
         'launcher_runs_metric_blind_gpu_smoke_before_low22_prepare': bool(
             'tools/smoke_sutrack_transaction_gpu.py' in launcher_text and
+            'tools/smoke_sutrack_template_transaction_parity.py' in
+            launcher_text and
             'SUTRACK_TRANSACTION_SMOKE_GPU' in launcher_text and
             launcher_text.index(
                 'tools/smoke_sutrack_transaction_gpu.py') <
+            launcher_text.index(
+                'tools/smoke_sutrack_template_transaction_parity.py') <
             launcher_text.index('tools/prepare_vot_transaction_low22.py')),
+        'gpu_smoke_matches_vot_runtime_flags': bool(
+            'params.visualization = False' in gpu_smoke_text and
+            'params.debug = False' in gpu_smoke_text),
+        'gpu_smoke_uses_formal_depthtrack_runtime_path': bool(
+            "SUTRACKProtectedTransaction(params, 'depthtrack')" in
+            gpu_smoke_text),
         'launcher_restarts_diagnostics_after_completed_gate': bool(
             'gate_complete=false' in launcher_text and
             'if [[ "$gate_complete" == true ]]' in launcher_text and
@@ -256,6 +270,25 @@ def main():
         tentative_snapshot.auxiliary['safe_policy_state']['last_frame_id'] == 1 and
         tentative_snapshot.auxiliary['safe_policy_state']['dynamic_active'])
 
+    active_anchor_types = []
+
+    def list_only_active_infer(
+            unused_image, anchor_bbox, unused_templates, unused_annos,
+            **unused_kwargs):
+        active_anchor_types.append(type(anchor_bbox))
+        if not isinstance(anchor_bbox, list):
+            raise TypeError('active snapshot bbox was not materialized')
+        return candidate_bbox, torch.tensor([0.90]), 0.90, 0.30
+
+    probe._infer = list_only_active_infer
+    with patch.object(
+            SafeTemplateUpdatePolicy, 'observe', new=scripted_observe):
+        active_output = probe.track(np.zeros((8, 8, 6)), {})
+    checks['active_branches_materialize_snapshot_bbox_as_list'] = bool(
+        active_anchor_types == [list, list] and
+        active_output['protected_transaction'].get(
+            'recoverable_error') is None)
+
     probe.template_transaction = ProtectedTentativeTemplateTransaction(
         **settings)
     probe.state = [10.0, 10.0, 20.0, 20.0]
@@ -281,15 +314,32 @@ def main():
     with patch.object(
             SafeTemplateUpdatePolicy, 'observe', new=scripted_conflict):
         conflict_output = probe.track(np.zeros((8, 8, 6)), {})
-    conflict_protected, conflict_tentative = (
-        probe.template_transaction.active_snapshots())
-    checks['state_conflict_candidate_keeps_prior_recursive_state'] = bool(
-        conflict_output['target_bbox'] == [10.0, 10.0, 20.0, 20.0] and
-        conflict_output['best_score'] == 0.0 and
-        conflict_protected.state == (10.0, 10.0, 20.0, 20.0) and
-        conflict_tentative.state == tuple(candidate_bbox) and
-        conflict_output['protected_transaction']['event_kind'] ==
-        'state_conflict_candidate')
+    checks['state_conflict_preserves_direct_baseline_bbox_semantics'] = bool(
+        conflict_output['target_bbox'] == candidate_bbox and
+        torch.equal(conflict_output['best_score'], torch.tensor([0.90])) and
+        probe.state == candidate_bbox and
+        not probe.template_transaction.active and
+        conflict_output['protected_transaction']['event_kind'] is None and
+        probe.safe_template_policy.last_frame_id == probe.frame_id and
+        probe.safe_template_policy.previous_bbox == candidate_bbox)
+
+    conflict_snapshot = probe._capture_snapshot(
+        [10.0, 10.0, 20.0, 20.0],
+        [probe.static_template, probe.static_template],
+        [probe.static_template_anno],
+        SafeTemplateUpdatePolicy.from_config(
+            params.cfg.TEST.SAFE_TEMPLATE_UPDATE))
+    with patch.object(
+            SafeTemplateUpdatePolicy, 'observe', new=scripted_conflict):
+        advanced_conflict, conflict_evidence, unused_decision = (
+            probe._advance_branch(
+                conflict_snapshot, np.zeros((8, 8, 6)), None,
+                (candidate_bbox, torch.tensor([0.90]), 0.90, 0.30)))
+    checks['active_shadow_conflict_also_accepts_current_bbox'] = bool(
+        advanced_conflict.state == tuple(candidate_bbox) and
+        conflict_evidence.hard_conflict and
+        advanced_conflict.auxiliary[
+            'safe_policy_state']['previous_bbox'] == candidate_bbox)
 
     probe.template_transaction = ProtectedTentativeTemplateTransaction(
         **settings)
@@ -388,7 +438,7 @@ def main():
             command = (process / 'cmdline').read_bytes().replace(b'\0', b' ')
         except (FileNotFoundError, PermissionError, ProcessLookupError):
             continue
-        if b'sutrack_l384_rgbd_anchor_identity_transaction_low22' in command:
+        if b'sutrack_l384_rgbd_anchor_identity_template_transaction_low22' in command:
             transaction_processes.append(int(process.name))
     checks['transaction_low22_has_not_started'] = bool(
         not transaction_processes and not transaction_run_root.exists())
@@ -396,7 +446,8 @@ def main():
     required_sources = (
         tracker_source, parameter_source, vot_source, vot_adapter_source,
         candidate_yaml, controller_source, prepare_source, launcher_source,
-        finalizer_source, diagnostics_source, gpu_smoke_source)
+        finalizer_source, diagnostics_source, gpu_smoke_source,
+        parity_smoke_source)
     checks['all_isolated_sources_exist'] = all(
         path.is_file() for path in required_sources)
 
@@ -406,7 +457,7 @@ def main():
             'transaction integration smoke failed: {}'.format(failed))
 
     payload = {
-        'schema': 'sutrack_transaction_low22_structural_smoke_v1',
+        'schema': 'sutrack_template_transaction_low22_structural_smoke_v2',
         'status': 'passed',
         'gpu_inference_exercised': False,
         'public_full127_path_changed': False,

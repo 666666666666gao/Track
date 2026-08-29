@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare an auditable 22-sequence VOT workspace for transaction testing."""
+"""Prepare an auditable low22 workspace for template-only transactions."""
 
 import argparse
 import hashlib
@@ -11,7 +11,7 @@ import sys
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-TRACKER = 'sutrack_l384_rgbd_anchor_identity_transaction_low22'
+TRACKER = 'sutrack_l384_rgbd_anchor_identity_template_transaction_low22'
 EXPECTED_SEQUENCE_COUNT = 22
 EXPECTED_ANCHOR_COUNT = 303
 BASELINE_METRICS = {
