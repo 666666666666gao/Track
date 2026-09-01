@@ -50,6 +50,8 @@ workspace, Qwen model, API credential or private server configuration.
   dependency-generated process and `/dev/null` events before any model code.
 - M19b mechanical extractor for a non-expanding, exact bootstrap receipt with
   two byte-identical derivations and linked-worktree-aware Git identity checks.
+- M20a receipt-bound zero-step model-runtime smoke runner with exact inner-gate
+  closure, immutable attempt journals and explicit failed-publication sealing.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -75,7 +77,13 @@ stopped without rerun. M19a subsequently attributed the bootstrap side effect
 to exactly one dependency import-time `uname -p` probe, and M19b extracted a
 sealed exact receipt for that single event. M19a/M19b are provenance results
 only: neither ran the model, loaded a checkpoint, trained, predicted or evaluated
-a benchmark. For all experiments, failure analyses, artifact hashes
+a benchmark. M20a then executed the frozen causal-survival model with zero
+optimizer steps. Its 17 model gates passed, but independent result audit found
+mutable observer snapshots and 286 later sensitive-read events that invalidated
+the runner's zero-new-runtime-side-effect acceptance. M20a is therefore a sealed
+negative engineering result: it produced no checkpoint, prediction or benchmark
+metric and cannot authorize training or evaluation. For all experiments, failure
+analyses, artifact hashes
 and next-action restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
