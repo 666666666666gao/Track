@@ -13755,7 +13755,7 @@ GitHub 仓库：`https://github.com/666666666666gao/Track`。
 2. `projects/sutrack_rgbd_language_template`：固定 SUTrack 上游提交的 RGB-D language/template overlay；
 3. `projects/sttrack_lachtt_v1`：固定 STTrack 上游提交的 candidate-own RGB-D association 与 protected/tentative transaction overlay。
 
-STTrack overlay 的上游为 `NJU-PCALab/STTrack@283cd6dd45536636490db8bca1c63c4647be799b`，发布实验源提交为 `3426dfc7dd06dc65506bd128a332d15b0b2ec845`，共 54 个项目相关文件。它不包含权重、数据集、缓存、预测结果、VOT workspace、训练输出、Qwen 模型或密钥。具体重建步骤见 `projects/sttrack_lachtt_v1/README.md`。
+STTrack overlay 的上游为 `NJU-PCALab/STTrack@283cd6dd45536636490db8bca1c63c4647be799b`，当前服务器实验源提交为 `2b32dccccf2d9082e15a54b8a02a945ac5439e05`；在原 54 个项目相关文件基础上增加 M17-1 fail-closed runner 和 post-audit binding builder，共 56 个 overlay 文件。它不包含权重、数据集、缓存、预测结果、VOT workspace、训练输出、Qwen 模型或密钥。具体重建步骤见 `projects/sttrack_lachtt_v1/README.md`。
 
 ## 4.2 早期 MPLT RGB-D baseline 支持
 
@@ -13854,3 +13854,83 @@ DepthTrack Train 可按 RGB frame 一行文本；DepthTrack Test、CDTB、VOT-RG
 - GitHub 唯一项目主文档：`docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`。
 
 后续实验首先续写远端主文档，再同步本地与 GitHub。`refine-logs/EXPERIMENT_TRACKER.md`、`MANIFEST.md` 和时间戳 plan/spec/audit 是机器审计工件，不再作为面向交接的第二份正文；它们的结论、SHA 和执行边界必须被吸收到本主文档。
+
+# 第 5 部分：2026-09-01 M17-1 终态、低指标场景与文本标注边界
+
+## 5.1 正式最好指标没有变化
+
+| 数据集 | 指标 | 当前正式最好 |
+|---|---|---:|
+| VOT-RGBD2022 | EAO | 74.020583 |
+| VOT-RGBD2022 | ACC | 82.579344 |
+| VOT-RGBD2022 | ROB | 89.565651 |
+| DepthTrack | Pr / Re / F | 65.995933 / 65.335885 / 65.664250 |
+| CDTB | Pr / Re / F | 75.387821 / 76.005850 / 75.695574 |
+
+本轮没有产生新的 low22、full-127、DepthTrack Test 或 CDTB 结果，也没有新 checkpoint。Qwen3_8B 保留但未调用。
+
+## 5.2 已定位的低指标场景
+
+当前 VOT 的核心问题仍不是普通帧框回归：ACC 已超过项目目标，真正短板是 ROB 和被 ROB 拖低的 EAO。最常见的失败链为：相似干扰物或遮挡后选错实例，错误框写入递归 `state/template`，下一帧搜索区域围绕错误目标裁剪，模型随后对错误目标越来越自信。
+
+| 问题族 | 代表序列 | 已确认现象 | 需要的机制 |
+|---|---|---|---|
+| 相似实例切换与递归污染 | `cup02`、`shoes02`、`cube05`、`toy09`、`yogurt`、`bandlight`、`duck03`、`humans_shirts` | 同类/近似外观候选被选中后连续失锁，文本类别也可能同时支持干扰物 | candidate-own RGB-D 身份证据、target/distractor association、独立 tentative 状态和原子回滚 |
+| 目标离开局部搜索区 | `ball06`、`cube02_indoor_1`、`two_tennis_balls_3` | 当前局部搜索窗口无法覆盖真实目标；仅改文本不能召回 | 风险触发的多中心搜索或 factor-7，不允许全程盲目放大搜索区 |
+| 未失锁但框贴合较差 | `humans_shirts_room_occ_1_B_1`、`robot_human_corridor_noocc_1_B_1`、`squirrel_wild_1` | ROB 可为 100，但尺度、宽高比或边界贴合拉低 ACC | 身份确定后的独立 box refinement，不应触发 recovery |
+
+这三类问题不能用一个阈值或一段更长文本统一解决。尤其是第一类需要回答“哪一个具体实例是初始化目标”，而不是只回答“哪个候选像鞋/杯子/球”。
+
+## 5.3 全帧/全 anchor 文本没有铺开
+
+本项目没有进行“每一帧一条文本”的全帧注释，也没有对全部 VOT anchor 生成 Qwen 专属文本。
+
+已完成的文本证据是：
+
+- low22 稳定身份短文本相对旧长结构文本有改善：EAO `+0.644823`、ACC `+0.237595`、ROB `+0.975206`，失败 anchor `200 -> 195`；
+- 同一 identity-only 方案进入 full-127 后仅约 EAO `+0.0456`、ROB `+0.1104`，远小于目标缺口；
+- low22 当前 anchor 的 Qwen 视觉重注释相对 identity-only 由 195 个失败 anchor 增至 202 个，虽然救回 4 个，却新增 11 个灾难失败，净增加 7 个失败。
+
+因此严格按“低指标子集先改善，才进入全量”的规则停止：没有把退化的 Qwen-anchor 方案铺到全 1,765 个 anchor，更没有为约 132.7 万 tracker frames 逐帧生成文本。传统每序列一条静态文本可以保留为身份锚；未来动态文本只能低频、低权重、可撤销，并且必须在 candidate-own RGB-D 身份验证之后使用。
+
+## 5.4 M17-1 实现、审查与唯一运行
+
+M17-1 实现了 sequence-disjoint、candidate-role-independent 的 utility/safety/survival runner，并增加 post-audit binding builder。服务器仓库分支为 `codex/language-anchored-candidate-transaction-v1`，最终代码提交为：
+
+- `47a0111`：初版 fail-closed runner；
+- `e8e58fd`：执行闭包与失败语义；
+- `a821bf3`：运行时临时写审计；
+- `939cc44`：精确 Git/文件系统副作用、隔离 scratch、确定性 gzip 与目录 fsync；
+- `8ee26cc`：绑定构建器；
+- `2b32dccccf2d9082e15a54b8a02a945ac5439e05`：spec/binding/audit/preflight 与 builder 的 same-FD 同字节解析和哈希闭包。
+
+最终 runner SHA 为 `7358a9f8828d4dd0831bc09fa93c2e00c610a0f302e88e47a566736ca91566c7`，builder SHA 为 `7b4ac1460a34dff1e1aa7a565a2e02017879c38b032560968bfb75f087c54e50`。规格轴与安全/standards 轴代码审查均 PASS；只读 smoke 得到 628 个训练事件、3,768 个动作、158,753 个参数，梯度 L2 `0.4776667741`，置换误差 0，且 optimizer step、checkpoint、公开 benchmark、Qwen 均为 0。
+
+独立 preexecution 审计为 PASS：
+
+- preflight binding SHA `38426347e01e5b4fc00b56f34075a9357f4264a94a0b454b811efea42131bd52`；
+- preexecution audit JSON SHA `0fb0447c8bda6daa771edd1b03edbc841a807a6fbf8f0e3b5fd8968a61c37c2f`；
+- execution binding SHA `1195894d3bbcb19969b79a215442f799e974a78473c219e189bb89113416480b`；
+- 绑定 9 个代码记录、28 个源记录、134 个 CLIP anchor、134 个 native anchor；训练/heldout 序列交集和 heldout 数值 target 序列化均为 0。
+
+## 5.5 M17-1 fail-closed 终态
+
+唯一一次 M17-1 使用 CPU、float32、固定 R3 合同启动。控制流到达训练后的发布前 `validate_runtime_identity()`，但运行时副作用审计触发统一异常：
+
+```text
+ContractError: forbidden runtime side effect observed
+```
+
+异常发生在 result/manifest/training trace/heldout predictions 构造和原子发布之前，SSH exit code 为 1。终态为：
+
+- M17-1 输出根不存在；
+- 没有 result、manifest、training trace 或 heldout predictions；
+- 没有 M17-1 活动进程、screen 或 checkpoint；
+- 仓库 HEAD/clean 和全部绑定身份保持；
+- execution binding 中 309 个路径/SHA 独立复核为 `309 OK / 0 BAD`。
+
+失败完整性审计结论为 `Integrity PASS / Overall WARN / Scientific FAIL-NOT_EVALUABLE`，JSON SHA `84bb79fee2170b233d261fd431d4582b640b62c7f24d104151c1f4d91caeea80`。runner 在抛错前没有持久化具体是 forbidden write、unexpected subprocess、network、Qwen/tracker/benchmark module 还是 checkpoint-path 集合，因此不得猜测精确副作用类别。同期 `/root/autodl-tmp/.autodl` mtime 变化也不能被当作根因，因为 Python audit hook 只记录当前进程事件。
+
+没有 training trace 或 result，故不能把“246 optimizer steps 已完成”写成可审计结果；只能说控制流到达 post-training/prepublish validation 后 fail closed。该事故不是模型 heldout 指标失败，而是实验完整性门失败，因此也没有新的模型好坏结论。
+
+R3 明确规定任意 `m17_1_failure` 后停止固定 M17 family：禁止重跑、fold 改动、阈值/seed/LR/step/width/loss 扫描、online replay 和公开 benchmark。后续只允许归档文档，以及设计名称、计划、规格均明确区分的新 family；不得以“只补日志”为由直接重跑 M17-1。

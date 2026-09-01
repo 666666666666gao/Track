@@ -11,9 +11,8 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `3426dfc7dd06dc65506bd128a332d15b0b2ec845`
-- Overlay archive SHA256: `14a9375fc8ca4eddfc5e9e73245759a77911e90be54f4c1057683613afd8645a`
-- Published project files: 54
+- Published source commit: `2b32dccccf2d9082e15a54b8a02a945ac5439e05`
+- Published project files: 56
 
 To reconstruct the source tree:
 
@@ -41,6 +40,8 @@ workspace, Qwen model, API credential or private server configuration.
   studies, including their fail-closed runners and audits.
 - M17 sequence-disjoint target/split closure that serializes training targets
   while withholding numeric held-out targets.
+- M17-1 same-bytes post-audit binding builder and fail-closed sequence-
+  disjoint utility/safety/survival runner.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -54,9 +55,11 @@ The best completed formal VOT-RGBD2022 result remains:
 |---:|---:|---:|
 | 74.020583 | 82.579344 | 89.565651 |
 
-M17-0 is only a target/split integrity closure. It did not train a model or
-produce a new public benchmark result. For all experiments, failure analyses,
-artifact hashes and next-action restrictions, read the single project master:
+M17-0 is only a target/split integrity closure. The sole M17-1 execution then
+failed closed at its prepublication runtime-side-effect gate, so it produced no
+result, manifest, trace, prediction, checkpoint or public benchmark metric and
+the fixed M17 family is stopped without rerun. For all experiments, failure
+analyses, artifact hashes and next-action restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
 ## Integrity
