@@ -11,8 +11,8 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `ae780f187cba74acd22217139326d9213ca721b7`
-- Published project files: 66
+- Published source commit: `f5e754d2d804f71124a63a014a3b58d76932b855`
+- Published project files: 68
 
 To reconstruct the source tree:
 
@@ -64,6 +64,12 @@ workspace, Qwen model, API credential or private server configuration.
   direct benefit/catastrophe selective router. Its runner uses natural-prior
   sequence-weighted training, fixed non-scanned commit gates, candidate/event
   permutation audits and explicit fold-0/full-target exclusion.
+- M24 sequence-fold epistemic committee runner. Four same-initialization
+  single-fold models vote only on folds unseen by each voter, with unanimous
+  role identity and fixed worst-member benefit/catastrophe/margin gates.
+- M25 sequence-pooled leave-one-fold-out runner. Each model trains on three
+  sequence-disjoint folds and evaluates only the excluded fourth fold under
+  the unchanged M23 direct-selection policy.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -126,7 +132,23 @@ unique-hypothesis family without threshold scanning, fold-0 access, checkpoint
 creation or public evaluation. A subsequent source-only reporting correction
 renamed the two negative-polarity data-isolation engineering flags; it did not
 rerun or alter the sealed scientific result. M23 produces no formal benchmark
-metric change. For all experiments, failure analyses, artifact hashes
+metric change.
+
+M24 then completed its fixed 780-step four-member sequence-OOF committee run.
+Engineering and integrity passed, but all 507 events abstained. Only 60 events
+had unanimous top-role identity, and no event passed either the fixed
+worst-member margin or worst-member benefit gate. Independent audit therefore
+stopped the single-fold committee family without scans or public evaluation.
+
+M25 replaced the single-fold committee with four pooled leave-one-fold-out
+models while preserving the M23 thresholds. Its audited 2,304-step run restored
+12 OOF actions: eight beneficial, three neutral and one catastrophic. The mean
+true H10 gain was +0.464147, but precision was only 0.666667. In particular,
+`cup14_indoor` received predicted benefit 0.923768 and catastrophe 0.002103
+despite true H10 gain -0.343674. M25 is therefore also scientifically stopped;
+it produced no checkpoint or formal benchmark result.
+
+For all experiments, failure analyses, artifact hashes
 and next-action restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 

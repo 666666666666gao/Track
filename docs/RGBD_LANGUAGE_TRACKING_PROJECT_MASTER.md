@@ -14933,10 +14933,285 @@ atomic tentative transaction
 
 截至M23的最准确结论是：**candidate-own关系和exact去重已经产生3个跨序列真实rescue，证明动作空间存在价值；但单模型直接概率在小样本上近乎过拟合，并对`file02`给出高置信错误安全判断，因此尚不能安全接管STTrack递归状态。**
 
-### 5.14.8 已冻结但尚未执行的M24计划
+### 5.14.8 M24冻结计划（后续执行状态由5.15节更新）
 
 只读fold census确认可在不访问fold1/fold0的条件下做真正的sequence-OOF epistemic实验：folds 2/3/4/5分别有20/17/18/21条序列、132/103/73/199个事件，四折都含独立beneficial和catastrophic序列。census receipt为SHA256 `d1fddfafd20faedc5f64f63cc45d6a907f5bdde5dea8cc2d7119fbf0b776c794`。
 
-因此新计划`EXPERIMENT_PLAN_M24_SEQUENCE_FOLD_EPISTEMIC_COMMITTEE_20260902.md`已冻结，SHA256 `4c6b69bdae5e10bcc9548ad47cc1801521e7a7007f0085d20730b0063613bb6f`，5583 bytes，0444，但**尚未实现、预审或执行**。核心协议是每折训练一个同初始化模型；评估折`f`时只使用另外三折模型，要求三者对同一canonical candidate一致，并同时通过最小benefit、最大catastrophe和最小margin门。四个模型总计预注册780步，聚合507个真正OOF事件；只有selected≥12、beneficial≥10、跨≥6序列、precision≥0.95、catastrophic=0且每折至少一个动作才通过。PASS也只允许另写consumed fold1计划，不自动访问fold1/fold0/VOT。
+因此新计划`EXPERIMENT_PLAN_M24_SEQUENCE_FOLD_EPISTEMIC_COMMITTEE_20260902.md`已冻结，SHA256 `4c6b69bdae5e10bcc9548ad47cc1801521e7a7007f0085d20730b0063613bb6f`，5583 bytes，0444。**本段记录的是计划冻结时状态；M24随后已经完成实现、独立预审、唯一一次执行和结果审计，正式结果见5.15节。**核心协议是每折训练一个同初始化模型；评估折`f`时只使用另外三折模型，要求三者对同一canonical candidate一致，并同时通过最小benefit、最大catastrophe和最小margin门。四个模型总计预注册780步，聚合507个真正OOF事件；只有selected≥12、beneficial≥10、跨≥6序列、precision≥0.95、catastrophic=0且每折至少一个动作才通过。PASS也只允许另写consumed fold1计划，不自动访问fold1/fold0/VOT。
 
 M24的目的不是再训练一个更大的分类器，而是直接检验：**由不同序列折产生的模型分歧，能否作为`file02`式高置信错误的epistemic安全证据。**
+
+## 5.15 M24 sequence-fold epistemic committee：工程闭合但507/507全弃权（2026-09-02）
+
+### 5.15.1 实现、冻结身份与审计链
+
+M24严格按5.14.8的冻结计划实现，没有修改`UniqueHypothesisSelectiveRouter`、loss、候选关系或固定提交阈值。新增runner为：
+
+```text
+tools/run_sttrack_lachtt_m24_sequence_fold_epistemic_committee.py
+```
+
+核心执行合同是：
+
+```text
+fold2模型只训练fold2
+fold3模型只训练fold3
+fold4模型只训练fold4
+fold5模型只训练fold5
+
+评估fold f时：
+    只使用另外三个未见过f的模型
+    三者必须选择相同canonical role
+    min(member margin) >= 0.10
+    min(member benefit) >= 0.80
+    max(member catastrophe) <= 0.05
+```
+
+四个模型在构造前都重置torch seed `20260924`，初始state digest必须完全相同；每个模型106434个参数，benefit/catastrophe参数交集为0。训练仍为CPU float32、单线程、12个natural-prior epoch、batch 8、AdamW、lr 0.001、weight decay 0.0001、gradient clip 5.0。各折步数为204/156/120/300，总计780步。
+
+源码独立复核先发现并修正两个运行前阻断问题：一是`load_training_targets()`返回值语义被误解，正常的heldout commitment与record counts会被错误当成“打开了非训练标签”；二是禁用标签只按输入键名拒绝，可能在dependency hash之前被伪装路径带入。修正后runner在任何dependency hash/read之前按`Path.resolve()`拒绝full delayed、M22 fold1 predictions和M23 consumed predictions；M22 spec中的delayed路径只读取路径字符串并核对身份，不打开标签。最终source-only review为PASS、0 blocking，runner SHA256为`7c8be4f968256f928ec643c18ee1b3d20e45f5582c9efe5b745979c39ed70ee5`。
+
+冻结身份如下：
+
+| 工件 | SHA256 |
+|---|---|
+| M24 plan | `4c6b69bdae5e10bcc9548ad47cc1801521e7a7007f0085d20730b0063613bb6f` |
+| source commit | `411a9547e08a61c6dae37aa79f8730e86bce5046` |
+| runner | `7c8be4f968256f928ec643c18ee1b3d20e45f5582c9efe5b745979c39ed70ee5` |
+| spec | `6e5b092da7344425247d922323d678ca7499d9d041c8f17402e346c66aeeb06a` |
+| preflight | `b7872ce9f3b5a706945b9f0565d233b5c1bbb4bf480d14d9fc98f8dcf8ecc3af` |
+| preexecution audit | `5a70de11ec1ff0726d632a4bac7fda342a99b1324b0f605df8a7947edc6472fc` |
+| result audit | `dc88bcad9b8dbbbdb5a9910848e676bf5ce85255b267790348d13be188587905` |
+
+preexecution audit为overall/integrity PASS，0 hard、0 soft，只授权一次固定780步执行。它独立闭合了292/292个M22绑定文件、四折序列互斥、3042条纯training action target、禁止输入未绑定以及输出目录不存在。
+
+### 5.15.2 唯一正式执行结果
+
+M24用56.31秒完成780/780个optimizer steps：
+
+| 评估数据折 | 训练成员折 | events | steps | selected |
+|---:|---:|---:|---:|---:|
+| 2 | 3、4、5成员投票 | 132 | fold2成员训练204步 | 0 |
+| 3 | 2、4、5成员投票 | 103 | fold3成员训练156步 | 0 |
+| 4 | 2、3、5成员投票 | 73 | fold4成员训练120步 | 0 |
+| 5 | 2、3、4成员投票 | 199 | fold5成员训练300步 | 0 |
+| 合计 | -- | **507** | **780** | **0** |
+
+四个模型初始state SHA完全相同，训练后四个final state均不同；candidate/event permutation error精确为0；所有参数、步数、trace、OOF排除、文件身份和禁止访问条件都通过。四个成员首末epoch平均loss分别为：
+
+| 成员折 | epoch0 mean loss | epoch11 mean loss |
+|---:|---:|---:|
+| 2 | 1.282182 | 0.154832 |
+| 3 | 1.360816 | 0.246223 |
+| 4 | 1.439482 | 0.298908 |
+| 5 | 1.203718 | 0.059066 |
+
+这说明训练真实执行并下降，但OOF策略仍然全弃权。输出全部0444只读：
+
+| 文件 | bytes | SHA256 |
+|---|---:|---|
+| `oof_predictions.jsonl.gz` | 85,096 | `0c5a02c22e3b95dc4ad3bc923ec88bdddb90dfc2f0a5dad5b6b6a92b63336c68` |
+| `training_trace.jsonl.gz` | 51,912 | `d4628e1711187e0aa0a0b94c9a1bf7195e53209b4cb39e9f17b64b507b765613` |
+| `result.json` | 9,010 | `bc297feb05cb3450bff674b13686291956669ab6a5cb1a8527e5067bd2b53d35` |
+| `manifest.json` | 973 | `26f649e8dd192c7ea024e15b62c06b8eb957940e45445d1ae047adfd6984330f` |
+
+独立结果审计为Integrity PASS、Engineering PASS、Scientific FAIL、overall `PASS_INTEGRITY_ENGINEERING_SCIENTIFIC_STOP`，没有reporting bug。固定决策为：
+
+```text
+m24_fail_stop_sequence_fold_epistemic_committee_without_scan
+```
+
+### 5.15.3 为什么全弃权：不是阈值“差一点”，而是单折成员跨序列标定崩塌
+
+只按冻结门逐项统计，不做任何阈值扫描：
+
+| 固定条件 | 通过事件 / 507 |
+|---|---:|
+| 三成员top role一致 | 60 |
+| min member margin ≥ 0.10 | **0** |
+| min member benefit ≥ 0.80 | **0** |
+| max member catastrophe ≤ 0.05 | 322 |
+| 四门同时通过 | **0** |
+
+独立审计复算表明，在全部507个事件中，最大的委员会最弱margin仍低于0.10，最大的委员会最弱benefit仍低于0.80；只看60个role一致事件时，最大min-margin仅`0.044138`，最大min-benefit仅`0.123192`。四个单折成员的OOF top-candidate benefit表现为：
+
+| 单折成员 | OOF events | max benefit | benefit≥0.80 |
+|---:|---:|---:|---:|
+| fold2 | 375 | 0.357861 | 0 |
+| fold3 | 404 | 0.204146 | 0 |
+| fold4 | 434 | 0.774516 | 0 |
+| fold5 | 308 | 0.997018 | 10 |
+
+不同成员两两top-role一致率仅`26.38%--34.63%`。因此M24确实暴露了epistemic disagreement，但用“单折训练 + 最坏成员 + 全体一致”把全部动作都否决了。单折只有73--199个事件，且序列和正负例构成差异大；不同成员学到不同折的局部规律，前三个成员对未见折的benefit整体塌缩，fold5成员则明显更尖锐。这个失败不能通过把0.80改成0.12或把0.10改成0.04修复：那既是后验扫描，也会把折特有错误重新放进来。
+
+所以M24的最终因果结论是：
+
+> **模型分歧能够暴露不确定性，但单折模型本身训练分布太窄；最坏成员一致策略没有保留任何可部署动作。该委员会家族停止。**
+
+## 5.16 M25 sequence-pooled leave-one-fold-out：恢复真实rescue，但仍出现高置信灾难提交（2026-09-02）
+
+### 5.16.1 为什么M25是新结构而不是M24阈值扫描
+
+M24没有回答一个更简单的问题：每个OOF模型是否需要足够多的序列多样性。M25因此完全移除committee和worst-member规则，改成标准leave-one-fold-out：
+
+```text
+评估fold2：模型只训练fold3+4+5，共375 events
+评估fold3：模型只训练fold2+4+5，共404 events
+评估fold4：模型只训练fold2+3+5，共434 events
+评估fold5：模型只训练fold2+3+4，共308 events
+```
+
+每个评估事件只由唯一一个从未见过该折的pooled模型决定。模型、relation、loss与M23完全相同；提交仍严格使用margin≥0.10、benefit≥0.80、catastrophe≤0.05，不改阈值、不加epoch、不换loss、不保存checkpoint。四模型构造seed固定为`20260925`，各自训练564/612/660/468步，总计2304步。
+
+M25计划`EXPERIMENT_PLAN_M25_SEQUENCE_POOLED_LOFO_DIRECT_ROUTER_20260902.md`在实现前冻结，SHA256 `e1c0436d4018144d83351c996156355490b3a308d5ab463f11ad293900718669`，4921 bytes，0444。源码独立审查PASS、0 blocking。完整冻结身份为：
+
+| 工件 | SHA256 |
+|---|---|
+| source commit | `f5e754d2d804f71124a63a014a3b58d76932b855` |
+| runner | `bb18eae6f5f0a24565ac57e381008d8d907efdaa934e87a7546d1b95643d93cd` |
+| spec | `dcfc2f6c72283e041bb75d0b4e8f1002b2959beec3d34b1427393c2921b5a0e6` |
+| preflight | `2cea9d7960fd831c68e81150e331076975fd08643203a4737504cfc06e0989a8` |
+| preexecution audit | `fd9b1aa2b6af2b1eecf5c3e0d816aac589734e066df617bc1d548e9914d0e641` |
+| result audit | `010dee63415e716e07cb41cfe144ac9ec23cad8fba75f59979429927c363f979` |
+
+preexecution audit闭合12/12 spec records、292/292 M22 binding records、四折LOFO隔离、固定2304步、禁止路径未绑定和输出目录不存在；0 hard、0 soft，只授权一次运行。
+
+### 5.16.2 整体和逐折结果
+
+M25用126.32秒完成2304/2304步；四模型首末batch loss均显著下降到`0.0000466--0.013075`。工程条件全部通过，507条OOF预测与固定policy不一致数为0。
+
+整体结果：
+
+| 项目 | M24 | M25 |
+|---|---:|---:|
+| selected actions | 0 | **12** |
+| beneficial / neutral / catastrophic | 0 / 0 / 0 | **8 / 3 / 1** |
+| beneficial sequences | 0 | **7** |
+| beneficial precision | 0 | **0.666667** |
+| mean true H10 gain | 不可定义 | **+0.464147** |
+| branch / public H10 mean IoU | 不可定义 | **0.642380 / 0.178233** |
+
+逐折差异很大：
+
+| 评估折 | selected | B / N / C | precision | mean H10 gain | branch / public |
+|---:|---:|---:|---:|---:|---:|
+| 2 | 3 | 1 / 2 / 0 | 0.333333 | +0.365182 | 0.546396 / 0.181214 |
+| 3 | 2 | 0 / 1 / **1** | 0 | **-0.095526** | 0.419433 / 0.514959 |
+| 4 | 1 | 1 / 0 / 0 | 1.0 | +0.679882 | 0.679882 / 0 |
+| 5 | 6 | 6 / 0 / 0 | 1.0 | +0.664231 | 0.758437 / 0.094207 |
+
+M25通过了selected≥12、beneficial sequence≥6、每折至少一个动作、平均gain≥0.20和branch>public，但失败三项硬门：beneficial actions `8<10`、precision `0.666667<0.95`、catastrophic `1>0`。因此科学结论必须为FAIL；完整决定为：
+
+```text
+m25_fail_stop_sequence_pooled_lofo_direct_router_without_scan
+```
+
+输出均为0444：
+
+| 文件 | bytes | SHA256 |
+|---|---:|---|
+| `oof_predictions.jsonl.gz` | 30,486 | `52d88d01c15c35764cae4795166888c3de2a8da35685aaf15f788c19fdbcbf5d` |
+| `training_trace.jsonl.gz` | 154,619 | `d1953d37bbe215ae91ed89bbf8b2ae29dcc557523f0e47dedf286ceb91f6d66a` |
+| `result.json` | 9,700 | `fa19f7bed82c96d3bfee460529748c5534dc68b98579d58f46588016718f97ae` |
+| `manifest.json` | 978 | `d7acd0dd273cae666141271669365d440e470f0c0b6cdc843a6ab830c1a544ae` |
+
+独立结果审计为Integrity PASS、Engineering PASS、Scientific FAIL、overall `PASS_INTEGRITY_ENGINEERING_SCIENTIFIC_STOP`；无reporting bug、无结果与training target不一致、无禁用数据访问。
+
+### 5.16.3 全部12个提交与具体效果
+
+role映射为：0/1=`current_peak0/1`，2/3=`last_reliable_peak0/1`，4/5=`velocity_peak0/1`。
+
+| fold | 事件 | role | strict | pred benefit / catastrophe / margin | true H10 gain | branch / public IoU |
+|---:|---|---:|---|---:|---:|---:|
+| 2 | `basket_indoor@674` | 5 | neutral | .973754 / .000164 / .160572 | +.195857 | .736933 / .541075 |
+| 2 | `colacan02_indoor@3709` | 0 | beneficial | .819472 / .000168 / .126315 | **+.899688** | .902255 / .002567 |
+| 2 | `flower01_indoor@452` | 1 | neutral | .860073 / .001933 / .156022 | .000000 | .000000 / .000000 |
+| 3 | `cup05_indoor@1592` | 0 | neutral | .803339 / .001024 / .116092 | +.152621 | .838866 / .686245 |
+| 3 | `cup14_indoor@1258` | 0 | **catastrophic** | **.923768 / .002103 / .929149** | **-.343674** | **.000000 / .343674** |
+| 4 | `cat03_indoor@503` | 5 | beneficial | .910236 / .024391 / 2.549063 | +.679882 | .679882 / .000000 |
+| 5 | `car01_indoor@999` | 1 | beneficial | .949004 / .000672 / .463974 | +.741446 | .741446 / .000000 |
+| 5 | `car01_indoor@1112` | 4 | beneficial | .949305 / .000140 / .953475 | +.671393 | .671393 / .000000 |
+| 5 | `car02_indoor@650` | 3 | beneficial | .886077 / .001005 / .116378 | +.789164 | .873737 / .084574 |
+| 5 | `colacan01_indoor@2666` | 5 | beneficial | .938625 / .008693 / 2.032063 | +.585561 | .585561 / .000000 |
+| 5 | `egg_indoor@1089` | 5 | beneficial | .972585 / .002820 / .328732 | +.295524 | .776191 / .480666 |
+| 5 | `glass03_indoor@143` | 1 | beneficial | .899329 / .021442 / .253338 | +.902297 | .902297 / .000000 |
+
+这张表揭示两个同时成立的事实：
+
+1. **候选关系和动作空间确实有效。**8个beneficial动作覆盖7条序列，多个动作把public H10 IoU接近0的轨迹救到0.58--0.90；fold5实现6/6 beneficial，不能把整个LACHTT动作空间判定为无效。
+2. **安全概率仍不能跨序列信任。**`cup14_indoor@1258`是比M23 `file02`更强的反例：错误动作benefit高达92.38%、catastrophe仅0.21%、margin高达0.929，但真实candidate未来十帧IoU为0，而protected仍有0.3437。这个动作不是“接近门槛的边界样本”，而是安全塔的高置信反向判断。
+
+三个neutral动作中，`basket`与`cup05`实际仍有+0.195857/+0.152621 gain，只因未达到strict beneficial标签边界而记为neutral；`flower01`为0 gain。它们解释了M25为何平均gain很好但strict precision只有2/3。真正不可接受的不是这三个轻微或零收益动作，而是`cup14`这种会让原本仍可生存的protected branch直接归零的灾难提交。
+
+### 5.16.4 为什么不能通过后验调阈值修复
+
+`cup14`同时具有高benefit、极低catastrophe和大margin，说明当前三门不是简单“松了一点”。如果在M25结果上把catastrophe阈值从0.05后验改到0.001，确实可能剔除它，但也会剔除`cat03`、`car02`、`colacan01`、`egg`和`glass03`等真实beneficial动作；而任何精确阈值都是利用已消费OOF标签挑出的，不能证明对新序列泛化。提高benefit或margin同样属于后验扫描，而且`cup14`的benefit和margin比部分真实rescue更高。
+
+因此M25把问题进一步收敛为：
+
+> **sequence-pooled LOFO训练恢复了跨序列utility信号和非零rescue，但单一直接安全塔仍会对未见序列的candidate-vs-protected伤害给出高置信错误。下一阶段必须引入独立的反事实保护分支安全证据或未见序列校准边界，而不是继续调整静态阈值。**
+
+## 5.17 截至M25的最新总判断、正式指标和下一步边界（2026-09-02）
+
+### 5.17.1 正式指标仍未变化
+
+M24/M25都只是DepthTrack Train离线候选选择实验，没有生成tracking checkpoint，没有修改公开STTrack递归路径，也没有运行low22、DepthTrack Test、CDTB、VOT或Qwen。因此正式最好仍为：
+
+| 数据集 | 当前正式最好 | 目标 | 状态 |
+|---|---:|---:|---|
+| VOT-RGBD2022 EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** | 77.9 / 82.1 / 93.7 | ACC达标，EAO/ROB不足 |
+| DepthTrack Pr / Re / F | **65.995933 / 65.335885 / 65.664250** | 65.2 / 64.9 / 65.1 | 达标，保护 |
+| CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
+
+Qwen3_8B继续保留但未启用；仍未进行全帧、全anchor或全序列Qwen注释。identity-only文本在low22有小幅改善、full127增益很小，而Qwen anchor重注释增加失败的结论没有变化。
+
+### 5.17.2 问题定位比M23更明确
+
+从M22到M25形成了一条完整证据链：
+
+```text
+M22：相对候选排序有信号，但absolute survival头极度悲观 → 0提交
+M23：direct benefit/cat恢复3个rescue，但file02高置信误判 → 精度.75
+M24：单折epistemic committee暴露分歧，但worst-member使507/507弃权
+M25：三折pooled LOFO恢复8个rescue，但cup14高置信灾难 → 精度.667
+```
+
+所以当前瓶颈不是：
+
+- 文本不够长；
+- 候选数量太少；
+- 模型没有训练；
+- 只需再加epoch；
+- 把0.8/0.05/0.1稍微改一下；
+- 继续做单折committee。
+
+真正的瓶颈是：
+
+> **当candidate看起来像目标、响应也很强，但protected branch其实更值得保留时，现有特征和安全头不能在未见序列上可靠预测“提交后会不会把生存轨迹归零”。**
+
+M25的8个rescue证明candidate-own RGB-D、language identity anchor和多中心候选仍应保留；`cup14`证明新的安全模块必须显式比较candidate与protected的反事实短窗生存，并对跨序列误校准提供独立证据。简单单模型概率或最坏成员一致都不够。
+
+### 5.17.3 当前停止项与允许研究方向
+
+M24、M25均已封存，明确禁止：
+
+```text
+M24/M25阈值、seed、epoch、fold组合或committee-size扫描；
+在fold1/fold0上继续试；
+生成tracking checkpoint；
+运行low22、DepthTrack Test、CDTB、VOT；
+开启Qwen或重新做全量文本注释。
+```
+
+下一家族只能作为全新的冻结计划，且仍先在DepthTrack Train folds2--5验证。最直接的科学问题应是：
+
+```text
+候选utility：继续使用pooled sequence-disjoint模型
+候选safety：显式预测candidate相对protected的短窗损害
+安全校准：使用与训练序列独立的校准/风险上界，而不是同一模型自报概率
+提交事务：只有utility与独立safety都通过才原子promote，否则保持protected
+```
+
+在新结构能够同时保留M25的多序列rescue、把`cup14`式高置信伤害拒绝，并达到零catastrophic与≥0.95 precision之前，不应进入VOT。搜索域组和ACC-only组的模块边界仍保持原判断：crop外目标由风险触发多中心factor6/7 shadow search处理；ROB=100但ACC低的序列由身份确定后的box refinement处理，不能让一个安全router承担全部三类问题。
+
+截至本节的最准确结论是：**工程和动作空间已经得到较充分验证，utility开始跨序列生效，但安全校准仍不能满足VOT递归提交要求；因此正式指标没有上涨，问题已从“有没有可救候选”收敛到“如何对candidate-vs-protected伤害建立未见序列可信的独立安全界”。**
