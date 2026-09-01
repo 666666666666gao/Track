@@ -15215,3 +15215,168 @@ M24/M25阈值、seed、epoch、fold组合或committee-size扫描；
 在新结构能够同时保留M25的多序列rescue、把`cup14`式高置信伤害拒绝，并达到零catastrophic与≥0.95 precision之前，不应进入VOT。搜索域组和ACC-only组的模块边界仍保持原判断：crop外目标由风险触发多中心factor6/7 shadow search处理；ROB=100但ACC低的序列由身份确定后的box refinement处理，不能让一个安全router承担全部三类问题。
 
 截至本节的最准确结论是：**工程和动作空间已经得到较充分验证，utility开始跨序列生效，但安全校准仍不能满足VOT递归提交要求；因此正式指标没有上涨，问题已从“有没有可救候选”收敛到“如何对candidate-vs-protected伤害建立未见序列可信的独立安全界”。**
+
+## 5.18 M26：嵌套序列校准的反事实伤害保护实验（2026-09-02，已封存FAIL）
+
+### 5.18.1 M26为什么启动
+
+M25最关键的反例是`cup14_indoor@1258/current_peak0`：模型给出benefit概率0.923768、catastrophe概率0.002103、margin 0.929149，但真实H10 gain为-0.343674，candidate未来十帧IoU归零，而protected仍有0.343674。M26没有继续扫描M25的阈值，而是先做两项只读可分性诊断：
+
+1. beneficial与catastrophic候选的candidate-public几何关系高度重叠。两类candidate-public IoU中位数都为0，归一化中心距离中位数分别约0.9683和0.9664。因此“大跳变/低IoU直接否决”会同时丢掉真实rescue。
+2. 简单CLIP身份证据也不能隔离`cup14`。该错误candidate相对protected反而更接近首帧CLIP身份，优势为+0.123147；文本相似度优势为+0.036414。加入最近3个安全protected crop的动态CLIP记忆后，`cup14`动态优势为-0.119647，但真实beneficial动作范围约为-0.2265到+0.1496，仍然重叠。
+
+因此M26明确否定了三种临时补丁：candidate-public距离阈值、首帧CLIP相似度阈值、短期protected CLIP记忆阈值。它测试的新问题是：
+
+> 能否用一个低容量、与utility参数完全分离的signed counterfactual harm头，配合独立序列校准，在保留M25 rescue容量的同时拒绝candidate相对protected的未来伤害？
+
+### 5.18.2 冻结架构、数据和校准协议
+
+M26提交为`0556c40ac5b6f2e2ae73e753951c8e19cec9e85d`，runner SHA256为`0830400e4b500131bfffb02a2543ac52e5e1798086993674798ba86b034a8b10`。实验只使用已经消费的DepthTrack Train folds 2--5，fold1、fold0、VOT、DepthTrack Test、CDTB、Qwen和checkpoint均禁止。
+
+模型由两个参数不重叠的部分组成：
+
+```text
+Utility tower：M23 full candidate-own RGB-D/language relation，53,217参数
+Safety tower：5步×49维scalar relation的last/mean/min/max摘要
+              → 196维 → 单层线性H3/H5/H10 signed harm，591参数
+总参数：53,808；四个outer模型同初始化
+```
+
+harm监督的符号固定为：
+
+```text
+true_harm = public_mean_iou - branch_mean_iou
+```
+
+正值表示candidate比protected更有害，负值表示candidate优于protected。嵌套划分固定为：
+
+| evaluation fold | calibration fold | fit folds | fit events | optimizer steps |
+|---:|---:|---|---:|---:|
+| 2 | 3 | 4,5 | 272 | 408 |
+| 3 | 2 | 4,5 | 272 | 408 |
+| 4 | 5 | 2,3 | 235 | 360 |
+| 5 | 4 | 2,3 | 235 | 360 |
+
+四个模型共1,536步，12 epochs，batch 8，CPU FP32单线程，AdamW，lr 0.001，weight decay 0.0001。每个calibration sequence先计算`true_harm-predicted_harm`的经验q90，再跨sequence取q90，形成H3/H5/H10三个固定offset。该值只是经验校准诊断，不声称有限样本或distribution-free conformal保证。
+
+提交策略完全冻结：
+
+```text
+选择benefit概率最高的valid candidate；
+top1-top2 benefit margin >= 0.10；
+benefit probability >= 0.80；
+calibrated harm upper在H3/H5/H10分别都 <= 0；
+否则全部abstain并保持protected branch。
+```
+
+科学门要求selected≥8、beneficial≥8、beneficial sequence≥5、precision≥0.95、catastrophic=0、mean H10 gain≥0.20、branch aggregate>public，且每个evaluation fold至少一个动作。全弃权明确不能通过。
+
+### 5.18.3 执行前审计与唯一固定运行
+
+源码审计最初发现并修复了三个工程阻塞：失败进程必须非零退出；禁用数据/Qwen/network/checkpoint不能用字面`True`充当证据；candidate/event permutation必须覆盖全部507个OOF事件，而不是抽样。修复后独立源码复核PASS。
+
+不可变契约：
+
+| 项目 | SHA256 |
+|---|---|
+| plan | `b9d484bd037c424c61f976390c9c3852d17d10910541d1212e824865b62dddd4` |
+| spec | `67aedeb58c8f240fb7a290387cce10c16fd79b3eec4817ba42ddb020098040bd` |
+| preflight | `d81c26d7b91e5a0d92a38d783ce67292ba819fdb63b4f8d9fe2bc84ac7f0aff4` |
+| preexecution audit | `249d9eb869d2a19432a1170b2bd838d710b4e6c4bada677b8c36b3e47d477da1` |
+
+独立预执行审计确认repo clean、source/dependency记录闭合、输出目录不存在、只绑定folds 2--5的剥离训练标签、禁用numeric target没有进入输入，并只授权一次固定M26执行。训练耗时101.16秒，完成1,536/1,536步；没有scheduler、early stop、scan、warm start或checkpoint。
+
+### 5.18.4 正式M26结果：完整性PASS，工程FAIL，科学FAIL
+
+固定结果为：
+
+| 项目 | 结果 |
+|---|---:|
+| OOF events / sequences / unique hypotheses | 507 / 76 / 2,106 |
+| selected actions | **0** |
+| beneficial / neutral / catastrophic提交 | **0 / 0 / 0** |
+| 每折提交（2/3/4/5） | **0 / 0 / 0 / 0** |
+| engineering verdict | **FAIL** |
+| scientific verdict | **FAIL** |
+| decision | `m26_fail_stop_nested_sequence_calibrated_harm_without_scan` |
+
+并不是utility完全没有信号。固定门的逐项诊断为：
+
+| 固定条件 | 单独通过事件数 |
+|---|---:|
+| benefit probability ≥0.80 | 22 / 507 |
+| top1-top2 margin ≥0.10 | 31 / 507 |
+| benefit与margin同时通过 | 6 / 507 |
+| calibrated H3 harm upper ≤0 | **0 / 507** |
+| calibrated H5 harm upper ≤0 | 3 / 507 |
+| calibrated H10 harm upper ≤0 | 9 / 507 |
+| 三个harm时域同时通过 | **0 / 507** |
+
+H3 calibrated harm upper的全体最小值仍为`+0.076609`；四折H3 offset约为0.287945--0.625842。也就是说，即使原始safety head对某些动作预测负harm，跨序列q90 residual offset仍把所有H3 upper推到0以上。最终全弃权的直接原因是：
+
+> **低容量harm头的未见序列残差太大；为了满足经验q90安全覆盖，校准边界必须非常保守，而`harm upper <= 0`要求又是candidate必须被证明“不比protected差”。两者组合后没有任何可提交区域。**
+
+这与M24的worst-member全弃权形式不同，但本质一致：系统可以通过“永远不提交”获得零catastrophe，却不能同时保留rescue。M26的经验upper coverage约为92.8%--97.2%，说明offset确实实现了保守覆盖；问题是覆盖成本高到动作容量归零。
+
+工程门的唯一失败是event permutation未达到预注册的逐位完全相等：candidate permutation对全部507个事件、8次试验均exact 0；event permutation最大绝对误差为`1.9073486328125e-06`，各折存在少量non-equal tensor。该误差很小，最可能来自不同batch行顺序触发的浮点矩阵计算差异，但预注册门要求bit-exact，因此不能在结果出来后改成容差并宣称PASS。更重要的是，即使忽略这项微小工程误差，科学门仍因507/507全弃权独立失败。
+
+### 5.18.5 独立结果审计与封存文件
+
+独立结果审计重新计算了4个输出文件、1,536条trace、507条OOF、fold/sequence隔离、固定policy、summary和全部门条件；没有打开fold1、fold0或delayed full target，没有网络/Qwen/checkpoint/public benchmark副作用。结论为：
+
+```text
+Integrity：PASS
+Engineering：FAIL
+Scientific：FAIL
+Overall：PASS_INTEGRITY_ENGINEERING_SCIENTIFIC_STOP
+```
+
+输出目录为`/root/autodl-tmp/sttrack_lachtt_m26_nested_sequence_calibrated_harm_v1_20260902`，已封存为0555；四个文件均为0444：
+
+| 文件 | bytes | SHA256 |
+|---|---:|---|
+| `manifest.json` | 967 | `49041cc75fa93639ba820c50f661f5ced5fd9ba300ccff90a217291660402ec9a` |
+| `oof_predictions.jsonl.gz` | 51,961 | `56839b22048a8d6df73f7b4e6c810a13cf8b35fdf8c072bc661c2b727a479393` |
+| `result.json` | 12,784 | `520cb850e625519e55e30b165b0febd42abd444b5d910fc76f190c46260682ca` |
+| `training_trace.jsonl.gz` | 102,569 | `be623aa7c92eb0af8f939109b2486419e39b7e437696a936e9dec4eef75f9902` |
+
+结果审计文件：
+
+| 文件 | bytes | SHA256 |
+|---|---:|---|
+| `EXPERIMENT_AUDIT_M26_RESULT_20260902.json` | 10,093 | `d5ec9931ba4515fd3279045abb4a44dbe6ac4df027d04779b50910ef5b369e9f` |
+| `EXPERIMENT_AUDIT_M26_RESULT_TRACE_20260902.json` | 7,188 | `436b0865559e52a93ab9cc6d79493737317beb9298f30d0420e7d8e948d4fe52` |
+
+### 5.18.6 M26对问题定位的新贡献和停止边界
+
+M26没有产生可部署checkpoint，也没有提高任何正式指标，但它把安全失败进一步拆清楚：
+
+```text
+M25：utility有8个跨序列rescue，但会高置信提交cup14灾难动作；
+M26：独立signed harm能形成保守风险覆盖，但未见序列残差过大；
+     q90校准后H3没有任何candidate能证明优于protected；
+     因此安全性与动作覆盖仍无法同时满足。
+```
+
+应立即停止：
+
+- 扫描M26 q90、benefit、margin或harm阈值；
+- 把`harm upper <=0`后验放宽到某个正数；
+- 因event permutation误差很小就重跑或改工程门；
+- 再增加同类scalar head容量并在相同folds 2--5反复试；
+- 用首帧CLIP、动态CLIP或candidate-public几何写一个后验veto；
+- 进入fold1、low22、DepthTrack Test、CDTB或VOT。
+
+仍然成立的结构证据是：candidate-own RGB-D、language identity anchor、多中心候选和protected/tentative原子事务提供了真实rescue动作。失败集中在**未见序列上如何可靠估计candidate相对protected的未来伤害**。如果建立新的实验家族，必须先获得更直接的candidate-vs-protected对照观测或改变监督/数据覆盖，而不是继续在同一49维scalar摘要上换校准分位数。
+
+### 5.18.7 正式指标仍然不变
+
+M26只运行DepthTrack Train离线开发实验，没有生成权重，也没有执行公开评测。因此截至M26：
+
+| 数据集 | 当前正式最好 | 目标 | 状态 |
+|---|---:|---:|---|
+| VOT-RGBD2022 EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** | 77.9 / 82.1 / 93.7 | ACC达标，EAO/ROB不足 |
+| DepthTrack Pr / Re / F | **65.995933 / 65.335885 / 65.664250** | 65.2 / 64.9 / 65.1 | 达标，保护 |
+| CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
+
+Qwen3_8B继续保留但未启用；全帧、全anchor、全序列文本注释仍未执行。M26不能被描述为VOT提升，也不能被描述为新模型完成；它是一个完整性通过、工程与科学均失败的Train-only安全校准负实验。

@@ -11,8 +11,8 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `f5e754d2d804f71124a63a014a3b58d76932b855`
-- Published project files: 68
+- Published source commit: `0556c40ac5b6f2e2ae73e753951c8e19cec9e85d`
+- Published project files: 70
 
 To reconstruct the source tree:
 
@@ -70,6 +70,10 @@ workspace, Qwen model, API credential or private server configuration.
 - M25 sequence-pooled leave-one-fold-out runner. Each model trains on three
   sequence-disjoint folds and evaluates only the excluded fourth fold under
   the unchanged M23 direct-selection policy.
+- M26 nested sequence-calibrated counterfactual-harm runner. It keeps the full
+  candidate-own utility tower, adds a parameter-disjoint 591-parameter signed
+  H3/H5/H10 harm head and calibrates harm residuals on a sequence fold that is
+  disjoint from both fitting and outer evaluation.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -147,6 +151,16 @@ true H10 gain was +0.464147, but precision was only 0.666667. In particular,
 `cup14_indoor` received predicted benefit 0.923768 and catastrophe 0.002103
 despite true H10 gain -0.343674. M25 is therefore also scientifically stopped;
 it produced no checkpoint or formal benchmark result.
+
+M26 then completed its one frozen 1,536-step nested run over 507 OOF events.
+The utility head still produced 22 top candidates with benefit probability at
+least 0.80, but the empirical sequence-q90 harm calibration made every H3 harm
+upper bound positive (minimum +0.076609), so all 507 events abstained. Its
+candidate permutation audit was exactly invariant, while event reordering had
+a maximum floating discrepancy of 1.9073486328125e-06 and therefore failed the
+preregistered bit-exact engineering gate. Independent audit recorded integrity
+PASS, engineering FAIL and scientific FAIL. M26 produced no checkpoint or
+formal benchmark result and is stopped without threshold scanning or rerun.
 
 For all experiments, failure analyses, artifact hashes
 and next-action restrictions, read the single project master:
