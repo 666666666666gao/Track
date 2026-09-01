@@ -11,8 +11,8 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `2b32dccccf2d9082e15a54b8a02a945ac5439e05`
-- Published project files: 56
+- Published source commit: `81700ba50a039bf75cbfa3ff1ae608dbbb0661c1`
+- Published project files: 59
 
 To reconstruct the source tree:
 
@@ -42,6 +42,10 @@ workspace, Qwen model, API credential or private server configuration.
   while withholding numeric held-out targets.
 - M17-1 same-bytes post-audit binding builder and fail-closed sequence-
   disjoint utility/safety/survival runner.
+- M18 sequence-disjoint causal-survival target closure with numeric targets
+  restricted to training folds.
+- M18 causal quantile-survival model and its zero-step, immutable-journal
+  architecture smoke runner.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -55,11 +59,16 @@ The best completed formal VOT-RGBD2022 result remains:
 |---:|---:|---:|
 | 74.020583 | 82.579344 | 89.565651 |
 
-M17-0 is only a target/split integrity closure. The sole M17-1 execution then
-failed closed at its prepublication runtime-side-effect gate, so it produced no
-result, manifest, trace, prediction, checkpoint or public benchmark metric and
-the fixed M17 family is stopped without rerun. For all experiments, failure
-analyses, artifact hashes and next-action restrictions, read the single project master:
+M17-0 and M18-0 are target/split integrity closures, not tracker results. The
+sole M18a zero-step architecture execution passed 20 of 21 engineering gates,
+including all model-architecture, permutation, monotonicity, gradient-isolation
+and exact-state checks. It failed closed at the runtime-side-effect gate because
+the observer recorded a subprocess event and a `/dev/null` write without enough
+call-site evidence to attribute them safely. Artifact integrity passed, but the
+engineering outcome failed; no optimizer step, training result, checkpoint,
+prediction or public benchmark metric was produced, and the fixed M18 family is
+stopped without rerun. For all experiments, failure analyses, artifact hashes
+and next-action restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
 ## Integrity

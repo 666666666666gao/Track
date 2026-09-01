@@ -13934,3 +13934,196 @@ ContractError: forbidden runtime side effect observed
 没有 training trace 或 result，故不能把“246 optimizer steps 已完成”写成可审计结果；只能说控制流到达 post-training/prepublish validation 后 fail closed。该事故不是模型 heldout 指标失败，而是实验完整性门失败，因此也没有新的模型好坏结论。
 
 R3 明确规定任意 `m17_1_failure` 后停止固定 M17 family：禁止重跑、fold 改动、阈值/seed/LR/step/width/loss 扫描、online replay 和公开 benchmark。后续只允许归档文档，以及设计名称、计划、规格均明确区分的新 family；不得以“只补日志”为由直接重跑 M17-1。
+
+## 5.6 M18：因果分位数生存事务的目标闭合与架构验证
+
+M18 不是继续重跑 M17，而是一个重新命名、重新冻结的数据闭合与模型家族：Language-Anchored Causal Quantile Survival Transaction（LACQST）。它试图直接学习“候选提交后未来是否能生存”，而不是只学习当前帧分数或手工阈值。
+
+### 5.6.1 M18-0：只在 DepthTrack Train 上闭合真实多时域监督
+
+冻结计划为：
+
+```text
+fold 2–5：training
+fold 1：heldout，只保留 commitment，不序列化数值 target
+fold 0：quarantine，只保留 commitment，不序列化数值 target
+H3 / H5 / H10：branch mean、public mean、gain、累计低重叠 run fraction
+```
+
+M18-0 是一次只读目标闭合，不导入 tracker、不训练、不产生 checkpoint，也不是公开测试。唯一运行与独立结果审计均 PASS：
+
+| 项目 | 结果 |
+|---|---:|
+| 源事件 / 动作 / 序列 | 1,466 / 8,796 / 134 |
+| training 可用事件 / 动作 / 序列 | 507 / 3,042 / 76 |
+| heldout commitment 事件 / 动作 / 序列 | 121 / 726 / 20 |
+| quarantine commitment 事件 / 动作 / 序列 | 154 / 924 / 23 |
+| training beneficial / catastrophic / neutral 事件 | 59 / 38 / 410 |
+| training beneficial / catastrophic / neutral 动作 | 211 / 127 / 2,704 |
+| heldout 数值 target 行 | 0 |
+| quarantine 数值 target 行 | 0 |
+| 三分区序列交集 | 0 |
+
+关键工件：
+
+- M18-0 result SHA：`19cf46def001d4068f9126b92c4f8ec80ed4f08474c7b1d8ae28b36a40752086`；
+- manifest SHA：`00592abd13deb5d9f1feee887abee048b936668ba11e4fff6236a786537fa563`；
+- split ledger SHA：`44a9e5dab9a95b9cbaaea11cf86dbbe13b52b63eed80517d1b08d594dc4a5f3a`；
+- 3,042 行 training target gzip SHA：`6912ba5b02a6d131db3f356f6fa30b2fd719beb98373977bb6510559c684db0f`；
+- 独立结果审计：`Integrity PASS`，claim ceiling 仅为 DepthTrack Train cached target closure。
+
+这一步解决了 M17 以后最关键的数据问题：utility 和 safety 不再依赖同一个单帧标签，且 fold1/fold0 数值监督没有进入后续训练输入。
+
+### 5.6.2 M18a 架构
+
+M18a 的输入仍是 candidate-own、detached、H5×177 的 RGB-D/语言关系，不改变 Qwen、搜索 factor 或公开 tracker。模型结构为：
+
+```text
+六类 768→8 family projector（utility 与 safety 各自独立）
+                    ↓
+每步 177→48→32 step encoder
+                    ↓
+候选集合 mean/max context + residual
+                    ↓
+因果 prefix mean / current-prev / prefix minimum
+          ┌─────────┴─────────┐
+ utility tower             safety tower
+ gain q0.10 LCB            H3/H5/H10 softplus hazards
+ branch mean q0.10 LCB      monotone survival
+                            risk q0.90 UCB + catastrophe
+          └─────────┬─────────┘
+ gain_LCB - 2*risk_H10 - 0.5*catastrophe
+```
+
+固定模型参数量为 106,566，utility/safety 参数交集必须为 0；candidate role ID 只做 canonical gather，不进入 learned layer。无 event-commit 分类头，避免 M17 中“科学分数 + 独立提交分类头”的双重标定冲突。
+
+零步验证固定使用 8 个 training 事件：2 beneficial、2 catastrophic、4 neutral；CPU、float32、seed `20260918`；六种循环候选排列必须逐值完全等价；每个 loss 只能向所属塔产生非零有限梯度；optimizer 构造和 step、checkpoint 均为 0。
+
+### 5.6.3 五轮双轴代码审查发现并关闭的问题
+
+初版不能直接运行。Standards 与 Spec 两个独立审查轴进行了五轮 fail-closed 审查，累计发现并修复：
+
+1. invalid candidate 只从集合均值/最大值中排除，却仍可得到高 dominance；修复为 gain/branch/risk/catastrophe/dominance 全路径失败关闭，并新增验证门；
+2. 执行参数中的 binding 文件可能和 manifest 声称的 `binding_path` 不同；修复为执行路径精确绑定；
+3. `.pt`、gzip、模型源码先哈希后重新打开，存在 TOCTOU；修复为同一次 descriptor 读取、哈希并从同一字节流反序列化/编译；
+4. preflight 异常在 journal 创建和 `try` 之前，无法记录；修复为固定 attempt root 先写 `start.json`，所有后续错误均写 terminal/manifest；
+5. 运行时审计只看 write-mode open；扩展到 rename/remove/mkdir/symlink/link/chmod/chown/utime/truncate/xattr、FD 与 `dir_fd`；
+6. Git 完整性代码不支持 linked worktree `.git` gitfile、`commondir` 和带斜线的完整分支名；已修复；
+7. Git clean 检查遗漏目录软链和 submodule 状态；已修复；
+8. journal 只检查根目录普通文件，遗漏嵌套目录/软链；改为 no-follow 递归 inventory；
+9. `chmod(..., follow_symlinks=False)` 失败可能被吞掉并仍报告 success；改为 descriptor-based `O_NOFOLLOW + fchmod`，逐项验证 `0444/0555`，任意失败改写失败收据和非零退出码；
+10. 硬链接可绕过 no-follow 并让封存修改外部 inode；增加 `os.link` 源/目标审计和 `st_nlink == 1` 双重检查。
+
+最终提交为 `81700ba50a039bf75cbfa3ff1ae608dbbb0661c1`：
+
+- model SHA：`2dc7fc2395eedc3c9901d908da96f0405f9ee2a71ccbe941c66eae314300843b`；
+- runner SHA：`1f5fd7fd588001d2b372d350ece0f80b63ca57de2cb5fe25bb8af6eb730e08d7`；
+- Standards：PASS，0 blocking findings；
+- Spec：PASS，0 findings；
+- 唯一非阻塞维护性意见：1,500 行以上 runner 同时承担 Git 解析、安全加载、审计、ML smoke 和 journal 发布，后续新家族应拆成深模块，但这不影响本次固定执行的正确性。
+
+## 5.7 M18a 唯一零步验证：模型门 20/21，但观测性合同失败
+
+### 5.7.1 执行前闭包
+
+独立 preexecution 审计第一次因隔离审计代理没有继承 SSH 接线而得到 `FAIL_UNVERIFIABLE`，没有授权执行。第二次显式使用现有 askpass 做只读 SSH 后 A–H 全部 PASS；这是同 GPT 家族的独立 Type-A 审计，不是跨家族 Type-B acquittal。
+
+最终绑定：
+
+- spec SHA：`d90996eced96dc0c1ec7ed88cc6a8e5b2673cbbe9193bedf4916fdc54047fd61`；
+- preexecution audit SHA：`f8588de82cb91e7425320cf55aac4af224d669deb2b991a8b6af987a92624dba`；
+- execution binding SHA：`c37688ea547d7defd8ebee8049ecd289b5713d8f9388f3fd807e78e10eb0d575`；
+- 授权只有“一次 8-event、zero-step architecture/journal smoke”；训练、checkpoint、Qwen、low22、full127 和自动 M18b 均禁止。
+
+### 5.7.2 唯一运行结果
+
+唯一一次运行终态：
+
+| 项目 | 结果 |
+|---|---:|
+| terminal status | `gate_failure` |
+| accepted | `false` |
+| exception / seal error | `null / null` |
+| 工程门 | 20 / 21 PASS |
+| 参数量 | 106,566 |
+| preclip / postclip L2 | 0.407504797 / 0.407504808 |
+| optimizer constructed / steps | false / 0 |
+| checkpoint | false |
+| 科学结果目录 | 不存在 |
+
+通过的模型/架构门包括：参数精确且低于 160k、utility/safety 参数完全隔离、所有参数被覆盖、shape/finiteness、combined loss finite、六种候选排列 exact parity、生存概率 H3≥H5≥H10、每个 loss 梯度只进入所属塔、pre/post clip、model state exact、无 optimizer、0 step、无 checkpoint、invalid candidate fail closed、仓库/控制文件身份运行后仍精确、科学输出不存在。
+
+唯一失败门为：
+
+```text
+runtime_side_effects_clean = false
+```
+
+审计钩子记录：
+
+```text
+forbidden_write_paths = ['/dev/null']
+subprocess_events = ['subprocess.Popen']
+network_events = []
+forbidden/unresolved mutation paths = []
+unresolved write targets = []
+forbidden modules = []
+```
+
+runner 和 model 的冻结源码中没有显式 `Popen` 或 `/dev/null` 调用；日志只保存了 subprocess 事件名，没有保存命令参数和调用栈。因此能证明“PyTorch/依赖导入路径内出现了这两类事件”，但不能诚实地进一步断言具体是哪个库、哪个命令或是否只属于无害环境探测。不得根据常见经验猜测成 `ldconfig`、编译器探测或 CUDA 检查。
+
+### 5.7.3 结果完整性与停止决定
+
+独立 result audit 结论为：
+
+```text
+Integrity PASS
+Engineering outcome FAIL
+Evaluation type: eight-event zero-step engineering smoke
+```
+
+三份 journal 的 SHA 与权限：
+
+| 工件 | SHA256 | 权限 / 大小 |
+|---|---|---:|
+| `start.json` | `77440bea224dc13c2e631ae51677d3bf8a43cc09823dbd7ec3b80f2beeea3006` | 0444 / 2,785 B |
+| `terminal.json` | `f56c7b6d583491beba76359d319b9cc3cfb0122f3e9f8b76640362a579c81d5f` | 0444 / 34,122 B |
+| `manifest.json` | `ff8747d6444a727bdef53fd95aa27ec2b165d7e07ca56c304b306c994bbf325a` | 0444 / 2,078 B |
+| attempt root | — | 0555，且仅上述 3 个文件 |
+
+result audit JSON SHA 为 `8d6c25778d96885e710e13fc28dbc2a770209dd4637f9b0a8d429aa2fc07c17f`。运行 PID 已结束，无 M18a screen/process；科学输出和 checkpoint 均不存在。
+
+冻结 M18 计划规定：任何架构或观测性合同失败均停止 M18，不得重跑或进入 M18b。因此当前明确禁止：
+
+- 重跑 M18a 或放宽 `runtime_side_effects_clean`；
+- 在 M18 内白名单 `/dev/null` 或任意 subprocess；
+- M18b 的 206-step training、checkpoint 或 fold1 打开；
+- threshold/seed/LR/loss/step/width/code scan；
+- low22、DepthTrack/CDTB、新 VOT full-127 或 Qwen 在线文本。
+
+这不是模型容量失败：20 个模型与数值工程门已经通过；也不是 VOT 指标下降，因为没有运行任何 tracker benchmark。它是“审计无法把依赖库 bootstrap 和模型运行边界区分开”的观测性失败。
+
+## 5.8 下一步必须是独立新家族，而不是 M18 补丁重跑
+
+下一家族应重新命名、重新冻结计划和规格，优先解决 bootstrap 可归因性，再复用已经通过的因果分位数生存模型。建议方向为 Bootstrap-Attributed Causal Survival Transaction：
+
+1. `bootstrap audit` 与 `model runtime audit` 两阶段分离；
+2. 第一阶段只导入精确版本的 PyTorch/依赖，记录 subprocess 的 executable、argv、cwd、环境摘要、调用栈和 `/dev/null` 的 flags/caller，不读取模型或 target；
+3. 只有 bootstrap 事件能由冻结规则逐项归因且独立审计 PASS，第二阶段才安装严格模型运行 hook；
+4. 模型阶段继续对任何新 subprocess、网络、外部写、Qwen、tracker/benchmark import 失败关闭；
+5. 不在 M18 结果上事后增加白名单；所有允许的 bootstrap 事件必须在新计划执行前冻结；
+6. 新架构 smoke 仍须 zero-step，随后才可能单独授权 sequence-disjoint 训练。
+
+该方案的目的不是绕过安全门，而是把“依赖环境初始化”和“候选生存模型本身”拆成可审计的两个作用域。新家族尚未执行，尚无训练或指标收益。
+
+## 5.9 正式最好指标与全帧文本状态仍不变
+
+M18-0/M18a 都没有运行 VOT、DepthTrack Test 或 CDTB，因此正式最好值仍为：
+
+| 数据集 | 指标 | 当前正式最好 |
+|---|---|---:|
+| VOT-RGBD2022 | EAO / ACC / ROB | 74.020583 / 82.579344 / 89.565651 |
+| DepthTrack | Pr / Re / F | 65.995933 / 65.335885 / 65.664250 |
+| CDTB | Pr / Re / F | 75.387821 / 76.005850 / 75.695574 |
+
+仍未做全帧文本注释，也未把 Qwen current-anchor 注释铺到全部序列或全部 1,765 anchors；Qwen3_8B 保留但 M18 未调用。低指标序列、失败原因和 identity-only/Qwen 注释效果仍以 5.2–5.3 节为准。
