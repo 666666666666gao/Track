@@ -14785,3 +14785,150 @@ M22没有生成 tracking checkpoint，也没有运行 low22、DepthTrack Test、
 如果继续研究，必须新建独立 successor plan/spec/audit。新计划应针对本次实证问题，而不是继续改文本：保留已有相对候选排序能力，单独解决 q10 gain/branch 与 q90 risk 的跨序列绝对校准，并继续把 catastrophic=0 作为硬门。任何新家族仍须先通过 DepthTrack Train sequence-disjoint heldout；未通过前不得进入VOT低22。
 
 因此截至M22的最新状态是：**工程闭合、训练真实完成、未见序列有可恢复候选且相对排序出现信号，但绝对survival校准失败导致全弃权，未形成可运行的VOT改进，也没有任何正式指标提升。**
+
+## 5.14 M23 exact-hypothesis direct selection：从全弃权到少量真实rescue，但跨序列安全概率仍不可靠（2026-09-02）
+
+### 5.14.1 M23为什么启动
+
+M22已经证明candidate-own RGB-D / target-distractor关系具有一定相对排序能力，但q10/q90绝对量严重失准，导致121/121个未见事件全部弃权。随后只读诊断又发现两个结构问题：
+
+1. 六个固定role中存在大量GT-free完全相同的五帧bbox轨迹，按role计数会重复训练同一个动作；
+2. M22把训练事件重采样成25% beneficial、25% catastrophic、50% neutral，而DepthTrack Train可用事件的真实先验约为11.64% / 7.50% / 80.87%，会进一步抬高q90风险；即使恢复真实先验和exact去重，全局risk q90仍为1.0，证明旧的绝对quantile门本身不适合当前小样本跨序列问题。
+
+因此M23只做一个新结构假设：先按五帧20个bbox标量精确合并重复假设，再使用参数完全分离的直接benefit/catastrophe双塔，固定输出
+
+```text
+dominance = p(benefit) - 4 * p(catastrophe)
+```
+
+固定提交门仍为margin≥0.10、benefit≥0.80、catastrophe≤0.05，不允许阈值扫描。文本继续只作稳定身份锚，Qwen关闭；公开tracker、模板和VOT路径均不修改。
+
+### 5.14.2 数据、模型和训练合同
+
+M23仍只使用DepthTrack Train：folds 2--5训练，已经消费的fold1做开发验证，fold0和delayed full数字标签严格禁止。精确去重后的数据为：
+
+| 分区 | unique假设数直方图 | 有重复事件 | unique假设总数 |
+|---|---:|---:|---:|
+| folds 2--5 | 2:1，4:466，6:40 | 467 / 507 | 2106 |
+| consumed fold1 | 4:113，6:8 | 113 / 121 | 500 |
+| 合计 | 2:1，4:579，6:48 | **580 / 628** | 2606 |
+
+同一组内必须同时满足完整五帧bbox完全相同、strict label相同、H3/H5/H10全部target相同；关系tensor作算术均值，最低canonical role作为代表，其余role被mask，不能进入set context、BCE、rank loss或policy。
+
+模型为`UniqueHypothesisSelectiveRouter`，共106434个可训练参数；benefit和catastrophe两塔参数交集为0。训练固定为CPU float32、单线程、seed 20260923、AdamW、lr 0.001、weight decay 0.0001、12个natural-prior epoch、batch 8、正好768步；序列逆事件数权重在每个batch内归一。loss为benefit BCE + catastrophe BCE + 0.5 strict-label pairwise dominance rank。候选和事件顺序置换的输出误差都必须精确为0。
+
+### 5.14.3 R1为何停止，以及为何允许一次R2
+
+R1在模型、relation和optimizer构造之前退出，原因是runner把“少于六个unique假设的事件数”误写为587；GT-free exact-bbox口径独立复算后正确值为580。R1：
+
+```text
+exit code = 1
+model instances = 0
+optimizer steps = 0
+output/checkpoint/public evaluation/Qwen = 0
+scientific result = NOT_EVALUABLE
+```
+
+独立失败审计为`EXPERIMENT_AUDIT_M23A_R1_PREOPT_FAILURE_20260902.json`，SHA256 `7dcbae8439e90d16a7ed9031b0c88d80979e15df81849afb11a6a489135e5fbb`，7166 bytes，0444。它只授权在新plan/spec/preaudit下把`587→580`，不授权直接重跑或任何科学参数变化。
+
+R1源码提交为`671f7406b07104e3d9a86cccc6b78cc0318c7ee6`；R2候选提交`90e7b71cb05c47ac7de997dfe0401fead52ac102`相对R1严格只有一个文件一删一增、唯一一行`587→580`，模型SHA仍为`9ae1927c7137169baba19cd1051801d57b0d4735b66f0a924d41b99e996fcb09`。R2 spec/preflight/preaudit分别为：
+
+| 工件 | SHA256 |
+|---|---|
+| R2 correction plan | `76fea1fc537db0f5176065c3c1f6d5b51ddd818d9327fe420f06a2f8f411c5fc` |
+| R2 spec | `fe41340c85572c4d83bb487c5d0f3e3b85d0b8988c4e0ecb862fd13613553389` |
+| R2 preflight | `714feb7a2da9ce4fa9c96a613f951198b435140bed1aee2a7fd12eff5391e185` |
+| R2 preexecution audit | `9f7784e6fc643faab2b9b691264210d85ae1b8f648478344b2a31ca8ce68da29` |
+
+R2预审为0 hard / 0 soft，只授权一次R2。
+
+### 5.14.4 R2正式结果
+
+R2完成768/768步，首/末total loss为1.539467 / 0.000176569。训练确实收敛，但固定fold1门没有通过：
+
+| 项目 | M22 | M23-R2 |
+|---|---:|---:|
+| selected actions | 0 | **4** |
+| beneficial / neutral / catastrophic | 0 / 0 / 0 | **3 / 1 / 0** |
+| beneficial sequences | 0 | **3** |
+| beneficial precision | 不可定义 | **0.75** |
+| mean true H10 gain | 不可定义 | **+0.423557** |
+| selected branch / public H10 mean IoU | 不可定义 | **0.713720 / 0.290163** |
+
+M23相对M22不是完全没有进展：它不再全弃权，真实救回`speaker_indoor`、`toiletpaper03_indoor`、`toy10_indoor`三条不同序列，且没有strict catastrophic提交。三个正例的H10 gain分别为+0.271127、+0.821306、+0.876299。
+
+但是固定成功门要求selected≥5、beneficial≥4、precision≥0.95；实际4、3、0.75，三项同时失败。因此最终决定严格为：
+
+```text
+m23a_fail_stop_direct_unique_hypothesis_family_without_scan
+```
+
+不得降低阈值、增加epoch、换seed或进入fold0/low22/VOT。
+
+R2输出为：
+
+| 文件 | bytes | SHA256 |
+|---|---:|---|
+| `development_predictions.jsonl.gz` | 7635 | `7225b06231cae6f635655571ebdf53714721eb454b906ce221646c965995bb4a` |
+| `training_trace.jsonl.gz` | 49241 | `1b602a7eba1cdf07f01ef3d7b3c8ec869d08fd2edaaa33ebec25d0b9c7232b59` |
+| `result.json` | 4965 | `b8fc6dfc534ef642d860765373028c29800b369b7006e6f0a587dd70d31e7b70` |
+| `manifest.json` | 1003 | `bcc84ee068144ebee4ee11b87ae89f447e40a2941238e2587aa6a89ebaef9715` |
+
+独立结果审计`EXPERIMENT_AUDIT_M23A_R2_RESULT_20260902.json`为SHA256 `42b50b7c93f7456ca46c58e30193553f26141d720c3b7118753eea55ab4da9dd`，10638 bytes，0444；结论是Integrity PASS、actual engineering `PASS_WITH_REPORTING_BUG`、Scientific FAIL、整体科学停止。
+
+### 5.14.5 最重要的新反例：安全塔会在未见序列上高置信地低估伤害
+
+唯一错误提交为：
+
+| 事件 | role | 预测benefit | 预测catastrophe | 真实branch/public H10 IoU | 真实gain | strict label |
+|---|---:|---:|---:|---:|---:|---|
+| `file02_indoor@941` | `velocity_peak0` | **0.812115** | **0.001589** | 0.292532 / 0.567037 | **-0.274504** | neutral |
+
+该事件本身属于catastrophic event class；模型却把候选伤害概率压到0.16%，并以0.250652的dominance margin提交。它虽然没有跨过strict catastrophic标签边界，但会明显降低未来十帧IoU，正是0.75 precision的来源。
+
+这条反例说明：
+
+1. exact去重解决了重复样本计数，但没有解决跨序列概率标定；
+2. 训练loss接近0而未见序列仍高置信误判，主要问题是小样本过拟合和epistemic uncertainty缺失，不是训练不足；
+3. 单个安全塔的低`p(catastrophe)`不能作为可靠提交证据；
+4. 继续把0.05改成0.02不会排除该动作，改benefit或margin阈值则属于在已消费fold1上的后验扫描，也不能证明泛化；
+5. 未来必须显式比较candidate与protected branch的反事实生存，并对跨序列模型不确定性做上界，而不是继续增加文本形容词或模板规则。
+
+### 5.14.6 工程记账bug及处理
+
+R2结果中的`engineering_pass=false`不是数据泄漏。runner把两个事实字段写成：
+
+```text
+fold0_numeric_targets_opened = false
+delayed_full_target_source_opened = false
+```
+
+然后直接对全部engineering condition做`all()`，因此把“没有打开”错误当成FAIL。其余工程条件全部为true，独立审计也验证fold0/full delayed从未打开，所以真实工程结论是`PASS_WITH_REPORTING_BUG`。不允许为修记账字段重跑实验；源码随后只把两个条件改成正语义`*_not_opened=true`，提交为`ae780f187cba74acd22217139326d9213ca721b7`。封存的R2结果、哈希和科学FAIL保持不变。
+
+### 5.14.7 对正式指标、文本和下一步的影响
+
+M23没有生成tracking checkpoint，没有运行DepthTrack Test、CDTB、VOT low22或full127，也没有调用Qwen。因此正式最好仍为：
+
+| 数据集 | 当前正式最好 |
+|---|---:|
+| VOT-RGBD2022 EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** |
+| DepthTrack Pr / Re / F | **65.995933 / 65.335885 / 65.664250** |
+| CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** |
+
+仍未做全帧、全anchor或全序列Qwen注释；Qwen3_8B保留但未使用。M23再次证明当前主要短板不是文本描述长度，而是同类实例候选的跨序列安全选择。
+
+固定M23 direct unique family已经停止。下一家族若继续，应只允许新结构计划，重点是：
+
+```text
+sequence-disjoint epistemic safety / committee disagreement
+        +
+candidate-versus-protected counterfactual survival
+        +
+candidate-own RGB-D / language identity relations
+        +
+atomic tentative transaction
+```
+
+具体要求是先在folds 2--5内部做sequence-level OOF安全验证，用模型间分歧或保守上界识别`file02`这类高置信OOD伤害；同时直接预测candidate相对protected的生存差，而不是只输出单模型benefit/catastrophe概率。consumed fold1不能再用于阈值扫描，fold0仍保持未触碰。只有新结构在预注册OOF门下获得非零高精度动作且零灾难，才可另写fold0计划；在此之前仍不得运行VOT。
+
+截至M23的最准确结论是：**candidate-own关系和exact去重已经产生3个跨序列真实rescue，证明动作空间存在价值；但单模型直接概率在小样本上近乎过拟合，并对`file02`给出高置信错误安全判断，因此尚不能安全接管STTrack递归状态。**

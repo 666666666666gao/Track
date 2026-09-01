@@ -11,8 +11,8 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `badc1900dd704169c70a391fd753075b1721510d`
-- Published project files: 64
+- Published source commit: `ae780f187cba74acd22217139326d9213ca721b7`
+- Published project files: 66
 
 To reconstruct the source tree:
 
@@ -60,6 +60,10 @@ workspace, Qwen model, API credential or private server configuration.
   DepthTrack Train folds 2--5, computes fold-1 predictions before opening the
   delayed held-out labels, enforces exact event/CLIP/native storage-dtype
   contracts and converts the verified tensors to contiguous CPU float32.
+- M23a exact five-frame hypothesis deduplication plus a parameter-disjoint
+  direct benefit/catastrophe selective router. Its runner uses natural-prior
+  sequence-weighted training, fixed non-scanned commit gates, candidate/event
+  permutation audits and explicit fold-0/full-target exclusion.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -107,8 +111,22 @@ held-out data still contained 80 beneficial actions across nine sequences, and
 the top dominance candidate was beneficial for 16 of 19 beneficial events;
 the failure was absolute survival calibration (the H10 risk gate passed 0/121),
 not absence of recoverable candidates. M22 produced no tracking checkpoint or
-public benchmark result and does not change the formal metrics. For all
-experiments, failure analyses, artifact hashes
+public benchmark result and does not change the formal metrics.
+
+M23a then collapsed exact duplicate five-frame bbox trajectories and replaced
+the miscalibrated quantile gates with direct benefit/catastrophe heads. Its
+audited R2 completed 768/768 optimizer steps and moved from M22's total
+abstention to four fixed-policy actions: three beneficial, one neutral and zero
+strict catastrophic. The mean true H10 gain of selected actions was +0.423557,
+but coverage and precision missed the preregistered gates
+(`selected=4<5`, `beneficial=3<4`, `precision=0.75<0.95`). In particular,
+`file02_indoor` received predicted catastrophe probability 0.001589 despite a
+true H10 gain of -0.274504. Independent audit therefore stopped the direct
+unique-hypothesis family without threshold scanning, fold-0 access, checkpoint
+creation or public evaluation. A subsequent source-only reporting correction
+renamed the two negative-polarity data-isolation engineering flags; it did not
+rerun or alter the sealed scientific result. M23 produces no formal benchmark
+metric change. For all experiments, failure analyses, artifact hashes
 and next-action restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
