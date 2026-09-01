@@ -14252,3 +14252,177 @@ M19a/M19b 没有运行 tracker benchmark，因此当前正式最好值完全不�
 ### 5.10.6 下一步严格边界
 
 M19 现在已经完成 bootstrap 来源和 receipt 闭合，但不能直接恢复 M18b。下一步必须另建 M20 新家族，重新冻结 plan/spec/binding，并在相同 Python/PyTorch/源码身份下先完成 zero-step 模型运行期 smoke：bootstrap receipt 只消费上述唯一已归因事件，模型作用域内新增 subprocess、网络、外部写、Qwen、数据或 checkpoint 仍应失败关闭。只有新模型 smoke 与独立审计通过，才可单独授权 sequence-disjoint DepthTrack Train 训练；只有 Train-only 未见序列达到零 catastrophic、低 harm 和跨序列 rescue，才允许 low22。DepthTrack/CDTB 保真和 full-127 仍在更后面的晋升门，不能提前执行。
+
+## 5.11 M20 receipt-bound 模型运行期 smoke：模型门通过，但观察器快照污染导致结果封存为负
+
+### 5.11.1 M20 为什么要做、做了什么
+
+M20 的目标不是继续改模型，也不是立刻训练，而是回答 M19 闭合后遗留的唯一工程问题：能否在精确消费一条已归因的 PyTorch 启动事件后，真实实例化 M18 因果分位数生存模型并完成前向/梯度探针，同时证明模型运行期没有新增 subprocess、网络、外部写、敏感读取或 checkpoint 行为。
+
+本次保持以下内容完全不变：
+
+- 模型仍为 M18 的 `Language-Anchored Causal Quantile Survival Transaction`，参数量 106,566；
+- 仍使用同一组 8 个 DepthTrack Train 冻结事件：2 beneficial、2 catastrophic、4 neutral；
+- 仍为 CPU、float32、seed 20260918、单线程；
+- 不构造 optimizer，不执行 optimizer step，不写 checkpoint；
+- 不运行 tracker、DepthTrack Test、CDTB、VOT low22/full-127，也不调用 Qwen；
+- M19b receipt 只允许 `torch_import -> uname -p` 这一条事件，不允许 wildcard、路径前缀或 model-runtime allowance。
+
+M20 新增的只是一个 receipt-bound runner：
+
+```text
+/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/tools/
+run_sttrack_lachtt_m20a_receipt_bound_model_runtime_smoke.py
+```
+
+服务器最终 runner 提交为 `7ec8ad31ca565b007eeef77fe71e74e433166442`，runner SHA256 为 `66563a70dca005f25f167138030436610790aa545bbc17fa2bf1be2e21ec53ed`。GitHub source-only 发布提交为 `0e62e2d292c78e8ff9140fa469a2f6328bd7f33d`。
+
+### 5.11.2 执行前发现并关闭的三个控制缺口
+
+第一次独立 preexecution audit 没有放行，指出三项硬问题；因此没有创建 attempt root，也没有执行模型：
+
+1. spec 写了 20 个模型 gate，但 M18 `run_smoke()` 实际返回 17 个 gate，runner 只做 `all(values)`，没有核验 exact key set；
+2. terminal 使用了另一条硬编码 claim ceiling，没有逐字复用 spec；
+3. attempt root 创建后若 `start/terminal/manifest` 写入或 chmod 失败，可能留下没有封存的已消费目录。
+
+修复保持最小范围：
+
+- spec 冻结 17 个实际 gate 的完整 key 列表，runner 同时检查 count、exact set 和全部值；
+- 正常、序列化失败、journal recovery 和 manifest 全部使用 `spec['claim_ceiling']`；
+- 只针对已证实的 journal publication 风险增加单一 recovery 路径，删除固定的三个 `.tmp`，写入 `accepted=false` 的三文件失败 journal，并封存为文件 0444、根目录 0555；
+- 没有改模型、loss、数据、阈值、候选或任何性能逻辑。
+
+修复后 standards/spec 两路只读复审均为 PASS、0 hard findings。最终 Type-A 执行前审计为 PASS，冻结身份如下：
+
+| 工件 | 大小 / 权限 | SHA256 |
+|---|---:|---|
+| M20 plan | 8,428 B / 0444 | `e39a882c4a469a98c19a08e2546c67954ff58f898c041f5104343397aba9ab6a` |
+| M20 spec | 15,506 B / 0444 | `3949d9692b7193f779336c101f481768d2d9f791db65c0856ff5fa27e90b6854` |
+| preexecution audit | 6,654 B / 0444 | `2be4c657451064d7e72ffece85b234ba7e0e81b00a3e1aeef5d9d0725bae91c7` |
+| binding | 3,802 B / 0444 | `041c70830a8ff5d65be0234ff1afe8090a5ef8cd6373cb830e0bf64069aa5bef` |
+
+该审计只能授权一次 8-event、zero-step model-runtime smoke；不能自动授权训练或评测。
+
+### 5.11.3 唯一 M20a 运行的 runner 自报结果
+
+唯一运行退出码为 0，attempt root：
+
+```text
+/root/autodl-tmp/sttrack_lachtt_m20a_receipt_bound_model_runtime_smoke_attempt_v1_20260901
+```
+
+runner 自报 `status=success`、`accepted=true`。真实执行计数与模型门如下：
+
+| 项目 | 结果 |
+|---|---:|
+| M18 exact model gates | 17 / 17 PASS |
+| model instantiations | 41 |
+| forward call entries | 590 |
+| tensor dispatch ops | 16,796 |
+| optimizer constructions | 0 |
+| optimizer step entries | 0 |
+| checkpoint write entries | 0 |
+| scientific output | 不存在 |
+| model state before/after | exact |
+| six-permutation parity | exact |
+| preclip / postclip L2 | 0.407504797 / 0.407504808 |
+
+精确 bootstrap event 也与 M19b receipt 一致：`torch_import`、`uname -p`、cwd `/root`、stdout PIPE、stderr DEVNULL、correlation `popen-0001`、event IDs 5/6/7、caller `torch/__init__.py:164::_load_global_deps`。
+
+三文件 journal 完整封存：
+
+| 工件 | 大小 / 权限 | SHA256 |
+|---|---:|---|
+| `start.json` | 2,211 B / 0444 | `669464e71ceafd721d3bef42150501d79c657bb05b671eb10e2c4ecf891c7d17` |
+| `terminal.json` | 985,158 B / 0444 | `3611dff2a4157591555c00d1a44beb850e21df8805641a7287caa73228ffa532` |
+| `manifest.json` | 495,128 B / 0444 | `b217e4b894f5d16fb59f2e217a46bb6235765ca5662e3eddf3658c531c70dff7` |
+
+attempt root 权限为 0555，严格只有上述三个普通文件。
+
+### 5.11.4 独立结果审计为什么推翻 runner 的 accepted=true
+
+独立 Type-A result audit 对封存 JSON 逐项重算后给出：
+
+```text
+overall_verdict  = FAIL
+integrity_status = FAIL
+claim_supported  = false
+current_state    = SEALED_NEGATIVE_M20A_RESULT
+rerun_authorized = false
+```
+
+审计确认模型本身的 17 个 gate、真实模型执行、精确 bootstrap event、零 optimizer/checkpoint/scientific output 都成立；失败集中在观察器与接受判断的时序。
+
+#### 问题一：接受判断早于后续 model-runtime 敏感读取
+
+runner 在 M18 `run_smoke()` 后立即取一次 observation 并计算 `model_runtime_new_side_effects_zero`，随后仍保持 phase=`model_runtime`，继续执行：
+
+```text
+direct_git_identity(repository)
+control file rehash / exact identity checks
+```
+
+这些后续操作产生了 286 条 `phase=model_runtime` 的 sensitive read，覆盖 143 个唯一路径，其中 170 条涉及 `lib/test/vot`。代表路径包括：
+
+```text
+lib/test/vot/__pycache__/sttrack_baseline.cpython-38.pyc
+lib/train/dataset/depthtrack.py
+lib/train/dataset/coco.py
+tools/audit_sttrack_lachtt_m5_train_predictions.py
+```
+
+但接受判断已经在这些事件发生前计算，因此 `model_runtime_events.sensitive_read_events` 为空、gate 为 true，而最终 `model_runtime_observation.sensitive_read_events` 实际包含 286 条记录。也就是说，runner 报告的“模型运行期新增敏感读取为 0”不成立。
+
+#### 问题二：snapshot 返回可变列表引用，早先快照被后续事件反向污染
+
+M19 `ProvenanceObserver.snapshot()` 返回的是 observer 内部列表本身，而不是不可变拷贝。于是：
+
+```text
+bootstrap_observation.phase_at_snapshot = torch_import
+```
+
+但这个早先保存的对象后来也出现了 286 条 `phase=model_runtime` 记录。由此可见 bootstrap 与 model-runtime 两个快照并没有真正冻结；它们只是指向同一批会继续增长的列表。
+
+因此只能保留以下子结论：
+
+- exact bootstrap event：支持；
+- 17 个模型 gate：支持；
+- 模型真实实例化/前向/tensor dispatch：支持；
+- optimizer、checkpoint、scientific output 为 0：支持；
+- model-runtime 新增副作用为 0：不支持；
+- bootstrap/model-runtime phase separation：不支持；
+- 训练、泛化、VOT/DepthTrack/CDTB 指标提升：未尝试、完全不支持。
+
+result audit JSON 大小 9,149 B、权限 0444，SHA256 为 `c2ca34e977a20cc35fd11eed7f56c4fe61161b4a3fc09e8bdedd11ce975a4425`。
+
+### 5.11.5 M20 对当前研究问题的实际意义
+
+M20 没有产生新权重或公开指标，因此当前正式最好仍为：
+
+| 数据集 | 指标 | 当前正式最好 |
+|---|---|---:|
+| VOT-RGBD2022 | EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** |
+| DepthTrack | Pr / Re / F | **65.995933 / 65.335885 / 65.664250** |
+| CDTB | Pr / Re / F | **75.387821 / 76.005850 / 75.695574** |
+
+VOT 的核心问题仍然是早期身份切换后污染递归 state/template，ACC 已达标而 ROB/EAO 受连续失败链拖累。M20 既没有验证候选身份关联是否改善，也没有验证 protected/tentative transaction 是否提高 survival；它只暴露了运行期审计器本身的时序和快照语义错误。
+
+低22文本结论也不变：identity-only 使失败 anchor `200 -> 195`，Qwen current-anchor 重注释使其 `195 -> 202`。因为困难序列没有获得可靠净改善，仍未做全序列、全 anchor 或全帧文本注释；Qwen3_8B 保留但本次未调用。
+
+### 5.11.6 后续允许和禁止的边界
+
+M20a 已封存，禁止：
+
+- 重跑同一个 M20a attempt；
+- 把 exit 0 或 runner 的 `accepted=true` 写成工程成功；
+- 根据 M20a 启动 M20b 训练、checkpoint、low22、full-127、DepthTrack Test、CDTB 或 Qwen；
+- 事后删掉 286 条读取记录，或扩大 receipt/model-runtime allowance 来让结果通过。
+
+若继续，必须建立新的 successor identity、plan、spec、binding 和独立 preexecution audit。最小结构修正应只处理本次已证实的问题：
+
+1. `snapshot()` 对每个事件列表创建真正的不可变副本，不能保存 live list 引用；
+2. 在模型运行期结束时明确关闭该 phase，再执行 Git/control identity postflight；
+3. acceptance 必须基于所有 postflight 完成后的最终冻结 observation，而不是中途快照；
+4. 保持 M19b receipt 不扩张，仍不允许把任意读取、VOT 路径或 `/dev/null` 作为通用白名单。
+
+该 successor 仍只能先做 zero-step 工程 smoke。只有其独立结果审计真正 PASS，才可另行规划 sequence-disjoint DepthTrack Train survival 训练；VOT low22 和 full-127 仍不能提前运行。
