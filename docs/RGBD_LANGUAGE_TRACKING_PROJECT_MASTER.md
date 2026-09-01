@@ -14932,3 +14932,11 @@ atomic tentative transaction
 具体要求是先在folds 2--5内部做sequence-level OOF安全验证，用模型间分歧或保守上界识别`file02`这类高置信OOD伤害；同时直接预测candidate相对protected的生存差，而不是只输出单模型benefit/catastrophe概率。consumed fold1不能再用于阈值扫描，fold0仍保持未触碰。只有新结构在预注册OOF门下获得非零高精度动作且零灾难，才可另写fold0计划；在此之前仍不得运行VOT。
 
 截至M23的最准确结论是：**candidate-own关系和exact去重已经产生3个跨序列真实rescue，证明动作空间存在价值；但单模型直接概率在小样本上近乎过拟合，并对`file02`给出高置信错误安全判断，因此尚不能安全接管STTrack递归状态。**
+
+### 5.14.8 已冻结但尚未执行的M24计划
+
+只读fold census确认可在不访问fold1/fold0的条件下做真正的sequence-OOF epistemic实验：folds 2/3/4/5分别有20/17/18/21条序列、132/103/73/199个事件，四折都含独立beneficial和catastrophic序列。census receipt为SHA256 `d1fddfafd20faedc5f64f63cc45d6a907f5bdde5dea8cc2d7119fbf0b776c794`。
+
+因此新计划`EXPERIMENT_PLAN_M24_SEQUENCE_FOLD_EPISTEMIC_COMMITTEE_20260902.md`已冻结，SHA256 `4c6b69bdae5e10bcc9548ad47cc1801521e7a7007f0085d20730b0063613bb6f`，5583 bytes，0444，但**尚未实现、预审或执行**。核心协议是每折训练一个同初始化模型；评估折`f`时只使用另外三折模型，要求三者对同一canonical candidate一致，并同时通过最小benefit、最大catastrophe和最小margin门。四个模型总计预注册780步，聚合507个真正OOF事件；只有selected≥12、beneficial≥10、跨≥6序列、precision≥0.95、catastrophic=0且每折至少一个动作才通过。PASS也只允许另写consumed fold1计划，不自动访问fold1/fold0/VOT。
+
+M24的目的不是再训练一个更大的分类器，而是直接检验：**由不同序列折产生的模型分歧，能否作为`file02`式高置信错误的epistemic安全证据。**
