@@ -14127,3 +14127,128 @@ M18-0/M18a 都没有运行 VOT、DepthTrack Test 或 CDTB，因此正式最好�
 | CDTB | Pr / Re / F | 75.387821 / 76.005850 / 75.695574 |
 
 仍未做全帧文本注释，也未把 Qwen current-anchor 注释铺到全部序列或全部 1,765 anchors；Qwen3_8B 保留但 M18 未调用。低指标序列、失败原因和 identity-only/Qwen 注释效果仍以 5.2–5.3 节为准。
+
+## 5.10 M19：启动期副作用完成精确归因与不可扩张收据封存（2026-09-01）
+
+### 5.10.1 为什么需要 M19
+
+M18a 的因果分位数生存模型本身通过了 20/21 个架构与数值门，唯一失败是审计观察到 `subprocess.Popen` 和 `/dev/null`，但旧日志没有保存 executable、argv、cwd、stdio、调用栈和事件关联，无法区分“PyTorch 依赖初始化”与“模型运行期副作用”。固定 M18 合同禁止事后补白名单或重跑，因此 M19 被定义为新的、独立的 Bootstrap-Attributed Runtime Provenance Closure，只解决来源归因，不训练模型，也不声称 VOT 有任何改善。
+
+M19 的边界始终是：
+
+- 不读取 RGB、Depth、GT、预测、target、cache、权重或 checkpoint；
+- 不实例化模型，不执行 forward/backward/optimizer；
+- 不调用 Qwen、网络、DepthTrack Test、CDTB、VOT low22 或 full-127；
+- 所有 journal 文件只读封存，失败关闭，不自动进入下一阶段。
+
+### 5.10.2 M19a：唯一 import-only 运行找到了精确来源
+
+M19a 源码仓库为 `/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1`，冻结分支为 `codex/language-anchored-candidate-transaction-v1`。唯一正式运行绑定提交 `19beca70b5edd847cebf5e4ab127524ababcced0`，输出根：
+
+```text
+/root/autodl-tmp/sttrack_lachtt_m19a_bootstrap_attribution_attempt_v1_20260901
+```
+
+运行 `exit=0`、`status=success`、`accepted=true`，23/23 门通过。精确事件只有一条：
+
+```text
+phase        = torch_import
+caller       = torch/__init__.py:164::_load_global_deps
+Popen        = uname -p
+cwd          = /root
+stdout       = PIPE
+stderr       = DEVNULL
+devnull      = /dev/null, flags=524290
+correlation  = popen-0001
+event ids    = Popen wrapper 5 / DEVNULL 6 / Popen audit 7
+```
+
+也就是说，M18a 观察到的两类事件不是 tracker、Qwen、训练脚本或候选模型主动产生，而是冻结 PyTorch 1.13.1+cu116 在 import 阶段的依赖引导探测。M19a 同时确认：模型实例化、forward、tensor dispatch、optimizer、checkpoint、benchmark、数据与网络访问全部为 0。
+
+M19a 封存工件：
+
+| 工件 | 大小 / 权限 | SHA256 |
+|---|---:|---|
+| `start.json` | 2,294 B / 0444 | `e81d7757899c01aa2e57b88fc2e29111830d106ef801d4b08246e4a71cfbf1d9` |
+| `terminal.json` | 57,281 B / 0444 | `652be013391150ebd35c7b47cfe9cc9b1245de5d086f720cd63572837a16b356` |
+| `manifest.json` | 56,886 B / 0444 | `cb5f1d361b7ced522526274516bd1807dbd4002fecdadc1682ed8d043c831416` |
+| result audit JSON | 3,942 B / 0444 | `36697d2a82a465a606ac3e7ea59f25ae5d63a602a75ef6b918da20b88e11c3a3` |
+
+结果审计为同模型家族独立 Type-A PASS，只支持“import-only 来源已归因”，不是跨模型家族 Type-B 免责，也不支持模型或指标结论。
+
+### 5.10.3 M19b：把一条精确事件机械提取为不可扩张 receipt
+
+M19b 没有再次 import torch，而是只读取已封存的 M19a journal，用两条独立路径重建同一事件：
+
+1. Path A：`analysis.linked_pairs` 与 raw Popen/DEVNULL/audit events 联结；
+2. Path B：完全绕过 `linked_pairs`，从 raw event set 独立重建。
+
+两条路径必须输出逐字节相同的 canonical JSON。receipt 明确禁止 wildcard、prefix、目录许可、任意 executable、任意 `/dev/null`、任意 torch event 或 model-runtime allowance，因此它不能把“一条已知启动事件”扩成运行期白名单。
+
+第一次使用 R6 绑定时，preflight 在创建 attempt root 之前以 exit 2 拒绝：实验仓库是 linked worktree，`.git` 是 gitfile，分支 ref 位于通过 `commondir=../..` 指向的 common Git directory；旧纯 Python Git 读取器只在 worktree gitdir 查 ref。该次没有创建结果目录、没有执行提取，也没有消耗唯一运行机会。修复只覆盖这一已有证据的问题：HEAD 仍从 worktree gitdir 读取，loose refs 与 `packed-refs` 从解析后的 common Git directory 读取；没有增加通用 fallback 或无证据兼容层。
+
+最终冻结身份：
+
+- 服务器源码提交：`d83fbbdd0286a535e8ec9c915313bb75de84c7e9`；
+- extractor SHA：`09fee5453f50e0016de7a922f1916dddce57a9fa161fd8339b1cac36996ea620`；
+- R7 spec SHA：`47a40c891f8f52f711dd0260285ba24252330025005a263cd08b8dc59f534335`；
+- R7 preexecution audit SHA：`4ff4339eaf0d88cfc95bd7d12a71c2365d470efc511fff7eaed5a7aa152a47ed`；
+- R7 binding SHA：`31ced4a23529e8ffd645a940bb6cde4888f4c72612b87cb538594181c93eb306`；
+- 最终代码审查 verdict SHA：`b7e304f8a6472f12e0001223998a13851c4a1658432f4357fc764f31e776cc19`，standards/spec 均 PASS、0 hard findings。
+
+唯一 M19b 提取运行成功，输出根：
+
+```text
+/root/autodl-tmp/sttrack_lachtt_m19b_exact_bootstrap_receipt_attempt_v1_20260901
+```
+
+| 项目 | 结果 |
+|---|---:|
+| terminal status / exit | `success / 0` |
+| accepted | `true` |
+| gates | 22 / 22 PASS |
+| Path A / Path B bytes | 4,649 / 4,649 |
+| Path A / Path B SHA | 均为 `24ad71fa198bf87a7ed8797282b88b26cd7f6522238d0858948f0d8517fef5a4` |
+| byte-identical | `true` |
+| wildcard / prefix allowance | `false / false` |
+| model-runtime allowance | 空列表 |
+
+封存结果：
+
+| 工件 | 大小 / 权限 | SHA256 |
+|---|---:|---|
+| `manifest.json` | 1,245 B / 0444 | `50a73b0a00a5749536e31d6b2a0c8d9d0f872653c2dce2d6760adda858bd06f9` |
+| `receipt.json` | 4,649 B / 0444 | `24ad71fa198bf87a7ed8797282b88b26cd7f6522238d0858948f0d8517fef5a4` |
+| `start.json` | 1,365 B / 0444 | `18cb34cf77f693200ed7bea29efaecac55b698eefb29e315a2fa6305d91bc7cc` |
+| `terminal.json` | 1,634 B / 0444 | `495150e140ef7812c1f39b9d09285f8a3dea8329207c305338626f3c2e251527` |
+| result audit JSON | 6,236 B / 0444 | `6614bda4f9a9dfc950dae9482c6ce343a88ec434d0cff296d0a1a67b77aed1ac` |
+
+attempt root 为 0555，严格只有上述四个结果文件。独立结果审计为 Integrity/Engineering PASS，10/10 审计项通过；它只证明 exact bootstrap receipt 已正确提取和封存，不证明模型性能，也不自动授权模型 smoke、训练或公开评测。
+
+### 5.10.4 最新源码发布范围
+
+Track 仓库新增且只新增两份 M19 相关源码：
+
+```text
+projects/sttrack_lachtt_v1/overlay/tools/
+├── run_sttrack_lachtt_m19a_bootstrap_attribution.py
+└── extract_sttrack_lachtt_m19b_exact_bootstrap_receipt.py
+```
+
+GitHub 源码提交为 `b0932c0c087fc501289cc6615b753e6a2ba3672e`。STTrack overlay 共 61 个文件，`MANIFEST.sha256` 已逐文件复核；发布前扫描确认没有 `.pth/.pt/.ckpt/.bin/.safetensors/.onnx`、压缩包、超过 10 MB 文件、数据集、预测结果、Qwen 模型、服务器密码或 API 凭据。服务器的 plan/spec/binding/audit/result journal 仍留在服务器，不作为源码包上传。
+
+### 5.10.5 对当前指标、低指标序列和全帧文本的影响
+
+M19a/M19b 没有运行 tracker benchmark，因此当前正式最好值完全不变：
+
+| 数据集 | 指标 | 当前正式最好 |
+|---|---|---:|
+| VOT-RGBD2022 | EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** |
+| DepthTrack | Pr / Re / F | **65.995933 / 65.335885 / 65.664250** |
+| CDTB | Pr / Re / F | **75.387821 / 76.005850 / 75.695574** |
+
+已确认的 VOT 低指标场景、身份切换、递归状态污染、搜索域丢失与框贴合问题没有因为 M19 自动消失；M19 只是移除了下一模型实验前的观测性阻塞。低22 identity-only 的失败 anchor 仍是 195，相对原结构化长文本的 200 有小幅改善；Qwen current-anchor 重注释仍为 202，净退化 7 个失败。因此仍没有铺开全序列、全 anchor 或全帧文本注释，Qwen3_8B 保留但 M19 未调用。
+
+### 5.10.6 下一步严格边界
+
+M19 现在已经完成 bootstrap 来源和 receipt 闭合，但不能直接恢复 M18b。下一步必须另建 M20 新家族，重新冻结 plan/spec/binding，并在相同 Python/PyTorch/源码身份下先完成 zero-step 模型运行期 smoke：bootstrap receipt 只消费上述唯一已归因事件，模型作用域内新增 subprocess、网络、外部写、Qwen、数据或 checkpoint 仍应失败关闭。只有新模型 smoke 与独立审计通过，才可单独授权 sequence-disjoint DepthTrack Train 训练；只有 Train-only 未见序列达到零 catastrophic、低 harm 和跨序列 rescue，才允许 low22。DepthTrack/CDTB 保真和 full-127 仍在更后面的晋升门，不能提前执行。
