@@ -11,8 +11,8 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `39b8be575f4c4121281d4e00cc28b3b13840484b`
-- Published project files: 63
+- Published source commit: `badc1900dd704169c70a391fd753075b1721510d`
+- Published project files: 64
 
 To reconstruct the source tree:
 
@@ -56,6 +56,10 @@ workspace, Qwen model, API credential or private server configuration.
   snapshots, isolates Git/control identity reads in a verified postflight phase,
   derives negative-result metadata from observations and closes binding/runtime
   authorization without modifying the model or fixture.
+- M22a sequence-disjoint causal-survival training runner. It trains on
+  DepthTrack Train folds 2--5, computes fold-1 predictions before opening the
+  delayed held-out labels, enforces exact event/CLIP/native storage-dtype
+  contracts and converts the verified tensors to contiguous CPU float32.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -93,7 +97,17 @@ while all 286 repository reads were isolated to the postflight Git identity
 phase with exact path and stack validation. All 17 frozen model gates passed,
 with zero optimizer construction/step and zero checkpoint write. This is an
 engineering-smoke result only; it is not a training, generalization or benchmark
-result and does not change the formal VOT/DepthTrack/CDTB metrics. For all
+result and does not change the formal VOT/DepthTrack/CDTB metrics. M22a then
+completed all 206 frozen optimizer steps with sequence-disjoint training and
+held-out evaluation. Its engineering gates passed, but every one of the 121
+held-out events abstained: `selected/beneficial/catastrophic = 0/0/0`.
+Independent audit therefore sealed the scientific result as FAIL and stopped
+the fixed M22 family without threshold scanning or low22 execution. The
+held-out data still contained 80 beneficial actions across nine sequences, and
+the top dominance candidate was beneficial for 16 of 19 beneficial events;
+the failure was absolute survival calibration (the H10 risk gate passed 0/121),
+not absence of recoverable candidates. M22 produced no tracking checkpoint or
+public benchmark result and does not change the formal metrics. For all
 experiments, failure analyses, artifact hashes
 and next-action restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).

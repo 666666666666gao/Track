@@ -14588,3 +14588,200 @@ M21a result audit 的授权边界明确为：结果可表述为工程 smoke 成�
 若继续，必须单独建立 M21b（或新的 successor 名称）plan/spec/binding/preexecution audit，训练仍只使用 DepthTrack Train 且按 sequence-disjoint folds。训练目标应直接对应当前 VOT 短板：candidate-own RGB-D target/distractor association、future survival/hazard 和 protected/tentative 原子 promote/rollback。只有 Train-only 未见序列达到零新增 catastrophic、低 harm、跨序列 rescue，才允许进入 low22；low22 明确改善且 DepthTrack/CDTB 保真后，才允许唯一一次 full-127。
 
 因此当前状态是：**工程运行与审计阻塞已闭合，性能创新尚未得到训练和 VOT 验证。**
+
+## 5.13 M22：sequence-disjoint causal-survival 训练结果与新发现（2026-09-01 至 2026-09-02）
+
+### 5.13.1 为什么启动 M22，以及它实际回答什么问题
+
+M21a 只证明冻结结构可以在零优化步条件下通过严格运行期审计，不能回答模型能否在未见序列上安全选择恢复候选。M22 因此单独建立了新的冻结计划：
+
+> **Sequence-Disjoint Language-Anchored Causal Survival Training**
+
+本次只使用 DepthTrack Train，不读取 DepthTrack Test、CDTB、VOT 或 Qwen，不生成 tracking checkpoint。数据按序列划分而不是按 action 随机划分：
+
+| 分区 | fold | 用途 | 可用事件 | 候选动作 | 可用序列 |
+|---|---:|---|---:|---:|---:|
+| training | 2、3、4、5 | 训练模型 | 507 | 3,042 | 76 |
+| heldout | 1 | 未见序列一次性选择门评估 | 121 | 726 | 20 |
+| quarantine | 0 | 隔离，不参与本次选择 | 154 | 924 | 23 |
+
+训练协议严格固定为 CPU float32、单线程、seed `20260918`、AdamW、学习率 `1e-3`、weight decay `0`、gradient clip `5`、batch 8。每个 batch 固定包含 `2 beneficial + 2 catastrophic + 4 neutral` 事件，训练 `2 × 103 = 206` 个 optimizer steps。模型仍是 106,566 参数的 `CausalQuantileSurvivalRouter`，utility 与 safety 参数完全分离；候选为固定六角色：
+
+```text
+current_peak0 / current_peak1
+last_reliable_peak0 / last_reliable_peak1
+velocity_peak0 / velocity_peak1
+```
+
+冻结晋升门要求：heldout 至少提交5个动作、至少4个 beneficial、覆盖至少3条序列、beneficial precision 至少0.95、catastrophic为0、平均真实H10 gain至少0.20，并且选中分支的H10 aggregate必须高于public。全弃权明确不能算通过。
+
+计划文件：
+
+```text
+/home/SUTrack_RGBD_L/refine-logs/
+EXPERIMENT_PLAN_M22_SEQUENCE_DISJOINT_CAUSAL_SURVIVAL_20260901_221110.md
+SHA256 2f7ff997186b352b7e0a15ff579327b052027675e9e94d5b4e5aff9be899797f
+```
+
+### 5.13.2 两次 step-0 前停止：发现的是冻结特征存储契约错误，不是训练失败
+
+初始 runner commit 为 `92318c885fb5732e0c8233efca071fe60051f285`，runner SHA256 为 `d32b23d72c0344925dfdadfddcff2c65313f740423ddf299f7f1f2d411253fc7`。第一次启动在读取首个 event feature 时停止：
+
+```text
+ContractError: feature payload tensor drifted: clip_image
+```
+
+实测 event payload 的真实冻结存储格式为：
+
+```text
+clip_image/native_rgb/native_depth/native_fused/
+query_rgb/query_depth/raw_depth : float16
+scalars                        : float32
+```
+
+旧 loader 错误地要求所有字段在磁盘上已经是 float32。最小修复为：严格按真实存储 dtype 校验，再将全部字段转换为 contiguous CPU float32。该修复 commit 为 `e644e4707e7982e0953f3e25892ef5a06f1f13c3`。
+
+R1 随后在读取 CLIP anchor 时再次于 optimizer 构造前停止：
+
+```text
+ContractError: clip anchor tensor drifted
+```
+
+继续实测确认：CLIP anchor 的 `initial_image/identity_text` 和 native anchor 的 RGB/Depth token bank/mean 也均以 float16 冻结存储。R2 因此只把这两类 loader 改为：严格校验 float16、finite 和固定 shape，然后转换为 contiguous CPU float32。最终修复 commit 为 `badc1900dd704169c70a391fd753075b1721510d`，runner SHA256 为 `7a3a0690f8e39c61df023733d099bbe7f2ead111c24059d629d76a2b975aa4ee`。
+
+这两次修复没有改变：数据、fold、候选顺序、target、loss、模型、optimizer、heldout 时序、policy 或阈值。FP16 到 FP32 只是对磁盘中已存储半精度值的精确扩展。独立审计还逐项打开并验证了全部 1,466 个 event payload、134 个 CLIP payload 和134个 native payload，共12,532个张量；shape、device、finite、storage dtype 和 CPU float32 转换错误均为0，heldout 标签文件未提前打开。
+
+两次停止的日志分别为：
+
+| attempt | 日志 SHA256 | 结果 |
+|---|---|---|
+| 初始版 | `e3861edf33152e18cf0dd45b9aba0e808d737b2465bbc4075c1cd2011183ddb9` | feature loader停止；optimizer未构造；step=0；无输出 |
+| R1 | `fc7c6950c601b215db4cf0df3ec7440773875e96b9a80013fa740e1891f16380` | CLIP anchor loader停止；optimizer未构造；step=0；无输出 |
+
+不存在部分训练、旧输出复用或权重污染。
+
+### 5.13.3 R2 的冻结身份与审计链
+
+最终真实执行绑定如下：
+
+| 对象 | SHA256 |
+|---|---|
+| R2 spec | `533a1822ff792f8e02dbe27362ccf7864a2e08eb8bf705651fdf872b0f4ddbd6` |
+| R2 runner | `7a3a0690f8e39c61df023733d099bbe7f2ead111c24059d629d76a2b975aa4ee` |
+| source commit | `badc1900dd704169c70a391fd753075b1721510d` |
+| R2 preflight binding | `1e61f8fc8c8707803a63ca51d3ba57d3de82d64232e166ddbc1d118fb93d4d69` |
+| R2 preexecution audit | `b7ddaeb115f28317cd17eb082fbe170660fc0e278321649da5caf7af6f05c688` |
+| R2 execution binding | `ed1f3365d20da8ebddb1b8ee3d51780cdf137c95d2543997b16f1fcabeb4fbcd` |
+| R2 result audit | `196c02f62928e66140e449a4d993bdce4de20b5e66c5905a82e5a113afc12bba` |
+
+preexecution audit 复核了292/292个绑定文件的SHA256和字节数、23/23个spec required records、sequence folds、206步训练常数以及 delayed heldout 标签隔离。result audit 为 PASS（0 hard / 0 soft），这里的 PASS 表示**结果与审计链真实、完整、可复算**，不表示科学指标通过。
+
+### 5.13.4 完整训练结果：工程 PASS，科学 FAIL，全 heldout 弃权
+
+R2 在25.22秒内完成全部206个 optimizer steps，206条 training trace 均为真实 optimizer step；无非有限 loss/gradient，所有 projector 均有梯度和参数变化，utility/safety tower 参数仍零重叠，candidate/event permutation error为0。
+
+输出闭合为：
+
+| 文件 | bytes | SHA256 |
+|---|---:|---|
+| `heldout_predictions.jsonl.gz` | 80,582 | `182218ac8820bac52f806541a61cf3045c437111a01a2b944ccec1106e444f59` |
+| `training_trace.jsonl.gz` | 29,544 | `029dab0705c97f2073e1484c8e4268624dd7bc42f0f73ddd2fdb8d6d27592fc4` |
+| `result.json` | 16,429 | `a78662eb6a22468b1f1e49ab39065379ea59881381d263aca691fa4d38c62eb0` |
+| `manifest.json` | 8,361 | `cae84f882f1d0de3956e56058ef1a5d1f118509820f55e632bb1616c985ce5cf` |
+
+所有输出均为0444只读。训练结束并完成heldout预测后，runner才第一次打开 delayed label source；观察到的 heldout commitment 与预提交 commitment完全相同，train/heldout sequence overlap为空。
+
+最终科学结果：
+
+| 项目 | 结果 |
+|---|---:|
+| heldout events / actions | 121 / 726 |
+| 实际提交动作 | **0** |
+| beneficial提交 | 0 |
+| catastrophic提交 | 0 |
+| 覆盖序列 | 0 |
+| engineering pass | **true** |
+| scientific pass | **false** |
+| accepted | **false** |
+| decision | `m22a_fail_stop_fixed_family_without_rescan` |
+
+失败的科学条件为：`all_abstain_is_not_pass`、最小提交数、beneficial数、beneficial序列数、beneficial precision、平均真实H10 gain以及branch aggregate优于public。因为没有任何提交，precision和选中动作的gain/aggregate均不可定义，不能把“零灾难”包装成安全性成功。
+
+### 5.13.5 最重要的新发现：候选排序有信号，但绝对 survival 校准严重失真
+
+heldout 的真实标签并不是“没有可救候选”。121个事件中包含：
+
+| event class | 事件数 |
+|---|---:|
+| beneficial | 19 |
+| catastrophic | 22 |
+| neutral | 80 |
+
+726个候选动作中实际有80个 beneficial、80个 catastrophic、566个 neutral；beneficial动作覆盖9条未见序列：
+
+```text
+adapter02_indoor, ball09_wild, bottle01_indoor,
+cube06_indoor, human05_wild, speaker_indoor,
+toiletpaper02_indoor, toiletpaper03_indoor, toy10_indoor
+```
+
+更关键的是，按模型 dominance 直接取第一候选时：
+
+- 19个 beneficial events 中，16次第一候选的真实标签就是 beneficial，3次为neutral；
+- 22个 catastrophic events 中，8次第一候选为catastrophic，14次为neutral；
+- 80个 neutral events 中，第一候选全部为neutral。
+
+这说明 candidate-own RGB-D / target-distractor relation 和相对排序不是完全没有泛化信号。真正阻止提交的是绝对值校准：
+
+| heldout门 | 通过事件数 / 121 |
+|---|---:|
+| dominance margin ≥ 0.10 | 30 |
+| predicted H10 gain ≥ 0.20 | 20 |
+| predicted H10 risk ≤ 0.05 | **0** |
+| catastrophe probability ≤ 0.05 | 111 |
+| predicted H10 branch mean IoU ≥ 0.50 | 3 |
+| 五门同时通过 | **0** |
+
+对80个真实 beneficial actions，预测与真实量差异尤其明显：
+
+| 量 | 预测均值 | 真实均值 |
+|---|---:|---:|
+| H10 gain | **-0.309846** | **+0.698499** |
+| H10 risk | **0.423792** | **0.038750** |
+| H10 branch mean IoU | **0.106065** | **0.796143** |
+| catastrophe probability | 0.005288 | beneficial标签 |
+
+真实 beneficial actions 的预测risk没有一个低于0.05，预测branch mean也没有一个达到0.50。与此同时，模型对真实 catastrophic actions 的方向性判断相对更合理：预测gain均值-0.656191、risk均值0.674213、catastrophe probability均值0.231644。训练loss也确实从首步1.733947下降到末步0.768196，因此不是训练没有执行或梯度完全失效。
+
+因此 M22 的问题应准确写成：
+
+> **相对候选排序已有部分跨序列信号，catastrophe方向也有一定区分度；但q10 gain/branch和q90 risk在未见序列上极度悲观且失准，导致风险门121/121拒绝、策略全弃权。**
+
+不能简单把risk阈值从0.05放宽或把branch阈值从0.50降低，因为不加新证据地扫阈值会同时放入8个当前top-ranked catastrophic actions，并违反冻结的零灾难门。下一阶段如果继续，必须作为新家族重新设计或校准absolute survival heads，并重新预注册数据、训练和选择规则；不能在M22输出上后验选阈值。
+
+### 5.13.6 对 VOT、文本和正式指标的影响
+
+M22没有生成 tracking checkpoint，也没有运行 low22、DepthTrack Test、CDTB、VOT或Qwen，因此正式最好指标仍为：
+
+| 数据集 | 当前正式最好 |
+|---|---:|
+| VOT-RGBD2022 EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** |
+| DepthTrack Pr / Re / F | **65.995933 / 65.335885 / 65.664250** |
+| CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** |
+
+低指标场景归因也没有被推翻：身份切换组仍需要 candidate-own RGB-D 与独立递归事务；搜索域组仍需要风险触发多中心 shadow search；ROB=100但ACC低的序列仍应由独立box refinement处理。M22只验证了离线候选选择器，不代表这些模块已经写入公开tracker主路径。
+
+文本实验结论同样不变：identity-only在low22有小幅改善，Qwen current-anchor重注释净增加失败；困难序列没有获得足够可靠的改善，因此**仍未做全序列、全anchor或全帧文本注释**。Qwen3_8B继续保留但在M22完全未调用。
+
+### 5.13.7 当前允许与禁止的下一步
+
+独立 result audit 明确要求停止固定 M22 family：
+
+```text
+禁止：M22阈值扫描、超参数扫描、自动重训、low22、
+      DepthTrack Test、CDTB、VOT、Qwen、checkpoint生成。
+```
+
+如果继续研究，必须新建独立 successor plan/spec/audit。新计划应针对本次实证问题，而不是继续改文本：保留已有相对候选排序能力，单独解决 q10 gain/branch 与 q90 risk 的跨序列绝对校准，并继续把 catastrophic=0 作为硬门。任何新家族仍须先通过 DepthTrack Train sequence-disjoint heldout；未通过前不得进入VOT低22。
+
+因此截至M22的最新状态是：**工程闭合、训练真实完成、未见序列有可恢复候选且相对排序出现信号，但绝对survival校准失败导致全弃权，未形成可运行的VOT改进，也没有任何正式指标提升。**
