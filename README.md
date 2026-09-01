@@ -66,5 +66,14 @@ The source-only SUTrack RGB-D language and safe-template-update overlay is in
 [`projects/sutrack_rgbd_language_template`](projects/sutrack_rgbd_language_template/README.md).
 It does not include checkpoints, datasets, VOT outputs or server handoff records.
 
+The current STTrack language-anchored candidate-association and
+protected/tentative transaction code is published as a source-only overlay in
+[`projects/sttrack_lachtt_v1`](projects/sttrack_lachtt_v1/README.md).
+
+All RGB-D/RGB-D-L experiment history, metrics, low-sequence failures, negative
+results, architecture decisions, code provenance and next-step restrictions
+have been consolidated into one document:
+[`docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
+
 ## Citation
 If our work is useful for your research, please consider cite.
