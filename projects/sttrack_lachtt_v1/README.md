@@ -11,8 +11,9 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `0556c40ac5b6f2e2ae73e753951c8e19cec9e85d`
-- Published project files: 70
+- Published source commit: `89654bba94b0609350e9e8e55827094b1035609b`
+- Overlay manifest SHA256: `fbaeafdf79d8a2f77da0e03ea10827d4542dac6edb51ce1c2b555caafb5066b7`
+- Published project files: 73
 
 To reconstruct the source tree:
 
@@ -74,6 +75,11 @@ workspace, Qwen model, API credential or private server configuration.
   candidate-own utility tower, adds a parameter-disjoint 591-parameter signed
   H3/H5/H10 harm head and calibrates harm residuals on a sequence fold that is
   disjoint from both fitting and outer evaluation.
+- M27 protected-own RGB-D observation collector for the exact 507 development
+  events, with immutable source-feature and runtime-access auditing.
+- M28 matched candidate-only versus paired-protected safety-veto model and
+  runner. It freezes the 12 M25 actions and compares equal-size 699-parameter
+  harm heads under sequence-disjoint fit/calibration/evaluation folds.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -162,8 +168,21 @@ preregistered bit-exact engineering gate. Independent audit recorded integrity
 PASS, engineering FAIL and scientific FAIL. M26 produced no checkpoint or
 formal benchmark result and is stopped without threshold scanning or rerun.
 
-For all experiments, failure analyses, artifact hashes
-and next-action restrictions, read the single project master:
+M27 then collected five aligned protected-own native RGB, depth and fused
+observations for all 507 development events. This was an observation-closure
+pass only: no model was trained and no public metric changed.
+
+M28 completed its one frozen 3,072-step matched safety-veto run. The
+candidate-only control and paired-protected condition each retained zero of the
+12 frozen M25 actions after sequence-q90 harm calibration. Both failed the
+scientific gate. The only engineering failure was a candidate-permutation
+floating difference of at most `5.960464477539063e-08`; event-order replay was
+tensor-exact. Independent audit recorded integrity PASS, engineering FAIL and
+scientific FAIL. M28 produced no checkpoint or formal benchmark result and is
+stopped without rerun, threshold scanning or public evaluation.
+
+For all experiments, failure analyses, artifact hashes and next-action
+restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
 ## Integrity
