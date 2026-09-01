@@ -11,8 +11,8 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `d83fbbdd0286a535e8ec9c915313bb75de84c7e9`
-- Published project files: 61
+- Published source commit: `39b8be575f4c4121281d4e00cc28b3b13840484b`
+- Published project files: 63
 
 To reconstruct the source tree:
 
@@ -52,6 +52,10 @@ workspace, Qwen model, API credential or private server configuration.
   two byte-identical derivations and linked-worktree-aware Git identity checks.
 - M20a receipt-bound zero-step model-runtime smoke runner with exact inner-gate
   closure, immutable attempt journals and explicit failed-publication sealing.
+- M21a immutable, phase-closed successor runner. It deep-copies observation
+  snapshots, isolates Git/control identity reads in a verified postflight phase,
+  derives negative-result metadata from observations and closes binding/runtime
+  authorization without modifying the model or fixture.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -82,8 +86,15 @@ optimizer steps. Its 17 model gates passed, but independent result audit found
 mutable observer snapshots and 286 later sensitive-read events that invalidated
 the runner's zero-new-runtime-side-effect acceptance. M20a is therefore a sealed
 negative engineering result: it produced no checkpoint, prediction or benchmark
-metric and cannot authorize training or evaluation. For all experiments, failure
-analyses, artifact hashes
+metric and cannot authorize training or evaluation. M21a corrected only the two
+confirmed observation defects plus review-required journal/authorization gaps.
+Its independent Type-A result audit found zero model-runtime side-effect events,
+while all 286 repository reads were isolated to the postflight Git identity
+phase with exact path and stack validation. All 17 frozen model gates passed,
+with zero optimizer construction/step and zero checkpoint write. This is an
+engineering-smoke result only; it is not a training, generalization or benchmark
+result and does not change the formal VOT/DepthTrack/CDTB metrics. For all
+experiments, failure analyses, artifact hashes
 and next-action restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
