@@ -14426,3 +14426,165 @@ M20a 已封存，禁止：
 4. 保持 M19b receipt 不扩张，仍不允许把任意读取、VOT 路径或 `/dev/null` 作为通用白名单。
 
 该 successor 仍只能先做 zero-step 工程 smoke。只有其独立结果审计真正 PASS，才可另行规划 sequence-disjoint DepthTrack Train survival 训练；VOT low22 和 full-127 仍不能提前运行。
+
+## 5.12 M21 immutable phase-closed successor：工程 smoke 经独立审计正式通过
+
+### 5.12.1 为什么必须建立 M21，而不是重跑 M20
+
+M20 的模型执行和 17 个模型门本身已经通过，但其接受判断不可信：`direct_git_identity()` 在模型快照后仍以 `model_runtime` phase 运行，产生 286 条仓库读取；同时 `snapshot()` 保存 live list，导致早期 bootstrap/runtime 快照被后续事件反向污染。独立审计明确禁止重跑或事后删事件，因此 M21 使用全新的 plan、spec、binding、runner、commit 和 attempt root，只修复这两个已有直接证据的问题。
+
+M21 没有改动以下科学内容：
+
+- `lachtt_causal_quantile_survival.py` 模型 SHA 仍为 `2dc7fc2395eedc3c9901d908da96f0405f9ee2a71ccbe941c66eae314300843b`；
+- 参数量仍为 106,566，candidate count=6，cached horizon=5，relation dim=177；
+- 仍复用 M18 的同一组 8 个 DepthTrack Train 工程事件：2 beneficial、2 catastrophic、4 neutral；
+- 仍为 CPU、float32、seed 20260918、单线程、零 optimizer step；
+- 不训练、不写 checkpoint/prediction、不运行 tracker/VOT/DepthTrack Test/CDTB、不调用 Qwen；
+- M19b receipt 仍只允许 `torch_import -> uname -p`，没有 wildcard、目录前缀或 model-runtime allowance。
+
+### 5.12.2 最小代码修复和审查中发现的合同缺口
+
+M21 runner 的核心修复只有：
+
+```python
+def frozen_observation(observer):
+    return copy.deepcopy(observer.snapshot())
+```
+
+并把执行顺序改为：
+
+```text
+torch_import
+  -> 冻结 bootstrap snapshot
+model_runtime
+  -> 真实模型 smoke
+  -> 冻结 runtime snapshot
+postflight_identity
+  -> direct_git_identity + control/binding rehash
+postflight_complete
+  -> 冻结 final snapshot
+  -> 统一计算 acceptance
+```
+
+postflight 读取没有被忽略或加入通用白名单。每一条敏感读取必须同时满足：
+
+1. 路径严格位于固定仓库 `/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1`；
+2. 调用栈来自冻结 SHA 的 M19 provenance runner；
+3. 栈中同时存在 `direct_git_identity` 和 `_git_worktree_clean`；
+4. postflight 的 subprocess、DEVNULL、write、unresolved write、mutation、network 全部为 0；
+5. postflight import 集合必须与 runtime 完全相同。
+
+双轴只读代码审查最初发现了额外的合同/负结果记录问题，但没有修改模型或实验：
+
+- spec/binding 的运行次数、zero-step、training/checkpoint/public-evaluation/automatic-next-stage、forbidden actions 和 claim ceiling 必须精确等值，不能只检查一个布尔开关；
+- 普通 gate failure/exception 也必须允许只读独立结果审计，但训练和评测权限仍必须为 false；
+- binding 本身必须纳入 postflight 重哈希；
+- terminal 的 optimizer/checkpoint 字段必须来自真实 instrumentation counts；无法观测时写 `null`，不能在失败路径硬编码成 0/false；
+- 清除唯一的 EOF 空白后，`git diff --check` clean。
+
+最终 runtime 与 contract 两轴复审均为 **PASS，0 hard / 0 soft**。服务器源码提交为 `39b8be575f4c4121281d4e00cc28b3b13840484b`，runner 大小 35,039 B、权限 0755、SHA256：
+
+```text
+2ea35b9ddaa53972d33d2b0e31672bd45a76fc62195e0876ff9737ecb1e3fbf5
+```
+
+source-only overlay 已推送到 `https://github.com/666666666666gao/Track`，源码发布提交为 `32783de42de9b5d4397e839f7311cf52623a036a`。发布树共 63 个 overlay 文件，manifest 63/63 精确匹配；权重、数据、结果包、Qwen 模型、凭据和大于 10 MiB 文件均为 0。
+
+### 5.12.3 冻结计划、规格、预审和 binding
+
+| 工件 | 大小 / 权限 | SHA256 |
+|---|---:|---|
+| M21 plan | 6,846 B / 0444 | `2caada7d7087c824ee4dad168ebe6f83e2f68830e0b8d124b35fd7a577b8c3d7` |
+| M21 spec | 16,831 B / 0444 | `9386af57a3000150a909d1cb1fe7932de11a1e6097c1fdd6de2d040605ced1e4` |
+| Type-A preexecution audit | 8,390 B / 0444 | `35abd900ab66add1e9e78406bda713bceb90779e671afcdde54cd0ccbeb6bcdc` |
+| M21 binding | 3,815 B / 0444 | `0c52b2693ec0d02eeda1a27734a9b7d0a4115d911ba59d0a28e6bfdfb22e8c82` |
+
+预执行审计直接检查了 37 个递归文件记录、35 个唯一冻结文件身份和全部权限/路径/claim ceiling；结论为 Type-A PASS，0 hard / 0 soft。binding/package 最终静态 preflight 同样 PASS，attempt 与 scientific-output 路径在执行前均不存在。该 binding 只授权一次 M21a eight-event zero-step smoke。
+
+### 5.12.4 唯一 M21a 运行和封存结果
+
+唯一 attempt root：
+
+```text
+/root/autodl-tmp/sttrack_lachtt_m21a_immutable_phase_closed_runtime_smoke_attempt_v1_20260901
+```
+
+进程退出码为 0；但最终结论没有依据退出码，而是依据随后对 sealed journal 的独立 Type-A 结果审计。三文件 journal 为：
+
+| 工件 | 大小 / 权限 | SHA256 |
+|---|---:|---|
+| `start.json` | 2,247 B / 0444 | `7fe9e98a8db557ecd25e8d0531c68c6e7ae7d15f3d745696a6eaec29514af2eb` |
+| `terminal.json` | 1,034,745 B / 0444 | `4d3efa790698b110f4c699680fc3570aa022b314a43212a15517b1e51f5a3f9a` |
+| `manifest.json` | 498,725 B / 0444 | `18fd187d44053f443dc5ecd8f701a2decf5b996ae4fc306adb52c378adeea235` |
+
+attempt root 权限 0555，严格只有三个 regular、non-symlink、nlink=1 文件；manifest 中 start/terminal 身份与重新计算的 bytes/SHA 完全一致。scientific-output 路径不存在。
+
+独立结果审计文件为：
+
+```text
+/home/SUTrack_RGBD_L/refine-logs/EXPERIMENT_AUDIT_M21A_RESULT_20260901.json
+```
+
+大小 13,522 B、权限 0444、SHA256 `f96788f5d00d21f1ea903177a0a67dc0cb6be7cda0758bc3e04b9d806d024884`。审计结论：
+
+```text
+overall_verdict    = PASS
+integrity_status   = PASS
+engineering_outcome = PASS
+claim_supported    = true（仅限 eight-event zero-step engineering smoke）
+```
+
+独立重算得到的关键事实：
+
+| 项目 | M21 审计结果 |
+|---|---:|
+| bootstrap 后期 phase 记录 | 0 |
+| runtime snapshot 中 postflight 记录 | 0 |
+| model-runtime popen/subprocess/DEVNULL | 0 / 0 / 0 |
+| model-runtime write/unresolved/mutation/network | 0 / 0 / 0 / 0 |
+| model-runtime sensitive reads | **0** |
+| postflight sensitive reads / unique paths | 286 / 143 |
+| postflight path violations / stack violations | **0 / 0** |
+| postflight 新 import | 0 |
+| M18 exact model gates | **17 / 17 PASS** |
+| model instantiations | 41 |
+| forward call entries | 590 |
+| tensor dispatch ops | 16,796 |
+| optimizer constructions / steps | 0 / 0 |
+| checkpoint writes | 0 |
+| model parameter count | 106,566 |
+| preclip / postclip L2 | 0.407504797 / 0.407504808 |
+
+M19b bootstrap receipt 也再次逐字段复现：phase=`torch_import`、`uname -p`、cwd=`/root`、stdout=PIPE、stderr=DEVNULL、correlation=`popen-0001`、event IDs 5/6/7、caller=`torch/__init__.py:164::_load_global_deps`。
+
+与 M20 的本质区别是：相同的 286 次 Git 工作树读取没有消失，也没有被删掉；它们现在全部被准确记录为 `postflight_identity`，而真正 `model_runtime` 的敏感读取为 0，早期快照也不再被污染。因此 M20 两个 hard findings 已被工程上闭合。
+
+### 5.12.5 对 VOT/RGB-D 指标和文本实验的影响
+
+M21a 没有训练新权重，也没有运行任何公开评测，因此正式最好指标完全不变：
+
+| 数据集 | 指标 | 当前正式最好 |
+|---|---|---:|
+| VOT-RGBD2022 | EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** |
+| DepthTrack | Pr / Re / F | **65.995933 / 65.335885 / 65.664250** |
+| CDTB | Pr / Re / F | **75.387821 / 76.005850 / 75.695574** |
+
+它只证明：冻结的 candidate-own RGB-D causal-survival 模型可以在严格区分 bootstrap、model runtime 和 Git postflight 的环境中真实运行，并保持 17 个架构/数值门全部通过。它**不能**证明：
+
+- survival head 已在未见序列减少 catastrophic identity switch；
+- protected/tentative transaction 已改善 ROB/EAO；
+- DepthTrack/CDTB 保真已经通过；
+- VOT low22 或 full-127 有任何提升；
+- 文本注释策略已获得新结论。
+
+因此此前文本记录不变：low22 identity-only 使失败 anchor `200 -> 195`，Qwen current-anchor 重注释使其 `195 -> 202`；困难序列没有获得可靠净改善，所以仍未做全序列、全 anchor 或全帧文本注释。Qwen3_8B 继续保留但未在 M21 中调用。
+
+VOT 的已知低指标场景和根因也不变：`cup02/shoes02/cube05/toy09/yogurt/bandlight/duck03/humans_shirts` 主要是同类干扰导致身份切换和递归 state/template 污染；`ball06/cube02_indoor_1/two_tennis_balls_3` 主要是目标离开当前搜索域；`humans_shirts_room_occ_1_B_1/robot_human_corridor_noocc_1_B_1/squirrel_wild_1` 主要是 ROB=100 但框尺度/贴合不足。ACC 已达标而 ROB/EAO 仍受连续失败链拖累。
+
+### 5.12.6 下一步：另建 sequence-disjoint 训练计划，不能把 M21a 自动升级为性能结论
+
+M21a result audit 的授权边界明确为：结果可表述为工程 smoke 成功，但 `authorized_next_actions_after_pass=[]`；训练、optimizer step、checkpoint、prediction、DepthTrack Test、CDTB、VOT、Qwen 和 automatic next stage 全部为 false。
+
+若继续，必须单独建立 M21b（或新的 successor 名称）plan/spec/binding/preexecution audit，训练仍只使用 DepthTrack Train 且按 sequence-disjoint folds。训练目标应直接对应当前 VOT 短板：candidate-own RGB-D target/distractor association、future survival/hazard 和 protected/tentative 原子 promote/rollback。只有 Train-only 未见序列达到零新增 catastrophic、低 harm、跨序列 rescue，才允许进入 low22；low22 明确改善且 DepthTrack/CDTB 保真后，才允许唯一一次 full-127。
+
+因此当前状态是：**工程运行与审计阻塞已闭合，性能创新尚未得到训练和 VOT 验证。**
