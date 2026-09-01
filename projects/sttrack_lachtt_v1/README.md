@@ -11,8 +11,8 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `81700ba50a039bf75cbfa3ff1ae608dbbb0661c1`
-- Published project files: 59
+- Published source commit: `d83fbbdd0286a535e8ec9c915313bb75de84c7e9`
+- Published project files: 61
 
 To reconstruct the source tree:
 
@@ -46,6 +46,10 @@ workspace, Qwen model, API credential or private server configuration.
   restricted to training folds.
 - M18 causal quantile-survival model and its zero-step, immutable-journal
   architecture smoke runner.
+- M19a import-only bootstrap attribution runner, which records the exact
+  dependency-generated process and `/dev/null` events before any model code.
+- M19b mechanical extractor for a non-expanding, exact bootstrap receipt with
+  two byte-identical derivations and linked-worktree-aware Git identity checks.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -67,7 +71,11 @@ the observer recorded a subprocess event and a `/dev/null` write without enough
 call-site evidence to attribute them safely. Artifact integrity passed, but the
 engineering outcome failed; no optimizer step, training result, checkpoint,
 prediction or public benchmark metric was produced, and the fixed M18 family is
-stopped without rerun. For all experiments, failure analyses, artifact hashes
+stopped without rerun. M19a subsequently attributed the bootstrap side effect
+to exactly one dependency import-time `uname -p` probe, and M19b extracted a
+sealed exact receipt for that single event. M19a/M19b are provenance results
+only: neither ran the model, loaded a checkpoint, trained, predicted or evaluated
+a benchmark. For all experiments, failure analyses, artifact hashes
 and next-action restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
