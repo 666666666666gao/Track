@@ -11,9 +11,9 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `27c565e04edbb88052979738e07c5dfddae64d8e`
-- Overlay manifest SHA256: `5801a3f1a8063c564628ab5709c0995e3f55570014e3eba575387d28c06e7a75`
-- Published project files: 75
+- Published source commit: `72b6446f5ba0e96c8882001f3286585fd81cff30`
+- Overlay manifest SHA256: `485c5a45d4f0268fa743fa95b75e9a8477fbdce532dbb5887b4f2e87ea2abf27`
+- Published project files: 77
 
 To reconstruct the source tree:
 
@@ -84,6 +84,10 @@ workspace, Qwen model, API credential or private server configuration.
   and calibrates on exactly one frozen M25 utility-top action per event, keeps
   the original 12-action final policy, and compares matched 8,323-parameter
   candidate-only and paired-protected GRU safety heads.
+- M30 utility-conditioned strict-benefit temporal model and runner. It keeps
+  the same one-action-per-event substrate but directly predicts the frozen
+  H10 gain, H10 branch mean and H5 early-hit-rate components, with nested
+  sequence-disjoint lower-bound calibration.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -196,6 +200,15 @@ folds 2 and 5 instead of at least three folds. The paired condition therefore
 did not add causal selection value, and both conditions failed the scientific
 gate. M29 is a sealed negative, produced no checkpoint or public metric, and is
 stopped without rerun, threshold/q90/architecture scans or public evaluation.
+
+M30 replaced relative harm with direct prediction of the three existing
+strict-benefit components. Its audited 1,536-step run passed every integrity
+and engineering gate, but sequence-q90 lower calibration made all 12 frozen
+actions abstain. The true targets have an eight-action, all-beneficial oracle
+boundary, but the raw model would retain two neutral actions and the known
+`cup14_indoor@1258` catastrophic action. M30 is therefore a sealed scientific
+negative: it produced no checkpoint or public metric and must not be repaired
+by relaxing q90, thresholds or the frozen safety gates.
 
 For all experiments, failure analyses, artifact hashes and next-action
 restrictions, read the single project master:

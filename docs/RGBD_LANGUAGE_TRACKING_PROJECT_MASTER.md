@@ -15810,3 +15810,231 @@ M29没有生成tracking checkpoint，也没有运行任何公开评测，因此�
 | CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
 
 Qwen3_8B继续保留、未启用；全帧、全anchor和全序列文本注释仍未执行。
+
+## 5.22 M30：直接预测 strict-benefit 三组成量仍然全弃权（2026-09-02，封存负结果）
+
+### 5.22.1 为什么建立M30
+
+M29的相对伤害目标无法识别candidate与public同时失败。最明确的反例是`flower01_indoor@452`：
+
+```text
+candidate H10 mean IoU = 0
+public H10 mean IoU = 0
+candidate连续10帧低overlap
+public - candidate = 0
+```
+
+因此M30没有继续改M29的q90或阈值，而是回到已经冻结的strict beneficial定义，直接预测三个组成量：
+
+```text
+H10 gain >= 0.2
+H10 branch mean IoU >= 0.5
+前5帧IoU>=0.5的帧数 >= 2，即early-hit rate >= 0.4
+```
+
+这三个条件不是根据M29后验新挑的阈值，而是M17/M18 target closure中一直使用的`recompute_label`定义。
+
+### 5.22.2 运行前只读可行性诊断
+
+在M25冻结的507个top actions上，真实目标分布为：
+
+| label | 动作数 | H10完整连续失败 | 平均branch H10 IoU | branch mean > 0.1 |
+|---|---:|---:|---:|---:|
+| beneficial | 54 | 0 | 0.814642 | 54 |
+| neutral | 441 | 156 | 0.483760 | 281 |
+| catastrophic | 12 | 9 | 0.053443 | 1 |
+
+若使用三个真实组成量作oracle：
+
+- 507动作中恰好保留54个beneficial，neutral/catastrophic均为0，覆盖27条序列和folds 2/3/4/5；
+- 冻结final12中恰好保留8个beneficial，拒绝3个neutral与1个catastrophic；
+- final12 oracle precision为1.0，覆盖7条beneficial序列和folds 2/4/5；
+- oracle保留动作的平均真实H10 gain为0.695619。
+
+因此target本身存在干净的真实后验边界。M30要检验的问题只是：candidate-own五步时序关系能否在未见序列上预测并保守校准这三个组成量。
+
+诊断文件：`DIAGNOSTIC_M30_STRICT_BENEFIT_COMPONENT_ORACLE_20260902.json`，SHA256 `2a176e529b4282837bf014bbac677cafa4646d2c90063d9ad8bc7e9f927aa087`。
+
+### 5.22.3 冻结模型与实验协议
+
+每事件仍只使用M25冻结`decision.top_role_id`对应的一个动作，不重算utility、不用GT选动作。输入为M29 candidate-temporal的同一组关系：
+
+```text
+5 ages × (49 scalar relation + 9 candidate-own RGB-D identity relation)
+```
+
+模型固定为：
+
+```text
+Linear(58,32) + tanh
+GRU(32,32)
+gain Linear(32,1) + tanh
+branch mean Linear(32,1) + sigmoid
+early-hit rate Linear(32,1) + sigmoid
+```
+
+总参数仍为8,323。训练为CPU FP32、seed 20260930、AdamW、lr `3e-4`、weight decay `1e-4`、12 epochs、batch8、逆序列事件数加权。fold2/3/4/5分别408/408/360/360步，总计1,536步，无scheduler、augmentation、early stopping、checkpoint或扫描。
+
+fit/cal/eval保持序列隔离：
+
+| eval | calibration | fit |
+|---:|---:|---|
+| 2 | 3 | 4,5 |
+| 3 | 2 | 4,5 |
+| 4 | 5 | 2,3 |
+| 5 | 4 | 2,3 |
+
+校准对每个组成量使用：
+
+```text
+residual = prediction - actual
+within-sequence q90
+across-sequence q90
+lower = prediction - offset
+```
+
+final只允许原M25的12个非空动作；只有三个lower同时超过`0.2/0.5/0.4`才保留。
+
+源码提交：`72b6446f5ba0e96c8882001f3286585fd81cff30`。
+
+| 文件 | SHA256 |
+|---|---|
+| `lachtt_utility_conditioned_strict_benefit_temporal.py` | `0a53a8f5ed80c0ef0733daca840f3dbbf57eaedcb31c0b648fd2471e349648f5` |
+| `run_sttrack_lachtt_m30_utility_conditioned_strict_benefit_temporal.py` | `dd63afe26b6c105040b7a1317121e12221c2991b79862f29e62d72637b5b0316` |
+| 两次零优化smoke | `c4f84c9665818d079ebc31b6ce2fc8265e4169bd3df29e11c4a95e275933b160` |
+| spec | `04ff65eede287c36cb4ea9b40c1b982fd0ec7f53c31ffba84de2e655d4793ab1` |
+| preflight | `bfcc2c23f716fc9392b7d0ad254d43dfba2de91966ac9391a28b67fb0494ddb2` |
+| preexecution audit | `771b5ea629f7e7c92e7273217319218f3c3993d8390bded8a4c50eea162c5eb7` |
+
+独立源码审计和预执行审计均为PASS，且只授权这一条1,536步运行。
+
+### 5.22.4 正式结果：工程PASS，科学FAIL，全弃权
+
+唯一正式运行完成1,536/1,536步：
+
+```text
+Integrity PASS
+Engineering PASS
+Scientific FAIL
+accepted = false
+interpretation = strict_benefit_temporal_fail_stop_family
+```
+
+工程侧结果：
+
+- 1,536条trace，fold步数408/408/360/360；
+- 所有loss/output/gradient finite，preclip>0，postclip最大0.489971；
+- 507条OOF prediction，fold计数132/103/73/199；
+- M25 507 top actions、12 final actions和M27 507事件join完全一致；
+- candidate permutation与event replay均bit exact；
+- forbidden file open、network和Qwen均为0；
+- 没有checkpoint，输出仅4个封存文件，目录0555、文件0444。
+
+科学结果：
+
+| 指标 | 结果 |
+|---|---:|
+| retained actions | 0 |
+| beneficial / neutral / catastrophic | 0 / 0 / 0 |
+| beneficial sequences | 0 |
+| covered folds | 0 |
+| cup14 veto | PASS |
+| all-abstain-not-pass | **FAIL** |
+
+因此M30没有产生可提交动作，也没有授权tracker接线或low22。
+
+### 5.22.5 为什么三个lower在数学上无法通过
+
+独立审计精确重算的offset如下：
+
+| eval fold | gain / branch / early offset | 要通过lower门所需raw prediction |
+|---:|---|---|
+| 2 | 0.382244 / 0.563774 / 0.572647 | 0.582244 / 1.063774 / 0.972647 |
+| 3 | 0.494091 / 0.599584 / 0.616359 | 0.694091 / 1.099584 / 1.016359 |
+| 4 | 0.229916 / 0.631519 / 0.662233 | 0.429916 / 1.131519 / 1.062233 |
+| 5 | 0.217284 / 0.614900 / 0.624436 | 0.417284 / 1.114900 / 1.024436 |
+
+branch和early输出由sigmoid限制在0到1。校准后：
+
+- 所有fold的branch门都要求raw prediction大于1，因此数学上不可能通过；
+- fold3/4/5的early门也要求大于1；
+- final12的gain lower最大也只有0.091，全部低于0.2。
+
+这不是实现错误。校准集包含大量真实branch/early接近0的动作，而模型输出集中在约0.6附近，导致`prediction - actual`的序列q90达到0.56--0.66。为了保证未见序列下界覆盖，必须减去这个大offset。
+
+### 5.22.6 final12逐动作证据
+
+下表每组三个数均为`gain / branch mean / early-hit rate`：
+
+| fold | 动作 | 真标签 | actual | raw prediction | calibrated lower | 决策 |
+|---:|---|---|---|---|---|---|
+| 2 | `basket_indoor@674` | neutral | 0.196/0.737/0.600 | 0.321/0.589/0.565 | -0.061/0.025/-0.008 | abstain |
+| 2 | `colacan02_indoor@3709` | beneficial | 0.900/0.902/1.000 | 0.387/0.611/0.633 | 0.005/0.047/0.060 | abstain |
+| 2 | `flower01_indoor@452` | neutral | 0.000/0.000/0.000 | 0.473/0.566/0.522 | 0.091/0.003/-0.051 | abstain |
+| 3 | `cup05_indoor@1592` | neutral | 0.153/0.839/1.000 | 0.075/0.607/0.610 | -0.419/0.007/-0.006 | abstain |
+| 3 | `cup14_indoor@1258` | catastrophic | -0.344/0.000/0.000 | 0.442/0.599/0.592 | -0.052/-0.001/-0.025 | abstain |
+| 4 | `cat03_indoor@503` | beneficial | 0.680/0.680/0.400 | 0.214/0.593/0.562 | -0.016/-0.039/-0.101 | abstain |
+| 5 | `car01_indoor@999` | beneficial | 0.741/0.741/0.600 | 0.190/0.598/0.594 | -0.028/-0.017/-0.031 | abstain |
+| 5 | `car01_indoor@1112` | beneficial | 0.671/0.671/0.400 | 0.203/0.591/0.570 | -0.015/-0.024/-0.054 | abstain |
+| 5 | `car02_indoor@650` | beneficial | 0.789/0.874/1.000 | 0.188/0.591/0.558 | -0.030/-0.024/-0.067 | abstain |
+| 5 | `colacan01_indoor@2666` | beneficial | 0.586/0.586/0.400 | 0.193/0.603/0.603 | -0.024/-0.012/-0.022 | abstain |
+| 5 | `egg_indoor@1089` | beneficial | 0.296/0.776/0.800 | 0.146/0.617/0.639 | -0.072/0.003/0.015 | abstain |
+| 5 | `glass03_indoor@143` | beneficial | 0.902/0.902/0.800 | 0.144/0.625/0.659 | -0.074/0.010/0.034 | abstain |
+
+raw prediction也不能直接使用。若不校准，final12会保留6个动作，其中只有3个beneficial，同时还会保留：
+
+```text
+basket_indoor neutral
+flower01_indoor mutual-failure neutral
+cup14_indoor catastrophic
+```
+
+在全部507动作上，raw prediction与真实gain/branch/early的Pearson只有0.394/0.370/0.418；raw三门会选择28个beneficial、19个neutral和5个catastrophic。也就是说，校准造成全弃权，但取消校准会真实引入灾难动作。不能通过放宽q90或降低阈值修复。
+
+### 5.22.7 新发现的问题与停止边界
+
+M30把问题进一步定位为：
+
+> 冻结标签和动作空间存在可恢复容量，但当前58维候选时序关系在未见序列上无法把“绝对可生存动作”与“共同失败动作”可靠分开；模型的branch/early输出收缩到约0.6，跨序列校准只能把它全部否决。
+
+具体表现：
+
+1. `flower01`真实三组成量全0，模型仍预测0.473/0.566/0.522；
+2. `cup14`真实为-0.344/0/0，模型仍预测0.442/0.599/0.592；
+3. `colacan02`真实为0.900/0.902/1.0，预测只有0.387/0.611/0.633；
+4. 模型能做弱排序，却不能提供动作级、跨序列的绝对数值校准；
+5. 当前失败不是再改一个relative-vs-absolute target即可解决，而是观测中缺少能预测未来branch survival的强因果证据。
+
+M30固定家族立即封存：
+
+- 不重跑；
+- 不扫描q90、阈值、loss weight、seed、epoch、hidden size、fold或特征；
+- 不去掉校准直接提交；
+- 不创建checkpoint；
+- 不接入tracker；
+- 不运行low22、DepthTrack Test、CDTB、VOT；
+- 不启用Qwen或全帧/全anchor文本注释。
+
+若另建后续家族，必须改变信息来源或训练监督，而不是放宽M30门槛。可讨论但尚未授权的方向是使用真实递归branch rollout中的绝对连续低overlap状态、目标/干扰物实例记忆或直接学习failure-onset hazard；M30本身不授权任何自动下一阶段。
+
+### 5.22.8 封存输出与正式指标
+
+输出目录：`/root/autodl-tmp/sttrack_lachtt_m30_utility_conditioned_strict_benefit_temporal_v1_20260902`。
+
+| 文件 | SHA256 |
+|---|---|
+| `manifest.json` | `940fe381264ad0af06ec1162ee90cd5fdac4469c9a75870c9c79546adac6c794` |
+| `oof_predictions.jsonl.gz` | `63ea5c2b30d45bf7a4f8702cbfde07b1b28ca924c3c284af0fbf21ba2c9fe277` |
+| `result.json` | `c42d7fa2d3ec1881090f3906a7046415622d2cca560c6a95e04263711e878ef2` |
+| `training_trace.jsonl.gz` | `671361079b89d0dd9b8fedac8069c06f340864047587c001e78cc136f5d35b89` |
+| 独立result audit | `9e6776e5681a50d74dd6a520eb8ba868dfabacbbcdfc132c7838540e77b2b065` |
+
+M30没有生成新tracker权重或公开结果，正式指标继续保持：
+
+| 数据集 | 当前正式最好 | 目标 | 状态 |
+|---|---:|---:|---|
+| VOT-RGBD2022 EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** | 77.9 / 82.1 / 93.7 | ACC达标，EAO/ROB不足 |
+| DepthTrack Pr / Re / F | **65.995933 / 65.335885 / 65.664250** | 65.2 / 64.9 / 65.1 | 达标，保护 |
+| CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
+
+Qwen3_8B继续保留、未启用；全帧、全anchor和全序列文本注释仍未执行。
