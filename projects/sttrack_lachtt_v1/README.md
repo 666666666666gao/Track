@@ -11,9 +11,9 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `89654bba94b0609350e9e8e55827094b1035609b`
-- Overlay manifest SHA256: `fbaeafdf79d8a2f77da0e03ea10827d4542dac6edb51ce1c2b555caafb5066b7`
-- Published project files: 73
+- Published source commit: `27c565e04edbb88052979738e07c5dfddae64d8e`
+- Overlay manifest SHA256: `5801a3f1a8063c564628ab5709c0995e3f55570014e3eba575387d28c06e7a75`
+- Published project files: 75
 
 To reconstruct the source tree:
 
@@ -80,6 +80,10 @@ workspace, Qwen model, API credential or private server configuration.
 - M28 matched candidate-only versus paired-protected safety-veto model and
   runner. It freezes the 12 M25 actions and compares equal-size 699-parameter
   harm heads under sequence-disjoint fit/calibration/evaluation folds.
+- M29 utility-conditioned five-age temporal-harm model and runner. It trains
+  and calibrates on exactly one frozen M25 utility-top action per event, keeps
+  the original 12-action final policy, and compares matched 8,323-parameter
+  candidate-only and paired-protected GRU safety heads.
 
 The code includes negative and diagnostic experiments because they are needed
 to reproduce why several apparently promising selectors were rejected. Their
@@ -180,6 +184,18 @@ floating difference of at most `5.960464477539063e-08`; event-order replay was
 tensor-exact. Independent audit recorded integrity PASS, engineering FAIL and
 scientific FAIL. M28 produced no checkpoint or formal benchmark result and is
 stopped without rerun, threshold scanning or public evaluation.
+
+M29 then aligned the safety fit/calibration population with the one M25
+utility-top action actually seen per event and retained the full five-age
+sequence in a matched GRU head. Its audited 3,072-step run passed every
+engineering gate. Both candidate-only and paired-protected conditions retained
+the same five original M25 actions: four beneficial, one neutral and zero
+catastrophic. Mean true H10 gain was +0.577335, but beneficial precision was
+0.8 instead of the frozen 0.95 requirement, and retained actions covered only
+folds 2 and 5 instead of at least three folds. The paired condition therefore
+did not add causal selection value, and both conditions failed the scientific
+gate. M29 is a sealed negative, produced no checkpoint or public metric, and is
+stopped without rerun, threshold/q90/architecture scans or public evaluation.
 
 For all experiments, failure analyses, artifact hashes and next-action
 restrictions, read the single project master:

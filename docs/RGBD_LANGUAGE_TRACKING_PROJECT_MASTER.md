@@ -15380,3 +15380,433 @@ M26只运行DepthTrack Train离线开发实验，没有生成权重，也没有�
 | CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
 
 Qwen3_8B继续保留但未启用；全帧、全anchor、全序列文本注释仍未执行。M26不能被描述为VOT提升，也不能被描述为新模型完成；它是一个完整性通过、工程与科学均失败的Train-only安全校准负实验。
+
+## 5.19 M27：protected-own RGB-D 对照观测闭包（2026-09-02，工程PASS）
+
+### 5.19.1 为什么必须补采protected自己的观测
+
+M26仍然只使用49维scalar relation判断candidate相对protected的未来伤害；candidate有自己的native RGB、native Depth和fused特征，而protected只有框、分数和几何摘要。selector实际上是在决定“candidate和protected谁更可信”，却没有看到protected框自身同龄的RGB-D外观证据，输入存在因果不对称。
+
+M27没有训练新模型，只在冻结的507个DepthTrack Train folds 2--5事件上，为protected/public分支补采5个同龄时刻的：
+
+```text
+public_native_rgb    [5,768] FP16
+public_native_depth  [5,768] FP16
+public_native_fused  [5,768] FP16
+public_raw_depth     [5,2,16,16] FP16
+public_score         [5] FP32
+```
+
+源码提交为`a5026c2be5fc9fb24eee287e794af7f1f7f143e5`。两次单事件smoke完全通过，随后两个GPU只做观测采集：shard0为246事件/37序列，shard1为261事件/39序列，合计507事件/76序列；所有key与原candidate事件一一对应，无缺失和重复。全量只读审计逐个加载507个特征文件，验证源candidate SHA/bytes、张量shape/dtype/finite、fold范围、禁止target/network/Qwen/checkpoint/public benchmark访问均通过。
+
+M27只解决“观测闭包”，没有生成checkpoint、selector或公开指标。正式VOT、DepthTrack、CDTB结果均不变。
+
+### 5.19.2 M27封存身份
+
+| 项目 | SHA256 |
+|---|---|
+| M27 spec | `636ceb7064c725397ea9cd2950d1be77e76ba92d2683168bfcea6b52eeba6068` |
+| shard0 result | `a9325aca6bd72a89fced9a7b39cc235756c829cf4cc608974b805097f1afbd82` |
+| shard1 result | `1f88a48d9dd29b284d66dcdc0ebb6fd9d5c8729a2ff6915167420e5f4e09dac2` |
+| shard0 event ledger | `af6001e04d53b30b051fa2cc5afa156292fc0b510861b5ceb6e416d952229fcc` |
+| shard1 event ledger | `d9f6a02129e86dfb04c07e214d65ac2086eac20a50450a41b9b4f9fe9a0ce60c` |
+
+M27明确保留一个限制：采集的是protected-own native search observation，不重建精确的protected recursive query state。因此它可用于外观安全可分性实验，不能直接声称完整protected递归状态已经恢复。
+
+## 5.20 M28：candidate-only 与 paired-protected 身份安全否决实验（2026-09-02，已封存FAIL）
+
+### 5.20.1 冻结问题与唯一科学变量
+
+M28不再重训utility，也不重新选择候选。它把M25 OOF中原样冻结的12个非空动作作为唯一action substrate：8个beneficial、3个neutral、1个catastrophic；折2/3/4/5分别为3/2/1/6个动作。`cup14_indoor@1258`仍是必须拒绝的灾难反例。
+
+两种条件使用相同的M26 196维scalar摘要、相同的训练/校准折、相同初始化、相同699参数head和相同固定动作，唯一变化是36维RGB-D身份关系的reference：
+
+```text
+CAND：candidate每个年龄与candidate age-0比较
+PAIR：candidate每个年龄与同年龄protected-own比较
+```
+
+三种模态为native RGB、native Depth和native fused；每种模态计算cosine、normalized L2、log norm ratio，再做last/mean/min/max，得到`3×3×4=36`维。exact-bbox重复候选先在逐年龄relation空间做算术平均，再进行时序摘要，避免min/max非线性改变M23冻结语义。
+
+head固定为：
+
+```text
+[196-D scalar summary + 36-D identity relation]
+→ Linear(232,3)
+→ tanh
+→ H3/H5/H10 signed protected harm
+```
+
+target仍为`public_mean_iou - branch_mean_iou`。没有utility参数、candidate ranking参数、文本重编码、Qwen、模板更新或checkpoint。
+
+### 5.20.2 源码审查、smoke与正式绑定
+
+源码审查先发现并修复了一个重要语义错误：早期实现先对每个role计算时序min/max再平均重复候选，这不等价于“先平均逐年龄relation再摘要”。修正后Standards、Spec、独立source/integrity三类审查均PASS。
+
+两次正式零优化步smoke字节完全一致，SHA均为`059b769d8f5097125f046bb23d8d82ff4422da505eb4a8c0c0bda420298dfb07`。smoke事件为`bag04_indoor@frame16`，确认：
+
+| 检查 | 结果 |
+|---|---:|
+| identity / total input dimension | 36 / 232 |
+| trainable parameters | 699 |
+| CAND/PAIR初始化 | 完全相同 |
+| CAND/PAIR证据最大差 | 0.0247268733，确实不同 |
+| optimizer构造/步数 | false / 0 |
+| forbidden opens / network | 0 / 0 |
+
+源码提交为`89654bba94b0609350e9e8e55827094b1035609b`，新增：
+
+```text
+lib/models/sttrack/lachtt_matched_paired_protected_safety.py
+tools/run_sttrack_lachtt_m28_matched_paired_safety_veto.py
+```
+
+正式不可变绑定：
+
+| 项目 | SHA256 |
+|---|---|
+| plan | `5447aec73dc0088e1aea8f1a7202d89083cf472831d54ed11d4f621c73cdbaf5` |
+| spec | `185f93fd4985780288712751432b9af4b30e5f7646b32c79a30f49cea748f3a3` |
+| preflight | `a6315214e242e61bbf6f5bf8872aa23846d44c251c05e20f4fc2741126bd0bd1` |
+| preexecution audit | `5d62f61b9c663b7c8a294db35ef1468cba73ee0599df036a00a2310c5711c03d` |
+| runner | `694fc190dec1e29e9566e8ec4716591b49310a8dd16041003879171b6fe11659` |
+| model | `a250d72dd63efef501775248b70e45186bfe52432713e00cd8761e75acd6da52` |
+
+### 5.20.3 唯一正式运行与结果
+
+M28只运行一次CPU FP32单线程正式实验。每种条件有四个nested模型，折2/3/4/5分别训练408/408/360/360步；每条件1,536步，两条件合计3,072步。12 epochs、batch 8、AdamW、lr 0.001、weight decay 0.0001、gradient clip 5.0；无scheduler、augmentation、early stop、resampling、warm start、checkpoint或scan。
+
+正式结果：
+
+| 项目 | CAND | PAIR |
+|---|---:|---:|
+| 冻结M25动作 | 12 | 12 |
+| 最终保留动作 | **0** | **0** |
+| beneficial / neutral / catastrophic | 0 / 0 / 0 | 0 / 0 / 0 |
+| H3单独通过动作 | 0 / 12 | 0 / 12 |
+| H5单独通过动作 | 0 / 12 | 0 / 12 |
+| H10单独通过动作 | 3 / 12 | 3 / 12 |
+| 三时域全部通过 | **0 / 12** | **0 / 12** |
+| scientific verdict | FAIL | FAIL |
+
+PAIR没有把系统从M26式全弃权中救出。各折q90 offset仍很大：CAND约为0.233129--0.623448，PAIR约为0.240777--0.614309。最有利动作的calibrated H3 upper仍为正：CAND最小`+0.162748`，PAIR最小`+0.159803`；H5最小也分别为`+0.065833`和`+0.065811`。因此不是某一个阈值附近的小误差，而是所有12个冻结动作在H3/H5都无法被证明“不比protected差”。
+
+PAIR相对CAND的预测变化通常很小，多数动作在约±0.01，较大的正向差异只出现在少数动作。`cup14`虽然仍被正确否决，但PAIR的calibrated upper反而从：
+
+```text
+CAND [0.386480, 0.291065, 0.056416]
+PAIR [0.387027, 0.300086, 0.074205]
+```
+
+略微变差。说明同龄protected native RGB-D外观确实提供不同证据，但在当前线性、全事件q90安全头中，其增量不足以跨序列区分“真实rescue”和“候选伤害”。
+
+### 5.20.4 工程失败与科学失败必须分开解释
+
+Integrity审计PASS；Engineering唯一失败是candidate permutation恢复没有达到预注册的bit-exact：最大绝对差`5.960464477539063e-08`。event-order replay本身完全exact，最大差0。该误差只是FP32线性层在候选行顺序变化时的末位舍入，但冻结门要求逐位相等，不能在看到结果后改成容差。
+
+即使忽略这项极小工程误差，科学结果仍然独立失败，因为CAND和PAIR都是0/12全弃权。最终审计结论为：
+
+```text
+Integrity：PASS
+Engineering：FAIL
+Scientific：FAIL
+Overall：FAIL / not accepted / stop
+Interpretation：both_fail_stop_fixed_identity_relation_family
+```
+
+### 5.20.5 M28封存输出
+
+输出目录：`/root/autodl-tmp/sttrack_lachtt_m28_matched_paired_safety_veto_v1_20260902`，目录0555，文件0444：
+
+| 文件 | SHA256 |
+|---|---|
+| `manifest.json` | `39231aec3112cf1a413c9ea943fe7815d54220d8a3a5eea372f9e5a72b8ffb07` |
+| `oof_predictions.jsonl.gz` | `fadea72cc45fb7af7978257f4cf38ea4bb38f064073314384d1cf4d80fa1350d` |
+| `result.json` | `bc01e9bc6e3ffc514514e2a965b0d38eb69a488313b1a75a158ecbc43b5d6b6a` |
+| `training_trace.jsonl.gz` | `077206f8a31bda03beb6953913edc0c76d0d9d06d1d949c63f01774d507b1b34` |
+
+独立结果审计重新验证3,072条trace、1,014条OOF、507个双条件事件闭包、12个冻结动作、q90算术、fold隔离、文件权限、禁止访问和repo clean，确认输出只能作为封存负实验发布，不能声称selector可部署或指标改善。
+
+### 5.20.6 M28后的问题定位和停止边界
+
+M27/M28回答了一个重要问题：M26全弃权并不只是因为缺少protected自己的RGB-D外观。把同龄protected native RGB-D证据以严格matched方式加入后，PAIR与CAND仍同时全弃权。当前证据支持：
+
+```text
+1. protected-own RGB-D提供了可测但较小的增量信号；
+2. 单层699参数harm head在未见序列上的残差仍远大于该增量；
+3. sequence-q90覆盖把offset推到0.23--0.62；
+4. harm upper <= 0要求candidate必须被证明不比protected差；
+5. 两者相乘后，安全动作区域仍为空。
+```
+
+因此立即停止：
+
+- 重跑M28或修改seed；
+- 扫描q90、harm threshold、epoch、head size或identity feature组合；
+- 对同一507事件继续做candidate/protected线性relation变体；
+- 因`5.96e-8`很小就修改工程门并宣称PASS；
+- 启动low22、DepthTrack Test、CDTB或VOT；
+- 开启Qwen、全帧/全anchor文本注释或生成checkpoint。
+
+如果以后建立新家族，不能再只是给同一全局q90 harm头增加少量特征。需要改变问题本身，例如获得更直接、事件条件化的protected-versus-candidate短窗监督，或把安全判定放进真实protected/tentative递归试运行中；但这必须重新冻结计划和数据依据，M28本身不授权自动下一阶段。
+
+### 5.20.7 截至M28的正式指标
+
+M27和M28都只使用DepthTrack Train开发数据，没有生成tracking checkpoint，也没有运行公开评测。因此项目正式最好仍为：
+
+| 数据集 | 当前正式最好 | 目标 | 状态 |
+|---|---:|---:|---|
+| VOT-RGBD2022 EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** | 77.9 / 82.1 / 93.7 | ACC达标，EAO/ROB不足 |
+| DepthTrack Pr / Re / F | **65.995933 / 65.335885 / 65.664250** | 65.2 / 64.9 / 65.1 | 达标，保护 |
+| CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
+
+Qwen3_8B继续保留但未启用；全帧、全anchor和全序列文本注释仍未执行。M28没有改变任何正式VOT、DepthTrack或CDTB指标。
+
+## 5.21 M29：utility-top action条件化的五时刻安全模型（2026-09-02，工程PASS、科学FAIL，已封存）
+
+### 5.21.1 为什么在M28停止后仍建立M29
+
+M28证明了“给全部2,106个候选增加同龄protected RGB-D关系，再用全候选残差做sequence-q90校准”仍会0/12全弃权。但M28后进行的只读诊断发现，训练/校准人口与真正部署人口明显不同：
+
+| 人口 | 数量 | beneficial | neutral | catastrophic |
+|---|---:|---:|---:|---:|
+| 全部M25 utility-top动作，每事件1个 | 507 | 54 | 441 | 12 |
+| M25最终原始提交动作 | 12 | 8 | 3 | 1 |
+
+507个utility-top动作中，306个在H3/H5/H10都不比public差，167个H10 gain大于0。其真实harm q90与全候选人口不同：
+
+| 人口 | H3 | H5 | H10 |
+|---|---:|---:|---:|
+| 全部unique hypotheses | 0.242821 | 0.158579 | 0.087589 |
+| 每事件M25 top action | **0.211623** | **0.129296** | **0.072898** |
+
+PAIR单特征与真实H10 harm的最大绝对Spearman约为0.3707，高于CAND的0.2466，说明配对证据并非完全无信息。但这只是假设依据，不能写成已经有效：fold2 H3是明确反例，top-action q90为0.344130，反而高于全候选0.334409。
+
+因此M29只检验一个新问题：
+
+> 安全模型也按部署时真正会看到的“每事件一个M25 utility-top action”训练和校准，并保留完整五时刻关系后，PAIR能否比matched CAND控制更安全地保留原始12个动作？
+
+只读诊断SHA为`f8ffddfe342da5b54926ae1e6b3533ef35563955fa4779748cfb4d1df8151d9b`。诊断没有优化器、模型或公开数据访问。
+
+### 5.21.2 冻结结构、因果变量和训练人口
+
+M29不重新运行M25 utility router。对507个事件，训练、校准和OOF评价动作都读取冻结的`decision.top_role_id`；真实label和gain不参与动作选择。最终仍只有M25原来的12个非空`selected_role_id`有资格提交，另外495个top action只提供训练/校准证据，不能扩张动作集。12个最终动作全部满足`selected_role_id == top_role_id`。
+
+每个动作保留五个因果缓存时刻。每时刻输入：
+
+```text
+49-D M26 scalar relation
++ 3 modalities × 3 identity relations = 9-D
+= 58-D per age
+```
+
+模型固定为：
+
+```text
+5 × 58-D
+→ per-age Linear(58,32) + tanh
+→ one-layer unidirectional GRU(32,32)
+→ Linear(32,3) + tanh
+→ H3/H5/H10 signed protected harm
+```
+
+每个fold/condition恰好8,323个可训练参数。两条件唯一差异：
+
+```text
+CAND-TEMP：candidate每个年龄与candidate age-0比较
+PAIR-TEMP：candidate每个年龄与同年龄protected-own比较
+```
+
+没有添加raw text、CLIP文本重编码、Qwen、query state、新候选、模板更新或checkpoint。target仍为`public_mean_iou - branch_mean_iou`。
+
+fold结构沿用M26/M28：
+
+| eval fold | calibration fold | fit folds | 每条件步数 |
+|---:|---:|---|---:|
+| 2 | 3 | 4,5 | 408 |
+| 3 | 2 | 4,5 | 408 |
+| 4 | 5 | 2,3 | 360 |
+| 5 | 4 | 2,3 | 360 |
+
+两条件各1,536步，总计3,072步；CPU FP32、单线程、seed 20260929、12 epochs、batch 8、AdamW、lr 0.001、weight decay 0.0001、gradient clip 5.0。无scheduler、augmentation、early stopping、resampling或scan。
+
+校准人口改为每个calibration事件的唯一M25 top action：先计算`true_harm - predicted_harm`，再做sequence内q90和sequence间q90。最终12个动作仍要求H3/H5/H10 calibrated upper全部`<=0`。
+
+### 5.21.3 源码、smoke、spec和审计闭包
+
+源码提交：`27c565e04edbb88052979738e07c5dfddae64d8e`，新增：
+
+```text
+lib/models/sttrack/lachtt_utility_conditioned_temporal_harm.py
+tools/run_sttrack_lachtt_m29_utility_conditioned_paired_temporal_harm.py
+```
+
+独立source audit确认GT来源、动作绑定、507/12人口、M27 507/76 join、sequence-disjoint folds、5×58输入、8,323参数、q90人口和禁止访问均PASS。两次零优化smoke均为14,355 bytes，字节完全一致，SHA为`7acea35f058f48f8e34dd3309a4df9928f019700ee19fa0bc426adacac3791be`，`optimizer_constructed=false`、`optimizer_steps=0`。
+
+冻结身份：
+
+| 项目 | SHA256 |
+|---|---|
+| plan | `fd30999430a821504c2a0e3b7250ef0fd6cb4bcd430fc19a392a5787c5c76a25` |
+| source diagnostic | `f8ffddfe342da5b54926ae1e6b3533ef35563955fa4779748cfb4d1df8151d9b` |
+| runner | `fdc50db2fe35e830d21fd46095f0bd1fb903bf14f07c051d53bf7f6e10aec890` |
+| model | `df79da2b8277a18bfaaf66d20da1f1414e81079d6d97b3b02870a50e002dad32` |
+| spec | `8b0991c19e762d7bc28b7d2865589e0fdfa4b65497a45ecc6d32476c2ebc533d` |
+| preflight | `f83300e7e8b94fc1cb5868d990d09352fed6fb3320975ae02c8947dd2652d892` |
+| preexecution audit | `10c7d834d70cfc174f5ec86410136ff3ebe7054ed565e523bd285b802520300a` |
+
+独立预执行审计PASS后，只授权了唯一一次绑定输出的3,072步CPU运行。没有授权重跑、阈值扫描、Qwen、checkpoint或公开评测。
+
+### 5.21.4 唯一正式结果
+
+正式运行完成3,072/3,072步。独立结果审计重新计算全部trace和OOF：
+
+| 工程项 | 结果 |
+|---|---:|
+| trace rows | 3,072 |
+| CAND-TEMP / PAIR-TEMP steps | 1,536 / 1,536 |
+| 每条件fold2/3/4/5 | 408 / 408 / 360 / 360 |
+| OOF rows | 1,014，即每条件507 |
+| loss/gradient | 全部finite |
+| canonical-role与event replay | tensor exact |
+| forbidden file opens / network | 0 / 0 |
+| Qwen / checkpoint | 未加载 / 无 |
+| Engineering | **PASS** |
+
+两个条件保留了完全相同的5个动作：
+
+| 事件 | fold | label | true H10 gain |
+|---|---:|---|---:|
+| `colacan02_indoor@3709` | 2 | beneficial | 0.8996881247 |
+| `flower01_indoor@452` | 2 | neutral | 0.0 |
+| `car02_indoor@650` | 5 | beneficial | 0.7891637683 |
+| `egg_indoor@1089` | 5 | beneficial | 0.2955244482 |
+| `glass03_indoor@143` | 5 | beneficial | 0.9022965431 |
+
+两条件汇总完全一致：
+
+| 指标 | CAND-TEMP | PAIR-TEMP | 冻结门 |
+|---|---:|---:|---:|
+| selected | 5 | 5 | >=5，PASS |
+| beneficial / neutral / catastrophic | 4 / 1 / 0 | 4 / 1 / 0 | catastrophic=0，PASS |
+| beneficial precision | **0.8** | **0.8** | >=0.95，**FAIL** |
+| beneficial sequences | 4 | 4 | >=3，PASS |
+| covered folds | **{2,5}** | **{2,5}** | >=3 folds，**FAIL** |
+| mean true H10 gain | 0.5773345768 | 0.5773345768 | >=0.20，PASS |
+| branch/public aggregate H10 IoU | 0.6908959627 / 0.1135613804 | 相同 | branch>public，PASS |
+| `cup14@1258` | veto | veto | PASS |
+
+只有`beneficial_precision_min`和`covered_evaluation_folds_min`两项失败，但冻结门要求全部通过，不能用其它强正值抵消。最终：
+
+```text
+Integrity：PASS
+Engineering：PASS
+Scientific：FAIL
+Accepted：false
+Interpretation：both_fail_stop_action_conditioned_temporal_family
+Decision：m29_stop_according_to_frozen_interpretation
+```
+
+### 5.21.5 原始12个动作的逐例结果
+
+下表中的`max upper`是H3/H5/H10三项calibrated harm upper的最大值；只有最大值`<=0`才提交：
+
+| fold | 事件 | label | H10 gain | CAND max upper | PAIR max upper | 结果 |
+|---:|---|---|---:|---:|---:|---|
+| 2 | `basket_indoor@674` | neutral | 0.195857 | 0.083367 | 0.082750 | veto |
+| 2 | `colacan02_indoor@3709` | beneficial | 0.899688 | -0.183276 | -0.180821 | retain |
+| 2 | `flower01_indoor@452` | neutral | 0.000000 | -0.067037 | -0.040551 | retain，错误utility |
+| 3 | `cup05_indoor@1592` | neutral | 0.152621 | 0.468423 | 0.469084 | veto |
+| 3 | `cup14_indoor@1258` | catastrophic | -0.343674 | 0.029377 | 0.056011 | veto，正确安全否决 |
+| 4 | `cat03_indoor@503` | beneficial | 0.679882 | 0.021947 | 0.014502 | veto，唯一fold4正例未过 |
+| 5 | `car01_indoor@999` | beneficial | 0.741446 | 0.063324 | 0.059953 | veto |
+| 5 | `car01_indoor@1112` | beneficial | 0.671393 | 0.155634 | 0.146319 | veto |
+| 5 | `car02_indoor@650` | beneficial | 0.789164 | -0.031169 | -0.069522 | retain |
+| 5 | `colacan01_indoor@2666` | beneficial | 0.585561 | 0.092006 | 0.092110 | veto |
+| 5 | `egg_indoor@1089` | beneficial | 0.295524 | -0.110797 | -0.114803 | retain |
+| 5 | `glass03_indoor@143` | beneficial | 0.902297 | -0.176607 | -0.197112 | retain |
+
+fold3的冻结action substrate只有一个neutral和一个catastrophic，没有可满足0.95 precision的beneficial动作。因此三折覆盖若要通过，只能覆盖fold2、fold4、fold5。M29在fold4唯一正例`cat03@503`上仍有`+0.014502`的PAIR max upper，导致fold coverage失败。该数值接近0不授权把阈值改成0.015；这样做是看到结果后的threshold scan。
+
+### 5.21.6 最新发现的问题：相对harm并不等于绝对生存
+
+`flower01_indoor@452`暴露了M29 target的核心漏洞：它的H10 candidate branch mean IoU和public mean IoU都是0，连续低overlap比例为1.0。也就是：
+
+```text
+candidate完全失败
+public也完全失败
+relative harm = public - branch = 0
+```
+
+相对安全模型只问“candidate是否比protected更坏”，无法回答“candidate本身是否还活着”。M29甚至把该动作预测成强负harm：
+
+```text
+CAND upper = [-0.067037, -0.211576, -0.222716]
+PAIR upper = [-0.040551, -0.185910, -0.203957]
+```
+
+所以它被当作安全动作提交，造成唯一neutral false positive。这个问题不能靠M25已有utility分数简单补救：`flower01`的M25 benefit probability为0.860073，而真正beneficial的`colacan02`只有0.819472；灾难`cup14`更高达0.923768。固定score threshold无法同时保留正例并删除这些错误。
+
+因此新结论是：
+
+> 仅做candidate-versus-protected相对harm，最多保护“不比public更差”；VOT需要额外建模candidate自己的绝对短窗生存和连续低overlap风险。
+
+### 5.21.7 PAIR为什么没有形成独立增益
+
+PAIR和CAND并不是数值完全相同，但输出高度一致：
+
+| 比较 | H3 | H5 | H10 |
+|---|---:|---:|---:|
+| 507事件PAIR-CAND预测mean absolute difference | 0.005525 | 0.005873 | 0.005596 |
+| 507事件PAIR/CAND Pearson | 0.998899 | 0.998708 | 0.998624 |
+| 12动作upper mean absolute difference | 0.011795 | 0.013475 | 0.007966 |
+| 12动作upper maximum absolute difference | 0.038353 | 0.037839 | 0.026199 |
+
+最终retained set完全一致。因此M29不支持“protected-paired temporal evidence在当前结构中是必要的”。可能是49维scalar relation主导，也可能是9维identity relation没有提供跨序列独立信息；由于没有冻结针对这两种解释的因果消融，不能在文档中任选其一作为结论。
+
+M29相对M28从0个动作变成5个动作，是“top-action条件化人口 + 未压缩GRU时序头”的组合变化，不能把提升单独归因于其中一个因素。
+
+### 5.21.8 停止边界和后续必须改变的问题
+
+M29固定家族立即停止：
+
+- 不重跑seed；
+- 不把harm threshold从0改为0.015；
+- 不扫描q90、hidden size、epoch、feature或fold；
+- 不把5/12、4/1/0包装成科学PASS；
+- 不声称PAIR优于CAND；
+- 不生成checkpoint或接入tracker；
+- 不运行low22、DepthTrack Test、CDTB、VOT；
+- 不启用Qwen或全帧/全anchor注释。
+
+若建立新家族，必须改变监督问题，而不是修改M29阈值。当前最直接的可证伪方向是同时建模：
+
+```text
+1. relative harm：candidate是否比protected更坏；
+2. absolute branch survival：candidate自身未来H3/H5/H10是否持续有效；
+3. consecutive low-overlap hazard：是否形成VOT式连续失败链；
+4. positive utility：不是仅仅“双方一起失败所以差值为0”。
+```
+
+任何该方向的实验仍需新的Train-only冻结计划、序列隔离和独立预审；M29不自动授权M30。PAIR证据在M29中没有因果增益，因此不能原样作为下一家族的主创新变量。
+
+### 5.21.9 封存输出与正式指标
+
+输出目录：`/root/autodl-tmp/sttrack_lachtt_m29_utility_conditioned_paired_temporal_harm_v1_20260902`，目录0555、文件0444：
+
+| 文件 | SHA256 |
+|---|---|
+| `manifest.json` | `3eb76929669e6e5e3a0b243b525ef5d9b3d7bcf350e2232eaa07f78380a21b37` |
+| `oof_predictions.jsonl.gz` | `4e671a29eebdb6be266cab4720c256107243f16bc75fa4791827b69cbd6dc002` |
+| `result.json` | `2e1c679f7719f6c050294a0a609d7c0ad58f3a8cbfa86d7b7ec561a8d58c5575` |
+| `training_trace.jsonl.gz` | `e237eb0f33c708c569112d7d429c90f4064a663bf2ae88a274ee88b35bddad51` |
+
+M29没有生成tracking checkpoint，也没有运行任何公开评测，因此正式指标不变：
+
+| 数据集 | 当前正式最好 | 目标 | 状态 |
+|---|---:|---:|---|
+| VOT-RGBD2022 EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** | 77.9 / 82.1 / 93.7 | ACC达标，EAO/ROB不足 |
+| DepthTrack Pr / Re / F | **65.995933 / 65.335885 / 65.664250** | 65.2 / 64.9 / 65.1 | 达标，保护 |
+| CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
+
+Qwen3_8B继续保留、未启用；全帧、全anchor和全序列文本注释仍未执行。
