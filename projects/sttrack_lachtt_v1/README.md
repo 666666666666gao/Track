@@ -325,8 +325,10 @@ budget:20 rounds each sample1511 pairs from the expanded2015-pair fitting pool.
 These are sampled rounds, not20complete epochs. Collection uses native default
 predicted crops with box/confidence parity checks. Collection and960updates have completed; actual weight audit passed. A
 report-only digest-variable error was recovered without extra optimization
-or checkpoint changes. Complete22-sequence recursion is running. Static
-590-window meanIoU.445511 has8rescues/4severe regressions and is diagnostic only. See [the M46 protocol and tracker](diagnostics/m46/EXPERIMENT_TRACKER.md).
+or checkpoint changes. Complete22-sequence recursion is now finished: meanIoU.686428, low frames5934,
+H10episodes89. Its fixed gate fails because episodes increase and mobilephone02
+is broken. No public evaluation was launched. Static590-window meanIoU.445511
+has8rescues/4severe regressions and remains diagnostic only. See [the M46 protocol and tracker](diagnostics/m46/EXPERIMENT_TRACKER.md).
 
 ## Integrity
 

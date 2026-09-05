@@ -27,12 +27,12 @@ Fresh initial weights must exactly match the M45 control. Sample order changes
 with the data-pool intervention and is recorded, not claimed to be identical.
 Final checkpoint only; no intermediate checkpoint selection.
 
-| Stage | Status at launch |
+| Stage | Verified status |
 |---|---|
 | Source/protocol | Frozen before collection and fitting; see `spec.json` |
 | New data collection | Complete:63sequences,567tracked frames,504pairs,545606694bytes; exact default box/confidence |
 | Training | Complete960updates; all2015inputs sampled; actual-tensor audit PASS |
-| Full recursion | Running since15:13:25CST, Python20236/20237; all22 existing development sequences,16567/16563 frames |
+| Full recursion | Complete, gate FAIL; all22sequences33130frames, both shards and recursive controller exit0 |
 | Advancement | Same STTrack-default gate, then fixed low22 gate; no automatic public launch |
 
 Root: `/root/autodl-tmp/sttrack_m46_initial_frame_v1_20260905`.
@@ -66,6 +66,26 @@ change the precommitted all22recursive run.
 
 Original recursive-stage commands are recorded in `recursive_pipeline.sh`;
 its controller20235 records `recursive_controller.exit` separately from the
-original failure. The new screen is sttrack_m46_recursion_20260905. Both original
-Python handles were verified alive. Expected terminal around15:30CST; next
-meaningful check around15:27. No public evaluation has been launched.
+original failure. The new screen is sttrack_m46_recursion_20260905. All three recursive handles have ended. No public evaluation was launched.
+
+
+## Complete recursive result
+
+M46 meanIoU0.686428344316008, low-overlap frames5934, H10episodes89; default
+0.6522262631762438/7397/75. Relative to M45, meanIoU increases only0.002325970,
+low frames fall254, and episodes rise9. The original gate fails on episodes
+and protection of mobilephone02. Both complete trajectory shards, all source
+and weight hashes, first-override default prefixes and scalar-IoU recomputation
+passed. Result SHA:c8e8625ebb6d519e1ec78e1b65be089429030feb48ccaafff9dee2be21567851.
+
+The first egg override moves to frame2, IoU.874292to.033289. Its23episodes
+compare with default9; early fitting coverage has not solved this identity
+case. Mobilephone02's first override improves single-frame IoU at21, yet its
+complete path adds a persistent failure. All22outputs are retained; the mean
+gain does not establish stable tracking or a VOT ROB result.
+
+M46 is sealed without a new warmup threshold or early-frame-count sweep. The
+next fitting-only audit examines how often several boxes reach IoU>=.5 for
+the same annotated target, and how unique action targets differ from auxiliary
+correspondence supervision. Formal evaluation interface review is recorded in
+[the evaluation contract](FORMAL_EVALUATION_CONTRACT.md); no public job was run.
