@@ -1,0 +1,47 @@
+{
+  "schema": "m52_fixed_paired_training_binding_v1",
+  "created_utc": "2026-09-05T13:12:58.186475+00:00",
+  "spec_sha256": "30a1cff2f81ff898df272ddbb3ac57589c40686b65b671fc66a8d9f3983c07c8",
+  "source_sha256": {
+    "tools/train_sttrack_m52.py": "c47fd3c83ef6b4c00f34a5066c3186b11ae89358052162fd9dc03735bbba7715",
+    "tools/run_sttrack_m52.py": "b2501dac69683d9ab3557285c390e99969cbfaa55c9e6e0e76d0e0aca4793461"
+  },
+  "run_files_sha256": {
+    "check_runtime.py": "38003fabaf3946f84263ec9a5683a45160e2a559a8a757fa2dd25da797be90b1",
+    "run_training.sh": "88835fda2edc023bba17a335a5f47241e3037eb7c2d8833ebba118ae44299ef9",
+    "PRE_TRAINING_NOTE.md": "7a290a10c3e140f21b366e78e73528586ffc3d171b809026887d4480eee84a06"
+  },
+  "shards": [
+    [
+      "ball07_indoor",
+      "ball19_indoor",
+      "book06_indoor",
+      "car01_indoor",
+      "car02_indoor",
+      "colacan04_indoor",
+      "cup08_indoor",
+      "egg_indoor",
+      "flowerbasket_indoor",
+      "glass03_indoor",
+      "mobilephone02_indoor"
+    ],
+    [
+      "bag05_indoor",
+      "beautifullight01_indoor",
+      "colacan01_indoor",
+      "container01_indoor",
+      "cup10_indoor",
+      "cup13_indoor",
+      "flower02_wild",
+      "flower03_indoor",
+      "ghostmask_indoor",
+      "mobilephone01_indoor",
+      "notebook02_indoor"
+    ]
+  ],
+  "native_recursive_result_sha256": "721553e2d8e2f37b084ca946ea0d0285ccf8436d203a9f0251851c2669a8d200",
+  "m45_recursive_result_sha256": "a3dd821916ce08a8964bb2df85b9da277f9262d41a1e42c32f0fdde85eed3317",
+  "advancement": "mixed if it passes native and incremental gates; otherwise control if it passes every native gate; otherwise neither",
+  "claim": "A qualifying control represents additional training only, never state-data benefit.",
+  "auto_launch": false
+}

@@ -382,12 +382,29 @@ native confidence is above0.75 and the predicted linear scale changes by at
 least1.25relative to the latest template. The fixed policy adds no learned
 parameters. The120-frame disabled-policy comparison matches native boxes,
 scores, templates and queries exactly, including a native update. Its full
-Train-development22-sequence recursive evaluation is running onGPU0.
+Train-development22-sequence recursive evaluation finished and failed the
+frozen advancement gate. The finalized evidence is in
+[M50 artifacts](diagnostics/m50/MANIFEST.md).
 
 The independent native STTrack full127 reference is running onGPU1 with four
 VOT workers. It reuses303SHA-verified M39native anchors and evaluates the
-remaining1462. Neither run has final metrics at this launch milestone.
+remaining1462. That independent full127 reference has not finished yet.
 See [M50 scope, contracts and launch evidence](diagnostics/m50/LAUNCH_REPORT.md).
+
+## M51 result and M52 paired policy-state training
+
+M51's replacement of absolute candidate geometry with previous-target-relative
+geometry reduced recursive tracking performance and was stopped before public
+evaluation. See [M51 results](diagnostics/m51/RESULT_REPORT.md).
+
+M52 retains the original geometry and compares two equally trained heads:
+duplicated original fit records versus original records paired with captures
+from the fixed M45 policy's own predicted trajectory. Both arms have the same
+1,511 physical events, 3,022 logical views, initialization, and 1,900 optimizer
+steps. Collection is running; the paired training and complete recursive
+evaluation pipeline is prepared. These are not completed M52 performance
+results. See [M52 implementation and evidence limits](diagnostics/m52/PIPELINE_IMPLEMENTATION.md)
+and the [training-before-results advancement note](diagnostics/m52/PRE_TRAINING_NOTE.md).
 
 ## Integrity
 

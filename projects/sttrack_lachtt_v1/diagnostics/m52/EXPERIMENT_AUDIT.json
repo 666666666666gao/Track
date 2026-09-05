@@ -1,0 +1,68 @@
+{
+  "date": "2026-09-05",
+  "auditor": "gpt-5.5-xhigh",
+  "review_type": "independent-context GPT-family Type-A advisory",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "Dataset GT after sealed captures; Train/development scope."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "No self-referential score normalization found."
+    },
+    "result_existence": {
+      "status": "warn",
+      "details": "Only launch and capture-contract evidence was available locally."
+    },
+    "dead_code": {
+      "status": "warn",
+      "details": "Prepared pipeline wired; base sttrack.py absent from supplied local overlay."
+    },
+    "scope": {
+      "status": "warn",
+      "details": "One seed, paired views of 1511 physical fit events, repeated Train development."
+    },
+    "eval_type": {
+      "status": "pass",
+      "claim_strength": "warn",
+      "classifications": [
+        "self_supervised_proxy (capture consistency)",
+        "real_gt (planned Train diagnostics)"
+      ]
+    }
+  },
+  "claims": [
+    {
+      "id": "launch_and_240_frame_capture_contract",
+      "impact": "supported"
+    },
+    {
+      "id": "paired_training_implementation",
+      "impact": "needs_qualifier"
+    },
+    {
+      "id": "M52_completed_training_or_performance",
+      "impact": "unsupported"
+    },
+    {
+      "id": "M52_public_benchmark_improvement",
+      "impact": "unsupported"
+    }
+  ],
+  "source_review_response_sha256": "34f225ad10a77e1736af5ea38b4ffe17b4d6f6046730ab41459513484d716334",
+  "note": "Verdict describes artifacts provided at review time. Later completion evidence and source snapshot are separate records.",
+  "source_followup": {
+    "overall_verdict": "warn",
+    "source_snapshot": "pass",
+    "initialization_reset": "pass",
+    "template_query_state": "pass",
+    "state_capture": "pass_with_qualification",
+    "concrete_new_defects": 0,
+    "remaining_limit": "No completed M52 training or recursive result artifacts at review time.",
+    "response_sha256": "a434299a4b3485c9c7c89bc95262088c0d29fadf52abad0b7fb8c7c4b8cd175a",
+    "report": "EXPERIMENT_AUDIT_SOURCE_FOLLOWUP.md"
+  }
+}
