@@ -436,12 +436,14 @@ verify a completed capacity result. See the
 
 ## Native DepthTrack/CDTB reference
 
-The same native STTrack checkpoint used by M39 and the running full127
-reference now has running OPE jobs for all DepthTrack Test50 and CDTB80
-sequences. The Train-only contract passed with 242 output frames, three
-template updates and exact native boxes/scores. It preserves the existing
-six-decimal outputs and macro PR/F-score evaluator. No completed score or
-learned-head promotion is claimed at this launch stage. See the
+The same native STTrack checkpoint used by M39 has completed DepthTrack Test50
+with P/R/F = **62.415336 / 62.682004 / 62.548386 percent**. All 76,373 frames
+and raw-data hashes were checked, and an independent bounded-overlap/PR
+recomputation exactly matches the report. This native reference fails all
+three DepthTrack targets; the historical SRTrack success does not transfer to
+this checkpoint. CDTB80 and full127 were still pending at that result's
+completion observation. No learned-head promotion is claimed. See the
+[completed DepthTrack result and all-sequence table](diagnostics/native_ope/completed_depthtrack/RESULT_REPORT.md),
 [contract and launch record](diagnostics/native_ope/LAUNCH_REPORT.md) and
 [frozen reference plan](diagnostics/native_ope/EXPERIMENT_PLAN.md).
 

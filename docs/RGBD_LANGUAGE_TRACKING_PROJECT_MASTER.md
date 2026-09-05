@@ -18147,3 +18147,28 @@ M52完整配对结果未通过，因此没有将其权重进入公开评测。�
 七个新增源码位于overlay的models/tracker/tools中，overlay总计150文件；运行根`/root/autodl-tmp/sttrack_m54_template_reader_v1_20260906`。完整计划、源码绑定、原始契约、审计原文、存储修正、执行绑定和进程观察见`projects/sttrack_lachtt_v1/diagnostics/m54/`。下一次先在预计终点检查原生OPE退出，再按M54实际采集吞吐安排后续检查；训练完成之后才记录权重与真实递归结果。
 
 **存储补充复核完成。**第三次范围限定的只读复核重新计算当前规范、契约、归档和启动文件hash，确认上述两项存储问题对本次执行已处理，没有新的具体完整性缺陷；总体WARN仅保留归档/训练/性能尚未完成的证据范围。完整原文EXPERIMENT_AUDIT_CLOSURE.md单独保存。队列脚本未增加自动JSON绑定检查，本次依靠实际启动前核验和collector自身复验，未来重启亦需同样的启动前检查。
+
+
+### 5.63 原生STTrack的DepthTrack Test完整结果完成：三项未达目标（2026-09-06）
+
+§5.59—5.61启动的原生参照中，DepthTrack Test已完成50条、76,373输出帧；tracking、analysis、controller退出码均0，2026-09-06 03:40:42 CST核实进程已结束及完整报告存在。跟踪耗时6,680.96秒，实际动态模板更新817次。它使用原生STTrack_Vot22基础权重和固定运行策略，不是新训练的M54结果。
+
+| 完整DepthTrack Test指标（%） | 当前原生STTrack | 项目目标 | 当前减目标（百分点） | 是否达标 |
+| --- | ---: | ---: | ---: | --- |
+| Precision | 62.415336 | 65.200000 | -2.784664 | 否 |
+| Recall | 62.682004 | 64.900000 | -2.217996 | 否 |
+| F-score | 62.548386 | 65.100000 | -2.551614 | 否 |
+
+三个数均取自同一全数据集最大F-score阈值0.387226。沿用原DepthTrack/CDTB正式口径：bounded VOT矩形重叠，GT无效帧按Special(0)，resolution=100全局置信度阈值网格，各序列PR后宏平均再求最大F；轨迹和分数保留六位小数、初始化confidence=1。没有逐序列选最佳阈值、没有额外报告框尺度调整，也不将Train mean IoU/H10与这些正式指标混用。
+
+**架构与完整性。**原生ViT/BSI＋TSG固定query窗口＋Mamba＋Center头，两个RGB-D模板、factor-4/256搜索及每50步confidence>0.75动态更新，语言和学习关联头关闭。权重SHA256仍为`cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98`；Python推理/分析入口`tools/run_sttrack_native_ope.py`的SHA为`11748e8e005e9cf0706a1ff24aa59bf9830dcaf23160db5274fa702720a04ec4`，shell控制器`run_dataset.sh`为`9947aa8dec69267e3bbd0d51b20dcfad5a2bbb9e4e0cfe23a9b8b868d6bddbf7`，原评测器SHA为`05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc`。§5.61“新入口”和execution_binding.runner_sha256所指的是shell控制器，Python入口另在spec内绑定；当前服务器/发布源码/最初准备提交中的Python文件hash一致，没有因分析改变运行代码。正式推理没有读取后续GT或执行优化器步骤；全部预测封存后才读GT分析。
+
+完整100份框/分数文件、50份GT及50张首帧图像已复制到本机私有复核目录并逐份验证hash，覆盖76,373帧；原始GT和图像不进入公开仓库。公开下载绑定保存这些校验值。新增封存后导出程序给出全部50条序列在全局阈值处的P/R/F及帧分母；不是每条各自最大F，整体F也不是逐序列F均值。导出聚合与正式报告一致，不改变运行或部署阈值。
+
+独立只读复核从原始框和GT使用VOT区域库重新计算重叠、全局100点阈值与宏平均PR，没有直接调用项目评测函数。全部正式指标差异为0；100份输出、50份GT及50张首图hash/行数均匹配，有效GT帧73,389，图像边界均640×360。完整性PASS，目标与范围WARN，评价类型real_gt；复核仍为同GPT家族Type-A建议性审计。完整原文EXPERIMENT_AUDIT.md保留，不将该负结果称为测量错误或新权重收益。
+
+另行逐序列复核对50行P/R/F及总帧、有效帧、选中帧比较，JSON/独立复算、CSV/独立复算及CSV/JSON均零差异，全局工作点共选中74,052帧。原文EXPERIMENT_AUDIT_PER_SEQUENCE.md单独保存。服务器源文件hash由主执行器SSH核验，审计者没有远端访问，独立验证限于本地/Git及已下载原始数据。
+
+**对下一步的约束。**历史“DepthTrack已达标”属于SRTrack配置，本次STTrack不能继承该结论。同一新模型的最终验收现在需要实际弥补DepthTrack的缺口，不能只改善VOT后继续引用旧SRTrack成绩。M54仍执行冻结的DepthTrack Train采集、20 epochs读取头训练和完整22条训练开发递归，不以本次Test结果修改其标签、阈值或挑选checkpoint。只有Train及低22通过，才评测同一base＋读取头＋运行策略的三个完整数据集。即使M54工程契约或后续Train门通过，也不能提前称三数据集已达标。
+
+本节首次终态观察时CDTB仍在跟踪，VOT full127仍等待完整终态；二者不填预估分数，也不重复启动。DepthTrack metrics SHA256为`bd89f02b8be95699cc845dae1a2473cc553a02771ee94093b84504878fa3892d`，tracking receipt SHA256为`003c21968c258a301e80ad862542e917e7dc57d5f2f1b56227973d0c1d5c43b4`。完整指标、50行逐序列表、退出码、日志和下载绑定见`projects/sttrack_lachtt_v1/diagnostics/native_ope/completed_depthtrack/`。
