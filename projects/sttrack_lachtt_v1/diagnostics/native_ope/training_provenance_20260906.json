@@ -1,0 +1,88 @@
+{
+  "observed_utc": "2026-09-05T20:40:56.173448+00:00",
+  "role": "Read-only upstream training and checkpoint provenance inspection; no new experiment",
+  "upstream_commit": "283cd6dd45536636490db8bca1c63c4647be799b",
+  "checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+  "checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "checkpoint_bytes": 532407510,
+  "checkpoint_top_level_keys": [
+    "net"
+  ],
+  "checkpoint_scalar_metadata": {},
+  "source_files": {
+    "experiments/sttrack/deep_rgbd_256.yaml": {
+      "sha256": "1d4274ec183862be9d74ce714cebe1fe383d760c25a1a1b8615f11c2a941044c",
+      "pinned_upstream_sha256": "1d4274ec183862be9d74ce714cebe1fe383d760c25a1a1b8615f11c2a941044c",
+      "matches_pinned_upstream": true
+    },
+    "lib/train/base_functions.py": {
+      "sha256": "3d12e3729d9d29e3e6b85cba8d7f72a1286b1308ef5cbf0f9a56625c16af6604",
+      "pinned_upstream_sha256": "3d12e3729d9d29e3e6b85cba8d7f72a1286b1308ef5cbf0f9a56625c16af6604",
+      "matches_pinned_upstream": true
+    },
+    "lib/train/actors/sttrack.py": {
+      "sha256": "1ceda58c78c9db4001eaf1625bcf1619ab64cb33e704630e1b1044d04b9af6a6",
+      "pinned_upstream_sha256": "1ceda58c78c9db4001eaf1625bcf1619ab64cb33e704630e1b1044d04b9af6a6",
+      "matches_pinned_upstream": true
+    },
+    "lib/train/data/processing.py": {
+      "sha256": "b761856eeb2a9d558d1b8928e5f108eeb6d3da3d8deb0578a57864badcdc30ca",
+      "pinned_upstream_sha256": "b761856eeb2a9d558d1b8928e5f108eeb6d3da3d8deb0578a57864badcdc30ca",
+      "matches_pinned_upstream": true
+    },
+    "lib/train/dataset/depthtrack.py": {
+      "sha256": "1197ad365c3ae707dd7a55ed891fb30ff33549172f2aeacda33c34643994a199",
+      "pinned_upstream_sha256": "1197ad365c3ae707dd7a55ed891fb30ff33549172f2aeacda33c34643994a199",
+      "matches_pinned_upstream": true
+    },
+    "lib/test/tracker/data_utils.py": {
+      "sha256": "873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5",
+      "pinned_upstream_sha256": "873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5",
+      "matches_pinned_upstream": true
+    },
+    "lib/test/vot/sttrack_depthTrack.py": {
+      "sha256": "b6b28452289f5c50dcb07a711835b08b5a3a83555bb5d3d15bbeea12c0c2340a",
+      "pinned_upstream_sha256": "b6b28452289f5c50dcb07a711835b08b5a3a83555bb5d3d15bbeea12c0c2340a",
+      "matches_pinned_upstream": true
+    },
+    "lib/test/vot/sttrack_vot22.py": {
+      "sha256": "d87af355cb1b75159114a369bf0841f9b97198c547515cd65012d1165f647970",
+      "pinned_upstream_sha256": "d87af355cb1b75159114a369bf0841f9b97198c547515cd65012d1165f647970",
+      "matches_pinned_upstream": true
+    },
+    "lib/test/parameter/sttrack.py": {
+      "sha256": "7741bfdb6e7d24a42cbaa4fc6763ff718d14eb092fb9398f80aa817b95e12c4a",
+      "pinned_upstream_sha256": "7741bfdb6e7d24a42cbaa4fc6763ff718d14eb092fb9398f80aa817b95e12c4a",
+      "matches_pinned_upstream": true
+    },
+    "lib/test/evaluation/tracker.py": {
+      "sha256": "efecadb8b4096bf029c0c5d2fd2b5343b24ef3c7d37f717965a1f7df0a690f38",
+      "pinned_upstream_sha256": "efecadb8b4096bf029c0c5d2fd2b5343b24ef3c7d37f717965a1f7df0a690f38",
+      "matches_pinned_upstream": true
+    },
+    "lib/train/data_specs/depthtrack_train.txt": {
+      "sha256": "0603ebfa695413a517621bb9365e84f5ad4f537558e953e1e9b79d95a16c38c8",
+      "pinned_upstream_sha256": "0603ebfa695413a517621bb9365e84f5ad4f537558e953e1e9b79d95a16c38c8",
+      "matches_pinned_upstream": true
+    },
+    "lib/train/data_specs/depthtrack_val.txt": {
+      "sha256": "6d2737a21d1f4e2aecc82f9feacf33a17d63e428c72cfa6953443be5cc2ce639",
+      "pinned_upstream_sha256": "6d2737a21d1f4e2aecc82f9feacf33a17d63e428c72cfa6953443be5cc2ce639",
+      "matches_pinned_upstream": true
+    }
+  },
+  "upstream_fit_sequences": 146,
+  "upstream_val_sequences": 6,
+  "upstream_fit_val_overlap": [],
+  "local_train_directories": 152,
+  "local_matches_upstream_split_union": true,
+  "upstream_depthtrack_run_id": 15,
+  "upstream_vot22_run_id": 16,
+  "run_id_interpretation": "Tracker.get_parameters passes run_id as parameters epoch; selects different checkpoint path",
+  "specific_downloaded_checkpoint_training_history_verified": false,
+  "training_images_or_gt_opened": false,
+  "optimizer_steps": 0,
+  "runtime_code_changed": false,
+  "m54_spec_changed": false,
+  "public_metrics_changed": false
+}

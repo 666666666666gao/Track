@@ -18207,3 +18207,24 @@ M52完整配对结果未通过，因此没有将其权重进入公开评测。�
 **接续方案与边界。**M54仍使用58,923参数的两模板组合读取头，维持两个实际前向独立query和完整所选状态提交，默认模板写入不改；63条Train拟合、20 epochs固定final、22条Train开发完整递归及所有晋升门保持§5.62。没有文本输入，也没有据此声称已解决M52自身状态分布问题。通过Train与低22才冻结同一base＋读取器权重＋运行策略的三个完整数据集评测。
 
 现在原生STTrack在DepthTrack Test和CDTB均未达标，历史SRTrack的达标结果不能继续作为当前底座的成绩。后续新模型既要补足VOT，也要实际弥补这两个完整数据集缺口；不按本次公开Test/CDTB结果改训练标签、阈值或挑选权重。VOT full127原任务仍等待完整终态，暂无可填的新完整指标。M54采集观察和启动说明另见`diagnostics/m54/collection_progress_20260906_0416.json`与`COLLECTION_START.md`。
+
+
+### 5.65 原生训练来源核实：作者两个RGB-D评测入口选择不同文件（2026-09-06）
+
+在M54长采集期间只读检查上游固定提交`283cd6dd45536636490db8bca1c63c4647be799b`与当前服务器，未改M54训练、运行代码或任何指标。04:40:56 CST完成的原始观察为`diagnostics/native_ope/training_provenance_20260906.json`，SHA256 `c99d37618e3cd94e0b7d646db0fb77e3c952cb530c7ceb958351951ac6ecbfdb`；12个所查训练/输入/参数源文件与上游逐字节相同。
+
+| 核实项目 | 实际证据 | 对本项目的约束 |
+| --- | --- | --- |
+| 官方DepthTrack入口 | run_id=15，参数调用链把它传为epoch，选择STTrack_ep0015.pth.tar | 与VOT默认文件不同 |
+| 官方VOT22入口 | run_id=16，同一调用链选择STTrack_ep0016.pth.tar | 作者两组分数不能仅凭方法名称作为同一文件的证明 |
+| 本机STTrack_Vot22文件 | 532,407,510字节，顶层只有net，无epoch/optimizer/训练日志 | 不能从文件名或字典推断确切训练履历，也不能直接认定等于ep0016 |
+| 官方RGB-D采样预算 | 每epoch 15,000条采样条目、每条4个搜索帧、batch8、15 epochs | 需区分条目、搜索帧和优化器步数；不把15,000与论文60,000直接当成同一计数 |
+| 官方Train清单 | 146拟合＋6验证无交集，本机152目录与并集一致 | 数据目录可用不等于本轮已训练全部数据；M54仍按原63/22划分 |
+
+固定文件路径由[DepthTrack入口](https://github.com/NJU-PCALab/STTrack/blob/283cd6dd45536636490db8bca1c63c4647be799b/lib/test/vot/sttrack_depthTrack.py)、[VOT入口](https://github.com/NJU-PCALab/STTrack/blob/283cd6dd45536636490db8bca1c63c4647be799b/lib/test/vot/sttrack_vot22.py)、[Tracker参数传递](https://github.com/NJU-PCALab/STTrack/blob/283cd6dd45536636490db8bca1c63c4647be799b/lib/test/evaluation/tracker.py)和[checkpoint路径生成](https://github.com/NJU-PCALab/STTrack/blob/283cd6dd45536636490db8bca1c63c4647be799b/lib/test/parameter/sttrack.py)共同确认。当前下载权重SHA仍为`cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98`。这说明外部结果的比较范围，不证明本次两个完整数据集未达标是选择文件造成的。
+
+另核实训练与运行使用相同6通道均值/方差，相关DepthTrack loader与RGB-D运行入口均设rgbcolormap、depth_clip=True；本次没有发现这些常量或开关不一致，但没有新增逐像素输入契约。官方GT抖动裁剪训练与真实预测裁剪仍是不同输入过程，历史H4原型已有记录，不能把它说成从未尝试过。
+
+引用作者数字时，以[论文表2](https://arxiv.org/html/2412.15691v1#S4)为准：DepthTrack F-score为63.3，VOT EAO为77.6；[固定README汇总表](https://github.com/NJU-PCALab/STTrack/blob/283cd6dd45536636490db8bca1c63c4647be799b/README.md)的这两个数据集列数值对调。此处只是文献来源校正，不替换§5.63/5.64的本机实测，也不增加一组本机成绩。
+
+后续仍要求实际训练得到同一个base＋新模块权重＋运行策略，再验证三个完整数据集。M54先完成冻结的20 epochs与全22条Train开发递归，不因本次来源检查中途换权重、改变样本或扩展训练。若后续需要底座RGB-D微调，官方配方只作参考，必须明确本项目采样条目/全局batch/优化器步数、真实Train划分及递归验证。完整说明见`diagnostics/native_ope/TRAINING_PROVENANCE.md`。
