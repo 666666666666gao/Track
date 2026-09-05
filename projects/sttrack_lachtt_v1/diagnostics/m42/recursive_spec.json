@@ -1,0 +1,32 @@
+{
+  "schema": "sttrack_m42_recursive_development_v1",
+  "created_unix": 1788576086.6212616,
+  "created_before_training_results": true,
+  "static_spec_sha256": "1b7daa3672fd688021018fadfc6e702c7f5bf9551a97594fea5fdf6351c8d1c9",
+  "recursive_smoke_sha256": "e5d3191708736550ea611caa25659800a576629d16fa6b190cb087694c9815e2",
+  "source_sha256": {
+    "lib/test/tracker/sttrack_local_spatial.py": "b84d86ec0788781674fcfbfb7a5e182d5686dae358bfab23f268107cedc47ba2",
+    "tools/run_sttrack_m42_recursive.py": "c1a2978c356a72d29165a43efe11b0d20a9793143182d2a12ebf2afda2f03877",
+    "tools/analyze_sttrack_m42_recursive.py": "03f7dff279a950214ba6040e192f67dea061b541ba068fd0714a6e9da59ad939",
+    "tools/gate_sttrack_m42_recursive.py": "e567c249c1a9667b99ef71320b4639d3194b740cec64607c8c37ac9129ea39a6",
+    "tools/prepare_sttrack_m42_recursive.py": "fc7f146802ad986aa15b6cda9bcf93081dc1c703c996b639dd9111b9a34df8d6"
+  },
+  "baseline_shard_sha256": {
+    "shard0.json": "846872b20c04fed1ffb132c84135925b819617a739b8319985cc70239a4e5fe3",
+    "shard1.json": "5b168dbd3b60aed619b9c9b9113a4c5c85d4f3d8ce23ca0fbebd91005d0656f9"
+  },
+  "sequences": "all22 existing Train development fold5 sequences, full available image lengths, one normal initialization",
+  "inference": "Each arm owns its predicted crop, query, default template images and native reference bank; no subsequent GT input.",
+  "template_update": "Existing interval50/threshold.75; when reranked, confidence belongs to the actually selected peak. Choice0/NONE exactly preserves default.",
+  "metrics": "Continuous xywh IoU. Exclude initialization and invalid GT. Invalid-GT gaps break failure spans; persistent failure requires10 valid consecutive frames with IoU<=.1.",
+  "gates": {
+    "mean_iou": "spatial > pooled and spatial > default",
+    "fewer_low_iou_frames": "spatial < default",
+    "no_episode_increase": "spatial <= default",
+    "sequence_coverage": "positive mean IoU gain on at least3 sequences",
+    "successful_sequence_protection": "No default-zero-episode sequence acquires a persistent failure"
+  },
+  "authorization": "Only run after static information gate passes. No automatic public evaluation. Passing recursion permits freezing a low22 candidate evaluation.",
+  "checkpoint_identity": "Official STTrack base SHA plus newly trained association-final SHA and frozen runtime source/config; no mixed historical model metrics.",
+  "poll_seconds": 240
+}
