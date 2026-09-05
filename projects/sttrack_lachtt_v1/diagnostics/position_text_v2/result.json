@@ -1,0 +1,1968 @@
+{
+  "status": "complete",
+  "summaries": {
+    "initial_identity": {
+      "cases": 24,
+      "accepted": 14,
+      "invalid_box": 1,
+      "correct": 4,
+      "wrong": 4,
+      "mean_iou": 0.19644036765155645,
+      "mean_latency_seconds": 4.520240472940107,
+      "per_sequence": {
+        "cube05_indoor_5": {
+          "correct": 1,
+          "wrong": 0
+        },
+        "cup02_indoor_1": {
+          "correct": 2,
+          "wrong": 2
+        },
+        "shoes02_indoor_1": {
+          "correct": 1,
+          "wrong": 1
+        },
+        "toy09_indoor_1": {
+          "correct": 0,
+          "wrong": 1
+        }
+      }
+    },
+    "default_templates_identity": {
+      "cases": 24,
+      "accepted": 11,
+      "invalid_box": 0,
+      "correct": 1,
+      "wrong": 6,
+      "mean_iou": 0.08146040047979525,
+      "mean_latency_seconds": 4.39452612803628,
+      "per_sequence": {
+        "cube05_indoor_5": {
+          "correct": 0,
+          "wrong": 0
+        },
+        "cup02_indoor_1": {
+          "correct": 1,
+          "wrong": 4
+        },
+        "shoes02_indoor_1": {
+          "correct": 0,
+          "wrong": 2
+        },
+        "toy09_indoor_1": {
+          "correct": 0,
+          "wrong": 0
+        }
+      }
+    },
+    "default_templates_relative": {
+      "cases": 24,
+      "accepted": 0,
+      "invalid_box": 0,
+      "correct": 0,
+      "wrong": 0,
+      "mean_iou": 0.0,
+      "mean_latency_seconds": 4.337280544141929,
+      "per_sequence": {
+        "cube05_indoor_5": {
+          "correct": 0,
+          "wrong": 0
+        },
+        "cup02_indoor_1": {
+          "correct": 0,
+          "wrong": 0
+        },
+        "shoes02_indoor_1": {
+          "correct": 0,
+          "wrong": 0
+        },
+        "toy09_indoor_1": {
+          "correct": 0,
+          "wrong": 0
+        }
+      }
+    }
+  },
+  "improved_sequences": [],
+  "relative_gate_passed": false,
+  "rank_accuracy_not_available": true,
+  "tracker_commits": 0,
+  "training_steps": 0,
+  "claim_limit": "Small GT-timed causal-information pilot, not an online tracker result or a VOT metric.",
+  "rows": [
+    {
+      "key": "cup02_indoor_1@0F:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.8795591182364729,
+      "correct": true,
+      "wrong": false,
+      "protected_iou": 0.9390248732945984,
+      "dynamic_step": 400,
+      "invalid_box": false,
+      "latency_seconds": 5.1743480041623116,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          400,
+          280,
+          457,
+          360
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@0F:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.8795591182364729,
+      "correct": true,
+      "wrong": false,
+      "protected_iou": 0.9390248732945984,
+      "dynamic_step": 400,
+      "invalid_box": false,
+      "latency_seconds": 4.712447226047516,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          400,
+          280,
+          457,
+          360
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@0F:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.9390248732945984,
+      "dynamic_step": 400,
+      "invalid_box": false,
+      "latency_seconds": 4.789207234978676,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          457,
+          278,
+          531,
+          359
+        ],
+        "stable_identity": null,
+        "similar_count": 3,
+        "left_to_right_rank": null,
+        "relative_description": "red cup on table"
+      }
+    },
+    {
+      "key": "cup02_indoor_1@0F:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.40056517131755565,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 400,
+      "invalid_box": false,
+      "latency_seconds": 4.430413618683815,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          398,
+          271,
+          532,
+          353
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@0F:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.0,
+      "dynamic_step": 400,
+      "invalid_box": false,
+      "latency_seconds": 4.655666999518871,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          227,
+          259,
+          286,
+          332
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@0F:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 400,
+      "invalid_box": false,
+      "latency_seconds": 4.671520493924618,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          457,
+          278,
+          504,
+          351
+        ],
+        "stable_identity": null,
+        "similar_count": 0,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@900B:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.8724778046811945,
+      "correct": true,
+      "wrong": false,
+      "protected_iou": 0.9471853427456123,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.683666527271271,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          227,
+          258,
+          275,
+          330
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@900B:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.9471853427456123,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.69747531414032,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          335,
+          244,
+          383,
+          309
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@900B:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.9471853427456123,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.848708137869835,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          227,
+          258,
+          275,
+          330
+        ],
+        "stable_identity": null,
+        "similar_count": 3,
+        "left_to_right_rank": null,
+        "relative_description": "red cup on table"
+      }
+    },
+    {
+      "key": "cup02_indoor_1@900B:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.0,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.244493134319782,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          295,
+          252,
+          357,
+          310
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@900B:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.0,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.668572075664997,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          295,
+          252,
+          351,
+          310
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@900B:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.826298989355564,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          227,
+          258,
+          276,
+          331
+        ],
+        "stable_identity": null,
+        "similar_count": 3,
+        "left_to_right_rank": null,
+        "relative_description": "red cup on table"
+      }
+    },
+    {
+      "key": "cup02_indoor_1@1752B:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.42482817869415807,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8367943765652337,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.206661991775036,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          345,
+          265,
+          392,
+          337
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@1752B:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.42482817869415807,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8367943765652337,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.6511023715138435,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          345,
+          265,
+          392,
+          337
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@1752B:before10",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8367943765652337,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.785650908946991,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          345,
+          265,
+          393,
+          337
+        ],
+        "stable_identity": null,
+        "similar_count": 2,
+        "left_to_right_rank": null,
+        "relative_description": "red cup on table"
+      }
+    },
+    {
+      "key": "cup02_indoor_1@1752B:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.0,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.661164857447147,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          345,
+          265,
+          393,
+          337
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@1752B:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.0,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.641198597848415,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          345,
+          265,
+          393,
+          337
+        ],
+        "stable_identity": "red cup",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cup02_indoor_1@1752B:onset",
+      "sequence": "cup02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.771607294678688,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          345,
+          265,
+          393,
+          337
+        ],
+        "stable_identity": null,
+        "similar_count": 2,
+        "left_to_right_rank": null,
+        "relative_description": "red cup on table"
+      }
+    },
+    {
+      "key": "toy09_indoor_1@0F:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.6092875692124398,
+      "dynamic_step": 1000,
+      "invalid_box": false,
+      "latency_seconds": 4.4901678413152695,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          85,
+          1,
+          570,
+          360
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@0F:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.6092875692124398,
+      "dynamic_step": 1000,
+      "invalid_box": false,
+      "latency_seconds": 3.727880135178566,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@0F:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.6092875692124398,
+      "dynamic_step": 1000,
+      "invalid_box": false,
+      "latency_seconds": 3.610845163464546,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@0F:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 1000,
+      "invalid_box": false,
+      "latency_seconds": 4.175365217030048,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          85,
+          1,
+          570,
+          360
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@0F:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 1000,
+      "invalid_box": false,
+      "latency_seconds": 3.921232670545578,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@0F:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 1000,
+      "invalid_box": false,
+      "latency_seconds": 3.8731985315680504,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@650F:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8866275930583897,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.201152510941029,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          207,
+          198,
+          265,
+          280
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@650F:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8866275930583897,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 3.8958815708756447,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@650F:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8866275930583897,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 3.8912592604756355,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@650F:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.617395028471947,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          221,
+          197,
+          258,
+          274
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@650F:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 3.893722802400589,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@650F:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 3.8598735108971596,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@1338B:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.9311111648607837,
+      "dynamic_step": 100,
+      "invalid_box": false,
+      "latency_seconds": 4.681267112493515,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          235,
+          191,
+          298,
+          307
+        ],
+        "stable_identity": "bottle",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@1338B:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.9311111648607837,
+      "dynamic_step": 100,
+      "invalid_box": false,
+      "latency_seconds": 4.752044215798378,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          235,
+          191,
+          298,
+          307
+        ],
+        "stable_identity": "bottle",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@1338B:before10",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.9311111648607837,
+      "dynamic_step": 100,
+      "invalid_box": false,
+      "latency_seconds": 4.674797467887402,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          235,
+          191,
+          298,
+          307
+        ],
+        "stable_identity": null,
+        "similar_count": 0,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@1338B:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 100,
+      "invalid_box": false,
+      "latency_seconds": 4.706752635538578,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          235,
+          191,
+          298,
+          307
+        ],
+        "stable_identity": "bottle",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@1338B:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 100,
+      "invalid_box": false,
+      "latency_seconds": 4.757485397160053,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          115,
+          187,
+          299,
+          308
+        ],
+        "stable_identity": "beige bottle",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "toy09_indoor_1@1338B:onset",
+      "sequence": "toy09_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 100,
+      "invalid_box": false,
+      "latency_seconds": 4.606195747852325,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          235,
+          191,
+          298,
+          307
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@0F:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.7394837476099426,
+      "correct": true,
+      "wrong": false,
+      "protected_iou": 0.9354912151779062,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.656341947615147,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          115,
+          208,
+          297,
+          321
+        ],
+        "stable_identity": "left shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@0F:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.9354912151779062,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.384838342666626,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          115,
+          178,
+          297,
+          322
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@0F:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.9354912151779062,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.680979527533054,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          115,
+          178,
+          297,
+          322
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@0F:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.05875872199779655,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.0,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.482696443796158,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          115,
+          178,
+          295,
+          323
+        ],
+        "stable_identity": "left shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@0F:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.05875872199779655,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.0,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.700259082019329,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          115,
+          178,
+          295,
+          323
+        ],
+        "stable_identity": "left shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@0F:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.711714684963226,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          230,
+          175,
+          380,
+          329
+        ],
+        "stable_identity": null,
+        "similar_count": 0,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@350B:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.24143947655398038,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8517225238067344,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.635653018951416,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          152,
+          127,
+          308,
+          303
+        ],
+        "stable_identity": "left shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@350B:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8517225238067344,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 3.8531972095370293,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@350B:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8517225238067344,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 3.886260859668255,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@350B:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.062242387360368516,
+      "dynamic_step": 50,
+      "invalid_box": true,
+      "latency_seconds": 4.687628090381622,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          265,
+          128,
+          407,
+          362
+        ],
+        "stable_identity": "left shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@350B:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.1779942439672349,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.062242387360368516,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.663826644420624,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          265,
+          127,
+          408,
+          251
+        ],
+        "stable_identity": "shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@350B:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.062242387360368516,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 3.8735529631376266,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@613B:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.18309859154929578,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8994015858114248,
+      "dynamic_step": 250,
+      "invalid_box": false,
+      "latency_seconds": 4.636484928429127,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          185,
+          179,
+          300,
+          292
+        ],
+        "stable_identity": "left foot",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@613B:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.01087962962962963,
+      "correct": false,
+      "wrong": true,
+      "protected_iou": 0.8994015858114248,
+      "dynamic_step": 250,
+      "invalid_box": false,
+      "latency_seconds": 4.675242803990841,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          297,
+          158,
+          418,
+          214
+        ],
+        "stable_identity": "left shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@613B:before10",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8994015858114248,
+      "dynamic_step": 250,
+      "invalid_box": false,
+      "latency_seconds": 3.92762191593647,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@613B:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.1406183714720635,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.018065823313993375,
+      "dynamic_step": 250,
+      "invalid_box": false,
+      "latency_seconds": 4.621695436537266,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          189,
+          157,
+          417,
+          330
+        ],
+        "stable_identity": "shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@613B:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.1406183714720635,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.018065823313993375,
+      "dynamic_step": 250,
+      "invalid_box": false,
+      "latency_seconds": 4.715813606977463,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          189,
+          157,
+          417,
+          330
+        ],
+        "stable_identity": "shoe",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "shoes02_indoor_1@613B:onset",
+      "sequence": "shoes02_indoor_1",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.018065823313993375,
+      "dynamic_step": 250,
+      "invalid_box": false,
+      "latency_seconds": 3.828178822994232,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@0F:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.6243552366001346,
+      "correct": true,
+      "wrong": false,
+      "protected_iou": 0.8152923052491854,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.680386915802956,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          325,
+          228,
+          373,
+          309
+        ],
+        "stable_identity": "yellow box",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@0F:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8152923052491854,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.574549928307533,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          398,
+          257,
+          425,
+          294
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@0F:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.8152923052491854,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.609944701194763,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          398,
+          257,
+          424,
+          294
+        ],
+        "stable_identity": null,
+        "similar_count": 0,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@0F:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0353342737444787,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.5421197488904,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          375,
+          258,
+          424,
+          295
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@0F:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0353342737444787,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.617694936692715,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          375,
+          258,
+          424,
+          295
+        ],
+        "stable_identity": "yellow box",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@0F:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.0353342737444787,
+      "dynamic_step": 0,
+      "invalid_box": false,
+      "latency_seconds": 4.651061214506626,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          375,
+          258,
+          424,
+          295
+        ],
+        "stable_identity": null,
+        "similar_count": 0,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@200F:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.28345587798913935,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.626028597354889,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          398,
+          235,
+          478,
+          310
+        ],
+        "stable_identity": "yellow box",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@200F:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.28345587798913935,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.6753252148628235,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          398,
+          235,
+          478,
+          310
+        ],
+        "stable_identity": "yellow box",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@200F:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.28345587798913935,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.621784470975399,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          325,
+          237,
+          380,
+          310
+        ],
+        "stable_identity": null,
+        "similar_count": 1,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@200F:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "initial_identity",
+      "accepted": true,
+      "iou": 0.1493844049247606,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.07991654096385718,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.517766050994396,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          332,
+          265,
+          390,
+          310
+        ],
+        "stable_identity": "yellow box",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@200F:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.07991654096385718,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.119948446750641,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          332,
+          265,
+          390,
+          311
+        ],
+        "stable_identity": "yellow box",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@200F:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.07991654096385718,
+      "dynamic_step": 50,
+      "invalid_box": false,
+      "latency_seconds": 4.041952520608902,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          332,
+          265,
+          390,
+          310
+        ],
+        "stable_identity": null,
+        "similar_count": 0,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@491B:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.39377493506706696,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.073740571737289,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          351,
+          174,
+          386,
+          204
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@491B:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_identity",
+      "accepted": true,
+      "iou": 0.2624113475177305,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.39377493506706696,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.132496073842049,
+      "parsed": {
+        "target_visible": true,
+        "identity_uncertain": false,
+        "bbox_xyxy_pixels": [
+          305,
+          258,
+          379,
+          311
+        ],
+        "stable_identity": "yellow box",
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@491B:before10",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.39377493506706696,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.047178618609905,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          352,
+          174,
+          386,
+          203
+        ],
+        "stable_identity": null,
+        "similar_count": 0,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@491B:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "initial_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.06141753368230372,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.052381120622158,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          351,
+          174,
+          386,
+          204
+        ],
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@491B:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_identity",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.06141753368230372,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 3.3807254061102867,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": null,
+        "stable_identity": null,
+        "similar_count": null,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    },
+    {
+      "key": "cube05_indoor_5@491B:onset",
+      "sequence": "cube05_indoor_5",
+      "variant": "default_templates_relative",
+      "accepted": false,
+      "iou": 0.0,
+      "correct": false,
+      "wrong": false,
+      "protected_iou": 0.06141753368230372,
+      "dynamic_step": 150,
+      "invalid_box": false,
+      "latency_seconds": 4.00534001737833,
+      "parsed": {
+        "target_visible": false,
+        "identity_uncertain": true,
+        "bbox_xyxy_pixels": [
+          351,
+          174,
+          386,
+          204
+        ],
+        "stable_identity": null,
+        "similar_count": 0,
+        "left_to_right_rank": null,
+        "relative_description": null
+      }
+    }
+  ]
+}

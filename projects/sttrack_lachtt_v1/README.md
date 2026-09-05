@@ -232,10 +232,17 @@ independent factor7 shadow. This is GT-timed diagnosis; no ground truth enters
 candidate generation beyond normal anchor initialization.
 
 Source and small evidence for M39/M40, new M39 per-sequence metrics, and the
-M41 protocol are under [`diagnostics/`](diagnostics/). M41 collection and a
-local Qwen2.5-VL template/relative-position pilot were launched on 2026-09-05.
-The pilot produces causal localization suggestions only, without changing
-tracker outputs. New neural modules must be trained on DepthTrack Train before
+M41 protocol are under [`diagnostics/`](diagnostics/). M41 completed all 124
+onsets: 91/115 in-crop failures have an IoU>=0.5 candidate in Hann top10,
+including 78 whose first correct candidate ranks second. Dense capacity is
+97/115. The nine factor7 shadows have five correct raw-top10 candidates but
+only one in Hann top10. These are single-frame oracle capacities, not rescues.
+
+The local Qwen2.5-VL template/relative-position pilot also completed. After
+correcting coordinate and causal-reference semantics, its three conditions
+localized 4/1/0 of 24 windows correctly; the relative-position condition
+abstained throughout. It failed the incremental-information gate and changed
+no tracker output. New neural modules must be trained on DepthTrack Train before
 the same resulting checkpoint is evaluated on DepthTrack, CDTB and full VOT.
 See the master handoff for the latest execution status and limits.
 
