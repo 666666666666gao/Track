@@ -282,13 +282,15 @@ center/size coordinates; the equal-parameter appearance control zeroes them.
 Both heads have 448,739 parameters. The official backbone, box head, crop and
 template schedule remain unchanged; no language benefit is claimed.
 
-Native collection is running on the existing 85-sequence DepthTrack Train
+Native collection completed on the existing 85-sequence DepthTrack Train
 ledger: 2,101 pairs, with 1,511 fitting and 590 previously used development
-pairs. Set-permutation/geometry contracts and 120-frame default replay passed.
-Training/runtime sources are bound before any real optimization: fixed
-20 epochs / 960 updates per arm, then both complete recursive development
-paths. Static snapshot ranking is diagnostic. No new trained weight or public
-metric is claimed at this launch. See
+pairs. All126,382 tracked frames reproduce default boxes/confidence exactly,
+including1,420 template writes. Runtime integration checks also passed.
+Both fixed20-epoch/960-update training runs completed and their final weights
+were strictly reloaded. On590 static development windows, meanIoU is
+0.440274/0.441423/0.438411 for default/geometry/appearance. These small static
+differences do not establish recursive performance. Both complete22-sequence
+recursive paths are running; no new public metric is claimed. See
 [the frozen M44 protocol](diagnostics/m44/EXPERIMENT_SPEC.md) and
 [execution tracker](diagnostics/m44/EXPERIMENT_TRACKER.md).
 
