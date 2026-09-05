@@ -1,0 +1,715 @@
+{
+  "status": "complete",
+  "integrity_pass": true,
+  "primary": "policy_state_data",
+  "primary_pass": false,
+  "gates": {
+    "control": {
+      "mean_iou": false,
+      "fewer_low_frames": false,
+      "no_episode_increase": false,
+      "sequence_coverage": true,
+      "successful_sequence_protection": true
+    },
+    "mixed": {
+      "mean_iou": false,
+      "fewer_low_frames": false,
+      "no_episode_increase": false,
+      "sequence_coverage": true,
+      "successful_sequence_protection": true
+    }
+  },
+  "incremental_gates": {
+    "mean_iou": false,
+    "low_frames": false,
+    "episodes": true
+  },
+  "extra_training_control_pass": false,
+  "advancing_arm": null,
+  "aggregates": {
+    "default": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "m45": {
+      "valid_frames": 28897,
+      "iou_sum": 19768.50630952179,
+      "low_iou_frames": 6188,
+      "failure_episodes": 80,
+      "mean_iou": 0.6841023742783606,
+      "macro_sequence_mean_iou": 0.6954084383805555
+    },
+    "control": {
+      "valid_frames": 28897,
+      "iou_sum": 18605.997579961513,
+      "low_iou_frames": 7429,
+      "failure_episodes": 90,
+      "mean_iou": 0.6438729826612283,
+      "macro_sequence_mean_iou": 0.6671082475548344
+    },
+    "mixed": {
+      "valid_frames": 28897,
+      "iou_sum": 18230.96473148059,
+      "low_iou_frames": 8058,
+      "failure_episodes": 80,
+      "mean_iou": 0.6308947202644077,
+      "macro_sequence_mean_iou": 0.6781284158048135
+    }
+  },
+  "per_sequence": {
+    "control": {
+      "ball07_indoor": {
+        "valid_frames": 2179,
+        "iou_sum": 797.442140572196,
+        "mean_iou": 0.365967021832123,
+        "low_iou_frames": 1286,
+        "failure_episodes": 8
+      },
+      "ball19_indoor": {
+        "valid_frames": 1380,
+        "iou_sum": 1154.648082244983,
+        "mean_iou": 0.8367015088731761,
+        "low_iou_frames": 19,
+        "failure_episodes": 1
+      },
+      "book06_indoor": {
+        "valid_frames": 1545,
+        "iou_sum": 983.9521947585494,
+        "mean_iou": 0.6368622619796436,
+        "low_iou_frames": 399,
+        "failure_episodes": 5
+      },
+      "car01_indoor": {
+        "valid_frames": 1402,
+        "iou_sum": 536.5829859938759,
+        "mean_iou": 0.38272680884013976,
+        "low_iou_frames": 825,
+        "failure_episodes": 3
+      },
+      "car02_indoor": {
+        "valid_frames": 565,
+        "iou_sum": 183.80362405436446,
+        "mean_iou": 0.3253161487687867,
+        "low_iou_frames": 366,
+        "failure_episodes": 2
+      },
+      "colacan04_indoor": {
+        "valid_frames": 567,
+        "iou_sum": 144.6639786601125,
+        "mean_iou": 0.2551392921695106,
+        "low_iou_frames": 407,
+        "failure_episodes": 12
+      },
+      "cup08_indoor": {
+        "valid_frames": 1321,
+        "iou_sum": 1109.3687149924785,
+        "mean_iou": 0.8397946366332162,
+        "low_iou_frames": 86,
+        "failure_episodes": 1
+      },
+      "egg_indoor": {
+        "valid_frames": 3433,
+        "iou_sum": 2290.3161602852474,
+        "mean_iou": 0.6671471483499118,
+        "low_iou_frames": 796,
+        "failure_episodes": 12
+      },
+      "flowerbasket_indoor": {
+        "valid_frames": 851,
+        "iou_sum": 640.9284304923449,
+        "mean_iou": 0.7531473918828965,
+        "low_iou_frames": 129,
+        "failure_episodes": 4
+      },
+      "glass03_indoor": {
+        "valid_frames": 570,
+        "iou_sum": 431.8285333006747,
+        "mean_iou": 0.7575939180713591,
+        "low_iou_frames": 111,
+        "failure_episodes": 3
+      },
+      "mobilephone02_indoor": {
+        "valid_frames": 610,
+        "iou_sum": 515.8045024462632,
+        "mean_iou": 0.8455811515512511,
+        "low_iou_frames": 1,
+        "failure_episodes": 0
+      },
+      "bag05_indoor": {
+        "valid_frames": 587,
+        "iou_sum": 500.36382498482527,
+        "mean_iou": 0.8524085604511504,
+        "low_iou_frames": 6,
+        "failure_episodes": 0
+      },
+      "beautifullight01_indoor": {
+        "valid_frames": 910,
+        "iou_sum": 565.8333438211167,
+        "mean_iou": 0.6217948833199085,
+        "low_iou_frames": 263,
+        "failure_episodes": 4
+      },
+      "colacan01_indoor": {
+        "valid_frames": 2801,
+        "iou_sum": 1879.2722587242338,
+        "mean_iou": 0.6709290463135429,
+        "low_iou_frames": 549,
+        "failure_episodes": 8
+      },
+      "container01_indoor": {
+        "valid_frames": 621,
+        "iou_sum": 574.9543623699495,
+        "mean_iou": 0.9258524353783406,
+        "low_iou_frames": 4,
+        "failure_episodes": 0
+      },
+      "cup10_indoor": {
+        "valid_frames": 2147,
+        "iou_sum": 1867.5222913504374,
+        "mean_iou": 0.8698287337449638,
+        "low_iou_frames": 61,
+        "failure_episodes": 1
+      },
+      "cup13_indoor": {
+        "valid_frames": 1658,
+        "iou_sum": 1153.1581255622464,
+        "mean_iou": 0.6955115353210171,
+        "low_iou_frames": 249,
+        "failure_episodes": 4
+      },
+      "flower02_wild": {
+        "valid_frames": 467,
+        "iou_sum": 367.32272744783137,
+        "mean_iou": 0.7865583028861486,
+        "low_iou_frames": 22,
+        "failure_episodes": 0
+      },
+      "flower03_indoor": {
+        "valid_frames": 547,
+        "iou_sum": 458.0215203335037,
+        "mean_iou": 0.8373336751983614,
+        "low_iou_frames": 0,
+        "failure_episodes": 0
+      },
+      "ghostmask_indoor": {
+        "valid_frames": 1025,
+        "iou_sum": 841.9342899344214,
+        "mean_iou": 0.8213993072530941,
+        "low_iou_frames": 17,
+        "failure_episodes": 0
+      },
+      "mobilephone01_indoor": {
+        "valid_frames": 1217,
+        "iou_sum": 674.8498295882268,
+        "mean_iou": 0.5545191697520352,
+        "low_iou_frames": 437,
+        "failure_episodes": 6
+      },
+      "notebook02_indoor": {
+        "valid_frames": 2494,
+        "iou_sum": 933.4256580436303,
+        "mean_iou": 0.37426850763577796,
+        "low_iou_frames": 1396,
+        "failure_episodes": 16
+      }
+    },
+    "mixed": {
+      "ball07_indoor": {
+        "valid_frames": 2179,
+        "iou_sum": 796.0499883607988,
+        "mean_iou": 0.36532812682918714,
+        "low_iou_frames": 1288,
+        "failure_episodes": 8
+      },
+      "ball19_indoor": {
+        "valid_frames": 1380,
+        "iou_sum": 1155.8912274051568,
+        "mean_iou": 0.8376023386993889,
+        "low_iou_frames": 19,
+        "failure_episodes": 1
+      },
+      "book06_indoor": {
+        "valid_frames": 1545,
+        "iou_sum": 1213.825411605567,
+        "mean_iou": 0.7856475156023088,
+        "low_iou_frames": 142,
+        "failure_episodes": 3
+      },
+      "car01_indoor": {
+        "valid_frames": 1402,
+        "iou_sum": 536.6975674484404,
+        "mean_iou": 0.3828085359831957,
+        "low_iou_frames": 824,
+        "failure_episodes": 3
+      },
+      "car02_indoor": {
+        "valid_frames": 565,
+        "iou_sum": 391.6098153367722,
+        "mean_iou": 0.6931147174102164,
+        "low_iou_frames": 143,
+        "failure_episodes": 2
+      },
+      "colacan04_indoor": {
+        "valid_frames": 567,
+        "iou_sum": 145.2396148833325,
+        "mean_iou": 0.256154523603761,
+        "low_iou_frames": 407,
+        "failure_episodes": 12
+      },
+      "cup08_indoor": {
+        "valid_frames": 1321,
+        "iou_sum": 1101.4339678462925,
+        "mean_iou": 0.8337880150236885,
+        "low_iou_frames": 96,
+        "failure_episodes": 1
+      },
+      "egg_indoor": {
+        "valid_frames": 3433,
+        "iou_sum": 1892.4066581558016,
+        "mean_iou": 0.5512399237272944,
+        "low_iou_frames": 1232,
+        "failure_episodes": 15
+      },
+      "flowerbasket_indoor": {
+        "valid_frames": 851,
+        "iou_sum": 644.8772849777332,
+        "mean_iou": 0.7577876439221307,
+        "low_iou_frames": 127,
+        "failure_episodes": 3
+      },
+      "glass03_indoor": {
+        "valid_frames": 570,
+        "iou_sum": 431.8285333006747,
+        "mean_iou": 0.7575939180713591,
+        "low_iou_frames": 111,
+        "failure_episodes": 3
+      },
+      "mobilephone02_indoor": {
+        "valid_frames": 610,
+        "iou_sum": 516.7208351428777,
+        "mean_iou": 0.8470833362997995,
+        "low_iou_frames": 1,
+        "failure_episodes": 0
+      },
+      "bag05_indoor": {
+        "valid_frames": 587,
+        "iou_sum": 500.759847689827,
+        "mean_iou": 0.8530832158259404,
+        "low_iou_frames": 6,
+        "failure_episodes": 0
+      },
+      "beautifullight01_indoor": {
+        "valid_frames": 910,
+        "iou_sum": 559.4832711270465,
+        "mean_iou": 0.6148167814582928,
+        "low_iou_frames": 270,
+        "failure_episodes": 4
+      },
+      "colacan01_indoor": {
+        "valid_frames": 2801,
+        "iou_sum": 283.18741135872733,
+        "mean_iou": 0.10110225325195549,
+        "low_iou_frames": 2464,
+        "failure_episodes": 10
+      },
+      "container01_indoor": {
+        "valid_frames": 621,
+        "iou_sum": 574.9543623699495,
+        "mean_iou": 0.9258524353783406,
+        "low_iou_frames": 4,
+        "failure_episodes": 0
+      },
+      "cup10_indoor": {
+        "valid_frames": 2147,
+        "iou_sum": 1866.8630099906868,
+        "mean_iou": 0.869521662780944,
+        "low_iou_frames": 62,
+        "failure_episodes": 1
+      },
+      "cup13_indoor": {
+        "valid_frames": 1658,
+        "iou_sum": 1310.874014599172,
+        "mean_iou": 0.790635714474772,
+        "low_iou_frames": 65,
+        "failure_episodes": 2
+      },
+      "flower02_wild": {
+        "valid_frames": 467,
+        "iou_sum": 361.9331048626716,
+        "mean_iou": 0.7750173551663203,
+        "low_iou_frames": 31,
+        "failure_episodes": 1
+      },
+      "flower03_indoor": {
+        "valid_frames": 547,
+        "iou_sum": 458.55314687342366,
+        "mean_iou": 0.8383055701525113,
+        "low_iou_frames": 0,
+        "failure_episodes": 0
+      },
+      "ghostmask_indoor": {
+        "valid_frames": 1025,
+        "iou_sum": 691.3346285873431,
+        "mean_iou": 0.6744728083778957,
+        "low_iou_frames": 255,
+        "failure_episodes": 3
+      },
+      "mobilephone01_indoor": {
+        "valid_frames": 1217,
+        "iou_sum": 681.1994506572331,
+        "mean_iou": 0.5597366069492467,
+        "low_iou_frames": 435,
+        "failure_episodes": 6
+      },
+      "notebook02_indoor": {
+        "valid_frames": 2494,
+        "iou_sum": 2115.2415789010597,
+        "mean_iou": 0.8481321487173455,
+        "low_iou_frames": 76,
+        "failure_episodes": 2
+      }
+    }
+  },
+  "details": {
+    "control": {
+      "first_overrides": [
+        {
+          "sequence": "ball07_indoor",
+          "first_override": 758,
+          "changes": 68,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "1dc854bc6afd2338b8ebfbca7524bd45a1b7587cf887dd8b22f737362a428fc2"
+        },
+        {
+          "sequence": "ball19_indoor",
+          "first_override": 475,
+          "changes": 9,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "3b1a5ae18407b5d3c92751c0ff733afb9517e0407946bf9b3844df53bd135f2e"
+        },
+        {
+          "sequence": "book06_indoor",
+          "first_override": 15,
+          "changes": 52,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "2e663d6eee7d9ba5ef46b1b8026d23d13710da6a4436b92743be00b1b360db96"
+        },
+        {
+          "sequence": "car01_indoor",
+          "first_override": 284,
+          "changes": 3,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "776462455c741e77d6567d7bc8a438876797abce7b8861dcd6b2c58550e888a6"
+        },
+        {
+          "sequence": "car02_indoor",
+          "first_override": 74,
+          "changes": 2,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "7ab390632668f6d406efb9e9f0daaa61719ff02574938852c3cf4b2f9ee83e9f"
+        },
+        {
+          "sequence": "colacan04_indoor",
+          "first_override": 131,
+          "changes": 2,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "2fff14b92473025a542b736d924c9c0cbb118da4cdba34498c059ccea46e0225"
+        },
+        {
+          "sequence": "cup08_indoor",
+          "first_override": 18,
+          "changes": 12,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "5ffd4156624e262dd0e676d1acb587a4dccb44a3270681f501b2bb03c25e8bc3"
+        },
+        {
+          "sequence": "egg_indoor",
+          "first_override": 100,
+          "changes": 120,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "c69d4f337f108a337b516b991a2edd1695b9f181e52d3729b31759d5c6c24b19"
+        },
+        {
+          "sequence": "flowerbasket_indoor",
+          "first_override": 68,
+          "changes": 14,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "1a4716f396660c9642c04c66e16800b992d0c9c65bed71c1ceeef69b2fa9ad7d"
+        },
+        {
+          "sequence": "glass03_indoor",
+          "first_override": null,
+          "changes": 0,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "f3ee0858af54a733eaee6666e40cccd82429603b1466ad1b8c06721cdad6cdcc"
+        },
+        {
+          "sequence": "mobilephone02_indoor",
+          "first_override": 6,
+          "changes": 16,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "5fa58fff3c45862a9b5be172045bcbd40ff000b55a42a0330e8096057b89a5b8"
+        },
+        {
+          "sequence": "bag05_indoor",
+          "first_override": 98,
+          "changes": 14,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "7d0d970e671578e6d200c3c72418a1a5c59e9d5494ffd5d1a19a082459d38e37"
+        },
+        {
+          "sequence": "beautifullight01_indoor",
+          "first_override": 93,
+          "changes": 4,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "59ef2e9d096fe513fb8e9287b662ad247d34176b4c2ff2dbeed505f8a2338e05"
+        },
+        {
+          "sequence": "colacan01_indoor",
+          "first_override": 244,
+          "changes": 68,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "b2942fd695c8f1e0d9b2baefd4b3305931f31b49dc6453473409f92cccec4fa6"
+        },
+        {
+          "sequence": "container01_indoor",
+          "first_override": null,
+          "changes": 0,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "d6c31157ecc8f780ef423a22fecd0cea932454e4e830c56b92d1787cdf1ace0b"
+        },
+        {
+          "sequence": "cup10_indoor",
+          "first_override": 187,
+          "changes": 39,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "f47a0c531275df7f235b1527b86f8f70bdde459f77820721f050fc02d3e5521f"
+        },
+        {
+          "sequence": "cup13_indoor",
+          "first_override": 101,
+          "changes": 104,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "525c6a6187a74d34423fbaf8647664bc34c6bbfba1fbd387173726640da625f5"
+        },
+        {
+          "sequence": "flower02_wild",
+          "first_override": 200,
+          "changes": 18,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "b6464cf3ca951f354e1af843753f2d1d18be54980538dd76b88c4c2baf4f015a"
+        },
+        {
+          "sequence": "flower03_indoor",
+          "first_override": 243,
+          "changes": 1,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "7af3a2c6f881b0cdb460d78c5077b564bdc879afe30b05420afd48786adc188a"
+        },
+        {
+          "sequence": "ghostmask_indoor",
+          "first_override": 256,
+          "changes": 16,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "c80e5911e94af485ca6afc1afdfd1d0be11cb9a22c89c229d1072892f903817b"
+        },
+        {
+          "sequence": "mobilephone01_indoor",
+          "first_override": 14,
+          "changes": 30,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "62757dae752afb259b35f4b33b606296b63fbebe49a5934b003c72aee39d886d"
+        },
+        {
+          "sequence": "notebook02_indoor",
+          "first_override": 219,
+          "changes": 11,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "fa961ef199904efc7795e1c8346250fb9bcc630daac4efcd5062dc5dbc19654c"
+        }
+      ],
+      "positive_sequences": 8,
+      "new_failure_sequences": []
+    },
+    "mixed": {
+      "first_overrides": [
+        {
+          "sequence": "ball07_indoor",
+          "first_override": 817,
+          "changes": 30,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "777d99c0e849106c83671c0395df73f9c370442ce55d4836a77053320537d91a"
+        },
+        {
+          "sequence": "ball19_indoor",
+          "first_override": null,
+          "changes": 0,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "38a3be2370bea4d950ffde34e9e0458d83da62d09a833fcfc87b717dc0890f88"
+        },
+        {
+          "sequence": "book06_indoor",
+          "first_override": 17,
+          "changes": 48,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "d1698653ba70608f05d7ef40d1b526d7df37f1c97056ebbb5d699ac8ebd11893"
+        },
+        {
+          "sequence": "car01_indoor",
+          "first_override": 284,
+          "changes": 4,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "e5c92e4012fdab40705ae2c849320fbacf190a686d156eca7888751e8c5e1838"
+        },
+        {
+          "sequence": "car02_indoor",
+          "first_override": null,
+          "changes": 0,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "caba729a9f81e1bc702145e696b8d610c4aa3c775a77169718857636a52c4d4b"
+        },
+        {
+          "sequence": "colacan04_indoor",
+          "first_override": 131,
+          "changes": 4,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "8945f94759eb3e61c8db99b02b3a35e50b22a217bf3f50c4daaacfed83497e06"
+        },
+        {
+          "sequence": "cup08_indoor",
+          "first_override": 841,
+          "changes": 2,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "ae97a33be592cc83cc648b330a4be600af3a3e20a8a84fbe247f37f7aa623069"
+        },
+        {
+          "sequence": "egg_indoor",
+          "first_override": 128,
+          "changes": 141,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "fdd88813b738a52347881696b96519fdb2088e00c385e8464a39a000eee55792"
+        },
+        {
+          "sequence": "flowerbasket_indoor",
+          "first_override": 333,
+          "changes": 8,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "465f57734752c1e2ec1e37e0062d6cf6b33d3b2c7be0aa48ced7c5ec9000b1ab"
+        },
+        {
+          "sequence": "glass03_indoor",
+          "first_override": null,
+          "changes": 0,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "e4c35d76af85f169f5c31ac003d0a62ef655b2861d89df71cbbde5bf8024a36e"
+        },
+        {
+          "sequence": "mobilephone02_indoor",
+          "first_override": 290,
+          "changes": 11,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "31219d5165ef667495c7982c0ebac827dd39021d1219f292b606f90f1335176f"
+        },
+        {
+          "sequence": "bag05_indoor",
+          "first_override": 62,
+          "changes": 9,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "411c77bf07c2bb10186f557584a6d11778978949aad0784ea1e007d76ce17411"
+        },
+        {
+          "sequence": "beautifullight01_indoor",
+          "first_override": null,
+          "changes": 0,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "62397df5e48958645d869bb45fe95263deb844ba54df0783691bfbf00a4462ea"
+        },
+        {
+          "sequence": "colacan01_indoor",
+          "first_override": 244,
+          "changes": 63,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "b6e5a91ecb3ec05e49aa8e42ac8c7d67c3bd4357ed315943139380ddac9b4512"
+        },
+        {
+          "sequence": "container01_indoor",
+          "first_override": null,
+          "changes": 0,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "2d2dd16354841069400bc1ddfe1f6b5eb7c6d441f0838517667f5d40d635845f"
+        },
+        {
+          "sequence": "cup10_indoor",
+          "first_override": 211,
+          "changes": 24,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "ddcf7cac3bc70b7e69d1d1ab97e62695580e1a6a3a162702ec0a3ef5622cb0a9"
+        },
+        {
+          "sequence": "cup13_indoor",
+          "first_override": 71,
+          "changes": 26,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "a28f3485d3e87bfabdf87fd426d0ae31eb07c78aadaecc7c1ef3a39e1f9e8179"
+        },
+        {
+          "sequence": "flower02_wild",
+          "first_override": 200,
+          "changes": 3,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "bf3b1eadb30c16471d39663244bb5e92739557aa106f26620e55440fc01577f8"
+        },
+        {
+          "sequence": "flower03_indoor",
+          "first_override": null,
+          "changes": 0,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "66563504b6723a7e77567eeaec8262806e3d334211b14858df07e088917a3076"
+        },
+        {
+          "sequence": "ghostmask_indoor",
+          "first_override": 287,
+          "changes": 4,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "2782fe3e3ebb4d6d01d07752266c38106e86973b03a3c0b4cac1fb9a0af4d5f6"
+        },
+        {
+          "sequence": "mobilephone01_indoor",
+          "first_override": 27,
+          "changes": 25,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "1e812cd1f19048e6487a60913b11a7dfed61f0fdf559ef302837701898c7c3ca"
+        },
+        {
+          "sequence": "notebook02_indoor",
+          "first_override": 393,
+          "changes": 16,
+          "native_prefix_exact": true,
+          "trajectory_sha256": "6b5e3c69f77cfe8b2dc6e8327d80f4e4c39ae174ae205218b40fbeb49a576256"
+        }
+      ],
+      "positive_sequences": 6,
+      "new_failure_sequences": []
+    }
+  },
+  "frames_per_arm": 33130,
+  "total_frames": 66260,
+  "matched_initialization_and_order": true,
+  "native_baseline_recomputed": true,
+  "checkpoint_sha256": {
+    "control": "0bd04b696a38c3e9388f59abfe4180bda2026c62447f2fbc1c7db26f6d7abcf8",
+    "mixed": "a249081ff664aa98c643f9e8b75718ab1dc8f03f4680737faec1c0a742de56ce"
+  },
+  "training_result_sha256": {
+    "control": "f58832f419a3057adf79aef4e086db10fe1f31cd98b68eeb4ec8214ea0452854",
+    "mixed": "df61c6b001874b636f88696c570d9d5e07ff395c047962d6b1faf2779d1e7592"
+  },
+  "spec_sha256": "30a1cff2f81ff898df272ddbb3ac57589c40686b65b671fc66a8d9f3983c07c8",
+  "training_binding_sha256": "d308fbef99d65ffe53caaa6c9f62b4f475ec1fb8ab1ad2ce56a7c5b422e3ea4d",
+  "data_audit_sha256": "2fe646d4745bbe2587b27f31ce4967cba91027f0616ee400a86e406749c424e0",
+  "scope": "Repeated Train development. Data attribution requires mixed improvement over paired control; a qualifying control is reported as extra-training benefit only."
+}

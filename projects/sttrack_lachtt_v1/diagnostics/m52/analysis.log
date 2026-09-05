@@ -1,0 +1,79 @@
+{
+  "status": "complete",
+  "integrity_pass": true,
+  "primary": "policy_state_data",
+  "primary_pass": false,
+  "gates": {
+    "control": {
+      "mean_iou": false,
+      "fewer_low_frames": false,
+      "no_episode_increase": false,
+      "sequence_coverage": true,
+      "successful_sequence_protection": true
+    },
+    "mixed": {
+      "mean_iou": false,
+      "fewer_low_frames": false,
+      "no_episode_increase": false,
+      "sequence_coverage": true,
+      "successful_sequence_protection": true
+    }
+  },
+  "incremental_gates": {
+    "mean_iou": false,
+    "low_frames": false,
+    "episodes": true
+  },
+  "extra_training_control_pass": false,
+  "advancing_arm": null,
+  "aggregates": {
+    "default": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "m45": {
+      "valid_frames": 28897,
+      "iou_sum": 19768.50630952179,
+      "low_iou_frames": 6188,
+      "failure_episodes": 80,
+      "mean_iou": 0.6841023742783606,
+      "macro_sequence_mean_iou": 0.6954084383805555
+    },
+    "control": {
+      "valid_frames": 28897,
+      "iou_sum": 18605.997579961513,
+      "low_iou_frames": 7429,
+      "failure_episodes": 90,
+      "mean_iou": 0.6438729826612283,
+      "macro_sequence_mean_iou": 0.6671082475548344
+    },
+    "mixed": {
+      "valid_frames": 28897,
+      "iou_sum": 18230.96473148059,
+      "low_iou_frames": 8058,
+      "failure_episodes": 80,
+      "mean_iou": 0.6308947202644077,
+      "macro_sequence_mean_iou": 0.6781284158048135
+    }
+  },
+  "frames_per_arm": 33130,
+  "total_frames": 66260,
+  "matched_initialization_and_order": true,
+  "native_baseline_recomputed": true,
+  "checkpoint_sha256": {
+    "control": "0bd04b696a38c3e9388f59abfe4180bda2026c62447f2fbc1c7db26f6d7abcf8",
+    "mixed": "a249081ff664aa98c643f9e8b75718ab1dc8f03f4680737faec1c0a742de56ce"
+  },
+  "training_result_sha256": {
+    "control": "f58832f419a3057adf79aef4e086db10fe1f31cd98b68eeb4ec8214ea0452854",
+    "mixed": "df61c6b001874b636f88696c570d9d5e07ff395c047962d6b1faf2779d1e7592"
+  },
+  "spec_sha256": "30a1cff2f81ff898df272ddbb3ac57589c40686b65b671fc66a8d9f3983c07c8",
+  "training_binding_sha256": "d308fbef99d65ffe53caaa6c9f62b4f475ec1fb8ab1ad2ce56a7c5b422e3ea4d",
+  "data_audit_sha256": "2fe646d4745bbe2587b27f31ce4967cba91027f0616ee400a86e406749c424e0",
+  "scope": "Repeated Train development. Data attribution requires mixed improvement over paired control; a qualifying control is reported as extra-training benefit only."
+}

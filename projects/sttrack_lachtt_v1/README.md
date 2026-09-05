@@ -401,11 +401,15 @@ M52 retains the original geometry and compares two equally trained heads:
 duplicated original fit records versus original records paired with captures
 from the fixed M45 policy's own predicted trajectory. Both arms have the same
 1,511 physical events, 3,022 logical views, initialization, and 1,900 optimizer
-steps. Collection, the sealed data audit, both training arms, and actual
-tracker-loader checks have completed. Both heads are now undergoing full
-recursive Train-development evaluation; no M52 recursive or public result is
-available yet. The small static development difference does not establish
-tracking improvement. See [M52 completed training evidence](diagnostics/m52/TRAINING_REPORT.md),
+steps. Collection, the sealed data audit, both training arms, actual
+tracker-loader checks, and both complete recursive runs have finished.
+Control reaches mean IoU 0.643873 with 7,429 low frames and 90 H10 episodes;
+Mixed reaches 0.630895 with 8,058 low frames and 80 episodes. Both fail the
+frozen native improvement gate, and the paired state-data condition also
+fails. Neither head advances to public evaluation. See the
+[completed M52 recursive result](diagnostics/m52/RESULT_REPORT.md),
+[auxiliary affinity readout diagnostic](diagnostics/m52/AFFINITY_REPORT.md),
+[M52 completed training evidence](diagnostics/m52/TRAINING_REPORT.md),
 [implementation and evidence limits](diagnostics/m52/PIPELINE_IMPLEMENTATION.md),
 and the [training-before-results advancement note](diagnostics/m52/PRE_TRAINING_NOTE.md).
 
