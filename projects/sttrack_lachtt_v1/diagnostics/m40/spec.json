@@ -1,0 +1,36 @@
+{
+  "schema": "sttrack_m40_failure_start_census_spec_v1",
+  "experiment": "M40 read-only failure-start search-domain census",
+  "source_commit": "72b6446f5ba0e96c8882001f3286585fd81cff30",
+  "paths": {
+    "m39_result": "/root/autodl-tmp/sttrack_lachtt_m39_vot_low22_template_ablation_v1_20260902/m39_result.json",
+    "default_merge": "/root/autodl-tmp/sttrack_lachtt_m39_vot_low22_template_ablation_v1_20260902/default/merge_result.json",
+    "default_analysis": "/root/autodl-tmp/sttrack_lachtt_m39_vot_low22_template_ablation_v1_20260902/default/master/analysis/m39_default_low22_analysis.json",
+    "tracker_source": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/test/tracker/sttrack.py",
+    "crop_source": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/train/data/processing_utils.py",
+    "tracker_config": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/experiments/sttrack/deep_rgbd_256.yaml",
+    "trajectory_root": "/root/autodl-tmp/sttrack_lachtt_m39_vot_low22_template_ablation_v1_20260902/default/master/results/sttrack_m39_default_low22/baseline",
+    "sequence_root": "/root/autodl-tmp/VOT-RGBD2022/sequences",
+    "output_dir": "/root/autodl-tmp/sttrack_lachtt_m40_failure_start_census_v1_20260902/result"
+  },
+  "input_sha256": {
+    "m39_result": "cf953c0d3c69609bcd83c11cb24ba57f37e30b38d3b3bcad32860b3a9ba9c1b5",
+    "default_merge": "80ec522448c70b5b29b918c112475b8c901410d872600aa3c2b89d0046294a65",
+    "default_analysis": "a67f7c59122e98ef56153570145b14156ee95fb3a9d56d688e6d52224c4cdc61",
+    "tracker_source": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "crop_source": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "tracker_config": "1d4274ec183862be9d74ce714cebe1fe383d760c25a1a1b8615f11c2a941044c"
+  },
+  "search_factors": [4.0, 6.0, 7.0],
+  "definitions": {
+    "failure_start": "The exact M39/VOT progress index: first frame of ten consecutive overlap <= 0.1 frames.",
+    "driving_state": "The previous trajectory prediction, or anchor GT for the first post-initialization frame.",
+    "crop_geometry": "Exact STTrack sample_target geometry: ceil(sqrt(w*h)*factor), centered with Python round, with padding outside the image.",
+    "inside_factor4": "GT target center is inside the official factor-4 crop at failure onset.",
+    "factor6_only": "GT center is outside factor-4 but inside factor-6.",
+    "factor7_only": "GT center is outside factor-6 but inside factor-7.",
+    "outside_factor7": "GT center is outside all three tested crops.",
+    "interpretation_limit": "Crop coverage is candidate-availability geometry only; it does not prove that wider inference would select or recover the target."
+  },
+  "claim_ceiling": "Read-only diagnosis of the completed M39 default low22 trajectories. It is not a new tracker, metric, checkpoint, training set, or authorization for full127."
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "sttrack_m41_candidate_capacity_v1",
+  "repository": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+  "sequence_root": "/root/autodl-tmp/VOT-RGBD2022/sequences",
+  "checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+  "checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "source_sha256": {
+    "lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "lib/test/tracker/sttrack_lachtt_observation.py": "183d8a3c8164db884beda1bf0ff6052c32aa44edaf2661acf922f13635018604",
+    "lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "lib/train/dataset/depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344"
+  },
+  "inputs_sha256": "97b12aeba3a09c66c33496a28f3041b5280aa4fb38d7b4477c5767a75f2ab1da",
+  "nms_top_k": 10,
+  "nms_kernel": 3,
+  "search_factors": [
+    4,
+    7
+  ],
+  "expected_events": 124,
+  "expected_wide_events": 9,
+  "replay_frames": 31834,
+  "shard_frames": [
+    15844,
+    15990
+  ],
+  "bbox_serialization_tolerance_px": 0.001,
+  "confidence_tolerance": 1e-05,
+  "gt_policy": "Only anchor initialization GT enters tracker; onset GT is posthoc-only. GT-selected event times are diagnosis, not a deployment trigger.",
+  "no_training": true,
+  "no_state_commit_from_shadow": true,
+  "full127": false
+}

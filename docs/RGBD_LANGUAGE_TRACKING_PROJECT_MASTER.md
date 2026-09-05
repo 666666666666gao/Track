@@ -16038,3 +16038,866 @@ M30没有生成新tracker权重或公开结果，正式指标继续保持：
 | CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
 
 Qwen3_8B继续保留、未启用；全帧、全anchor和全序列文本注释仍未执行。
+
+## 5.23 M31：缓存关系与直接实例标签只读诊断（2026-09-02，封存负结果）
+
+M30封存后没有直接实现新模型，而是先用零优化、sequence-disjoint诊断回答两个问题：
+
+1. 将`5×58`紧凑关系换成缓存中已有的完整RGB、Depth、fused、CLIP与query关系，能否提高strict-beneficial可分性；
+2. 不预测未来gain，直接监督shadow候选框是否仍覆盖目标，能否得到安全的target--distractor边界。
+
+所有诊断只使用DepthTrack Train folds 2--5、M25冻结的507个top actions、M27 candidate-own observation与原M25 final12。optimizer step、checkpoint、fold0/fold1数值标签、DepthTrack Test、CDTB、low22、VOT、Qwen和文本重注释均为0。
+
+### 5.23.1 完整关系反而降低strict-beneficial可分性
+
+比较输入为：
+
+```text
+compact: 5 × (49 scalar + 9 candidate-own identity) = 290维
+rich:    5 × (177 projected RGB-D/CLIP/query relation + 9 identity) = 930维
+```
+
+sequence-disjoint 1-NN只读结果：
+
+| 输入 | AUC | TP / FP / FN / TN | precision | recall |
+|---|---:|---:|---:|---:|
+| compact | **0.930668** | 26 / 12 / 28 / 441 | **0.684211** | **0.481481** |
+| rich | 0.892854 | 18 / 13 / 36 / 440 | 0.580645 | 0.333333 |
+
+rich相对compact的AUC下降`0.037814`，precision和recall也同时下降。两种输入都把已知灾难动作`cup14_indoor@1258`判成正类；rich分数为`0.055551`。因此没有实现或训练rich-GRU。
+
+输出：`/tmp/m31_rich_relation_readonly_diagnostic.out`，SHA256 `5abf5b8ded3e92b33b90519ba7b5c51cbe20819728e3b866185e2b410edc1507`。
+
+### 5.23.2 固定两帧实例确认会否决真实恢复
+
+按候选框真实IoU建立诊断标签：
+
+```text
+target:     IoU >= 0.5
+distractor: IoU <= 0.1
+0.1 < IoU < 0.5不参与
+```
+
+前两帧共885条可用action-age记录：
+
+| 输入 | AUC | TP / FP / FN / TN | precision | recall |
+|---|---:|---:|---:|---:|
+| compact 58维 | **0.758772** | 331 / 150 / 116 / 288 | **0.688150** | **0.740492** |
+| rich 186维 | 0.712947 | 307 / 181 / 140 / 257 | 0.629098 | 0.686801 |
+
+`car01@999`、`car01@1112`、`cat03@503`和`colacan01@2666`在age0/1的IoU都为0，但在age2/3以后恢复并最终属于beneficial。固定“两帧必须证明当前就是目标”的确认规则会错误否决这些真实救援；同时`cup14`在age0/1仍会被rich关系误判为target。
+
+两帧输出：`/tmp/m31_direct_association_readonly_diagnostic.out`，SHA256 `a5f705a249138cf5e977d1b16cb98931d6b8c601e3a59014fcf620006197cdc8`。
+
+### 5.23.3 延长到五帧仍没有安全实例边界
+
+age0--4共2,353条可用记录：
+
+| 输入 | AUC | TP / FP / FN / TN | precision | recall |
+|---|---:|---:|---:|---:|
+| compact 58维 | **0.797432** | 1130 / 397 / 225 / 601 | **0.740013** | **0.833948** |
+| rich 186维 | 0.751474 | 1072 / 425 / 283 / 573 | 0.716099 | 0.791144 |
+
+延长shadow可让部分真实rescue在age2/3显现，但不能排除灾难：
+
+- `cup14`真实age0--4 IoU全部为0，compact仍将age2/3/4判为target，rich五帧中四帧判为target；
+- `flower01`真实五帧IoU全部为0，compact仍在前四帧中的三帧判为target；
+- `car02`真实五帧均为高IoU，rich却将五帧全部判为distractor。
+
+因此问题不是把shadow由2帧改为5帧即可解决，而是当前缓存的STTrack/CLIP/random-projection关系缺少可泛化的实例级辨识信息。
+
+五帧输出：`/tmp/m31_direct_association_age5_readonly.out`，SHA256 `da4a3baa283be2ccbf459761d145a0dcedf749f15c0d8f65cbbdd72cbff22186`。
+
+### 5.23.4 强baseline复核与M31停止边界
+
+作者公开信息复核仍给出同一决策：MDTrack-U报告`80.0/83.5/95.1`，但公开GitHub仓库为空；FlexTrack报告`78.0/83.8/93.1`，但会议仓库将代码指向FlexTrackV2，而FlexTrackV2未报告VOT三指标且公开checkpoint不可取得；STTrack报告`77.6/82.5/93.7`，同时具有源码、许可和VOT22权重，仍是唯一可运行的强迁移平台。不能把FlexTrack的78.0归给FlexTrackV2，也不重跑用户已明确免测的STTrack baseline。
+
+M31缓存selector家族封存：不实现rich-GRU，不训练2/5帧直接association classifier，不扫描KNN阈值、shadow长度、projection、hidden size或loss，不接tracker和公开评测，不启用Qwen或全量文本。
+
+## 5.24 M32：DINOv2-S候选实例观测诊断（2026-09-02，封存负结果）
+
+M32只检验一种新的、与STTrack缓存关系不同的信息来源：Apache-2.0官方DINOv2 ViT-S/14。候选RGB框和初始化GT框均取2倍上下文、缩放至224，冻结模型，仅计算CLS特征；没有训练度量头。
+
+官方资产：
+
+| 资产 | SHA256 |
+|---|---|
+| `dinov2-main.zip` | `eebbfa9e4c2c2aa84c6ecd3baef7d4fcbd652431805c460bcf4860c118310497` |
+| `dinov2_vits14_pretrain.pth` | `b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9` |
+
+同一2,353条candidate-age标签上的原始candidate--initial CLS余弦结果：
+
+| 范围 | AUC |
+|---|---:|
+| 全部folds 2--5 | **0.720422** |
+| fold2 | 0.660972 |
+| fold3 | 0.621672 |
+| fold4 | 0.578254 |
+| fold5 | 0.784534 |
+
+已知灾难实例仍无法排除：`cup14`五帧真实IoU均为0，但余弦为`0.670/0.664/0.649/0.794/0.807`；`flower01`五帧真实IoU均为0，余弦仍为`0.595/0.632/0.586/0.586/0.602`。
+
+随后只读构造`abs(candidate-initial)、candidate×initial、cosine`共769维pair relation，并按M30相同sequence-disjoint fit folds做1-NN：
+
+```text
+AUC = 0.559197
+TP / FP / FN / TN = 954 / 579 / 401 / 419
+precision = 0.622309
+recall = 0.704059
+```
+
+`cup14`与`flower01`仍然五帧全部被判为target。DINOv2通用视觉特征没有解决“同类实例中的原目标是谁”，而且明显弱于compact STTrack关系。M32因此封存：不训练DINO metric head，不扫描层、token、crop、分辨率或模型大小，不接tracker，不运行公开评测。
+
+| 输出 | SHA256 |
+|---|---|
+| `/tmp/m32_dinov2_instance_readonly_diagnostic.out` | `5f3bb8d2ba3726c24d10c5376020e0ee61f3228fad4956dd74c5b713ff648918` |
+| `/tmp/m32_dinov2_pair_relation_readonly.out` | `7bd638aaf3b2cca3b33135065db083073a70da10bd38c82b5ead81f64d6d9d40` |
+
+## 5.25 M33：报告框统一宽高偏差诊断（2026-09-02，封存负结果）
+
+STTrack官方报告的ROB已达到项目目标，而当前整体ACC也已达标，因此M33检验一个最小、完全不污染递归状态的假设：是否存在可从DepthTrack Train学习的统一宽高报告偏差，能够只修正最终报告框。
+
+协议固定为：
+
+- 只用ledger中folds 2--5的85条training序列；
+- eval fold2/3分别只用fold4/5拟合，eval fold4/5分别只用fold2/3拟合；
+- 每条fit序列先计算`median(log(gt_size/pred_size))`，再跨序列取median并指数还原；
+- 仅绕预测框中心缩放width/height；
+- frame0不参与，NaN或无效GT显式跳过；
+- 不改变tracker state、template、query，不训练、不扫描尺度、不读取fold0/fold1数值标签。
+
+在115,434个非初始化帧上的OOF结果：
+
+| 汇总 | 原框 | 修正框 | 变化 |
+|---|---:|---:|---:|
+| micro mean IoU | 0.705297777 | 0.705200613 | **-0.000097164** |
+| macro mean IoU | 0.716611175 | 0.716536153 | **-0.000075023** |
+| IoU <= 0.1帧数 | 21,928 | 21,928 | 0 |
+
+| eval fold | width scale | height scale | mean IoU变化 | 低overlap变化 | 改善序列 / 总序列 |
+|---:|---:|---:|---:|---:|---:|
+| 2 | 1.001770989 | 1.003219394 | -0.000285040 | +1 | 8 / 22 |
+| 3 | 1.001770989 | 1.003219394 | -0.000050570 | -1 | 9 / 21 |
+| 4 | 1.000178330 | 1.001512821 | -0.000010580 | 0 | 11 / 20 |
+| 5 | 1.000178330 | 1.001512821 | -0.000019971 | 0 | 10 / 22 |
+
+四个未见折的mean IoU全部下降，85条序列仅38条改善；拟合尺度都极接近1，说明STTrack报告框没有统一的宽高系统偏差。报告框scale correction不支持，不能据此训练轻量box refinement head，也不运行VOT。结果输出`/tmp/m33_report_only_bbox_bias_readonly.out`，SHA256 `8dd941a1c3f41b66c30579cd6a1677f984cf7c34edea2ee72c34b9f95127b943`。
+
+M31--M33均为零优化诊断，没有修改项目源码或生成可部署模型，因此GitHub不新增临时诊断脚本或权重。正式最好指标保持不变：
+
+| 数据集 | 当前正式最好 | 目标 | 状态 |
+|---|---:|---:|---|
+| VOT-RGBD2022 EAO / ACC / ROB | **74.020583 / 82.579344 / 89.565651** | 77.9 / 82.1 / 93.7 | ACC达标，EAO/ROB不足 |
+| DepthTrack Pr / Re / F | **65.995933 / 65.335885 / 65.664250** | 65.2 / 64.9 / 65.1 | 达标，保护 |
+| CDTB Pr / Re / F | **75.387821 / 76.005850 / 75.695574** | 72.9 / 75.6 / 74.2 | 达标，保护 |
+
+Qwen3_8B继续保留且未启用；全帧、全anchor和全序列文本注释仍未执行。当前新证据进一步排除了“继续加缓存特征”“固定2/5帧确认”“DINO通用实例特征”和“统一框尺度校正”。若继续提高ROB/EAO，下一主假设必须提供真实的候选实例持续身份信息或改变可恢复候选的生成方式，不能再扫描这些已封存家族。
+
+## 5.26 M34：STTrack动态模板更新的因果消融（2026-09-02）
+
+### 5.26.1 为什么重新审计模板更新
+
+STTrack RGB-D配置固定使用两个模板槽，并在`frame_id % 50 == 0`且`best_score > 0.75`时，直接用当前预测框裁出的模板替换动态槽。已有fixed6模板shadow说明旧/新模板在普通帧有差异，但没有形成确认失锁恢复；M34进一步利用完整Train152 default trace，检验全量序列中是否真实存在“高置信错误框被写入动态模板”。
+
+本轮所有推理均使用官方`STTrack_Vot22.pth.tar`、fixed-query-window和相同RGB-D预处理；没有训练、checkpoint、公开评测、Qwen或文本重注释。
+
+### 5.26.2 全152模板写入事件审计
+
+只读取ledger folds 2--5的85条training序列。按源码原规则识别出1,391次可执行模板写入：
+
+| 当前预测状态 | 写入次数 |
+|---|---:|
+| IoU >= 0.5，目标仍正确 | 1,200 |
+| 0.1 < IoU < 0.5，状态模糊 | 10 |
+| IoU <= 0.1，错误目标/失锁 | **181** |
+
+181次坏写入覆盖22条序列，占全部写入`13.0122%`；其中164次后续H10仍连续低overlap，仅2次在H10内恢复到IoU>=0.5。但时序归因表明：
+
+- 162/181次坏写入发生在此前已经连续低overlap至少10帧之后，主要是失锁后的重复污染；
+- 只有2次坏写入发生前10帧内仍出现过正确目标；
+- 1,200次正确写入中只有4次在未来20帧内出现新的连续10帧失败；
+- 10次模糊写入中有2次在未来20帧内出现新失败。
+
+因此动态模板坏写入是真实问题，但多数是持续失锁的放大器，不是首次失锁的唯一原因。只凭“当前score高”不能保证模板正确；同时也不能据此全局禁用更新。
+
+事件审计输出：`/tmp/m34_sttrack_template_write_census_readonly_v2.out`，SHA256 `305b775748071eba2698ea0d816e694a4e3e03ed24e9a5f354f453a59d74a610`。
+
+### 5.26.3 六条更新临界序列的no-update因果消融
+
+冻结6条在更新附近出现新失败的training序列：`ball13_indoor`、`car02_indoor`、`colacan02_indoor`、`cube04_indoor`、`cup05_indoor`、`pine02_wild_320`。唯一干预为：
+
+```text
+cfg.TEST.UPDATE_INTERVALS = 1_000_000_000
+```
+
+即保留首帧模板和全部bbox/query递归，只禁止动态槽的定时写入。推理过程中只读取首帧GT；结果完成后才离线拼接GT。default与no-update在首次更新能够影响输出之前的bbox、score最大差均为0，证明路径一致。
+
+| 序列 | default mean IoU | no-update mean IoU | 变化 | 低overlap帧变化 |
+|---|---:|---:|---:|---:|
+| `ball13_indoor` | 0.156 | 0.430 | **+0.274** | -612 |
+| `car02_indoor` | 0.690 | 0.910 | **+0.220** | -129 |
+| `cube04_indoor` | 0.100 | 0.270 | **+0.170** | -495 |
+| `colacan02_indoor` | 0.680 | 0.770 | **+0.090** | -404 |
+| `cup05_indoor` | 0.420 | 0.440 | **+0.020** | -56 |
+| `pine02_wild_320` | 0.630 | 0.560 | **-0.070** | +22 |
+
+六条汇总：
+
+```text
+mean IoU:        0.405862705 -> 0.537665329，+0.131802624
+IoU<=0.1 frames: 5708 -> 4034，-1674
+改善序列:         5/6
+failure runs:    25 -> 30
+```
+
+failure run数量增加是因为部分超长连续失败被恢复帧切分成多个较短失败段；它提醒不能用普通Train episode数直接等同VOT multi-start ROB。更重要的是，`pine02`明确退化，所以“永久禁用动态模板”不能部署。
+
+| 工件 | SHA256 |
+|---|---|
+| suspect shard0 | `d5a65ea4a27cb360f3d4d2f21fed0c02b459417679566dd85dcd04c6431e1d5c` |
+| suspect shard1 | `9d7aedfeb8645de03264ebd1b11ec9a3957562c1e60d9802291c0121b8b625b1` |
+| suspect analysis | `f2d5abb100c3d75afd9d49dcbae37977f9fe3c6d577c2144d69966cc02eab40e` |
+
+### 5.26.4 预冻结正常控制组
+
+为避免只在已知坏序列上得出偏置结论，在任何控制组no-update推理前固定选择规则：fold配额与可疑组相同；default mean IoU至少0.7；至少10次合法模板更新；坏写入为0；正确写入后20帧内新failure为0；每fold按更新次数降序、序列名升序选取。
+
+冻结控制为`bottle03_indoor`、`chair02_indoor`、`book02_indoor`、`human03_wild`、`bottle02_indoor`、`egg_indoor`。前置bbox/score仍完全一致。结果：
+
+```text
+mean IoU:        0.834523497 -> 0.827414471，-0.007109026
+IoU<=0.1 frames: 776 -> 888，+112
+改善序列:         2/6
+failure runs:    13 -> 13
+```
+
+`egg_indoor`下降约0.03并新增114个低overlap帧，说明健康轨迹确实会从动态模板更新获益。控制组与可疑组共同证明：
+
+> STTrack动态模板更新是双向因果因素。总是更新会在困难序列产生长期污染；从不更新会伤害正常外观适应。下一结构必须决定“允许还是抑制本次更新”，而不是固定关闭或固定开启。
+
+| 工件 | SHA256 |
+|---|---|
+| control selection | `25628226f3070c4330d5ae86462f38153ad7a58ab8b24e2f5a9511cd9e836fb1` |
+| control shard2 | `5d3cf29047c30b10c95cc447f6cad5cf2f3f3cff9169aa7f8d5fed768903f12d` |
+| control shard3 | `1cfb38b64e97f47641c00c69672daf1bcad51fe71e36749d0283cbcb2a401793` |
+| control analysis | `dbc639d1b01b2f6465c47319fb62cf890341001eef16515b86b00df93d6cf534` |
+
+### 5.26.5 对模板事务架构的直接约束
+
+M34支持的最小结构不是旧“public先写新模板、protected只观察”，而是：
+
+```text
+旧动态模板继续服务public路径
+        +
+新模板进入tentative槽，不立即替换
+        ↓
+未来帧并行比较old/new模板的相对生存、响应和候选一致性
+        ↓
+健康且new明确更优：promote
+否则：保留old并丢弃tentative
+```
+
+这一事务只控制动态模板槽，暂存期间不改变public bbox、query或搜索中心；它与此前失败的多中心bbox recovery selector不是同一个动作。M34还没有提供可泛化的在线allow/suppress判据，因此不能直接接VOT。
+
+## 5.27 M35：full152 no-update配对轨迹终态（2026-09-02）
+
+为在未见序列上学习/检验条件化模板事务，M35生成完整DepthTrack Train 152条no-update轨迹，与现有default full152 trace逐帧配对。两片各109,917/110,037帧，分别运行在两张RTX 3090；唯一干预仍为不可到达的更新间隔，推理不读取未来GT。原始JSON完成后立即确定性gzip压缩，避免96%磁盘占用继续上升。
+
+冻结绑定：
+
+| 项目 | SHA256 |
+|---|---|
+| 原full152 plan | `0c40cf46a543293b5ade0a6373d5ef50f80f8b2b46e9b4fda02a3c727dd2bc50` |
+| STTrack VOT22 checkpoint | `cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98` |
+| config | `b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344` |
+| tracker source | `d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f` |
+| model source | `d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13` |
+| runner | `e2bf6753c2c9205c7c37b8530883a72a821d8bef092527552bf6eec2098c3964` |
+| spec | `5e9dfc20e4f2989d33adc064d6c9cd5be301d6d44045abf2807ec156fb6b548a` |
+
+输出根：`/root/autodl-tmp/sttrack_lachtt_m35_no_update_full152_v1_20260902`；screen为`m35_no_update_s0/s1`。两片分别完成109,917和110,037帧，退出码均为0；原始JSON完成后按冻结规则压缩并删除未压缩副本：
+
+| 工件 | 帧数 | SHA256 |
+|---|---:|---|
+| `shard0.json.gz` | 109,917 | `29225eee3dfca3fad54bc313d87060732689a2c009495f526fc02c58cdbc0ee9` |
+| `shard1.json.gz` | 110,037 | `75f6ae970e2067ed8fcab932762e2dd109bb231e99f9112284b38144fa1be901` |
+| 预冻结分析脚本 | -- | `0689c8def73c0a03d5b813688e1ee3d9d7c41dada7b161acabb9c704b061817e` |
+| `analysis.json` | -- | `7e2d543109bb4cb8ebb91dc5b48283665060c3f12840f0b7d62d56fac749f072` |
+
+### 5.27.1 完整training folds 2--5结果
+
+分析只读取ledger folds 2--5的85条训练序列数值GT；fold1、fold0、DepthTrack Test、CDTB和VOT均未读取。default与no-update在首次合法更新能够影响下一帧之前的bbox和score最大差均为0，证明配对成立。汇总115,434个有效帧：
+
+| 指标 | default动态更新 | 永久no-update | 差值 |
+|---|---:|---:|---:|
+| micro mean IoU | 0.705297777 | **0.746688030** | **+0.041390253** |
+| macro mean IoU | 0.716611175 | **0.748216480** | **+0.031605305** |
+| IoU<=0.1帧 | 21,928 | **16,217** | **-5,711** |
+| failure runs | 235 | **221** | **-14** |
+
+85条中41条改善、41条退化、3条完全不变。收益并不是所有序列一致，而是少数严重污染轨迹带来很大的长尾收益。改善最明显的序列包括：
+
+| 序列 | default IoU | no-update IoU | 差值 | 低重叠帧变化 |
+|---|---:|---:|---:|---:|
+| `cup06_indoor` | 0.20 | 0.88 | **+0.67** | -1,615 |
+| `colacan04_indoor` | 0.28 | 0.81 | **+0.54** | -339 |
+| `ball07_indoor` | 0.37 | 0.78 | **+0.42** | -998 |
+| `dumbbells02_indoor` | 0.42 | 0.80 | **+0.39** | -621 |
+| `ball13_indoor` | 0.16 | 0.43 | **+0.27** | -612 |
+| `flower01_indoor` | 0.52 | 0.75 | **+0.24** | -220 |
+| `car02_indoor` | 0.69 | 0.91 | **+0.22** | -129 |
+| `mushroom05_indoor` | 0.61 | 0.82 | **+0.21** | -227 |
+| `glass05_indoor` | 0.60 | 0.79 | **+0.19** | -228 |
+| `toy07_indoor_320` | 0.43 | 0.62 | **+0.19** | -221 |
+
+退化最大的序列同样明确，证明不能把永久no-update直接部署：
+
+| 序列 | default IoU | no-update IoU | 差值 | 低重叠帧变化 |
+|---|---:|---:|---:|---:|
+| `glass03_indoor` | 0.76 | 0.27 | **-0.48** | +294 |
+| `pigeon03_wild` | 0.88 | 0.63 | **-0.25** | +198 |
+| `ball02_indoor` | 0.55 | 0.33 | **-0.22** | +415 |
+| `flower03_indoor` | 0.84 | 0.70 | **-0.14** | +85 |
+| `pigeon07_wild` | 0.86 | 0.75 | **-0.10** | +81 |
+| `pine02_wild_320` | 0.63 | 0.56 | **-0.07** | +22 |
+| `cup10_indoor` | 0.87 | 0.80 | **-0.07** | +30 |
+| `cat05_indoor` | 0.83 | 0.77 | **-0.07** | +62 |
+
+### 5.27.2 为什么首次更新事件不能直接训练短窗gate
+
+global no-update从首次更新之后便与default拥有不同模板历史，所以后续每次更新不能被错误解释成单事件因果对照；本轮唯一局部严格对齐的是每条序列的首次合法更新。81个可计算H10事件中：
+
+```text
+抑制后H10更好：39
+允许后H10更好：40
+相等：2
+平均 suppress gain：-0.000795
+范围：[-0.043552, +0.037656]
+|gain|>=0.05：0
+冻结strict beneficial：允许0、抑制0
+新增短窗伤害：0
+```
+
+73个具有完整H50的首次事件中，抑制/允许更好为37/34，平均gain仅`+0.002594`；只有`ball13_indoor@300`达到明显的`+0.191489` H50抑制收益。也就是说，单次首次模板写入通常只产生很小的短窗变化，M35的巨大整体差异来自多次更新及递归状态的长期累积。用这81个近零标签训练短窗二分类器会把噪声当成因果信号，因此不授权这样做。
+
+### 5.27.3 M35支持与不支持的结论
+
+M35直接支持：
+
+1. 官方STTrack固定每50帧、高置信即覆盖动态模板，在DepthTrack Train上是重要性能因素；
+2. 动态模板在部分序列造成严重长期污染，永久关闭可显著恢复这些轨迹；
+3. 动态适应对另一批序列不可替代，永久关闭会出现同样严重的退化；
+4. 模板决策必须是条件化、可撤销的长期事务，而不是全开、全关或单帧score阈值。
+
+M35不支持：
+
+1. 不支持把no-update直接称为新模型或新最好指标；
+2. 不支持用首次更新H10训练allow/suppress分类器；
+3. 不支持把首次更新后的所有差异都归因于某一个后续更新事件；
+4. 不授权Active tracker、DepthTrack Test、CDTB、VOT low22/full127或checkpoint；
+5. 不改变既有正式指标。
+
+下一次因果采集若继续模板事务，应在每个合法更新点从**完全相同的当前state/query/旧模板**分叉，仅让`old template`与`new tentative template`各自独立递归固定长窗；这样每个更新事件才有可学习的allow/suppress标签。两分支在验证期都不能污染公开tracker，结果应按sequence-disjoint划分，并继续以零新增catastrophic为硬门。该方向只控制template slot，不替代bbox recovery。
+
+截至M35终态，正式指标仍保持：VOT `74.020583/82.579344/89.565651`，DepthTrack `65.995933/65.335885/65.664250`，CDTB `75.387821/76.005850/75.695574`。Qwen3_8B继续保留且未启用；全帧、全anchor和全序列文本注释仍未执行；本轮没有源代码变更，因此GitHub `main`仍为`7ab474084b6ed0d03004d4b5e879f55bad39283c`。
+
+## 5.28 M36：逐事件old/new模板因果shadow采集终态（2026-09-02）
+
+M35只能把“整条序列永久关闭更新”作为sequence policy比较，首次更新之后的模板历史已经不同，不能为后续每次写入提供干净因果标签。M36因此只解决这一缺口：在default公开轨迹的每个合法模板写入点，从完全相同的当前bbox、RGB/Depth query、固定模板和旧动态模板状态分叉：
+
+```text
+old branch：保留写入前的动态模板
+new branch：接受当前预测框裁出的新动态模板
+
+两分支：
+    固定递归50帧
+    后续动态模板更新全部关闭
+    bbox和query各自独立递归
+    不修改公开default tracker
+```
+
+推理阶段只读取第一帧初始化框，不读取未来GT。结果完成后才只对ledger folds 2--5读取数值GT；fold1/fold0、DepthTrack Test、CDTB、VOT和Qwen均保持关闭。
+
+### 5.28.1 单序列真实GPU工程门
+
+`bottle03_indoor` smoke完整运行3,186个公开帧、43个模板事件和两分支H50 rollout：
+
+| 检查 | 结果 |
+|---|---:|
+| default封存事件数 / M36事件数 | 43 / 43 |
+| public bbox逐帧最大差 | 0 |
+| public score逐帧最大差 | 0 |
+| 分支是否污染public路径 | 否 |
+| 未来GT是否用于推理 | 否 |
+| 最大GPU显存 | 637,893,632 bytes |
+| smoke SHA256 | `98772ed881591733e630e709bff83e4ce865af3eb222f7f1f2aa76b4fc988ec2` |
+
+工程门通过后才冻结正式spec：
+
+| 工件 | SHA256 |
+|---|---|
+| runner | `c112cf83630b5c613a30e10d1563b77196351d37f3fce10eab6f1253e86bcd8d` |
+| analysis | `0421de488e6aab624ce64f86c6471f4bc9191453a80522c45e0f0c9d4c66c9ae` |
+| spec | `0ded838347cb4024f28cb9ae105dd2e4a6bc0d4bc6f2932ed8811deb18ef596e` |
+
+### 5.28.2 冻结分析与晋升门
+
+主结果固定使用最长50帧窗口。某动作只有同时满足以下条件才记为strict beneficial：至少30个有效GT帧、相对另一分支mean IoU提高至少0.10、选中分支mean IoU至少0.50、前10个有效帧至少3次IoU>=0.50、且没有新增连续10帧IoU<=0.10失败。该定义在全量输出产生前已写入spec和analysis脚本，不根据结果调节。
+
+只有old/suppress与new/allow两类都至少覆盖12个事件、6条序列和3个fold，才允许另建sequence-disjoint gate训练计划；否则封存这一固定H50事务容量，不扫描阈值或窗口。
+
+### 5.28.3 正式采集状态
+
+training folds 2--5共85条序列，按原full152 plan分为：
+
+| shard | 序列 | 预期事件 | 估算public+branch steps | GPU |
+|---|---:|---:|---:|---:|
+| 0 | 41 | 630 | 115,565 | 0 |
+| 1 | 44 | 796 | 142,469 | 1 |
+
+两片于2026-09-02 12:42 CST启动，分别于14:24和14:47完成，退出码均为0。输出根为`/root/autodl-tmp/sttrack_lachtt_m36_event_local_template_v1_20260902`：
+
+| 工件 | 序列 | 事件 | SHA256 |
+|---|---:|---:|---|
+| `shard0.json` | 41 | 630 | `d740102a29ac643cb78103149d5560c9c2e161cb88fd12617718b4dfa92d1dd0` |
+| `shard1.json` | 44 | 796 | `a19c4506a4914929d239b1da7858b40a8f8f4b6b8960ec1f8bdc9e226cd1cbad` |
+| `analysis.json` | 85 | 1,426 | `5747cb27ebcd32a5c994ba5d24a91a8a900e3542716272d75199d1c8492c9b4a` |
+
+### 5.28.4 预冻结容量门结果：失败
+
+1,426个事件中1,327个具有至少30个有效GT帧。普通方向统计接近对称：保留旧模板更好629次，接受新模板更好555次，完全相等143次；平均`suppress gain`仅`+0.001217`。更重要的是，按运行前固定的严格定义：
+
+| 动作 | strict事件 | 序列 | folds | 冻结门 |
+|---|---:|---:|---|---|
+| 保留旧模板 / suppress | 6 | 5 | 2/3/4/5 | 需要12事件、6序列、3折，**失败** |
+| 接受新模板 / allow | 9 | 8 | 2/3/4/5 | 需要12事件、6序列、3折，**失败** |
+
+两类都覆盖四折，但事件数量不足；suppress还少1条序列。除此之外，保留旧模板相对新模板新增连续10帧低IoU失败16次，接受新模板相对旧模板新增11次。说明旧、新两个endpoint都可能造成灾难，不能把“旧模板保护”当成天然安全动作。
+
+强suppress正例只有：`suitcase@1150`、`mobilephone06@300`、`shoes01@900`、`toy03@550/750`、`car02@200`。其中`car02@200`最明显：旧模板H50 IoU `0.92`，新模板仅`0.08`，差`+0.84`。强allow正例为：`leaves05@2550`、`cube04@500`、`mobilephone06@1100`、`book04@400/800`、`colacan02@3750`、`egg@1950`、`cup10@1900`、`toy03@800`。同一`mobilephone06`和`toy03`内部同时存在应允许与应抑制事件，进一步排除了按序列永久开/关模板更新。
+
+因此M36严格决定为：
+
+```text
+capacity_gate = false
+不训练allow/suppress classifier
+不降低0.10 gain或12事件门
+不扫描H10/H20/H50、模板权重或阈值
+不实现Active模板提交
+不运行DepthTrack Test、CDTB或VOT
+```
+
+### 5.28.5 已有风险触发器为何无法直接复用
+
+随后只读使用既有、未调参的STTrack风险规则：`score<0.30`、`center jump>0.75`或`|log area change|>0.70`。在全部1,426个合法模板写入事件中，风险条件命中为**0**；181次当前IoU<=0.1的错误写入、6次strict suppress、9次strict allow也全部为0命中。
+
+原因不是实现错误，而是更新规则本身要求`score>0.75`，且错误实例切换通常运动连续、尺度稳定：它们会以高置信通过模板写入，却不会触发低置信/大运动风险门。只读脚本SHA为`2e1869a1f22bab327587dbfa5ed5a7148fe29f5f44a7a4094f1c7f421641d37b`，结果SHA为`0f18c178c17527f56ddf345efeb541d8f1cb6b7882358b82420bf7f61270afe6`。
+
+### 5.28.6 本轮发现的问题与下一边界
+
+M34--M36把模板问题收敛为：模板更新确实能造成长期污染，但**单个更新点的强因果样本极稀疏**，而现有高置信运动风险信号对错误模板写入完全失明。继续训练小样本event classifier只会复现之前候选selector的跨序列过拟合。
+
+下一步若继续模板方向，必须改变可观察证据而非放宽标签：例如让新模板先进入不影响public的长期tentative memory，积累候选自身RGB-D实例一致性和跨遮挡重现证据；仅靠response score、中心跳变、尺度变化或固定50帧endpoint比较均已不足。任何新结构仍须先在新的sequence-disjoint Train-only门通过后才进入low22。
+
+M36没有生成checkpoint或修改tracker源代码，GitHub `main`仍为`7ab474084b6ed0d03004d4b5e879f55bad39283c`。正式指标仍为VOT `74.020583/82.579344/89.565651`、DepthTrack `65.995933/65.335885/65.664250`、CDTB `75.387821/76.005850/75.695574`；Qwen3_8B保留且未启用，全帧/全anchor/全序列文本注释仍未执行。
+
+## 5.29 M37--M39：双模板只读selector封存与VOT low22全局no-update因果验证（2026-09-02）
+
+M35证明全局关闭更新在DepthTrack Train folds 2--5的聚合值上明显优于default，但41条序列改善、41条退化、3条持平，不能直接部署。M36又证明单事件old/new模板的强因果样本不足，且既有低分数/大运动风险规则对1,426次合法写入零命中。因此先做两个不训练、不写回tracker的固定双分支selector诊断，再把仍然最强的`static/no-update` endpoint送入用户要求的VOT低指标22序列验证。
+
+### 5.29.1 M37：逐帧较高response选择失败
+
+M37只读比较同一帧的default/adaptive分支与static/no-update分支，固定选择response score较高者；没有阈值扫描、训练或state写回。85条DepthTrack Train序列的结果为：
+
+| 路径 | micro IoU | macro IoU | IoU<=0.1帧 | 连续10帧低IoU runs |
+|---|---:|---:|---:|---:|
+| default/adaptive | 0.705515 | 0.716936 | 21,928 | 235 |
+| static/no-update | **0.746874** | **0.748521** | **16,217** | **221** |
+| 逐帧较高score选择 | 0.732701 | 0.742678 | 18,452 | 247 |
+| GT后验oracle | 0.776012 | 0.783038 | 13,581 | 171 |
+
+score选择虽然优于default，却明显不如static，而且failure runs增至247。它在序列内高频切换分支，说明错误实例同样能维持较高response；response不是目标身份或未来生存的充分证据。脚本SHA为`9abf8f2155e195fde20efc3ba2428350f233a60cc27c46bf6838ac5077df4115`，输出SHA为`1aebcb10054260563318fd26feb1dc93dc28dcad03bf5a83f493508fae6cadbc`。
+
+### 5.29.2 M38：VOT对齐的连续10帧score hysteresis仍失败
+
+M38不重新选择阈值，只采用与VOT确认失败长度一致的固定10帧滞回：另一分支必须连续10帧score更高才切换。结果为micro/macro IoU `0.733420/0.743575`、IoU<=0.1帧18,224、failure runs 238；共发生341次切换。它比M37略稳，但仍不及static的`0.746874/0.748521`与221 runs，且不能解决高置信错误身份。脚本SHA为`e461bbea15dcbd768c97e0c7d2b64709611ed390a6482196a6480d8f9a3afaca`，输出SHA为`be3384e7be0abb8fbb2a32a1b6f61a3981ed900a59e97c9f89e17aa2b0997089`。
+
+因此封存以下selector家族，不再扫描response差、连续帧数或滞回阈值：
+
+```text
+逐帧最高score
+固定连续score hysteresis
+仅由response决定default/static分支
+```
+
+M37/M38的oracle仍明显优于两个endpoint，证明动作空间有互补性；失败点是在线可观察的response无法安全识别正确实例，而不是分支毫无恢复容量。
+
+### 5.29.3 为什么现在只跑VOT low22，而不是full-127
+
+用户已明确要求：先在指标低的序列验证，只有改善后才允许全序列。M39因此固定使用原identity-only low22集合的22条序列和303个multi-start anchors，不生成新文本，不启用Qwen，不训练权重，不运行DepthTrack Test、CDTB或VOT full-127。
+
+同一批anchors上此前没有STTrack原始轨迹，只有SUTrack identity-only reference；直接用不同baseline比较无法归因。M39因此只补一组必要的同栈配对控制：
+
+| arm | checkpoint/架构/搜索域 | 动态模板规则 | GPU |
+|---|---|---|---:|
+| `default` | STTrack VOT22，factor=4，完全相同 | 每50帧且score>0.75写入 | 0 |
+| `no_update` | 同上 | interval固定为1,000,000,000 | 1 |
+
+每臂严格覆盖22序列、303 anchors和约220,483 tracker frames。唯一干预变量是动态模板是否写入；两臂都关闭语言，因此本轮回答的是“全局关闭STTrack模板更新能否改善VOT困难集”，而不是文本效果。
+
+冻结晋升门为：no-update相对default的EAO与ROB严格提高，ACC下降不超过0.10pp，确认失败数不增加，且default存活的anchor上新增确认失败必须为0。通过只表示允许另建一次full-127候选验证，不自动启动；失败则封存全局no-update，回到条件化长期template transaction。
+
+### 5.29.4 运行接线问题与真实smoke
+
+前两次smoke都在产生任何VOT轨迹前失败，不能算实验结果：
+
+1. `mplt`环境有VOT 0.7.1，但缺STTrack依赖`einops`；
+2. 切到原`sttrack`环境后，仓库旧VOT bridge使用`customMetadata`，与当前`vot-trax 4.0.2` API不兼容。
+
+最终最小修复为：toolkit继续使用`/root/miniconda3/envs/mplt/bin/python`，tracker通过VOT原生`python=`字段使用`/root/autodl-tmp/envs/sttrack/bin/python`；只在该环境安装`vot-trax==4.0.2 --no-deps`，并复用已经通过正式SUTrack VOT的4.0.2兼容bridge。没有升级OpenCV、Torch或模型依赖。
+
+真实smoke使用`cube05_indoor_2@100`的46帧forward trajectory，两臂均生成`.bin / confidence / time`三件套并成功merge。因为46帧早于首次50帧更新，default与no-update的bbox SHA完全相同（`1c0820071d81fa993e21c8a46fe572aab1a53e9d442c1d91a2fbb45cd7b3b4a9`），confidence SHA也完全相同（`20d7df85af7c04124aaa2f8cb89b38a9468b9fc68ec3c799478eeadf46e21bb0`），证明两臂在干预生效前精确一致。
+
+M39输出根为`/root/autodl-tmp/sttrack_lachtt_m39_vot_low22_template_ablation_v1_20260902`。正式双臂于2026-09-02 15:43 CST启动：
+
+| arm | screen | manifest SHA256 | 启动状态 |
+|---|---|---|---|
+| default | `m39_low22_default` | `fea9fcedc9c5d8398cbd0bd7535520a5ad698e161684562dcf962b6a883dcfd2` | 0/303，运行中 |
+| no-update | `m39_low22_no_update` | `930be1be9c56505013ea1bd1321d15cb4e1b1005fca1fb9a98b9f5de79bbcb4a` | 0/303，运行中 |
+
+两张GPU启动时分别占用约2.43GB；预计60--120分钟。终态必须报告两臂EAO/ACC/ROB、确认失败总数、逐anchor rescue/new failure及逐序列失败变化，不能只看聚合IoU。M39运行前后正式最好指标保持不变：VOT `74.020583/82.579344/89.565651`、DepthTrack `65.995933/65.335885/65.664250`、CDTB `75.387821/76.005850/75.695574`。本轮没有新checkpoint、没有全帧/全anchor文本注释，也没有可推送的tracker源代码变更。
+
+### 5.29.5 M39正式终态：全局no-update在VOT low22显著失败
+
+两臂均完成22序列、303/303 anchors、220,483/220,483估算tracker frames；default于18:23完成，no-update于18:24完成，controller正常退出并分别生成303×3个标准VOT结果文件。VOT toolkit 0.7.1在完全合并的master workspace上给出：
+
+| low22同栈结果 | EAO | ACC | ROB | 确认失败anchors |
+|---|---:|---:|---:|---:|
+| STTrack default | **57.135993** | **75.719622** | **73.022401** | **124** |
+| STTrack no-update | 54.685572 | 75.564176 | 66.628218 | 155 |
+| no-update相对default | **-2.450420pp** | **-0.155446pp** | **-6.394183pp** | **+31** |
+
+no-update只救回4个default确认失败，却在default存活的anchors上新增35个确认失败，净增31。EAO、ROB、ACC容差、失败不增加、零新增失败五项冻结门全部失败：
+
+```text
+gate_passed = false
+full127_authorized = false
+automatic_full127_launch = false
+```
+
+正式结果SHA为`cf953c0d3c69609bcd83c11cb24ba57f37e30b38d3b3bcad32860b3a9ba9c1b5`；default/no-update analysis SHA分别为`a67f7c59122e98ef56153570145b14156ee95fb3a9d56d688e6d52224c4cdc61`和`0d9ff24bb632f1b9a18fffb9216c74c754b9d7c621aa204eb020cde7c49e3954`；逐序列诊断SHA为`98137feab73c84d06c76a6d0331e307b8137968ba7ed05e8973333ecf075612c`。
+
+### 5.29.6 全部22条序列的失败与生存变化
+
+`progress ratio`是每个anchor确认失败前生存长度除以该trajectory总长度，再在序列内平均；正值表示no-update平均活得更久，负值表示更早失败。
+
+| 序列 | anchors | default失败 | no-update失败 | 失败变化 | progress ratio变化 |
+|---|---:|---:|---:|---:|---:|
+| `bandlight_indoor_1` | 25 | 5 | 14 | **+9** | **-0.181248** |
+| `earphone01_indoor_1` | 20 | 2 | 7 | **+5** | **-0.118316** |
+| `humans_shirts_room_occ_1_B_1` | 12 | 0 | 5 | **+5** | **-0.115791** |
+| `yogurt_indoor_1` | 34 | 2 | 7 | **+5** | **-0.070679** |
+| `humans_shirts_room_occ_1_A_2` | 13 | 6 | 10 | **+4** | **-0.230766** |
+| `robot_human_corridor_noocc_1_B_1` | 19 | 0 | 3 | **+3** | **-0.089476** |
+| `cube02_indoor_2` | 13 | 0 | 2 | **+2** | **-0.084193** |
+| `cube05_indoor_6` | 16 | 1 | 2 | **+1** | **-0.023793** |
+| `cup02_indoor_1` | 36 | 36 | 36 | 0 | -0.036109 |
+| `shoes02_indoor_1` | 13 | 12 | 12 | 0 | -0.004687 |
+| `ball06_indoor_2` | 8 | 7 | 7 | 0 | 0 |
+| `cube02_indoor_1` | 13 | 7 | 7 | 0 | 0 |
+| `cube05_indoor_2` | 4 | 0 | 0 | 0 | 0 |
+| `duck03_wild_1` | 6 | 0 | 0 | 0 | 0 |
+| `duck03_wild_2` | 6 | 0 | 0 | 0 | 0 |
+| `shoes02_indoor_2` | 4 | 2 | 2 | 0 | 0 |
+| `squirrel_wild_1` | 9 | 0 | 0 | 0 | 0 |
+| `two_tennis_balls_3` | 4 | 3 | 3 | 0 | 0 |
+| `toy09_indoor_1` | 26 | 26 | 26 | 0 | +0.029026 |
+| `cube05_indoor_1` | 4 | 2 | 1 | **-1** | **+0.051802** |
+| `cube05_indoor_4` | 7 | 4 | 3 | **-1** | **+0.010901** |
+| `cube05_indoor_5` | 11 | 9 | 8 | **-1** | **+0.004066** |
+
+按失败计数，8条序列退化、3条改善、11条不变。35个新增失败高度集中在动态外观、姿态、遮挡和长时变化序列，而不是均匀噪声：
+
+```text
+bandlight 9
+earphone01 6（同时有1个rescue）
+humans_shirts B 5
+yogurt 5
+humans_shirts A 4
+robot_human B 3
+cube02_2 2
+cube05_6 1
+```
+
+最严重的具体新增失败包括：
+
+| anchor | default生存 | no-update生存 | 损失frames | 说明 |
+|---|---:|---:|---:|---|
+| `yogurt@1250B` | 1,251/1,251 | 199/1,251 | **-1,052** | default动态模板适应后完整存活；静态模板在反向长轨迹早期失锁 |
+| `yogurt@1400B` | 1,401/1,401 | 351/1,401 | **-1,050** | 同一序列跨anchor复现，不是单anchor偶然 |
+| `bandlight@0F` | 1,185/1,185 | 208/1,185 | **-977** | 形变、反光和遮挡后的外观适应被关闭 |
+| `bandlight@50F` | 1,135/1,135 | 159/1,135 | **-976** | 相邻anchor再次复现长期伤害 |
+| `bandlight@1000B` | 1,001/1,001 | 234/1,001 | **-767** | 反向轨迹也需要动态适应 |
+| `robot_human B@896B` | 897/897 | 288/897 | **-609** | 原本ROB=100的保护序列被破坏 |
+| `earphone01@0F` | 1,085/1,085 | 491/1,085 | **-594** | 尺度/旋转变化后静态模板不足 |
+
+仅有4个确认rescue：`cube05_1@110B`（+23 progress）、`cube05_4@50F`（+19）、`cube05_5@50F`（+110）和`earphone01@1000B`（+536）。最后一个正例同时伴随该序列另外6个新增失败，说明即使在同一序列内，永久关闭更新也不是稳定策略。
+
+### 5.29.7 本轮发现的核心问题
+
+1. **全局no-update在Train aggregate上正、在VOT困难集上强负，存在明确协议/场景分布差异。** M35的85条训练序列平均支持static，但VOT low22主动富集了形变、遮挡、长时姿态变化和多次再出现；这些场景恰好依赖动态模板。不能把训练域聚合均值直接外推为VOT策略。
+2. **动态模板既是污染源，也是长时适应来源。** `cube05_1/4/5`显示抑制更新能救回少量漂移；`bandlight/yogurt/human/earphone`则证明关闭更新会制造更大的生存灾难。这与M35的41改善/41退化以及M36同序列内allow/suppress混合完全一致。
+3. **no-update主要伤害ROB而不是ACC。** ACC只下降0.155pp，但ROB下降6.394pp、失败增加31；静态模板在仍跟对时框仍较准，问题是外观变化后更早、连续地失锁。
+4. **模板开关不解决几何搜索问题。** `ball06`、`cube02_1`、`two_tennis_balls_3`的失败数与生存长度完全不变；但后续M40对正式failure start的精确重建进一步修正了病因：真正起点在factor-4外的只有`cube02_1`和`two_tennis_balls_3`，`ball06`的7个起点全部仍在factor-4内。
+5. **模板开关不解决顽固实例身份失败。** `cup02`仍36/36失败，`toy09`仍26/26，`shoes02_1`仍12/13；这些需要candidate-own RGB-D target/distractor关联和独立递归恢复，而不是固定模板策略。
+6. **保护序列必须被显式保护。** `humans_shirts B`、`robot_human B`、`cube02_2`在default均为0失败，却被no-update分别变成5、3、2个失败。任何新模块都必须把“原路径存活、候选路径失败”作为catastrophic硬负例。
+
+因此永久封存：
+
+```text
+STTrack global no-update
+按序列永久开/关模板更新
+response-only default/static选择
+固定score hysteresis选择
+把M35 Train aggregate当成VOT提升证据
+```
+
+### 5.29.8 baseline迁移结论与下一步
+
+虽然no-update失败，纯STTrack default在同一low22集合上相对此前SUTrack identity-only reference仍有巨大提升：
+
+| low22 | EAO | ACC | ROB | 确认失败 |
+|---|---:|---:|---:|---:|
+| SUTrack identity-only历史reference | 43.274104 | 72.065511 | 54.388022 | 195 |
+| STTrack default本服务器同集实测 | **57.135993** | **75.719622** | **73.022401** | **124** |
+| STTrack变化 | **+13.861889pp** | **+3.654111pp** | **+18.634379pp** | **-71** |
+
+这不是full-127正式新最好，不能替代项目当前正式VOT `74.020583/82.579344/89.565651`；但它是直接证据：STTrack应成为后续创新的protected baseline，不应退回SUTrack，也不应先重测整个baseline。
+
+下一步冻结为M40只读STTrack failure-start census：只分析M39 default的124个确认失败，在每个失败起点记录confidence、当前预测框到GT的几何距离、factor-4搜索域是否覆盖目标、factor-6/7是否可覆盖，并按序列统计。目标是把当前STTrack失败严格拆成：
+
+```text
+搜索域外且factor-6/7可恢复
+搜索域内但选错同类实例
+搜索域内但框/深度质量不足
+```
+
+M40不训练、不改tracker、不扫描阈值、不运行新GPU推理；它只决定下一次唯一允许的结构是风险触发多中心搜索，还是candidate-own实例关联。全局no-update已经失败，因此不运行full-127。正式三数据集最好指标保持不变，Qwen3_8B继续保留且关闭，全帧/全anchor/全序列文本注释仍未执行。
+
+### 5.30 M40：正式failure-start搜索域精确普查
+
+M40已在固定M39 STTrack default输出上完成。它只读取22条序列、303个anchors中的124个正式确认失败，不运行新模型、不训练、不修改checkpoint，也不产生新的VOT指标。失败起点严格取VOT toolkit记录的`progress`，即连续10帧overlap `<=0.1`的第一帧。
+
+每个起点使用上一轨迹帧的公开预测框作为真实递归state；若它是初始化后的第一帧，则使用anchor GT。搜索框完全复现STTrack `sample_target()`：
+
+```text
+crop_side = ceil(sqrt(state_w * state_h) * search_factor)
+crop_center = previous public state center
+```
+
+固定比较factor 4、6、7。这里的覆盖只代表候选可见性上限，不代表宽搜索一定会定位或选中目标。
+
+#### 5.30.1 聚合原始结果
+
+| 失效起点几何类别 | anchor数 | 占124个失败的比例 |
+|---|---:|---:|
+| 真目标中心仍在官方factor-4内 | **115** | **92.741935%** |
+| 只在factor-6内 | 7 | 5.645161% |
+| 只在factor-7内 | 2 | 1.612903% |
+| factor-7仍不覆盖 | 0 | 0% |
+
+| 补充统计 | 结果 |
+|---|---:|
+| factor-4完整覆盖GT框 | 112/124，90.322581% |
+| factor-4至少覆盖GT框面积一半 | 115/124，92.741935% |
+| 起点confidence `>=0.75` | 9/124，7.258065% |
+| 高置信且目标仍在factor-4 | 9/124，7.258065% |
+| 失效前一帧IoU `>0.5` | 88/124，70.967742% |
+| 上述突发失效中仍在factor-4 | 81 |
+| 上述突发失效中已出factor-4 | 7 |
+
+confidence的q10/q25/q50/q75/q90分别为：
+
+```text
+0.153428 / 0.197638 / 0.327705 / 0.514203 / 0.664889
+```
+
+失效后H10的1,240个帧级搜索框中，真目标中心覆盖为：
+
+| factor | 覆盖帧 | 覆盖率 |
+|---:|---:|---:|
+| 4 | 1,059/1,240 | 85.403226% |
+| 6 | 1,103/1,240 | 88.951613% |
+| 7 | 1,109/1,240 | 89.435484% |
+
+factor-4扩大到factor-7只增加50/1,240个覆盖帧。一旦错误框写入递归state，继续围绕同一错误中心放大crop也很快再次看不到目标。因此宽搜索若要有效，必须在失效起点立即建立独立shadow branch，不能等错误状态传播后才启动。
+
+#### 5.30.2 22条序列逐项统计
+
+| 序列 | anchors | 失败 | factor-4内 | factor-6 only | factor-7 only | factor-7外 | confidence中位数 | 中心最小factor中位数 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| ball06_indoor_2 | 8 | 7 | 7 | 0 | 0 | 0 | 0.379135 | 1.305437 |
+| bandlight_indoor_1 | 25 | 5 | 5 | 0 | 0 | 0 | 0.425272 | 2.000402 |
+| cube02_indoor_1 | 13 | 7 | 1 | 6 | 0 | 0 | 0.209889 | 5.785096 |
+| cube02_indoor_2 | 13 | 0 | 0 | 0 | 0 | 0 | — | — |
+| cube05_indoor_1 | 4 | 2 | 2 | 0 | 0 | 0 | 0.268858 | 0.198157 |
+| cube05_indoor_2 | 4 | 0 | 0 | 0 | 0 | 0 | — | — |
+| cube05_indoor_4 | 7 | 4 | 4 | 0 | 0 | 0 | 0.182027 | 0.032111 |
+| cube05_indoor_5 | 11 | 9 | 9 | 0 | 0 | 0 | 0.871208 | 1.466597 |
+| cube05_indoor_6 | 16 | 1 | 1 | 0 | 0 | 0 | 0.418677 | 1.780727 |
+| cup02_indoor_1 | 36 | 36 | 36 | 0 | 0 | 0 | 0.481510 | 0.401983 |
+| duck03_wild_1 | 6 | 0 | 0 | 0 | 0 | 0 | — | — |
+| duck03_wild_2 | 6 | 0 | 0 | 0 | 0 | 0 | — | — |
+| earphone01_indoor_1 | 20 | 2 | 2 | 0 | 0 | 0 | 0.323736 | 0.782221 |
+| humans_shirts_room_occ_1_A_2 | 13 | 6 | 6 | 0 | 0 | 0 | 0.521682 | 0.121991 |
+| humans_shirts_room_occ_1_B_1 | 12 | 0 | 0 | 0 | 0 | 0 | — | — |
+| robot_human_corridor_noocc_1_B_1 | 19 | 0 | 0 | 0 | 0 | 0 | — | — |
+| shoes02_indoor_1 | 13 | 12 | 12 | 0 | 0 | 0 | 0.232339 | 0.157066 |
+| shoes02_indoor_2 | 4 | 2 | 2 | 0 | 0 | 0 | 0.263263 | 0.114690 |
+| squirrel_wild_1 | 9 | 0 | 0 | 0 | 0 | 0 | — | — |
+| toy09_indoor_1 | 26 | 26 | 26 | 0 | 0 | 0 | 0.199339 | 0.188634 |
+| two_tennis_balls_3 | 4 | 3 | 0 | 1 | 2 | 0 | 0.066402 | 6.440211 |
+| yogurt_indoor_1 | 34 | 2 | 2 | 0 | 0 | 0 | 0.103543 | 0.155530 |
+
+#### 5.30.3 搜索域不足只集中在9个anchors
+
+`cube02_indoor_1`有6/7个失败起点需要factor-6，最小中心factor为`5.767638～5.856460`，起点confidence为`0.185701～0.226275`。这6个事件失效前一帧IoU均为`0.853315～0.907924`，属于从正确跟踪突然大位移到crop外；factor-6在起点能覆盖中心，但在随后H10中通常只覆盖1/10帧。
+
+`two_tennis_balls_3`的3/3个失败起点在factor-4外：
+
+| anchor | confidence | 前一帧IoU | 中心最小factor | 完整框最小factor | 类别 |
+|---|---:|---:|---:|---:|---|
+| @0F | 0.066402 | 0.302843 | 6.541807 | 7.740181 | factor-7 only |
+| @50F | 0.043824 | 0.473593 | 6.440211 | 7.738946 | factor-7 only |
+| @129B | 0.072996 | 0.868949 | 4.060946 | 5.077692 | factor-6 only |
+
+前两个anchor即使factor-7也只覆盖目标中心，完整框约需factor 7.74。扩大搜索框只提供一次候选可见机会，不保证网球实例身份正确。
+
+#### 5.30.4 主要瓶颈明确是crop内失败
+
+115/124个起点的目标中心仍在factor-4内，112个连完整GT框都在crop内。最严重序列全部属于这一组：
+
+```text
+cup02_indoor_1       36/36 failures inside factor-4
+toy09_indoor_1       26/26 failures inside factor-4
+shoes02_indoor_1     12/12 failures inside factor-4
+cube05_indoor_5       9/9 failures inside factor-4
+ball06_indoor_2       7/7 failures inside factor-4
+humans_shirts A       6/6 failures inside factor-4
+```
+
+因此“整体搜索框太小”已经被排除为主因。不过单凭几何不能把115个失败全称为身份切换；它们还可能包含遮挡、外观变化、响应峰错误和回归失败。下一步必须读取真实response top-K，区分“正确候选已存在但没被选中”和“特征根本没有产生正确候选”。
+
+只有9/124个起点confidence `>=0.75`，全部位于factor-4内，集中于`cube05_indoor_5`的6个和`toy09_indoor_1`的3个。例如`cube05_5@491B`为0.923919、`@387B`为0.916983、`@100F`为0.914077；但它们的前一帧IoU已只有约0.13～0.20。这些帧表现为错误状态形成后的高置信强化，而不一定是第一次突发切换。confidence-only策略既漏掉大多数起点，也阻止不了后续高置信漂移。
+
+#### 5.30.5 对ball06旧判断的正式修正
+
+此前根据较晚失败帧或粗略距离得到的`ball06`需要约factor 5.42的说法，不能继续作为“失效起点出搜索域”的证据。M40逐anchor精确重建显示：
+
+> `ball06_indoor_2`的7个正式失败起点，真目标中心全部仍在官方factor-4内。
+
+`ball06`现在归入crop内定位/外观/候选选择问题。被M40严格证明存在起点搜索域不足的只有`cube02_indoor_1`和`two_tennis_balls_3`。
+
+#### 5.30.6 低confidence只适合作为shadow触发，不适合作为提交门
+
+搜索域不足的9个起点confidence全部`<=0.226275`，所以固定`confidence<=0.30`能覆盖这9个诊断事件；但同一条件共触发56个失败起点，其中47个目标本来就在factor-4内：
+
+```text
+真正出factor-4：  9
+总触发：          56
+出框精度：        16.071429%
+```
+
+低confidence可以启动factor-7 shadow，但不能直接用factor-7结果覆盖state/template。宽分支必须继续接受候选身份与未来短窗验证。
+
+#### 5.30.7 下一步冻结为M41候选可恢复容量诊断
+
+M41先做一次最小只读counterfactual，不立即训练复杂router：
+
+1. 对115个factor-4内失败起点，精确重放到失效前一帧，导出官方factor-4 response的NMS top-K与解码框；GT只用于事后oracle，判断是否存在IoU高的非top-1正确候选。
+2. 对9个factor-4外失败起点，从相同protected state只运行一帧factor-7 shadow，记录top-1与top-K oracle IoU；不提交bbox、template、query或memory。
+3. 若factor-4 top-K跨多序列存在正确候选，继续candidate-own RGB-D + language identity association + protected/tentative原子事务；若不存在，则瓶颈在候选生成/表征，不能继续训练selector。
+4. 只有factor-7在这9个事件中真正产生可恢复框，才实现低confidence风险触发宽搜索；否则封存扩大搜索方向。
+
+M40证据身份：
+
+```text
+spec SHA256     eaa3c69631d5950ad360e67bd99fc95f9850c32821e93426109fb9754aa6eef9
+analyzer SHA256 4295f414283c2a9ac7ec9405cca8051eccf37f61e4fa79d7464132e15c8f6f24
+result SHA256   385d088a99b9b6eeadaeb55526194c887bc5ee575a58b7a5dfb5a38bfc8068ec
+CSV SHA256      5da4c09f2fa7c7aa1242342b7bd0ae405b5f78e7e88d152967c9426aef5b8837
+```
+
+M40不改变正式指标。项目full-127 VOT最好仍为`74.020583/82.579344/89.565651`；DepthTrack与CDTB保护结果、Qwen3_8B保留关闭和未执行全帧/全anchor文本注释等状态均不变。
+
+
+### 5.31 M41启动、M39逐序列指标补全与用户新增在线相对位置文本实验（2026-09-05）
+
+本节接续M40。用户已明确要求：以M39 STTrack default为当前基线，先区分有正确候选却选错和没有正确候选；可以尝试模板更新及本地视觉语言模型在线更新文本（例如相似物体中从左到右第几个）；先验证低指标序列，有明显改善后全量验证。若修改模块/网络架构，必须在DepthTrack Train重新训练，再用同一个权重验证DepthTrack、CDTB、完整VOT-RGBD2022。
+
+#### 5.31.1 必须使用的当前模型与指标口径
+
+M39的STTrack default在同一low22上相对旧SUTrack取得EAO+13.861889pp、ACC+3.654111pp、ROB+18.634379pp；不是“换模型仅涨一两点”。其默认模板更新必须保留为protected基线。M39的124个失败起点只有9个confidence>=0.75，不能把剩余问题统称为高置信身份切换。
+
+原正式DepthTrack/CDTB结果属于此前SRTrack模型，原full127 VOT最好属于SUTrack identity-only；不能把三者合并成“当前STTrack同一权重已经验证三数据集”。历史指标表保留原处，本节不重复登记。当前STTrack尚没有新的full127、DepthTrack或CDTB正式结果。
+
+M39当前架构：RGB/depth双模态ViT-B/16及跨模态交互、2层TSG、MambaFusion、CENTER响应/size/offset头；两模板、4-token固定query窗口，factor4/256搜索，factor2/128模板，50帧且confidence>0.75时默认动态更新。权重为`STTrack_Vot22.pth.tar`，SHA `cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98`；语言关闭。M41只增加诊断导出，没有改网络或权重。
+
+#### 5.31.2 从已完成M39产物导出的22序列当前指标
+
+本表调用原VOT toolkit 0.7.1的AccuracyRobustness与EAOCurves，直接读取已保存轨迹，未重跑跟踪。单序列EAO仍使用原115—755区间，因此短序列可能因有效长度限制出现很低的单序列EAO；ROB=100的序列不能据此称为失锁。
+
+| 序列 | ST default EAO | ACC | ROB | ST no-update EAO | ACC | ROB | default失败/anchors |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `ball06_indoor_2` | 21.382877 | 72.524119 | 43.843985 | 21.382877 | 72.524119 | 43.843985 | 7/8 |
+| `bandlight_indoor_1` | 72.573535 | 79.242430 | 85.227926 | 65.805960 | 79.049413 | 64.818499 | 5/25 |
+| `cube02_indoor_1` | 57.199496 | 88.220566 | 74.561404 | 57.252927 | 88.252112 | 74.561404 | 7/13 |
+| `cube02_indoor_2` | 65.797662 | 87.942139 | 100.000000 | 67.978111 | 88.107638 | 90.006741 | 0/13 |
+| `cube05_indoor_1` | 12.422344 | 86.786932 | 67.447917 | 2.143020 | 86.575815 | 73.437500 | 2/4 |
+| `cube05_indoor_2` | 4.339054 | 87.300438 | 100.000000 | 4.344880 | 88.528878 | 100.000000 | 0/4 |
+| `cube05_indoor_4` | 50.275205 | 89.467173 | 95.565006 | 49.194540 | 89.404840 | 96.719320 | 4/7 |
+| `cube05_indoor_5` | 33.178608 | 73.874983 | 49.091767 | 30.826984 | 76.628328 | 49.327672 | 9/11 |
+| `cube05_indoor_6` | 83.210122 | 85.911934 | 97.768402 | 79.649567 | 85.134312 | 95.536805 | 1/16 |
+| `cup02_indoor_1` | 44.588250 | 87.406087 | 18.866661 | 40.628608 | 87.780546 | 14.223236 | 36/36 |
+| `duck03_wild_1` | 13.403495 | 82.685281 | 100.000000 | 13.403530 | 82.426454 | 100.000000 | 0/6 |
+| `duck03_wild_2` | 17.679860 | 84.669157 | 100.000000 | 17.151667 | 82.687622 | 100.000000 | 0/6 |
+| `earphone01_indoor_1` | 67.929667 | 70.805165 | 91.959829 | 64.529086 | 68.788646 | 78.957690 | 2/20 |
+| `humans_shirts_room_occ_1_A_2` | 56.780386 | 69.711573 | 84.692513 | 45.500759 | 68.589532 | 61.196524 | 6/13 |
+| `humans_shirts_room_occ_1_B_1` | 45.696466 | 73.236355 | 100.000000 | 56.487637 | 75.128898 | 86.258278 | 0/12 |
+| `robot_human_corridor_noocc_1_B_1` | 62.923553 | 62.686801 | 100.000000 | 60.401838 | 64.372704 | 90.851178 | 0/19 |
+| `shoes02_indoor_1` | 26.476125 | 86.668307 | 26.271048 | 25.965034 | 86.075696 | 25.666176 | 12/13 |
+| `shoes02_indoor_2` | 18.342446 | 91.785501 | 80.208333 | 18.329749 | 91.428120 | 80.208333 | 2/4 |
+| `squirrel_wild_1` | 33.320448 | 84.161617 | 100.000000 | 33.404118 | 84.224639 | 100.000000 | 0/9 |
+| `toy09_indoor_1` | 59.986363 | 85.009942 | 43.426477 | 61.549895 | 82.768345 | 47.068255 | 26/26 |
+| `two_tennis_balls_3` | 12.071282 | 62.683456 | 68.934240 | 12.071282 | 62.683456 | 68.934240 | 3/4 |
+| `yogurt_indoor_1` | 67.299504 | 68.531264 | 96.170233 | 66.322959 | 68.473541 | 89.044473 | 2/34 |
+
+指标产物：`/root/autodl-tmp/sttrack_m41_candidate_capacity_v1_20260905/m39_per_sequence_metrics.{json,csv}`。这补齐当前STTrack逐序列三指标缺口，不能用旧SUTrack逐序列值替代。
+
+#### 5.31.3 M41执行与轨迹序列化修正
+
+输入固定为M40全部124个失败起点（115框内/9框外），完整重放31,834帧。复用`decode_nms_candidates()`导出Hann前/后NMS top10（kernel3）、全部256格解码、score/size/offset图及RGB/depth/fused搜索tokens。每个峰使用其自身的size/offset。只有9个框外起点运行factor7单帧shadow，模板/query/state独立，不能提交到主路径。GT只用于初始化及候选封存后的诊断；GT失败时点不是部署触发条件。
+
+首次工程检查通过两个事件，最大框误差0.000071px。全量首轮保留33个已成功事件；两分片分别在`cup02@750F`及`toy09@850B`遇到“从已保存框重建整数crop不同”的检查。对cup02完整166帧复查，最大框误差仅0.00007248px，起点confidence差3.10e-9，确认是TraX/VOT坐标序列化跨整数舍入边界，而非该轨迹数值偏离。
+
+实际TraX链先把坐标存为C float32、再以四位小数传递，最后VOT以float32保存。R2工程检查漏掉首个float32转换，在smoke第4步停止；R3修正后两个完整smoke均通过。后续91个未完成事件保留严格`float32→四位小数→float32`逐帧完全相等检查，整数crop差异单列诊断。原33个事件保留原始全路径误差/crop检查证据，不虚报它们曾执行R3检查。模型、checkpoint、K、数据和科学门均未变。
+
+本节写入时剩余两分片已重新启动于screens `m41_resume_s0/s1`；结果必须等全部124个候选文件齐备、哈希验证和事后分析后再结论。根目录为`/root/autodl-tmp/sttrack_m41_candidate_capacity_v1_20260905`。
+
+#### 5.31.4 在线模板与相对位置文字的实际试验
+
+服务器保留的`Qwen3_8B`配置为纯文本`Qwen3ForCausalLM`，不能看图；本轮使用本机已有视觉模型`Qwen2.5-VL-3B-Instruct`，官方模型卡：https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct 。模型在服务器离线加载，不调用外部图像服务。
+
+先固定四条核心序列cup02/toy09/shoes02_1/cube05_5，各取anchor数值顺序首/中/末三个anchor，各取起点及起点前10帧，共24窗口。三臂为：首帧参考+身份；首帧及最近default动态模板+身份；同两模板+当前相对位置。最近动态模板必须在当前帧之前产生。GT起点抽样只用于诊断，不能把这个采样当在线触发能力。
+
+第一版完成72次生成，但未通过输入/输出语义检查：模型返回初始化尺度的像素坐标，未遵从bbox_1000归一化要求，并多次复述首帧位置。首帧与当前可能间隔数百帧，未标注身份的前一帧不能可靠关联三个相似杯子的交换。故这轮不作为部署/网络改造的科学结论，也不报告新的VOT分数。
+
+第二版保持相同24窗口、三臂、权重、生成预算和定位门，明确每张图的时间角色，改为模型原生像素坐标，并在紧邻上一帧标出STTrack预测框作为因果身份参考；当前帧始终不标GT，前一帧标框也是预测而非GT。它检验在线跟踪中真实可用的新观测，不是恢复GT身份。排序不明确只把排序字段置null，不能自动混同于目标身份不明确。
+
+V2执行目录为`/root/autodl-tmp/sttrack_position_text_pilot_v2_20260905`，screen `position_text_v2`。成功门保持：相对位置条件相对同模板身份条件正确定位(IoU>=.5)净增加，至少两个序列改善，错误接受(IoU<=.1)不增加。计数/序号无独立实例标注，因此不宣称序号准确率。此pilot只记录建议，不修改STTrack输出，不生成训练权重。
+
+#### 5.31.5 后续训练与递进验证
+
+M41若有正确候选，优先验证局部RGB-D模板/候选关联和在线位置语义的独立增量；若没有正确候选，转向已证实的问题所在的响应/特征/回归模块。任何模块变化先用DepthTrack Train按序列隔离训练，先验证真实预测裁剪递归，再冻结权重做low22。文本消融需包含真实文本、空文本、同类错属性、打乱文本。
+
+低22工作门暂定为相对M39 default的EAO与ROB均提升至少1pp，ACC下降不超过0.10pp，失败数减少，七条原零失败序列继续零失败。通过后同一checkpoint和配置验证DepthTrack、CDTB、full127；最终仍要求VOT ROB>93.7、EAO>77.9、ACC>82.1。低22是开发集，不能称为完全未见测试。本轮没有修改神经网络，没有新权重或正式三数据集收益。

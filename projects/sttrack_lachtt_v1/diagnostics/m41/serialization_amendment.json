@@ -1,0 +1,20 @@
+{
+  "schema": "m41_serialized_crop_amendment_v1",
+  "completed_events_retained": 33,
+  "reason": "Stored TraX rectangle values are rounded to four decimals then binary float32. Reconstructing sample_target integer crop from those rounded values can cross half-integer boundaries despite identical recursive outputs.",
+  "evidence": "cup02@750F exact166-frame replay maximum bbox error 0.000072479248046875; onset confidence difference 3.0967712838503303e-09; only step85 reconstructed crop discrepancy",
+  "unchanged": [
+    "model",
+    "checkpoint",
+    "templates",
+    "queries",
+    "candidate K",
+    "inference inputs",
+    "posthoc labels"
+  ],
+  "r2_gate": "Every replay output must equal stored trajectory exactly after four-decimal formatting and float32 serialization; record rounded-input crop discrepancies rather than gating on them.",
+  "r1_sha256": "472d171c10e717ff0d034b0fd5b99e95456f63df3630539a3ec5d330e40eaa00",
+  "r2_sha256": "0c5ad0ce9ac6dcda37f7da1162ea9d31abde3be907c49a9951d161ebe016697f",
+  "r3_gate": "TraX first casts rectangle fields to C float32, emits four decimal digits, then VOT stores float32. Compare exactly under float32 -> .4f -> float32. R2 had omitted the first cast and stopped at smoke step4; R3 full two-event smoke passed.",
+  "r3_sha256": "bead9d4c041f6a815f11d7e2253c96cd2492f54f1c13755f272a541cadb05d9c"
+}

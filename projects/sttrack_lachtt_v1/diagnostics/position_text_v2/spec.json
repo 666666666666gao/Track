@@ -1,0 +1,26 @@
+{
+  "schema": "sttrack_position_text_causal_pilot_v2",
+  "count": 24,
+  "selection": "First/median/last anchor by numeric anchor order in each of four fixed sequences, onset and onset-minus-ten. Selected before VLM outputs; no favorable-case selection.",
+  "variants": [
+    "initial_identity",
+    "default_templates_identity",
+    "default_templates_relative"
+  ],
+  "prompts": {
+    "common": "You are observing a single-object tracking video causally. Image 1 is the initialization frame with the target marked by a red box. Image 2 is the initial target crop. {dynamic} The final two images are the immediately previous observed frame and the CURRENT frame, in tracking order. The previous frame has a YELLOW box showing the previous STTrack prediction. This is a causal identity reference, not ground truth; use image correspondence to follow that instance into the CURRENT frame and compare its appearance with the initialization. Backward playback is possible; do not assume a fixed motion direction. Locate the SAME physical target in the final CURRENT image; do not just locate an object of the same category. There is no target mark in the current image. If it is occluded or indistinguishable from another instance, report uncertainty and a null box. {condition}Return only one JSON object with these keys: target_visible (boolean), identity_uncertain (boolean), bbox_xyxy_pixels ([x1,y1,x2,y2] in native PIXELS of the final CURRENT 640-by-360 image, or null; never normalized), stable_identity (short string), similar_count (integer or null), left_to_right_rank (one-based integer or null), relative_description (short string or null). Never use a frame number as identity. Do not invent a hidden target or copy coordinates from a reference image.",
+    "identity": "Identify the same physical target by stable visible appearance, markings, shape, and visual correspondence. Do not use an ordinal position as the identity. Set similar_count, left_to_right_rank, and relative_description to null. ",
+    "relative": "Also reason about the target among visually similar objects in the CURRENT frame: count visible similar objects and describe its current rank from LEFT to RIGHT using object center x coordinates, and its relation to adjacent objects. Do not assume its rank in the initialization frame remains fixed: objects and camera can move or cross. If count or ordering is unclear, set only those fields to null. Set identity_uncertain to true only if the target identity itself is unclear. "
+  },
+  "model": "/root/autodl-tmp/qwen/Qwen2.5-VL-3B-Instruct",
+  "model_config_sha256": "7ed3eed5be6924cc800e8a5e53fc405c1aab1aaf36bad65c33403b36c56827f5",
+  "sequence_root": "/root/autodl-tmp/VOT-RGBD2022/sequences",
+  "max_new_tokens": 320,
+  "do_sample": false,
+  "no_tracker_commit": true,
+  "no_training": true,
+  "observation_change": "v1 returned initialization-scale coordinates and lacked a target mark in the immediately previous image. v2 uses native pixels, explicit image roles, and previous predicted bbox as a causal reference. Same 24 windows, variants, model and decision gate; no GT previous/current target mark.",
+  "inputs_sha256": "870ca7afa3e8add9eee07f9306a66ae35f1406572dcf4865cb2123070dba34e9",
+  "success_rule": "Relative vs default-template identity increases correct localization (IoU>=.5) across at least two sequences and does not increase wrong accepted localization (IoU<=.1). Template reference contribution is separately compared to initial-only identity.",
+  "limitations": "GT-derived time sampling is diagnosis only. Rank/count lack independent instance annotations; report target localization and qualitative rank consistency, not rank accuracy. This is not online tracker or VOT validation."
+}

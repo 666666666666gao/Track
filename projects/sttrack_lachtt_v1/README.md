@@ -214,6 +214,31 @@ For all experiments, failure analyses, artifact hashes and next-action
 restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
+## M39–M41 baseline and candidate diagnosis
+
+M39 evaluated STTrack default and global no-update on the same frozen 22 difficult
+VOT-RGBD2022 sequences and 303 multi-start anchors. Default achieved
+EAO/ACC/ROB **57.135993/75.719622/73.022401**, with 124 confirmed failures;
+no-update had 155 failures. These are difficult-subset results, not full127
+metrics or evidence that one STTrack checkpoint passed all three datasets.
+The preserved full127 VOT result belongs to SUTrack, while the historical
+DepthTrack/CDTB results belong to SRTrack.
+
+M40 found that 115 of the 124 failure onsets still contain the target center
+inside the default search crop. M41 therefore replays all failure onsets,
+exports each response peak's own size/offset box, and compares raw/Hann NMS
+top10 and dense candidate capacity. Nine out-of-crop events receive one
+independent factor7 shadow. This is GT-timed diagnosis; no ground truth enters
+candidate generation beyond normal anchor initialization.
+
+Source and small evidence for M39/M40, new M39 per-sequence metrics, and the
+M41 protocol are under [`diagnostics/`](diagnostics/). M41 collection and a
+local Qwen2.5-VL template/relative-position pilot were launched on 2026-09-05.
+The pilot produces causal localization suggestions only, without changing
+tracker outputs. New neural modules must be trained on DepthTrack Train before
+the same resulting checkpoint is evaluated on DepthTrack, CDTB and full VOT.
+See the master handoff for the latest execution status and limits.
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source

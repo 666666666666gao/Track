@@ -1,0 +1,65 @@
+{
+  "schema": "sttrack_m39_vot_low22_template_ablation_spec_v1",
+  "status": "frozen_before_execution",
+  "experiment": "M39",
+  "scope": {
+    "dataset": "VOT-RGBD2022",
+    "low22_only": true,
+    "sequence_count": 22,
+    "anchor_count": 303,
+    "estimated_tracker_frames_per_arm": 220483,
+    "full127_run": false,
+    "automatic_full127_launch": false
+  },
+  "source": {
+    "repository": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+    "commit": "72b6446f5ba0e96c8882001f3286585fd81cff30",
+    "configuration": "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml",
+    "checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+    "checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+    "frozen_low22_manifest": "/root/autodl-tmp/sutrack_vot_low22_anchor_identity_v1/run/shard_manifest.json",
+    "frozen_low22_manifest_sha256": "600b1ebb8b0c2f69b831f954e907e63709fd69afb7ea94c5b58e8c7408a29eed"
+  },
+  "runtime": {
+    "toolkit_python": "/root/miniconda3/envs/mplt/bin/python",
+    "vot_toolkit_version": "0.7.1",
+    "tracker_python": "/root/autodl-tmp/envs/sttrack/bin/python",
+    "tracker_torch_version": "1.13.1+cu116",
+    "tracker_trax_version": "4.0.2",
+    "vot_bridge_sha256": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316"
+  },
+  "arms": {
+    "default": {
+      "template_update_interval": 50,
+      "template_update_threshold": 0.75,
+      "wrapper_sha256": "3ef2704c9e3d987383f2184ba5e45789278eee7d4b6de6470e647d883c10a608"
+    },
+    "no_update": {
+      "template_update_interval": 1000000000,
+      "template_update_threshold": 0.75,
+      "wrapper_sha256": "02d0a8c92ca84a17b32f2299ef34447a635b2730f086b7eb2b1e6088bf649c7a"
+    }
+  },
+  "invariants": {
+    "same_checkpoint": true,
+    "same_model_architecture": true,
+    "same_search_factor": 4.0,
+    "same_template_factor": 2.0,
+    "same_anchor_set_and_directions": true,
+    "language_enabled": false,
+    "qwen_enabled": false,
+    "weights_trained_again": false,
+    "only_changed_variable": "dynamic template update enabled versus disabled"
+  },
+  "promotion_gate": {
+    "eao": "no_update > default",
+    "rob": "no_update > default",
+    "acc": "no_update >= default - 0.001 fraction",
+    "confirmed_failures": "no_update <= default",
+    "new_confirmed_failures": 0
+  },
+  "interpretation": {
+    "pass": "authorize but do not automatically launch one full127 no-update candidate validation",
+    "fail": "seal global no-update and retain conditional template transaction as the research target"
+  }
+}
