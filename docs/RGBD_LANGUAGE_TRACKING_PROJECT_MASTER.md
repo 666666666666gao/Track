@@ -17178,3 +17178,72 @@ M43位于`/root/autodl-tmp/sttrack_m43_pooled_recursive_v1_20260905`，screen `s
 这为“当前画面中的前后排/左右顺序”提供了具体动机，但两帧人眼观察不构成永久ordinal身份标签，也不证明本地VLM能可靠生成它。下一项新假设应检验候选之间的位置关系与跨帧实例对应，并在DepthTrack Train真实预测裁剪链上训练和验证；本次未据此增加修补阈值、重训或公开评测。
 
 证据：`diagnostics/m43/first_override_case_note.json`，绑定两张原图哈希、准确坐标及已封存的首次改选记录。原始数据集图像只在本地/服务器诊断，没有加入公开源码仓库。
+
+
+### 5.37 M44前后帧完整候选集合关联：实现、冻结与采集启动（2026-09-05）
+
+上一轮M42/M43已完成并封存，池化主候选失败、空间辅助头仅有小幅总均值增益，没有晋升低22或全量。本轮基于egg相邻实例误选的直接证据，新增“完整前后帧候选集合＋部分目标对应监督”，不再把每个当前候选仅与一个过去预测RoI独立打分。
+
+#### 5.37.1 架构和开源参考
+
+输入为当前10个及紧邻上一帧10个NMS候选，每个保留4×4 RGB/depth原生RoI；另有不可变首帧和实际动态模板的两个RoI，以及上一帧被选择候选的标记。共享768→32局部投影、对象投影至128维，再经过2层/4头/FFN256的PyTorch Transformer，统一处理这22个节点。当前候选与上一帧候选的目标对应有单独监督；未标注的干扰实例不伪造身份标签。两臂均448,739参数，官方STTrack backbone、框头、factor4搜索和默认模板更新冻结。
+
+主候选固定为geometry，加入当前/上一帧候选中心和宽高的图像归一化坐标；appearance对照将这一路显式坐标置零，其余RoI、response、前帧选择标记、模板、架构、初值和样本顺序相同。它们都使用完整前后候选集合。因此两臂比较只支撑“显式位置关系的独立增量”，整个新网络相对default的性能另行评价。
+
+11类身份输出包含10个候选及NONE；NONE保持默认框。第一个跟踪帧使用default并建立前一帧候选集合。监督为当前最高IoU且>=.5的候选，否则NONE；加0.25倍可用的正反向目标匹配CE，匹配温度0.1。对应目标在另一帧候选中缺失时监督为unmatched；双方均缺失时无对应损失。当前没有LLM文本输入，也没有声称模型已能生成完整场景中“第几个”的描述。
+
+参考KeepTrack官方候选关联、坐标/响应编码及部分对应训练思路：
+
+- [模型与描述子](https://github.com/visionml/pytracking/blob/master/ltr/models/target_candidate_matching/target_candidate_matching.py)
+- [匹配器](https://github.com/visionml/pytracking/blob/master/ltr/models/target_candidate_matching/superglue.py)
+- [训练](https://github.com/visionml/pytracking/blob/master/ltr/train_settings/keep_track/keep_track.py)
+
+本轮为原生STTrack特征和PyTorch层的新实现，没有复制上游源码或加载上游权重；其他基准的收益不作为本项目结果。
+
+#### 5.37.2 数据、训练计划与决策顺序
+
+仍用85条既有Train账本：63条/folds2–4拟合，22条/fold5开发。这些折已有历史使用，官方预训练backbone也早于本轮新头划分，不称为全新未见。每序列最多12个健康、4个中等误差、2个较晚低重叠、2个不可见窗口，再从最多6个持续失败起点取−2/0/+2帧；交叉标签窗口去重。GT只用于Train抽样和监督，采集器只读普通首帧初始化、请求帧及默认预测参照，不打开后续GT标签。
+
+| 冻结项目 | 数值/安排 |
+|---|---|
+| 总候选对 |2,101 |
+| 拟合/开发候选对 |1,511 /590 |
+| 健康/中等/不可见/较晚低重叠/起点附近标签数 |1,020 /277 /158 /141 /525；同一窗口可有多个标签，不能相加作去重总数 |
+| 两片计划跟踪帧 |63,025 /63,357，共126,382，另有85个初始化 |
+| 预计原始特征空间 |2,271,903,744 bytes；采集前可用6.8GB |
+| 优化 |每臂20轮、960次更新；seed2026、batch32、AdamW lr0.0003、wd0.01、grad clip1.0 |
+| 权重选择 |只保留固定最终epoch，不看开发结果选epoch或阈值 |
+| 后续递归 |每臂22完整开发序列/33,130帧，各自维护完整query、模板及前帧候选状态 |
+
+M43已证明静态窗口选择相同不等于递归结果相同，因此本轮静态结果仅作诊断；采集与训练完整性通过后，两臂均进入既定完整递归。主性能门固定为geometry相对default mean IoU至少+0.01、严重帧减少、持续失败段不增加、至少3序列均值改善、默认零失败段序列不新增失败。显式位置贡献要求geometry优于appearance，但不把该归因条件与主模型性能混为一谈。
+
+只有主递归门通过，才冻结low22；沿用5.31的EAO/ROB各至少+1pp、ACC不低于default−.10pp、失败减少且保护7条零失败序列的门。之后才用同一新权重验证DepthTrack Test、CDTB、full127。M43失败权重未被晋升，当前官方完整三数据集分数仍无更新。
+
+#### 5.37.3 已执行检查与真实启动
+
+合成合同检查PASS：非零分类头下的候选置换logit最大差4.768e−7、匹配差1.431e−6；appearance对照对坐标变化严格不变，geometry输出确有变化。24次合成优化使损失6.450934→2.697996，仅证明可优化，不计作真实数据训练。两条拟合序列120帧/6对原生采集smoke通过：bbox及confidence与default最大差均0，有2次实际模板写入。
+
+两片采集已启动，PIDs13173/13175，screens `sttrack_m44_collect_s0_20260905` / `sttrack_m44_collect_s1_20260905`。另一个controller PID13654、screen `sttrack_m44_pipeline_20260905`每240秒等待原采集器结束；随后先执行完整状态parity及强制候选自身框/分数/前帧选择传播smoke，再固定训练、完整递归和后验分析。该runtime smoke尚未执行，不能与已经通过的采集smoke混写。优化器真正启动前，训练和运行源码已单独绑定。
+
+本次交接写入时的已完成采集进度如下，仅覆盖已封存序列：
+
+| 分片 | 已完成序列 | 已重放帧 | 已采候选对 | 最大bbox差 | 最大confidence差 |
+|---|---:|---:|---:|---:|---:|
+| 0 | 12 | 17140 | 285 | 0.0 | 0.0 |
+| 1 | 12 | 17030 | 312 | 0.0 | 0.0 |
+
+真实数据优化尚未启动，没有新增训练后权重或正式指标。运行目录为`/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905`，完整计划和launch证据见`diagnostics/m44/`。
+
+证据哈希：
+
+- `spec.json` — SHA256 `8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18`
+
+- `training_binding.json` — SHA256 `390b236fe7fc5cca318e774ed5f05f4dd03d56b21f741ab668e64a2c71b353d3`
+
+- `contracts.json` — SHA256 `7b507cba28920383c41ebcb350e9ba1fd46c7dce289ab7652e38413e45db6d49`
+
+- `smoke_receipt.json` — SHA256 `3e4a14432a327f51a2a4e6f9c25fbe820a0102deef0a3a8bfda90583fd2f242f`
+
+- `launch.json` — SHA256 `a670359863e7bb6554c8f6b9cfcbcd59818ef2d8789c1a3a21fd6d0d89ef33c7`
+
+- `pipeline_launch.json` — SHA256 `78aafb8d51cc739da48ff1f9ead6a4d54d1d134d578e45ab37b4c4ea6b3f6b52`

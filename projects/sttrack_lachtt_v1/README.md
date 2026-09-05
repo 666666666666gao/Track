@@ -272,6 +272,26 @@ M42's spatial-information hypothesis remains failed and the spatial arm is
 diagnostic only. These are Train proxies; no new formal benchmark score exists.
 See [the complete M43 result](diagnostics/m43/EXPERIMENT_TRACKER.md).
 
+## M44 temporal candidate sets
+
+M44 represents all ten current and ten preceding candidates, the two causal
+template references and the preceding selected index. A shared native RGB/depth
+descriptor and two Transformer layers learn target identity and partial
+frame-to-frame target correspondence. The geometry primary includes candidate
+center/size coordinates; the equal-parameter appearance control zeroes them.
+Both heads have 448,739 parameters. The official backbone, box head, crop and
+template schedule remain unchanged; no language benefit is claimed.
+
+Native collection is running on the existing 85-sequence DepthTrack Train
+ledger: 2,101 pairs, with 1,511 fitting and 590 previously used development
+pairs. Set-permutation/geometry contracts and 120-frame default replay passed.
+Training/runtime sources are bound before any real optimization: fixed
+20 epochs / 960 updates per arm, then both complete recursive development
+paths. Static snapshot ranking is diagnostic. No new trained weight or public
+metric is claimed at this launch. See
+[the frozen M44 protocol](diagnostics/m44/EXPERIMENT_SPEC.md) and
+[execution tracker](diagnostics/m44/EXPERIMENT_TRACKER.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source

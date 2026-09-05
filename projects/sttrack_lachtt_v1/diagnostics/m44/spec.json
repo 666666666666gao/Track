@@ -1,0 +1,104 @@
+{
+  "schema": "sttrack_m44_temporal_candidate_set_v1",
+  "repository": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+  "dataset_root": "/root/autodl-tmp/depthtrack/train/sequences",
+  "checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+  "checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "source_sha256": {
+    "lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "lib/test/tracker/sttrack_lachtt_observation.py": "183d8a3c8164db884beda1bf0ff6052c32aa44edaf2661acf922f13635018604",
+    "lib/test/tracker/sttrack_local_spatial_observation.py": "98d7f72815780fa4158adcd6b10b0b437ff1f58e808196df6d7c25655736409d",
+    "lib/test/tracker/sttrack_candidate_set_observation.py": "666fe3a5cdbf3ad306da5a770bf8ba2a3d20910b2bc9865b3d190f5dc0437e82",
+    "lib/models/sttrack/lachtt_candidate_set.py": "d262746d38774d2252306e258317f95a6bbceedf908ceda647c1ce2b490e3728",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "lib/train/dataset/depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+    "tools/prepare_sttrack_m42.py": "e83450c55e500087c7871397c8e99385f0ffcfa12a58edea632570b47863491d",
+    "tools/prepare_sttrack_m44.py": "94555cb9456c8da8c375623d283ea9406c458dffb2329a5a4c3d168ecf9657d9",
+    "tools/collect_sttrack_m44.py": "eaadbe85b569f8a805e371e2aa1607f52c3f8946db7638829e6cc3410a54987f"
+  },
+  "baseline_trace_sha256": {
+    "/root/autodl-tmp/sttrack_innovation_v1/risk_recovery_full152_v1/shard0.json": "846872b20c04fed1ffb132c84135925b819617a739b8319985cc70239a4e5fe3",
+    "/root/autodl-tmp/sttrack_innovation_v1/risk_recovery_full152_v1/shard1.json": "5b168dbd3b60aed619b9c9b9113a4c5c85d4f3d8ce23ca0fbebd91005d0656f9"
+  },
+  "ledger_sha256": "44a9e5dab9a95b9cbaaea11cf86dbbe13b52b63eed80517d1b08d594dc4a5f3a",
+  "inference_inputs_sha256": "0e9a9bd34d4fb5682ba1f90966c2a8d495d0a10cef5ba2e02bbc8c29039c2ae0",
+  "labels_sha256": "787451cc746a3df8c5f211a6cb98eb49f6b994cd696c8f34176de3f2ebf2839a",
+  "sequences": 85,
+  "events": 2101,
+  "split_sequences": {
+    "fit": 63,
+    "development": 22
+  },
+  "shard_frames": [
+    63025,
+    63357
+  ],
+  "strata_counts": {
+    "healthy": 1020,
+    "intermediate": 277,
+    "unavailable": 158,
+    "late_low": 141,
+    "transition": 525
+  },
+  "annotation_rows_without_images": {
+    "toy07_indoor_320": 39
+  },
+  "fit_folds": [
+    2,
+    3,
+    4
+  ],
+  "development_fold": 5,
+  "split_scope": "Existing development folds; official pretrained backbone predates this head split. Mixed full152 prediction JSONs parsed and filtered; folds0/1 provide no new GT/native features/head fitting/evaluation.",
+  "architecture": {
+    "candidates_per_frame": 10,
+    "previous_frames": 1,
+    "roi_cells": 4,
+    "template_references": 2,
+    "descriptor_dim": 128,
+    "transformer_layers": 2,
+    "attention_heads": 4,
+    "ffn_dim": 256,
+    "dropout": 0.0,
+    "partial_matching_weight": 0.25,
+    "matching_temperature": 0.1,
+    "unmatched": true
+  },
+  "variants": [
+    "geometry",
+    "appearance"
+  ],
+  "primary": "geometry",
+  "ablation": "Zero explicit candidate center/size coordinates, preserving all appearance, response, previous-selection and template inputs.",
+  "optimization": {
+    "seed": 2026,
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "optimizer": "AdamW",
+    "checkpoint": "fixed final epoch only"
+  },
+  "feature_storage": "FP16 raw RoIs; FP32 geometry/scores; conversion to FP32 for fitting and inference",
+  "estimated_feature_bytes": 2271903744,
+  "language_enabled": false,
+  "default_template_updates": true,
+  "backbone_and_box_head_frozen": true,
+  "policy": "11-way argmax; NONE keeps default candidate0; first tracking frame collects preceding candidates using default.",
+  "training_target": "Maximum-IoU candidate if IoU>=.5 else NONE; partial true-target pair correspondence, other identities unlabeled.",
+  "next": "After collection integrity and fixed training, always run both complete22-sequence recursive development paths; static snapshots are diagnostic, not the promotion gate.",
+  "recursive_performance_gate": {
+    "mean_iou_gain_at_least": 0.01,
+    "fewer_low_frames": true,
+    "no_episode_increase": true,
+    "positive_sequences_at_least": 3,
+    "no_new_failure_in_default_zero_episode_sequences": true
+  },
+  "mechanism_claim": "Geometry must exceed appearance control for an explicit-position incremental claim; failure of this attribution does not erase separately measured main-model performance.",
+  "public_gate": "Frozen low22 only after recursive main performance pass; then EAO/ROB each >=M39default+1pp, ACC>=default-.10pp, fewer failures, all7 default-zero-failure sequences preserved before same-weight three-dataset validation.",
+  "upstream_reference": "https://github.com/visionml/pytracking/tree/master/ltr/models/target_candidate_matching",
+  "no_public_gt_for_training": true
+}
