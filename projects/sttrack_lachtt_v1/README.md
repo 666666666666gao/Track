@@ -358,6 +358,23 @@ on native default. Four of five gates pass, but mobilephone02 gains one
 failure, so the protection gate fails and public evaluation is withheld.
 See [the M48 audit and protocol](diagnostics/m48/EXPERIMENT_TRACKER.md).
 
+## M49 adjacent-frame motion, scale and template diagnosis
+
+M49 follows the user's motion/scale steering. The native M39 census covers
+all303anchors,220180tracking steps and13922unique adjacent GT pairs. Median
+GT motion is2pixels; at115in-crop failure onsets, median normalized GT motion
+is.088410 while the prediction jumps.865329. Recent templates were correct
+when written at117of124onsets. Pure velocity-based crop recentering gains one
+failure-center coverage and loses two healthy-center coverages.
+
+GT-free prior-box overlap ranking selects a correct candidate at63of124
+onsets, but breaks43native-correct fitting-cache examples while rescuing22,
+and breaks15development examples while rescuing8. Its unconditional use fails
+the frozen cache screen. These are diagnostics, with no new training, text
+calls, recursive run or public benchmark metrics. Motion remains a useful
+conditional cue, not a validated standalone selector.
+See [M49 measurements, figures and next experiments](diagnostics/m49/REPORT.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source

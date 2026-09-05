@@ -1,0 +1,45 @@
+{
+  "artifact_sha256": {
+    "CANDIDATE_CONTINUITY_PLAN.md": "ebfa0741f8ab6d93570719cb769efb738e7d9e29219b32b524eaf195e330ec56",
+    "EXPERIMENT_PLAN.md": "431ecc2940eeaef29bca196a0666516ab2585765eb4656c21762d14520e2e08f",
+    "TRAIN_CACHE_PLAN.md": "fe5c4f3e55a295091c3028c58fffc054114d49b03c75f61011c326af806af6d7",
+    "adjacent_frame_examples.pdf": "f4711117e452a66f5be3a98843c429db067842c260cddd9ecdeb7fe280dc0f08",
+    "adjacent_frame_examples.png": "552e7ae3ec04a5e2b9129c61f75c29776d94dba2a0cc21d89cf14f075744a98b",
+    "analyze_motion_scale.py": "cfe4915c5bd0937dbf7afa27b4038c344dc66a62256b1e33bd27150f08eb86cd",
+    "audit_outputs.py": "e87203b13457663d2cc52688422248c93ab5ead6e9209268bd9c3cf2e0f583a0",
+    "candidate_choices.json": "76543b0105db24b5fc1350a27872a68bf55530798e27cd62429477175756520b",
+    "candidate_continuity.py": "f1913ea817ae44d256634f05a98b541eea91fcea242089dd50875525d3f1e19b",
+    "candidate_continuity_result.json": "849fbc752cc5fc0d70d068286429310d848b4f2c313b135b8e4924d8de57f3ee",
+    "candidate_continuity_rows.csv": "9a0d0f70891a3d197053f03ecd2a840100d11106322c7bdb25df519ddc6afe21",
+    "figure_inputs.json": "0468e69665178ac65bcffda36070f0c932c4f7183dff2933cb2801065dee8e7e",
+    "motion_scale_scatter.pdf": "48402fe2529019bec1d5ed29863f6887b80fe34d5b16519030271fac1b07cfa3",
+    "motion_scale_scatter.png": "9831145ebf772ed698f5453132d74c1181472b09f11414573133da0f5a3ae86c",
+    "plot_motion_scale.py": "2ef442cf9c0f2493bcead8d9347cb4e2054ccae0b785a263874b5ec7af3c492f",
+    "result/failure_onsets.csv": "1555f324fe9550d3c4419faaf3af12e13733bb49f76a8eb8ecfecf4237519129",
+    "result/healthy_paired_frames.csv": "b167f874af59b954c018a980a3fa438728a80d0cfe2369989058f1ace8b886fd",
+    "result/per_sequence.csv": "11b73089ebd8872d11345cd9e0634c4c48f57e8e48683dc2468165f416b70797",
+    "result/result.json": "1acc147182b91ba870b2e18fc14d3e56db86a79ee3e210c8bfbdbcc91d41e950",
+    "result/template_writes.csv": "c1e25c1e51329b7b7914cc0a16d1d3a117bbee8d506b959a9e446deaaa1adcd6",
+    "result/unique_gt_pairs.csv": "71f2f806799c5d55fc511893a20c04b0c14aa029554a451487448f437570be7a",
+    "spec.json": "1869e76bfe800c9cf60c577ef99ca280ec3f76f748d86ca8c5e4a71dd918e3b6",
+    "train_cache_choices.json": "be3951a160e6ebaff56e52bfcf7e4837b3ff5195b6bd5bfb7d5674cc00e83220",
+    "train_cache_continuity.py": "e524b889bc0ed79709427cc52ee29046db941cb115441d4252cc4465bbbbea95",
+    "train_cache_continuity_r1.py": "0e5d9c530e51b1320f638b47e28258f9b245743a6428337f36d8895c460a59cb",
+    "train_cache_result.json": "778e57ec45dc966bbc0f4bd247bc80ce0fc5245b98923a4110206913c0516ff2",
+    "train_cache_rows.json": "ed24086ea832c3fc06b79d8ef29a97e84fb33665f1f65efd125448ddb945e5c6"
+  },
+  "m39_gt_and_trajectory_files_verified": 628,
+  "m40_exact_onset_and_crop_matches": 124,
+  "m41_continuous_capacity_rows_reproduced": 124,
+  "metric_boundary": [
+    {
+      "bounded_raster_top10_iou": 0.4937545922116091,
+      "continuous_top10_iou": 0.5053840917750542,
+      "key": "cube05_indoor_5@200F"
+    }
+  ],
+  "metric_note": "M41 used continuous rectangle IoU (91/115 capacity); M49 VOT candidate diagnosis preregistered bounded raster IoU (90/115). Candidate data is unchanged.",
+  "scope": "Output integrity, causal selection seals, and metric alignment; no performance promotion",
+  "status": "PASS",
+  "training_report_repair": "Initial selection completed and was sealed; Python3.8 rejected dict union in the reporting stage. R2 used dictionary unpacking and labelled the same sealed choices. No selection, training, or inference was repeated."
+}

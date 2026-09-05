@@ -1,0 +1,79 @@
+{
+  "schema": "sttrack_m49_train_cache_continuity_v1",
+  "status": "complete",
+  "scope": "Existing DepthTrack Train event cache, no new optimization or recursion",
+  "metric": "continuous box IoU, matching M44 cache labels; not bounded VOT raster IoU",
+  "verified_feature_files": 85,
+  "pairs": 2101,
+  "choices_sealed_before_gt_sha256": "be3951a160e6ebaff56e52bfcf7e4837b3ff5195b6bd5bfb7d5674cc00e83220",
+  "labels_sha256": "787451cc746a3df8c5f211a6cb98eb49f6b994cd696c8f34176de3f2ebf2839a",
+  "source_sha256": "e524b889bc0ed79709427cc52ee29046db941cb115441d4252cc4465bbbbea95",
+  "by_split": {
+    "fit": {
+      "pairs": 1511,
+      "valid_gt_pairs": 1300,
+      "unavailable_gt_pairs": 211,
+      "native": {
+        "correct": 762,
+        "mean_iou": 0.5685636597153894,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 715,
+        "mean_iou": 0.5120973446464366,
+        "rescued_native_wrong": 21,
+        "broke_native_correct": 68,
+        "broke_native_correct_to_low": 8
+      },
+      "previous_box_iou": {
+        "correct": 741,
+        "mean_iou": 0.5310420542406195,
+        "rescued_native_wrong": 22,
+        "broke_native_correct": 43,
+        "broke_native_correct_to_low": 8
+      },
+      "velocity_box_iou": {
+        "correct": 755,
+        "mean_iou": 0.5391782750432208,
+        "rescued_native_wrong": 25,
+        "broke_native_correct": 32,
+        "broke_native_correct_to_low": 6
+      }
+    },
+    "development": {
+      "pairs": 590,
+      "valid_gt_pairs": 495,
+      "unavailable_gt_pairs": 95,
+      "native": {
+        "correct": 268,
+        "mean_iou": 0.5247707239045543,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 257,
+        "mean_iou": 0.47521524019200034,
+        "rescued_native_wrong": 9,
+        "broke_native_correct": 20,
+        "broke_native_correct_to_low": 2
+      },
+      "previous_box_iou": {
+        "correct": 261,
+        "mean_iou": 0.4915102753109943,
+        "rescued_native_wrong": 8,
+        "broke_native_correct": 15,
+        "broke_native_correct_to_low": 2
+      },
+      "velocity_box_iou": {
+        "correct": 269,
+        "mean_iou": 0.5056353016530146,
+        "rescued_native_wrong": 11,
+        "broke_native_correct": 10,
+        "broke_native_correct_to_low": 2
+      }
+    }
+  }
+}

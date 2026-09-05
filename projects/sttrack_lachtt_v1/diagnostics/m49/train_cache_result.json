@@ -1,0 +1,2886 @@
+{
+  "schema": "sttrack_m49_train_cache_continuity_v1",
+  "status": "complete",
+  "scope": "Existing DepthTrack Train event cache, no new optimization or recursion",
+  "metric": "continuous box IoU, matching M44 cache labels; not bounded VOT raster IoU",
+  "verified_feature_files": 85,
+  "pairs": 2101,
+  "choices_sealed_before_gt_sha256": "be3951a160e6ebaff56e52bfcf7e4837b3ff5195b6bd5bfb7d5674cc00e83220",
+  "labels_sha256": "787451cc746a3df8c5f211a6cb98eb49f6b994cd696c8f34176de3f2ebf2839a",
+  "source_sha256": "e524b889bc0ed79709427cc52ee29046db941cb115441d4252cc4465bbbbea95",
+  "by_split": {
+    "fit": {
+      "pairs": 1511,
+      "valid_gt_pairs": 1300,
+      "unavailable_gt_pairs": 211,
+      "native": {
+        "correct": 762,
+        "mean_iou": 0.5685636597153894,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 715,
+        "mean_iou": 0.5120973446464366,
+        "rescued_native_wrong": 21,
+        "broke_native_correct": 68,
+        "broke_native_correct_to_low": 8
+      },
+      "previous_box_iou": {
+        "correct": 741,
+        "mean_iou": 0.5310420542406195,
+        "rescued_native_wrong": 22,
+        "broke_native_correct": 43,
+        "broke_native_correct_to_low": 8
+      },
+      "velocity_box_iou": {
+        "correct": 755,
+        "mean_iou": 0.5391782750432208,
+        "rescued_native_wrong": 25,
+        "broke_native_correct": 32,
+        "broke_native_correct_to_low": 6
+      }
+    },
+    "development": {
+      "pairs": 590,
+      "valid_gt_pairs": 495,
+      "unavailable_gt_pairs": 95,
+      "native": {
+        "correct": 268,
+        "mean_iou": 0.5247707239045543,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 257,
+        "mean_iou": 0.47521524019200034,
+        "rescued_native_wrong": 9,
+        "broke_native_correct": 20,
+        "broke_native_correct_to_low": 2
+      },
+      "previous_box_iou": {
+        "correct": 261,
+        "mean_iou": 0.4915102753109943,
+        "rescued_native_wrong": 8,
+        "broke_native_correct": 15,
+        "broke_native_correct_to_low": 2
+      },
+      "velocity_box_iou": {
+        "correct": 269,
+        "mean_iou": 0.5056353016530146,
+        "rescued_native_wrong": 11,
+        "broke_native_correct": 10,
+        "broke_native_correct_to_low": 2
+      }
+    }
+  },
+  "per_sequence": {
+    "bag04_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 21,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 13,
+        "mean_iou": 0.6073740512658428,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.5141013284523329,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5338159667568689,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.48688761852457124,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "bag05_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6015170660880009,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.5331227113865568,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 1
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5146738515327005,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 1
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.534515976861558,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 1
+      }
+    },
+    "ball02_indoor": {
+      "pairs": 38,
+      "valid_gt_pairs": 30,
+      "unavailable_gt_pairs": 8,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.39550241229643157,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 9,
+        "mean_iou": 0.3029755341663757,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 9,
+        "mean_iou": 0.3029755341663757,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.3621164326640273,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "ball04_indoor": {
+      "pairs": 26,
+      "valid_gt_pairs": 22,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.511311137873642,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.3984659530423324,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.40478701763840347,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.46897644280156126,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "ball05_indoor": {
+      "pairs": 26,
+      "valid_gt_pairs": 22,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5039191959844204,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 9,
+        "mean_iou": 0.3552744593779464,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 4,
+        "broke_native_correct_to_low": 1
+      },
+      "previous_box_iou": {
+        "correct": 9,
+        "mean_iou": 0.3705462058192872,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 4,
+        "broke_native_correct_to_low": 1
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4692673916940004,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "ball07_indoor": {
+      "pairs": 38,
+      "valid_gt_pairs": 30,
+      "unavailable_gt_pairs": 8,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.39298576955285197,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.35946611483768276,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.364735780671797,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.37926459447049704,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "ball08_wild": {
+      "pairs": 26,
+      "valid_gt_pairs": 23,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5242929818345086,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.4245347924636322,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.44105461467059587,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.46688408265350845,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      }
+    },
+    "ball13_indoor": {
+      "pairs": 38,
+      "valid_gt_pairs": 31,
+      "unavailable_gt_pairs": 7,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.33980100775285077,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.30784843533488904,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.33454135895885784,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.30935599363314764,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "ball19_indoor": {
+      "pairs": 21,
+      "valid_gt_pairs": 21,
+      "unavailable_gt_pairs": 0,
+      "native": {
+        "correct": 13,
+        "mean_iou": 0.5906393275153392,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.512307739880488,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5257661280699171,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.585503095555983,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "ball21_indoor": {
+      "pairs": 17,
+      "valid_gt_pairs": 17,
+      "unavailable_gt_pairs": 0,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7162486750710403,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.6605490106880169,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6828533301156381,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.675412406691353,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "basket_indoor": {
+      "pairs": 26,
+      "valid_gt_pairs": 23,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5079552685435673,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.4474358599160447,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.47491105660772354,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.4649273606797156,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      }
+    },
+    "beautifullight01_indoor": {
+      "pairs": 30,
+      "valid_gt_pairs": 24,
+      "unavailable_gt_pairs": 6,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.47104915890138727,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.4361670050321931,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4411544839714024,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.47220739561584973,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "bike03_wild": {
+      "pairs": 18,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7184885991672825,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.6928509082235235,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6953741694902745,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.6573326722577681,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "book02_indoor": {
+      "pairs": 16,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 0,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7764727244238576,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.7622710283596378,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7764727244238576,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7720580450689847,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "book04_indoor": {
+      "pairs": 16,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 0,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7469293443420062,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.7563745126667022,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7611441337747749,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7538651262352598,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "book06_indoor": {
+      "pairs": 29,
+      "valid_gt_pairs": 25,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.4712629533073415,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 13,
+        "mean_iou": 0.47837285922827727,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.4848548723576592,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.4811365743495199,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "bottle02_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5879695969662364,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.5255827959913698,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5745085819135909,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5601685562905396,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "bottle03_indoor": {
+      "pairs": 20,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6603596238829681,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.5954183187135993,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5993136704642105,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.626600433124005,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "box_indoor": {
+      "pairs": 31,
+      "valid_gt_pairs": 25,
+      "unavailable_gt_pairs": 6,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.3823281657041489,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 7,
+        "mean_iou": 0.28999652942510273,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 5,
+        "broke_native_correct_to_low": 1
+      },
+      "previous_box_iou": {
+        "correct": 9,
+        "mean_iou": 0.30916869821639503,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 1
+      },
+      "velocity_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.32392598395464733,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "car01_indoor": {
+      "pairs": 28,
+      "valid_gt_pairs": 23,
+      "unavailable_gt_pairs": 5,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5351602409899644,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.4884530493641282,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5088895110850818,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5191081960422498,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "car02_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 19,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6229187054933231,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.574247102364386,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5733903110824786,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6014015398796303,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cat02_indoor": {
+      "pairs": 20,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6732951638185802,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.6282953133782214,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.6232652522426223,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.6273768076741126,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cat03_indoor": {
+      "pairs": 21,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6398861655229915,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.5995088519742544,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6108761309718463,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5959607077702731,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cat04_indoor": {
+      "pairs": 20,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6516189416400516,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.5742415243391462,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.604394483849236,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5964393412027027,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      }
+    },
+    "cat05_indoor": {
+      "pairs": 26,
+      "valid_gt_pairs": 22,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5449627884409254,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.5074871388590076,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5395602882577148,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5370333446193472,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "chair01_indoor": {
+      "pairs": 22,
+      "valid_gt_pairs": 19,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6393206473996687,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.6330420613466825,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6361896388243774,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6239233868272338,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "chair02_indoor": {
+      "pairs": 18,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7998110900953154,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 13,
+        "mean_iou": 0.8051086227419708,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.8113941693432892,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.8052402204746099,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "colacan01_indoor": {
+      "pairs": 33,
+      "valid_gt_pairs": 25,
+      "unavailable_gt_pairs": 8,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.40358696221520973,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.3534558175182735,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.3588436148587968,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.38905497142513307,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "colacan02_indoor": {
+      "pairs": 38,
+      "valid_gt_pairs": 30,
+      "unavailable_gt_pairs": 8,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.4139183393482432,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.3820622900957284,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.40232725240616346,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 14,
+        "mean_iou": 0.42310233482336373,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "colacan04_indoor": {
+      "pairs": 36,
+      "valid_gt_pairs": 28,
+      "unavailable_gt_pairs": 8,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.4027376573445866,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 8,
+        "mean_iou": 0.2746193044161163,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 4,
+        "broke_native_correct_to_low": 1
+      },
+      "previous_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.3275774195671931,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 1
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.35500560019019056,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      }
+    },
+    "container01_indoor": {
+      "pairs": 17,
+      "valid_gt_pairs": 15,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7534564630927044,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.693260334561623,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.693260334561623,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7271082435563244,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cube01_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 21,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 13,
+        "mean_iou": 0.6355847088498541,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 13,
+        "mean_iou": 0.5355318733239579,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.5598204335670662,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5860968198982563,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cube04_indoor": {
+      "pairs": 37,
+      "valid_gt_pairs": 33,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 13,
+        "mean_iou": 0.380285827388191,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 14,
+        "mean_iou": 0.36591313088907423,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 14,
+        "mean_iou": 0.370345814791359,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 14,
+        "mean_iou": 0.3878603724544363,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cup05_indoor": {
+      "pairs": 38,
+      "valid_gt_pairs": 31,
+      "unavailable_gt_pairs": 7,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.383141469590946,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.3239960739035492,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.34686869155304384,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.3858184523137411,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cup06_indoor": {
+      "pairs": 38,
+      "valid_gt_pairs": 33,
+      "unavailable_gt_pairs": 5,
+      "native": {
+        "correct": 14,
+        "mean_iou": 0.431842160264486,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 16,
+        "mean_iou": 0.4633840730366202,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 16,
+        "mean_iou": 0.46117419334289694,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 16,
+        "mean_iou": 0.47562645234304757,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cup08_indoor": {
+      "pairs": 22,
+      "valid_gt_pairs": 19,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6236071903546272,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.6010349081554609,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6299022972698857,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6251897832547602,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cup10_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6006760396579781,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 15,
+        "mean_iou": 0.6617101811239923,
+        "rescued_native_wrong": 3,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 15,
+        "mean_iou": 0.6876532480124338,
+        "rescued_native_wrong": 3,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 15,
+        "mean_iou": 0.6803710947701325,
+        "rescued_native_wrong": 3,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cup13_indoor": {
+      "pairs": 29,
+      "valid_gt_pairs": 24,
+      "unavailable_gt_pairs": 5,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.46119837123692825,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.4225896697288289,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.4094352418201567,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.42666090610042917,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "cup14_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5922457354194935,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 14,
+        "mean_iou": 0.6523395466152565,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 14,
+        "mean_iou": 0.6535402236335813,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 14,
+        "mean_iou": 0.6204274058102865,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "dumbbells02_indoor": {
+      "pairs": 26,
+      "valid_gt_pairs": 22,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5345810090557204,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 9,
+        "mean_iou": 0.462521461995168,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.4838319097163816,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.4769585887387716,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "earphone02_indoor": {
+      "pairs": 29,
+      "valid_gt_pairs": 24,
+      "unavailable_gt_pairs": 5,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.47827955123270627,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.4016954149970052,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.4262191076021269,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.44484595749221273,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "egg_indoor": {
+      "pairs": 37,
+      "valid_gt_pairs": 31,
+      "unavailable_gt_pairs": 6,
+      "native": {
+        "correct": 14,
+        "mean_iou": 0.4389706385830487,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 17,
+        "mean_iou": 0.46601254867564,
+        "rescued_native_wrong": 3,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 16,
+        "mean_iou": 0.47639700674986923,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 17,
+        "mean_iou": 0.4879975764278771,
+        "rescued_native_wrong": 3,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "flower01_indoor": {
+      "pairs": 37,
+      "valid_gt_pairs": 29,
+      "unavailable_gt_pairs": 8,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.4110370933489011,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.4012349345373941,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4033577158083015,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4161101989730568,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "flower02_wild": {
+      "pairs": 26,
+      "valid_gt_pairs": 22,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5417363740405304,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.4311883402395372,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.448366005634268,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.3984826570214767,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "flower03_indoor": {
+      "pairs": 14,
+      "valid_gt_pairs": 12,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.8406181923267791,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.7588595664298924,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7810286918564086,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.8081409352848702,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "flowerbasket_indoor": {
+      "pairs": 29,
+      "valid_gt_pairs": 25,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 13,
+        "mean_iou": 0.5423010713680106,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 13,
+        "mean_iou": 0.4926948554467795,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 14,
+        "mean_iou": 0.5120079827875148,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 14,
+        "mean_iou": 0.518944748079683,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "ghostmask_indoor": {
+      "pairs": 29,
+      "valid_gt_pairs": 26,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.4571382106926253,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.3585825708818734,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.43769519634602144,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4325965753219649,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "glass03_indoor": {
+      "pairs": 28,
+      "valid_gt_pairs": 23,
+      "unavailable_gt_pairs": 5,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5330483763520009,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.4512574017026408,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.49299566400947464,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5123531304703455,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "glass04_indoor": {
+      "pairs": 18,
+      "valid_gt_pairs": 15,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7156580115835802,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.6633362696208847,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.684934250219987,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7108791457382319,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "glass05_indoor": {
+      "pairs": 24,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5489354585407844,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.46626195316707103,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5036291414417458,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5411177648697375,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "gymring_wild": {
+      "pairs": 12,
+      "valid_gt_pairs": 12,
+      "unavailable_gt_pairs": 0,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.943219538970783,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.9120410613880537,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.927063255361373,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.9406872622385188,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "hat01_indoor": {
+      "pairs": 18,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7655373331066894,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.7241688836606988,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7231813112327443,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7064279830021428,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "human01_indoor": {
+      "pairs": 18,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7738705839469928,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 13,
+        "mean_iou": 0.7819383772452875,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.7773292850612166,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.7816846700812043,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "human03_wild": {
+      "pairs": 31,
+      "valid_gt_pairs": 25,
+      "unavailable_gt_pairs": 6,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.46756898654355844,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.4611197594688305,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4619627965997299,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4619627965997299,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "leaves01_wild": {
+      "pairs": 22,
+      "valid_gt_pairs": 19,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5720686631579155,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.4685148472610386,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.489735350246487,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.501691021420416,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "leaves02_indoor": {
+      "pairs": 24,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6150773796634715,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.5569092652561768,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5674917195236157,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5685469483324104,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "leaves03_wild": {
+      "pairs": 30,
+      "valid_gt_pairs": 24,
+      "unavailable_gt_pairs": 6,
+      "native": {
+        "correct": 13,
+        "mean_iou": 0.4704388834594481,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 8,
+        "mean_iou": 0.3051125959790611,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 5,
+        "broke_native_correct_to_low": 2
+      },
+      "previous_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.33777590041521394,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 2
+      },
+      "velocity_box_iou": {
+        "correct": 8,
+        "mean_iou": 0.2833959074184826,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 5,
+        "broke_native_correct_to_low": 1
+      }
+    },
+    "leaves05_indoor": {
+      "pairs": 20,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6693355209361648,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 13,
+        "mean_iou": 0.6179105391993325,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.6640254189333838,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.6813024659728416,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "leaves06_wild": {
+      "pairs": 20,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6661188480229874,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 9,
+        "mean_iou": 0.5076229342695452,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5595882381844021,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.6410212997701874,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "milkbottle_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 21,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5694266354005896,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.4993139518772233,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.5584413616983994,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.5508203944100154,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "mobilephone01_indoor": {
+      "pairs": 34,
+      "valid_gt_pairs": 27,
+      "unavailable_gt_pairs": 7,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.4471174028082352,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.38223019808229175,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.3953502468041748,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.4087468170453449,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "mobilephone02_indoor": {
+      "pairs": 18,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6530068242231117,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.6098321543868557,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.6198735572147177,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.6351302479371171,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "mobilephone06_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.584975467191535,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.499126613787929,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5025802514785565,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 10,
+        "mean_iou": 0.49784488273475624,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "mushroom01_indoor": {
+      "pairs": 26,
+      "valid_gt_pairs": 23,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5300932949085572,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.4993334259685282,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5126572402699481,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4867045985354138,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "mushroom05_indoor": {
+      "pairs": 25,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 5,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5158603334490816,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.42136031989723427,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.49755926510320003,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5120646348906697,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "notebook02_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6435529705770158,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.5798861746954327,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5753431668761818,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.6051681908255538,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "paintbottle_indoor": {
+      "pairs": 21,
+      "valid_gt_pairs": 19,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5700049881699712,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.5246009469289534,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5704125354203379,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5700049881699712,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "painting_indoor_320": {
+      "pairs": 16,
+      "valid_gt_pairs": 14,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.8057619137678207,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.8057619137678207,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.8057619137678207,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.8057619137678207,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "pigeon03_wild": {
+      "pairs": 14,
+      "valid_gt_pairs": 12,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.8860841518261441,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.785420655403041,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.874910980769729,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.8782595158485168,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "pigeon07_wild": {
+      "pairs": 16,
+      "valid_gt_pairs": 14,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7739442337710833,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.7201615067268604,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7530686768301973,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7413867671766611,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "pine01_indoor": {
+      "pairs": 20,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6089070886254546,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.4581438789089908,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5226608736406604,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 14,
+        "mean_iou": 0.589976310696639,
+        "rescued_native_wrong": 2,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "pine02_wild_320": {
+      "pairs": 29,
+      "valid_gt_pairs": 25,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.48401027409154296,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 9,
+        "mean_iou": 0.35212858450758233,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 4,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.3858693843596565,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.38339447381343816,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "shoes01_indoor": {
+      "pairs": 37,
+      "valid_gt_pairs": 31,
+      "unavailable_gt_pairs": 6,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.3906251284596074,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.3851532263566898,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.39276256653035324,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.38166063951124485,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "skateboard01_indoor": {
+      "pairs": 33,
+      "valid_gt_pairs": 26,
+      "unavailable_gt_pairs": 7,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.4490240187608175,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.41562640306517795,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.41474015106239714,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.4309122453467441,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "skateboard02_indoor": {
+      "pairs": 20,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6862736521788448,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.6441504934455171,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.6727166629610307,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.6677237531909733,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "suitcase_indoor": {
+      "pairs": 26,
+      "valid_gt_pairs": 22,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.5610966819423905,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.5391618896725962,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5505598428875441,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.5512066797201535,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "toiletpaper04_indoor": {
+      "pairs": 23,
+      "valid_gt_pairs": 20,
+      "unavailable_gt_pairs": 3,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.626166360389897,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 13,
+        "mean_iou": 0.567108076068491,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.5682417958908125,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.6039134540542687,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "toy01_indoor": {
+      "pairs": 15,
+      "valid_gt_pairs": 13,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.8498111519466249,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 12,
+        "mean_iou": 0.8316777108612843,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.8478664709191708,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.8447906670843397,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "toy03_indoor": {
+      "pairs": 18,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7268345862285612,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 15,
+        "mean_iou": 0.7382020808708585,
+        "rescued_native_wrong": 3,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.7231842806551497,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.7064151920411139,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "toy04_indoor": {
+      "pairs": 14,
+      "valid_gt_pairs": 14,
+      "unavailable_gt_pairs": 0,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.8332464032349612,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 13,
+        "mean_iou": 0.8065369582881464,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.7875853463402819,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.7752943398571998,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "toy06_indoor": {
+      "pairs": 18,
+      "valid_gt_pairs": 16,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.7148650965645647,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.6352512531483874,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6929140604027699,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 12,
+        "mean_iou": 0.6833502217972066,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "toy07_indoor_320": {
+      "pairs": 33,
+      "valid_gt_pairs": 25,
+      "unavailable_gt_pairs": 8,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.4125407556326881,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 10,
+        "mean_iou": 0.34294853838715444,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 2,
+        "broke_native_correct_to_low": 1
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.3737588199492731,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.38766956049723084,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      }
+    },
+    "toy08_indoor": {
+      "pairs": 20,
+      "valid_gt_pairs": 18,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6466360406556112,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.5372372483422274,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5436636145019802,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5951442362386282,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      }
+    },
+    "tree_wild": {
+      "pairs": 25,
+      "valid_gt_pairs": 21,
+      "unavailable_gt_pairs": 4,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.590587314657969,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 11,
+        "mean_iou": 0.49586389552171656,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5033549408325888,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      },
+      "velocity_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.4874686175203471,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 1
+      }
+    },
+    "trophy_indoor": {
+      "pairs": 19,
+      "valid_gt_pairs": 17,
+      "unavailable_gt_pairs": 2,
+      "native": {
+        "correct": 12,
+        "mean_iou": 0.6533705122715263,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      },
+      "nearest_center": {
+        "correct": 9,
+        "mean_iou": 0.5591861400640051,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 3,
+        "broke_native_correct_to_low": 0
+      },
+      "previous_box_iou": {
+        "correct": 11,
+        "mean_iou": 0.5893635450059543,
+        "rescued_native_wrong": 0,
+        "broke_native_correct": 1,
+        "broke_native_correct_to_low": 0
+      },
+      "velocity_box_iou": {
+        "correct": 13,
+        "mean_iou": 0.6452983970394764,
+        "rescued_native_wrong": 1,
+        "broke_native_correct": 0,
+        "broke_native_correct_to_low": 0
+      }
+    }
+  }
+}
