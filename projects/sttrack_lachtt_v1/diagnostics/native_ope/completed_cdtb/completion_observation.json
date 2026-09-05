@@ -1,0 +1,59 @@
+{
+  "observed_utc": "2026-09-05T20:11:08.178364+00:00",
+  "cdtb": {
+    "controller_live": false,
+    "process": "",
+    "output_sequences": 80,
+    "exits": {
+      "tracking_cdtb.exit": "0",
+      "analysis_cdtb.exit": "0",
+      "cdtb.controller.exit": "0"
+    },
+    "metrics": {
+      "precision": 0.6993311256529843,
+      "recall": 0.6806774352120221,
+      "f_score": 0.6898782086902927,
+      "precision_percent": 69.93311256529843,
+      "recall_percent": 68.0677435212022,
+      "f_score_percent": 68.98782086902926,
+      "threshold": 0.580139,
+      "sequences": 80,
+      "frames": 101956
+    },
+    "analysis_tail": [
+      "  \"recall_percent\": 68.0677435212022,",
+      "  \"f_score_percent\": 68.98782086902926,",
+      "  \"threshold\": 0.580139,",
+      "  \"sequences\": 80,",
+      "  \"frames\": 101956",
+      "}"
+    ]
+  },
+  "m54": {
+    "pids": {
+      "queue.pid": {
+        "pid": 182350,
+        "live": true,
+        "process": "182350 182349 S+         59:54 bash /root/autodl-tmp/sttrack_m54_template_reader_v1_20260906/wait_for_native.sh",
+        "children": "203098 182350 S+         01:09 bash /root/autodl-tmp/sttrack_m54_template_reader_v1_20260906/run.sh"
+      },
+      "controller.pid": {
+        "pid": 203098,
+        "live": true,
+        "process": "203098 182350 S+         01:09 bash /root/autodl-tmp/sttrack_m54_template_reader_v1_20260906/run.sh",
+        "children": "203099 203098 Rl+        01:09 /root/autodl-tmp/envs/sttrack/bin/python -m tools.collect_sttrack_m54 --root /root/autodl-tmp/sttrack_m54_template_reader_v1_20260906"
+      }
+    },
+    "exits": {
+      "contract.exit": "0",
+      "runtime_contract.exit": "0",
+      "contract_controller.exit": "0"
+    },
+    "queue_tail": [
+      "2026-09-05T20:01:59Z native tracking still running; next check in 240 seconds",
+      "2026-09-05T20:05:59Z native tracking still running; next check in 240 seconds",
+      "2026-09-05T20:09:59Z starting frozen M54 collection-training-recursion pipeline"
+    ],
+    "collection_tail": []
+  }
+}

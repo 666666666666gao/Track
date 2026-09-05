@@ -441,8 +441,11 @@ with P/R/F = **62.415336 / 62.682004 / 62.548386 percent**. All 76,373 frames
 and raw-data hashes were checked, and an independent bounded-overlap/PR
 recomputation exactly matches the report. This native reference fails all
 three DepthTrack targets; the historical SRTrack success does not transfer to
-this checkpoint. CDTB80 and full127 were still pending at that result's
-completion observation. No learned-head promotion is claimed. See the
+this checkpoint. CDTB80 has also completed with P/R/F =
+**69.933113 / 68.067744 / 68.987821 percent**, failing all three CDTB targets.
+All 101,956 frames and the 80 per-sequence rows have been sealed and exported.
+Native full127 remains pending; no learned-head promotion is claimed. See the
+[completed CDTB result and all-sequence table](diagnostics/native_ope/completed_cdtb/RESULT_REPORT.md),
 [completed DepthTrack result and all-sequence table](diagnostics/native_ope/completed_depthtrack/RESULT_REPORT.md),
 [contract and launch record](diagnostics/native_ope/LAUNCH_REPORT.md) and
 [frozen reference plan](diagnostics/native_ope/EXPERIMENT_PLAN.md).
@@ -454,10 +457,12 @@ current `[initial, dynamic]` and alternate `[initial, initial]` combinations.
 The new 58,923-parameter head reads actual branch RGB-D RoIs, causal references
 and response maps. Two 240-step contracts pass: current-only native parity,
 and complete-state consistency under forced initial-slot reads. The frozen
-10,615-window fitting collection, 20-epoch head training and full22 recursive
-evaluation are queued after the native GPU0 reference tracking jobs. No new
-trained or performance result is claimed. See the
-[M54 implementation, contracts and execution scope](diagnostics/m54/IMPLEMENTATION_REPORT.md).
+10,615-window fitting collection started at 04:09:59 CST on 2026-09-06,
+after both native GPU0 reference tracking jobs exited successfully. The fixed
+20-epoch head training and full22 recursive evaluation follow collection.
+The first four fitting sequences have completed; no trained or performance
+result is claimed. See the [actual collection start](diagnostics/m54/COLLECTION_START.md)
+and [M54 implementation, contracts and execution scope](diagnostics/m54/IMPLEMENTATION_REPORT.md).
 
 ## Integrity
 
