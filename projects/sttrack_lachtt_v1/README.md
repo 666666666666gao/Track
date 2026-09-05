@@ -423,6 +423,11 @@ The complete fixed fitting collection is running; no capacity result, learned
 reader or public metric is available. See the
 [frozen M53 plan](diagnostics/m53/EXPERIMENT_PLAN.md) and
 [contract, launch evidence and scope](diagnostics/m53/LAUNCH_REPORT.md).
+The post-seal analyzer is now implemented and bound before experiment GT
+analysis. Its synthetic geometry checks pass in the server environment;
+the independent implementation review found no concrete defect but does not
+verify a completed capacity result. See the
+[analysis protocol and implementation checks](diagnostics/m53/ANALYSIS_IMPLEMENTATION.md).
 
 ## Integrity
 
