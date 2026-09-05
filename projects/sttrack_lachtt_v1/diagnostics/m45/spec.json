@@ -1,0 +1,79 @@
+{
+  "schema": "sttrack_m45_default_priority_targets_v1",
+  "source_root": "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905",
+  "source_spec_sha256": "8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18",
+  "control_training_result_sha256": "7f6df58956ea6a9ad1cf018fb9763d26c14137bb412e11f89292ba60e78a5266",
+  "control_recursive_result_sha256": "721553e2d8e2f37b084ca946ea0d0285ccf8436d203a9f0251851c2669a8d200",
+  "control_terminal_audit_sha256": "c01a9579be0df14270f336da75c4ce2a0a3e0423890fea3fc646fe25afce7c85",
+  "trainer_sha256": "021af5536e27d279e8406333d00872e049f3a4dea8c0db92d6e5f89548abe625",
+  "source_sha256": {
+    "tools/train_sttrack_m45.py": "021af5536e27d279e8406333d00872e049f3a4dea8c0db92d6e5f89548abe625",
+    "tools/run_sttrack_m45.py": "d3e562c07dca90965a8b0db8fbf4e2cc661655521e4bb5942b5c1246377d7593",
+    "tools/prepare_sttrack_m45.py": "f1c8b516d0c83f64593a158b46efc25b347610b9d935257840c80610cada7b17"
+  },
+  "primary": "default_priority",
+  "single_change": "Current and previous identity supervision keep candidate0 when its IoU>=.5; otherwise max-IoU if>=.5, else NONE.",
+  "inference": "Unchanged M44 geometry runtime; no GT, new threshold, text, search, query or template change.",
+  "fit_sequences": 63,
+  "fit_pairs": 1511,
+  "development_sequences": 22,
+  "development_pairs": 590,
+  "current_fit_labels_changed": 121,
+  "optimization": {
+    "seed": 2026,
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "optimizer": "AdamW",
+    "checkpoint": "fixed final epoch only"
+  },
+  "initialization": "Fresh seed2026 initialization, not additional epochs on M44 weights.",
+  "control": "Reuse sealed M44 geometry with exact matched initial-state and sample-order hashes; same architecture/data/20epochs960steps.",
+  "parameters": 448739,
+  "performance_gate": {
+    "mean_iou_gain_at_least": 0.01,
+    "fewer_low_frames": true,
+    "no_episode_increase": true,
+    "positive_sequences_at_least": 3,
+    "no_new_failure_in_default_zero_episode_sequences": true
+  },
+  "public_gate": "Frozen low22 only after recursive main performance pass; then EAO/ROB each >=M39default+1pp, ACC>=default-.10pp, fewer failures, all7 default-zero-failure sequences preserved before same-weight three-dataset validation.",
+  "static_is_diagnostic_only": true,
+  "shards": [
+    [
+      "ball07_indoor",
+      "ball19_indoor",
+      "book06_indoor",
+      "car01_indoor",
+      "car02_indoor",
+      "colacan04_indoor",
+      "cup08_indoor",
+      "egg_indoor",
+      "flowerbasket_indoor",
+      "glass03_indoor",
+      "mobilephone02_indoor"
+    ],
+    [
+      "bag05_indoor",
+      "beautifullight01_indoor",
+      "colacan01_indoor",
+      "container01_indoor",
+      "cup10_indoor",
+      "cup13_indoor",
+      "flower02_wild",
+      "flower03_indoor",
+      "ghostmask_indoor",
+      "mobilephone01_indoor",
+      "notebook02_indoor"
+    ]
+  ],
+  "shard_frames": [
+    16567,
+    16563
+  ],
+  "public_automatic_launch": false,
+  "rationale": "M44 has121 fitting windows where a correct default is supervised away for higher instantaneous IoU; no causal proof that this is the sole failure source.",
+  "next": "Complete fixed fitting and all22 recursive sequences. Strong advancement baseline remains STTrack default."
+}

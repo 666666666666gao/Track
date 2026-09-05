@@ -1,4 +1,4 @@
-# M44 tracker — training complete, recursive validation running
+# M44 tracker — complete, primary performance failed
 
 | Stage | Status | Evidence |
 |---|---|---|
@@ -11,15 +11,15 @@
 | Runtime integration | PASS |120-frame default bbox/score/template/query parity; two forced-candidate frames and preceding selected-index propagation |
 | Real fitting | Complete |20 epochs /960 updates per arm; final checkpoints strictly reloaded;46 tensors changed per arm |
 | Static development | Diagnostic only |590 windows: default meanIoU.440274; geometry.441423; appearance.438411; primary is unchanged |
-| Pipeline controller | Running recursive validation | PID13654; completed collection, runtime checks and both training arms |
-| Full recursive development | Running | Started13:32:07; geometryPID15301/appearancePID15302; each22 complete sequences/33,130 frames |
-| Terminal scalar/weight audit | Prepared, not executed | tools/audit_sttrack_m44.py runs after original controller exit0 |
-| Public evaluation | Not launched | Requires the original main recursive gate; no automatic public launch |
+| Pipeline controller | Complete | Original controller exit0; original tracking processes ended |
+| Full recursive development | Complete; both FAIL | All22 sequences/33,130 frames per arm; geometry.617098 vsdefault.652226; lowframes8436 vs7397; episodes87 vs75 |
+| Terminal scalar/weight audit | PASS | All44 trajectory/source/weight bindings, scalarIoU/H10 and exact default prefixes verified |
+| Public evaluation | Not authorized by result | Both performance gates failed; no low22/full127 launch |
 
-Recursive performance remains pending until both terminal receipts exist. Do not
-restart an existing collector because a monitoring call times out. Static
-snapshots are diagnostic; the geometry primary and performance gates are
-fixed before these results. No same-weight three-dataset result is claimed.
+Both recursive results and the terminal audit are sealed. Geometry is2.344925pp
+worse than the appearance control, so explicit-position attribution also fails.
+Appearance meanIoU.640547,7466lowframes,85episodes also fails and introduces a
+failure on mobilephone02. No primary switch or public promotion is made.
 
 Both final weights require the same official STTrack backbone checkpoint:
 
@@ -32,3 +32,11 @@ correct default candidate exists in both frames. Correspondence-column
 inspection gives unmatched/correct/wrong, so a correct matcher followed by an
 incorrect final ranking is not a uniform explanation. See the sealed static
 diagnosis; no inference policy or training setting was changed.
+
+The two largest geometry regressions were replayed to their first choice,
+118frames exactly matching sealed boxes/scores. Eggframe16 chooses an incorrect
+neighbor despite a correct candidate. Glass03frame102 has no IoU>=.5candidate,
+yet commits candidate9; this single override changes the later trajectory.
+See `first_choice_diagnosis.json`, `ASSOCIATION_DIAGNOSIS.md`, and the complete
+`per_sequence.csv`. M45 is a separate fresh training-target intervention, not a
+continuation or relabeling of this failed M44 result.

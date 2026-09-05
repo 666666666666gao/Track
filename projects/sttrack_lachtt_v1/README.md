@@ -289,10 +289,28 @@ including1,420 template writes. Runtime integration checks also passed.
 Both fixed20-epoch/960-update training runs completed and their final weights
 were strictly reloaded. On590 static development windows, meanIoU is
 0.440274/0.441423/0.438411 for default/geometry/appearance. These small static
-differences do not establish recursive performance. Both complete22-sequence
-recursive paths are running; no new public metric is claimed. See
+differences did not transfer to recursive performance. Both complete22-sequence
+paths failed: geometry meanIoU.617098,8436lowframes,87episodes;
+appearance.640547,7466lowframes,85episodes; default.652226,7397lowframes,75episodes.
+All44trajectory/source/weight bindings and independent scalar metrics passed
+the terminal audit. No new public metric is claimed. See
 [the frozen M44 protocol](diagnostics/m44/EXPERIMENT_SPEC.md) and
 [execution tracker](diagnostics/m44/EXPERIMENT_TRACKER.md).
+
+## M45 default-preserving training targets
+
+M45 keeps the same geometry architecture, data, optimizer, seed and runtime.
+Its single training intervention labels an already-correct default candidate
+as the target, rather than requiring a different box with higher instantaneous
+IoU. All-bad sets still use NONE. Current/previous fitting labels change121/174
+times. This is a new20-epoch/960-step training from the same fresh initialization,
+not added epochs on the failed weights. Initialization/sample-order hashes
+match the sealed M44 geometry control.
+
+Static590-window meanIoU is.446766, with15changes,5rescues and1severe regression.
+Complete22-sequence recursive validation is running in two sequence shards;
+the advancement baseline and gate remain STTrack default. See
+[the M45 tracker](diagnostics/m45/EXPERIMENT_TRACKER.md).
 
 ## Integrity
 
