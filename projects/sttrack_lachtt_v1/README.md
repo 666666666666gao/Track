@@ -419,8 +419,13 @@ M53 tests past native template reads from the same current search/query state,
 preserving the initial template, two-template input and native recursive path.
 The purity contract passes on two fitting sequences with 240 tracking steps,
 238 current-template replays, 110 historical shadows and three native writes.
-The complete fixed fitting collection is running; no capacity result, learned
-reader or public metric is available. See the
+The complete fitting collection and post-seal analysis have finished: 1,511
+events, 1,300 valid GT events, and 14,349 historical-view forwards. A privileged
+oracle recovers 26 of 325 severe-current events across 12 fitting sequences,
+passing the fixed capacity screen. This permits reader design, not recursive
+or public-benchmark promotion. All raw arithmetic and 189 per-sequence rows
+were independently recomputed without disagreement. See the
+[completed result and read-budget limits](diagnostics/m53/RESULT_REPORT.md),
 [frozen M53 plan](diagnostics/m53/EXPERIMENT_PLAN.md) and
 [contract, launch evidence and scope](diagnostics/m53/LAUNCH_REPORT.md).
 The post-seal analyzer is now implemented and bound before experiment GT
@@ -432,11 +437,13 @@ verify a completed capacity result. See the
 ## Native DepthTrack/CDTB reference
 
 The same native STTrack checkpoint used by M39 and the running full127
-reference now has a prepared OPE entry for all DepthTrack Test50 and CDTB80
-sequences. It preserves the existing six-decimal outputs and macro PR/F-score
-evaluator. A Train-only native-trajectory/serialization contract is required
-before full tracking. No score or learned-head promotion is claimed at this
-preparation stage. See the [frozen reference plan](diagnostics/native_ope/EXPERIMENT_PLAN.md).
+reference now has running OPE jobs for all DepthTrack Test50 and CDTB80
+sequences. The Train-only contract passed with 242 output frames, three
+template updates and exact native boxes/scores. It preserves the existing
+six-decimal outputs and macro PR/F-score evaluator. No completed score or
+learned-head promotion is claimed at this launch stage. See the
+[contract and launch record](diagnostics/native_ope/LAUNCH_REPORT.md) and
+[frozen reference plan](diagnostics/native_ope/EXPERIMENT_PLAN.md).
 
 ## Integrity
 

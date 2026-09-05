@@ -1,0 +1,22 @@
+{
+  "observed_utc": "2026-09-05T17:47:13.716443+00:00",
+  "jobs": [
+    {
+      "dataset": "depthtrack",
+      "pid": 159777,
+      "live": true,
+      "process": "PID   PPID ELAPSED COMMAND\n159777 159775      47 bash /root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/run_dataset.sh depthtrack",
+      "children": "159780 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/tools/run_sttrack_native_ope.py --root /root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906 --mode track --dataset depthtrack"
+    },
+    {
+      "dataset": "cdtb",
+      "pid": 159779,
+      "live": true,
+      "process": "PID   PPID ELAPSED COMMAND\n159779 159778      47 bash /root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/run_dataset.sh cdtb",
+      "children": "159781 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/tools/run_sttrack_native_ope.py --root /root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906 --mode track --dataset cdtb"
+    }
+  ],
+  "exits": {
+    "contract.exit": "0"
+  }
+}
