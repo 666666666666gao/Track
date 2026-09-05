@@ -64,5 +64,33 @@
     "remaining_limit": "No completed M52 training or recursive result artifacts at review time.",
     "response_sha256": "a434299a4b3485c9c7c89bc95262088c0d29fadf52abad0b7fb8c7c4b8cd175a",
     "report": "EXPERIMENT_AUDIT_SOURCE_FOLLOWUP.md"
+  },
+  "completed_training_followup": {
+    "overall_verdict": "warn",
+    "completed_stages": [
+      "collection",
+      "sealed data audit",
+      "control training and static diagnostics",
+      "mixed training and static diagnostics",
+      "actual tracker-loader spot contract",
+      "descriptive predicted-state comparison"
+    ],
+    "concrete_defects": 0,
+    "checks": {
+      "gt_provenance": "pass",
+      "score_normalization": "pass",
+      "result_existence": "warn",
+      "execution": "warn",
+      "scope": "warn",
+      "eval_type": "warn"
+    },
+    "unsupported_until_complete": [
+      "recursive full22 improvement",
+      "primary_pass",
+      "advancing_arm",
+      "public benchmark improvement"
+    ],
+    "report": "EXPERIMENT_AUDIT_TRAINING_FOLLOWUP.md",
+    "response_sha256": "4489e4febf1392f497ffca0551018af7bd6229da5135d9a274ff56230ca7ab13"
   }
 }
