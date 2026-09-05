@@ -2,7 +2,8 @@
 
 The fitting-only audit below is complete. The subsequent fixed M47 loss
 comparison has now been implemented and trained, with an actual-tensor audit
-PASS. Complete22-sequence recursion is running; no public score exists.
+PASS. Complete22-sequence recursion has finished and failed its frozen
+performance gate. No public evaluation was launched.
 
 The current observer extracts ten boxes by3x3 grid suppression. It does not
 establish ten distinct physical object instances. The audit recomputes the
@@ -62,13 +63,13 @@ CE. See `loss_contract.json`. These checks establish semantics, not performance.
 | Matched control | Exact M45 action labels, initial tensors and sample-order hash |
 | Checkpoint reload/audit | PASS;448739parameters,46updated tensors, all finite, strict reload |
 | Static development |590inputs; meanIoU.441917896, correct271, changes41, NONE204,7rescues/5severe regressions |
-| Full recursion | Running; two shards16567/16563frames, all22existing development sequences |
-| Public evaluation | Not launched; original gates required |
+| Full recursion | Complete; two shards16567/16563frames, all22existing development sequences,28897valid frames |
+| Public evaluation | Not launched because the fixed recursive gate failed |
 
 Root `/root/autodl-tmp/sttrack_m47_multipositive_v1_20260905`; screen
 `sttrack_m47_multipositive_20260905`. Original pipeline22403 and Python
-22493/22494 were verified alive16:10:18CST; recursion began about16:07:01.
-Expected terminal about16:23:30; next useful check near16:20.
+22493/22494 all ended. Terminal status was verified16:24:46CST; training,
+both recursive shards and controller exited0. Recursion began about16:07:01.
 
 Final head SHA:016a3898d43ac870761c18424c7627ab35fe4a495bf61579c14629e1607066ab.
 Training result SHA:c2df1099344ea29dfea3555647b04aa6f1b1d3ac245df316c76a2b659061065c.
@@ -79,3 +80,40 @@ set and must not be compared directly with M45 exact-slot accuracy. M44-relative
 action-label-change counts in the training artifact are inherited metadata;
 the complete current/previous label maps are exactly identical to M45. Static
 results do not select an epoch or bypass the fixed complete recursive run.
+
+## Complete recursive result
+
+| Metric | M47 | Change from native STTrack default |
+|---|---:|---:|
+| Valid frames |28897|0|
+| Mean IoU |.571037773888139|-.081188489288105|
+| Low-overlap frames |9946|+2549|
+| H10 failure episodes |99|+24|
+| Sequences with positive mean change |9/22|Diagnostic count|
+| New failures in default-zero-episode sequences |0|Protection condition passes|
+
+Mean gain, fewer low frames and no episode increase all fail. Sequence
+coverage and protection of default-zero-episode sequences pass. All trajectory
+hashes, full frame counts, finite values, initialization, exact default
+prefixes, checkpoint/source bindings, scalar IoU/H10 recomputation and gate
+calculations pass the recorded integrity checks. The local22-row aggregate
+also reproduces the terminal artifact.
+
+The largest two regressions are notebook02_indoor: meanIoU.388048,
+1318additional low frames and17additional episodes; and egg_indoor:
+meanIoU.427174,1194additional low frames and12additional episodes. Their
+combined low-frame increase2512 nearly accounts for the net2549increase;
+other sequences include both gains and losses. These are descriptive
+concentrations, not proof of a unique causal mechanism.
+
+Relative to M45, meanIoU falls by11.306460percentage points. Accepting multiple
+valid auxiliary destinations does not improve recursive association in this
+controlled comparison. The loss-contract and weight-integrity passes do not
+override this negative result. Do not promote this checkpoint, loosen the
+gate or launch low22/full benchmarks from M47.
+
+Artifacts: `recursive_result.json`, `per_sequence.csv`, and both shard
+receipts. Recursive result SHA:
+`a669372d8f89614cfc565207c163832f5090385f136f3e1db918219023e60409`.
+CSV SHA:`fd4a36c2718c96e9cbcddef3e7aa6d64a66f8cf19ddb8e11769e6043eb077adb`.
+These remain DepthTrack Train development metrics, not formal VOT scores.

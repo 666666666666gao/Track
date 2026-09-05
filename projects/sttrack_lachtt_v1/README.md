@@ -339,8 +339,10 @@ gradient equivalence, empty-target behavior and unlabeled-pair checks passed
 before training. The actual20-epoch/960-update run completed with identical M45
 action labels, initialization and sample order; strict reload and tensor audit
 passed. Static590-window meanIoU is.441918 with7rescues/5severe regressions.
-All22development sequences are undergoing the fixed recursive evaluation;
-no public score or language contribution is claimed. See
+All22development sequences completed the fixed recursive evaluation: meanIoU
+.571038, low-overlap frames9946 and H10episodes99. This fails the default
+comparison by8.118849percentage points of meanIoU and adds24episodes. M47 is
+sealed without public evaluation. No language contribution is claimed. See
 [M47 protocol, audit and execution](diagnostics/m47/EXPERIMENT_TRACKER.md).
 
 ## Integrity
