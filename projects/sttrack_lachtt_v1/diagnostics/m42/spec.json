@@ -1,0 +1,84 @@
+{
+  "schema": "sttrack_m42_local_spatial_association_v1",
+  "repository": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+  "dataset_root": "/root/autodl-tmp/depthtrack/train/sequences",
+  "checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+  "checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "source_sha256": {
+    "lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "lib/test/tracker/sttrack_lachtt_observation.py": "183d8a3c8164db884beda1bf0ff6052c32aa44edaf2661acf922f13635018604",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "lib/train/dataset/depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+    "lib/test/tracker/sttrack_local_spatial_observation.py": "98d7f72815780fa4158adcd6b10b0b437ff1f58e808196df6d7c25655736409d",
+    "lib/models/sttrack/lachtt_local_spatial_association.py": "3094eb61bb98d950dc1845a33c312d2ec987577d2a014b34e4a0f2bc7b017516",
+    "tools/prepare_sttrack_m42.py": "e83450c55e500087c7871397c8e99385f0ffcfa12a58edea632570b47863491d",
+    "tools/collect_sttrack_m42.py": "f4a97825753e3962750f9c14524447de2cc35783fab74e1afbf438b1def097db"
+  },
+  "ledger_sha256": "44a9e5dab9a95b9cbaaea11cf86dbbe13b52b63eed80517d1b08d594dc4a5f3a",
+  "fit_folds": [
+    2,
+    3,
+    4
+  ],
+  "development_holdout_fold": 5,
+  "fold_history": "All these development folds have prior experiment exposure; no fresh/unseen-test claim.",
+  "quarantine_folds_unopened": [
+    0,
+    1
+  ],
+  "public_datasets_used": false,
+  "sequence_count": 85,
+  "event_count": 1375,
+  "shard_frames": [
+    63065,
+    63402
+  ],
+  "trailing_annotations_without_images": {
+    "toy07_indoor_320": 39
+  },
+  "split_counts": {
+    "fit": 63,
+    "development_holdout": 22
+  },
+  "inference_inputs_sha256": "27ec68a3591886994d64779cbcc1252e6bbb17fb296cdcfe1cd2a8ba0cf17ed7",
+  "labels_sha256": "acc94469d84036e03ea6633ffd6af7c63d548f6ce5925492c232f57482d278f2",
+  "candidates": 10,
+  "nms_kernel": 3,
+  "roi_cells": 4,
+  "modalities": [
+    "rgb",
+    "depth"
+  ],
+  "references": [
+    "initial",
+    "dynamic",
+    "previous_prediction"
+  ],
+  "variants": [
+    "spatial",
+    "pooled"
+  ],
+  "feature_storage": "FP16, converted to FP32 for fitting",
+  "optimization": {
+    "seed": 2026,
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "optimizer": "AdamW",
+    "grad_clip": 5.0,
+    "target": "Highest-IoU candidate if max IoU>=.5, otherwise NONE; no class balancing or heldout epoch selection.",
+    "checkpoint": "fixed final epoch only"
+  },
+  "information_gate": {
+    "mean_iou": "spatial > pooled and spatial > default",
+    "alternative_fixes": "spatial fixes more default failures than it breaks default successes",
+    "sequence_coverage": "positive selected-IoU gain over default on at least 3 heldout sequences",
+    "next": "If passed, run paired prediction-crop recursive holdout evaluation; no public launch from static information gate."
+  },
+  "policy": "Argmax among ten candidate logits and NONE; NONE preserves default top1. No threshold scan.",
+  "no_backbone_or_box_regression_training": true,
+  "language_enabled": false
+}

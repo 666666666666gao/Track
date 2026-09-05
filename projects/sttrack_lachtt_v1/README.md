@@ -246,6 +246,17 @@ no tracker output. New neural modules must be trained on DepthTrack Train before
 the same resulting checkpoint is evaluated on DepthTrack, CDTB and full VOT.
 See the master handoff for the latest execution status and limits.
 
+## M42 DepthTrack local association training
+
+M42 is now collecting candidate-own 4x4 RGB/depth observations from85 existing
+DepthTrack Train development sequences (63 fitting/22 sequence-disjoint
+development). Two matched50,858-parameter heads compare retained spatial tokens
+with mean-pooled controls. Default STTrack template adaptation is preserved.
+The120-frame smoke exactly reproduced baseline boxes and confidence. The
+controller collects1,375 frozen windows on two GPUs, then fits both heads for
+20 epochs. No new recursive or formal benchmark result is claimed at launch.
+See [the frozen protocol and launch record](diagnostics/m42/EXPERIMENT_SPEC.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source
