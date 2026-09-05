@@ -413,6 +413,17 @@ fails. Neither head advances to public evaluation. See the
 [implementation and evidence limits](diagnostics/m52/PIPELINE_IMPLEMENTATION.md),
 and the [training-before-results advancement note](diagnostics/m52/PRE_TRAINING_NOTE.md).
 
+## M53 historical template read capacity
+
+M53 tests past native template reads from the same current search/query state,
+preserving the initial template, two-template input and native recursive path.
+The purity contract passes on two fitting sequences with 240 tracking steps,
+238 current-template replays, 110 historical shadows and three native writes.
+The complete fixed fitting collection is running; no capacity result, learned
+reader or public metric is available. See the
+[frozen M53 plan](diagnostics/m53/EXPERIMENT_PLAN.md) and
+[contract, launch evidence and scope](diagnostics/m53/LAUNCH_REPORT.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source
