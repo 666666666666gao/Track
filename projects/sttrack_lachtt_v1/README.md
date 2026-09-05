@@ -248,14 +248,28 @@ See the master handoff for the latest execution status and limits.
 
 ## M42 DepthTrack local association training
 
-M42 is now collecting candidate-own 4x4 RGB/depth observations from85 existing
-DepthTrack Train development sequences (63 fitting/22 sequence-disjoint
-development). Two matched50,858-parameter heads compare retained spatial tokens
-with mean-pooled controls. Default STTrack template adaptation is preserved.
-The120-frame smoke exactly reproduced baseline boxes and confidence. The
-controller collects1,375 frozen windows on two GPUs, then fits both heads for
-20 epochs. No new recursive or formal benchmark result is claimed at launch.
-See [the frozen protocol and launch record](diagnostics/m42/EXPERIMENT_SPEC.md).
+M42 completed candidate-own 4x4 RGB/depth collection on 85 existing DepthTrack
+Train sequences (63 fitting / 22 development). Two matched 50,858-parameter
+heads each received 640 optimizer updates over 20 epochs; the STTrack backbone
+and box head stayed frozen and default template adaptation was preserved.
+All 126,382 replayed frames reproduced default boxes and confidence exactly.
+
+On 375 development windows, both heads improved mean IoU from 0.414883 to
+0.435760, with 10 rescues across six sequences and zero new severe errors.
+Their 12 changed choices also include one joint failure and one slight
+regression. Their final choices are identical, so the primary hypothesis that
+retaining spatial information improves over mean pooling **failed**. The
+original recursive gate stopped with zero GPU jobs. See
+[the terminal tracker](diagnostics/m42/EXPERIMENT_TRACKER.md) and
+[the integrity audit](diagnostics/m42/terminal_audit.json).
+
+M43 separately tests whether the already trained pooled control improves
+default through complete recursive tracking. Pooled is the frozen primary
+candidate and spatial is diagnostic only; neither weights nor thresholds were
+changed. Both arms are running all 33,130 available frames of the same 22
+development sequences, with independent bbox, query and template state.
+This is an exploratory Train follow-up; there is no new low22 or full benchmark
+score. See [the M43 protocol](diagnostics/m43/EXPERIMENT_SPEC.md).
 
 ## Integrity
 

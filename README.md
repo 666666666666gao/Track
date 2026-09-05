@@ -70,6 +70,12 @@ The current STTrack language-anchored candidate-association and
 protected/tentative transaction code is published as a source-only overlay in
 [`projects/sttrack_lachtt_v1`](projects/sttrack_lachtt_v1/README.md).
 
+The latest DepthTrack Train experiment completed matched spatial and pooled
+association-head training. Their identical development choices do not support
+an independent spatial-information benefit. The trained pooled control is now
+being tested through full recursive tracking before any new low22 or complete
+benchmark evaluation; see the STTrack overlay's M42/M43 records.
+
 All RGB-D/RGB-D-L experiment history, metrics, low-sequence failures, negative
 results, architecture decisions, code provenance and next-step restrictions
 have been consolidated into one document:

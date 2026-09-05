@@ -1,0 +1,168 @@
+{
+  "status": "complete",
+  "integrity_pass": true,
+  "sequence_count": 85,
+  "events": 1375,
+  "replay_frames": 126382,
+  "initialization_frames": 85,
+  "feature_bytes": 879632094,
+  "maximum_bbox_error_px": 0.0,
+  "maximum_score_error": 0.0,
+  "default_template_writes": 1420,
+  "weights": {
+    "spatial": {
+      "sha256": "88e37f12f4645a68a09cef135785113bbb85d9b07655728a2a1357192eb10c9a",
+      "parameters": 50858,
+      "optimizer_steps": 640,
+      "changed_parameter_tensors": 13,
+      "max_abs_parameter_change": 0.4887414872646332,
+      "first_loss": 2.0014830646514894,
+      "final_loss": 0.5551468682289123
+    },
+    "pooled": {
+      "sha256": "70908682c8049c1b444fe55949fbe5bb66ddbf9c9895375a017f205c87a73cca",
+      "parameters": 50858,
+      "optimizer_steps": 640,
+      "changed_parameter_tensors": 13,
+      "max_abs_parameter_change": 0.4002744257450104,
+      "first_loss": 1.9957567472457887,
+      "final_loss": 0.5356715624332428
+    }
+  },
+  "candidate_capacity_groups": {
+    "spatial": {
+      "fit": {
+        "default_good": {
+          "events": 504,
+          "selected_correct": 504,
+          "changes": 2,
+          "default_iou_sum": 440.17691069841385,
+          "selected_iou_sum": 440.2248438000679
+        },
+        "unavailable": {
+          "events": 116,
+          "selected_correct": 0,
+          "changes": 1,
+          "default_iou_sum": 0.0,
+          "selected_iou_sum": 0.0
+        },
+        "non_good_with_correct_candidate": {
+          "events": 30,
+          "selected_correct": 15,
+          "changes": 16,
+          "default_iou_sum": 0.3177188081899658,
+          "selected_iou_sum": 12.564320292905904
+        },
+        "non_good_without_correct_candidate": {
+          "events": 350,
+          "selected_correct": 0,
+          "changes": 4,
+          "default_iou_sum": 2.521154756730539,
+          "selected_iou_sum": 3.395450393742067
+        }
+      },
+      "development_holdout": {
+        "default_good": {
+          "events": 176,
+          "selected_correct": 176,
+          "changes": 1,
+          "default_iou_sum": 155.15115278959274,
+          "selected_iou_sum": 155.1476829648018
+        },
+        "non_good_without_correct_candidate": {
+          "events": 141,
+          "selected_correct": 0,
+          "changes": 1,
+          "default_iou_sum": 0.4055125121958554,
+          "selected_iou_sum": 0.4055125121958554
+        },
+        "unavailable": {
+          "events": 42,
+          "selected_correct": 0,
+          "changes": 0,
+          "default_iou_sum": 0.0,
+          "selected_iou_sum": 0.0
+        },
+        "non_good_with_correct_candidate": {
+          "events": 16,
+          "selected_correct": 10,
+          "changes": 10,
+          "default_iou_sum": 0.024647124111652374,
+          "selected_iou_sum": 7.856752522289753
+        }
+      }
+    },
+    "pooled": {
+      "fit": {
+        "default_good": {
+          "events": 504,
+          "selected_correct": 504,
+          "changes": 3,
+          "default_iou_sum": 440.17691069841385,
+          "selected_iou_sum": 440.0677155852318
+        },
+        "unavailable": {
+          "events": 116,
+          "selected_correct": 0,
+          "changes": 0,
+          "default_iou_sum": 0.0,
+          "selected_iou_sum": 0.0
+        },
+        "non_good_with_correct_candidate": {
+          "events": 30,
+          "selected_correct": 14,
+          "changes": 15,
+          "default_iou_sum": 0.3177188081899658,
+          "selected_iou_sum": 12.04649498744402
+        },
+        "non_good_without_correct_candidate": {
+          "events": 350,
+          "selected_correct": 0,
+          "changes": 5,
+          "default_iou_sum": 2.521154756730539,
+          "selected_iou_sum": 3.838242705052835
+        }
+      },
+      "development_holdout": {
+        "default_good": {
+          "events": 176,
+          "selected_correct": 176,
+          "changes": 1,
+          "default_iou_sum": 155.15115278959274,
+          "selected_iou_sum": 155.1476829648018
+        },
+        "non_good_without_correct_candidate": {
+          "events": 141,
+          "selected_correct": 0,
+          "changes": 1,
+          "default_iou_sum": 0.4055125121958554,
+          "selected_iou_sum": 0.4055125121958554
+        },
+        "unavailable": {
+          "events": 42,
+          "selected_correct": 0,
+          "changes": 0,
+          "default_iou_sum": 0.0,
+          "selected_iou_sum": 0.0
+        },
+        "non_good_with_correct_candidate": {
+          "events": 16,
+          "selected_correct": 10,
+          "changes": 10,
+          "default_iou_sum": 0.024647124111652374,
+          "selected_iou_sum": 7.856752522289753
+        }
+      }
+    }
+  },
+  "information_gate": {
+    "mean_iou": false,
+    "alternative_fixes": true,
+    "sequence_coverage": true
+  },
+  "information_gate_pass": false,
+  "training_result_sha256": "86ed72e3159848c0606f3b02cc1a997b9df21dddb861968fbdb5b309d9c125ae",
+  "auditor_sha256": "c29decea9dc22494d6345cdde03b77ce784a86d5219ff0690efb45b8b9b96751",
+  "quarantine_scope": "Mixed full152 prediction JSONs were parsed and filtered to85 selected sequences. Folds0/1 supplied no GT supervision, native features, fitting examples or evaluation results to M42.",
+  "limitation": "One fixed data/head/feature test on previously used development folds. No public metric or general impossibility claim."
+}
