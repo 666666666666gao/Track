@@ -375,6 +375,20 @@ calls, recursive run or public benchmark metrics. Motion remains a useful
 conditional cue, not a validated standalone selector.
 See [M49 measurements, figures and next experiments](diagnostics/m49/REPORT.md).
 
+## M50 scale-triggered template update and full native reference
+
+M50 preserves native periodic updates and adds a dynamic-template write when
+native confidence is above0.75 and the predicted linear scale changes by at
+least1.25relative to the latest template. The fixed policy adds no learned
+parameters. The120-frame disabled-policy comparison matches native boxes,
+scores, templates and queries exactly, including a native update. Its full
+Train-development22-sequence recursive evaluation is running onGPU0.
+
+The independent native STTrack full127 reference is running onGPU1 with four
+VOT workers. It reuses303SHA-verified M39native anchors and evaluates the
+remaining1462. Neither run has final metrics at this launch milestone.
+See [M50 scope, contracts and launch evidence](diagnostics/m50/LAUNCH_REPORT.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source
