@@ -214,7 +214,7 @@ For all experiments, failure analyses, artifact hashes and next-action
 restrictions, read the single project master:
 [`../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`](../../docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md).
 
-## M39–M41 baseline and candidate diagnosis
+## M39閳ユ彈41 baseline and candidate diagnosis
 
 M39 evaluated STTrack default and global no-update on the same frozen 22 difficult
 VOT-RGBD2022 sequences and 303 multi-start anchors. Default achieved
@@ -308,9 +308,14 @@ not added epochs on the failed weights. Initialization/sample-order hashes
 match the sealed M44 geometry control.
 
 Static590-window meanIoU is.446766, with15changes,5rescues and1severe regression.
-Complete22-sequence recursive validation is running in two sequence shards;
-the advancement baseline and gate remain STTrack default. See
-[the M45 tracker](diagnostics/m45/EXPERIMENT_TRACKER.md).
+M45 is now complete: mean IoU0.684102374 versus default0.652226263,
+6188 versus7397 low-overlap frames, but80 versus75 persistent failure episodes
+and a new mobilephone02 failure. Its fixed advancement gate fails; no public
+evaluation was launched. All22full trajectories and actual trained tensors
+passed integrity checks. See [M45 records](diagnostics/m45/EXPERIMENT_TRACKER.md)
+and the master section5.41 for the preserved serialization failure, minimal
+analysis-only integer conversion, complete metrics and next training-coverage
+hypothesis.
 
 ## Integrity
 
