@@ -11,9 +11,9 @@ a copy of the server workspace.
 - Required upstream commit: `283cd6dd45536636490db8bca1c63c4647be799b`
 - Upstream license: [`UPSTREAM_LICENSE.txt`](UPSTREAM_LICENSE.txt)
 - Experiment branch: `codex/language-anchored-candidate-transaction-v1`
-- Published source commit: `72b6446f5ba0e96c8882001f3286585fd81cff30`
-- Overlay manifest SHA256: `485c5a45d4f0268fa743fa95b75e9a8477fbdce532dbb5887b4f2e87ea2abf27`
-- Published project files: 77
+- Initial publication source commit: `72b6446f5ba0e96c8882001f3286585fd81cff30`
+- Initial publication manifest SHA256: `485c5a45d4f0268fa743fa95b75e9a8477fbdce532dbb5887b4f2e87ea2abf27`
+- Initial publication project files: 77; the current expanded overlay is bound by `MANIFEST.sha256`.
 
 To reconstruct the source tree:
 
@@ -444,6 +444,18 @@ six-decimal outputs and macro PR/F-score evaluator. No completed score or
 learned-head promotion is claimed at this launch stage. See the
 [contract and launch record](diagnostics/native_ope/LAUNCH_REPORT.md) and
 [frozen reference plan](diagnostics/native_ope/EXPERIMENT_PLAN.md).
+
+## M54 two-template visual reader
+
+M53's fitting-only capacity screen motivates a small learned reader over the
+current `[initial, dynamic]` and alternate `[initial, initial]` combinations.
+The new 58,923-parameter head reads actual branch RGB-D RoIs, causal references
+and response maps. Two 240-step contracts pass: current-only native parity,
+and complete-state consistency under forced initial-slot reads. The frozen
+10,615-window fitting collection, 20-epoch head training and full22 recursive
+evaluation are queued after the native GPU0 reference tracking jobs. No new
+trained or performance result is claimed. See the
+[M54 implementation, contracts and execution scope](diagnostics/m54/IMPLEMENTATION_REPORT.md).
 
 ## Integrity
 

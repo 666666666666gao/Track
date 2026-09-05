@@ -1,0 +1,50 @@
+{
+  "schema": "sttrack_m54_two_template_visual_reader_v1",
+  "source_root": "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905",
+  "source_spec_sha256": "8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18",
+  "m53_root": "/root/autodl-tmp/sttrack_m53_template_read_capacity_v1_20260905",
+  "m53_capacity_sha256": "60e40d6e7a4efe1301f3f4153986f1d03825ab01e33bc0127b7f62f47c0cbe6a",
+  "contract_sequences": [
+    "chair01_indoor",
+    "cube04_indoor"
+  ],
+  "fitting_sequences": 63,
+  "development_sequences": 22,
+  "fit_event_windows": 10615,
+  "fit_tracking_steps": 93362,
+  "sampling": "Original fitting events union every tenth frame through each original final event",
+  "architecture": "Frozen native STTrack plus trained two-view RGB-D template reader; no language",
+  "optimization": {
+    "seed": 2026,
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "steps": "20 * ceil(valid_windows / 32)"
+  },
+  "recursive_gate": {
+    "mean_iou_gain_at_least": 0.01,
+    "positive_sequences_at_least": 3,
+    "fewer_low_frames": true,
+    "no_episode_increase": true,
+    "successful_sequence_protection": true
+  },
+  "public_automatic_launch": false,
+  "experiment_plan_sha256": "8fcf8192914630d35171647db20893f7c44ae6f932cf83b19e120acdeef68f24",
+  "source_sha256": {
+    "lib/models/sttrack/lachtt_template_reader.py": "bec6de05b9324bb726ed521726fdc047010f173c863b8d01d5ee74fc99b78cf7",
+    "lib/test/tracker/sttrack_template_reader.py": "79103f44a28e112fd48469ae5b0c345d001415f1ac35698506893b6fb6b94c2c",
+    "tools/sttrack_m54_common.py": "3693bd84a55d9d74a7c5d65ca52fa616a24341902fb70f8d240d8555e4c233f7",
+    "tools/collect_sttrack_m54.py": "f01e082c55ce5c39caea76d1c6d60850212cf05d8b7a3e059ea2b8c1561aa702",
+    "tools/train_sttrack_m54.py": "1e0bc5ad54aa3196dd2c16680d90fbb533047fee83dcdbca6eea25f36d5b88ee",
+    "tools/run_sttrack_m54.py": "38751ab4b24bbe2c16a36804be083f73474fe1630a18e1f51f32b8c3b1ce1cfe",
+    "tools/check_sttrack_m54.py": "dc8eae5a695077dc963bd7ab798531afe441786aef19a3e1377ee82347fec55c"
+  },
+  "run_files_sha256": {
+    "run.sh": "fb3667b79467b9f5c97042598321d5a2e965020420e0e54e6dc3a5fc23472cb9"
+  },
+  "feature_directory": "/dev/shm/sttrack_m54_features_v1_20260906",
+  "feature_storage": "Local volatile shared-memory cache; persist final weights/results on the original disk and archive features after completion",
+  "initial_storage_spec_sha256": "2ec9bd39c4b17ab37383e5e891ebb162b69a844137745916deff8dd01283c08b"
+}

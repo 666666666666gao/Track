@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-09-05T18:46:30.041040+00:00",
+  "status": "queue_launch_requested",
+  "spec_sha256": "2ec9bd39c4b17ab37383e5e891ebb162b69a844137745916deff8dd01283c08b",
+  "contract_sha256": "ee3b19330e03ffa51ff2f9e7d770bc716ec1ec42d4b13ac8a6ec232b05aaea73",
+  "runtime_contract_sha256": "05f0bd3cca652c9338dcbbd915e02477aa314888743afc4529dc91ec826d6702",
+  "pipeline_sha256": "fb3667b79467b9f5c97042598321d5a2e965020420e0e54e6dc3a5fc23472cb9",
+  "waiter_sha256": "ff72be9793c64c4bb8304264ffe90204add832d119ba3a6761d72679a839e493",
+  "first_native_exit_check_utc": "2026-09-05T19:30:00Z",
+  "poll_interval_seconds": 240,
+  "prerequisites": [
+    "native tracking_depthtrack.exit=0",
+    "native tracking_cdtb.exit=0"
+  ],
+  "gpu": 0,
+  "pipeline": [
+    "collection",
+    "training",
+    "recursive",
+    "analysis"
+  ],
+  "public_automatic_launch": false
+}
