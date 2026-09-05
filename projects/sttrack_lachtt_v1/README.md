@@ -345,6 +345,17 @@ comparison by8.118849percentage points of meanIoU and adds24episodes. M47 is
 sealed without public evaluation. No language contribution is claimed. See
 [M47 protocol, audit and execution](diagnostics/m47/EXPERIMENT_TRACKER.md).
 
+## M48 native-continuity admission
+
+M48 reuses the exact DepthTrack-trained M45 head without new parameters or
+optimization. It accepts a proposed override only when native RGB and depth
+RoI continuity to the preceding selected target both meet the default's
+values. The fixed fitting audit retains20of96changes and5of26rescues; it
+does not establish safety. GPU/CPU decisions and120frames of veto/default
+state parity pass, including two native template updates. One fixed full22
+recursive comparison is running, with all original advancement gates intact.
+See [the M48 audit and protocol](diagnostics/m48/EXPERIMENT_TRACKER.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source
