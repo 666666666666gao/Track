@@ -263,13 +263,14 @@ original recursive gate stopped with zero GPU jobs. See
 [the terminal tracker](diagnostics/m42/EXPERIMENT_TRACKER.md) and
 [the integrity audit](diagnostics/m42/terminal_audit.json).
 
-M43 separately tests whether the already trained pooled control improves
-default through complete recursive tracking. Pooled is the frozen primary
-candidate and spatial is diagnostic only; neither weights nor thresholds were
-changed. Both arms are running all 33,130 available frames of the same 22
-development sequences, with independent bbox, query and template state.
-This is an exploratory Train follow-up; there is no new low22 or full benchmark
-score. See [the M43 protocol](diagnostics/m43/EXPERIMENT_SPEC.md).
+M43 completed the separate pooled-versus-default recursive performance test on
+all 33,130 frames of 22 development sequences per arm. The frozen pooled primary
+gate **FAIL**: mean IoU 0.652226 to 0.617064,
+low-IoU frames 7397 to 8553, and persistent
+failure episodes 75 to 77.
+M42's spatial-information hypothesis remains failed and the spatial arm is
+diagnostic only. These are Train proxies; no new formal benchmark score exists.
+See [the complete M43 result](diagnostics/m43/EXPERIMENT_TRACKER.md).
 
 ## Integrity
 

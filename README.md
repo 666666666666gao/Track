@@ -72,9 +72,9 @@ protected/tentative transaction code is published as a source-only overlay in
 
 The latest DepthTrack Train experiment completed matched spatial and pooled
 association-head training. Their identical development choices do not support
-an independent spatial-information benefit. The trained pooled control is now
-being tested through full recursive tracking before any new low22 or complete
-benchmark evaluation; see the STTrack overlay's M42/M43 records.
+an independent spatial-information benefit. The separate complete recursive
+test of the trained pooled control finished with a **FAIL** performance gate;
+see the STTrack overlay's M42/M43 records. No new formal benchmark is claimed.
 
 All RGB-D/RGB-D-L experiment history, metrics, low-sequence failures, negative
 results, architecture decisions, code provenance and next-step restrictions

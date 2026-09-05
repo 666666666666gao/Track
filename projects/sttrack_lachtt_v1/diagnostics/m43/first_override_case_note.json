@@ -1,0 +1,107 @@
+{
+  "status": "complete",
+  "cases": [
+    {
+      "arm": "pooled",
+      "frame_zero_based": 42,
+      "image_filename": "00000043.jpg",
+      "image_sha256": "5e02f8b3b499c7b079aa2dbc1e9926aaaffdbc15e2d2a3a6da4e69206714be4f",
+      "gt_bbox": [
+        312.0,
+        289.0,
+        40.0,
+        39.0
+      ],
+      "selected_bbox": [
+        262.0088520050049,
+        290.42445945739746,
+        38.94921875,
+        37.74692153930664
+      ],
+      "selected_response_confidence": 0.201711505651474,
+      "first_override": {
+        "sequence": "egg_indoor",
+        "arm": "pooled",
+        "changes": 128,
+        "first_override_frame_zero_based": 42,
+        "prefix_max_bbox_error_px": 0.0,
+        "trajectory_sha256": "a5716422f473cf7bd2768a2a8973904b10686738d537db5604442e46d4104647",
+        "first_choice": 1,
+        "first_default_iou": 0.8359565732320055,
+        "first_selected_iou": 0.0,
+        "next10_valid_frames": 10,
+        "next10_mean_gain": -0.38282751341406007
+      },
+      "sequence_default": {
+        "valid_frames": 3433,
+        "iou_sum": 2522.4921413802276,
+        "mean_iou": 0.7347777865948814,
+        "low_iou_frames": 523,
+        "failure_episodes": 9,
+        "invalid_gt_frames": 118
+      },
+      "sequence_candidate": {
+        "valid_frames": 3433,
+        "iou_sum": 1258.5026195021208,
+        "mean_iou": 0.36658975225811846,
+        "low_iou_frames": 1983,
+        "failure_episodes": 17,
+        "invalid_gt_frames": 118,
+        "changes": 128
+      }
+    },
+    {
+      "arm": "spatial",
+      "frame_zero_based": 680,
+      "image_filename": "00000681.jpg",
+      "image_sha256": "7405fae68997ddd576eeb6ece39c7b5e0687472b154bfb4d09a1ae0567cf1a33",
+      "gt_bbox": [
+        313.0,
+        291.0,
+        35.0,
+        34.0
+      ],
+      "selected_bbox": [
+        359.2425785064697,
+        284.14843940734863,
+        41.02373123168945,
+        41.6749382019043
+      ],
+      "selected_response_confidence": 0.17172551155090332,
+      "first_override": {
+        "sequence": "egg_indoor",
+        "arm": "spatial",
+        "changes": 60,
+        "first_override_frame_zero_based": 680,
+        "prefix_max_bbox_error_px": 0.0,
+        "trajectory_sha256": "cb91781bba682618ee4d56031dae8ae70a09ff4e6aa1a089b2013e78f8c87d60",
+        "first_choice": 1,
+        "first_default_iou": 0.822138990921448,
+        "first_selected_iou": 0.0,
+        "next10_valid_frames": 10,
+        "next10_mean_gain": -0.09135662826222864
+      },
+      "sequence_default": {
+        "valid_frames": 3433,
+        "iou_sum": 2522.4921413802276,
+        "mean_iou": 0.7347777865948814,
+        "low_iou_frames": 523,
+        "failure_episodes": 9,
+        "invalid_gt_frames": 118
+      },
+      "sequence_candidate": {
+        "valid_frames": 3433,
+        "iou_sum": 1948.1712232133889,
+        "mean_iou": 0.5674836071113862,
+        "low_iou_frames": 1152,
+        "failure_episodes": 12,
+        "invalid_gt_frames": 118,
+        "changes": 60
+      }
+    }
+  ],
+  "visual_observation": "The target is the central egg in the foreground row in both inspected images. The pooled alternative covers the adjacent foreground egg to its left; the spatial alternative covers the adjacent foreground egg to its right. This is a two-frame visual observation, not a persistent ordinal identity annotation.",
+  "mechanism_supported": "Correct default box exists at the first nonzero candidate choice; exact preceding bbox equality and the inspected image support adjacent-instance misassociation at these two events. Neither first-override frame is a scheduled 50-frame template-write frame.",
+  "limitations": "Do not attribute all later loss to one event or all tracker failures to identity switches. No GT-triggered repair, confidence threshold change, caption rewrite or retraining was performed.",
+  "terminal_audit_sha256": "5520b19d8b14cadff3be5ca71e533f63e0160ee7f96b471c3bffdfc18c756f88"
+}

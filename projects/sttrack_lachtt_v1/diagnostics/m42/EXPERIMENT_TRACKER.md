@@ -10,7 +10,7 @@
 | Static information gate | FAIL | Spatial and pooled make identical final choices on all 375 development windows |
 | Integrity audit | PASS | Source/base hashes unchanged; all 13 head parameter tensors changed; checkpoint reload logits exact |
 | Recursive development under M42 | Not launched | Failed information gate; receipt confirms zero GPU jobs |
-| Distinct M43 performance follow-up | Running | Frozen pooled-versus-default primary; spatial secondary; same final weights and no new optimization |
+| Distinct M43 performance follow-up | Complete: FAIL | Pooled primary; full 22-sequence recursive result in diagnostics/m43; M42 superiority remains failed |
 | Low22 / three datasets | Not launched | No new formal tracking metrics |
 
 Data preparation stopped once on the measured toy07 annotation/image count
