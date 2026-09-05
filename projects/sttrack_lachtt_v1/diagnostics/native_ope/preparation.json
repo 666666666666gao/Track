@@ -1,0 +1,30 @@
+{
+  "status": "prepared",
+  "spec_sha256": "e623ef63de89da423fc12b877f58d56219f88ef9f1232f20de9e42fb6c8665e1",
+  "inputs_sha256": "61541e35f7b9e3c40427df79067fc0be20b8622cf275e93025e4a1547bf68601",
+  "datasets": {
+    "depthtrack": {
+      "root": "/root/autodl-tmp/depthtrack/test/sequences",
+      "sequences": 50,
+      "frames": 76373
+    },
+    "cdtb": {
+      "root": "/root/autodl-tmp/CDTB/sequences",
+      "sequences": 80,
+      "frames": 101956
+    }
+  },
+  "contract_sequences": [
+    "chair01_indoor",
+    "cube04_indoor"
+  ],
+  "contract_output_frames": 242,
+  "contract_tracking_steps": 240,
+  "gt_values_used": [
+    "first_frame_initialization_box"
+  ],
+  "subsequent_gt_values_used": false,
+  "gt_row_counts_checked": true,
+  "canonical_rgb_depth_pairs_checked": true,
+  "inference_launched": false
+}

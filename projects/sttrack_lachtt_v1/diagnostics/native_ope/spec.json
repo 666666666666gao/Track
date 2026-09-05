@@ -1,0 +1,59 @@
+{
+  "schema": "native-sttrack-rgbd-ope-reference-v1",
+  "created_utc": "2026-09-05T17:32:24.687510+00:00",
+  "role": "Unchanged native reference, separate from learned-module promotion",
+  "repository": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+  "checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+  "checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "configuration": "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml",
+  "source_sha256": {
+    "lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "lib/test/tracker/sttrack_lachtt_observation.py": "183d8a3c8164db884beda1bf0ff6052c32aa44edaf2661acf922f13635018604",
+    "lib/test/tracker/sttrack_local_spatial_observation.py": "98d7f72815780fa4158adcd6b10b0b437ff1f58e808196df6d7c25655736409d",
+    "lib/test/tracker/sttrack_candidate_set_observation.py": "666fe3a5cdbf3ad306da5a770bf8ba2a3d20910b2bc9865b3d190f5dc0437e82",
+    "lib/models/sttrack/lachtt_candidate_set.py": "d262746d38774d2252306e258317f95a6bbceedf908ceda647c1ce2b490e3728",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "lib/train/dataset/depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+    "tools/prepare_sttrack_m42.py": "e83450c55e500087c7871397c8e99385f0ffcfa12a58edea632570b47863491d",
+    "tools/prepare_sttrack_m44.py": "94555cb9456c8da8c375623d283ea9406c458dffb2329a5a4c3d168ecf9657d9",
+    "tools/collect_sttrack_m44.py": "eaadbe85b569f8a805e371e2aa1607f52c3f8946db7638829e6cc3410a54987f",
+    "lib/test/tracker/sttrack_candidate_set.py": "deaf19edbf8c281b4ea606049e28d40c9ac74b09facd0fddf06ee34525313f68",
+    "tools/train_sttrack_m44.py": "111fde71ee247f15c9a0385e7adc7b093ba9368ff193ab774f6bddfaedcd6091",
+    "tools/smoke_sttrack_m44_runtime.py": "29836f82eb029845cf3d13a792197b89e52afd09782cf82ec1597eb029d8dabc",
+    "tools/run_sttrack_m44_recursive.py": "abc6f44a1e14e66b8dddb6a3915c73d5e8347e3854756d2edee89cb00c7fcfec",
+    "tools/run_sttrack_m44_pipeline.py": "ee316d775d19ee9326857e2eaca5da878ce16bcaed56ecca40508f77c44f8d94",
+    "tools/bind_sttrack_m44.py": "cbaee050f2265279c5601950f679c080ef3635506f7755e0f037adc0de8e77c9",
+    "tools/train_sttrack_m42.py": "211e6f7cbc6758ac0f20e489635707915b713c4b4084d5715395add31b5e7f15",
+    "tools/analyze_sttrack_m42_recursive.py": "03f7dff279a950214ba6040e192f67dea061b541ba068fd0714a6e9da59ad939",
+    "tools/run_sttrack_native_ope.py": "11748e8e005e9cf0706a1ff24aa59bf9830dcaf23160db5274fa702720a04ec4",
+    "lib/test/tracker/data_utils.py": "873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5",
+    "lib/test/tracker/basetracker.py": "f9bc6bbfb1a8f677f86e4f1eda024d89baaf454498a5f1321f1421df67a7aa36",
+    "lib/test/tracker/vis_utils.py": "47ba468532b9b849022f23d8025d113300708457ae1dfdcc00ead96cbaf088bb",
+    "lib/test/utils/hann.py": "94de2151485d5911797afc5a2a431a4dcf99c6b293835b5b2d86bb27945bd504"
+  },
+  "inputs_sha256": "61541e35f7b9e3c40427df79067fc0be20b8622cf275e93025e4a1547bf68601",
+  "plan_sha256": "a94abb829e20516d43cab4149547260d6c50860cbb229799ceae0768a472cac5",
+  "metric_source": "/home/SRTrack_RGBD_L/lib/test/analysis/depthtrack_pr.py",
+  "metric_source_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+  "native_inputs": "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905/inference_inputs.json",
+  "native_inputs_sha256": "0e9a9bd34d4fb5682ba1f90966c2a8d495d0a10cef5ba2e02bbc8c29039c2ae0",
+  "datasets": {
+    "depthtrack": {
+      "root": "/root/autodl-tmp/depthtrack/test/sequences",
+      "sequences": 50,
+      "frames": 76373
+    },
+    "cdtb": {
+      "root": "/root/autodl-tmp/CDTB/sequences",
+      "sequences": 80,
+      "frames": 101956
+    }
+  },
+  "language": false,
+  "optimizer_steps": 0,
+  "learned_head": null,
+  "pr_resolution": 100,
+  "output_decimals": 6
+}

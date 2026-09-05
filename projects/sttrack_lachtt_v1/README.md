@@ -429,6 +429,15 @@ the independent implementation review found no concrete defect but does not
 verify a completed capacity result. See the
 [analysis protocol and implementation checks](diagnostics/m53/ANALYSIS_IMPLEMENTATION.md).
 
+## Native DepthTrack/CDTB reference
+
+The same native STTrack checkpoint used by M39 and the running full127
+reference now has a prepared OPE entry for all DepthTrack Test50 and CDTB80
+sequences. It preserves the existing six-decimal outputs and macro PR/F-score
+evaluator. A Train-only native-trajectory/serialization contract is required
+before full tracking. No score or learned-head promotion is claimed at this
+preparation stage. See the [frozen reference plan](diagnostics/native_ope/EXPERIMENT_PLAN.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source
