@@ -1,0 +1,41 @@
+{
+  "status": "complete",
+  "integrity_pass": true,
+  "primary_pass": false,
+  "gates": {
+    "mean_iou": false,
+    "fewer_low_frames": true,
+    "no_episode_increase": false,
+    "positive_sequences": true,
+    "successful_sequence_protection": false
+  },
+  "aggregates": {
+    "default": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "m50": {
+      "valid_frames": 28897,
+      "iou_sum": 18857.31988301517,
+      "low_iou_frames": 7204,
+      "failure_episodes": 87,
+      "mean_iou": 0.65257015894436
+    }
+  },
+  "positive_sequences": 7,
+  "new_failure_sequences": [
+    "mobilephone02_indoor"
+  ],
+  "native_updates": 335,
+  "scale_updates": 520,
+  "frames": 33130,
+  "spec_sha256": "3cfd152ebb1e92a76d58f1f9158d7418c4807171ac9e8351c23b57c9b3d4078e",
+  "checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "source_sha256": "05632a0a1646c52df997bb1fc577fdd5e30933ee65d21b148e36800ad46aa226",
+  "optimizer_steps": 0,
+  "scope": "Repeatedly used DepthTrack Train development sequences. Fixed template policy only; no new weights or public metrics."
+}

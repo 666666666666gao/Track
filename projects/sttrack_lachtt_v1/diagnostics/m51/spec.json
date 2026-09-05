@@ -1,0 +1,83 @@
+{
+  "control": "M45 geometry head: same labels, initial parameter hashes, sample order and 20epochs960steps. Native STTrack remains the advancement reference.",
+  "control_recursive_result_sha256": "721553e2d8e2f37b084ca946ea0d0285ccf8436d203a9f0251851c2669a8d200",
+  "control_terminal_audit_sha256": "c01a9579be0df14270f336da75c4ce2a0a3e0423890fea3fc646fe25afce7c85",
+  "control_training_result_sha256": "7f6df58956ea6a9ad1cf018fb9763d26c14137bb412e11f89292ba60e78a5266",
+  "current_fit_labels_changed": 121,
+  "development_pairs": 590,
+  "development_sequences": 22,
+  "fit_pairs": 1511,
+  "fit_sequences": 63,
+  "inference": "Frozen STTrackCandidateSet path; geometry transform identical to training. Native template policy; no M48/M50/text.",
+  "initialization": "Fresh seed2026 initialization, not additional epochs on M44 weights.",
+  "next": "Complete fixed fitting and all22 recursive sequences. Strong advancement baseline remains STTrack default.",
+  "optimization": {
+    "batch_size": 32,
+    "checkpoint": "fixed final epoch only",
+    "epochs": 20,
+    "grad_clip": 1.0,
+    "lr": 0.0003,
+    "optimizer": "AdamW",
+    "seed": 2026,
+    "weight_decay": 0.01
+  },
+  "paired_recursive_result_sha256": "a3dd821916ce08a8964bb2df85b9da277f9262d41a1e42c32f0fdde85eed3317",
+  "paired_root": "/root/autodl-tmp/sttrack_m45_default_priority_v1_20260905",
+  "paired_training_result_sha256": "e2647ea8d9738632d93f99d0108e638025b1c38894f8560cc9a532eb4f13f39d",
+  "parameters": 448739,
+  "performance_gate": {
+    "fewer_low_frames": true,
+    "mean_iou_gain_at_least": 0.01,
+    "no_episode_increase": true,
+    "no_new_failure_in_default_zero_episode_sequences": true,
+    "positive_sequences_at_least": 3
+  },
+  "primary": "relative_geometry",
+  "public_automatic_launch": false,
+  "public_gate": "Frozen low22 only after recursive main performance pass; then EAO/ROB each >=M39default+1pp, ACC>=default-.10pp, fewer failures, all7 default-zero-failure sequences preserved before same-weight three-dataset validation.",
+  "rationale": "M49 supports target-scale motion as a conditional cue; actual M44/M45 geometry uses absolute image fractions. Unconditional distance selection failed healthy-cache controls.",
+  "schema": "sttrack_m51_relative_geometry_v1",
+  "shard_frames": [
+    16567,
+    16563
+  ],
+  "shards": [
+    [
+      "ball07_indoor",
+      "ball19_indoor",
+      "book06_indoor",
+      "car01_indoor",
+      "car02_indoor",
+      "colacan04_indoor",
+      "cup08_indoor",
+      "egg_indoor",
+      "flowerbasket_indoor",
+      "glass03_indoor",
+      "mobilephone02_indoor"
+    ],
+    [
+      "bag05_indoor",
+      "beautifullight01_indoor",
+      "colacan01_indoor",
+      "container01_indoor",
+      "cup10_indoor",
+      "cup13_indoor",
+      "flower02_wild",
+      "flower03_indoor",
+      "ghostmask_indoor",
+      "mobilephone01_indoor",
+      "notebook02_indoor"
+    ]
+  ],
+  "single_change": "Replace image-normalized absolute box geometry by offsets and log-size ratios relative to the preceding selected candidate box; no new parameters.",
+  "source_root": "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905",
+  "source_sha256": {
+    "lib/models/sttrack/lachtt_relative_geometry.py": "3d5375653856d89e66adc7eda2d5c14aaed556d5b75d297aeda97e9b7595f714",
+    "lib/test/tracker/sttrack_relative_candidate_set.py": "83a2e5b1392b3a28d68ed95206e002f9ce331b47ca6106525b5eb690d527a97e",
+    "tools/run_sttrack_m51.py": "66dc54d4defe4130da9be84a594404fcad2b88de946cd9763b205fee8cdfd615",
+    "tools/train_sttrack_m51.py": "edd2362090cc2a847da5f3fea0afd9fc4a96c2f761cae56dba680ba43fc4913c"
+  },
+  "source_spec_sha256": "8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18",
+  "static_is_diagnostic_only": true,
+  "trainer_sha256": "edd2362090cc2a847da5f3fea0afd9fc4a96c2f761cae56dba680ba43fc4913c"
+}
