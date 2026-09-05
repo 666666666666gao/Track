@@ -1,0 +1,65 @@
+{
+  "status": "confirmed_source_semantics",
+  "observed_utc": "2026-09-05T22:08:52.231614+00:00",
+  "source_sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+  "probe_sha256": "a816ccfd048b3da76882bd71da0c27ec90bcbfc7939d05f94bcdf79c9238ae57",
+  "torch_version": "1.13.1+cu116",
+  "extracted_lines": [
+    93,
+    107
+  ],
+  "input_shape": [
+    1,
+    13,
+    4
+  ],
+  "query_tail": 5,
+  "device": "cpu",
+  "results": [
+    {
+      "layers": 1,
+      "original_inputs_equal": [
+        true
+      ],
+      "original_inputs_share_storage": [
+        true
+      ],
+      "clone_inputs_distinct": [
+        true
+      ],
+      "original_first_input_is_flipped": true,
+      "clone_first_input_is_unmodified": true,
+      "original_vs_functional_reference_max_error": 9.100000000000001,
+      "clone_vs_functional_reference_max_error": 0.0,
+      "clone_vs_functional_reference_max_gradient_error": 7.105427357601002e-15
+    },
+    {
+      "layers": 2,
+      "original_inputs_equal": [
+        true,
+        true
+      ],
+      "original_inputs_share_storage": [
+        true,
+        true
+      ],
+      "clone_inputs_distinct": [
+        true,
+        true
+      ],
+      "original_first_input_is_flipped": true,
+      "clone_first_input_is_unmodified": true,
+      "original_vs_functional_reference_max_error": 96.00000000000034,
+      "clone_vs_functional_reference_max_error": 0.0,
+      "clone_vs_functional_reference_max_gradient_error": 9.094947017729282e-13
+    }
+  ],
+  "scope": "Exact extracted assignment/call/addition loop with an explicit order-sensitive probe operator. Not a real TSG/Mamba numerical or tracking evaluation.",
+  "actual_tsg_weights_loaded": false,
+  "images_or_gt_opened": false,
+  "optimizer_steps": 0,
+  "cuda_initialized": false,
+  "runtime_source_changed": false,
+  "inference_benefit_measured": false,
+  "training_benefit_measured": false
+}

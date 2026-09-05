@@ -1,0 +1,40 @@
+{
+  "status": "complete",
+  "spec_sha256": "1ca1387e6eb33c897e12d5e0c10b746d48257e7745906c431e8ac857f63d7267",
+  "checkpoint_sha256": "53374903f5c7314dbc08c857d9ac6d56f2adc914908e62831176fb7c2b7d0c05",
+  "training_result_sha256": "bdd3ae1f165ed7cb11d75b9ba498d994328007064cb27eb058d8ba6be90c255d",
+  "recursive_receipt_sha256": "97763dc780a5dcc226d1110ed3df5cfb5c7ae58170cb8670d9123d333571d1aa",
+  "aggregates": {
+    "default": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "reader": {
+      "valid_frames": 28897,
+      "iou_sum": 19440.00230258002,
+      "low_iou_frames": 6692,
+      "failure_episodes": 65,
+      "mean_iou": 0.672734273543275,
+      "macro_sequence_mean_iou": 0.7102239826379665
+    }
+  },
+  "gates": {
+    "mean_iou": true,
+    "fewer_low_frames": true,
+    "no_episode_increase": true,
+    "sequence_coverage": true,
+    "successful_sequence_protection": false
+  },
+  "primary_pass": false,
+  "positive_sequences": 12,
+  "new_failure_sequences": [
+    "mobilephone02_indoor"
+  ],
+  "public_evaluation": false,
+  "scope": "Full 22-sequence DepthTrack Train development recursion; repeatedly used development split",
+  "next": "Stop this frozen reader; no public evaluation"
+}

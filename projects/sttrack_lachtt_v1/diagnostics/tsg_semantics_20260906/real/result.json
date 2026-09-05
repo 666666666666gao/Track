@@ -1,0 +1,211 @@
+{
+  "status": "complete_real_forward_diagnostic",
+  "observed_utc": "2026-09-05T22:36:57.246056+00:00",
+  "probe_sha256": "cf15f6edf82680d11b0541eeb40282115f1f3ec30a7c5052f495b9e2c847929e",
+  "source_sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+  "mamba_source_sha256": "a11e49551cea9c7a188b9b7783b541b315a1f684b86e1de364bb3ad6c04f00be",
+  "base_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "m54_spec_sha256": "1ca1387e6eb33c897e12d5e0c10b746d48257e7745906c431e8ac857f63d7267",
+  "sequence": "chair01_indoor",
+  "split": "fit",
+  "current_frame_zero_based": 1,
+  "image_sha256": {
+    "/root/autodl-tmp/depthtrack/train/sequences/chair01_indoor/color/00000001.jpg": "2ba331de07018bf2da26ed2de82cad123e50d1b2386966929eb6b667ffd1125f",
+    "/root/autodl-tmp/depthtrack/train/sequences/chair01_indoor/depth/00000001.png": "f44861c3541b6dcf2e209eda7cdfe8ac71ec792bfdcaeaf6bb1dcc42a96983a5",
+    "/root/autodl-tmp/depthtrack/train/sequences/chair01_indoor/color/00000002.jpg": "371ad57e38f9ce562daa149b62d5d0ed43458814f551d97b8e390855ade695cc",
+    "/root/autodl-tmp/depthtrack/train/sequences/chair01_indoor/depth/00000002.png": "9cff4293d89f4726f0ccd7f306f9c776f62c30cb05fc231e6cad0563b2a59f46"
+  },
+  "variants": {
+    "original": {
+      "layers": [
+        {
+          "layer": 0,
+          "input_shapes": [
+            [
+              1,
+              389,
+              768
+            ],
+            [
+              1,
+              389,
+              768
+            ]
+          ],
+          "same_input_storage": [
+            true,
+            true
+          ],
+          "input_call_max_abs": [
+            0.0,
+            0.0
+          ],
+          "output_call_max_abs": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "layer": 1,
+          "input_shapes": [
+            [
+              1,
+              389,
+              768
+            ],
+            [
+              1,
+              389,
+              768
+            ]
+          ],
+          "same_input_storage": [
+            true,
+            true
+          ],
+          "input_call_max_abs": [
+            0.0,
+            0.0
+          ],
+          "output_call_max_abs": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "fusion_input": [
+        {
+          "shape": [
+            1,
+            384,
+            768
+          ],
+          "spatial_palindrome_exact": true,
+          "spatial_palindrome_max_abs": 0.0,
+          "spatial_palindrome_mean_abs": 0.0
+        },
+        {
+          "shape": [
+            1,
+            384,
+            768
+          ],
+          "spatial_palindrome_exact": true,
+          "spatial_palindrome_max_abs": 0.0,
+          "spatial_palindrome_mean_abs": 0.0
+        }
+      ],
+      "bbox": [
+        266.49878311157227,
+        112.21255493164062,
+        105.36699676513672,
+        169.69720458984375
+      ],
+      "confidence": 0.9599361419677734,
+      "query_lengths": [
+        4,
+        4
+      ]
+    },
+    "clone_only": {
+      "layers": [
+        {
+          "layer": 0,
+          "input_shapes": [
+            [
+              1,
+              389,
+              768
+            ],
+            [
+              1,
+              389,
+              768
+            ]
+          ],
+          "same_input_storage": [
+            false,
+            false
+          ],
+          "input_call_max_abs": [
+            10.884461402893066,
+            5.752420425415039
+          ],
+          "output_call_max_abs": [
+            11.13508415222168,
+            5.975951194763184
+          ]
+        },
+        {
+          "layer": 1,
+          "input_shapes": [
+            [
+              1,
+              389,
+              768
+            ],
+            [
+              1,
+              389,
+              768
+            ]
+          ],
+          "same_input_storage": [
+            false,
+            false
+          ],
+          "input_call_max_abs": [
+            22.211997985839844,
+            11.702330589294434
+          ],
+          "output_call_max_abs": [
+            22.23041534423828,
+            11.703291893005371
+          ]
+        }
+      ],
+      "fusion_input": [
+        {
+          "shape": [
+            1,
+            384,
+            768
+          ],
+          "spatial_palindrome_exact": false,
+          "spatial_palindrome_max_abs": 44.44416046142578,
+          "spatial_palindrome_mean_abs": 1.039531946182251
+        },
+        {
+          "shape": [
+            1,
+            384,
+            768
+          ],
+          "spatial_palindrome_exact": false,
+          "spatial_palindrome_max_abs": 23.387903213500977,
+          "spatial_palindrome_mean_abs": 0.6716582179069519
+        }
+      ],
+      "bbox": [
+        265.91776275634766,
+        113.68602752685547,
+        104.44523620605469,
+        167.4033966064453
+      ],
+      "confidence": 0.9699385166168213,
+      "query_lengths": [
+        4,
+        4
+      ]
+    }
+  },
+  "actual_tsg_weights_loaded": true,
+  "inference_forwards": 2,
+  "current_or_future_gt_opened": false,
+  "initialization_box_source": "Sealed fitting inference manifest",
+  "optimizer_steps": 0,
+  "runtime_source_changed": false,
+  "tracking_metrics_computed": false,
+  "training_benefit_measured": false,
+  "scope": "Two same-weight one-frame probes from independent initialized states. Clone-only change exists solely on the second in-memory model instance. No trajectory/benchmark comparison."
+}
