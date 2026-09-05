@@ -352,8 +352,10 @@ optimization. It accepts a proposed override only when native RGB and depth
 RoI continuity to the preceding selected target both meet the default's
 values. The fixed fitting audit retains20of96changes and5of26rescues; it
 does not establish safety. GPU/CPU decisions and120frames of veto/default
-state parity pass, including two native template updates. One fixed full22
-recursive comparison is running, with all original advancement gates intact.
+state parity pass, including two native template updates. The complete full22
+comparison reaches meanIoU.714587,5331low frames and68H10episodes, improving
+on native default. Four of five gates pass, but mobilephone02 gains one
+failure, so the protection gate fails and public evaluation is withheld.
 See [the M48 audit and protocol](diagnostics/m48/EXPERIMENT_TRACKER.md).
 
 ## Integrity

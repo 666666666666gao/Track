@@ -1,0 +1,133 @@
+{
+  "status": "complete",
+  "summary": {
+    "vetoed_rescues": {
+      "events": 21,
+      "previous_default_valid": 1,
+      "previous_alternative_valid": 11,
+      "previous_no_valid_candidate": 9
+    },
+    "retained_rescues": {
+      "events": 5,
+      "previous_default_valid": 4,
+      "previous_alternative_valid": 0,
+      "previous_no_valid_candidate": 1
+    }
+  },
+  "scope": "Fitting-only descriptive analysis after M48 policy and recursive protocol were frozen. No margin change or new training.",
+  "definition": "Reuse M45 default-priority previous_target labels:0 means previous default IoU>=.5;1to9 mean another box reaches.5;10 means no valid candidate under the existing annotation rule.",
+  "interpretation": "20of21vetoed rescues have no valid previous default. Continuity to a previous mistake can obstruct recovery. This is an explanatory fitting association, not a deployable GT condition or proof of recursive causation.",
+  "audit_sha256": "969a982bf7633b31d25569b2cdd4bcf6e957b45934705fceb808085b3fa24950",
+  "fit_result_sha256": "e2647ea8d9738632d93f99d0108e638025b1c38894f8560cc9a532eb4f13f39d",
+  "source_sha256": "bc8c00327445cb2ca55bdd8253155683f9e55cb1564cb57e9190af21fe87ee4b",
+  "rows": {
+    "vetoed_rescues": [
+      {
+        "key": "bag04_indoor@395",
+        "previous_target": 0
+      },
+      {
+        "key": "bike03_wild@322",
+        "previous_target": 10
+      },
+      {
+        "key": "bottle02_indoor@2601",
+        "previous_target": 10
+      },
+      {
+        "key": "colacan02_indoor@3736",
+        "previous_target": 1
+      },
+      {
+        "key": "cube04_indoor@720",
+        "previous_target": 10
+      },
+      {
+        "key": "cube04_indoor@1890",
+        "previous_target": 10
+      },
+      {
+        "key": "cube04_indoor@1892",
+        "previous_target": 1
+      },
+      {
+        "key": "cube04_indoor@2155",
+        "previous_target": 4
+      },
+      {
+        "key": "cube04_indoor@2157",
+        "previous_target": 1
+      },
+      {
+        "key": "cube04_indoor@2571",
+        "previous_target": 1
+      },
+      {
+        "key": "cup05_indoor@1491",
+        "previous_target": 10
+      },
+      {
+        "key": "cup05_indoor@1593",
+        "previous_target": 1
+      },
+      {
+        "key": "cup06_indoor@579",
+        "previous_target": 1
+      },
+      {
+        "key": "cup06_indoor@1791",
+        "previous_target": 1
+      },
+      {
+        "key": "leaves06_wild@391",
+        "previous_target": 10
+      },
+      {
+        "key": "paintbottle_indoor@123",
+        "previous_target": 1
+      },
+      {
+        "key": "shoes01_indoor@938",
+        "previous_target": 1
+      },
+      {
+        "key": "shoes01_indoor@962",
+        "previous_target": 10
+      },
+      {
+        "key": "shoes01_indoor@1466",
+        "previous_target": 10
+      },
+      {
+        "key": "shoes01_indoor@1468",
+        "previous_target": 1
+      },
+      {
+        "key": "toiletpaper04_indoor@902",
+        "previous_target": 10
+      }
+    ],
+    "retained_rescues": [
+      {
+        "key": "ball05_indoor@638",
+        "previous_target": 10
+      },
+      {
+        "key": "cube04_indoor@14",
+        "previous_target": 0
+      },
+      {
+        "key": "cup06_indoor@577",
+        "previous_target": 0
+      },
+      {
+        "key": "cup06_indoor@1789",
+        "previous_target": 0
+      },
+      {
+        "key": "cup14_indoor@134",
+        "previous_target": 0
+      }
+    ]
+  }
+}
