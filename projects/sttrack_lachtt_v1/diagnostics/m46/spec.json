@@ -1,0 +1,84 @@
+{
+  "schema": "sttrack_m46_initial_frame_coverage_v1",
+  "source_root": "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905",
+  "control_root": "/root/autodl-tmp/sttrack_m45_default_priority_v1_20260905",
+  "source_spec_sha256": "8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18",
+  "source_recursive_result_sha256": "721553e2d8e2f37b084ca946ea0d0285ccf8436d203a9f0251851c2669a8d200",
+  "control_training_result_sha256": "e2647ea8d9738632d93f99d0108e638025b1c38894f8560cc9a532eb4f13f39d",
+  "control_recursive_result_sha256": "a3dd821916ce08a8964bb2df85b9da277f9262d41a1e42c32f0fdde85eed3317",
+  "early_spec_sha256": "87bb8997675d73c2c79e9b36bd7183969bfa8804650ba6591fdd8f969b868b6f",
+  "source_sha256": {
+    "tools/prepare_sttrack_m46.py": "1bdba227c5286b2c28d4b5f1e8065debbacb941a9ca299876815b19efdfc9d1e",
+    "tools/train_sttrack_m46.py": "aeef07434512db663b26c07f581057f3c18d062388df5913c5603b7fe1a4eee5",
+    "tools/run_sttrack_m46.py": "21ddb1a9f3ad0440077a9260bd44211ee17e099f930bbee8854e21a74ec1542c"
+  },
+  "primary": "initial_frame_coverage",
+  "single_change": "Add fitting-only frame2-9 inputs to the M45 default-priority training pool.",
+  "inference": "Unchanged native candidate-set geometry runtime, NONE/default behavior, query, templates and search. No warmup exclusion or text.",
+  "fit_sequences": 63,
+  "old_fit_pairs": 1511,
+  "early_fit_pairs": 504,
+  "fit_pairs": 2015,
+  "development_sequences": 22,
+  "development_pairs": 590,
+  "optimization": {
+    "seed": 2026,
+    "rounds": 20,
+    "examples_per_round": 1511,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "optimizer": "AdamW",
+    "checkpoint": "fixed final only",
+    "sampler": "Fresh seeded permutation of2015fitting pairs per round; take first1511 without replacement. Total960updates, not20full epochs."
+  },
+  "initialization": "Fresh seed2026 initialization exactly paired with M45; no warm start.",
+  "control": "Reuse sealed M45: same initial weights, architecture, constant optimizer and960updates. Sampling order changes with the input-pool intervention.",
+  "parameters": 448739,
+  "performance_gate": {
+    "mean_iou_gain_at_least": 0.01,
+    "fewer_low_frames": true,
+    "no_episode_increase": true,
+    "positive_sequences_at_least": 3,
+    "no_new_failure_in_default_zero_episode_sequences": true
+  },
+  "public_gate": "Frozen low22 only after recursive main performance pass; then EAO/ROB each >=M39default+1pp, ACC>=default-.10pp, fewer failures, all7 default-zero-failure sequences preserved before same-weight three-dataset validation.",
+  "static_is_diagnostic_only": true,
+  "shards": [
+    [
+      "ball07_indoor",
+      "ball19_indoor",
+      "book06_indoor",
+      "car01_indoor",
+      "car02_indoor",
+      "colacan04_indoor",
+      "cup08_indoor",
+      "egg_indoor",
+      "flowerbasket_indoor",
+      "glass03_indoor",
+      "mobilephone02_indoor"
+    ],
+    [
+      "bag05_indoor",
+      "beautifullight01_indoor",
+      "colacan01_indoor",
+      "container01_indoor",
+      "cup10_indoor",
+      "cup13_indoor",
+      "flower02_wild",
+      "flower03_indoor",
+      "ghostmask_indoor",
+      "mobilephone01_indoor",
+      "notebook02_indoor"
+    ]
+  ],
+  "shard_frames": [
+    16567,
+    16563
+  ],
+  "public_automatic_launch": false,
+  "rationale": "Runtime begins association at2, but all original fitting frames>=10. M45 egg first error at6; this does not establish the cause of later errors.",
+  "next": "Fit fixed model and complete all22recursive sequences before deciding advancement.",
+  "initial_free_bytes": 4930682880
+}

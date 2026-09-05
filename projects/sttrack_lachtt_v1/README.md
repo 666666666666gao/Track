@@ -317,6 +317,16 @@ and the master section5.41 for the preserved serialization failure, minimal
 analysis-only integer conversion, complete metrics and next training-coverage
 hypothesis.
 
+## M46 initialization-frame fitting coverage
+
+M46 adds the omitted fitting frames2through9 from the same63 DepthTrack Train
+sequences. It retains the M45 architecture, labels, inference and960-update
+budget:20 rounds each sample1511 pairs from the expanded2015-pair fitting pool.
+These are sampled rounds, not20complete epochs. Collection uses native default
+predicted crops with box/confidence parity checks. The fixed pipeline has been
+launched; training and complete22-sequence recursion require terminal evidence
+before any advancement. See [the M46 protocol and tracker](diagnostics/m46/EXPERIMENT_TRACKER.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source
