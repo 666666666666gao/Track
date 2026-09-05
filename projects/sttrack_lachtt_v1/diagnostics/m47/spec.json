@@ -1,0 +1,87 @@
+{
+  "schema": "sttrack_m47_multipositive_correspondence_v1",
+  "source_root": "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905",
+  "control_root": "/root/autodl-tmp/sttrack_m45_default_priority_v1_20260905",
+  "source_spec_sha256": "8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18",
+  "source_training_result_sha256": "7f6df58956ea6a9ad1cf018fb9763d26c14137bb412e11f89292ba60e78a5266",
+  "source_recursive_result_sha256": "721553e2d8e2f37b084ca946ea0d0285ccf8436d203a9f0251851c2669a8d200",
+  "control_training_result_sha256": "e2647ea8d9738632d93f99d0108e638025b1c38894f8560cc9a532eb4f13f39d",
+  "control_recursive_result_sha256": "a3dd821916ce08a8964bb2df85b9da277f9262d41a1e42c32f0fdde85eed3317",
+  "trainer_sha256": "e1bf0fc7fb6a195e794f84eb72634325a4d6d0fd8c058cab9e88e0a29a7b4b60",
+  "source_sha256": {
+    "lib/models/sttrack/lachtt_candidate_multipositive_loss.py": "fd1ead4a48451b585db8be7c43645b4dc0e527af250c2c2b5eb9aeea940d6b36",
+    "tools/check_sttrack_m47_loss.py": "48dd4541e5ce119e91de00a5ba011593f3e96c52a55431ea2936c2c0cff77c8c",
+    "tools/train_sttrack_m47.py": "e1bf0fc7fb6a195e794f84eb72634325a4d6d0fd8c058cab9e88e0a29a7b4b60",
+    "tools/run_sttrack_m47.py": "8a633c0ef422fb6a1f370b4c8d632d1454c43b22ef596fd4570094caee68c6ef",
+    "tools/prepare_sttrack_m47.py": "42bf4463c29157e1a11ef5d2e54717293be4317251b6c08bcef1411ded98a4b8"
+  },
+  "loss_contract_sha256": "fee80ba5b1ef933e21ef915e9c5fb17b15fc5d66944dadb5e3cbf79c140f4fcc",
+  "primary": "multipositive_correspondence",
+  "single_change": "Auxiliary partial matching uses probability mass of all opposite-frame IoU>=.5 target boxes; empty set uses unmatched.",
+  "queries": "The same single current and preceding M45 action-target queries are supervised; other real distractor identities remain unknown.",
+  "action_supervision": "Exactly the M45 default-priority labels and action cross-entropy. No new action threshold.",
+  "inference": "Unchanged STTrackCandidateSet geometry runtime, native confidence, NONE/default behavior, query, templates and search. Language OFF.",
+  "fit_sequences": 63,
+  "fit_pairs": 1511,
+  "development_sequences": 22,
+  "development_pairs": 590,
+  "optimization": {
+    "seed": 2026,
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "optimizer": "AdamW",
+    "checkpoint": "fixed final epoch only"
+  },
+  "initialization": "Fresh seed2026 weights, exactly paired with M45; no warm start.",
+  "control": "Reuse sealed M45: identical action labels, initial state, sample order, data, architecture and20epochs960updates.",
+  "parameters": 448739,
+  "matching_loss_weight": 0.25,
+  "positive_iou_threshold": 0.5,
+  "performance_gate": {
+    "mean_iou_gain_at_least": 0.01,
+    "fewer_low_frames": true,
+    "no_episode_increase": true,
+    "positive_sequences_at_least": 3,
+    "no_new_failure_in_default_zero_episode_sequences": true
+  },
+  "public_gate": "Frozen low22 only after recursive main performance pass; then EAO/ROB each >=M39default+1pp, ACC>=default-.10pp, fewer failures, all7 default-zero-failure sequences preserved before same-weight three-dataset validation.",
+  "static_is_diagnostic_only": true,
+  "shards": [
+    [
+      "ball07_indoor",
+      "ball19_indoor",
+      "book06_indoor",
+      "car01_indoor",
+      "car02_indoor",
+      "colacan04_indoor",
+      "cup08_indoor",
+      "egg_indoor",
+      "flowerbasket_indoor",
+      "glass03_indoor",
+      "mobilephone02_indoor"
+    ],
+    [
+      "bag05_indoor",
+      "beautifullight01_indoor",
+      "colacan01_indoor",
+      "container01_indoor",
+      "cup10_indoor",
+      "cup13_indoor",
+      "flower02_wild",
+      "flower03_indoor",
+      "ghostmask_indoor",
+      "mobilephone01_indoor",
+      "notebook02_indoor"
+    ]
+  ],
+  "shard_frames": [
+    16567,
+    16563
+  ],
+  "public_automatic_launch": false,
+  "matching_metric": "Membership in valid destination set; do not compare this to old exact-slot match accuracy.",
+  "next": "Complete fixed fitting and all22 recursive sequences before applying the unchanged STTrack-default advancement gate."
+}

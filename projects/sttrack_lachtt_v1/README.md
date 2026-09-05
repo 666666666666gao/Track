@@ -330,6 +330,19 @@ H10episodes89. Its fixed gate fails because episodes increase and mobilephone02
 is broken. No public evaluation was launched. Static590-window meanIoU.445511
 has8rescues/4severe regressions and remains diagnostic only. See [the M46 protocol and tracker](diagnostics/m46/EXPERIMENT_TRACKER.md).
 
+## M47 multiple valid correspondence destinations
+
+M47 retains M45's unique action targets and inference, and changes only the
+auxiliary opposite-frame positive destination set. Its loss accepts all boxes
+meeting the existing IoU criterion for that target. Single-positive loss and
+gradient equivalence, empty-target behavior and unlabeled-pair checks passed
+before training. The actual20-epoch/960-update run completed with identical M45
+action labels, initialization and sample order; strict reload and tensor audit
+passed. Static590-window meanIoU is.441918 with7rescues/5severe regressions.
+All22development sequences are undergoing the fixed recursive evaluation;
+no public score or language contribution is claimed. See
+[M47 protocol, audit and execution](diagnostics/m47/EXPERIMENT_TRACKER.md).
+
 ## Integrity
 
 `MANIFEST.sha256` binds every file in `overlay/`. Before publication the source
