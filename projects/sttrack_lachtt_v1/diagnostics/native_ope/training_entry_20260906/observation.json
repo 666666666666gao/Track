@@ -1,0 +1,108 @@
+{
+  "observed_utc": "2026-09-05T21:26:37.298966+00:00",
+  "source_root": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+  "sources": {
+    "lib/train/train_script.py": {
+      "sha256": "24b164c309e3f89b05f84b45823875afd0e76c50f7bd18bc98709274cb8d899c",
+      "bytes": 3639
+    },
+    "lib/train/base_functions.py": {
+      "sha256": "3d12e3729d9d29e3e6b85cba8d7f72a1286b1308ef5cbf0f9a56625c16af6604",
+      "bytes": 11790
+    },
+    "lib/train/actors/sttrack.py": {
+      "sha256": "1ceda58c78c9db4001eaf1625bcf1619ab64cb33e704630e1b1044d04b9af6a6",
+      "bytes": 7741
+    },
+    "lib/train/admin/local.py": {
+      "sha256": "0f7afdc0560232797ab8e242469ad4ec8ed2a37225d18eda54772e49bd0cc8bc",
+      "bytes": 1314
+    },
+    "lib/models/sttrack/sttrack.py": {
+      "sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+      "bytes": 10684
+    },
+    "lib/test/tracker/sttrack.py": {
+      "sha256": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+      "bytes": 10216
+    },
+    "lib/train/data_specs/depthtrack_train.txt": {
+      "sha256": "0603ebfa695413a517621bb9365e84f5ad4f537558e953e1e9b79d95a16c38c8",
+      "bytes": 2182
+    },
+    "lib/train/data_specs/depthtrack_val.txt": {
+      "sha256": "6d2737a21d1f4e2aecc82f9feacf33a17d63e428c72cfa6953443be5cc2ce639",
+      "bytes": 85
+    },
+    "experiments/sttrack/deep_rgbd_256.yaml": {
+      "sha256": "1d4274ec183862be9d74ce714cebe1fe383d760c25a1a1b8615f11c2a941044c",
+      "bytes": 1393
+    }
+  },
+  "path_observations": {
+    "workspace_dir": {
+      "path": "/home/hxt/code/STTrack_pub",
+      "exists": false,
+      "is_dir": false,
+      "is_file": false
+    },
+    "tensorboard_dir": {
+      "path": "/nasdata/tracking/hxt/STTrack_pub/tensorboard",
+      "exists": false,
+      "is_dir": false,
+      "is_file": false
+    },
+    "pretrained_networks": {
+      "path": "/nasdata/tracking/hxt/STTrack_pub/pretrained_networks",
+      "exists": false,
+      "is_dir": false,
+      "is_file": false
+    },
+    "depthtrack_dir": {
+      "path": "/nasdata/tracking/data/DepthTrack/train",
+      "exists": false,
+      "is_dir": false,
+      "is_file": false
+    },
+    "actual_depthtrack_train": {
+      "path": "/root/autodl-tmp/depthtrack/train",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false
+    },
+    "default_sot_pretrain": {
+      "path": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/pretrained/SOT_Pretrained_256.pth.tar",
+      "exists": false,
+      "is_dir": false,
+      "is_file": false
+    }
+  },
+  "official_split": {
+    "train_sequences": 146,
+    "val_sequences": 6,
+    "val_names": [
+      "bag04_indoor",
+      "ball16_indoor",
+      "bottle03_indoor",
+      "flower03_indoor",
+      "pigeon05_wild",
+      "toy03_indoor"
+    ],
+    "train_val_overlap": 0
+  },
+  "official_val_overlap_current_m54": {
+    "fit": [
+      "bag04_indoor",
+      "bottle03_indoor",
+      "toy03_indoor"
+    ],
+    "development": [
+      "flower03_indoor"
+    ]
+  },
+  "runtime_changed": false,
+  "training_launched": false,
+  "optimizer_steps": 0,
+  "m54_changed": false,
+  "training_images_or_gt_opened": false
+}
