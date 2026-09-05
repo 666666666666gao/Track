@@ -50,3 +50,13 @@ verbatim review, separately from the successful server check.
 No full capacity analysis result, reader weight, recursive improvement or public
 benchmark result is claimed by this implementation note. The full collection
 must finish and pass its receipt checks before the analyzer runs.
+
+An independent `run_analysis.sh` waiter was launched after publication of the
+analyzer. Its first collection-exit check is scheduled for 2026-09-05 17:35 UTC
+(September 6, 01:35 China time), near the estimated collection completion.
+It then checks every 240 seconds. Once the collector terminal file exists, the
+bound CPU-only analyzer verifies successful exits and all seals before GT.
+The waiter records `analysis.exit` and does not retry a failed analysis or start
+training/public evaluation. The original collector/controller stays unchanged.
+`analysis_launch.json` and `analysis_launch_observation.json` record the schedule
+and observed live waiter; they are not completed analysis evidence.

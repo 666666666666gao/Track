@@ -18041,3 +18041,5 @@ M52完整配对结果未通过，因此没有将其权重进入公开评测。�
 **下一步。**采集结束并封存后运行分析，按原先冻结的“至少10个严重错误事件、至少3个序列”读取容量条件判断。该条件仍仅使用all_past主分析；valid_past不取代主条件。通过只支持设计模板读取实验，不能跳过DepthTrack Train训练与递归验证，也不能宣称获得VOT/三数据集收益。当前仅完成分析实现和无实验GT的检查，尚无本节新增正式模型指标。
 
 证据：`projects/sttrack_lachtt_v1/diagnostics/m53/ANALYSIS_IMPLEMENTATION.md`、`analysis_binding.json`、`analysis_contract.json`、`EXPERIMENT_AUDIT_ANALYSIS.md`及对应源码。
+
+**5.58执行补充。**分析代码已发布后，独立后处理等待进程于北京时间2026-09-06 01:07启动，首次检查安排在01:35，之后间隔240秒。原始采集器和控制脚本保持原样；后处理仅在采集终止后进入CPU分析，程序会先验证两个成功退出码和全部封存产物。记录 `analysis.exit`，失败不自动重跑，不启动训练或公开评测。等待进程的启动记录不是完整分析结果。对应 `diagnostics/m53/run_analysis.sh`、`analysis_launch.json` 和 `analysis_launch_observation.json`。
