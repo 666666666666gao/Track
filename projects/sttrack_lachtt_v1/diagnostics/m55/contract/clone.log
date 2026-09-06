@@ -1,0 +1,17 @@
+WARNING: You are using tensorboardX instead sis you have a too old pytorch version.
+Traceback (most recent call last):
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/check_training.py", line 160, in <module>
+    main()
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/check_training.py", line 104, in main
+    outputs = network(template=[template, template], search=inputs, track_query_before=None, keep_rate=1.)
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/code/clone/lib/models/sttrack/sttrack.py", line 73, in forward
+    x, aux_dict,len_zx = self.backbone(z=template, x=search[i],track_query_before = track_query_before,
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/code/clone/lib/models/sttrack/base_backbone.py", line 156, in forward
+    x, aux_dict ,len_zx = self.forward_features(z, x,track_query_before,keep_rate)
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/code/clone/lib/models/sttrack/vit_care.py", line 164, in forward_features
+    keep_layer = self.depth//len(keep_rate)
+TypeError: object of type 'float' has no len()

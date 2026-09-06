@@ -1,0 +1,21 @@
+{
+  "schema": "sttrack_m55_preflight_advisory_review_v1",
+  "auditor": "gpt-5.5 xhigh",
+  "review_type": "Type A advisory within the GPT model family; not cross-family",
+  "overall_verdict": "warn",
+  "integrity_status": "pass_for_listed_local_contract_and_readiness_artifacts",
+  "retained_training_complete": false,
+  "recursive_evaluation_complete": false,
+  "public_evaluation_complete": false,
+  "reviews": [
+    {"response": "review/001_response.md", "sha256": "0f0b17c8f98e49321803833ad20b54308e6542c2a427d652ae3cd1795da8b904", "scope": "paired trainer preflight and three-step contract"},
+    {"response": "review/002_response.md", "sha256": "b3191e6d29af378abb7f6eaa59e495d98070f58b0952b0e0440d89912dff3ec6", "scope": "two-step sampler contract; prior mismatch finding withdrawn"},
+    {"response": "review/003_response.md", "sha256": "17bac1da668284c9b00fde1661bf15ccb5ab120507cc6c6478febe683e61fa78", "scope": "v1 data failure, existing GT-tail contract and v2 readiness"}
+  ],
+  "limitations": [
+    "No independent live-server or GPU execution by the reviewer",
+    "Only the listed source subset and local downloads were independently rehashed",
+    "Tiny contracts do not verify the complete training budget or final weights",
+    "No current recursive or public performance claim"
+  ]
+}

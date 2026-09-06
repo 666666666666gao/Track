@@ -1,0 +1,37 @@
+WARNING: You are using tensorboardX instead sis you have a too old pytorch version.
+{"epoch": 1, "optimizer_step": 1, "microbatches": 4, "mean_summed_four_frame_loss": 4.883830785751343, "grad_norm_before_clip": 26.271575927734375, "learning_rates": [1e-05, 0.0001], "keep_rate": [1.0], "elapsed_seconds": 7.9025797843933105}
+[ WARN:0@74.806] global loadsave.cpp:241 findDecoder imread_('/root/autodl-tmp/depthtrack/train/sequences/toy07_indoor_320/color/00001406.jpg'): can't open/read file: check file path/integrity
+Traceback (most recent call last):
+  File "train.py", line 288, in <module>
+    main()
+  File "train.py", line 194, in main
+    for batch_id, (data, sample_records) in enumerate(loader):
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1333, in _next_data
+    return self._process_data(data)
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1359, in _process_data
+    data.reraise()
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/_utils.py", line 543, in reraise
+    raise exception
+cv2.error: Caught error in DataLoader worker process 2.
+Original Traceback (most recent call last):
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/utils/data/_utils/worker.py", line 302, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 58, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 58, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "train.py", line 94, in __getitem__
+    searches, search_anno, _ = dataset.get_frames(seq_id, search_ids, info)
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/code/control/lib/train/dataset/depthtrack.py", line 150, in get_frames
+    frame_list = [self._get_frame(seq_path, f_id) for ii, f_id in enumerate(frame_ids)]
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/code/control/lib/train/dataset/depthtrack.py", line 150, in <listcomp>
+    frame_list = [self._get_frame(seq_path, f_id) for ii, f_id in enumerate(frame_ids)]
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/code/control/lib/train/dataset/depthtrack.py", line 123, in _get_frame
+    img = get_x_frame(color_path, depth_path, dtype=self.dtype, depth_clip=True)
+  File "/root/autodl-tmp/sttrack_m55_tsg_direction_v1_20260906/code/control/lib/train/dataset/depth_utils.py", line 79, in get_x_frame
+    rgb = cv2.cvtColor(rgb, cv2.COLOR_BGR2RGB)
+cv2.error: OpenCV(4.10.0) /io/opencv/modules/imgproc/src/color.cpp:196: error: (-215:Assertion failed) !_src.empty() in function 'cvtColor'
+
+

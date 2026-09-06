@@ -1,0 +1,73 @@
+{
+  "observed_utc": "2026-09-06T00:45:55.417865+00:00",
+  "arms": {
+    "control": {
+      "first_epoch": {
+        "epoch": 1,
+        "samples": 2048,
+        "optimizer_steps": 256,
+        "mean_summed_four_frame_loss": 2.3129287674091756,
+        "seconds": 987.3323340415955,
+        "batch_stream_sha256": "19a40d3005d03524b9c34d897f941d71d279d0076d034d4c14176f945113c7b2"
+      },
+      "last_flushed_step": {
+        "epoch": 3,
+        "optimizer_step": 550,
+        "microbatches": 2200,
+        "mean_summed_four_frame_loss": 2.0878120362758636,
+        "grad_norm_before_clip": 8.901511192321777,
+        "learning_rates": [
+          1e-05,
+          0.0001
+        ],
+        "keep_rate": [
+          1.0
+        ],
+        "elapsed_seconds": 2119.798671245575
+      },
+      "controller_pid": "309414",
+      "terminal": false,
+      "execution_binding_sha256": "0538f35ebc82cfd43b2ae72e50a8d85036874a3ad4bf473d596bb5fb7df52b96",
+      "initial_state_sha256_file": "a7eb400cfe17820ed3ccc5ce98c0de960b5379ba038e154c95a3e261f9a414dd",
+      "temporary_checkpoint_bytes": 1590801497
+    },
+    "clone": {
+      "first_epoch": {
+        "epoch": 1,
+        "samples": 2048,
+        "optimizer_steps": 256,
+        "mean_summed_four_frame_loss": 2.2998906969442032,
+        "seconds": 984.7862417697906,
+        "batch_stream_sha256": "19a40d3005d03524b9c34d897f941d71d279d0076d034d4c14176f945113c7b2"
+      },
+      "last_flushed_step": {
+        "epoch": 2,
+        "optimizer_step": 300,
+        "microbatches": 1200,
+        "mean_summed_four_frame_loss": 1.7683076560497284,
+        "grad_norm_before_clip": 10.873695373535156,
+        "learning_rates": [
+          1e-05,
+          0.0001
+        ],
+        "keep_rate": [
+          1.0
+        ],
+        "elapsed_seconds": 1155.3344042301178
+      },
+      "controller_pid": "313370",
+      "terminal": false,
+      "execution_binding_sha256": "08610298f265cd0bc419dcec43db3af52922eefdeac1fb3e78874fcb5275be77",
+      "initial_state_sha256_file": "a7eb400cfe17820ed3ccc5ce98c0de960b5379ba038e154c95a3e261f9a414dd",
+      "temporary_checkpoint_bytes": 1590801497
+    }
+  },
+  "first_epoch_input_stream_byte_equal": true,
+  "compared_microbatches": 1024,
+  "compared_clips": 2048,
+  "full_training_complete": false,
+  "final_weights_exist": false,
+  "spec_sha256": "b53991ca364cbe767641fcc3216faa41e8bd6699e9ed1e59c0224b140da56998",
+  "approximate_finish_cst": "Control around 12:20; Clone around 12:40, subject to later keep-rate throughput. Next planned training check near epoch 10 around 10:40 and 11:00.",
+  "gpu": "0, 11949 MiB, 100 %\n1, 11975 MiB, 100 %\n"
+}

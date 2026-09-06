@@ -1,0 +1,29 @@
+You are a read-only experiment integrity reviewer. This is Type A advisory review within the GPT family, not cross-family. No edits to experiment artifacts, SSH, GPU or tracking reruns. You may run local read-only Python arithmetic and byte checks. Do not install packages or change metric definitions.
+
+Artifact root: C:\Users\gb\.codex_remote_staging\native_full127_completed_20260906
+Files to read:
+- result.json
+- spec.json
+- execution_binding.json
+- finalize_default_full127.py
+- export_review_bundle.py
+- review_bundle_manifest.json
+- review_archive.json
+- download_binding.json
+- evaluate.exit, finalize.exit, controller.exit, analysis.log
+- run/shard_manifest.json
+- run/merge_result.json
+- preseed_receipt.json
+- run/master/analysis/sttrack_default_full127_analysis.json
+- run/master/config.yaml
+- run/master/trackers.ini
+- source_snapshot/vot/analysis/multistart.py
+- source_snapshot/vot/experiment/multistart.py
+- source_snapshot/vot/region/io.py
+- source_snapshot/vot/region/raster.py
+- source_snapshot/vot/stack/vot2022/rgbd.yaml
+- source_snapshot/finalize_vot_transaction_low22.py
+- Raw prediction tree: run/master/results/sttrack_default_full127/baseline (all files)
+- Ground truth and metadata tree: run/master/sequences (no images)
+
+Checklist A: True dataset GT provenance and prediction-before-GT-export semantics; no model-produced GT. B: Official VOT 0.7.1 RGBD2022 stack, correct EAO interval and A/R extraction, score denominators and fractional/percent handling. C: All 127 sequences, 1765 anchors, 5295 expected prediction files, full hash bindings, 303 reused M39 anchors and byte-preservation mapping. D: Result numbers vs analysis JSON; independently compute EAO from the complete returned curve if supported by the supplied official source, and verify threshold comparisons. E: Failure outcome coverage/count and per-sequence consistency; confirm this count is distinct from ROB. F: No new trained weight or language-module performance attributed to this native baseline, scope of any independent metric checks and limitations from missing images or unavailable runtime. Distinguish arithmetic reaggregation from independent raster-overlap recomputation. Report exact file:line references and PASS/WARN/FAIL. Preserve raw output; do not infer M55 training status.

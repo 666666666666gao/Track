@@ -1,0 +1,20 @@
+You are a read-only experiment-integrity and implementation reviewer. This is advisory Type A review within the GPT model family, not cross-family review. Read the files directly. Do not edit files or launch jobs.
+
+Files:
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\training_spec.json
+- C:\Users\gb\.codex_remote_staging\train_sttrack_m55.py
+- C:\Users\gb\.codex_remote_staging\prepare_sttrack_m55_training.py
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\preparation.json
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\code\control\lib\models\sttrack\sttrack.py
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\code\clone\lib\models\sttrack\sttrack.py
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\code\control\lib\train\data\sampler.py
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\code\control\lib\train\data\processing.py
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\code\control\lib\train\dataset\depthtrack.py
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\code\control\lib\train\actors\sttrack.py
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\code\control\lib\utils\ce_utils.py
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\code\control\experiments\sttrack\deep_rgbd_256_lachtt_v1.yaml
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\contract_v2\control_result.json
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\contract_v2\clone_result.json
+- C:\Users\gb\.codex_remote_staging\m55_training_evidence_20260906\check_training_v2.py
+
+Checklist: A) Dataset GT provenance and fit/development isolation; B) same initialization, sample/augmentation order, train budget, only intended arm difference; C) actual original-sampler/processing parity including temporal order and invalid data; D) gradient accumulation, loss, keep_rate and scheduler correctness, learning-state checkpoint semantics, errors not hidden; E) scope of existing three-step contract vs retained training/recursive metrics; F) exact claims that may and may not be made; G) minimal actionable implementation issues before launch. Cite exact file:line references and verify SHA bindings. Report PASS/WARN/FAIL for each, with limitations; do not infer current remote completion from absence of local logs.

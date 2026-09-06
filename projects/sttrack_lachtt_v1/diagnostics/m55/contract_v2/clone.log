@@ -1,0 +1,120 @@
+WARNING: You are using tensorboardX instead sis you have a too old pytorch version.
+{"optimizer_step": 1, "summed_four_frame_loss": 3.5949344635009766, "grad_norm_before_clip": 30.214923858642578, "seconds": 4.365065336227417, "query_lengths": [4, 4]}
+{"optimizer_step": 2, "summed_four_frame_loss": 1.2928868532180786, "grad_norm_before_clip": 23.16494369506836, "seconds": 1.210658073425293, "query_lengths": [4, 4]}
+{"optimizer_step": 3, "summed_four_frame_loss": 1.2480294704437256, "grad_norm_before_clip": 19.825408935546875, "seconds": 0.9440584182739258, "query_lengths": [4, 4]}
+{
+  "status": "complete_training_contract",
+  "variant": "clone",
+  "observed_utc": "2026-09-05T23:31:45.940969+00:00",
+  "probe_sha256": "44bb34d4566d0a60827daf9fe67453fd1559aba027ce93059a468f2bc1a67329",
+  "preparation_sha256": "d830a16cb5654e2c85936cc930512086b901c7c8221e4a10a8ffbfdf175024ef",
+  "model_source_sha256": "6a3c8968db9949e24a43f61cb2323789a2c5679959118c378956df2cea2b2034",
+  "base_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "sequences": [
+    "chair01_indoor",
+    "cube04_indoor"
+  ],
+  "frames_zero_based": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "batch_size": 2,
+  "search_frames": 4,
+  "training_steps": 3,
+  "keep_rate": [
+    1.0
+  ],
+  "trainable_parameters": 133065093,
+  "input_tensor_sha256": [
+    "96c9cc69ae0691ec7cbc54e5ad53f24e33ba53013cbcfac630c484844e6d0a46",
+    "dae8b978f2cb90bde19335b37d2d1527ce11d6f631dc8bd58b5ccf1259a99ef9",
+    "12629033dd2cd03a3dad318d742a3a568bf15326b77b5440d1202fd07726cae5",
+    "3da49d79922b5b29adbd9840ae0da647b38ce4edce9b9418ee55bed927d2626a",
+    "4e30f5a161e076c0ac77e9d1b777fc5cdd5edc4f64ea1db3eb30430d8fb37dd2",
+    "d71e2c23f38535768f85089d8a1e136388e4e166e0a5929a95e1d5a3e728f37f"
+  ],
+  "records": [
+    {
+      "optimizer_step": 1,
+      "summed_four_frame_loss": 3.5949344635009766,
+      "grad_norm_before_clip": 30.214923858642578,
+      "seconds": 4.365065336227417,
+      "query_lengths": [
+        4,
+        4
+      ]
+    },
+    {
+      "optimizer_step": 2,
+      "summed_four_frame_loss": 1.2928868532180786,
+      "grad_norm_before_clip": 23.16494369506836,
+      "seconds": 1.210658073425293,
+      "query_lengths": [
+        4,
+        4
+      ]
+    },
+    {
+      "optimizer_step": 3,
+      "summed_four_frame_loss": 1.2480294704437256,
+      "grad_norm_before_clip": 19.825408935546875,
+      "seconds": 0.9440584182739258,
+      "query_lengths": [
+        4,
+        4
+      ]
+    }
+  ],
+  "peak_cuda_allocated_bytes": 9908207616,
+  "peak_cuda_reserved_bytes": 10110369792,
+  "gradient_groups": {
+    "backbone": {
+      "parameter_elements": 98449152,
+      "gradient_elements": 98297088,
+      "nonzero_gradient_tensors": 222
+    },
+    "decode_fuse_search": {
+      "parameter_elements": 5310720,
+      "gradient_elements": 5310720,
+      "nonzero_gradient_tensors": 4
+    },
+    "box_head": {
+      "parameter_elements": 6474117,
+      "gradient_elements": 6474117,
+      "nonzero_gradient_tensors": 54
+    },
+    "TSG": {
+      "parameter_elements": 12453888,
+      "gradient_elements": 12423168,
+      "nonzero_gradient_tensors": 40
+    },
+    "MambaFusion": {
+      "parameter_elements": 10377216,
+      "gradient_elements": 9756672,
+      "nonzero_gradient_tensors": 18
+    }
+  },
+  "missing_gradient_parameters": [
+    "backbone.cls_token",
+    "backbone.pos_embed",
+    "TSG.0.op.conv2d.weight",
+    "TSG.0.op.conv2d.bias",
+    "TSG.1.op.conv2d.weight",
+    "TSG.1.op.conv2d.bias",
+    "MambaFusion.op.conv2d.weight",
+    "MambaFusion.op.conv2d.bias",
+    "MambaFusion.op.conv2d_modalx.weight",
+    "MambaFusion.op.conv2d_modalx.bias",
+    "MambaFusion.op.fc1.0.weight",
+    "MambaFusion.op.fc1.2.weight",
+    "MambaFusion.op.fc2.0.weight",
+    "MambaFusion.op.fc2.2.weight"
+  ],
+  "trained_checkpoint_saved": false,
+  "public_evaluation": false,
+  "development_gt_used": false,
+  "scope": "Three real-data full-network optimizer steps on two fitting clips. Initialization-centered crops and consecutive frames are a contract batch, not the final training sampler or recursive performance evaluation. No surviving/adopted trained weights."
+}
