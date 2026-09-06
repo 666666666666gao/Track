@@ -1,0 +1,72 @@
+{
+  "observed_utc": "2026-09-06T10:31:55.684675+00:00",
+  "free_bytes": 2952675328,
+  "training": {
+    "text": {
+      "pid": 341833,
+      "cwd": "/root/autodl-tmp/sttrack_m58_semantic_spatial_v2_20260906",
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm text ",
+      "completed_sequences": 26,
+      "latest_completed_sequence": {
+        "sequence": "basket_indoor",
+        "sequence_index": 25,
+        "total_sequences": 130,
+        "frames": 841,
+        "track_calls": 840,
+        "supervised_frames": 793,
+        "label_counts": {
+          "centre_inside": 793,
+          "invalid": 47
+        },
+        "mean_training_loss": 0.5268323070887584,
+        "template_writes": 8,
+        "maximum_preclip_gradient_norm": 3.376922607421875,
+        "total_optimizer_steps": 1132,
+        "total_track_calls": 36181,
+        "seconds": 55.326210737228394,
+        "elapsed_seconds": 2453.045481443405
+      },
+      "exit": null
+    },
+    "visual": {
+      "pid": 341836,
+      "cwd": "/root/autodl-tmp/sttrack_m58_semantic_spatial_v2_20260906",
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm visual ",
+      "completed_sequences": 26,
+      "latest_completed_sequence": {
+        "sequence": "basket_indoor",
+        "sequence_index": 25,
+        "total_sequences": 130,
+        "frames": 841,
+        "track_calls": 840,
+        "supervised_frames": 793,
+        "label_counts": {
+          "centre_inside": 793,
+          "invalid": 47
+        },
+        "mean_training_loss": 0.5552109104967564,
+        "template_writes": 9,
+        "maximum_preclip_gradient_norm": 3.4993505477905273,
+        "total_optimizer_steps": 1132,
+        "total_track_calls": 36181,
+        "seconds": 57.86554527282715,
+        "elapsed_seconds": 2450.275113582611
+      },
+      "exit": null
+    }
+  },
+  "protected_qwen": [
+    {
+      "name": "Qwen3_8B",
+      "files": 5,
+      "bytes": 16381516776
+    },
+    {
+      "name": "Qwen2.5-VL-3B-Instruct",
+      "files": 2,
+      "bytes": 7509337976
+    }
+  ],
+  "screen": "There are screens on:\n\t341829.m58_v2_causal_text_20260906\t(09/06/26 17:49:56)\t(Detached)\n\t341832.m58_v2_causal_visual_20260906\t(09/06/26 17:49:56)\t(Detached)\n\t341964.m58_v2_after_training_20260906\t(09/06/26 17:49:56)\t(Detached)\n3 Sockets in /run/screen/S-root.\n",
+  "gpu": "341833, GPU-e79dfa6a-f0d9-7cf6-76de-737f5d1374db, 2452 MiB\n341836, GPU-f1b632ae-2edb-87fd-c241-a2d2e9fbc0d2, 2452 MiB\n"
+}

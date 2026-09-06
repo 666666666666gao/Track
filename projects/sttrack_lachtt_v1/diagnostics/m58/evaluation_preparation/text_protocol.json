@@ -1,0 +1,75 @@
+{
+  "prompt": "The first image is the initialization frame with a red rectangle marking the target. The second image is a tight crop of that target from exactly the same frame. Describe only that specific target object. Use no sequence name or outside information. Return one JSON object, without Markdown, with exactly these keys: \"category\" (a short English object category), \"attributes\" (zero to four short English phrases about clearly visible color, material, shape, texture, or distinctive markings). Prefer specific visible evidence over generic properties. Do not invent unreadable text, brand names, hidden parts, or properties. Do not describe the red annotation, background, people holding the target, screen position, ordinal position, movement, depth, or future visibility. If a property is uncertain, omit it. If the category is unclear, use \"object\". Use lowercase strings. Example format: {\"category\":\"bottle\",\"attributes\":[\"red cap\",\"clear body\"]}.",
+  "model_sha256": {
+    "config.json": "7ed3eed5be6924cc800e8a5e53fc405c1aab1aaf36bad65c33403b36c56827f5",
+    "generation_config.json": "533f191cc257b7de37a4fccd0a7a1706d75e1aa660f93efaa54e5a2a9f9aace9",
+    "preprocessor_config.json": "f2058c716eef96ccaed1cc1e2d0c08306b62586d535b28d9d08e691b2fab7ca0",
+    "tokenizer_config.json": "4abd3520120e266da84c0864fee064d1fb10806f02225911a47253dd38dc5f56",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "model.safetensors.index.json": "c7dd78a4c6bea60b51332f1baf37b8f8124ecab2c35395a29a29825bf2619768",
+    "model-00001-of-00002.safetensors": "41a8895c164b4d32bae6b302f4603fcbc1797f32dafa45c7e9bcda23c6755df8",
+    "model-00002-of-00002.safetensors": "365531ff8752420e89dee707b79d021fb2d6e25abafe486f080555a4fe6972e4",
+    "PINNED_DOWNLOAD_MANIFEST.json": "9cb9eacdd8b4af1294e4d34ce57acd434a32c74527b2399f5494ee6dcb971255"
+  },
+  "generation": {
+    "max_new_tokens": 160,
+    "do_sample": false,
+    "use_cache": true
+  },
+  "image_pixels": {
+    "full_max": 401408,
+    "crop_min": 100352,
+    "crop_max": 200704
+  },
+  "torch_dtype": "float16",
+  "attention": "sdpa",
+  "seed": 2026,
+  "sequence_name_in_model_prompt": false,
+  "category_hint_in_model_prompt": false,
+  "subsequent_images_used": false,
+  "manual_adjudication_used": false,
+  "format": "m58_initialization_text_protocol_v1",
+  "initialization_only": true,
+  "input_modality": "RGB",
+  "input_region": "Actual initialization xywh",
+  "crop_xyxy": "[max(0,int(x)), max(0,int(y)), min(W,int(x+w+.999999)), min(H,int(y+h+.999999))]",
+  "images": [
+    "RGB full image with the crop rectangle drawn red at width 2",
+    "Tight crop from the same unmarked RGB image"
+  ],
+  "processor": {
+    "use_fast": false,
+    "padding": true,
+    "add_generation_prompt": true
+  },
+  "decoding": {
+    "skip_special_tokens": true,
+    "clean_up_tokenization_spaces": false
+  },
+  "json_parser": "Strip whitespace, then strip only an exact ```json\\n...\\n``` wrapper; parse once.",
+  "caption_package_versions": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.51.3",
+    "qwen-vl-utils": "0.0.11",
+    "Pillow": "12.3.0",
+    "accelerate": "1.14.0"
+  },
+  "text_encoder": {
+    "weight_sha256": "b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836",
+    "python_source_sha256": {
+      "clip.py": "3891eee0ad659a781ec3fd0240f9d69b7f3845837f671ff6670accf0d4bad0a2",
+      "model.py": "dc4981bbd17867430890cfe711bb813466232f3b19c5753e26de0b7b047b0926",
+      "simple_tokenizer.py": "acf0cda10cad73193af7a0d7184364cca3139b7de464f163fd4953bf2648c608",
+      "__init__.py": "f6ddc7cbe2e119c937398de04e4d064976cc0110c5618bc7312fa595967ae3b4"
+    },
+    "device": "cpu",
+    "dtype": "float32",
+    "normalize": false,
+    "truncate": false,
+    "slots": 5,
+    "channels": 768,
+    "order": "category, then attributes in generated order",
+    "unused_slots": "zero vector and false mask",
+    "empty_control": "CLIP encoding of the empty string"
+  }
+}

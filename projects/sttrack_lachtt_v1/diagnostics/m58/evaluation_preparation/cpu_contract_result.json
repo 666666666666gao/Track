@@ -1,0 +1,53 @@
+{
+  "status": "cpu_initialization_and_serialization_contract_passed",
+  "observed_utc": "2026-09-06T10:28:47.731994+00:00",
+  "elapsed_seconds": 0.134568452835083,
+  "training_spec_sha256": "c592109d10579efac4dce5d3dd6f4881900c2c264acc3db3b63a6021855ea3b7",
+  "original_inference_files_unchanged": 160,
+  "original_text_banks_unchanged": true,
+  "train_initializations_verified": 152,
+  "same_filename_across_all_inputs": true,
+  "exact_token_mask_and_bbox_matches": 152,
+  "actual_trax_wire_comparisons": 153,
+  "noninteger_wire_example": {
+    "input": [
+      1.1,
+      2.2,
+      30.3,
+      40.4
+    ],
+    "actual": [
+      1.100000023841858,
+      2.200000047683716,
+      30.299999237060547,
+      40.400001525878906
+    ]
+  },
+  "same_image_distinct_region_routes": 2,
+  "same_image_different_path_route": true,
+  "unknown_or_unconverted_region_rejected": true,
+  "ope_fixture_frames": 3,
+  "maximum_confidence_roundtrip_error": 3.4500000001269626e-07,
+  "confidence_rank_preserved": true,
+  "text_protocol_sha256": "d08acfb068ac5f7c428d5decb5f17af4655383543eeb4b4277e65cfda14bcac1",
+  "train_fixture_sha256": "07e6b49d97a6fa5b7c0feafad65fcd12063f724811b7dc654feb308c5a09ced2",
+  "train_fixture_bytes": 3326284,
+  "source_sha256": {
+    "initialization_text.py": "5ffd459fe13242537571809f8a77b1a57c2b5dea97291221f4c5b4738eedf941",
+    "semantic_runtime.py": "7d71bfd7d0c3deb657d45657c491d7aa5d8b6544c2a6ac1626cf7940d6f6c261",
+    "run_semantic_ope.py": "e307b62197df87d4626a5693350fb14461b1ae397499ebd6fd92d122cba98758",
+    "run_semantic_vot.py": "1ae1f2246aaa943f7d896a4086937b4680bc4b4c6d9dd61d7829ca1a7f5d7272",
+    "check_initialization_binding.py": "8e85f5863f8de83e1c3ee6a585380d9ebafaa4086aeae44c6f9720f56ce6f223",
+    "m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316"
+  },
+  "cuda_initialized": false,
+  "optimizer_steps": 0,
+  "actual_semantic_tracking_calls": 0,
+  "public_test_images_opened": 0,
+  "new_captions_generated": 0,
+  "final_evaluation_bundle_created": false,
+  "gpu_wrapper_parity_verified": false,
+  "trax_server_exchange_verified": false,
+  "independent_review_pass": false,
+  "scope": "CPU data-routing/output checks only; no tracking gain, final-weight promotion, or public evaluation."
+}

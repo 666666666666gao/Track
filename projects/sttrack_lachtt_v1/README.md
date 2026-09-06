@@ -35,6 +35,10 @@ floor/round mismatch with the pretrained native head. V2 reuses native crop
 coordinates and rounded centres, and restarted the same paired full-sequence
 budget from the common zero adapter. No learned recursive gain exists yet.
 See [M58 correction evidence and v2 training](diagnostics/m58/supervision_correction/README.md).
+Shared semantic OPE/VOT entry points now pass CPU initialization-text routing
+and output serialization checks on existing Train inputs. GPU wrapper parity,
+TraX exchange and public evaluation are still pending; see
+[M58 evaluation preparation](diagnostics/m58/evaluation_preparation/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

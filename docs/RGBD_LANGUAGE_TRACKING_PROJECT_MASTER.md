@@ -18789,3 +18789,24 @@ v2复用160个完全相同的推理文件与289154参数结构，只修正监督
 17:49:55正式重启text/visual，从同一个未训练零残差初始化开始；每组130条/186694次track、最多5896步，估计4.31小时/组，预计22:10附近完成训练。17:53:47实查PID341833/341836运行于v2目录，两组各第一条完整2575次track/81步，未启动开发评测。训练spec SHA=`c592109d10579efac4dce5d3dd6f4881900c2c264acc3db3b63a6021855ea3b7`；递归spec SHA=`29aeeaa353d1d898f4793744375238b2212f865557df64efd5f981c1d62c027e`。新队列仍每240秒检查，两组fixed final核验后各完成开发22，全部预测封存后再算指标，门槛通过后才依次推进词义反事实、低22和最终同模型三个数据集。
 
 来源与损失证据位于projects/sttrack_lachtt_v1/diagnostics/m58/supervision_correction；私有下载包64,429字节、SHA=`670024e0a470efcb8ef066aea3e3c12ed9591a07452780d1fddbb230e876b380`。没有新的独立Astra/max审阅PASS，也没有学习后递归或正式三个数据集提升结论。当前目标尚未完成。
+
+
+### 5.89 M58三数据集语义接口准备：初始化文字与实际画面/框绑定（2026-09-06）
+
+原生OPE/VOT入口没有文本输入，VOT不同anchor又有不同初始化观测。本次独立新增共用STTrackSemantic的两个入口，按RGB文件SHA和实际初始化四坐标精确取文本。OPE保留原坐标；VOT离线输入准备必须使用toolkit实际xywh并复现TraX float32封送，运行时不改变模型收到的框，不采用模糊匹配或旧序列文本回退。同画面同框可以共用一条生成记录，不因anchor方向不同宣称独立注释。
+
+真实TraX 4.0.2构造器将1.1转换成1.100000023841858等float32值，证明直接用原JSON小数匹配存在差异。153组构造器/封送对照全部一致。若后续涉及polygon，需要核验toolkit的实际region转换，不能沿用旧文本工具的通用包围框假定。新代码只在独立evaluation_preparation目录，v2训练与160个推理文件未修改。
+
+| 本次CPU接线/序列化检查，不是跟踪指标 | 结果 |
+| --- | ---: |
+| 原Train初始化token/mask/框逐项一致 | 152/152 |
+| 真实TraX float32封送核验 | 153/153 |
+| 同一图片的两个不同初始化框分别取对应文字 | 2/2 |
+| OPE合成输出 | 3帧，confidence误差最大3.45e-7 |
+| GPU初始化/真实语义track/新caption/正式测试图像读取 | 均0 |
+
+文字协议从已完成的M58自动首帧注释冻结，SHA=d08acfb068ac5f7c428d5decb5f17af4655383543eeb4b4277e65cfda14bcac1；原类别误认等噪声未改写。本次只包装原始银行，未重新编码、未证明文字准确。OPE保持首帧confidence=1、后续原始Hann置信度、六位小数及原生depthtrack_pr.py；全部输出封存后才分析GT。VOT复用M39 bridge原文件，尚未完成新入口的真实TraX交换。最终base/head/runtime/text bundle尚未建立，没有虚构final SHA或正式性能。
+
+18:31:55 CST实查text/visual均完成26/130条、36181次track、1132步，无终态退出；两个训练PID和240秒等待队列继续运行。磁盘剩余2952675328字节，Qwen3-8B五分片16381516776字节、Qwen2.5-VL-3B两分片7509337976字节均保留，本次未删权重。初始化索引CPU样例约3.33MB，仅留服务器。
+
+源码、协议与CPU证据见projects/sttrack_lachtt_v1/diagnostics/m58/evaluation_preparation。下载包3664字节，SHA=caf6406070bd9781a9e1d819d3c4e0799d2be953779642a1f87c4c1b1e447f82。通过当前训练/开发/固定同权重文字反事实后，再验证GPU入口一致性和真实TraX，按当前anchor准备low22文字，改善后才同bundle评测三个完整数据集。无新的独立Astra/max审阅PASS，项目目标仍未完成。
