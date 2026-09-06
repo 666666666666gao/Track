@@ -5,6 +5,24 @@ for the language-anchored candidate association and protected/tentative RGB-D
 tracking experiments. It is an overlay for STTrack, not a model checkpoint or
 a copy of the server workspace.
 
+## Verified current status (2026-09-06)
+
+Native STTrack full127 VOT has completed: **EAO 77.321654, ACC 82.471190,
+ROB 93.669109 percent**, 183 confirmed failures. It has no experimental
+language or candidate head. The same native weight has DepthTrack P/R/F
+62.415336/62.682004/62.548386 and CDTB69.933113/68.067744/68.987821;
+the old SRTrack results are a different model. See the
+[complete VOT report](diagnostics/native_vot_full127/RESULT_REPORT.md).
+
+M55 paired full-model training is still pending completion. M56 has completed
+three equal-budget language-head training arms and static diagnostics; its
+attribute arm has not beaten the pooled or empty-text control on those
+snapshots. Full recursive development is queued, not completed. See
+[M56 evidence](diagnostics/m56/README.md) and the
+[language research direction](diagnostics/m56/LANGUAGE_RESEARCH_DIRECTION.md).
+Earlier milestone sections below retain their historical evaluation scope;
+old statements that native full127 was pending are superseded by this status.
+
 ## Upstream base and source identity
 
 - Upstream repository: <https://github.com/NJU-PCALab/STTrack>

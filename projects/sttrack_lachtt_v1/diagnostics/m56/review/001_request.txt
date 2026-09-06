@@ -1,0 +1,23 @@
+Use the experiment-audit skill at C:\Users\gb\.codex\skills\experiment-audit\SKILL.md for a bounded, read-only Type-A review of existing language evidence and the next language experiment's implementation boundary. The user explicitly selected gpt-6-astra with max reasoning and stated that the project's main innovation must integrate text. Do not edit files, use SSH/GPU, run tracking/training, or contact anyone. No external literature review is requested.
+
+Workspace: C:\Users\gb\.codex_track_publish_m29_20260902
+Read the artifacts themselves and cite file:line evidence:
+- docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md. Search language / Qwen / identity-only / CPSD / position_text / M42-M55 sections as needed; do not assume its historic results belong to the current model.
+- projects/sttrack_lachtt_v1/diagnostics/position_text_v1/{spec.json,result.json,responses.jsonl,receipt.json}
+- projects/sttrack_lachtt_v1/diagnostics/position_text_v2/{spec.json,result.json,responses.jsonl,receipt.json,paired_diagnosis.json,abstained_box_diagnosis.json}
+- projects/sttrack_lachtt_v1/overlay/tools/{run_position_text_pilot.py,run_position_text_pilot_v2.py,analyze_position_text_pilot.py,analyze_position_text_pilot_v2.py}
+- projects/sttrack_lachtt_v1/overlay/lib/models/sttrack/lachtt_candidate_set.py
+- projects/sttrack_lachtt_v1/overlay/lib/test/tracker/{sttrack_candidate_set.py,sttrack_candidate_set_observation.py}
+- projects/sttrack_lachtt_v1/overlay/tools/{collect_sttrack_m44.py,train_sttrack_m44.py,run_sttrack_m44_recursive.py}
+- projects/sttrack_lachtt_v1/diagnostics/m44/{spec.json,training_result.json,recursive_result.json,input_state_coverage.json}
+- projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/{spec.json,result.json,RESULT_REPORT.md}
+- projects/sttrack_lachtt_v1/diagnostics/m55/{EXPERIMENT_PLAN.md,v2/training_spec.json}
+
+Questions:
+1. What language inputs have actually been tested on this STTrack path, what outcomes exist, and which capabilities are merely proposed? Separate same-sequence/cached diagnosis from recursive trajectory gains.
+2. What evidence, if any, supports a next language module rather than repeating ordinal prompt selection or global-pooled descriptors? Clearly label any new hypothesis.
+3. Inspect the concrete feature/runtime/training interfaces. Identify the smallest new language-information experiment consistent with the user's stable-identity attributes and current-frame relative-position idea. Specify exactly what can be reused and what information/data is currently absent. Avoid proposing a large multi-module combination or claiming pretrained text is automatically useful.
+4. Identify required controls and label/causality boundaries to test independent language contribution, including valid treatment of empty/wrong/shuffled text, Train fit/development sequence splits, current-candidate ordinals, and predicted-state recursion.
+5. Report blockers/unknowns supported by files, not hypothetical safeguards. Do not select thresholds from VOT low22 or promise metric gains.
+
+Return a concise evidence-grounded review, with one bounded next experiment if justified and explicit missing inputs. This is same-family advisory, not a cross-family verdict.

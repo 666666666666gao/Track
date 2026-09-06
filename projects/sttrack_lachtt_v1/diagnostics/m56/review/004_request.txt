@@ -1,0 +1,7 @@
+请对M56已经完成的CPU训练与静态数值做最后一次范围有限的只读验收，不重审研究方案，不执行SSH/GPU/训练。实际完整私有审阅包已下载并校验36个文件，位于 C:\Users\gb\.codex_remote_staging\m56_language_evidence_20260906，含训练权重、bank、spec、日志、三组training结果、static_result及archive manifest。归档SHA为f5706dc87cb93388f91882a8e4f730c263363f39b092bd963c9572c5e1281c60。
+
+公开投影位于 C:\Users\gb\.codex_track_publish_m29_20260902\projects\sttrack_lachtt_v1\diagnostics\m56，包括README、cpu_completed、source和verify_cpu_report.py。根代理已执行公开行聚合核验通过。请独立查训练实际20轮/960步、相同初始化/顺序、权重与结果SHA、模型/训练/分析代码绑定、开发事件覆盖，以及README对结果的解释有无漏报伤害或越界。二进制如本地无torch可只校验真实字节SHA并明确范围，不为此安装依赖。
+
+当前静态590事件结果：attributes 0.450517714、pooled 0.451725274、empty 0.450666726，native候选0 0.440273792；救回/破坏分别7/3、7/0、7/0。固定attributes权重的empty 0.449481308、shuffled 0.450699627；同类冲突仅9序列225事件，真实0.472446471、冲突0.468270272。声明是“尚无独立静态属性语言优势”，不以静态结果晋升。完整递归已排队但尚未执行，GPU0成功标记提前写入问题已在首次排队前修正。
+
+请返回准确的PASS/WARN/FAIL与来源；只需检查当前完成态数字和发布边界，保留已有历史标注/单槽容量/重复开发/原生状态缓存限制。

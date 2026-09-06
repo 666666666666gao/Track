@@ -1,0 +1,11 @@
+请对 M56 启动前代码做一次范围有限、只读的完整性审阅，使用你当前的 gpt-6-astra / max，不执行 GPU、SSH 或训练。只查能导致实验错误、对照不公平、数据泄漏或错误结论的具体问题，不重新扩大研究范围。
+
+新模块和运行接线位于 C:\Users\gb\.codex_track_publish_m29_20260902\projects\sttrack_lachtt_v1\overlay\lib\models\sttrack\lachtt_attribute_candidate_set.py 与 overlay\lib\test\tracker\sttrack_attribute_candidate_set.py。计划位于同项目 diagnostics\m56\EXPERIMENT_PLAN.md。
+
+准备、真实缓存检查、训练与冻结脚本位于 C:\Users\gb\.codex_remote_staging\prepare_sttrack_m56.py、check_sttrack_m56.py、train_sttrack_m56.py、bind_sttrack_m56.py。可对照已存在 overlay\tools\train_sttrack_m45.py 和 overlay\lib\models\sttrack\lachtt_candidate_set.py。
+
+实际准备已完成85条文本、173个唯一短语含空串、最大5槽；63fit/1511事件，22development/590事件。7条文本具有历史跨帧/裁定复核来源，准备脚本解析既有混合label JSON后只物化fit数值标签，训练脚本只读fit。cat04唯一bbox差异是初始GT超图像底边5像素，旧文本crop是640×360边界裁剪，已记录且不改GT。
+
+CPU真实chair01缓存接线检查已通过：448739父头参数、35648新增、484387总参数；共享参数精确相等，零残差logits/affinity精确保真，padding精确不影响输出，短语置换最大误差3.34e-6，3步真实fit梯度有限且各交互层有变化，检查权重已丢弃。训练尚未启动。
+
+三组从同seed2026起点固定20轮/960步，attributes为各短语，pooled为同短语均值，empty为有效CLIP空串，均训练相同参数。只训练头，STTrack与CLIP冻结。完整递归另行执行，无在线Qwen/ordinal、无M55权重、无部署分布补齐声明。请返回可定位的FAIL/WARN/PASS，尤其检查checkpoint与runtime文本语义一致性、类别/属性控制公平性，以及fit-only训练实现。

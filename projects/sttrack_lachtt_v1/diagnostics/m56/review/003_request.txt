@@ -1,0 +1,7 @@
+请继续做一个边界明确的只读审阅：M56 的静态反事实评估与完整递归入口是否正确接上已训练权重。三组 CPU fit 已于10:09启动，尚未读取开发数值结果。不要执行SSH、GPU或训练，不再重审已通过的主模型/训练部分。
+
+文件在 C:\Users\gb\.codex_remote_staging\：analyze_sttrack_m56_static.py、run_sttrack_m56_recursive.py、prepare_sttrack_m56_recursive.py、queue_sttrack_m56_recursive.py；可参考已审的 train_sttrack_m56.py、bind_sttrack_m56.py 和 publisher overlay 的 sttrack_attribute_candidate_set.py。
+
+训练 spec 已冻结为 cafc4471d87c8c8de5c9cb051ae659f1d14404691d2d178cff2131fa7f30a45e，递归 spec 为 bdc367d05dca2ea1bedbde9fa7ab3a7891ea3eb4bbddc15afd0ca16678e6cde5。递归 runner 现显式检查checkpoint的spec/base/text-bank SHA及variant，按bank的sequence查找文本。静态评估在三组最终权重封存后读开发标签，报告完整错配和按类别/短语数的预定分层；未拿静态结果替代完整递归门。
+
+请重点找：真实train/inference文本语义错误、预测未封存即使用后续GT、实例/序列错配、比较范围或门槛错误、队列执行明显会失败/死等的实际路径。不要增加假设性兼容或fallback。队列仍未启动，等待GPU释放的时间会按M55实际进度设置。审阅结论请准确区分已运行CPU结果与尚未执行GPU路径。

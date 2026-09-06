@@ -88,3 +88,12 @@ have been consolidated into one document:
 
 ## Citation
 If our work is useful for your research, please consider cite.
+
+
+M56 (2026-09-06) has completed matched attribute, pooled-text and empty-text
+head fitting. Static development does not yet support an independent
+attribute-language gain; full recursive comparison is queued. The primary
+research direction is now explicitly instance-grounded text interaction,
+semantic temporal association and identity/view memory, all hypotheses
+requiring separate evidence. See the
+[M56 record](projects/sttrack_lachtt_v1/diagnostics/m56/README.md).

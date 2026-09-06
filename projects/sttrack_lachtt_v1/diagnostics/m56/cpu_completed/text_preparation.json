@@ -1,0 +1,70 @@
+{
+  "status": "complete",
+  "scope": "Existing DepthTrack Train annotations, frozen phrase embeddings; no optimizer or tracking evaluation",
+  "preparer_sha256": "db1b3413a2f07719e7714808994c95581e5b6782406a12ace7286ff4aa6d1b99",
+  "parent_spec_sha256": "8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18",
+  "input_sha256": {
+    "/home/OSTrack_RGBD_L_dataset_modified/annotations/depthtrack_train_first_rich_reviewed_qwen3_v5.jsonl": "56c03871b8e2a005bbd9ca12c32ed8821c5445d16af9e2631963267b89785b58",
+    "/root/autodl-tmp/sutrack_rgbd_language_short_prompt_fixed6_v1/source/depthtrack_train_language_short.jsonl": "c85a38b9d570096d61c2f60bbde1b9b8b8ab8ff9d2a18f4e735c857610c923d1",
+    "/root/autodl-tmp/sutrack_rgbd_language_short_prompt_fixed6_v1/source/depthtrack_train_language_short.receipt.json": "ead5d9e9ab25958ef0e1802ec051d188e01670156337c0c3caf669b719ba7882",
+    "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905/inference_inputs.json": "0e9a9bd34d4fb5682ba1f90966c2a8d495d0a10cef5ba2e02bbc8c29039c2ae0",
+    "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905/training_labels.json": "787451cc746a3df8c5f211a6cb98eb49f6b994cd696c8f34176de3f2ebf2839a"
+  },
+  "files": {
+    "text_manifest.json": "97e18d86b6f9406d198d682c9e3c91cb2fc5edcceaf33985bb03674c5f139db7",
+    "text_bank.pt": "93cd72856177f338d14ae05959459e36bf3082ddda340e9b332e5a33089ae967",
+    "fit_labels.json": "0913d2121efc2e5a5261eebc58d932fa763d039623c11cbe72e14c9796742080"
+  },
+  "encoder_path": "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+  "encoder_sha256": "b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836",
+  "clip_source_sha256": {
+    "/root/autodl-tmp/sutrack_assets/openai-clip/clip/__init__.py": "f6ddc7cbe2e119c937398de04e4d064976cc0110c5618bc7312fa595967ae3b4",
+    "/root/autodl-tmp/sutrack_assets/openai-clip/clip/clip.py": "3891eee0ad659a781ec3fd0240f9d69b7f3845837f671ff6670accf0d4bad0a2",
+    "/root/autodl-tmp/sutrack_assets/openai-clip/clip/model.py": "dc4981bbd17867430890cfe711bb813466232f3b19c5753e26de0b7b047b0926",
+    "/root/autodl-tmp/sutrack_assets/openai-clip/clip/simple_tokenizer.py": "acf0cda10cad73193af7a0d7184364cca3139b7de464f163fd4953bf2648c608",
+    "/root/autodl-tmp/sutrack_assets/openai-clip/clip/bpe_simple_vocab_16e6.txt.gz": "924691ac288e54409236115652ad4aa250f48203de50a9e4722a6ecd48d6804a"
+  },
+  "torch_version": "1.13.1+cu116",
+  "cpu_threads": 4,
+  "clip_device": "cpu",
+  "phrase_embedding_dimension": 768,
+  "unique_phrases_including_empty": 173,
+  "maximum_phrase_slots": 5,
+  "sequence_counts": {
+    "fit": 63,
+    "development": 22
+  },
+  "phrase_counts": {
+    "3": 42,
+    "4": 35,
+    "5": 5,
+    "2": 3
+  },
+  "review_status_counts": {
+    "corrected_after_cross_frame_identity_audit": 5,
+    "accepted_visual": 78,
+    "corrected_after_independent_gt_crop_adjudication": 2
+  },
+  "clipped_annotation_sequences": [
+    "cat04_indoor"
+  ],
+  "fit_events": 1511,
+  "development_labels_in_training_file": 0,
+  "mixed_label_source_parsed_and_filtered": true,
+  "future_frame_annotations_claimed_causal": false,
+  "language_fields": [
+    "annotation.category",
+    "annotation.stable_attributes"
+  ],
+  "excluded_from_model": [
+    "sequence",
+    "fold",
+    "paths",
+    "bbox",
+    "depth_relation",
+    "occlusion",
+    "motion",
+    "ordinal"
+  ],
+  "elapsed_seconds": 33.29267477989197
+}

@@ -1,0 +1,18 @@
+{
+  "status": "launched",
+  "launched_utc": "2026-09-06T02:09:44.496509+00:00",
+  "screen": "sttrack_m56_cpu_20260906",
+  "device": "cpu",
+  "cpu_threads": 4,
+  "spec_sha256": "cafc4471d87c8c8de5c9cb051ae659f1d14404691d2d178cff2131fa7f30a45e",
+  "controller_sha256": "02505ddeed5ff3a6dd36dc1d9ab793cd4f28271f69097563386744c82f18d6b8",
+  "processes": [
+    "319528 319515       2 bash -c /root/autodl-tmp/envs/sttrack/bin/python - <<'PY' import ast,datetime,hashlib,json,subprocess,time from pathlib import Path r=Path('/root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906') for name in ['train.py','analyze_static.py','run_recursive.py','prepare_recursive.py']:  ast.parse((r/name).read_text()) assert not (r/'training').exists() and not (r/'train.exit').exists() name='sttrack_m56_cpu_20260906' assert name not in subprocess.check_output(['screen','-ls'],text=True) subprocess.run(['screen','-dmS',name,'bash',str(r/'run_cpu.sh')],check=True) time.sleep(2) processes=[line for line in subprocess.check_output(['ps','-eo','pid,ppid,etimes,args'],text=True).splitlines() if str(r) in line and ('train.py --root' in line or 'bash '+str(r/'run_cpu.sh') in line)] assert any('train.py --root' in x for x in processes) receipt=dict(status='launched',launched_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),screen=name,device='cpu',cpu_threads=4,  spec_sha256=hashlib.sha256((r/'spec.json').read_bytes()).hexdigest(),controller_sha256=hashlib.sha256((r/'run_cpu.sh').read_bytes()).hexdigest(),  processes=processes,estimated_seconds=720,first_completion_check_after_seconds=600,no_gpu_consumed=True) (r/'launch.json').write_text(json.dumps(receipt,indent=2)+'\\n') print(json.dumps(receipt)) PY ",
+    "319532      1       2 SCREEN -dmS sttrack_m56_cpu_20260906 bash /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/run_cpu.sh",
+    "319533 319532       2 bash /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/run_cpu.sh",
+    "319534 319533       2 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/train.py --root /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906"
+  ],
+  "estimated_seconds": 720,
+  "first_completion_check_after_seconds": 600,
+  "no_gpu_consumed": true
+}
