@@ -27,6 +27,8 @@ M57 has an untrained initialization-binding prototype and a passed CPU interface
 contract; true t0 extraction and formal training await the base decision. Its
 source review is partial after a reviewer service limit. See
 [M57 preparation](diagnostics/m57_initial_binding_preparation/README.md).
+Its [t0 state-validation protocol](diagnostics/m57_initial_binding_preparation/t0_validation_preparation/README.md)
+is prepared with initialization-only input; GPU execution remains pending.
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 
