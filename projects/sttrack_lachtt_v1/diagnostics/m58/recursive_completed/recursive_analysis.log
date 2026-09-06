@@ -1,0 +1,50 @@
+{
+  "status": "complete_recursive_development",
+  "observed_utc": "2026-09-06T13:58:01.296113+00:00",
+  "recursive_spec_sha256": "29aeeaa353d1d898f4793744375238b2212f865557df64efd5f981c1d62c027e",
+  "training_spec_sha256": "c592109d10579efac4dce5d3dd6f4881900c2c264acc3db3b63a6021855ea3b7",
+  "aggregates": {
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "text": {
+      "valid_frames": 28897,
+      "iou_sum": 20593.209855121604,
+      "low_iou_frames": 5429,
+      "failure_episodes": 78,
+      "mean_iou": 0.71264179171269,
+      "macro_sequence_mean_iou": 0.7184673127390621
+    },
+    "visual": {
+      "valid_frames": 28897,
+      "iou_sum": 20462.87894919183,
+      "low_iou_frames": 5748,
+      "failure_episodes": 67,
+      "mean_iou": 0.7081316035987067,
+      "macro_sequence_mean_iou": 0.7333794853176527
+    }
+  },
+  "gates": {
+    "mean_vs_native": true,
+    "mean_vs_visual": true,
+    "low_frames": true,
+    "H10": false,
+    "native_success_protection": true
+  },
+  "primary_pass": false,
+  "new_failure_sequences": [],
+  "receipts": {
+    "text": "cca333a86f34b92ae8f088bd61eecec93156d8c93b3821fb6c634c38847bd536",
+    "visual": "cbdf75da44ad8da3f5f783f222ed947ea3e598b109aeb2f5ace9ca1607af7782"
+  },
+  "frozen_native_result_sha256": "5ed4a20beae88a8e8b85513000a8f020311e934b9206678f7d670b50b0737064",
+  "scope": "Reused DepthTrack Train development22; no public dataset results.",
+  "caption_scope": "Automatic initialization-only captions with documented errors; no semantic ground-truth guarantee.",
+  "independent_review_pass": false,
+  "next": "Stop this frozen revision; diagnose complete trajectories"
+}

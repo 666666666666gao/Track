@@ -33,7 +33,10 @@ See [M57 full results and trajectory diagnosis](diagnostics/m57/recursive_comple
 M58 v1 training stopped after a fit-only diagnostic found a centre-label
 floor/round mismatch with the pretrained native head. V2 reuses native crop
 coordinates and rounded centres, and restarted the same paired full-sequence
-budget from the common zero adapter. No learned recursive gain exists yet.
+budget from the common zero adapter. Both v2 arms have now completed training
+and development22 recursion. Text mean IoU is 0.712642 versus native 0.652226
+and visual 0.708132, but H10 rises from 75 to 78. The frozen promotion gate
+fails; see [M58 complete results](diagnostics/m58/recursive_completed/README.md).
 See [M58 correction evidence and v2 training](diagnostics/m58/supervision_correction/README.md).
 Shared semantic OPE/VOT entry points passed CPU initialization-text routing
 on existing Train inputs. A subsequent real toolkit/TraX exchange with a synthetic
@@ -44,8 +47,8 @@ training/runtime sources unchanged. Real-weight GPU entry parity and public
 evaluation remain pending; see [M58 transport correction](diagnostics/m58/trax_transport/README.md)
 and the [historical preparation snapshot](diagnostics/m58/evaluation_preparation/README.md).
 Fixed-text-head empty, category-retention, mismatched-caption and matched-caption-category
-attribute controls are frozen. A conditional queue waits for the original recursive gate;
-no content-control tracking has run. See [M58 content controls](diagnostics/m58/content_controls/README.md).
+attribute controls are frozen. Their conditional queue stopped with
+not_run_parent_gate_failed; no content-control tracking or public evaluation has run. See [M58 content controls](diagnostics/m58/content_controls/README.md).
 A shared initialization-caption preparation and encoding entry now reproduces all
 152 frozen Train crops/caption parses/text routes, plus exact processor tensors on
 three crop-size-selected inputs. New GPU caption generation and public model evaluation are

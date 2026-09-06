@@ -1,7 +1,8 @@
 # M58 密集语义与真实预测裁剪训练
 
-当前v1因新训练器的中心监督与预训练底座不对齐而停止；v2修正后已从同一初始化重启，尚无学习后的开发结果。
+v2两组训练与开发22完整递归已完成：文本mean IoU 0.712642，高于原生0.652226和同预算纯视觉0.708132；但H10由75增至78，冻结晋升门未通过，原内容队列停止，未运行公开集。v1监督修正及各准备记录保留为历史快照。
 
+- [v2配对训练、完整递归结果与持续损害诊断](recursive_completed/README.md)
 - [低22实际初始化清单与multi-start调度核对](vot_initializations/README.md)
 - [共用初始化文字生成器与Train输入/编码回放](initialization_generator/README.md)
 - [真实TraX通信与初始化文字索引精度修正](trax_transport/README.md)

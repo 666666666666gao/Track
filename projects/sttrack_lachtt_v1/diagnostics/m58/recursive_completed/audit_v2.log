@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/audit_m58_completion_v2_20260906.py", line 220, in <module>
+    main()
+  File "/root/autodl-tmp/audit_m58_completion_v2_20260906.py", line 89, in main
+    counts = {k: sum(r['label_counts'][k] for r in logs) for k in trained_results[arm]['training_label_counts']}
+  File "/root/autodl-tmp/audit_m58_completion_v2_20260906.py", line 89, in <dictcomp>
+    counts = {k: sum(r['label_counts'][k] for r in logs) for k in trained_results[arm]['training_label_counts']}
+  File "/root/autodl-tmp/audit_m58_completion_v2_20260906.py", line 89, in <genexpr>
+    counts = {k: sum(r['label_counts'][k] for r in logs) for k in trained_results[arm]['training_label_counts']}
+KeyError: 'centre_outside'
