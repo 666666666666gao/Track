@@ -14,9 +14,10 @@ language or candidate head. The same native weight has DepthTrack P/R/F
 the old SRTrack results are a different model. See the
 [complete VOT report](diagnostics/native_vot_full127/RESULT_REPORT.md).
 
-M55 paired full-model training has completed and passed the frozen artifact
-binding checks; both recursive comparison arms are now running. See
-[M55 training completion](diagnostics/m55/training_completed/README.md).
+M55 paired training and recursion have completed. Clone mean IoU is
+0.677094 versus Control 0.668888 and native 0.652226, but H10 rises to 91
+with two new native-success failures; the native weight remains the language
+experiment base. See [M55 recursive results](diagnostics/m55/recursive_completed/README.md).
 M56 has completed all three equal-budget language-head recursive arms.
 Attributes mean IoU is 0.653400 versus native 0.652226, pooled 0.585857,
 and empty 0.605514. H10 increases from 75 to 86 with a new mobilephone02
@@ -24,12 +25,13 @@ failure, so this revision does not advance to public evaluation. The different
 effective text-slot structures still limit semantic attribution. See
 [M56 evidence](diagnostics/m56/README.md) and the
 [language research direction](diagnostics/m56/LANGUAGE_RESEARCH_DIRECTION.md).
-M57 has an untrained initialization-binding prototype and a passed CPU interface
-contract; true t0 extraction and formal training await the base decision. Its
-source review is partial after a reviewer service limit. See
-[M57 preparation](diagnostics/m57_initial_binding_preparation/README.md).
-Its [t0 state-validation protocol](diagnostics/m57_initial_binding_preparation/t0_validation_preparation/README.md)
-is prepared with initialization-only input; GPU execution remains pending.
+M57 has an untrained initialization-binding prototype, a passed CPU interface
+contract, and a completed native t0 GPU check: three 102-frame paths agree
+exactly, including a template write at step100 and new-template read at101.
+The native base is fixed; formal collection and training have not started.
+Its source review is partial after a reviewer service limit. See
+[M57 preparation](diagnostics/m57_initial_binding_preparation/README.md) and
+[native t0 evidence](diagnostics/m57_initial_binding_preparation/native_t0_completed/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

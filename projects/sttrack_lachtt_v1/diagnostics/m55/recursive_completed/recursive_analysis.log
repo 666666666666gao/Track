@@ -1,0 +1,60 @@
+{
+  "status": "complete",
+  "scope": "Repeatedly used 22-sequence DepthTrack Train development only",
+  "recursive_spec_sha256": "e05a9814371f5974387f8fa9bbe259a3b74b4c062391ae461f7f45625f6094e2",
+  "training_spec_sha256": "b53991ca364cbe767641fcc3216faa41e8bd6699e9ed1e59c0224b140da56998",
+  "training_result_sha256": {
+    "control": "9c61cab634cfe39351bde07041fd746ab945c7dd626d3b8ebba0e47b98deca73",
+    "clone": "2a174bbfbe89dfa4e026438a313bf4fb3545063e6dc5ad0e31a10937c1c371fc"
+  },
+  "recursive_receipt_sha256": {
+    "control": "54f74ef448c01bc4f412aa58b09a06d2a212413559b81a5df7bab8529a91d513",
+    "clone": "b6e6597915c24932525b7cf3fec245b2cada7fac25fb1d0dc56f25c316e3d552"
+  },
+  "weights": {
+    "control": "fe1d4b2faddc7f0dc523b6ec9cacbbf878f523cfc1985cd2a0d8a3fb4c4ba284",
+    "clone": "d1ce44c82593fe5f508954a536762ba9ef772e9264da12500e62f80064e46c81"
+  },
+  "aggregates": {
+    "default": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "control": {
+      "valid_frames": 28897,
+      "iou_sum": 19328.851888292167,
+      "low_iou_frames": 6667,
+      "failure_episodes": 86,
+      "mean_iou": 0.6688878391629639,
+      "macro_sequence_mean_iou": 0.6766523611495864
+    },
+    "clone": {
+      "valid_frames": 28897,
+      "iou_sum": 19565.9888620259,
+      "low_iou_frames": 6453,
+      "failure_episodes": 91,
+      "mean_iou": 0.6770941226433852,
+      "macro_sequence_mean_iou": 0.6713606219197759
+    }
+  },
+  "gates": {
+    "mean_vs_native": true,
+    "mean_vs_control": true,
+    "low_frames": true,
+    "H10": false,
+    "successful_sequence_protection": false
+  },
+  "primary_pass": false,
+  "new_failure_sequences": [
+    "flower03_indoor",
+    "mobilephone02_indoor"
+  ],
+  "language_enabled": false,
+  "public_evaluation": false,
+  "metric": "Continuous xywh IoU; init and invalid GT excluded; invalid GT breaks H10 low-overlap runs",
+  "next": "Stop this frozen model revision"
+}
