@@ -1,0 +1,62 @@
+{
+  "status": "complete_recursive_development",
+  "recursive_spec_sha256": "bdc367d05dca2ea1bedbde9fa7ab3a7891ea3eb4bbddc15afd0ca16678e6cde5",
+  "training_result_sha256": "36b650d2a61fd4ed3ad68a079bb8621d04854ae22882f45140627c9076b35705",
+  "aggregates": {
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "attributes": {
+      "valid_frames": 28897,
+      "iou_sum": 18881.302712857683,
+      "low_iou_frames": 7356,
+      "failure_episodes": 86,
+      "mean_iou": 0.6534001008013871,
+      "macro_sequence_mean_iou": 0.6890374549290684
+    },
+    "pooled": {
+      "valid_frames": 28897,
+      "iou_sum": 16929.510345393268,
+      "low_iou_frames": 9431,
+      "failure_episodes": 104,
+      "mean_iou": 0.585857021330701,
+      "macro_sequence_mean_iou": 0.6420850810724057
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 17497.539347464743,
+      "low_iou_frames": 8791,
+      "failure_episodes": 86,
+      "mean_iou": 0.6055140446227893,
+      "macro_sequence_mean_iou": 0.6628746149171089
+    }
+  },
+  "gates": {
+    "mean_vs_native": false,
+    "mean_vs_empty": true,
+    "mean_vs_pooled": true,
+    "low_frames": true,
+    "H10": false,
+    "native_successful_sequence_protection": false
+  },
+  "primary_pass": false,
+  "new_failure_sequences": [
+    "mobilephone02_indoor"
+  ],
+  "receipts": {
+    "attributes": "71bdd005f64b41d0e20f8b6658e4d9cdb8b8bf73c423867eac47c749a83879d9",
+    "pooled": "8bab0d75af16da8c9374b174192589a004420d02cd35459f5cbdc0d01c8ab42e",
+    "empty": "55a5b25ba31affd26941302ae834689eb125ab91dda20b09e29b2813f6ab9626"
+  },
+  "scope": "Repeatedly used 22-sequence DepthTrack Train development, 33130 frames per arm",
+  "metric": "Continuous xywh IoU; init/invalid GT excluded; invalid GT breaks H10 low-overlap runs",
+  "public_evaluation": false,
+  "text_strings_updated_online": false,
+  "claim": "Same-base equal-budget language interaction comparison; no VOT or three-dataset gain yet",
+  "next": "Stop this frozen revision; diagnose all harms"
+}

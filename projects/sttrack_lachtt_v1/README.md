@@ -15,12 +15,13 @@ the old SRTrack results are a different model. See the
 [complete VOT report](diagnostics/native_vot_full127/RESULT_REPORT.md).
 
 M55 paired full-model training has completed and passed the frozen artifact
-binding checks; its recursive comparison remains queued. See
+binding checks; both recursive comparison arms are now running. See
 [M55 training completion](diagnostics/m55/training_completed/README.md).
-M56 has completed
-three equal-budget language-head training arms and static diagnostics; its
-attribute arm has not beaten the pooled or empty-text control on those
-snapshots. Full recursive development is running, not completed. See
+M56 has completed all three equal-budget language-head recursive arms.
+Attributes mean IoU is 0.653400 versus native 0.652226, pooled 0.585857,
+and empty 0.605514. H10 increases from 75 to 86 with a new mobilephone02
+failure, so this revision does not advance to public evaluation. The different
+effective text-slot structures still limit semantic attribution. See
 [M56 evidence](diagnostics/m56/README.md) and the
 [language research direction](diagnostics/m56/LANGUAGE_RESEARCH_DIRECTION.md).
 M57 has an untrained initialization-binding prototype and a passed CPU interface

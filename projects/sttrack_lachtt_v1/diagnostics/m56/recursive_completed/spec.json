@@ -1,0 +1,428 @@
+{
+  "schema": "sttrack_m56_attribute_local_alignment_v1",
+  "frozen_unix": 1788660514.9956615,
+  "repository": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+  "source_root": "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905",
+  "dataset_root": "/root/autodl-tmp/depthtrack/train/sequences",
+  "parent_spec_sha256": "8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18",
+  "source_sha256": {
+    "lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "lib/test/tracker/sttrack_lachtt_observation.py": "183d8a3c8164db884beda1bf0ff6052c32aa44edaf2661acf922f13635018604",
+    "lib/test/tracker/sttrack_local_spatial_observation.py": "98d7f72815780fa4158adcd6b10b0b437ff1f58e808196df6d7c25655736409d",
+    "lib/test/tracker/sttrack_candidate_set_observation.py": "666fe3a5cdbf3ad306da5a770bf8ba2a3d20910b2bc9865b3d190f5dc0437e82",
+    "lib/models/sttrack/lachtt_candidate_set.py": "d262746d38774d2252306e258317f95a6bbceedf908ceda647c1ce2b490e3728",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "lib/train/dataset/depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+    "tools/prepare_sttrack_m42.py": "e83450c55e500087c7871397c8e99385f0ffcfa12a58edea632570b47863491d",
+    "tools/prepare_sttrack_m44.py": "94555cb9456c8da8c375623d283ea9406c458dffb2329a5a4c3d168ecf9657d9",
+    "tools/collect_sttrack_m44.py": "eaadbe85b569f8a805e371e2aa1607f52c3f8946db7638829e6cc3410a54987f",
+    "lib/test/tracker/sttrack_candidate_set.py": "deaf19edbf8c281b4ea606049e28d40c9ac74b09facd0fddf06ee34525313f68",
+    "tools/train_sttrack_m44.py": "111fde71ee247f15c9a0385e7adc7b093ba9368ff193ab774f6bddfaedcd6091",
+    "tools/smoke_sttrack_m44_runtime.py": "29836f82eb029845cf3d13a792197b89e52afd09782cf82ec1597eb029d8dabc",
+    "tools/run_sttrack_m44_recursive.py": "abc6f44a1e14e66b8dddb6a3915c73d5e8347e3854756d2edee89cb00c7fcfec",
+    "tools/run_sttrack_m44_pipeline.py": "ee316d775d19ee9326857e2eaca5da878ce16bcaed56ecca40508f77c44f8d94",
+    "tools/bind_sttrack_m44.py": "cbaee050f2265279c5601950f679c080ef3635506f7755e0f037adc0de8e77c9",
+    "tools/train_sttrack_m42.py": "211e6f7cbc6758ac0f20e489635707915b713c4b4084d5715395add31b5e7f15",
+    "tools/analyze_sttrack_m42_recursive.py": "03f7dff279a950214ba6040e192f67dea061b541ba068fd0714a6e9da59ad939",
+    "lib/models/sttrack/lachtt_attribute_candidate_set.py": "49cc04e2e9c6e2eb8f3f27b340372bc5c1e61f0fb6dbac0cc68542003d5723e1",
+    "lib/test/tracker/sttrack_attribute_candidate_set.py": "f1fbf0587f955cbe13f49bf2ac3d886dbae9916519681d00677612987af94cb3"
+  },
+  "input_sha256": {
+    "/root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/text_preparation.json": "622b4b81761321fd939976f94753cad150b9a4247360ef366ba1c5e528222e8c",
+    "/root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/text_manifest.json": "97e18d86b6f9406d198d682c9e3c91cb2fc5edcceaf33985bb03674c5f139db7",
+    "/root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/text_controls.json": "34d1b038fd6a1ce411d63d2d5404c553220d890f4cc6e653fbe220d99e59533e",
+    "/root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/text_bank.pt": "93cd72856177f338d14ae05959459e36bf3082ddda340e9b332e5a33089ae967",
+    "/root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/fit_labels.json": "0913d2121efc2e5a5261eebc58d932fa763d039623c11cbe72e14c9796742080",
+    "/root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/contract.json": "afbec32648f91ffff6659d9bd9e926081b7c1b3e6be52a8e5198d631ee56d80a",
+    "/root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/EXPERIMENT_PLAN.md": "33a2e995d9028e6a93c1a8fb472a69a47cf3ac93d52d62d74a0aaf3bb926e7f2",
+    "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905/spec.json": "8572eca25d04291186980c947400106ad6db91705222f2d7f1153ca6c8fdbd18",
+    "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905/training_binding.json": "390b236fe7fc5cca318e774ed5f05f4dd03d56b21f741ab668e64a2c71b353d3",
+    "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905/shard0_receipt.json": "9af9d07f2dc3137551554a2e447a23a2d067329c7faf78ddd228cf01cdcce7d9",
+    "/root/autodl-tmp/sttrack_m44_candidate_set_v1_20260905/shard1_receipt.json": "54954fbf8e0ba433252e3205e137471652e67d7adbbc5c2d66f2cf64728105c1",
+    "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98"
+  },
+  "trainer_sha256": "687031b5e9e5b4a66a6a72eb1e656b94cb5dbc31db2ad161d1e8973eb1017c9f",
+  "static_analyzer_sha256": "d373c417c1c18da193ad5de971177078fa065b2db307675f956449e6feb6f245",
+  "binder_sha256": "8bc53fc11ac8ddff61c180ed4f6d1506ed8f0525666c97f03874a0cc44a638b9",
+  "base_checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+  "base_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "fit_features": [
+    {
+      "sequence": "bag04_indoor",
+      "events": 23,
+      "sha256": "f89c0631f74d256f0b59b8c5e71070d93f802f59aaae8cb26a2c4ffcb8d5890e"
+    },
+    {
+      "sequence": "ball02_indoor",
+      "events": 38,
+      "sha256": "71dedb9cdf8a48d3d7dfc5e893549359c61b5606a3cd8bf2474d4c031fc058d6"
+    },
+    {
+      "sequence": "ball04_indoor",
+      "events": 26,
+      "sha256": "5bd0fc261d274a35589863cd1a99469876b0adc89d08efe1b9c911189f0e40eb"
+    },
+    {
+      "sequence": "ball05_indoor",
+      "events": 26,
+      "sha256": "fae06f26c0b3b335301b36aebe40ab01037af83fc363779e8e85c0c519b463a0"
+    },
+    {
+      "sequence": "ball08_wild",
+      "events": 26,
+      "sha256": "0d877e4b87c65fce38bd9d00b02499189e7a4ec25d9d1fcd80606a9fa432fb6e"
+    },
+    {
+      "sequence": "ball13_indoor",
+      "events": 38,
+      "sha256": "a33257c5d268d001688e9d54ea711ac61f758e31f03ed47cdd7194c3fed50924"
+    },
+    {
+      "sequence": "ball21_indoor",
+      "events": 17,
+      "sha256": "214a38a1a8913ec9d35503a6d12cc7859e2bcca4db16aee16265359a4bdc5b02"
+    },
+    {
+      "sequence": "basket_indoor",
+      "events": 26,
+      "sha256": "75ac445c000ca056803bf5c2342cd63ee978778b587dedeafa37d1ef1bff48be"
+    },
+    {
+      "sequence": "bike03_wild",
+      "events": 18,
+      "sha256": "4bbaa6c3fdbc47eed0aff6aa9dc323e4095ba2883bb4ae5209f9257c80cd8933"
+    },
+    {
+      "sequence": "book02_indoor",
+      "events": 16,
+      "sha256": "64069899868f6a8f95760e6125e540f6479ba697cec018204864f9d6ddd395e5"
+    },
+    {
+      "sequence": "book04_indoor",
+      "events": 16,
+      "sha256": "fc3a98d45ab86c575a052144ef83ad378deab93ac40879cb5ed20da3f9d97b1d"
+    },
+    {
+      "sequence": "bottle02_indoor",
+      "events": 23,
+      "sha256": "704942e8143b63e85c7193d22778023a6da8071742b469deab5940055852bb89"
+    },
+    {
+      "sequence": "bottle03_indoor",
+      "events": 20,
+      "sha256": "6993bd32464bb0cb0b307a667d0c28d1214feb3792de5a1244eebb64e645b2bf"
+    },
+    {
+      "sequence": "box_indoor",
+      "events": 31,
+      "sha256": "fb94883de26e1cadec747c628802b69fd76b7c82a6acb88cedf9bc5b7cf64a99"
+    },
+    {
+      "sequence": "cat02_indoor",
+      "events": 20,
+      "sha256": "9ea27ef460ca3c4800efae4f2100b4445c090f7bba5103a3fb4ab646f45fcabf"
+    },
+    {
+      "sequence": "cat03_indoor",
+      "events": 21,
+      "sha256": "14848cb2410ed16abed554b922961be1753dc381c7a626d155ee2f4abda86ef0"
+    },
+    {
+      "sequence": "cat04_indoor",
+      "events": 20,
+      "sha256": "af91f8942ad4cee518d5a389fcdc714c703e4f0acc832ff086a7376219ca84f3"
+    },
+    {
+      "sequence": "cat05_indoor",
+      "events": 26,
+      "sha256": "7f52b0ef66da7c960ca81dc41d5dfe7a4941dbc3726b97438a484cf67101a6d5"
+    },
+    {
+      "sequence": "chair01_indoor",
+      "events": 22,
+      "sha256": "89cab337b93af63858d9d5fb87f96216cde6146de301ebb689cdacb2726af80a"
+    },
+    {
+      "sequence": "chair02_indoor",
+      "events": 18,
+      "sha256": "5941d6eceb09327414ea3639fd593e56bb22834db8a15c0f2ff7a6a3bc352c97"
+    },
+    {
+      "sequence": "colacan02_indoor",
+      "events": 38,
+      "sha256": "780dfde1f40c4ce3625d952fe6a11eaf11e170a6890fb2f53ca90540d3287f1e"
+    },
+    {
+      "sequence": "cube01_indoor",
+      "events": 23,
+      "sha256": "87b3b61b3b637d81fce8d080a04e5110ebf1cb39dd605e321047dda8ea6fbb32"
+    },
+    {
+      "sequence": "cube04_indoor",
+      "events": 37,
+      "sha256": "ab69f04ab8e1e66387c09c841762aaf9d7e186e3109673580eb67c8e6a138cf1"
+    },
+    {
+      "sequence": "cup05_indoor",
+      "events": 38,
+      "sha256": "ca95f380518b65347a35cc738c6ea076abc2c92eb9b293a1f0a0411c6a188572"
+    },
+    {
+      "sequence": "cup06_indoor",
+      "events": 38,
+      "sha256": "d315012aec4963d2baf6db045f555a76045ed8c8c196f8cf15f16dd8964de70c"
+    },
+    {
+      "sequence": "cup14_indoor",
+      "events": 23,
+      "sha256": "299720d17ed3b3fb6ca1a166d2b41da89a747a3393eeddc2e5768e5c1ca98c51"
+    },
+    {
+      "sequence": "dumbbells02_indoor",
+      "events": 26,
+      "sha256": "186381977b8cf9532f24cd012949395a0571ae49673f5dcef1646ce3a555d7b5"
+    },
+    {
+      "sequence": "earphone02_indoor",
+      "events": 29,
+      "sha256": "0a6587009d6bf9dffe1acd5bac70387e6ce2e65e5dae292aeaf5241bea77eb1d"
+    },
+    {
+      "sequence": "flower01_indoor",
+      "events": 37,
+      "sha256": "12b9bcc203f126c2f56cb031f26a0c2f6c26431be00ef7b9a45f8e6dc8cafaea"
+    },
+    {
+      "sequence": "glass04_indoor",
+      "events": 18,
+      "sha256": "a2db0667ebde941d5664ee857fe890b4824919b71626d0165139e14fd90b8964"
+    },
+    {
+      "sequence": "glass05_indoor",
+      "events": 24,
+      "sha256": "5c04f2e4e7bf6d96ff8e3c2a17c6edd46a76b62c91b1156529fc199956ab6fb1"
+    },
+    {
+      "sequence": "gymring_wild",
+      "events": 12,
+      "sha256": "a1bd7a65c51ae3498e37c7f7537556a9b8b78c4606cc8083ca3f70b8d7bd0787"
+    },
+    {
+      "sequence": "hat01_indoor",
+      "events": 18,
+      "sha256": "e0679027c9d1b317d6c83a7eaf74d29b28846e7281f8b42f38c6659b12a795e0"
+    },
+    {
+      "sequence": "human01_indoor",
+      "events": 18,
+      "sha256": "c3a6f3ee4d2d9a526024f68a862dc29d27d3dc70d668a5ba94643ee44ddc9ec3"
+    },
+    {
+      "sequence": "human03_wild",
+      "events": 31,
+      "sha256": "ee7e7ae0b9de1e0306591083f75ab6a4d3816530539d1e7041433a350f1538bf"
+    },
+    {
+      "sequence": "leaves01_wild",
+      "events": 22,
+      "sha256": "c6a4c19a724b5d9e1a639e9af88a39970c79aff5c946b38b35c126270b4d0acf"
+    },
+    {
+      "sequence": "leaves02_indoor",
+      "events": 24,
+      "sha256": "5c12cde9927ce6f24fa96cbfbaf888def7c090563ec4e2881815f5c9f560936c"
+    },
+    {
+      "sequence": "leaves03_wild",
+      "events": 30,
+      "sha256": "66197e8c038dd95a87893e8d16ce0721d599fea0f8e6d9c0faefe4dde8eb05b8"
+    },
+    {
+      "sequence": "leaves05_indoor",
+      "events": 20,
+      "sha256": "d019a30a759ebdd65098ead91a78128bc1d5bdf3d0164fb492a14861693d285d"
+    },
+    {
+      "sequence": "leaves06_wild",
+      "events": 20,
+      "sha256": "45724a928ec362f567e7e04488f2f25c37b459f47fe929566ed00db22333a000"
+    },
+    {
+      "sequence": "milkbottle_indoor",
+      "events": 23,
+      "sha256": "e831caec5b9a966455051d41f88e3b3fc36bc677354f9171f80425ae5224490b"
+    },
+    {
+      "sequence": "mobilephone06_indoor",
+      "events": 23,
+      "sha256": "2c77bdeeca324ceeacb6c58402a02e3e7d5fdbe6384ddd7d663dba2c785e520b"
+    },
+    {
+      "sequence": "mushroom01_indoor",
+      "events": 26,
+      "sha256": "7fccec1abbfaad5126b947b12e0e4910a9585841e077bc9f7b386077cd9a4741"
+    },
+    {
+      "sequence": "mushroom05_indoor",
+      "events": 25,
+      "sha256": "9a57d7bc33a1c614c061a99113499a9249e6f8e01ee2ec7d29969d5187fc5a3c"
+    },
+    {
+      "sequence": "paintbottle_indoor",
+      "events": 21,
+      "sha256": "690be4d82f7e53f87d0d9c3e5685e69c6505fca43727962301a0591e4664129e"
+    },
+    {
+      "sequence": "painting_indoor_320",
+      "events": 16,
+      "sha256": "71396753a5025c2e979c15d8eeb7f2775c79dac4a53220bcbab8308eb21f4d9a"
+    },
+    {
+      "sequence": "pigeon03_wild",
+      "events": 14,
+      "sha256": "8b944a835b1c42b83e1ea1b0ecb0c33ac4cf55deea4a608dc5666dca88674475"
+    },
+    {
+      "sequence": "pigeon07_wild",
+      "events": 16,
+      "sha256": "77bd2fa4eec64491d66ef200409cd7fdf53222e8102e1c0246742f5fa06d4f1b"
+    },
+    {
+      "sequence": "pine01_indoor",
+      "events": 20,
+      "sha256": "f57f6632ae9d718920571818a6846c5e45872689e1e31bbf7e1696993abd11ed"
+    },
+    {
+      "sequence": "pine02_wild_320",
+      "events": 29,
+      "sha256": "02b96fa30d71750a0a98242344f663cf0656d0804fa8a92bfb76b7f6890eef2d"
+    },
+    {
+      "sequence": "shoes01_indoor",
+      "events": 37,
+      "sha256": "380d5cba4178149dcc628a81cea19ede07a8eb2646f6367798875592b084af2a"
+    },
+    {
+      "sequence": "skateboard01_indoor",
+      "events": 33,
+      "sha256": "3d8dcdc9a57fd69712e0b471fee42ed54614618ec923a3e8a959030cac7c72b9"
+    },
+    {
+      "sequence": "skateboard02_indoor",
+      "events": 20,
+      "sha256": "64acfc38b7b945c03ac4c725e9118bd20dd1618c7c4bb74b9d982cc8897da800"
+    },
+    {
+      "sequence": "suitcase_indoor",
+      "events": 26,
+      "sha256": "0de590e3362994e8b6f9b158dea4fdfbdf3eb9009ac9b08cae253f60197530d4"
+    },
+    {
+      "sequence": "toiletpaper04_indoor",
+      "events": 23,
+      "sha256": "15b80922362cc7e46a8dddcaa9366b20894aec1ec8ee7713e8e9cc38a66e03ea"
+    },
+    {
+      "sequence": "toy01_indoor",
+      "events": 15,
+      "sha256": "9d80c871ab422d8700ef51b0970d7b88f7625a8585e61cfb963edf326db71c1f"
+    },
+    {
+      "sequence": "toy03_indoor",
+      "events": 18,
+      "sha256": "74a33d4fbc897daa04a06764f736583dde359269c14c6ca448444e1ac4307291"
+    },
+    {
+      "sequence": "toy04_indoor",
+      "events": 14,
+      "sha256": "326600dcaffb13f71b81432fe79e338f4fb0a7fe03c10a118537b88001b55592"
+    },
+    {
+      "sequence": "toy06_indoor",
+      "events": 18,
+      "sha256": "2851d1c5d5cfd6313a7209f9ff9bc74a56a62ee64c83f1b047af4187a5fa2e96"
+    },
+    {
+      "sequence": "toy07_indoor_320",
+      "events": 33,
+      "sha256": "5f59bd652851fdcd4aece378dd34eec958a78c7c7f2ed376c45f41da0502de31"
+    },
+    {
+      "sequence": "toy08_indoor",
+      "events": 20,
+      "sha256": "53043043b9f3d8df445597c0b361b213dd8f1d39478fe81841a9418324ebcfa9"
+    },
+    {
+      "sequence": "tree_wild",
+      "events": 25,
+      "sha256": "8cc4d68f5440eaaec78414efb2941eed623fa70da552e3137d94c231f8a7259f"
+    },
+    {
+      "sequence": "trophy_indoor",
+      "events": 19,
+      "sha256": "b4bdd765a39b1d010a2ff93dd366a8e02900c47e7f7a11a72d20302716dbbd97"
+    }
+  ],
+  "parameters": 484387,
+  "added_parameters": 35648,
+  "variants": [
+    "attributes",
+    "pooled",
+    "empty"
+  ],
+  "optimization": {
+    "seed": 2026,
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "optimizer": "AdamW",
+    "optimizer_steps": 960,
+    "device": "cpu",
+    "cpu_threads": 4,
+    "checkpoint": "fixed final epoch only"
+  },
+  "model": {
+    "phrase_dimension": 768,
+    "phrase_slots": 5,
+    "local_channels": 32,
+    "cross_attention_heads": 4,
+    "roi_shape": [
+      2,
+      16,
+      768
+    ],
+    "text_reads_visual": true,
+    "visual_reads_conditioned_text": true,
+    "zero_initial_residual": true,
+    "backbone_frozen": true,
+    "text_encoder_frozen": true,
+    "native_default_template_updates": true,
+    "candidate_generation_uses_language": false
+  },
+  "training_target": "M45 default-priority labels; current and previous IoU>=.5; partial target-only matching",
+  "state_distribution": "Native STTrack trajectories only, previous_choice=0; no claim of policy-state augmentation",
+  "annotation_scope": "Existing Train category and stable attributes; seven of 85 carry historical cross-frame/adjudication review provenance",
+  "train_label_scope": "Preparation parses existing mixed label file and writes only 1511 fit labels; trainer cannot read development numerical targets",
+  "recursive_gate": {
+    "mean_gain_vs_native": 0.002,
+    "mean_gain_vs_empty": 0.001,
+    "mean_gain_vs_pooled": 0.001,
+    "low_frames_no_increase_vs_all": true,
+    "H10_no_increase_vs_all": true,
+    "protect_native_zero_H10": true,
+    "all_22_sequences_required": true
+  },
+  "low22_gate": {
+    "EAO_gain_pp": 0.2,
+    "ROB_gain_pp": 0.2,
+    "ACC_min_delta_pp": -0.1,
+    "fewer_than_124_failures": true,
+    "protect_all_7_zero_failure_sequences": true
+  },
+  "public_evaluation_requires_recursive_pass": true,
+  "claim": "Frozen language hypothesis, no M56 performance yet; modest development gates do not imply original final targets reached"
+}
