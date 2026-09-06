@@ -1,0 +1,70 @@
+{
+  "status": "queued_not_tracking_yet",
+  "verified_utc": "2026-09-06T03:08:23.162514+00:00",
+  "queues": [
+    {
+      "gpu": 0,
+      "screen": "sttrack_m55_recursive_gpu0_20260906",
+      "not_before": "2026-09-06T13:00:00+08:00"
+    },
+    {
+      "gpu": 1,
+      "screen": "sttrack_m55_recursive_gpu1_20260906",
+      "not_before": "2026-09-06T13:00:00+08:00"
+    }
+  ],
+  "processes": [
+    "322434 322433 S+         04:32 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906/queue_recursive.py --root /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906 --predecessor /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906 --gpu 0 --not-before 2026-09-06T13:00:00+08:00",
+    "322595 322594 S+         00:02 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906/queue_recursive.py --root /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906 --predecessor /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906 --gpu 1 --not-before 2026-09-06T13:00:00+08:00"
+  ],
+  "training": {
+    "control": {
+      "process": "309416 309414 Rl+     02:57:56 /root/autodl-tmp/envs/sttrack/bin/python -u train.py --root /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906 --variant control --mode train",
+      "last_step": {
+        "epoch": 11,
+        "optimizer_step": 2750,
+        "microbatches": 11000,
+        "mean_summed_four_frame_loss": 1.4442256689071655,
+        "grad_norm_before_clip": 8.82409954071045,
+        "learning_rates": [
+          1.0000000000000002e-06,
+          1e-05
+        ],
+        "keep_rate": [
+          1.0,
+          0.8500000238418579,
+          0.699999988079071
+        ],
+        "elapsed_seconds": 10638.121508359909
+      },
+      "final_result_present": false
+    },
+    "clone": {
+      "process": "313371 313370 Rl+     02:41:56 /root/autodl-tmp/envs/sttrack/bin/python -u train.py --root /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906 --variant clone --mode train",
+      "last_step": {
+        "epoch": 10,
+        "optimizer_step": 2500,
+        "microbatches": 10000,
+        "mean_summed_four_frame_loss": 2.232130467891693,
+        "grad_norm_before_clip": 11.911345481872559,
+        "learning_rates": [
+          1e-05,
+          0.0001
+        ],
+        "keep_rate": [
+          1.0,
+          0.8500000238418579,
+          0.699999988079071
+        ],
+        "elapsed_seconds": 9614.318677186966
+      },
+      "final_result_present": false
+    }
+  },
+  "recursive_spec_sha256": "e05a9814371f5974387f8fa9bbe259a3b74b4c062391ae461f7f45625f6094e2",
+  "queue_sha256": "c7172ce8f6346dfde60e0611bdafe6c8dc2a7de6ba87cbd0e9fe10715ac4cb13",
+  "wrapper_sha256": "6b947eee0dc10e4208a1ae09e512573e3ff968045c2c4e3ec290ff4d1b6240af",
+  "public_evaluation_started": false,
+  "launch_correction_sha256": "17773a04ee55617502240da5335cf91062a6bb95225d0801d75694fb70edf281",
+  "estimated_predecessor_duration": "M52 974-978s per 16563-16567 frames; M56 full arm estimated 33-40min, subject to actual timing"
+}
