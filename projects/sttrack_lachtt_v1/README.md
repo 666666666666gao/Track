@@ -48,8 +48,13 @@ attribute controls are frozen. A conditional queue waits for the original recurs
 no content-control tracking has run. See [M58 content controls](diagnostics/m58/content_controls/README.md).
 A shared initialization-caption preparation and encoding entry now reproduces all
 152 frozen Train crops/caption parses/text routes, plus exact processor tensors on
-three crop-size-selected inputs. New GPU caption generation and public inputs are
+three crop-size-selected inputs. New GPU caption generation and public model evaluation are
 unrun; see [M58 initialization generator](diagnostics/m58/initialization_generator/README.md).
+Frozen low22 initialization metadata is now exported from the actual toolkit.
+The original multi-start scheduler matches all 303 initializations and 220483 frame
+paths under a CPU recorder. Wire rounding changes none of these actual initial
+boxes; no model gain is attributed to that protocol correction. See
+[M58 low22 initialization export](diagnostics/m58/vot_initializations/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

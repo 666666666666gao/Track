@@ -18870,3 +18870,28 @@ processor参考由SHA固定的旧脚本实际预处理语句在CPU执行到input
 20:28:27 CST两组训练各97/130条、138664次track、4325步；两训练及两调度Python进程在。父推理160文件、六接口、训练/开发/内容方案和队列来源未改变，尚无开发终态或候选bundle。两个Qwen完整保留，磁盘余2927144960字节，本轮未删权重。
 
 公开位置projects/sttrack_lachtt_v1/diagnostics/m58/initialization_generator。证据包10038字节、SHA=9d6767239974fee6077968e2772014201da0d4c7d0c9eb4a7e3cf5ec116b4480；预处理result SHA=862b556460e230b9282a40b138d24311e7638bd1bec50d6fc4ac22b4baefbc78，编码回放result SHA=920c8d1ddefa1e2ecd630c51f940d0b4285bc290e4dbcf78f7c4ad01c1bee303。公开计划省略真实初始化框，图像/GT/银行/权重不发布。真实GPU生成、正式观测清单和同最终权重评测尚待主开发/内容门通过后执行；未增加自动GPU队列。无新独立Astra/max审阅PASS，整体目标未完成。
+
+
+### 5.93 M58低22实际初始化清单与multi-start调度核对（2026-09-06）
+
+本轮补齐§5.92生成器上游的VOT初始化清单导出。直接加载既有冻结四分片的Workspace/stack/dataset，执行实际experiment.transform、find_anchors与_get_initialization，包含SingleObject及ignore-special行为；没有手写GT字符串或polygon外接框解析。原low22 manifest SHA仍为600b1ebb…，集合、anchor索引/方向/值、官方轨迹名称与长度均核对。
+
+| 元数据/CPU调度检查，不是模型指标 | 实测 |
+| --- | --- |
+| 序列/anchor | 22/303 |
+| 正向/反向 | 154/149 |
+| toolkit初始化区域 | 303个全为Rectangle |
+| 原execute初始化框与导出值 | 303/303相同 |
+| 完整帧路径和方向 | 220483个位置全部一致 |
+| CPU占位update调用 | 220180 |
+| 模型/Qwen/新TraX/正式预测文件 | 均0 |
+
+检查使用安装版本0.7.1的真实MultiStartExperiment.execute及transform，替换运行时工厂、结果存储和Trajectory为CPU记录器；占位框不参与精度分析，不写正式预测目录。累计完整帧路径摘要并比较各工作区case顺序，耗时40.77秒，export/scheduler均exit0。toolkit加载既有GT/anchor元数据，本轮只使用初始化框和调度信息，后续GT不用于监督/诊断选择/指标，公开集像素未送入跟踪网络或Qwen。
+
+实际303个toolkit框经过完整float32→四位小数→float32转换后，变化框数0/303，最大坐标差0。因此§5.91高精度合成输入暴露的精度缺口不在这批低22初始化上触发，不能解释既有性能下降或记为指标提升。完整协议辅助函数仍保留，合成边界证据与当前实际输入范围分开记录。
+
+私有low22_inputs/caption_inputs.json SHA=5149bee97236f96587d90191087eef7434373fc714d6f5dbfe4d00583a6859e8，按官方轨迹ID排序，可交给文字prepare；跟踪保留工作区调度顺序，并行分片不承诺统一墙钟顺序。真实初始化框仅留服务器。303条记录不等于已生成303份新文字；观测去重和真实GPU生成尚待后续门槛通过后执行。完整127未运行该导出器，其他region类型未添加转换路径。
+
+20:59:22两训练及两调度Python进程在，父推理160文件/六接口/内容方案未变，无开发完成结果。本轮未改模型、文字、训练或门槛，没有新GPU队列；两个Qwen继续保留，磁盘余2921897984字节。主开发及内容门通过后才进行真实GPU生成/模型入口验收和低22正式评测，低22实际改善后再同bundle三数据集。
+
+公开位置projects/sttrack_lachtt_v1/diagnostics/m58/vot_initializations。证据包81228字节、SHA=24d2da9bdf5c2ba833de18185c1224ae21df784a8f50298c15852c6cfc9ea54f；scheduler result SHA=8c7c68b12adb2390da4c8ce9e58574bb52a15d3fc1eca85ee5799441b03f70bc。公开anchor摘要省略真实框与图像路径，未公开图像、GT、向量银行或权重。无新独立Astra/max审阅PASS，整体目标未完成。
