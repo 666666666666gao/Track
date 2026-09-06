@@ -25,15 +25,11 @@ failure, so this revision does not advance to public evaluation. The different
 effective text-slot structures still limit semantic attribution. See
 [M56 evidence](diagnostics/m56/README.md) and the
 [language research direction](diagnostics/m56/LANGUAGE_RESEARCH_DIRECTION.md).
-M57 has completed causal t0 collection, four real-runtime input contracts,
-four equal-budget same-slot heads, and static content counterfactuals.
-Initial-text snapshot mean IoU is 0.445936 versus native candidate0 0.440274,
-but the same-structure visual-query control is 0.448180. Fixed-head content
-changes affect a small set of choices; this is not yet a language promotion.
-Four full recursive arms (132520 total frames) are scheduled in two GPU queues;
-both text arms have finished and the visual-query controls are running.
-The native base remains fixed. See [M57 formal evidence](diagnostics/m57/README.md)
-and [earlier preparation](diagnostics/m57_initial_binding_preparation/README.md).
+M57 has completed all four same-slot recursive arms (132520 frames).
+Initial-text mean IoU is 0.595335 versus native 0.652226 and initial-visual
+0.655847; H10 rises from 75 to 80 with a new mobilephone02 failure.
+All seven primary gates fail, so this frozen revision stops before low22.
+See [M57 full results and trajectory diagnosis](diagnostics/m57/recursive_completed/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

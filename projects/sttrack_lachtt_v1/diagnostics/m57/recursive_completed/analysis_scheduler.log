@@ -1,0 +1,75 @@
+{
+  "status": "complete_recursive_development",
+  "recursive_spec_sha256": "c00665e1d8b12b7fd332d3c5c94514932b6183817a29ca69cf27a957e34eeb30",
+  "training_result_sha256": "e60a40e6ea0209600663d2a7a8da3d05eeda8d593cb8055ff09439cc91dd8d8d",
+  "aggregates": {
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "candidate_text": {
+      "valid_frames": 28897,
+      "iou_sum": 17495.860762956665,
+      "low_iou_frames": 8841,
+      "failure_episodes": 110,
+      "mean_iou": 0.6054559560839071,
+      "macro_sequence_mean_iou": 0.670435631107857
+    },
+    "candidate_visual": {
+      "valid_frames": 28897,
+      "iou_sum": 16986.145525588137,
+      "low_iou_frames": 9310,
+      "failure_episodes": 105,
+      "mean_iou": 0.5878169195967795,
+      "macro_sequence_mean_iou": 0.6430004930772678
+    },
+    "initial_text": {
+      "valid_frames": 28897,
+      "iou_sum": 17203.397688196274,
+      "low_iou_frames": 9137,
+      "failure_episodes": 80,
+      "mean_iou": 0.595335075897023,
+      "macro_sequence_mean_iou": 0.6223047808141845
+    },
+    "initial_visual": {
+      "valid_frames": 28897,
+      "iou_sum": 18952.009198010393,
+      "low_iou_frames": 7053,
+      "failure_episodes": 94,
+      "mean_iou": 0.6558469459809113,
+      "macro_sequence_mean_iou": 0.6949889120921642
+    }
+  },
+  "gates": {
+    "mean_vs_native": false,
+    "mean_vs_initial_visual": false,
+    "mean_vs_candidate_text": false,
+    "semantic_difference_of_differences": false,
+    "low_frames": false,
+    "H10": false,
+    "native_successful_sequence_protection": false
+  },
+  "primary_variant": "initial_text",
+  "primary_pass": false,
+  "new_failure_sequences": [
+    "mobilephone02_indoor"
+  ],
+  "semantic_difference_of_differences": -0.07815090657101598,
+  "receipts": {
+    "candidate_text": "4fa915da7f17a1e7017997846938b7135ec0c74b002036ef47e7a90c10897270",
+    "candidate_visual": "e9540eda1d412446611c084a2117536933098a4a554be2271353ddd28e88aa4c",
+    "initial_text": "6c63aa8b2819bd92d58a33f65ef9281dfa8f28f92dcfca22981ff7e18140731f",
+    "initial_visual": "45f96127a6174500bf13dc7738cdb389c3e642a9472c2c42e7f14bd4e60d4418"
+  },
+  "scope": "Repeatedly used 22-sequence DepthTrack Train development, 33130 frames per arm",
+  "metric": "Continuous xywh IoU; init/invalid GT excluded; invalid GT breaks H10 low-overlap runs",
+  "public_evaluation": false,
+  "text_strings_updated_online": false,
+  "claim": "Same-base equal-budget same-slot initial binding and lexical-content comparison; no VOT or three-dataset gain yet",
+  "next": "Stop this frozen revision; diagnose all harms"
+}
+{"status": "complete_recursive_analysis", "result_sha256": "5ed4a20beae88a8e8b85513000a8f020311e934b9206678f7d670b50b0737064", "primary_pass": false}
