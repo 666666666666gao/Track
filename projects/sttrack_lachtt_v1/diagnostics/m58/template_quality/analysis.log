@@ -1,0 +1,123 @@
+{
+  "status": "completed_posthoc_template_condition_quality",
+  "observed_utc": "2026-09-06T14:51:13.523225+00:00",
+  "script_sha256": "9aa8b83571dd4715342f34350513d942c6e1d85ead497c8e79785760ea8548a6",
+  "parent_result_sha256": "54fd8445297e1eef761fa36e8a17def01afa027f71371984998f08229f6f5ee9",
+  "reconstruction_sha256": "e4bb63cb51f12b2deebde92fe446a04ce026b8ab58efe67b5a20398f551d2fef",
+  "scope": "One seed, reused Train development22. Current-box quality at default update times; no causal claim about future template utility.",
+  "thresholds": {
+    "correct_iou": 0.5,
+    "low_iou": 0.1,
+    "update_score": 0.75,
+    "interval": 50
+  },
+  "aggregates": {
+    "native": {
+      "checks": {
+        "total": 654,
+        "invalid_gt": 82,
+        "correct_iou_ge_05": 424,
+        "partial_iou_01_to_05": 4,
+        "low_iou_le_01": 144
+      },
+      "writes": {
+        "total": 292,
+        "invalid_gt": 9,
+        "correct_iou_ge_05": 256,
+        "partial_iou_01_to_05": 0,
+        "low_iou_le_01": 27
+      },
+      "skipped": {
+        "total": 362,
+        "invalid_gt": 73,
+        "correct_iou_ge_05": 168,
+        "partial_iou_01_to_05": 4,
+        "low_iou_le_01": 117
+      },
+      "confidence_above_default": {
+        "total": 15309,
+        "invalid_gt": 604,
+        "correct_iou_ge_05": 13206,
+        "partial_iou_01_to_05": 25,
+        "low_iou_le_01": 1474
+      }
+    },
+    "text": {
+      "checks": {
+        "total": 654,
+        "invalid_gt": 82,
+        "correct_iou_ge_05": 457,
+        "partial_iou_01_to_05": 8,
+        "low_iou_le_01": 107
+      },
+      "writes": {
+        "total": 178,
+        "invalid_gt": 3,
+        "correct_iou_ge_05": 170,
+        "partial_iou_01_to_05": 0,
+        "low_iou_le_01": 5
+      },
+      "skipped": {
+        "total": 476,
+        "invalid_gt": 79,
+        "correct_iou_ge_05": 287,
+        "partial_iou_01_to_05": 8,
+        "low_iou_le_01": 102
+      },
+      "confidence_above_default": {
+        "total": 9481,
+        "invalid_gt": 98,
+        "correct_iou_ge_05": 9084,
+        "partial_iou_01_to_05": 3,
+        "low_iou_le_01": 296
+      }
+    },
+    "visual": {
+      "checks": {
+        "total": 654,
+        "invalid_gt": 82,
+        "correct_iou_ge_05": 453,
+        "partial_iou_01_to_05": 8,
+        "low_iou_le_01": 111
+      },
+      "writes": {
+        "total": 237,
+        "invalid_gt": 2,
+        "correct_iou_ge_05": 214,
+        "partial_iou_01_to_05": 0,
+        "low_iou_le_01": 21
+      },
+      "skipped": {
+        "total": 417,
+        "invalid_gt": 80,
+        "correct_iou_ge_05": 239,
+        "partial_iou_01_to_05": 8,
+        "low_iou_le_01": 90
+      },
+      "confidence_above_default": {
+        "total": 12390,
+        "invalid_gt": 142,
+        "correct_iou_ge_05": 11151,
+        "partial_iou_01_to_05": 21,
+        "low_iou_le_01": 1076
+      }
+    }
+  },
+  "comparisons": {
+    "native": {
+      "counterpart_writes_text_skips": 146,
+      "both_current_boxes_correct": 108,
+      "text_current_correct_counterpart_current_low": 7
+    },
+    "visual": {
+      "counterpart_writes_text_skips": 83,
+      "both_current_boxes_correct": 55,
+      "text_current_correct_counterpart_current_low": 15
+    }
+  },
+  "new_model_calls": 0,
+  "new_training_steps": 0,
+  "threshold_fitting": false,
+  "M59_predictions_or_GT_analyzed": false,
+  "independent_review_pass": false
+}

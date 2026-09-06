@@ -2,6 +2,7 @@
 
 v2两组训练与开发22完整递归已完成：文本mean IoU 0.712642，高于原生0.652226和同预算纯视觉0.708132；但H10由75增至78，冻结晋升门未通过，原内容队列停止，未运行公开集。v1监督修正及各准备记录保留为历史快照。
 
+- [默认模板写入质量及跳过时刻补查](template_quality/README.md)
 - [v2配对训练、完整递归结果与持续损害诊断](recursive_completed/README.md)
 - [低22实际初始化清单与multi-start调度核对](vot_initializations/README.md)
 - [共用初始化文字生成器与Train输入/编码回放](initialization_generator/README.md)
