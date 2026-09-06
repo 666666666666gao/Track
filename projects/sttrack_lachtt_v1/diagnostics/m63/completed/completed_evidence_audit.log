@@ -1,0 +1,137 @@
+{
+  "status": "complete_saved_factorial_evidence_audit",
+  "observed_utc": "2026-09-06T20:04:47.031971+00:00",
+  "auditor_sha256": "2c611c8dae3c226c5c625301a98ff1f74f4ff03e727c5599060dea1650cac66d",
+  "source_sha256": "866e213132efa4e94538b0547afc98624992859126c8b7ea45d3e9b3241bf44e",
+  "spec_sha256": "903c48d5efc83f727b3e5553cedd3063613f379f4e679f74260e61e1654a4132",
+  "result_sha256": "e0c437b8f08631161afbe212a529a06adc78e827d0b55d07160544e34d86a863",
+  "control_audit_sha256": "cd51755a74b6cc37f1562bd35992dad98c0ad767c7dba5e28908a9128d070b24",
+  "parent_result_sha256": "54fd8445297e1eef761fa36e8a17def01afa027f71371984998f08229f6f5ee9",
+  "recomputed_aggregates": {
+    "CC": {
+      "valid_frames": 28897,
+      "iou_sum": 21765.570608166094,
+      "low_iou_frames": 4063,
+      "failure_episodes": 64,
+      "mean_iou": 0.7532121191876698,
+      "macro_sequence_mean_iou": 0.7690405614393121,
+      "sequences": 22
+    },
+    "SS": {
+      "valid_frames": 28897,
+      "iou_sum": 21344.503023335696,
+      "low_iou_frames": 4587,
+      "failure_episodes": 76,
+      "mean_iou": 0.7386407939694672,
+      "macro_sequence_mean_iou": 0.7235630305079526,
+      "sequences": 22
+    },
+    "CS": {
+      "valid_frames": 28897,
+      "iou_sum": 20718.716943513242,
+      "low_iou_frames": 5374,
+      "failure_episodes": 67,
+      "mean_iou": 0.7169850483964855,
+      "macro_sequence_mean_iou": 0.746205109259353,
+      "sequences": 22
+    },
+    "SC": {
+      "valid_frames": 28897,
+      "iou_sum": 21039.68584211921,
+      "low_iou_frames": 4903,
+      "failure_episodes": 70,
+      "mean_iou": 0.7280923916710803,
+      "macro_sequence_mean_iou": 0.7119772826591693,
+      "sequences": 22
+    }
+  },
+  "all_four_contrasts_recomputed": true,
+  "native_zero_H10_sequences": [
+    "container01_indoor",
+    "flower03_indoor",
+    "mobilephone02_indoor"
+  ],
+  "category_zero_H10_sequences": [
+    "beautifullight01_indoor",
+    "container01_indoor",
+    "cup08_indoor",
+    "flower02_wild",
+    "flower03_indoor",
+    "ghostmask_indoor",
+    "mobilephone02_indoor"
+  ],
+  "new_failures_on_native_success": {
+    "CC": [],
+    "SS": [
+      "mobilephone02_indoor"
+    ],
+    "CS": [],
+    "SC": [
+      "mobilephone02_indoor"
+    ]
+  },
+  "new_failures_on_category_success": {
+    "CC": [],
+    "SS": [
+      "cup08_indoor",
+      "flower02_wild",
+      "ghostmask_indoor",
+      "mobilephone02_indoor"
+    ],
+    "CS": [],
+    "SC": [
+      "flower02_wild",
+      "ghostmask_indoor",
+      "mobilephone02_indoor"
+    ]
+  },
+  "sustained_crossed_H10_with_same_localization_reference_correct_every_frame": [
+    {
+      "mode": "CS",
+      "reference_mode": "CC",
+      "sequence": "cup13_indoor",
+      "start": 1140,
+      "end_exclusive": 1160,
+      "frames": 20,
+      "first_write_branch_frame": 50,
+      "frames_after_first_write_branch": 1090
+    },
+    {
+      "mode": "CS",
+      "reference_mode": "CC",
+      "sequence": "cup13_indoor",
+      "start": 1161,
+      "end_exclusive": 1181,
+      "frames": 20,
+      "first_write_branch_frame": 50,
+      "frames_after_first_write_branch": 1111
+    },
+    {
+      "mode": "CS",
+      "reference_mode": "CC",
+      "sequence": "mobilephone01_indoor",
+      "start": 1367,
+      "end_exclusive": 1381,
+      "frames": 14,
+      "first_write_branch_frame": 50,
+      "frames_after_first_write_branch": 1317
+    },
+    {
+      "mode": "CS",
+      "reference_mode": "CC",
+      "sequence": "mobilephone01_indoor",
+      "start": 1384,
+      "end_exclusive": 1418,
+      "frames": 34,
+      "first_write_branch_frame": 50,
+      "frames_after_first_write_branch": 1334
+    }
+  ],
+  "scalar_continuous_IoU_and_H10_recomputed": true,
+  "new_tracking_calls": 0,
+  "new_caption_calls": 0,
+  "new_GT_opened_only_after_all_four_families_verified": true,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "scope": "DepthTrack Train development evidence; crossed donor category is diagnostic input, not a deployment protocol. No formal three-dataset metric or promotion claim."
+}

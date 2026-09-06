@@ -1,0 +1,110 @@
+{
+  "status": "completed_fixed_weight_location_write_factorial",
+  "observed_utc": "2026-09-06T20:02:10.128688+00:00",
+  "spec_sha256": "903c48d5efc83f727b3e5553cedd3063613f379f4e679f74260e61e1654a4132",
+  "source_sha256": "866e213132efa4e94538b0547afc98624992859126c8b7ea45d3e9b3241bf44e",
+  "head_sha256": "0f2303ae1f9c12b4a25e6e6531b1fe39fa79578938aa9bc8c517e10bec06b629",
+  "receipts": {
+    "CC": "fcdd08ec2fb36f3dd135fac6a963e75b4ec6e1cde4f2baf4d3cd807af80f7947",
+    "SS": "5f2b11eabfed742b7127c6c4e34afb36fa1c7ba3a081b31f368548e2ed6082d6",
+    "CS": "43fd2b07c2ae42357f4556240119255588207d063a21bb52054671778f03a359",
+    "SC": "7ea6d834d0a66a99c6aa703088c402ebf42bf3a7782cc615d64e957f4bb5ed28"
+  },
+  "aggregates": {
+    "CC": {
+      "valid_frames": 28897,
+      "iou_sum": 21765.570608166094,
+      "low_iou_frames": 4063,
+      "failure_episodes": 64,
+      "mean_iou": 0.7532121191876698,
+      "macro_sequence_mean_iou": 0.7690405614393118,
+      "sequences": 22
+    },
+    "SS": {
+      "valid_frames": 28897,
+      "iou_sum": 21344.503023335696,
+      "low_iou_frames": 4587,
+      "failure_episodes": 76,
+      "mean_iou": 0.7386407939694672,
+      "macro_sequence_mean_iou": 0.7235630305079526,
+      "sequences": 22
+    },
+    "CS": {
+      "valid_frames": 28897,
+      "iou_sum": 20718.716943513242,
+      "low_iou_frames": 5374,
+      "failure_episodes": 67,
+      "mean_iou": 0.7169850483964855,
+      "macro_sequence_mean_iou": 0.7462051092593529,
+      "sequences": 22
+    },
+    "SC": {
+      "valid_frames": 28897,
+      "iou_sum": 21039.68584211921,
+      "low_iou_frames": 4903,
+      "failure_episodes": 70,
+      "mean_iou": 0.7280923916710803,
+      "macro_sequence_mean_iou": 0.7119772826591693,
+      "sequences": 22
+    }
+  },
+  "contrasts": {
+    "localization_given_C_write": {
+      "mean_iou": 0.02511972751658953,
+      "macro_sequence_mean_iou": 0.0570632787801425,
+      "low_iou_frames": -840,
+      "failure_episodes": -6
+    },
+    "localization_given_S_write": {
+      "mean_iou": -0.021655745572981777,
+      "macro_sequence_mean_iou": 0.02264207875140034,
+      "low_iou_frames": 787,
+      "failure_episodes": -9
+    },
+    "write_given_C_localization": {
+      "mean_iou": 0.03622707079118437,
+      "macro_sequence_mean_iou": 0.02283545217995886,
+      "low_iou_frames": -1311,
+      "failure_episodes": -3
+    },
+    "write_given_S_localization": {
+      "mean_iou": -0.010548402298386939,
+      "macro_sequence_mean_iou": -0.011585747848783301,
+      "low_iou_frames": 316,
+      "failure_episodes": -6
+    }
+  },
+  "template_writes": {
+    "CC": 197,
+    "SS": 249,
+    "CS": 246,
+    "SC": 208
+  },
+  "category_zero_H10_sequences": [
+    "beautifullight01_indoor",
+    "container01_indoor",
+    "cup08_indoor",
+    "flower02_wild",
+    "flower03_indoor",
+    "ghostmask_indoor",
+    "mobilephone02_indoor"
+  ],
+  "new_failure_sequences": {
+    "CC": [],
+    "SS": [
+      "cup08_indoor",
+      "flower02_wild",
+      "ghostmask_indoor",
+      "mobilephone02_indoor"
+    ],
+    "CS": [],
+    "SC": [
+      "flower02_wild",
+      "ghostmask_indoor",
+      "mobilephone02_indoor"
+    ]
+  },
+  "public_evaluation_allowed": false,
+  "independent_review_pass": false,
+  "scope": "Same learned weight and empty attributes; original versus swapped automatic category assigned to localization and write-score channels. Full Train development recursion; no new official metric or semantic ground-truth claim."
+}
