@@ -1,0 +1,40 @@
+{
+  "observed_utc": "2026-09-06T14:31:51.318327+00:00",
+  "live": [
+    {
+      "pid": 355439,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python run_controls.py --worker 0 ",
+      "cwd": "/root/autodl-tmp/sttrack_m59_fixed_head_content_diagnostic_20260906"
+    },
+    {
+      "pid": 355441,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python run_controls.py --worker 1 ",
+      "cwd": "/root/autodl-tmp/sttrack_m59_fixed_head_content_diagnostic_20260906"
+    }
+  ],
+  "free_disk_bytes": 2889166848,
+  "workers": {
+    "0": {
+      "completed_sequences": 1,
+      "latest": {
+        "control": "empty",
+        "sequence": "bag05_indoor",
+        "frames": 889,
+        "sha256": "3378c79c516307d54185be34110f103dc86960de5393cc1bdcbc826b07ce8d90",
+        "elapsed_seconds": 49.483744859695435
+      },
+      "terminal_exit_exists": false
+    },
+    "1": {
+      "completed_sequences": 1,
+      "latest": {
+        "control": "category",
+        "sequence": "bag05_indoor",
+        "frames": 889,
+        "sha256": "e67b803714187f13b34f6dcdcbdd4dea76398e76d394ca28f4c42eb01cd228ea",
+        "elapsed_seconds": 49.529407262802124
+      },
+      "terminal_exit_exists": false
+    }
+  }
+}

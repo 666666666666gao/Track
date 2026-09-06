@@ -1,0 +1,57 @@
+--- m58_frozen/run_controls.py
++++ m59_diagnostic/run_controls.py
+@@ -1,4 +1,4 @@
+-"""Fixed-text-head content interventions after the frozen M58 development gate."""
++"""M59: train-only content diagnosis of M58, whose promotion gate remains failed."""
+ import argparse
+ from datetime import datetime, timezone
+ import hashlib
+@@ -8,7 +8,7 @@
+ import time
+ 
+ 
+-ROOT = Path('/root/autodl-tmp/sttrack_m58_content_controls_v1_20260906')
++ROOT = Path('/root/autodl-tmp/sttrack_m59_fixed_head_content_diagnostic_20260906')
+ PARENT = Path('/root/autodl-tmp/sttrack_m58_semantic_spatial_v2_20260906')
+ INTERFACE = Path('/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906')
+ TRAINING_SHA = 'c592109d10579efac4dce5d3dd6f4881900c2c264acc3db3b63a6021855ea3b7'
+@@ -62,7 +62,10 @@
+     assert result['status'] == 'complete_recursive_development'
+     assert result['recursive_spec_sha256'] == RECURSIVE_SHA
+     assert result['training_spec_sha256'] == TRAINING_SHA
+-    assert result['primary_pass'] and all(result['gates'].values())
++    assert sha(PARENT / 'recursive_result.json') == spec['negative_parent_result_sha256']
++    assert not result['primary_pass'] and result['gates'] == spec['negative_parent_gates']
++    assert spec['purpose'] == 'train_only_content_diagnosis_of_failed_revision'
++    assert spec['public_evaluation_allowed'] is False
+     sys.path.insert(0, str(PARENT))
+     from run_recursive import trained
+     _, training, training_results = trained()
+@@ -87,7 +90,7 @@
+         write(ROOT / (name + '_plan.json'), dict(bundle_path=str(ROOT / 'bundle.json'),
+             bundle_sha256=sha(ROOT / 'bundle.json'), text_bank_path=str(ROOT / (name + '.pt')),
+             text_bank_sha256=spec['bank_sha256'][name]))
+-    write(ROOT / 'bundle_receipt.json', dict(status='candidate_bundle_sealed_after_parent_gate',
++    write(ROOT / 'bundle_receipt.json', dict(status='diagnostic_bundle_sealed_with_parent_promotion_failed',
+         bundle_sha256=sha(ROOT / 'bundle.json'), content_spec_sha256=sha(ROOT / 'spec.json'),
+         parent_recursive_result_sha256=sha(PARENT / 'recursive_result.json'),
+         head_sha256=bundle['adapter_checkpoint_sha256'],
+@@ -277,15 +280,15 @@
+             original_worse_sequences=sum(per_sequence['original'][n]['mean_iou'] < per_sequence[control][n]['mean_iou'] - 1e-8 for n in settings['sequences']))
+     gates = {name:comparisons[name]['original_minus_control_mean_iou'] >= threshold
+              for name, threshold in spec['primary_content_gates'].items()}
+-    result = dict(status='completed_same_head_content_controls', observed_utc=datetime.now(timezone.utc).isoformat(),
++    result = dict(status='completed_train_only_same_head_content_diagnosis', observed_utc=datetime.now(timezone.utc).isoformat(),
+         content_spec_sha256=sha(ROOT / 'spec.json'), bundle_sha256=sha(ROOT / 'bundle.json'),
+         head_sha256=results['text']['final_checkpoint_sha256'], parent_result_sha256=sha(PARENT / 'recursive_result.json'),
+         receipt_sha256=receipt_shas, aggregates=aggregates, per_sequence=per_sequence,
+         comparisons=comparisons, first_bbox_differences=first_differences,
+-        gates=gates, primary_content_pass=all(gates.values()), attributes_descriptive_only=True,
++        descriptive_content_thresholds=gates, parent_promotion_pass=False, public_evaluation_allowed=False, attributes_descriptive_only=True,
+         wrong_attribute_ground_truth_verified=False, independent_review_pass=False,
+         scope='Reused DepthTrack Train development22; attribute arm is a frozen matched-caption-category subset.',
+-        next='Technical low22 entry validation before public evaluation' if all(gates.values()) else 'Stop this revision before public evaluation; diagnose fixed content effects')
++        next='Interpret all fixed-head content effects; M58 remains unpromoted; any model revision needs new Train training and recursive validation')
+     write(ROOT / 'result.json', result)
+     print(json.dumps({k:v for k,v in result.items() if k not in ['per_sequence', 'first_bbox_differences']}, indent=2), flush=True)
+ 
