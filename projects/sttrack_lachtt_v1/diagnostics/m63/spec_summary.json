@@ -1,0 +1,68 @@
+{
+  "source_spec_sha256": "903c48d5efc83f727b3e5553cedd3063613f379f4e679f74260e61e1654a4132",
+  "summary": {
+    "status": "frozen_before_location_write_factorial",
+    "observed_utc": "2026-09-06T17:59:52.060966+00:00",
+    "source_sha256": "866e213132efa4e94538b0547afc98624992859126c8b7ea45d3e9b3241bf44e",
+    "m61_result_sha256": "dafe3d3fd3d1667e2702fff179345025efe5c741c586b93c520b818174bfaa6a",
+    "m60_result_sha256": "febddd93eda9f25f3530377948751c1999030db9a08656f9bb24ae151ad64287",
+    "role_plan_sha256": {
+      "C": "50b1fa7029b6f968ed61173b11efd3c2340e5516e504ee376d3a95560772d482",
+      "S": "f6b0a9264bdd9549f60603fdef3e6bbf0186e36dc5660a459bc393be143dc306"
+    },
+    "bundle_sha256": "695ac6e416a6d03c4599fcfa1bb5e1005f18c6bf078f952c02bc89de922e9dca",
+    "head_sha256": "0f2303ae1f9c12b4a25e6e6531b1fe39fa79578938aa9bc8c517e10bec06b629",
+    "dataset_root": "/root/autodl-tmp/depthtrack/train/sequences",
+    "modes": [
+      "CC",
+      "SS",
+      "CS",
+      "SC"
+    ],
+    "roles": {
+      "C": "Original automatic category; all attributes empty.",
+      "S": "Previously frozen swapped automatic category; identical empty attributes and masks."
+    },
+    "mode_order": "First letter selects localization text, second selects template-write scoring text.",
+    "localization": "Normal semantic response, size and offset choose the box and reported confidence on every frame.",
+    "write_score": "At each default 50-frame check, apply the same frozen adapter/head using write-role text to cloned pre-adapter features. Read its Hann score at the localization-selected peak; threshold remains strictly greater than 0.75.",
+    "template_action": "Only the write decision changes. A write crops the localization box and follows the native dynamic-template append/pop rule. The quality-head box and query are never committed.",
+    "controls": "CC must reproduce M59 category and SS must reproduce M60 swapped category, every frame of all22, before either full crossed arm starts.",
+    "prefix_sequences": [
+      "bag05_indoor",
+      "container01_indoor",
+      "mobilephone02_indoor"
+    ],
+    "prefix_frames": 202,
+    "full_image_frames": 132520,
+    "full_track_calls": 132432,
+    "prefix_image_frames": 2424,
+    "prefix_track_calls": 2412,
+    "stages": [
+      [
+        "CC",
+        "SS"
+      ],
+      [
+        "CS",
+        "SC"
+      ]
+    ],
+    "execution_device": 0,
+    "execution_order": "Sequential on GPU0; GPU1 remains available for candidate validation.",
+    "new_optimizer_steps": 0,
+    "new_learned_parameters": 0,
+    "new_captions": 0,
+    "metric_sha256": "03f7dff279a950214ba6040e192f67dea061b541ba068fd0714a6e9da59ad939",
+    "reference_receipt_sha256": {
+      "C": "111213c8a437a3e2e84a8d185b072ffe8f43fa9fc291ec43ba10459c9cd34ca7",
+      "S": "0d954664cd0144f5c37f9951c50adee2c2faea4959f43f0f7ce21a4d3099e0e5"
+    },
+    "outcomes": "Full pooled/macro IoU, low frames, H10, native/category success protection, write counts, first write-decision divergence and factorial contrasts.",
+    "GT_policy": "Initialization boxes only in inference. Subsequent GT opens after all four complete prediction families and receipts verify.",
+    "public_evaluation_allowed": false,
+    "independent_review_pass": false,
+    "interpretation": "Fixed trained network; a causal runtime input-channel ablation. Not a new trained quality head, a future-memory-utility predictor, or semantic ground truth.",
+    "next": "Use the four complete results to choose a deployable localization/write-control design. Swapped donor words remain diagnostic inputs. Independently freeze any public candidate protocol; new learned modules still require DepthTrack Train training."
+  }
+}

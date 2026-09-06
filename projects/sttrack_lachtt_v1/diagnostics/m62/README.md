@@ -1,0 +1,11 @@
+# M62完成：训练权重经过真实OPE与TraX入口验证
+
+2026-09-07 01:06:51 CST完成。使用同一个M58文本final及类别保留输入，分别运行实际OPE入口、真实vot-toolkit TrackerProcess到原TraX入口；未使用假模型、记录器替身或直接调用来冒充TraX。
+
+三条DepthTrack Train序列bag05_indoor、container01_indoor、mobilephone02_indoor各取202图像。两入口共6次初始化、1206次真实模型track。OPE与TraX及verification/job退出码均0。
+
+OPE写盘框和分数与封存预测之差均不超过0.0000005，符合六位小数输出规则。TraX返回的全部603个框与完整协议转换后的参考框完全一致；confidence差约3e-8，符合float32字符串传输精度。三个实际模型子进程均exit0。
+
+这证明的是当前训练权重、类别保留输入在这三条前缀上的入口一致性；不是官方DepthTrack/CDTB/VOT分数，也不自动证明不同控制器或未来输入协议通过。M64后续显式验证词向量与此路径逐元素一致，协议元数据单独冻结。
+
+结果SHA=731bf649920f91087f242442f384b6611c4b7a7d42186aaedb1dc4bb67325d22。公开实际OPE/TraX收据、日志、验证源码和结果；完整预测保留服务器。完成态再核验了源码、bundle和收据指纹，没有重写原结果。没有新的独立Astra/max审阅PASS。

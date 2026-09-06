@@ -1,0 +1,13 @@
+--- before
++++ after
+@@ -150,8 +150,8 @@
+     write(ROOT / 'low22_plan.json', plan)
+     sys.path.insert(0, str(INTERFACE))
+     from semantic_runtime import checked_plan, text_bank
+-    checked, bundle = checked_plan(ROOT / 'low22_plan.json')
+-    lookup = text_bank(checked, bundle)
++    checked_input, bundle = checked_plan(ROOT / 'low22_plan.json')
++    lookup = text_bank(checked_input, bundle)
+     observations = json.loads((root / 'plan.json').read_text())
+     for row in observations['rows']: lookup.info(row['image'], row['init_bbox'])
+     write(ROOT / 'low22_bank_result.json', dict(status='category_bank_bound_to_actual_initializations', cases=303,

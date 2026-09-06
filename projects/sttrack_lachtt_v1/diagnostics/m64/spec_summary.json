@@ -1,0 +1,43 @@
+{
+  "source_spec_sha256": "4a39f286f2e1f025281bf274be31490e43d683d999de3b21225a67097aa66122",
+  "summary": {
+    "status": "candidate_frozen_before_public_caption_generation_and_tracking",
+    "observed_utc": "2026-09-06T18:03:16.820420+00:00",
+    "source_sha256": "968ebade9734c2bcbeb9bf13d0d82f27037493c3e31e9238714811576ffe420d",
+    "bundle_sha256": "1273c87110bdd023d256660d8764586223fcc4f7b85667911e4545c2e7d9fa17",
+    "text_protocol_sha256": "20d3e4ee754822053239e6c7073b7819c8928ce4904620596ef4596e51912846",
+    "parent_m60_result_sha256": "febddd93eda9f25f3530377948751c1999030db9a08656f9bb24ae151ad64287",
+    "learned_entry_m62_result_sha256": "731bf649920f91087f242442f384b6611c4b7a7d42186aaedb1dc4bb67325d22",
+    "unchanged_development_text_tensors": 22,
+    "new_learned_parameters": 0,
+    "new_optimizer_steps": 0,
+    "training": "Reuse the M58 text adapter already trained on130 DepthTrack Train fit sequences, 186694 track calls and5798 optimizer steps; no architecture change.",
+    "low22_inputs_path": "/root/autodl-tmp/sttrack_m58_vot_initialization_export_20260906/low22_inputs/caption_inputs.json",
+    "low22_inputs_sha256": "5149bee97236f96587d90191087eef7434373fc714d6f5dbfe4d00583a6859e8",
+    "low22_baseline": {
+      "EAO": 57.135993,
+      "ACC": 75.719622,
+      "ROB": 73.022401,
+      "confirmed_failures": 124,
+      "sequences": 22,
+      "anchors": 303
+    },
+    "full_evaluation_gate": {
+      "EAO_min": 57.635993,
+      "ACC_min": 75.719622,
+      "ROB_min": 73.022401,
+      "confirmed_failures_max": 118,
+      "preserve_all_seven_native_zero_failure_sequences": true,
+      "all303_anchors_complete": true,
+      "identical_bundle_and_text_protocol": true
+    },
+    "gate_interpretation": "Before any M64 public outcome: require at least0.5pp EAO, no ACC/ROB regression, at least6 fewer failures and preserve native-success sequences. No threshold sweep or alternate captions after evaluation.",
+    "sequence": "Actual GPU caption replay on three preselected Train observations must reproduce frozen raw replies; then low22 initialization captions and fixed-runtime tracking. Run full DepthTrack Test, CDTB and VOT127 only if the new low22 gate passes.",
+    "independence": "M64 does not select from M63 crossed arms. Swapped donor categories never enter this candidate.",
+    "same_bundle_across_three_datasets": true,
+    "reused_development_sets_not_unseen": true,
+    "independent_review_pass": false,
+    "public_tracking_started": false,
+    "full_three_dataset_evaluation_allowed": false
+  }
+}

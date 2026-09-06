@@ -69,10 +69,15 @@ beats the swapped category by 0.014571 mean IoU, with 524 fewer low frames and
 12 fewer H10 episodes. This passes the descriptive content margin, without
 promoting the original M58 full-caption protocol or public evaluation.
 See [M60 complete results](diagnostics/m60/completed/README.md).
-M61 now holds the visual state fixed to separate direct language changes to
-peaks/regression from changes in template-write eligibility. Both actual-model
-prefixes reproduce boxes, scores and seven template writes per reference; the
-two full reference replays are running. See [M61 mechanism diagnostic](diagnostics/m61/README.md).
+M61 completed all1,308 matched-state events: category substitutions often change
+template-write eligibility without changing the selected peak. This motivates the
+four-cell full-recursion [M63 experiment](diagnostics/m63/README.md), now running.
+[M61 complete evidence](diagnostics/m61/completed/README.md) and the actual learned
+[M62 OPE/TraX entry check](diagnostics/m62/README.md) are available.
+Separately, [M64](diagnostics/m64/README.md) freezes the post-development category-
+retention candidate. Actual GPU Train caption replay and all303 low22 text bindings
+passed; the complete low22 run has started under a predeclared full-evaluation gate.
+No new complete benchmark scores or original-M58 promotion are claimed.
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

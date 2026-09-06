@@ -1,0 +1,54 @@
+{
+  "source_spec_sha256": "2d6f2e89cc5aef32d7f3b12931ce7f699aaf35fae6980fad74dee59411249399",
+  "summary": {
+    "status": "frozen_before_fixed_state_probe",
+    "observed_utc": "2026-09-06T16:22:56.391400+00:00",
+    "source_sha256": "06e9892e24d85073f9322114401642c0dca492e127caaf07458ca1f9eb8eed84",
+    "m60_result_sha256": "febddd93eda9f25f3530377948751c1999030db9a08656f9bb24ae151ad64287",
+    "m59_result_sha256": "6e9373d1d9252eae104421d664703490a13541353988ac8851fe2bc5c4d0756e",
+    "m59_source_sha256": "748f91b768dbfeb3274c0646f9994e35a0c3a87197c2f4575b30db210a237f87",
+    "head_sha256": "0f2303ae1f9c12b4a25e6e6531b1fe39fa79578938aa9bc8c517e10bec06b629",
+    "bank_sha256": {
+      "original": "538d2f8ab983facb13ac37c3bff60e86e30bebad9425c773487d6820b39310d3",
+      "empty": "d34af47fe8c388d1d02dfde49a0778c1fea98357e7fae32d745aae91bdf8d04d",
+      "category": "5dcf41e708a26abdabca07f33ffc7b25a494998b7a0b675ad3231d2af674f6db",
+      "swapped_category": "90ea3f11ba34470a15ed5078177dcd4cf41d47a564c22a4f5f3d94815ecc7986"
+    },
+    "references": [
+      "original",
+      "category"
+    ],
+    "conditions": [
+      "unadapted_same_state",
+      "original",
+      "empty",
+      "category",
+      "swapped_category"
+    ],
+    "checks_per_reference": 654,
+    "image_frames_per_reference": 33130,
+    "track_calls_per_reference": 33108,
+    "prefix_sequences": [
+      "bag05_indoor",
+      "container01_indoor",
+      "mobilephone02_indoor"
+    ],
+    "prefix_frames": 202,
+    "event_rule": "Every frame_id divisible by 50; no GT or failure selection.",
+    "reference_behavior": "Unchanged native semantic runtime, compared on every frame against the sealed M58/M59 trajectory.",
+    "intervention": "After the reference frame commits, reuse cloned pre-adapter RGB, Depth, fused tokens and initial RoI. Change only lexical token values; do not commit any diagnostic output.",
+    "outputs": "Hann peak, own-peak and fixed-reference-peak decoded boxes, raw score/size/offset maps, write eligibility, and full-reference parity.",
+    "score_only_transforms": [
+      0.5,
+      2.0
+    ],
+    "score_transform_scope": "Replay eligibility on sealed scores with boxes/features unchanged. No recursive benefit or independent quality controller is tested.",
+    "new_optimizer_steps": 0,
+    "new_network_parameters": 0,
+    "new_caption_calls": 0,
+    "public_evaluation_allowed": false,
+    "independent_review_pass": false,
+    "interpretation": "Matched-state direct effects and update-score coupling only. Not causal future template utility, semantic ground truth, or full public tracking performance.",
+    "next": "Use all paired results to choose a minimal rejectable-semantic or independent-memory-quality experiment; any new learned parameters must train on DepthTrack Train."
+  }
+}
