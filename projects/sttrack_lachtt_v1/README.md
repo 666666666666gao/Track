@@ -14,10 +14,13 @@ language or candidate head. The same native weight has DepthTrack P/R/F
 the old SRTrack results are a different model. See the
 [complete VOT report](diagnostics/native_vot_full127/RESULT_REPORT.md).
 
-M55 paired full-model training is still pending completion. M56 has completed
+M55 paired full-model training has completed and passed the frozen artifact
+binding checks; its recursive comparison remains queued. See
+[M55 training completion](diagnostics/m55/training_completed/README.md).
+M56 has completed
 three equal-budget language-head training arms and static diagnostics; its
 attribute arm has not beaten the pooled or empty-text control on those
-snapshots. Full recursive development is queued, not completed. See
+snapshots. Full recursive development is running, not completed. See
 [M56 evidence](diagnostics/m56/README.md) and the
 [language research direction](diagnostics/m56/LANGUAGE_RESEARCH_DIRECTION.md).
 M57 has an untrained initialization-binding prototype and a passed CPU interface

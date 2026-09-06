@@ -1,0 +1,15 @@
+{
+  "observed_utc": "2026-09-06T04:40:11.003055+00:00",
+  "processes": "   PID   PPID STAT     ELAPSED COMMAND\n320681 320679 S+      02:13:30 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/queue_recursive.py --root /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906 --gpu 0 --not-before 2026-09-06T12:15:00+08:00\n320683 320682 S+      02:13:30 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/queue_recursive.py --root /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906 --gpu 1 --not-before 2026-09-06T12:35:00+08:00\n322434 322433 S+      01:36:20 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906/queue_recursive.py --root /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906 --predecessor /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906 --gpu 0 --not-before 2026-09-06T13:00:00+08:00\n322595 322594 S+      01:31:50 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906/queue_recursive.py --root /root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906 --predecessor /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906 --gpu 1 --not-before 2026-09-06T13:00:00+08:00\n326519 320681 Rl+        17:11 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/run_recursive.py --root /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906 --arm attributes\n",
+  "gpu1_queue_children": "   PID   PPID STAT     ELAPSED COMMAND\n327331 320683 Rl+        01:11 /root/autodl-tmp/envs/sttrack/bin/python /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906/run_recursive.py --root /root/autodl-tmp/sttrack_m56_attribute_alignment_v1_20260906 --arm pooled\n",
+  "gpu_processes": "326519, GPU-e79dfa6a-f0d9-7cf6-76de-737f5d1374db, 2434\n327331, GPU-f1b632ae-2edb-87fd-c241-a2d2e9fbc0d2, 2432\n",
+  "m56_completed_sequence_files": {
+    "attributes": 11,
+    "empty": 0,
+    "pooled": 1
+  },
+  "m55_recursive_completed_sequence_files": {
+    "control": 0,
+    "clone": 0
+  }
+}
