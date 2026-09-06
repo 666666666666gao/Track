@@ -1,0 +1,44 @@
+{
+  "status": "frozen_before_generation",
+  "observed_utc": "2026-09-06T09:06:31.904300+00:00",
+  "inventory_sha256": "529f10ebd1122596a6e8832578f1cd26c3315a78fac59664fdb0d0fb367b85c1",
+  "script_sha256": "42789e10651e70b0f4bf6685a14d0833d797174f121d6c01642202bf19f73335",
+  "model_path": "/root/autodl-tmp/qwen/Qwen2.5-VL-3B-Instruct",
+  "model_sha256": {
+    "config.json": "7ed3eed5be6924cc800e8a5e53fc405c1aab1aaf36bad65c33403b36c56827f5",
+    "generation_config.json": "533f191cc257b7de37a4fccd0a7a1706d75e1aa660f93efaa54e5a2a9f9aace9",
+    "preprocessor_config.json": "f2058c716eef96ccaed1cc1e2d0c08306b62586d535b28d9d08e691b2fab7ca0",
+    "tokenizer_config.json": "4abd3520120e266da84c0864fee064d1fb10806f02225911a47253dd38dc5f56",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "model.safetensors.index.json": "c7dd78a4c6bea60b51332f1baf37b8f8124ecab2c35395a29a29825bf2619768",
+    "model-00001-of-00002.safetensors": "41a8895c164b4d32bae6b302f4603fcbc1797f32dafa45c7e9bcda23c6755df8",
+    "model-00002-of-00002.safetensors": "365531ff8752420e89dee707b79d021fb2d6e25abafe486f080555a4fe6972e4",
+    "PINNED_DOWNLOAD_MANIFEST.json": "9cb9eacdd8b4af1294e4d34ce57acd434a32c74527b2399f5494ee6dcb971255"
+  },
+  "prompt": "The first image is the initialization frame with a red rectangle marking the target. The second image is a tight crop of that target from exactly the same frame. Describe only that specific target object. Use no sequence name or outside information. Return one JSON object, without Markdown, with exactly these keys: \"category\" (a short English object category), \"attributes\" (zero to four short English phrases about clearly visible color, material, shape, texture, or distinctive markings). Prefer specific visible evidence over generic properties. Do not invent unreadable text, brand names, hidden parts, or properties. Do not describe the red annotation, background, people holding the target, screen position, ordinal position, movement, depth, or future visibility. If a property is uncertain, omit it. If the category is unclear, use \"object\". Use lowercase strings. Example format: {\"category\":\"bottle\",\"attributes\":[\"red cap\",\"clear body\"]}.",
+  "generation": {
+    "max_new_tokens": 160,
+    "do_sample": false,
+    "use_cache": true
+  },
+  "image_pixels": {
+    "full_max": 401408,
+    "crop_min": 100352,
+    "crop_max": 200704
+  },
+  "torch_dtype": "float16",
+  "attention": "sdpa",
+  "seed": 2026,
+  "first_frame_only": true,
+  "sequence_name_in_model_prompt": false,
+  "category_hint_in_model_prompt": false,
+  "subsequent_images_used": false,
+  "manual_adjudication_used": false,
+  "independent_annotation_review": false,
+  "intended_scope": "DepthTrack Train initialization text; no public-test annotation",
+  "private_full_plan_sha256": "50d83fe2811acbec045fd35dee255f634ada284aa39fc43e62142d2b36a2addb",
+  "sequences": {
+    "fit": 130,
+    "development": 22
+  }
+}
