@@ -18849,3 +18849,24 @@ v2复用160个完全相同的推理文件与289154参数结构，只修正监督
 20:04:42 CST实查父推理160文件、接口6文件、训练方案c592109d…、开发方案29aeeaa3…、内容方案be4a2521…及来源均不变。20:03:10两条训练和两条队列Python进程均存活；文本组84/130条、116770次track、3641步。没有开发完成结果、候选bundle或新内容结果。两个Qwen的索引/全部分片齐全，大小与修改时间逐项等于清理前：Qwen3-8B 5片16381516776字节，Qwen2.5-VL-3B 2片7509337976字节；此次未删权重，磁盘余2935861248字节。
 
 公开位置projects/sttrack_lachtt_v1/diagnostics/m58/trax_transport。下载证据包20612字节，SHA=ddc6c2a76bfaf727a18228ae60d73c0721b35c7fb49d74209ddb9a1ce5cf9008；修正result SHA=0a0124072407db0a949f1410064967d269546992c6de31bb2fb713ee82521d60。合成图片/向量由脚本可重建，不公开数据集/权重。无新独立Astra/max审阅PASS。下一步仍为训练及完整开发门、固定同权重文字对照，通过后才低22与同一最终bundle三数据集，项目目标未完成。
+
+
+### 5.92 M58共用初始化文字生成器与训练协议CPU回放（2026-09-06）
+
+新增初始化观测清单的prepare/generate/encode入口，为后续同一最终模型的OPE与VOT文字输入准备。模型架构、当前训练文字、默认模板与冻结运行配置未改。OPE保留原始xywh；VOT清单必须先由toolkit实际region→xywh转换，再使用§5.91的完整TraX精度辅助函数。新模块不负责导出VOT anchor或替代其region转换。相同图像SHA和相同实际框复用一份文字，同图不同框分开，ID/文件名不入prompt，生成器不读GT文件或清单以外的帧。
+
+生成设置沿用原Qwen2.5-VL-3B、红框全图＋无标记紧裁剪、greedy/160 token、float16/SDPA、seed2026和原JSON解析。编码沿用CLIP ViT-L/14 CPU float32、5槽768维、未归一化、类别后接属性、唯一短语排序和batch32。共享text_protocol SHA仍为d08acfb0…；没有在线文字、位置序数或新运动/模板策略，原自动描述的语义噪声没有修订。
+
+| 本轮CPU回放，不是跟踪指标 | 实测 |
+| --- | --- |
+| 原Train初始化图像/尺寸/裁剪与自动回复解析 | 152/152完全相同 |
+| 小、中、大三种裁剪的实际Qwen processor输出 | chat及所有token/图像张量完全相同 |
+| 实际重新CLIP编码并经文字银行路由 | 152/152的token、mask、empty、bbox完全相同 |
+| 同图三次合成VOT初始化请求 | 相同框复用、不同框分离，共2个观测 |
+| 新Qwen生成、公开集图像、跟踪、优化、GPU初始化 | 均0 |
+
+processor参考由SHA固定的旧脚本实际预处理语句在CPU执行到inputs，不执行model.generate；样本按裁剪面积取最小/中位位置/最大。CLIP实际加载原权重到CPU，312条唯一短语含空串，编码56.88秒，随后与原fit130/dev22逐项核对。新银行2350765字节、SHA=a0c8f5dd1d56bdf4a8086fc005135238e8231a15b0bb40c3ded34a78246b0f73，仅留服务器。这个证据证明输入和编码一致，不是语义正确率或GPU生成/跟踪验收。
+
+20:28:27 CST两组训练各97/130条、138664次track、4325步；两训练及两调度Python进程在。父推理160文件、六接口、训练/开发/内容方案和队列来源未改变，尚无开发终态或候选bundle。两个Qwen完整保留，磁盘余2927144960字节，本轮未删权重。
+
+公开位置projects/sttrack_lachtt_v1/diagnostics/m58/initialization_generator。证据包10038字节、SHA=9d6767239974fee6077968e2772014201da0d4c7d0c9eb4a7e3cf5ec116b4480；预处理result SHA=862b556460e230b9282a40b138d24311e7638bd1bec50d6fc4ac22b4baefbc78，编码回放result SHA=920c8d1ddefa1e2ecd630c51f940d0b4285bc290e4dbcf78f7c4ad01c1bee303。公开计划省略真实初始化框，图像/GT/银行/权重不发布。真实GPU生成、正式观测清单和同最终权重评测尚待主开发/内容门通过后执行；未增加自动GPU队列。无新独立Astra/max审阅PASS，整体目标未完成。

@@ -2,6 +2,7 @@
 
 当前v1因新训练器的中心监督与预训练底座不对齐而停止；v2修正后已从同一初始化重启，尚无学习后的开发结果。
 
+- [共用初始化文字生成器与Train输入/编码回放](initialization_generator/README.md)
 - [真实TraX通信与初始化文字索引精度修正](trax_transport/README.md)
 - [固定同权重文字内容对照与条件队列](content_controls/README.md)
 - [三数据集语义入口与CPU初始化绑定验收](evaluation_preparation/README.md)

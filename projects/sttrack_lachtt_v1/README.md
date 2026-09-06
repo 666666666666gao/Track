@@ -46,6 +46,10 @@ and the [historical preparation snapshot](diagnostics/m58/evaluation_preparation
 Fixed-text-head empty, category-retention, mismatched-caption and matched-caption-category
 attribute controls are frozen. A conditional queue waits for the original recursive gate;
 no content-control tracking has run. See [M58 content controls](diagnostics/m58/content_controls/README.md).
+A shared initialization-caption preparation and encoding entry now reproduces all
+152 frozen Train crops/caption parses/text routes, plus exact processor tensors on
+three crop-size-selected inputs. New GPU caption generation and public inputs are
+unrun; see [M58 initialization generator](diagnostics/m58/initialization_generator/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 
