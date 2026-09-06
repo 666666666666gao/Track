@@ -1,0 +1,21 @@
+{
+  "status": "termination_requested_for_verified_supervision_mismatch",
+  "observed_utc": "2026-09-06T09:40:32.998198+00:00",
+  "processes": [
+    {
+      "pid": 340592,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u queue_after_training.py "
+    },
+    {
+      "pid": 340045,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm text "
+    },
+    {
+      "pid": 340048,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm visual "
+    }
+  ],
+  "explanation": "Dense centre supervision used floor while native pretrained head uses round. Before any optimizer step, cube04 frame1 native IoU 0.8981503132845379 / score 0.9280951023101807 receives focal8.024560928344727; target cell floor(7,7) versus native round(8,8). Seal both paired arms and compare same-state losses before a corrected revision.",
+  "training_results_eligible_for_promotion": false,
+  "development_evaluation_started": false
+}

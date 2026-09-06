@@ -1,0 +1,66 @@
+{
+  "observed_utc": "2026-09-06T09:53:47.135762+00:00",
+  "arms": {
+    "text": {
+      "exit": null,
+      "completed_sequences": 1,
+      "last_completed": {
+        "sequence": "cube04_indoor",
+        "sequence_index": 0,
+        "total_sequences": 130,
+        "frames": 2576,
+        "track_calls": 2575,
+        "supervised_frames": 2513,
+        "label_counts": {
+          "centre_inside": 1132,
+          "centre_outside": 1381,
+          "invalid": 62
+        },
+        "mean_training_loss": 2.434538086604251,
+        "template_writes": 30,
+        "maximum_preclip_gradient_norm": 11.972336769104004,
+        "total_optimizer_steps": 81,
+        "total_track_calls": 2575,
+        "seconds": 168.30734062194824,
+        "elapsed_seconds": 171.04747605323792
+      }
+    },
+    "visual": {
+      "exit": null,
+      "completed_sequences": 1,
+      "last_completed": {
+        "sequence": "cube04_indoor",
+        "sequence_index": 0,
+        "total_sequences": 130,
+        "frames": 2576,
+        "track_calls": 2575,
+        "supervised_frames": 2513,
+        "label_counts": {
+          "centre_inside": 1134,
+          "centre_outside": 1379,
+          "invalid": 62
+        },
+        "mean_training_loss": 2.4429076126685096,
+        "template_writes": 32,
+        "maximum_preclip_gradient_norm": 12.791431427001953,
+        "total_optimizer_steps": 81,
+        "total_track_calls": 2575,
+        "seconds": 167.69965243339539,
+        "elapsed_seconds": 170.41752910614014
+      }
+    }
+  },
+  "processes": [
+    {
+      "pid": 341833,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm text ",
+      "cwd": "/root/autodl-tmp/sttrack_m58_semantic_spatial_v2_20260906"
+    },
+    {
+      "pid": 341836,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm visual ",
+      "cwd": "/root/autodl-tmp/sttrack_m58_semantic_spatial_v2_20260906"
+    }
+  ],
+  "queue_exit": null
+}

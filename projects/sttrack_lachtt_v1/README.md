@@ -30,11 +30,11 @@ Initial-text mean IoU is 0.595335 versus native 0.652226 and initial-visual
 0.655847; H10 rises from 75 to 80 with a new mobilephone02 failure.
 All seven primary gates fail, so this frozen revision stops before low22.
 See [M57 full results and trajectory diagnosis](diagnostics/m57/recursive_completed/README.md).
-M58 has launched paired text/empty-text dense-residual training on 130
-complete causal DepthTrack Train sequences per arm. The 289154 new parameters
-learn on actual predicted crop/query/template states with the native base
-frozen. Automatic first-frame captions have documented errors; no learned
-recursive gains exist yet. See [M58 training and frozen evaluation](diagnostics/m58/README.md).
+M58 v1 training stopped after a fit-only diagnostic found a centre-label
+floor/round mismatch with the pretrained native head. V2 reuses native crop
+coordinates and rounded centres, and restarted the same paired full-sequence
+budget from the common zero adapter. No learned recursive gain exists yet.
+See [M58 correction evidence and v2 training](diagnostics/m58/supervision_correction/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

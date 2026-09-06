@@ -1,8 +1,9 @@
 # M58 密集语义与真实预测裁剪训练
 
-当前两组完整训练已启动，尚无学习后的递归结果。
+当前v1因新训练器的中心监督与预训练底座不对齐而停止；v2修正后已从同一初始化重启，尚无学习后的开发结果。
 
+- [监督问题、同状态证据与v2重启](supervision_correction/README.md)
 - [零残差三路径接线验收](preparation/README.md)
-- [首帧自动文字、因果训练与冻结递归队列](training_preparation/README.md)
+- [首帧自动文字及v1历史训练方案](training_preparation/README.md)
 
-各阶段快照按时间保存，后续完成态补充前期状态。当前目标仍未完成。
+各阶段快照按时间保存。当前目标仍未完成。
