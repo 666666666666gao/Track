@@ -25,13 +25,15 @@ failure, so this revision does not advance to public evaluation. The different
 effective text-slot structures still limit semantic attribution. See
 [M56 evidence](diagnostics/m56/README.md) and the
 [language research direction](diagnostics/m56/LANGUAGE_RESEARCH_DIRECTION.md).
-M57 has an untrained initialization-binding prototype, a passed CPU interface
-contract, and a completed native t0 GPU check: three 102-frame paths agree
-exactly, including a template write at step100 and new-template read at101.
-The native base is fixed; formal collection and training have not started.
-Its source review is partial after a reviewer service limit. See
-[M57 preparation](diagnostics/m57_initial_binding_preparation/README.md) and
-[native t0 evidence](diagnostics/m57_initial_binding_preparation/native_t0_completed/README.md).
+M57 has completed causal t0 collection, four real-runtime input contracts,
+four equal-budget same-slot heads, and static content counterfactuals.
+Initial-text snapshot mean IoU is 0.445936 versus native candidate0 0.440274,
+but the same-structure visual-query control is 0.448180. Fixed-head content
+changes affect a small set of choices; this is not yet a language promotion.
+Four full recursive arms (132520 total frames) are scheduled in two GPU queues;
+the first pair is running.
+The native base remains fixed. See [M57 formal evidence](diagnostics/m57/README.md)
+and [earlier preparation](diagnostics/m57_initial_binding_preparation/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 
