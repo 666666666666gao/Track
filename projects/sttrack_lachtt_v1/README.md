@@ -64,9 +64,15 @@ mean IoU 0.753212 / 4063 low frames / 64 H10, with no new native-zero-H10
 sequence failures. Original full captions do not beat the cross-category donor
 captions. This is development evidence, not public performance or proven semantic
 utility. See [M59 complete results](diagnostics/m59/completed/README.md).
-M60 now isolates the category word with all attribute inputs/masks fixed, using
-the same trained weight. Its true-model reference prefixes reproduce M59 exactly;
-one full22 control is running. See [M60 category isolation](diagnostics/m60/README.md).
+M60 completed the category-only intervention: the retained automatic category
+beats the swapped category by 0.014571 mean IoU, with 524 fewer low frames and
+12 fewer H10 episodes. This passes the descriptive content margin, without
+promoting the original M58 full-caption protocol or public evaluation.
+See [M60 complete results](diagnostics/m60/completed/README.md).
+M61 now holds the visual state fixed to separate direct language changes to
+peaks/regression from changes in template-write eligibility. Both actual-model
+prefixes reproduce boxes, scores and seven template writes per reference; the
+two full reference replays are running. See [M61 mechanism diagnostic](diagnostics/m61/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

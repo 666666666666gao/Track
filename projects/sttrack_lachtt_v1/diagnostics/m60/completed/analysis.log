@@ -1,0 +1,46 @@
+{
+  "status": "completed_fixed_weight_category_content_isolation",
+  "observed_utc": "2026-09-06T16:15:40.731388+00:00",
+  "spec_sha256": "567944c9dbe2e79340bfabc737a0975563fa7e5be17d16a8b2fc3d75fd1990c5",
+  "receipt_sha256": "0d954664cd0144f5c37f9951c50adee2c2faea4959f43f0f7ce21a4d3099e0e5",
+  "m59_result_sha256": "6e9373d1d9252eae104421d664703490a13541353988ac8851fe2bc5c4d0756e",
+  "head_sha256": "0f2303ae1f9c12b4a25e6e6531b1fe39fa79578938aa9bc8c517e10bec06b629",
+  "aggregates": {
+    "original_category": {
+      "valid_frames": 28897,
+      "iou_sum": 21765.570608166094,
+      "low_iou_frames": 4063,
+      "failure_episodes": 64,
+      "mean_iou": 0.7532121191876698,
+      "macro_sequence_mean_iou": 0.7690405614393118,
+      "sequences": 22
+    },
+    "swapped_category": {
+      "valid_frames": 28897,
+      "iou_sum": 21344.503023335696,
+      "low_iou_frames": 4587,
+      "failure_episodes": 76,
+      "mean_iou": 0.7386407939694672,
+      "macro_sequence_mean_iou": 0.7235630305079526,
+      "sequences": 22
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 20377.462486941247,
+      "low_iou_frames": 5744,
+      "failure_episodes": 79,
+      "mean_iou": 0.7051757098294372,
+      "macro_sequence_mean_iou": 0.6952189562677197,
+      "sequences": 22
+    }
+  },
+  "original_minus_swapped_mean_iou": 0.014571325218202591,
+  "original_minus_swapped_H10": -12,
+  "original_minus_swapped_low_frames": -524,
+  "original_minus_empty_mean_iou": 0.04803640935823261,
+  "descriptive_category_margin_pass": true,
+  "swapped_category_reconstructed_template_writes": 249,
+  "public_evaluation_allowed": false,
+  "independent_review_pass": false,
+  "scope": "Same trained weight, masks and empty attribute tokens. Only the original automatic category is replaced; original category is not semantic ground truth. Reused development22, chosen after M59."
+}
