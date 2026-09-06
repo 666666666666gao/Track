@@ -1,0 +1,162 @@
+{
+  "status": "pass",
+  "checker_sha256": "4e507ff6a530176ede684a5d0db86caac5aadfa38e02348d232fe5fdf7072792",
+  "model_sha256": "59af4516e854e686dc0425c7e57dc70df7238f7afbd12e68fb170df6eaf06746",
+  "extractor_sha256": "2f63f49f90b08f3e205c9bb48cb22aad1d800b6bc7d1d823746c638bf9ffddde",
+  "cache_sha256": "89cab337b93af63858d9d5fb87f96216cde6146de301ebb689cdacb2726af80a",
+  "text_bank_sha256": "93cd72856177f338d14ae05959459e36bf3082ddda340e9b332e5a33089ae967",
+  "fit_labels_sha256": "0913d2121efc2e5a5261eebc58d932fa763d039623c11cbe72e14c9796742080",
+  "source_sequence": "chair01_indoor",
+  "split": "fit",
+  "real_cache_records": 22,
+  "batch": 32,
+  "cyclic_repetition_for_contract_only": true,
+  "arms": [
+    {
+      "reference_mode": "candidate",
+      "text": "real",
+      "parameters": 484547,
+      "initial_state_sha256": "234b6c97a3f53bd0832679794c9e9f37b749555daa36b818e550dafb3557395a",
+      "zero_residual_parent_parity_exact": true,
+      "padding_invariance_exact": true,
+      "actual_conditioning_independent_of_mutable_cells": false,
+      "actual_candidate_conditioning_responds_to_initial_cells": false,
+      "data_gradient_norms_before_optimizer": [
+        {
+          "text": 0.0,
+          "read_visual": 0.0,
+          "guide_visual": 0.0,
+          "output": 0.1641748994588852,
+          "slot_embedding": 0.0
+        },
+        {
+          "text": 0.0005233597476035357,
+          "read_visual": 5.123348091728985e-05,
+          "guide_visual": 0.00010523557284614071,
+          "output": 0.0306790079921484,
+          "slot_embedding": 1.683667505858466e-05
+        },
+        {
+          "text": 0.0001536022318759933,
+          "read_visual": 2.53127800533548e-05,
+          "guide_visual": 3.425138856982812e-05,
+          "output": 0.03671233355998993,
+          "slot_embedding": 4.840919245907571e-06
+        }
+      ],
+      "discarded_optimizer_steps": 3
+    },
+    {
+      "reference_mode": "candidate",
+      "text": "visual_queries",
+      "parameters": 484547,
+      "initial_state_sha256": "234b6c97a3f53bd0832679794c9e9f37b749555daa36b818e550dafb3557395a",
+      "zero_residual_parent_parity_exact": true,
+      "padding_invariance_exact": true,
+      "actual_conditioning_independent_of_mutable_cells": false,
+      "actual_candidate_conditioning_responds_to_initial_cells": false,
+      "data_gradient_norms_before_optimizer": [
+        {
+          "text": 0.0,
+          "read_visual": 0.0,
+          "guide_visual": 0.0,
+          "output": 0.15231160819530487,
+          "slot_embedding": 0.0
+        },
+        {
+          "text": 0.0005010029999539256,
+          "read_visual": 3.937403380405158e-05,
+          "guide_visual": 0.00010045446833828464,
+          "output": 0.028062904253602028,
+          "slot_embedding": 1.2227712431922555e-05
+        },
+        {
+          "text": 0.00024843262508511543,
+          "read_visual": 2.4586259314673953e-05,
+          "guide_visual": 5.234696072875522e-05,
+          "output": 0.0328817218542099,
+          "slot_embedding": 5.617608621832915e-06
+        }
+      ],
+      "discarded_optimizer_steps": 3
+    },
+    {
+      "reference_mode": "initial",
+      "text": "real",
+      "parameters": 484547,
+      "initial_state_sha256": "234b6c97a3f53bd0832679794c9e9f37b749555daa36b818e550dafb3557395a",
+      "zero_residual_parent_parity_exact": true,
+      "padding_invariance_exact": true,
+      "actual_conditioning_independent_of_mutable_cells": true,
+      "actual_candidate_conditioning_responds_to_initial_cells": true,
+      "data_gradient_norms_before_optimizer": [
+        {
+          "text": 0.0,
+          "read_visual": 0.0,
+          "guide_visual": 0.0,
+          "output": 0.1623743325471878,
+          "slot_embedding": 0.0
+        },
+        {
+          "text": 0.0005469515454024076,
+          "read_visual": 5.232065450400114e-05,
+          "guide_visual": 0.0001032041254802607,
+          "output": 0.030205244198441505,
+          "slot_embedding": 1.703775160422083e-05
+        },
+        {
+          "text": 0.0002011405158555135,
+          "read_visual": 2.077637327602133e-05,
+          "guide_visual": 5.233311094343662e-05,
+          "output": 0.03632371872663498,
+          "slot_embedding": 6.420789304684149e-06
+        }
+      ],
+      "discarded_optimizer_steps": 3
+    },
+    {
+      "reference_mode": "initial",
+      "text": "visual_queries",
+      "parameters": 484547,
+      "initial_state_sha256": "234b6c97a3f53bd0832679794c9e9f37b749555daa36b818e550dafb3557395a",
+      "zero_residual_parent_parity_exact": true,
+      "padding_invariance_exact": true,
+      "actual_conditioning_independent_of_mutable_cells": true,
+      "actual_candidate_conditioning_responds_to_initial_cells": true,
+      "data_gradient_norms_before_optimizer": [
+        {
+          "text": 0.0,
+          "read_visual": 0.0,
+          "guide_visual": 0.0,
+          "output": 0.15284155309200287,
+          "slot_embedding": 0.0
+        },
+        {
+          "text": 0.00047124383854679763,
+          "read_visual": 3.775201548705809e-05,
+          "guide_visual": 0.00010041395580628887,
+          "output": 0.028182167559862137,
+          "slot_embedding": 1.1701801668095868e-05
+        },
+        {
+          "text": 0.0002505604934412986,
+          "read_visual": 1.976527892111335e-05,
+          "guide_visual": 5.82772699999623e-05,
+          "output": 0.03285523131489754,
+          "slot_embedding": 6.290281362453243e-06
+        }
+      ],
+      "discarded_optimizer_steps": 3
+    }
+  ],
+  "cpu_threads": 4,
+  "torch_version": "1.13.1+cu116",
+  "initial_reference_used": "Historical t1 reference from existing cache; only tensor/gradient contract, not a new t0 observation",
+  "t0_extractor_executed": false,
+  "gpu_execution": false,
+  "trained_checkpoint_saved": false,
+  "final_base_selected": false,
+  "formal_feature_collection_started": false,
+  "development_evaluation": false,
+  "scope": "Untrained interface preparation; no evidence of semantic accuracy or tracking improvement"
+}

@@ -1,0 +1,764 @@
+{
+  "status": "pass",
+  "checker_sha256": "7623effc675f47081259e345045949271714b247473efa4ca65394e257933938",
+  "model_sha256": "59af4516e854e686dc0425c7e57dc70df7238f7afbd12e68fb170df6eaf06746",
+  "extractor_sha256": "2f63f49f90b08f3e205c9bb48cb22aad1d800b6bc7d1d823746c638bf9ffddde",
+  "cache_sha256": "89cab337b93af63858d9d5fb87f96216cde6146de301ebb689cdacb2726af80a",
+  "text_bank_sha256": "93cd72856177f338d14ae05959459e36bf3082ddda340e9b332e5a33089ae967",
+  "fit_labels_sha256": "0913d2121efc2e5a5261eebc58d932fa763d039623c11cbe72e14c9796742080",
+  "source_sequence": "chair01_indoor",
+  "split": "fit",
+  "real_cache_records": 22,
+  "batch": 32,
+  "cyclic_repetition_for_contract_only": true,
+  "arms": [
+    {
+      "reference_mode": "candidate",
+      "text": "real",
+      "parameters": 484547,
+      "initial_state_sha256": "234b6c97a3f53bd0832679794c9e9f37b749555daa36b818e550dafb3557395a",
+      "zero_residual_parent_parity_exact": true,
+      "padding_invariance_exact": true,
+      "initial_slot_minimum_separation": 0.14384475350379944,
+      "initial_valid_query_minimum_separation": 0.9879637956619263,
+      "valid_slots": 4,
+      "actual_conditioning_object_probes": [
+        {
+          "perturbed_object": 0,
+          "changed_conditioned_objects": [
+            0
+          ]
+        },
+        {
+          "perturbed_object": 1,
+          "changed_conditioned_objects": [
+            1
+          ]
+        },
+        {
+          "perturbed_object": 2,
+          "changed_conditioned_objects": [
+            2
+          ]
+        },
+        {
+          "perturbed_object": 3,
+          "changed_conditioned_objects": [
+            3
+          ]
+        },
+        {
+          "perturbed_object": 4,
+          "changed_conditioned_objects": [
+            4
+          ]
+        },
+        {
+          "perturbed_object": 5,
+          "changed_conditioned_objects": [
+            5
+          ]
+        },
+        {
+          "perturbed_object": 6,
+          "changed_conditioned_objects": [
+            6
+          ]
+        },
+        {
+          "perturbed_object": 7,
+          "changed_conditioned_objects": [
+            7
+          ]
+        },
+        {
+          "perturbed_object": 8,
+          "changed_conditioned_objects": [
+            8
+          ]
+        },
+        {
+          "perturbed_object": 9,
+          "changed_conditioned_objects": [
+            9
+          ]
+        },
+        {
+          "perturbed_object": 10,
+          "changed_conditioned_objects": [
+            10
+          ]
+        },
+        {
+          "perturbed_object": 11,
+          "changed_conditioned_objects": [
+            11
+          ]
+        },
+        {
+          "perturbed_object": 12,
+          "changed_conditioned_objects": [
+            12
+          ]
+        },
+        {
+          "perturbed_object": 13,
+          "changed_conditioned_objects": [
+            13
+          ]
+        },
+        {
+          "perturbed_object": 14,
+          "changed_conditioned_objects": [
+            14
+          ]
+        },
+        {
+          "perturbed_object": 15,
+          "changed_conditioned_objects": [
+            15
+          ]
+        },
+        {
+          "perturbed_object": 16,
+          "changed_conditioned_objects": [
+            16
+          ]
+        },
+        {
+          "perturbed_object": 17,
+          "changed_conditioned_objects": [
+            17
+          ]
+        },
+        {
+          "perturbed_object": 18,
+          "changed_conditioned_objects": [
+            18
+          ]
+        },
+        {
+          "perturbed_object": 19,
+          "changed_conditioned_objects": [
+            19
+          ]
+        },
+        {
+          "perturbed_object": 20,
+          "changed_conditioned_objects": [
+            20
+          ]
+        },
+        {
+          "perturbed_object": 21,
+          "changed_conditioned_objects": [
+            21
+          ]
+        }
+      ],
+      "data_gradient_norms_before_optimizer": [
+        {
+          "text": 0.0,
+          "read_visual": 0.0,
+          "guide_visual": 0.0,
+          "output": 0.1641748994588852,
+          "slot_embedding": 0.0
+        },
+        {
+          "text": 0.0005233597476035357,
+          "read_visual": 5.123348091728985e-05,
+          "guide_visual": 0.00010523557284614071,
+          "output": 0.0306790079921484,
+          "slot_embedding": 1.683667505858466e-05
+        },
+        {
+          "text": 0.0001536022318759933,
+          "read_visual": 2.53127800533548e-05,
+          "guide_visual": 3.425138856982812e-05,
+          "output": 0.03671233355998993,
+          "slot_embedding": 4.840919245907571e-06
+        }
+      ],
+      "attention_qkv_data_gradient_norms_before_optimizer": [
+        {
+          "read_visual.query": 0.0,
+          "read_visual.key": 0.0,
+          "read_visual.value": 0.0,
+          "guide_visual.query": 0.0,
+          "guide_visual.key": 0.0,
+          "guide_visual.value": 0.0
+        },
+        {
+          "read_visual.query": 7.360949325629917e-07,
+          "read_visual.key": 5.365401420931448e-07,
+          "read_visual.value": 2.040617255261168e-05,
+          "guide_visual.query": 4.235995447743335e-07,
+          "guide_visual.key": 3.8719619510629855e-07,
+          "guide_visual.value": 6.62825332256034e-05
+        },
+        {
+          "read_visual.query": 4.708854532964324e-07,
+          "read_visual.key": 3.385030140634626e-07,
+          "read_visual.value": 1.2199097000120673e-05,
+          "guide_visual.query": 6.248964723454264e-07,
+          "guide_visual.key": 6.155958658382588e-07,
+          "guide_visual.value": 2.1148103769519366e-05
+        }
+      ],
+      "discarded_optimizer_steps": 3
+    },
+    {
+      "reference_mode": "candidate",
+      "text": "visual_queries",
+      "parameters": 484547,
+      "initial_state_sha256": "234b6c97a3f53bd0832679794c9e9f37b749555daa36b818e550dafb3557395a",
+      "zero_residual_parent_parity_exact": true,
+      "padding_invariance_exact": true,
+      "initial_slot_minimum_separation": 0.14384475350379944,
+      "initial_valid_query_minimum_separation": 0.14384472370147705,
+      "valid_slots": 4,
+      "actual_conditioning_object_probes": [
+        {
+          "perturbed_object": 0,
+          "changed_conditioned_objects": [
+            0
+          ]
+        },
+        {
+          "perturbed_object": 1,
+          "changed_conditioned_objects": [
+            1
+          ]
+        },
+        {
+          "perturbed_object": 2,
+          "changed_conditioned_objects": [
+            2
+          ]
+        },
+        {
+          "perturbed_object": 3,
+          "changed_conditioned_objects": [
+            3
+          ]
+        },
+        {
+          "perturbed_object": 4,
+          "changed_conditioned_objects": [
+            4
+          ]
+        },
+        {
+          "perturbed_object": 5,
+          "changed_conditioned_objects": [
+            5
+          ]
+        },
+        {
+          "perturbed_object": 6,
+          "changed_conditioned_objects": [
+            6
+          ]
+        },
+        {
+          "perturbed_object": 7,
+          "changed_conditioned_objects": [
+            7
+          ]
+        },
+        {
+          "perturbed_object": 8,
+          "changed_conditioned_objects": [
+            8
+          ]
+        },
+        {
+          "perturbed_object": 9,
+          "changed_conditioned_objects": [
+            9
+          ]
+        },
+        {
+          "perturbed_object": 10,
+          "changed_conditioned_objects": [
+            10
+          ]
+        },
+        {
+          "perturbed_object": 11,
+          "changed_conditioned_objects": [
+            11
+          ]
+        },
+        {
+          "perturbed_object": 12,
+          "changed_conditioned_objects": [
+            12
+          ]
+        },
+        {
+          "perturbed_object": 13,
+          "changed_conditioned_objects": [
+            13
+          ]
+        },
+        {
+          "perturbed_object": 14,
+          "changed_conditioned_objects": [
+            14
+          ]
+        },
+        {
+          "perturbed_object": 15,
+          "changed_conditioned_objects": [
+            15
+          ]
+        },
+        {
+          "perturbed_object": 16,
+          "changed_conditioned_objects": [
+            16
+          ]
+        },
+        {
+          "perturbed_object": 17,
+          "changed_conditioned_objects": [
+            17
+          ]
+        },
+        {
+          "perturbed_object": 18,
+          "changed_conditioned_objects": [
+            18
+          ]
+        },
+        {
+          "perturbed_object": 19,
+          "changed_conditioned_objects": [
+            19
+          ]
+        },
+        {
+          "perturbed_object": 20,
+          "changed_conditioned_objects": [
+            20
+          ]
+        },
+        {
+          "perturbed_object": 21,
+          "changed_conditioned_objects": [
+            21
+          ]
+        }
+      ],
+      "data_gradient_norms_before_optimizer": [
+        {
+          "text": 0.0,
+          "read_visual": 0.0,
+          "guide_visual": 0.0,
+          "output": 0.15231160819530487,
+          "slot_embedding": 0.0
+        },
+        {
+          "text": 0.0005010029999539256,
+          "read_visual": 3.937403380405158e-05,
+          "guide_visual": 0.00010045446833828464,
+          "output": 0.028062904253602028,
+          "slot_embedding": 1.2227712431922555e-05
+        },
+        {
+          "text": 0.00024843262508511543,
+          "read_visual": 2.4586259314673953e-05,
+          "guide_visual": 5.234696072875522e-05,
+          "output": 0.0328817218542099,
+          "slot_embedding": 5.617608621832915e-06
+        }
+      ],
+      "attention_qkv_data_gradient_norms_before_optimizer": [
+        {
+          "read_visual.query": 0.0,
+          "read_visual.key": 0.0,
+          "read_visual.value": 0.0,
+          "guide_visual.query": 0.0,
+          "guide_visual.key": 0.0,
+          "guide_visual.value": 0.0
+        },
+        {
+          "read_visual.query": 9.607007314116345e-07,
+          "read_visual.key": 8.50110438932461e-07,
+          "read_visual.value": 1.76005378307309e-05,
+          "guide_visual.query": 4.2690397883404785e-09,
+          "guide_visual.key": 3.5256879638012606e-09,
+          "guide_visual.value": 5.909938408876769e-05
+        },
+        {
+          "read_visual.query": 6.015711733198259e-07,
+          "read_visual.key": 4.549410448362323e-07,
+          "read_visual.value": 1.2988853086426388e-05,
+          "guide_visual.query": 5.317239537561136e-09,
+          "guide_visual.key": 5.714736683870569e-09,
+          "guide_visual.value": 3.1614112231181934e-05
+        }
+      ],
+      "discarded_optimizer_steps": 3
+    },
+    {
+      "reference_mode": "initial",
+      "text": "real",
+      "parameters": 484547,
+      "initial_state_sha256": "234b6c97a3f53bd0832679794c9e9f37b749555daa36b818e550dafb3557395a",
+      "zero_residual_parent_parity_exact": true,
+      "padding_invariance_exact": true,
+      "initial_slot_minimum_separation": 0.14384475350379944,
+      "initial_valid_query_minimum_separation": 0.9879637956619263,
+      "valid_slots": 4,
+      "actual_conditioning_object_probes": [
+        {
+          "perturbed_object": 0,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 1,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 2,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 3,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 4,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 5,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 6,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 7,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 8,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 9,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 10,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 11,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 12,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 13,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 14,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 15,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 16,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 17,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 18,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 19,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 20,
+          "changed_conditioned_objects": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        {
+          "perturbed_object": 21,
+          "changed_conditioned_objects": []
+        }
+      ],
+      "data_gradient_norms_before_optimizer": [
+        {
+          "text": 0.0,
+          "read_visual": 0.0,
+          "guide_visual": 0.0,
+          "output": 0.1623743325471878,
+          "slot_embedding": 0.0
+        },
+        {
+          "text": 0.0005469515454024076,
+          "read_visual": 5.232065450400114e-05,
+          "guide_visual": 0.0001032041254802607,
+          "output": 0.030205244198441505,
+          "slot_embedding": 1.703775160422083e-05
+        },
+        {
+          "text": 0.0002011405158555135,
+          "read_visual": 2.077637327602133e-05,
+          "guide_visual": 5.233311094343662e-05,
+          "output": 0.03632371872663498,
+          "slot_embedding": 6.420789304684149e-06
+        }
+      ],
+      "attention_qkv_data_gradient_norms_before_optimizer": [
+        {
+          "read_visual.query": 0.0,
+          "read_visual.key": 0.0,
+          "read_visual.value": 0.0,
+          "guide_visual.query": 0.0,
+          "guide_visual.key": 0.0,
+          "guide_visual.value": 0.0
+        },
+        {
+          "read_visual.query": 8.126463626467739e-07,
+          "read_visual.key": 5.550962782763236e-07,
+          "read_visual.value": 2.1921410734648816e-05,
+          "guide_visual.query": 4.1688369378789503e-07,
+          "guide_visual.key": 3.557246373020462e-07,
+          "guide_visual.value": 6.281722744461149e-05
+        },
+        {
+          "read_visual.query": 2.5827949912127224e-07,
+          "read_visual.key": 2.1868657995582907e-07,
+          "read_visual.value": 9.819502338359598e-06,
+          "guide_visual.query": 6.432032364500628e-07,
+          "guide_visual.key": 6.272333052947943e-07,
+          "guide_visual.value": 2.775629582174588e-05
+        }
+      ],
+      "discarded_optimizer_steps": 3
+    },
+    {
+      "reference_mode": "initial",
+      "text": "visual_queries",
+      "parameters": 484547,
+      "initial_state_sha256": "234b6c97a3f53bd0832679794c9e9f37b749555daa36b818e550dafb3557395a",
+      "zero_residual_parent_parity_exact": true,
+      "padding_invariance_exact": true,
+      "initial_slot_minimum_separation": 0.14384475350379944,
+      "initial_valid_query_minimum_separation": 0.14384472370147705,
+      "valid_slots": 4,
+      "actual_conditioning_object_probes": [
+        {
+          "perturbed_object": 0,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 1,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 2,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 3,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 4,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 5,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 6,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 7,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 8,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 9,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 10,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 11,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 12,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 13,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 14,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 15,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 16,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 17,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 18,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 19,
+          "changed_conditioned_objects": []
+        },
+        {
+          "perturbed_object": 20,
+          "changed_conditioned_objects": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        {
+          "perturbed_object": 21,
+          "changed_conditioned_objects": []
+        }
+      ],
+      "data_gradient_norms_before_optimizer": [
+        {
+          "text": 0.0,
+          "read_visual": 0.0,
+          "guide_visual": 0.0,
+          "output": 0.15284155309200287,
+          "slot_embedding": 0.0
+        },
+        {
+          "text": 0.00047124383854679763,
+          "read_visual": 3.775201548705809e-05,
+          "guide_visual": 0.00010041395580628887,
+          "output": 0.028182167559862137,
+          "slot_embedding": 1.1701801668095868e-05
+        },
+        {
+          "text": 0.0002505604934412986,
+          "read_visual": 1.976527892111335e-05,
+          "guide_visual": 5.82772699999623e-05,
+          "output": 0.03285523131489754,
+          "slot_embedding": 6.290281362453243e-06
+        }
+      ],
+      "attention_qkv_data_gradient_norms_before_optimizer": [
+        {
+          "read_visual.query": 0.0,
+          "read_visual.key": 0.0,
+          "read_visual.value": 0.0,
+          "guide_visual.query": 0.0,
+          "guide_visual.key": 0.0,
+          "guide_visual.value": 0.0
+        },
+        {
+          "read_visual.query": 6.212807193151093e-07,
+          "read_visual.key": 4.6390471197810257e-07,
+          "read_visual.value": 1.7437398128095083e-05,
+          "guide_visual.query": 4.111854412514049e-09,
+          "guide_visual.key": 3.3125400200617605e-09,
+          "guide_visual.value": 5.633321779896505e-05
+        },
+        {
+          "read_visual.query": 4.538421478628152e-07,
+          "read_visual.key": 2.8603835744434036e-07,
+          "read_visual.value": 8.709161193110049e-06,
+          "guide_visual.query": 5.367847499826439e-09,
+          "guide_visual.key": 5.1222190933231104e-09,
+          "guide_visual.value": 3.418800042709336e-05
+        }
+      ],
+      "discarded_optimizer_steps": 3
+    }
+  ],
+  "cpu_threads": 4,
+  "torch_version": "1.13.1+cu116",
+  "initial_reference_used": "Historical t1 reference from existing cache; only tensor/gradient contract, not a new t0 observation",
+  "t0_extractor_executed": false,
+  "gpu_execution": false,
+  "trained_checkpoint_saved": false,
+  "final_base_selected": false,
+  "formal_feature_collection_started": false,
+  "development_evaluation": false,
+  "scope": "Untrained interface preparation; no evidence of semantic accuracy or tracking improvement"
+}

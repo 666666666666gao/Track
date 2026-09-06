@@ -20,6 +20,10 @@ attribute arm has not beaten the pooled or empty-text control on those
 snapshots. Full recursive development is queued, not completed. See
 [M56 evidence](diagnostics/m56/README.md) and the
 [language research direction](diagnostics/m56/LANGUAGE_RESEARCH_DIRECTION.md).
+M57 has an untrained initialization-binding prototype and a passed CPU interface
+contract; true t0 extraction and formal training await the base decision. Its
+source review is partial after a reviewer service limit. See
+[M57 preparation](diagnostics/m57_initial_binding_preparation/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 
