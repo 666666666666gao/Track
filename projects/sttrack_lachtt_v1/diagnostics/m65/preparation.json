@@ -1,0 +1,55 @@
+{
+  "status": "ready_for_real_fit_smoke",
+  "observed_utc": "2026-09-06T21:29:53.574208+00:00",
+  "prepare_script_sha256": "1afc6227b0cf0d5c6721387992e8560dfce06b29fc703521ff74b5fb92b91d13",
+  "parent_inputs": {
+    "integration.json": "f6720047fdaec934efe9610d448fbdab8e2f6125318d0c917ee809d3e8458a96",
+    "training_spec.json": "c592109d10579efac4dce5d3dd6f4881900c2c264acc3db3b63a6021855ea3b7",
+    "train_causal.py": "acca756f0b7158c16a4d0ae68d141dcacd4955b72e6399f7c3744a9ad7c5767c",
+    "causal_training.py": "672b7575437f9d5000377311b949bb46f7908f0dce2f7cfe5891390b8f1bfb95",
+    "run_recursive.py": "63406ce954e62f03f170b09b9796484caa79abdf20880d8b9b97535a69aed254",
+    "text_fit.pt": "d7ce0833b8e0e96c881a31ced85be43b6eeccb777adc577144fad0fb2420e3d0",
+    "text_development.pt": "81879fa1ace5da373c77b898a76dd5fea23c5911c94184322fee4f2755d56e89",
+    "native_parity/text_zero.pth": "ea90ec858551d5edbd1cd48f7c11408c367b57cf172be795b42e9fbd03e4e0d1"
+  },
+  "source_files": 160,
+  "changed_source_paths": [
+    "lib/models/sttrack/semantic_spatial_adapter.py",
+    "lib/test/tracker/sttrack_semantic.py"
+  ],
+  "bank_receipts": {
+    "fit": {
+      "sequences": 130,
+      "source_sha256": "d7ce0833b8e0e96c881a31ced85be43b6eeccb777adc577144fad0fb2420e3d0",
+      "output_sha256": "1efb31a5e6ed30e4fd41c78efcba4538585e4d3b597208d3069c1de04734d47a",
+      "valid_attribute_vectors_replaced": 318,
+      "category_exact": true,
+      "mask_exact": true,
+      "padding_exact": true,
+      "regenerated_captions": 0,
+      "regenerated_embeddings": 0
+    },
+    "development": {
+      "sequences": 22,
+      "source_sha256": "81879fa1ace5da373c77b898a76dd5fea23c5911c94184322fee4f2755d56e89",
+      "output_sha256": "e537d03f666f661f684db63586ca7d995476a7bc00e12d641ba417f619c1b3d6",
+      "valid_attribute_vectors_replaced": 48,
+      "category_exact": true,
+      "mask_exact": true,
+      "padding_exact": true,
+      "regenerated_captions": 0,
+      "regenerated_embeddings": 0
+    }
+  },
+  "initial_checkpoint_sha256": {
+    "control": "adbfe10024ac90501081474c2f624f0d25f6bfa255e8b434fbe5dc16ac7f031e",
+    "null": "2b996b5925abf100f101b4dc7566165253843c58e36098f932fb59a96f6a58d2"
+  },
+  "initial_parameter_tensor_sha256": "36f8a7409457336c8689576d1d40a7cc9835eb3cef0e8148bf652900ebbaa675",
+  "learned_parameters_each": 289154,
+  "formal_training_started": false,
+  "new_caption_calls": 0,
+  "architecture": "semantic_spatial_support_v1",
+  "primary": "null",
+  "control": "control"
+}

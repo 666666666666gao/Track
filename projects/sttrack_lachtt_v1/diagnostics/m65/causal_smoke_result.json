@@ -1,0 +1,123 @@
+{
+  "status": "paired_fit_smoke_complete",
+  "observed_utc": "2026-09-06T21:31:19.772904+00:00",
+  "checker_sha256": "d94117e4aaf3159a501ae5c1ded7e01975a769aa568e29da9081d977f5d08d0a",
+  "preparation_sha256": "27bec5635dbe91b57ae5c22636bdf81de605b0fd7c45c39695580f76b527d712",
+  "integration_sha256": "5881ef1594929f0e71b0f7e8da6564e1c4669cbef86b1986b2948d7e0f231a65",
+  "sequence": "chair01_indoor",
+  "split": "fit",
+  "native_zero_residual_parity_frames_each": 101,
+  "causal_and_deployed_boxes_scores_queries_templates_exact": true,
+  "parity_template_writes": {
+    "control": [
+      100
+    ],
+    "null": [
+      100
+    ]
+  },
+  "parity_seconds": 24.370466709136963,
+  "initial_adapter_state_sha256": {
+    "control": "f570b4a2c7d775e7025789178159181525117b54cf62b135f79aab49f2905356",
+    "null": "f570b4a2c7d775e7025789178159181525117b54cf62b135f79aab49f2905356"
+  },
+  "base_state_sha256": {
+    "control": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+    "null": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0"
+  },
+  "mechanism": {
+    "nonzero_control_matches_parent_exactly": true,
+    "null_changes_nonzero_real_features": true,
+    "null_mass_min": 0.0020196824334561825,
+    "null_mass_mean": 0.003905082121491432,
+    "null_mass_max": 0.027061348780989647,
+    "null_vs_control_max_abs": 0.026679039001464844,
+    "parameter_counts": [
+      289154,
+      289154,
+      289154
+    ]
+  },
+  "arms": {
+    "control": {
+      "training_frames": 96,
+      "actual_dataset_optimizer_steps": 3,
+      "seconds": 6.818253755569458,
+      "labels": {
+        "centre_inside": 45,
+        "invalid": 8,
+        "centre_outside": 43
+      },
+      "mean_loss": 0.32658866775984113,
+      "last_gradient_l1": {
+        "slots": 9.346678416477516e-05,
+        "rgb.0.weight": 0.1331183910369873,
+        "rgb.0.bias": 7.439230103045702e-05,
+        "rgb.1.weight": 0.00015288915892597288,
+        "rgb.1.bias": 0.00013393872359301895,
+        "depth.0.weight": 0.10636724531650543,
+        "depth.0.bias": 5.9882193454541266e-05,
+        "depth.1.weight": 0.00012134347343817353,
+        "depth.1.bias": 0.00012802844867110252,
+        "text.0.weight": 0.049094799906015396,
+        "text.0.bias": 0.00022636693029198796,
+        "text.1.weight": 6.912861135788262e-05,
+        "text.1.bias": 8.597299893153831e-05,
+        "rgb_bound.weight": 0.000132859218865633,
+        "rgb_bound.bias": 0.00012123365013394505,
+        "depth_bound.weight": 5.148537820787169e-05,
+        "depth_bound.bias": 5.236265860730782e-05,
+        "modality.weight": 0.0018601707415655255,
+        "modality.bias": 1.2074748156010173e-05,
+        "delta.0.weight": 0.10063518583774567,
+        "delta.0.bias": 0.00044714720570482314,
+        "delta.2.weight": 3.228839159011841,
+        "delta.2.bias": 0.07794656604528427
+      },
+      "base_parameters_and_buffers_unchanged": true
+    },
+    "null": {
+      "training_frames": 96,
+      "actual_dataset_optimizer_steps": 3,
+      "seconds": 6.752890348434448,
+      "labels": {
+        "centre_inside": 45,
+        "invalid": 8,
+        "centre_outside": 43
+      },
+      "mean_loss": 0.32663737482983957,
+      "last_gradient_l1": {
+        "slots": 9.31982503971085e-05,
+        "rgb.0.weight": 0.13276565074920654,
+        "rgb.0.bias": 7.41830954211764e-05,
+        "rgb.1.weight": 0.0001530492736492306,
+        "rgb.1.bias": 0.00013382325414568186,
+        "depth.0.weight": 0.10622484236955643,
+        "depth.0.bias": 5.980190326226875e-05,
+        "depth.1.weight": 0.00012173730647191405,
+        "depth.1.bias": 0.00012824157602153718,
+        "text.0.weight": 0.04892733693122864,
+        "text.0.bias": 0.00022556900512427092,
+        "text.1.weight": 6.889429641887546e-05,
+        "text.1.bias": 8.555672684451565e-05,
+        "rgb_bound.weight": 0.00013298523845151067,
+        "rgb_bound.bias": 0.00012125341163482517,
+        "depth_bound.weight": 5.1608272769954056e-05,
+        "depth_bound.bias": 5.237660661805421e-05,
+        "modality.weight": 0.0018401544075459242,
+        "modality.bias": 1.1945523510803469e-05,
+        "delta.0.weight": 0.1004457026720047,
+        "delta.0.bias": 0.0004466813988983631,
+        "delta.2.weight": 3.225255012512207,
+        "delta.2.bias": 0.07791893184185028
+      },
+      "base_parameters_and_buffers_unchanged": true
+    }
+  },
+  "formal_optimizer_steps": 0,
+  "smoke_weights_saved": false,
+  "source_unchanged": true,
+  "measured_tracking_improvement": false,
+  "elapsed_seconds": 38.079789876937866,
+  "independent_model_review_pass": false
+}
