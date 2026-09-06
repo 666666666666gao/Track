@@ -39,6 +39,9 @@ Shared semantic OPE/VOT entry points now pass CPU initialization-text routing
 and output serialization checks on existing Train inputs. GPU wrapper parity,
 TraX exchange and public evaluation are still pending; see
 [M58 evaluation preparation](diagnostics/m58/evaluation_preparation/README.md).
+Fixed-text-head empty, category-retention, mismatched-caption and matched-caption-category
+attribute controls are frozen. A conditional queue waits for the original recursive gate;
+no content-control tracking has run. See [M58 content controls](diagnostics/m58/content_controls/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 
