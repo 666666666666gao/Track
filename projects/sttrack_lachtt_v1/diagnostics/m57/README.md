@@ -106,3 +106,7 @@ GPU0依次initial_text、initial_visual，GPU1依次candidate_text、candidate_v
 - [原始静态结果](static_result.json)
 - [完整递归配置](recursive_spec.json)
 - [此前t0工程验收](../m57_initial_binding_preparation/native_t0_completed/README.md)
+
+## 词义证据的后续范围审计
+
+同类别不同描述的114事件中，initial_text没有改选；其中仅3个默认错误且存在正确候选，检验力有限。3个明显错配正例全部改变了类别，集中于egg与ghostmask，其中egg还具有已披露的历史跨帧文字复核来源。不能把它们当作已验证同类实例消歧或严格首帧注释收益。见[完整后验范围审计](static_content_scope/README.md)。

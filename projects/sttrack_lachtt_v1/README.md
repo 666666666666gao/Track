@@ -31,7 +31,7 @@ Initial-text snapshot mean IoU is 0.445936 versus native candidate0 0.440274,
 but the same-structure visual-query control is 0.448180. Fixed-head content
 changes affect a small set of choices; this is not yet a language promotion.
 Four full recursive arms (132520 total frames) are scheduled in two GPU queues;
-the first pair is running.
+both text arms have finished and the visual-query controls are running.
 The native base remains fixed. See [M57 formal evidence](diagnostics/m57/README.md)
 and [earlier preparation](diagnostics/m57_initial_binding_preparation/README.md).
 Earlier milestone sections below retain their historical evaluation scope;

@@ -1,0 +1,126 @@
+{
+  "schema": "track_unused_weight_cleanup_v1",
+  "created_utc": "2026-09-06T07:48:33.945260+00:00",
+  "authorization": "User requested deleting unused weights and explicitly preserving both Qwen models.",
+  "disk_before": {
+    "total": 193273528320,
+    "used": 192244875264,
+    "free": 1028653056
+  },
+  "deleted_weight_files": [
+    {
+      "path": "/root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906/training/control/model_final.pth",
+      "size_bytes": 532399447,
+      "sha256": "fe1d4b2faddc7f0dc523b6ec9cacbbf878f523cfc1985cd2a0d8a3fb4c4ba284",
+      "reason": "Completed M55 negative promotion experiment; results and source retained."
+    },
+    {
+      "path": "/root/autodl-tmp/sttrack_m55_tsg_direction_v2_20260906/training/clone/model_final.pth",
+      "size_bytes": 532399447,
+      "sha256": "d1ce44c82593fe5f508954a536762ba9ef772e9264da12500e62f80064e46c81",
+      "reason": "Completed M55 negative promotion experiment; results and source retained."
+    },
+    {
+      "path": "/root/autodl-tmp/srtrack_clean_droptrack_initializer_seed2026/DropTrack_mapped_visual.pth.tar",
+      "size_bytes": 826888229,
+      "sha256": "7def9f2df523356b86ab5b120fb13fbcd96f107802067eb277105963b5bc672a",
+      "reason": "Old SRTrack derived initializer; original source, seed, mapping manifest and builder retained."
+    },
+    {
+      "path": "/root/autodl-tmp/dinov2_vits14_pretrain.pth",
+      "size_bytes": 88283115,
+      "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "reason": "Retired M32 global descriptor diagnostic; not used by current language experiments."
+    },
+    {
+      "path": "/root/autodl-tmp/sttrack_m57_initial_binding_v1_20260906/runtime_contract/candidate_text_temporary.pth",
+      "size_bytes": 1959645,
+      "sha256": "a1b14dfec0ea80307024b9ff92d60b606fdb5d57a018ae089a60f65bd55a5515",
+      "reason": "Untrained temporary runtime wiring check; formal trained head retained."
+    },
+    {
+      "path": "/root/autodl-tmp/sttrack_m57_initial_binding_v1_20260906/runtime_contract/candidate_visual_temporary.pth",
+      "size_bytes": 1959771,
+      "sha256": "c4fbfb97c81a117ead51dd73651c0a141bf158b1f96a40155e77635dd9c8cfce",
+      "reason": "Untrained temporary runtime wiring check; formal trained head retained."
+    },
+    {
+      "path": "/root/autodl-tmp/sttrack_m57_initial_binding_v1_20260906/runtime_contract/initial_text_temporary.pth",
+      "size_bytes": 1959519,
+      "sha256": "480891330d8d4a042b7c3a828ac044491ae278dc4a4affdf08861d86f5724808",
+      "reason": "Untrained temporary runtime wiring check; formal trained head retained."
+    },
+    {
+      "path": "/root/autodl-tmp/sttrack_m57_initial_binding_v1_20260906/runtime_contract/initial_visual_temporary.pth",
+      "size_bytes": 1959645,
+      "sha256": "b90f21763d8e3a3b0bde05b7553b5535eec859a6e6e1cb5b8ed841d321e2d181",
+      "reason": "Untrained temporary runtime wiring check; formal trained head retained."
+    }
+  ],
+  "protected_weight_metadata_before": {
+    "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar": [
+      532407510,
+      1786796504947096969
+    ],
+    "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt": [
+      932768134,
+      1786711802905292512
+    ],
+    "/root/autodl-tmp/sutrack_assets/weights/SUTRACK_ep0180_l384.pth.tar": [
+      2208572476,
+      1786712593194526892
+    ],
+    "/root/autodl-tmp/pretrained/DropTrack_k700_800E_alldata.pth.tar": [
+      1115466495,
+      1784086200508972650
+    ],
+    "/root/autodl-tmp/qwen/Qwen3_8B/model-00001-of-00005.safetensors": [
+      3996250744,
+      1784204461576247247
+    ],
+    "/root/autodl-tmp/qwen/Qwen3_8B/model-00002-of-00005.safetensors": [
+      3993160032,
+      1784205412778635509
+    ],
+    "/root/autodl-tmp/qwen/Qwen3_8B/model-00003-of-00005.safetensors": [
+      3959604768,
+      1784211308797076429
+    ],
+    "/root/autodl-tmp/qwen/Qwen3_8B/model-00004-of-00005.safetensors": [
+      3187841392,
+      1784211146980697975
+    ],
+    "/root/autodl-tmp/qwen/Qwen3_8B/model-00005-of-00005.safetensors": [
+      1244659840,
+      1784213412124160209
+    ],
+    "/root/autodl-tmp/qwen/Qwen2.5-VL-3B-Instruct/model-00001-of-00002.safetensors": [
+      3982649232,
+      1787963607875409322
+    ],
+    "/root/autodl-tmp/qwen/Qwen2.5-VL-3B-Instruct/model-00002-of-00002.safetensors": [
+      3526688744,
+      1787963585401472583
+    ],
+    "/root/autodl-tmp/sttrack_m57_initial_binding_v1_20260906/training/candidate_text_final.pth": [
+      1960609,
+      1788677413162911692
+    ],
+    "/root/autodl-tmp/sttrack_m57_initial_binding_v1_20260906/training/candidate_visual_final.pth": [
+      1960863,
+      1788677453689608865
+    ],
+    "/root/autodl-tmp/sttrack_m57_initial_binding_v1_20260906/training/initial_text_final.pth": [
+      1960483,
+      1788677493972162804
+    ],
+    "/root/autodl-tmp/sttrack_m57_initial_binding_v1_20260906/training/initial_visual_final.pth": [
+      1960609,
+      1788677534710626659
+    ]
+  },
+  "m55_result_sha256": "a2ee9b85208010ca97003052cd1fbaab0520d3a542a1ebf328862aa2d6db0e7b",
+  "m57_base_decision_sha256": "bdeaa840a47dca0588bca214829150f1dee79b870c2258bcb942cb0133f79c1b",
+  "script_sha256": "5d2353de8623b95eaf92b92250daef93479cf26ee64f2a027ab5350ba3077267",
+  "retirement_limit": "Deleted M55 weights require retraining for exact reruns; predictions, metrics, configs and logs are retained."
+}
