@@ -1,0 +1,180 @@
+{
+  "observed": "2026-09-06T20:03:10.744379",
+  "qwen": [
+    {
+      "model": "Qwen3_8B",
+      "path": "/root/autodl-tmp/qwen/Qwen3_8B",
+      "shards": [
+        {
+          "file": "model-00001-of-00005.safetensors",
+          "bytes": 3996250744,
+          "mtime_ns": 1784204461576247247
+        },
+        {
+          "file": "model-00002-of-00005.safetensors",
+          "bytes": 3993160032,
+          "mtime_ns": 1784205412778635509
+        },
+        {
+          "file": "model-00003-of-00005.safetensors",
+          "bytes": 3959604768,
+          "mtime_ns": 1784211308797076429
+        },
+        {
+          "file": "model-00004-of-00005.safetensors",
+          "bytes": 3187841392,
+          "mtime_ns": 1784211146980697975
+        },
+        {
+          "file": "model-00005-of-00005.safetensors",
+          "bytes": 1244659840,
+          "mtime_ns": 1784213412124160209
+        }
+      ],
+      "total_weight_bytes": 16381516776,
+      "index_all_shards_present": true
+    },
+    {
+      "model": "Qwen2.5-VL-3B-Instruct",
+      "path": "/root/autodl-tmp/qwen/Qwen2.5-VL-3B-Instruct",
+      "shards": [
+        {
+          "file": "model-00001-of-00002.safetensors",
+          "bytes": 3982649232,
+          "mtime_ns": 1787963607875409322
+        },
+        {
+          "file": "model-00002-of-00002.safetensors",
+          "bytes": 3526688744,
+          "mtime_ns": 1787963585401472583
+        }
+      ],
+      "total_weight_bytes": 7509337976,
+      "index_all_shards_present": true
+    }
+  ],
+  "processes": [
+    {
+      "pid": 341833,
+      "cwd": "/root/autodl-tmp/sttrack_m58_semantic_spatial_v2_20260906",
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm text "
+    },
+    {
+      "pid": 341836,
+      "cwd": "/root/autodl-tmp/sttrack_m58_semantic_spatial_v2_20260906",
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm visual "
+    },
+    {
+      "pid": 341966,
+      "cwd": "/root/autodl-tmp/sttrack_m58_semantic_spatial_v2_20260906",
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u queue_after_training.py "
+    },
+    {
+      "pid": 344799,
+      "cwd": "/root/autodl-tmp/sttrack_m58_content_controls_v1_20260906",
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -u queue_controls.py "
+    }
+  ],
+  "training_spec.json": {
+    "sha256": "c592109d10579efac4dce5d3dd6f4881900c2c264acc3db3b63a6021855ea3b7",
+    "top_level_keys": [
+      "status",
+      "observed_utc",
+      "revision",
+      "preceding_training_spec_sha256",
+      "supervision_coordinate_convention",
+      "supervision_diagnostic_sha256",
+      "primary_arm",
+      "control_arm",
+      "seed",
+      "epochs",
+      "hypothesis",
+      "architecture",
+      "learned_parameters",
+      "visual_base_frozen_eval",
+      "native_checkpoint",
+      "native_checkpoint_sha256",
+      "integration_sha256",
+      "causal_script_sha256",
+      "training_script_sha256",
+      "freeze_script_sha256",
+      "inventory_sha256",
+      "text_preparation_sha256",
+      "text_fit_sha256",
+      "text_development_sha256",
+      "initial_checkpoint_sha256",
+      "causal_smoke_result_sha256",
+      "dataset_root",
+      "sequence_order",
+      "development_sequences",
+      "total_training_image_frames",
+      "total_training_track_calls",
+      "maximum_optimizer_steps",
+      "optimizer",
+      "learning_rate",
+      "weight_decay",
+      "gradient_accumulation_frames",
+      "gradient_clip",
+      "loss",
+      "invalid_gt",
+      "target_centre_outside_crop",
+      "state_protocol",
+      "backprop_through_time_or_discrete_crops",
+      "native_update_interval",
+      "native_update_threshold",
+      "caption_protocol",
+      "text_control",
+      "annotation_limitations",
+      "frozen_native_development_aggregate",
+      "native_result_sha256",
+      "promotion_gates",
+      "after_training",
+      "checkpoint_retention",
+      "runtime_estimate_seconds_per_arm",
+      "monitoring",
+      "independent_review_pass",
+      "independent_reviewer_status",
+      "optimizer_stop_conditions",
+      "final_three_dataset_metrics_exist"
+    ]
+  },
+  "recursive_spec.json": {
+    "sha256": "29aeeaa353d1d898f4793744375238b2212f865557df64efd5f981c1d62c027e",
+    "top_level_keys": [
+      "status",
+      "observed_utc",
+      "training_spec_sha256",
+      "runner_sha256",
+      "queue_sha256",
+      "metric_sha256",
+      "native_result_path",
+      "cases",
+      "variants",
+      "fixed_final_heads_only",
+      "full_prediction_families_sealed_before_metric_GT",
+      "poll_interval_seconds",
+      "public_evaluation"
+    ]
+  },
+  "result_sha256": "0a0124072407db0a949f1410064967d269546992c6de31bb2fb713ee82521d60",
+  "training_state": {
+    "sequence": "toy06_indoor",
+    "sequence_index": 83,
+    "total_sequences": 130,
+    "frames": 1281,
+    "track_calls": 1280,
+    "supervised_frames": 1253,
+    "label_counts": {
+      "centre_inside": 1253,
+      "invalid": 27
+    },
+    "mean_training_loss": 0.42481045068166584,
+    "template_writes": 16,
+    "maximum_preclip_gradient_norm": 0.8143576383590698,
+    "total_optimizer_steps": 3641,
+    "total_track_calls": 116770,
+    "seconds": 89.35567259788513,
+    "elapsed_seconds": 7974.784121751785
+  },
+  "disk_free_bytes": 2935861248
+}

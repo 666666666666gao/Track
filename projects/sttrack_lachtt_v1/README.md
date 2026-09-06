@@ -35,10 +35,14 @@ floor/round mismatch with the pretrained native head. V2 reuses native crop
 coordinates and rounded centres, and restarted the same paired full-sequence
 budget from the common zero adapter. No learned recursive gain exists yet.
 See [M58 correction evidence and v2 training](diagnostics/m58/supervision_correction/README.md).
-Shared semantic OPE/VOT entry points now pass CPU initialization-text routing
-and output serialization checks on existing Train inputs. GPU wrapper parity,
-TraX exchange and public evaluation are still pending; see
-[M58 evaluation preparation](diagnostics/m58/evaluation_preparation/README.md).
+Shared semantic OPE/VOT entry points passed CPU initialization-text routing
+on existing Train inputs. A subsequent real toolkit/TraX exchange with a synthetic
+CPU predictor found four-decimal wire serialization missing from the earlier
+constructor-only coordinate helper. A separate offline VOT input helper now
+passes two valid target sessions and two expected key rejections, with all frozen
+training/runtime sources unchanged. Real-weight GPU entry parity and public
+evaluation remain pending; see [M58 transport correction](diagnostics/m58/trax_transport/README.md)
+and the [historical preparation snapshot](diagnostics/m58/evaluation_preparation/README.md).
 Fixed-text-head empty, category-retention, mismatched-caption and matched-caption-category
 attribute controls are frozen. A conditional queue waits for the original recursive gate;
 no content-control tracking has run. See [M58 content controls](diagnostics/m58/content_controls/README.md).

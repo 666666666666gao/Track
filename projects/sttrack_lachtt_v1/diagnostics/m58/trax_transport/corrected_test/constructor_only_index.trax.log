@@ -1,0 +1,17 @@
+@@TRAX:hello "trax.name=" "trax.family=" "trax.image=path;" "trax.region=rectangle;" "trax.description=" "trax.version=4" "vot=python" "trax.channels=color;depth;" 
+@@TRAX:initialize "1.1235,2.2346,30.3457,40.4568" 
+@@TRAX:frame "file:///root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/color/00000001.jpg" "file:///root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/depth/00000001.png" 
+@@TRAX:state "1.1235,2.2346,30.3457,40.4568" 
+@@TRAX:frame "file:///root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/color/00000002.jpg" "file:///root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/depth/00000002.png" 
+WARNING: You are using tensorboardX instead sis you have a too old pytorch version.
+Traceback (most recent call last):
+  File "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/transport_worker.py", line 95, in <module>
+    main(parser.parse_args().case)
+  File "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/transport_worker.py", line 84, in main
+    entry.run('synthetic_fixture_plan')
+  File "/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906/run_semantic_vot.py", line 18, in run
+    tracker.initialize(image, bank.info(files[0], bbox))
+  File "/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906/initialization_text.py", line 44, in info
+    index = self.indices[initialization_key(sha(rgb_path), bbox)]
+KeyError: 'f0e964311b327003f11fb2acdcef87d380d17fa67e5f120d7c48f97d766ea51e'
+@@TRAX:quit 

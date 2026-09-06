@@ -1,0 +1,282 @@
+{
+  "scope": "Synthetic transport only",
+  "images": [
+    {
+      "color": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/color/00000001.jpg",
+      "depth": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/depth/00000001.png",
+      "color_sha256": "0c444228b871362e377f898418432cdca6759bc5c16423efac4c99203f1fe6dc",
+      "depth_sha256": "e204a6b4ca44d3bab0c9772a4b0bbafe8a47d1cb35de776a0505733c2849ccc8"
+    },
+    {
+      "color": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/color/00000002.jpg",
+      "depth": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/depth/00000002.png",
+      "color_sha256": "ae0109bd6f79751de7cbd64ba7016d3a9c4dc6295a55defad291db20b711f4d0",
+      "depth_sha256": "c98f4df8e3c08176686efb1b2bb960fc027406af73fe7bd6f3e2d6544eae199b"
+    },
+    {
+      "color": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/color/00000003.jpg",
+      "depth": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/depth/00000003.png",
+      "color_sha256": "4fdea60544ad933c8f4f63bc505e8d00da39b0a54cc699954ea76915ef7c8731",
+      "depth_sha256": "7b17db84f8ccb2151c24023bce48341c6adb0f12a423804001b7103b68681df8"
+    }
+  ],
+  "cases": [
+    {
+      "name": "first_object",
+      "raw_bbox": [
+        1.123456789,
+        2.234567891,
+        30.345678912,
+        40.456789123
+      ],
+      "wire_bbox": [
+        1.1234999895095825,
+        2.234600067138672,
+        30.345699310302734,
+        40.4567985534668
+      ],
+      "wire_text": "1.1235,2.2346,30.3457,40.4568",
+      "expected_key_index": 0,
+      "predictions": [
+        {
+          "bbox": [
+            1.2469567785095825,
+            2.5802789791386718,
+            30.456810429302735,
+            40.6790207824668
+          ],
+          "wire_bbox": [
+            1.246999979019165,
+            2.5803000926971436,
+            30.45680046081543,
+            40.67900085449219
+          ],
+          "wire_text": "1.2470,2.5803,30.4568,40.6790",
+          "score": 0.533012345
+        },
+        {
+          "bbox": [
+            1.3704135675095825,
+            2.9259578911386717,
+            30.567921548302735,
+            40.901243011466796
+          ],
+          "wire_bbox": [
+            1.3703999519348145,
+            2.9260001182556152,
+            30.567899703979492,
+            40.90119934082031
+          ],
+          "wire_text": "1.3704,2.9260,30.5679,40.9012",
+          "score": 0.060412345
+        }
+      ],
+      "bank_path": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/synthetic_bank.pt",
+      "bank_sha256": "3fe912ba39203991eed00435a4a37c6f61b53e214c6774820b7203384697df0c"
+    },
+    {
+      "name": "second_object_same_image",
+      "raw_bbox": [
+        19.234567891,
+        7.123456789,
+        20.7654321,
+        15.4321
+      ],
+      "wire_bbox": [
+        19.234600067138672,
+        7.123499870300293,
+        20.765399932861328,
+        15.432100296020508
+      ],
+      "wire_text": "19.2346,7.1235,20.7654,15.4321",
+      "expected_key_index": 1,
+      "predictions": [
+        {
+          "bbox": [
+            19.35805685613867,
+            7.469178782300293,
+            20.87651105186133,
+            15.654322525020508
+          ],
+          "wire_bbox": [
+            19.35810089111328,
+            7.469200134277344,
+            20.87649917602539,
+            15.65429973602295
+          ],
+          "wire_text": "19.3581,7.4692,20.8765,15.6543",
+          "score": 0.533012345
+        },
+        {
+          "bbox": [
+            19.481513645138673,
+            7.814857694300293,
+            20.98762217086133,
+            15.876544754020507
+          ],
+          "wire_bbox": [
+            19.48150062561035,
+            7.814899921417236,
+            20.987600326538086,
+            15.876500129699707
+          ],
+          "wire_text": "19.4815,7.8149,20.9876,15.8765",
+          "score": 0.060412345
+        }
+      ],
+      "bank_path": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/synthetic_bank.pt",
+      "bank_sha256": "3fe912ba39203991eed00435a4a37c6f61b53e214c6774820b7203384697df0c"
+    },
+    {
+      "name": "unregistered_object",
+      "raw_bbox": [
+        40.1,
+        9.2,
+        12.3,
+        20.4
+      ],
+      "wire_bbox": [
+        40.099998474121094,
+        9.199999809265137,
+        12.300000190734863,
+        20.399999618530273
+      ],
+      "wire_text": "40.1000,9.2000,12.3000,20.4000",
+      "expected_key_index": null,
+      "predictions": [
+        {
+          "bbox": [
+            40.223455263121096,
+            9.545678721265137,
+            12.411111309734864,
+            20.622221847530273
+          ],
+          "wire_bbox": [
+            40.2234992980957,
+            9.545700073242188,
+            12.411100387573242,
+            20.62220001220703
+          ],
+          "wire_text": "40.2235,9.5457,12.4111,20.6222",
+          "score": 0.533012345
+        },
+        {
+          "bbox": [
+            40.34691205212109,
+            9.891357633265137,
+            12.522222428734864,
+            20.844444076530273
+          ],
+          "wire_bbox": [
+            40.346900939941406,
+            9.891400337219238,
+            12.522199630737305,
+            20.84440040588379
+          ],
+          "wire_text": "40.3469,9.8914,12.5222,20.8444",
+          "score": 0.060412345
+        }
+      ],
+      "bank_path": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/synthetic_bank.pt",
+      "bank_sha256": "3fe912ba39203991eed00435a4a37c6f61b53e214c6774820b7203384697df0c"
+    },
+    {
+      "name": "constructor_only_index",
+      "raw_bbox": [
+        1.123456789,
+        2.234567891,
+        30.345678912,
+        40.456789123
+      ],
+      "wire_bbox": [
+        1.1234999895095825,
+        2.234600067138672,
+        30.345699310302734,
+        40.4567985534668
+      ],
+      "wire_text": "1.1235,2.2346,30.3457,40.4568",
+      "expected_key_index": null,
+      "predictions": [
+        {
+          "bbox": [
+            1.2469567785095825,
+            2.5802789791386718,
+            30.456810429302735,
+            40.6790207824668
+          ],
+          "wire_bbox": [
+            1.246999979019165,
+            2.5803000926971436,
+            30.45680046081543,
+            40.67900085449219
+          ],
+          "wire_text": "1.2470,2.5803,30.4568,40.6790",
+          "score": 0.533012345
+        },
+        {
+          "bbox": [
+            1.3704135675095825,
+            2.9259578911386717,
+            30.567921548302735,
+            40.901243011466796
+          ],
+          "wire_bbox": [
+            1.3703999519348145,
+            2.9260001182556152,
+            30.567899703979492,
+            40.90119934082031
+          ],
+          "wire_text": "1.3704,2.9260,30.5679,40.9012",
+          "score": 0.060412345
+        }
+      ],
+      "bank_path": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/constructor_only_bank.pt",
+      "bank_sha256": "88a275041c664b1e536645d1819fa61542ce77d6c1dd2ae18bf1f74a128b3b71"
+    }
+  ],
+  "bank_path": "/root/autodl-tmp/sttrack_m58_trax_cpu_contract_v2_20260906/synthetic_bank.pt",
+  "bank_sha256": "3fe912ba39203991eed00435a4a37c6f61b53e214c6774820b7203384697df0c",
+  "protocol_sha256": "06d76bf7f09fbcc39837d2a3d000a7967a8514d666359bd3c8ade3c4222949ae",
+  "interface_sha256": {
+    "initialization_text.py": "5ffd459fe13242537571809f8a77b1a57c2b5dea97291221f4c5b4738eedf941",
+    "semantic_runtime.py": "7d71bfd7d0c3deb657d45657c491d7aa5d8b6544c2a6ac1626cf7940d6f6c261",
+    "run_semantic_ope.py": "e307b62197df87d4626a5693350fb14461b1ae397499ebd6fd92d122cba98758",
+    "run_semantic_vot.py": "1ae1f2246aaa943f7d896a4086937b4680bc4b4c6d9dd61d7829ca1a7f5d7272",
+    "check_initialization_binding.py": "8e85f5863f8de83e1c3ee6a585380d9ebafaa4086aeae44c6f9720f56ce6f223",
+    "m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316"
+  },
+  "parent_integration_sha256": "f6720047fdaec934efe9610d448fbdab8e2f6125318d0c917ee809d3e8458a96",
+  "depth_utility_sha256": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+  "source_sha256": {
+    "prepare_transport.py": "ddd5c3f33dae8bb40838462f26633332c2f8d678b3edca9c520d153b3520ddc6",
+    "transport_worker.py": "257e59f2a3b8191008dd129a5cbddbd29f75e0375825c7023d27c248c67b3042",
+    "check_transport.py": "7de36100ab07471eece897b6bf48dc817f7a8089ccbc13e1d384879f815dbab9",
+    "vot_rectangle_transport.py": "20878b6ada788d609605c6328570f19e66d6b3a93e735ca86b1c6ec0646402cc"
+  },
+  "precision_example": {
+    "raw_bbox": [
+      1.123456789,
+      2.234567891,
+      30.345678912,
+      40.456789123
+    ],
+    "constructor_only_bbox": [
+      1.1234568357467651,
+      2.234567880630493,
+      30.345678329467773,
+      40.456790924072266
+    ],
+    "actual_wire_text": "1.1235,2.2346,30.3457,40.4568",
+    "actual_received_bbox": [
+      1.1234999895095825,
+      2.234600067138672,
+      30.345699310302734,
+      40.4567985534668
+    ],
+    "constructor_only_key": "450cba001710889c642a7edf775e36aba10a69a11c6e5cbcecdef22d326e2a61",
+    "corrected_key": "f0e964311b327003f11fb2acdcef87d380d17fa67e5f120d7c48f97d766ea51e"
+  },
+  "opencv_version": "4.10.0",
+  "numpy_version": "1.24.4",
+  "torch_version": "1.13.1+cu116"
+}

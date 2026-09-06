@@ -1,0 +1,147 @@
+{
+  "status": "real_toolkit_trax_transport_with_cpu_recorder_passed",
+  "observed_utc": "2026-09-06T11:59:18.935612+00:00",
+  "fixture_sha256": "7702062deb1ebe2b43d295296014c5f946fd22c835a69b87f13200afe35bad35",
+  "source_sha256": {
+    "prepare_transport.py": "ddd5c3f33dae8bb40838462f26633332c2f8d678b3edca9c520d153b3520ddc6",
+    "transport_worker.py": "257e59f2a3b8191008dd129a5cbddbd29f75e0375825c7023d27c248c67b3042",
+    "check_transport.py": "7de36100ab07471eece897b6bf48dc817f7a8089ccbc13e1d384879f815dbab9",
+    "vot_rectangle_transport.py": "20878b6ada788d609605c6328570f19e66d6b3a93e735ca86b1c6ec0646402cc"
+  },
+  "interface_sha256": {
+    "initialization_text.py": "5ffd459fe13242537571809f8a77b1a57c2b5dea97291221f4c5b4738eedf941",
+    "semantic_runtime.py": "7d71bfd7d0c3deb657d45657c491d7aa5d8b6544c2a6ac1626cf7940d6f6c261",
+    "run_semantic_ope.py": "e307b62197df87d4626a5693350fb14461b1ae397499ebd6fd92d122cba98758",
+    "run_semantic_vot.py": "1ae1f2246aaa943f7d896a4086937b4680bc4b4c6d9dd61d7829ca1a7f5d7272",
+    "check_initialization_binding.py": "8e85f5863f8de83e1c3ee6a585380d9ebafaa4086aeae44c6f9720f56ce6f223",
+    "m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316"
+  },
+  "sessions": [
+    {
+      "case": "first_object",
+      "pid": 348085,
+      "exit_code": 0,
+      "expected_unknown_key_failure": false,
+      "failure_message": null,
+      "initialization_ack_without_confidence": true,
+      "responses": [
+        {
+          "frame": 1,
+          "bbox": [
+            1.246999979019165,
+            2.5803000926971436,
+            30.45680046081543,
+            40.67900085449219
+          ],
+          "confidence": 0.533012345
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            1.3703999519348145,
+            2.9260001182556152,
+            30.567899703979492,
+            40.90119934082031
+          ],
+          "confidence": 0.060412345
+        }
+      ],
+      "worker_receipt_sha256": "da77892a69be9ae35f93d4ff159ab45b5f21841ee2715b8d661de577d2f48f82",
+      "protocol_log_sha256": "c2b0d624cdfd86e76bd2151b012aea9660c21564b5b9245e8830d68405238213"
+    },
+    {
+      "case": "second_object_same_image",
+      "pid": 348192,
+      "exit_code": 0,
+      "expected_unknown_key_failure": false,
+      "failure_message": null,
+      "initialization_ack_without_confidence": true,
+      "responses": [
+        {
+          "frame": 1,
+          "bbox": [
+            19.35810089111328,
+            7.469200134277344,
+            20.87649917602539,
+            15.65429973602295
+          ],
+          "confidence": 0.533012345
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            19.48150062561035,
+            7.814899921417236,
+            20.987600326538086,
+            15.876500129699707
+          ],
+          "confidence": 0.060412345
+        }
+      ],
+      "worker_receipt_sha256": "6165a2b8c91347df4a5eeee25884197e92d75ffa8ac69af67637d9d970da987d",
+      "protocol_log_sha256": "8be3fa546f1aeeae3df69987f5c604c475400c613011c0008745e0c8e847f246"
+    },
+    {
+      "case": "unregistered_object",
+      "pid": 348297,
+      "exit_code": 1,
+      "expected_unknown_key_failure": true,
+      "failure_message": "Server terminated the session",
+      "initialization_ack_without_confidence": true,
+      "responses": [],
+      "worker_receipt_sha256": "fcc592813093233c17c98023379d7c5b09ceef47c68243fd12aeacfd1cc46553",
+      "protocol_log_sha256": "e415ad607541b6f6666e408e98324d8a9c17d23f9e7d4789a67eeffa7921573a"
+    },
+    {
+      "case": "constructor_only_index",
+      "pid": 348403,
+      "exit_code": 1,
+      "expected_unknown_key_failure": true,
+      "failure_message": "Server terminated the session",
+      "initialization_ack_without_confidence": true,
+      "responses": [],
+      "worker_receipt_sha256": "1526d4561ed6f8eeaae3e15c943fbfec7b4eb72ad201326c1f3e6731172933de",
+      "protocol_log_sha256": "3497593bceab2e8f0f9bbab94481ee4b948f99f84bd5efcc11b724ff97b59974"
+    }
+  ],
+  "successful_sessions": 2,
+  "intentional_unknown_key_rejections": 1,
+  "intentional_constructor_only_index_rejections": 1,
+  "precision_example": {
+    "raw_bbox": [
+      1.123456789,
+      2.234567891,
+      30.345678912,
+      40.456789123
+    ],
+    "constructor_only_bbox": [
+      1.1234568357467651,
+      2.234567880630493,
+      30.345678329467773,
+      40.456790924072266
+    ],
+    "actual_wire_text": "1.1235,2.2346,30.3457,40.4568",
+    "actual_received_bbox": [
+      1.1234999895095825,
+      2.234600067138672,
+      30.345699310302734,
+      40.4567985534668
+    ],
+    "constructor_only_key": "450cba001710889c642a7edf775e36aba10a69a11c6e5cbcecdef22d326e2a61",
+    "corrected_key": "f0e964311b327003f11fb2acdcef87d380d17fa67e5f120d7c48f97d766ea51e"
+  },
+  "completed_tracking_reports": 4,
+  "same_image_distinct_initialized_targets": true,
+  "rgbd_channel_order_and_frame_order_verified": true,
+  "application_confidence_remapping": false,
+  "toolkit_version": "0.7.1",
+  "client_trax_version": "4.0.2",
+  "toolkit_client_source_sha256": "f001d00e791000ba6b484583c17fb9a536e7898329951120ed23676337112a61",
+  "trax_client_source_sha256": "3ccf61c206eaa50e1a8c5c1b0ea9d6a133c1686d9205bb2d433bcc73736e2a45",
+  "elapsed_seconds": 8.355521440505981,
+  "actual_model_tracking_calls": 0,
+  "dataset_images_used": 0,
+  "real_model_constructor_and_bundle_validation_tested": false,
+  "independent_review_pass": false,
+  "scope": "Real VOT 0.7.1 client, TraX 4.0.2, unchanged semantic VOT loop and bank lookup; deterministic synthetic CPU predictor. No model performance or real-weight GPU entry claim."
+}
