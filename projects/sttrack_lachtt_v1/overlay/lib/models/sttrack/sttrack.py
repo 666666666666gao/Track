@@ -26,6 +26,7 @@ class STTrack(nn.Module):
         self.backbone = transformer
         self.decode_fuse_search = conv(hidden_dim, hidden_dim)  # Fuse RGB and T search regions, random initialized
         self.box_head = box_head
+        self.semantic_adapter = None
         self.TSG_layer = cfg.MODEL.TSG.LAYER
         self.track_query_len = cfg.MODEL.TSG.TRACK_QUERY
         self.track_beforequery_len = cfg.MODEL.TSG.TRACK_QUERY_OLD
@@ -63,6 +64,7 @@ class STTrack(nn.Module):
                 track_query_before = None,
                 keep_rate=None,
                 return_candidate_features=False,
+                semantic_context=None,
                 ):
         track_query_before = track_query_before
         out_dict = []
@@ -142,7 +144,16 @@ class STTrack(nn.Module):
             fused_tokens = self.MambaFusion(temp_x,temp_r)
             feat_last = fused_tokens[:,-num_search_token:,:]
 
+            semantic_aux = None
+            if semantic_context is not None:
+                assert self.semantic_adapter is not None
+                feat_last, semantic_aux = self.semantic_adapter(
+                    temp_x[:, -num_search_token:, :], temp_r[:, -num_search_token:, :],
+                    feat_last, semantic_context['initial'], semantic_context['text'],
+                    semantic_context['mask'])
             out = self.forward_head(feat_last, None)
+            if semantic_aux is not None:
+                out['semantic_features'] = semantic_aux
             out.update(aux_dict)
             out['track_query_before'] = track_query_before
             out['backbone_feat'] = x

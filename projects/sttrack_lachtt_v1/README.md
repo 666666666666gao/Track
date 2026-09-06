@@ -30,6 +30,11 @@ Initial-text mean IoU is 0.595335 versus native 0.652226 and initial-visual
 0.655847; H10 rises from 75 to 80 with a new mobilephone02 failure.
 All seven primary gates fail, so this frozen revision stops before low22.
 See [M57 full results and trajectory diagnosis](diagnostics/m57/recursive_completed/README.md).
+M58 now has a 289154-parameter dense semantic residual prototype. Three
+zero-output paths match native tracking across three 102-frame sequences,
+including actual template writes and subsequent reads. No dataset optimizer
+steps or learned performance results exist yet. See
+[M58 source and engineering parity](diagnostics/m58/preparation/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

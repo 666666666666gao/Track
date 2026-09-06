@@ -1,0 +1,52 @@
+{
+  "status": "three_path_native_parity_complete",
+  "observed_utc": "2026-09-06T08:50:00.701999+00:00",
+  "native_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "integration_sha256": "7d6bc4512ac6cdf6003aede134bcffa08fc56cab70fd965ec778b6993889f52d",
+  "checker_sha256": "3c8f2ecd930161187b1f586328d481b0784d1de6c834ceba76907c2984136ef3",
+  "source_files_verified": 160,
+  "parameters": 289154,
+  "cases": [
+    {
+      "sequence": "chair01_indoor",
+      "frames": 102,
+      "tracked_frames": 101,
+      "template_writes": [
+        100
+      ],
+      "post_frame100_write_read_checked": true,
+      "legacy_native_bbox_prefix_exact": true,
+      "text_and_visual_zero_bbox_score_query_templates_exact": true
+    },
+    {
+      "sequence": "bag05_indoor",
+      "frames": 102,
+      "tracked_frames": 101,
+      "template_writes": [],
+      "post_frame100_write_read_checked": false,
+      "legacy_native_bbox_prefix_exact": true,
+      "text_and_visual_zero_bbox_score_query_templates_exact": true
+    },
+    {
+      "sequence": "cup08_indoor",
+      "frames": 102,
+      "tracked_frames": 101,
+      "template_writes": [
+        50,
+        100
+      ],
+      "post_frame100_write_read_checked": true,
+      "legacy_native_bbox_prefix_exact": true,
+      "text_and_visual_zero_bbox_score_query_templates_exact": true
+    }
+  ],
+  "image_frames": 306,
+  "tracker_frame_states": 918,
+  "track_calls": 909,
+  "elapsed_seconds": 47.35344338417053,
+  "actual_dataset_optimizer_steps": 0,
+  "subsequent_gt_used_for_tracking": false,
+  "baseline_comparison_uses_public_bboxes_only": true,
+  "learned_tracker_performance_tested": false,
+  "public_evaluation": false
+}
