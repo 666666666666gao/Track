@@ -1,0 +1,120 @@
+{
+  "status": "completed_train_only_same_head_content_diagnosis",
+  "observed_utc": "2026-09-06T15:27:50.983014+00:00",
+  "content_spec_sha256": "2c190de16b186a3c9c97abcdabdeb76ce75428f4e32546c32d7d5e6226077cd6",
+  "bundle_sha256": "695ac6e416a6d03c4599fcfa1bb5e1005f18c6bf078f952c02bc89de922e9dca",
+  "head_sha256": "0f2303ae1f9c12b4a25e6e6531b1fe39fa79578938aa9bc8c517e10bec06b629",
+  "parent_result_sha256": "54fd8445297e1eef761fa36e8a17def01afa027f71371984998f08229f6f5ee9",
+  "receipt_sha256": {
+    "original": "cca333a86f34b92ae8f088bd61eecec93156d8c93b3821fb6c634c38847bd536",
+    "empty": "84d547fceadb8f34792e4cf223c4f10b3d2ce3230302a13e0cf160149887f999",
+    "category": "111213c8a437a3e2e84a8d185b072ffe8f43fa9fc291ec43ba10459c9cd34ca7",
+    "mismatch": "85c44b121bcd04b824d81dcaa61601573c9cbce6c1faca13fa66913becd37e43",
+    "attributes": "4dbfc6093e4bbbe1fe7a9ca3004468e3d9e7f851b2e8d862b17a543f87fa6106"
+  },
+  "aggregates": {
+    "original": {
+      "valid_frames": 28897,
+      "iou_sum": 20593.209855121604,
+      "low_iou_frames": 5429,
+      "failure_episodes": 78,
+      "mean_iou": 0.71264179171269,
+      "macro_sequence_mean_iou": 0.7184673127390621,
+      "sequences": 22
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 20377.462486941247,
+      "low_iou_frames": 5744,
+      "failure_episodes": 79,
+      "mean_iou": 0.7051757098294372,
+      "macro_sequence_mean_iou": 0.6952189562677197,
+      "sequences": 22
+    },
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 21765.570608166094,
+      "low_iou_frames": 4063,
+      "failure_episodes": 64,
+      "mean_iou": 0.7532121191876698,
+      "macro_sequence_mean_iou": 0.7690405614393118,
+      "sequences": 22
+    },
+    "mismatch": {
+      "valid_frames": 28897,
+      "iou_sum": 20791.3476434899,
+      "low_iou_frames": 5222,
+      "failure_episodes": 72,
+      "mean_iou": 0.7194984823161539,
+      "macro_sequence_mean_iou": 0.7196337390192815,
+      "sequences": 22
+    },
+    "attributes": {
+      "valid_frames": 17949,
+      "iou_sum": 14146.4118234895,
+      "low_iou_frames": 1850,
+      "failure_episodes": 29,
+      "mean_iou": 0.7881448450325644,
+      "macro_sequence_mean_iou": 0.7732392217590854,
+      "sequences": 14
+    },
+    "original_for_attributes": {
+      "valid_frames": 17949,
+      "iou_sum": 14647.319141773043,
+      "low_iou_frames": 1308,
+      "failure_episodes": 28,
+      "mean_iou": 0.8160520999372134,
+      "macro_sequence_mean_iou": 0.8200534626867567,
+      "sequences": 14
+    }
+  },
+  "comparisons": {
+    "empty": {
+      "sequences": 22,
+      "valid_frames": 28897,
+      "original_minus_control_mean_iou": 0.0074660818832528175,
+      "original_minus_control_low_frames": -315,
+      "original_minus_control_H10": -1,
+      "original_better_sequences": 9,
+      "original_worse_sequences": 13
+    },
+    "category": {
+      "sequences": 22,
+      "valid_frames": 28897,
+      "original_minus_control_mean_iou": -0.040570327474979795,
+      "original_minus_control_low_frames": 1366,
+      "original_minus_control_H10": 14,
+      "original_better_sequences": 6,
+      "original_worse_sequences": 16
+    },
+    "mismatch": {
+      "sequences": 22,
+      "valid_frames": 28897,
+      "original_minus_control_mean_iou": -0.006856690603463833,
+      "original_minus_control_low_frames": 207,
+      "original_minus_control_H10": 6,
+      "original_better_sequences": 12,
+      "original_worse_sequences": 10
+    },
+    "attributes": {
+      "sequences": 14,
+      "valid_frames": 17949,
+      "original_minus_control_mean_iou": 0.02790725490464896,
+      "original_minus_control_low_frames": -542,
+      "original_minus_control_H10": -1,
+      "original_better_sequences": 9,
+      "original_worse_sequences": 5
+    }
+  },
+  "descriptive_content_thresholds": {
+    "empty": true,
+    "mismatch": false
+  },
+  "parent_promotion_pass": false,
+  "public_evaluation_allowed": false,
+  "attributes_descriptive_only": true,
+  "wrong_attribute_ground_truth_verified": false,
+  "independent_review_pass": false,
+  "scope": "Reused DepthTrack Train development22; attribute arm is a frozen matched-caption-category subset.",
+  "next": "Interpret all fixed-head content effects; M58 remains unpromoted; any model revision needs new Train training and recursive validation"
+}

@@ -58,10 +58,15 @@ The original multi-start scheduler matches all 303 initializations and 220483 fr
 paths under a CPU recorder. Wire rounding changes none of these actual initial
 boxes; no model gain is attributed to that protocol correction. See
 [M58 low22 initialization export](diagnostics/m58/vot_initializations/README.md).
-M59 now runs a separately frozen, Train-only fixed-text-head content diagnosis
-of the negative M58 revision. Three real-weight 102-frame entry prefixes reproduce
-M58 boxes/scores exactly. Four full controls are running; this does not promote
-M58 or reopen its stopped conditional queue. See [M59 diagnostic](diagnostics/m59/README.md).
+M59 completed all four fixed-head controls (119782 new frames). Retaining the
+automatic category while clearing attribute embeddings gives Train development
+mean IoU 0.753212 / 4063 low frames / 64 H10, with no new native-zero-H10
+sequence failures. Original full captions do not beat the cross-category donor
+captions. This is development evidence, not public performance or proven semantic
+utility. See [M59 complete results](diagnostics/m59/completed/README.md).
+M60 now isolates the category word with all attribute inputs/masks fixed, using
+the same trained weight. Its true-model reference prefixes reproduce M59 exactly;
+one full22 control is running. See [M60 category isolation](diagnostics/m60/README.md).
 Earlier milestone sections below retain their historical evaluation scope;
 old statements that native full127 was pending are superseded by this status.
 

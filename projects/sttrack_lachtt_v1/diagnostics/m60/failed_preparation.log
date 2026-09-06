@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m60_category_isolation_20260906.py", line 224, in <module>
+    {'prepare':prepare,'parity':parity,'run':run,'analyze':analyze}[action]()
+  File "/root/autodl-tmp/m60_category_isolation_20260906.py", line 68, in prepare
+    rgb,_=previous.load_frame(Path(training['dataset_root'])/case['sequence'],0)
+  File "/root/autodl-tmp/sttrack_m59_fixed_head_content_diagnostic_20260906/run_controls.py", line 116, in load_frame
+    from lib.train.dataset.depth_utils import get_rgbd_frame
+ModuleNotFoundError: No module named 'lib'
