@@ -1,0 +1,71 @@
+{
+  "observed_utc": "2026-09-07T15:28:35.755901+00:00",
+  "waiter_pid": 496607,
+  "waiter_start_ticks": "4581958397",
+  "waiter_state": "S",
+  "stage": {
+    "stage": "waiting_for_original_training_and_recursion",
+    "observed_utc": "2026-09-07T15:27:22.881969+00:00",
+    "verified_parent_pid": 495611
+  },
+  "training": [
+    {
+      "arm": "empty",
+      "pid": 495614,
+      "state": "R",
+      "completed_sequences": 9,
+      "last_completed": {
+        "sequence": "toydog_indoor",
+        "sequence_index": 8,
+        "total_sequences": 130,
+        "frames": 1001,
+        "track_calls": 1000,
+        "supervised_frames": 888,
+        "label_counts": {
+          "centre_inside": 886,
+          "invalid": 112,
+          "centre_outside": 2
+        },
+        "mean_training_loss": 0.4952138518046185,
+        "template_writes": 18,
+        "cumulative_competition_frames": 13175,
+        "cumulative_competition_loss_sum": 4952.343332286924,
+        "cumulative_competition_negatives": 118568,
+        "maximum_preclip_gradient_norm": 4.674506187438965,
+        "total_optimizer_steps": 507,
+        "total_track_calls": 16157,
+        "seconds": 73.1816725730896,
+        "elapsed_seconds": 1141.1972825527191
+      }
+    },
+    {
+      "arm": "category",
+      "pid": 495615,
+      "state": "R",
+      "completed_sequences": 9,
+      "last_completed": {
+        "sequence": "toydog_indoor",
+        "sequence_index": 8,
+        "total_sequences": 130,
+        "frames": 1001,
+        "track_calls": 1000,
+        "supervised_frames": 888,
+        "label_counts": {
+          "centre_inside": 876,
+          "invalid": 112,
+          "centre_outside": 12
+        },
+        "mean_training_loss": 0.26268985307238457,
+        "template_writes": 17,
+        "cumulative_competition_frames": 13887,
+        "cumulative_competition_loss_sum": 4566.483089726418,
+        "cumulative_competition_negatives": 124981,
+        "maximum_preclip_gradient_norm": 2.379976272583008,
+        "total_optimizer_steps": 507,
+        "total_track_calls": 16157,
+        "seconds": 73.49147033691406,
+        "elapsed_seconds": 1145.759165763855
+      }
+    }
+  ]
+}

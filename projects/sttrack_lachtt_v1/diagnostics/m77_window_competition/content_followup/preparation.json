@@ -1,0 +1,51 @@
+{
+  "status": "CPU_source_bank_schema_and_historical_reference_checks_complete",
+  "source_sha256": "58e52b047f428857255e56ebd18a966f81f74fcb787217d5d52eebfdc6453a7e",
+  "spec_sha256": "ce95e06d20f14a317b142e8c4719e4593d7762572df83bdbe74e3c1b8d6188cc",
+  "auditor_sha256": "4be53fa556a36d70630baba1b90a8052aab6f3615598fcd0badc902799a13bf2",
+  "historical_M73_training_reference": {
+    "result_sha256": "59a5f2730b4fcd63dc59b2b5c7f53804d1267a8b18e103ff40ddb43bcffe13c5",
+    "head_sha256": "8f912e8b8ced42e67ce39b4643cb46aeb835f672309261967c354f2150e82e72",
+    "initial_tensor_sha256": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42",
+    "final_tensor_sha256": "92eae5a6f4a63cd84b284e27234bd0961a4059f17b4786343d097cf771178cdf",
+    "base_state_sha256": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+    "sequences": 130,
+    "track_calls": 186694,
+    "optimizer_steps": 5798,
+    "supervised_frames": 174479,
+    "sampled_rows": 3917,
+    "template_writes": 1792,
+    "base_freeze_scope": "Runtime full-base tensor/hash assertion at training end; not a new independent full training replay."
+  },
+  "historical_M73_scalar_reference": {
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 20912.435349488445,
+      "low_iou_frames": 5072,
+      "failure_episodes": 71,
+      "mean_iou": 0.7236888033182838,
+      "macro_sequence_mean_iou": 0.738934640851976
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 18900.41920335495,
+      "low_iou_frames": 7415,
+      "failure_episodes": 90,
+      "mean_iou": 0.6540616397326695,
+      "macro_sequence_mean_iou": 0.6544162776656578
+    },
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    }
+  },
+  "gate_reference_passes": 13,
+  "current_M77_final_outputs_opened": false,
+  "current_GPU_calls": 0,
+  "new_optimizer_steps": 0,
+  "all_masks_and_padding_match": true
+}
