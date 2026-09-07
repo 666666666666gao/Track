@@ -21196,3 +21196,22 @@ CPU准备记录SHA256：`c980509860b1c4d85d0acd3debfce66d94af95e039f48c5e8d403a3
 进程验证记录SHA256：`df3b2cff2586164bebb53c2b6cd62aab04d8d329fc4b54673fc177796390daf8`。
 
 代码与启动证据发布至`projects/sttrack_lachtt_v1/diagnostics/m77_window_competition/candidate_evaluation/deferred_execution/`。下一次按训练预计完成时间检查原任务和两个接续执行器的实际状态；完整结果到达前，不重复用训练loss或历史正式成绩替代当前模型表现。
+
+
+## 5.148 M76既定起点已补真实图像/响应可视化，M77训练不变
+
+本节将§5.143已经封存的四个M76起点转成可直接检查的PNG/PDF和16行同状态头数值CSV。没有新增候选采集、前向、训练或seed；不重复此前M76指标表，不把历史图写成M77效果。所有图像路径/SHA、GT、重放及完成态审计均核对；图中的数值与原报告一致。
+
+图的四列是原RGB、搜索区域RGB显示缩放、原始响应、Hann×原始响应。绿色GT、品红实际输出、橙色虚线raw top1、白色虚线搜索区域；四行响应使用同一0—1真实分数色标，没有按各自最大值归一化。全部帧号零基，图像文件名为帧号加一。原始图中的人物只作为场景内容，不作身份判断。
+
+图像补充了此前数字背后的场景证据：book06中有相似书本，cup10中上下红杯竞争，egg中多个相似鸡蛋竞争；cup08的GT区域在当前搜索框上沿附近且部分超出crop。book06/cup08的密集解码容量不足，与cup10/egg的正确raw峰被加窗错误峰压过是不同问题。图中选错实例是当前帧事实，不能直接归因于某个词、速度或旋转，更不能声称修改一次选峰已救回完整轨迹。
+
+图支持当前M77“在保留推理Hann规则下，监督最终位置竞争”的研究动机，同时保留其边界：它没有增加跨区域观察，也没有单独证明语义实例区分。M77仍按原固定seed2027、两个训练臂、15项开发条件及既定内容/公开评测接续执行，不因看到某个例子更直观而改变门槛。
+
+交付文件：桌面`document/M76_same_state_onsets.png`、`M76_same_state_onsets.pdf`与`M76_onset_head_scores.csv`；服务器为`sttrack_m76_same_state_content_20260907/onset_visualization_20260908/`。源码、精确绘图数组、CSV、说明和收据发布至`projects/sttrack_lachtt_v1/diagnostics/m76_same_state_content/onset_visualization/`；图像型交付保留在服务器/本地，不复制到Git。执行器已实际打开PNG检查图例、四行图像、框及响应可读性，不将该检查标为独立模型审阅。
+
+渲染源码SHA256：`1f187374d3369ab1a14131590ae7c28bd3cecf3174dc8da4bd451ad9b8feff82`。
+PNG SHA256：`a73807b2c98ae3d39c8728fda614c834d1d9e84ed7b8607a49d84554999ac517`。
+PDF SHA256：`9d7819118f3b8367d63ba0e427408d4e2e83bf79160a02e9c6c857da2414ccc2`。
+
+磁盘核查仍约1.80GB可用；限定sttrack_m目录、深度不超过4且排除features等目录的50个pth权重合计108674823字节，大文件主要为旧特征缓存。原生全量VOT主结果目录实际约67MB、DepthTrack/CDTB结果目录约10MB；这些是已有产物体量，不是新任务磁盘上界。本节没有将特征缓存当作权重删除，保留两份Qwen、基线与复现依赖；既有评测阶段1GB空闲检查保持。
