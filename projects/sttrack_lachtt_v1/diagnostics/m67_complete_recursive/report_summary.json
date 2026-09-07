@@ -1,0 +1,176 @@
+{
+  "status": "completed_M67_development_report_bound_to_frozen_audit",
+  "observed_utc": "2026-09-07T06:50:22.428294+00:00",
+  "source_sha256": "848f638bb4b7065c998cc609979ad1864220765e15fdf822b8a2433a6463137f",
+  "result_sha256": "9f2cfe2457a967fdfa2ba9beae737b6a1575e7224c4029ee438472e547db4d07",
+  "audit_sha256": "f85a7105c87a68e86943eeeb40ad55c53e3c368d36c649592b5e23e699c6f5bb",
+  "aggregates": {
+    "control": {
+      "valid_frames": 28897,
+      "iou_sum": 21711.33111901206,
+      "low_iou_frames": 4193,
+      "failure_episodes": 52,
+      "mean_iou": 0.7513351254113596,
+      "macro_sequence_mean_iou": 0.7879104685054338
+    },
+    "support": {
+      "valid_frames": 28897,
+      "iou_sum": 20941.54896513398,
+      "low_iou_frames": 5085,
+      "failure_episodes": 62,
+      "mean_iou": 0.7246962994474853,
+      "macro_sequence_mean_iou": 0.7129620549895828
+    },
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    }
+  },
+  "support_minus_reference": {
+    "native": {
+      "mean_iou_percentage_points": 7.247003627124149,
+      "sequence_equal_iou_percentage_points": 2.862563862954315,
+      "low_overlap_frames": -2312,
+      "H10_episodes": -13
+    },
+    "control": {
+      "mean_iou_percentage_points": -2.6638825963874346,
+      "sequence_equal_iou_percentage_points": -7.494841351585102,
+      "low_overlap_frames": 892,
+      "H10_episodes": 10
+    }
+  },
+  "gates": {
+    "prior_control_success_protection": false,
+    "mean_vs_native": true,
+    "mean_vs_control": false,
+    "macro_vs_native": true,
+    "macro_vs_control": false,
+    "low_frames_vs_native": true,
+    "low_frames_vs_control": false,
+    "H10_vs_native": true,
+    "H10_vs_control": false,
+    "native_success_protection": false,
+    "control_success_protection": false
+  },
+  "passed_gates": 4,
+  "gate_count": 11,
+  "primary_pass": false,
+  "broken_success_sequences": {
+    "native": [
+      "mobilephone02_indoor"
+    ],
+    "control": [
+      "beautifullight01_indoor",
+      "flower02_wild",
+      "ghostmask_indoor",
+      "mobilephone02_indoor"
+    ],
+    "prior_control": [
+      "bag05_indoor",
+      "glass03_indoor"
+    ]
+  },
+  "sustained_support_H10_with_reference_correct_every_frame": [
+    {
+      "sequence": "bag05_indoor",
+      "reference": "native",
+      "start": 697,
+      "end_exclusive": 716,
+      "frames": 19
+    },
+    {
+      "sequence": "car01_indoor",
+      "reference": "native",
+      "start": 412,
+      "end_exclusive": 424,
+      "frames": 12
+    },
+    {
+      "sequence": "mobilephone01_indoor",
+      "reference": "native",
+      "start": 940,
+      "end_exclusive": 950,
+      "frames": 10
+    },
+    {
+      "sequence": "mobilephone02_indoor",
+      "reference": "native",
+      "start": 497,
+      "end_exclusive": 659,
+      "frames": 162
+    },
+    {
+      "sequence": "notebook02_indoor",
+      "reference": "native",
+      "start": 1340,
+      "end_exclusive": 1355,
+      "frames": 15
+    },
+    {
+      "sequence": "bag05_indoor",
+      "reference": "control",
+      "start": 697,
+      "end_exclusive": 716,
+      "frames": 19
+    },
+    {
+      "sequence": "ball07_indoor",
+      "reference": "control",
+      "start": 428,
+      "end_exclusive": 442,
+      "frames": 14
+    },
+    {
+      "sequence": "car01_indoor",
+      "reference": "control",
+      "start": 412,
+      "end_exclusive": 424,
+      "frames": 12
+    },
+    {
+      "sequence": "ghostmask_indoor",
+      "reference": "control",
+      "start": 1127,
+      "end_exclusive": 1165,
+      "frames": 38
+    },
+    {
+      "sequence": "mobilephone01_indoor",
+      "reference": "control",
+      "start": 940,
+      "end_exclusive": 950,
+      "frames": 10
+    }
+  ],
+  "live_queue_identity": {
+    "pid": 471187,
+    "start_ticks": "4578045533",
+    "argv": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/root/autodl-tmp/post_m67_diagnostic_queue_20260907.py",
+      "run"
+    ],
+    "cwd": "/root/autodl-tmp/sttrack_post_m67_diagnostic_queue_20260907"
+  },
+  "queue_latest": {
+    "time": "2026-09-07T06:47:25.645174+00:00",
+    "event": "stage_started",
+    "stage": "M69_M65_content",
+    "argv": [
+      "bash",
+      "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907/run_controls.sh"
+    ]
+  },
+  "disk_free_bytes": 2223673344,
+  "new_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "new_formal_metrics": false,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false
+}
