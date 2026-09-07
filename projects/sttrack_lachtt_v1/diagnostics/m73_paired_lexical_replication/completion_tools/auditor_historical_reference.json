@@ -1,0 +1,50 @@
+{
+  "status": "completed_M73_auditor_historical_reference_check",
+  "observed_utc": "2026-09-07T09:39:18.721033+00:00",
+  "auditor_sha256": "4fcaf10e73225ea7bf9f57dbd031c1a6d9f58ebed29fa04341277d0d69fb3ef8",
+  "frozen_M73_spec_sha256": "9b5203ad2c6f890ab55105a7738a46b212e57ec411e5490a78a0435545bb44e7",
+  "historical_result_sha256": "9f2cfe2457a967fdfa2ba9beae737b6a1575e7224c4029ee438472e547db4d07",
+  "reference_training": {
+    "result_sha256": "752f740445c26c6470004aa7759a66a5f95e190c87e6825a4ad5a8a295b5dd9e",
+    "head_sha256": "7a8907a45cec672f11563ad7cfaee21cb64acfee3fa13e854621c146cb8d058e",
+    "initial_tensor_sha256": "f570b4a2c7d775e7025789178159181525117b54cf62b135f79aab49f2905356",
+    "final_tensor_sha256": "1cb0f3532fb2eaa54c19ecb8bf54ba690da2242103e73cfffa7118d4430fc8c9",
+    "base_state_sha256": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+    "sequences": 130,
+    "track_calls": 186694,
+    "optimizer_steps": 5798,
+    "supervised_frames": 174479,
+    "sampled_rows": 3917,
+    "template_writes": 1768,
+    "base_freeze_scope": "Runtime full-base tensor/hash assertion at training end; not a new independent full training replay."
+  },
+  "scalar_aggregates": {
+    "control": {
+      "valid_frames": 28897,
+      "iou_sum": 21711.33111901206,
+      "low_iou_frames": 4193,
+      "failure_episodes": 52,
+      "mean_iou": 0.7513351254113596,
+      "macro_sequence_mean_iou": 0.7879104685054338
+    },
+    "support": {
+      "valid_frames": 28897,
+      "iou_sum": 20941.54896513398,
+      "low_iou_frames": 5085,
+      "failure_episodes": 62,
+      "mean_iou": 0.7246962994474853,
+      "macro_sequence_mean_iou": 0.7129620549895828
+    },
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    }
+  },
+  "actual_M73_final_outputs_opened": false,
+  "new_model_calls": 0,
+  "independent_model_review_pass": false
+}

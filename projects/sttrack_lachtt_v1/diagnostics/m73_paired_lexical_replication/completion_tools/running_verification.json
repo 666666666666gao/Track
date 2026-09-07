@@ -1,0 +1,150 @@
+{
+  "status": "verified_M73_training_and_completion_follower_live",
+  "observed_utc": "2026-09-07T09:57:10.573696+00:00",
+  "follower_identity": {
+    "pid": 484228,
+    "start_ticks": "4579959586",
+    "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/completion_queue",
+    "argv": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/root/autodl-tmp/m73_completion_queue_20260907.py",
+      "run"
+    ]
+  },
+  "follower_spec_sha256": "c225d02cff3198cc01659cf14c12a7745335e2a22716ec7708663d8bda98ed6c",
+  "parent_identity": {
+    "pid": 482884,
+    "start_ticks": "4579784392",
+    "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907",
+    "argv": [
+      "bash",
+      "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/run_m73.sh"
+    ]
+  },
+  "training_jobs": [
+    {
+      "pid": 482891,
+      "start_ticks": "4579784502",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "empty"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027",
+      "gpu": "0"
+    },
+    {
+      "pid": 482892,
+      "start_ticks": "4579784502",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "category"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027",
+      "gpu": "1"
+    }
+  ],
+  "latest_follower_state": {
+    "observed_utc": "2026-09-07T09:54:14.833093+00:00",
+    "status": "waiting_for_registered_full_M73_training_queue",
+    "parent_identity": {
+      "pid": 482884,
+      "start_ticks": "4579784392",
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907",
+      "argv": [
+        "bash",
+        "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/run_m73.sh"
+      ]
+    },
+    "poll_seconds": 240,
+    "new_model_calls": 0
+  },
+  "progress": {
+    "2027/category": {
+      "completed_sequences": 19,
+      "latest": {
+        "sequence": "duck04_wild",
+        "sequence_index": 18,
+        "total_sequences": 130,
+        "frames": 710,
+        "track_calls": 709,
+        "supervised_frames": 709,
+        "label_counts": {
+          "centre_inside": 709
+        },
+        "mean_training_loss": 0.1810731965922376,
+        "template_writes": 8,
+        "maximum_preclip_gradient_norm": 0.9283195734024048,
+        "total_optimizer_steps": 861,
+        "total_track_calls": 27455,
+        "seconds": 49.05925726890564,
+        "elapsed_seconds": 1878.122419834137
+      },
+      "final_exists": false
+    },
+    "2027/empty": {
+      "completed_sequences": 19,
+      "latest": {
+        "sequence": "duck04_wild",
+        "sequence_index": 18,
+        "total_sequences": 130,
+        "frames": 710,
+        "track_calls": 709,
+        "supervised_frames": 709,
+        "label_counts": {
+          "centre_inside": 709
+        },
+        "mean_training_loss": 0.16446735256723272,
+        "template_writes": 7,
+        "maximum_preclip_gradient_norm": 0.7732955813407898,
+        "total_optimizer_steps": 861,
+        "total_track_calls": 27455,
+        "seconds": 49.59306621551514,
+        "elapsed_seconds": 1882.276564359665
+      },
+      "final_exists": false
+    },
+    "2028/category": {
+      "completed_sequences": 0,
+      "latest": null,
+      "final_exists": false
+    },
+    "2028/empty": {
+      "completed_sequences": 0,
+      "latest": null,
+      "final_exists": false
+    }
+  },
+  "disk_free_bytes": 1985970176,
+  "retained_qwen": {
+    "Qwen3_8B": {
+      "files": 5,
+      "bytes": 16381516776
+    },
+    "Qwen2.5-VL-3B-Instruct": {
+      "files": 2,
+      "bytes": 7509337976
+    }
+  },
+  "gpu_memory": "0, 2461 MiB\n1, 2461 MiB\n",
+  "launch_wrapper": {
+    "pid": 484161,
+    "released_after_identity_and_independent_screen_session_check": true,
+    "reason": "Uppercase screen -D -m kept the launcher waiting. Only that launcher was terminated; screen/follower/original training retain their original live identities.",
+    "screen_pid": 484226,
+    "screen_reparented_to_pid1": true,
+    "no_training_or_follower_restart": true
+  },
+  "original_training_sources_unchanged": true,
+  "completed_M73_results_exist": false,
+  "new_content_activation_exists": false,
+  "public_evaluation_started": false,
+  "independent_model_review_pass": false,
+  "exporter_sha256": "a27a80ea0ac9c50a570d36b059e01aa19470a0ab190cb2c2eba4972e3dc4eeb8"
+}
