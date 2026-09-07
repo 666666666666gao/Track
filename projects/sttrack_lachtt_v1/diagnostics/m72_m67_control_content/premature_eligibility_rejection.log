@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m72_m67_control_content_20260907.py", line 342, in <module>
+    else: {'prepare': prepare, 'check': checked, 'wait_parent': wait_parent, 'eligible': eligible, 'idle': idle, 'analyze': analyze}[args.action]()
+  File "/root/autodl-tmp/m72_m67_control_content_20260907.py", line 211, in eligible
+    assert (OUT / 'wait.exit').read_text().strip() == '0'
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/pathlib.py", line 1236, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/pathlib.py", line 1222, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/pathlib.py", line 1078, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/sttrack_m72_m67_control_content_20260907/wait.exit'

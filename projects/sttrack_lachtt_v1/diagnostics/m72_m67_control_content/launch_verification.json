@@ -1,0 +1,100 @@
+{
+  "status": "M72_live_waiter_verified_after_CPU_checks",
+  "observed_utc": "2026-09-07T07:09:17.001393+00:00",
+  "exporter_sha256": "01e405c7c0ef122c39c16d411d43fe4c673cf4a6baaf0773cb8f16215cfc0cf4",
+  "source_sha256": "6d1b1cbcaf236590cd5c3bab5c5bb8f5ef5aa45088c8939fbb4ad7ef7b6657a2",
+  "spec_sha256": "cb220985b1b8d2bd910ddf1dc9a7dbd9bb5eae563fd591740fbf1afc952b357b",
+  "cpu_check_sha256": "96d3c4ccb66e93a698365749448c517faa92044b8213fc1a69b5a613d573b1a3",
+  "waiting_identity": {
+    "pid": 477500,
+    "start_ticks": "4578959259",
+    "cwd": "/root/autodl-tmp/sttrack_m72_m67_control_content_20260907",
+    "argv": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/root/autodl-tmp/m72_m67_control_content_20260907.py",
+      "wait_parent"
+    ]
+  },
+  "parent_identity": {
+    "pid": 474465,
+    "start_ticks": "4578576825",
+    "cwd": "/root/autodl-tmp/sttrack_m71_equal_budget_routing_20260907/post_queue_runner",
+    "argv": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/root/autodl-tmp/m71_after_diagnostics_20260907.py",
+      "run"
+    ]
+  },
+  "original_queue_identity": {
+    "pid": 471187,
+    "start_ticks": "4578045533",
+    "argv": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/root/autodl-tmp/post_m67_diagnostic_queue_20260907.py",
+      "run"
+    ],
+    "cwd": "/root/autodl-tmp/sttrack_post_m67_diagnostic_queue_20260907"
+  },
+  "original_queue_latest": {
+    "time": "2026-09-07T06:47:25.645174+00:00",
+    "event": "stage_started",
+    "stage": "M69_M65_content",
+    "argv": [
+      "bash",
+      "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907/run_controls.sh"
+    ]
+  },
+  "M69_progress": {
+    "empty": {
+      "identity": {
+        "pid": 476496,
+        "start_ticks": "4578841518",
+        "cwd": "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907",
+        "argv": [
+          "/root/autodl-tmp/envs/sttrack/bin/python",
+          "-u",
+          "/root/autodl-tmp/m69_m65_content_diagnostic_20260907.py",
+          "empty"
+        ]
+      },
+      "completed_sequences": 13,
+      "completed_track_calls": 20559
+    },
+    "swapped": {
+      "identity": {
+        "pid": 476495,
+        "start_ticks": "4578841518",
+        "cwd": "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907",
+        "argv": [
+          "/root/autodl-tmp/envs/sttrack/bin/python",
+          "-u",
+          "/root/autodl-tmp/m69_m65_content_diagnostic_20260907.py",
+          "swapped"
+        ]
+      },
+      "completed_sequences": 13,
+      "completed_track_calls": 20559
+    }
+  },
+  "disk_free_bytes": 2214903808,
+  "Qwen": {
+    "Qwen3_8B": {
+      "files": 5,
+      "bytes": 16381516776,
+      "preserved": true
+    },
+    "Qwen2.5-VL-3B-Instruct": {
+      "files": 2,
+      "bytes": 7509337976,
+      "preserved": true
+    }
+  },
+  "M72_GPU_execution_started": false,
+  "new_GPU_jobs_started": 0,
+  "original_queues_modified": false,
+  "new_formal_metrics": false,
+  "independent_model_review_pass": false
+}
