@@ -1,0 +1,13 @@
+{
+  "observation_protocol_path": "/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906/text_protocol.json",
+  "observation_protocol_sha256": "d08acfb068ac5f7c428d5decb5f17af4655383543eeb4b4277e65cfda14bcac1",
+  "lexical_policy": "Retain the generated category in slot0. Replace each valid attribute slot1..4 by the frozen CLIP empty-string vector. Preserve slot count, mask, padding, initialization key and all other tensors.",
+  "initialization_only": true,
+  "online_caption_updates": false,
+  "category_hints": false,
+  "manual_caption_corrections": false,
+  "image_specific_exceptions": false,
+  "subsequent_GT_used": false,
+  "selection_provenance": "M78 compares category and empty training with the same added raw-score competition loss, only seed2027. The fixed Category final is the only candidate, conditional on all ten frozen development checks and all eight same-head content comparisons. Category retention is used during both training and deployment. No additional seed or checkpoint selection.",
+  "training_spec_sha256": "57cdd314efd5359fa2e16be4f364c5568f1ca498b41df718517173610fe4d865"
+}

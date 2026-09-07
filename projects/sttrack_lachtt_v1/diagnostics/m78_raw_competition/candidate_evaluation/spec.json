@@ -1,0 +1,77 @@
+{
+  "status": "M78_candidate_entry_CPU_prepared_before_final_results",
+  "observed_utc": "2026-09-07T20:37:14.144574+00:00",
+  "source_sha256": {
+    "m78_candidate_evaluation_20260908.py": "26aa12bd72abfd92c5f6c59d23e8662af3f12c39e886c5bbda30d2cae4cb7640",
+    "m78_learned_entry_parity_20260908.py": "02e53c6f046af219402bac8f5490c8cf94ee865be0f31c9c209920a4846510fb",
+    "m78_vot_low22_20260908.py": "7fe95f000d8eb0df1268a40641124520ba1d8d78176d47f941c59847987dcfb5",
+    "m78_candidate_entry_20260908.sh": "1c50897975cfa32d90263f440d61c2712425dc29bfc1dac35b03940bfc558599",
+    "m78_candidate_low22_20260908.sh": "f6b1762ad00333bbf7be9009c94a17cb276f00a7e9186d55227b0c8f36326e7d"
+  },
+  "training_spec_sha256": "57cdd314efd5359fa2e16be4f364c5568f1ca498b41df718517173610fe4d865",
+  "M78_spec_sha256": "bb09a030efacb0215c4639fe74aa7c03b2800b60d351fcfd630fc801b2184334",
+  "M78_frozen_sha256": "ff2468b7c417acb12ab4201d321520e30fd7e0804f291bc3f8188f8885e56469",
+  "content_source_sha256": "af967f2978ed92058f2801842435058cb8dbef1d70a65186436457dfaae8bb20",
+  "content_spec_sha256": "e6216f7dd2a1d8ec8f24ee7a4c77a4a07e5c86b0cc03742581990d2c4df5da5d",
+  "parent_interface_spec_sha256": "323620eab82b163a3a9e6de54ea8e17da5dbc0cf7336b3717ef443082b59e07b",
+  "interface_sha256": {
+    "initialization_text.py": "5ffd459fe13242537571809f8a77b1a57c2b5dea97291221f4c5b4738eedf941",
+    "semantic_runtime.py": "a5d018351b6c02d7a3a88f376edc7303fcf9e1da4b0927bf989dfdac3cebc8ef",
+    "run_semantic_ope.py": "e307b62197df87d4626a5693350fb14461b1ae397499ebd6fd92d122cba98758",
+    "run_semantic_vot.py": "1ae1f2246aaa943f7d896a4086937b4680bc4b4c6d9dd61d7829ca1a7f5d7272",
+    "m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316"
+  },
+  "text_protocol_sha256": "a24d92e64307f156df04a136be5cc03fe3ce98c07472a179e05f89dff08994bb",
+  "initial_fixture_sha256": "5c27b6c35a61d4f55964368fd6a58a69b7b2fde66059d509b9079ceaa0a643fe",
+  "banks": {
+    "development": {
+      "path": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/development_category.pt",
+      "sha256": "640dc42d56e81790d6aff721705334d2446538d8d66935c35d93bcf0c94e90e8"
+    },
+    "low22": {
+      "path": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/low22_category.pt",
+      "sha256": "f9bfdc595ea447b3a0d9ce2a0ea87bc8ffa6603a93810f590cc0cd6092730a03"
+    }
+  },
+  "parent_low22_bank_sha256": "332d92cafa874bfc34a4354af0e49969503c50fbfd09e632224c498ece6c8496",
+  "parent_low22_caption_plan_sha256": "5835a31ff987f9f9f1cd89f346843b3830491f8a966585880e631d022bad0ecf",
+  "final_head": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/training/category/final.pth",
+  "candidate_seed": 2027,
+  "additional_seeds": [],
+  "architecture": "semantic_spatial_support_v1",
+  "null_support": true,
+  "arm": "category",
+  "support_loss_weight": 0.0,
+  "reported_confidence": "Original Hann maximum; no Null product, normalization, or confidence rescaling.",
+  "template_control": "Original interval50 and raw Hann maximum strictly greater than0.75.",
+  "same_bundle_across_three_datasets": true,
+  "reused_development_sets_not_unseen": true,
+  "full_evaluation_gate": {
+    "EAO_min": 57.635993,
+    "ACC_min": 75.719622,
+    "ROB_min": 73.022401,
+    "confirmed_failures_max": 118,
+    "preserve_all_seven_native_zero_failure_sequences": true,
+    "all303_anchors_complete": true,
+    "identical_bundle_and_text_protocol": true
+  },
+  "gate_provenance": "Retain native low22 primary thresholds prospectively for M78; historical model dominance is not required; require all ten M78 development gates and all eight existing content comparisons before binding.",
+  "entry_prefixes": [
+    "bag05_indoor",
+    "container01_indoor",
+    "mobilephone02_indoor"
+  ],
+  "frames_per_entry_prefix": 202,
+  "required_order": [
+    "All ten M78 seed2027 development gates and completed audit",
+    "All eight fixed Category head content comparisons",
+    "Bind that one final",
+    "Real OPE/TraX parity on three Train prefixes",
+    "All303 low22 anchors",
+    "Full three datasets only after low22 gate passes"
+  ],
+  "actual_gpu_entry_parity_checked": false,
+  "final_bundle_created": false,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false
+}
