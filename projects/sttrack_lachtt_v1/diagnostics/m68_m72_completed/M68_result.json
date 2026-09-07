@@ -1,0 +1,597 @@
+{
+  "status": "completed_Train_confidence_readout_diagnostic",
+  "observed_utc": "2026-09-07T07:47:31.087451+00:00",
+  "source_sha256": "7faf987f68c26739cd3666428e1c73e42704a4d208ffe29572863ca7b808f4d9",
+  "spec_sha256": "e2106dd1604d627c02d0589b91224c4901bfbca2906ffbbf241a3f380b7cfdf5",
+  "metric_source_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+  "parent_completed_audit_sha256": "f85a7105c87a68e86943eeeb40ad55c53e3c368d36c649592b5e23e699c6f5bb",
+  "receipts": {
+    "control": "d2126fe14afae5e5edd37941ac29a9ab93a64f12a54bc9fb86eb5d584f680168",
+    "support": "cf57cbca57e8a589a966c501264decf996978d18b0e3ac76117b967cd7df8ca5"
+  },
+  "metrics": {
+    "control": {
+      "raw": {
+        "precision": 0.7871299252670358,
+        "recall": 0.7688655789035359,
+        "f_score": 0.7778905582189823,
+        "precision_percent": 78.71299252670359,
+        "recall_percent": 76.88655789035359,
+        "f_score_percent": 77.78905582189823,
+        "threshold": 0.406823,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "semantic_product": {
+        "precision": 0.7870396743128544,
+        "recall": 0.7687583660596615,
+        "f_score": 0.7777916134976083,
+        "precision_percent": 78.70396743128543,
+        "recall_percent": 76.87583660596616,
+        "f_score_percent": 77.77916134976083,
+        "threshold": 0.406121,
+        "sequences": 22,
+        "frames": 33130
+      }
+    },
+    "support": {
+      "raw": {
+        "precision": 0.7739845088164358,
+        "recall": 0.6941293200189841,
+        "f_score": 0.7318851307819223,
+        "precision_percent": 77.39845088164358,
+        "recall_percent": 69.41293200189841,
+        "f_score_percent": 73.18851307819223,
+        "threshold": 0.442815,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "semantic_product": {
+        "precision": 0.7750183088079603,
+        "recall": 0.6536118113696268,
+        "f_score": 0.7091564338593493,
+        "precision_percent": 77.50183088079604,
+        "recall_percent": 65.36118113696267,
+        "f_score_percent": 70.91564338593493,
+        "threshold": 0.387844,
+        "sequences": 22,
+        "frames": 33130
+      }
+    }
+  },
+  "semantic_product_minus_raw_percentage_points": {
+    "control": {
+      "precision_percent": -0.009025095418152773,
+      "recall_percent": -0.010721284387429364,
+      "f_score_percent": -0.009894472137403909
+    },
+    "support": {
+      "precision_percent": 0.10337999915245177,
+      "recall_percent": -4.051750864935741,
+      "f_score_percent": -2.272869692257302
+    }
+  },
+  "null_mass_and_confidence_by_GT_group": {
+    "control": {
+      "valid_correct": {
+        "frames": 24431,
+        "columns": [
+          "null_mass",
+          "raw",
+          "semantic_product"
+        ],
+        "mean": [
+          0.003118899007933342,
+          0.7061373731993237,
+          0.7038485504196298
+        ],
+        "median": [
+          0.0022517219185829163,
+          0.7222663760185242,
+          0.720116814204928
+        ]
+      },
+      "valid_low_overlap": {
+        "frames": 4193,
+        "columns": [
+          "null_mass",
+          "raw",
+          "semantic_product"
+        ],
+        "mean": [
+          0.0017471788190647289,
+          0.37607863174798933,
+          0.37534751438805064
+        ],
+        "median": [
+          0.0014779106713831425,
+          0.38832879066467285,
+          0.38779924056262083
+        ]
+      },
+      "valid_intermediate": {
+        "frames": 273,
+        "columns": [
+          "null_mass",
+          "raw",
+          "semantic_product"
+        ],
+        "mean": [
+          0.0028500827157276346,
+          0.3910316349426796,
+          0.38990201039439154
+        ],
+        "median": [
+          0.0014946727314963937,
+          0.38050585985183716,
+          0.3799977644706843
+        ]
+      },
+      "invalid_GT": {
+        "frames": 4211,
+        "columns": [
+          "null_mass",
+          "raw",
+          "semantic_product"
+        ],
+        "mean": [
+          0.0018754258830493086,
+          0.30549202902838357,
+          0.3048160865186185
+        ],
+        "median": [
+          0.0014153365045785904,
+          0.25992703437805176,
+          0.2594815551402301
+        ]
+      }
+    },
+    "support": {
+      "valid_correct": {
+        "frames": 23567,
+        "columns": [
+          "null_mass",
+          "raw",
+          "semantic_product"
+        ],
+        "mean": [
+          0.05769558895175913,
+          0.7397934408362783,
+          0.7052868614462301
+        ],
+        "median": [
+          0.0017716150032356381,
+          0.7736668586730957,
+          0.7566065504648991
+        ]
+      },
+      "valid_low_overlap": {
+        "frames": 5086,
+        "columns": [
+          "null_mass",
+          "raw",
+          "semantic_product"
+        ],
+        "mean": [
+          0.3165997738746016,
+          0.449691528530965,
+          0.38017357415286557
+        ],
+        "median": [
+          0.04731319472193718,
+          0.39614178240299225,
+          0.3058689795482028
+        ]
+      },
+      "valid_intermediate": {
+        "frames": 244,
+        "columns": [
+          "null_mass",
+          "raw",
+          "semantic_product"
+        ],
+        "mean": [
+          0.3859242335569374,
+          0.4140776729318084,
+          0.292146074000932
+        ],
+        "median": [
+          0.14927881956100464,
+          0.43017782270908356,
+          0.2559290747423617
+        ]
+      },
+      "invalid_GT": {
+        "frames": 4211,
+        "columns": [
+          "null_mass",
+          "raw",
+          "semantic_product"
+        ],
+        "mean": [
+          0.4885426344389579,
+          0.3296701791142234,
+          0.23315637951493157
+        ],
+        "median": [
+          0.4958590269088745,
+          0.2839042544364929,
+          0.11908708155737635
+        ]
+      }
+    }
+  },
+  "exports": {
+    "control": {
+      "raw": {
+        "bag05_indoor": {
+          "bbox_sha256": "29f86b7e073109621ff04423145cfebd4241ca0afb00b371390e080b26033d27",
+          "confidence_sha256": "47c570615e6a1d783b1bdc20b6878beeb29b724768a719a7eb8fb7da7589109d"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "d9e6991319d4ddd6bc20883dc09fdbdd54965a005b78df7214ca18d9cb494c47",
+          "confidence_sha256": "d2c02122bd43075834bdbdcb2794f1e3c905dd48e8db8b502036ffbf7f99bacd"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "264f29c63509af0d22334b8d407ca3b923528d0f7fb5479a04c2ddc24b20617b",
+          "confidence_sha256": "3703f01694284fbec7537eaed0024ec2c9571e0414b1ca6d82bb1aa1ca6af619"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "754149d3b800d1952ebf2877feb20796c88b2b69d2accab96f94f8ed5d2ec8f5",
+          "confidence_sha256": "29eef473a86af50233e9c98fccb387a72499a29d72b3330ab05afaa6e2e1244b"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "c81824b8d828efe169fde1dd55b5cfb5a37a179765ef0a09c7a728cf1dc83504",
+          "confidence_sha256": "14620ed5b50eea78598c0aff1bbf45630f7aa9c395cfc46488604ba65917dd4f"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "d3c139dcf7802720b582a7e3aa4f98bed8ba2ea92f462dc0783b1bec0a386449",
+          "confidence_sha256": "526d9dc195507aa0880ec706fff33ac8620203516f6e336bd88312ee3caea458"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "251df83361bc5f197730e5d1ff6549202c47f7bfb04fb30b60b3526da34da327",
+          "confidence_sha256": "b8e0b35f757f971a081a7e8272a648ce93eac6887fae7e2840b4d2c281ce8d5f"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "4a29e759de38d9ef3443c0a4b9e902e8f1ad6493c9ce1c7c075d679752e1262b",
+          "confidence_sha256": "55be3753be734ba08f43ef99896fc1a5e99ff23d23e57ab03e2bff08c8031654"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "52cb67aa756b9873ceb5bcff548a4e703d7d0eac6e52aace7eb419fd554f5fef",
+          "confidence_sha256": "b80553f3f5d27138580288eeaa61bc4cce85d348a001a84c75aad48ac8407ac3"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "266d07a8c6603db38d92f83c7da2a39c8a593f24493fdb149767d95ec8668589",
+          "confidence_sha256": "5ad6a4fc59a0526fdab6be277639030a7902013d3528feb68ba767e206dd0d32"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "7fc22799e217797af901cc477ee3570e7c7d5706b1ddb5629f469abfbfa6e6f6",
+          "confidence_sha256": "81b0d0f6209e017db0e9376096b9a8e2ac039b34aaa5d41a2afd479f53991f90"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "95ce529bcd55b2565b3713a331e04431dba9fe389a3334632dddf15603859556",
+          "confidence_sha256": "a740469b3867d6a2adbcac878853409f04560639492acfc663530f83a3045700"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "d219fc0f6393b60bd8e35268117d3a8c1737e551c3f84370f64e78094d0274fe",
+          "confidence_sha256": "19a672012fbfb7629c098731bb20ba4c3cb152ce8c5db0481f01a48902fb0c69"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "da592656a08f779485480bade6223d3f086b9efb6fbab8d9d070ccff9e89b1a6",
+          "confidence_sha256": "47f8c0ecaf405007783488c4ff6ef99603ff2ec1fc4c7186cfeb657e6b0dd58d"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "5b1b31616631d6cb72de6396c403c9e97b4890a1ccea2c3aab95f61c5d885f2e",
+          "confidence_sha256": "e557c3c4ae1d32d05bbd00f6e437a4113dad985fdecd5aa81da4078354c9f3e2"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "71d325dd25fdf69f99529f065ebdad09c46c4625e9157fd9a4a0e1c2a4967580",
+          "confidence_sha256": "7c3208ccd7e0d2e9273abfcdd07570f74492fc77bfa7365a9602ab05c0811a54"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "a55ab641e59772678a41b0693557efb9a025879440906fbc8b709e35790913a7",
+          "confidence_sha256": "adf8bda14860a70678a1bc7083d3d3beb9ec85b6ce90b85520b6f59bc24761c0"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "475b2ca7dea72db15b299ee3eaef4a0c265a8eb11f08fd5ede25fc035f85201e",
+          "confidence_sha256": "073ff1fb0b95b7923c7a77a84f61f85d6abf2d21dd8cf4865545536ff42576d1"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "e48d98861c43ceef166be52c00b32e0c251b96707a42900513048fd483e02ffc",
+          "confidence_sha256": "8a7661483ec597e768a060fc513ac9c80cdd839526f7369485cf81822b94c4de"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "836f5ed10da30c234b473097db24b89088a223e09980f66e8dcaf9ff650c9357",
+          "confidence_sha256": "efdd0166f4bf7d5dec1de4cdfb445b6c8e7fc753bd7eafdf8d24c541b67f218e"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "7452e14c2a5b5719cc757b48cc52bb1cda62eaa307f636a7884536a61e8a7947",
+          "confidence_sha256": "7a4fac403ffacfc038d46530726026b9a5f44bba91bab8cd445aea346c7a0609"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "38bad13d8f4f8d635eea73a5097f379cb9cf2c418fbbb793820c6d0d83ffe368",
+          "confidence_sha256": "4b04795e0c00de8327a3d36aeb4aa6eb32d10e851a99d8cc51e98282cccde71c"
+        }
+      },
+      "semantic_product": {
+        "bag05_indoor": {
+          "bbox_sha256": "29f86b7e073109621ff04423145cfebd4241ca0afb00b371390e080b26033d27",
+          "confidence_sha256": "8fe141dcc2c20e8ec2a779baac93cea0095ea1c1a6d2452b714da39863af1a5b"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "d9e6991319d4ddd6bc20883dc09fdbdd54965a005b78df7214ca18d9cb494c47",
+          "confidence_sha256": "954dde6743f94292215bba0d46a6a7c714ae685c9aaf90650f35062a97cfd4b0"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "264f29c63509af0d22334b8d407ca3b923528d0f7fb5479a04c2ddc24b20617b",
+          "confidence_sha256": "3b477714243a112fcc00586e6be4fa4766605d809233477e28edb0fe7aec79bc"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "754149d3b800d1952ebf2877feb20796c88b2b69d2accab96f94f8ed5d2ec8f5",
+          "confidence_sha256": "87f39a38629ec19ef0520affd3518e467ef909d1f228efa893aa580ed20631b0"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "c81824b8d828efe169fde1dd55b5cfb5a37a179765ef0a09c7a728cf1dc83504",
+          "confidence_sha256": "6f88a7c20ea5fc7a09a9f89a1b88cbbacb1b7f3f527414a51675430e85fc7453"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "d3c139dcf7802720b582a7e3aa4f98bed8ba2ea92f462dc0783b1bec0a386449",
+          "confidence_sha256": "8edf772cfaa7a70cc1ab85aa633f9692701d2ff37167e103979a45bfd1a20339"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "251df83361bc5f197730e5d1ff6549202c47f7bfb04fb30b60b3526da34da327",
+          "confidence_sha256": "aef3a313c0f7add29f9c3d868bb71c07dd3fcbbd80ff00504febcae583e367d7"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "4a29e759de38d9ef3443c0a4b9e902e8f1ad6493c9ce1c7c075d679752e1262b",
+          "confidence_sha256": "790f29e2592fc0e6dd9d7abae8bccb8211da0339dbf10d8c8ece63caa0b2aaca"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "52cb67aa756b9873ceb5bcff548a4e703d7d0eac6e52aace7eb419fd554f5fef",
+          "confidence_sha256": "83316b41adf5d8e1f47a53c49fa9a1b124ce4ee9d9b62c2fe3662837e4b90cbd"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "266d07a8c6603db38d92f83c7da2a39c8a593f24493fdb149767d95ec8668589",
+          "confidence_sha256": "8fda49f6f2f0f9a39d9f2fca920011ec5c9dc43980523a525a39181faa9a88eb"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "7fc22799e217797af901cc477ee3570e7c7d5706b1ddb5629f469abfbfa6e6f6",
+          "confidence_sha256": "a41b220ccc7b66ceac2d841b654f127a37e9348534188e8328c17cffeae696a5"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "95ce529bcd55b2565b3713a331e04431dba9fe389a3334632dddf15603859556",
+          "confidence_sha256": "07d6a8b6bc5bcec0f6177d6d85b87d4f3438ef45482f9aa66bc209f77cf20f43"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "d219fc0f6393b60bd8e35268117d3a8c1737e551c3f84370f64e78094d0274fe",
+          "confidence_sha256": "7d526249dc5a9aed795d426a39cfb23c5c236dec6942837521179c0d41a45020"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "da592656a08f779485480bade6223d3f086b9efb6fbab8d9d070ccff9e89b1a6",
+          "confidence_sha256": "3c936398e9037aec0a19bb2801af2b4a3bfe8f1183aebb393c8f6dd0cc604b68"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "5b1b31616631d6cb72de6396c403c9e97b4890a1ccea2c3aab95f61c5d885f2e",
+          "confidence_sha256": "b4be51516b96289b8bc361292e6ff469601ed8e3bb5c8612ff0552122a10ee0d"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "71d325dd25fdf69f99529f065ebdad09c46c4625e9157fd9a4a0e1c2a4967580",
+          "confidence_sha256": "84426b553c215a36479aeb8b027dcedaeef15ee68457fc7b01f049d62f78d05c"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "a55ab641e59772678a41b0693557efb9a025879440906fbc8b709e35790913a7",
+          "confidence_sha256": "c05cf22edc12414033afde4a8219959b750b891d89841afaf462a5cd3c5eee28"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "475b2ca7dea72db15b299ee3eaef4a0c265a8eb11f08fd5ede25fc035f85201e",
+          "confidence_sha256": "045b8b97bfdb0ee6f60f8aaf19d29c4dd366c252714bcd3aae05b6cab2e29516"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "e48d98861c43ceef166be52c00b32e0c251b96707a42900513048fd483e02ffc",
+          "confidence_sha256": "bfb10a77287350603945671717fc3ebd8329afae577273ac10a367a6fd8a793c"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "836f5ed10da30c234b473097db24b89088a223e09980f66e8dcaf9ff650c9357",
+          "confidence_sha256": "4a67485f2edcb11a1920372c9c4e1c8a0074f0f39e6169d13974d56340f4b4ac"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "7452e14c2a5b5719cc757b48cc52bb1cda62eaa307f636a7884536a61e8a7947",
+          "confidence_sha256": "e6b241e46a4105d5f310ed687d7c47bd9233c01f67c48544f987c140adddd0d7"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "38bad13d8f4f8d635eea73a5097f379cb9cf2c418fbbb793820c6d0d83ffe368",
+          "confidence_sha256": "8e7c0191af03276821bb32b610679ebccc7e5a613ecbd33215b7ecbd75632dd4"
+        }
+      }
+    },
+    "support": {
+      "raw": {
+        "bag05_indoor": {
+          "bbox_sha256": "d9997d207b1b95a066f1f6b658d229c58b7fdf0783bab3ee617d6129027cb7ec",
+          "confidence_sha256": "0d5f51fbd8bbc412f1a994fe38dd43c106ed444099019582cb0bba207089d3a1"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "33831d5afbec2c1617861873cca9b997e70af834339fa232336dfc87a73cc857",
+          "confidence_sha256": "e46eac21b4984c8ecf3d0c118474776e7e12c0ea23e9e9dfd0035b6803454254"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "8d2155dd47645b681c8ef309019738633ff12051425de9e5ad5ec8bede2e2399",
+          "confidence_sha256": "b367d4fa3287919d023416bc9b4a57932094a74b011e01f2d98184f8b7ecbb1d"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "622e6c140e806c0e19aae3da1cdd66a62e1dba92f7564af136bf01c9b344a4cb",
+          "confidence_sha256": "75740ebff5b3be253443ae953e502fa1a9da2a9b524ae58603a2ed3abff0ce5e"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "ac5c37b70fac89c584d8267b89f6e57a0031cd15704ef714d2d1b6e6906795da",
+          "confidence_sha256": "197ddfbfa92d5d0ee39a45777a3663e18f6e0516878ff1af07d02c11d20060c9"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "430b4bc0371b119ef6af604eec06889e375dea706c68d0968a8a2a650029e338",
+          "confidence_sha256": "e185cf730ccd2be736ed4803a1bab511c31a89ff9c21228a0d66b6c19c595331"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "7c5fc5913e7944b506d0255f2ae08b5480e65ccd97ef14ca100f97e036344748",
+          "confidence_sha256": "78c18d04d09b8f225ec9b9d7db757bbf7a153b7bbc329e10a3d573eee78714f5"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "e1abd098fbfdec33a7609d46235a968d03fdb3937502219922a5bf028b18328e",
+          "confidence_sha256": "609d05ef4154587351d6098d268e04a94975c26b8fcab6ac1ac22db7358cf93a"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "8a005837c302edfb6d70eda2f8fda19da3aebeed72f4b21ecb74269b0af1d0a7",
+          "confidence_sha256": "56975e691e4b2c39ab2b777ef1944ce3d93db1b3ee3e70d6d111e6d9a4c8113b"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "fde5064e36600db7ec4110804c53aa90d398b284c836246e0781b24f5fc9a2c3",
+          "confidence_sha256": "7db9ea86471fb6733f46b85a35e28f0d2d0814ddf93c17cc9004fcf25f3d1a3b"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "f380eed2a2afe5e985263b1215e3cf149d86d78334249cc22dd8f9cc6f7f7c6c",
+          "confidence_sha256": "a52040fa53310f339aa5a7f42a52f1d20d5168d30e50b5527a7c14aa2bf59f21"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "2555b776a671910f486b5993044d249c638b00d5783a3e4e9515640bf6de5753",
+          "confidence_sha256": "8be7536f5074cfd9ee24a7eae4da2f3aaec40376772818b37725fa2d4f8bf038"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "73e4c8c8f1fba8c63a6cf5dd9febc3ad6262f5ca7c3ad3d928f43f4d660420b1",
+          "confidence_sha256": "2bf3a9cbbeeb24d200ea9ed79b3c83e756600b0bdd92dd670bdbb74709d9ad5d"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "3b845fc0c250c739f1ef19c20de676bd3f44e3148307b0b164f849c446cf1a33",
+          "confidence_sha256": "83adf8ad20f1625ce381c67afc34f6a5bbffec0f6c713c2f10ef76b38c12d030"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "e1227d2aa886b656a46b85505fa292bd15e1b72cf1dcd14c02a86ef85c0ccb6d",
+          "confidence_sha256": "21df0e2ffa8b40576b5e11681198d1aa3319748b4780590271d58a7e329b2fa0"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "f9a248be0f22b026ad3d939ea0f53a85a8609a0b8a46d30cc2f4ac94c3a2d71d",
+          "confidence_sha256": "6d7e4025c41f8558f78c8eb2fe02a63b691ce80dee9263f1c350705030208639"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "46c16b3f620e8d35756691b36d2b8237e97ebc1dae6ff83ca6ff91d1d3caec8b",
+          "confidence_sha256": "4c29a9e5dcaf4917ba0b4ed1b949050e9fbfe99b3491f6715edb48e4bcb34609"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "5c567c48305b029bc55aa789fcb2dc1eebbdcab0e4ee7638032e968d68d5da51",
+          "confidence_sha256": "62c77c8cd798a7318f928de64ff2bd4eb18cbdbfc9c253ae81f51b708deb17ab"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "aea2214e6ffa3561571b7535f1bc115db7e664404fbe4d18882893cf75b07ec2",
+          "confidence_sha256": "f77463c6d9d3db694ffb6768023765a1e263bc926340e4e33ba15d528d51acde"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "9906c065a399ab367d20dd85180ebbda611ae5470f65c2df0d3e8faadac9175b",
+          "confidence_sha256": "197533407b5292a4fda7125e1030e6a8b436922acd2bd292cb0cd7250d793810"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "e1520beb3109e79a2d789fc4cdaced8ad17a74d17a427b13b4481757eecb4e0b",
+          "confidence_sha256": "70ecadfd6132c230f58ea1e8d5ddaa2704dc41b9e52ab647d1d39e093591ab0e"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "1340a5fdc26e7efc146bfeed5b26ba7517465f8b8ced5f5202bc956e0e8104a5",
+          "confidence_sha256": "549fffc2d57d6c88b8e5e2e1a6b977d06f8d28097d7991f0029b97a4c8014079"
+        }
+      },
+      "semantic_product": {
+        "bag05_indoor": {
+          "bbox_sha256": "d9997d207b1b95a066f1f6b658d229c58b7fdf0783bab3ee617d6129027cb7ec",
+          "confidence_sha256": "b074c8ded37351b6e25ed4fcfcfa90923fa9eed4fdc78bb18ff1bdc21f7d3c52"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "33831d5afbec2c1617861873cca9b997e70af834339fa232336dfc87a73cc857",
+          "confidence_sha256": "05255466484e668e792d2da96bb9feb90fcb2514b61c3521e5413f0263dc121a"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "8d2155dd47645b681c8ef309019738633ff12051425de9e5ad5ec8bede2e2399",
+          "confidence_sha256": "e3ab975489f2495ebf7b050c979ebd48a8cdb1b2bfeb1baf7c2a0b41da5ce008"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "622e6c140e806c0e19aae3da1cdd66a62e1dba92f7564af136bf01c9b344a4cb",
+          "confidence_sha256": "9b42e4e74c484a25089e60fee3a623fee1ef3ef4ba50a82c59f8c87d998b11cc"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "ac5c37b70fac89c584d8267b89f6e57a0031cd15704ef714d2d1b6e6906795da",
+          "confidence_sha256": "bd1502ce49937ff5d8cd3ade68001006fb0616e9569e61c552c5ce28afc14962"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "430b4bc0371b119ef6af604eec06889e375dea706c68d0968a8a2a650029e338",
+          "confidence_sha256": "af1516e6c0e3e8940f49e75189e43b8ef7bb7c59724892c58b4d2e27ade7749e"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "7c5fc5913e7944b506d0255f2ae08b5480e65ccd97ef14ca100f97e036344748",
+          "confidence_sha256": "db30b0ad376f754c32b62534c1e01b25ab934e1bb1246ef6495da0758bc66042"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "e1abd098fbfdec33a7609d46235a968d03fdb3937502219922a5bf028b18328e",
+          "confidence_sha256": "0af7e1038cd66ff64df1d8159ffc0f806327826e445a712b08af83ad05f2aa61"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "8a005837c302edfb6d70eda2f8fda19da3aebeed72f4b21ecb74269b0af1d0a7",
+          "confidence_sha256": "8de55e3e1ca3ebb0d609492a6343ba798f30ae9de98d8573493b5fc99809d1b9"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "fde5064e36600db7ec4110804c53aa90d398b284c836246e0781b24f5fc9a2c3",
+          "confidence_sha256": "8dbfcc105c9f88b416d9b8c98aecc7387f27273b70a9f5ed182c5cb6eaf99786"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "f380eed2a2afe5e985263b1215e3cf149d86d78334249cc22dd8f9cc6f7f7c6c",
+          "confidence_sha256": "8b6c3b2fb03e18d51b8e00e004888bd53f683a5b9204b2e48ff53f0cb61b2f04"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "2555b776a671910f486b5993044d249c638b00d5783a3e4e9515640bf6de5753",
+          "confidence_sha256": "4ec26e0765f4fe7b1532e5540d79129a405837d9a28bcdeeb24708ef782b85f3"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "73e4c8c8f1fba8c63a6cf5dd9febc3ad6262f5ca7c3ad3d928f43f4d660420b1",
+          "confidence_sha256": "ed05f955019c69697ddfebda7993e98f6a2b53eda508be03fa47d68ec0c67379"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "3b845fc0c250c739f1ef19c20de676bd3f44e3148307b0b164f849c446cf1a33",
+          "confidence_sha256": "5331809590d1757bf5fa9de28a5b0c8e46b285f03f5f60a1f84b1b8bda514afa"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "e1227d2aa886b656a46b85505fa292bd15e1b72cf1dcd14c02a86ef85c0ccb6d",
+          "confidence_sha256": "786b009dfd556ae2d08ebcd69efc8f1d3f9dfb4f749091c46c94e0d1d7e06866"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "f9a248be0f22b026ad3d939ea0f53a85a8609a0b8a46d30cc2f4ac94c3a2d71d",
+          "confidence_sha256": "85993b487dcb2ca8dbfe2aa4545c363980b86c24edc9d12956170495f588f084"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "46c16b3f620e8d35756691b36d2b8237e97ebc1dae6ff83ca6ff91d1d3caec8b",
+          "confidence_sha256": "5411487ea145dfa0f41e72568f69537dae1a93d295e077de9bd65d4ac4938347"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "5c567c48305b029bc55aa789fcb2dc1eebbdcab0e4ee7638032e968d68d5da51",
+          "confidence_sha256": "84cf3cd13939122c2ac64806a05b6bf206c33d5be81f73d2480f234d658d06ff"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "aea2214e6ffa3561571b7535f1bc115db7e664404fbe4d18882893cf75b07ec2",
+          "confidence_sha256": "bcc1098f15b9d140ccac51004e9088c0d0afcf41feda2004bedc1780e2998560"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "9906c065a399ab367d20dd85180ebbda611ae5470f65c2df0d3e8faadac9175b",
+          "confidence_sha256": "c27d1f3dbc4afa064cbe1b6e55799928b6dbb8292df1494976caa5b7c8d0cb04"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "e1520beb3109e79a2d789fc4cdaced8ad17a74d17a427b13b4481757eecb4e0b",
+          "confidence_sha256": "7bda29f996fbab1e64d7be5917c595066b47f65bfd00a19b522288e664b05e03"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "1340a5fdc26e7efc146bfeed5b26ba7517465f8b8ced5f5202bc956e0e8104a5",
+          "confidence_sha256": "0553f1a07fd77b04bb93a1f2285f48b10975bb2426088f30ea345b2d3fe7b482"
+        }
+      }
+    }
+  },
+  "all_exported_boxes_identical_between_readouts": true,
+  "parent_M67_development_gate_pass": false,
+  "original_M67_gates_modified": false,
+  "no_deployment_threshold_selected": true,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "scope": "Only reused DepthTrack Train development22. No new official Test/CDTB/VOT results; no direct lexical-effect claim."
+}
