@@ -1,0 +1,125 @@
+{
+  "kind": "post_result_Train_failure_mechanism_diagnostic",
+  "created_utc": "2026-09-07T01:58:12.506104+00:00",
+  "runner_sha256": "4c934301b01f02967c8756cc5e37db66466635cbb4f1fe02d909a3feb0659b34",
+  "parent_result_sha256": "0101fa8185855044dda7462df2f9606b6e58c88248e8a7f1cf87497fb055b150",
+  "parent_training_spec_sha256": "fc04a897f3d3e246203981a2cb3b83ea50075392e30c0c960c8908eaaeabb93b",
+  "parent_recursive_spec_sha256": "09f3f193de81f9cf91518b2c05497bfea30e8ab88db812e3585f6d3618767723",
+  "integration_sha256": "5881ef1594929f0e71b0f7e8da6564e1c4669cbef86b1986b2948d7e0f231a65",
+  "bank_sha256": "e537d03f666f661f684db63586ca7d995476a7bc00e12d641ba417f619c1b3d6",
+  "base_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "head_sha256": {
+    "control": "aaf02acef08659a0ad155d4a00135b9d8281d54d96bee8fa2a5fc94974b90568",
+    "null": "5caf9c65c850cdd79d1aee75a002ffd0b74d5876292680349b9387318780e758"
+  },
+  "cases": [
+    {
+      "sequence": "glass03_indoor",
+      "frames": 675,
+      "init_bbox": [
+        301.0,
+        183.0,
+        65.0,
+        77.0
+      ],
+      "gt_sha256": "b4e6aa986c65391dfdb688c77403795f5626134f5088821ea3bd4b7284e184da"
+    },
+    {
+      "sequence": "cup13_indoor",
+      "frames": 1762,
+      "init_bbox": [
+        284.0,
+        139.0,
+        19.0,
+        24.0
+      ],
+      "gt_sha256": "bd048b8a08b71b5616f185f8e8f1727972d7addf6251881c35f94d2911099864"
+    },
+    {
+      "sequence": "cup10_indoor",
+      "frames": 2196,
+      "init_bbox": [
+        184.0,
+        200.0,
+        54.0,
+        74.0
+      ],
+      "gt_sha256": "237081c1453dc80861c19444a63b2a4f63bd56c8703285c408c3e4d52a3d55ae"
+    },
+    {
+      "sequence": "mobilephone01_indoor",
+      "frames": 1418,
+      "init_bbox": [
+        123.0,
+        127.0,
+        133.0,
+        97.0
+      ],
+      "gt_sha256": "572ff6fde310d831e0fd2dd5201805a4f9d2cf18ec1dd63a227266872bf218ce"
+    },
+    {
+      "sequence": "ball07_indoor",
+      "frames": 2519,
+      "init_bbox": [
+        157.0,
+        107.0,
+        60.0,
+        62.0
+      ],
+      "gt_sha256": "c9cb5a6fcfd0bd3f5b3582292e5c30625a4c30fee1c08e5eb247f5ae6ffaaab2"
+    }
+  ],
+  "capture_windows": {
+    "glass03_indoor": [
+      [
+        600,
+        675
+      ]
+    ],
+    "cup13_indoor": [
+      [
+        970,
+        1160
+      ]
+    ],
+    "cup10_indoor": [
+      [
+        1750,
+        1900
+      ],
+      [
+        2050,
+        2196
+      ]
+    ],
+    "mobilephone01_indoor": [
+      [
+        850,
+        1020
+      ],
+      [
+        1300,
+        1418
+      ]
+    ],
+    "ball07_indoor": [
+      [
+        1380,
+        1560
+      ]
+    ]
+  },
+  "also_capture_every_50_frames": true,
+  "diagnostic_heads": [
+    "actual_semantic",
+    "unadapted_head_same_current_features"
+  ],
+  "changes_to_public_tracking": false,
+  "new_text_content_controls": false,
+  "new_training": false,
+  "public_evaluation_allowed": false,
+  "GT_policy": "Only frozen t0 box in run; all later GT opened in analyze after both exact replays seal.",
+  "selection_scope": "Five already examined Train development failure/regression sequences; no deployment trigger or unbiased test.",
+  "candidate_protocol": "Existing NMS top10; all 256 boxes decoded with native cal_bbox; GT used after sealing only.",
+  "state_policy": "Head-only probe receives cloned pre-adapter fused tokens; no alternate crop, query, bbox or template commits."
+}
