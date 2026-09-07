@@ -1,0 +1,131 @@
+--- M64/m64_full_preparation_20260907.py
++++ M73/m73_full_preparation_20260907.py
+@@ -1,4 +1,4 @@
+-"""Conditional full-dataset preparation for the unchanged M64 bundle."""
++"""Conditional full-dataset preparation for the unchanged M73 bundle."""
+ import argparse
+ from datetime import datetime, timezone
+ import hashlib
+@@ -8,9 +8,9 @@
+ import shutil
+ import sys
+ 
+-ROOT=Path('/root/autodl-tmp/sttrack_m64_category_candidate_20260907')
++ROOT=Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation')
+ FULL=ROOT/'full_evaluation'
+-INTERFACE=Path('/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906')
++INTERFACE=Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation/interface')
+ GENERATOR=Path('/root/autodl-tmp/sttrack_m58_initialization_generator_20260906')
+ EXPORTER=Path('/root/autodl-tmp/sttrack_m58_vot_initialization_export_20260906/export_initializations.py')
+ NATIVE=Path('/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906')
+@@ -37,21 +37,46 @@
+     s=importlib.util.spec_from_file_location(name,str(path));m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
+ 
+ 
+-def sources():
+-    spec=module('candidate64',Path('/root/autodl-tmp/m64_category_candidate_20260907.py')).checked()
++EXTRA_SOURCES=['m73_full_preparation_20260907.py','m73_full_vot_20260907.py','verify_m73_three_datasets_20260907.py','m73_full_evaluation_20260907.sh']
++CANDIDATE_SPEC_SHA='af20b98be8654ab214a71f481fe943c17505a4b1ee1e20c09affcfdd78e4b5c9'
++
++
++def contracts():
++    assert sha(ROOT/'spec.json')==CANDIDATE_SPEC_SHA
++    candidate=module('candidate73',Path('/root/autodl-tmp/m73_candidate_evaluation_20260907.py'))
++    spec=candidate.checked_preparation()
+     for p,h in FINGERPRINTS.items():assert sha(p)==h,p
+-    sys.path.insert(0,str(INTERFACE))
+-    from semantic_runtime import checked_plan
+-    _,bundle=checked_plan(ROOT/'low22_plan.json')
++    assert sha(GENERATOR/'initialization_captions.py')=='eeb15e8bee4a40692cfb19e8ec73329e232f3a8c25c96f789a03b991d71ac655'
+     inputs=json.loads((NATIVE/'inputs.json').read_text());native=json.loads((NATIVE/'spec.json').read_text())
++    assert sha(native['metric_source'])==native['metric_source_sha256']
+     for name,count,frames in [('depthtrack',50,76373),('cdtb',80,101956)]:
+         assert len(inputs[name])==count and sum(r['frames'] for r in inputs[name])==frames
+         assert all(r['root']==native['datasets'][name]['root'] for r in inputs[name])
+         gt=json.loads((NATIVE/('metrics_'+name+'.json')).read_text())['groundtruth_sha256']
+         assert set(gt)=={r['sequence'] for r in inputs[name]}
+-    full=json.loads(MANIFEST.read_text());assert len(full['sequences'])==127 and full['total_anchor_count']==1765
+-    assert full['total_estimated_frames']==1327004
++    full=json.loads(MANIFEST.read_text())
++    assert len(full['sequences'])==127 and full['total_anchor_count']==1765 and full['total_estimated_frames']==1327004
++    return spec,inputs,native,candidate
++
++
++def sources():
++    _,inputs,native,candidate=contracts()
++    proof=json.loads((ROOT/'full_preparation_readiness.json').read_text())
++    assert proof['candidate_spec_sha256']==CANDIDATE_SPEC_SHA
++    for p,h in proof['full_source_sha256'].items():assert sha(p)==h,p
++    spec=candidate.checked()
++    sys.path.insert(0,str(INTERFACE));from semantic_runtime import checked_plan
++    _,bundle=checked_plan(ROOT/'low22_plan.json')
+     return spec,bundle,inputs,native
++
++
++def retain_category(bank,protocol_sha):
++    out=dict(bank);out['tokens']=bank['tokens'].clone()
++    for i in range(len(out['keys'])):
++        for j in range(1,5):
++            if bool(out['mask'][i,j]):out['tokens'][i,j]=out['empty']
++    out['protocol_sha256']=protocol_sha
++    return out
+ 
+ 
+ def eligible():
+@@ -71,15 +96,26 @@
+ 
+ 
+ def check_sources():
+-    spec,bundle,inputs,native=sources()
+-    p=ROOT/'full_preparation_readiness.json'
+-    result=dict(status='source_and_metadata_contract_verified_only',observed_utc=datetime.now(timezone.utc).isoformat(),
+-        preparation_source_sha256=sha(__file__),bundle_sha256=spec['bundle_sha256'],text_protocol_sha256=spec['text_protocol_sha256'],
+-        source_sha256={str(p):h for p,h in FINGERPRINTS.items()},
+-        OPE_datasets=native['datasets'],VOT_sequences=127,VOT_anchors=1765,VOT_planned_frame_positions=1327004,
++    import subprocess
++    spec,inputs,native,_=contracts()
++    p=ROOT/'full_preparation_readiness.json';assert not p.exists()
++    assert not (ROOT/'bundle.json').exists() and not FULL.exists()
++    for name in EXTRA_SOURCES:
++        source=Path('/root/autodl-tmp')/name
++        if source.suffix=='.py':compile(source.read_text(),name,'exec')
++        else:subprocess.run(['bash','-n',str(source)],check=True)
++    result=dict(status='M73_full_dataset_sources_and_counts_verified_only',observed_utc=datetime.now(timezone.utc).isoformat(),
++        preparation_source_sha256=sha(__file__),candidate_spec_sha256=CANDIDATE_SPEC_SHA,
++        text_protocol_sha256=spec['text_protocol_sha256'],source_sha256={str(p):h for p,h in FINGERPRINTS.items()},
++        full_source_sha256={str(Path('/root/autodl-tmp')/n):sha(Path('/root/autodl-tmp')/n) for n in EXTRA_SOURCES},
++        generator_sha256=sha(GENERATOR/'initialization_captions.py'),OPE_datasets=native['datasets'],
++        metric_source_sha256=native['metric_source_sha256'],VOT_sequences=127,VOT_anchors=1765,VOT_planned_frame_positions=1327004,
++        existing_low22_anchors_to_preserve=303,remaining_VOT_anchors=1462,
++        full_bank_deficit='DepthTrack Test and CDTB first-frame banks plus remaining VOT initialization observations; generate only after low22 passes.',
+         public_images_decoded=0,new_caption_calls=0,new_tracking_calls=0,new_training_steps=0,
+-        full_low22_gate_required=True,full_evaluation_started=False,
+-        next='Only after all M64 low22 checks pass: prepare first-frame observations, generate and encode with the shared protocol, bind the same bundle, then run full inference. This check does not qualify full evaluation or claim an execution test.')
++        full_low22_gate_required=True,final_bundle_created=False,full_evaluation_started=False,
++        next='After actual M73 low22 pass only: causal initialization captions and category encoding, fixed-bundle OPE/full127, saved-output and target verification.',
++        independent_model_review_pass=False)
+     write(p,result);print(json.dumps(result,indent=2))
+ 
+ 
+@@ -111,9 +147,8 @@
+     prepared=json.loads((root/'preparation.json').read_text());assert prepared['source_sha256']==sha(__file__)
+     encoded=json.loads((root/'captions/encoding_result.json').read_text())
+     assert encoded['bank_sha256']==sha(root/'captions/text_bank.pt')
+-    c=module('candidate64bank',Path('/root/autodl-tmp/m64_category_candidate_20260907.py'))
+     raw=torch.load(root/'captions/text_bank.pt',map_location='cpu')
+-    bank=c.retain_category(raw,spec['text_protocol_sha256']);torch.save(bank,root/'category.pt')
++    bank=retain_category(raw,spec['text_protocol_sha256']);torch.save(bank,root/'category.pt')
+     plan=dict(bundle_path=str(ROOT/'bundle.json'),bundle_sha256=spec['bundle_sha256'],
+         text_bank_path=str(root/'category.pt'),text_bank_sha256=sha(root/'category.pt'),
+         cases_path=str(root/'cases.json'),cases_sha256=prepared['cases_sha256'],
+@@ -143,8 +178,9 @@
+ 
+ 
+ if __name__=='__main__':
+-    p=argparse.ArgumentParser();p.add_argument('action',choices=['check_sources','prepare_ope','bank_ope','export_vot']);p.add_argument('--dataset',choices=['depthtrack','cdtb']);a=p.parse_args()
++    p=argparse.ArgumentParser();p.add_argument('action',choices=['check_sources','eligible','prepare_ope','bank_ope','export_vot']);p.add_argument('--dataset',choices=['depthtrack','cdtb']);a=p.parse_args()
+     if a.action=='check_sources':check_sources()
++    elif a.action=='eligible':eligible();print('M73_FULL_LOW22_PREREQUISITES_VERIFIED')
+     elif a.action=='export_vot':export_vot()
+     else:
+         assert a.dataset is not None

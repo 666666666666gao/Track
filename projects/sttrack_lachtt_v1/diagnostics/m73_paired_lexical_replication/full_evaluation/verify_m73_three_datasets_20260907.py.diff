@@ -1,0 +1,38 @@
+--- M64/verify_m64_three_datasets_20260907.py
++++ M73/verify_m73_three_datasets_20260907.py
+@@ -1,4 +1,4 @@
+-"""Verify complete saved predictions and numeric targets for one M64 bundle."""
++"""Verify complete saved predictions and numeric targets for one M73 bundle."""
+ from datetime import datetime, timezone
+ import hashlib
+ import importlib.util
+@@ -8,9 +8,9 @@
+ import numpy as np
+ import torch
+ 
+-ROOT=Path('/root/autodl-tmp/sttrack_m64_category_candidate_20260907')
++ROOT=Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation')
+ FULL=ROOT/'full_evaluation'
+-INTERFACE=Path('/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906')
++INTERFACE=Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation/interface')
+ TARGETS={'depthtrack':{'precision_percent':65.2,'recall_percent':64.9,'f_score_percent':65.1},
+          'cdtb':{'precision_percent':72.9,'recall_percent':75.6,'f_score_percent':74.2},
+          'vot':{'EAO':77.9,'ACC':82.1,'ROB':93.7}}
+@@ -28,7 +28,7 @@
+ 
+ 
+ def main():
+-    helper=module('final_helper',Path('/root/autodl-tmp/m64_full_preparation_20260907.py'))
++    helper=module('final_helper',Path('/root/autodl-tmp/m73_full_preparation_20260907.py'))
+     spec,bundle,_,_=helper.eligible()
+     sys.path.insert(0,str(INTERFACE));from semantic_runtime import checked_plan
+     vot=json.loads((FULL/'vot/result.json').read_text())
+@@ -75,7 +75,7 @@
+     master=FULL/'vot/run/master';merge_path=FULL/'vot/run/merge_result.json';merge=json.loads(merge_path.read_text())
+     assert sha(merge_path)==vot['merge_sha256'] and merge['anchor_count']==1765 and merge['result_file_count']==5295
+     for rel,h in merge['result_sha256'].items():assert sha(master/rel)==h
+-    analysis=master/'analysis/m64_category_full127_analysis.json';assert sha(analysis)==vot['analysis_sha256']
++    analysis=master/'analysis/m73_category_full127_analysis.json';assert sha(analysis)==vot['analysis_sha256']
+     data=json.loads(analysis.read_text())['results']['baseline']['results']
+     v=dict(EAO=float(data[0][0][0])*100,ACC=float(data[2][0][0])*100,ROB=float(data[2][0][1])*100)
+     assert v==vot['metrics_percent']

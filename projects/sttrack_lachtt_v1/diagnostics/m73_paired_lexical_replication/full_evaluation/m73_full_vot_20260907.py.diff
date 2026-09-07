@@ -1,0 +1,105 @@
+--- M64/m64_full_vot_20260907.py
++++ M73/m73_full_vot_20260907.py
+@@ -1,4 +1,4 @@
+-"""Conditional full VOT preparation preserving the exact M64 low22 inputs."""
++"""Conditional full VOT preparation preserving the exact M73 low22 inputs."""
+ import argparse
+ from datetime import datetime, timezone
+ import hashlib
+@@ -10,11 +10,12 @@
+ import subprocess
+ import sys
+ 
+-ROOT=Path('/root/autodl-tmp/sttrack_m64_category_candidate_20260907')
++ROOT=Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation')
+ FULL=ROOT/'full_evaluation/vot'
+-INTERFACE=Path('/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906')
++INTERFACE=Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation/interface')
++LOW_CAPTIONS=Path('/root/autodl-tmp/sttrack_m64_category_candidate_20260907/low22_captions')
+ GENERATOR=Path('/root/autodl-tmp/sttrack_m58_initialization_generator_20260906')
+-TRACKER='sttrack_m64_category_full127'
++TRACKER='sttrack_m73_category_full127'
+ PYTHON='/root/miniconda3/envs/mplt/bin/python'
+ 
+ 
+@@ -33,7 +34,7 @@
+ 
+ 
+ def eligible():
+-    p=Path('/root/autodl-tmp/m64_full_preparation_20260907.py')
++    p=Path('/root/autodl-tmp/m73_full_preparation_20260907.py')
+     proof=json.loads((ROOT/'full_preparation_readiness.json').read_text())
+     assert sha(p)==proof['preparation_source_sha256']
+     helper=module('full_prep64',p)
+@@ -50,7 +51,7 @@
+     assert exported['anchors']==1765 and exported['sequences']==127
+     sys.path.insert(0,str(GENERATOR));import initialization_captions as app
+     plan=app.prepare(FULL/'initializations/caption_inputs.json',FULL/'all_initializations')
+-    old_plan=json.loads((ROOT/'low22_captions/plan.json').read_text())
++    old_plan=json.loads((LOW_CAPTIONS/'plan.json').read_text())
+     old_ids={c['id']:c['key'] for c in old_plan['cases']};all_ids={c['id']:c['key'] for c in plan['cases']}
+     assert len(old_ids)==303 and len(all_ids)==1765 and all(all_ids[k]==v for k,v in old_ids.items())
+     old_anchors=json.loads(Path('/root/autodl-tmp/sttrack_m58_vot_initialization_export_20260906/low22_inputs/anchors.json').read_text())
+@@ -66,7 +67,7 @@
+     assert set(r['key'] for r in remaining['rows'])==set(rows)-old_keys
+     summary=dict(status='full_initializations_partitioned_without_regenerating_low22',observed_utc=datetime.now(timezone.utc).isoformat(),
+         source_sha256=sha(__file__),bundle_sha256=spec['bundle_sha256'],text_protocol_sha256=spec['text_protocol_sha256'],
+-        old_caption_plan_sha256=sha(ROOT/'low22_captions/plan.json'),old_caption_records_sha256=sha(ROOT/'low22_captions/records.jsonl'),
++        old_caption_plan_sha256=sha(LOW_CAPTIONS/'plan.json'),old_caption_records_sha256=sha(LOW_CAPTIONS/'records.jsonl'),
+         old_category_bank_sha256=sha(ROOT/'low22_category.pt'),all_plan_sha256=sha(FULL/'all_initializations/plan.json'),
+         remaining_plan_sha256=sha(FULL/'remaining_captions/plan.json'),all_cases=1765,reused_low22_cases=303,
+         all_unique_observations=len(plan['rows']),new_caption_observations=len(remaining['rows']),
+@@ -78,13 +79,12 @@
+     import torch
+     helper,spec,bundle=eligible()
+     partition=json.loads((FULL/'caption_partition.json').read_text());assert partition['source_sha256']==sha(__file__)
+-    for p,k in [(ROOT/'low22_category.pt','old_category_bank_sha256'),(ROOT/'low22_captions/records.jsonl','old_caption_records_sha256'),(FULL/'all_initializations/plan.json','all_plan_sha256'),(FULL/'remaining_captions/plan.json','remaining_plan_sha256')]:assert sha(p)==partition[k]
++    for p,k in [(ROOT/'low22_category.pt','old_category_bank_sha256'),(LOW_CAPTIONS/'records.jsonl','old_caption_records_sha256'),(FULL/'all_initializations/plan.json','all_plan_sha256'),(FULL/'remaining_captions/plan.json','remaining_plan_sha256')]:assert sha(p)==partition[k]
+     encoded=json.loads((FULL/'remaining_captions/encoding_result.json').read_text())
+     assert encoded['bank_sha256']==sha(FULL/'remaining_captions/text_bank.pt')
+     old=torch.load(ROOT/'low22_category.pt',map_location='cpu');raw=torch.load(FULL/'remaining_captions/text_bank.pt',map_location='cpu')
+     assert torch.equal(old['empty'],raw['empty'])
+-    candidate=module('cat64',Path('/root/autodl-tmp/m64_category_candidate_20260907.py'))
+-    new=candidate.retain_category(raw,spec['text_protocol_sha256'])
++    new=helper.retain_category(raw,spec['text_protocol_sha256'])
+     assert not set(old['keys'])&set(new['keys'])
+     plan=json.loads((FULL/'all_initializations/plan.json').read_text());keys=[r['key'] for r in plan['rows']]
+     lookup={key:(b,i) for b in [old,new] for i,key in enumerate(b['keys'])};assert set(lookup)==set(keys)
+@@ -103,9 +103,9 @@
+     metadata=json.loads((FULL/'initializations/metadata_sha256.json').read_text())
+     for p,h in metadata.items():assert sha(p)==h,p
+     frozen=json.loads(helper.MANIFEST.read_text());run=FULL/'run';run.mkdir()
+-    wrapper=FULL/'m64_full_semantic_vot.py'
++    wrapper=FULL/'m73_full_semantic_vot.py'
+     wrapper.write_text("import sys\nsys.path.insert(0,'"+str(INTERFACE)+"')\nfrom run_semantic_vot import run\nrun('"+str(FULL/'plan.json')+"')\n")
+-    ini=(f'[{TRACKER}]\nlabel = M64 category-retention full127\nprotocol = traxpython\ncommand = m64_full_semantic_vot\npaths = {FULL}\n'
++    ini=(f'[{TRACKER}]\nlabel = M73 category-retention full127\nprotocol = traxpython\ncommand = m73_full_semantic_vot\npaths = {FULL}\n'
+          'python = /root/autodl-tmp/envs/sttrack/bin/python\nenv_CUDA_VISIBLE_DEVICES = 1\n'
+          f'env_PYTHONPATH = {FULL}\nenv_TOKENIZERS_PARALLELISM = false\nenv_PYTHONDONTWRITEBYTECODE = 1\ntimeout = 600\nrestart = false\n')
+     low_manifest=json.loads((ROOT/'low22_run/shard_manifest.json').read_text())
+@@ -127,13 +127,13 @@
+                 assert sha(out)==sha(source);seeded[str(out.relative_to(FULL))]=dict(source=str(source),sha256=sha(out))
+         shards.append(dict(s,root=str(dest),gpu=1,trackers_sha256=sha(dest/'trackers.ini')))
+     assert len(seeded)==909
+-    manifest=dict(frozen,schema='m64_same_bundle_full127_v1',tracker=TRACKER,gpu_count=1,shards=shards,
+-        native_source='Only native dataset/shard metadata reused; all predictions belong to the M64 bundle.')
++    manifest=dict(frozen,schema='m73_same_bundle_full127_v1',tracker=TRACKER,gpu_count=1,shards=shards,
++        native_source='Only native dataset/shard metadata reused; all predictions belong to the M73 bundle.')
+     write(run/'shard_manifest.json',manifest)
+     runner=FULL/'run_vot_failure_family_shards.py';shutil.copyfile(ROOT/'run_vot_failure_family_shards.py',runner)
+     write(FULL/'preseed_receipt.json',dict(status='same_bundle_low22_results_reused',source_merge_sha256=sha(ROOT/'low22_run/merge_result.json'),
+         anchors=303,files=seeded,identical_low22_tokens_masks_and_initializations=True,native_predictions_reused=0))
+-    files=[Path(__file__),wrapper,runner,FULL/'category.pt',FULL/'plan.json',run/'shard_manifest.json',FULL/'preseed_receipt.json',ROOT/'bundle.json',ROOT/'text_protocol.json']
++    files=[Path(__file__),wrapper,runner,FULL/'category.pt',FULL/'plan.json',run/'shard_manifest.json',FULL/'preseed_receipt.json',ROOT/'bundle.json',INTERFACE/'text_protocol.json']
+     files += [Path(s['root'])/n for s in shards for n in ['trackers.ini','config.yaml','sequences/list.txt']]
+     files += [INTERFACE/n for n in bundle['interface_sha256']]
+     files += [Path(p) for p in metadata]
+@@ -156,7 +156,7 @@
+     assert merge['anchor_count']==1765 and merge['result_file_count']==5295
+     assert merge['source_manifest_sha256']==sha(run/'shard_manifest.json')
+     for rel,h in merge['result_sha256'].items():assert sha(run/'master'/rel)==h
+-    name='m64_category_full127_analysis'
++    name='m73_category_full127_analysis'
+     with (FULL/'toolkit_analysis.log').open('w') as log:
+         subprocess.run([PYTHON,'-m','vot','analysis','--workspace',str(run/'master'),'--format','json','--name',name,TRACKER],
+             env=dict(os.environ,PYTHONPATH='/home/SUTrack_RGBD_L'),stdout=log,stderr=subprocess.STDOUT,check=True)

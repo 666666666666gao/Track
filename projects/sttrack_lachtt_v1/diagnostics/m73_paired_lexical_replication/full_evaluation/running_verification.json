@@ -1,0 +1,59 @@
+{
+  "status": "M73_full_helpers_verified_original_training_live",
+  "observed_utc": "2026-09-07T10:22:23.894555+00:00",
+  "jobs": [
+    {
+      "pid": 482884,
+      "start_ticks": "4579784392",
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907",
+      "argv": [
+        "bash",
+        "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/run_m73.sh"
+      ]
+    },
+    {
+      "pid": 482891,
+      "start_ticks": "4579784502",
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "empty"
+      ]
+    },
+    {
+      "pid": 482892,
+      "start_ticks": "4579784502",
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "category"
+      ]
+    },
+    {
+      "pid": 484228,
+      "start_ticks": "4579959586",
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/completion_queue",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/root/autodl-tmp/m73_completion_queue_20260907.py",
+        "run"
+      ]
+    }
+  ],
+  "disk_free_bytes": 1978118144,
+  "readiness_sha256": "47ec0977c21c2dec38513092b4261031e19fdc48af842f6ee635671dc6b1daa8",
+  "CPU_check_sha256": "6316a69537603bcdbcd99e31411148cd61f9657c5a71f78d44066c86853e9ce2",
+  "full_evaluation_directory_created": false,
+  "candidate_bundle_created": false,
+  "new_model_calls": 0,
+  "new_caption_calls": 0,
+  "independent_model_review_pass": false,
+  "exporter_sha256": "f36fd0eca947821f766d3e8f1767c6549766692a0d7a72e12eba8b5a46c6d42a"
+}
