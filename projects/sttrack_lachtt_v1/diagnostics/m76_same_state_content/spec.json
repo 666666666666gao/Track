@@ -1,0 +1,145 @@
+{
+  "status": "frozen_M76_post_result_same_state_content_probe",
+  "observed_utc": "2026-09-07T14:35:51.357794+00:00",
+  "source_sha256": "0ba57381de9fa2de8ede9d6198a1c030ef4e555e410d148fb8b2a2764736124b",
+  "queue_sha256": "53f6dc3f7a42efa06297ed734fbf5e9fad60051552352bf4bac4309f9c918393",
+  "M74_spec_sha256": "636baf52a2418cf01879d3a440afa5a6b2f039c454a2771296d000e357a6427a",
+  "M74_result_sha256": "cad42b93712f017af9b79c615f7e8264de614c0b982d0e32be9d398927089820",
+  "M74_audit_sha256": "ddba08da45fddf83b2ddd56195a01a72c8af6bc7971a83f27f26569f3e5b9d84",
+  "M75_result_sha256": "18d79edfb53ee3e908d98a9b8011163272efa13958fac08b4de9005636ecf268",
+  "head_sha256": "8f912e8b8ced42e67ce39b4643cb46aeb835f672309261967c354f2150e82e72",
+  "cases": [
+    {
+      "sequence": "book06_indoor",
+      "frames": 1991,
+      "init_bbox": [
+        230.0,
+        168.0,
+        107.0,
+        62.0
+      ],
+      "gt_sha256": "df6b93503aa8177ac8b0e32507124189f453bce6c5bcb5f993667850f77b58a1",
+      "stop_frame_exclusive": 1266
+    },
+    {
+      "sequence": "cup08_indoor",
+      "frames": 1451,
+      "init_bbox": [
+        280.0,
+        202.0,
+        43.0,
+        45.0
+      ],
+      "gt_sha256": "b7c606e0373f5cdba15ecb21efa1ce293bc6620c5ffa60ddb567a1394c67f1c8",
+      "stop_frame_exclusive": 833
+    },
+    {
+      "sequence": "cup10_indoor",
+      "frames": 2196,
+      "init_bbox": [
+        184.0,
+        200.0,
+        54.0,
+        74.0
+      ],
+      "gt_sha256": "237081c1453dc80861c19444a63b2a4f63bd56c8703285c408c3e4d52a3d55ae",
+      "stop_frame_exclusive": 2172
+    },
+    {
+      "sequence": "egg_indoor",
+      "frames": 3552,
+      "init_bbox": [
+        310.0,
+        290.0,
+        40.0,
+        39.0
+      ],
+      "gt_sha256": "a4010da190dfc37a2c48efdc21c60993e398af6b9df87b91dc3aee813e5bc9bd",
+      "stop_frame_exclusive": 2658
+    }
+  ],
+  "capture_windows": {
+    "book06_indoor": [
+      1176,
+      1266
+    ],
+    "cup08_indoor": [
+      719,
+      833
+    ],
+    "cup10_indoor": [
+      2127,
+      2172
+    ],
+    "egg_indoor": [
+      2609,
+      2658
+    ]
+  },
+  "selected_intervals": [
+    {
+      "sequence": "book06_indoor",
+      "H10_start": 1253,
+      "H10_end_exclusive": 1266,
+      "last_valid_correct_frame": 1178,
+      "capture_start": 1176,
+      "capture_end_exclusive": 1266
+    },
+    {
+      "sequence": "cup08_indoor",
+      "H10_start": 750,
+      "H10_end_exclusive": 833,
+      "last_valid_correct_frame": 721,
+      "capture_start": 719,
+      "capture_end_exclusive": 833
+    },
+    {
+      "sequence": "cup10_indoor",
+      "H10_start": 2156,
+      "H10_end_exclusive": 2172,
+      "last_valid_correct_frame": 2129,
+      "capture_start": 2127,
+      "capture_end_exclusive": 2172
+    },
+    {
+      "sequence": "egg_indoor",
+      "H10_start": 2628,
+      "H10_end_exclusive": 2658,
+      "last_valid_correct_frame": 2611,
+      "capture_start": 2609,
+      "capture_end_exclusive": 2658
+    }
+  ],
+  "banks": {
+    "category": {
+      "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_development.pt",
+      "sha256": "e537d03f666f661f684db63586ca7d995476a7bc00e12d641ba417f619c1b3d6"
+    },
+    "empty": {
+      "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/development_empty.pt",
+      "sha256": "4da5777613ff304f2bcd629df3fd61e6f2b267cc8d9aabf8eb79ab7655d03bed"
+    },
+    "swapped": {
+      "path": "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907/swapped.pt",
+      "sha256": "955343f3e86d8e8d1bf15f29ee777de3b5098f37c80f2b2b5ea88aa44eda9125"
+    }
+  },
+  "seed": 2027,
+  "capture_rule": "Four strict M74 harms whose GT centers remain in the Category search at H10 onset. Capture from two frames before the latest valid correct Category frame through the H10 end, plus every scheduled template-check frame in each replayed prefix.",
+  "new_track_calls": 6925,
+  "estimated_runtime_seconds": 450,
+  "poll_seconds": 240,
+  "heads": [
+    "category",
+    "empty",
+    "swapped",
+    "unadapted_same_state"
+  ],
+  "GT_policy": "GT selects diagnostic windows during CPU preparation and scores sealed probes afterward. Replay/probes receive only frozen initialization boxes, images and frozen text banks.",
+  "state_policy": "Run the original Category prefix exactly. Clone the actual six pre-adapter inputs. Read Empty/Swapped using the same trained adapter and unadapted head using the same pre-adapter fused features; never commit probe bbox/query/template/semantic state.",
+  "interpretation": "These are one-frame counterfactuals on the Category trajectory, not alternative recursive recoveries or an independent native baseline. Deliberately selected four reused Train development harms, not an unbiased distribution.",
+  "new_optimizer_steps": 0,
+  "new_training_seeds": [],
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false
+}
