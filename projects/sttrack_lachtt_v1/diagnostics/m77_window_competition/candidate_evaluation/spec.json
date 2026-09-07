@@ -1,0 +1,77 @@
+{
+  "status": "M77_candidate_entry_CPU_prepared_before_final_results",
+  "observed_utc": "2026-09-07T15:45:45.845962+00:00",
+  "source_sha256": {
+    "m77_candidate_evaluation_20260907.py": "04fe660ac93c76371acdfec36361a205f9ceff1e800638fce2119585bd62cf39",
+    "m77_learned_entry_parity_20260907.py": "4cdf8b0dc4bb7d0fd54bb2896f710351851d6518dcd52cba18e3e767f388b39e",
+    "m77_vot_low22_20260907.py": "4616b615f01f479bb4e2a36de60dca836c58cc4bc038c03f0b86b44c6a8edc3c",
+    "m77_candidate_entry_20260907.sh": "f5b1a7f454aa9d8146d032ba7ad3bbada8568e4c16b9a8a8fe8eea2b16522e27",
+    "m77_candidate_low22_20260907.sh": "564ffe359a89c14b1e2071f3dc0f6eb6d7382a384f5c3312fba74c29dd96f7f5"
+  },
+  "training_spec_sha256": "7162b4c6043d1895097a3cdec79f6373364031e6b100edbd08983f0f8a858f47",
+  "M77_spec_sha256": "77701eff3d0aa6fee0ddbc4d9c3da4ddb2834d0104ee54605095b4633a288f41",
+  "M77_frozen_sha256": "600153b4193ab2cd9014f59f7ad767abae7cb1708097d502ccf6723ac95ce5ed",
+  "content_source_sha256": "58e52b047f428857255e56ebd18a966f81f74fcb787217d5d52eebfdc6453a7e",
+  "content_spec_sha256": "ce95e06d20f14a317b142e8c4719e4593d7762572df83bdbe74e3c1b8d6188cc",
+  "parent_interface_spec_sha256": "323620eab82b163a3a9e6de54ea8e17da5dbc0cf7336b3717ef443082b59e07b",
+  "interface_sha256": {
+    "initialization_text.py": "5ffd459fe13242537571809f8a77b1a57c2b5dea97291221f4c5b4738eedf941",
+    "semantic_runtime.py": "a5d018351b6c02d7a3a88f376edc7303fcf9e1da4b0927bf989dfdac3cebc8ef",
+    "run_semantic_ope.py": "e307b62197df87d4626a5693350fb14461b1ae397499ebd6fd92d122cba98758",
+    "run_semantic_vot.py": "1ae1f2246aaa943f7d896a4086937b4680bc4b4c6d9dd61d7829ca1a7f5d7272",
+    "m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316"
+  },
+  "text_protocol_sha256": "09dfbbd8dd9ed62be50e4f0705dd307a2b5ce1278d072ad9f6634e9721c460dc",
+  "initial_fixture_sha256": "5c27b6c35a61d4f55964368fd6a58a69b7b2fde66059d509b9079ceaa0a643fe",
+  "banks": {
+    "development": {
+      "path": "/root/autodl-tmp/sttrack_m77_window_competition_20260907/candidate_evaluation/development_category.pt",
+      "sha256": "90459641b8cf843e19fccb3b3b5d2c27edb564a2552cf04fc9551a9df857c453"
+    },
+    "low22": {
+      "path": "/root/autodl-tmp/sttrack_m77_window_competition_20260907/candidate_evaluation/low22_category.pt",
+      "sha256": "fe554a8786e1c7e97835467770c42b8395548b7996e781faaed7dec6b26382fb"
+    }
+  },
+  "parent_low22_bank_sha256": "332d92cafa874bfc34a4354af0e49969503c50fbfd09e632224c498ece6c8496",
+  "parent_low22_caption_plan_sha256": "5835a31ff987f9f9f1cd89f346843b3830491f8a966585880e631d022bad0ecf",
+  "final_head": "/root/autodl-tmp/sttrack_m77_window_competition_20260907/training/category/final.pth",
+  "candidate_seed": 2027,
+  "additional_seeds": [],
+  "architecture": "semantic_spatial_support_v1",
+  "null_support": true,
+  "arm": "category",
+  "support_loss_weight": 0.0,
+  "reported_confidence": "Original Hann maximum; no Null product, normalization, or confidence rescaling.",
+  "template_control": "Original interval50 and raw Hann maximum strictly greater than0.75.",
+  "same_bundle_across_three_datasets": true,
+  "reused_development_sets_not_unseen": true,
+  "full_evaluation_gate": {
+    "EAO_min": 57.635993,
+    "ACC_min": 75.719622,
+    "ROB_min": 73.022401,
+    "confirmed_failures_max": 118,
+    "preserve_all_seven_native_zero_failure_sequences": true,
+    "all303_anchors_complete": true,
+    "identical_bundle_and_text_protocol": true
+  },
+  "gate_provenance": "Carry forward the M64/M67/M73 low22 gate unchanged before M77 final outcomes; require all fifteen M77 development gates and all eight existing content comparisons before binding.",
+  "entry_prefixes": [
+    "bag05_indoor",
+    "container01_indoor",
+    "mobilephone02_indoor"
+  ],
+  "frames_per_entry_prefix": 202,
+  "required_order": [
+    "All fifteen M77 seed2027 development gates and completed audit",
+    "All eight fixed Category head content comparisons",
+    "Bind that one final",
+    "Real OPE/TraX parity on three Train prefixes",
+    "All303 low22 anchors",
+    "Full three datasets only after low22 gate passes"
+  ],
+  "actual_gpu_entry_parity_checked": false,
+  "final_bundle_created": false,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false
+}

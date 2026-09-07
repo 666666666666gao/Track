@@ -1,0 +1,74 @@
+{
+  "observed_utc": "2026-09-07T15:51:49.176110+00:00",
+  "processes": [
+    {
+      "pid": 495611,
+      "start_ticks": "4581846567",
+      "state": "S",
+      "argv": [
+        "bash",
+        "/root/autodl-tmp/sttrack_m77_window_competition_20260907/run_pair.sh"
+      ]
+    },
+    {
+      "pid": 495614,
+      "start_ticks": "4581846567",
+      "state": "R",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "empty"
+      ]
+    },
+    {
+      "pid": 495615,
+      "start_ticks": "4581846567",
+      "state": "R",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "category"
+      ]
+    },
+    {
+      "pid": 496607,
+      "start_ticks": "4581958397",
+      "state": "S",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/root/autodl-tmp/m77_content_followup_20260907.py",
+        "controller"
+      ]
+    }
+  ],
+  "training_spec_sha256": "7162b4c6043d1895097a3cdec79f6373364031e6b100edbd08983f0f8a858f47",
+  "frozen_sha256": "600153b4193ab2cd9014f59f7ad767abae7cb1708097d502ccf6723ac95ce5ed",
+  "followup_source_sha256": "58e52b047f428857255e56ebd18a966f81f74fcb787217d5d52eebfdc6453a7e",
+  "followup_stage": {
+    "stage": "waiting_for_original_training_and_recursion",
+    "observed_utc": "2026-09-07T15:51:23.490497+00:00",
+    "verified_parent_pid": 495611
+  },
+  "disk_free_bytes": 1800380416,
+  "preserved_Qwen": [
+    {
+      "name": "Qwen3_8B",
+      "shards": 5,
+      "bytes": 16381516776
+    },
+    {
+      "name": "Qwen2.5-VL-3B-Instruct",
+      "shards": 2,
+      "bytes": 7509337976
+    }
+  ],
+  "new_weight_downloads": 0,
+  "new_weight_deletions": 0,
+  "new_training_seeds": [],
+  "public_evaluation_started": false
+}

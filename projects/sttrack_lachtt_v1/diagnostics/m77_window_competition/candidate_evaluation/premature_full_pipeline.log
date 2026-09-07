@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m77_full_preparation_20260907.py", line 183, in <module>
+    elif a.action=='eligible':eligible();print('M77_FULL_LOW22_PREREQUISITES_VERIFIED')
+  File "/root/autodl-tmp/m77_full_preparation_20260907.py", line 83, in eligible
+    spec,bundle,inputs,native=sources()
+  File "/root/autodl-tmp/m77_full_preparation_20260907.py", line 67, in sources
+    spec=candidate.checked()
+  File "/root/autodl-tmp/m77_candidate_evaluation_20260907.py", line 214, in checked
+    spec,_,_=gates();bound=read(ROOT/'binding_result.json')
+  File "/root/autodl-tmp/m77_candidate_evaluation_20260907.py", line 157, in gates
+    _,_,_,activation,audit=module.checked()
+  File "/root/autodl-tmp/m77_content_followup_20260907.py", line 75, in checked
+    s,t,rs=plans();a=read(O/'activation.json');audit=read(O/'completed_training_audit.json')
+  File "/root/autodl-tmp/m77_content_followup_20260907.py", line 9, in <lambda>
+    read=lambda p:json.loads(Path(p).read_text())
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/pathlib.py", line 1236, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/pathlib.py", line 1222, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/pathlib.py", line 1078, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/sttrack_m77_window_competition_20260907/content_followup/activation.json'
