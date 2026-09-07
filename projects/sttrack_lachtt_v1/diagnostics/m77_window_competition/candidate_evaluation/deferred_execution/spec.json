@@ -1,0 +1,44 @@
+{
+  "status": "M77_deferred_evaluation_frozen_before_final_results",
+  "observed_utc": "2026-09-07T16:00:54.844984+00:00",
+  "source_sha256": "451eeed785d8fc550cb766bfacb108b524f23601eb75fe8d0413779580123025",
+  "wrapper_sha256": "9a46c0562af725c9833029bce211ce6dfdd5bddf8c494800a04559bacff5ebee",
+  "entry_spec_sha256": "7626558230f864237b49aa4e77bd2cf7fe32c8af46d46cb3753584ac4db9483d",
+  "full_readiness_sha256": "1877fa45c8b67ed06ee48a2bf332aa066146cecfb5784802f065b955bfe1dc17",
+  "content_spec_sha256": "ce95e06d20f14a317b142e8c4719e4593d7762572df83bdbe74e3c1b8d6188cc",
+  "parent_pid": 496607,
+  "parent_start_ticks": "4581958397",
+  "parent_cwd": "/root/autodl-tmp/sttrack_m77_window_competition_20260907/content_followup",
+  "parent_argv": [
+    "/root/autodl-tmp/envs/sttrack/bin/python",
+    "-u",
+    "/root/autodl-tmp/m77_content_followup_20260907.py",
+    "controller"
+  ],
+  "poll_seconds": 240,
+  "seed": 2027,
+  "additional_seeds": [],
+  "head_selection": "Only the prospectively fixed M77 Category final; no metric-based checkpoint or seed selection.",
+  "steps": {
+    "entry": "m77_candidate_entry_20260907.sh",
+    "low22": "m77_candidate_low22_20260907.sh",
+    "full": "m77_full_evaluation_20260907.sh"
+  },
+  "required_development_conditions": 15,
+  "required_content_comparisons": 8,
+  "low22_gate": {
+    "EAO_min": 57.635993,
+    "ACC_min": 75.719622,
+    "ROB_min": 73.022401,
+    "confirmed_failures_max": 118,
+    "preserve_all_seven_native_zero_failure_sequences": true,
+    "all303_anchors_complete": true,
+    "identical_bundle_and_text_protocol": true
+  },
+  "execution": "Wait for the original content controller identity and zero exit. Failed development/content conditions stop before binding. Failed low22 conditions stop before any full-dataset captions or tracking. No restart or threshold change.",
+  "preserve_original_training_and_content_controllers": true,
+  "new_optimizer_steps": 0,
+  "new_caption_protocol": false,
+  "goal_completion_claimed": false,
+  "independent_model_review_pass": false
+}
