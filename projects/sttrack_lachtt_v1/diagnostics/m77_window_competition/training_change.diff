@@ -1,0 +1,74 @@
+--- M73/train_causal.py
++++ M77/train_causal.py
+@@ -1,4 +1,4 @@
+-"""Matched category versus empty-content causal training; identical Null architecture and zero auxiliary loss."""
++"""Single-seed category/empty causal training with final-window hard-negative competition."""
+ import argparse
+ from collections import Counter
+ from datetime import datetime, timezone
+@@ -34,7 +34,7 @@
+     parser = argparse.ArgumentParser()
+     parser.add_argument('--arm', choices=['empty', 'category'], required=True)
+     args = parser.parse_args()
+-    root = Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027')
++    root = Path('/root/autodl-tmp/sttrack_m77_window_competition_20260907')
+     assert (root / 'frozen.json').is_file()
+     spec_path = root / 'training_spec.json'
+     spec = json.loads(spec_path.read_text())
+@@ -42,6 +42,7 @@
+     assert sha(__file__) == spec['training_script_sha256']
+     assert sha(root / 'causal_training.py') == spec['causal_script_sha256']
+     assert sha(root / 'support_loss.py') == spec['support_loss_sha256']
++    assert sha(root / 'window_competition.py') == spec['window_loss_sha256']
+     assert sha(spec['banks']['fit'][args.arm]['path']) == spec['banks']['fit'][args.arm]['sha256']
+     assert sha(root / 'native_parity' / (args.arm + '_zero.pth')) == spec['initial_checkpoint_sha256'][args.arm]
+     assert sha(spec['native_checkpoint']) == spec['native_checkpoint_sha256']
+@@ -51,7 +52,8 @@
+         assert sha(root / 'code' / name) == digest, name
+     sys.path.insert(0, str(root / 'code'))
+     sys.path.insert(0, str(root))
+-    from causal_training import CausalTrainingTracker, supervision
++    from causal_training import CausalTrainingTracker
++    from window_competition import supervision
+     from lib.config.sttrack.config import cfg, update_config_from_file
+     from lib.train.dataset.depth_utils import get_rgbd_frame
+     torch.set_num_threads(1)
+@@ -87,6 +89,8 @@
+             actual_dataset_optimizer_steps=steps, frame_count=frame_count, training_spec_sha256=sha(spec_path),
+             status='complete' if complete else 'in_progress', seed=spec['seed'])
+ 
++    rank_frames = rank_negative_sum = 0
++    rank_loss_sum = 0.
+     with (output / 'sequence_log.jsonl').open('x') as log, (output / 'sampled_state_trace.jsonl').open('x') as trace:
+         for seq_index, row in enumerate(spec['sequence_order']):
+             folder = Path(spec['dataset_root']) / row['sequence']
+@@ -118,8 +122,12 @@
+                 out, state = tracker.step(frame(frame_index))
+                 # Only now expose the current training target to the loss function.
+                 loss, diagnostic = supervision(tracker.network, out, gt[frame_index],
+-                    state['previous_bbox'], state['resize_factor'], 256, support_weight=spec['support_loss_weights'][args.arm])
++                    state['previous_bbox'], state['resize_factor'], 256, output_window=tracker.output_window)
+                 labels[diagnostic['label']] += 1
++                if diagnostic['competition_loss'] is not None:
++                    rank_frames += 1
++                    rank_loss_sum += diagnostic['competition_loss']
++                    rank_negative_sum += diagnostic['competition_negatives']
+                 pending += 1
+                 frame_count += 1
+                 writes += int(state['template_write'])
+@@ -150,6 +158,7 @@
+             record = dict(sequence=row['sequence'], sequence_index=seq_index, total_sequences=len(spec['sequence_order']),
+                 frames=n, track_calls=n-1, supervised_frames=supervised, label_counts=dict(labels),
+                 mean_training_loss=loss_sum/supervised if supervised else None, template_writes=writes,
++                cumulative_competition_frames=rank_frames, cumulative_competition_loss_sum=rank_loss_sum, cumulative_competition_negatives=rank_negative_sum,
+                 maximum_preclip_gradient_norm=max_gradient_norm, total_optimizer_steps=steps,
+                 total_track_calls=frame_count, seconds=time.time()-sequence_start, elapsed_seconds=time.time()-started)
+             receipts.append(record)
+@@ -171,6 +180,7 @@
+         full_visited_state_stream_sha256=visited_digest.hexdigest(),
+         gt_after_prediction_for_loss_only=True, gt_reinitialization_after_first_frame=False,
+         learned_parameters=289154, backward_through_crops_or_time=False,
++        competition_frames=rank_frames, competition_loss_sum=rank_loss_sum, competition_negatives=rank_negative_sum, window_loss_sha256=spec['window_loss_sha256'],
+         evaluation_metrics_computed=False, observed_utc=datetime.now(timezone.utc).isoformat())
+     (output / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
+     print(json.dumps(result, indent=2), flush=True)
