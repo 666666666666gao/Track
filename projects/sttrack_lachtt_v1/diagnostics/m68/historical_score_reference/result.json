@@ -1,0 +1,3248 @@
+{
+  "status": "completed_historical_Train_confidence_capacity_reference",
+  "observed_utc": "2026-09-07T03:29:50.776713+00:00",
+  "source_sha256": "308f474c83473a6a9d590f6482703a0fea9f1f3fe7d9e8a41ec3b716fed64355",
+  "spec_sha256": "5760597b96bed5e03413d17b621cff700b88c670964fa46ecd53109f47e440c6",
+  "metric_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+  "source_family_receipts": {
+    "control": {
+      "receipt_sha256": "c551b37d1bce270324ad9730fa09c0d34f9eeb7c3fb8028fda85442f2f551e2d",
+      "head_sha256": "aaf02acef08659a0ad155d4a00135b9d8281d54d96bee8fa2a5fc94974b90568",
+      "sequences": 22,
+      "image_frames": 33130,
+      "track_calls": 33108,
+      "reconstructed_template_writes": {
+        "bag05_indoor": 6,
+        "ball07_indoor": 26,
+        "ball19_indoor": 9,
+        "beautifullight01_indoor": 16,
+        "book06_indoor": 4,
+        "car01_indoor": 14,
+        "car02_indoor": 3,
+        "colacan01_indoor": 2,
+        "colacan04_indoor": 2,
+        "container01_indoor": 12,
+        "cup08_indoor": 17,
+        "cup10_indoor": 28,
+        "cup13_indoor": 4,
+        "egg_indoor": 32,
+        "flower02_wild": 2,
+        "flower03_indoor": 3,
+        "flowerbasket_indoor": 8,
+        "ghostmask_indoor": 12,
+        "glass03_indoor": 7,
+        "mobilephone01_indoor": 8,
+        "mobilephone02_indoor": 9,
+        "notebook02_indoor": 19
+      }
+    },
+    "null": {
+      "receipt_sha256": "fe1f2c149409cbdab8b65a39a85f7c4029b9c00caf54ed488b11d195c8cb0f0d",
+      "head_sha256": "5caf9c65c850cdd79d1aee75a002ffd0b74d5876292680349b9387318780e758",
+      "sequences": 22,
+      "image_frames": 33130,
+      "track_calls": 33108,
+      "reconstructed_template_writes": {
+        "bag05_indoor": 5,
+        "ball07_indoor": 14,
+        "ball19_indoor": 8,
+        "beautifullight01_indoor": 3,
+        "book06_indoor": 4,
+        "car01_indoor": 16,
+        "car02_indoor": 7,
+        "colacan01_indoor": 2,
+        "colacan04_indoor": 2,
+        "container01_indoor": 13,
+        "cup08_indoor": 18,
+        "cup10_indoor": 26,
+        "cup13_indoor": 1,
+        "egg_indoor": 14,
+        "flower02_wild": 2,
+        "flower03_indoor": 3,
+        "flowerbasket_indoor": 8,
+        "ghostmask_indoor": 12,
+        "glass03_indoor": 7,
+        "mobilephone01_indoor": 7,
+        "mobilephone02_indoor": 5,
+        "notebook02_indoor": 22
+      }
+    },
+    "native": {
+      "result_sha256": "5ed4a20beae88a8e8b85513000a8f020311e934b9206678f7d670b50b0737064",
+      "trace_sha256": {
+        "/root/autodl-tmp/sttrack_innovation_v1/risk_recovery_full152_v1/shard0.json": "846872b20c04fed1ffb132c84135925b819617a739b8319985cc70239a4e5fe3",
+        "/root/autodl-tmp/sttrack_innovation_v1/risk_recovery_full152_v1/shard1.json": "5b168dbd3b60aed619b9c9b9113a4c5c85d4f3d8ce23ca0fbebd91005d0656f9"
+      }
+    }
+  },
+  "metrics": {
+    "native": {
+      "raw": {
+        "precision": 0.6965522154923387,
+        "recall": 0.6676948699475307,
+        "f_score": 0.6818183390655601,
+        "precision_percent": 69.65522154923387,
+        "recall_percent": 66.76948699475307,
+        "f_score_percent": 68.18183390655601,
+        "threshold": 0.47173,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "constant": {
+        "precision": 0.5806892147282408,
+        "recall": 0.6854784983253143,
+        "f_score": 0.628747624508072,
+        "precision_percent": 58.06892147282407,
+        "recall_percent": 68.54784983253143,
+        "f_score_percent": 62.8747624508072,
+        "threshold": 1.0,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "GT_overlap_oracle": {
+        "precision": 0.8846372979820657,
+        "recall": 0.6846169441249974,
+        "f_score": 0.7718796194430254,
+        "precision_percent": 88.46372979820657,
+        "recall_percent": 68.46169441249974,
+        "f_score_percent": 77.18796194430254,
+        "threshold": 0.311828,
+        "sequences": 22,
+        "frames": 33130
+      }
+    },
+    "control": {
+      "raw": {
+        "precision": 0.6987741561137805,
+        "recall": 0.6546718924144004,
+        "f_score": 0.6760044844798393,
+        "precision_percent": 69.87741561137804,
+        "recall_percent": 65.46718924144004,
+        "f_score_percent": 67.60044844798394,
+        "threshold": 0.482442,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "constant": {
+        "precision": 0.5867558163742624,
+        "recall": 0.6893380256201184,
+        "f_score": 0.6339237486616378,
+        "precision_percent": 58.67558163742624,
+        "recall_percent": 68.93380256201183,
+        "f_score_percent": 63.39237486616378,
+        "threshold": 1.0,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "GT_overlap_oracle": {
+        "precision": 0.8886250384773299,
+        "recall": 0.6874758723469073,
+        "f_score": 0.7752146697219102,
+        "precision_percent": 88.86250384773298,
+        "recall_percent": 68.74758723469073,
+        "f_score_percent": 77.52146697219102,
+        "threshold": 0.443662,
+        "sequences": 22,
+        "frames": 33130
+      }
+    },
+    "null": {
+      "raw": {
+        "precision": 0.7872781782937713,
+        "recall": 0.7200718047808048,
+        "f_score": 0.7521767672723594,
+        "precision_percent": 78.72781782937713,
+        "recall_percent": 72.00718047808049,
+        "f_score_percent": 75.21767672723594,
+        "threshold": 0.459063,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "constant": {
+        "precision": 0.6390305103004413,
+        "recall": 0.7563448775546828,
+        "f_score": 0.6927561676572664,
+        "precision_percent": 63.90305103004413,
+        "recall_percent": 75.63448775546829,
+        "f_score_percent": 69.27561676572664,
+        "threshold": 1.0,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "GT_overlap_oracle": {
+        "precision": 0.8843548923523048,
+        "recall": 0.7556415828653574,
+        "f_score": 0.8149472767411001,
+        "precision_percent": 88.43548923523048,
+        "recall_percent": 75.56415828653574,
+        "f_score_percent": 81.49472767411001,
+        "threshold": 0.26311,
+        "sequences": 22,
+        "frames": 33130
+      }
+    }
+  },
+  "per_sequence_individual_optimum_metrics": {
+    "native": {
+      "raw": {
+        "bag05_indoor": {
+          "precision": 0.6449653299011398,
+          "recall": 0.7985285036871254,
+          "f_score": 0.713578662869346,
+          "precision_percent": 64.49653299011398,
+          "recall_percent": 79.85285036871254,
+          "f_score_percent": 71.3578662869346,
+          "threshold": 0.440839,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.5994512583032776,
+          "recall": 0.315124377071356,
+          "f_score": 0.41309148647958877,
+          "precision_percent": 59.94512583032776,
+          "recall_percent": 31.5124377071356,
+          "f_score_percent": 41.30914864795888,
+          "threshold": 0.644128,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.8501562581613089,
+          "recall": 0.8335348106809647,
+          "f_score": 0.8417634907132813,
+          "precision_percent": 85.01562581613089,
+          "recall_percent": 83.35348106809647,
+          "f_score_percent": 84.17634907132813,
+          "threshold": 0.358155,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.5482007438041273,
+          "recall": 0.6029606424717185,
+          "f_score": 0.5742782491288402,
+          "precision_percent": 54.820074380412734,
+          "recall_percent": 60.296064247171856,
+          "f_score_percent": 57.42782491288402,
+          "threshold": 0.478438,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.5528459739335334,
+          "recall": 0.647609352389152,
+          "f_score": 0.5964873749142859,
+          "precision_percent": 55.28459739335334,
+          "recall_percent": 64.7609352389152,
+          "f_score_percent": 59.64873749142859,
+          "threshold": 0.472371,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.9140691305549685,
+          "recall": 0.3863456838339959,
+          "f_score": 0.5431292529249462,
+          "precision_percent": 91.40691305549686,
+          "recall_percent": 38.63456838339959,
+          "f_score_percent": 54.31292529249462,
+          "threshold": 0.504269,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.9305041984076986,
+          "recall": 0.6888361468777839,
+          "f_score": 0.791637074381372,
+          "precision_percent": 93.05041984076986,
+          "recall_percent": 68.88361468777839,
+          "f_score_percent": 79.1637074381372,
+          "threshold": 0.47946,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.1598337280855567,
+          "recall": 0.0810577186329679,
+          "f_score": 0.10756510897919776,
+          "precision_percent": 15.983372808555671,
+          "recall_percent": 8.10577186329679,
+          "f_score_percent": 10.756510897919776,
+          "threshold": 0.60426,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.17975817721664036,
+          "recall": 0.26900431449673295,
+          "f_score": 0.21550698255873668,
+          "precision_percent": 17.975817721664036,
+          "recall_percent": 26.900431449673295,
+          "f_score_percent": 21.55069825587367,
+          "threshold": 0.495228,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.9166810676598461,
+          "recall": 0.8400453513924635,
+          "f_score": 0.8766916251109266,
+          "precision_percent": 91.66810676598462,
+          "recall_percent": 84.00453513924634,
+          "f_score_percent": 87.66916251109265,
+          "threshold": 0.889114,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.8166388914590669,
+          "recall": 0.8246693798017052,
+          "f_score": 0.8206344901000032,
+          "precision_percent": 81.6638891459067,
+          "recall_percent": 82.46693798017051,
+          "f_score_percent": 82.06344901000033,
+          "threshold": 0.51406,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.8525691825659736,
+          "recall": 0.8632858343021381,
+          "f_score": 0.8578940421378638,
+          "precision_percent": 85.25691825659736,
+          "recall_percent": 86.32858343021381,
+          "f_score_percent": 85.78940421378638,
+          "threshold": 0.440828,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.771848724818638,
+          "recall": 0.7625437371776659,
+          "f_score": 0.7671680169664934,
+          "precision_percent": 77.18487248186379,
+          "recall_percent": 76.25437371776658,
+          "f_score_percent": 76.71680169664934,
+          "threshold": 0.403654,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.8209035539281743,
+          "recall": 0.7035291669221365,
+          "f_score": 0.7576977134108882,
+          "precision_percent": 82.09035539281743,
+          "recall_percent": 70.35291669221365,
+          "f_score_percent": 75.76977134108883,
+          "threshold": 0.476891,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.5868863465911617,
+          "recall": 0.591902469211599,
+          "f_score": 0.5893837353000603,
+          "precision_percent": 58.68863465911617,
+          "recall_percent": 59.1902469211599,
+          "f_score_percent": 58.938373530006025,
+          "threshold": 0.474189,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.821500172086236,
+          "recall": 0.8244983478967697,
+          "f_score": 0.8229965294124405,
+          "precision_percent": 82.15001720862361,
+          "recall_percent": 82.44983478967697,
+          "f_score_percent": 82.29965294124405,
+          "threshold": 0.490714,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.6825348046200675,
+          "recall": 0.7458214825132428,
+          "f_score": 0.7127761111624036,
+          "precision_percent": 68.25348046200675,
+          "recall_percent": 74.58214825132427,
+          "f_score_percent": 71.27761111624037,
+          "threshold": 0.429972,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.720937540660758,
+          "recall": 0.7125055226413339,
+          "f_score": 0.7166967315980476,
+          "precision_percent": 72.0937540660758,
+          "recall_percent": 71.25055226413339,
+          "f_score_percent": 71.66967315980476,
+          "threshold": 0.470043,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.9493856534477991,
+          "recall": 0.7498650257529902,
+          "f_score": 0.8379117998140067,
+          "precision_percent": 94.93856534477992,
+          "recall_percent": 74.98650257529901,
+          "f_score_percent": 83.79117998140066,
+          "threshold": 0.542966,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.8466205901919176,
+          "recall": 0.6978711597312687,
+          "f_score": 0.7650828735847752,
+          "precision_percent": 84.66205901919176,
+          "recall_percent": 69.78711597312687,
+          "f_score_percent": 76.50828735847752,
+          "threshold": 0.522602,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.8214241863018186,
+          "recall": 0.8389012966486659,
+          "f_score": 0.8300707566839431,
+          "precision_percent": 82.14241863018185,
+          "recall_percent": 83.89012966486659,
+          "f_score_percent": 83.00707566839432,
+          "threshold": 0.453883,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.837541140169586,
+          "recall": 0.8526470925974944,
+          "f_score": 0.8450266121274076,
+          "precision_percent": 83.7541140169586,
+          "recall_percent": 85.26470925974944,
+          "f_score_percent": 84.50266121274076,
+          "threshold": 0.426217,
+          "sequences": 1,
+          "frames": 2646
+        }
+      },
+      "constant": {
+        "bag05_indoor": {
+          "precision": 0.5479056819194643,
+          "recall": 0.8283812095687139,
+          "f_score": 0.6595641858177437,
+          "precision_percent": 54.790568191946434,
+          "recall_percent": 82.83812095687139,
+          "f_score_percent": 65.95641858177437,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.3168019485962727,
+          "recall": 0.3660661048229408,
+          "f_score": 0.3396569944728712,
+          "precision_percent": 31.68019485962727,
+          "recall_percent": 36.60661048229408,
+          "f_score_percent": 33.965699447287115,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.8383353393425151,
+          "recall": 0.8383353393425151,
+          "f_score": 0.8383353393425151,
+          "precision_percent": 83.83353393425152,
+          "recall_percent": 83.83353393425152,
+          "f_score_percent": 83.83353393425152,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.4412910457696613,
+          "recall": 0.6151916883945883,
+          "f_score": 0.5139290491769554,
+          "precision_percent": 44.129104576966135,
+          "recall_percent": 61.51916883945883,
+          "f_score_percent": 51.39290491769554,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.5100895214231278,
+          "recall": 0.6569134781070164,
+          "f_score": 0.5742653305928457,
+          "precision_percent": 51.00895214231278,
+          "recall_percent": 65.69134781070164,
+          "f_score_percent": 57.426533059284566,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.3557990152681415,
+          "recall": 0.391049238448663,
+          "f_score": 0.37259224553037296,
+          "precision_percent": 35.57990152681415,
+          "recall_percent": 39.1049238448663,
+          "f_score_percent": 37.2592245530373,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.5212659682549521,
+          "recall": 0.6934863499928956,
+          "f_score": 0.5951679667869278,
+          "precision_percent": 52.126596825495206,
+          "recall_percent": 69.34863499928956,
+          "f_score_percent": 59.516796678692785,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.09360962274885895,
+          "recall": 0.1020952916204543,
+          "f_score": 0.09766848996944792,
+          "precision_percent": 9.360962274885894,
+          "recall_percent": 10.209529162045431,
+          "f_score_percent": 9.766848996944793,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.15869231154465435,
+          "recall": 0.27966726031020955,
+          "f_score": 0.20248693926857747,
+          "precision_percent": 15.869231154465435,
+          "recall_percent": 27.966726031020954,
+          "f_score_percent": 20.248693926857747,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.7569562303539918,
+          "recall": 0.9261152593237746,
+          "f_score": 0.8330349838024408,
+          "precision_percent": 75.69562303539918,
+          "recall_percent": 92.61152593237746,
+          "f_score_percent": 83.30349838024408,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.7588699438026898,
+          "recall": 0.8329200366548433,
+          "f_score": 0.7941725845349461,
+          "precision_percent": 75.88699438026897,
+          "recall_percent": 83.29200366548433,
+          "f_score_percent": 79.41725845349461,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.8482943725065893,
+          "recall": 0.8672506713335523,
+          "f_score": 0.8576677909873252,
+          "precision_percent": 84.82943725065894,
+          "recall_percent": 86.72506713335522,
+          "f_score_percent": 85.76677909873251,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.7274488752616873,
+          "recall": 0.7726129705913762,
+          "f_score": 0.7493510191237025,
+          "precision_percent": 72.74488752616874,
+          "recall_percent": 77.26129705913762,
+          "f_score_percent": 74.93510191237024,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.7115567463561031,
+          "recall": 0.7360074441050897,
+          "f_score": 0.7235755977832459,
+          "precision_percent": 71.15567463561031,
+          "recall_percent": 73.60074441050897,
+          "f_score_percent": 72.35755977832459,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.46584868789043976,
+          "recall": 0.6529844855900182,
+          "f_score": 0.543766439957524,
+          "precision_percent": 46.58486878904397,
+          "recall_percent": 65.29844855900183,
+          "f_score_percent": 54.3766439957524,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.6191376789439669,
+          "recall": 0.840581082361882,
+          "f_score": 0.713062589991194,
+          "precision_percent": 61.913767894396685,
+          "recall_percent": 84.0581082361882,
+          "f_score_percent": 71.3062589991194,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.6489634825467102,
+          "recall": 0.7624559225695504,
+          "f_score": 0.7011467307385397,
+          "precision_percent": 64.89634825467103,
+          "recall_percent": 76.24559225695504,
+          "f_score_percent": 70.11467307385398,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.6314522365279213,
+          "recall": 0.7169998592154272,
+          "f_score": 0.6715124194934079,
+          "precision_percent": 63.145223652792126,
+          "recall_percent": 71.69998592154272,
+          "f_score_percent": 67.15124194934079,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.6437900961921057,
+          "recall": 0.7610478370046784,
+          "f_score": 0.6975253851198577,
+          "precision_percent": 64.37900961921056,
+          "recall_percent": 76.10478370046783,
+          "f_score_percent": 69.75253851198578,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.6272045511485603,
+          "recall": 0.7301938042107213,
+          "f_score": 0.6747921498699989,
+          "precision_percent": 62.72045511485603,
+          "recall_percent": 73.01938042107213,
+          "f_score_percent": 67.47921498699989,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.7421509432769563,
+          "recall": 0.8514694128267535,
+          "f_score": 0.7930606878615036,
+          "precision_percent": 74.21509432769562,
+          "recall_percent": 85.14694128267534,
+          "f_score_percent": 79.30606878615036,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.8096984243459259,
+          "recall": 0.8587022167612505,
+          "f_score": 0.8334806577783778,
+          "precision_percent": 80.9698424345926,
+          "recall_percent": 85.87022167612504,
+          "f_score_percent": 83.34806577783777,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2646
+        }
+      },
+      "GT_overlap_oracle": {
+        "bag05_indoor": {
+          "precision": 0.8700706781642407,
+          "recall": 0.825679317033412,
+          "f_score": 0.8472939588405695,
+          "precision_percent": 87.00706781642407,
+          "recall_percent": 82.5679317033412,
+          "f_score_percent": 84.72939588405694,
+          "threshold": 0.396493,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.9129392224848075,
+          "recall": 0.36266301223479047,
+          "f_score": 0.5191105493577434,
+          "precision_percent": 91.29392224848075,
+          "recall_percent": 36.26630122347905,
+          "f_score_percent": 51.91105493577434,
+          "threshold": 0.494737,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.8582649439308978,
+          "recall": 0.8327842323442455,
+          "f_score": 0.8453326165875803,
+          "precision_percent": 85.82649439308977,
+          "recall_percent": 83.27842323442455,
+          "f_score_percent": 84.53326165875804,
+          "threshold": 0.52459,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.8804356828179313,
+          "recall": 0.6088633152308416,
+          "f_score": 0.7198890073657322,
+          "precision_percent": 88.04356828179313,
+          "recall_percent": 60.88633152308416,
+          "f_score_percent": 71.98890073657323,
+          "threshold": 0.659894,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.8807395946858524,
+          "recall": 0.6534335802746912,
+          "f_score": 0.7502475418527089,
+          "precision_percent": 88.07395946858524,
+          "recall_percent": 65.34335802746912,
+          "f_score_percent": 75.0247541852709,
+          "threshold": 0.311828,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.9251944240921268,
+          "recall": 0.39104796399617336,
+          "f_score": 0.5497397730326966,
+          "precision_percent": 92.51944240921269,
+          "recall_percent": 39.104796399617335,
+          "f_score_percent": 54.97397730326966,
+          "threshold": 0.002243,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.9325910810224488,
+          "recall": 0.6903810299441803,
+          "f_score": 0.7934125136008244,
+          "precision_percent": 93.25910810224488,
+          "recall_percent": 69.03810299441803,
+          "f_score_percent": 79.34125136008244,
+          "threshold": 0.645833,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.8567260266460303,
+          "recall": 0.0950898623436529,
+          "f_score": 0.17118007985025083,
+          "precision_percent": 85.67260266460302,
+          "recall_percent": 9.50898623436529,
+          "f_score_percent": 17.118007985025084,
+          "threshold": 0.753197,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.9086814551697843,
+          "recall": 0.2767638939161491,
+          "f_score": 0.4242966038984418,
+          "precision_percent": 90.86814551697843,
+          "recall_percent": 27.676389391614908,
+          "f_score_percent": 42.42966038984418,
+          "threshold": 0.658824,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.9336489186903836,
+          "recall": 0.92464265902456,
+          "f_score": 0.9291239643187017,
+          "precision_percent": 93.36489186903836,
+          "recall_percent": 92.464265902456,
+          "f_score_percent": 92.91239643187016,
+          "threshold": 0.595103,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.9038390747926252,
+          "recall": 0.8327352444004671,
+          "f_score": 0.8668314906278878,
+          "precision_percent": 90.38390747926252,
+          "recall_percent": 83.27352444004671,
+          "f_score_percent": 86.68314906278877,
+          "threshold": 0.373843,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.9016866642407889,
+          "recall": 0.8664251745777413,
+          "f_score": 0.8837043091134797,
+          "precision_percent": 90.16866642407889,
+          "recall_percent": 86.64251745777413,
+          "f_score_percent": 88.37043091134798,
+          "threshold": 0.346154,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.8328839116621872,
+          "recall": 0.7691248659834061,
+          "f_score": 0.7997356017965972,
+          "precision_percent": 83.28839116621872,
+          "recall_percent": 76.9124865983406,
+          "f_score_percent": 79.97356017965971,
+          "threshold": 0.540091,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.8689387058246341,
+          "recall": 0.7355867262178833,
+          "f_score": 0.7967212798713803,
+          "precision_percent": 86.8938705824634,
+          "recall_percent": 73.55867262178833,
+          "f_score_percent": 79.67212798713803,
+          "threshold": 0.405428,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.8333924425392794,
+          "recall": 0.6517556281396928,
+          "f_score": 0.7314667481280006,
+          "precision_percent": 83.33924425392793,
+          "recall_percent": 65.17556281396928,
+          "f_score_percent": 73.14667481280006,
+          "threshold": 0.459704,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.8431731501330059,
+          "recall": 0.8339413273213306,
+          "f_score": 0.8385318300405306,
+          "precision_percent": 84.31731501330059,
+          "recall_percent": 83.39413273213306,
+          "f_score_percent": 83.85318300405305,
+          "threshold": 0.665,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.8908879650589177,
+          "recall": 0.7622738574271725,
+          "f_score": 0.8215778956710322,
+          "precision_percent": 89.08879650589176,
+          "recall_percent": 76.22738574271725,
+          "f_score_percent": 82.15778956710322,
+          "threshold": 0.34878,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.8974915367657595,
+          "recall": 0.7111701943377802,
+          "f_score": 0.79354064099028,
+          "precision_percent": 89.74915367657596,
+          "recall_percent": 71.11701943377801,
+          "f_score_percent": 79.354064099028,
+          "threshold": 0.461891,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.9479429383713196,
+          "recall": 0.7603465249983614,
+          "f_score": 0.8438442483460921,
+          "precision_percent": 94.79429383713196,
+          "recall_percent": 76.03465249983614,
+          "f_score_percent": 84.3844248346092,
+          "threshold": 0.518519,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.8922943209970402,
+          "recall": 0.7245312672135245,
+          "f_score": 0.7997091830231743,
+          "precision_percent": 89.22943209970401,
+          "recall_percent": 72.45312672135245,
+          "f_score_percent": 79.97091830231743,
+          "threshold": 0.55924,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.8528652643231908,
+          "recall": 0.8514694128267535,
+          "f_score": 0.8521667669732127,
+          "precision_percent": 85.28652643231908,
+          "recall_percent": 85.14694128267534,
+          "f_score_percent": 85.21667669732128,
+          "threshold": 0.403906,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.8789185535437859,
+          "recall": 0.8570776916921968,
+          "f_score": 0.8678607308328048,
+          "precision_percent": 87.89185535437859,
+          "recall_percent": 85.70776916921969,
+          "f_score_percent": 86.78607308328048,
+          "threshold": 0.448878,
+          "sequences": 1,
+          "frames": 2646
+        }
+      }
+    },
+    "control": {
+      "raw": {
+        "bag05_indoor": {
+          "precision": 0.6600087839174792,
+          "recall": 0.8171537324692599,
+          "f_score": 0.7302224843342323,
+          "precision_percent": 66.00087839174792,
+          "recall_percent": 81.71537324692599,
+          "f_score_percent": 73.02224843342323,
+          "threshold": 0.419302,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.8656645747701766,
+          "recall": 0.7584492375279988,
+          "f_score": 0.8085180135995292,
+          "precision_percent": 86.56645747701765,
+          "recall_percent": 75.84492375279987,
+          "f_score_percent": 80.85180135995293,
+          "threshold": 0.533687,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.8592624217129041,
+          "recall": 0.8337520963760258,
+          "f_score": 0.8463150643846319,
+          "precision_percent": 85.92624217129041,
+          "recall_percent": 83.37520963760258,
+          "f_score_percent": 84.63150643846319,
+          "threshold": 0.396676,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.33226987507072847,
+          "recall": 0.4216289523400243,
+          "f_score": 0.3716535806306358,
+          "precision_percent": 33.22698750707285,
+          "recall_percent": 42.16289523400243,
+          "f_score_percent": 37.16535806306358,
+          "threshold": 0.371188,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.7275012158270042,
+          "recall": 0.7482062957082385,
+          "f_score": 0.7377085032939648,
+          "precision_percent": 72.75012158270042,
+          "recall_percent": 74.82062957082385,
+          "f_score_percent": 73.77085032939648,
+          "threshold": 0.42318,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.9377090613033663,
+          "recall": 0.656329506913689,
+          "f_score": 0.7721847364359795,
+          "precision_percent": 93.77090613033663,
+          "recall_percent": 65.63295069136889,
+          "f_score_percent": 77.21847364359795,
+          "threshold": 0.409931,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.8424485310383336,
+          "recall": 0.31852294283074806,
+          "f_score": 0.46226662985180356,
+          "precision_percent": 84.24485310383336,
+          "recall_percent": 31.852294283074805,
+          "f_score_percent": 46.226662985180354,
+          "threshold": 0.535545,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.5253652409716525,
+          "recall": 0.3299938701320872,
+          "f_score": 0.4053673056160054,
+          "precision_percent": 52.53652409716525,
+          "recall_percent": 32.99938701320872,
+          "f_score_percent": 40.53673056160054,
+          "threshold": 0.503047,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.4495706726413283,
+          "recall": 0.1844189555025167,
+          "f_score": 0.26154798183627836,
+          "precision_percent": 44.957067264132824,
+          "recall_percent": 18.44189555025167,
+          "f_score_percent": 26.154798183627836,
+          "threshold": 0.620432,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.9097739133678754,
+          "recall": 0.8673568016513666,
+          "f_score": 0.8880591450652676,
+          "precision_percent": 90.97739133678753,
+          "recall_percent": 86.73568016513667,
+          "f_score_percent": 88.80591450652676,
+          "threshold": 0.796995,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.8889938786777775,
+          "recall": 0.8883214173474614,
+          "f_score": 0.8886575207970822,
+          "precision_percent": 88.89938786777775,
+          "recall_percent": 88.83214173474614,
+          "f_score_percent": 88.86575207970822,
+          "threshold": 0.479648,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.8765465791482094,
+          "recall": 0.8875646227408546,
+          "f_score": 0.8820211934523968,
+          "precision_percent": 87.65465791482094,
+          "recall_percent": 88.75646227408545,
+          "f_score_percent": 88.20211934523968,
+          "threshold": 0.365886,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.8249030645574793,
+          "recall": 0.7970582353741045,
+          "f_score": 0.8107416385564926,
+          "precision_percent": 82.49030645574793,
+          "recall_percent": 79.70582353741045,
+          "f_score_percent": 81.07416385564926,
+          "threshold": 0.360788,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.6604526169687991,
+          "recall": 0.6625682194110404,
+          "f_score": 0.6615087266921101,
+          "precision_percent": 66.0452616968799,
+          "recall_percent": 66.25682194110404,
+          "f_score_percent": 66.15087266921101,
+          "threshold": 0.317168,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.6429103698530402,
+          "recall": 0.603071906763856,
+          "f_score": 0.6223542499790179,
+          "precision_percent": 64.29103698530402,
+          "recall_percent": 60.3071906763856,
+          "f_score_percent": 62.23542499790179,
+          "threshold": 0.45928,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.8091611964708996,
+          "recall": 0.7781531944163578,
+          "f_score": 0.7933543265863517,
+          "precision_percent": 80.91611964708996,
+          "recall_percent": 77.81531944163578,
+          "f_score_percent": 79.33543265863517,
+          "threshold": 0.52757,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.7741582345738972,
+          "recall": 0.7359955047005361,
+          "f_score": 0.75459466907925,
+          "precision_percent": 77.41582345738972,
+          "recall_percent": 73.59955047005361,
+          "f_score_percent": 75.459466907925,
+          "threshold": 0.482442,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.6977503210869757,
+          "recall": 0.6494654548129257,
+          "f_score": 0.6727426114468064,
+          "precision_percent": 69.77503210869756,
+          "recall_percent": 64.94654548129257,
+          "f_score_percent": 67.27426114468064,
+          "threshold": 0.515937,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.9528318709547502,
+          "recall": 0.912782895643167,
+          "f_score": 0.9323775195210168,
+          "precision_percent": 95.28318709547501,
+          "recall_percent": 91.2782895643167,
+          "f_score_percent": 93.23775195210168,
+          "threshold": 0.433068,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.5749461960390332,
+          "recall": 0.5348226930313831,
+          "f_score": 0.5541591153655675,
+          "precision_percent": 57.49461960390332,
+          "recall_percent": 53.48226930313831,
+          "f_score_percent": 55.41591153655675,
+          "threshold": 0.505639,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.5361740436459703,
+          "recall": 0.5598674956565124,
+          "f_score": 0.5477646754942018,
+          "precision_percent": 53.617404364597036,
+          "recall_percent": 55.98674956565124,
+          "f_score_percent": 54.77646754942018,
+          "threshold": 0.344281,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.8403918522520344,
+          "recall": 0.5763168173159242,
+          "f_score": 0.6837424912996818,
+          "precision_percent": 84.03918522520344,
+          "recall_percent": 57.63168173159242,
+          "f_score_percent": 68.37424912996818,
+          "threshold": 0.551454,
+          "sequences": 1,
+          "frames": 2646
+        }
+      },
+      "constant": {
+        "bag05_indoor": {
+          "precision": 0.5618682298923219,
+          "recall": 0.849491252337201,
+          "f_score": 0.676372181955686,
+          "precision_percent": 56.18682298923219,
+          "recall_percent": 84.9491252337201,
+          "f_score_percent": 67.63721819556861,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.6786829100445689,
+          "recall": 0.7842212157808575,
+          "f_score": 0.7276451374344624,
+          "precision_percent": 67.86829100445689,
+          "recall_percent": 78.42212157808575,
+          "f_score_percent": 72.76451374344623,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.8417510726556104,
+          "recall": 0.8417510726556104,
+          "f_score": 0.8417510726556104,
+          "precision_percent": 84.17510726556104,
+          "recall_percent": 84.17510726556104,
+          "f_score_percent": 84.17510726556104,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.3053747593039659,
+          "recall": 0.42571453821738386,
+          "f_score": 0.35564048080333494,
+          "precision_percent": 30.53747593039659,
+          "recall_percent": 42.57145382173839,
+          "f_score_percent": 35.56404808033349,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.6195776182677527,
+          "recall": 0.7979165834224422,
+          "f_score": 0.6975284353808854,
+          "precision_percent": 61.95776182677527,
+          "recall_percent": 79.79165834224422,
+          "f_score_percent": 69.75284353808854,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.5989350614612052,
+          "recall": 0.6582736028319163,
+          "f_score": 0.6272039828680329,
+          "precision_percent": 59.89350614612052,
+          "recall_percent": 65.82736028319162,
+          "f_score_percent": 62.72039828680329,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.24734105872615156,
+          "recall": 0.3290597477399154,
+          "f_score": 0.28240760761302824,
+          "precision_percent": 24.734105872615157,
+          "recall_percent": 32.905974773991545,
+          "f_score_percent": 28.240760761302823,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.3602719117893523,
+          "recall": 0.39293039344334785,
+          "f_score": 0.3758931247621238,
+          "precision_percent": 36.02719117893523,
+          "recall_percent": 39.29303934433479,
+          "f_score_percent": 37.58931247621238,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.1541493320927851,
+          "recall": 0.271661058846616,
+          "f_score": 0.19669022488830834,
+          "precision_percent": 15.41493320927851,
+          "recall_percent": 27.1661058846616,
+          "f_score_percent": 19.669022488830834,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.7548875167982205,
+          "recall": 0.923584244828691,
+          "f_score": 0.8307583518198783,
+          "precision_percent": 75.48875167982206,
+          "recall_percent": 92.3584244828691,
+          "f_score_percent": 83.07583518198783,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.8166506629585406,
+          "recall": 0.8963389651685646,
+          "f_score": 0.8546412635794031,
+          "precision_percent": 81.66506629585406,
+          "recall_percent": 89.63389651685645,
+          "f_score_percent": 85.4641263579403,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.8710552414806974,
+          "recall": 0.8905201630780314,
+          "f_score": 0.8806801612760642,
+          "precision_percent": 87.10552414806973,
+          "recall_percent": 89.05201630780314,
+          "f_score_percent": 88.06801612760641,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.7592181581642214,
+          "recall": 0.8063546682853274,
+          "f_score": 0.78207681653631,
+          "precision_percent": 75.92181581642214,
+          "recall_percent": 80.63546682853274,
+          "f_score_percent": 78.207681653631,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.6450339284987496,
+          "recall": 0.6671987519008616,
+          "f_score": 0.6559291480181961,
+          "precision_percent": 64.50339284987496,
+          "recall_percent": 66.71987519008617,
+          "f_score_percent": 65.59291480181962,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.4737909529932264,
+          "recall": 0.6641172332554626,
+          "f_score": 0.5530371266255455,
+          "precision_percent": 47.379095299322636,
+          "recall_percent": 66.41172332554626,
+          "f_score_percent": 55.30371266255455,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.6197744979925778,
+          "recall": 0.8414456688074413,
+          "f_score": 0.7137960162638975,
+          "precision_percent": 61.977449799257776,
+          "recall_percent": 84.14456688074414,
+          "f_score_percent": 71.37960162638976,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.6599527330456475,
+          "recall": 0.7753670020876681,
+          "f_score": 0.7130196284713365,
+          "precision_percent": 65.99527330456475,
+          "recall_percent": 77.5367002087668,
+          "f_score_percent": 71.30196284713365,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.5827327926710317,
+          "recall": 0.6616800228672047,
+          "f_score": 0.6197021482991802,
+          "precision_percent": 58.27327926710317,
+          "recall_percent": 66.16800228672048,
+          "f_score_percent": 61.97021482991802,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.7796480988039298,
+          "recall": 0.9216505546281132,
+          "f_score": 0.84472306050185,
+          "precision_percent": 77.96480988039298,
+          "recall_percent": 92.16505546281132,
+          "f_score_percent": 84.472306050185,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.48471292871329186,
+          "recall": 0.5643045426235204,
+          "f_score": 0.5214893269464702,
+          "precision_percent": 48.47129287132918,
+          "recall_percent": 56.430454262352036,
+          "f_score_percent": 52.14893269464702,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.4894539623706263,
+          "recall": 0.5615502907067251,
+          "f_score": 0.5230293103990992,
+          "precision_percent": 48.94539623706263,
+          "recall_percent": 56.15502907067251,
+          "f_score_percent": 52.302931039909915,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.6037645315092979,
+          "recall": 0.6403049901297002,
+          "f_score": 0.621498132804358,
+          "precision_percent": 60.37645315092979,
+          "recall_percent": 64.03049901297003,
+          "f_score_percent": 62.149813280435794,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2646
+        }
+      },
+      "GT_overlap_oracle": {
+        "bag05_indoor": {
+          "precision": 0.8749313602951118,
+          "recall": 0.8436838117131434,
+          "f_score": 0.8590235173806552,
+          "precision_percent": 87.49313602951118,
+          "recall_percent": 84.36838117131434,
+          "f_score_percent": 85.90235173806552,
+          "threshold": 0.457143,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.9284848086533539,
+          "recall": 0.7806938781016504,
+          "f_score": 0.8481996781767246,
+          "precision_percent": 92.84848086533539,
+          "recall_percent": 78.06938781016504,
+          "f_score_percent": 84.81996781767246,
+          "threshold": 0.566908,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.8620656231529049,
+          "recall": 0.8370963074931538,
+          "f_score": 0.8493975023130386,
+          "precision_percent": 86.2065623152905,
+          "recall_percent": 83.70963074931538,
+          "f_score_percent": 84.93975023130386,
+          "threshold": 0.516129,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.8799294641270643,
+          "recall": 0.4220956924517312,
+          "f_score": 0.5705180650200699,
+          "precision_percent": 87.99294641270643,
+          "recall_percent": 42.209569245173114,
+          "f_score_percent": 57.05180650200698,
+          "threshold": 0.651852,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.8662168270188775,
+          "recall": 0.7894563449350571,
+          "f_score": 0.8260571974751935,
+          "precision_percent": 86.62168270188775,
+          "recall_percent": 78.94563449350571,
+          "f_score_percent": 82.60571974751934,
+          "threshold": 0.326049,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.9391722743729184,
+          "recall": 0.6573536517706385,
+          "f_score": 0.7733896632571957,
+          "precision_percent": 93.91722743729184,
+          "recall_percent": 65.73536517706385,
+          "f_score_percent": 77.33896632571957,
+          "threshold": 0.553146,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.9361436336906722,
+          "recall": 0.32748487539002313,
+          "f_score": 0.48522628133705,
+          "precision_percent": 93.61436336906722,
+          "recall_percent": 32.74848753900231,
+          "f_score_percent": 48.522628133705,
+          "threshold": 0.613636,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.8474286511545402,
+          "recall": 0.3925633080651653,
+          "f_score": 0.536567019121265,
+          "precision_percent": 84.74286511545402,
+          "recall_percent": 39.25633080651653,
+          "f_score_percent": 53.6567019121265,
+          "threshold": 0.356709,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.9172608811458318,
+          "recall": 0.2632280345541736,
+          "f_score": 0.4090657281170194,
+          "precision_percent": 91.72608811458318,
+          "recall_percent": 26.32280345541736,
+          "f_score_percent": 40.90657281170194,
+          "threshold": 0.774087,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.9311405960524956,
+          "recall": 0.9221585324249796,
+          "f_score": 0.9266277983333397,
+          "precision_percent": 93.11405960524955,
+          "recall_percent": 92.21585324249796,
+          "f_score_percent": 92.66277983333397,
+          "threshold": 0.568898,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.8970174958007892,
+          "recall": 0.8963389651685646,
+          "f_score": 0.8966781021209553,
+          "precision_percent": 89.70174958007891,
+          "recall_percent": 89.63389651685645,
+          "f_score_percent": 89.66781021209553,
+          "threshold": 0.230474,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.9059682857314897,
+          "recall": 0.8890973679338828,
+          "f_score": 0.8974535462039381,
+          "precision_percent": 90.59682857314897,
+          "recall_percent": 88.90973679338828,
+          "f_score_percent": 89.74535462039381,
+          "threshold": 0.492308,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.8344019039706938,
+          "recall": 0.806236438857759,
+          "f_score": 0.8200774077651883,
+          "precision_percent": 83.44019039706939,
+          "recall_percent": 80.62364388577589,
+          "f_score_percent": 82.00774077651883,
+          "threshold": 0.215569,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.8744671696342388,
+          "recall": 0.6671822901693959,
+          "f_score": 0.7568893242291725,
+          "precision_percent": 87.44671696342388,
+          "recall_percent": 66.71822901693959,
+          "f_score_percent": 75.68893242291725,
+          "threshold": 0.027413,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.835395489705467,
+          "recall": 0.6640323123299866,
+          "f_score": 0.7399217194534137,
+          "precision_percent": 83.53954897054669,
+          "recall_percent": 66.40323123299866,
+          "f_score_percent": 73.99217194534137,
+          "threshold": 0.187805,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.848692139717893,
+          "recall": 0.8393998900129526,
+          "f_score": 0.844020439866235,
+          "precision_percent": 84.8692139717893,
+          "recall_percent": 83.93998900129526,
+          "f_score_percent": 84.4020439866235,
+          "threshold": 0.613636,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.893254041023049,
+          "recall": 0.7747825543615412,
+          "f_score": 0.8298111078768488,
+          "precision_percent": 89.3254041023049,
+          "recall_percent": 77.47825543615411,
+          "f_score_percent": 82.98111078768487,
+          "threshold": 0.363971,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.8969539896721949,
+          "recall": 0.6591650177513011,
+          "f_score": 0.7598913575425111,
+          "precision_percent": 89.69539896721949,
+          "recall_percent": 65.91650177513011,
+          "f_score_percent": 75.98913575425111,
+          "threshold": 0.365152,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.9491596219033989,
+          "recall": 0.9209009291321943,
+          "f_score": 0.9348167653946363,
+          "precision_percent": 94.91596219033988,
+          "recall_percent": 92.09009291321944,
+          "f_score_percent": 93.48167653946363,
+          "threshold": 0.518519,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.8847837512550026,
+          "recall": 0.5622517434083514,
+          "f_score": 0.6875729151318997,
+          "precision_percent": 88.47837512550026,
+          "recall_percent": 56.22517434083514,
+          "f_score_percent": 68.75729151318997,
+          "threshold": 0.334101,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.858323768746986,
+          "recall": 0.5591045171216047,
+          "f_score": 0.6771315360977214,
+          "precision_percent": 85.8323768746986,
+          "recall_percent": 55.910451712160466,
+          "f_score_percent": 67.71315360977214,
+          "threshold": 0.454475,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.8890724860998968,
+          "recall": 0.6385642866096253,
+          "f_score": 0.7432787007655773,
+          "precision_percent": 88.90724860998968,
+          "recall_percent": 63.85642866096253,
+          "f_score_percent": 74.32787007655773,
+          "threshold": 0.508937,
+          "sequences": 1,
+          "frames": 2646
+        }
+      }
+    },
+    "null": {
+      "raw": {
+        "bag05_indoor": {
+          "precision": 0.8444232517389126,
+          "recall": 0.7625658957029976,
+          "f_score": 0.8014097348943031,
+          "precision_percent": 84.44232517389126,
+          "recall_percent": 76.25658957029977,
+          "f_score_percent": 80.14097348943031,
+          "threshold": 0.487042,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.8541900254275604,
+          "recall": 0.47881661058370584,
+          "f_score": 0.6136509177380828,
+          "precision_percent": 85.41900254275603,
+          "recall_percent": 47.88166105837058,
+          "f_score_percent": 61.36509177380828,
+          "threshold": 0.524848,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.8598543578529517,
+          "recall": 0.8343264587421835,
+          "f_score": 0.8468980812370123,
+          "precision_percent": 85.98543578529517,
+          "recall_percent": 83.43264587421835,
+          "f_score_percent": 84.68980812370123,
+          "threshold": 0.357689,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.8576311761831107,
+          "recall": 0.8105603103113702,
+          "f_score": 0.8334316508957769,
+          "precision_percent": 85.76311761831107,
+          "recall_percent": 81.05603103113702,
+          "f_score_percent": 83.34316508957768,
+          "threshold": 0.443499,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.717398429530104,
+          "recall": 0.7749387951586505,
+          "f_score": 0.7450593142507921,
+          "precision_percent": 71.7398429530104,
+          "recall_percent": 77.49387951586505,
+          "f_score_percent": 74.50593142507921,
+          "threshold": 0.383263,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.9402794994990262,
+          "recall": 0.7211266867148626,
+          "f_score": 0.8162490854868514,
+          "precision_percent": 94.02794994990262,
+          "recall_percent": 72.11266867148626,
+          "f_score_percent": 81.62490854868514,
+          "threshold": 0.377391,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.9342631781656837,
+          "recall": 0.9062022699875625,
+          "f_score": 0.9200188068393909,
+          "precision_percent": 93.42631781656837,
+          "recall_percent": 90.62022699875625,
+          "f_score_percent": 92.00188068393909,
+          "threshold": 0.443853,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.4553216608306481,
+          "recall": 0.2559356230579125,
+          "f_score": 0.32768179840451034,
+          "precision_percent": 45.532166083064816,
+          "recall_percent": 25.593562305791252,
+          "f_score_percent": 32.76817984045103,
+          "threshold": 0.425431,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.42991846315758575,
+          "recall": 0.29140600055575794,
+          "f_score": 0.34736329132354776,
+          "precision_percent": 42.99184631575857,
+          "recall_percent": 29.140600055575796,
+          "f_score_percent": 34.736329132354776,
+          "threshold": 0.52127,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.9293809092355023,
+          "recall": 0.875590374295827,
+          "f_score": 0.9016841271721928,
+          "precision_percent": 92.93809092355023,
+          "recall_percent": 87.5590374295827,
+          "f_score_percent": 90.16841271721928,
+          "threshold": 0.768068,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.8824536064833797,
+          "recall": 0.8911312894518244,
+          "f_score": 0.8867712191609423,
+          "precision_percent": 88.24536064833796,
+          "recall_percent": 89.11312894518244,
+          "f_score_percent": 88.67712191609422,
+          "threshold": 0.452053,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.848263701951838,
+          "recall": 0.8502382450196961,
+          "f_score": 0.8492498257625237,
+          "precision_percent": 84.8263701951838,
+          "recall_percent": 85.02382450196961,
+          "f_score_percent": 84.92498257625238,
+          "threshold": 0.370474,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.7675717794229799,
+          "recall": 0.7337967704429453,
+          "f_score": 0.7503043711339576,
+          "precision_percent": 76.757177942298,
+          "recall_percent": 73.37967704429454,
+          "f_score_percent": 75.03043711339576,
+          "threshold": 0.306541,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.8092925278942357,
+          "recall": 0.6766100313291644,
+          "f_score": 0.7370273901932912,
+          "precision_percent": 80.92925278942357,
+          "recall_percent": 67.66100313291645,
+          "f_score_percent": 73.70273901932912,
+          "threshold": 0.471003,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.6683838212557441,
+          "recall": 0.5884062699943731,
+          "f_score": 0.6258503053576513,
+          "precision_percent": 66.83838212557441,
+          "recall_percent": 58.840626999437305,
+          "f_score_percent": 62.58503053576513,
+          "threshold": 0.411459,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.8512906555759903,
+          "recall": 0.8419699549674939,
+          "f_score": 0.846604651967315,
+          "precision_percent": 85.12906555759902,
+          "recall_percent": 84.1969954967494,
+          "f_score_percent": 84.66046519673151,
+          "threshold": 0.41956,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.8299500296367761,
+          "recall": 0.75981340741395,
+          "f_score": 0.7933345871528007,
+          "precision_percent": 82.9950029636776,
+          "recall_percent": 75.981340741395,
+          "f_score_percent": 79.33345871528007,
+          "threshold": 0.458569,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.7752083930997032,
+          "recall": 0.7744528293637386,
+          "f_score": 0.7748304270377336,
+          "precision_percent": 77.52083930997033,
+          "recall_percent": 77.44528293637386,
+          "f_score_percent": 77.48304270377336,
+          "threshold": 0.41814,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.9505888860164611,
+          "recall": 0.8756738249468625,
+          "f_score": 0.9115948113849744,
+          "precision_percent": 95.0588886016461,
+          "recall_percent": 87.56738249468626,
+          "f_score_percent": 91.15948113849744,
+          "threshold": 0.448988,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.7539954449155276,
+          "recall": 0.7100433294894172,
+          "f_score": 0.731359640860981,
+          "precision_percent": 75.39954449155276,
+          "recall_percent": 71.00433294894172,
+          "f_score_percent": 73.1359640860981,
+          "threshold": 0.454833,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.8390423441222565,
+          "recall": 0.8376691160631365,
+          "f_score": 0.838355167755244,
+          "precision_percent": 83.90423441222565,
+          "recall_percent": 83.76691160631366,
+          "f_score_percent": 83.8355167755244,
+          "threshold": 0.372756,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.8605108771800571,
+          "recall": 0.8298152987956784,
+          "f_score": 0.8448843789003132,
+          "precision_percent": 86.05108771800572,
+          "recall_percent": 82.98152987956784,
+          "f_score_percent": 84.48843789003132,
+          "threshold": 0.450509,
+          "sequences": 1,
+          "frames": 2646
+        }
+      },
+      "constant": {
+        "bag05_indoor": {
+          "precision": 0.5571808631230644,
+          "recall": 0.8424044001979665,
+          "f_score": 0.670729569825869,
+          "precision_percent": 55.71808631230644,
+          "recall_percent": 84.24044001979665,
+          "f_score_percent": 67.0729569825869,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.43685023637917003,
+          "recall": 0.5047824520362978,
+          "f_score": 0.468365926979838,
+          "precision_percent": 43.685023637917006,
+          "recall_percent": 50.47824520362978,
+          "f_score_percent": 46.8365926979838,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.842298543245767,
+          "recall": 0.842298543245767,
+          "f_score": 0.8422985432457669,
+          "precision_percent": 84.2298543245767,
+          "recall_percent": 84.2298543245767,
+          "f_score_percent": 84.22985432457669,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.5968747794443381,
+          "recall": 0.8320866848455646,
+          "f_score": 0.6951223933006047,
+          "precision_percent": 59.68747794443381,
+          "recall_percent": 83.20866848455645,
+          "f_score_percent": 69.51223933006047,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.624364879251395,
+          "recall": 0.8040818076258263,
+          "f_score": 0.7029179952442903,
+          "precision_percent": 62.4364879251395,
+          "recall_percent": 80.40818076258263,
+          "f_score_percent": 70.29179952442904,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.6578435458293944,
+          "recall": 0.7230183518666615,
+          "f_score": 0.6888928676868769,
+          "precision_percent": 65.78435458293944,
+          "recall_percent": 72.30183518666615,
+          "f_score_percent": 68.88928676868768,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.6847240400159718,
+          "recall": 0.9109491203746055,
+          "f_score": 0.7818001548628153,
+          "precision_percent": 68.47240400159717,
+          "recall_percent": 91.09491203746055,
+          "f_score_percent": 78.18001548628153,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.27831677062055205,
+          "recall": 0.3035460567510375,
+          "f_score": 0.29038444896429055,
+          "precision_percent": 27.831677062055206,
+          "recall_percent": 30.354605675103752,
+          "f_score_percent": 29.038444896429056,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.18893845642488769,
+          "recall": 0.33297076563611366,
+          "f_score": 0.2410801719328395,
+          "precision_percent": 18.893845642488767,
+          "recall_percent": 33.29707656361137,
+          "f_score_percent": 24.108017193283953,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.7550469170216781,
+          "recall": 0.9237792666454937,
+          "f_score": 0.8309337727454766,
+          "precision_percent": 75.50469170216782,
+          "recall_percent": 92.37792666454936,
+          "f_score_percent": 83.09337727454766,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.8140496540751264,
+          "recall": 0.8934841513335918,
+          "f_score": 0.8519192557252134,
+          "precision_percent": 81.40496540751265,
+          "recall_percent": 89.34841513335918,
+          "f_score_percent": 85.19192557252134,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.8369580005675848,
+          "recall": 0.8556609726473073,
+          "f_score": 0.846206155269989,
+          "precision_percent": 83.69580005675849,
+          "recall_percent": 85.56609726473073,
+          "f_score_percent": 84.6206155269989,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.6998815554079613,
+          "recall": 0.7433341173169546,
+          "f_score": 0.7209536981168243,
+          "precision_percent": 69.98815554079613,
+          "recall_percent": 74.33341173169546,
+          "f_score_percent": 72.09536981168243,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.7076935390200745,
+          "recall": 0.7320114882350917,
+          "f_score": 0.7196471373029787,
+          "precision_percent": 70.76935390200745,
+          "recall_percent": 73.20114882350917,
+          "f_score_percent": 71.96471373029787,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.45504398358278436,
+          "recall": 0.6378394299792876,
+          "f_score": 0.5311545431144244,
+          "precision_percent": 45.504398358278436,
+          "recall_percent": 63.783942997928754,
+          "f_score_percent": 53.11545431144245,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.6264924092031081,
+          "recall": 0.850566336582322,
+          "f_score": 0.7215330533237034,
+          "precision_percent": 62.64924092031081,
+          "recall_percent": 85.0566336582322,
+          "f_score_percent": 72.15330533237034,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.6811098002028836,
+          "recall": 0.8002240727735757,
+          "f_score": 0.7358779384814748,
+          "precision_percent": 68.11098002028835,
+          "recall_percent": 80.02240727735756,
+          "f_score_percent": 73.58779384814747,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.6888306320562058,
+          "recall": 0.7821517410774655,
+          "f_score": 0.7325309779511453,
+          "precision_percent": 68.88306320562057,
+          "recall_percent": 78.21517410774655,
+          "f_score_percent": 73.25309779511453,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.751087629743359,
+          "recall": 0.8878881787684191,
+          "f_score": 0.8137787320654372,
+          "precision_percent": 75.1087629743359,
+          "recall_percent": 88.7888178768419,
+          "f_score_percent": 81.37787320654371,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.6363691445898659,
+          "recall": 0.740863257001995,
+          "f_score": 0.6846520842400833,
+          "precision_percent": 63.636914458986595,
+          "recall_percent": 74.0863257001995,
+          "f_score_percent": 68.46520842400832,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.7352697069169057,
+          "recall": 0.8435745737295433,
+          "f_score": 0.7857074154706569,
+          "precision_percent": 73.52697069169058,
+          "recall_percent": 84.35745737295433,
+          "f_score_percent": 78.5707415470657,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.8034461398876315,
+          "recall": 0.8520715375321334,
+          "f_score": 0.8270447329868402,
+          "precision_percent": 80.34461398876314,
+          "recall_percent": 85.20715375321333,
+          "f_score_percent": 82.70447329868402,
+          "threshold": 1.0,
+          "sequences": 1,
+          "frames": 2646
+        }
+      },
+      "GT_overlap_oracle": {
+        "bag05_indoor": {
+          "precision": 0.8703513495801881,
+          "recall": 0.8392673728094672,
+          "f_score": 0.8545267795878211,
+          "precision_percent": 87.03513495801882,
+          "recall_percent": 83.92673728094671,
+          "f_score_percent": 85.4526779587821,
+          "threshold": 0.376027,
+          "sequences": 1,
+          "frames": 889
+        },
+        "ball07_indoor": {
+          "precision": 0.9171286315605485,
+          "recall": 0.5035793449440259,
+          "f_score": 0.6501646265786062,
+          "precision_percent": 91.71286315605485,
+          "recall_percent": 50.35793449440259,
+          "f_score_percent": 65.01646265786061,
+          "threshold": 0.205593,
+          "sequences": 1,
+          "frames": 2519
+        },
+        "ball19_indoor": {
+          "precision": 0.8626014157416506,
+          "recall": 0.8369919602417174,
+          "f_score": 0.8496037464857124,
+          "precision_percent": 86.26014157416506,
+          "recall_percent": 83.69919602417174,
+          "f_score_percent": 84.96037464857123,
+          "threshold": 0.542373,
+          "sequences": 1,
+          "frames": 1381
+        },
+        "beautifullight01_indoor": {
+          "precision": 0.8748306885958849,
+          "recall": 0.8268158319221262,
+          "f_score": 0.8501458497528859,
+          "precision_percent": 87.48306885958849,
+          "recall_percent": 82.68158319221261,
+          "f_score_percent": 85.01458497528859,
+          "threshold": 0.570101,
+          "sequences": 1,
+          "frames": 1270
+        },
+        "book06_indoor": {
+          "precision": 0.8736135021782176,
+          "recall": 0.7961975579360341,
+          "f_score": 0.8331109472548959,
+          "precision_percent": 87.36135021782177,
+          "recall_percent": 79.6197557936034,
+          "f_score_percent": 83.31109472548958,
+          "threshold": 0.419452,
+          "sequences": 1,
+          "frames": 1991
+        },
+        "car01_indoor": {
+          "precision": 0.9404057805264722,
+          "recall": 0.7212235351721198,
+          "f_score": 0.816358709033065,
+          "precision_percent": 94.04057805264722,
+          "recall_percent": 72.12235351721198,
+          "f_score_percent": 81.6358709033065,
+          "threshold": 0.623853,
+          "sequences": 1,
+          "frames": 1542
+        },
+        "car02_indoor": {
+          "precision": 0.9368435215754806,
+          "recall": 0.908705111916853,
+          "f_score": 0.9225598086904732,
+          "precision_percent": 93.68435215754806,
+          "recall_percent": 90.8705111916853,
+          "f_score_percent": 92.25598086904732,
+          "threshold": 0.61583,
+          "sequences": 1,
+          "frames": 753
+        },
+        "colacan01_indoor": {
+          "precision": 0.8469890698369125,
+          "recall": 0.2989550999531429,
+          "f_score": 0.4419267686988691,
+          "precision_percent": 84.69890698369124,
+          "recall_percent": 29.89550999531429,
+          "f_score_percent": 44.19267686988691,
+          "threshold": 0.60274,
+          "sequences": 1,
+          "frames": 3056
+        },
+        "colacan04_indoor": {
+          "precision": 0.9148508943202712,
+          "recall": 0.32696255554051945,
+          "f_score": 0.4817502763865501,
+          "precision_percent": 91.48508943202712,
+          "recall_percent": 32.696255554051945,
+          "f_score_percent": 48.17502763865501,
+          "threshold": 0.737297,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "container01_indoor": {
+          "precision": 0.9311826180607008,
+          "recall": 0.9222001490761924,
+          "f_score": 0.9266696166807621,
+          "precision_percent": 93.11826180607008,
+          "recall_percent": 92.22001490761924,
+          "f_score_percent": 92.66696166807621,
+          "threshold": 0.560741,
+          "sequences": 1,
+          "frames": 761
+        },
+        "cup08_indoor": {
+          "precision": 0.8941605208652602,
+          "recall": 0.893484151333592,
+          "f_score": 0.8938222081445393,
+          "precision_percent": 89.41605208652602,
+          "recall_percent": 89.34841513335921,
+          "f_score_percent": 89.38222081445393,
+          "threshold": 0.252721,
+          "sequences": 1,
+          "frames": 1451
+        },
+        "cup10_indoor": {
+          "precision": 0.8955158629669758,
+          "recall": 0.8513237393754957,
+          "f_score": 0.8728608077224652,
+          "precision_percent": 89.55158629669758,
+          "recall_percent": 85.13237393754956,
+          "f_score_percent": 87.28608077224652,
+          "threshold": 0.499661,
+          "sequences": 1,
+          "frames": 2196
+        },
+        "cup13_indoor": {
+          "precision": 0.8337067073453148,
+          "recall": 0.743250283401881,
+          "f_score": 0.7858841428704402,
+          "precision_percent": 83.37067073453149,
+          "recall_percent": 74.3250283401881,
+          "f_score_percent": 78.58841428704402,
+          "threshold": 0.080357,
+          "sequences": 1,
+          "frames": 1762
+        },
+        "egg_indoor": {
+          "precision": 0.8749600314536761,
+          "recall": 0.7315114299078346,
+          "f_score": 0.796831165837749,
+          "precision_percent": 87.49600314536761,
+          "recall_percent": 73.15114299078346,
+          "f_score_percent": 79.6831165837749,
+          "threshold": 0.475269,
+          "sequences": 1,
+          "frames": 3552
+        },
+        "flower02_wild": {
+          "precision": 0.8416107721272883,
+          "recall": 0.6330063927111228,
+          "f_score": 0.7225536385092816,
+          "precision_percent": 84.16107721272883,
+          "recall_percent": 63.30063927111228,
+          "f_score_percent": 72.25536385092816,
+          "threshold": 0.554017,
+          "sequences": 1,
+          "frames": 656
+        },
+        "flower03_indoor": {
+          "precision": 0.8536119531770637,
+          "recall": 0.8442658369014024,
+          "f_score": 0.8489131717834284,
+          "precision_percent": 85.36119531770638,
+          "recall_percent": 84.42658369014025,
+          "f_score_percent": 84.89131717834285,
+          "threshold": 0.665,
+          "sequences": 1,
+          "frames": 744
+        },
+        "flowerbasket_indoor": {
+          "precision": 0.8943448562928422,
+          "recall": 0.7967227064862291,
+          "f_score": 0.8427160098401828,
+          "precision_percent": 89.43448562928423,
+          "recall_percent": 79.67227064862291,
+          "f_score_percent": 84.27160098401828,
+          "threshold": 0.531239,
+          "sequences": 1,
+          "frames": 1001
+        },
+        "ghostmask_indoor": {
+          "precision": 0.8926298582294597,
+          "recall": 0.7795286091360585,
+          "f_score": 0.8322542694834505,
+          "precision_percent": 89.26298582294598,
+          "recall_percent": 77.95286091360585,
+          "f_score_percent": 83.22542694834505,
+          "threshold": 0.500938,
+          "sequences": 1,
+          "frames": 1165
+        },
+        "glass03_indoor": {
+          "precision": 0.949051534032299,
+          "recall": 0.885892237546787,
+          "f_score": 0.9163849051435061,
+          "precision_percent": 94.9051534032299,
+          "recall_percent": 88.5892237546787,
+          "f_score_percent": 91.63849051435061,
+          "threshold": 0.731956,
+          "sequences": 1,
+          "frames": 675
+        },
+        "mobilephone01_indoor": {
+          "precision": 0.8849353753372151,
+          "recall": 0.7396257898959647,
+          "f_score": 0.8057819428383586,
+          "precision_percent": 88.49353753372151,
+          "recall_percent": 73.96257898959647,
+          "f_score_percent": 80.57819428383586,
+          "threshold": 0.274534,
+          "sequences": 1,
+          "frames": 1418
+        },
+        "mobilephone02_indoor": {
+          "precision": 0.8528182422558809,
+          "recall": 0.8416520459579315,
+          "f_score": 0.8471983526858257,
+          "precision_percent": 85.28182422558808,
+          "recall_percent": 84.16520459579316,
+          "f_score_percent": 84.71983526858257,
+          "threshold": 0.423077,
+          "sequences": 1,
+          "frames": 701
+        },
+        "notebook02_indoor": {
+          "precision": 0.8826060417457785,
+          "recall": 0.8511222991744862,
+          "f_score": 0.8665783050154431,
+          "precision_percent": 88.26060417457785,
+          "recall_percent": 85.11222991744862,
+          "f_score_percent": 86.65783050154431,
+          "threshold": 0.436257,
+          "sequences": 1,
+          "frames": 2646
+        }
+      }
+    }
+  },
+  "constant_score_analytical_checks": {
+    "native": {
+      "macro_precision": 0.5806892147282408,
+      "macro_recall": 0.6854784983253143,
+      "f_score": 0.628747624508072
+    },
+    "control": {
+      "macro_precision": 0.5867558163742624,
+      "macro_recall": 0.6893380256201184,
+      "f_score": 0.6339237486616378
+    },
+    "null": {
+      "macro_precision": 0.6390305103004413,
+      "macro_recall": 0.7563448775546828,
+      "f_score": 0.6927561676572664
+    }
+  },
+  "prediction_and_score_files": {
+    "native": {
+      "raw": {
+        "bag05_indoor": {
+          "bbox_sha256": "2ae94c5cdce0d5fa9f67cd62c3dbf12c9eb2db6a1ed36a0f264fe057da305264",
+          "score_sha256": "1fe8082fdcc5ab63b7a9a987194c1e836ee534bdbb7a2a8da8a1c24569ac0b4d"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "4fc9109dbae1295e5a1edf63bce7d8ad1aa032a0111b73bf586ca64f2491ff0b",
+          "score_sha256": "aacecd1bd3d949846efc468ace78fbb0db80deff2dca34f137d4e1b39d8d4194"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "18c7132731dff638921fea37a47fbd756b79423b0d0bcbea95a28c63f781f49d",
+          "score_sha256": "68be321164b392ed08a4981af60fc0f81caa2160fb3abd1a060d504c2c0a523b"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "3353224db2b3f7081aa7c2c76fbd523fbd2e3a6d69b64e59f3c094164a5ee96c",
+          "score_sha256": "f981f949b368f25932523f8498a99d4573e9ef05049df3057d7979798fce8917"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "b859c33b209f033101d785ebd307216edfc00c2038a138b28e7383411ce25d3d",
+          "score_sha256": "19c55494235731c1dba2473598733f28e5e48fbef41b027b481337bf3d5e2523"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "7ed4a0cc4cb7f57ec7b60b5ecd106d97768c11ad4a7f977b87752b43925ae475",
+          "score_sha256": "39a5897d8caeac21f6b56e477a8fe19a64268713a1354e0e2523f15455c6336c"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "636dd911233cd4a0087df12ccf26b4dcb33244e0fde870cb3e9eac89b82f9b56",
+          "score_sha256": "3c4544eaf023fa516c09c7b76243ad33dcb97ede0e80adec126aee682abb8ac4"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "f110478f17bf36ba8767921b1611ced7ad038497c5a1eac8805ca99c9a0d9d47",
+          "score_sha256": "5ba6f1ad01b701e3cae2eca1f6fc0374d7da227e01a0e42c7ff29ead2bc0021d"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "130aab44e1bbc926f076246aa853c0fd070697f94f10b78f8986e2c6de1f7895",
+          "score_sha256": "810ef5e44c54cbd5bf13776668816e27b0f6b202861b8e99df3fad8b5dd9c9c9"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "e5d92828b859685d886cee254283ff9b88ae58d2cfbcfd7b20b0f20cec308fa4",
+          "score_sha256": "21a915c0e2c9bc2c758657b2404e9715a7e42fdd8c4053676afa6dabc964be80"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "ff768c2faac182c1be28899e6db50c53140d99c7504c005613d8ff621987861f",
+          "score_sha256": "bd8d266f545ccb780e532a81adfd258dca0991622ea7a673d022976753ecf127"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "840da49a5b31ae29e69a98d541754690c5a77e878304cf59e946a923149940d3",
+          "score_sha256": "3ddae46b7dc9a89061486e542869372330a2e4a449a1933ae190a387e6ff9a9f"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "43384323656ec2221c7e0acd91e92e8c687620e6d331f4c3b45389d1c3e0cbcb",
+          "score_sha256": "020381f561393a4d45468c2ba5296e7a92e03a4dd7e001b71c0cfe4a4b6ef037"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "63c2303653727ebeea6265e9b998f98fa58e8f050ba1771960e64b08bc79ae5c",
+          "score_sha256": "f441809323b89cb64ace58a17b5558524334b5e677ea6377c92e8ddf5c3500b5"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "bdb36aa5297b7fcdbbcc5c64aec5eec4b43cebf89364b5eff24253181b885acf",
+          "score_sha256": "5db0fe3bc88bbac7e660998fe3edd509656bafc63c294fa42333fc50f5932bd8"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "973fbe52cb5369d685c9f56e0d560aee74c1394009ac28edb9e89efacab3e1ad",
+          "score_sha256": "4e513ce05db72dd82cb19a0e29e0a013a83f450d7675484e2d8eb5fa043984eb"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "38c199645da8d3f57c7d2551cd8aa85b89d7553d1b217ad6df48b52b08a737d8",
+          "score_sha256": "7c2bc6f1a35c5906a9a0f29756ab744e8e327f076e6f4dbad21f33fa1b083e51"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "e49ba1a9ffe88bc7b358a4d9e870590e9314e24a510ece390d3e2a122b749c8e",
+          "score_sha256": "2b89213be7c08d8644c2fcc8ed389bbb40def27ec98d21cd71cc105923d30a30"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "e74c2a4813104265d43b59a8503a4c70cd5adb4c2e3f717c675f6f52832382a5",
+          "score_sha256": "6da33f785442fe8f7dc35c1ed016869a796b959519f0e243c53977626391b143"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "21127e61bdefa20790761919bd1f5e87994ef651e199d612570856ee4a70b28e",
+          "score_sha256": "4394a1818265c3e288763ff8d296a96ccca8515ab043181c8b2e0761435363b9"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "98f23f8b238c3fb50de22c2df44eccf39e140f4ef078334627e965446e47bc33",
+          "score_sha256": "1730bcaf4ec191bde03bfc8dee626a921e5b185a7e2b849cd5fc6e6ee765c73e"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "2407c3940e071c099fad409d904cd8f7d31eda47973f6c0122a1e4758d1d77c2",
+          "score_sha256": "864d88cfebd9b8a16b32d329a9de98ea572b66cd570eb4b52681ecd043201866"
+        }
+      },
+      "constant": {
+        "bag05_indoor": {
+          "bbox_sha256": "2ae94c5cdce0d5fa9f67cd62c3dbf12c9eb2db6a1ed36a0f264fe057da305264",
+          "score_sha256": "96680772855a3f9508d14cae5d0c20d5c283d35086557fd7bbf169fa252690b8"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "4fc9109dbae1295e5a1edf63bce7d8ad1aa032a0111b73bf586ca64f2491ff0b",
+          "score_sha256": "6714f161f0af9ef6d3db40177602bae7343c4b3622c7020d65605e73cdeee3bf"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "18c7132731dff638921fea37a47fbd756b79423b0d0bcbea95a28c63f781f49d",
+          "score_sha256": "dd04874540a8d4d1f1e0a18ce4a9921d44a3673c8061be8ebdbef8997339412c"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "3353224db2b3f7081aa7c2c76fbd523fbd2e3a6d69b64e59f3c094164a5ee96c",
+          "score_sha256": "a9d1141024f7454c5c250c97942579781540a5c418c952057a7c28ef7812e646"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "b859c33b209f033101d785ebd307216edfc00c2038a138b28e7383411ce25d3d",
+          "score_sha256": "a239c55c8a64cd5e57a3ad32eb2cdf93d64afefba33d0e6672a7e712dcb28854"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "7ed4a0cc4cb7f57ec7b60b5ecd106d97768c11ad4a7f977b87752b43925ae475",
+          "score_sha256": "20bb73f5ec684e0c948caacbd9cd7b23391d91415e7df6ae11c907019a71e172"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "636dd911233cd4a0087df12ccf26b4dcb33244e0fde870cb3e9eac89b82f9b56",
+          "score_sha256": "7c4b805c3e4a757cfaa880bea78337aca5bf808ff3a3de80f0dbdfa97a2038e6"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "f110478f17bf36ba8767921b1611ced7ad038497c5a1eac8805ca99c9a0d9d47",
+          "score_sha256": "0ff1d60f2612f976845ea90921d0c1bc97382e064822dd95ba6f07da80e55bc2"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "130aab44e1bbc926f076246aa853c0fd070697f94f10b78f8986e2c6de1f7895",
+          "score_sha256": "7c3daf37a102176802977a66e3aaa834410d0e408c00a7555e965e136f4c080a"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "e5d92828b859685d886cee254283ff9b88ae58d2cfbcfd7b20b0f20cec308fa4",
+          "score_sha256": "b44b0bc7c112a21467f9c4afe99fc3a3c2d89cc39c56c7b1bdf3cdd4c386600c"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "ff768c2faac182c1be28899e6db50c53140d99c7504c005613d8ff621987861f",
+          "score_sha256": "4a9a2925dff72267121d4b64b844d54437b2bf3e0411c9767a6bf30e6744aafd"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "840da49a5b31ae29e69a98d541754690c5a77e878304cf59e946a923149940d3",
+          "score_sha256": "ee12254e7bfcb80538dc00087a796f300bc8f252c66fe264fc138e5f1ed00b14"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "43384323656ec2221c7e0acd91e92e8c687620e6d331f4c3b45389d1c3e0cbcb",
+          "score_sha256": "7ec9a6ff65902d2a5eb4f37feb084f818ff53a1a85f358ed0eb7efcb417bed16"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "63c2303653727ebeea6265e9b998f98fa58e8f050ba1771960e64b08bc79ae5c",
+          "score_sha256": "3fb0d289aaaa8a5ddee4209fcdedb524ffc57a349290ca4cf6238bc7715b8b04"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "bdb36aa5297b7fcdbbcc5c64aec5eec4b43cebf89364b5eff24253181b885acf",
+          "score_sha256": "d7d6bf0c8e57d41ae0f9e4788d011e6fc87a8e57cde43bd3ae9b179815f16f90"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "973fbe52cb5369d685c9f56e0d560aee74c1394009ac28edb9e89efacab3e1ad",
+          "score_sha256": "815a93d06b1f1d5a3f9f111d21f00ca1867893b7086a14e079e3a39c2b8b6546"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "38c199645da8d3f57c7d2551cd8aa85b89d7553d1b217ad6df48b52b08a737d8",
+          "score_sha256": "7c3daf37a102176802977a66e3aaa834410d0e408c00a7555e965e136f4c080a"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "e49ba1a9ffe88bc7b358a4d9e870590e9314e24a510ece390d3e2a122b749c8e",
+          "score_sha256": "f5efa44517afb7dded9f9a72828d147747e81144fbb4a47946b41838f048bd0c"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "e74c2a4813104265d43b59a8503a4c70cd5adb4c2e3f717c675f6f52832382a5",
+          "score_sha256": "a65048c18f548620ac721b8c960185c2a9a553fd2b8b3078289a97db694bb3eb"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "21127e61bdefa20790761919bd1f5e87994ef651e199d612570856ee4a70b28e",
+          "score_sha256": "c0f15ae563a056d4192d74cf3f6416ce4d6c592c4499b44da79f2c97abd2dc89"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "98f23f8b238c3fb50de22c2df44eccf39e140f4ef078334627e965446e47bc33",
+          "score_sha256": "4a783acb5754d43572a4f493fba417c20dd7c9b8410c021a36e1740f27e59543"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "2407c3940e071c099fad409d904cd8f7d31eda47973f6c0122a1e4758d1d77c2",
+          "score_sha256": "c3dcd6f1f8866d53a03c1b1da6193a2a79a501f46392879143c2388873d833be"
+        }
+      },
+      "GT_overlap_oracle": {
+        "bag05_indoor": {
+          "bbox_sha256": "2ae94c5cdce0d5fa9f67cd62c3dbf12c9eb2db6a1ed36a0f264fe057da305264",
+          "score_sha256": "b136f2b9da7a827316d003b79a8a6a562fe6a30b9b57a68cbb02129eb6bfdf47"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "4fc9109dbae1295e5a1edf63bce7d8ad1aa032a0111b73bf586ca64f2491ff0b",
+          "score_sha256": "fa54384b72fbfafc887301454f5ac91d89b690fd95a567971f87f69c051364da"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "18c7132731dff638921fea37a47fbd756b79423b0d0bcbea95a28c63f781f49d",
+          "score_sha256": "ab764dd6c8fb23f77a3e5efe9d7f79a6d4a956d739961cef60d3c2798752b9c2"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "3353224db2b3f7081aa7c2c76fbd523fbd2e3a6d69b64e59f3c094164a5ee96c",
+          "score_sha256": "c79d8c1aa755b99e7e29b8a887335452c25f9ebb3b633b76ba0d8315d51a5b48"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "b859c33b209f033101d785ebd307216edfc00c2038a138b28e7383411ce25d3d",
+          "score_sha256": "5c588f9492d1ed5c24690866b4c1e181680c016064c442b0e367554920ebb7c2"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "7ed4a0cc4cb7f57ec7b60b5ecd106d97768c11ad4a7f977b87752b43925ae475",
+          "score_sha256": "2f7efc015e2c937ac6f3107ed582ac510794eb700bfe746c173ae9b6b6d3dcca"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "636dd911233cd4a0087df12ccf26b4dcb33244e0fde870cb3e9eac89b82f9b56",
+          "score_sha256": "da906459f9a2fae74ee2ec0accfe39fb96ed20a8e2697cf7c32086ffc0c0a778"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "f110478f17bf36ba8767921b1611ced7ad038497c5a1eac8805ca99c9a0d9d47",
+          "score_sha256": "67196e213629b0e59f5bc073dc4fd241ca006381a60f0bdfbb430f5cd13de87c"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "130aab44e1bbc926f076246aa853c0fd070697f94f10b78f8986e2c6de1f7895",
+          "score_sha256": "00ba996c9554bf07b96a7eba4012bb7e4a7ddbc2fda914a4e091de4a698fb718"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "e5d92828b859685d886cee254283ff9b88ae58d2cfbcfd7b20b0f20cec308fa4",
+          "score_sha256": "e6f4136ff1ebe76117583586edd5c155ec9fe0b1dd4afa222783daf883a886cc"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "ff768c2faac182c1be28899e6db50c53140d99c7504c005613d8ff621987861f",
+          "score_sha256": "f21e2d5f4ddd699c2d5d55d0d2372f4730b234451eac5a3e00f49f2eb198c731"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "840da49a5b31ae29e69a98d541754690c5a77e878304cf59e946a923149940d3",
+          "score_sha256": "91b20e05936420f55db82ee80f21698b8c3bb0f561564274d3e0907a507d49b3"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "43384323656ec2221c7e0acd91e92e8c687620e6d331f4c3b45389d1c3e0cbcb",
+          "score_sha256": "344159dc19e5b6ae7b6ee64e7f435645df63d7ef1de0e17c1c3e4c659ce23173"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "63c2303653727ebeea6265e9b998f98fa58e8f050ba1771960e64b08bc79ae5c",
+          "score_sha256": "e3aabf5fb23b473e3923405c299ae299315f9e260f742253f67372e7887acaee"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "bdb36aa5297b7fcdbbcc5c64aec5eec4b43cebf89364b5eff24253181b885acf",
+          "score_sha256": "04d6576ef5573bcac7daebe349086b4ff6b6e0c7edd5b3a6b5ec69fc26ae31e7"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "973fbe52cb5369d685c9f56e0d560aee74c1394009ac28edb9e89efacab3e1ad",
+          "score_sha256": "cf313d2cfa7f2d1c8945c3f7576bec0b7470ae16d186ccf7cbbb62446ec4dbae"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "38c199645da8d3f57c7d2551cd8aa85b89d7553d1b217ad6df48b52b08a737d8",
+          "score_sha256": "45cd877d363c244c7779629d7e9f59e5c71e4582afab9564fceb3f9c3a5013ef"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "e49ba1a9ffe88bc7b358a4d9e870590e9314e24a510ece390d3e2a122b749c8e",
+          "score_sha256": "bd8cb71386cb4f4a74d201532faa4764b17042f1e94636da5d683822367d68db"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "e74c2a4813104265d43b59a8503a4c70cd5adb4c2e3f717c675f6f52832382a5",
+          "score_sha256": "d7d84788be6264064c7ea5a11e8de8687085a70fd2dc0676ab691546b2dff398"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "21127e61bdefa20790761919bd1f5e87994ef651e199d612570856ee4a70b28e",
+          "score_sha256": "22925a7e1e72760f1ff34146eb5bd27b2a9e216702c6279db72a90b8f2223ee1"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "98f23f8b238c3fb50de22c2df44eccf39e140f4ef078334627e965446e47bc33",
+          "score_sha256": "9206e7daffa9894b6cc6ee51d8d7a38026416ab375d774a5c62691521b6fcf8d"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "2407c3940e071c099fad409d904cd8f7d31eda47973f6c0122a1e4758d1d77c2",
+          "score_sha256": "7dd7cb1ddbc6f22eb8e96d17154a8038ed106e6768e91067bd8356b1573a9eba"
+        }
+      }
+    },
+    "control": {
+      "raw": {
+        "bag05_indoor": {
+          "bbox_sha256": "9cb5b3a3d9ec459ba02dd7935448a2290d7653cbfa61c97adcf96801050cc746",
+          "score_sha256": "85304adf9d90f21737b5f5eb7a9434ff72ebf12ca727a68cba960ee4fdb86262"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "269218689c426486e94dfabcee1edfe08ba753899457e7094b313ab49339bdfb",
+          "score_sha256": "b5e4cc8e9c98ec9b2f0c88ff001dfc249f142ba95f12adb3b7c1446cb584726d"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "b2cba165dae9de6fdd0331e85c42c18c75211bb4d25a8f41e79646f9a0c78f3b",
+          "score_sha256": "5af19dd37980edfe5b53b37688a5a763cfa20092488dad7373a1a9973399a5f6"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "fc5c63849c3c2f21029a0032c0ef177e12087e56ec272d8e1c0f99daa569c9ee",
+          "score_sha256": "e88de89042624915256781de67f321bd3beefa7bc1f61df7bc450a3045e975a4"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "d7b68324c297f9e546da571f03391e6ca5495656c21b38ded4ad9acb5a652b4b",
+          "score_sha256": "ab82a0e689cfe6ae3f9b526d283923b34f9031eef47d62bd40344c91dec2ebbd"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "bedce507273dc894984a3d2e69178d6e497caa8fd751ab20f7840394ee4bd0f3",
+          "score_sha256": "a48056a26bd8d9d4d2b275beec7a669ca66862962f8c1cf0aa56b32c690769d5"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "ba760ddb3f538f4bb88c8846a71a6a3bfc73b197a58d72eefa198888fedd43e1",
+          "score_sha256": "01b5147752083975e2a19a98675bad5e2ad6f16de9d8372df47ecb97dcc0d9a6"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "608e0d1b477256d4751af067b372c1b99fe54ff171c4dfae81810d2f008e2831",
+          "score_sha256": "bd5167261c8a5da4206c5ba3c879ba10d4e269438dd6190d7bb7211741314796"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "54ae9ec1e4906b37e0f70c744f831fde372e14ccd6fb6ffe9264a53eebd9f57c",
+          "score_sha256": "452812d02f6aa58641a2edb6dafc1366286a9f1056b65935737e2957966c05ff"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "ddcce56a3333056dc40d9ad0f447ccaad88222d58a3e316944f659f6ddb57a32",
+          "score_sha256": "fcda8cb9a93f46433b9a6b46027640b9ef7a923d26d7030ec0c1a4ad364bd60f"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "4cc110e5c7b8eb927a8aff9e2276082a2d3f414286818448895c2e2ed0a8f5d2",
+          "score_sha256": "22f2dd68db434280eb38223165ed98a51589fd34c3a2c26bba473444236f1a93"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "124aab0e0c3a24f9f9f68c32022a6f8ca644c98531d62ea6a2459090610d0d88",
+          "score_sha256": "4dc478266c819df7219aef4e4917a0ed4ed36ba3e43952c044b06b9bd62aa3ca"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "3e868b69f9e015238b1cbb64ed80c4ba62af22397e924c2b950543e2c999d7e3",
+          "score_sha256": "50fa871ea997084bba27f0ee32ffb09e5ed0ccc0a4504ebb0974c7c5d6adfc79"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "3cccc4d156cf0553a656572eaf2447e67e36da639e2afb3fcce7e4b126d522b6",
+          "score_sha256": "2082aac323b9fadc266548392b10612bd84a6d72c1ee85d00ab13d8b198b6a76"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "ae69ad69c3e8cf6064f0f5e3ccc9981f23aaade6bfe12442eed1a40985110a5c",
+          "score_sha256": "30969038317d0229c973b65fdb2073eefab81711140741d8c1d3dee40ad2badd"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "af2e2d2eeec434400cd67807851a955c4e2a3946607bd44a2ef2de449eaf6625",
+          "score_sha256": "ca161da977cef2c42d6275fd6c90b9c9056d042b2f60397f4264d4aff646144f"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "1820a19a274feda8ca91b4bd91421364caf7db47f69389b077517dcb6f3aafbc",
+          "score_sha256": "a4b7d02769f936bfd6a40bd5c698b4caab1e387c0fbe5d25f98615dde335e342"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "4333ce06525cfc1a09dd951a21dcdd8d5f99ca07c6e5fcb02cc737d254f1e406",
+          "score_sha256": "6decef0929685f09e36a1cbdeab0d56d9852608f0b58e6ef6eb46ac6400f7ffb"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "dbf6768f9193e8be3929269d5225e0feb25a24f1a49c94337dd78d98886879b6",
+          "score_sha256": "892503f2aae8dc246f5777462c86575a2f230540c4eefc0e7d10d1920b1165e0"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "9259c4e2d65eb2d4f41eb8f657f08cec68f09ed24d0c97465a20b773980455cd",
+          "score_sha256": "dc0411a03eaf34e68f4a2933fd700bced6ba55b1f483ee73d4b86a8a5f6f25d3"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "ef4d6840ed23f680ea191e2a2a919b8183a69418dcced70c2177ed1da93a1c79",
+          "score_sha256": "702fe3d2f8bedef964b85816b484eb30fe069fe635613c09c21449f3a7cf84d8"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "98198afa45aa426e5de2e68c8f6e03516e7740c114f3f4206912c4c5ec92bd47",
+          "score_sha256": "9ef43cb3343b7680bc8e5957a49616d330238fa4c8976736b1bebf101448baa4"
+        }
+      },
+      "constant": {
+        "bag05_indoor": {
+          "bbox_sha256": "9cb5b3a3d9ec459ba02dd7935448a2290d7653cbfa61c97adcf96801050cc746",
+          "score_sha256": "96680772855a3f9508d14cae5d0c20d5c283d35086557fd7bbf169fa252690b8"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "269218689c426486e94dfabcee1edfe08ba753899457e7094b313ab49339bdfb",
+          "score_sha256": "6714f161f0af9ef6d3db40177602bae7343c4b3622c7020d65605e73cdeee3bf"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "b2cba165dae9de6fdd0331e85c42c18c75211bb4d25a8f41e79646f9a0c78f3b",
+          "score_sha256": "dd04874540a8d4d1f1e0a18ce4a9921d44a3673c8061be8ebdbef8997339412c"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "fc5c63849c3c2f21029a0032c0ef177e12087e56ec272d8e1c0f99daa569c9ee",
+          "score_sha256": "a9d1141024f7454c5c250c97942579781540a5c418c952057a7c28ef7812e646"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "d7b68324c297f9e546da571f03391e6ca5495656c21b38ded4ad9acb5a652b4b",
+          "score_sha256": "a239c55c8a64cd5e57a3ad32eb2cdf93d64afefba33d0e6672a7e712dcb28854"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "bedce507273dc894984a3d2e69178d6e497caa8fd751ab20f7840394ee4bd0f3",
+          "score_sha256": "20bb73f5ec684e0c948caacbd9cd7b23391d91415e7df6ae11c907019a71e172"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "ba760ddb3f538f4bb88c8846a71a6a3bfc73b197a58d72eefa198888fedd43e1",
+          "score_sha256": "7c4b805c3e4a757cfaa880bea78337aca5bf808ff3a3de80f0dbdfa97a2038e6"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "608e0d1b477256d4751af067b372c1b99fe54ff171c4dfae81810d2f008e2831",
+          "score_sha256": "0ff1d60f2612f976845ea90921d0c1bc97382e064822dd95ba6f07da80e55bc2"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "54ae9ec1e4906b37e0f70c744f831fde372e14ccd6fb6ffe9264a53eebd9f57c",
+          "score_sha256": "7c3daf37a102176802977a66e3aaa834410d0e408c00a7555e965e136f4c080a"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "ddcce56a3333056dc40d9ad0f447ccaad88222d58a3e316944f659f6ddb57a32",
+          "score_sha256": "b44b0bc7c112a21467f9c4afe99fc3a3c2d89cc39c56c7b1bdf3cdd4c386600c"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "4cc110e5c7b8eb927a8aff9e2276082a2d3f414286818448895c2e2ed0a8f5d2",
+          "score_sha256": "4a9a2925dff72267121d4b64b844d54437b2bf3e0411c9767a6bf30e6744aafd"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "124aab0e0c3a24f9f9f68c32022a6f8ca644c98531d62ea6a2459090610d0d88",
+          "score_sha256": "ee12254e7bfcb80538dc00087a796f300bc8f252c66fe264fc138e5f1ed00b14"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "3e868b69f9e015238b1cbb64ed80c4ba62af22397e924c2b950543e2c999d7e3",
+          "score_sha256": "7ec9a6ff65902d2a5eb4f37feb084f818ff53a1a85f358ed0eb7efcb417bed16"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "3cccc4d156cf0553a656572eaf2447e67e36da639e2afb3fcce7e4b126d522b6",
+          "score_sha256": "3fb0d289aaaa8a5ddee4209fcdedb524ffc57a349290ca4cf6238bc7715b8b04"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "ae69ad69c3e8cf6064f0f5e3ccc9981f23aaade6bfe12442eed1a40985110a5c",
+          "score_sha256": "d7d6bf0c8e57d41ae0f9e4788d011e6fc87a8e57cde43bd3ae9b179815f16f90"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "af2e2d2eeec434400cd67807851a955c4e2a3946607bd44a2ef2de449eaf6625",
+          "score_sha256": "815a93d06b1f1d5a3f9f111d21f00ca1867893b7086a14e079e3a39c2b8b6546"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "1820a19a274feda8ca91b4bd91421364caf7db47f69389b077517dcb6f3aafbc",
+          "score_sha256": "7c3daf37a102176802977a66e3aaa834410d0e408c00a7555e965e136f4c080a"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "4333ce06525cfc1a09dd951a21dcdd8d5f99ca07c6e5fcb02cc737d254f1e406",
+          "score_sha256": "f5efa44517afb7dded9f9a72828d147747e81144fbb4a47946b41838f048bd0c"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "dbf6768f9193e8be3929269d5225e0feb25a24f1a49c94337dd78d98886879b6",
+          "score_sha256": "a65048c18f548620ac721b8c960185c2a9a553fd2b8b3078289a97db694bb3eb"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "9259c4e2d65eb2d4f41eb8f657f08cec68f09ed24d0c97465a20b773980455cd",
+          "score_sha256": "c0f15ae563a056d4192d74cf3f6416ce4d6c592c4499b44da79f2c97abd2dc89"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "ef4d6840ed23f680ea191e2a2a919b8183a69418dcced70c2177ed1da93a1c79",
+          "score_sha256": "4a783acb5754d43572a4f493fba417c20dd7c9b8410c021a36e1740f27e59543"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "98198afa45aa426e5de2e68c8f6e03516e7740c114f3f4206912c4c5ec92bd47",
+          "score_sha256": "c3dcd6f1f8866d53a03c1b1da6193a2a79a501f46392879143c2388873d833be"
+        }
+      },
+      "GT_overlap_oracle": {
+        "bag05_indoor": {
+          "bbox_sha256": "9cb5b3a3d9ec459ba02dd7935448a2290d7653cbfa61c97adcf96801050cc746",
+          "score_sha256": "a178e7aa0f41b7ea54e70b2e9f3d083b7ac8a3b76483243655e45ca108667c19"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "269218689c426486e94dfabcee1edfe08ba753899457e7094b313ab49339bdfb",
+          "score_sha256": "104fdc8b07b2fbde96c583a2605395bc2ecec75a14ebd2252c6febf7ec74cf2b"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "b2cba165dae9de6fdd0331e85c42c18c75211bb4d25a8f41e79646f9a0c78f3b",
+          "score_sha256": "b700e7128243335ddd4636d18d53f70910c5033ef6b57c08eb6cc869b949c1bb"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "fc5c63849c3c2f21029a0032c0ef177e12087e56ec272d8e1c0f99daa569c9ee",
+          "score_sha256": "192784fb87593f24fd8bfcaa6af04d6136c270646300d43d7def8787b57d6413"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "d7b68324c297f9e546da571f03391e6ca5495656c21b38ded4ad9acb5a652b4b",
+          "score_sha256": "e1f976ac9a49bf115e4281604b892fa80f8376703eaa238e9e7027768af4b6f8"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "bedce507273dc894984a3d2e69178d6e497caa8fd751ab20f7840394ee4bd0f3",
+          "score_sha256": "254647001fc309284f18979b720153ffbf45bab33b61fbd71c1f6807c7959e40"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "ba760ddb3f538f4bb88c8846a71a6a3bfc73b197a58d72eefa198888fedd43e1",
+          "score_sha256": "b19e54604208a8ee1180da5d9623f0d7d13a9b5c588bb7ae7abca38bd23655fa"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "608e0d1b477256d4751af067b372c1b99fe54ff171c4dfae81810d2f008e2831",
+          "score_sha256": "76462e682275db66930bd18afc68be0538e4bf1eaeb9aee99b441cfcfe167b4d"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "54ae9ec1e4906b37e0f70c744f831fde372e14ccd6fb6ffe9264a53eebd9f57c",
+          "score_sha256": "4d5ee0d9ccd102c7b4f89733d8ceceb6b42621fe7ad123ea490c527fe0774124"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "ddcce56a3333056dc40d9ad0f447ccaad88222d58a3e316944f659f6ddb57a32",
+          "score_sha256": "1ec367dbd6c762b913b73b854a3adcddd9fb1c576134c6d1748e9115647bd26c"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "4cc110e5c7b8eb927a8aff9e2276082a2d3f414286818448895c2e2ed0a8f5d2",
+          "score_sha256": "05ccfd87a886cffa9d81d5fe5ba63ba952d5785eca6344dc38f971f2ac58d947"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "124aab0e0c3a24f9f9f68c32022a6f8ca644c98531d62ea6a2459090610d0d88",
+          "score_sha256": "ebe0062cf6ef87f52c25c58bd4d1ee44a87f30502be9826479d0ea5f2cb067aa"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "3e868b69f9e015238b1cbb64ed80c4ba62af22397e924c2b950543e2c999d7e3",
+          "score_sha256": "ea6637aec0b68e1e9afc517f8536469df690c46d6f5ad9558cfa56bb37a7307a"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "3cccc4d156cf0553a656572eaf2447e67e36da639e2afb3fcce7e4b126d522b6",
+          "score_sha256": "cb640f5a6740fcfd730266a8a30fa05c855a26d4f2705e8e077205ddb62e9a14"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "ae69ad69c3e8cf6064f0f5e3ccc9981f23aaade6bfe12442eed1a40985110a5c",
+          "score_sha256": "d8bc4b692f1cdb2aee9762e2b3d7e54b16c1a518197a734c6ad79400830227a1"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "af2e2d2eeec434400cd67807851a955c4e2a3946607bd44a2ef2de449eaf6625",
+          "score_sha256": "1e24ef176755d60cc27cd9a4e988badb532d02fe42e14091215384504e7f450d"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "1820a19a274feda8ca91b4bd91421364caf7db47f69389b077517dcb6f3aafbc",
+          "score_sha256": "dd78a2e61df9aabe00dd400925c0717fe7b59295a809a27699007a9e7f99497e"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "4333ce06525cfc1a09dd951a21dcdd8d5f99ca07c6e5fcb02cc737d254f1e406",
+          "score_sha256": "089cdcb3f5fef8073cc141a0e25040fca1bc9a96dbdd092ab0bdacc857a56087"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "dbf6768f9193e8be3929269d5225e0feb25a24f1a49c94337dd78d98886879b6",
+          "score_sha256": "2e5ffba5c14ebed3f9d55412bb5e838c9029baa6be2020877782fb3e78aeec65"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "9259c4e2d65eb2d4f41eb8f657f08cec68f09ed24d0c97465a20b773980455cd",
+          "score_sha256": "289bee835008c53473428b9d8608da91cdb10aef78a08b068eef8a943b1be461"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "ef4d6840ed23f680ea191e2a2a919b8183a69418dcced70c2177ed1da93a1c79",
+          "score_sha256": "66b3c3cce933ddb55313a7847d422009f44894b2868c3b62808e73a138fbb551"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "98198afa45aa426e5de2e68c8f6e03516e7740c114f3f4206912c4c5ec92bd47",
+          "score_sha256": "c54234f1acbac2fe8facbdb644b15c20757ec5fe0390632667a7734d09a7bc0a"
+        }
+      }
+    },
+    "null": {
+      "raw": {
+        "bag05_indoor": {
+          "bbox_sha256": "e965282b2873fdc2d6f882e43459e3f080fece0b7ac96fad98cc895b1084a783",
+          "score_sha256": "d8b9a86981101f106503de3aeb0f6d9ba6ea8a57a19fc5f88ec959b62c26c473"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "99e90fa7b824a4f06fc99dd3f1d9465f7d03906a68ce87827120ae89aa4a931a",
+          "score_sha256": "1c08885e3a43463ecddac2fcd96709e361f5e215224ed71da5343c7af58dcf09"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "da7fb991f9702ea9661cd8ae849cc5afccda458e76acdeec9a3b05b39ee5f8b6",
+          "score_sha256": "227966c0f4fc727210415d3346326c97a1db68cb680054ab738dc4b446d18465"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "d6cb8c80e8e7a1972687aaf2f4db28ddced3fffbbd471415c150ebd2ae235b4d",
+          "score_sha256": "7a963f6fedd9400b3d2ec51076f0979793bae96a32303d179cd70a65fc74e00c"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "92bf6bfa229d221246f91a2acc40ddba5ed77da563e8784b5202f1504119c078",
+          "score_sha256": "f57c0dc5dcfd376cc3f6a8c7d7ed7f520efe1a201b5f9db9c1b68004c41d8251"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "958284dec70acd30656d96c350da62028cd853be0c58a34a5f4f199d9ba0f8ee",
+          "score_sha256": "bca6a566f4b226e7ebdc366de936ba44efef83f92439b21f64e0d0e6c636f915"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "f43e8f9ad68ca0b51e4420e8a6181f8c71b0582d295e8c324df9a9293fbab736",
+          "score_sha256": "152300dc0b474c3d1b21485a5d3db13b62b591bf0d522d79b3393e38d3624bdd"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "118628005d3fc46aa55393950b8a368834d311073a0a618b0b3045f4ba6f5944",
+          "score_sha256": "9afbc408cb76d5aff3e2d17addf174c74e6aaf5c1a73927e2e4bd26d47a3110f"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "954bfe1c6e755c009e0c8f5bd45355cc94528b18ba8d8abe8d9b302cfabaa8ea",
+          "score_sha256": "2f4e6bfa737066952477f3adc0c9c38244e50339b246c0ac969fe95f92137874"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "8166634093345207982992163b883f41532171ef16f5d03280526f1530162b1a",
+          "score_sha256": "524ba974b781344be2d429a76c768874e58f2494d24e7e30048bd653b25f597f"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "36a9fee0da3b86939d3d19082cc448ed97a28487104b8d8ff6572d56af2d9037",
+          "score_sha256": "44f2a56c958dbedcc9f57fe0fb45917e5137e7035eea57b1a165b0e9ca87c540"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "4b685b6de460f2ce15c897fbf1c771ab00344c552018302f8862798032a5228f",
+          "score_sha256": "374b6a33f7caaac773dcfac33e423b008016cce17909760eba415c1633a724ab"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "a8a7808a8e930ba9bda80844ee07df981e39036f2cd43daa782cd9366fc69f52",
+          "score_sha256": "69953276f88d6f984d425f71def651e5e56ac0961261bad74f616ad4ddd5977d"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "672a7b8d7e3363eee4caa57ecfc7e6e888263f1698ebf2b97ea1f0591a78a4da",
+          "score_sha256": "d6c4197344aa10a57fd2cc4753840a38dd9daee0c826f3a65a1c08b0aa35f4ba"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "3b4e1a8f9f446e2fafd2fc1a8a0a272aceaa2b287f8f0f2d78640d2bdd77a8f5",
+          "score_sha256": "e2adea85fd1422f73e5a972192dce6f7e1d36af75d3a0f865ed8c95d7ea98bd6"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "27b12ce62928851ddabc63325f44dc7d1d968eef84c0cc264c8e4395ffa7c89e",
+          "score_sha256": "8641e21b508828bdbf5d5e696eb25c0ca8f309b2ff355451bd5576b786970e69"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "e28ab9f5f15d35fecf61cf4b20d498081eed2d1c75348eed962a74582c89dcfb",
+          "score_sha256": "f865a46b7bbde096eea509b682745d831b7492271d25b2672a3b07fd75ba3e5b"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "40b50e500ff80d37a5da31d692be698d056429713d7768048d17c88a2886dc6d",
+          "score_sha256": "f0fe91b39b2995db517717f1665c16498452e78206d488a46701364d40845201"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "597998d52760ad84b6dae2f5529a471ced1b2054c0e6cb09fa9ab2d757c5cf33",
+          "score_sha256": "e8b85d2141ea30e01a94f7c4ee0719b6e7b2b71e21f6f4fe10507fc94d23fa65"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "9da7fea50c5e0e7b14a38a730ded06e153efb7129fdc9c2d722a61047a64cd68",
+          "score_sha256": "0afe48f1e255aa871ce4245d21425448822a34cfb3e5830a399907119a3892e5"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "748a8974b04fcaf868e49e85f401d35a5f8807296cb8a5867f7f93a13413f3a0",
+          "score_sha256": "55a18d4f1f855e3ff299ac8b3e599c7841b502e93e42ab298a0c941375b2ecb6"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "431a327ad78d4d4888699a4696019de582de140a26d107dfcd2c7332222b97f8",
+          "score_sha256": "7d1b1e0728b9ee6d8b6ad0ac87452e42217504ab8c5ea4c60e49294ae10b28b5"
+        }
+      },
+      "constant": {
+        "bag05_indoor": {
+          "bbox_sha256": "e965282b2873fdc2d6f882e43459e3f080fece0b7ac96fad98cc895b1084a783",
+          "score_sha256": "96680772855a3f9508d14cae5d0c20d5c283d35086557fd7bbf169fa252690b8"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "99e90fa7b824a4f06fc99dd3f1d9465f7d03906a68ce87827120ae89aa4a931a",
+          "score_sha256": "6714f161f0af9ef6d3db40177602bae7343c4b3622c7020d65605e73cdeee3bf"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "da7fb991f9702ea9661cd8ae849cc5afccda458e76acdeec9a3b05b39ee5f8b6",
+          "score_sha256": "dd04874540a8d4d1f1e0a18ce4a9921d44a3673c8061be8ebdbef8997339412c"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "d6cb8c80e8e7a1972687aaf2f4db28ddced3fffbbd471415c150ebd2ae235b4d",
+          "score_sha256": "a9d1141024f7454c5c250c97942579781540a5c418c952057a7c28ef7812e646"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "92bf6bfa229d221246f91a2acc40ddba5ed77da563e8784b5202f1504119c078",
+          "score_sha256": "a239c55c8a64cd5e57a3ad32eb2cdf93d64afefba33d0e6672a7e712dcb28854"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "958284dec70acd30656d96c350da62028cd853be0c58a34a5f4f199d9ba0f8ee",
+          "score_sha256": "20bb73f5ec684e0c948caacbd9cd7b23391d91415e7df6ae11c907019a71e172"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "f43e8f9ad68ca0b51e4420e8a6181f8c71b0582d295e8c324df9a9293fbab736",
+          "score_sha256": "7c4b805c3e4a757cfaa880bea78337aca5bf808ff3a3de80f0dbdfa97a2038e6"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "118628005d3fc46aa55393950b8a368834d311073a0a618b0b3045f4ba6f5944",
+          "score_sha256": "0ff1d60f2612f976845ea90921d0c1bc97382e064822dd95ba6f07da80e55bc2"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "954bfe1c6e755c009e0c8f5bd45355cc94528b18ba8d8abe8d9b302cfabaa8ea",
+          "score_sha256": "7c3daf37a102176802977a66e3aaa834410d0e408c00a7555e965e136f4c080a"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "8166634093345207982992163b883f41532171ef16f5d03280526f1530162b1a",
+          "score_sha256": "b44b0bc7c112a21467f9c4afe99fc3a3c2d89cc39c56c7b1bdf3cdd4c386600c"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "36a9fee0da3b86939d3d19082cc448ed97a28487104b8d8ff6572d56af2d9037",
+          "score_sha256": "4a9a2925dff72267121d4b64b844d54437b2bf3e0411c9767a6bf30e6744aafd"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "4b685b6de460f2ce15c897fbf1c771ab00344c552018302f8862798032a5228f",
+          "score_sha256": "ee12254e7bfcb80538dc00087a796f300bc8f252c66fe264fc138e5f1ed00b14"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "a8a7808a8e930ba9bda80844ee07df981e39036f2cd43daa782cd9366fc69f52",
+          "score_sha256": "7ec9a6ff65902d2a5eb4f37feb084f818ff53a1a85f358ed0eb7efcb417bed16"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "672a7b8d7e3363eee4caa57ecfc7e6e888263f1698ebf2b97ea1f0591a78a4da",
+          "score_sha256": "3fb0d289aaaa8a5ddee4209fcdedb524ffc57a349290ca4cf6238bc7715b8b04"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "3b4e1a8f9f446e2fafd2fc1a8a0a272aceaa2b287f8f0f2d78640d2bdd77a8f5",
+          "score_sha256": "d7d6bf0c8e57d41ae0f9e4788d011e6fc87a8e57cde43bd3ae9b179815f16f90"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "27b12ce62928851ddabc63325f44dc7d1d968eef84c0cc264c8e4395ffa7c89e",
+          "score_sha256": "815a93d06b1f1d5a3f9f111d21f00ca1867893b7086a14e079e3a39c2b8b6546"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "e28ab9f5f15d35fecf61cf4b20d498081eed2d1c75348eed962a74582c89dcfb",
+          "score_sha256": "7c3daf37a102176802977a66e3aaa834410d0e408c00a7555e965e136f4c080a"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "40b50e500ff80d37a5da31d692be698d056429713d7768048d17c88a2886dc6d",
+          "score_sha256": "f5efa44517afb7dded9f9a72828d147747e81144fbb4a47946b41838f048bd0c"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "597998d52760ad84b6dae2f5529a471ced1b2054c0e6cb09fa9ab2d757c5cf33",
+          "score_sha256": "a65048c18f548620ac721b8c960185c2a9a553fd2b8b3078289a97db694bb3eb"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "9da7fea50c5e0e7b14a38a730ded06e153efb7129fdc9c2d722a61047a64cd68",
+          "score_sha256": "c0f15ae563a056d4192d74cf3f6416ce4d6c592c4499b44da79f2c97abd2dc89"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "748a8974b04fcaf868e49e85f401d35a5f8807296cb8a5867f7f93a13413f3a0",
+          "score_sha256": "4a783acb5754d43572a4f493fba417c20dd7c9b8410c021a36e1740f27e59543"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "431a327ad78d4d4888699a4696019de582de140a26d107dfcd2c7332222b97f8",
+          "score_sha256": "c3dcd6f1f8866d53a03c1b1da6193a2a79a501f46392879143c2388873d833be"
+        }
+      },
+      "GT_overlap_oracle": {
+        "bag05_indoor": {
+          "bbox_sha256": "e965282b2873fdc2d6f882e43459e3f080fece0b7ac96fad98cc895b1084a783",
+          "score_sha256": "b64f8b87d96781810625a20aeb998af32386801e32193f51865ce953a1d2b874"
+        },
+        "ball07_indoor": {
+          "bbox_sha256": "99e90fa7b824a4f06fc99dd3f1d9465f7d03906a68ce87827120ae89aa4a931a",
+          "score_sha256": "ef803259200d1c70848504385be6d37d28df9e4ba36ababed18454955bbfce81"
+        },
+        "ball19_indoor": {
+          "bbox_sha256": "da7fb991f9702ea9661cd8ae849cc5afccda458e76acdeec9a3b05b39ee5f8b6",
+          "score_sha256": "dca9edfe2450f1c394c201d0a6750463614ac1c42a80fa6a840cd59f9ee522a6"
+        },
+        "beautifullight01_indoor": {
+          "bbox_sha256": "d6cb8c80e8e7a1972687aaf2f4db28ddced3fffbbd471415c150ebd2ae235b4d",
+          "score_sha256": "2ce439a47867e80c425f8849a39af0408f4637e2a7662faa4b9c4f27c50845c2"
+        },
+        "book06_indoor": {
+          "bbox_sha256": "92bf6bfa229d221246f91a2acc40ddba5ed77da563e8784b5202f1504119c078",
+          "score_sha256": "231a0fcf73b88cc26368523ddb6cc526e9c5c583553e909e90b47b1798f00189"
+        },
+        "car01_indoor": {
+          "bbox_sha256": "958284dec70acd30656d96c350da62028cd853be0c58a34a5f4f199d9ba0f8ee",
+          "score_sha256": "87af1abcd23518ec434433befb738d13f8612c3c55b4fd901faf9f06971e28bb"
+        },
+        "car02_indoor": {
+          "bbox_sha256": "f43e8f9ad68ca0b51e4420e8a6181f8c71b0582d295e8c324df9a9293fbab736",
+          "score_sha256": "a928a615611879480b436c28b0f52fb86828c5314b240341d2eca1dd1ed4810a"
+        },
+        "colacan01_indoor": {
+          "bbox_sha256": "118628005d3fc46aa55393950b8a368834d311073a0a618b0b3045f4ba6f5944",
+          "score_sha256": "3b40053a3ee9ad2c637b26c5f796d8f93484fc501b07e140e069e8f622c534a4"
+        },
+        "colacan04_indoor": {
+          "bbox_sha256": "954bfe1c6e755c009e0c8f5bd45355cc94528b18ba8d8abe8d9b302cfabaa8ea",
+          "score_sha256": "e8f96c4e698fa8b3773c48b36e1679f6eaf1e4eac5ec65cd38343ef0d47e5a28"
+        },
+        "container01_indoor": {
+          "bbox_sha256": "8166634093345207982992163b883f41532171ef16f5d03280526f1530162b1a",
+          "score_sha256": "2606559a0dd18f7bdbba63fe9d758b4158072a076a3901d8ef7f78c68e3d666c"
+        },
+        "cup08_indoor": {
+          "bbox_sha256": "36a9fee0da3b86939d3d19082cc448ed97a28487104b8d8ff6572d56af2d9037",
+          "score_sha256": "1673fe7c9301c00173e0981c13f5acf29364fe17f83d5a6268bd1147d564c7b5"
+        },
+        "cup10_indoor": {
+          "bbox_sha256": "4b685b6de460f2ce15c897fbf1c771ab00344c552018302f8862798032a5228f",
+          "score_sha256": "efa56fe9dc8f15f4baffc9c718648f0eca1f2dba12faf182d6f96eaab1a8351b"
+        },
+        "cup13_indoor": {
+          "bbox_sha256": "a8a7808a8e930ba9bda80844ee07df981e39036f2cd43daa782cd9366fc69f52",
+          "score_sha256": "40a02becb2a50b5b40e87e93547cdff51a4971d2a91d3e6956a5d2059a75891a"
+        },
+        "egg_indoor": {
+          "bbox_sha256": "672a7b8d7e3363eee4caa57ecfc7e6e888263f1698ebf2b97ea1f0591a78a4da",
+          "score_sha256": "2df409394d5b6149b02a2a842ddca71317264eaf37932d343acbea3b04409448"
+        },
+        "flower02_wild": {
+          "bbox_sha256": "3b4e1a8f9f446e2fafd2fc1a8a0a272aceaa2b287f8f0f2d78640d2bdd77a8f5",
+          "score_sha256": "9ef591a0953a2d32065a1b16bf3d6b96336e1e5c1a7db578f4f8e1420c5f96a3"
+        },
+        "flower03_indoor": {
+          "bbox_sha256": "27b12ce62928851ddabc63325f44dc7d1d968eef84c0cc264c8e4395ffa7c89e",
+          "score_sha256": "53d2d8bb0f26245128c499b3e5f7ce110297b6f95e6d7cf9e89d47e20a8b8603"
+        },
+        "flowerbasket_indoor": {
+          "bbox_sha256": "e28ab9f5f15d35fecf61cf4b20d498081eed2d1c75348eed962a74582c89dcfb",
+          "score_sha256": "f41a0d0b5d98905779e620bec91d83adfd2006b27f172924563620c98af0104a"
+        },
+        "ghostmask_indoor": {
+          "bbox_sha256": "40b50e500ff80d37a5da31d692be698d056429713d7768048d17c88a2886dc6d",
+          "score_sha256": "405a62f481ce95f5396388f160dc484065f86d9a1f3c6068212b5dedcb3dedc0"
+        },
+        "glass03_indoor": {
+          "bbox_sha256": "597998d52760ad84b6dae2f5529a471ced1b2054c0e6cb09fa9ab2d757c5cf33",
+          "score_sha256": "b568cf2b954d9a5c4f01b4d4f325468c7584f6c5b4c8d1258edf5ef0d7f2892d"
+        },
+        "mobilephone01_indoor": {
+          "bbox_sha256": "9da7fea50c5e0e7b14a38a730ded06e153efb7129fdc9c2d722a61047a64cd68",
+          "score_sha256": "40d56cc59366791739a24b3518bf83170af7a130d5028a665cffecba031236f4"
+        },
+        "mobilephone02_indoor": {
+          "bbox_sha256": "748a8974b04fcaf868e49e85f401d35a5f8807296cb8a5867f7f93a13413f3a0",
+          "score_sha256": "0d7fc6a86d4d262ceb377d3e8e14f39980a4433fe345f1a3c0e14e1af95cfb90"
+        },
+        "notebook02_indoor": {
+          "bbox_sha256": "431a327ad78d4d4888699a4696019de582de140a26d107dfcd2c7332222b97f8",
+          "score_sha256": "9e82d8cc73f33b0080f814d81e36dd4fefd7ae3a10b72f03f6753ae34b0c66dd"
+        }
+      }
+    }
+  },
+  "deltas": {
+    "native": {
+      "constant_minus_raw_F_pp": -5.307071455748812,
+      "GT_overlap_oracle_minus_raw_F_pp": 9.006128037746535
+    },
+    "control": {
+      "constant_minus_raw_F_pp": -4.208073581820159,
+      "GT_overlap_oracle_minus_raw_F_pp": 9.921018524207085
+    },
+    "null": {
+      "constant_minus_raw_F_pp": -5.942059961509301,
+      "GT_overlap_oracle_minus_raw_F_pp": 6.27705094687407
+    }
+  },
+  "boxes_identical_across_readouts": true,
+  "new_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "GT_oracle_is_diagnostic_only": true,
+  "oracle_is_not_proved_global_optimum": true,
+  "M65_failed_promotion_unchanged": true,
+  "M67_or_M68_source_modified": false,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "scope": "Repeatedly used DepthTrack Train development22; no new Test/CDTB/VOT metrics or deployable oracle."
+}

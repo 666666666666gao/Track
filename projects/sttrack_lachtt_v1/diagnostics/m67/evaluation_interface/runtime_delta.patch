@@ -1,0 +1,23 @@
+--- M58/semantic_runtime.py
++++ M67/semantic_runtime.py
+@@ -11,7 +11,8 @@
+     plan = json.loads(Path(path).read_text())
+     assert sha(plan['bundle_path']) == plan['bundle_sha256']
+     bundle = json.loads(Path(plan['bundle_path']).read_text())
+-    assert bundle['architecture'] == 'semantic_spatial_v1'
++    assert bundle['architecture'] == 'semantic_spatial_support_v1'
++    assert bundle['null_support'] is True
+     assert sha(bundle['base_checkpoint']) == bundle['base_checkpoint_sha256']
+     assert sha(bundle['adapter_checkpoint']) == bundle['adapter_checkpoint_sha256']
+     for name, digest in bundle['source_sha256'].items():
+@@ -46,6 +47,10 @@
+     assert saved['status'] == 'complete' and saved['completed_sequences'] == 130
+     assert saved['training_spec_sha256'] == bundle['training_spec_sha256']
+     assert saved['use_text'] == bundle['use_text']
++    assert saved['architecture'] == bundle['architecture']
++    assert saved['null_support'] == bundle['null_support']
++    assert saved['arm'] == bundle['arm']
++    assert saved['support_loss_weight'] == bundle['support_loss_weight']
+     params = SimpleNamespace(cfg=cfg, checkpoint=bundle['base_checkpoint'],
+         base_checkpoint_sha256=bundle['base_checkpoint_sha256'], template_factor=2., template_size=128,
+         search_factor=4., search_size=256, save_all_boxes=False, debug=0)

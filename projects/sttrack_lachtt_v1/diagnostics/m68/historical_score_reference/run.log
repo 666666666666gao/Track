@@ -1,0 +1,155 @@
+{
+  "status": "completed_historical_Train_confidence_capacity_reference",
+  "observed_utc": "2026-09-07T03:29:50.776713+00:00",
+  "source_sha256": "308f474c83473a6a9d590f6482703a0fea9f1f3fe7d9e8a41ec3b716fed64355",
+  "spec_sha256": "5760597b96bed5e03413d17b621cff700b88c670964fa46ecd53109f47e440c6",
+  "metric_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+  "metrics": {
+    "native": {
+      "raw": {
+        "precision": 0.6965522154923387,
+        "recall": 0.6676948699475307,
+        "f_score": 0.6818183390655601,
+        "precision_percent": 69.65522154923387,
+        "recall_percent": 66.76948699475307,
+        "f_score_percent": 68.18183390655601,
+        "threshold": 0.47173,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "constant": {
+        "precision": 0.5806892147282408,
+        "recall": 0.6854784983253143,
+        "f_score": 0.628747624508072,
+        "precision_percent": 58.06892147282407,
+        "recall_percent": 68.54784983253143,
+        "f_score_percent": 62.8747624508072,
+        "threshold": 1.0,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "GT_overlap_oracle": {
+        "precision": 0.8846372979820657,
+        "recall": 0.6846169441249974,
+        "f_score": 0.7718796194430254,
+        "precision_percent": 88.46372979820657,
+        "recall_percent": 68.46169441249974,
+        "f_score_percent": 77.18796194430254,
+        "threshold": 0.311828,
+        "sequences": 22,
+        "frames": 33130
+      }
+    },
+    "control": {
+      "raw": {
+        "precision": 0.6987741561137805,
+        "recall": 0.6546718924144004,
+        "f_score": 0.6760044844798393,
+        "precision_percent": 69.87741561137804,
+        "recall_percent": 65.46718924144004,
+        "f_score_percent": 67.60044844798394,
+        "threshold": 0.482442,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "constant": {
+        "precision": 0.5867558163742624,
+        "recall": 0.6893380256201184,
+        "f_score": 0.6339237486616378,
+        "precision_percent": 58.67558163742624,
+        "recall_percent": 68.93380256201183,
+        "f_score_percent": 63.39237486616378,
+        "threshold": 1.0,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "GT_overlap_oracle": {
+        "precision": 0.8886250384773299,
+        "recall": 0.6874758723469073,
+        "f_score": 0.7752146697219102,
+        "precision_percent": 88.86250384773298,
+        "recall_percent": 68.74758723469073,
+        "f_score_percent": 77.52146697219102,
+        "threshold": 0.443662,
+        "sequences": 22,
+        "frames": 33130
+      }
+    },
+    "null": {
+      "raw": {
+        "precision": 0.7872781782937713,
+        "recall": 0.7200718047808048,
+        "f_score": 0.7521767672723594,
+        "precision_percent": 78.72781782937713,
+        "recall_percent": 72.00718047808049,
+        "f_score_percent": 75.21767672723594,
+        "threshold": 0.459063,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "constant": {
+        "precision": 0.6390305103004413,
+        "recall": 0.7563448775546828,
+        "f_score": 0.6927561676572664,
+        "precision_percent": 63.90305103004413,
+        "recall_percent": 75.63448775546829,
+        "f_score_percent": 69.27561676572664,
+        "threshold": 1.0,
+        "sequences": 22,
+        "frames": 33130
+      },
+      "GT_overlap_oracle": {
+        "precision": 0.8843548923523048,
+        "recall": 0.7556415828653574,
+        "f_score": 0.8149472767411001,
+        "precision_percent": 88.43548923523048,
+        "recall_percent": 75.56415828653574,
+        "f_score_percent": 81.49472767411001,
+        "threshold": 0.26311,
+        "sequences": 22,
+        "frames": 33130
+      }
+    }
+  },
+  "constant_score_analytical_checks": {
+    "native": {
+      "macro_precision": 0.5806892147282408,
+      "macro_recall": 0.6854784983253143,
+      "f_score": 0.628747624508072
+    },
+    "control": {
+      "macro_precision": 0.5867558163742624,
+      "macro_recall": 0.6893380256201184,
+      "f_score": 0.6339237486616378
+    },
+    "null": {
+      "macro_precision": 0.6390305103004413,
+      "macro_recall": 0.7563448775546828,
+      "f_score": 0.6927561676572664
+    }
+  },
+  "deltas": {
+    "native": {
+      "constant_minus_raw_F_pp": -5.307071455748812,
+      "GT_overlap_oracle_minus_raw_F_pp": 9.006128037746535
+    },
+    "control": {
+      "constant_minus_raw_F_pp": -4.208073581820159,
+      "GT_overlap_oracle_minus_raw_F_pp": 9.921018524207085
+    },
+    "null": {
+      "constant_minus_raw_F_pp": -5.942059961509301,
+      "GT_overlap_oracle_minus_raw_F_pp": 6.27705094687407
+    }
+  },
+  "boxes_identical_across_readouts": true,
+  "new_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "GT_oracle_is_diagnostic_only": true,
+  "oracle_is_not_proved_global_optimum": true,
+  "M65_failed_promotion_unchanged": true,
+  "M67_or_M68_source_modified": false,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "scope": "Repeatedly used DepthTrack Train development22; no new Test/CDTB/VOT metrics or deployable oracle."
+}

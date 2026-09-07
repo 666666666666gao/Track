@@ -1,0 +1,13 @@
+{
+  "observation_protocol_path": "/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906/text_protocol.json",
+  "observation_protocol_sha256": "d08acfb068ac5f7c428d5decb5f17af4655383543eeb4b4277e65cfda14bcac1",
+  "lexical_policy": "Retain the generated category in slot0. Replace each valid attribute slot1..4 by the frozen CLIP empty-string vector. Preserve slot count, mask, padding, initialization key and all other tensors.",
+  "initialization_only": true,
+  "online_caption_updates": false,
+  "category_hints": false,
+  "manual_caption_corrections": false,
+  "image_specific_exceptions": false,
+  "subsequent_GT_used": false,
+  "selection_provenance": "M67 uses the category-only lexical policy during both paired training and inference, following M65. Both M67 heads are newly trained from zero residual initialization. This is not deployment-only removal of attributes from the M58 full-attribute head.",
+  "training_spec_sha256": "2027b1893343e5e1520c447bd82a5c45468542cecaab0f59b3ec72a345e48b2e"
+}
