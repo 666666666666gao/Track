@@ -1,0 +1,2624 @@
+{
+  "supervision_coordinate_convention": "Native transform_image_to_crop; rounded centre, constrained to the representable 0..15 grid; same-state diagnostic precedes restart",
+  "epochs": 1,
+  "architecture": "semantic_spatial_support_v1",
+  "learned_parameters": 289154,
+  "visual_base_frozen_eval": true,
+  "native_checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+  "native_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "integration_sha256": "5881ef1594929f0e71b0f7e8da6564e1c4669cbef86b1986b2948d7e0f231a65",
+  "causal_script_sha256": "b8cdaa14f05af6f3a1e21943d64d9102f7c30ad6a0d6111848c71599c3e542ae",
+  "inventory_sha256": "529f10ebd1122596a6e8832578f1cd26c3315a78fac59664fdb0d0fb367b85c1",
+  "dataset_root": "/root/autodl-tmp/depthtrack/train/sequences",
+  "development_sequences": [
+    "bag05_indoor",
+    "ball07_indoor",
+    "ball19_indoor",
+    "beautifullight01_indoor",
+    "book06_indoor",
+    "car01_indoor",
+    "car02_indoor",
+    "colacan01_indoor",
+    "colacan04_indoor",
+    "container01_indoor",
+    "cup08_indoor",
+    "cup10_indoor",
+    "cup13_indoor",
+    "egg_indoor",
+    "flower02_wild",
+    "flower03_indoor",
+    "flowerbasket_indoor",
+    "ghostmask_indoor",
+    "glass03_indoor",
+    "mobilephone01_indoor",
+    "mobilephone02_indoor",
+    "notebook02_indoor"
+  ],
+  "sequence_order": [
+    {
+      "sequence": "cube04_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2576,
+      "depth_frames": 2576,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2576,
+      "groundtruth_sha256": "d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+      "first_box": [
+        269.0,
+        248.0,
+        33.0,
+        32.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cube04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cube04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bag04_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1669,
+      "depth_frames": 1669,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1669,
+      "groundtruth_sha256": "0d06a12db2f75b4428d77d0983050e51ed2e56153c24ab74871ab4abca315267",
+      "first_box": [
+        338.0,
+        111.0,
+        96.0,
+        111.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bag04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bag04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "skateboard02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1976,
+      "depth_frames": 1976,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1976,
+      "groundtruth_sha256": "304a07f4b196eb9a855d1a1857beec4757141965a09c5e635b80cede70938b68",
+      "first_box": [
+        312.0,
+        195.0,
+        236.0,
+        131.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/skateboard02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/skateboard02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cat02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 751,
+      "depth_frames": 751,
+      "paired_stems_match": true,
+      "groundtruth_rows": 751,
+      "groundtruth_sha256": "db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d",
+      "first_box": [
+        199.0,
+        11.0,
+        220.0,
+        128.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cat02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cat02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bottle02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2666,
+      "depth_frames": 2666,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2666,
+      "groundtruth_sha256": "48f14b53ca931b24f50e0e24cef612aaef8311a85736c0916f69b58d54c72522",
+      "first_box": [
+        172.0,
+        252.0,
+        33.0,
+        77.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bottle02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bottle02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bottle01_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 4069,
+      "depth_frames": 4069,
+      "paired_stems_match": true,
+      "groundtruth_rows": 4069,
+      "groundtruth_sha256": "e226e68e5c5ec7dbe8b380aaa0c37ad6444b683ca4f6fa84bfc59968ee818e83",
+      "first_box": [
+        349.0,
+        14.0,
+        55.0,
+        94.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bottle01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bottle01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "mushroom02_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 359,
+      "depth_frames": 359,
+      "paired_stems_match": true,
+      "groundtruth_rows": 359,
+      "groundtruth_sha256": "b7e602085a0c3af4ddd417b9dea144eab7d9d8bfec6517db261227f46090716d",
+      "first_box": [
+        100.0,
+        139.0,
+        171.0,
+        120.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mushroom02_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mushroom02_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "book04_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1099,
+      "depth_frames": 1099,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1099,
+      "groundtruth_sha256": "d7009271319c37873f1ca7e4a615e7efed384818c4a5a4c36b02c3f4628cbfdc",
+      "first_box": [
+        153.0,
+        167.0,
+        116.0,
+        41.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/book04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/book04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toydog_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1001,
+      "depth_frames": 1001,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1001,
+      "groundtruth_sha256": "837f3df1f6bac05974c27339219bc9d61c8943a73ba03f8aa7f7cf4aaa6c4b01",
+      "first_box": [
+        86.0,
+        126.0,
+        306.0,
+        232.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toydog_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toydog_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "skateboard01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2360,
+      "depth_frames": 2360,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2360,
+      "groundtruth_sha256": "afb682605337866d5ea72db4025dfbb70ee2acd2ea85719b5989a7626bb758d5",
+      "first_box": [
+        171.0,
+        286.0,
+        171.0,
+        53.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/skateboard01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/skateboard01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toy05_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1344,
+      "depth_frames": 1344,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1344,
+      "groundtruth_sha256": "1bb2433f521ae44c146e6df9d7bbd825daa1d11e1b8df9f36d7d98e8ebd524ec",
+      "first_box": [
+        336.0,
+        104.0,
+        46.0,
+        93.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toy05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toy05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toy01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1264,
+      "depth_frames": 1264,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1264,
+      "groundtruth_sha256": "0f69714f77bc1cde2549ff14dc6474262aadaf78cae2ba74e7baf67bb56642c0",
+      "first_box": [
+        292.0,
+        121.0,
+        58.0,
+        106.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toy01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toy01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cat05_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1113,
+      "depth_frames": 1113,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1113,
+      "groundtruth_sha256": "5d9144b7989d54a349cedafcf15f407db098d8af69019302bc05c2de0f09082a",
+      "first_box": [
+        169.0,
+        49.0,
+        285.0,
+        305.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cat05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cat05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "leaves01_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 156,
+      "depth_frames": 156,
+      "paired_stems_match": true,
+      "groundtruth_rows": 156,
+      "groundtruth_sha256": "d34f88a2e29041dcc3f0921878f934bae4f654e12f9e43d14aaad17e00e83561",
+      "first_box": [
+        478.0,
+        97.0,
+        160.0,
+        134.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/leaves01_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/leaves01_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "ball04_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1555,
+      "depth_frames": 1555,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1555,
+      "groundtruth_sha256": "db05ab15d9143192adc6a248c4a8d1fa66c339d028d067d60cae72c01ff85661",
+      "first_box": [
+        214.0,
+        132.0,
+        30.0,
+        29.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "chair01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1002,
+      "depth_frames": 1002,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1002,
+      "groundtruth_sha256": "fc25354c8769860a8c4404019368e34c1415367828009e6503bb7695581bf62a",
+      "first_box": [
+        266.0,
+        112.0,
+        107.0,
+        175.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/chair01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/chair01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "swing02_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 780,
+      "depth_frames": 780,
+      "paired_stems_match": true,
+      "groundtruth_rows": 780,
+      "groundtruth_sha256": "9768e065c404b8acf47dc8dbe902f8eca8dd1736c501e97c5ad431cfac087741",
+      "first_box": [
+        413.0,
+        204.0,
+        51.0,
+        52.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/swing02_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/swing02_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "ball03_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1024,
+      "depth_frames": 1024,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1024,
+      "groundtruth_sha256": "ce41f746332d2777ea7f5f97ae8f545bbfa9afbe93929eaca8f0f0ee70f057c7",
+      "first_box": [
+        430.0,
+        104.0,
+        36.0,
+        37.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "duck04_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 710,
+      "depth_frames": 710,
+      "paired_stems_match": true,
+      "groundtruth_rows": 710,
+      "groundtruth_sha256": "29848ca243337725cfeae195563bd6035fae1f14f34c32a0441918112772c986",
+      "first_box": [
+        307.0,
+        257.0,
+        78.0,
+        71.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/duck04_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/duck04_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "speaker_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 3401,
+      "depth_frames": 3401,
+      "paired_stems_match": true,
+      "groundtruth_rows": 3401,
+      "groundtruth_sha256": "1a06abd953cb7833c232576238363cbe6c5248c486b3f221567d18dacf9a9a44",
+      "first_box": [
+        228.0,
+        239.0,
+        41.0,
+        48.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/speaker_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/speaker_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "mushroom03_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 402,
+      "depth_frames": 402,
+      "paired_stems_match": true,
+      "groundtruth_rows": 402,
+      "groundtruth_sha256": "453dd8042c4d9f0decb712d3899e228197b62f432e3318bdd1da44f26bd172fd",
+      "first_box": [
+        205.0,
+        145.0,
+        135.0,
+        145.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mushroom03_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mushroom03_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "mushroom05_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1007,
+      "depth_frames": 1007,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1007,
+      "groundtruth_sha256": "79887acbc43dc5468d4e9bdcf021df1347c869cc15ad336fc4e5fe7e42b5bb25",
+      "first_box": [
+        109.0,
+        117.0,
+        85.0,
+        65.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mushroom05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mushroom05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "mobilephone05_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1201,
+      "depth_frames": 1201,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1201,
+      "groundtruth_sha256": "70c425a3f893af73aca7bdac61cb111e47549d0c935b42af3a299a8f29919356",
+      "first_box": [
+        412.0,
+        184.0,
+        21.0,
+        151.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mobilephone05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mobilephone05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball17_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1499,
+      "depth_frames": 1499,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1499,
+      "groundtruth_sha256": "a2e90cb9a2db72c3d4dd00bbeeb645b8f02b95094f714bb3f783ccb7e0dcd5e0",
+      "first_box": [
+        364.0,
+        208.0,
+        38.0,
+        37.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball17_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball17_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "pine02_wild_320",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 382,
+      "depth_frames": 382,
+      "paired_stems_match": true,
+      "groundtruth_rows": 382,
+      "groundtruth_sha256": "0555c5378049662102ef0f382e3a4ddc2e5abdcc4fc5deb6ce2a9966bf5be16f",
+      "first_box": [
+        368.0,
+        201.0,
+        42.0,
+        17.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/pine02_wild_320/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/pine02_wild_320/depth/00000001.png"
+    },
+    {
+      "sequence": "basket_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 841,
+      "depth_frames": 841,
+      "paired_stems_match": true,
+      "groundtruth_rows": 841,
+      "groundtruth_sha256": "d681b5a242bed11da0f5fe714491b49651ef1d1c4b4f43b92cfc6263c9d1e9ca",
+      "first_box": [
+        260.0,
+        218.0,
+        69.0,
+        58.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/basket_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/basket_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "book05_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1497,
+      "depth_frames": 1497,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1497,
+      "groundtruth_sha256": "8e2f3008f581de3517e2d19185080261a796ec36506a62f07824ecbdf34196f1",
+      "first_box": [
+        230.0,
+        161.0,
+        131.0,
+        57.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/book05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/book05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "leaves04_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1940,
+      "depth_frames": 1940,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1940,
+      "groundtruth_sha256": "ede8be7594992f5bd8addd4a22c657ee5fa63857c5b54ac602f88381dd76dffb",
+      "first_box": [
+        197.0,
+        100.0,
+        32.0,
+        55.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/leaves04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/leaves04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "book02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1494,
+      "depth_frames": 1494,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1494,
+      "groundtruth_sha256": "25fc50ddf6083b81f0e202fbfbc83561d4d2cb13d445d9adb398e798473a7fc1",
+      "first_box": [
+        241.0,
+        212.0,
+        94.0,
+        35.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/book02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/book02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "dumbbells02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1371,
+      "depth_frames": 1371,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1371,
+      "groundtruth_sha256": "18dac18d42fb4fa09483990feae0d084fff631c4629589fb4c7cfe880ff0052c",
+      "first_box": [
+        250.0,
+        175.0,
+        57.0,
+        76.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/dumbbells02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/dumbbells02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bike02_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 294,
+      "depth_frames": 294,
+      "paired_stems_match": true,
+      "groundtruth_rows": 294,
+      "groundtruth_sha256": "4b90a9f1d4251f16d6dff2bf9864387d2954f0978145a524b0ed06ba3c03ea35",
+      "first_box": [
+        29.0,
+        1.0,
+        420.0,
+        349.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bike02_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bike02_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "book01_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1461,
+      "depth_frames": 1461,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1461,
+      "groundtruth_sha256": "9d0c8affacf73e01d0eed4d446aadaeb3e42f111d46b2e2d38ed86de40b9a19c",
+      "first_box": [
+        51.0,
+        232.0,
+        83.0,
+        31.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/book01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/book01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bottle03_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 3186,
+      "depth_frames": 3186,
+      "paired_stems_match": true,
+      "groundtruth_rows": 3186,
+      "groundtruth_sha256": "8cb3e98365c17668ebbbb937431a5a38d22f05804b352f353d51d834fd3a117a",
+      "first_box": [
+        267.0,
+        113.0,
+        68.0,
+        197.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bottle03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bottle03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "glass04_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1005,
+      "depth_frames": 1005,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1005,
+      "groundtruth_sha256": "d24775109819cb517cbe764c3ef7990d25fe925049538864f4770864b40afbde",
+      "first_box": [
+        430.0,
+        48.0,
+        52.0,
+        49.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/glass04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/glass04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "colacan02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 4036,
+      "depth_frames": 4036,
+      "paired_stems_match": true,
+      "groundtruth_rows": 4036,
+      "groundtruth_sha256": "ca6587fa0aa38475f51d7dc443398b8e716d7b0a175346f310c60bb8b8360f57",
+      "first_box": [
+        399.0,
+        110.0,
+        40.0,
+        60.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/colacan02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/colacan02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "candlecup_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 701,
+      "depth_frames": 701,
+      "paired_stems_match": true,
+      "groundtruth_rows": 701,
+      "groundtruth_sha256": "2c2ba43df1406dd9fd0ac25d776dde07980efc6ae94900d3bbcdc453a6fbfc01",
+      "first_box": [
+        359.0,
+        218.0,
+        62.0,
+        56.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/candlecup_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/candlecup_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball08_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1751,
+      "depth_frames": 1751,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1751,
+      "groundtruth_sha256": "a3570303bd54848f4b96234001d8a0f141460cf42effcb1ade9b2760e8e84bf9",
+      "first_box": [
+        173.0,
+        75.0,
+        49.0,
+        51.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball08_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball08_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "milkbottle_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2721,
+      "depth_frames": 2721,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2721,
+      "groundtruth_sha256": "1d677d5d444fd4e14aec00fcdd9c4fbf3af1efb32bb8bcc1b53490610ab54f55",
+      "first_box": [
+        305.0,
+        204.0,
+        49.0,
+        98.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/milkbottle_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/milkbottle_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "parkingsign_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 439,
+      "depth_frames": 439,
+      "paired_stems_match": true,
+      "groundtruth_rows": 439,
+      "groundtruth_sha256": "397c45dcc9273890a8a0364f59ccb58f4d485bf5454e04af27cf0aee7e3b8343",
+      "first_box": [
+        212.0,
+        10.0,
+        93.0,
+        146.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/parkingsign_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/parkingsign_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "teacup_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 787,
+      "depth_frames": 787,
+      "paired_stems_match": true,
+      "groundtruth_rows": 787,
+      "groundtruth_sha256": "33ecb768c92c86e7106b05ce42527bf80db3c81c1f58b8332e22ccbb11625f97",
+      "first_box": [
+        388.0,
+        254.0,
+        39.0,
+        40.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/teacup_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/teacup_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "suitcase_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1401,
+      "depth_frames": 1401,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1401,
+      "groundtruth_sha256": "946321102dd03c4d28f1f3ccb31434bb955982bcec7e88082ce86b1579442c6e",
+      "first_box": [
+        248.0,
+        189.0,
+        106.0,
+        158.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/suitcase_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/suitcase_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bottle06_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 285,
+      "depth_frames": 285,
+      "paired_stems_match": true,
+      "groundtruth_rows": 285,
+      "groundtruth_sha256": "7dce3716c2635f7801abaefa8cda804ab943aa16ac77024d1ce11fa871437812",
+      "first_box": [
+        214.0,
+        41.0,
+        59.0,
+        60.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bottle06_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bottle06_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toy08_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2048,
+      "depth_frames": 2048,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2048,
+      "groundtruth_sha256": "6c471ef8b84b8cd168a4ea3b7e578131a659bc59ca4207afb6d54bc819feec4d",
+      "first_box": [
+        207.0,
+        123.0,
+        55.0,
+        110.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toy08_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toy08_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball05_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 691,
+      "depth_frames": 691,
+      "paired_stems_match": true,
+      "groundtruth_rows": 691,
+      "groundtruth_sha256": "4a3bf9f327e4994423b75c3d1267b80ac71d05c5e9b93b08b509f6d83bff4a34",
+      "first_box": [
+        186.0,
+        178.0,
+        26.0,
+        24.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cube06_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1800,
+      "depth_frames": 1800,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1800,
+      "groundtruth_sha256": "19cf63610ae9b40e67f5e9b8f10ec62a42ad6662a693158eda64d18bb2b4c43a",
+      "first_box": [
+        402.0,
+        266.0,
+        49.0,
+        42.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cube06_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cube06_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "human05_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 2328,
+      "depth_frames": 2328,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2328,
+      "groundtruth_sha256": "65e455611bc7c342891c0bbe60ca0f876c181196251fa9d80f963ead74542f9e",
+      "first_box": [
+        86.0,
+        0.0,
+        169.0,
+        248.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/human05_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/human05_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "mushroom04_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1758,
+      "depth_frames": 1758,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1758,
+      "groundtruth_sha256": "bc2f201ef68a86eca6b19abef4dd410ed50aaec2569d6163cc0b57913c32540f",
+      "first_box": [
+        220.0,
+        116.0,
+        60.0,
+        35.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mushroom04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mushroom04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "swing01_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 562,
+      "depth_frames": 562,
+      "paired_stems_match": true,
+      "groundtruth_rows": 562,
+      "groundtruth_sha256": "2518e4ffc0ba579cbcce533e6aa33792b9f2a9f676651c2b79347dd24629657b",
+      "first_box": [
+        184.0,
+        119.0,
+        97.0,
+        102.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/swing01_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/swing01_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "ball09_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1701,
+      "depth_frames": 1701,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1701,
+      "groundtruth_sha256": "a3647edc0b7e4ffcbedbc970b0e48e88aa11c5fea9cf9a2f22b490a43f0f1a01",
+      "first_box": [
+        478.0,
+        193.0,
+        51.0,
+        37.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball09_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball09_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "cup14_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1985,
+      "depth_frames": 1985,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1985,
+      "groundtruth_sha256": "9ad3ecd17fdbf886c7edf1f56934e7d47ac192cf7b9b4c53d013451651656bda",
+      "first_box": [
+        315.0,
+        242.0,
+        21.0,
+        27.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cup14_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cup14_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "hat03_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1219,
+      "depth_frames": 1219,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1219,
+      "groundtruth_sha256": "c7cd257073a4e20905e43f0bb3558cfb2d8bd4d391c6db18ae8bb8cf3cce9951",
+      "first_box": [
+        172.0,
+        274.0,
+        59.0,
+        33.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/hat03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/hat03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toy04_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1117,
+      "depth_frames": 1117,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1117,
+      "groundtruth_sha256": "bb2d9f68b10422815d088d3d6aa9ecac6eed2bd3eb64c2d5b32c3fd239fed6d7",
+      "first_box": [
+        273.0,
+        89.0,
+        62.0,
+        138.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toy04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toy04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toy10_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 996,
+      "depth_frames": 996,
+      "paired_stems_match": true,
+      "groundtruth_rows": 996,
+      "groundtruth_sha256": "018c4dd5c17df16c7e186a4ad2f48759ba4836cedfe8fbf43edc53ba40c61e14",
+      "first_box": [
+        157.0,
+        211.0,
+        50.0,
+        57.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toy10_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toy10_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "human01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1506,
+      "depth_frames": 1506,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1506,
+      "groundtruth_sha256": "384febbcddeeafe3489749b1b143c5d357e0c2098b02f589f45f208a0f627271",
+      "first_box": [
+        448.0,
+        45.0,
+        187.0,
+        314.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/human01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/human01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "glass05_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1074,
+      "depth_frames": 1074,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1074,
+      "groundtruth_sha256": "51cc8d500877bc4a321bc2bb6e810a30cb86711896764968d2700250f9352206",
+      "first_box": [
+        537.0,
+        43.0,
+        38.0,
+        99.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/glass05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/glass05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "notebook03_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 941,
+      "depth_frames": 941,
+      "paired_stems_match": true,
+      "groundtruth_rows": 941,
+      "groundtruth_sha256": "a7c2e9a80ae2a6303b3b06c21cf8c1ab2fd96d88ae77368eaa804f83644100a0",
+      "first_box": [
+        121.0,
+        119.0,
+        142.0,
+        149.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/notebook03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/notebook03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toiletpaper04_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1157,
+      "depth_frames": 1157,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1157,
+      "groundtruth_sha256": "e01fe3e9d60dbfe0588a3a096ca3b136a5ed0e2017e8e401d2704e57caf1467d",
+      "first_box": [
+        316.0,
+        281.0,
+        46.0,
+        56.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toiletpaper04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toiletpaper04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "lock01_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 511,
+      "depth_frames": 511,
+      "paired_stems_match": true,
+      "groundtruth_rows": 511,
+      "groundtruth_sha256": "8812b746751f5f59ea8a16764ec70b7d1ded6c3ffcf963ad9245ac7ce84ac577",
+      "first_box": [
+        424.0,
+        112.0,
+        48.0,
+        41.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/lock01_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/lock01_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "painting_indoor_320",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1000,
+      "depth_frames": 1000,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1000,
+      "groundtruth_sha256": "452f8042e633005d48071913f4b63c71d24829f0a931891f142539d4664a2ec6",
+      "first_box": [
+        235.0,
+        134.0,
+        108.0,
+        117.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/painting_indoor_320/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/painting_indoor_320/depth/00000001.png"
+    },
+    {
+      "sequence": "hat02_indoor_320",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1203,
+      "depth_frames": 1203,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1203,
+      "groundtruth_sha256": "5851dd6051472626d3b0432e492fae38c4fa7a06d12caaab93f44a6c5c1dbbd5",
+      "first_box": [
+        199.0,
+        186.0,
+        157.0,
+        104.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/hat02_indoor_320/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/hat02_indoor_320/depth/00000001.png"
+    },
+    {
+      "sequence": "bike01_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1354,
+      "depth_frames": 1354,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1354,
+      "groundtruth_sha256": "cd70a8371938cdac020502cf2c4e0c77f77180eecd6baabee70b269b2ec47f24",
+      "first_box": [
+        100.0,
+        1.0,
+        297.0,
+        246.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bike01_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bike01_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "cat04_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 394,
+      "depth_frames": 394,
+      "paired_stems_match": true,
+      "groundtruth_rows": 394,
+      "groundtruth_sha256": "6421ade8ca96dbc2da52ca02cedd69c415f37498775732b0cf780d81f2d292af",
+      "first_box": [
+        217.0,
+        43.0,
+        191.0,
+        322.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cat04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cat04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toy07_indoor_320",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1367,
+      "depth_frames": 1367,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1406,
+      "groundtruth_sha256": "683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2",
+      "first_box": [
+        298.0,
+        164.0,
+        36.0,
+        45.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toy07_indoor_320/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toy07_indoor_320/depth/00000001.png"
+    },
+    {
+      "sequence": "toiletpaper03_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1845,
+      "depth_frames": 1845,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1845,
+      "groundtruth_sha256": "5b1f12533be6068b6db0ec4a06cf5702660e4a904c6385e78fce892a352a3cc4",
+      "first_box": [
+        221.0,
+        161.0,
+        111.0,
+        110.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toiletpaper03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toiletpaper03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "pigeon05_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1250,
+      "depth_frames": 1250,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1250,
+      "groundtruth_sha256": "7ce05357a9a6e942c8dca07cc44507ec36f431b6920f6150c11629ab594e4f7d",
+      "first_box": [
+        498.0,
+        15.0,
+        26.0,
+        24.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/pigeon05_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/pigeon05_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "hand02_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 901,
+      "depth_frames": 901,
+      "paired_stems_match": true,
+      "groundtruth_rows": 901,
+      "groundtruth_sha256": "fdb582d198c0d0e843a21891c4e8966cced3c2330dc3ded5110029ac67ccfab5",
+      "first_box": [
+        265.0,
+        169.0,
+        34.0,
+        29.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/hand02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/hand02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "mirror_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1256,
+      "depth_frames": 1256,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1256,
+      "groundtruth_sha256": "39399adcf38d1be5d83ed6bac42e777cb660e49f0c93b150a5e2f105f9674d41",
+      "first_box": [
+        236.0,
+        247.0,
+        58.0,
+        62.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mirror_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mirror_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "shoes03_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1478,
+      "depth_frames": 1478,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1478,
+      "groundtruth_sha256": "4f3bc65b100348817f2d1856613d54c1f783759ed1a282b8df28eded96467f7c",
+      "first_box": [
+        310.0,
+        110.0,
+        144.0,
+        94.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/shoes03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/shoes03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "gymring_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1244,
+      "depth_frames": 1244,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1244,
+      "groundtruth_sha256": "b2df5de9aaaae941866b11586188ca7a5a94be1000a54e118df375cacf3d2346",
+      "first_box": [
+        124.0,
+        110.0,
+        135.0,
+        146.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/gymring_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/gymring_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "duck02_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 285,
+      "depth_frames": 285,
+      "paired_stems_match": true,
+      "groundtruth_rows": 285,
+      "groundtruth_sha256": "ac48fd345b322c2bb305e68ec659c8872446f9023867e23851f3b6e12d11790e",
+      "first_box": [
+        406.0,
+        140.0,
+        112.0,
+        159.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/duck02_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/duck02_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "mobilephone04_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 2124,
+      "depth_frames": 2124,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2124,
+      "groundtruth_sha256": "c18af5d30957a339497ba8235ecbf6986dbc7ce66773afcfabdbdb0a3b03d55c",
+      "first_box": [
+        260.0,
+        196.0,
+        90.0,
+        45.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mobilephone04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mobilephone04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "duck06_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 984,
+      "depth_frames": 984,
+      "paired_stems_match": true,
+      "groundtruth_rows": 984,
+      "groundtruth_sha256": "dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e",
+      "first_box": [
+        241.0,
+        195.0,
+        37.0,
+        18.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/duck06_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/duck06_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "glass02_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1750,
+      "depth_frames": 1750,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1750,
+      "groundtruth_sha256": "8e019d223669c6f31adf10d3ee4162fca5404fd40be892f1c44f411fcc03ae4f",
+      "first_box": [
+        249.0,
+        228.0,
+        99.0,
+        95.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/glass02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/glass02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cup07_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 2043,
+      "depth_frames": 2043,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2043,
+      "groundtruth_sha256": "a87da31a984f168cba69d158eb46e31373ef79d11b2d4fd50c4c1886737c8885",
+      "first_box": [
+        271.0,
+        201.0,
+        35.0,
+        46.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cup07_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cup07_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cup09_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1794,
+      "depth_frames": 1794,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1794,
+      "groundtruth_sha256": "6235e8bec9d88203c3bcc2adfa66db218730d79c619979fa575e77bd3cc2c5c5",
+      "first_box": [
+        283.0,
+        195.0,
+        30.0,
+        43.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cup09_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cup09_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1829,
+      "depth_frames": 1829,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1829,
+      "groundtruth_sha256": "2147f99e45f7af89f466d6bfbe718ca4a95a75827324f1c736eaef810d9f2083",
+      "first_box": [
+        444.0,
+        40.0,
+        55.0,
+        52.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "container02_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1326,
+      "depth_frames": 1326,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1326,
+      "groundtruth_sha256": "00cfbbbd0e55ccf24f191bda511d2a217c43a665f65ba0f64073d3b7b51fdccf",
+      "first_box": [
+        315.0,
+        175.0,
+        210.0,
+        127.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/container02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/container02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toy03_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1278,
+      "depth_frames": 1278,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1278,
+      "groundtruth_sha256": "aa4e58bcabae622280b2c73dcf1143118ff540a3cac0202f8eb5da8e779b6888",
+      "first_box": [
+        299.0,
+        121.0,
+        40.0,
+        52.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toy03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toy03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bike03_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 628,
+      "depth_frames": 628,
+      "paired_stems_match": true,
+      "groundtruth_rows": 628,
+      "groundtruth_sha256": "dad8d95321f350d2a347f4f71504d8d82b57fd7fdd08ef617b63e2929f57c3e3",
+      "first_box": [
+        95.0,
+        73.0,
+        249.0,
+        269.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bike03_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bike03_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "flower01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1000,
+      "depth_frames": 1000,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1000,
+      "groundtruth_sha256": "97ecc6e67a43c29a5ef5eceaff28a480f40487347788ff044bef19fcbaea13db",
+      "first_box": [
+        199.0,
+        216.0,
+        50.0,
+        57.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/flower01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/flower01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "shoes01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1712,
+      "depth_frames": 1712,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1712,
+      "groundtruth_sha256": "cee9970156a03576505b05a59ecc55e8daf4ff5ef5f10ef23dbf5efad7123326",
+      "first_box": [
+        278.0,
+        170.0,
+        42.0,
+        41.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/shoes01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/shoes01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "clothes_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 786,
+      "depth_frames": 786,
+      "paired_stems_match": true,
+      "groundtruth_rows": 786,
+      "groundtruth_sha256": "e0717f89c1ad115ce87bb252bc7915ee1d0b34ab73c72fc8ca5a47a07612094b",
+      "first_box": [
+        324.0,
+        57.0,
+        109.0,
+        156.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/clothes_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/clothes_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "hat04_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 2772,
+      "depth_frames": 2772,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2772,
+      "groundtruth_sha256": "2d71dd08fff19e4be6ba64b51dff107674ac7c18d50dfe5e924e23e58989eaa1",
+      "first_box": [
+        240.0,
+        187.0,
+        126.0,
+        122.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/hat04_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/hat04_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "toy06_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1281,
+      "depth_frames": 1281,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1281,
+      "groundtruth_sha256": "21ec622063569d66a1d4135a7f86b2b983070fbd3f2331d2bd18ec7aacb4cfc6",
+      "first_box": [
+        45.0,
+        146.0,
+        74.0,
+        139.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toy06_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toy06_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball14_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1716,
+      "depth_frames": 1716,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1716,
+      "groundtruth_sha256": "f6d7da3590803baab88cadc089e76daa57b25fd1bcd2152abab118e41d085017",
+      "first_box": [
+        275.0,
+        178.0,
+        58.0,
+        57.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball14_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball14_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "cup03_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 2752,
+      "depth_frames": 2752,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2752,
+      "groundtruth_sha256": "aef83d01e39f78bded1998acf5650504e4833292f9efaafc712094bca7eeda3d",
+      "first_box": [
+        236.0,
+        210.0,
+        79.0,
+        95.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cup03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cup03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball12_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 2246,
+      "depth_frames": 2246,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2246,
+      "groundtruth_sha256": "feee35d47e25bcdfcaef049ebebd67f77892cb1b533c842ad5147c1cff6b8c9b",
+      "first_box": [
+        371.0,
+        189.0,
+        52.0,
+        51.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball12_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball12_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "trophy_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 616,
+      "depth_frames": 616,
+      "paired_stems_match": true,
+      "groundtruth_rows": 616,
+      "groundtruth_sha256": "8cee409befcc8e7ddc51c9d971bcd323ae4b4d527607359c17421b222b1c9cf2",
+      "first_box": [
+        223.0,
+        133.0,
+        64.0,
+        116.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/trophy_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/trophy_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "hat01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1361,
+      "depth_frames": 1361,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1361,
+      "groundtruth_sha256": "8898891868efd65a97b8138c99404a0ae24e760f808487870f1b7529a30270bf",
+      "first_box": [
+        318.0,
+        140.0,
+        97.0,
+        132.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/hat01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/hat01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cup11_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1955,
+      "depth_frames": 1955,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1955,
+      "groundtruth_sha256": "14e516059c4ebb3500cb0626fa4ff5135cee275d9b2e3f8862faa83a4e4af761",
+      "first_box": [
+        320.0,
+        239.0,
+        20.0,
+        24.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cup11_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cup11_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cup06_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2507,
+      "depth_frames": 2507,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2507,
+      "groundtruth_sha256": "ebba4639a8d94969986dc9dd60960c43701d1a1fafefaec270cdac99cc1b9e5f",
+      "first_box": [
+        185.0,
+        245.0,
+        57.0,
+        82.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cup06_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cup06_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cup05_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1996,
+      "depth_frames": 1996,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1996,
+      "groundtruth_sha256": "15d37ca8f694388415795e8df944d882347dbb5a2fd2e0a2e07e346164733149",
+      "first_box": [
+        286.0,
+        204.0,
+        36.0,
+        66.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cup05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cup05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cat03_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 571,
+      "depth_frames": 571,
+      "paired_stems_match": true,
+      "groundtruth_rows": 571,
+      "groundtruth_sha256": "d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f",
+      "first_box": [
+        93.0,
+        65.0,
+        354.0,
+        270.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cat03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cat03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "duck01_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 481,
+      "depth_frames": 481,
+      "paired_stems_match": true,
+      "groundtruth_rows": 481,
+      "groundtruth_sha256": "83aca68e7101f1261e7bafcff766bad3a0a68301f10921ded08f11192497263b",
+      "first_box": [
+        185.0,
+        186.0,
+        49.0,
+        25.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/duck01_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/duck01_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "tree_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1637,
+      "depth_frames": 1637,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1637,
+      "groundtruth_sha256": "3563aa656258cfab370ff9aa39a887500afa9d80a20aa39d273f02074cd8089e",
+      "first_box": [
+        124.0,
+        23.0,
+        341.0,
+        210.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/tree_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/tree_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "cube01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2796,
+      "depth_frames": 2796,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2796,
+      "groundtruth_sha256": "c7e7f55e9d0ed4bac64c18d658796fa340fe6dddd2467a877015d42c71d4185e",
+      "first_box": [
+        324.0,
+        161.0,
+        44.0,
+        42.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cube01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cube01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "mobilephone06_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1273,
+      "depth_frames": 1273,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1273,
+      "groundtruth_sha256": "4d96750a2019b57ad1ab7cfe0076f3fea8a1b03a8d293aec7826dc25f188ceff",
+      "first_box": [
+        334.0,
+        242.0,
+        56.0,
+        108.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mobilephone06_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mobilephone06_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "thermos01_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1796,
+      "depth_frames": 1796,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1796,
+      "groundtruth_sha256": "4a9a8a13af7359b697edfffe887b26b8e316042171f2955b44ad874b8f25d99e",
+      "first_box": [
+        269.0,
+        208.0,
+        28.0,
+        88.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/thermos01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/thermos01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "mushroom01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1750,
+      "depth_frames": 1750,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1750,
+      "groundtruth_sha256": "fee7899ead7c9ba02f3afb6e6e0829656cff0ba0df64ca9fbef1304574661ced",
+      "first_box": [
+        256.0,
+        211.0,
+        68.0,
+        50.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mushroom01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mushroom01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bag03_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 2181,
+      "depth_frames": 2181,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2181,
+      "groundtruth_sha256": "fb4702c2f0e4c6a1e33251efb0f3c1c7f4eb5f26c1a3c79d9018913b2372d8ec",
+      "first_box": [
+        257.0,
+        107.0,
+        129.0,
+        125.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bag03_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bag03_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "file02_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1862,
+      "depth_frames": 1862,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1862,
+      "groundtruth_sha256": "b8f7d0914b2162609f993e8445b92cef3e2e1bb6e388cd21d1e62d835a154dfb",
+      "first_box": [
+        337.0,
+        49.0,
+        130.0,
+        115.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/file02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/file02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball16_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1914,
+      "depth_frames": 1914,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1914,
+      "groundtruth_sha256": "e39af82dd9ae52bbf6734c63cc916dfa043129fbcc4e0d675de09535ce0180a4",
+      "first_box": [
+        165.0,
+        148.0,
+        78.0,
+        75.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball16_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball16_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "chair02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1817,
+      "depth_frames": 1817,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1817,
+      "groundtruth_sha256": "4f05bc2ed056bdc6c9c5a2687ab6c074a2f32b95cae62bf6feebe89899f03ca2",
+      "first_box": [
+        319.0,
+        101.0,
+        145.0,
+        258.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/chair02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/chair02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball21_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1691,
+      "depth_frames": 1691,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1691,
+      "groundtruth_sha256": "5230b453b3d069f8ade8e23aef0f3d18f9794d900a1a6264ebb830aff0ac0bb4",
+      "first_box": [
+        164.0,
+        161.0,
+        45.0,
+        42.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball21_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball21_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ball13_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2398,
+      "depth_frames": 2398,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2398,
+      "groundtruth_sha256": "99c5e76747408d0c120b92ce172d37cbd39abc2836207837633eb92698547446",
+      "first_box": [
+        307.0,
+        217.0,
+        25.0,
+        24.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ball13_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ball13_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "leaves05_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 2898,
+      "depth_frames": 2898,
+      "paired_stems_match": true,
+      "groundtruth_rows": 2898,
+      "groundtruth_sha256": "aa0b613b169058dbf47eafd1c74e75e9e3d617e4f3ed21136bb5093e3ce8a3c1",
+      "first_box": [
+        156.0,
+        81.0,
+        72.0,
+        58.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/leaves05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/leaves05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "adapter02_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 801,
+      "depth_frames": 801,
+      "paired_stems_match": true,
+      "groundtruth_rows": 801,
+      "groundtruth_sha256": "33a964dea164f87c4c4adaf720aeed9f6209f4f3f5025fc9d597c03f84d14e78",
+      "first_box": [
+        187.0,
+        223.0,
+        30.0,
+        30.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/adapter02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/adapter02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "ukulele02_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1596,
+      "depth_frames": 1596,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1596,
+      "groundtruth_sha256": "fd075a6c2a64bd319316c63b6be190b8e16565e5e1af99147b08d65f703733d9",
+      "first_box": [
+        125.0,
+        155.0,
+        126.0,
+        145.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/ukulele02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/ukulele02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "earphone02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1451,
+      "depth_frames": 1451,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1451,
+      "groundtruth_sha256": "9178128a1ed5d23438515fdea6bac208c800122a1d38d0963d44f0eb700ba782",
+      "first_box": [
+        306.0,
+        94.0,
+        88.0,
+        75.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/earphone02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/earphone02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "leaves02_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1200,
+      "depth_frames": 1200,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1200,
+      "groundtruth_sha256": "d6a2ad6c7f3a9720b75c5a2457201857edfba1beeeeea2c5e5e85a39807fd696",
+      "first_box": [
+        239.0,
+        212.0,
+        79.0,
+        79.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/leaves02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/leaves02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "trashbin_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 982,
+      "depth_frames": 982,
+      "paired_stems_match": true,
+      "groundtruth_rows": 982,
+      "groundtruth_sha256": "a10a14dc93003e0b3f111f92ebe093ebff80d856f9d01637af43bc5dc057edb1",
+      "first_box": [
+        245.0,
+        239.0,
+        49.0,
+        75.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/trashbin_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/trashbin_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "pigeon03_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 744,
+      "depth_frames": 744,
+      "paired_stems_match": true,
+      "groundtruth_rows": 744,
+      "groundtruth_sha256": "4281a4712dae248a85869058f68162c94984b6e287896287bf7e74e5440712fd",
+      "first_box": [
+        158.0,
+        103.0,
+        45.0,
+        50.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/pigeon03_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/pigeon03_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "guitarbag_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1561,
+      "depth_frames": 1561,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1561,
+      "groundtruth_sha256": "0d80234a96568cf983950b1f8b5bda33a01cb8cffd5cf1705f5c93f5621f9618",
+      "first_box": [
+        266.0,
+        129.0,
+        97.0,
+        204.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/guitarbag_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/guitarbag_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "pigeon06_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1232,
+      "depth_frames": 1232,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1232,
+      "groundtruth_sha256": "d249393a979a8cfc4c541107b51329cc133e2e99c30f821c937359d5304df275",
+      "first_box": [
+        265.0,
+        115.0,
+        23.0,
+        37.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/pigeon06_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/pigeon06_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "pigeon07_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 710,
+      "depth_frames": 710,
+      "paired_stems_match": true,
+      "groundtruth_rows": 710,
+      "groundtruth_sha256": "91f2a4d1cbdd2808af3c0fc42f7a2a26a728eee5246b32a8c3ef12a2c06883d3",
+      "first_box": [
+        319.0,
+        160.0,
+        43.0,
+        25.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/pigeon07_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/pigeon07_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "paintbottle_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 515,
+      "depth_frames": 515,
+      "paired_stems_match": true,
+      "groundtruth_rows": 515,
+      "groundtruth_sha256": "138c6884d76f8385a71bfd04c0ccc83b835ce67b9f37a9e8880da2abb2caca05",
+      "first_box": [
+        375.0,
+        133.0,
+        22.0,
+        53.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/paintbottle_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/paintbottle_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "stand_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 801,
+      "depth_frames": 801,
+      "paired_stems_match": true,
+      "groundtruth_rows": 801,
+      "groundtruth_sha256": "15219e425e311f79e435a1c7526b3d04de6dbe1a035a6a1b5a4614e0ed4cef21",
+      "first_box": [
+        336.0,
+        143.0,
+        91.0,
+        86.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/stand_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/stand_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "human03_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 3324,
+      "depth_frames": 3324,
+      "paired_stems_match": true,
+      "groundtruth_rows": 3324,
+      "groundtruth_sha256": "608ef24142202c0e8e9af1b3752ee0709e043a5f085e30bc66068bcaa4196543",
+      "first_box": [
+        247.0,
+        114.0,
+        105.0,
+        245.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/human03_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/human03_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "human06_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 545,
+      "depth_frames": 545,
+      "paired_stems_match": true,
+      "groundtruth_rows": 545,
+      "groundtruth_sha256": "0f723bba01cd765122da6a513f6e458623ba3345aafb5a94826d787c9b1ee134",
+      "first_box": [
+        293.0,
+        26.0,
+        181.0,
+        331.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/human06_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/human06_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "pine01_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 1549,
+      "depth_frames": 1549,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1549,
+      "groundtruth_sha256": "c06487c4c9e9de804050ebe5a7c25c90cc1dcb1d88c83279cd980cb0c5de5329",
+      "first_box": [
+        221.0,
+        104.0,
+        29.0,
+        67.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/pine01_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/pine01_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "duck05_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 449,
+      "depth_frames": 449,
+      "paired_stems_match": true,
+      "groundtruth_rows": 449,
+      "groundtruth_sha256": "5ad1b542b94c9181d66bc1d84e033b747ecd9a8fa62fe4717d6a65f05d870004",
+      "first_box": [
+        270.0,
+        161.0,
+        76.0,
+        92.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/duck05_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/duck05_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "human04_wild",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1621,
+      "depth_frames": 1621,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1621,
+      "groundtruth_sha256": "3a24191b7f4b4690c0c6c9c912754cdf658a702622686aa7891419f866a9a8b7",
+      "first_box": [
+        342.0,
+        1.0,
+        129.0,
+        283.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/human04_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/human04_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "leaves06_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 721,
+      "depth_frames": 721,
+      "paired_stems_match": true,
+      "groundtruth_rows": 721,
+      "groundtruth_sha256": "e5e14506d23aea54df25bd626b5d418240d15d1fa9b16739bac967fe464c7d74",
+      "first_box": [
+        304.0,
+        190.0,
+        39.0,
+        47.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/leaves06_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/leaves06_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "leaves03_wild",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 728,
+      "depth_frames": 728,
+      "paired_stems_match": true,
+      "groundtruth_rows": 728,
+      "groundtruth_sha256": "a8169078aadfb3484b795038128cb1d314e04f2626a9f974253ac55c8dd69b5a",
+      "first_box": [
+        384.0,
+        158.0,
+        37.0,
+        26.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/leaves03_wild/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/leaves03_wild/depth/00000001.png"
+    },
+    {
+      "sequence": "toiletpaper02_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 3086,
+      "depth_frames": 3086,
+      "paired_stems_match": true,
+      "groundtruth_rows": 3086,
+      "groundtruth_sha256": "23039f5b59a9259bbfc89dd6d38e3ed9dcce696e03b827fb8ea320eeaef5cd0c",
+      "first_box": [
+        291.0,
+        241.0,
+        79.0,
+        70.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/toiletpaper02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/toiletpaper02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "box_indoor",
+      "split": "fit",
+      "old_fit_sequence": true,
+      "rgb_frames": 731,
+      "depth_frames": 731,
+      "paired_stems_match": true,
+      "groundtruth_rows": 731,
+      "groundtruth_sha256": "a34d48e631a3ec23016aa71f1951d350a72ad03beb878ed1ca18217875b98afd",
+      "first_box": [
+        421.0,
+        140.0,
+        16.0,
+        23.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/box_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/box_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "thermos02_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1591,
+      "depth_frames": 1591,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1591,
+      "groundtruth_sha256": "96b26f5f41d8ad70a8d1c1c34751aa224b2c8e447c007dc7dec6eb9ab90c5dbc",
+      "first_box": [
+        348.0,
+        117.0,
+        53.0,
+        61.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/thermos02_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/thermos02_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "bottle05_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 601,
+      "depth_frames": 601,
+      "paired_stems_match": true,
+      "groundtruth_rows": 601,
+      "groundtruth_sha256": "222999382c4ba7803d1ad6fd919d93fc290f1b0fd521f3c08dddd2c47e06b01f",
+      "first_box": [
+        288.0,
+        66.0,
+        40.0,
+        81.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/bottle05_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/bottle05_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "mac_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1546,
+      "depth_frames": 1546,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1546,
+      "groundtruth_sha256": "7b7fbed57f079ebedae12870613d30719a69d98f458815d7a42c50be893adb1a",
+      "first_box": [
+        225.0,
+        224.0,
+        141.0,
+        74.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/mac_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/mac_indoor/depth/00000001.png"
+    },
+    {
+      "sequence": "cart_indoor",
+      "split": "fit",
+      "old_fit_sequence": false,
+      "rgb_frames": 1671,
+      "depth_frames": 1671,
+      "paired_stems_match": true,
+      "groundtruth_rows": 1671,
+      "groundtruth_sha256": "e5b16fea25a7b2ddb32cf3132f97e385d6c27bd9af99c64cf12bd882b72c5226",
+      "first_box": [
+        294.0,
+        193.0,
+        127.0,
+        126.0
+      ],
+      "first_box_valid": true,
+      "initial_rgb": "/root/autodl-tmp/depthtrack/train/sequences/cart_indoor/color/00000001.jpg",
+      "initial_depth": "/root/autodl-tmp/depthtrack/train/sequences/cart_indoor/depth/00000001.png"
+    }
+  ],
+  "total_training_image_frames": 186824,
+  "total_training_track_calls": 186694,
+  "maximum_optimizer_steps": 5896,
+  "optimizer": "AdamW",
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "gradient_accumulation_frames": 32,
+  "gradient_clip": 1.0,
+  "loss": "Native raw focal + 2 GIoU + 5 xyxy L1 + weight-1 competition at the rounded GT cell against up to 9 raw-score hard negatives with detached decoded center outside GT and IoU<=0.1.",
+  "invalid_gt": "No loss; advance the predicted crop/query/template state normally.",
+  "target_centre_outside_crop": "All-zero centre heatmap and no box regression; no GT reset or widened crop.",
+  "state_protocol": "Initialize from first RGB-D/box only; chronological full sequence; actual predicted boxes, queries and default template updates feed the next frame. Optimizer updates every 32 observed frames with valid-loss averaging. State tensors are detached.",
+  "backprop_through_time_or_discrete_crops": false,
+  "native_update_interval": 50,
+  "native_update_threshold": 0.75,
+  "caption_protocol": "Frozen local Qwen2.5-VL first-frame full image with target mark plus target crop; no sequence/category hint; raw automatic captions retained, including observed errors.",
+  "frozen_native_development_aggregate": {
+    "valid_frames": 28897,
+    "iou_sum": 18847.382327003917,
+    "low_iou_frames": 7397,
+    "failure_episodes": 75,
+    "mean_iou": 0.6522262631762438,
+    "macro_sequence_mean_iou": 0.6843364163600396
+  },
+  "native_result_sha256": "5ed4a20beae88a8e8b85513000a8f020311e934b9206678f7d670b50b0737064",
+  "checkpoint_retention": "One latest and one fixed final adapter+optimizer per arm; no base copy or per-epoch history.",
+  "optimizer_stop_conditions": [
+    "Non-finite loss/gradient, source mismatch, runtime exception; preserve terminal evidence."
+  ],
+  "support_loss_sha256": "6afd1da844066a4ebc8d8a43122a0c07e6377338edc1daa9856ebd306b9412af",
+  "protected_prior_control_sequences": [
+    "bag05_indoor",
+    "container01_indoor",
+    "cup08_indoor",
+    "flower03_indoor",
+    "glass03_indoor"
+  ],
+  "status": "prepared_before_checks",
+  "revision": "m78_raw_competition_v1",
+  "seed": 2027,
+  "primary_arm": "category",
+  "control_arm": "empty",
+  "support_loss_weights": {
+    "category": 0.0,
+    "empty": 0.0
+  },
+  "banks": {
+    "fit": {
+      "category": {
+        "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_fit.pt",
+        "sha256": "1efb31a5e6ed30e4fd41c78efcba4538585e4d3b597208d3069c1de04734d47a"
+      },
+      "empty": {
+        "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/fit_empty.pt",
+        "sha256": "1ff4b1816d059c5a48147bee33e0472502221c9f3ff9f1ba3c6b131943ed52c9"
+      },
+      "sequences": 130,
+      "changed_category_slots": 130
+    },
+    "development": {
+      "category": {
+        "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_development.pt",
+        "sha256": "e537d03f666f661f684db63586ca7d995476a7bc00e12d641ba417f619c1b3d6"
+      },
+      "empty": {
+        "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/development_empty.pt",
+        "sha256": "4da5777613ff304f2bcd629df3fd61e6f2b267cc8d9aabf8eb79ab7655d03bed"
+      },
+      "sequences": 22,
+      "changed_category_slots": 22
+    }
+  },
+  "training_script_sha256": "9338d6a72c2038bc9e4caad687afc5e9d225d596851dc344e2e22e9d0d96903c",
+  "run_queue_sha256": "0de13ff966ef8e9b373086a203f6cbe4fef7a086ae868e09a115d5a1e5082657",
+  "initial_checkpoint_sha256": {
+    "category": "4b20f34b1ed4190dcaf4e12bffc7b09b297d2bf9489c5d067d8f6bb84422868d",
+    "empty": "4b20f34b1ed4190dcaf4e12bffc7b09b297d2bf9489c5d067d8f6bb84422868d"
+  },
+  "promotion_gates": {
+    "category_pooled_mean_vs_native_minimum": 0.002,
+    "category_pooled_mean_vs_control_minimum": 0.001,
+    "support_macro_mean_no_less_than_native_and_control": true,
+    "support_low_frames_no_more_than_native_and_control": true,
+    "support_H10_no_more_than_native_and_control": true,
+    "no_new_failure_on_native_or_control_zero_H10_sequences": true
+  },
+  "parent_training_spec_sha256": "0f90ad42fc4084271e8ad6153714d0252531b1c08f71e2646cb94697c8f506be",
+  "hypothesis": "Compare raw versus Hann-weighted competition training with identical Hann inference. Category contribution is separately tested against matched empty training and fixed-head content interventions.",
+  "architecture_control": "M77 sources, initial tensors, banks, optimizer, data order and budget retained. Only training competition scores and their hard-negative ordering change from Hann*score to raw score.",
+  "selection_protocol": "Only fixed seed2027 category final; no additional seeds or checkpoint selection.",
+  "text_control": "Both use_text=True and five original slots/mask/padding. Category uses original slot0 plus empty attributes. Empty replaces every valid slot with the same CLIP empty embedding. No new caption or embedding.",
+  "monitoring": "Check initial coverage about 240 seconds after launch; later near estimated completion. Preserve errors and do not restart on observation timeout.",
+  "runtime_estimate_seconds_per_arm": 15000,
+  "independent_review_pass": false,
+  "scope_limitations": [
+    "Fixed seed2027 only; reused Train development22, no seed variance claims.",
+    "Prospective ten promotion conditions compare native and same-budget Empty only. Prior M65/M73/M77 outcomes are descriptive references, not cumulative protection gates.",
+    "The eligible negative geometry is identical; top-nine membership may change because raw rather than Hann-weighted scores determine hardness.",
+    "No new inference parameters or policy, no automatic public evaluation. Past experiment conclusions stay frozen."
+  ],
+  "after_training": "Complete both arms and development22, then same-head Empty/Swapped diagnostic regardless of development gate status. Content results cannot override failed development gates. No automatic public evaluation.",
+  "final_three_dataset_metrics_exist": false,
+  "causal_check_sha256": null,
+  "observed_utc": "2026-09-07T20:23:21.301218+00:00",
+  "window_loss_weight": 1.0,
+  "window_hard_negative_count": 9,
+  "window_negative_maximum_iou": 0.1,
+  "window_loss_sha256": "db500eac6b3392c6a4f6e29796f931824df0acb451b416964c0b2924404be593",
+  "parent_recursive_result_path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027/recursive_result.json",
+  "parent_recursive_result_sha256": "4e9a52ead8a8ae5fb05250b95bf156d9fed1045d9e400fe29f140d2942a0a546",
+  "parent_M76_audit_sha256": "3297d636109949ca08325d6d48c9ea98b7686c4211fb18480d0cdae16eb39239",
+  "hann_recursive_result_path": "/root/autodl-tmp/sttrack_m77_window_competition_20260907/recursive_result.json",
+  "hann_recursive_result_sha256": "d3d33dac98c510f76711949f12b01d497157d25f2085fac9c83e0937018ff9c1",
+  "parent_M77_training_spec_sha256": "7162b4c6043d1895097a3cdec79f6373364031e6b100edbd08983f0f8a858f47",
+  "promotion_gate_scope": "Ten native and paired Empty conditions only; historical protected sequences reported descriptively."
+}

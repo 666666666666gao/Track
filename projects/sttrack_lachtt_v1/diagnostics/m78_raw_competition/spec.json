@@ -1,0 +1,23 @@
+{
+  "status": "prepared_M78_before_checks",
+  "observed_utc": "2026-09-07T20:23:21.314955+00:00",
+  "source_sha256": "2d71dc63acd260028a3283fdb4131c185c2b1dae247335cb641a938514ea9daa",
+  "seed": 2027,
+  "additional_seeds": [],
+  "training_prepared_sha256": "6389b65254dce50d56b6f04a50751ede9a801501b10ab044584a6c6bbf8779f6",
+  "recursive_prepared_sha256": "1912b2f751f26dbfba71180f64ea9fe2f3570865ca704d4f448b60cbd75ba5ed",
+  "check_source_sha256": "23c3139d857674de8623ee4cd1cacb349a2823ed03cdebbd111ec12bb72c884e",
+  "expected_training_calls_per_arm": 186694,
+  "expected_optimizer_steps_per_arm": 5798,
+  "expected_development_calls_per_arm": 33108,
+  "claims": [
+    "Raw versus final-window ranking can have different recursive effects.",
+    "Category-trained benefit and concrete word benefit require separate controls."
+  ],
+  "promotion_conditions": 10,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "review_status": "Previously requested gpt-6-astra/max reviewer unavailable; deterministic precheck is not independent model review.",
+  "fixed_head_controls": "After both dev families, run same final Category head with Empty and existing Swapped contents regardless of gate; audit offline metrics using rows-based scalar interface.",
+  "next": "Freeze only after causal and gradient contracts pass, then detached paired training and dev evaluation."
+}

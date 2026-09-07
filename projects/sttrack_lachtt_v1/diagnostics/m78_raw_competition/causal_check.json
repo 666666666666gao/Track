@@ -1,0 +1,103 @@
+{
+  "status": "completed_M78_native_parity_and_causal_smoke",
+  "observed_utc": "2026-09-07T20:24:20.762611+00:00",
+  "checker_sha256": "23c3139d857674de8623ee4cd1cacb349a2823ed03cdebbd111ec12bb72c884e",
+  "prepared_spec_sha256": "6389b65254dce50d56b6f04a50751ede9a801501b10ab044584a6c6bbf8779f6",
+  "seed": 2027,
+  "initial_adapter_state_sha256": {
+    "category": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42",
+    "empty": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42"
+  },
+  "base_state_sha256": {
+    "category": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+    "empty": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0"
+  },
+  "zero_residual_public_state_exact": true,
+  "zero_residual_frames_each": 101,
+  "default_template_writes": {
+    "category": [
+      100
+    ],
+    "empty": [
+      100
+    ]
+  },
+  "combined_loss_contract_verified": true,
+  "combined_loss_checks": 192,
+  "base_frozen_all_arms": true,
+  "arms": {
+    "category": {
+      "frames": 96,
+      "optimizer_steps": 3,
+      "loss_mean": 0.48662397832694376,
+      "final_smoke_adapter_sha256": "84a01ece68c22f7efbe5136601664b5301a40db993f6ea204c0266a3f924d71a",
+      "last_gradient_l1": {
+        "slots": 0.0007735962863080204,
+        "rgb.0.weight": 0.6865699291229248,
+        "rgb.0.bias": 0.00038882746594026685,
+        "rgb.1.weight": 0.0006386467721313238,
+        "rgb.1.bias": 0.0007362902979366481,
+        "depth.0.weight": 0.9891209602355957,
+        "depth.0.bias": 0.0005624887999147177,
+        "depth.1.weight": 0.0013653524219989777,
+        "depth.1.bias": 0.0010754504473879933,
+        "text.0.weight": 0.3440054655075073,
+        "text.0.bias": 0.001616933150216937,
+        "text.1.weight": 0.0006159936310723424,
+        "text.1.bias": 0.0007154786144383252,
+        "rgb_bound.weight": 0.00045383363612927496,
+        "rgb_bound.bias": 0.00043867441127076745,
+        "depth_bound.weight": 0.0009212561417371035,
+        "depth_bound.bias": 0.0007844016654416919,
+        "modality.weight": 0.008165434934198856,
+        "modality.bias": 5.6253516959259287e-05,
+        "delta.0.weight": 0.5784885883331299,
+        "delta.0.bias": 0.0027037085965275764,
+        "delta.2.weight": 9.646721839904785,
+        "delta.2.bias": 0.2871759533882141
+      }
+    },
+    "empty": {
+      "frames": 96,
+      "optimizer_steps": 3,
+      "loss_mean": 0.37816262598657474,
+      "final_smoke_adapter_sha256": "28b400d1c7157b439ebae6ec0f1e65840a3e3e380270bb804f3b1cff4ebf6d69",
+      "last_gradient_l1": {
+        "slots": 0.0007367497310042381,
+        "rgb.0.weight": 0.674365758895874,
+        "rgb.0.bias": 0.00038199115078896284,
+        "rgb.1.weight": 0.0005867936415597796,
+        "rgb.1.bias": 0.0007123271352611482,
+        "depth.0.weight": 1.0423778295516968,
+        "depth.0.bias": 0.0005939897382631898,
+        "depth.1.weight": 0.001372647238895297,
+        "depth.1.bias": 0.0011087995953857899,
+        "text.0.weight": 0.36626458168029785,
+        "text.0.bias": 0.0015590470284223557,
+        "text.1.weight": 0.0006249247235246003,
+        "text.1.bias": 0.0007367497310042381,
+        "rgb_bound.weight": 0.00040451803943142295,
+        "rgb_bound.bias": 0.00038613041397184134,
+        "depth_bound.weight": 0.0009947726503014565,
+        "depth_bound.bias": 0.0008567573968321085,
+        "modality.weight": 0.014209946617484093,
+        "modality.bias": 9.432362276129425e-05,
+        "delta.0.weight": 0.593460202217102,
+        "delta.0.bias": 0.0027394485659897327,
+        "delta.2.weight": 10.379438400268555,
+        "delta.2.bias": 0.29641538858413696
+      }
+    }
+  },
+  "synthetic_competition_contract": {
+    "loss": 0.6151856780052185,
+    "positive_gradient": -0.574324369430542,
+    "false_peak_gradient": 0.675675630569458,
+    "same_instance_gradient": 0.0,
+    "no_regression_mask_gradients": true
+  },
+  "formal_optimizer_steps": 0,
+  "smoke_weights_saved": false,
+  "independent_model_review_pass": false,
+  "elapsed_seconds": 32.21450352668762
+}

@@ -1,0 +1,28 @@
+--- M77/window_competition.py
++++ M78/window_competition.py
+@@ -1,4 +1,4 @@
+-"""Supervise the same Hann-weighted peak competition used by the public tracker.
++"""Raw-response competition control; public inference still uses native Hann.
+ 
+ Training-only GT labels are read after the causal tracker has committed its state.
+ The native focal and box losses, network, decoder and template rule are retained.
+@@ -29,8 +29,8 @@
+         outside = ((centers < target[:2]) | (centers > target[:2]+target[2:])).any(-1)
+         negative = outside & (iou <= .1)
+         negative[positive] = False
+-    weighted = (score * output_window.reshape(16, 16)).flatten()
+-    # Center Head already clamps scores to [1e-4,1-1e-4]; the native centered Hann is positive.
++    weighted = score.flatten()
++    # Center Head already clamps scores to [1e-4,1-1e-4]; raw competition does not use the Hann values.
+     assert bool((weighted > 0).all())
+     log_weighted = weighted.log()
+     competitors = log_weighted[negative]
+@@ -38,7 +38,7 @@
+     values = torch.cat((log_weighted[positive:positive+1], hard))
+     loss = torch.logsumexp(values, dim=0) - log_weighted[positive]
+     return loss, dict(competition_loss=float(loss.detach()), competition_negatives=hard.numel(),
+-        competition_positive_index=int(positive), competition_hann_top1_index=int(weighted.detach().argmax()),
++        competition_positive_index=int(positive), competition_raw_top1_index=int(weighted.detach().argmax()),
+         competition_positive_probability=float(values.softmax(0)[0].detach()))
+ 
+ 
