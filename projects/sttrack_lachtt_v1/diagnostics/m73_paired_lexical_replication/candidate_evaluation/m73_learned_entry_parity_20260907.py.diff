@@ -1,0 +1,110 @@
+--- M67/m67_learned_entry_parity_20260907.py
++++ M73/m73_learned_entry_parity_20260907.py
+@@ -9,10 +9,10 @@
+ import time
+ import numpy as np
+ 
+-ROOT = Path('/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/candidate_evaluation/entry_parity')
+-M67 = Path('/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907')
+-CANDIDATE = Path('/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/candidate_evaluation')
+-INTERFACE = Path('/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/evaluation_interface')
++ROOT = Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation/entry_parity')
++MODEL = Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027')
++CANDIDATE = Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation')
++INTERFACE = Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation/interface')
+ GENERATOR = Path('/root/autodl-tmp/sttrack_m58_initialization_generator_20260906')
+ MODEL_PYTHON = '/root/autodl-tmp/envs/sttrack/bin/python'
+ 
+@@ -38,16 +38,16 @@
+ 
+ 
+ def candidate():
+-    path = Path('/root/autodl-tmp/m67_candidate_evaluation_20260907.py')
+-    spec = importlib.util.spec_from_file_location('m67_evaluation_candidate', str(path))
++    path = Path('/root/autodl-tmp/m73_candidate_evaluation_20260907.py')
++    spec = importlib.util.spec_from_file_location('m73_evaluation_candidate', str(path))
+     module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+     return module.checked()
+ 
+ 
+ def prepare():
+     frozen = candidate()
+-    parent = json.loads((M67 / 'recursive_spec.json').read_text())
+-    training = json.loads((M67 / 'training_spec.json').read_text())
++    parent = json.loads((MODEL / 'recursive_spec.json').read_text())
++    training = json.loads((MODEL / 'training_spec.json').read_text())
+     sys.path.insert(0, str(INTERFACE))
+     from semantic_runtime import checked_plan, text_bank
+     plan, bundle = checked_plan(CANDIDATE / 'development_plan.json')
+@@ -56,7 +56,7 @@
+     names = ['bag05_indoor', 'container01_indoor', 'mobilephone02_indoor']
+     cases = [dict(case, frames=202) for case in parent['cases'] if case['sequence'] in names]
+     assert len(cases) == 3
+-    reference_receipt = json.loads((M67 / 'support_recursive_receipt.json').read_text())
++    reference_receipt = json.loads((MODEL / 'category_recursive_receipt.json').read_text())
+     reference_files = {r['sequence']: r for r in reference_receipt['sequences']}
+     for case in cases:
+         assert wire(case['init_bbox']) == case['init_bbox']
+@@ -66,7 +66,7 @@
+             stem = '%08d' % (frame + 1)
+             assert (folder / 'color' / (stem + '.jpg')).is_file()
+             assert (folder / 'depth' / (stem + '.png')).is_file()
+-        assert sha(M67 / 'recursive/support' / (case['sequence'] + '.json')) == reference_files[case['sequence']]['sha256']
++        assert sha(MODEL / 'recursive/category' / (case['sequence'] + '.json')) == reference_files[case['sequence']]['sha256']
+     ROOT.mkdir()
+     write(ROOT / 'cases.json', cases)
+     ope_plan = dict(plan, dataset_root=training['dataset_root'], cases_path=str(ROOT / 'cases.json'),
+@@ -78,7 +78,7 @@
+                 bundle_path=plan['bundle_path'], bundle_sha256=plan['bundle_sha256'], head_sha256=bundle['adapter_checkpoint_sha256'],
+                 cases_sha256=sha(ROOT / 'cases.json'), ope_plan_sha256=sha(ROOT / 'ope_plan.json'),
+                 trax_plan_sha256=sha(ROOT / 'trax_plan.json'), text_bank_sha256=plan['text_bank_sha256'],
+-                reference_receipt_sha256=sha(M67 / 'support_recursive_receipt.json'),
++                reference_receipt_sha256=sha(MODEL / 'category_recursive_receipt.json'),
+                 reference_prediction_sha256={case['sequence']: reference_files[case['sequence']]['sha256'] for case in cases},
+                 dataset_root=training['dataset_root'], sequences=names, prefix_frames=202,
+                 ope_expected_frames=606, trax_expected_sessions=3, trax_expected_reports=603,
+@@ -99,7 +99,7 @@
+     spec = json.loads((ROOT / 'spec.json').read_text())
+     assert sha(__file__) == spec['source_sha256']
+     assert spec['candidate_binding_sha256'] == frozen['binding_result_sha256']
+-    assert sha(M67 / 'support_recursive_receipt.json') == spec['reference_receipt_sha256']
++    assert sha(MODEL / 'category_recursive_receipt.json') == spec['reference_receipt_sha256']
+     for name, key in [('cases.json', 'cases_sha256'), ('ope_plan.json', 'ope_plan_sha256'), ('trax_plan.json', 'trax_plan_sha256')]:
+         assert sha(ROOT / name) == spec[key]
+     assert sha(Path(spec['bundle_path'])) == spec['bundle_sha256']
+@@ -114,7 +114,7 @@
+     plan = json.loads((ROOT / 'trax_plan.json').read_text())
+     assert sha(Path(plan['text_bank_path'])) == spec['text_bank_sha256']
+     for name, digest in spec['reference_prediction_sha256'].items():
+-        assert sha(M67 / 'recursive/support' / (name + '.json')) == digest
++        assert sha(MODEL / 'recursive/category' / (name + '.json')) == digest
+     return spec, json.loads((ROOT / 'cases.json').read_text())
+ 
+ 
+@@ -147,7 +147,7 @@
+     reports = []; started = time.time()
+     for case in cases:
+         name = case['sequence']; folder = Path(spec['dataset_root']) / name
+-        expected = json.loads((M67 / 'recursive/support' / (name + '.json')).read_text())['rows']
++        expected = json.loads((MODEL / 'recursive/category' / (name + '.json')).read_text())['rows']
+         command = shlex.join([MODEL_PYTHON, str(INTERFACE / 'run_semantic_vot.py'), '--plan', str(ROOT / 'trax_plan.json')])
+         log = destination / (name + '.trax.log')
+         process = toolkit.TrackerProcess(command, envvars={'CUDA_VISIBLE_DEVICES': '1', 'OMP_NUM_THREADS': '4'},
+@@ -206,7 +206,7 @@
+         box_path = folder / (name + '.txt'); score_path = folder / (name + '_all_scores.txt')
+         assert sha(box_path) == item['bbox_sha256'] and sha(score_path) == item['confidence_sha256']
+         boxes = np.loadtxt(box_path, delimiter=',').reshape(-1, 4); scores = np.loadtxt(score_path).reshape(-1)
+-        reference = json.loads((M67 / 'recursive/support' / (name + '.json')).read_text())['rows'][:202]
++        reference = json.loads((MODEL / 'recursive/category' / (name + '.json')).read_text())['rows'][:202]
+         expected_boxes = np.asarray([r['bbox'] for r in reference])
+         expected_scores = np.asarray([1.] + [r['score'] for r in reference[1:]])
+         assert boxes.shape == (202, 4) and scores.shape == (202,)
+@@ -219,7 +219,7 @@
+                   TraX_receipt_sha256=sha(ROOT / 'trax/receipt.json'), OPE_comparisons=rows,
+                   TraX_sessions=trax['sessions'], real_model_tracking_calls=1206,
+                   initializations=6, public_evaluation_allowed=False, independent_review_pass=False,
+-                  scope='Fixed newly trained M67 Support final and category input bank on three sealed Train prefixes. OPE six-decimal files and actual toolkit/TraX wire outputs agree with direct predictions. No official metric, new caption generation, or public benchmark.')
++                  scope='Predetermined M73 seed2027 Category final and category input bank on three sealed Train prefixes. OPE six-decimal files and actual toolkit/TraX wire outputs agree with direct predictions. No official metric, new caption generation, or public benchmark.')
+     write(ROOT / 'result.json', result)
+     print(json.dumps(result, indent=2), flush=True)
+ 

@@ -1,0 +1,28 @@
+{
+  "status": "M73_premature_binding_OPE_TraX_and_low22_preparation_rejected",
+  "checks": [
+    {
+      "source": "m73_candidate_evaluation_20260907.py",
+      "action": "build",
+      "returncode": 1,
+      "expected_reason_matched": true
+    },
+    {
+      "source": "m73_learned_entry_parity_20260907.py",
+      "action": "prepare",
+      "returncode": 1,
+      "expected_reason_matched": true
+    },
+    {
+      "source": "m73_vot_low22_20260907.py",
+      "action": "prepare",
+      "returncode": 1,
+      "expected_reason_matched": true
+    }
+  ],
+  "no_output_side_effects": true,
+  "original_training_and_completion_queue_unchanged": true,
+  "new_model_calls": 0,
+  "new_optimizer_steps": 0,
+  "public_evaluation_started": false
+}

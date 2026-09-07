@@ -1,0 +1,58 @@
+{
+  "status": "M73_CPU_candidate_preparation_sealed_training_and_follower_live",
+  "observed_utc": "2026-09-07T10:09:14.348862+00:00",
+  "spec_sha256": "af20b98be8654ab214a71f481fe943c17505a4b1ee1e20c09affcfdd78e4b5c9",
+  "parent_training_identity": {
+    "pid": 482884,
+    "start_ticks": "4579784392",
+    "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907",
+    "argv": [
+      "bash",
+      "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/run_m73.sh"
+    ]
+  },
+  "follower_identity": {
+    "pid": 484228,
+    "start_ticks": "4579959586",
+    "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/completion_queue",
+    "argv": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/root/autodl-tmp/m73_completion_queue_20260907.py",
+      "run"
+    ]
+  },
+  "follower_latest": {
+    "observed_utc": "2026-09-07T10:06:15.043784+00:00",
+    "status": "waiting_for_registered_full_M73_training_queue",
+    "parent_identity": {
+      "pid": 482884,
+      "start_ticks": "4579784392",
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907",
+      "argv": [
+        "bash",
+        "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/run_m73.sh"
+      ]
+    },
+    "poll_seconds": 240,
+    "new_model_calls": 0
+  },
+  "disk_free_bytes": 1979781120,
+  "retained_qwen": {
+    "Qwen3_8B": {
+      "files": 5,
+      "bytes": 16381516776
+    },
+    "Qwen2.5-VL-3B-Instruct": {
+      "files": 2,
+      "bytes": 7509337976
+    }
+  },
+  "candidate_bundle_exists": false,
+  "actual_entry_parity_run": false,
+  "low22_tracking_started": false,
+  "new_model_calls": 0,
+  "original_training_and_follower_sources_unchanged": true,
+  "exporter_sha256": "13fc387d3c2843608e995e206ce7b2b9920101583c319eb41abb2ea54ee78a84",
+  "independent_model_review_pass": false
+}

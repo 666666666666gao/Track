@@ -1,0 +1,69 @@
+--- M67/m67_vot_low22_20260907.py
++++ M73/m73_vot_low22_20260907.py
+@@ -10,11 +10,11 @@
+ import subprocess
+ import sys
+ 
+-ROOT=Path('/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/candidate_evaluation')
+-INTERFACE=Path('/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/evaluation_interface')
++ROOT=Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation')
++INTERFACE=Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation/interface')
+ M39=Path('/root/autodl-tmp/sttrack_lachtt_m39_vot_low22_template_ablation_v1_20260902')
+ FROZEN=Path('/root/autodl-tmp/sutrack_vot_low22_anchor_identity_v1/run/shard_manifest.json')
+-TRACKER='sttrack_m67_support_low22'
++TRACKER='sttrack_m73_category_low22'
+ PYTHON='/root/miniconda3/envs/mplt/bin/python'
+ 
+ 
+@@ -29,7 +29,7 @@
+ 
+ 
+ def candidate():
+-    path=Path('/root/autodl-tmp/m67_candidate_evaluation_20260907.py')
++    path=Path('/root/autodl-tmp/m73_candidate_evaluation_20260907.py')
+     spec=importlib.util.spec_from_file_location('candidate_protocol',str(path))
+     m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+     return m.checked()
+@@ -45,8 +45,8 @@
+     assert result['status']=='real_learned_OPE_and_TraX_entries_verified'
+     assert result['bundle_sha256']==spec['bundle_sha256']
+     assert result['head_sha256']==sha(spec['final_head'])
+-    path=Path('/root/autodl-tmp/m67_learned_entry_parity_20260907.py')
+-    module_spec=importlib.util.spec_from_file_location('m67_parity_validation',str(path))
++    path=Path('/root/autodl-tmp/m73_learned_entry_parity_20260907.py')
++    module_spec=importlib.util.spec_from_file_location('m73_parity_validation',str(path))
+     module=importlib.util.module_from_spec(module_spec);module_spec.loader.exec_module(module)
+     module.checked()
+     assert result['spec_sha256']==sha(parity/'spec.json')
+@@ -61,10 +61,10 @@
+     assert sha(FROZEN)=='600b1ebb8b0c2f69b831f954e907e63709fd69afb7ea94c5b58e8c7408a29eed'
+     assert sha(M39/'m39_result.json')=='cf953c0d3c69609bcd83c11cb24ba57f37e30b38d3b3bcad32860b3a9ba9c1b5'
+     frozen=json.loads(FROZEN.read_text()); run=ROOT/'low22_run';run.mkdir()
+-    wrapper=ROOT/'m67_semantic_vot.py'
++    wrapper=ROOT/'m73_semantic_vot.py'
+     wrapper.write_text("import sys\nsys.path.insert(0, '"+str(INTERFACE)+"')\nfrom run_semantic_vot import run\nrun('"+str(ROOT/'low22_plan.json')+"')\n")
+-    ini=(f'[{TRACKER}]\nlabel = M67 supervised-support RGB-D-L\nprotocol = traxpython\n'
+-         f'command = m67_semantic_vot\npaths = {ROOT}\npython = /root/autodl-tmp/envs/sttrack/bin/python\n'
++    ini=(f'[{TRACKER}]\nlabel = M73 seed2027 Category RGB-D-L\nprotocol = traxpython\n'
++         f'command = m73_semantic_vot\npaths = {ROOT}\npython = /root/autodl-tmp/envs/sttrack/bin/python\n'
+          f'env_CUDA_VISIBLE_DEVICES = 1\nenv_PYTHONPATH = {ROOT}\nenv_TOKENIZERS_PARALLELISM = false\n'
+          'env_PYTHONDONTWRITEBYTECODE = 1\ntimeout = 600\nrestart = false\n')
+     shards=[]
+@@ -79,7 +79,7 @@
+             a=source/'sequences'/name/'anchor.value';b=dest/'sequences'/name/'anchor.value'
+             if a.exists():assert sha(a)==sha(b)
+         shards.append(dict(old,root=str(dest),gpu=1,trackers_sha256=sha(dest/'trackers.ini')))
+-    manifest=dict(frozen,schema='m67_same_bundle_support_low22_v1',tracker=TRACKER,gpu_count=1,shards=shards)
++    manifest=dict(frozen,schema='m73_same_bundle_category_low22_v1',tracker=TRACKER,gpu_count=1,shards=shards)
+     write(run/'shard_manifest.json',manifest)
+     runner=ROOT/'run_vot_failure_family_shards.py'
+     shutil.copyfile('/home/SUTrack_RGBD_L/tools/run_vot_failure_family_shards.py',runner)
+@@ -113,7 +113,7 @@
+     assert merge['anchor_count']==303 and merge['result_file_count']==909
+     assert merge['source_manifest_sha256']==ex['manifest_sha256']
+     for rel,h in merge['result_sha256'].items():assert sha(run/'master'/rel)==h
+-    name='m67_support_low22_analysis'
++    name='m73_category_low22_analysis'
+     env=dict(os.environ,PYTHONPATH='/home/SUTrack_RGBD_L')
+     with (ROOT/'toolkit_analysis.log').open('w') as log:
+         subprocess.run([PYTHON,'-m','vot','analysis','--workspace',str(run/'master'),'--format','json','--name',name,TRACKER],env=env,stdout=log,stderr=subprocess.STDOUT,check=True)

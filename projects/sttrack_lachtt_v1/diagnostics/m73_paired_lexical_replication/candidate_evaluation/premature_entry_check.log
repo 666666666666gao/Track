@@ -1,0 +1,43 @@
+m73_candidate_evaluation_20260907.py build
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 218, in <module>
+    {'prepare':prepare,'check':checked_preparation,'build':build}[a.action]()
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 178, in build
+    spec,audit,content=gates(); assert not (ROOT/'bundle.json').exists()
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 157, in gates
+    _,_,audit=module.eligible()
+  File "/root/autodl-tmp/m73_content_counterfactuals_20260907.py", line 137, in eligible
+    assert (PARENT / 'completion_tools/completed.json').exists(), 'M73 completion audit is not yet available'
+AssertionError: M73 completion audit is not yet available
+
+m73_learned_entry_parity_20260907.py prepare
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m73_learned_entry_parity_20260907.py", line 231, in <module>
+    {'prepare': prepare, 'client': client, 'verify': verify}[args.mode]()
+  File "/root/autodl-tmp/m73_learned_entry_parity_20260907.py", line 48, in prepare
+    frozen = candidate()
+  File "/root/autodl-tmp/m73_learned_entry_parity_20260907.py", line 44, in candidate
+    return module.checked()
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 205, in checked
+    spec,_,_=gates();bound=read(ROOT/'binding_result.json')
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 157, in gates
+    _,_,audit=module.eligible()
+  File "/root/autodl-tmp/m73_content_counterfactuals_20260907.py", line 137, in eligible
+    assert (PARENT / 'completion_tools/completed.json').exists(), 'M73 completion audit is not yet available'
+AssertionError: M73 completion audit is not yet available
+
+m73_vot_low22_20260907.py prepare
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m73_vot_low22_20260907.py", line 147, in <module>
+    {'prepare':prepare,'check':checked_execution,'analyze':analyze}[a.action]()
+  File "/root/autodl-tmp/m73_vot_low22_20260907.py", line 39, in prepare
+    spec=candidate()
+  File "/root/autodl-tmp/m73_vot_low22_20260907.py", line 35, in candidate
+    return m.checked()
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 205, in checked
+    spec,_,_=gates();bound=read(ROOT/'binding_result.json')
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 157, in gates
+    _,_,audit=module.eligible()
+  File "/root/autodl-tmp/m73_content_counterfactuals_20260907.py", line 137, in eligible
+    assert (PARENT / 'completion_tools/completed.json').exists(), 'M73 completion audit is not yet available'
+AssertionError: M73 completion audit is not yet available

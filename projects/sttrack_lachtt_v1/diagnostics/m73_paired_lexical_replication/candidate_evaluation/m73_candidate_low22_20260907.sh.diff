@@ -1,0 +1,14 @@
+--- M67/m67_candidate_low22_20260907.sh
++++ M73/m73_candidate_low22_20260907.sh
+@@ -1,9 +1,9 @@
+ #!/bin/bash
+ set -u
+-root=/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/candidate_evaluation
++root=/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation
+ model=/root/autodl-tmp/envs/sttrack/bin/python
+ metric=/root/miniconda3/envs/mplt/bin/python
+-script=/root/autodl-tmp/m67_vot_low22_20260907.py
++script=/root/autodl-tmp/m73_vot_low22_20260907.py
+ cd "$root" || exit 1
+ export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+ CUDA_VISIBLE_DEVICES='' "$model" -u "$script" prepare > low22_preparation.log 2>&1
