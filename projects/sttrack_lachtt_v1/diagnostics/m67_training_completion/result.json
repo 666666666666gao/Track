@@ -1,0 +1,164 @@
+{
+  "status": "completed_paired_training_artifact_audit_recursive_live",
+  "observed_utc": "2026-09-07T06:18:45.872579+00:00",
+  "source_sha256": "0a8550987d9c9ecb360e3ec92bf1db025ab621378897f2e787a06759637d59bc",
+  "frozen_auditor_sha256": "1773887deb3be27aa11a4409aa77bd7581f32b8d891ecab2a03454d277e769bf",
+  "training_spec_sha256": "2027b1893343e5e1520c447bd82a5c45468542cecaab0f59b3ec72a345e48b2e",
+  "recursive_spec_sha256": "d4dd7ca74b8f4b318f8e32f961bc21a10b95aa3802137dd293b49948d83411c5",
+  "integration_sha256": "5881ef1594929f0e71b0f7e8da6564e1c4669cbef86b1986b2948d7e0f231a65",
+  "training": {
+    "control": {
+      "result_sha256": "752f740445c26c6470004aa7759a66a5f95e190c87e6825a4ad5a8a295b5dd9e",
+      "final_checkpoint_sha256": "7a8907a45cec672f11563ad7cfaee21cb64acfee3fa13e854621c146cb8d058e",
+      "sequences": 130,
+      "track_calls": 186694,
+      "optimizer_steps": 5798,
+      "supervised_frames": 174479,
+      "sampled_state_rows": 3917,
+      "all_scheduled_write_counts_checked": 1768,
+      "final_optimizer_state_steps_verified": true,
+      "base_unchanged_runtime_assertion_present": true,
+      "initial_adapter_state_sha256": "f570b4a2c7d775e7025789178159181525117b54cf62b135f79aab49f2905356",
+      "support_loss_weight": 0.0,
+      "support_sampled_rows_checked": 0
+    },
+    "support": {
+      "result_sha256": "26015ef9d7558341ac447f7ca51be611935ad4667a34ff4ff03c27398117743c",
+      "final_checkpoint_sha256": "2b0fa1c11694790af7585277cede084edd8866d32596ea2257b014839882233e",
+      "sequences": 130,
+      "track_calls": 186694,
+      "optimizer_steps": 5798,
+      "supervised_frames": 174479,
+      "sampled_state_rows": 3917,
+      "all_scheduled_write_counts_checked": 1870,
+      "final_optimizer_state_steps_verified": true,
+      "base_unchanged_runtime_assertion_present": true,
+      "initial_adapter_state_sha256": "f570b4a2c7d775e7025789178159181525117b54cf62b135f79aab49f2905356",
+      "support_loss_weight": 0.1,
+      "support_sampled_rows_checked": 3660
+    }
+  },
+  "training_summaries": {
+    "control": {
+      "training_label_counts": {
+        "centre_inside": 151756,
+        "centre_outside": 22723,
+        "invalid": 12215
+      },
+      "elapsed_seconds": 12695.479064941406,
+      "observed_utc": "2026-09-07T06:10:54.028542+00:00",
+      "base_parameters_and_buffers_unchanged": true,
+      "gt_after_prediction_for_loss_only": true,
+      "gt_reinitialization_after_first_frame": false,
+      "backward_through_crops_or_time": false
+    },
+    "support": {
+      "training_label_counts": {
+        "centre_inside": 155482,
+        "centre_outside": 18997,
+        "invalid": 12215
+      },
+      "elapsed_seconds": 13002.876347541809,
+      "observed_utc": "2026-09-07T06:16:01.237263+00:00",
+      "base_parameters_and_buffers_unchanged": true,
+      "gt_after_prediction_for_loss_only": true,
+      "gt_reinitialization_after_first_frame": false,
+      "backward_through_crops_or_time": false
+    }
+  },
+  "live_recursive_processes": [
+    {
+      "pid": 475087,
+      "start_ticks": "4578650390",
+      "state": "R",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "run_recursive.py",
+        "--arm",
+        "control"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907"
+    },
+    {
+      "pid": 475088,
+      "start_ticks": "4578650390",
+      "state": "R",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "run_recursive.py",
+        "--arm",
+        "support"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907"
+    }
+  ],
+  "live_queues": {
+    "post_M67": {
+      "identity": {
+        "pid": 471187,
+        "start_ticks": "4578045533",
+        "argv": [
+          "/root/autodl-tmp/envs/sttrack/bin/python",
+          "-u",
+          "/root/autodl-tmp/post_m67_diagnostic_queue_20260907.py",
+          "run"
+        ],
+        "cwd": "/root/autodl-tmp/sttrack_post_m67_diagnostic_queue_20260907"
+      },
+      "latest": {
+        "time": "2026-09-07T06:15:16.844168+00:00",
+        "event": "waiting_for_registered_M67_controller",
+        "parent_identity": {
+          "pid": 465920,
+          "start_ticks": "4577349167",
+          "argv": [
+            "bash",
+            "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/run_m67.sh"
+          ],
+          "cwd": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907"
+        },
+        "poll_seconds": 240
+      }
+    },
+    "M71_after_queue": {
+      "identity": {
+        "pid": 474465,
+        "start_ticks": "4578576825",
+        "cwd": "/root/autodl-tmp/sttrack_m71_equal_budget_routing_20260907/post_queue_runner",
+        "argv": [
+          "/root/autodl-tmp/envs/sttrack/bin/python",
+          "-u",
+          "/root/autodl-tmp/m71_after_diagnostics_20260907.py",
+          "run"
+        ]
+      },
+      "latest": {
+        "time": "2026-09-07T06:15:47.852325+00:00",
+        "event": "waiting_for_registered_diagnostic_queue",
+        "parent_identity": {
+          "pid": 471187,
+          "start_ticks": "4578045533",
+          "cwd": "/root/autodl-tmp/sttrack_post_m67_diagnostic_queue_20260907",
+          "argv": [
+            "/root/autodl-tmp/envs/sttrack/bin/python",
+            "-u",
+            "/root/autodl-tmp/post_m67_diagnostic_queue_20260907.py",
+            "run"
+          ]
+        },
+        "poll_seconds": 240
+      }
+    }
+  },
+  "disk_free_bytes": 2237911040,
+  "checked_scope": "The existing frozen auditor training_artifacts function: physical final/latest/initial models, optimizer states, sequence order, training GT hashes and validity counts, sampled states and scheduled write records. Base freezing is supported by the training runtime assertion, not a newly replayed training run.",
+  "dev_result_complete": false,
+  "paired_development_gate_pass": null,
+  "new_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "public_evaluation_allowed": false,
+  "new_formal_metrics": false,
+  "independent_model_review_pass": false
+}
