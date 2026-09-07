@@ -1,0 +1,36 @@
+{
+  "status": "verified_live_M73_seed2027_paired_training",
+  "observed_utc": "2026-09-07T09:25:54.972909+00:00",
+  "jobs": [
+    {
+      "pid": 482891,
+      "start_ticks": "4579784502",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "empty"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027",
+      "gpu": "0"
+    },
+    {
+      "pid": 482892,
+      "start_ticks": "4579784502",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "category"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027",
+      "gpu": "1"
+    }
+  ],
+  "gpu_processes": "482891, 2452 MiB\n482892, 2452 MiB\n",
+  "spec_sha256": "9b5203ad2c6f890ab55105a7738a46b212e57ec411e5490a78a0435545bb44e7",
+  "frozen_sha256": "27de59df77bf12383747f39f84583c0386bcf57f90dd1a345451a498b00f054f",
+  "completed_development_metrics": false
+}

@@ -1,0 +1,110 @@
+{
+  "status": "verified_live_M73_paired_training_and_frozen_sources",
+  "observed_utc": "2026-09-07T09:29:45.621757+00:00",
+  "jobs": [
+    {
+      "pid": 482891,
+      "start_ticks": "4579784502",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "empty"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027",
+      "gpu": "0"
+    },
+    {
+      "pid": 482892,
+      "start_ticks": "4579784502",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "train_causal.py",
+        "--arm",
+        "category"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027",
+      "gpu": "1"
+    }
+  ],
+  "progress": {
+    "2027/category": {
+      "completed_sequences": 1,
+      "latest": {
+        "sequence": "cube04_indoor",
+        "sequence_index": 0,
+        "total_sequences": 130,
+        "frames": 2576,
+        "track_calls": 2575,
+        "supervised_frames": 2513,
+        "label_counts": {
+          "centre_inside": 1133,
+          "centre_outside": 1380,
+          "invalid": 62
+        },
+        "mean_training_loss": 2.4716564665366536,
+        "template_writes": 32,
+        "maximum_preclip_gradient_norm": 14.39353084564209,
+        "total_optimizer_steps": 81,
+        "total_track_calls": 2575,
+        "seconds": 166.85010886192322,
+        "elapsed_seconds": 169.7236304283142
+      },
+      "trained_final_exists": false
+    },
+    "2027/empty": {
+      "completed_sequences": 1,
+      "latest": {
+        "sequence": "cube04_indoor",
+        "sequence_index": 0,
+        "total_sequences": 130,
+        "frames": 2576,
+        "track_calls": 2575,
+        "supervised_frames": 2513,
+        "label_counts": {
+          "centre_inside": 1135,
+          "centre_outside": 1378,
+          "invalid": 62
+        },
+        "mean_training_loss": 2.426798390105242,
+        "template_writes": 34,
+        "maximum_preclip_gradient_norm": 14.424731254577637,
+        "total_optimizer_steps": 81,
+        "total_track_calls": 2575,
+        "seconds": 166.99987530708313,
+        "elapsed_seconds": 169.71687245368958
+      },
+      "trained_final_exists": false
+    },
+    "2028/category": {
+      "completed_sequences": 0,
+      "latest": null,
+      "trained_final_exists": false
+    },
+    "2028/empty": {
+      "completed_sequences": 0,
+      "latest": null,
+      "trained_final_exists": false
+    }
+  },
+  "spec_sha256": "9b5203ad2c6f890ab55105a7738a46b212e57ec411e5490a78a0435545bb44e7",
+  "frozen_sha256": "27de59df77bf12383747f39f84583c0386bcf57f90dd1a345451a498b00f054f",
+  "all_160_model_sources_identical_to_M67": true,
+  "retained_qwen": {
+    "Qwen3_8B": {
+      "files": 5,
+      "bytes": 16381516776
+    },
+    "Qwen2.5-VL-3B-Instruct": {
+      "files": 2,
+      "bytes": 7509337976
+    }
+  },
+  "disk_free_bytes": 1988370432,
+  "gpu_memory": "0, 2461 MiB\n1, 2461 MiB\n",
+  "exporter_sha256": "b8b41f1be5b8245213ccd33e484ea4c843abc878dbd18706bc320356c63ea16b",
+  "public_evaluation_started": false,
+  "independent_model_review_pass": false
+}

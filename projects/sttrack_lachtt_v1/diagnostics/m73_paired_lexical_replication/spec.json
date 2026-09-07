@@ -1,0 +1,66 @@
+{
+  "status": "prepared_before_causal_checks",
+  "source_sha256": "3c0a21d53c1d6ff77501d6ae61753799a28c0edd3c340275c2c26b56ef45d696",
+  "observed_utc": "2026-09-07T09:22:44.826699+00:00",
+  "seeds": [
+    2027,
+    2028
+  ],
+  "candidate_seed": 2027,
+  "candidate_arm": "category",
+  "compared_arms": [
+    "category",
+    "empty"
+  ],
+  "preparations": {
+    "2027": {
+      "training_spec_sha256": "4425c216cbaa3712970b9cbd2ef884f5cf7d5daf9bd987de6b066fa8a03311dc",
+      "recursive_spec_sha256": "b46aefc73832134c48046495564c72c05403cc54e61e0c3352c257fcb84cfcb9",
+      "initial_sha256": "4b20f34b1ed4190dcaf4e12bffc7b09b297d2bf9489c5d067d8f6bb84422868d"
+    },
+    "2028": {
+      "training_spec_sha256": "95d659a780e43b471e8f2c3575dba383d81660d08dcc092847f1b6bfed917d63",
+      "recursive_spec_sha256": "9dbb975ac3d39ff6160f88a60222ec8787611aef8cb2b1fa86bc95618505436e",
+      "initial_sha256": "a5d1d35539a77fe7dbceb9b7e7f0e10c08612b68eaea447a18a7d6115bc14ace"
+    }
+  },
+  "parent_M72_result_sha256": "8774a10626d9dd7127d1cd91f8f87107370415fcc842c514a59a08a74cf73326",
+  "banks": {
+    "fit": {
+      "category": {
+        "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_fit.pt",
+        "sha256": "1efb31a5e6ed30e4fd41c78efcba4538585e4d3b597208d3069c1de04734d47a"
+      },
+      "empty": {
+        "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/fit_empty.pt",
+        "sha256": "1ff4b1816d059c5a48147bee33e0472502221c9f3ff9f1ba3c6b131943ed52c9"
+      },
+      "sequences": 130,
+      "changed_category_slots": 130
+    },
+    "development": {
+      "category": {
+        "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_development.pt",
+        "sha256": "e537d03f666f661f684db63586ca7d995476a7bc00e12d641ba417f619c1b3d6"
+      },
+      "empty": {
+        "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/development_empty.pt",
+        "sha256": "4da5777613ff304f2bcd629df3fd61e6f2b267cc8d9aabf8eb79ab7655d03bed"
+      },
+      "sequences": 22,
+      "changed_category_slots": 22
+    }
+  },
+  "seed_order": [
+    2027,
+    2028
+  ],
+  "total_training_track_calls": 746776,
+  "total_development_track_calls": 132432,
+  "paired_training_only_variable": "valid-slot lexical content; distinct seeds change adapter initialization, not data order",
+  "run_queue_sha256": "54689b25d0647c36749e5cb0218b19e81b4f3fe6ac0ab4b0c1899af5095c3a5a",
+  "check_script_sha256": "f6f2a0f52c9400a5b7d691435a31bbe12c4b642d1e694f58c90157538c3ce8d2",
+  "criteria": "Both seeds individually pass inherited eleven development comparisons, then fixed-head category/empty/swapped controls. Never select the better seed.",
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false
+}

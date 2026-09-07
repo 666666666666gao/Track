@@ -1,0 +1,100 @@
+--- M67/run_recursive.py
++++ M73/seed2028/run_recursive.py
+@@ -9,7 +9,7 @@
+ from types import SimpleNamespace
+ 
+ 
+-ROOT = Path('/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907')
++ROOT = Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2028')
+ 
+ 
+ def sha(path):
+@@ -26,11 +26,13 @@
+ 
+ def plans():
+     spec = json.loads((ROOT/'recursive_spec.json').read_text())
++    assert sha(ROOT/'recursive_spec.json') == json.loads((ROOT/'frozen.json').read_text())['recursive_spec_sha256']
+     assert sha(__file__) == spec['runner_sha256']
+     training = json.loads((ROOT/'training_spec.json').read_text())
+     assert sha(ROOT/'training_spec.json') == spec['training_spec_sha256']
+     assert sha(ROOT/'data_inventory.json') == training['inventory_sha256']
+-    assert sha(ROOT/'text_development.pt') == training['text_development_sha256']
++    for arm in ['category', 'empty']:
++        assert sha(training['banks']['development'][arm]['path']) == training['banks']['development'][arm]['sha256']
+     assert sha(ROOT/'integration.json') == training['integration_sha256']
+     integration = json.loads((ROOT/'integration.json').read_text())
+     for name, digest in integration['source_sha256'].items():
+@@ -41,7 +43,7 @@
+ def trained():
+     spec, training = plans()
+     results = {}
+-    for arm in ['support', 'control']:
++    for arm in ['category', 'empty']:
+         assert (ROOT/('training_'+arm+'.exit')).read_text().strip() == '0'
+         r = json.loads((ROOT/'training'/arm/'result.json').read_text())
+         assert r['status'] == 'one_full_causal_fit_pass_complete' and r['sequences'] == 130
+@@ -51,7 +53,7 @@
+         assert sha(ROOT/'training'/arm/'final.pth') == r['final_checkpoint_sha256']
+         results[arm] = r
+     for key in ['initial_adapter_state_sha256', 'base_state_before_sha256', 'optimizer_steps', 'total_track_calls']:
+-        assert results['support'][key] == results['control'][key], key
++        assert results['category'][key] == results['empty'][key], key
+     return spec, training, results
+ 
+ 
+@@ -74,7 +76,7 @@
+     assert saved['training_spec_sha256'] == spec['training_spec_sha256']
+     assert saved['use_text'] and saved['null_support']
+     tracker = STTrackSemantic(params, str(checkpoint))
+-    bank = torch.load(ROOT/'text_development.pt', map_location='cpu')
++    bank = torch.load(training['banks']['development'][arm]['path'], map_location='cpu')
+     assert set(bank['sequences']) == set(training['development_sequences'])
+     output = ROOT/'recursive'/arm
+     output.mkdir(parents=True)
+@@ -115,7 +117,7 @@
+     native_path = Path(spec['native_result_path'])
+     assert sha(native_path) == training['native_result_sha256']
+     native = json.loads(native_path.read_text())
+-    predicted = {a:{} for a in ['support','control']}
++    predicted = {a:{} for a in ['category','empty']}
+     receipts = {}
+     for arm in predicted:
+         assert (ROOT/(arm+'_recursive.exit')).read_text().strip() == '0'
+@@ -137,7 +139,7 @@
+         receipts[arm]=sha(ROOT/(arm+'_recursive_receipt.json'))
+     assert all(set(v)==set(training['development_sequences']) for v in predicted.values())
+     # Both complete families are now sealed; GT is first opened for metric analysis.
+-    per = {'native':native['per_sequence']['native'], 'support':{}, 'control':{}}
++    per = {'native':native['per_sequence']['native'], 'category':{}, 'empty':{}}
+     for case in spec['cases']:
+         path=Path(training['dataset_root'])/case['sequence']/'groundtruth.txt'
+         assert sha(path)==case['gt_sha256']
+@@ -152,13 +154,13 @@
+         counts['macro_sequence_mean_iou']=float(np.mean([r['mean_iou'] for r in values.values()]))
+         aggregates[arm]=counts
+         assert counts['valid_frames']==28897
+-    primary=aggregates['support']; baseline=aggregates['native']; control=aggregates['control']
+-    broken=[n for n in per['native'] if per['native'][n]['failure_episodes']==0 and per['support'][n]['failure_episodes']>0]
++    primary=aggregates['category']; baseline=aggregates['native']; control=aggregates['empty']
++    broken=[n for n in per['native'] if per['native'][n]['failure_episodes']==0 and per['category'][n]['failure_episodes']>0]
+     rule=training['promotion_gates']
+-    control_broken=[n for n in per['control'] if per['control'][n]['failure_episodes']==0 and per['support'][n]['failure_episodes']>0]
+-    legacy_broken=[n for n in training['protected_prior_control_sequences'] if per['support'][n]['failure_episodes']>0]
+-    gates=dict(prior_control_success_protection=not legacy_broken, mean_vs_native=primary['mean_iou']>=baseline['mean_iou']+rule['support_pooled_mean_vs_native_minimum'],
+-        mean_vs_control=primary['mean_iou']>=control['mean_iou']+rule['support_pooled_mean_vs_control_minimum'],
++    control_broken=[n for n in per['empty'] if per['empty'][n]['failure_episodes']==0 and per['category'][n]['failure_episodes']>0]
++    legacy_broken=[n for n in training['protected_prior_control_sequences'] if per['category'][n]['failure_episodes']>0]
++    gates=dict(prior_control_success_protection=not legacy_broken, mean_vs_native=primary['mean_iou']>=baseline['mean_iou']+rule['category_pooled_mean_vs_native_minimum'],
++        mean_vs_control=primary['mean_iou']>=control['mean_iou']+rule['category_pooled_mean_vs_control_minimum'],
+         macro_vs_native=primary['macro_sequence_mean_iou']>=baseline['macro_sequence_mean_iou'],
+         macro_vs_control=primary['macro_sequence_mean_iou']>=control['macro_sequence_mean_iou'],
+         low_frames_vs_native=primary['low_iou_frames']<=baseline['low_iou_frames'],
+@@ -180,7 +182,7 @@
+ if __name__=='__main__':
+     parser=argparse.ArgumentParser()
+     action=parser.add_mutually_exclusive_group(required=True)
+-    action.add_argument('--arm',choices=['support','control'])
++    action.add_argument('--arm',choices=['category','empty'])
+     action.add_argument('--analyze',action='store_true')
+     action.add_argument('--preflight',action='store_true')
+     args=parser.parse_args()

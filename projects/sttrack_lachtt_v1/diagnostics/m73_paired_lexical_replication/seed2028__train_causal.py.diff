@@ -1,0 +1,38 @@
+--- M67/train_causal.py
++++ M73/seed2028/train_causal.py
+@@ -1,4 +1,4 @@
+-"""Matched Null-architecture training; original loss versus explicit box-level support supervision."""
++"""Matched category versus empty-content causal training; identical Null architecture and zero auxiliary loss."""
+ import argparse
+ from collections import Counter
+ from datetime import datetime, timezone
+@@ -32,15 +32,17 @@
+ 
+ def main():
+     parser = argparse.ArgumentParser()
+-    parser.add_argument('--arm', choices=['control', 'support'], required=True)
++    parser.add_argument('--arm', choices=['empty', 'category'], required=True)
+     args = parser.parse_args()
+-    root = Path('/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907')
++    root = Path('/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2028')
++    assert (root / 'frozen.json').is_file()
+     spec_path = root / 'training_spec.json'
+     spec = json.loads(spec_path.read_text())
++    assert sha(spec_path) == json.loads((root / 'frozen.json').read_text())['training_spec_sha256']
+     assert sha(__file__) == spec['training_script_sha256']
+     assert sha(root / 'causal_training.py') == spec['causal_script_sha256']
+     assert sha(root / 'support_loss.py') == spec['support_loss_sha256']
+-    assert sha(root / 'text_fit.pt') == spec['text_fit_sha256']
++    assert sha(spec['banks']['fit'][args.arm]['path']) == spec['banks']['fit'][args.arm]['sha256']
+     assert sha(root / 'native_parity' / (args.arm + '_zero.pth')) == spec['initial_checkpoint_sha256'][args.arm]
+     assert sha(spec['native_checkpoint']) == spec['native_checkpoint_sha256']
+     integration = json.loads((root / 'integration.json').read_text())
+@@ -65,7 +67,7 @@
+     assert sum(p.numel() for p in tracker.network.parameters() if p.requires_grad) == 289154
+     base_before = tensor_state_sha(tracker.network)
+     initial_sha = tensor_state_sha(tracker.network, adapter_only=True)
+-    bank = torch.load(root / 'text_fit.pt', map_location='cpu')
++    bank = torch.load(spec['banks']['fit'][args.arm]['path'], map_location='cpu')
+     assert set(bank['sequences']) == {r['sequence'] for r in spec['sequence_order']}
+     output = root / 'training' / args.arm
+     output.mkdir(parents=True)
