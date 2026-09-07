@@ -1,0 +1,6 @@
+{
+  "initial_exit": 1,
+  "error": "AttributeError: 'str' object has no attribute 'read_bytes'",
+  "cause": "Exporter passed __file__ string to a Path-only hash helper after evidence copies. No model, output, metric, or gate changed.",
+  "correction": "Normalize hash input with Path and reuse the existing partial evidence directory."
+}

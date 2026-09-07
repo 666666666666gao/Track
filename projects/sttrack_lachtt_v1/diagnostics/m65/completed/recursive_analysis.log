@@ -1,0 +1,58 @@
+{
+  "status": "complete_recursive_development",
+  "observed_utc": "2026-09-07T01:35:28.802699+00:00",
+  "recursive_spec_sha256": "09f3f193de81f9cf91518b2c05497bfea30e8ab88db812e3585f6d3618767723",
+  "training_spec_sha256": "fc04a897f3d3e246203981a2cb3b83ea50075392e30c0c960c8908eaaeabb93b",
+  "aggregates": {
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "null": {
+      "valid_frames": 28897,
+      "iou_sum": 20922.28794423755,
+      "low_iou_frames": 5081,
+      "failure_episodes": 68,
+      "mean_iou": 0.7240297589451344,
+      "macro_sequence_mean_iou": 0.755101188588103
+    },
+    "control": {
+      "valid_frames": 28897,
+      "iou_sum": 19872.502287938965,
+      "low_iou_frames": 6326,
+      "failure_episodes": 78,
+      "mean_iou": 0.6877012246232815,
+      "macro_sequence_mean_iou": 0.6879317664992578
+    }
+  },
+  "gates": {
+    "mean_vs_native": true,
+    "mean_vs_control": true,
+    "macro_vs_native": true,
+    "macro_vs_control": true,
+    "low_frames_vs_native": true,
+    "low_frames_vs_control": true,
+    "H10_vs_native": true,
+    "H10_vs_control": true,
+    "native_success_protection": true,
+    "control_success_protection": false
+  },
+  "primary_pass": false,
+  "new_failure_sequences": [],
+  "broken_control_success_sequences": [
+    "glass03_indoor"
+  ],
+  "receipts": {
+    "null": "fe1f2c149409cbdab8b65a39a85f7c4029b9c00caf54ed488b11d195c8cb0f0d",
+    "control": "c551b37d1bce270324ad9730fa09c0d34f9eeb7c3fb8028fda85442f2f551e2d"
+  },
+  "frozen_native_result_sha256": "5ed4a20beae88a8e8b85513000a8f020311e934b9206678f7d670b50b0737064",
+  "scope": "Reused DepthTrack Train development22; no public dataset results.",
+  "caption_scope": "Automatic initialization-only captions with documented errors; no semantic ground-truth guarantee.",
+  "independent_review_pass": false,
+  "next": "Stop this frozen revision; diagnose complete trajectories"
+}

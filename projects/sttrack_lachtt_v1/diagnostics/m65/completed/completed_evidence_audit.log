@@ -1,0 +1,100 @@
+{
+  "status": "completed_M65_artifacts_and_development_audited",
+  "observed_utc": "2026-09-07T01:39:35.395465+00:00",
+  "auditor_sha256": "ef6a3f5f9f7b8635497fc993fded0924e7f37f5b67d14c3fab46fc27b7e596db",
+  "scalar_metric_source_sha256": "2c611c8dae3c226c5c625301a98ff1f74f4ff03e727c5599060dea1650cac66d",
+  "reference_check_sha256": "c332eaee9896dbc28bd43f5bfdc8f8725766c18b2db141df771ac29bef27db2d",
+  "training_spec_sha256": "fc04a897f3d3e246203981a2cb3b83ea50075392e30c0c960c8908eaaeabb93b",
+  "recursive_spec_sha256": "09f3f193de81f9cf91518b2c05497bfea30e8ab88db812e3585f6d3618767723",
+  "result_sha256": "0101fa8185855044dda7462df2f9606b6e58c88248e8a7f1cf87497fb055b150",
+  "recomputed_aggregates": {
+    "control": {
+      "valid_frames": 28897,
+      "iou_sum": 19872.502287938965,
+      "low_iou_frames": 6326,
+      "failure_episodes": 78,
+      "mean_iou": 0.6877012246232815,
+      "macro_sequence_mean_iou": 0.6879317664992578
+    },
+    "null": {
+      "valid_frames": 28897,
+      "iou_sum": 20922.28794423755,
+      "low_iou_frames": 5081,
+      "failure_episodes": 68,
+      "mean_iou": 0.7240297589451344,
+      "macro_sequence_mean_iou": 0.755101188588103
+    },
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    }
+  },
+  "recomputed_frozen_gates": {
+    "mean_vs_native": true,
+    "mean_vs_control": true,
+    "macro_vs_native": true,
+    "macro_vs_control": true,
+    "low_frames_vs_native": true,
+    "low_frames_vs_control": true,
+    "H10_vs_native": true,
+    "H10_vs_control": true,
+    "native_success_protection": true,
+    "control_success_protection": false
+  },
+  "broken_success_sequences": {
+    "native": [],
+    "control": [
+      "glass03_indoor"
+    ]
+  },
+  "sustained_null_H10_with_reference_correct_every_frame": [
+    {
+      "sequence": "mobilephone01_indoor",
+      "reference": "native",
+      "start": 940,
+      "end_exclusive": 950,
+      "frames": 10
+    },
+    {
+      "sequence": "cup10_indoor",
+      "reference": "control",
+      "start": 2127,
+      "end_exclusive": 2153,
+      "frames": 26
+    },
+    {
+      "sequence": "cup13_indoor",
+      "reference": "control",
+      "start": 1031,
+      "end_exclusive": 1125,
+      "frames": 94
+    },
+    {
+      "sequence": "mobilephone01_indoor",
+      "reference": "control",
+      "start": 1367,
+      "end_exclusive": 1381,
+      "frames": 14
+    },
+    {
+      "sequence": "mobilephone01_indoor",
+      "reference": "control",
+      "start": 1384,
+      "end_exclusive": 1418,
+      "frames": 34
+    }
+  ],
+  "paired_development_gate_pass": false,
+  "content_counterfactuals_allowed": false,
+  "public_evaluation_allowed": false,
+  "formal_three_dataset_metrics_exist": false,
+  "independent_model_review_pass": false,
+  "new_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "new_caption_calls": 0,
+  "scope": "Read-only executor audit. No gate changes or checkpoint selection. Content attribution is still required before low22; no same-bundle formal metrics."
+}
