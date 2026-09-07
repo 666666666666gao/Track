@@ -1,0 +1,81 @@
+{
+  "status": "frozen_before_post_M67_diagnostics",
+  "created_utc": "2026-09-07T04:34:08.773609+00:00",
+  "source_sha256": "4a4bc5debaf8581ede1cec7bd1c2020b3361ee5963509b7c7b18679fab3688cb",
+  "launch_sha256": "29aa2417d9a4d3eb20f4c228b8ffa895cf942eb7cead7697427cde815fc1f60d",
+  "parent_controller": {
+    "pid": 465920,
+    "start_ticks": "4577349167",
+    "argv": [
+      "bash",
+      "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/run_m67.sh"
+    ],
+    "cwd": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907"
+  },
+  "parent_queue_sha256": "546d4ac1dedf38a6381e8fcc79038dcd73dfc6d7a424126852ffdc1bce6c95a3",
+  "poll_seconds": 240,
+  "dependencies": {
+    "/root/autodl-tmp/audit_m67_completed_20260907.py": "1773887deb3be27aa11a4409aa77bd7581f32b8d891ecab2a03454d277e769bf",
+    "/root/autodl-tmp/m67_content_counterfactuals_20260907.py": "40b765b22c398bc18ed4ac3f5ef33edc7b9611cf1c8d3172062f518d435f8285",
+    "/root/autodl-tmp/m68_reported_confidence_20260907.py": "7faf987f68c26739cd3666428e1c73e42704a4d208ffe29572863ca7b808f4d9",
+    "/root/autodl-tmp/m69_m65_content_diagnostic_20260907.py": "c3feaa2f1507dc5174331d0a1ebd0fbf96032fc5434f9f82675bd83cc7292ce0",
+    "/root/autodl-tmp/m70_candidate_capacity_20260907.py": "e0f02783e2410f745a40465799407a4cef218993e1d8eee6fc745d0029f53977",
+    "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/run_m67.sh": "546d4ac1dedf38a6381e8fcc79038dcd73dfc6d7a424126852ffdc1bce6c95a3",
+    "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/training_spec.json": "2027b1893343e5e1520c447bd82a5c45468542cecaab0f59b3ec72a345e48b2e",
+    "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/recursive_spec.json": "d4dd7ca74b8f4b318f8e32f961bc21a10b95aa3802137dd293b49948d83411c5",
+    "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/content_counterfactuals/spec.json": "c107a0b08a6825803f6a57f0c7ab5f469e06288c3df203dfbb5ce880a4f6c400",
+    "/root/autodl-tmp/sttrack_m68_reported_confidence_20260907/spec.json": "e2106dd1604d627c02d0589b91224c4901bfbca2906ffbbf241a3f380b7cfdf5",
+    "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907/spec.json": "1edc827b9f5aaf9dffee70b4f85e456b6f66c9a2e0dfab5c189bb4132ceeab8e",
+    "/root/autodl-tmp/sttrack_m70_recovery_window_inventory_20260907/candidate_capacity/spec.json": "796a2756db4c2be0b5282d567294a76d494ad031cc4e186ba96deb3228c00fa5"
+  },
+  "stages": [
+    {
+      "name": "M67_content",
+      "queue": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/content_counterfactuals/run_controls.sh",
+      "result": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/content_counterfactuals/result.json",
+      "when": "M67_original_development_gate_pass",
+      "expected_status": "completed_fixed_head_category_content_controls",
+      "queue_sha256": "1b0fb4a4dba41ef4524f1ba3ac500b1846734c58bfc5b720a9f4d8b499357235"
+    },
+    {
+      "name": "M69_M65_content",
+      "queue": "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907/run_controls.sh",
+      "result": "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907/result.json",
+      "when": "always_diagnostic_only",
+      "expected_status": "completed_diagnostic_only_M65_fixed_head_content_controls",
+      "queue_sha256": "3e20dcbe402d1061dbeb858407cae36992527dc614d15d858ffd9776444be5d1"
+    },
+    {
+      "name": "M68_confidence",
+      "queue": "/root/autodl-tmp/sttrack_m68_reported_confidence_20260907/run_diagnostic.sh",
+      "result": "/root/autodl-tmp/sttrack_m68_reported_confidence_20260907/result.json",
+      "when": "always_diagnostic_only",
+      "expected_status": "completed_Train_confidence_readout_diagnostic",
+      "queue_sha256": "5f11e4bc0d762ffce1e267b69c0fedb0da5ff2ba48d68af380bbcac4cdcc27b6"
+    },
+    {
+      "name": "M70_capacity",
+      "queue": "/root/autodl-tmp/sttrack_m70_recovery_window_inventory_20260907/candidate_capacity/run_capacity.sh",
+      "result": "/root/autodl-tmp/sttrack_m70_recovery_window_inventory_20260907/candidate_capacity/result.json",
+      "when": "always_diagnostic_only",
+      "expected_status": "completed_fixed_state_cross_region_candidate_capacity",
+      "queue_sha256": "56754df356c24fc59c54b30b136ad32bf4d994dce5d4b65c5ba5d9160112415d"
+    }
+  ],
+  "ready_files": [
+    "controller.exit",
+    "training_control.exit",
+    "training_support.exit",
+    "control_recursive.exit",
+    "support_recursive.exit",
+    "recursive_analysis.exit"
+  ],
+  "first_action": "Run the already frozen M67 completed artifact and original performance-gate audit.",
+  "policy": "Original M67 content stage only if its original gate passes. M69 is explicitly authorized despite the old M65 failure; M68 and M70 are pure diagnostics. Any execution/parity/artifact failure stops the sequence without retries.",
+  "automatic_public_evaluation": false,
+  "automatic_promotion": false,
+  "training_restart_allowed": false,
+  "parent_training_or_sources_modified": false,
+  "goal_completed": false,
+  "independent_model_review_pass": false
+}

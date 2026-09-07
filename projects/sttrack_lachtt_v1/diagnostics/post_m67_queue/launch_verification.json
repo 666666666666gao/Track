@@ -1,0 +1,56 @@
+{
+  "status": "live_post_M67_queue_verified_waiting_for_registered_parent",
+  "observed_utc": "2026-09-07T04:35:39.458271+00:00",
+  "queue_identity": {
+    "observed_utc": "2026-09-07T04:35:14.632013+00:00",
+    "identity": {
+      "pid": 471187,
+      "start_ticks": "4578045533",
+      "argv": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/root/autodl-tmp/post_m67_diagnostic_queue_20260907.py",
+        "run"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_post_m67_diagnostic_queue_20260907"
+    },
+    "source_sha256": "4a4bc5debaf8581ede1cec7bd1c2020b3361ee5963509b7c7b18679fab3688cb",
+    "spec_sha256": "5f34ea8f38dfe6f7047d4cf65fba388da076c4c178d0b7e3b3afa3f4c078eddf"
+  },
+  "latest": {
+    "time": "2026-09-07T04:35:14.632621+00:00",
+    "event": "waiting_for_registered_M67_controller",
+    "parent_identity": {
+      "pid": 465920,
+      "start_ticks": "4577349167",
+      "argv": [
+        "bash",
+        "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/run_m67.sh"
+      ],
+      "cwd": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907"
+    },
+    "poll_seconds": 240
+  },
+  "M67_training": {
+    "control": {
+      "pid": 465923,
+      "alive": true,
+      "sequences": 74,
+      "calls": 102374,
+      "steps": 3187
+    },
+    "support": {
+      "pid": 465924,
+      "alive": true,
+      "sequences": 72,
+      "calls": 98583,
+      "steps": 3070
+    }
+  },
+  "source_sha256": "4a4bc5debaf8581ede1cec7bd1c2020b3361ee5963509b7c7b18679fab3688cb",
+  "spec_sha256": "5f34ea8f38dfe6f7047d4cf65fba388da076c4c178d0b7e3b3afa3f4c078eddf",
+  "disk_free_bytes": 2257842176,
+  "GPU_diagnostic_stages_started": false,
+  "parent_training_modified": false,
+  "public_evaluation_allowed": false
+}
