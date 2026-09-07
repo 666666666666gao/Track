@@ -1,0 +1,44 @@
+--- previous/m73_candidate_evaluation_20260907.py
++++ single_seed/m73_candidate_evaluation_20260907.py
+@@ -18,8 +18,8 @@
+ OLD_LOW = B / 'sttrack_m64_category_candidate_20260907'
+ CONTENT = M73 / 'content_counterfactuals'
+ CONTENT_SCRIPT = B / 'm73_content_counterfactuals_20260907.py'
+-CONTENT_SHA = 'c2b3422b1c5ad19cbb5231d415244431033f238f2da747b11b053eefcd7c686d'
+-CONTENT_SPEC_SHA = 'b25a073ad07e2f9e5740a2732f06b8ee4d23472072ccad91bd3a5b37385ee7d5'
++CONTENT_SHA = '28a6c668146a8c4b90c5b588d3aa670593bb1a295c59497b2ddfa5a690202341'
++CONTENT_SPEC_SHA = '151d1bf496af7b10d1af2e9e1d454b6afdd481a65f2bead30ed729271038822d'
+ INTERFACE_SHA = '323620eab82b163a3a9e6de54ea8e17da5dbc0cf7336b3717ef443082b59e07b'
+ SOURCES = ['m73_candidate_evaluation_20260907.py', 'm73_learned_entry_parity_20260907.py', 'm73_vot_low22_20260907.py',
+     'm73_candidate_entry_20260907.sh', 'm73_candidate_low22_20260907.sh']
+@@ -65,8 +65,8 @@
+         shutil.copyfile(OLD / n, INTERFACE / n); compile((INTERFACE / n).read_text(), n, 'exec')
+     protocol = read(OLD / 'text_protocol.json')
+     protocol['training_spec_sha256'] = sha(MODEL / 'training_spec.json')
+-    protocol['selection_provenance'] = ('M73 prospectively compares category and empty training in seeds2027/2028; '
+-        'seed2027 Category final is the only candidate, conditional on both-seed development and same-head content checks. '
++    protocol['selection_provenance'] = ('M73 compares category and empty training in fixed seed2027; seed2028 was cancelled by the user; '
++        'seed2027 Category final is the only candidate, conditional on unchanged single-seed development and same-head content checks. '
+         'Category retention is used in this arm during both training and deployment.')
+     write(INTERFACE / 'text_protocol.json', protocol)
+     protocol_sha = sha(INTERFACE / 'text_protocol.json')
+@@ -128,7 +128,7 @@
+             preserve_all_seven_native_zero_failure_sequences=True,all303_anchors_complete=True,identical_bundle_and_text_protocol=True),
+         gate_provenance='Carry forward the M64/M67 low22 gate unchanged before M73 final outcomes.',
+         entry_prefixes=['bag05_indoor','container01_indoor','mobilephone02_indoor'],frames_per_entry_prefix=202,
+-        required_order=['Both M73 seed development gates and completed audit','Fixed seed2027 Category head content gates',
++        required_order=['Retained M73 seed2027 development gates and completed audit','Fixed seed2027 Category head content gates',
+             'Bind that one final','Real OPE/TraX parity on three Train prefixes','All303 low22 anchors','Full three datasets only after low22 gate passes'],
+         actual_gpu_entry_parity_checked=False,final_bundle_created=False,public_evaluation_allowed=False,independent_model_review_pass=False)
+     write(ROOT/'spec.json',spec)
+@@ -155,8 +155,8 @@
+ def gates():
+     spec=checked_preparation(); _,_,_,module=inputs()
+     _,_,audit=module.eligible()
+-    assert (M73/'completion_queue/controller.exit').read_text().strip()=='0'
+-    follower=read(M73/'completion_queue/result.json')
++    assert (M73/'single_seed_amendment/controller/controller.exit').read_text().strip()=='0'
++    follower=read(M73/'single_seed_amendment/controller/result.json')
+     assert follower['status']=='completed_M73_audit_and_conditional_content' and follower['content_started']
+     result=read(CONTENT/'result.json')
+     assert follower['content_result_sha256']==sha(CONTENT/'result.json')

@@ -1,0 +1,56 @@
+--- previous/m73_content_counterfactuals_20260907.py
++++ single_seed/m73_content_counterfactuals_20260907.py
+@@ -1,4 +1,4 @@
+-"""Prospectively fixed seed2027 content controls, conditional on both M73 seeds."""
++"""Prospectively fixed seed2027 content controls, conditional on the retained M73 seed2027."""
+ import argparse
+ from datetime import datetime, timezone
+ import hashlib
+@@ -17,7 +17,7 @@
+ OUT = PARENT / 'content_counterfactuals'
+ M69 = BASE / 'sttrack_m69_m65_content_diagnostic_20260907'
+ AUDITOR = BASE / 'audit_m73_completed_20260907.py'
+-AUDITOR_SHA = '4fcaf10e73225ea7bf9f57dbd031c1a6d9f58ebed29fa04341277d0d69fb3ef8'
++AUDITOR_SHA = '6ea04715e50733a0dd41ca7b458f80c6afbd6af826b01e8865ff4674aa427747'
+ REFERENCE_SHA = 'fb387791f1de063990ff2b9f105b7387616893c382dce44642e5b591375c45fa'
+ M69_SPEC_SHA = '1edc827b9f5aaf9dffee70b4f85e456b6f66c9a2e0dfab5c189bb4132ceeab8e'
+ 
+@@ -99,8 +99,8 @@
+         M73_spec_sha256=sha(PARENT / 'spec.json'), M73_frozen_sha256=sha(PARENT / 'frozen.json'),
+         training_spec_sha256=sha(ROOT / 'training_spec.json'), recursive_spec_sha256=sha(ROOT / 'recursive_spec.json'),
+         candidate_seed=2027, candidate_arm='category', candidate_path=str(ROOT / 'training/category/final.pth'),
+-        head_selection='Prospective seed2027 Category final only; seed2028 verifies replication and cannot replace the candidate.',
+-        prerequisite='Both seeds individually pass all inherited eleven development requirements, verified by completed-checkpoint/scalar auditor.',
++        head_selection='Prospective seed2027 Category final only; seed2028 was cancelled by the user before full training.',
++        prerequisite='The retained seed2027 passes all inherited eleven development requirements, verified by completed-checkpoint/scalar auditor.',
+         banks=banks, M69_spec_sha256=M69_SPEC_SHA, cases=recursive['cases'],
+         prefix_sequences=previous['prefix_sequences'], prefix_frames=previous['prefix_frames'],
+         primary='category', controls=['empty', 'swapped'], reuse_complete_category_predictions=True,
+@@ -136,13 +136,15 @@
+     spec, training = checked()
+     assert (PARENT / 'completion_tools/completed.json').exists(), 'M73 completion audit is not yet available'
+     audit = read(PARENT / 'completion_tools/completed.json')
+-    assert audit['status'] == 'completed_M73_two_seed_checkpoint_and_scalar_audit' and audit['auditor_sha256'] == AUDITOR_SHA
++    assert audit['status'] == 'completed_M73_single_seed_checkpoint_and_scalar_audit' and audit['auditor_sha256'] == AUDITOR_SHA
+     assert (PARENT / 'controller.exit').read_text().strip() == '0'
+     assert audit['parent_result_sha256'] == sha(PARENT / 'result.json')
+     assert audit['spec_sha256'] == spec['M73_spec_sha256'] and audit['frozen_sha256'] == spec['M73_frozen_sha256']
+-    assert audit['both_seed_development_gates_pass'] and audit['content_counterfactuals_allowed']
++    assert audit['single_seed_development_gates_pass'] and audit['content_counterfactuals_allowed']
+     assert audit['candidate_seed'] == 2027
+-    for seed in ['2027', '2028']:
++    assert audit['amendment_sha256'] == sha(PARENT / 'single_seed_amendment/plan.json')
++    assert set(audit['seeds']) == {'2027'}
++    for seed in ['2027']:
+         assert audit['seeds'][seed]['gate_pass'] and all(audit['seeds'][seed]['gates'].values())
+         assert audit['seeds'][seed]['result_sha256'] == sha(PARENT / ('seed'+seed) / 'recursive_result.json')
+     assert sha(spec['candidate_path']) == audit['candidate_head_sha256']
+@@ -282,7 +284,7 @@
+         source_sha256=sha(__file__), spec_sha256=sha(OUT / 'spec.json'), head_sha256=head_sha, M73_audit_sha256=audit_sha,
+         receipts=receipts, aggregates=aggregates, per_sequence=per, reconstructed_template_writes=writes,
+         lexical_criteria=comparisons, lexical_criteria_pass=all(flag for item in comparisons.values() for flag in item.values()),
+-        both_seed_development_gates_pass=True, candidate_seed=2027, new_full_track_calls=66216,
++        single_seed_development_gates_pass=True, candidate_seed=2027, new_full_track_calls=66216,
+         scope=spec['interpretation'],
+         candidate_entry_parity_preparation_allowed=all(flag for item in comparisons.values() for flag in item.values()), public_evaluation_allowed=False, independent_model_review_pass=False)
+     write(OUT / 'result.json', result)

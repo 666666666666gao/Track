@@ -1,0 +1,51 @@
+{
+  "status": "M73_full_dataset_sources_and_counts_verified_only",
+  "observed_utc": "2026-09-07T11:33:02.952597+00:00",
+  "preparation_source_sha256": "4e62b45821a824d285e66b08c97c5b2d5dacf60dc0efc8a29f7ef0d74b07587b",
+  "candidate_spec_sha256": "de9782545b6a117b0e9a07b7630b996daab7257edc8939c3f1514b4917488215",
+  "text_protocol_sha256": "a20af28e86d48dc9b914b5bd7946023758289d218d56398a57ea9146edd07ddc",
+  "source_sha256": {
+    "/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/spec.json": "e623ef63de89da423fc12b877f58d56219f88ef9f1232f20de9e42fb6c8665e1",
+    "/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/inputs.json": "61541e35f7b9e3c40427df79067fc0be20b8622cf275e93025e4a1547bf68601",
+    "/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/metrics_depthtrack.json": "bd89f02b8be95699cc845dae1a2473cc553a02771ee94093b84504878fa3892d",
+    "/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/metrics_cdtb.json": "a00f5db6e853dd9ac59ef2e174ed7a06e991701e61bfd85badf29ae273c1b731",
+    "/root/autodl-tmp/sttrack_m58_vot_initialization_export_20260906/export_initializations.py": "3459b8fb2274dc79aa6132172fca2c20ba817867f5a028f80186711029694159",
+    "/root/autodl-tmp/sttrack_default_full127_v1_20260905/run/shard_manifest.json": "8e76256f1c7c135a65a1b262506356769b59557db60eb83bc21ef1392890dd01"
+  },
+  "full_source_sha256": {
+    "/root/autodl-tmp/m73_full_preparation_20260907.py": "4e62b45821a824d285e66b08c97c5b2d5dacf60dc0efc8a29f7ef0d74b07587b",
+    "/root/autodl-tmp/m73_full_vot_20260907.py": "96171125be3b14506618c9e5ad5f8d5dcc7a3bea93572b19d194e399490deb14",
+    "/root/autodl-tmp/verify_m73_three_datasets_20260907.py": "7ab6b614c078b9b961a8f5e5766166120c2a3f7566f3b8a0669fcc3bf4f3180c",
+    "/root/autodl-tmp/m73_full_evaluation_20260907.sh": "2c20bd539f1e01f55d1ae59b29f342c2dd0795c86c67602d149218a33d90b48d"
+  },
+  "generator_sha256": "eeb15e8bee4a40692cfb19e8ec73329e232f3a8c25c96f789a03b991d71ac655",
+  "OPE_datasets": {
+    "depthtrack": {
+      "root": "/root/autodl-tmp/depthtrack/test/sequences",
+      "sequences": 50,
+      "frames": 76373
+    },
+    "cdtb": {
+      "root": "/root/autodl-tmp/CDTB/sequences",
+      "sequences": 80,
+      "frames": 101956
+    }
+  },
+  "metric_source_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+  "VOT_sequences": 127,
+  "VOT_anchors": 1765,
+  "VOT_planned_frame_positions": 1327004,
+  "existing_low22_anchors_to_preserve": 303,
+  "remaining_VOT_anchors": 1462,
+  "full_bank_deficit": "DepthTrack Test and CDTB first-frame banks plus remaining VOT initialization observations; generate only after low22 passes.",
+  "public_images_decoded": 0,
+  "new_caption_calls": 0,
+  "new_tracking_calls": 0,
+  "new_training_steps": 0,
+  "full_low22_gate_required": true,
+  "final_bundle_created": false,
+  "full_evaluation_started": false,
+  "next": "After actual M73 low22 pass only: causal initialization captions and category encoding, fixed-bundle OPE/full127, saved-output and target verification.",
+  "independent_model_review_pass": false,
+  "amendment_sha256": "a3c03c8036e9f40bee4e9c24e7eade1dbd04e81e6c23d44b9343007b29b9756f"
+}

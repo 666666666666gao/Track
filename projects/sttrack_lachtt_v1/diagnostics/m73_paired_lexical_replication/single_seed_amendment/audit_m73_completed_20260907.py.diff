@@ -1,0 +1,62 @@
+--- previous/audit_m73_completed_20260907.py
++++ single_seed/audit_m73_completed_20260907.py
+@@ -1,4 +1,4 @@
+-"""Complete-checkpoint and scalar-metric audit for the frozen two-seed M73 study."""
++"""Complete-checkpoint and scalar-metric audit for the user-amended single-seed M73 study."""
+ import argparse
+ from collections import Counter
+ from datetime import datetime, timezone
+@@ -30,11 +30,14 @@
+ 
+ 
+ def checked():
++    amendment = read(ROOT / 'single_seed_amendment/plan.json')
++    assert amendment['active_seeds'] == [2027] and amendment['cancelled_seeds'] == [2028]
++    assert amendment['original_spec_sha256'] == SPEC_SHA and amendment['original_frozen_sha256'] == FROZEN_SHA
+     assert sha(ROOT / 'spec.json') == SPEC_SHA and sha(ROOT / 'frozen.json') == FROZEN_SHA
+     spec = read(ROOT / 'spec.json'); frozen = read(ROOT / 'frozen.json')
+     assert sha(B / 'm73_paired_lexical_replication_20260907.py') == spec['source_sha256']
+     assert sha(ROOT / 'run_m73.sh') == spec['run_queue_sha256']
+-    for seed in [2027, 2028]:
++    for seed in [2027]:
+         root = ROOT / ('seed' + str(seed)); bound = frozen['seeds'][str(seed)]
+         assert sha(root / 'training_spec.json') == bound['training_spec_sha256']
+         assert sha(root / 'recursive_spec.json') == bound['recursive_spec_sha256']
+@@ -143,14 +146,18 @@
+ def completed():
+     _, frozen, old = checked()
+     assert not (OUT / 'completed.json').exists()
+-    ref = read(OUT / 'reference.json'); assert ref['auditor_sha256'] == sha(__file__)
++    ref = read(OUT / 'reference.json')
++    assert sha(OUT / 'reference.json') == 'fb387791f1de063990ff2b9f105b7387616893c382dce44642e5b591375c45fa'
++    assert ref['auditor_sha256'] == '4fcaf10e73225ea7bf9f57dbd031c1a6d9f58ebed29fa04341277d0d69fb3ef8'
+     assert (ROOT / 'controller.exit').read_text().strip() == '0'
+-    parent = read(ROOT / 'result.json'); assert parent['status'] == 'completed_two_seed_paired_lexical_replication'
++    parent = read(ROOT / 'result.json'); assert parent['status'] == 'completed_single_seed_paired_lexical_experiment'
+     assert parent['spec_sha256'] == SPEC_SHA and parent['candidate_seed'] == 2027
++    assert parent['amendment_sha256'] == sha(ROOT / 'single_seed_amendment/plan.json')
++    assert set(parent['results']) == {'2027'}
+     legacy_path = B / 'sttrack_m65_category_null_support_20260907/recursive_result.json'
+     assert sha(legacy_path) == '0101fa8185855044dda7462df2f9606b6e58c88248e8a7f1cf87497fb055b150'
+     legacy = read(legacy_path); outputs = {}
+-    for seed in [2027, 2028]:
++    for seed in [2027]:
+         root = ROOT / ('seed' + str(seed)); result = read(root / 'recursive_result.json')
+         assert (root / 'controller.exit').read_text().strip() == '0'
+         assert parent['results'][str(seed)]['result_sha256'] == sha(root / 'recursive_result.json')
+@@ -182,11 +189,11 @@
+         outputs[str(seed)] = dict(result_sha256=sha(root / 'recursive_result.json'), training=train, families=families,
+             aggregates=aggregate, gates=gates, gate_pass=all(gates.values()), broken_success_sequences=broken,
+             sustained_category_H10_with_reference_correct_every_frame=harms)
+-    passed = all(x['gate_pass'] for x in outputs.values()); assert passed == parent['both_seed_development_gates_pass']
+-    assert outputs['2027']['training']['category']['initial_tensor_sha256'] != outputs['2028']['training']['category']['initial_tensor_sha256']
+-    r = dict(status='completed_M73_two_seed_checkpoint_and_scalar_audit', observed_utc=datetime.now(timezone.utc).isoformat(),
++    passed = all(x['gate_pass'] for x in outputs.values()); assert passed == parent['single_seed_development_gates_pass']
++    r = dict(status='completed_M73_single_seed_checkpoint_and_scalar_audit', observed_utc=datetime.now(timezone.utc).isoformat(),
+         auditor_sha256=sha(__file__), spec_sha256=SPEC_SHA, frozen_sha256=FROZEN_SHA, parent_result_sha256=sha(ROOT / 'result.json'),
+-        historical_reference_sha256=sha(OUT / 'reference.json'), seeds=outputs, both_seed_development_gates_pass=passed,
++        amendment_sha256=sha(ROOT / 'single_seed_amendment/plan.json'), cancelled_seeds=[2028],
++        historical_reference_sha256=sha(OUT / 'reference.json'), seeds=outputs, single_seed_development_gates_pass=passed,
+         content_counterfactuals_allowed=passed, candidate_seed=2027,
+         candidate_head_sha256=outputs['2027']['training']['category']['head_sha256'],
+         public_evaluation_allowed=False, new_tracking_calls=0, new_optimizer_steps=0, independent_model_review_pass=False)

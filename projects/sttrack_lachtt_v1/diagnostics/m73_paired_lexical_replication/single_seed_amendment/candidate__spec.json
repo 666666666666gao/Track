@@ -1,0 +1,77 @@
+{
+  "status": "M73_candidate_preparation_amended_to_single_seed_before_results",
+  "observed_utc": "2026-09-07T11:33:02.900370+00:00",
+  "source_sha256": {
+    "m73_candidate_evaluation_20260907.py": "e5269879b3cf439e44a378ff5e86d11f8e904ebe7ef5487b52d0e3989f6c7f85",
+    "m73_learned_entry_parity_20260907.py": "d91f589eeea4a622803249f33ba36aa1ce6744122b97e952835891c3ced2d1d7",
+    "m73_vot_low22_20260907.py": "0370ce1c6b65db5dd4f9b64fcd7c8904bf51c55ea5d3dc8275eed6e7d011c2f4",
+    "m73_candidate_entry_20260907.sh": "e855a18b1e255fc8b3191bb039293685c9b61e124faf09a16375a32226bafcb9",
+    "m73_candidate_low22_20260907.sh": "deae31283a5dd383a883cd1312218fc713343edbe3ca7dddf85b61216acf355e"
+  },
+  "training_spec_sha256": "0f90ad42fc4084271e8ad6153714d0252531b1c08f71e2646cb94697c8f506be",
+  "M73_spec_sha256": "9b5203ad2c6f890ab55105a7738a46b212e57ec411e5490a78a0435545bb44e7",
+  "M73_frozen_sha256": "27de59df77bf12383747f39f84583c0386bcf57f90dd1a345451a498b00f054f",
+  "content_source_sha256": "28a6c668146a8c4b90c5b588d3aa670593bb1a295c59497b2ddfa5a690202341",
+  "content_spec_sha256": "151d1bf496af7b10d1af2e9e1d454b6afdd481a65f2bead30ed729271038822d",
+  "parent_interface_spec_sha256": "323620eab82b163a3a9e6de54ea8e17da5dbc0cf7336b3717ef443082b59e07b",
+  "interface_sha256": {
+    "initialization_text.py": "5ffd459fe13242537571809f8a77b1a57c2b5dea97291221f4c5b4738eedf941",
+    "semantic_runtime.py": "a5d018351b6c02d7a3a88f376edc7303fcf9e1da4b0927bf989dfdac3cebc8ef",
+    "run_semantic_ope.py": "e307b62197df87d4626a5693350fb14461b1ae397499ebd6fd92d122cba98758",
+    "run_semantic_vot.py": "1ae1f2246aaa943f7d896a4086937b4680bc4b4c6d9dd61d7829ca1a7f5d7272",
+    "m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316"
+  },
+  "text_protocol_sha256": "8b00dc7c1d9e5a458221dacce461b137e96e32bfba343fb2a1b46e621c6553ee",
+  "initial_fixture_sha256": "5c27b6c35a61d4f55964368fd6a58a69b7b2fde66059d509b9079ceaa0a643fe",
+  "banks": {
+    "development": {
+      "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation/development_category.pt",
+      "sha256": "611fb6334eca18c9e745d33e2cb7b7717f779baeaed4bbd578520d6d3e86feb3"
+    },
+    "low22": {
+      "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/candidate_evaluation/low22_category.pt",
+      "sha256": "c95100b9b55d188218589be58b0514cca8a13a84b766e3383cc7a9b102e2fa1e"
+    }
+  },
+  "parent_low22_bank_sha256": "332d92cafa874bfc34a4354af0e49969503c50fbfd09e632224c498ece6c8496",
+  "parent_low22_caption_plan_sha256": "5835a31ff987f9f9f1cd89f346843b3830491f8a966585880e631d022bad0ecf",
+  "final_head": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027/training/category/final.pth",
+  "candidate_seed": 2027,
+  "architecture": "semantic_spatial_support_v1",
+  "null_support": true,
+  "arm": "category",
+  "support_loss_weight": 0.0,
+  "reported_confidence": "Original Hann maximum; no Null product, normalization, or confidence rescaling.",
+  "template_control": "Original interval50 and raw Hann maximum strictly greater than0.75.",
+  "same_bundle_across_three_datasets": true,
+  "reused_development_sets_not_unseen": true,
+  "full_evaluation_gate": {
+    "EAO_min": 57.635993,
+    "ACC_min": 75.719622,
+    "ROB_min": 73.022401,
+    "confirmed_failures_max": 118,
+    "preserve_all_seven_native_zero_failure_sequences": true,
+    "all303_anchors_complete": true,
+    "identical_bundle_and_text_protocol": true
+  },
+  "gate_provenance": "Carry forward the M64/M67 low22 gate unchanged before M73 final outcomes.",
+  "entry_prefixes": [
+    "bag05_indoor",
+    "container01_indoor",
+    "mobilephone02_indoor"
+  ],
+  "frames_per_entry_prefix": 202,
+  "required_order": [
+    "Retained seed2027 development gates and completed audit",
+    "Fixed seed2027 Category head content gates",
+    "Bind that one final",
+    "Real OPE/TraX parity on three Train prefixes",
+    "All303 low22 anchors",
+    "Full three datasets only after low22 gate passes"
+  ],
+  "actual_gpu_entry_parity_checked": false,
+  "final_bundle_created": false,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "amendment_sha256": "a3c03c8036e9f40bee4e9c24e7eade1dbd04e81e6c23d44b9343007b29b9756f"
+}

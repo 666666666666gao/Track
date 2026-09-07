@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m73_full_preparation_20260907.py", line 183, in <module>
+    elif a.action=='eligible':eligible();print('M73_FULL_LOW22_PREREQUISITES_VERIFIED')
+  File "/root/autodl-tmp/m73_full_preparation_20260907.py", line 83, in eligible
+    spec,bundle,inputs,native=sources()
+  File "/root/autodl-tmp/m73_full_preparation_20260907.py", line 67, in sources
+    spec=candidate.checked()
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 205, in checked
+    spec,_,_=gates();bound=read(ROOT/'binding_result.json')
+  File "/root/autodl-tmp/m73_candidate_evaluation_20260907.py", line 157, in gates
+    _,_,audit=module.eligible()
+  File "/root/autodl-tmp/m73_content_counterfactuals_20260907.py", line 137, in eligible
+    assert (PARENT / 'completion_tools/completed.json').exists(), 'M73 completion audit is not yet available'
+AssertionError: M73 completion audit is not yet available
