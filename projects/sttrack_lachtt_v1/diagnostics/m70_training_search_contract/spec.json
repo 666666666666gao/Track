@@ -1,0 +1,41 @@
+{
+  "status": "frozen_before_contract_statistics",
+  "observed_utc": "2026-09-07T05:34:37.084056+00:00",
+  "source_sha256": "7ce99be7ec26c013f8277ae6c4867bd24bc6991c4edda1743ffba661a1acd9c4",
+  "M65_completed_audit_sha256": "26a79a424ca8b0dec01ff3c12f8cda6653b4a156c12e5c3b297112f52cf69f88",
+  "training_result_sha256": "f84831de0984d69cd860b093204bb5dbf9b136ca9bf80273eb9bf03e124e1854",
+  "training_trace_sha256": "d8f558aa79a93ba1442e11d322371c8fba4f7fcdd76d4d0107c74ca6b99f59dd",
+  "model_sources": {
+    "lib/models/sttrack/sttrack.py": "aa75dfcb6b8990a10293b7415332f6fe293e8584d0ad7348423e3a4a48129057",
+    "lib/models/sttrack/base_backbone.py": "b8f7c576072471b78a0cb025264b7d35d926b9044df45945625b0a8f35751b5a",
+    "lib/models/sttrack/vit_care.py": "05096a6cec0448e49f82264ad34647e267a6a50a6d96d3ee07ba10d61ce6ef0e",
+    "lib/test/tracker/sttrack.py": "5b114e384942ecf2740e1b2da93bea855eb38246786c62e49bf5ce70b78ff8c6",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344"
+  },
+  "M70_capacity_spec_sha256": "796a2756db4c2be0b5282d567294a76d494ad031cc4e186ba96deb3228c00fa5",
+  "M70_geometry_sha256": "53c0e11a6a178f1a5c02dece153dfe353e4b8b70e53b4d731b949e5b8d723880",
+  "training_groups": [
+    "all valid sampled inputs",
+    "native supervision centre_inside",
+    "current prediction continuous IoU>=0.5"
+  ],
+  "event_groups": [
+    "all",
+    "H10",
+    "H10_local_outside",
+    "healthy"
+  ],
+  "quantiles": [
+    0.05,
+    0.5,
+    0.95
+  ],
+  "comparison": "Nominal GT size and nominal padding in the256 search tensor. Actual recorded training resize; M70 whole-image square and its fixed-size grid.",
+  "scope": "M65 adapter training samples only. Does not describe every training frame, native backbone pretraining, visibility or semantic truth. Event selection is reused Train development.",
+  "no_model_outputs_for_M70_read": true,
+  "new_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "no_threshold_selected": true,
+  "public_evaluation_allowed": false
+}

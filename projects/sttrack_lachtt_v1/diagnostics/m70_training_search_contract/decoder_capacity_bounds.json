@@ -1,0 +1,232 @@
+{
+  "status": "completed_conservative_decoder_IoU_capacity_bounds",
+  "observed_utc": "2026-09-07T05:43:57.213886+00:00",
+  "source_sha256": "16557666c5d70edf3556d0cc5a2e4a654cc8a813853e3f3e42bad3aab8b11f00",
+  "geometry_sha256": "53c0e11a6a178f1a5c02dece153dfe353e4b8b70e53b4d731b949e5b8d723880",
+  "capacity_spec_sha256": "796a2756db4c2be0b5282d567294a76d494ad031cc4e186ba96deb3228c00fa5",
+  "bound_model_sources": {
+    "lib/models/layers/head.py": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+    "lib/test/tracker/sttrack_lachtt_observation.py": "183d8a3c8164db884beda1bf0ff6052c32aa44edaf2661acf922f13635018604",
+    "lib/utils/box_ops.py": "cee9d309a9c4a6c5f00fab575719bc7bf8d865127c91b10d4fb233996a111fbc"
+  },
+  "events": 216,
+  "summaries": {
+    "all": {
+      "events": 216,
+      "bounds": {
+        "local_grid": {
+          "size_alone_impossible": 2,
+          "image_and_size_impossible": 3
+        },
+        "wide": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 1
+        },
+        "coarse": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 1
+        }
+      }
+    },
+    "H10": {
+      "events": 68,
+      "bounds": {
+        "local_grid": {
+          "size_alone_impossible": 1,
+          "image_and_size_impossible": 1
+        },
+        "wide": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 0
+        },
+        "coarse": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 0
+        }
+      }
+    },
+    "H10_local_outside": {
+      "events": 54,
+      "bounds": {
+        "local_grid": {
+          "size_alone_impossible": 1,
+          "image_and_size_impossible": 1
+        },
+        "wide": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 0
+        },
+        "coarse": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 0
+        }
+      }
+    },
+    "valid_after_invalid": {
+      "events": 115,
+      "bounds": {
+        "local_grid": {
+          "size_alone_impossible": 2,
+          "image_and_size_impossible": 3
+        },
+        "wide": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 1
+        },
+        "coarse": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 1
+        }
+      }
+    },
+    "healthy": {
+      "events": 76,
+      "bounds": {
+        "local_grid": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 0
+        },
+        "wide": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 0
+        },
+        "coarse": {
+          "size_alone_impossible": 0,
+          "image_and_size_impossible": 0
+        }
+      }
+    }
+  },
+  "impossible_events": [
+    {
+      "sequence": "flower02_wild",
+      "frame": 143,
+      "tags": [
+        "valid_after_invalid"
+      ],
+      "local_centre_inside": false,
+      "GT_centre_inside_image": true,
+      "GT_wh": [
+        98.0,
+        70.0
+      ],
+      "GT_visible_wh": [
+        98.0,
+        70.0
+      ],
+      "bounds": {
+        "local_grid": {
+          "side": 40,
+          "size_only_upper_bound": 0.23323615160349853,
+          "after_image_clipping_upper_bound": 0.23323615160349853,
+          "size_alone_rules_out_IoU_half": true,
+          "image_and_size_rule_out_IoU_half": true
+        },
+        "wide": {
+          "side": 70,
+          "size_only_upper_bound": 0.7142857142857143,
+          "after_image_clipping_upper_bound": 0.7142857142857143,
+          "size_alone_rules_out_IoU_half": false,
+          "image_and_size_rule_out_IoU_half": false
+        },
+        "coarse": {
+          "side": 640,
+          "size_only_upper_bound": 1.0,
+          "after_image_clipping_upper_bound": 1.0,
+          "size_alone_rules_out_IoU_half": false,
+          "image_and_size_rule_out_IoU_half": false
+        }
+      }
+    },
+    {
+      "sequence": "flower02_wild",
+      "frame": 157,
+      "tags": [
+        "H10",
+        "valid_after_invalid"
+      ],
+      "local_centre_inside": false,
+      "GT_centre_inside_image": true,
+      "GT_wh": [
+        92.0,
+        51.0
+      ],
+      "GT_visible_wh": [
+        92.0,
+        51.0
+      ],
+      "bounds": {
+        "local_grid": {
+          "side": 43,
+          "size_only_upper_bound": 0.394075021312873,
+          "after_image_clipping_upper_bound": 0.394075021312873,
+          "size_alone_rules_out_IoU_half": true,
+          "image_and_size_rule_out_IoU_half": true
+        },
+        "wide": {
+          "side": 75,
+          "size_only_upper_bound": 0.8152173913043478,
+          "after_image_clipping_upper_bound": 0.8152173913043478,
+          "size_alone_rules_out_IoU_half": false,
+          "image_and_size_rule_out_IoU_half": false
+        },
+        "coarse": {
+          "side": 640,
+          "size_only_upper_bound": 1.0,
+          "after_image_clipping_upper_bound": 1.0,
+          "size_alone_rules_out_IoU_half": false,
+          "image_and_size_rule_out_IoU_half": false
+        }
+      }
+    },
+    {
+      "sequence": "glass03_indoor",
+      "frame": 313,
+      "tags": [
+        "valid_after_invalid"
+      ],
+      "local_centre_inside": false,
+      "GT_centre_inside_image": false,
+      "GT_wh": [
+        62.0,
+        64.0
+      ],
+      "GT_visible_wh": [
+        62.0,
+        21.0
+      ],
+      "bounds": {
+        "local_grid": {
+          "side": 80,
+          "size_only_upper_bound": 1.0,
+          "after_image_clipping_upper_bound": 0.328125,
+          "size_alone_rules_out_IoU_half": false,
+          "image_and_size_rule_out_IoU_half": true
+        },
+        "wide": {
+          "side": 139,
+          "size_only_upper_bound": 1.0,
+          "after_image_clipping_upper_bound": 0.328125,
+          "size_alone_rules_out_IoU_half": false,
+          "image_and_size_rule_out_IoU_half": true
+        },
+        "coarse": {
+          "side": 640,
+          "size_only_upper_bound": 1.0,
+          "after_image_clipping_upper_bound": 0.328125,
+          "size_alone_rules_out_IoU_half": false,
+          "image_and_size_rule_out_IoU_half": true
+        }
+      }
+    }
+  ],
+  "derivation": "Sigmoid normalized widths/heights are below1; after256/resize mapping each is below the window side s. For s>=10, clip_box(margin10) cannot increase either dimension above s. Any reported box is inside the image. Let visible GT dimensions be vw,vh and raw GT dimensions be w,h. Intersection<=min(s,vw)*min(s,vh); union>=w*h. Thus raw continuous IoU<=min(s,vw)*min(s,vh)/(w*h). Ignore all center/offset/feature/visibility constraints, so this is optimistic.",
+  "equality_policy": "Use conservative side s rather than the slightly smaller sigmoid clamp limit; only upper_bound<0.5 is declared impossible.",
+  "metric_scope": "M70 raw continuous rectangle IoU only. This is not VOT image-bounded overlap and does not change the original criterion.",
+  "claim_limit": "A bound>=0.5 does not prove that a correct candidate exists or succeeds; it only fails to exclude one.",
+  "inference_or_GT_policy_changed": false,
+  "new_model_forwards": 0,
+  "optimizer_steps": 0,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false
+}
