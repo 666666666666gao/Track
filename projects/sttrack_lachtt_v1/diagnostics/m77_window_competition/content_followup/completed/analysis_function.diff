@@ -1,0 +1,18 @@
+--- original_analyze
++++ recovered_analyze
+@@ -28,7 +28,7 @@
+     for case in s['cases']:
+         seq=case['sequence'];p=Path(t['dataset_root'])/seq/'groundtruth.txt';assert sha(p)==case['gt_sha256'];gt=np.loadtxt(p,delimiter=',').reshape(-1,4);assert len(gt)==case['frames']
+         for n in data:
+-            rows=data[n][seq];boxes=np.asarray([r['bbox'] for r in rows]);v=statistics(boxes,gt);iou,recomputed,spans=scalar(boxes,gt)
++            rows=data[n][seq];boxes=np.asarray([r['bbox'] for r in rows]);v=statistics(boxes,gt);iou,recomputed,spans=scalar(rows,gt)
+             for k in v:assert abs(v[k]-recomputed[k])<1e-8,(n,seq,k)
+             per[n][seq]=v;overlaps[n][seq]=iou
+             if n=='category':segments[seq]=spans
+@@ -50,4 +50,5 @@
+         development_gate_pass=audit['development_gates_pass'],strict_category_H10_reference_correct_every_frame=harms,independent_scalar_recomputation=True,
+         seed=2027,new_full_tracking_calls=66216,new_optimizer_steps=0,additional_seeds=[],public_evaluation_allowed=False,independent_model_review_pass=False,
+         scope='One fixed Category head, reused Train development22, original/empty/swapped word content. Automatic category truth and same-class identity are not established. Failed development conditions remain failed regardless of content diagnostics.')
+-    write(O/'result.json',result);print(json.dumps({k:v for k,v in result.items() if k not in ['per_sequence','strict_category_H10_reference_correct_every_frame']},indent=2))
++    result.update(original_source_sha256=ORIGINAL_SHA, original_analysis_exit=1, recovery_scope='Only scalar input corrected from bbox array to frame records; no tracking, optimization or prediction changes', new_full_tracking_calls=0, reused_control_tracking_calls=66216, original_controller_exit_preserved=True)
++    write(Q/'result.json',result);print(json.dumps({k:v for k,v in result.items() if k not in ['per_sequence','strict_category_H10_reference_correct_every_frame']},indent=2))

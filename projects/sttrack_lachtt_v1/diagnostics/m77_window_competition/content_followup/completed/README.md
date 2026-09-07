@@ -1,0 +1,7 @@
+# M77 fixed-head content results and isolated analysis repair
+
+All three content conditions use the exact same Category final head. Original Category pooled/macro IoU0.658378645835/0.668491236846,7188 low-overlap frames,80 H10 episodes. Empty content0.761538969853/0.762405814127,3781 low frames,59 episodes. Swapped content0.701899848411/0.698466331891,5711 low frames,67 episodes. This Empty condition is not the separately trained Empty model in the preceding result table. Original Category passes0/8 content comparisons.
+
+Both tracking controls completed with exit0. The original analysis passed a bbox array to a scalar function requiring frame records and failed. The original source, error logs and controller exit1 are preserved. The isolated CPU recovery changes scalar(boxes,gt) to scalar(rows,gt), routes outputs to a new directory, records its own source hash and recomputes all66 sequence-condition metrics. It performs no tracking or optimization. See analysis_function.diff, preparation and resolution.json.
+
+The original conditional public-evaluation controller also exits1 on the failed upstream controller. No bundle or public run was created. Recovery does not overwrite those exits; both development and content criteria remain failed, so public evaluation is not restarted. Empty-content gains are diagnostic, not a promoted language result. Master section5.150 documents the exact scope and next raw-score-versus-windowed-score comparison. Seed2027 only.

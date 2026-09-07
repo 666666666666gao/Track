@@ -1,0 +1,73 @@
+{
+  "status": "completed_M77_fixed_Category_head_content_diagnostic",
+  "observed_utc": "2026-09-07T19:53:36.816184+00:00",
+  "source_sha256": "13b0856b60946744085eeddc6771d3ec5e2b6a561aa446296f36528663d8e3a7",
+  "spec_sha256": "ce95e06d20f14a317b142e8c4719e4593d7762572df83bdbe74e3c1b8d6188cc",
+  "activation_sha256": "7206007cd9072cf0f7550767ea7963ddc54eafe125509e4d8d97f36e4370c911",
+  "head_sha256": "dee563689a5cb4a511857aa2235c5b7f70af21c9a8f6d86a185ec885272fe106",
+  "receipts": {
+    "category": "853b7b20564edb9845fcf64c9ccb17c0ad3be0b95d670ccfdd235b310bdd5296",
+    "empty": "893da77849bf9f93a12aab75f7a5d7ed2fb8803f7d6dc173f977b780d1d40de3",
+    "swapped": "bb21302867f6247ef5ad795b726f95c261f6c80110be064dba2538a194d61228"
+  },
+  "aggregates": {
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 19025.167728701712,
+      "low_iou_frames": 7188,
+      "failure_episodes": 80,
+      "mean_iou": 0.6583786458352671,
+      "macro_sequence_mean_iou": 0.6684912368464014
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 22006.19161185411,
+      "low_iou_frames": 3781,
+      "failure_episodes": 59,
+      "mean_iou": 0.7615389698534142,
+      "macro_sequence_mean_iou": 0.7624058141272392
+    },
+    "swapped": {
+      "valid_frames": 28897,
+      "iou_sum": 20282.799919522662,
+      "low_iou_frames": 5711,
+      "failure_episodes": 67,
+      "mean_iou": 0.7018998484106538,
+      "macro_sequence_mean_iou": 0.6984663318906624
+    }
+  },
+  "reconstructed_template_writes": {
+    "category": 199,
+    "empty": 198,
+    "swapped": 225
+  },
+  "descriptive_criteria": {
+    "empty": {
+      "pooled": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    },
+    "swapped": {
+      "pooled": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    }
+  },
+  "descriptive_criteria_pass": false,
+  "development_gate_pass": false,
+  "independent_scalar_recomputation": true,
+  "seed": 2027,
+  "new_full_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "additional_seeds": [],
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "scope": "One fixed Category head, reused Train development22, original/empty/swapped word content. Automatic category truth and same-class identity are not established. Failed development conditions remain failed regardless of content diagnostics.",
+  "original_source_sha256": "58e52b047f428857255e56ebd18a966f81f74fcb787217d5d52eebfdc6453a7e",
+  "original_analysis_exit": 1,
+  "recovery_scope": "Only scalar input corrected from bbox array to frame records; no tracking, optimization or prediction changes",
+  "reused_control_tracking_calls": 66216,
+  "original_controller_exit_preserved": true
+}

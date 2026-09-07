@@ -1,0 +1,702 @@
+{
+  "status": "completed_M77_fixed_Category_head_content_diagnostic",
+  "observed_utc": "2026-09-07T19:53:36.816184+00:00",
+  "source_sha256": "13b0856b60946744085eeddc6771d3ec5e2b6a561aa446296f36528663d8e3a7",
+  "spec_sha256": "ce95e06d20f14a317b142e8c4719e4593d7762572df83bdbe74e3c1b8d6188cc",
+  "activation_sha256": "7206007cd9072cf0f7550767ea7963ddc54eafe125509e4d8d97f36e4370c911",
+  "head_sha256": "dee563689a5cb4a511857aa2235c5b7f70af21c9a8f6d86a185ec885272fe106",
+  "receipts": {
+    "category": "853b7b20564edb9845fcf64c9ccb17c0ad3be0b95d670ccfdd235b310bdd5296",
+    "empty": "893da77849bf9f93a12aab75f7a5d7ed2fb8803f7d6dc173f977b780d1d40de3",
+    "swapped": "bb21302867f6247ef5ad795b726f95c261f6c80110be064dba2538a194d61228"
+  },
+  "aggregates": {
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 19025.167728701712,
+      "low_iou_frames": 7188,
+      "failure_episodes": 80,
+      "mean_iou": 0.6583786458352671,
+      "macro_sequence_mean_iou": 0.6684912368464014
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 22006.19161185411,
+      "low_iou_frames": 3781,
+      "failure_episodes": 59,
+      "mean_iou": 0.7615389698534142,
+      "macro_sequence_mean_iou": 0.7624058141272392
+    },
+    "swapped": {
+      "valid_frames": 28897,
+      "iou_sum": 20282.799919522662,
+      "low_iou_frames": 5711,
+      "failure_episodes": 67,
+      "mean_iou": 0.7018998484106538,
+      "macro_sequence_mean_iou": 0.6984663318906624
+    }
+  },
+  "per_sequence": {
+    "category": {
+      "bag05_indoor": {
+        "valid_frames": 587,
+        "iou_sum": 477.20934091659717,
+        "mean_iou": 0.8129631020725676,
+        "low_iou_frames": 31,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 301
+      },
+      "ball07_indoor": {
+        "valid_frames": 2179,
+        "iou_sum": 787.0804069367233,
+        "mean_iou": 0.3612117516919336,
+        "low_iou_frames": 1312,
+        "failure_episodes": 10,
+        "invalid_gt_frames": 339
+      },
+      "ball19_indoor": {
+        "valid_frames": 1380,
+        "iou_sum": 1153.1856643687613,
+        "mean_iou": 0.8356417857744647,
+        "low_iou_frames": 27,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 0
+      },
+      "beautifullight01_indoor": {
+        "valid_frames": 910,
+        "iou_sum": 501.7004715219327,
+        "mean_iou": 0.5513191994746514,
+        "low_iou_frames": 339,
+        "failure_episodes": 6,
+        "invalid_gt_frames": 359
+      },
+      "book06_indoor": {
+        "valid_frames": 1545,
+        "iou_sum": 1228.8920768036091,
+        "mean_iou": 0.7953994024618829,
+        "low_iou_frames": 72,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 445
+      },
+      "car01_indoor": {
+        "valid_frames": 1402,
+        "iou_sum": 560.1554450977816,
+        "mean_iou": 0.3995402604121124,
+        "low_iou_frames": 798,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 139
+      },
+      "car02_indoor": {
+        "valid_frames": 565,
+        "iou_sum": 514.9460652736232,
+        "mean_iou": 0.9114089650860587,
+        "low_iou_frames": 14,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 187
+      },
+      "colacan01_indoor": {
+        "valid_frames": 2801,
+        "iou_sum": 750.9431880701135,
+        "mean_iou": 0.26809824636562424,
+        "low_iou_frames": 1920,
+        "failure_episodes": 10,
+        "invalid_gt_frames": 254
+      },
+      "colacan04_indoor": {
+        "valid_frames": 567,
+        "iou_sum": 116.42591786193185,
+        "mean_iou": 0.20533671580587629,
+        "low_iou_frames": 439,
+        "failure_episodes": 13,
+        "invalid_gt_frames": 433
+      },
+      "container01_indoor": {
+        "valid_frames": 621,
+        "iou_sum": 574.1832830639861,
+        "mean_iou": 0.9246107617777554,
+        "low_iou_frames": 3,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 139
+      },
+      "cup08_indoor": {
+        "valid_frames": 1321,
+        "iou_sum": 1178.502396212839,
+        "mean_iou": 0.89212899032009,
+        "low_iou_frames": 1,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 129
+      },
+      "cup10_indoor": {
+        "valid_frames": 2147,
+        "iou_sum": 1906.154636444964,
+        "mean_iou": 0.8878223737517298,
+        "low_iou_frames": 36,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 48
+      },
+      "cup13_indoor": {
+        "valid_frames": 1658,
+        "iou_sum": 1326.2880585242901,
+        "mean_iou": 0.799932484031538,
+        "low_iou_frames": 63,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 103
+      },
+      "egg_indoor": {
+        "valid_frames": 3433,
+        "iou_sum": 2461.9008252582753,
+        "mean_iou": 0.7171281168826902,
+        "low_iou_frames": 614,
+        "failure_episodes": 8,
+        "invalid_gt_frames": 118
+      },
+      "flower02_wild": {
+        "valid_frames": 467,
+        "iou_sum": 305.68567432606983,
+        "mean_iou": 0.654573178428415,
+        "low_iou_frames": 99,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 188
+      },
+      "flower03_indoor": {
+        "valid_frames": 547,
+        "iou_sum": 456.1451910947748,
+        "mean_iou": 0.8339034572116542,
+        "low_iou_frames": 0,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 196
+      },
+      "flowerbasket_indoor": {
+        "valid_frames": 851,
+        "iou_sum": 654.1895666838466,
+        "mean_iou": 0.7687303956331922,
+        "low_iou_frames": 116,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 149
+      },
+      "ghostmask_indoor": {
+        "valid_frames": 1025,
+        "iou_sum": 638.4004340690822,
+        "mean_iou": 0.6228296917747143,
+        "low_iou_frames": 312,
+        "failure_episodes": 4,
+        "invalid_gt_frames": 139
+      },
+      "glass03_indoor": {
+        "valid_frames": 570,
+        "iou_sum": 276.6629042177692,
+        "mean_iou": 0.4853735161715249,
+        "low_iou_frames": 277,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 104
+      },
+      "mobilephone01_indoor": {
+        "valid_frames": 1217,
+        "iou_sum": 684.2359619022461,
+        "mean_iou": 0.5622316860330699,
+        "low_iou_frames": 435,
+        "failure_episodes": 6,
+        "invalid_gt_frames": 200
+      },
+      "mobilephone02_indoor": {
+        "valid_frames": 610,
+        "iou_sum": 343.4578012418078,
+        "mean_iou": 0.5630455758062423,
+        "low_iou_frames": 208,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 90
+      },
+      "notebook02_indoor": {
+        "valid_frames": 2494,
+        "iou_sum": 2128.822418810689,
+        "mean_iou": 0.853577553653043,
+        "low_iou_frames": 72,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 151
+      }
+    },
+    "empty": {
+      "bag05_indoor": {
+        "valid_frames": 587,
+        "iou_sum": 480.9274403651769,
+        "mean_iou": 0.8192971726834359,
+        "low_iou_frames": 29,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 301
+      },
+      "ball07_indoor": {
+        "valid_frames": 2179,
+        "iou_sum": 1746.4244464982705,
+        "mean_iou": 0.8014797826976918,
+        "low_iou_frames": 269,
+        "failure_episodes": 8,
+        "invalid_gt_frames": 339
+      },
+      "ball19_indoor": {
+        "valid_frames": 1380,
+        "iou_sum": 1154.801303144813,
+        "mean_iou": 0.836812538510734,
+        "low_iou_frames": 22,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 0
+      },
+      "beautifullight01_indoor": {
+        "valid_frames": 910,
+        "iou_sum": 510.6822719670958,
+        "mean_iou": 0.5611893098539514,
+        "low_iou_frames": 328,
+        "failure_episodes": 5,
+        "invalid_gt_frames": 359
+      },
+      "book06_indoor": {
+        "valid_frames": 1545,
+        "iou_sum": 1277.5771906972727,
+        "mean_iou": 0.826910803040306,
+        "low_iou_frames": 62,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 445
+      },
+      "car01_indoor": {
+        "valid_frames": 1402,
+        "iou_sum": 472.54238148839414,
+        "mean_iou": 0.33704877424279184,
+        "low_iou_frames": 892,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 139
+      },
+      "car02_indoor": {
+        "valid_frames": 565,
+        "iou_sum": 515.3668913843088,
+        "mean_iou": 0.9121537900607236,
+        "low_iou_frames": 14,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 187
+      },
+      "colacan01_indoor": {
+        "valid_frames": 2801,
+        "iou_sum": 2120.266816539446,
+        "mean_iou": 0.7569678031201165,
+        "low_iou_frames": 272,
+        "failure_episodes": 6,
+        "invalid_gt_frames": 254
+      },
+      "colacan04_indoor": {
+        "valid_frames": 567,
+        "iou_sum": 370.1179996357449,
+        "mean_iou": 0.6527654314563403,
+        "low_iou_frames": 156,
+        "failure_episodes": 5,
+        "invalid_gt_frames": 433
+      },
+      "container01_indoor": {
+        "valid_frames": 621,
+        "iou_sum": 477.1289842356705,
+        "mean_iou": 0.7683236461121908,
+        "low_iou_frames": 110,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 139
+      },
+      "cup08_indoor": {
+        "valid_frames": 1321,
+        "iou_sum": 1178.0840531679473,
+        "mean_iou": 0.8918123036850472,
+        "low_iou_frames": 3,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 129
+      },
+      "cup10_indoor": {
+        "valid_frames": 2147,
+        "iou_sum": 1806.4493973047115,
+        "mean_iou": 0.8413830448554781,
+        "low_iou_frames": 121,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 48
+      },
+      "cup13_indoor": {
+        "valid_frames": 1658,
+        "iou_sum": 1329.00123258206,
+        "mean_iou": 0.8015688978178891,
+        "low_iou_frames": 58,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 103
+      },
+      "egg_indoor": {
+        "valid_frames": 3433,
+        "iou_sum": 2527.9974384213947,
+        "mean_iou": 0.7363814268632085,
+        "low_iou_frames": 542,
+        "failure_episodes": 7,
+        "invalid_gt_frames": 118
+      },
+      "flower02_wild": {
+        "valid_frames": 467,
+        "iou_sum": 368.8058642502044,
+        "mean_iou": 0.7897341846899453,
+        "low_iou_frames": 23,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 188
+      },
+      "flower03_indoor": {
+        "valid_frames": 547,
+        "iou_sum": 462.2650327931414,
+        "mean_iou": 0.8450914676291433,
+        "low_iou_frames": 0,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 196
+      },
+      "flowerbasket_indoor": {
+        "valid_frames": 851,
+        "iou_sum": 618.0947746776238,
+        "mean_iou": 0.726315833933753,
+        "low_iou_frames": 159,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 149
+      },
+      "ghostmask_indoor": {
+        "valid_frames": 1025,
+        "iou_sum": 716.5917000333466,
+        "mean_iou": 0.6991138536910698,
+        "low_iou_frames": 224,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 139
+      },
+      "glass03_indoor": {
+        "valid_frames": 570,
+        "iou_sum": 510.12815903606815,
+        "mean_iou": 0.8949616825194178,
+        "low_iou_frames": 31,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 104
+      },
+      "mobilephone01_indoor": {
+        "valid_frames": 1217,
+        "iou_sum": 683.7342712545488,
+        "mean_iou": 0.5618194504967534,
+        "low_iou_frames": 435,
+        "failure_episodes": 6,
+        "invalid_gt_frames": 200
+      },
+      "mobilephone02_indoor": {
+        "valid_frames": 610,
+        "iou_sum": 514.8144342149757,
+        "mean_iou": 0.8439580888770093,
+        "low_iou_frames": 3,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 90
+      },
+      "notebook02_indoor": {
+        "valid_frames": 2494,
+        "iou_sum": 2164.38952816189,
+        "mean_iou": 0.8678386239622655,
+        "low_iou_frames": 28,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 151
+      }
+    },
+    "swapped": {
+      "bag05_indoor": {
+        "valid_frames": 587,
+        "iou_sum": 473.38934993707954,
+        "mean_iou": 0.8064554513408511,
+        "low_iou_frames": 34,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 301
+      },
+      "ball07_indoor": {
+        "valid_frames": 2179,
+        "iou_sum": 976.0793249393919,
+        "mean_iou": 0.4479482904724148,
+        "low_iou_frames": 1107,
+        "failure_episodes": 9,
+        "invalid_gt_frames": 339
+      },
+      "ball19_indoor": {
+        "valid_frames": 1380,
+        "iou_sum": 1160.4319845077175,
+        "mean_iou": 0.8408927423968967,
+        "low_iou_frames": 23,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 0
+      },
+      "beautifullight01_indoor": {
+        "valid_frames": 910,
+        "iou_sum": 382.4791531319958,
+        "mean_iou": 0.4203067616835119,
+        "low_iou_frames": 474,
+        "failure_episodes": 9,
+        "invalid_gt_frames": 359
+      },
+      "book06_indoor": {
+        "valid_frames": 1545,
+        "iou_sum": 1259.9366853508454,
+        "mean_iou": 0.8154930002270844,
+        "low_iou_frames": 78,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 445
+      },
+      "car01_indoor": {
+        "valid_frames": 1402,
+        "iou_sum": 542.188045390801,
+        "mean_iou": 0.38672471140570686,
+        "low_iou_frames": 819,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 139
+      },
+      "car02_indoor": {
+        "valid_frames": 565,
+        "iou_sum": 421.9839323941703,
+        "mean_iou": 0.7468742166268502,
+        "low_iou_frames": 111,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 187
+      },
+      "colacan01_indoor": {
+        "valid_frames": 2801,
+        "iou_sum": 1902.2837900652696,
+        "mean_iou": 0.6791445162675007,
+        "low_iou_frames": 529,
+        "failure_episodes": 6,
+        "invalid_gt_frames": 254
+      },
+      "colacan04_indoor": {
+        "valid_frames": 567,
+        "iou_sum": 364.7765564900441,
+        "mean_iou": 0.6433448968078379,
+        "low_iou_frames": 161,
+        "failure_episodes": 4,
+        "invalid_gt_frames": 433
+      },
+      "container01_indoor": {
+        "valid_frames": 621,
+        "iou_sum": 574.6236863487449,
+        "mean_iou": 0.9253199458111834,
+        "low_iou_frames": 4,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 139
+      },
+      "cup08_indoor": {
+        "valid_frames": 1321,
+        "iou_sum": 1090.5985918177014,
+        "mean_iou": 0.8255856107628322,
+        "low_iou_frames": 103,
+        "failure_episodes": 1,
+        "invalid_gt_frames": 129
+      },
+      "cup10_indoor": {
+        "valid_frames": 2147,
+        "iou_sum": 1865.4880156419804,
+        "mean_iou": 0.8688812369082349,
+        "low_iou_frames": 76,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 48
+      },
+      "cup13_indoor": {
+        "valid_frames": 1658,
+        "iou_sum": 1333.133890753878,
+        "mean_iou": 0.8040614540131954,
+        "low_iou_frames": 57,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 103
+      },
+      "egg_indoor": {
+        "valid_frames": 3433,
+        "iou_sum": 2545.4860438088017,
+        "mean_iou": 0.7414756900113025,
+        "low_iou_frames": 520,
+        "failure_episodes": 6,
+        "invalid_gt_frames": 118
+      },
+      "flower02_wild": {
+        "valid_frames": 467,
+        "iou_sum": 364.3467814854587,
+        "mean_iou": 0.7801858275919886,
+        "low_iou_frames": 29,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 188
+      },
+      "flower03_indoor": {
+        "valid_frames": 547,
+        "iou_sum": 461.5721360370461,
+        "mean_iou": 0.8438247459543805,
+        "low_iou_frames": 0,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 196
+      },
+      "flowerbasket_indoor": {
+        "valid_frames": 851,
+        "iou_sum": 266.8486608055315,
+        "mean_iou": 0.31357069424856815,
+        "low_iou_frames": 551,
+        "failure_episodes": 3,
+        "invalid_gt_frames": 149
+      },
+      "ghostmask_indoor": {
+        "valid_frames": 1025,
+        "iou_sum": 660.9327801109126,
+        "mean_iou": 0.6448124684008903,
+        "low_iou_frames": 286,
+        "failure_episodes": 5,
+        "invalid_gt_frames": 139
+      },
+      "glass03_indoor": {
+        "valid_frames": 570,
+        "iou_sum": 330.51009701746693,
+        "mean_iou": 0.5798422754692403,
+        "low_iou_frames": 220,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 104
+      },
+      "mobilephone01_indoor": {
+        "valid_frames": 1217,
+        "iou_sum": 683.8471554501912,
+        "mean_iou": 0.5619122066147832,
+        "low_iou_frames": 432,
+        "failure_episodes": 7,
+        "invalid_gt_frames": 200
+      },
+      "mobilephone02_indoor": {
+        "valid_frames": 610,
+        "iou_sum": 515.4582638355133,
+        "mean_iou": 0.8450135472713333,
+        "low_iou_frames": 3,
+        "failure_episodes": 0,
+        "invalid_gt_frames": 90
+      },
+      "notebook02_indoor": {
+        "valid_frames": 2494,
+        "iou_sum": 2106.4049942021184,
+        "mean_iou": 0.8445890113079865,
+        "low_iou_frames": 94,
+        "failure_episodes": 2,
+        "invalid_gt_frames": 151
+      }
+    }
+  },
+  "reconstructed_template_writes": {
+    "category": 199,
+    "empty": 198,
+    "swapped": 225
+  },
+  "descriptive_criteria": {
+    "empty": {
+      "pooled": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    },
+    "swapped": {
+      "pooled": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    }
+  },
+  "descriptive_criteria_pass": false,
+  "development_gate_pass": false,
+  "strict_category_H10_reference_correct_every_frame": [
+    {
+      "reference": "empty",
+      "sequence": "colacan01_indoor",
+      "start": 351,
+      "end_exclusive": 384,
+      "frames": 33
+    },
+    {
+      "reference": "empty",
+      "sequence": "colacan04_indoor",
+      "start": 954,
+      "end_exclusive": 979,
+      "frames": 25
+    },
+    {
+      "reference": "empty",
+      "sequence": "cup10_indoor",
+      "start": 2070,
+      "end_exclusive": 2090,
+      "frames": 20
+    },
+    {
+      "reference": "empty",
+      "sequence": "flowerbasket_indoor",
+      "start": 388,
+      "end_exclusive": 403,
+      "frames": 15
+    },
+    {
+      "reference": "empty",
+      "sequence": "ghostmask_indoor",
+      "start": 1127,
+      "end_exclusive": 1165,
+      "frames": 38
+    },
+    {
+      "reference": "empty",
+      "sequence": "mobilephone02_indoor",
+      "start": 497,
+      "end_exclusive": 701,
+      "frames": 204
+    },
+    {
+      "reference": "empty",
+      "sequence": "notebook02_indoor",
+      "start": 1652,
+      "end_exclusive": 1677,
+      "frames": 25
+    },
+    {
+      "reference": "swapped",
+      "sequence": "colacan01_indoor",
+      "start": 351,
+      "end_exclusive": 384,
+      "frames": 33
+    },
+    {
+      "reference": "swapped",
+      "sequence": "colacan04_indoor",
+      "start": 460,
+      "end_exclusive": 515,
+      "frames": 55
+    },
+    {
+      "reference": "swapped",
+      "sequence": "cup10_indoor",
+      "start": 2070,
+      "end_exclusive": 2090,
+      "frames": 20
+    },
+    {
+      "reference": "swapped",
+      "sequence": "egg_indoor",
+      "start": 2628,
+      "end_exclusive": 2656,
+      "frames": 28
+    },
+    {
+      "reference": "swapped",
+      "sequence": "mobilephone01_indoor",
+      "start": 940,
+      "end_exclusive": 950,
+      "frames": 10
+    },
+    {
+      "reference": "swapped",
+      "sequence": "mobilephone02_indoor",
+      "start": 497,
+      "end_exclusive": 701,
+      "frames": 204
+    }
+  ],
+  "independent_scalar_recomputation": true,
+  "seed": 2027,
+  "new_full_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "additional_seeds": [],
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "scope": "One fixed Category head, reused Train development22, original/empty/swapped word content. Automatic category truth and same-class identity are not established. Failed development conditions remain failed regardless of content diagnostics.",
+  "original_source_sha256": "58e52b047f428857255e56ebd18a966f81f74fcb787217d5d52eebfdc6453a7e",
+  "original_analysis_exit": 1,
+  "recovery_scope": "Only scalar input corrected from bbox array to frame records; no tracking, optimization or prediction changes",
+  "reused_control_tracking_calls": 66216,
+  "original_controller_exit_preserved": true
+}

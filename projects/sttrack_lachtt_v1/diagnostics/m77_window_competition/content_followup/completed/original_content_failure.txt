@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m77_content_followup_20260907.py", line 211, in <module>
+    else:{'prepare':prepare,'check':plans,'controller':controller,'analyze':analyze}[a.action]()
+  File "/root/autodl-tmp/m77_content_followup_20260907.py", line 204, in controller
+    stage('content_analysis',[str(PY),str(Path(__file__)),'analyze'],'')
+  File "/root/autodl-tmp/m77_content_followup_20260907.py", line 180, in stage
+    (O/(name+'.exit')).write_text(str(status)+'\n');assert status==0,(name,status)
+AssertionError: ('content_analysis', 1)

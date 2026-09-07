@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/m77_content_followup_20260907.py", line 211, in <module>
+    else:{'prepare':prepare,'check':plans,'controller':controller,'analyze':analyze}[a.action]()
+  File "/root/autodl-tmp/m77_content_followup_20260907.py", line 150, in analyze
+    rows=data[n][seq];boxes=np.asarray([r['bbox'] for r in rows]);v=statistics(boxes,gt);iou,recomputed,spans=scalar(boxes,gt)
+  File "/root/autodl-tmp/m63_evidence_audit_20260907.py", line 104, in overlaps_and_statistics
+    x,y,w,h=map(float,rows[f]['bbox']);gx,gy,gw,gh=map(float,g)
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
