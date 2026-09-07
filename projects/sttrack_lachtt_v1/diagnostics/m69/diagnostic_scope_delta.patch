@@ -1,0 +1,162 @@
+--- M65_original_gated_content
++++ M69_diagnostic_only_content
+@@ -1,4 +1,4 @@
+-"""Predeclared same-final-head category controls, conditional on M65's frozen gates."""
++"""M69: explicitly authorized M65 fixed-head lexical diagnosis; never a promotion route."""
+ import argparse
+ from datetime import datetime,timezone
+ import hashlib,json
+@@ -7,12 +7,16 @@
+ from types import SimpleNamespace
+ 
+ BASE=Path('/root/autodl-tmp');ROOT=BASE/'sttrack_m65_category_null_support_20260907'
+-OUT=ROOT/'content_counterfactuals';M60=BASE/'sttrack_m60_category_isolation_20260906'
++OUT=BASE/'sttrack_m69_m65_content_diagnostic_20260907';M60=BASE/'sttrack_m60_category_isolation_20260906'
+ TRAIN_SHA='fc04a897f3d3e246203981a2cb3b83ea50075392e30c0c960c8908eaaeabb93b'
+ RECURSIVE_SHA='09f3f193de81f9cf91518b2c05497bfea30e8ab88db812e3585f6d3618767723'
+ AUDITOR=BASE/'audit_m65_completed_20260907.py'
+ AUDITOR_SHA='ef6a3f5f9f7b8635497fc993fded0924e7f37f5b67d14c3fab46fc27b7e596db'
+ M60_SPEC_SHA='567944c9dbe2e79340bfabc737a0975563fa7e5be17d16a8b2fc3d75fd1990c5'
++M65_AUDIT_SHA='26a79a424ca8b0dec01ff3c12f8cda6653b4a156c12e5c3b297112f52cf69f88'
++M65_NULL_SHA='5caf9c65c850cdd79d1aee75a002ffd0b74d5876292680349b9387318780e758'
++ORIGINAL_SOURCE=BASE/'m65_content_counterfactuals_20260907.py'
++ORIGINAL_SOURCE_SHA='3e125d263862f8f301417423cc25eb06dc2191fbe9d28404e3e8562509ae9bd3'
+ def sha(p):
+     h=hashlib.sha256()
+     with Path(p).open('rb') as f:
+@@ -34,7 +38,9 @@
+ def prepare():
+     import torch
+     training,recursive=parents()
+-    assert not (ROOT/'null_recursive_receipt.json').exists() and not (ROOT/'recursive_result.json').exists()
++    assert sha(ROOT/'completed_evidence_audit.json')==M65_AUDIT_SHA
++    assert sha(ROOT/'training/null/final.pth')==M65_NULL_SHA
++    assert sha(ORIGINAL_SOURCE)==ORIGINAL_SOURCE_SHA
+     assert not OUT.exists();OUT.mkdir()
+     assert sha(M60/'spec.json')==M60_SPEC_SHA
+     previous=read(M60/'spec.json');assert sha(M60/'swapped_category.pt')==previous['bank_sha256']
+@@ -60,11 +66,19 @@
+     queue=OUT/'run_controls.sh'
+     queue.write_text('''#!/bin/bash
+ set -u
+-root=/root/autodl-tmp/sttrack_m65_category_null_support_20260907/content_counterfactuals
++root=/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907
+ python=/root/autodl-tmp/envs/sttrack/bin/python
+-script=/root/autodl-tmp/m65_content_counterfactuals_20260907.py
++script=/root/autodl-tmp/m69_m65_content_diagnostic_20260907.py
+ cd "$root" || exit 1
+ export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
++CUDA_VISIBLE_DEVICES='' "$python" -u "$script" eligible > eligibility.log 2>&1
++status=$?
++printf '%s\\n' "$status" > eligibility.exit
++if [ "$status" -ne 0 ]; then printf '1\\n' > controller.exit; exit 1; fi
++CUDA_VISIBLE_DEVICES='' "$python" -u "$script" idle > device_check.log 2>&1
++status=$?
++printf '%s\\n' "$status" > device_check.exit
++if [ "$status" -ne 0 ]; then printf '1\\n' > controller.exit; exit 1; fi
+ CUDA_VISIBLE_DEVICES=0 "$python" -u "$script" prefix > prefix.log 2>&1
+ status=$?
+ printf '%s\\n' "$status" > prefix.exit
+@@ -86,28 +100,32 @@
+ printf '%s\\n' "$status" > controller.exit
+ exit "$status"
+ ''')
+-    spec=dict(status='frozen_before_M65_development_outputs',observed_utc=datetime.now(timezone.utc).isoformat(),
++    spec=dict(status='frozen_after_M65_failure_before_new_content_outputs',observed_utc=datetime.now(timezone.utc).isoformat(),
+         source_sha256=sha(__file__),queue_sha256=sha(queue),training_spec_sha256=TRAIN_SHA,recursive_spec_sha256=RECURSIVE_SHA,
+-        completion_auditor_sha256=AUDITOR_SHA,banks=banks,cases=recursive['cases'],prefix_sequences=previous['prefix_sequences'],
++        completion_auditor_sha256=AUDITOR_SHA,completed_M65_audit_sha256=M65_AUDIT_SHA,
++        fixed_null_head_sha256=M65_NULL_SHA,original_content_source_sha256=ORIGINAL_SOURCE_SHA,
++        authorization='User explicitly requested a separate diagnosis after the M65 gate failure, without automatic promotion.',
++        original_M65_paired_development_gate_pass=False,original_M65_content_gate_permission=False,banks=banks,cases=recursive['cases'],prefix_sequences=previous['prefix_sequences'],
+         prefix_frames=previous['prefix_frames'],M60_spec_sha256=M60_SPEC_SHA,donor_bank_sha256=previous['bank_sha256'],
+         donor_mapping_sha256=previous['donor_mapping_sha256'],category_vectors_changed=22,all_masks_padding_and_noncategory_slots_exact=True,
+-        head_selection='Only M65 null final after completed evidence audit and every original development gate passes.',
++        head_selection='The already completed M65 Null final is fixed by SHA; its failed protection gate is retained. No selection among checkpoints.',
+         inference='Same final head, base, 5 slots, mask, initialization, crop, query and native template code. No online text or optimizer.',
+         primary='category',controls=['empty','swapped'],reuse_complete_category_predictions=True,new_full_track_calls=66216,
+         metric='DepthTrack Train reused development22; continuous IoU with initialization/invalid GT excluded; H10 same convention as M65.',
+-        gate=dict(category_pooled_margin_vs_each_control=.001,category_macro_no_less_than_each_control=True,
++        descriptive_lexical_criteria=dict(category_pooled_margin_vs_each_control=.001,category_macro_no_less_than_each_control=True,
+             category_low_frames_no_more_than_each_control=True,category_H10_no_more_than_each_control=True),
+-        gate_scope='Necessary lexical-content evidence, not proof of correct captions or fine-grained same-class identity. Requires all original M65 gates too.',
++        criteria_scope='Descriptive lexical comparison only, not semantic truth or same-class identity. Passing cannot change the original failed M65 gate or authorize any public evaluation.',
+         fresh_captions=0,new_embeddings=0,new_learned_parameters=0,new_optimizer_steps=0,
+-        public_full_evaluation_allowed=False,independent_model_review_pass=False,
++        low22_candidate_preparation_allowed=False,public_full_evaluation_allowed=False,independent_model_review_pass=False,
+         limitations=['Original categories are noisy automatic descriptions, not semantic ground truth.',
+             'Frozen replacement category need not be a verified contradiction to the target.',
+             'One seed and repeatedly used development sequences; lexical sensitivity alone is insufficient for a language-gain claim.'])
+     write(OUT/'spec.json',spec)
+-    report=dict(status='conditional_content_inputs_and_source_prepared',source_sha256=sha(__file__),spec_sha256=sha(OUT/'spec.json'),
++    report=dict(status='diagnostic_only_M65_content_inputs_and_source_prepared',source_sha256=sha(__file__),spec_sha256=sha(OUT/'spec.json'),
+         banks=banks,category_vectors_changed=22,masks_padding_noncategory_exact=True,learned_head_loaded=False,
+         new_tracking_calls=0,new_GT_files_opened=False,new_captions=0,new_embeddings=0,
+-        M65_training_or_evaluation_modified=False,conditional_execution_started=False)
++        M65_training_or_evaluation_modified=False,original_M65_failed_gate_preserved=True,
++        diagnostic_execution_started=False,low22_candidate_preparation_allowed=False,full_three_dataset_evaluation_allowed=False)
+     write(OUT/'preparation_result.json',report);print(json.dumps(report,indent=2))
+ 
+ def checked():
+@@ -120,15 +138,26 @@
+ def eligible():
+     s,training,recursive=checked()
+     assert sha(AUDITOR)==AUDITOR_SHA==s['completion_auditor_sha256']
++    assert sha(ORIGINAL_SOURCE)==ORIGINAL_SOURCE_SHA==s['original_content_source_sha256']
++    assert sha(ROOT/'completed_evidence_audit.json')==M65_AUDIT_SHA==s['completed_M65_audit_sha256']
++    assert sha(ROOT/'training/null/final.pth')==M65_NULL_SHA==s['fixed_null_head_sha256']
++    assert not s['low22_candidate_preparation_allowed'] and not s['public_full_evaluation_allowed']
+     audit=read(ROOT/'completed_evidence_audit.json')
+     assert audit['status']=='completed_M65_artifacts_and_development_audited' and audit['auditor_sha256']==AUDITOR_SHA
+     assert audit['training_spec_sha256']==TRAIN_SHA and audit['recursive_spec_sha256']==RECURSIVE_SHA
+-    assert audit['paired_development_gate_pass'] and audit['content_counterfactuals_allowed']
+-    assert all(audit['recomputed_frozen_gates'].values())
++    assert not audit['paired_development_gate_pass'] and not audit['content_counterfactuals_allowed']
++    assert [k for k,v in audit['recomputed_frozen_gates'].items() if not v]==['control_success_protection']
+     assert sha(ROOT/'recursive_result.json')==audit['result_sha256']
+     assert sha(ROOT/'training/null/final.pth')==audit['training']['null']['final_checkpoint_sha256']
+     assert sha(ROOT/'null_recursive_receipt.json')==audit['families']['null']['receipt_sha256']
+     return s,training,audit
++
++def idle():
++    import subprocess
++    output=subprocess.check_output(['nvidia-smi','--query-gpu=memory.used','--format=csv,noheader,nounits'],text=True)
++    used=[int(x.strip()) for x in output.splitlines()]
++    assert len(used)==2 and max(used)<500,used
++    print(json.dumps(dict(gpu_memory_MiB=used,ready=True)))
+ 
+ def track(name,prefix=False):
+     s,training,audit=eligible()
+@@ -214,23 +243,26 @@
+     primary=aggregates['category'];gates={}
+     for name in ['empty','swapped']:
+         other=aggregates[name]
+-        gates[name]=dict(pooled_margin=primary['mean_iou']>=other['mean_iou']+s['gate']['category_pooled_margin_vs_each_control'],
++        gates[name]=dict(pooled_margin=primary['mean_iou']>=other['mean_iou']+s['descriptive_lexical_criteria']['category_pooled_margin_vs_each_control'],
+             macro=primary['macro_sequence_mean_iou']>=other['macro_sequence_mean_iou'],low_frames=primary['low_iou_frames']<=other['low_iou_frames'],
+             H10=primary['failure_episodes']<=other['failure_episodes'])
+     passed=all(value for conditions in gates.values() for value in conditions.values())
+-    r=dict(status='completed_fixed_head_category_content_controls',observed_utc=datetime.now(timezone.utc).isoformat(),
++    r=dict(status='completed_diagnostic_only_M65_fixed_head_content_controls',observed_utc=datetime.now(timezone.utc).isoformat(),
+         source_sha256=sha(__file__),spec_sha256=sha(OUT/'spec.json'),head_sha256=sha(ROOT/'training/null/final.pth'),
+         M65_completed_audit_sha256=sha(ROOT/'completed_evidence_audit.json'),receipts=receipts,aggregates=aggregates,per_sequence=per,
+-        reconstructed_template_writes=writes,gates=gates,content_gate_pass=passed,new_full_track_calls=66216,
++        reconstructed_template_writes=writes,descriptive_lexical_criteria=gates,descriptive_criteria_pass=passed,
++        original_M65_paired_development_gate_pass=False,original_M65_content_gate_permission=False,new_full_track_calls=66216,
+         scope='Reused Train development22. Original automatic categories are not ground-truth semantic labels.',
+-        low22_candidate_preparation_allowed=passed,full_three_dataset_evaluation_allowed=False,independent_model_review_pass=False,
+-        next='Freeze a new exact-bundle low22 candidate after result audit' if passed else 'Stop this fixed candidate; retain negative content evidence without threshold changes')
++        low22_candidate_preparation_allowed=False,full_three_dataset_evaluation_allowed=False,independent_model_review_pass=False,
++        next='Retain the fixed-head lexical diagnosis; the original M65 failure and all public evaluation restrictions remain unchanged.')
+     write(OUT/'result.json',r);print(json.dumps({k:v for k,v in r.items() if k!='per_sequence'},indent=2))
+ 
+ if __name__=='__main__':
+-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','check','prefix','empty','swapped','analyze']);a=p.parse_args()
++    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','check','eligible','idle','prefix','empty','swapped','analyze']);a=p.parse_args()
+     if a.action=='prepare':prepare()
+     elif a.action=='check':checked();print('CONTENT_SOURCE_AND_INPUTS_VERIFIED_NO_EXECUTION')
++    elif a.action=='eligible':eligible();print('DIAGNOSTIC_ARTIFACTS_VALID_M65_FAILED_GATE_PRESERVED')
++    elif a.action=='idle':idle()
+     elif a.action=='prefix':track('category',prefix=True)
+     elif a.action in ['empty','swapped']:track(a.action)
+     else:analyze()
