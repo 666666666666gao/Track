@@ -1,0 +1,232 @@
+{
+  "status": "completed_M77_checkpoint_training_coverage_and_independent_scalar_audit",
+  "observed_utc": "2026-09-07T19:19:36.164634+00:00",
+  "auditor_sha256": "4be53fa556a36d70630baba1b90a8052aab6f3615598fcd0badc902799a13bf2",
+  "followup_spec_sha256": "ce95e06d20f14a317b142e8c4719e4593d7762572df83bdbe74e3c1b8d6188cc",
+  "training_spec_sha256": "7162b4c6043d1895097a3cdec79f6373364031e6b100edbd08983f0f8a858f47",
+  "recursive_spec_sha256": "5a09680ab064e1f4fddfb842e5c32fb780d252f493195d2daea2106186e6fff4",
+  "result_sha256": "d3d33dac98c510f76711949f12b01d497157d25f2085fac9c83e0937018ff9c1",
+  "training": {
+    "category": {
+      "result_sha256": "96952acd612c5bb3f833de324ea34a137b97386a2cc3ad5685139be972e5ed82",
+      "head_sha256": "dee563689a5cb4a511857aa2235c5b7f70af21c9a8f6d86a185ec885272fe106",
+      "initial_tensor_sha256": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42",
+      "final_tensor_sha256": "e2a4be2c70cc859a76243706a7c96757e69a96a92e2a38421678980e6411395a",
+      "base_state_sha256": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+      "sequences": 130,
+      "track_calls": 186694,
+      "optimizer_steps": 5798,
+      "supervised_frames": 174479,
+      "sampled_rows": 3917,
+      "template_writes": 1827,
+      "base_freeze_scope": "Runtime full-base tensor/hash assertion at training end; not a new independent full training replay."
+    },
+    "empty": {
+      "result_sha256": "23af4344cdc4b84f050024d43f4c2643c35711a0e56efe816d4d18cc834245c5",
+      "head_sha256": "c6758dd5e924ddb99b390f7a3b5d886cb67142a0c15a54ecdb9df35753eafaf9",
+      "initial_tensor_sha256": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42",
+      "final_tensor_sha256": "00d5fc2013290e77436d7cba4e93ac4e2b4d8d310cc9cab4f1cc7e3c8825b20a",
+      "base_state_sha256": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+      "sequences": 130,
+      "track_calls": 186694,
+      "optimizer_steps": 5798,
+      "supervised_frames": 174479,
+      "sampled_rows": 3917,
+      "template_writes": 1845,
+      "base_freeze_scope": "Runtime full-base tensor/hash assertion at training end; not a new independent full training replay."
+    }
+  },
+  "competition_training": {
+    "category": {
+      "supervised_competition_frames": 153894,
+      "competition_loss_sum": 25978.030584383756,
+      "severe_negatives_used": 1385034
+    },
+    "empty": {
+      "supervised_competition_frames": 153390,
+      "competition_loss_sum": 21280.651916412637,
+      "severe_negatives_used": 1380380
+    }
+  },
+  "aggregates": {
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 19025.167728701712,
+      "low_iou_frames": 7188,
+      "failure_episodes": 80,
+      "mean_iou": 0.6583786458352671,
+      "macro_sequence_mean_iou": 0.6684912368464014
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 20213.99016393834,
+      "low_iou_frames": 5905,
+      "failure_episodes": 70,
+      "mean_iou": 0.6995186408256338,
+      "macro_sequence_mean_iou": 0.7073177470980759
+    },
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    }
+  },
+  "gates": {
+    "prior_control_success_protection": false,
+    "mean_vs_native": true,
+    "mean_vs_control": false,
+    "macro_vs_native": false,
+    "macro_vs_control": false,
+    "low_frames_vs_native": true,
+    "low_frames_vs_control": false,
+    "H10_vs_native": false,
+    "H10_vs_control": false,
+    "native_success_protection": false,
+    "control_success_protection": false,
+    "mean_vs_M73_category": false,
+    "macro_vs_M73_category": false,
+    "low_frames_vs_M73_category": false,
+    "H10_vs_M73_category": false
+  },
+  "development_gates_pass": false,
+  "families": {
+    "category": {
+      "receipt_sha256": "853b7b20564edb9845fcf64c9ccb17c0ad3be0b95d670ccfdd235b310bdd5296",
+      "head_sha256": "dee563689a5cb4a511857aa2235c5b7f70af21c9a8f6d86a185ec885272fe106",
+      "sequences": 22,
+      "image_frames": 33130,
+      "track_calls": 33108,
+      "reconstructed_template_writes": {
+        "bag05_indoor": 5,
+        "ball07_indoor": 10,
+        "ball19_indoor": 8,
+        "beautifullight01_indoor": 2,
+        "book06_indoor": 9,
+        "car01_indoor": 8,
+        "car02_indoor": 7,
+        "colacan01_indoor": 6,
+        "colacan04_indoor": 1,
+        "container01_indoor": 12,
+        "cup08_indoor": 17,
+        "cup10_indoor": 29,
+        "cup13_indoor": 3,
+        "egg_indoor": 19,
+        "flower02_wild": 2,
+        "flower03_indoor": 2,
+        "flowerbasket_indoor": 6,
+        "ghostmask_indoor": 10,
+        "glass03_indoor": 8,
+        "mobilephone01_indoor": 8,
+        "mobilephone02_indoor": 4,
+        "notebook02_indoor": 23
+      }
+    },
+    "empty": {
+      "receipt_sha256": "c568325896fac953fdc5027401d94be2be7413fa5a0464d1f2c91b382aecfc6e",
+      "head_sha256": "c6758dd5e924ddb99b390f7a3b5d886cb67142a0c15a54ecdb9df35753eafaf9",
+      "sequences": 22,
+      "image_frames": 33130,
+      "track_calls": 33108,
+      "reconstructed_template_writes": {
+        "bag05_indoor": 6,
+        "ball07_indoor": 29,
+        "ball19_indoor": 9,
+        "beautifullight01_indoor": 2,
+        "book06_indoor": 22,
+        "car01_indoor": 9,
+        "car02_indoor": 7,
+        "colacan01_indoor": 7,
+        "colacan04_indoor": 1,
+        "container01_indoor": 12,
+        "cup08_indoor": 19,
+        "cup10_indoor": 32,
+        "cup13_indoor": 3,
+        "egg_indoor": 22,
+        "flower02_wild": 2,
+        "flower03_indoor": 3,
+        "flowerbasket_indoor": 3,
+        "ghostmask_indoor": 11,
+        "glass03_indoor": 7,
+        "mobilephone01_indoor": 5,
+        "mobilephone02_indoor": 6,
+        "notebook02_indoor": 22
+      }
+    },
+    "native": {
+      "result_sha256": "5ed4a20beae88a8e8b85513000a8f020311e934b9206678f7d670b50b0737064",
+      "trace_sha256": {
+        "/root/autodl-tmp/sttrack_innovation_v1/risk_recovery_full152_v1/shard0.json": "846872b20c04fed1ffb132c84135925b819617a739b8319985cc70239a4e5fe3",
+        "/root/autodl-tmp/sttrack_innovation_v1/risk_recovery_full152_v1/shard1.json": "5b168dbd3b60aed619b9c9b9113a4c5c85d4f3d8ce23ca0fbebd91005d0656f9"
+      }
+    }
+  },
+  "strict_category_H10_reference_correct_every_frame": [
+    {
+      "sequence": "bag05_indoor",
+      "start": 697,
+      "end_exclusive": 713,
+      "frames": 16,
+      "reference": "native"
+    },
+    {
+      "sequence": "bag05_indoor",
+      "start": 697,
+      "end_exclusive": 713,
+      "frames": 16,
+      "reference": "empty"
+    },
+    {
+      "sequence": "cup10_indoor",
+      "start": 2070,
+      "end_exclusive": 2090,
+      "frames": 20,
+      "reference": "native"
+    },
+    {
+      "sequence": "cup10_indoor",
+      "start": 2070,
+      "end_exclusive": 2090,
+      "frames": 20,
+      "reference": "empty"
+    },
+    {
+      "sequence": "mobilephone01_indoor",
+      "start": 940,
+      "end_exclusive": 950,
+      "frames": 10,
+      "reference": "native"
+    },
+    {
+      "sequence": "mobilephone01_indoor",
+      "start": 940,
+      "end_exclusive": 950,
+      "frames": 10,
+      "reference": "empty"
+    },
+    {
+      "sequence": "mobilephone02_indoor",
+      "start": 497,
+      "end_exclusive": 701,
+      "frames": 204,
+      "reference": "native"
+    },
+    {
+      "sequence": "mobilephone02_indoor",
+      "start": 497,
+      "end_exclusive": 701,
+      "frames": 204,
+      "reference": "empty"
+    }
+  ],
+  "seed": 2027,
+  "additional_seeds": [],
+  "new_training_calls": 0,
+  "new_optimizer_steps": 0,
+  "content_diagnostic_allowed": true,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "scope": "Checkpoint, scalar and frozen-protocol verification; base-frozen proof uses the recorded end-of-training tensor hash assertion, not a second full training replay."
+}
