@@ -1,0 +1,153 @@
+{
+  "status": "M74_completed_artifacts_and_independent_scalar_recomputation",
+  "observed_utc": "2026-09-07T14:11:43.429676+00:00",
+  "auditor_sha256": "f63bf234f3ea8654ade74ac1fc869190f2d7b06c302ab28f4b29aa4ef28ef011",
+  "source_sha256": "819b5a629bd59715a0ce7a106e3dbfcc7780c4d0078fed9731cfb6a1a8d891eb",
+  "spec_sha256": "636baf52a2418cf01879d3a440afa5a6b2f039c454a2771296d000e357a6427a",
+  "result_sha256": "cad42b93712f017af9b79c615f7e8264de614c0b982d0e32be9d398927089820",
+  "families": {
+    "category": {
+      "receipt_sha256": "a4e9da97f51253b2e39866d2463371136b5cee17428ddd7944c05db242598529",
+      "head_sha256": "8f912e8b8ced42e67ce39b4643cb46aeb835f672309261967c354f2150e82e72",
+      "track_calls": 33108,
+      "sequences": 22
+    },
+    "empty": {
+      "receipt_sha256": "4b9dc2f173687d14477ff00e931823ecf935508a8289490c81e9b350fc3a899d",
+      "head_sha256": "8f912e8b8ced42e67ce39b4643cb46aeb835f672309261967c354f2150e82e72",
+      "track_calls": 33108,
+      "sequences": 22
+    },
+    "swapped": {
+      "receipt_sha256": "5ef440f0fffcebd1372fe57f321c1818adfaf6e0cca84eea6f83351053265b2a",
+      "head_sha256": "8f912e8b8ced42e67ce39b4643cb46aeb835f672309261967c354f2150e82e72",
+      "track_calls": 33108,
+      "sequences": 22
+    }
+  },
+  "recomputed_aggregates": {
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 20912.435349488445,
+      "low_iou_frames": 5072,
+      "failure_episodes": 71,
+      "mean_iou": 0.7236888033182838,
+      "macro_sequence_mean_iou": 0.738934640851976
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 20771.847880991078,
+      "low_iou_frames": 5235,
+      "failure_episodes": 64,
+      "mean_iou": 0.7188236800010754,
+      "macro_sequence_mean_iou": 0.7163547064099309
+    },
+    "swapped": {
+      "valid_frames": 28897,
+      "iou_sum": 20201.276555642533,
+      "low_iou_frames": 5952,
+      "failure_episodes": 81,
+      "mean_iou": 0.6990786779126738,
+      "macro_sequence_mean_iou": 0.7110734007663365
+    }
+  },
+  "recomputed_lexical_criteria": {
+    "empty": {
+      "pooled_margin": true,
+      "macro": true,
+      "low_frames": true,
+      "H10": false
+    },
+    "swapped": {
+      "pooled_margin": true,
+      "macro": true,
+      "low_frames": true,
+      "H10": true
+    }
+  },
+  "reconstructed_template_writes": {
+    "category": 184,
+    "empty": 165,
+    "swapped": 211
+  },
+  "sustained_category_H10_with_reference_correct_every_frame": [
+    {
+      "sequence": "beautifullight01_indoor",
+      "reference": "swapped",
+      "start": 963,
+      "end_exclusive": 995,
+      "frames": 32
+    },
+    {
+      "sequence": "book06_indoor",
+      "reference": "empty",
+      "start": 1253,
+      "end_exclusive": 1266,
+      "frames": 13
+    },
+    {
+      "sequence": "cup08_indoor",
+      "reference": "empty",
+      "start": 750,
+      "end_exclusive": 833,
+      "frames": 83
+    },
+    {
+      "sequence": "cup08_indoor",
+      "reference": "swapped",
+      "start": 750,
+      "end_exclusive": 833,
+      "frames": 83
+    },
+    {
+      "sequence": "cup10_indoor",
+      "reference": "empty",
+      "start": 2156,
+      "end_exclusive": 2172,
+      "frames": 16
+    },
+    {
+      "sequence": "egg_indoor",
+      "reference": "empty",
+      "start": 2628,
+      "end_exclusive": 2658,
+      "frames": 30
+    },
+    {
+      "sequence": "egg_indoor",
+      "reference": "swapped",
+      "start": 2904,
+      "end_exclusive": 2935,
+      "frames": 31
+    },
+    {
+      "sequence": "mobilephone01_indoor",
+      "reference": "swapped",
+      "start": 787,
+      "end_exclusive": 854,
+      "frames": 67
+    },
+    {
+      "sequence": "notebook02_indoor",
+      "reference": "empty",
+      "start": 979,
+      "end_exclusive": 997,
+      "frames": 18
+    },
+    {
+      "sequence": "notebook02_indoor",
+      "reference": "swapped",
+      "start": 979,
+      "end_exclusive": 997,
+      "frames": 18
+    }
+  ],
+  "additional_seeds": [],
+  "new_optimizer_steps": 0,
+  "new_tracking_calls": 0,
+  "sealed_outputs_modified": false,
+  "original_M73_primary_pass": false,
+  "public_evaluation_allowed": false,
+  "independent_model_review_pass": false,
+  "scope": "Continuous-box metric independently implemented here; source, receipt and input bindings verified. Same reused Train development22, no statistical seed replication or independent learned-model review."
+}

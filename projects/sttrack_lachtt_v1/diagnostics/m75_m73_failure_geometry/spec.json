@@ -1,0 +1,22 @@
+{
+  "status": "frozen_post_result_Train_geometry_census",
+  "observed_utc": "2026-09-07T14:19:20.577140+00:00",
+  "source_sha256": "cc168f3cca806aca1b2ccd89a82c3037c4410154d2583a3272fc197f9683ce6a",
+  "M74_result_sha256": "cad42b93712f017af9b79c615f7e8264de614c0b982d0e32be9d398927089820",
+  "M74_audit_sha256": "ddba08da45fddf83b2ddd56195a01a72c8af6bc7971a83f27f26569f3e5b9d84",
+  "sampling_source_sha256": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+  "seed": 2027,
+  "new_training_seeds": [],
+  "selection": "Every Category H10 onset in all 22 reused Train development sequences; mark the already sealed M74 strict content-harm intervals. No sequence or failure subset is dropped.",
+  "comparisons": "At the same physical Category-failure time, compare each content condition own prior bbox/search state. These are different complete trajectories, not same-state head probes.",
+  "crop": "Exact native ceil(sqrt(w*h)*4), round(center-halfside) geometry from prior public xywh.",
+  "GT_policy": "Posthoc diagnostics only, not a deployable trigger; invalid GT never automatically means absent target.",
+  "limitations": [
+    "Search inclusion does not prove a correct candidate exists.",
+    "H10 onset is the first frame of a sustained low-overlap interval, not necessarily the first earlier tracking error.",
+    "Reused development events are not an unbiased held-out test."
+  ],
+  "new_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "public_evaluation_allowed": false
+}
