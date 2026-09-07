@@ -1,0 +1,5 @@
+WARNING: You are using tensorboardX instead sis you have a too old pytorch version.
+Traceback (most recent call last):
+  File "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/check_m67.py", line 86, in <module>
+    assert parity['max_box_difference']<1e-3 and parity['max_score_difference']<2e-5 and parity['max_loss_difference']<2e-5 and parity['max_parameter_difference']<2e-6,parity
+AssertionError: {'max_box_difference': 0.0009002685546875, 'max_score_difference': 7.361173629760742e-06, 'max_loss_difference': 4.32133674621582e-05, 'max_parameter_difference': 7.748531061224639e-07, 'search_crops_identical': True, 'template_writes_identical': True, 'limits': {'box': 0.001, 'score': 2e-05, 'loss': 2e-05, 'parameter': 2e-06}}
