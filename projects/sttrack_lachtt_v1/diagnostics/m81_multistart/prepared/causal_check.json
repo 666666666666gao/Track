@@ -1,0 +1,101 @@
+{
+  "status": "completed_M81_native_parity_and_causal_smoke",
+  "observed_utc": "2026-09-08T07:57:50.141968+00:00",
+  "checker_sha256": "fc6e9ce83516837f4bd6870313f3858f40ad630bd3fcfeb7ca72812f4adcf951",
+  "prepared_spec_sha256": "04ca9c69f0aeca1c302fdf970bed1570d6e52c2025e3fd0a6c6b4933fed30637",
+  "seed": 2027,
+  "initial_adapter_state_sha256": {
+    "category": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42",
+    "empty": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42"
+  },
+  "base_state_sha256": {
+    "category": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+    "empty": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0"
+  },
+  "zero_residual_public_state_exact": true,
+  "zero_residual_frames_each": 101,
+  "default_template_writes": {
+    "category": [],
+    "empty": []
+  },
+  "combined_loss_contract_verified": true,
+  "combined_loss_checks": 192,
+  "base_frozen_all_arms": true,
+  "arms": {
+    "category": {
+      "frames": 96,
+      "optimizer_steps": 3,
+      "loss_mean": 0.6007780881288151,
+      "final_smoke_adapter_sha256": "f6aa1053fcb73843fa09751f4a96dcf116e5432c8d4cb5d3415ce6eff6a76963",
+      "last_gradient_l1": {
+        "slots": 0.0005148634663783014,
+        "rgb.0.weight": 0.5112077593803406,
+        "rgb.0.bias": 0.0002860543900169432,
+        "rgb.1.weight": 0.0005171263474039733,
+        "rgb.1.bias": 0.0005429117009043694,
+        "depth.0.weight": 0.6932693123817444,
+        "depth.0.bias": 0.0003959820023737848,
+        "depth.1.weight": 0.0009526077192276716,
+        "depth.1.bias": 0.0007479387568309903,
+        "text.0.weight": 0.23141184449195862,
+        "text.0.bias": 0.0011205270420759916,
+        "text.1.weight": 0.00043592002475634217,
+        "text.1.bias": 0.0004928901325911283,
+        "rgb_bound.weight": 0.0003483193868305534,
+        "rgb_bound.bias": 0.00031740881968289614,
+        "depth_bound.weight": 0.0006633081939071417,
+        "depth_bound.bias": 0.0005833232426084578,
+        "modality.weight": 0.005331968888640404,
+        "modality.bias": 3.628323975135572e-05,
+        "delta.0.weight": 0.42438018321990967,
+        "delta.0.bias": 0.00196459935978055,
+        "delta.2.weight": 7.064755439758301,
+        "delta.2.bias": 0.20247980952262878
+      }
+    },
+    "empty": {
+      "frames": 96,
+      "optimizer_steps": 3,
+      "loss_mean": 0.6007744739763439,
+      "final_smoke_adapter_sha256": "43b4ae4e2f059817547edd7c545fe0138fe121f0d855d3df1181afa649c092a1",
+      "last_gradient_l1": {
+        "slots": 0.0005309816333465278,
+        "rgb.0.weight": 0.48638588190078735,
+        "rgb.0.bias": 0.0002723604266066104,
+        "rgb.1.weight": 0.0004577723448164761,
+        "rgb.1.bias": 0.000505125499330461,
+        "depth.0.weight": 0.7414488792419434,
+        "depth.0.bias": 0.0004232365754432976,
+        "depth.1.weight": 0.0010204960126429796,
+        "depth.1.bias": 0.0008005243726074696,
+        "text.0.weight": 0.261717826128006,
+        "text.0.bias": 0.0011140317656099796,
+        "text.1.weight": 0.0004645403823815286,
+        "text.1.bias": 0.0005309816333465278,
+        "rgb_bound.weight": 0.00030888247420080006,
+        "rgb_bound.bias": 0.0002831032034009695,
+        "depth_bound.weight": 0.0007257869001477957,
+        "depth_bound.bias": 0.0006235209875740111,
+        "modality.weight": 0.010141465812921524,
+        "modality.bias": 6.750543252564967e-05,
+        "delta.0.weight": 0.4178124964237213,
+        "delta.0.bias": 0.0019316035322844982,
+        "delta.2.weight": 7.186158180236816,
+        "delta.2.bias": 0.19893458485603333
+      }
+    }
+  },
+  "synthetic_competition_contract": {
+    "loss": 0.6151856780052185,
+    "positive_gradient": -0.574324369430542,
+    "false_peak_gradient": 0.675675630569458,
+    "same_instance_gradient": 0.0,
+    "no_regression_mask_gradients": true
+  },
+  "formal_optimizer_steps": 0,
+  "smoke_weights_saved": false,
+  "later_initialization_frame": 1536,
+  "smoke_episode_sha256": "8aa252bea66e3a630e5c6ed44a8fa1bf9abef8e7a53b4d567aae93ad42fa1c4c",
+  "independent_model_review_pass": false,
+  "elapsed_seconds": 32.41505718231201
+}
