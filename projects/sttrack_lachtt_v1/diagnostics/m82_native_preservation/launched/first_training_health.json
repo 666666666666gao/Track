@@ -1,0 +1,101 @@
+{
+  "status": "first_paired_training_health_observation",
+  "observed_utc": "2026-09-08T19:04:36.600152+00:00",
+  "seconds_since_launch": 248.70674,
+  "processes": [
+    {
+      "pid": 144318,
+      "arm": "empty",
+      "gpu_memory_mib": 2454
+    },
+    {
+      "pid": 144319,
+      "arm": "category",
+      "gpu_memory_mib": 2454
+    }
+  ],
+  "arms": {
+    "category": {
+      "exit": null,
+      "completed_sequences": 1,
+      "latest_record": {
+        "sequence": "cube04_indoor",
+        "sequence_index": 0,
+        "total_sequences": 130,
+        "frames": 2576,
+        "track_calls": 2575,
+        "supervised_frames": 2513,
+        "label_counts": {
+          "centre_inside": 1121,
+          "centre_outside": 1392,
+          "invalid": 62
+        },
+        "mean_training_loss": 3.906336576475881,
+        "template_writes": 33,
+        "cumulative_competition_frames": 1121,
+        "cumulative_competition_loss_sum": 3052.097114013508,
+        "cumulative_competition_negatives": 10089,
+        "cumulative_native_eligible_frames": 251,
+        "cumulative_preservation_kl_sum": 23.297600593417883,
+        "maximum_preservation_kl": 0.9823979139328003,
+        "maximum_preclip_gradient_norm": 28.472816467285156,
+        "total_optimizer_steps": 81,
+        "total_track_calls": 2575,
+        "seconds": 169.96477603912354,
+        "elapsed_seconds": 172.65799641609192
+      },
+      "log_tail": null,
+      "observed_track_calls_per_second": 14.913876295624656,
+      "estimated_remaining_training_seconds": 12345.48257946968,
+      "estimated_training_finish_utc": "2026-09-08T22:30:22.082731+00:00"
+    },
+    "empty": {
+      "exit": null,
+      "completed_sequences": 1,
+      "latest_record": {
+        "sequence": "cube04_indoor",
+        "sequence_index": 0,
+        "total_sequences": 130,
+        "frames": 2576,
+        "track_calls": 2575,
+        "supervised_frames": 2513,
+        "label_counts": {
+          "centre_inside": 1132,
+          "centre_outside": 1381,
+          "invalid": 62
+        },
+        "mean_training_loss": 3.9531087389017925,
+        "template_writes": 35,
+        "cumulative_competition_frames": 1132,
+        "cumulative_competition_loss_sum": 3087.695209113881,
+        "cumulative_competition_negatives": 10188,
+        "cumulative_native_eligible_frames": 250,
+        "cumulative_preservation_kl_sum": 23.155653565190732,
+        "maximum_preservation_kl": 0.9769056439399719,
+        "maximum_preclip_gradient_norm": 28.249765396118164,
+        "total_optimizer_steps": 81,
+        "total_track_calls": 2575,
+        "seconds": 170.9671859741211,
+        "elapsed_seconds": 173.61941981315613
+      },
+      "log_tail": null,
+      "observed_track_calls_per_second": 14.831290202277692,
+      "estimated_remaining_training_seconds": 12414.226779253784,
+      "estimated_training_finish_utc": "2026-09-08T22:31:30.826931+00:00"
+    }
+  },
+  "free_disk_bytes": 1442684928,
+  "qwen_retained": {
+    "Qwen3_8B": {
+      "shards": 5,
+      "bytes": 16381516776
+    },
+    "Qwen2.5-VL-3B-Instruct": {
+      "shards": 2,
+      "bytes": 7509337976
+    }
+  },
+  "source_hashes_unchanged": true,
+  "performance_results_exist": false,
+  "audit_queued": true
+}
