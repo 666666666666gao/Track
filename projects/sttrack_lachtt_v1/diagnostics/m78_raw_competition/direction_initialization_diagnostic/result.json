@@ -1,0 +1,98 @@
+{
+  "status": "complete_posthoc_M78_direction_initialization_accounting",
+  "observed_utc": "2026-09-08T04:29:05.197243+00:00",
+  "source_sha256": "44288ac9b5b550aef1740875bffef077cf2a76f31e0498c20223f53aa30469b7",
+  "M78_result_sha256": "64f23763ee6df91d80e81754e7db3e654196eb377b624e258768fddd970d5fc3",
+  "native_result_sha256": "cf953c0d3c69609bcd83c11cb24ba57f37e30b38d3b3bcad32860b3a9ba9c1b5",
+  "training_spec_sha256": "57cdd314efd5359fa2e16be4f364c5568f1ca498b41df718517173610fe4d865",
+  "training_source_sha256": "9338d6a72c2038bc9e4caad687afc5e9d225d596851dc344e2e22e9d0d96903c",
+  "training_source_line_evidence": {
+    "for seq_index, row in enumerate(spec['sequence_order']):": [
+      95
+    ],
+    "tracker.initialize(frame(0), info)": [
+      113
+    ],
+    "for frame_index in range(1, n):": [
+      121
+    ]
+  },
+  "training_initializations_per_arm": 130,
+  "training_initial_frame_index": 0,
+  "training_direction": "forward",
+  "actual_training_calls": {
+    "category": 186694,
+    "empty": 186694
+  },
+  "groups": {
+    "forward": {
+      "anchors": 154,
+      "native_failures": 60,
+      "M78_failures": 68,
+      "rescued": 1,
+      "new_failures": 9,
+      "frame_positions": 110973,
+      "net_added_failures": 8,
+      "native_success_anchors": 94,
+      "new_failure_fraction_among_native_success": 0.09574468085106383
+    },
+    "backward": {
+      "anchors": 149,
+      "native_failures": 64,
+      "M78_failures": 72,
+      "rescued": 4,
+      "new_failures": 12,
+      "frame_positions": 109510,
+      "net_added_failures": 8,
+      "native_success_anchors": 85,
+      "new_failure_fraction_among_native_success": 0.1411764705882353
+    },
+    "first_frame_forward": {
+      "anchors": 22,
+      "native_failures": 9,
+      "M78_failures": 10,
+      "rescued": 0,
+      "new_failures": 1,
+      "frame_positions": 13944,
+      "net_added_failures": 1,
+      "native_success_anchors": 13,
+      "new_failure_fraction_among_native_success": 0.07692307692307693
+    },
+    "later_forward": {
+      "anchors": 132,
+      "native_failures": 51,
+      "M78_failures": 58,
+      "rescued": 1,
+      "new_failures": 8,
+      "frame_positions": 97029,
+      "net_added_failures": 7,
+      "native_success_anchors": 81,
+      "new_failure_fraction_among_native_success": 0.09876543209876543
+    },
+    "all_later": {
+      "anchors": 281,
+      "native_failures": 115,
+      "M78_failures": 130,
+      "rescued": 5,
+      "new_failures": 20,
+      "frame_positions": 206539,
+      "net_added_failures": 15,
+      "native_success_anchors": 166,
+      "new_failure_fraction_among_native_success": 0.12048192771084337
+    }
+  },
+  "new_failures_at_later_anchors_fraction": 0.9523809523809523,
+  "later_anchor_fraction": 0.9273927392739274,
+  "interpretation": [
+    "Net deterioration occurs in both directions, so reverse-only mismatch does not explain all new failures.",
+    "Most new failures are at later initializations, but later anchors also dominate exposure; counts alone do not establish causal concentration.",
+    "Single-start forward-only training is a verified coverage difference, not proof that multi-start or reverse training will improve performance.",
+    "Groups overlap: forward/backward and first-frame/all-later are separate partitions. Rates here are anchor counts, not VOT ROB."
+  ],
+  "source_trajectories_modified": false,
+  "new_inference_calls": 0,
+  "new_training_steps": 0,
+  "new_caption_calls": 0,
+  "M79_modified": false,
+  "goal_achieved": false
+}
