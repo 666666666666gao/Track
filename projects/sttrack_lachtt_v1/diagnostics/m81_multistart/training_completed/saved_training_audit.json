@@ -1,0 +1,37 @@
+{
+  "status": "completed_saved_training_artifacts_verified",
+  "experiment": "m81",
+  "observed_utc": "2026-09-08T15:55:06.738192+00:00",
+  "auditor_sha256": "99ccfaaa56d135ce6db75cd0cc491259243b8554a261cc2c97df5dc9448d146c",
+  "training_spec_sha256": "c62574e32c051f183f562a3417c5e2ed27ed28ef6e3101dbf746de8bdf40d06f",
+  "fit_sequences": 130,
+  "tracking_calls": 186694,
+  "valid_loss_optimizer_windows": 5798,
+  "initializations": 426,
+  "text_condition_calls": "fixed_per_training_arm",
+  "formal_training_completion_verified": true,
+  "tracking_inference_calls": 0,
+  "optimizer_steps_executed_by_auditor": 0,
+  "independent_model_review_pass": false,
+  "arms": {
+    "category": {
+      "final_checkpoint_sha256": "0553d3b978abc137aa79340c157e4f387bed5f04108ff4379ce663522f2ff416",
+      "final_adapter_tensor_sha256": "3f244edbf25e7f3b48287ff3016497d9d4b2b1da05a7bc4797e98629ad101508",
+      "sequence_rows": 130,
+      "sampled_trace_rows": 4213,
+      "all_scheduled_trace_positions_matched": true,
+      "actual_optimizer_steps_verified": 5798,
+      "actual_initialization_protocol_verified": true
+    },
+    "empty": {
+      "final_checkpoint_sha256": "da6a055b1475ae0c71c7f15984872ff95824a703222e9dfcc35ce905b8677dc5",
+      "final_adapter_tensor_sha256": "634f9be9867d83f98ebafbcef6eb9433b817d8e16a257b2a56b6080673d76e77",
+      "sequence_rows": 130,
+      "sampled_trace_rows": 4213,
+      "all_scheduled_trace_positions_matched": true,
+      "actual_optimizer_steps_verified": 5798,
+      "actual_initialization_protocol_verified": true
+    }
+  },
+  "base_preservation_evidence": "Completed trainer source assertions, recorded tensor fingerprint, unchanged checkpoint file; no separately stored post-training base copy."
+}
