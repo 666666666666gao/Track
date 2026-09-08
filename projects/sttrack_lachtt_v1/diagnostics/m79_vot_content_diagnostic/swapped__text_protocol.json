@@ -1,0 +1,21 @@
+{
+  "observation_protocol_path": "/root/autodl-tmp/sttrack_m58_evaluation_preparation_20260906/text_protocol.json",
+  "observation_protocol_sha256": "d08acfb068ac5f7c428d5decb5f17af4655383543eeb4b4277e65cfda14bcac1",
+  "lexical_policy": "Retain the generated category in slot0. Replace each valid attribute slot1..4 by the frozen CLIP empty-string vector. Preserve slot count, mask, padding, initialization key and all other tensors.",
+  "initialization_only": true,
+  "online_caption_updates": false,
+  "category_hints": false,
+  "manual_caption_corrections": false,
+  "image_specific_exceptions": false,
+  "subsequent_GT_used": false,
+  "selection_provenance": "M79 fixed M78 Category final after failed low22; content diagnosis only. No new seed, training, caption generation, or checkpoint selection.",
+  "training_spec_sha256": "57cdd314efd5359fa2e16be4f364c5568f1ca498b41df718517173610fe4d865",
+  "diagnostic_intervention": {
+    "variant": "swapped",
+    "parent_protocol_sha256": "a24d92e64307f156df04a136be5cc03fe3ce98c07472a179e05f89dff08994bb",
+    "rule": "Only slot0 receives a fixed different-vector category from a different sequence; no guaranteed semantic contradiction.",
+    "donor_mapping_sha256": "ccc9b5126dafeb9b471d66e7fbffcef4aeb28330176e8b96df7443b55e3d8d38",
+    "diagnostic_only": true,
+    "model_promotion_allowed": false
+  }
+}
