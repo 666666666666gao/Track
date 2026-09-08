@@ -1,0 +1,49 @@
+from pathlib import Path
+from datetime import datetime,timezone
+import hashlib,json,shutil,tarfile
+R=Path('/root/autodl-tmp/sttrack_m82_native_preservation_20260909');O=R/'preflight_publication';F=O/'files'
+M=Path('/home/SUTrack_RGBD_L/docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md')
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+old=M.read_bytes()
+assert sha(M)=='5e38c39040e96ee463d8de0aee47db8e017fcb2e2abc0f76342d06360afd563b'
+assert b'\n## 5.169 ' not in old and not O.exists() and not (R/'training').exists()
+s=json.loads((R/'training_spec.json').read_text());f=json.loads((R/'frozen.json').read_text());c=json.loads((R/'causal_check.json').read_text())
+assert f['training_spec_sha256']==sha(R/'training_spec.json') and f['recursive_spec_sha256']==sha(R/'recursive_spec.json')
+assert s['causal_check_sha256']==sha(R/'causal_check.json') and (R/'causal_check.exit').read_text().strip()=='0'
+note='''
+
+## 5.169 M82可靠同状态原生空间保持：方案冻结与真实训练前核验
+
+M81完成态与负结果保持§5.168不变。M82采用M78首帧完整正向预测裁剪、Raw竞争训练协议，从相同零残差适配器初始化，固定seed2027。拟合仅130条DepthTrack Train序列，仍为186694次跟踪调用、32帧梯度累积、AdamW 1e-4与原固定最终checkpoint规则；预期5798次有效优化，不用M78训练后权重热启动。新增可训练参数为0，适配器总计289154参数；Category与独立Empty均训练，匹配的M78两组封存结果用于单独评价新增损失。
+
+唯一学习改动是weight=1的可靠同状态原生空间KL。每帧冻结STTrack已计算原生score/size/offset；直接复用其原始响应，并按原Hann选峰与裁剪前previous_bbox解码原生参照框。教师不提交bbox、query或模板，不额外运行ViT或Head。适配路径按原规则完成当帧预测和状态提交后，GT才用于训练判定：GT有效、中心在当前crop内、同状态原生框连续矩形IoU>=0.5时启用KL，否则不启用。原定位损失与Raw困难负样本竞争均保留。
+
+KL将两张原始正值响应各自在256个空间位置归一化，计算KL(原生教师||适配学生)，空间求和、batch均值，系数1；不除以256，不增加温度或Hann损失。原Center Head已经将sigmoid响应限制到[1e-4,1-1e-4]，没有为假设数值问题新增fallback。教师detach。该约束不保持响应绝对幅度，也不自动保持0.75模板更新资格；同状态原生参照不是独立原生递归轨迹，不能据此声称长期安全或原生历史回退。
+
+训练前真实GPU核验已完成：Category/Empty各101帧零残差轨迹与独立原生bbox、query、模板逐值一致，默认模板写入均为第100帧；教师框与同状态部署框一致、初始KL为0。两组各运行96帧、3次真实优化，合计192次损失检查，禁用KL时与原Raw损失值及实际受监督的score/size/offset输出梯度逐值一致；选定适配器参数梯度按rtol=1e-5、atol=1e-7比较，同时记录同一Raw损失重复反传的数值差异。独立数值参考验证空间KL与教师无梯度；无效GT、crop外GT和错误教师不产生保持项。底座参数及buffer哈希不变，测试权重不保存，不计入正式训练预算。确定性核验不是独立模型审阅。前两次检查分别暴露了参数反传逐位比较过严、crop外无回归时误请求未使用梯度的问题；原损失自身重复反传也有约1e-8差异。终止日志保留，修订的是检查接口，未修改训练损失、系数或初始化，正式训练没有启动后重训。
+
+评测预先冻结为四组首帧开发22：Category、独立Empty训练、同Category最终权重Empty内容、同Category最终权重Swapped内容。四组完整轨迹均封存后才读取后续GT算指标，不因主条件失败跳过内容诊断。保留10项原生/本轮Empty主条件、8项同权重内容条件，新增4项Category相对匹配M78的非退化条件（按帧与宏均值不低、低重叠帧与H10不多）；Empty相对M78 Empty的4项只作机制对照。逐序列及移除单序列的内容增量同时报告。历史全部成功序列不累加成新晋升门，不据新结果修改旧结论。没有自动外部评测。
+
+当前冻结并完成前检，正式训练尚未启动、性能指标不存在。下一步持久任务在两张现有GPU分别运行Category/Empty，接续四组开发评测；检查首个真实优化窗口后按预计约4小时训练、随后开发推理的时间安排复查，不高频轮询。环境沿用已验证STTrack环境，无重建或安装。两个Qwen与已发表最终权重均保留，当前剩余空间与GPU空闲证据写入frozen.json。
+
+审阅模型仍按用户要求为gpt-6-astra/max。此前额度拒绝至9月12日的状态未改变，本次未重试、未换模型、未宣称独立审阅通过。这里只借鉴PromptSRC/CoPrompt的功能保持原则；普通KL不是独立创新，效果与语言归因需由本轮完整对照建立。固定源码参考为PromptSRC bb95c77b634d63488f2cad81ff4a72d53bdd06d5、CoPrompt a2a6c12e3622cfe4b3a127f4ba0c4f3eb841418c。
+
+冻结计划、训练与评测源码、训练前核验及SHA清单发布于diagnostics/m82_native_preservation/preflight/。同一最终完整模型仍须验证DepthTrack Test、CDTB与完整VOT；本节不刷新任何正式成绩。
+'''
+note+='\n训练规范SHA256：`%s`；评测规范SHA256：`%s`；核验报告SHA256：`%s`。\n'%(sha(R/'training_spec.json'),sha(R/'recursive_spec.json'),sha(R/'causal_check.json'))
+F.mkdir(parents=True)
+names=['training_spec.json','recursive_spec.json','frozen.json','causal_check.json','EXPERIMENT_PLAN.md','EXPERIMENT_TRACKER.md','train_causal.py','causal_training.py','native_preservation.py','window_competition.py','run_recursive.py','recursive_metric.py','check_causal.py','run_pair.sh']
+for n in names:shutil.copyfile(R/n,F/n)
+shutil.copyfile(Path(__file__),F/Path(__file__).name)
+for n in ['causal_check.log.attempt1','causal_check.log.attempt2','gradient_diagnostic_summary.json']:
+    shutil.copyfile(R/n,F/n)
+(F/'handoff_append.md').write_text(note)
+manifest=[dict(path=p.name,bytes=p.stat().st_size,sha256=sha(p)) for p in sorted(F.iterdir())]
+(F/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+archive=O/'published.tar.gz'
+with tarfile.open(archive,'w:gz') as t:
+    for p in sorted(F.iterdir()):t.add(p,arcname=p.name)
+M.write_bytes(old+note.encode('utf-8'))
+record=dict(observed_utc=datetime.now(timezone.utc).isoformat(),archive_sha256=sha(archive),master_sha256=sha(M),master_bytes=M.stat().st_size,files=len(manifest),formal_training_started=False,source_root=str(R))
+(O/'publication_record.json').write_text(json.dumps(record,indent=2)+'\n')
+print(json.dumps(record))

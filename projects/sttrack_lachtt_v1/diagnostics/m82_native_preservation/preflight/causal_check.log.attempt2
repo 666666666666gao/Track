@@ -1,0 +1,22 @@
+WARNING: You are using tensorboardX instead sis you have a too old pytorch version.
+{"gradient_probe_arm": "category", "frame": 1, "parameter_max_abs_difference": 4.307366907596588e-09, "same_raw_repeat_max_abs_difference": 4.889443516731262e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 2, "parameter_max_abs_difference": 2.1245796233415604e-09, "same_raw_repeat_max_abs_difference": 5.820766091346741e-10, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 3, "parameter_max_abs_difference": 4.94765117764473e-09, "same_raw_repeat_max_abs_difference": 2.3283064365386963e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 4, "parameter_max_abs_difference": 2.0954757928848267e-09, "same_raw_repeat_max_abs_difference": 4.423782229423523e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 5, "parameter_max_abs_difference": 4.001776687800884e-09, "same_raw_repeat_max_abs_difference": 4.103640094399452e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 6, "parameter_max_abs_difference": 3.4924596548080444e-09, "same_raw_repeat_max_abs_difference": 3.725290298461914e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 7, "parameter_max_abs_difference": 3.725290298461914e-09, "same_raw_repeat_max_abs_difference": 1.2514647096395493e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 8, "parameter_max_abs_difference": 9.080395102500916e-09, "same_raw_repeat_max_abs_difference": 9.546056389808655e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 9, "parameter_max_abs_difference": 1.3969838619232178e-09, "same_raw_repeat_max_abs_difference": 1.7462298274040222e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 10, "parameter_max_abs_difference": 1.4435499906539917e-08, "same_raw_repeat_max_abs_difference": 1.4435499906539917e-08, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 11, "parameter_max_abs_difference": 5.3551048040390015e-09, "same_raw_repeat_max_abs_difference": 8.149072527885437e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 12, "parameter_max_abs_difference": 1.0826624929904938e-08, "same_raw_repeat_max_abs_difference": 1.1408701539039612e-08, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 13, "parameter_max_abs_difference": 2.0954757928848267e-09, "same_raw_repeat_max_abs_difference": 1.0477378964424133e-09, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 14, "parameter_max_abs_difference": 7.450580596923828e-09, "same_raw_repeat_max_abs_difference": 2.3515895009040833e-08, "output_gradient_equal": [true, true, true]}
+{"gradient_probe_arm": "category", "frame": 15, "parameter_max_abs_difference": 2.444721758365631e-09, "same_raw_repeat_max_abs_difference": 7.450580596923828e-09, "output_gradient_equal": [true, true, true]}
+Traceback (most recent call last):
+  File "check_causal.py", line 121, in <module>
+    ga=torch.autograd.grad(raw,[out[k] for k in output_keys],retain_graph=True)
+  File "/root/autodl-tmp/envs/sttrack/lib/python3.8/site-packages/torch/autograd/__init__.py", line 300, in grad
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: One of the differentiated Tensors appears to not have been used in the graph. Set allow_unused=True if this is the desired behavior.

@@ -1,0 +1,110 @@
+{
+  "status": "completed_M82_native_parity_preservation_and_causal_smoke",
+  "observed_utc": "2026-09-08T18:58:52.497534+00:00",
+  "checker_sha256": "bd4d128e3dcd574ae45672c25e0e9c5c932c5cef024643ecdf2ad827ebba988c",
+  "prepared_spec_sha256": "4ec581a52c94bf0f73d1397758c2b1f852c008e57a6355f511081d40246447b5",
+  "seed": 2027,
+  "initial_adapter_state_sha256": {
+    "category": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42",
+    "empty": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42"
+  },
+  "base_state_sha256": {
+    "category": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+    "empty": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0"
+  },
+  "zero_residual_public_state_exact": true,
+  "zero_residual_frames_each": 101,
+  "default_template_writes": {
+    "category": [
+      100
+    ],
+    "empty": [
+      100
+    ]
+  },
+  "combined_loss_contract_verified": true,
+  "combined_loss_checks": 192,
+  "base_frozen_all_arms": true,
+  "arms": {
+    "category": {
+      "frames": 96,
+      "supervised_loss_frames": 88,
+      "optimizer_steps": 3,
+      "loss_mean": 0.4866688979196955,
+      "final_smoke_adapter_sha256": "ac1225104c3e2622ed414d272e65a4dadd874d235b10c84328f7f655405668dc",
+      "last_gradient_l1": {
+        "slots": 0.0006454588146880269,
+        "rgb.0.weight": 0.5717308521270752,
+        "rgb.0.bias": 0.00032412767177447677,
+        "rgb.1.weight": 0.0005315484595485032,
+        "rgb.1.bias": 0.0006134524010121822,
+        "depth.0.weight": 0.8290884494781494,
+        "depth.0.bias": 0.0004712081281468272,
+        "depth.1.weight": 0.0011443846160545945,
+        "depth.1.bias": 0.0009002184960991144,
+        "text.0.weight": 0.28699982166290283,
+        "text.0.bias": 0.0013493688311427832,
+        "text.1.weight": 0.0005134069360792637,
+        "text.1.bias": 0.0005969631019979715,
+        "rgb_bound.weight": 0.00037928784149698913,
+        "rgb_bound.bias": 0.0003667611163109541,
+        "depth_bound.weight": 0.000770872924476862,
+        "depth_bound.bias": 0.0006551539991050959,
+        "modality.weight": 0.007027770392596722,
+        "modality.bias": 4.845091461902484e-05,
+        "delta.0.weight": 0.4825870990753174,
+        "delta.0.bias": 0.002258527558296919,
+        "delta.2.weight": 7.826730251312256,
+        "delta.2.bias": 0.23175424337387085
+      }
+    },
+    "empty": {
+      "frames": 96,
+      "supervised_loss_frames": 88,
+      "optimizer_steps": 3,
+      "loss_mean": 0.37820693416605616,
+      "final_smoke_adapter_sha256": "3e850c481c830758ec75fad63cec05b7c12028ca69f16c6cd6fec117ba53a6c0",
+      "last_gradient_l1": {
+        "slots": 0.0006139542674645782,
+        "rgb.0.weight": 0.5587040781974792,
+        "rgb.0.bias": 0.00031675826176069677,
+        "rgb.1.weight": 0.00048561085714027286,
+        "rgb.1.bias": 0.0005901266122236848,
+        "depth.0.weight": 0.8712671399116516,
+        "depth.0.bias": 0.000496300111990422,
+        "depth.1.weight": 0.001147849136032164,
+        "depth.1.bias": 0.0009259392973035574,
+        "text.0.weight": 0.30511757731437683,
+        "text.0.bias": 0.0012987677473574877,
+        "text.1.weight": 0.0005197604186832905,
+        "text.1.bias": 0.0006139542674645782,
+        "rgb_bound.weight": 0.0003373409272171557,
+        "rgb_bound.bias": 0.0003226964036002755,
+        "depth_bound.weight": 0.000829881289973855,
+        "depth_bound.bias": 0.0007137982174754143,
+        "modality.weight": 0.012052935548126698,
+        "modality.bias": 8.00106136011891e-05,
+        "delta.0.weight": 0.4929206669330597,
+        "delta.0.bias": 0.0022788341157138348,
+        "delta.2.weight": 8.395895004272461,
+        "delta.2.bias": 0.23875604569911957
+      }
+    }
+  },
+  "synthetic_competition_contract": {
+    "loss": 0.6151856780052185,
+    "positive_gradient": -0.574324369430542,
+    "false_peak_gradient": 0.675675630569458,
+    "same_instance_gradient": 0.0,
+    "no_regression_mask_gradients": true
+  },
+  "spatial_kl_reference_verified": true,
+  "detached_teacher_verified": true,
+  "excluded_gt_and_wrong_teacher_masks_verified": true,
+  "disabled_loss_gradient_parity_frames": 176,
+  "gradient_parity_interface": "exact at supervised score/size/offset outputs; selected adapter parameter allclose rtol1e-5 atol1e-7; same-raw repeated backward logged for comparison",
+  "formal_optimizer_steps": 0,
+  "smoke_weights_saved": false,
+  "independent_model_review_pass": false,
+  "elapsed_seconds": 38.44734787940979
+}
