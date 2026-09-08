@@ -1,0 +1,58 @@
+{
+  "status": "initialization_inventory_prepared_no_training",
+  "observed_utc": "2026-09-08T07:36:59.826829+00:00",
+  "source_sha256": "f8bb04a91d2861c3ccf777359ae686ff5cf5a4bd3af8fe6e3bd5b84971f09f04",
+  "seed": 2027,
+  "additional_seeds": [],
+  "parent_training_spec_sha256": "57cdd314efd5359fa2e16be4f364c5568f1ca498b41df718517173610fe4d865",
+  "interval_track_frames": 512,
+  "invalid_boundary_advance": 32,
+  "eligibility": "Finite positive GT box with center inside current image. Does not establish visibility, sharpness or caption correctness.",
+  "initialization_policy": "Fixed boundaries from Train GT, never from tracking failures; all chronological transitions retained exactly once.",
+  "caption_policy": "For each new boundary, current RGB image plus target box/crop only; no future frame, sequence name or category hint. Reuse t0 bank. Category/Empty share masks, slots and episode list.",
+  "learning_policy": "M78 raw competition, optimizer and frozen architecture. No M80 dropout, reverse traversal, new memory, consistency loss, or new template rule.",
+  "compared_training_arms": [
+    "multistart_category",
+    "multistart_empty"
+  ],
+  "reference": "Sealed M78 single-start Category/Empty with same tracking calls, accumulation windows and initial tensors.",
+  "evaluation_policy": "Keep full t0 development22, additionally evaluate all compared models on this fixed development multistart manifest. Never compare reset-enhanced evaluation only against single-start native.",
+  "summaries": {
+    "fit": {
+      "sequences": 130,
+      "episodes": 426,
+      "additional_initializations": 296,
+      "track_calls": 186694,
+      "valid_loss_update_windows": 5798,
+      "caption_requests_pending": 296,
+      "maximum_episode_calls": 608,
+      "minimum_episode_calls": 2,
+      "every_original_transition_covered_exactly_once": true,
+      "gradient_accumulation_windows_identical": true
+    },
+    "development": {
+      "sequences": 22,
+      "episodes": 74,
+      "additional_initializations": 52,
+      "track_calls": 33108,
+      "valid_loss_update_windows": 1009,
+      "caption_requests_pending": 52,
+      "maximum_episode_calls": 672,
+      "minimum_episode_calls": 5,
+      "every_original_transition_covered_exactly_once": true,
+      "gradient_accumulation_windows_identical": true
+    }
+  },
+  "fit_manifest_sha256": "dbda503513f092ab894b7564f4def9244515851b8961cfde78b66b9d7eed4b99",
+  "development_manifest_sha256": "acc944677307c341aeb5d791178e0466e294ffc7eee406c53ecf521fa28cacd9",
+  "training_has_started": false,
+  "captions_generated": 0,
+  "new_weights_created": false,
+  "public_evaluation_allowed": false,
+  "limitations": [
+    "Multiple initialization uses more GT initialization boxes and extra initialization forwards, despite identical tracking calls and optimizer windows.",
+    "Initialization-specific captions differ with the new start; results test protocol coverage, not pure visual-reset causality.",
+    "Later-start descriptions must be generated before training; no automatic t0 text reuse at later starts.",
+    "Reused development sequences and historical controls are not independent heldout evidence."
+  ]
+}
