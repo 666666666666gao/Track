@@ -1,0 +1,15 @@
+
+
+## 5.155 M78低22到完整三数据集的条件队列已启动
+
+在§5.154的开发10/10、同权重内容8/8与真实入口一致性通过后，为避免长评测结束后人工排队停顿，新增独立条件控制器；没有修改M78权重、训练、推理、文字协议或任何已有门槛。仅seed2027，后续评测不产生新seed或选择新checkpoint。
+
+控制器于UTC2026-09-08T01:31:59.102420+00:00启动，进程PID14915；跟随已绑定的低22主脚本PID11656并核对启动标识和命令，每240秒检查一次退出状态。本快照低22已封存23/303个anchor、29221/220483个计划帧位置；尚无完成指标。当前控制器处于waiting_for_complete_low22，完整三数据集尚未开始。
+
+若低22执行失败，保存失败并终止本次后续队列；若执行完成但任一冻结指标/保护条件未通过，保存完整低22结果并结束队列，不调用全量脚本、不改阈值、不换文字或权重。只有低22全部条件通过，才调用§5.153已经冻结的m78_full_evaluation_20260908.sh：依次生成DepthTrack Test、CDTB的因果初始化文本并评测，随后补充剩余1462个VOT初始化文本、保留既有303个记录，验证完整127序列1765个anchor，最后进行同bundle的保存输出核验与数值目标检查。文本生成只读取各次初始化图像与初始化框。
+
+后续脚本SHA256仍为`9e6465cd0abce5ddf1f729bc111591c056873dee89c4441ffcb64b6e9a769785`，bundle仍为`d1507b789040ae936721f4be65385d40e902d7fcf7f9a9c325bb3d5e19d95e79`；没有为队列更换模型接口。队列spec SHA256为`635cd6f51ad99db865a571b66bf866fda127bd697f9b3a5d3d25ec5ef68ef458`，控制器源码为`7920c8245bfb6324bf0e3b52d8f56be957df64898da5e771cad6bbffe2e6d2a2`。准备期发现全量脚本哈希保存在prepared_entry_and_full.json的source_files，而非入口spec的source_sha256；已在启动队列前修正索引，已冻结评测源码字节保持不变。检查包括真实进程标识、冻结源码/配置/模型绑定、Python语法和shell语法；不是独立模型审阅PASS。
+
+队列目录：`/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/full_followup`；阶段见stage.json，日志见controller.log/full_execution.log，退出状态见controller.exit/full_execution.exit。即使全量脚本完成，也需读取same_bundle_verification.json，核对三个数据集及目标、补齐交接和发布后才可完成项目目标，控制器不会自动宣称目标达成。
+
+本节及启动证据发布到`projects/sttrack_lachtt_v1/diagnostics/m78_raw_competition/full_followup/`。当前低22四个分片是工作划分，不是多seed。按首批实际耗时预计整轮低22约2.5—3小时，在预计收尾前检查；当前磁盘1696382976字节可用，两份Qwen均保留。
