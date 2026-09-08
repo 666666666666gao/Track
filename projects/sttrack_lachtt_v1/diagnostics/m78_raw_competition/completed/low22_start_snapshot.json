@@ -1,0 +1,45 @@
+{
+  "observed_utc": "2026-09-08T01:21:30.451285+00:00",
+  "processes": [
+    {
+      "pid": 11661,
+      "parent_pid": 11656,
+      "state": "S+",
+      "cwd": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation",
+      "command": "/root/miniconda3/envs/mplt/bin/python -u run_vot_failure_family_shards.py --root /root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/low22_run --poll-seconds 240"
+    },
+    {
+      "pid": 11662,
+      "parent_pid": 11661,
+      "state": "Ssl",
+      "cwd": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/low22_run/shard-00",
+      "command": "/root/miniconda3/envs/mplt/bin/python -m vot evaluate --workspace . sttrack_m78_category_low22"
+    },
+    {
+      "pid": 11663,
+      "parent_pid": 11661,
+      "state": "Ssl",
+      "cwd": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/low22_run/shard-01",
+      "command": "/root/miniconda3/envs/mplt/bin/python -m vot evaluate --workspace . sttrack_m78_category_low22"
+    },
+    {
+      "pid": 11664,
+      "parent_pid": 11661,
+      "state": "Ssl",
+      "cwd": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/low22_run/shard-02",
+      "command": "/root/miniconda3/envs/mplt/bin/python -m vot evaluate --workspace . sttrack_m78_category_low22"
+    },
+    {
+      "pid": 11665,
+      "parent_pid": 11661,
+      "state": "Ssl",
+      "cwd": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/low22_run/shard-03",
+      "command": "/root/miniconda3/envs/mplt/bin/python -m vot evaluate --workspace . sttrack_m78_category_low22"
+    }
+  ],
+  "low22_complete": false,
+  "full_evaluation_started": false,
+  "disk_free_bytes": 1698078720,
+  "entry_result_sha256": "a64b8e3186cd91338b1a8efc1da87550a0f4e463f75e2946d4eafcd6d158dfe0",
+  "bundle_sha256": "d1507b789040ae936721f4be65385d40e902d7fcf7f9a9c325bb3d5e19d95e79"
+}

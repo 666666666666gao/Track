@@ -1,0 +1,126 @@
+{
+  "status": "completed_M78_paired_training_development_and_fixed_head_content",
+  "observed_utc": "2026-09-08T01:08:35.766632+00:00",
+  "collector_sha256": "e9ca088bcde63365edbe09e204cc8e58e69ca509152d4749826cc6d046aa5b04",
+  "training_spec_sha256": "57cdd314efd5359fa2e16be4f364c5568f1ca498b41df718517173610fe4d865",
+  "recursive_result_sha256": "37e01fd17c9b747dc5c5d7654ef66fc60b8ba00e799d0a59fc71e7dfba82e16a",
+  "audit_sha256": "5a402e032e0f18390ae469b5641c200ea30f24740753fd6c49460654efd977d7",
+  "content_result_sha256": "4771426a7029683b38a899917c7f19d603348ebad833fd407cb7808ae6c50054",
+  "development_passes": 10,
+  "development_conditions": 10,
+  "development_pass": true,
+  "content_passes": 8,
+  "content_conditions": 8,
+  "content_pass": true,
+  "paired_aggregates": {
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600396
+    },
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 20777.19107972538,
+      "low_iou_frames": 5223,
+      "failure_episodes": 73,
+      "mean_iou": 0.7190085849647154,
+      "macro_sequence_mean_iou": 0.7015137299609854
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 18336.517518026787,
+      "low_iou_frames": 8125,
+      "failure_episodes": 83,
+      "mean_iou": 0.6345474449952171,
+      "macro_sequence_mean_iou": 0.6514465893569041
+    }
+  },
+  "same_head_content_aggregates": {
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 20777.19107972538,
+      "low_iou_frames": 5223,
+      "failure_episodes": 73,
+      "mean_iou": 0.7190085849647154,
+      "macro_sequence_mean_iou": 0.7015137299609854
+    },
+    "empty": {
+      "valid_frames": 28897,
+      "iou_sum": 18919.306683063533,
+      "low_iou_frames": 7397,
+      "failure_episodes": 86,
+      "mean_iou": 0.6547152535925367,
+      "macro_sequence_mean_iou": 0.6473963032375197
+    },
+    "swapped": {
+      "valid_frames": 28897,
+      "iou_sum": 19314.020286235096,
+      "low_iou_frames": 6886,
+      "failure_episodes": 93,
+      "mean_iou": 0.6683745816602102,
+      "macro_sequence_mean_iou": 0.6712281987032628
+    }
+  },
+  "same_head_template_writes": {
+    "category": 272,
+    "empty": 303,
+    "swapped": 315
+  },
+  "deltas": {
+    "category_minus_M73_no_competition": {
+      "mean_iou": -0.004680218353568355,
+      "macro_sequence_mean_iou": -0.037420910890990644,
+      "low_iou_frames": 151,
+      "failure_episodes": 2
+    },
+    "category_minus_M77_Hann_competition": {
+      "mean_iou": 0.06062993912944836,
+      "macro_sequence_mean_iou": 0.03302249311458394,
+      "low_iou_frames": -1965,
+      "failure_episodes": -7
+    },
+    "empty_minus_M73_no_competition": {
+      "mean_iou": -0.019514194737452417,
+      "macro_sequence_mean_iou": -0.0029696883087536596,
+      "low_iou_frames": 710,
+      "failure_episodes": -7
+    },
+    "empty_minus_M77_Hann_competition": {
+      "mean_iou": -0.06497119583041666,
+      "macro_sequence_mean_iou": -0.055871157741171795,
+      "low_iou_frames": 2220,
+      "failure_episodes": 13
+    }
+  },
+  "unique_development_harm_intervals": 7,
+  "unique_development_harm_frames": 481,
+  "head_sha256": {
+    "category": "2c3b8acc538605abb240b17654a66ab0fbd324fa1b1ca6a8688dfdcce02b23a1",
+    "empty": "70f9f9f797b2203eb84b3f6cb768df8c718c993f45fd78642a1550f9e811eb1c"
+  },
+  "seed": 2027,
+  "additional_seeds": [],
+  "source_references": {
+    "M73": {
+      "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/seed2027/recursive_result.json",
+      "sha256": "4e9a52ead8a8ae5fb05250b95bf156d9fed1045d9e400fe29f140d2942a0a546"
+    },
+    "M77": {
+      "path": "/root/autodl-tmp/sttrack_m77_window_competition_20260907/recursive_result.json",
+      "sha256": "d3d33dac98c510f76711949f12b01d497157d25f2085fac9c83e0937018ff9c1"
+    }
+  },
+  "public_evaluation_started": false,
+  "independent_model_review_pass": false,
+  "goal_achieved": false,
+  "interpretation_limits": [
+    "Same-seed budget-matched training interventions, not random-seed replication.",
+    "Each trained policy visits its own states; do not attribute independent-head differences to one word.",
+    "Hard-negative eligibility is fixed but raw versus Hann ordering may select different negatives.",
+    "Fixed-head content tests do not retroactively override failed development gates.",
+    "Reused DepthTrack Train development22, not official three-dataset results."
+  ]
+}
