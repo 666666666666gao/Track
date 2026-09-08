@@ -1,0 +1,3 @@
+
+
+M82复算程序补充验证（北京时间2026-09-09 03:09）：在M82两组训练仍运行期间，独立标量统计函数对已封存M78 Category/Empty的44条轨迹、66260个位置进行了复算，逐序列有效帧、IoU、低重叠帧、H10及无效GT数与封存结果一致。本次未读取M82当前开发预测，未产生M82性能结论；正式完成后的训练产物与四组开发结果核验仍在排队。验证源码及receipt发布于diagnostics/m82_native_preservation/auditor_reference_check/。
