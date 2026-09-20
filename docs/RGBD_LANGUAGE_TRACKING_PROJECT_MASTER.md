@@ -21917,3 +21917,8 @@ M84 等待期间的直接先例核查（2026-09-20）：
 因此当前方法定位为“借鉴空文本参照中心化思路，在冻结 STTrack 上研究共享可训练语义适配器的差分残差参数化”。空词恒等不保证非空增量仅包含词义，也不能恢复过去已改变的递归状态。本次只补引用与机制边界，不修改 M84 冻结训练、评测或晋升规则；尚无 M84 完成态性能结论。
 
 证据：`projects/sttrack_lachtt_v1/diagnostics/m84_centered/prior_art/EMPTY_REFERENCE_PRIOR_ART.md`。官方来源：[单文本实现](https://github.com/xmed-lab/CLIP_Surgery/blob/d4696d47f49cfe70f49140afe5eb94f94c5f59bc/clip/clip.py#L287-L308)、[作者说明](https://github.com/xmed-lab/CLIP_Surgery/issues/2#issuecomment-1512353799)。报告同时区分论文与固定代码的标签集合加权细节，不能将另一条标签集合路径笼统写成减空字符串。
+
+
+M84 运行观察连接调整（2026-09-20 22:14 CST）：两次长时间 SSH 观察会话出现 socket 10054，但每次重新认证连接均确认原控制 PID 6605、训练 PID 6606 正常，未重启训练。观察改为单连接等待 240 秒后返回，下一轮新建观察连接；等待前后检查原控制进程命令和启动时钟。第一次实测退出码 0，22:10—22:14 从 90 条/127410 次调用推进至 92 条/131911 次调用、4112 次优化，磁盘剩余 1358249984 字节。该记录仅证明存活与推进，不是性能结果；训练、损失、最终 checkpoint 和评测规则均未修改。
+
+观察源码及实测回执：`projects/sttrack_lachtt_v1/diagnostics/m84_centered/observation/`。观察程序正常退出只表示这一轮读取完成，必须另读 `controller_terminal` 和各阶段退出码判断实验是否结束。
