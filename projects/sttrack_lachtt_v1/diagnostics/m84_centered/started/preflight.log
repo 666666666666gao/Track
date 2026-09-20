@@ -1,0 +1,127 @@
+WARNING: You are using tensorboardX instead sis you have a too old pytorch version.
+{
+  "status": "M84_native_parity_and_causal_smoke_pass",
+  "observed_utc": "2026-09-20T11:15:33.752373+00:00",
+  "source_sha256": "4e0e9ea2006163ff0e96f3862b7e7bfc384f94406831ac67e6f48624a7ccca9e",
+  "training_spec_sha256": "0f9bb841edd3e2c5171cd78ce9d1030d29a243561006d111d2c98eebfc74abd5",
+  "seed": 2027,
+  "sequence": "chair01_indoor",
+  "parity": [
+    {
+      "condition": "zero_category",
+      "frames": 101,
+      "exact_bbox_score_query_template": true,
+      "template_writes": [
+        100
+      ]
+    },
+    {
+      "condition": "nonzero_M82_empty",
+      "frames": 101,
+      "exact_bbox_score_query_template": true,
+      "template_writes": [
+        100
+      ]
+    }
+  ],
+  "smoke_frames": 96,
+  "supervised_frames": 88,
+  "smoke_optimizer_steps": 3,
+  "mean_smoke_loss": 0.4802371355789629,
+  "gradients": [
+    {
+      "step": 1,
+      "preclip_norm": 0.015320674516260624,
+      "maximum_gradient": {
+        "slots": 0.0,
+        "rgb.0.weight": 0.0,
+        "rgb.0.bias": 0.0,
+        "rgb.1.weight": 0.0,
+        "rgb.1.bias": 0.0,
+        "depth.0.weight": 0.0,
+        "depth.0.bias": 0.0,
+        "depth.1.weight": 0.0,
+        "depth.1.bias": 0.0,
+        "text.0.weight": 0.0,
+        "text.0.bias": 0.0,
+        "text.1.weight": 0.0,
+        "text.1.bias": 0.0,
+        "rgb_bound.weight": 0.0,
+        "rgb_bound.bias": 0.0,
+        "depth_bound.weight": 0.0,
+        "depth_bound.bias": 0.0,
+        "modality.weight": 0.0,
+        "modality.bias": 0.0,
+        "delta.0.weight": 0.0,
+        "delta.0.bias": 0.0,
+        "delta.2.weight": 0.0007518031634390354,
+        "delta.2.bias": 0.0
+      }
+    },
+    {
+      "step": 2,
+      "preclip_norm": 0.019299816340208054,
+      "maximum_gradient": {
+        "slots": 3.46272972819861e-05,
+        "rgb.0.weight": 0.0002425630809739232,
+        "rgb.0.bias": 1.1811075637524482e-05,
+        "rgb.1.weight": 7.027640822343528e-05,
+        "rgb.1.bias": 2.9338263630052097e-05,
+        "depth.0.weight": 0.00016668502939864993,
+        "depth.0.bias": 9.169892109639477e-06,
+        "depth.1.weight": 6.978787860134616e-05,
+        "depth.1.bias": 2.6048281142720953e-05,
+        "text.0.weight": 0.0004388187953736633,
+        "text.0.bias": 4.703628292190842e-05,
+        "text.1.weight": 4.495551547734067e-05,
+        "text.1.bias": 1.9774219254031777e-05,
+        "rgb_bound.weight": 7.032108260318637e-05,
+        "rgb_bound.bias": 2.4615808797534555e-05,
+        "depth_bound.weight": 5.020630487706512e-05,
+        "depth_bound.bias": 1.568115476402454e-05,
+        "modality.weight": 0.00019765198521781713,
+        "modality.bias": 1.1983110198343638e-05,
+        "delta.0.weight": 7.518203346990049e-05,
+        "delta.0.bias": 8.653057193441782e-06,
+        "delta.2.weight": 0.000889127841219306,
+        "delta.2.bias": 0.0
+      }
+    },
+    {
+      "step": 3,
+      "preclip_norm": 0.01281383540481329,
+      "maximum_gradient": {
+        "slots": 3.2581494451733306e-05,
+        "rgb.0.weight": 0.00023748572857584804,
+        "rgb.0.bias": 1.1208657269889954e-05,
+        "rgb.1.weight": 8.009741577552631e-05,
+        "rgb.1.bias": 3.476850179140456e-05,
+        "depth.0.weight": 0.00017172115622088313,
+        "depth.0.bias": 9.402116120327264e-06,
+        "depth.1.weight": 8.040086686378345e-05,
+        "depth.1.bias": 3.0790670280111954e-05,
+        "text.0.weight": 0.0004989749286323786,
+        "text.0.bias": 5.773381781182252e-05,
+        "text.1.weight": 4.065995381097309e-05,
+        "text.1.bias": 2.2103316950961016e-05,
+        "rgb_bound.weight": 8.906725997803733e-05,
+        "rgb_bound.bias": 2.8469281460274942e-05,
+        "depth_bound.weight": 5.566036270465702e-05,
+        "depth_bound.bias": 1.7003512766677886e-05,
+        "modality.weight": 0.0002559874556027353,
+        "modality.bias": 1.3712854524783324e-05,
+        "delta.0.weight": 7.40694667911157e-05,
+        "delta.0.bias": 8.217406502808444e-06,
+        "delta.2.weight": 0.0005481682019308209,
+        "delta.2.bias": 0.0
+      }
+    }
+  ],
+  "base_state_sha256": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+  "base_parameters_and_buffers_unchanged": true,
+  "trained_smoke_empty_feature_exact_native": true,
+  "smoke_weights_saved": false,
+  "formal_optimizer_steps": 0,
+  "elapsed_seconds": 32.55332636833191,
+  "scope": "Correctness and trainability only; not development performance or final training results."
+}

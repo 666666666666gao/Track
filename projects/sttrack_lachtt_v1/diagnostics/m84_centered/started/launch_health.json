@@ -1,0 +1,69 @@
+{
+  "status": "training_alive_with_completed_sequence",
+  "observed_utc": "2026-09-20T11:27:51.401713+00:00",
+  "training_pid": 6606,
+  "completed_sequences": 1,
+  "last_sequence": {
+    "sequence": "cube04_indoor",
+    "sequence_index": 0,
+    "total_sequences": 130,
+    "frames": 2576,
+    "track_calls": 2575,
+    "supervised_frames": 2513,
+    "label_counts": {
+      "centre_inside": 1133,
+      "centre_outside": 1380,
+      "invalid": 62
+    },
+    "mean_training_loss": 3.7921590659006914,
+    "template_writes": 34,
+    "cumulative_competition_frames": 1133,
+    "cumulative_competition_loss_sum": 2965.9402409587055,
+    "cumulative_competition_negatives": 10197,
+    "cumulative_native_eligible_frames": 286,
+    "cumulative_preservation_kl_sum": 24.532622060738504,
+    "maximum_preservation_kl": 1.3362095355987549,
+    "maximum_preclip_gradient_norm": 16.323429107666016,
+    "total_optimizer_steps": 81,
+    "total_track_calls": 2575,
+    "seconds": 185.86576747894287,
+    "elapsed_seconds": 188.63008880615234
+  },
+  "last_sampled_trace": {
+    "sequence": "cube04_indoor",
+    "frame_index": 2575,
+    "optimizer_steps_before_update": 80,
+    "previous_bbox": [
+      294.23695373535156,
+      247.05647468566895,
+      31.163745880126953,
+      26.937435150146484
+    ],
+    "resize_factor": 2.206896551724138,
+    "bbox": [
+      293.8278045654297,
+      246.77231311798096,
+      31.31979751586914,
+      26.988645553588867
+    ],
+    "best_score": 0.6138144731521606,
+    "template_write": false,
+    "label": "centre_inside",
+    "focal": 0.9504649639129639,
+    "regression": 0.4416812062263489,
+    "competition_loss": 1.8991339206695557,
+    "competition_negatives": 9,
+    "competition_positive_index": 114,
+    "competition_raw_top1_index": 136,
+    "competition_positive_probability": 0.14969821274280548,
+    "native_eligible": false,
+    "native_iou": 0.0,
+    "preservation_kl": null,
+    "preservation_weight": 1.0,
+    "preservation_weighted": 0.0
+  },
+  "free_disk_bytes": 1369268224,
+  "gpu": "0, NVIDIA GeForce RTX 3090, 53 %, 2465 MiB, 24576 MiB\n1, NVIDIA GeForce RTX 3090, 0 %, 1 MiB, 24576 MiB\n",
+  "formal_performance_available": false,
+  "observed_launch_sha256": "e5984ce58fdbf0501ac0cf3f9e7eee256e3bdbba213e8023c27124738e49bdf0"
+}
