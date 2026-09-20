@@ -1,0 +1,44 @@
+{
+  "status": "read_only_inputs_and_source_inventory_complete_not_evaluation_ready",
+  "observed_utc": "2026-09-20T11:34:58.823207+00:00",
+  "source_sha256": "f857d51177cd2098a7d5d8ccf52ad00f89ad6f4e6591675d0cfe639c7002047a",
+  "parent_readiness_sha256": "dc483a2bf6927e7507998fa6b16bda63cd27844a5d4c46f327a113a404659205",
+  "VOT": {
+    "root": "/root/autodl-tmp/VOT-RGBD2022/sequences",
+    "sequences": 127,
+    "anchors": 1765,
+    "planned_tracking_positions": 1327004,
+    "sequence_directories_exist": true,
+    "frame_files_not_counted": true
+  },
+  "old_low22_bank": {
+    "path": "/root/autodl-tmp/sttrack_m78_raw_competition_20260908/candidate_evaluation/low22_category.pt",
+    "sha256": "f9bfdc595ea447b3a0d9ce2a0ea87bc8ffa6603a93810f590cc0cd6092730a03",
+    "unique_initializations": 303,
+    "empty_matches_M84_fit": true,
+    "protocol_sha256": "a24d92e64307f156df04a136be5cc03fe3ce98c07472a179e05f89dff08994bb",
+    "requires_new_protocol_binding": true
+  },
+  "old_full_evaluation_directory_exists": false,
+  "remaining_expected_initialization_observations": {
+    "depthtrack": 50,
+    "cdtb": 80,
+    "vot": 1462
+  },
+  "base_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "generator_sha256": "eeb15e8bee4a40692cfb19e8ec73329e232f3a8c25c96f789a03b991d71ac655",
+  "new_caption_calls": 0,
+  "new_tracking_calls": 0,
+  "new_optimizer_steps": 0,
+  "images_decoded": 0,
+  "subsequent_groundtruth_opened": false,
+  "free_disk_bytes": 1364324352,
+  "blockers_to_claim_full_ready": [
+    "M84 final and completed development decision pending",
+    "External runtime architecture assertion must target centered_v1",
+    "Bind new protocol/bundle without changing preserved low22 text tensors",
+    "Generate missing initialization observations only after eligibility",
+    "Run and review actual final-weight OPE/TraX entry parity before external evaluation"
+  ],
+  "scope": "OPE complete frame counts; VOT manifest and directory existence only. No new benchmark results or promotion."
+}
