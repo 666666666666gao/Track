@@ -1,0 +1,1 @@
+const v=document.getElementById('verdict'),c=document.getElementById('changed');function update(){for(const a of document.querySelectorAll('article'))a.hidden=(v.value!=='all'&&a.dataset.verdict!==v.value)||(c.value!=='all'&&a.dataset.changed!==c.value);}v.addEventListener('change',update);c.addEventListener('change',update);

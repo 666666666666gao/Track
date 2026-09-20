@@ -1,0 +1,81 @@
+from pathlib import Path
+import hashlib, html, json, shutil, subprocess
+
+R=Path(__file__).resolve().parent
+read=lambda p:json.loads(p.read_text(encoding='utf-8'))
+s=read(R/'screening_summary.json'); rows=read(R/'paired_register.json')
+names={'supported':'观测支持','conflicting':'明显冲突','uncertain':'无法确认'}
+matrix=s['transitions_changed']
+report='''# M87 新初始化类别：152项观测初筛完成
+
+本报告在M87训练进行期间完成，不读取后续图像和跟踪指标，不改动冻结的文字bank、训练、最终权重选择或18项评测条件。它是助手依据同一初始化RGB图像与协议框进行的类别相容性初筛，不是独立盲评、人工真值、生成器真实准确率或跟踪性能结论。
+
+## 完整计数
+
+| 范围 | 条目 | 旧协议支持/冲突/不确定 | 新协议支持/冲突/不确定 |
+|---|---:|---:|---:|
+| 全部 | 152 | 110 / 18 / 24 | 85 / 39 / 28 |
+| 拟合 | 130 | 93 / 13 / 24 | 71 / 34 / 25 |
+| 开发 | 22 | 17 / 5 / 0 | 14 / 5 / 3 |
+
+新类别没有返回宽泛的`object`。`supported`只表示类别与初始化可见证据相容；并不证明描述精确、属性全部正确或能够区分同类实例。人物与衣物混合框、细小低质目标、无法确认功能的物件保留不确定。
+
+## 配对结果与测量限制
+
+新旧字符串89项变化、63项相同。先对全部152项新类别封存判断，再连接M86旧记录。展示时隐藏序列名、fit/dev划分、旧词、旧判断与跟踪指标，但助手已经具有项目上下文，所以不称真正独立盲评。
+
+89项字符串变化中的判断转移：
+
+| 旧 → 新 | 支持 | 冲突 | 不确定 |
+|---|---:|---:|---:|
+'''
+for state in ['supported','conflicting','uncertain']:
+    report+='| '+names[state]+' | '+' | '.join(str(matrix[state][b]) for b in ['supported','conflicting','uncertain'])+' |\n'
+report+='''
+其中6项旧冲突变为新支持，19项旧支持变为新冲突。不能只报道修正的案例，也不能把这些助手判定直接当作准确率变化。
+
+63项类别字符串完全相同的条目中仍有3项跨次判断不一致：`006/ball03`的apple由不确定变冲突、`072/file02`的box由支持变冲突、`144/toy06`的book由不确定变冲突。原判断和新判断均保留，没有为使统计一致而事后覆盖。它们暴露了视觉分辨率、类别粒度及助手判定的可重复性限制，不是生成协议造成的文字变化。即使排除这三项，89项变化子集也没有呈现单向纠错。
+
+## 具体观测
+
+- `cup13`：phone改为cup，新类别与手中杯子相容。
+- `book06`：cup改为cable，仍未指向可见书本；换词本身不等于纠错。
+- `mobilephone02`：shorts改为shoe，细小深色手持物的类别仍无法确认，不能据序列名称补真值。
+- 新增明显冲突包括篮球被描述为lightbulb、猫被描述为banana、鸭被描述为cat、蛋被描述为pillow。
+- 同一初始化观测下仍可见旧问题延续：红色菌盖被描述为strawberry、支架被描述为camera。
+
+## 当前可以得出的结论
+
+仅保留紧裁剪并采用类别专用指令，没有自动建立可靠目标语义输入。这一结论来自初始化观测筛查，不预判M87完整跟踪会提高或下降。新协议同时改变生成图像上下文和指令，不能单独归因于去掉整帧。
+
+M87继续按冻结协议完成。若跟踪改善，也必须另行验证是否来自正确词义；若跟踪退化，当前筛查只能指出输入证据存在缺口，不能把全部性能变化精确归因于caption。任何后续新文字协议应另立版本，本轮判断不写回当前训练或开发输入。
+
+## 产物与绑定
+
+`sealed_new_labels.json`为配对前封存的新判断；`paired_register.json/csv`保留152项新旧文字、判断及可见理由；`screening_summary.json`包含分组、转移矩阵与3项不一致。`analyze_screening.py`验证同图像与同整数裁剪后生成计数。私有图册保留19张匿名首帧红框与裁剪图，公开材料不包含原始图像或GT坐标。
+
+'''
+for name in ['labels_sha256','screening_plan_sha256','caption_records_sha256','old_register_sha256']:
+    report+='- '+name+': `'+s[name]+'`\n'
+(R/'M87_INITIALIZATION_SCREENING.md').write_text(report,encoding='utf-8')
+out=Path(r'C:\Users\gb\Desktop\document\RGBD_TEXT_PROTOCOL_COMPARISON_20260921/semantic_screening')
+out.mkdir()
+shutil.copytree(R/'sheets',out/'sheets')
+for name in ['SCREENING_PLAN.md','sealed_new_labels.json','paired_register.json','paired_register.csv','screening_summary.json','M87_INITIALIZATION_SCREENING.md']:
+    shutil.copyfile(R/name,out/name)
+esc=html.escape;cards=[]
+for i,r in enumerate(rows):
+    src='../../RGBD_INITIALIZATION_TEXT_AUDIT_20260921/images/'+r['audit_id']+'_crop.png'
+    sheet='sheets/%02d.jpg'%(i//8+1)
+    assert (out/src).is_file() and (out/sheet).is_file()
+    cards.append('<article data-verdict="%s" data-changed="%s"><h2>%s · %s</h2><img loading="lazy" src="%s" alt="初始化目标原始裁剪"><p>旧：%s · %s</p><p>新：<b>%s</b> · <b>%s</b></p><p>%s</p><a href="%s">查看同首帧红框图与裁剪</a><details><summary>旧初筛理由</summary><p>%s</p></details></article>'%(
+        r['new_screening'],str(r['category_changed']).lower(),r['audit_id'],esc(r['sequence']),esc(src),esc(r['old_category']),names[r['old_screening']],esc(r['new_category']),names[r['new_screening']],esc(r['new_visual_reason']),sheet,esc(r['old_visual_reason'])))
+js="const v=document.getElementById('verdict'),c=document.getElementById('changed');function update(){for(const a of document.querySelectorAll('article'))a.hidden=(v.value!=='all'&&a.dataset.verdict!==v.value)||(c.value!=='all'&&a.dataset.changed!==c.value);}v.addEventListener('change',update);c.addEventListener('change',update);"
+(R/'gallery.js').write_text(js,encoding='utf-8')
+subprocess.run(['node','--check',str(R/'gallery.js')],check=True)
+page='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>M87 初始化语义初筛</title><style>body{font:16px/1.6 system-ui;background:#f1f4f8;color:#15202e;margin:28px}header{max-width:1150px;margin:auto}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;max-width:1450px;margin:24px auto}article{background:white;padding:18px;border-radius:10px}article[hidden]{display:none}h2{font-size:17px}img{width:100%;height:180px;object-fit:contain;background:#e8ebf0}select{padding:8px}a{color:#125fa5}</style><header><h1>M87 初始化类别：152项助手初筛</h1><p>新类别：85项观测支持、39项明显冲突、28项无法确认。旧记录为110 / 18 / 24。此为初始化观测筛查，不是人工真值、准确率或跟踪结果；没有修改M87冻结文字或训练。</p><p>89项文字改变；其中6项旧冲突变新支持、19项旧支持变新冲突。63项未改词中有3项跨次判断不一致，详见报告，不能把全部判定差异归于生成器。</p><p><a href="M87_INITIALIZATION_SCREENING.md">完整报告</a> · <a href="paired_register.csv">逐项CSV</a> · <a href="screening_summary.json">统计JSON</a></p><label>新判断 <select id="verdict"><option value="all">全部</option><option value="supported">支持</option><option value="conflicting">冲突</option><option value="uncertain">不确定</option></select></label> <label>文字 <select id="changed"><option value="all">全部</option><option value="true">已变化</option><option value="false">未变化</option></select></label></header><main>'''+''.join(cards)+'</main><script>'+js+'</script></html>'
+(out/'index.html').write_text(page,encoding='utf-8')
+validation=dict(cards=len(cards),all_crop_and_sheet_links_exist=True,javascript_syntax_pass=True,browser_tested=False,
+    report_sha256=hashlib.sha256((R/'M87_INITIALIZATION_SCREENING.md').read_bytes()).hexdigest(),gallery_path=str(out/'index.html'))
+(R/'artifact_validation.json').write_text(json.dumps(validation,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(validation))

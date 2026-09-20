@@ -1,0 +1,175 @@
+{
+  "status": "completed_initialization_only_assistant_screening",
+  "rows": 152,
+  "labels_sha256": "14f6a8d146de3bc4af6200828f7698dc410b163d5dacdb08f2bb72a29bb13c91",
+  "screening_plan_sha256": "92056cc96bc253dfc6b7b01585f0cf4c44f95d0774c9bd0c27c8d890e63adcd8",
+  "caption_records_sha256": "8141f3746b6ddec25beab547fe2bbb7d242b5bb617da830f971af530678208f2",
+  "old_register_sha256": "b4ca66f5ba539234690d8f97e7f3a8271ad76db639a732c7a34cd0da71d447e6",
+  "old_counts": {
+    "supported": 110,
+    "conflicting": 18,
+    "uncertain": 24
+  },
+  "new_counts": {
+    "supported": 85,
+    "conflicting": 39,
+    "uncertain": 28
+  },
+  "by_split": {
+    "development": {
+      "rows": 22,
+      "old": {
+        "supported": 17,
+        "conflicting": 5,
+        "uncertain": 0
+      },
+      "new": {
+        "supported": 14,
+        "conflicting": 5,
+        "uncertain": 3
+      }
+    },
+    "fit": {
+      "rows": 130,
+      "old": {
+        "supported": 93,
+        "conflicting": 13,
+        "uncertain": 24
+      },
+      "new": {
+        "supported": 71,
+        "conflicting": 34,
+        "uncertain": 25
+      }
+    }
+  },
+  "changed_category_rows": 89,
+  "transitions_all": {
+    "supported": {
+      "supported": 77,
+      "conflicting": 20,
+      "uncertain": 13
+    },
+    "conflicting": {
+      "supported": 6,
+      "conflicting": 8,
+      "uncertain": 4
+    },
+    "uncertain": {
+      "supported": 2,
+      "conflicting": 11,
+      "uncertain": 11
+    }
+  },
+  "transitions_changed": {
+    "supported": {
+      "supported": 21,
+      "conflicting": 19,
+      "uncertain": 13
+    },
+    "conflicting": {
+      "supported": 6,
+      "conflicting": 5,
+      "uncertain": 4
+    },
+    "uncertain": {
+      "supported": 2,
+      "conflicting": 9,
+      "uncertain": 10
+    }
+  },
+  "unchanged_category_judgment_disagreements": [
+    {
+      "audit_id": "006",
+      "sequence": "ball03_indoor",
+      "split": "fit",
+      "old_category": "apple",
+      "new_category": "apple",
+      "category_changed": false,
+      "old_screening": "uncertain",
+      "new_screening": "conflicting",
+      "new_visual_reason": "黄色球体可见弯曲接缝，符合球类而非苹果。",
+      "old_visual_reason": "黄色球状物可见，但分辨率不足以确认苹果；类别需保守。",
+      "image_sha256": "e37790e2f2bdcc61b2ab831989fa27a7a3e27911a3f167e0279afe737c4a95b1",
+      "crop_sha256": "093682c04b66d0ea66d351a9dbe6a4df50f0a1df20817816068c8fa124b8eaea"
+    },
+    {
+      "audit_id": "072",
+      "sequence": "file02_indoor",
+      "split": "fit",
+      "old_category": "box",
+      "new_category": "box",
+      "category_changed": false,
+      "old_screening": "supported",
+      "new_screening": "conflicting",
+      "new_visual_reason": "可见文件夹的书脊和圆形指孔等结构，更支持文件夹而非箱盒。",
+      "old_visual_reason": "手持白色长方盒状物可见。",
+      "image_sha256": "4262d7150f9d6df47d47289cec41164c63714d6efb4ca323c4fbefb5359cc33d",
+      "crop_sha256": "8440b0416a9b3166c4f17681e08233537df8baae2e0a00aafd1d3387f552b061"
+    },
+    {
+      "audit_id": "144",
+      "sequence": "toy06_indoor",
+      "split": "fit",
+      "old_category": "book",
+      "new_category": "book",
+      "category_changed": false,
+      "old_screening": "uncertain",
+      "new_screening": "conflicting",
+      "new_visual_reason": "可见尖帽和长胡须的装饰玩偶，未见书本封面或书页。",
+      "old_visual_reason": "三角折叠、带图案的物体可见，不能确认书本、封面或书脊。",
+      "image_sha256": "584e78c6092951ee0818ac82399a39d7131ebec278a6051e753f3355b2ab13de",
+      "crop_sha256": "58ba24846c5555824a5a5d6e6925323cfbfafdb889c37270c7ca92f1b503a060"
+    }
+  ],
+  "object_category_rows": [],
+  "new_conflicts": [
+    "001",
+    "005",
+    "006",
+    "009",
+    "010",
+    "015",
+    "019",
+    "020",
+    "028",
+    "032",
+    "035",
+    "042",
+    "054",
+    "061",
+    "068",
+    "071",
+    "072",
+    "077",
+    "087",
+    "093",
+    "097",
+    "100",
+    "109",
+    "110",
+    "112",
+    "113",
+    "121",
+    "123",
+    "130",
+    "132",
+    "133",
+    "136",
+    "140",
+    "141",
+    "143",
+    "144",
+    "146",
+    "147",
+    "149"
+  ],
+  "limits": [
+    "assistant screening, not independent blind human truth",
+    "same first RGB observations only; no subsequent frame or tracking metric used",
+    "judgments are not training labels and do not modify frozen M87",
+    "cross-pass disagreements for identical strings are measurement limitations, not generator changes",
+    "crop-only images and category-only prompt changed together",
+    "counts are not empirical caption accuracy or tracking performance"
+  ]
+}
