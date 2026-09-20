@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "review_date": "2026-09-21",
+  "review_round": "initial_review_then_one_revision_re_review",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "max",
+  "server_model_telemetry": "unavailable",
+  "reviewed_files": [
+    "EXPERIMENT_PLAN.md",
+    "check_entries.py",
+    "run.sh",
+    "interface/semantic_runtime.py",
+    "interface/run_semantic_ope.py",
+    "interface/run_semantic_vot.py",
+    "interface/m39_vot_bridge.py",
+    "interface/initialization_text.py"
+  ],
+  "blocking_issues": [],
+  "nonblocking_issues": [],
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "initial_severity": "blocking",
+      "issue": "Existing frozen training specification integration_sha256 binding was not checked before trusting integration.json source digests.",
+      "resolution": "check_entries.py:29 now validates the existing integration_sha256 field.",
+      "status": "resolved"
+    },
+    {
+      "id": "R2",
+      "initial_severity": "nonblocking_for_fresh_sequential_runner",
+      "issue": "Standalone verify lacked exact sequence and session completeness checks before zip comparisons and trusted aggregate TraX counts.",
+      "resolution": "check_entries.py:164-202 now validates names, row counts, session identities, OPE shapes, saved TraX initialization and tracking outputs, and zero child exits.",
+      "status": "resolved"
+    }
+  ],
+  "expected_runtime_counts": {
+    "fit_sequences": 2,
+    "frames_per_prefix": 102,
+    "transitions_per_prefix": 101,
+    "tracking_calls": 1414,
+    "initializations": 15,
+    "trax_sessions": 5,
+    "trax_tracking_reports": 404,
+    "ope_comparisons": 4,
+    "empty_native_stored_rows": 204
+  },
+  "local_validation": {
+    "python_files_ast_parsed": 6,
+    "interface_files_changed_from_prior_local_copy": ["initialization_text.py"],
+    "local_frozen_training_spec_digest_matches_pinned_value": true,
+    "local_integration_matches_existing_training_spec_binding": true,
+    "synthetic_complete_comparator_fixture": "PASS_four_comparisons",
+    "synthetic_invalid_fixtures_rejected": [
+      "truncated_direct_output",
+      "missing_trax_session",
+      "truncated_trax_rows",
+      "changed_trax_bbox",
+      "nonzero_child_exit"
+    ],
+    "synthetic_fixture_scope": "Comparator logic only; read, hash, and array-loading operations substituted. Not real transport or model evidence.",
+    "fractional_offline_conversion": [269.1234130859375, 248.76539611816406, 33.12350082397461, 32.76539993286133]
+  },
+  "primary_api_sources": [
+    "https://github.com/votchallenge/toolkit/blob/v0.7.1/vot/tracker/trax.py",
+    "https://github.com/votchallenge/trax/blob/v4.0.2/support/python/trax/client.py"
+  ],
+  "execution_evidence": {
+    "remote_commands_executed": false,
+    "gpu_used": false,
+    "real_trax_executed": false,
+    "model_inference_executed": false,
+    "gt_metrics_computed": false,
+    "m87_modified": false
+  },
+  "remaining_runtime_requirements": [
+    "Verify remote artifacts and installed package identity through the planned preflight.",
+    "Require complete stage receipts, exact comparator acceptance, and normal exits for all five real TraX sessions.",
+    "Verify GPU 1 is available and release it before M87 evaluation begins.",
+    "Report interface parity only; no benchmark, promotion, or M87 final-weight conclusion."
+  ]
+}

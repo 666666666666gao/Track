@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "review_date": "2026-09-21",
+  "scope": "Bounded correction after observed TraX shutdown assertion failure",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "max",
+  "server_model_telemetry": "unavailable",
+  "source_read_directly": "check_entries.py:119-164",
+  "amended_shutdown_lines": "check_entries.py:155-163",
+  "blocking_issues": [],
+  "nonblocking_code_issues": [],
+  "conclusion": "Explicit protocol quit followed by a 30-second normal-exit wait and numeric exit assertion before finally cleanup appropriately tests graceful shutdown without changing tracker behavior.",
+  "properties_verified_in_source": {
+    "quit_before_wait": true,
+    "normal_exit_wait_seconds": 30,
+    "observed_exit_zero_required_before_cleanup": true,
+    "numeric_exit_code_in_assertion": true,
+    "unconditional_finally_cleanup": true,
+    "monotonic_shutdown_timing": true,
+    "shutdown_seconds_in_session_receipt": true,
+    "tracker_or_inference_logic_changed": false
+  },
+  "first_attempt_evidence": {
+    "provenance": "executor report; remote evidence not independently fetched by this reviewer",
+    "category_direct_completed": true,
+    "category_ope_completed": true,
+    "first_trax_sequence_matching_reports": 101,
+    "failure_location": "original post-terminate exit-code assertion",
+    "numeric_exit_code": null,
+    "exact_failure_cause": "unconfirmed",
+    "sigterm_confirmed": false,
+    "preserved_archive_files_reported": 42,
+    "preserved_archive_sha256_reported": "e50509000367b299ccce1b1bec0d85046267303c2597e477f19793401fba1af9",
+    "archive_independently_verified": false
+  },
+  "resume_scope": [
+    "Category real TraX stage",
+    "remaining Empty direct, OPE, and real TraX stages",
+    "final verification"
+  ],
+  "reporting_obligations": {
+    "preserve_first_attempt_source_review_and_logs": true,
+    "retain_completed_native_category_direct_and_ope": true,
+    "successful_path_tracking_calls": 1414,
+    "successful_path_initializations": 15,
+    "failed_attempt_additional_tracking_calls": 101,
+    "failed_attempt_additional_initializations": 1,
+    "cumulative_tracking_calls_if_one_clean_resume": 1515,
+    "cumulative_initializations_if_one_clean_resume": 16,
+    "cumulative_count_condition": "Category TraX restarts from its first sequence; no additional failures or reruns",
+    "require_actual_zero_exits_and_shutdown_times": true
+  },
+  "review_execution": {
+    "gpu_used": false,
+    "remote_commands_executed": false,
+    "model_inference_executed": false,
+    "live_trax_executed": false,
+    "m87_modified": false
+  }
+}

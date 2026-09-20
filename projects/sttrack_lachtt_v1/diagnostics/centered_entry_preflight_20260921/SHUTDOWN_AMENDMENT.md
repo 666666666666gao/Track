@@ -1,0 +1,7 @@
+# Operational amendment after observed shutdown failure
+
+The first run completed native direct, Category direct and Category OPE (202 transitions each), then matched all 101 real TraX reports for cube04. The assertion after TrackerProcess.terminate() observed a nonzero child exit; the original assertion did not record its numeric value. The protocol log ends with quit. The installed toolkit waits only 3 seconds after quit before it may terminate/kill the child. This evidence does not prove which signal or exact cause produced the nonzero exit.
+
+Preserve all first-attempt files in attempt1.tar.gz, SHA256 e50509000367b299ccce1b1bec0d85046267303c2597e477f19793401fba1af9. Keep already completed direct/OPE artifacts. Change only client shutdown: send protocol quit explicitly, measure graceful child.wait(30) with a monotonic clock and require observed exit zero before unconditional cleanup. A timeout remains failure, with no automatic retry or fallback. No model, interface, initialization, text or comparison tolerances change.
+
+Resume Category TraX then the previously unexecuted Empty direct/OPE/TraX and final verification. Successful comparison paths still total 1414 tracking calls and 15 initializations; including the failed first TraX attempt, total executed calls become 1515 and initializations 16. The repeated 101 transitions are an interface retry, not extra model training. Preserve this failed attempt and report measured shutdown durations before attributing a cause.

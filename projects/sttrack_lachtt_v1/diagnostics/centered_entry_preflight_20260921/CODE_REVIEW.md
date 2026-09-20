@@ -1,0 +1,30 @@
+**Verdict: PASS after one revision and re-review.** No blocking or nonblocking code findings remain in the reviewed execution path. This is a fresh-context, same-family review with provisional acceptance; it permits the planned bounded runtime check, not a claim that parity has already passed.
+
+Requested reviewer routing: `gpt-6-astra`, reasoning effort `max`. Server-side model telemetry was not available to this reviewer. Review date: 2026-09-21.
+
+**Reviewed scope**
+
+Read `EXPERIMENT_PLAN.md`, `check_entries.py`, `run.sh`, and all five `interface/*.py` files directly. Also read the local completed M84 training specification, integration manifest, native/semantic tracker implementations, and the previous M84 interface copy. Packaging/report helpers are outside this execution-path review. No remote command, GPU run, checkpoint loading, training change, or GT evaluation was performed.
+
+**Resolved findings**
+
+1. **Blocking before revision: existing frozen-source binding was incomplete.** Preparation trusted `integration.json` as the source-code digest authority without checking its existing `training_spec.json.integration_sha256` binding. The fixed training specification already supplied this digest. `check_entries.py:29` now validates that exact existing relation before reading the source manifest. This closes the specific gap without adding a new binding scheme. The local completed M84 specification matches the pinned specification digest, and its integration file matches the existing specification field; this does not assert current remote identity.
+2. **Nonblocking before revision: standalone verification could skip missing sequence comparisons.** The original `zip(direct_rows, receipt['sequences'])` did not establish complete input lists, and the TraX receipt check relied on aggregate report counts. The amended `check_entries.py:164-202` requires the exact two sequence names, 102 direct rows per sequence, exact OPE shapes, the expected 3 Category / 2 Empty TraX sessions, 101 / 101 / 0 report counts, initialization regions, saved per-frame boxes and scores, and zero exits. These checks close the completeness gap. The original fresh, sequential runner already stopped on stage failure; no actual partial runtime result was observed.
+
+**Correctness conclusions**
+
+- Direct inference constructs `STTrackSemantic` separately and looks up the original fit bank by sequence name. OPE/TraX load the reindexed bank by RGB observation plus actual initialization coordinates. Both conditions use the same frozen Category adapter; Empty supplies the historical empty vectors, while the independent native comparison constructs `STTrack` directly.
+- `cube04_indoor` and `bag04_indoor` are the first two entries of the inspected frozen fit order, with integer initialization boxes and sufficient frame counts. Preparation asserts their names and excludes development sequences. Runtime paths read initialization boxes from the manifest and RGB-D frames, with no subsequent GT or metric calls. The OPE module's existing `analyze` mode is not invoked by `run.sh`.
+- OPE and direct tracking reuse their tracker across the two sequences. Real TraX uses a fresh subprocess for each initialization. The inspected native initializer resets frame count, templates, previous query, state, and semantic context; the semantic initializer then installs the new context.
+- The count is `2 conditions × 2 sequences × 101 transitions × 3 paths + 2 native prefixes × 101 = 1414` tracking calls. The corresponding initializations are 12 across the three semantic paths, 2 native, and 1 fractional protocol-only probe: 15 total. There are 5 TraX sessions and 404 tracking reports.
+- The copied interface files are byte-identical to the prior local M84 interface except `initialization_text.py`. Its conversion helper now implements float32 storage, four-decimal serialization, and float32 restoration. The fractional probe has a separate observation key and sends no tracking frames. Offline conversion of the prescribed input produced `[269.1234130859375, 248.76539611816406, 33.12350082397461, 32.76539993286133]`.
+- The OPE comparator preserves the six-decimal `5.01e-7` tolerance. Saved TraX boxes must equal the explicit wire conversion and scores must differ by at most `1e-6`. Empty/native equality includes all 204 stored rows.
+- The runner executes stages sequentially on GPU 1, records exits, and stops on failure. The client retains the child handle, terminates the transport in `finally`, waits, and requires exit zero before writing a complete receipt. No reviewed path starts, stops, or edits M87.
+
+The pinned official [toolkit 0.7.1 implementation](https://github.com/votchallenge/toolkit/blob/v0.7.1/vot/tracker/trax.py) supports the used frame/object conversion and termination API. The pinned [TraX 4.0.2 client](https://github.com/votchallenge/trax/blob/v4.0.2/support/python/trax/client.py) accepts a string log filename. This was source inspection, not verification of the installed remote packages. The VOT bridge acknowledges initialization before model initialization, so the fractional acknowledgement alone is insufficient; the mandatory normal child exit is part of the acceptance condition.
+
+**Local review validation**
+
+- Python AST parsing passed for `check_entries.py` and all five interface files.
+- CPU-only synthetic comparator fixtures accepted the complete expected four comparisons and rejected five independent corruptions: truncated direct output, a missing TraX session, truncated TraX rows, an altered TraX box, and a nonzero child exit. Read/hash/array-loading operations were substituted with fixture data; this exercised comparison logic only and is not transport or model evidence.
+- The actual real TraX/OPE runtime, installed-package identity, remote frozen artifacts, child exits, and GPU occupancy remain to be verified by the planned run. GPU 1 availability and completion before M87 evaluation are operational prerequisites, not established by this code review. No EAO, F, ROB, promotion, or M87 final-weight claim follows from this report.
