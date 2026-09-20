@@ -1,0 +1,227 @@
+{
+  "checks": {
+    "hash_binding": 671,
+    "byte_size": 308,
+    "binding_equality": 6,
+    "structure": 161,
+    "frame_contract": 440,
+    "receipt": 100,
+    "numeric_value": 1737,
+    "native_raw_parity": 44,
+    "frozen_gate_recompute": 14,
+    "derived_result": 4,
+    "CSV": 18,
+    "posthoc_diagnostic": 26,
+    "training": 786,
+    "control_identity": 17,
+    "terminal": 25,
+    "checkpoint": 123
+  },
+  "check_count": 4480,
+  "errors": [],
+  "error_count": 0,
+  "independent_metric": "Python stdlib scalar continuous xywh intersection / union; math.fsum; initialize excluded; invalid GT breaks consecutive low runs; H10 counts maximal low runs with length >=10",
+  "manifest_files": 283,
+  "integration_source_files": 161,
+  "hash_binding_checks": 671,
+  "raw_prediction_files_checked": 110,
+  "m84_raw_frames": 99390,
+  "m84_raw_noninitial_positions": 99324,
+  "m84_valid_metric_positions": 86691,
+  "additional_M82_raw_frames": 33130,
+  "gt_frames": 33130,
+  "gt_invalid_noninitial": 4211,
+  "aggregates": {
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.38232700392,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.652226263176244,
+      "macro_sequence_mean_iou": 0.6843364163600397
+    },
+    "M82_mask_control": {
+      "valid_frames": 28897,
+      "iou_sum": 21080.96532028973,
+      "low_iou_frames": 4952,
+      "failure_episodes": 67,
+      "mean_iou": 0.7295208956047248,
+      "macro_sequence_mean_iou": 0.7447772742984768
+    },
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 20474.143699949313,
+      "low_iou_frames": 5541,
+      "failure_episodes": 72,
+      "mean_iou": 0.7085214278281244,
+      "macro_sequence_mean_iou": 0.7004543356970994
+    },
+    "category_empty": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.38232700392,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.652226263176244,
+      "macro_sequence_mean_iou": 0.6843364163600397
+    },
+    "category_swapped": {
+      "valid_frames": 28897,
+      "iou_sum": 20347.5966058493,
+      "low_iou_frames": 5796,
+      "failure_episodes": 73,
+      "mean_iou": 0.7041421810516421,
+      "macro_sequence_mean_iou": 0.7059337344176406
+    }
+  },
+  "gates": {
+    "M82_increment": {
+      "mean": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    },
+    "native": {
+      "mean": true,
+      "macro": true,
+      "low": true,
+      "H10": true,
+      "native_zero_H10_protection": false
+    },
+    "swapped_content": {
+      "mean": true,
+      "macro": false,
+      "low": true,
+      "H10": true
+    },
+    "empty_native_parity": {
+      "all_sequences": true
+    }
+  },
+  "gate_count": 14,
+  "gate_pass_count": 8,
+  "native_success_damage": [
+    "mobilephone02_indoor"
+  ],
+  "loo_positive_counts": {
+    "category_empty": 22,
+    "category_swapped": 19
+  },
+  "loo_nonpositive": {
+    "category_empty": {},
+    "category_swapped": {
+      "colacan01_indoor": -0.018629633916492083,
+      "flower02_wild": -0.0022566492018978312,
+      "ghostmask_indoor": -0.002565009744592839
+    }
+  },
+  "CSV_rows": {
+    "aggregate_metrics.csv": 5,
+    "per_sequence_metrics.csv": 110,
+    "frozen_gates.csv": 14,
+    "leave_one_sequence_out.csv": 44
+  },
+  "training_sequence_rows": 130,
+  "training_calls": 186694,
+  "training_steps": 5798,
+  "training_label_counts": {
+    "centre_inside": 156814,
+    "centre_outside": 17665,
+    "invalid": 12215
+  },
+  "sampled_training_trace_rows": 3917,
+  "control_identity": {
+    "seed": true,
+    "sequence_order": true,
+    "development_sequences": true,
+    "native_checkpoint_sha256": true,
+    "banks": true,
+    "learning_rate": true,
+    "weight_decay": true,
+    "gradient_accumulation_frames": true,
+    "gradient_clip": true,
+    "native_update_interval": true,
+    "native_update_threshold": true,
+    "window_loss_weight": true,
+    "window_hard_negative_count": true,
+    "window_negative_maximum_iou": true,
+    "preservation_weight": true,
+    "preservation_teacher_minimum_iou": true,
+    "epochs": true
+  },
+  "M82_M84_changed_integration_sources": [
+    "lib/test/tracker/sttrack_semantic.py",
+    "lib/models/sttrack/centered_semantic_adapter.py"
+  ],
+  "exit_codes": {
+    "category_empty_recursive.exit": "0",
+    "category_recursive.exit": "0",
+    "category_swapped_recursive.exit": "0",
+    "controller.exit": "0",
+    "recursive_analysis.exit": "0",
+    "training_category.exit": "0"
+  },
+  "archive_native_candidates": {
+    "review_evidence.tar.gz": [
+      "native_reference.json"
+    ],
+    "review_inputs.tar.gz": [
+      "native_preservation.py"
+    ]
+  },
+  "checkpoint_pickle_globals": [
+    "collections OrderedDict",
+    "torch FloatStorage",
+    "torch._utils _rebuild_tensor_v2"
+  ],
+  "checkpoint": {
+    "metadata": {
+      "architecture": "semantic_spatial_centered_v1",
+      "null_support": true,
+      "support_loss_weight": 0.0,
+      "arm": "category",
+      "base_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+      "use_text": true,
+      "completed_sequences": 130,
+      "optimizer_steps": 5798,
+      "actual_dataset_optimizer_steps": 5798,
+      "frame_count": 186694,
+      "training_spec_sha256": "0f9bb841edd3e2c5171cd78ce9d1030d29a243561006d111d2c98eebfc74abd5",
+      "status": "complete",
+      "seed": 2027
+    },
+    "model_tensor_count": 24,
+    "model_numel": {
+      "slots": 320,
+      "empty_text": 768,
+      "rgb.0.weight": 49152,
+      "rgb.0.bias": 64,
+      "rgb.1.weight": 64,
+      "rgb.1.bias": 64,
+      "depth.0.weight": 49152,
+      "depth.0.bias": 64,
+      "depth.1.weight": 64,
+      "depth.1.bias": 64,
+      "text.0.weight": 49152,
+      "text.0.bias": 64,
+      "text.1.weight": 64,
+      "text.1.bias": 64,
+      "rgb_bound.weight": 64,
+      "rgb_bound.bias": 64,
+      "depth_bound.weight": 64,
+      "depth_bound.bias": 64,
+      "modality.weight": 384,
+      "modality.bias": 2,
+      "delta.0.weight": 40960,
+      "delta.0.bias": 128,
+      "delta.2.weight": 98304,
+      "delta.2.bias": 768
+    },
+    "trainable_parameter_count": 289154,
+    "float_storage_files": 93,
+    "finite_float_values": 868253,
+    "optimizer_state_count": 23,
+    "load_method": "Restricted stdlib pickle reader permitting only FloatStorage tag, OrderedDict and inert tensor reconstruction; tensor bytes checked directly with struct; no torch or runtime execution."
+  },
+  "native_raw_independent_recursion_available": true,
+  "native_reference_boundary": "All 22 locally extracted raw independent native sequences independently recomputed and compared with Empty: all 33130 bbox arrays and 33108 noninitial scores exact. The extraction source and local manifests verified. Original two remote shards and their original runtime/checkpoint bytes were not available to this reviewer; original shard hashes remain extraction-run provenance assertions, not locally rehashed source bytes. M83 same-state native readouts were not used."
+}

@@ -1,0 +1,160 @@
+{
+  "status": "complete_recursive_development",
+  "observed_utc": "2026-09-20T16:25:35.931317+00:00",
+  "training_spec_sha256": "0f9bb841edd3e2c5171cd78ce9d1030d29a243561006d111d2c98eebfc74abd5",
+  "recursive_spec_sha256": "132002a4c0755e4b07c6c9758645d380273e0a0aff41809c2fe6f49d08b1f5d8",
+  "aggregates": {
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600395
+    },
+    "M82_mask_control": {
+      "valid_frames": 28897,
+      "iou_sum": 21080.96532028973,
+      "low_iou_frames": 4952,
+      "failure_episodes": 67,
+      "mean_iou": 0.7295208956047248,
+      "macro_sequence_mean_iou": 0.7447772742984767
+    },
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 20474.143699949313,
+      "low_iou_frames": 5541,
+      "failure_episodes": 72,
+      "mean_iou": 0.7085214278281244,
+      "macro_sequence_mean_iou": 0.7004543356970993
+    },
+    "category_empty": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600395
+    },
+    "category_swapped": {
+      "valid_frames": 28897,
+      "iou_sum": 20347.596605849307,
+      "low_iou_frames": 5796,
+      "failure_episodes": 73,
+      "mean_iou": 0.7041421810516423,
+      "macro_sequence_mean_iou": 0.7059337344176406
+    }
+  },
+  "gates": {
+    "M82_increment": {
+      "mean": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    },
+    "native": {
+      "mean": true,
+      "macro": true,
+      "low": true,
+      "H10": true,
+      "native_zero_H10_protection": false
+    },
+    "swapped_content": {
+      "mean": true,
+      "macro": false,
+      "low": true,
+      "H10": true
+    },
+    "empty_native_parity": {
+      "all_sequences": true
+    }
+  },
+  "all_gates_pass": false,
+  "gate_count": 14,
+  "native_success_damage": [
+    "mobilephone02_indoor"
+  ],
+  "empty_native_parity": {
+    "bag05_indoor": true,
+    "ball07_indoor": true,
+    "ball19_indoor": true,
+    "beautifullight01_indoor": true,
+    "book06_indoor": true,
+    "car01_indoor": true,
+    "car02_indoor": true,
+    "colacan01_indoor": true,
+    "colacan04_indoor": true,
+    "container01_indoor": true,
+    "cup08_indoor": true,
+    "cup10_indoor": true,
+    "cup13_indoor": true,
+    "egg_indoor": true,
+    "flower02_wild": true,
+    "flower03_indoor": true,
+    "flowerbasket_indoor": true,
+    "ghostmask_indoor": true,
+    "glass03_indoor": true,
+    "mobilephone01_indoor": true,
+    "mobilephone02_indoor": true,
+    "notebook02_indoor": true
+  },
+  "content_leave_one_out": {
+    "category_empty": {
+      "bag05_indoor": 0.058572645207904395,
+      "ball07_indoor": 0.027704481209284038,
+      "ball19_indoor": 0.058876304864309836,
+      "beautifullight01_indoor": 0.055929503249596446,
+      "book06_indoor": 0.05799668363264765,
+      "car01_indoor": 0.05650273366207936,
+      "car02_indoor": 0.06473881297912609,
+      "colacan01_indoor": 0.021132245740828726,
+      "colacan04_indoor": 0.05471659657200345,
+      "container01_indoor": 0.05755391480933192,
+      "cup08_indoor": 0.056218395367882645,
+      "cup10_indoor": 0.060898688604763884,
+      "cup13_indoor": 0.0624291983202131,
+      "egg_indoor": 0.06720068533924906,
+      "flower02_wild": 0.05767413757814144,
+      "flower03_indoor": 0.05726033045028012,
+      "flowerbasket_indoor": 0.05788806045651951,
+      "ghostmask_indoor": 0.054653578055386065,
+      "glass03_indoor": 0.05487174317496557,
+      "mobilephone01_indoor": 0.06756866905355863,
+      "mobilephone02_indoor": 0.06378423431296232,
+      "notebook02_indoor": 0.06231783718779993
+    },
+    "category_swapped": {
+      "bag05_indoor": 0.004192324631046351,
+      "ball07_indoor": 0.005051944707051725,
+      "ball19_indoor": 0.004608897806422596,
+      "beautifullight01_indoor": 0.00041339573359611137,
+      "book06_indoor": 0.01121089994886637,
+      "car01_indoor": 0.014158631225295149,
+      "car02_indoor": 0.008669980097192886,
+      "colacan01_indoor": -0.018629633916492416,
+      "colacan04_indoor": 0.008939719727450002,
+      "container01_indoor": 0.0034039982025289017,
+      "cup08_indoor": 0.004573718602372767,
+      "cup10_indoor": 0.0071346777235208325,
+      "cup13_indoor": 0.00903037716997257,
+      "egg_indoor": 0.002785139817521043,
+      "flower02_wild": -0.0022566492018983864,
+      "flower03_indoor": 0.004439829600482281,
+      "flowerbasket_indoor": 0.0047418830240747445,
+      "ghostmask_indoor": -0.002565009744593283,
+      "glass03_indoor": 0.00453935570644437,
+      "mobilephone01_indoor": 0.004602304833081106,
+      "mobilephone02_indoor": 0.010556761316950602,
+      "notebook02_indoor": 0.005636609200461717
+    }
+  },
+  "receipts": {
+    "category": "bd44cfadea92849b29dc5f9a68a1402dca8c07a96e2b3c2f30029cae7caf226e",
+    "category_empty": "f452744025b4890ce3c2ddb4e1412c82e7065f35e49f70cdaf97d56b6de064fb",
+    "category_swapped": "84ccbfc6b8d50ba216db908b897a7399e38780be4291359df7d32a6f768660c6"
+  },
+  "head_sha256": "c63605ebcb1f702de66f96967255e5301bfdca1e3c40450b6d4b8a952791b1e0",
+  "scope": "Repeated DepthTrack Train development22; one trained Category head and three content recursions, not three trained models.",
+  "text_scope": "Frozen automatic captions, not semantically verified ground truth.",
+  "public_evaluation_started": false
+}

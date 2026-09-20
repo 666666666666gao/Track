@@ -1,0 +1,9 @@
+{
+  "call_number": 1,
+  "purpose": "completed-result-integrity",
+  "timestamp": "2026-09-21T00:29:00+08:00",
+  "tool": "spawn_agent",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "prompt": "Use C:\\Users\\gb\\.codex\\skills\\experiment-audit\\SKILL.md. Fresh experiment integrity review; read actual evidence, do not trust narrative. Evidence root D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed. Files: evidence_manifest.json, recursive_result.json, recursive_spec.json, training_spec.json, frozen.json, integration.json, run_recursive.py, recursive_metric.py, run_m84.sh, EXPERIMENT_PLAN.md, *_recursive_receipt.json, all *.exit/log, recursive/{category,category_empty,category_swapped}/*.json, dataset_gt/*.txt, controls/{native_result.json,M82_recursive_result.json}, training/category/{result.json,final.pth,sequence_log.jsonl}, training_saved_verification.json, verify_training_complete.py, code/ tree. Additional available local independent native/M82 evidence at D:\\Program Files\\UserCache\\gb\\codex\\tmp\\m82_complete_20260920 (locate relevant paths if needed). Audit GT provenance, no own-output normalization, result existence, invoked metric, single-seed repeated-development scope, all SHA bindings. Independently recompute raw IoUs, H10 contiguous valid lows (invalid breaks), aggregate and per-sequence, leave-one-out and every 14 frozen gate; check all prediction receipts. Distinguish aggregate/persequence empty parity from proof of every native bbox/score equal: verify stronger claim only if native raw files available. Check method/control comparability, no premature official performance claim. Write M84_COMPLETED_AUDIT.md and .json in completed root, exact file:line references, deterministic checks separate from same-family provisional semantic review. Do not modify existing evidence/code or access SSH secrets. No new subagents. Return actual checks/counts/errors and hashes."
+}
