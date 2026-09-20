@@ -1,0 +1,110 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "assistant_proxy_measurement_and_historical_provenance_limits",
+  "summary": "All deterministic checks passed. Existing reports preserve scope; semantic labels remain same-family assistant proxy judgments, and historical seal ordering/tensor identity are not independently established.",
+  "date": "2026-09-21",
+  "generated_at": "2026-09-20T18:59:22.090220+00:00",
+  "project": "M87 initialization semantic screening",
+  "reviewer_model_requested": "gpt-6-astra",
+  "reviewer_reasoning_requested": "max",
+  "model_attribution_basis": "requested route only; no server-side model or reasoning telemetry available",
+  "reviewer_model_server_verified": false,
+  "reviewer_reasoning_server_verified": false,
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "agent_task": "/root/m87_screening_integrity",
+  "trace_path": ".aris/traces/experiment-audit/2026-09-21_run01/",
+  "deterministic_checks": {
+    "main_passed": 65,
+    "main_total": 65,
+    "supplement_passed": 41,
+    "supplement_total": 41,
+    "failed_checks": [],
+    "acceptance_status": "accepted_for_local_deterministic_consistency_only"
+  },
+  "report_sha256": "9224e243958d1e60cd1d2a081c520c3c4782c36b21cc53725b28dbef30ffd002",
+  "checks": {
+    "A": {
+      "status": "WARN",
+      "evidence": [
+        "semantic_screening/SCREENING_PLAN.md:5-9",
+        "semantic_screening/sealed_new_labels.json:3-6",
+        "semantic_screening/M87_INITIALIZATION_SCREENING.md:17-29"
+      ]
+    },
+    "B": {
+      "status": "PASS",
+      "evidence": [
+        "semantic_screening/analyze_screening.py:25-42",
+        "input_audit/audit_processor.py:66-74"
+      ]
+    },
+    "C": {
+      "status": "PASS",
+      "evidence": [
+        "semantic_screening/analyze_screening.py:11-23",
+        "semantic_screening/screening_summary.json:8-166",
+        "semantic_screening/M87_INITIALIZATION_SCREENING.md:9-29",
+        "semantic_screening/M87_INITIALIZATION_SCREENING.md:49-52"
+      ]
+    },
+    "D": {
+      "status": "PASS",
+      "evidence": [
+        "semantic_screening/analyze_screening.py:31-52",
+        "prepared_evidence/caption_protocol.py:78-108",
+        "prepared_evidence/caption_result.json:9-14"
+      ]
+    },
+    "E": {
+      "status": "PASS",
+      "evidence": [
+        "semantic_screening/SCREENING_PLAN.md:3-9",
+        "semantic_screening/M87_INITIALIZATION_SCREENING.md:3",
+        "semantic_screening/M87_INITIALIZATION_SCREENING.md:41-43"
+      ]
+    },
+    "F": {
+      "status": "PASS",
+      "evidence": [
+        "semantic_screening/sealed_new_labels.json:6",
+        "semantic_screening/M87_INITIALIZATION_SCREENING.md:3",
+        "input_audit/M87_INPUT_RECONSTRUCTION.md:23-27"
+      ]
+    }
+  },
+  "evaluation_type": {
+    "classification": "synthetic_proxy",
+    "subtype": "assistant_visual_initialization_screening",
+    "human_eval": false
+  },
+  "detailed_checks": [
+    {
+      "path": "deterministic_checks.json",
+      "sha256": "57e1dd8f5687ca384bec645bf4da533cca82f5b1538cdea9a14c816ca98b619e",
+      "private": true
+    },
+    {
+      "path": "input_supplement_checks.json",
+      "sha256": "5cd9e567b44b19d0eb47d05ec47a4cd4556ba8bdca7bdde5610f80833cb4ab9d",
+      "private": true
+    }
+  ],
+  "limitations": [
+    "Assistant labels are proxy judgments with prior context and three cross-pass disagreements.",
+    "Current hashes and self-recorded times do not independently establish historical blinding or seal order.",
+    "No historical input tensor bytes; reviewer did not rerun complete processor/tokenizer or generation.",
+    "Model provenance review compared saved local metadata; no remote weight rehash or independent official metadata fetch."
+  ],
+  "scope": {
+    "original_artifacts_modified": false,
+    "remote_access_performed": false,
+    "later_frames_accessed": false,
+    "training_performance_evaluation_performed": false,
+    "raw_images_in_public_report": false,
+    "protocol_gt_coordinates_in_public_report": false
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "status": "completed_cpu_processor_reconstruction",
+  "rows": 152,
+  "checks": {
+    "source_image_hash": 152,
+    "crop_size": 152,
+    "historical_grid": 152,
+    "single_image_markers": 152,
+    "image_token_count": 152,
+    "finite_pixel_values": 152,
+    "rgb_roundtrip_exact": 152,
+    "temporal_duplicate_exact": 152
+  },
+  "generator_calls": 0,
+  "model_weight_loads": 0,
+  "optimizer_steps": 0,
+  "cuda_visible_devices": "",
+  "image_tokens_range": [
+    128,
+    180
+  ],
+  "crop_short_side_quantiles": [
+    16.0,
+    38.75,
+    57.0,
+    98.75,
+    349.0
+  ],
+  "max_denormalization_float_error": 4.57763671875e-05,
+  "output_rows_sha256": "4df0c8deffb06e19229df48dce04a5b1a2477c759fa5b18f0b082b6a58241b3c",
+  "script_sha256": "b50873c8e383335961f91f6af376b11413271765f25fab4a620ec47b5e5840ba",
+  "plan_sha256": "e157f14e2d49dae5c626ce0660c2df5f10da46f91b792848a751032251d33f5f",
+  "caption_spec_sha256": "f9857ad3d0a07d4cf46234cacadba661ae57629771939de12a1d4621931f4b37",
+  "caption_records_sha256": "8141f3746b6ddec25beab547fe2bbb7d242b5bb617da830f971af530678208f2",
+  "library_sources": {
+    "image_processor": {
+      "installed_path": "/home/qwen25_env/lib/python3.10/site-packages/transformers/models/qwen2_vl/image_processing_qwen2_vl.py",
+      "sha256": "06d72059abedc4e6b8fa693be9f2b51da3fe11a09dfc0ff456c578951e269c1f"
+    },
+    "processor": {
+      "installed_path": "/home/qwen25_env/lib/python3.10/site-packages/transformers/models/qwen2_5_vl/processing_qwen2_5_vl.py",
+      "sha256": "95ec1231f8123e6949dd328e3035e104a335a0701488949aec444410071474cd"
+    },
+    "vision_process": {
+      "installed_path": "/home/qwen25_env/lib/python3.10/site-packages/qwen_vl_utils/vision_process.py",
+      "sha256": "77a14dda7d6f3ddf1a1280c75d14f3424155d409296accdee8fb7ebbe883866e"
+    }
+  },
+  "python": "3.10.20 (main, Jun 11 2026, 15:17:37) [GCC 14.3.0]",
+  "torch": "2.5.1+cu121",
+  "transformers": "4.51.3",
+  "elapsed_seconds": 3.5706610679626465,
+  "selected_visual_ids": [
+    "010",
+    "028",
+    "042",
+    "062",
+    "068",
+    "071",
+    "105",
+    "128"
+  ],
+  "historical_pixel_values_saved": false,
+  "historical_generation_replayed": false,
+  "caption_semantic_accuracy_estimated": false,
+  "limitations": [
+    "CPU reconstruction verifies current preprocessing, not unrecorded historical tensors",
+    "Historical grid and source image hashes match; model visual attention and generation semantics not checked",
+    "No conclusion that caption errors are caused by crop size or loss of context"
+  ]
+}
