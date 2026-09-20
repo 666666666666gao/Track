@@ -1,0 +1,291 @@
+{
+  "status": "complete_code_review",
+  "verdict": "PASS",
+  "reviewed_at_utc": "2026-09-20T16:58:08.996336+00:00",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "max",
+    "fork_turns": "none",
+    "attribution": "Actual spawn parameters confirmed by parent agent"
+  },
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "scope": "Code and syntax review of the bounded M85 diagnostic, its M83 replay reference and relevant M84 frozen implementation. No SSH, CUDA execution, GT inspection, additional model, or seed sweep.",
+  "spec_sha256": "748b11527aa7302490a37cfdf9b2b7643239e604943880e675d2e480b4e533ec",
+  "blocking_findings": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings": [],
+  "resolved_observations": [
+    {
+      "issue": "Native checkpoint digest originally checked only as metadata",
+      "resolution": "Executor added direct byte digest and frozen integration checks; final same_state.py lines 33-34 reviewed."
+    },
+    {
+      "issue": "Earlier analyzer did not aggregate low-overlap runs",
+      "resolution": "Executor added low_runs at analyze_saved.py lines 29-37 and per-arm H10 at line 93; invalid GT breaks intervals."
+    },
+    {
+      "issue": "Category-only dense partition could be overinterpreted",
+      "resolution": "Executor added alternate-correct and all-heads-no-correct counts at analyze_saved.py lines 90-91. Category-only partition remains explicitly interpreted as such."
+    }
+  ],
+  "checks": [
+    {
+      "name": "chronological exact replay",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "same_state.py:78-91",
+        "same_state.py:130"
+      ],
+      "detail": "Initialization only at frame zero. Category is the only tracker.track call and its bbox, score, and decoded Hann bbox must exactly match sealed reference/output. Three complete case counts sum to 2616; preflight covers 101 calls."
+    },
+    {
+      "name": "capture and hook overwrite",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "same_state.py:56-57",
+        "same_state.py:92-101",
+        "M84/code/lib/models/sttrack/sttrack.py:147-154"
+      ],
+      "detail": "Adapter pre-hook captures the current state boundary. Category map tensor references are saved before alternate head hooks overwrite capture. Alternative calls use .forward directly on the adapter, retaining the original captured inputs."
+    },
+    {
+      "name": "alternative state isolation",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "same_state.py:95-110",
+        "M84/code/lib/models/sttrack/centered_semantic_adapter.py:12-20",
+        "M84/code/lib/models/sttrack/semantic_spatial_adapter.py:25-52",
+        "M84/code/lib/models/sttrack/sttrack.py:175-205"
+      ],
+      "detail": "Alternatives call only stateless adapter/head evaluation paths; no backbone, query update, tracker.track, or template-write path is called. Bbox, query values, and template object identities are checked after alternatives. Category output tensors are not mutated by these operations."
+    },
+    {
+      "name": "Empty/native and dense layout",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "same_state.py:102-107",
+        "same_state.py:137-139",
+        "M84/code/lib/models/layers/head.py:142-156"
+      ],
+      "detail": "Exact Empty/native equality is enforced for score, size, and offset. Saved order is score,width,height,offset_x,offset_y, with finite per-frame (5,16,16) maps. The existing evaluation path uses float32 and no autocast; NPZ preserves that dtype. The actual Hann window is saved."
+    },
+    {
+      "name": "crop and template eligibility",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "same_state.py:111-133",
+        "M84/code/lib/train/data/processing_utils.py:32-41",
+        "M84/code/lib/test/tracker/sttrack.py:119-139",
+        "M84/code/lib/test/tracker/sttrack.py:192-198"
+      ],
+      "detail": "Integer crop origin uses the same ceil/round expressions as sample_target. Box decoding intentionally uses the tracker center mapping, including its subpixel offset, then the same clip_box margin. Eligibility matches frozen two-template configuration, interval 50 and strict score > 0.75."
+    },
+    {
+      "name": "source and checkpoint binding",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "same_state.py:29-40",
+        "same_state.py:51-54",
+        "same_state.py:80-81",
+        "launch.py:8-11"
+      ],
+      "detail": "Final code checks native checkpoint bytes against the frozen training-spec digest, validates integration digest and its source table, Category final checkpoint, banks, sealed Category predictions, and its own source. Launch checks the review/spec and plan/queue/analyzer/replay source bindings. Actual remote bytes were not accessed by this reviewer."
+    },
+    {
+      "name": "preflight and launch gate",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "run_replay.sh:5-13",
+        "launch.py:8-21"
+      ],
+      "detail": "Any nonzero preflight exit prevents the full run; preflight and predictions directories are separate. Launcher requires zero blockers, bound sources, at least 200 MiB free space, and absence of previous launch/preflight/predictions before starting the queue once. Process liveness check is only startup evidence."
+    },
+    {
+      "name": "GT only after sealed predictions",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "same_state.py:67-91",
+        "analyze_saved.py:40-54"
+      ],
+      "detail": "Replay has no subsequent-GT load. Analyzer requires successful controller exit, complete selected3 receipt with 2616 calls, exact case counts and every JSON/NPZ hash before loading subsequent GT. GT files are then checked against case digests."
+    },
+    {
+      "name": "dense decoder and IoU",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "analyze_saved.py:11-27",
+        "analyze_saved.py:67-77",
+        "M84/code/lib/models/layers/head.py:142-156",
+        "M84/code/lib/utils/box_ops.py:97-106"
+      ],
+      "detail": "Flattened row-major x/y and channel order match CenterPredictor.cal_bbox; output uses the same image clipping. All selected raw/Hann indices must match, and decoded selected boxes must be within 1e-4 pixel of saved online boxes before candidate-capacity use. Primary selected IoU uses saved boxes; dense IoU uses dataset GT."
+    },
+    {
+      "name": "valid frames and count partition",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "analyze_saved.py:62-66",
+        "analyze_saved.py:79-93"
+      ],
+      "detail": "Only finite GT with positive width and height is evaluated, initialization is excluded, and Category-low frames partition into center outside / center inside without Category-correct dense candidate / center inside with one. Alternate candidate capacity and all-heads-no-correct capacity are separately counted. Rescue/harm counts may overlap other categories and are not a second partition."
+    },
+    {
+      "name": "low-overlap intervals",
+      "status": "PASS_STATIC",
+      "evidence": [
+        "analyze_saved.py:29-37",
+        "analyze_saved.py:93"
+      ],
+      "detail": "H10 contains half-open [start,end) intervals of at least 10 consecutive valid frames with selected Hann IoU <= 0.1. Invalid GT ends an interval; final sentinel closes a tail interval. Alternate H10 values remain under the Category state history."
+    }
+  ],
+  "validation": {
+    "python_syntax": {
+      "status": "PASS",
+      "runtime": "E:\\python.exe, Python 3.12.6",
+      "files": [
+        "same_state.py",
+        "analyze_saved.py",
+        "launch.py"
+      ],
+      "method": "compile(source, path, exec), no imports or model execution"
+    },
+    "shell_syntax": {
+      "status": "PASS",
+      "file": "run_replay.sh",
+      "method": "bash -n, stdin from local file",
+      "exit_code": 0
+    },
+    "local_spec_bindings": "PASS",
+    "fixed_case_tracking_calls": 2616,
+    "parent_replay_source_binding": "PASS",
+    "cuda_preflight": "NOT_RUN_BY_REVIEWER",
+    "full_replay": "NOT_RUN_BY_REVIEWER",
+    "posthoc_analysis": "NOT_RUN_BY_REVIEWER"
+  },
+  "limitations": [
+    "PASS permits the defined CUDA preflight; it does not certify actual bitwise replay, CUDA numerical parity, remote artifact availability, output dtype/shape receipts, or full-run completion.",
+    "Dense absence is bounded to these saved candidates and alternate heads under the Category history. It does not establish a causal mechanism for earlier query/template updates or prove a target is absent.",
+    "These three posthoc selected cases cannot support unbiased prevalence, formal benchmark metrics, causal repair, native/Swapped independent trajectories, or promotion of M84.",
+    "H10 uses half-open frame-index intervals; threshold definitions are selected Hann IoU <= 0.1 and candidate correctness IoU >= 0.5."
+  ],
+  "implementation_modified_by_reviewer": false,
+  "reviewed_files": [
+    {
+      "label": "EXPERIMENT_PLAN.md",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\EXPERIMENT_PLAN.md",
+      "sha256": "93c66f1943c275055741028b7db92d5f5a9ac18ce4cdf2486d2028122b2b2ebd",
+      "scope": "complete file"
+    },
+    {
+      "label": "spec.json",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\spec.json",
+      "sha256": "748b11527aa7302490a37cfdf9b2b7643239e604943880e675d2e480b4e533ec",
+      "scope": "complete file"
+    },
+    {
+      "label": "same_state.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\same_state.py",
+      "sha256": "6959a6e632bccea2469bae523d924698cbc6dfd32b08b38ec0e1bf1658326f41",
+      "scope": "complete file"
+    },
+    {
+      "label": "run_replay.sh",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\run_replay.sh",
+      "sha256": "74a1d147b310d76df45eeb3ce2fbb269d388e86ec1673d33826249db2c46edcb",
+      "scope": "complete file"
+    },
+    {
+      "label": "analyze_saved.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\analyze_saved.py",
+      "sha256": "6bc7f5cbf5a451d19f3b03cc7b1d65d51f1fe17dd25f460c1fe602ea1d4265d0",
+      "scope": "complete file"
+    },
+    {
+      "label": "launch.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\launch.py",
+      "sha256": "0663abe161ed7d83fc409543cdc966dacfcdd1852f043f44c56bcb92927f9106",
+      "scope": "complete file"
+    },
+    {
+      "label": "M83/m83_same_state.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\m82_complete_20260920\\m83_completed\\m83_same_state.py",
+      "sha256": "976ff0c134f9f839db4e361344446632a5377ae41b8ac9cfa257ac99c00a589c",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/models/sttrack/centered_semantic_adapter.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\models\\sttrack\\centered_semantic_adapter.py",
+      "sha256": "59be315803924f429d3e431b753c4cc7a6acc98a97a02cb8e370f7078fbe36a5",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/models/sttrack/semantic_spatial_adapter.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\models\\sttrack\\semantic_spatial_adapter.py",
+      "sha256": "dde93520ed569ede7f4f0b9a0c10d0b6ff179135b9928b2b3e03f41dfd3f4d88",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/test/tracker/sttrack_semantic.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\test\\tracker\\sttrack_semantic.py",
+      "sha256": "9283fc1c54f1df157eb9d28fec69b49c8655e2898a01342228452809fdd77922",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/test/tracker/sttrack.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\test\\tracker\\sttrack.py",
+      "sha256": "5b114e384942ecf2740e1b2da93bea855eb38246786c62e49bf5ce70b78ff8c6",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/models/sttrack/sttrack.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\models\\sttrack\\sttrack.py",
+      "sha256": "aa75dfcb6b8990a10293b7415332f6fe293e8584d0ad7348423e3a4a48129057",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/models/layers/head.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\models\\layers\\head.py",
+      "sha256": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/train/data/processing_utils.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\train\\data\\processing_utils.py",
+      "sha256": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+      "scope": "sample_target, lines 14-81"
+    },
+    {
+      "label": "M84/code/experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\experiments\\sttrack\\deep_rgbd_256_lachtt_v1.yaml",
+      "sha256": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/train/dataset/depth_utils.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\train\\dataset\\depth_utils.py",
+      "sha256": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+      "scope": "get_rgbd_frame, lines 7-68"
+    },
+    {
+      "label": "M84/code/lib/test/tracker/sttrack_initial_instance_observation.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\test\\tracker\\sttrack_initial_instance_observation.py",
+      "sha256": "2f63f49f90b08f3e205c9bb48cb22aad1d800b6bc7d1d823746c638bf9ffddde",
+      "scope": "complete file"
+    },
+    {
+      "label": "M84/code/lib/test/tracker/data_utils.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\test\\tracker\\data_utils.py",
+      "sha256": "873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5",
+      "scope": "PreprocessorMM, lines 16-27"
+    },
+    {
+      "label": "M84/code/lib/utils/box_ops.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed\\code\\lib\\utils\\box_ops.py",
+      "sha256": "cee9d309a9c4a6c5f00fab575719bc7bf8d865127c91b10d4fb233996a111fbc",
+      "scope": "clip_box, lines 97-106"
+    }
+  ],
+  "report_sha256": "74cbb5d38fb0b92cc0a7e8f810e6818ed786e21e7ccd0dde023c417de17687bd"
+}

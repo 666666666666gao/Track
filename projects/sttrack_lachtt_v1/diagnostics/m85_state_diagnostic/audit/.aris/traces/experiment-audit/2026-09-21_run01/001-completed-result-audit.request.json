@@ -1,0 +1,19 @@
+{
+  "call_number": 1,
+  "purpose": "completed-result-audit",
+  "timestamp": null,
+  "timestamp_note": "Historical spawn timestamp unavailable to reviewer; request captured verbatim.",
+  "tool": "spawn_agent",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "fork_turns": "none",
+  "files_referenced": [
+    "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\completed",
+    "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed"
+  ],
+  "prompt": "Apply C:\\Users\\gb\\.codex\\skills\\experiment-audit\\SKILL.md as fresh same-family/provisional integrity reviewer. Read source artifacts directly; verify rather than trust author claims. Root needs a bounded completed-result audit while independently auditing caption provenance. Read-only experiment; you may write ONLY your audit scripts/reports/traces under D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\audit. Main evidence directory D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m85_state_diagnostic_20260921\\completed contains spec.json, EXPERIMENT_PLAN.md, same_state.py, analyze_saved.py, run_replay.sh, launch.py, code_review.json, review_receipt.json, all *.exit/log, predictions/*.json and *.npz, preflight/*, diagnostic_result.json. Parent evidence D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\completed contains training_spec.json, recursive_result.json, recursive_spec.json, raw predictions and dataset GT (discover concrete relative paths), code/integration. Check A-F from skill: actual dataset GT provenance and prediction sealing before GT, no prediction-based normalization, file/metric existence, executed code, scope limited 3 posthoc sequences not benchmark/cause proof, evaluation classification. Independently recompute M85 dense decode and primary single-step metrics/H10/candidate counts from saved artifacts and parent GT, hash bindings and exact saved Category replay versus M84 raw. Verify counterfactuals don't commit state and Empty/native parity assertions actual executed. Don't rerun GPU or training, don't access SSH/secrets. Reports distinguish deterministic evidence, actual unverified runtime assertions, same-family semantic verdict provisional. Preserve actual request, full final response and metadata in .aris trace inside audit. Supply exact audit/report paths and remaining limitations, no fabricated independent training reproduction. Do not modify frozen source/results.",
+  "followup_messages": [
+    "Actual native spawn explicit model=gpt-6-astra, reasoning_effort=max, fork_turns=none, task_name=m85_completed_integrity. No overrides/fallback. Please save those as root-confirmed spawn parameters; your independent interpretation remains same-family/provisional.",
+    "Use uv run --no-project --with numpy python <audit script> (existing uv available, its cache redirected to D:). Prior M84 audit may also identify known runtime; inspect D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\audit. Bounded NumPy environment via uv allowed; do not modify project environments."
+  ]
+}

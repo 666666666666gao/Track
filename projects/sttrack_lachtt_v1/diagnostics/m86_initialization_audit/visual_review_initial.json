@@ -1,0 +1,773 @@
+{
+  "review_type": "assistant_initialization_only_screening",
+  "reviewer": "root Codex visual review; not human ground truth; not independent of project history",
+  "presentation": "19 anonymous ID contact sheets, first-frame RGB/full red box and exact crop only; no sequence names/splits/metrics in sheets",
+  "scope": "Category referent support classification for all 152. Attribute comments are illustrative, not exhaustive phrase-level truth labels. No replacement caption or training labels produced.",
+  "definitions": {
+    "supported": "Observed object supports the category at its stated or explicitly noted coarse granularity; does not validate every attribute.",
+    "conflicting": "Observed protocol target conflicts with category referent; alternative identity need not be known.",
+    "uncertain": "Insufficient pixels/light, functional or fine-grained ambiguity, partial-object referent, or nonsemantic label."
+  },
+  "rows": [
+    {
+      "audit_id": "001",
+      "category_support": "uncertain",
+      "visual_evidence": "白色小方块可见，功能细节不足，不能确认灯具。"
+    },
+    {
+      "audit_id": "002",
+      "category_support": "supported",
+      "visual_evidence": "黑色带拉链的盒包外形可见；皮革材质不能确认。"
+    },
+    {
+      "audit_id": "003",
+      "category_support": "uncertain",
+      "visual_evidence": "框内黑色物体细节较暗，不能确认耳机；按钮数量不可核实。"
+    },
+    {
+      "audit_id": "004",
+      "category_support": "conflicting",
+      "visual_evidence": "框主要圈住红色织物物体，非手；smooth skin无对应目标证据。"
+    },
+    {
+      "audit_id": "005",
+      "category_support": "supported",
+      "visual_evidence": "黑色球及白色数字圆区可见。"
+    },
+    {
+      "audit_id": "006",
+      "category_support": "uncertain",
+      "visual_evidence": "黄色球状物可见，但分辨率不足以确认苹果；类别需保守。"
+    },
+    {
+      "audit_id": "007",
+      "category_support": "supported",
+      "visual_evidence": "悬空黄色球状物可见。"
+    },
+    {
+      "audit_id": "008",
+      "category_support": "supported",
+      "visual_evidence": "绿色球状物可见，表面细节较模糊。"
+    },
+    {
+      "audit_id": "009",
+      "category_support": "supported",
+      "visual_evidence": "黑色球状物及白色数字区域可见。"
+    },
+    {
+      "audit_id": "010",
+      "category_support": "supported",
+      "visual_evidence": "棕色篮球与球面沟槽可见。"
+    },
+    {
+      "audit_id": "011",
+      "category_support": "supported",
+      "visual_evidence": "手持棕色篮球可见。"
+    },
+    {
+      "audit_id": "012",
+      "category_support": "supported",
+      "visual_evidence": "拼块足球可见；含黄色和深色区域。"
+    },
+    {
+      "audit_id": "013",
+      "category_support": "conflicting",
+      "visual_evidence": "框内为近球形白色物体，未见杯口、杯壁；周围桌面有其他杯子。"
+    },
+    {
+      "audit_id": "014",
+      "category_support": "supported",
+      "visual_evidence": "篮球形状和沟槽可见。"
+    },
+    {
+      "audit_id": "015",
+      "category_support": "uncertain",
+      "visual_evidence": "暗色圆形物体带彩色花纹；水果和绿色果柄均缺乏充分证据。"
+    },
+    {
+      "audit_id": "016",
+      "category_support": "supported",
+      "visual_evidence": "篮球沟槽与橙棕色表面可见。"
+    },
+    {
+      "audit_id": "017",
+      "category_support": "supported",
+      "visual_evidence": "棕色球体可见。"
+    },
+    {
+      "audit_id": "018",
+      "category_support": "supported",
+      "visual_evidence": "绿色拼块足球可见；黄色属性不明显。"
+    },
+    {
+      "audit_id": "019",
+      "category_support": "conflicting",
+      "visual_evidence": "框内为开口容器或垃圾桶，未见电脑结构。"
+    },
+    {
+      "audit_id": "020",
+      "category_support": "supported",
+      "visual_evidence": "白色球体可见。"
+    },
+    {
+      "audit_id": "021",
+      "category_support": "supported",
+      "visual_evidence": "自行车与后架粉色物可见。"
+    },
+    {
+      "audit_id": "022",
+      "category_support": "supported",
+      "visual_evidence": "橙白自行车可见，车架文字细节不足。"
+    },
+    {
+      "audit_id": "023",
+      "category_support": "supported",
+      "visual_evidence": "银色车架与橙色车轮可见。"
+    },
+    {
+      "audit_id": "024",
+      "category_support": "supported",
+      "visual_evidence": "侧视书本外形可见；open属性不能据此确认。"
+    },
+    {
+      "audit_id": "025",
+      "category_support": "supported",
+      "visual_evidence": "书本及绿色封面可见，封面文字存在但内容未核验。"
+    },
+    {
+      "audit_id": "026",
+      "category_support": "supported",
+      "visual_evidence": "黑绿书本可见；具体标题须原图文字核验，未直接接受。"
+    },
+    {
+      "audit_id": "027",
+      "category_support": "supported",
+      "visual_evidence": "书本与绿色书脊可见。"
+    },
+    {
+      "audit_id": "028",
+      "category_support": "conflicting",
+      "visual_evidence": "协议框主要覆盖书本，左侧杯子侵入框内；cup未指向主要框选书本。"
+    },
+    {
+      "audit_id": "029",
+      "category_support": "supported",
+      "visual_evidence": "蓝色瓶状物、瓶颈及瓶身可见。"
+    },
+    {
+      "audit_id": "030",
+      "category_support": "supported",
+      "visual_evidence": "瓶子与标签可见，透明程度和标签颜色受光照影响。"
+    },
+    {
+      "audit_id": "031",
+      "category_support": "supported",
+      "visual_evidence": "橙色喷瓶与红色喷头可见。"
+    },
+    {
+      "audit_id": "032",
+      "category_support": "supported",
+      "visual_evidence": "透明细长瓶状容器可见。"
+    },
+    {
+      "audit_id": "033",
+      "category_support": "supported",
+      "visual_evidence": "透明容器和绿色部分可见；具体材质及绿盖位置仍不确定。"
+    },
+    {
+      "audit_id": "034",
+      "category_support": "uncertain",
+      "visual_evidence": "极小白色矩形物体，像素不足以确认盒子。"
+    },
+    {
+      "audit_id": "035",
+      "category_support": "supported",
+      "visual_evidence": "手持壳状物及螺旋纹理可见。"
+    },
+    {
+      "audit_id": "036",
+      "category_support": "supported",
+      "visual_evidence": "蓝白玩具车可见；并非四个轮子都直接可见。"
+    },
+    {
+      "audit_id": "037",
+      "category_support": "supported",
+      "visual_evidence": "车的形状明确；open hood与可见车头不符或缺乏证据。"
+    },
+    {
+      "audit_id": "038",
+      "category_support": "supported",
+      "visual_evidence": "带轮金属推车架可见；blue carpet属于框内背景而非车体。"
+    },
+    {
+      "audit_id": "039",
+      "category_support": "supported",
+      "visual_evidence": "黑白猫可见；被人托举，lying down表述不准确。"
+    },
+    {
+      "audit_id": "040",
+      "category_support": "supported",
+      "visual_evidence": "黑白动物轮廓可见，粗类别animal有支持。"
+    },
+    {
+      "audit_id": "041",
+      "category_support": "supported",
+      "visual_evidence": "黑猫坐姿可见；looking out window为当时关系，不是持久属性。"
+    },
+    {
+      "audit_id": "042",
+      "category_support": "uncertain",
+      "visual_evidence": "画面过暗，黑白弯曲区域不足以确认mask或材质。"
+    },
+    {
+      "audit_id": "043",
+      "category_support": "supported",
+      "visual_evidence": "办公转椅、扶手和轮脚可见；皮革材质未证实。"
+    },
+    {
+      "audit_id": "044",
+      "category_support": "supported",
+      "visual_evidence": "黄色椅子可见；金属与木材不能仅凭颜色确认。"
+    },
+    {
+      "audit_id": "045",
+      "category_support": "supported",
+      "visual_evidence": "白色圆领短袖及印花可见。"
+    },
+    {
+      "audit_id": "046",
+      "category_support": "supported",
+      "visual_evidence": "红色饮料罐可见；品牌文字分辨率有限。"
+    },
+    {
+      "audit_id": "047",
+      "category_support": "uncertain",
+      "visual_evidence": "红色易拉罐有支持，但指定coca-cola品牌无法在当前裁剪中可靠读出。"
+    },
+    {
+      "audit_id": "048",
+      "category_support": "supported",
+      "visual_evidence": "圆柱罐状物可见；可见标签以白底蓝区为主，白字不明确。"
+    },
+    {
+      "audit_id": "049",
+      "category_support": "supported",
+      "visual_evidence": "透明长方形收纳容器可见。"
+    },
+    {
+      "audit_id": "050",
+      "category_support": "supported",
+      "visual_evidence": "绿色长方形箱体可见。"
+    },
+    {
+      "audit_id": "051",
+      "category_support": "supported",
+      "visual_evidence": "带数字的木色立方块可见；精确数字81不可确认。"
+    },
+    {
+      "audit_id": "052",
+      "category_support": "uncertain",
+      "visual_evidence": "木色方块上为深色印记，无法确认是盒子；black handle未得到支持。"
+    },
+    {
+      "audit_id": "053",
+      "category_support": "supported",
+      "visual_evidence": "木色方块及0数字可见；4可能对应旁边物体而非该目标。"
+    },
+    {
+      "audit_id": "054",
+      "category_support": "supported",
+      "visual_evidence": "杯口、杯身可见；白色主要为内壁，外壁较暗。"
+    },
+    {
+      "audit_id": "055",
+      "category_support": "uncertain",
+      "visual_evidence": "黑色圆柱体具有镜头样外观，但可能为仿镜头容器；初帧无法确认功能类别。"
+    },
+    {
+      "audit_id": "056",
+      "category_support": "supported",
+      "visual_evidence": "倒置红色杯子可见。"
+    },
+    {
+      "audit_id": "057",
+      "category_support": "supported",
+      "visual_evidence": "白色杯子及杯口可见。"
+    },
+    {
+      "audit_id": "058",
+      "category_support": "supported",
+      "visual_evidence": "白色杯子及杯口可见。"
+    },
+    {
+      "audit_id": "059",
+      "category_support": "supported",
+      "visual_evidence": "白色杯子可见；暗色内部不足以确认咖啡。"
+    },
+    {
+      "audit_id": "060",
+      "category_support": "supported",
+      "visual_evidence": "红色杯子可见，塑料材质仅为外观推断。"
+    },
+    {
+      "audit_id": "061",
+      "category_support": "supported",
+      "visual_evidence": "直立杯状容器可见；颜色偏白，蓝色可能受光照影响。"
+    },
+    {
+      "audit_id": "062",
+      "category_support": "conflicting",
+      "visual_evidence": "手持对象呈杯身及椭圆杯口，未见手机屏幕；red screen无对应证据。"
+    },
+    {
+      "audit_id": "063",
+      "category_support": "supported",
+      "visual_evidence": "白色杯状物与暗色杯口可见。"
+    },
+    {
+      "audit_id": "064",
+      "category_support": "supported",
+      "visual_evidence": "水面鸭子与喙可见；蹼足未显示。"
+    },
+    {
+      "audit_id": "065",
+      "category_support": "supported",
+      "visual_evidence": "鸭子头身与棕色羽毛可见；黑头描述不够准确。"
+    },
+    {
+      "audit_id": "066",
+      "category_support": "supported",
+      "visual_evidence": "棕色鸭子体态可见；长尾和白色头纹未明确支持。"
+    },
+    {
+      "audit_id": "067",
+      "category_support": "supported",
+      "visual_evidence": "鸟类外形明确；蹼足细节并不清楚。"
+    },
+    {
+      "audit_id": "068",
+      "category_support": "uncertain",
+      "visual_evidence": "水面目标很小且遮挡较强，鸟状物可见但鸭的细分类不充分。"
+    },
+    {
+      "audit_id": "069",
+      "category_support": "uncertain",
+      "visual_evidence": "手持黑红物体带字样，无法根据该分辨率可靠确认为凉鞋。"
+    },
+    {
+      "audit_id": "070",
+      "category_support": "supported",
+      "visual_evidence": "蓝色头戴耳机形状明确；线缆不明显。"
+    },
+    {
+      "audit_id": "071",
+      "category_support": "supported",
+      "visual_evidence": "蛋及蛋托可见。"
+    },
+    {
+      "audit_id": "072",
+      "category_support": "supported",
+      "visual_evidence": "手持白色长方盒状物可见。"
+    },
+    {
+      "audit_id": "073",
+      "category_support": "supported",
+      "visual_evidence": "浅色花朵与花瓣可见。"
+    },
+    {
+      "audit_id": "074",
+      "category_support": "conflicting",
+      "visual_evidence": "框内为密集花簇，未见昆虫或翅膀。"
+    },
+    {
+      "audit_id": "075",
+      "category_support": "supported",
+      "visual_evidence": "粉色花朵可见。"
+    },
+    {
+      "audit_id": "076",
+      "category_support": "supported",
+      "visual_evidence": "棕色编织篮状容器可见。"
+    },
+    {
+      "audit_id": "077",
+      "category_support": "supported",
+      "visual_evidence": "白色尖叫脸面具可见。"
+    },
+    {
+      "audit_id": "078",
+      "category_support": "supported",
+      "visual_evidence": "透明带柄杯可见；水滴与玻璃反光不易区分。"
+    },
+    {
+      "audit_id": "079",
+      "category_support": "supported",
+      "visual_evidence": "透明杯身和圆底可见。"
+    },
+    {
+      "audit_id": "080",
+      "category_support": "supported",
+      "visual_evidence": "带柄杯形状可见；白色可能为曝光反光，不能排除透明材质。"
+    },
+    {
+      "audit_id": "081",
+      "category_support": "supported",
+      "visual_evidence": "透明瓶及细颈可见。"
+    },
+    {
+      "audit_id": "082",
+      "category_support": "supported",
+      "visual_evidence": "吉他轮廓的包套及印刷花纹可见。"
+    },
+    {
+      "audit_id": "083",
+      "category_support": "supported",
+      "visual_evidence": "绿色圆环可见。"
+    },
+    {
+      "audit_id": "084",
+      "category_support": "conflicting",
+      "visual_evidence": "红框和紧裁剪为手掌；吉他包在框外背景，文字指向了另一物体。"
+    },
+    {
+      "audit_id": "085",
+      "category_support": "supported",
+      "visual_evidence": "灰色帽子及黑色帽带可见。"
+    },
+    {
+      "audit_id": "086",
+      "category_support": "supported",
+      "visual_evidence": "悬挂的红黑头盔可见；文字内容未核验。"
+    },
+    {
+      "audit_id": "087",
+      "category_support": "uncertain",
+      "visual_evidence": "黑色长条物及亮点可见，不能可靠确认为遥控器。"
+    },
+    {
+      "audit_id": "088",
+      "category_support": "supported",
+      "visual_evidence": "黑色带黄色花纹的帽子可见。"
+    },
+    {
+      "audit_id": "089",
+      "category_support": "supported",
+      "visual_evidence": "穿黑色外套的人可见；背向镜头为瞬时视角。"
+    },
+    {
+      "audit_id": "090",
+      "category_support": "supported",
+      "visual_evidence": "穿深色外套的人可见。"
+    },
+    {
+      "audit_id": "091",
+      "category_support": "uncertain",
+      "visual_evidence": "裤子在框内，但协议框同时包含上身与双臂，pants只描述其中一部分。"
+    },
+    {
+      "audit_id": "092",
+      "category_support": "uncertain",
+      "visual_evidence": "短裤在框内，但框还覆盖躯干、手臂与腿脚，目标指代范围不明确。"
+    },
+    {
+      "audit_id": "093",
+      "category_support": "uncertain",
+      "visual_evidence": "白衬衣存在，但框主要为包含头和躯干的人体，类别只对应其中部分。"
+    },
+    {
+      "audit_id": "094",
+      "category_support": "supported",
+      "visual_evidence": "黄色落叶轮廓可见。"
+    },
+    {
+      "audit_id": "095",
+      "category_support": "supported",
+      "visual_evidence": "绿叶植物可见；tall缺少稳定尺度参照。"
+    },
+    {
+      "audit_id": "096",
+      "category_support": "supported",
+      "visual_evidence": "枝上黄色叶片可见；oval-shaped与裂片形状不符，shiny缺乏明确证据。"
+    },
+    {
+      "audit_id": "097",
+      "category_support": "conflicting",
+      "visual_evidence": "框内为细长扁平黄叶状物，不是所描述的圆形橙色水果。"
+    },
+    {
+      "audit_id": "098",
+      "category_support": "supported",
+      "visual_evidence": "黄色裂叶可见；湿润和发亮未能确定。"
+    },
+    {
+      "audit_id": "099",
+      "category_support": "supported",
+      "visual_evidence": "黄色叶片可见；湿润状态不能确认。"
+    },
+    {
+      "audit_id": "100",
+      "category_support": "supported",
+      "visual_evidence": "挂锁外形可见；wooden handle无直接证据。"
+    },
+    {
+      "audit_id": "101",
+      "category_support": "supported",
+      "visual_evidence": "打开的笔记本电脑可见。"
+    },
+    {
+      "audit_id": "102",
+      "category_support": "conflicting",
+      "visual_evidence": "框内为长方体纸盒包装，未见杯口与杯形；cup不受目标形状支持。"
+    },
+    {
+      "audit_id": "103",
+      "category_support": "supported",
+      "visual_evidence": "圆形锅底及延伸手柄可见。"
+    },
+    {
+      "audit_id": "104",
+      "category_support": "supported",
+      "visual_evidence": "手持薄板状手机及侧边结构可见。"
+    },
+    {
+      "audit_id": "105",
+      "category_support": "conflicting",
+      "visual_evidence": "紧裁剪为手边独立的黑色窄物体；shorts指向附近穿着，不能代表该框内对象，具体物体细类仍不确定。"
+    },
+    {
+      "audit_id": "106",
+      "category_support": "supported",
+      "visual_evidence": "手持黑色手机外形可见。"
+    },
+    {
+      "audit_id": "107",
+      "category_support": "uncertain",
+      "visual_evidence": "细长发亮管状物可见，但无法确认灯泡；glowing可能是反射。"
+    },
+    {
+      "audit_id": "108",
+      "category_support": "supported",
+      "visual_evidence": "带黑屏的手机外形可见；划痕与反射污迹不能完全区分。"
+    },
+    {
+      "audit_id": "109",
+      "category_support": "conflicting",
+      "visual_evidence": "红色宽圆斑点菌盖样物可见，不呈草莓形态。"
+    },
+    {
+      "audit_id": "110",
+      "category_support": "supported",
+      "visual_evidence": "带柄菌盖及生长环境支持蘑菇；smooth与可见斑点应分开描述。"
+    },
+    {
+      "audit_id": "111",
+      "category_support": "supported",
+      "visual_evidence": "菌盖与菌柄可见；湿润只能作外观推测。"
+    },
+    {
+      "audit_id": "112",
+      "category_support": "uncertain",
+      "visual_evidence": "红色斑点菌盖样物可见，无法由图像确认food用途或crispy口感。"
+    },
+    {
+      "audit_id": "113",
+      "category_support": "conflicting",
+      "visual_evidence": "红色斑点菌盖样结构可见，非橙皮水果；smooth亦不符合斑点表面。"
+    },
+    {
+      "audit_id": "114",
+      "category_support": "supported",
+      "visual_evidence": "带装订边的笔记本可见。"
+    },
+    {
+      "audit_id": "115",
+      "category_support": "supported",
+      "visual_evidence": "装订纸本可见；白/灰受照明影响，网格不够清晰。"
+    },
+    {
+      "audit_id": "116",
+      "category_support": "supported",
+      "visual_evidence": "灰色圆柱状物可见，几何粗类别有支持。"
+    },
+    {
+      "audit_id": "117",
+      "category_support": "supported",
+      "visual_evidence": "黑白人物照片可见。"
+    },
+    {
+      "audit_id": "118",
+      "category_support": "supported",
+      "visual_evidence": "蓝底白色P标志牌可见。"
+    },
+    {
+      "audit_id": "119",
+      "category_support": "supported",
+      "visual_evidence": "地面鸟类轮廓可见；long beak细节不足。"
+    },
+    {
+      "audit_id": "120",
+      "category_support": "uncertain",
+      "visual_evidence": "框内远处小黑影像素不足，无法确认鸟类及喙。"
+    },
+    {
+      "audit_id": "121",
+      "category_support": "supported",
+      "visual_evidence": "站立的鸟类轮廓可见。"
+    },
+    {
+      "audit_id": "122",
+      "category_support": "supported",
+      "visual_evidence": "地面鸟类及灰色羽毛可见；脚部并不清晰。"
+    },
+    {
+      "audit_id": "123",
+      "category_support": "uncertain",
+      "visual_evidence": "细长植物枝叶可见，单片leaf与针叶枝条难以区分；waxy无法确认。"
+    },
+    {
+      "audit_id": "124",
+      "category_support": "uncertain",
+      "visual_evidence": "框内过暗且对象很小；target只是指代词，不提供可核验类别。"
+    },
+    {
+      "audit_id": "125",
+      "category_support": "supported",
+      "visual_evidence": "脚上黑鞋外形可见；suede材质未证实。"
+    },
+    {
+      "audit_id": "126",
+      "category_support": "supported",
+      "visual_evidence": "蓝色鞋可见；黑袜为关联穿着，不是鞋自身属性。"
+    },
+    {
+      "audit_id": "127",
+      "category_support": "supported",
+      "visual_evidence": "黑板红轮滑板可见。"
+    },
+    {
+      "audit_id": "128",
+      "category_support": "supported",
+      "visual_evidence": "黑板红轮滑板可见。"
+    },
+    {
+      "audit_id": "129",
+      "category_support": "supported",
+      "visual_evidence": "带JBL标志的音箱外形可见。"
+    },
+    {
+      "audit_id": "130",
+      "category_support": "conflicting",
+      "visual_evidence": "手中为有孔圆盘与支架的机械组件，未见相机镜头结构；silver lens不受图像支持。"
+    },
+    {
+      "audit_id": "131",
+      "category_support": "conflicting",
+      "visual_evidence": "框内为大型直立拉杆箱，非笔记本电脑。"
+    },
+    {
+      "audit_id": "132",
+      "category_support": "supported",
+      "visual_evidence": "悬吊秋千座可见；金属框架并非座椅材质的可靠判断。"
+    },
+    {
+      "audit_id": "133",
+      "category_support": "supported",
+      "visual_evidence": "悬吊秋千座可见。"
+    },
+    {
+      "audit_id": "134",
+      "category_support": "conflicting",
+      "visual_evidence": "框内为手持黑白小物，浅蓝短袖属于框外人物穿着。"
+    },
+    {
+      "audit_id": "135",
+      "category_support": "conflicting",
+      "visual_evidence": "框内为蓝色细长圆柱物；钟表在旁边背景，不在目标框内。"
+    },
+    {
+      "audit_id": "136",
+      "category_support": "uncertain",
+      "visual_evidence": "带柄壶状电器可见，像水壶；不能确认咖啡机功能，digital display不明确。"
+    },
+    {
+      "audit_id": "137",
+      "category_support": "supported",
+      "visual_evidence": "白色卷纸可见。"
+    },
+    {
+      "audit_id": "138",
+      "category_support": "uncertain",
+      "visual_evidence": "白色方块或盒状物可见；缺少Wii遥控器按钮与细长外形证据。"
+    },
+    {
+      "audit_id": "139",
+      "category_support": "uncertain",
+      "visual_evidence": "白色圆柱物可见，但未见杯口，无法排除卷纸或其他容器。"
+    },
+    {
+      "audit_id": "140",
+      "category_support": "conflicting",
+      "visual_evidence": "白色企鹅状玩偶及黄色脚部可见，非有按键的遥控器。"
+    },
+    {
+      "audit_id": "141",
+      "category_support": "supported",
+      "visual_evidence": "彩色人物玩偶可见；篮球属性不清楚。"
+    },
+    {
+      "audit_id": "142",
+      "category_support": "supported",
+      "visual_evidence": "瓜类外形支持粗类别vegetable；脸部更像涂画，carved无法确认。"
+    },
+    {
+      "audit_id": "143",
+      "category_support": "conflicting",
+      "visual_evidence": "手中为黑白企鹅状玩偶，非白壳手机，未见背部摄像头。"
+    },
+    {
+      "audit_id": "144",
+      "category_support": "uncertain",
+      "visual_evidence": "三角折叠、带图案的物体可见，不能确认书本、封面或书脊。"
+    },
+    {
+      "audit_id": "145",
+      "category_support": "supported",
+      "visual_evidence": "穿条纹服装的玩偶可见。"
+    },
+    {
+      "audit_id": "146",
+      "category_support": "supported",
+      "visual_evidence": "悬挂的动物玩偶可见；并非坐姿。"
+    },
+    {
+      "audit_id": "147",
+      "category_support": "supported",
+      "visual_evidence": "带车轮和吊臂的工程车玩具可见。"
+    },
+    {
+      "audit_id": "148",
+      "category_support": "supported",
+      "visual_evidence": "米色毛绒动物玩具可见。"
+    },
+    {
+      "audit_id": "149",
+      "category_support": "supported",
+      "visual_evidence": "开口金属圆柱容器可见；颜色偏铜红而非银色。"
+    },
+    {
+      "audit_id": "150",
+      "category_support": "supported",
+      "visual_evidence": "绿色灌木可见。"
+    },
+    {
+      "audit_id": "151",
+      "category_support": "supported",
+      "visual_evidence": "金色奖杯可见；底座呈方形，非明确圆柱。"
+    },
+    {
+      "audit_id": "152",
+      "category_support": "supported",
+      "visual_evidence": "吉他琴身与琴颈可见；背带不可确认。"
+    }
+  ]
+}
