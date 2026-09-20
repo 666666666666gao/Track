@@ -1,0 +1,91 @@
+{
+  "observed_utc": "2026-09-20T17:48:05.802057+00:00",
+  "reviewer_task": "/root/m87_caption_code_review",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "max",
+  "initial_fork_turns": "none",
+  "stage2_is_followup_to_stage1_reviewer": true,
+  "routing_evidence": "Actual initial requested routing supplied by parent task; service-side actual model telemetry is not exposed to reviewer",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "verdict": "PASS",
+  "scope": "stage2 bank preparation only",
+  "bank_preparation_code_ready": true,
+  "bank_preparation_execution_verified": false,
+  "training_approved": false,
+  "blocking_issues": [],
+  "non_blocking_issues": [],
+  "reviewed_sources": [
+    {
+      "name": "EXPERIMENT_PLAN.md",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m87_crop_only_text_20260921\\EXPERIMENT_PLAN.md",
+      "sha256": "44f1f38b93258424fe1b15021979ac157d3354760420e00a9ad01f9599478e13"
+    },
+    {
+      "name": "prepare_banks.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m87_crop_only_text_20260921\\prepare_banks.py",
+      "sha256": "e5fe015402ffc2882d36cc819ebcb2ebdceacb3c058c34123a39978200ceb960"
+    },
+    {
+      "name": "caption_protocol.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m87_crop_only_text_20260921\\caption_protocol.py",
+      "sha256": "82bd117f1334517d4471c72022982e44e3b8f91204bc390def0cb5299a58394d"
+    },
+    {
+      "name": "M84_training_spec.json",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920\\training_spec.json",
+      "sha256": "0f9bb841edd3e2c5171cd78ce9d1030d29a243561006d111d2c98eebfc74abd5"
+    },
+    {
+      "name": "historical_prepare_text.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m86_initialization_audit_20260921\\evidence\\sources\\prepare_text.py",
+      "sha256": "61ab2bd5e879da5767c22d17e237f5a8182cc53cdcfa4ec19c18da84d5f578a1"
+    },
+    {
+      "name": "historical_text_preparation.json",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m86_initialization_audit_20260921\\evidence\\sources\\text_preparation.json",
+      "sha256": "1510eeb53c15ef8779dd77ab7730f41e6ffe92fe4047a388536d0067bef2fe27"
+    },
+    {
+      "name": "M86_provenance_result.json",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m86_initialization_audit_20260921\\evidence\\provenance_result.json",
+      "sha256": "fe68178143974c8291b59a1780ee3328cbc61e9d5ac3775f7dba726ff8340d8c"
+    },
+    {
+      "name": "M86_prepare_audit.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m86_initialization_audit_20260921\\evidence\\prepare_audit.py",
+      "sha256": "d7ce75c3967963e16f25b2cf867ac0c2e049e33afa932396a15277a43991a17a"
+    },
+    {
+      "name": "historical_text_manifest.json",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m86_initialization_audit_20260921\\evidence\\sources\\text_manifest.json",
+      "sha256": "14ff0d72efc48aa06baae04859fec12d87b68c5107d2d92d8304cf9e6fdaf01d"
+    }
+  ],
+  "checks": {
+    "syntax": "pass",
+    "historical_prepare_source_matches_record": true,
+    "m84_category_bindings_match_m86_provenance": true,
+    "historical_original_bank_hashes_match_encoder_record": true,
+    "clip_weight_matches_historical_record": true,
+    "donor_fixture_categories": [
+      "cup",
+      "cup",
+      "bottle",
+      "object",
+      "cup"
+    ],
+    "donor_fixture_indices": [
+      2,
+      2,
+      3,
+      4,
+      2
+    ],
+    "torch_imported": false,
+    "bank_tensors_loaded": false,
+    "model_inference_executed": false,
+    "ssh_accessed": false,
+    "gpu_accessed": false
+  }
+}

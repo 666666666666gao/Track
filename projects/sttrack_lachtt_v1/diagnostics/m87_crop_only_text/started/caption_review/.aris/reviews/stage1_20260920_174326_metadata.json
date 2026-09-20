@@ -1,0 +1,57 @@
+{
+  "observed_utc": "2026-09-20T17:43:26.252005+00:00",
+  "reviewer_task": "/root/m87_caption_code_review",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "max",
+  "fork_turns": "none",
+  "routing_evidence": "Actual requested routing supplied by parent task; service-side actual model telemetry is not exposed to reviewer",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "verdict": "PASS",
+  "scope": "stage1 caption generation only",
+  "stage1_code_ready": true,
+  "stage1_execution_verified": false,
+  "bank_preparation_approved": false,
+  "training_approved": false,
+  "blocking_issues": [],
+  "non_blocking_issues": [],
+  "reviewed_sources": [
+    {
+      "name": "EXPERIMENT_PLAN.md",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m87_crop_only_text_20260921\\EXPERIMENT_PLAN.md",
+      "sha256": "44f1f38b93258424fe1b15021979ac157d3354760420e00a9ad01f9599478e13"
+    },
+    {
+      "name": "caption_protocol.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m87_crop_only_text_20260921\\caption_protocol.py",
+      "sha256": "82bd117f1334517d4471c72022982e44e3b8f91204bc390def0cb5299a58394d"
+    },
+    {
+      "name": "historical_caption_initial_v2.py",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m86_initialization_audit_20260921\\evidence\\sources\\caption_initial_v2.py",
+      "sha256": "42789e10651e70b0f4bf6685a14d0833d797174f121d6c01642202bf19f73335"
+    },
+    {
+      "name": "historical_plan.json",
+      "path": "D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m86_initialization_audit_20260921\\evidence\\sources\\plan.json",
+      "sha256": "50d83fe2811acbec045fd35dee255f634ada284aa39fc43e62142d2b36a2addb"
+    }
+  ],
+  "checks": {
+    "syntax": "pass",
+    "historical_rows": 152,
+    "fit_rows": 130,
+    "development_rows": 22,
+    "unique_sequences": 152,
+    "unique_images": 152,
+    "all_initial_frames": true,
+    "all_integer_in_bounds_crops": true,
+    "historical_plan_hash_matches": true,
+    "historical_generator_hash_matches": true,
+    "parser_cases_passed": 9,
+    "raw_preserved_before_parse": true,
+    "model_inference_executed": false,
+    "ssh_accessed": false,
+    "gpu_accessed": false
+  }
+}

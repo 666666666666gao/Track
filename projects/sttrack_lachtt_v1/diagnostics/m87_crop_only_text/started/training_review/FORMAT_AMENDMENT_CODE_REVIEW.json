@@ -1,0 +1,43 @@
+{
+  "observed_utc": "2026-09-20T17:58:45.211769+00:00",
+  "reviewer_task": "/root/m87_training_code_review",
+  "review_model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "model_attribution": "Requested routing only; service-side actual model telemetry is unavailable",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "verdict": "PASS",
+  "blocking_issues": 0,
+  "blocking_findings": [],
+  "non_blocking_findings": [],
+  "report_sha256": "8d4d981e462314cc317cd510a64575cccce07362720a853e5ad8a9c14e6107e1",
+  "reviewed_sources": {
+    "EXPERIMENT_PLAN.md": "0e30f28330683411779184a9a1b2eefae8b3e6cf3dd89cda1c9e902d48a9e002",
+    "caption_protocol.py": "7df8440c4f19dfebe56f4c38d789fa4877c4c27939e482e8a19200bc0a758a3b",
+    "prepare_banks.py": "396f717af2b507977046b683a5d316f96e381964e9777ff873925500083dade7",
+    "caption_v1/EXPERIMENT_PLAN.md": "44f1f38b93258424fe1b15021979ac157d3354760420e00a9ad01f9599478e13",
+    "caption_v1/caption_protocol.py": "82bd117f1334517d4471c72022982e44e3b8f91204bc390def0cb5299a58394d",
+    "caption_v1/prepare_banks.py": "e5fe015402ffc2882d36cc819ebcb2ebdceacb3c058c34123a39978200ceb960",
+    "caption_review/STAGE1_CAPTION_REVIEW.json": "71587ebf80b32d9af6351c4ac43f559e1c0d19521964b14b0433310e310ee54b",
+    "caption_review/STAGE2_BANK_REVIEW.json": "70eec9144d63ca9b8d1ae592b9b1a62dfd000fc156a13eb34992f3209207d22c"
+  },
+  "scope": "Observed JSON fence format amendment and its shared bank parser only",
+  "code_ready": true,
+  "execution_verified": false,
+  "training_approved": false,
+  "checks": {
+    "syntax_files": 2,
+    "positive_parser_cases": 4,
+    "negative_parser_cases": 9,
+    "prompt_literal_identical": true,
+    "provided_raw_bytes_sha256_matches_parent": true,
+    "v1_sources_match_prior_reviews": true,
+    "torch_imported": false,
+    "model_loaded": false,
+    "ssh_accessed": false,
+    "gpu_accessed": false
+  },
+  "parent_supplied_first_raw_sha256": "336b8950a984d7b4551ab1dc8b8a77b972f7cf9c109491d592de0f59dd8cee99",
+  "parent_supplied_v1_spec_sha256": "a5cd7713ff2bfec44cdad2aa9b6bdeafb343a3a79e1dc32138ff7f30ab5680a6",
+  "complete_actual_written_response": "training_review/FORMAT_AMENDMENT_CODE_REVIEW.md"
+}

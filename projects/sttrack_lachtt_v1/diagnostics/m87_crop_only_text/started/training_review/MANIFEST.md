@@ -1,0 +1,2 @@
+- 2026-09-20T17:58:45.211769+00:00 FORMAT review: FORMAT_AMENDMENT_CODE_REVIEW_20260920_175845.md and fixed report, SHA256 8d4d981e462314cc317cd510a64575cccce07362720a853e5ad8a9c14e6107e1; timestamped and fixed JSON receipts; actual_review_requests.json.
+- 2026-09-20T18:11:24.948434+00:00 Training review: CODE_REVIEW_20260920_181124.md and CODE_REVIEW.md, SHA256 aede5c8759244489ebe156d679b9353e16d8487f030561ed7cb0f75f6ccf65a7; timestamped and fixed code_review_receipt.json; prepared_evidence_verification.json; actual_review_requests.json.

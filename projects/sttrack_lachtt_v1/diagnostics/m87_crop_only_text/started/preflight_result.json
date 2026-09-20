@@ -1,0 +1,126 @@
+{
+  "status": "M87_native_parity_and_causal_smoke_pass",
+  "observed_utc": "2026-09-20T18:12:33.865648+00:00",
+  "source_sha256": "04c28ef2f42690690a283c4a3b3add3a3b42e44703052ca3d356db2a0da3a9b7",
+  "training_spec_sha256": "d14946d36262ee9c23153af8927bce7f3d07aa0383ae2f1c2c02933662448860",
+  "seed": 2027,
+  "sequence": "chair01_indoor",
+  "parity": [
+    {
+      "condition": "zero_category",
+      "frames": 101,
+      "exact_bbox_score_query_template": true,
+      "template_writes": [
+        100
+      ]
+    },
+    {
+      "condition": "nonzero_M82_empty",
+      "frames": 101,
+      "exact_bbox_score_query_template": true,
+      "template_writes": [
+        100
+      ]
+    }
+  ],
+  "smoke_frames": 96,
+  "supervised_frames": 88,
+  "smoke_optimizer_steps": 3,
+  "mean_smoke_loss": 0.4802371372722767,
+  "gradients": [
+    {
+      "step": 1,
+      "preclip_norm": 0.015320674516260624,
+      "maximum_gradient": {
+        "slots": 0.0,
+        "rgb.0.weight": 0.0,
+        "rgb.0.bias": 0.0,
+        "rgb.1.weight": 0.0,
+        "rgb.1.bias": 0.0,
+        "depth.0.weight": 0.0,
+        "depth.0.bias": 0.0,
+        "depth.1.weight": 0.0,
+        "depth.1.bias": 0.0,
+        "text.0.weight": 0.0,
+        "text.0.bias": 0.0,
+        "text.1.weight": 0.0,
+        "text.1.bias": 0.0,
+        "rgb_bound.weight": 0.0,
+        "rgb_bound.bias": 0.0,
+        "depth_bound.weight": 0.0,
+        "depth_bound.bias": 0.0,
+        "modality.weight": 0.0,
+        "modality.bias": 0.0,
+        "delta.0.weight": 0.0,
+        "delta.0.bias": 0.0,
+        "delta.2.weight": 0.0007518033380620182,
+        "delta.2.bias": 0.0
+      }
+    },
+    {
+      "step": 2,
+      "preclip_norm": 0.019299814477562904,
+      "maximum_gradient": {
+        "slots": 3.4627293644007295e-05,
+        "rgb.0.weight": 0.00024256315373349935,
+        "rgb.0.bias": 1.1811079275503289e-05,
+        "rgb.1.weight": 7.027644460322335e-05,
+        "rgb.1.bias": 2.93382654490415e-05,
+        "depth.0.weight": 0.00016668497119098902,
+        "depth.0.bias": 9.169887562165968e-06,
+        "depth.1.weight": 6.978787132538855e-05,
+        "depth.1.bias": 2.604829023766797e-05,
+        "text.0.weight": 0.000438818649854511,
+        "text.0.bias": 4.7036272007972e-05,
+        "text.1.weight": 4.4955508201383054e-05,
+        "text.1.bias": 1.977421561605297e-05,
+        "rgb_bound.weight": 7.032111170701683e-05,
+        "rgb_bound.bias": 2.461581607349217e-05,
+        "depth_bound.weight": 5.0206312153022736e-05,
+        "depth_bound.bias": 1.5681151126045734e-05,
+        "modality.weight": 0.00019765198521781713,
+        "modality.bias": 1.1983065633103251e-05,
+        "delta.0.weight": 7.518204802181572e-05,
+        "delta.0.bias": 8.65305628394708e-06,
+        "delta.2.weight": 0.0008891274337656796,
+        "delta.2.bias": 0.0
+      }
+    },
+    {
+      "step": 3,
+      "preclip_norm": 0.012813834473490715,
+      "maximum_gradient": {
+        "slots": 3.258148717577569e-05,
+        "rgb.0.weight": 0.00023748571402393281,
+        "rgb.0.bias": 1.120865454140585e-05,
+        "rgb.1.weight": 8.009743032744154e-05,
+        "rgb.1.bias": 3.476851634331979e-05,
+        "depth.0.weight": 0.00017172117077279836,
+        "depth.0.bias": 9.40211884881137e-06,
+        "depth.1.weight": 8.040083048399538e-05,
+        "depth.1.bias": 3.0790655728196725e-05,
+        "text.0.weight": 0.0004989747540093958,
+        "text.0.bias": 5.773381417384371e-05,
+        "text.1.weight": 4.065994653501548e-05,
+        "text.1.bias": 2.2103311493992805e-05,
+        "rgb_bound.weight": 8.906725997803733e-05,
+        "rgb_bound.bias": 2.846927600330673e-05,
+        "depth_bound.weight": 5.5660329962847754e-05,
+        "depth_bound.bias": 1.7003505490720272e-05,
+        "modality.weight": 0.00025598728097975254,
+        "modality.bias": 1.3712784493691288e-05,
+        "delta.0.weight": 7.406947406707332e-05,
+        "delta.0.bias": 8.217408321797848e-06,
+        "delta.2.weight": 0.0005481680855154991,
+        "delta.2.bias": 0.0
+      }
+    }
+  ],
+  "base_state_sha256": "c07022117c6efa8399b6df57e275ec81c6f3efce44eca5e4bc0282b52dd0dae0",
+  "base_parameters_and_buffers_unchanged": true,
+  "trained_smoke_empty_feature_exact_native": true,
+  "smoke_weights_saved": false,
+  "formal_optimizer_steps": 0,
+  "elapsed_seconds": 31.390671968460083,
+  "scope": "Correctness and trainability only; not development performance or final training results."
+}

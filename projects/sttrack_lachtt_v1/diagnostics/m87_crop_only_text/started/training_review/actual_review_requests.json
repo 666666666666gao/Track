@@ -1,0 +1,34 @@
+{
+  "recorded_utc": "2026-09-20T17:58:45.211769+00:00",
+  "scope": "Verbatim parent task texts actually received by this reviewer, not a reconstructed model API request",
+  "requests": [
+    {
+      "kind": "actual_initial_parent_task",
+      "text": "按 experiment-bridge 的 CODE_REVIEW=true 要求执行 M87 新训练/评测代码独立审查。只读代码，不访问SSH/凭据，不执行GPU或正式训练，不改实现；只可写审查报告及实际请求/完整答复元数据。M87路径 D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m87_crop_only_text_20260921，M84对照 D:\\Program Files\\UserCache\\gb\\codex\\tmp\\sttrack_m84_centered_20260920。读 EXPERIMENT_PLAN.md、prepare_training.py、train_causal.py、preflight_m87.py、run_recursive.py、run_m87.sh、freeze_m87.py、launch_m87.py，并对照M84原件。caption_protocol.py/prepare_banks.py已在caption_review分别审过，生成正在运行，bank尚未准备。M87唯一实验主因素是冻结crop-only自动类别协议，非语义真值；与M84同初始化文件/参数/损失/130seq186694calls5798opt/seed2027；旧代码与loss复制不改；同权重new/old/Empty/Swapped四组全部封存后分析18条件。查实现是否符合、哈希绑定是否闭合、因果GT边界/对照是否真实、queue失败是否停止。无多seed，无fallback，不要求理论防御逻辑。务必发现具体阻塞，独立核查，不只是接受计划。报告写M87/training_review/CODE_REVIEW.md和code_review_receipt.json，receipt供freeze读取字段：blocking_issues整数，review_model='gpt-6-astra',reasoning_effort='max',report_sha256,reviewed_sources字典（相对M87路径→实际SHA），另标same-family/provisional且实际路由仅为请求无服务侧遥测。元数据保存实际请求、完整回应，不伪造审查运行。未形成实际spec/未跑前检明确保留限制，报告通过只授权既定运行检查并非性能。完成后告知root。"
+    },
+    {
+      "kind": "actual_parent_scope_extension",
+      "text": "caption审查者followup因agent thread limit失败（其已完成）。请在你的当前审查中额外审核FORMAT修订，作为单独阶段报告先完成允许生成，然后完成训练报告。M87/caption_v1保存原件；caption_protocol.py新增parse_category仅处理确切json围栏，generate复用第1raw（format_amendment.json绑定first_raw/new_source/new_plan）；prepare_banks改用此parser；plan末尾修订。这是实际首条围栏JSON解析失败（完整raw已发）触发，无重试无改词，运行需备份v1spec/log/emptyrecords再preparev2，firstraw保留。请先写training_review/FORMAT_AMENDMENT_CODE_REVIEW.md/json，实际reviewed_sources字典/0blocking等。两阶段都不修改实现；源只需做具体证据审查，不增加假设防御。"
+    },
+    {
+      "kind": "actual_parent_execution_evidence_and_delivery_clarification",
+      "text": "确认会把training_review中两固定报告字节复制到M87根目录并逐SHA验证，freeze不改。远端v1已封存，实际首条rawSHA336b8950a984d7b4551ab1dc8b8a77b972f7cf9c109491d592de0f59dd8cee99；v1specSHAa5cd7713ff2bfec44cdad2aa9b6bdeafb343a3a79e1dc32138ff7f30ab5680a6；旧exit1，空records封存，raw未改。你审过format后我将绑定这两SHA及新source/plan，preparev2再生成。"
+    },
+    {
+      "kind": "actual_parent_preparation_failure_update",
+      "text": "实际bank准备已成功，但prepare_training因我用Python3.8相对脚本调用导致__file__相对、R='.'，预定trainer根路径精确断言停止（实际M84源码SHA正确；展开绝对R后diff为空）。没有训练/spec。不改reviewed实现，将本次bank/prep部分产物封存preparation_attempt1，重用同一152raw，改用绝对脚本路径执行bank和prepare；不是增加fallback。M84旧入口原来用绝对路径。正式freeze/preflight/launch也全部绝对路径。你的代码源无需变更；会提供最终actualspec。"
+    },
+    {
+      "kind": "actual_parent_actual_spec_delivery",
+      "text": "实际准备完成exit0。355文件证据已取回M87/prepared_evidence并逐manifestSHA验证。内有caption_result/spec、bank_result、training_spec、recursive_spec、preparation_receipt、完整copied code/helpers/integration、caption_v1与preparation_attempt1日志。归档SHA24255ab72e07acdbb5626f0ed1443c2f5133e3ed6d5c0633a0f81b767d038bb1。training_specSHA d14946d36262ee9c23153af8927bce7f3d07aa0383ae2f1c2c02933662448860；recursive7e1259529215b4efd93e7751a7a3e1c41fd607a4aa56f5e7ef0539daf9a0cd19。请最终核查、封存PASS报告/receipt（绑定实际生成spec也可以，reviewed_sources相对M87根目录，实际文件当前在prepared_evidence我将复制spec到根目录）。bank向量文件留远端，你可验证receipt但别声称本地逐tensor重跑。待你完成再前检。"
+    },
+    {
+      "kind": "actual_parent_full_code_export_update",
+      "text": "已将export范围补全code/**/*（只取现有隔离代码文件），重新从远端打包下载并369文件逐SHA验证，prepared_evidence已补齐。归档新SHA296782cca54cc4f48c3c57e0fb9dbe07cd1854650c9e5661acaf46cff884c88b，文件名preparation_evidence_fullcode.tar.gz。请复核161integration现在应齐。actualspec/源码均未改变。"
+    },
+    {
+      "kind": "actual_parent_closeout_instruction",
+      "text": "请在现有实质检查完成后及时封存简洁最终报告；不必扩展到新审计目标或增加额外复算。当前准备真实exit0，等待你的CODE_REVIEW/receipt才运行96帧前检，前检及训练性能都由后续运行验证，不需你预先证明。"
+    }
+  ]
+}
