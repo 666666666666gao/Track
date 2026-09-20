@@ -1,0 +1,82 @@
+{
+  "strict_intervals": {
+    "category_empty": {
+      "damage": {
+        "segments": 28,
+        "frames": 2015
+      },
+      "improvement": {
+        "segments": 22,
+        "frames": 1768
+      }
+    },
+    "category_old": {
+      "damage": {
+        "segments": 24,
+        "frames": 2991
+      },
+      "improvement": {
+        "segments": 15,
+        "frames": 1068
+      }
+    },
+    "category_swapped": {
+      "damage": {
+        "segments": 20,
+        "frames": 2549
+      },
+      "improvement": {
+        "segments": 14,
+        "frames": 859
+      }
+    }
+  },
+  "template_writes": {
+    "category": {
+      "correct": 219,
+      "severe": 4,
+      "intermediate": 2,
+      "invalid_gt": 2
+    },
+    "category_empty": {
+      "correct": 256,
+      "severe": 27,
+      "intermediate": 0,
+      "invalid_gt": 9
+    },
+    "category_old": {
+      "correct": 250,
+      "severe": 18,
+      "intermediate": 2,
+      "invalid_gt": 3
+    },
+    "category_swapped": {
+      "correct": 242,
+      "severe": 15,
+      "intermediate": 0,
+      "invalid_gt": 11
+    }
+  },
+  "semantic_subgroups": {
+    "supported": {
+      "sequences": 14,
+      "valid_frames": 15827,
+      "delta_category_old": 0.04308404813549513,
+      "delta_category_empty": -0.06429864357085148
+    },
+    "conflicting": {
+      "sequences": 5,
+      "valid_frames": 9092,
+      "delta_category_old": -0.09144329804503798,
+      "delta_category_empty": 0.021927623176936195
+    },
+    "uncertain": {
+      "sequences": 3,
+      "valid_frames": 3978,
+      "delta_category_old": -0.39831607943404695,
+      "delta_category_empty": 0.13950977765263603
+    }
+  },
+  "semantic_scope": "Assistant proxy labels, not independent human or semantic ground truth.",
+  "update_scope": "Reconstructed write events from actual deterministic condition; no causal attribution across diverged histories."
+}

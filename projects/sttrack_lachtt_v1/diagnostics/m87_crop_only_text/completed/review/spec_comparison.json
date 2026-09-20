@@ -1,0 +1,116 @@
+{
+  "run_queue_sha256": {
+    "M87": "a8f040aafd87b2c94fe47a525a451f6226107cf0c659711c434d0f97b1530c82",
+    "M84": "573e51cf80280d77133def6305a915fd478515e0269ad613b58e317d3e5821fa"
+  },
+  "caption_protocol": {
+    "M87": "M87 frozen crop-only category protocol; original five slots/mask/padding/Empty unchanged; new text is not semantic ground truth.",
+    "M84": "Frozen local Qwen2.5-VL first-frame full image with target mark plus target crop; no sequence/category hint; raw automatic captions retained, including observed errors."
+  },
+  "banks": {
+    "M87": {
+      "fit": {
+        "category": {
+          "path": "/root/autodl-tmp/sttrack_m87_crop_only_text_20260921/banks/fit_category.pt",
+          "sha256": "fa96e9358c0f620757d66521bd1f352de9457a3f568a3afd51ce6ebed4e556b3"
+        },
+        "empty": {
+          "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/fit_empty.pt",
+          "sha256": "1ff4b1816d059c5a48147bee33e0472502221c9f3ff9f1ba3c6b131943ed52c9"
+        }
+      },
+      "development": {
+        "category": {
+          "path": "/root/autodl-tmp/sttrack_m87_crop_only_text_20260921/banks/development_category.pt",
+          "sha256": "6e028644f99f198181e8dbbde576506df633aa0a20bd35dac23332cfca88452c"
+        },
+        "empty": {
+          "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/development_empty.pt",
+          "sha256": "4da5777613ff304f2bcd629df3fd61e6f2b267cc8d9aabf8eb79ab7655d03bed"
+        },
+        "old": {
+          "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_development.pt",
+          "sha256": "e537d03f666f661f684db63586ca7d995476a7bc00e12d641ba417f619c1b3d6"
+        },
+        "swapped": {
+          "path": "/root/autodl-tmp/sttrack_m87_crop_only_text_20260921/banks/development_swapped.pt",
+          "sha256": "673e7d9c5b70c322f53c00575e64e99bb7bffbf613f4cfe1875859ba6b554d46"
+        }
+      }
+    },
+    "M84": {
+      "fit": {
+        "category": {
+          "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_fit.pt",
+          "sha256": "1efb31a5e6ed30e4fd41c78efcba4538585e4d3b597208d3069c1de04734d47a"
+        },
+        "empty": {
+          "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/fit_empty.pt",
+          "sha256": "1ff4b1816d059c5a48147bee33e0472502221c9f3ff9f1ba3c6b131943ed52c9"
+        },
+        "sequences": 130,
+        "changed_category_slots": 130
+      },
+      "development": {
+        "category": {
+          "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_development.pt",
+          "sha256": "e537d03f666f661f684db63586ca7d995476a7bc00e12d641ba417f619c1b3d6"
+        },
+        "empty": {
+          "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/development_empty.pt",
+          "sha256": "4da5777613ff304f2bcd629df3fd61e6f2b267cc8d9aabf8eb79ab7655d03bed"
+        },
+        "sequences": 22,
+        "changed_category_slots": 22,
+        "swapped": {
+          "path": "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907/swapped.pt",
+          "sha256": "955343f3e86d8e8d1bf15f29ee777de3b5098f37c80f2b2b5ea88aa44eda9125"
+        }
+      }
+    }
+  },
+  "parent_training_spec_sha256": {
+    "M87": "0f9bb841edd3e2c5171cd78ce9d1030d29a243561006d111d2c98eebfc74abd5",
+    "M84": "6163ef5b21f897ca9819c6358b03682c1278bc1b37e5ac93146ff47d332dd700"
+  },
+  "parent_result_path": {
+    "M87": "/root/autodl-tmp/sttrack_m84_centered_20260920/recursive_result.json",
+    "M84": "/root/autodl-tmp/sttrack_m82_native_preservation_20260909/recursive_result.json"
+  },
+  "preflight_source_sha256": {
+    "M87": "04c28ef2f42690690a283c4a3b3add3a3b42e44703052ca3d356db2a0da3a9b7",
+    "M84": "4e0e9ea2006163ff0e96f3862b7e7bfc384f94406831ac67e6f48624a7ccca9e"
+  },
+  "plan_sha256": {
+    "M87": "0e30f28330683411779184a9a1b2eefae8b3e6cf3dd89cda1c9e902d48a9e002",
+    "M84": "a260f0105f70f43e29b52e87fb6c7af16d6ace271472a0eff1f38b22368f0a48"
+  },
+  "bank_result_sha256": {
+    "M87": "3c5c2cb9d032482e7eac41658225ce29ed8be8bb9620deaff91a2662bb475e18",
+    "M84": null
+  },
+  "training_script_sha256": {
+    "M87": "c98999b361b65a8e46e3375c0131d73d0895a036be275c48e281a636fdd90d41",
+    "M84": "7be4d165ec70d8dd3413a4cec9ccc2856e67f6312b3bce825271ddfd1e407416"
+  },
+  "primary_control": {
+    "M87": "M84 same architecture, initialization, loss, sequence order and training budget; old text protocol",
+    "M84": "M82 Category as nonempty-equivalent hard-empty mask control; no extra Empty training"
+  },
+  "caption_result_sha256": {
+    "M87": "71b37f3df26d634ce5a483ae01e63d95519e8d8004e250f47bf192e30a8d1730",
+    "M84": null
+  },
+  "caption_spec_sha256": {
+    "M87": "f9857ad3d0a07d4cf46234cacadba661ae57629771939de12a1d4621931f4b37",
+    "M84": null
+  },
+  "parent_result_sha256": {
+    "M87": "a9281e0833b8ba1c01220374f3d6a93dbc9d22e6e8648c3495bb009083f2d5f7",
+    "M84": "823d0560db3acfdd594c53ecfae239ebb59ef77b3b2776bc9037dcdaa3a259ea"
+  },
+  "acceptance_definition": {
+    "M87": "4 M84 increment + 5 native including zero-H10 protection + 4 same-weight old content + 4 Swapped content + 1 Empty/native parity; all 18 required",
+    "M84": "4 M82 increment + 5 native including zero-H10 protection + 4 Swapped content + 1 per-sequence Empty/native metric parity; all required"
+  }
+}

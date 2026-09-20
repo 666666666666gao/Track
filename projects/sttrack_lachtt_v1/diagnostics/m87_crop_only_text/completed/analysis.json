@@ -1,0 +1,187 @@
+{
+  "scope": "Posthoc descriptive analysis, all22 repeated Train development sequences; not new training, official test or same-state intervention.",
+  "semantic_scope": "Sealed pre-result assistant proxy labels, not independent human ground truth. Subgroups do not establish causal semantic accuracy.",
+  "update_scope": "Reconstructed from saved scores and actual frame%50==0 and score>.75 code. Different recursive histories; counts do not establish update causality.",
+  "input_result_sha256": "76a8b269e51a858202687917c727158b2acc16f9fedc2b5985a623f2dcec8965",
+  "input_register_sha256": "0569e64d9fe41b6eb6b7ad71f73496479fe14955902acf62421c16aa0ef7ba1d",
+  "source_sha256": "a2a5f07e44b9c77dcf7b602362c13c28ba08951dd998bec65671eddf0605a3a3",
+  "aggregates": {
+    "native": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600395
+    },
+    "M84_protocol_control": {
+      "valid_frames": 28897,
+      "iou_sum": 20474.143699949313,
+      "low_iou_frames": 5541,
+      "failure_episodes": 72,
+      "mean_iou": 0.7085214278281244,
+      "macro_sequence_mean_iou": 0.7004543356970993
+    },
+    "M82_historical": {
+      "valid_frames": 28897,
+      "iou_sum": 21080.96532028973,
+      "low_iou_frames": 4952,
+      "failure_episodes": 67,
+      "mean_iou": 0.7295208956047248,
+      "macro_sequence_mean_iou": 0.7447772742984767
+    },
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 18584.063540634943,
+      "low_iou_frames": 7694,
+      "failure_episodes": 75,
+      "mean_iou": 0.6431139405694343,
+      "macro_sequence_mean_iou": 0.6626550277692717
+    },
+    "category_empty": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.382327003917,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.6522262631762438,
+      "macro_sequence_mean_iou": 0.6843364163600395
+    },
+    "category_old": {
+      "valid_frames": 28897,
+      "iou_sum": 20318.076140608584,
+      "low_iou_frames": 5731,
+      "failure_episodes": 67,
+      "mean_iou": 0.7031206056202576,
+      "macro_sequence_mean_iou": 0.709197245845413
+    },
+    "category_swapped": {
+      "valid_frames": 28897,
+      "iou_sum": 20171.47256663693,
+      "low_iou_frames": 6001,
+      "failure_episodes": 73,
+      "mean_iou": 0.6980472909518957,
+      "macro_sequence_mean_iou": 0.7056619783696262
+    }
+  },
+  "gates": {
+    "M84_increment": {
+      "mean": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    },
+    "native": {
+      "mean": false,
+      "macro": false,
+      "low": false,
+      "H10": true,
+      "native_zero_H10_protection": false
+    },
+    "old_content": {
+      "mean": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    },
+    "swapped_content": {
+      "mean": false,
+      "macro": false,
+      "low": false,
+      "H10": false
+    },
+    "empty_native_parity": {
+      "all_sequences": true
+    }
+  },
+  "native_success_damage": [
+    "mobilephone02_indoor"
+  ],
+  "strict_intervals": {
+    "category_empty": {
+      "damage": {
+        "segments": 28,
+        "frames": 2015
+      },
+      "improvement": {
+        "segments": 22,
+        "frames": 1768
+      }
+    },
+    "category_old": {
+      "damage": {
+        "segments": 24,
+        "frames": 2991
+      },
+      "improvement": {
+        "segments": 15,
+        "frames": 1068
+      }
+    },
+    "category_swapped": {
+      "damage": {
+        "segments": 20,
+        "frames": 2549
+      },
+      "improvement": {
+        "segments": 14,
+        "frames": 859
+      }
+    }
+  },
+  "template_writes": {
+    "category": {
+      "correct": 219,
+      "severe": 4,
+      "intermediate": 2,
+      "invalid_gt": 2
+    },
+    "category_empty": {
+      "correct": 256,
+      "severe": 27,
+      "intermediate": 0,
+      "invalid_gt": 9
+    },
+    "category_old": {
+      "correct": 250,
+      "severe": 18,
+      "intermediate": 2,
+      "invalid_gt": 3
+    },
+    "category_swapped": {
+      "correct": 242,
+      "severe": 15,
+      "intermediate": 0,
+      "invalid_gt": 11
+    }
+  },
+  "semantic_subgroups": {
+    "supported": {
+      "sequences": 14,
+      "valid_frames": 15827,
+      "delta_category_old": 0.04308404813549514,
+      "delta_category_empty": -0.06429864357085147
+    },
+    "conflicting": {
+      "sequences": 5,
+      "valid_frames": 9092,
+      "delta_category_old": -0.09144329804503798,
+      "delta_category_empty": 0.02192762317693618
+    },
+    "uncertain": {
+      "sequences": 3,
+      "valid_frames": 3978,
+      "delta_category_old": -0.3983160794340469,
+      "delta_category_empty": 0.13950977765263603
+    }
+  },
+  "leave_one_out_positive": {
+    "category_empty": 1,
+    "category_old": 0,
+    "category_swapped": 0
+  },
+  "artifacts_sha256": {
+    "per_sequence.csv": "8dbedcec310ebded7f6537040b9b71374c5df5f7c9497c9d7914c69ab764ba4d",
+    "strict_intervals.csv": "2b96b032f2be778a0bc6b3696118f7801fee8f843a1c2b99c77b2f36fa17a8d1",
+    "template_write_events.csv": "9a0a01c9bd4583740bee6a0db2dc2257f42987a68ea45626dbb52b20e32bee54"
+  }
+}
