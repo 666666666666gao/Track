@@ -1,0 +1,25 @@
+{
+  "scope": "Synthetic CPU interface probe; no tracking or dataset evaluation",
+  "date": "2026-09-20",
+  "remote_directory": "/root/autodl-tmp/sttrack_centered_interface_probe_20260920",
+  "attempts": [
+    {
+      "script": "check_centered_algebra.py",
+      "exit_code": 1,
+      "failed_assertion": "assert empty_grad==0",
+      "prior_forward_checks_passed": ["zero initialization exact native", "nonzero weights Empty exact native"],
+      "diagnostic_replay_exit_code": 1,
+      "diagnostic_empty_gradient_max": 1.4551915228366852e-11,
+      "nonzero_residual_locations": "Shared RGB/Depth Linear and LayerNorm gradient accumulation",
+      "evidence_type": "Recorded from executor tool output; not a separately saved raw stderr log"
+    },
+    {
+      "script": "check_centered_algebra_v2.py",
+      "script_sha256": "092beeba24c1a8dd64f2efa3157b2fd0719cecc8383753d82d06686b740833fb",
+      "exit_code": 0,
+      "change": "Numerical gradient check uses explicit absolute tolerance 1e-9; candidate forward implementation unchanged",
+      "result": "centered_algebra_result.json",
+      "interpretation": "Analytic empty task gradient is zero; float32 shared-path accumulation is not bitwise zero. Do not run Empty as a meaningful independent training arm."
+    }
+  ]
+}
