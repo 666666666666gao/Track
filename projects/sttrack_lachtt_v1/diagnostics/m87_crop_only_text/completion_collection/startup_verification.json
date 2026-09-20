@@ -1,0 +1,34 @@
+{
+  "observed_utc": "2026-09-20T19:39:35.212526+00:00",
+  "processes": "   PID   PPID STAT COMMAND\n 25357      1 Ss   bash /root/autodl-tmp/sttrack_m87_crop_only_text_20260921/run_m87.sh\n 25358  25357 Rl   /root/autodl-tmp/envs/sttrack/bin/python -u train_causal.py --arm category\n 31888      1 Ss   bash /root/autodl-tmp/sttrack_m87_crop_only_text_20260921/completion_collection/run_collection.sh\n 31889  31888 S    /root/autodl-tmp/envs/sttrack/bin/python -u /root/autodl-tmp/sttrack_m87_crop_only_text_20260921/completion_collection/collect_completed.py --controller-pid 25357\n",
+  "collector_log": "{\"observed_utc\": \"2026-09-20T19:39:01.640883+00:00\", \"status\": \"controller_live_wait\", \"pid\": 25357}\n",
+  "completed_sequences": 46,
+  "last_completed": {
+    "sequence": "human05_wild",
+    "sequence_index": 45,
+    "total_sequences": 130,
+    "frames": 2328,
+    "track_calls": 2327,
+    "supervised_frames": 2249,
+    "label_counts": {
+      "centre_inside": 2219,
+      "invalid": 78,
+      "centre_outside": 30
+    },
+    "mean_training_loss": 0.30616672450520027,
+    "template_writes": 41,
+    "cumulative_competition_frames": 58472,
+    "cumulative_competition_loss_sum": 9097.57177647017,
+    "cumulative_competition_negatives": 526198,
+    "cumulative_native_eligible_frames": 56136,
+    "cumulative_preservation_kl_sum": 647.0907561065983,
+    "maximum_preservation_kl": 1.5329039096832275,
+    "maximum_preclip_gradient_norm": 0.7038863301277161,
+    "total_optimizer_steps": 2101,
+    "total_track_calls": 67397,
+    "seconds": 187.66584420204163,
+    "elapsed_seconds": 5139.194963693619
+  },
+  "free_disk_bytes": 1105960960,
+  "collector_result_exists": false
+}
