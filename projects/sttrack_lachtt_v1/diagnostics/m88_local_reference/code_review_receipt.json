@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "blocking_issues": 0,
+  "nonblocking_issues": 0,
+  "review_model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "reviewer_independence": "same-family",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "observed_utc": "2026-09-21T00:11:18.2894318Z",
+  "report_sha256": "b87553f64133e081ee157d9c3f039f8fe9ae9b99eb5a1b4ef45e10eefc563af4",
+  "reviewed_sources": {
+    "EXPERIMENT_PLAN.md": "a634815c377c14ecddfc841c2931bae96ec009e91748126660eaa98a1740f784",
+    "semantic_spatial_adapter.py": "783538c45d87beb3ef8ffbfbe8f2933966921c527ee00acd6ffb05e6d988f272",
+    "prepare.py": "8ac7f2fb1aea14277add6272a025023e30391c6b6c98f1c167b9f52d38376445",
+    "train_causal.py": "39318fcf4ab8f2ffead0612d0722542c10a125172c8f7103ce78223fbb35e7bb",
+    "run_recursive.py": "6d66178e466ac8b4d9a3ec956d43e928e9e1d6468e90383c70400d21a776d161",
+    "run_m88.sh": "2c62c710fe009f72219443e58958428b710a2625652fadc5bc3c117711dd402f",
+    "preflight_m88.py": "429fcdcd70c013540f7721f43a7e570bb85c4801d78cde08336a6af7090315c2",
+    "check_model.py": "d0f8f0968f537f95814c40059e3804292f50721451b65e2bbe576b7587aa8c42",
+    "freeze_m88.py": "5ab60c6395e273e1b18c059bdc794243751c20d6877fdaf40c9928340cc8af68",
+    "launch_m88.py": "7697dc72335c6d09f0013a5c9683c53fa7f280b5d21f156945e8fa9d39890942"
+  },
+  "reviewed_prepared_artifacts": {
+    "training_spec.json": "0d82b358e88525b17474e50215afd84f39898f40c7ff1b0df13b44bc92da4428",
+    "recursive_spec.json": "06c6920905baa4613c1c1c4a846a1838346d19b9c7a7a55fe2e065806ff4262f",
+    "integration.json": "5e3453b69e3ab6227e694efe0f3a4826eca471eff69867231c04169cbe45c321",
+    "native_parity/category_zero.pth": "d36353b6fcea8634a94d0c0051cb2d0c2f19061c9cd2e6cffb35e253e44b5334",
+    "model_check.json": "fcef7fd0937376e3832bcc550ca9a1a7c7cbc6b36a61aad2128de139903be8cb",
+    "numerical_clarification.json": "4ef62cfa7f2f0a3675cc7fbe00df33f61053b8b6e2c28d415920e44c62ec8b13",
+    "queue_line_endings.json": "daf2c7d5cc89aa804e22fb4c87e86a75f6b4962759404b216a4ea0b7bcf2ed56"
+  },
+  "verified_integration_source_count": 161,
+  "verified_model_changes": [
+    "lib/models/sttrack/semantic_spatial_adapter.py",
+    "lib/test/tracker/sttrack_semantic.py"
+  ],
+  "source_edits_by_reviewer": false,
+  "remote_operations_by_reviewer": false,
+  "gpu_or_training_execution_by_reviewer": false,
+  "cpu_execution_evidence": "Executor-produced prepared/model_check.json inspected and cross-checked, not independently rerun by reviewer",
+  "next_phase": "Repeat the required short GPU preflight under final queue/spec binding; on success freeze and execute full training and three development recursions",
+  "open_result_obligations": [
+    "Repeat GPU parity and discarded smoke under final spec binding before freezing and formal training; preserve the prior successful preflight separately",
+    "Final complete-pass checkpoint only",
+    "Seal all three prediction families before development GT analysis",
+    "Posthoc Empty full bbox/score parity and descriptive strict damage/improvement, LOO, all negative rows"
+  ],
+  "initial_review_observed_utc": "2026-09-21T00:03:18.895696Z",
+  "correction_history": [
+    {
+      "scope": "CRLF to LF queue correction only; existing command and control-flow bytes otherwise identical",
+      "reviewed_utc": "2026-09-21T00:11:18.2894318Z",
+      "prior_report_path": "CODE_REVIEW_20260921_000318.md",
+      "prior_report_sha256": "219f4c0f50d01b751848219538a8242e6c5200c7cd640fcb2b29a040121c9847",
+      "prior_receipt_path": "code_review_receipt_20260921_000318.json",
+      "prior_receipt_sha256": "bc396daf9b30862d60b17919af57121e4e7158ab8d7012ba81a7a1b18e117eac",
+      "previous_queue_sha256": "c94d778f4a51ca094940f3eb44d4e0ef7167ae17766e5ef15c032ac13a8c5f33",
+      "queue_sha256": "2c62c710fe009f72219443e58958428b710a2625652fadc5bc3c117711dd402f",
+      "previous_training_spec_sha256": "e022ca6ae5e70174020ba2edc20a947b079382df717e6a050f7a84e0610f18e9",
+      "training_spec_sha256": "0d82b358e88525b17474e50215afd84f39898f40c7ff1b0df13b44bc92da4428",
+      "previous_recursive_spec_sha256": "24c90c589968159df2f1c1b350ea9a4bce1b91139c8569c0927aef02c9d1f7c8",
+      "recursive_spec_sha256": "06c6920905baa4613c1c1c4a846a1838346d19b9c7a7a55fe2e065806ff4262f",
+      "unchanged_other_root_sources": 9,
+      "exact_old_bytes_reconstructed": true,
+      "gpu_preflight_rerun_required_under_final_binding": true
+    }
+  ]
+}

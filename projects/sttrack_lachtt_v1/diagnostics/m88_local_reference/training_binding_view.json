@@ -1,0 +1,129 @@
+{
+  "supervision_coordinate_convention": "Native transform_image_to_crop; rounded centre, constrained to the representable 0..15 grid; same-state diagnostic precedes restart",
+  "epochs": 1,
+  "learned_parameters": 289154,
+  "visual_base_frozen_eval": true,
+  "native_checkpoint": "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+  "native_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+  "dataset_root": "/root/autodl-tmp/depthtrack/train/sequences",
+  "development_sequences": [
+    "bag05_indoor",
+    "ball07_indoor",
+    "ball19_indoor",
+    "beautifullight01_indoor",
+    "book06_indoor",
+    "car01_indoor",
+    "car02_indoor",
+    "colacan01_indoor",
+    "colacan04_indoor",
+    "container01_indoor",
+    "cup08_indoor",
+    "cup10_indoor",
+    "cup13_indoor",
+    "egg_indoor",
+    "flower02_wild",
+    "flower03_indoor",
+    "flowerbasket_indoor",
+    "ghostmask_indoor",
+    "glass03_indoor",
+    "mobilephone01_indoor",
+    "mobilephone02_indoor",
+    "notebook02_indoor"
+  ],
+  "total_training_image_frames": 186824,
+  "total_training_track_calls": 186694,
+  "maximum_optimizer_steps": 5896,
+  "optimizer": "AdamW",
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "gradient_accumulation_frames": 32,
+  "gradient_clip": 1.0,
+  "loss": "Native raw focal + 2 GIoU + 5 xyxy L1 + weight-1 competition at the rounded GT cell against up to 9 raw-score hard negatives with detached decoded center outside GT and IoU<=0.1. Plus weight-1 reliable same-state native spatial KL.",
+  "invalid_gt": "No loss; advance the predicted crop/query/template state normally.",
+  "target_centre_outside_crop": "All-zero centre heatmap and no box regression; no GT reset or widened crop.",
+  "state_protocol": "Initialize from first RGB-D/box only; chronological full sequence; actual predicted boxes, queries and default template updates feed the next frame. Optimizer updates every 32 observed frames with valid-loss averaging. State tensors are detached.",
+  "backprop_through_time_or_discrete_crops": false,
+  "native_update_interval": 50,
+  "native_update_threshold": 0.75,
+  "caption_protocol": "Frozen local Qwen2.5-VL first-frame full image with target mark plus target crop; no sequence/category hint; raw automatic captions retained, including observed errors.",
+  "native_result_sha256": "5ed4a20beae88a8e8b85513000a8f020311e934b9206678f7d670b50b0737064",
+  "checkpoint_retention": "One latest and one fixed final adapter+optimizer per arm; no base copy or per-epoch history.",
+  "optimizer_stop_conditions": [
+    "Non-finite loss/gradient, source mismatch, runtime exception; preserve terminal evidence."
+  ],
+  "seed": 2027,
+  "banks": {
+    "fit": {
+      "category": {
+        "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_fit.pt",
+        "sha256": "1efb31a5e6ed30e4fd41c78efcba4538585e4d3b597208d3069c1de04734d47a"
+      },
+      "empty": {
+        "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/fit_empty.pt",
+        "sha256": "1ff4b1816d059c5a48147bee33e0472502221c9f3ff9f1ba3c6b131943ed52c9"
+      },
+      "sequences": 130,
+      "changed_category_slots": 130
+    },
+    "development": {
+      "category": {
+        "path": "/root/autodl-tmp/sttrack_m67_supervised_semantic_support_20260907/text_development.pt",
+        "sha256": "e537d03f666f661f684db63586ca7d995476a7bc00e12d641ba417f619c1b3d6"
+      },
+      "empty": {
+        "path": "/root/autodl-tmp/sttrack_m73_paired_lexical_replication_20260907/banks/development_empty.pt",
+        "sha256": "4da5777613ff304f2bcd629df3fd61e6f2b267cc8d9aabf8eb79ab7655d03bed"
+      },
+      "sequences": 22,
+      "changed_category_slots": 22,
+      "swapped": {
+        "path": "/root/autodl-tmp/sttrack_m69_m65_content_diagnostic_20260907/swapped.pt",
+        "sha256": "955343f3e86d8e8d1bf15f29ee777de3b5098f37c80f2b2b5ea88aa44eda9125"
+      }
+    }
+  },
+  "window_loss_weight": 1.0,
+  "window_hard_negative_count": 9,
+  "window_negative_maximum_iou": 0.1,
+  "preservation_weight": 1.0,
+  "preservation_teacher_minimum_iou": 0.5,
+  "preservation_teacher": "Already computed native raw score; native Hann-decoded clipped bbox on exactly the student current crop/template/query, before public state commit. Detached, never committed.",
+  "preservation_eligibility": "Training only, after public prediction: valid GT, target centre in crop, same-state native decoded bbox continuous rectangle IoU>=0.5.",
+  "preservation_distribution": "Raw positive clamped Center Head sigmoid scores normalized over 256 spatial positions; KL(teacher||student), spatial sum and batch mean, weight 1; no /256 and no temperature.",
+  "status": "prepared_not_frozen",
+  "architecture": "semantic_spatial_local_reference_v1",
+  "primary_arm": "category",
+  "trained_arms": [
+    "category"
+  ],
+  "support_loss_weights": {
+    "category": 0.0
+  },
+  "stored_parameters": 289154,
+  "cancelled_final_bias_dimensions": 768,
+  "expected_optimizer_steps": 5798,
+  "primary_control": "M84 same initial tensors, original text banks, loss, fit order and budget; spatially constant initial binding",
+  "parent_training_spec_sha256": "0f9bb841edd3e2c5171cd78ce9d1030d29a243561006d111d2c98eebfc74abd5",
+  "parent_result_path": "/root/autodl-tmp/sttrack_m84_centered_20260920/recursive_result.json",
+  "parent_result_sha256": "a9281e0833b8ba1c01220374f3d6a93dbc9d22e6e8648c3495bb009083f2d5f7",
+  "plan_sha256": "a634815c377c14ecddfc841c2931bae96ec009e91748126660eaa98a1740f784",
+  "inventory_sha256": "529f10ebd1122596a6e8832578f1cd26c3315a78fac59664fdb0d0fb367b85c1",
+  "integration_sha256": "5e3453b69e3ab6227e694efe0f3a4826eca471eff69867231c04169cbe45c321",
+  "initial_checkpoint_sha256": {
+    "category": "d36353b6fcea8634a94d0c0051cb2d0c2f19061c9cd2e6cffb35e253e44b5334"
+  },
+  "training_script_sha256": "39318fcf4ab8f2ffead0612d0722542c10a125172c8f7103ce78223fbb35e7bb",
+  "causal_script_sha256": "23d445e3309958df3f699a8d2ea0c3e3e244517c1f821de365f2cb287c11d0f1",
+  "support_loss_sha256": "6afd1da844066a4ebc8d8a43122a0c07e6377338edc1daa9856ebd306b9412af",
+  "window_loss_sha256": "db500eac6b3392c6a4f6e29796f931824df0acb451b416964c0b2924404be593",
+  "preservation_loss_sha256": "4d3d0f0e74a059e8661dcc449ea3db197da4c543058941e4667ee9b2f4826486",
+  "run_queue_sha256": "2c62c710fe009f72219443e58958428b710a2625652fadc5bc3c117711dd402f",
+  "preflight_source_sha256": "429fcdcd70c013540f7721f43a7e570bb85c4801d78cde08336a6af7090315c2",
+  "all_development_predictions_before_GT": true,
+  "public_evaluation": "No automatic public evaluation or promotion",
+  "fixed_final_checkpoint_only": true,
+  "acceptance_definition": "4 M84 increment + 5 native including zero-H10 protection + 4 Swapped content + 1 Empty/native parity; all14 required",
+  "local_reference_equation": "softmax_j((q_k+r_p) dot z_j/sqrt(64))",
+  "sequence_order_count": 130,
+  "source_full_spec_sha256": "0d82b358e88525b17474e50215afd84f39898f40c7ff1b0df13b44bc92da4428"
+}
