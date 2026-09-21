@@ -1,0 +1,26 @@
+{
+  "status": "historical_replay_pass",
+  "experiment_replayed": "M87",
+  "current_M88_results_available": false,
+  "new_tracking_calls": 0,
+  "new_training_steps": 0,
+  "checks": {
+    "strict_intervals.csv": {
+      "rows": 84,
+      "matched": true
+    },
+    "template_write_events.csv": {
+      "rows": 787,
+      "matched": true
+    }
+  },
+  "input_sha256": {
+    "strict_intervals_recomputed.csv": "2b96b032f2be778a0bc6b3696118f7801fee8f843a1c2b99c77b2f36fa17a8d1",
+    "strict_intervals.csv": "071ebf1594bf7ef41f809efc5adfb7d1a69ccf09f24415fdaf6723f816b54b3f",
+    "template_writes_recomputed.csv": "9a0a01c9bd4583740bee6a0db2dc2257f42987a68ea45626dbb52b20e32bee54",
+    "template_write_events.csv": "0065db5d44bd122ae3cc0500fd8ccaded1d201e390398510020bfdcb68537637"
+  },
+  "analyzer_sha256": "208035be483c9217a26d651c35db7936e919950fc216f754cf5d62b953ea0576",
+  "validation_source_sha256": "5234cd83361f9e5cf92c8bdb9b3dcdbdb522d7df814864d4c7203c872ab59ed8",
+  "scope": "Historical reader validation only; not a completed M88 audit. M84 control metrics checked from its raw trajectories against its sealed result by the reader. Frozen gates are copied, not independently recomputed."
+}
