@@ -1,0 +1,94 @@
+{
+  "review_date_local": "2026-09-24",
+  "verdict": "PASS",
+  "blocking_issues": [],
+  "reviewer": {"model": "gpt-6-astra", "reasoning_effort": "max", "context": "fresh"},
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "scope": "Current remote snapshot and bounded continuation of two selected finals, six full official evaluations, no new training or seeds",
+  "reviewed_snapshot": "remote_snapshot_20260924",
+  "final_continuation_sha256": {
+    "resume_20260924.sh": "725ca63b444d6e43d25a4f64a9d72d421044fd3905868ba8675d34e752cfec99",
+    "launch_resume_20260924.py": "97371f0562004ddf20e575c954d5a6fc3b76107411e22646539a2bac74c7dcc9",
+    "migration_preflight_20260924.py": "cfba51648aaeacdd0ce9908b08f7bb5bc0c65d6f2e7678871a17209a5b621905"
+  },
+  "checks": {
+    "selection_and_interface_hash_checks": 22,
+    "selection_and_interface_hashes": "pass",
+    "python_ast_main_files": 16,
+    "python_ast_status": "pass",
+    "M67_depthtrack_completed_chain": {
+      "status": "pass",
+      "sequences": 50,
+      "frames": 76373,
+      "P_percent": 63.66596112335755,
+      "R_percent": 62.114945894106974,
+      "F_percent": 62.88089065734882,
+      "metrics_recomputed_locally": false,
+      "preserved_by_resume": true
+    },
+    "M67_cdtb_input_binding": {"sequences": 80, "frames": 101956, "status": "pass"},
+    "real_trax_recomputed_reports": {
+      "M67": {"reports": 202, "wire_boxes": "exact_match", "max_score_error": 2.9635620069079494e-8, "fractional_probe": "pass"},
+      "M82": {"reports": 202, "wire_boxes": "exact_match", "max_score_error": 2.9799652079276484e-8, "fractional_probe": "pass"}
+    },
+    "vot_coverage": {
+      "status": "pass",
+      "shard_anchors": [441, 441, 441, 442],
+      "unique_anchors": 1765,
+      "sequences": 127,
+      "forward": 867,
+      "backward": 898,
+      "frame_positions": 1327004,
+      "metadata_entries": 6938,
+      "caption_inputs_exact_anchor_projection": true,
+      "manifest_exporter_and_three_exported_file_hashes": "match"
+    },
+    "initialization_only_text": "pass",
+    "bf16_finite_guard": "evidence_based_uniform_generation_no_fallback",
+    "ope_gt_use": "analysis_after_complete_prediction_receipt",
+    "vot_gt_use": "official_engine_initialization_and_analysis_only_no_tracker_gt_reads",
+    "new_training_steps": 0,
+    "remaining_queue": ["M67 CDTB", "M67 VOT full127", "M82 DepthTrack Test", "M82 CDTB", "M82 VOT full127"],
+    "actual_vot_poll_seconds": 3600,
+    "original_execution_metadata_poll_seconds": 240,
+    "polling_override_recorded_in_launch_receipt": true
+  },
+  "nonblocking_issues": [
+    {
+      "id": "R1",
+      "file": "remote_snapshot_20260924/analyze_full.py",
+      "lines": [42, 57],
+      "issue": "Collector writes all_results.json but no final comparison CSV required by the plan.",
+      "action": "Export CSV from audited six-result JSON after completion; no frozen evaluation code change needed.",
+      "blocks_resume": false
+    }
+  ],
+  "launch_report": {
+    "source": "parent_agent_report_after_no_blocker_review_message",
+    "utc_time": "16:54:34",
+    "controller_pid": 2437,
+    "stage": "M67_cdtb_running_after_migration_gpu_witness_pass",
+    "migration_gpu_witness_complete_at_review": true,
+    "migration_preflight_exit": 0,
+    "migration_preflight_log": "Both migrated final models reproduce saved Train prefixes.",
+    "postlaunch_health_source": "parent_agent_one_time_health_check",
+    "controller_alive": true,
+    "gpu1_memory_mib": 2444,
+    "gpu1_utilization_percent": 62,
+    "formal_inference_blocked_if_witness_fails": true,
+    "reviewer_launched_remote_task": false
+  },
+  "migrated_toolkit_versions": {
+    "source": "parent_agent_current_host_query",
+    "receipt_remote_relative_path": "migration_versions_20260924.json",
+    "python": "3.8.20",
+    "vot-toolkit": "0.7.1",
+    "vot-trax": "4.0.2"
+  },
+  "limitations": [
+    "No local full-dataset inference or independent metric recomputation.",
+    "Remaining five full evaluations were not complete when this report was written; migration GPU witness passed according to parent-agent health receipt.",
+    "This code review does not constitute a completed-result audit or cross-family acceptance."
+  ]
+}
