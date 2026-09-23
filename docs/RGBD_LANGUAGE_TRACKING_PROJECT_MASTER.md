@@ -22261,3 +22261,20 @@ M67最终权重SHA256为7a8907a45cec672f11563ad7cfaee21cb64acfee3fa13e854621c146
 
 运行根目录为/root/autodl-tmp/sttrack_selected_full_evaluation_20260921，目标补充见GOAL_SUPPLEMENT_20260924.md，恢复进程记录见resume_launch.json。新恢复脚本SHA256为725ca63b444d6e43d25a4f64a9d72d421044fd3905868ba8675d34e752cfec99。后续收齐六项官方指标后补comparison CSV与逐序列归因，不从平均IoU推算F，也不将开发成绩填入正式测试结果。
 启动健康确认：迁移GPU预检exit=0，M67/M82均复现保存的Train前缀；控制器PID2437存活，GPU1使用2444MiB且利用率62%，M67 CDTB正在执行。后续检查间隔一小时，下一次不早于北京时间2026-09-24 01:55。
+
+## 5.191 M88完整开发结果与审计补记（2026-09-24）
+
+此前§5.189只记录了M88训练完成。其后三组固定seed2027的DepthTrack Train开发22完整递归已结束，最终完整遍历checkpoint SHA256为`a6705a512444f0d715e50d2655edb1611dcbb7801be83329ce7bff2d13611c78`，未选择中间权重。仅Category训练了一个adapter；Empty与Swapped均是同一权重的内容干预，不是另外两次训练。原始结果SHA256为`6eede114475e34ea069f7701d15262e92a6aecdbd7c6668fd44c3386ba80c80a`。
+
+| 开发22内容条件 | 帧均IoU | 序列等权IoU | IoU≤0.1帧 | H10段 |
+| --- | ---: | ---: | ---: | ---: |
+| M88 Category | 0.714800772 | 0.707712887 | 5373 | 65 |
+| M88同权重Empty | 0.652226263 | 0.684336416 | 7397 | 75 |
+| M88同权重Swapped | 0.710027126 | 0.719890230 | 5477 | 65 |
+| M84 Category | 0.708521428 | 0.700454336 | 5541 | 72 |
+
+M88相对M84在四项聚合比较中均有改善，但冻结的14项条件只通过12项，因此原定晋升判据失败。两个未通过点：Category序列等权IoU低于Swapped约1.218个百分点；原生H10=0的`container01_indoor`、`mobilephone02_indoor`在M88各新增1段H10。Category相对M84的严格持续损害14段/617帧，改善19段/743帧；相对Empty的损害19段/1143帧，改善30段/3187帧。不能用整体收益抹去受损成功轨迹。
+
+同权重Empty的33130个bbox和33108个非初始化分数与保留的native提取参照逐值一致；该结论是已有native轨迹的提取比对，本次没有重跑独立native。审计对保存文件与指标的确定性复算为PASS，整体完整性判为WARN：开发推理时实际载入的532MB原生base文件没有独立字节哈希回执；原始native分片未完整收进本地审计包。这里未发现base替换证据，但不能将未验证的绑定写成已证实。自动类别也未经语义真值认证，因此Category相对Swapped的差异不能直接解释为正确词义的因果增益。完整审计为同模型家族的临时接受，见`projects/sttrack_lachtt_v1/diagnostics/m88_local_reference/completion_collection/EXPERIMENT_AUDIT.md`。
+
+M88属于反复使用的Train开发22结果，没有DepthTrack Test、CDTB或VOT全量指标，也没有进入当前M67先、M82后验收队列。按用户最新指令，先收齐这两个已选版本的六项正式结果，再决定是否停止或开展新的针对性实验；M88结果保留为机制证据，不能拿来填正式表格。审计与分析JSON、逐序列CSV、门槛CSV均保存在同一GitHub诊断目录。

@@ -1,0 +1,136 @@
+{
+  "scope": "Posthoc descriptive analysis of all22 repeated Train development sequences; no inference or gate changes.",
+  "limitations": "First bbox difference is not first identity error. Strict intervals and write counts compare different recursive histories, not causal interventions. Automatic original captions are not semantic ground truth.",
+  "inputs_sha256": {
+    "recursive_result": "6eede114475e34ea069f7701d15262e92a6aecdbd7c6668fd44c3386ba80c80a",
+    "recursive_spec": "06c6920905baa4613c1c1c4a846a1838346d19b9c7a7a55fe2e065806ff4262f",
+    "control_result": "a9281e0833b8ba1c01220374f3d6a93dbc9d22e6e8648c3495bb009083f2d5f7",
+    "category_receipt": "dfc88ad583b82d1af7685ba6f2c1f7d13b7bed17b5e2941a3e14ecd5597a8ec2",
+    "category_empty_receipt": "b536ce0392cc27691531dee12dce5ecf231184209e018dec5b17fcd0d5c72074",
+    "category_swapped_receipt": "ebde12744beb3921a624ceeb9722575387987af1dda87967076cecc2efbe9e63",
+    "M84_control_receipt": "bd44cfadea92849b29dc5f9a68a1402dca8c07a96e2b3c2f30029cae7caf226e"
+  },
+  "source_sha256": "208035be483c9217a26d651c35db7936e919950fc216f754cf5d62b953ea0576",
+  "aggregates": {
+    "category": {
+      "valid_frames": 28897,
+      "iou_sum": 20655.597909738408,
+      "low_iou_frames": 5373,
+      "failure_episodes": 65,
+      "mean_iou": 0.7148007720434096,
+      "macro_sequence_mean_iou": 0.7077128871780697
+    },
+    "category_empty": {
+      "valid_frames": 28897,
+      "iou_sum": 18847.38232700392,
+      "low_iou_frames": 7397,
+      "failure_episodes": 75,
+      "mean_iou": 0.652226263176244,
+      "macro_sequence_mean_iou": 0.6843364163600397
+    },
+    "category_swapped": {
+      "valid_frames": 28897,
+      "iou_sum": 20517.653871730472,
+      "low_iou_frames": 5477,
+      "failure_episodes": 65,
+      "mean_iou": 0.7100271264051795,
+      "macro_sequence_mean_iou": 0.7198902300223942
+    },
+    "M84_control": {
+      "valid_frames": 28897,
+      "iou_sum": 20474.143699949313,
+      "low_iou_frames": 5541,
+      "failure_episodes": 72,
+      "mean_iou": 0.7085214278281244,
+      "macro_sequence_mean_iou": 0.7004543356970994
+    }
+  },
+  "strict_intervals": {
+    "M84_control": {
+      "damage": {
+        "segments": 14,
+        "frames": 617
+      },
+      "improvement": {
+        "segments": 19,
+        "frames": 743
+      }
+    },
+    "category_empty": {
+      "damage": {
+        "segments": 19,
+        "frames": 1143
+      },
+      "improvement": {
+        "segments": 30,
+        "frames": 3187
+      }
+    },
+    "category_swapped": {
+      "damage": {
+        "segments": 10,
+        "frames": 654
+      },
+      "improvement": {
+        "segments": 11,
+        "frames": 791
+      }
+    }
+  },
+  "template_writes": {
+    "category": {
+      "correct": 251,
+      "severe": 12,
+      "intermediate": 1,
+      "invalid_gt": 11
+    },
+    "category_empty": {
+      "correct": 256,
+      "severe": 27,
+      "intermediate": 0,
+      "invalid_gt": 9
+    },
+    "category_swapped": {
+      "correct": 248,
+      "severe": 12,
+      "intermediate": 0,
+      "invalid_gt": 10
+    },
+    "M84_control": {
+      "correct": 243,
+      "severe": 7,
+      "intermediate": 2,
+      "invalid_gt": 12
+    }
+  },
+  "frozen_gates_as_recorded": {
+    "M84_increment": {
+      "mean": true,
+      "macro": true,
+      "low": true,
+      "H10": true
+    },
+    "native": {
+      "mean": true,
+      "macro": true,
+      "low": true,
+      "H10": true,
+      "native_zero_H10_protection": false
+    },
+    "swapped_content": {
+      "mean": true,
+      "macro": false,
+      "low": true,
+      "H10": true
+    },
+    "empty_native_parity": {
+      "all_sequences": true
+    }
+  },
+  "gates_independently_recomputed": false,
+  "artifacts_sha256": {
+    "per_sequence.csv": "aaf4b285042e7d106281ff2b7d5012a6ef88d724c68d8875366fc75f2c47e566",
+    "strict_intervals.csv": "7f87f8def1affda16bcb599d4b05b9119c6379af8c1ad88de6d7b4f195a2f077",
+    "template_write_events.csv": "ca48e8955acd1b58b0e6da5b18b607c7bcb32acbdbc728d707a4afe1053bafef"
+  }
+}
