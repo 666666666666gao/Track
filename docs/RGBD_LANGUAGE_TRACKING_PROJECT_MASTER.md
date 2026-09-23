@@ -22235,3 +22235,29 @@ M88训练完成记录时间为`2026-09-21T04:28:34.940824+00:00`（北京时间1
 最终权重SHA256 `a6705a512444f0d715e50d2655edb1611dcbb7801be83329ce7bff2d13611c78`；训练result `cea9691518899b2f480806569e357a120ec2b6f03aca2ae031f655591951dbc4`；130条序列日志 `79cd01ad017d2edf56064642b01bd4ed45cf0005fc8bb69abb691f1892a5bfac`。训练spec仍为`0d82b358e88525b17474e50215afd84f39898f40c7ff1b0df13b44bc92da4428`。公开训练result、序列日志和核验记录见`projects/sttrack_lachtt_v1/diagnostics/m88_local_reference/training_completed/`，最终权重仅保存在远端和D盘临时目录，不上传GitHub。
 
 下一步完成三组开发、既定收集器封存与本地逐项哈希核验，再使用§5.187已验证的分析脚本及独立审查复算指标、14项条件、内容干预和持续损害；依据完整结果决定后续优化，不自动进入正式外部评测。建议续接技能为monitor-experiment、analyze-results和experiment-audit。两套Qwen继续保留，不做多seed；同一模型三数据集目标仍未完成。
+
+## 5.190 M67/M82完整三数据集验收、服务器续跑与目标更新（2026-09-24）
+
+用户明确指定先做M67 Control、再做M82 Category，不新增训练、不重新选择中间checkpoint；历史M67 seed2026与M82 seed2027均获授权。这不是新增多seed实验。每个版本用其同一最终权重、共享文字协议及绑定推理策略分别完成DepthTrack Test50、CDTB80、VOT-RGBD2022全127/1765 anchor；不得跨版本拼接指标。两版本完成后，如任一完整模型同时达标则停止；若均未达标，依据逐序列失分与失败机制分析拖累项，再继续针对性新思路。新增训练仍仅DepthTrack Train、固定seed2027，不做多seed。
+
+验收目标：DepthTrack P/R/F至少65.2/64.9/65.1，CDTB至少72.9/75.6/74.2；VOT EAO>77.9、ACC>82.1、ROB>93.7。当前goal保持active，部分指标、启动成功或开发收益均不构成完成。长期任务在一次启动健康确认后，每小时检查一次；VOT实际轮询参数3600秒，旧冻结execution.json中240秒仅为原计划元数据，实际值在resume_launch.json另记。
+
+原始回复全感叹号已定位到数值异常：相同输入下float16生成的前8步151936个logit均为NaN，贪心选择token 0（感叹号）；bfloat16前8步均有限并输出正常JSON前缀。尚未定位首次异常网络层，不能将所有历史错类别归因于此。没有采用感叹号转Empty、NaN清洗或静默重试。统一外部文字生成改为bfloat16并逐步检查有限logit，50+80+1765个初始化观测现已完成；两版本共享这些输入，训练时旧bank未改，需披露训练与外部生成精度差异。
+
+2026-09-24迁至用户指定SSH端口43811。已核验权重、源码、bank哈希未变，环境vot-toolkit0.7.1、vot-trax4.0.2；两张RTX3090。迁移前完整控制器已退出而非继续运行。M67 DepthTrack已完成，CDTB仅XMG_outside一个序列有输出、无完整receipt；该部分已归档保留，完整CDTB重跑。冻结原始脚本不覆盖。
+
+| 版本 | 全量范围 | P / R / F（%）或EAO / ACC / ROB（%） | 完成状态 |
+| --- | --- | --- | --- |
+| M67 Control | DepthTrack Test，50条、76373帧 | 63.665961 / 62.114946 / 62.880891 | 完成；尚未达标 |
+| M67 Control | CDTB，80条 | 未完成，不填写 | 续跑队列 |
+| M67 Control | VOT全127 / 1765 anchor | 未完成，不填写 | 排队 |
+| M82 Category | DepthTrack Test，50条 | 未完成，不填写 | 排队 |
+| M82 Category | CDTB，80条 | 未完成，不填写 | 排队 |
+| M82 Category | VOT全127 / 1765 anchor | 未完成，不填写 | 排队 |
+
+M67最终权重SHA256为7a8907a45cec672f11563ad7cfaee21cb64acfee3fa13e854621c146cb8d058e；M82为581a044bbba8514fb5f26d283a9dd038f46e27f8608c08724228eebfff47f859。M67 DepthTrack指标文件SHA256为ddc848ed952d7270653776b5a71b792c985609c982efb46ee1ba4e8dd69ecebe，receipt为643e71e36930db8e4703894e3ef26506e8c84dc48d532688fd95aa66fc0b01d1；全部预测哈希已核验，保持不动。
+
+续跑于2026-09-23T16:54:34.649516+00:00启动，控制器PID2437。先做两个模型新服务器16帧GPU输出一致性检查，失败则停止正式队列；通过后依次M67 CDTB、M67 VOT、M82 DepthTrack、M82 CDTB、M82 VOT并收集结果。此处启动不等于预检或指标已经通过。代码审查已确认VOT实物清单127序列、1765唯一轨迹、867正向/898反向、1327004位置及文字输入映射；详细报告随本节资料保存。
+
+运行根目录为/root/autodl-tmp/sttrack_selected_full_evaluation_20260921，目标补充见GOAL_SUPPLEMENT_20260924.md，恢复进程记录见resume_launch.json。新恢复脚本SHA256为725ca63b444d6e43d25a4f64a9d72d421044fd3905868ba8675d34e752cfec99。后续收齐六项官方指标后补comparison CSV与逐序列归因，不从平均IoU推算F，也不将开发成绩填入正式测试结果。
+启动健康确认：迁移GPU预检exit=0，M67/M82均复现保存的Train前缀；控制器PID2437存活，GPU1使用2444MiB且利用率62%，M67 CDTB正在执行。后续检查间隔一小时，下一次不早于北京时间2026-09-24 01:55。
