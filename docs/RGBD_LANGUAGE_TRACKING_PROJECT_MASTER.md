@@ -22290,3 +22290,14 @@ M88属于反复使用的Train开发22结果，没有DepthTrack Test、CDTB或VOT
 为防止原暂停shell在CDTB结束后重复绑定VOT，不能恢复它。待CDTB子进程确实结束且80序列/101956帧receipt封存，`finish_m67_cdtb_20260924.py`会终止该旧shell并调用原冻结OPE分析器检查预测与GT，再生成CDTB完整P/R/F。此恢复路径会如实记录原子进程退出码未直接由暂停shell取得；完整封存与分析器成功是验收依据。M67 VOT另按原冻结工具链分析。两项都完成后，M82 DepthTrack/CDTB可分别在GPU0/GPU1并行运行，随后M82 VOT继续双GPU；在任何M67结果未完成前，不执行M82正式推理。完整操作及进程绑定见`projects/sttrack_lachtt_v1/diagnostics/selected_full_evaluation_20260921/PARALLEL_HANDOFF_20260924.md`。
 
 原本六项正式结果表仍只有M67 DepthTrack一项完成。并行调度不应被写成性能提升，后续需由真实receipt、正式指标和同一checkpoint绑定证明。每小时监控节奏保持；这次额外的即时查询只用于用户新增并行调度的启动检查。
+## 5.194 M67 CDTB全80正式结果完成，VOT仍运行（2026-09-24）
+
+双GPU调度下，M67 CDTB子进程运行到80条/101956帧并写出完整receipt后结束为zombie；原控制shell仍处暂停状态。`finish_m67_cdtb_20260924.py`核对receipt，再终止旧shell，运行冻结的DepthTrack长期PR评价代码逐项核验预测框、分数与GT哈希，评价exit=0。子进程原始exit code因控制shell暂停未直接得到，因此不伪造`cdtb_track.exit`；可信完成证据是完整receipt、所有预测哈希与原评价器成功。`finish_m67_cdtb.json`及指标文件已保存。
+
+| 同一M67 Control最终权重 | 数据集 | P / R / F（%） | 目标（%） | 当前判断 |
+| --- | --- | ---: | ---: | --- |
+| SHA256 `7a8907a45cec672f11563ad7cfaee21cb64acfee3fa13e854621c146cb8d058e` | CDTB80 | 73.045559 / 68.590162 / 70.747784 | 72.9 / 75.6 / 74.2 | P超过0.145559百分点；R低7.009838、F低3.452216百分点 |
+
+CDTB相对原生STTrack完整结果的P/R/F分别提高约3.112446/0.522418/1.759963个百分点，但仍不能称三数据集目标通过。M67 CDTB的metrics SHA256为`3da1902e5e48c34e02295e6b1792dc52e5e544717d6b0ba66bf11670628acea6`，receipt SHA256为`389244f111aa87380a17a9c2294b3e7d8c2e81a933a84c0ebb67d6aeaa8e280f`。M67 DepthTrack与CDTB的逐序列P/R/F已按各自完整数据集选定阈值重算，宏平均P/R与正式指标相符；这些诊断不能替代VOT结果或作为挑checkpoint依据。
+
+M67 VOT完成并封存后，才启动M82。新`parallel_m82_20260924.sh`将DepthTrack与CDTB分别放到GPU0/GPU1运行，两项完整后再用双GPU跑VOT，最后统一收集六项结果。它在M67正式指标未全完成时不能启动。用户的每小时监控节奏继续保持。
