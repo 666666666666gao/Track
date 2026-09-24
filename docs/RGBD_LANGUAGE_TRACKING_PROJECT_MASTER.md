@@ -22301,3 +22301,16 @@ M88属于反复使用的Train开发22结果，没有DepthTrack Test、CDTB或VOT
 CDTB相对原生STTrack完整结果的P/R/F分别提高约3.112446/0.522418/1.759963个百分点，但仍不能称三数据集目标通过。M67 CDTB的metrics SHA256为`3da1902e5e48c34e02295e6b1792dc52e5e544717d6b0ba66bf11670628acea6`，receipt SHA256为`389244f111aa87380a17a9c2294b3e7d8c2e81a933a84c0ebb67d6aeaa8e280f`。M67 DepthTrack与CDTB的逐序列P/R/F已按各自完整数据集选定阈值重算，宏平均P/R与正式指标相符；这些诊断不能替代VOT结果或作为挑checkpoint依据。
 
 M67 VOT完成并封存后，才启动M82。新`parallel_m82_20260924.sh`将DepthTrack与CDTB分别放到GPU0/GPU1运行，两项完整后再用双GPU跑VOT，最后统一收集六项结果。它在M67正式指标未全完成时不能启动。用户的每小时监控节奏继续保持。
+## 5.195 M67全127 VOT完成，M82双GPU OPE启动（2026-09-24）
+
+M67 VOT四分片已完成全部127序列、1765个初始化anchor，合并5295个结果文件，跟踪、官方toolkit分析与独立并行控制器均exit=0。`M67/vot/result.json`的SHA256为`623613641ea6f86bb56ebd88257f26c05992482c22e294912880c74e10db5f75`，merge结果SHA256为`a05d710830d653dd0691a4be92f13c38ad64f8d7cef5e5b3801dbf47c1c4306f`；结果绑定M67 Control最终checkpoint `7a8907a45cec672f11563ad7cfaee21cb64acfee3fa13e854621c146cb8d058e`。VOT评价使用原127全量结果，确认失败anchor为215/1765。
+
+| M67全量VOT指标（%） | 实测 | 项目目标 | 与目标差值（百分点） | 原生STTrack全量参照 |
+| --- | ---: | ---: | ---: | ---: |
+| EAO | 75.896320 | >77.9 | −2.003680 | 77.321654 |
+| ACC | 82.146632 | >82.1 | +0.046632 | 82.471190 |
+| ROB | 92.314696 | >93.7 | −1.385304 | 93.669109 |
+
+M67 DepthTrack/CDTB完整P/R/F已分别见§5.190和§5.194。三套数据均来自同一M67最终权重及共享外部文字协议，但没有同时达到目标；尤其VOT EAO/ROB低于原生，确认失败anchor比原生183增加32。不能由失败次数单独推算EAO，也不能把ACC单项过线写成整体晋升。
+
+M67结果全部封存后，`launch_parallel_m82_20260924.py`于2026-09-24T04:46:48.445425+00:00启动M82控制器PID197376。DepthTrack Test50绑定并在GPU0推理，CDTB80绑定并在GPU1推理，两个bind退出码均0；启动检查两个真实OPE进程存活、GPU0/1分别约2444/2442MiB且利用率70%/65%。随后队列会用双GPU进行M82 VOT全127，再收集六项正式指标与对比CSV。M82此刻没有完整外部指标，仍固定最终checkpoint，不新训练、不做多seed。
