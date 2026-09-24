@@ -200,7 +200,7 @@ def bind_vot(name):
     files += [Path(f) for f in metadata]
     write(target/'execution.json',dict(status='frozen_before_tracking',model=name,bundle_sha256=sha(ROOT/name/'bundle.json'),
         source_sha256={str(f):sha(f) for f in files},anchors=1765,sequences=127,reused_prediction_anchors=0,
-        planned_frame_positions=1327004,poll_seconds=3600,workers=len(shards),
+        planned_frame_positions=1327004,poll_seconds=300,workers=len(shards),
         training_steps_before_external_evaluation=read(ROOT/'selection.json')['models'][name]['optimizer_steps']))
 
 

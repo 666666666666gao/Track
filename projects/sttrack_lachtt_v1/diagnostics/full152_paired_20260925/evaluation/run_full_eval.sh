@@ -50,7 +50,7 @@ for name in M67 M82; do
 
   stage "$name/vot_bind" "$model" -u prepare_full.py bind_vot --model "$name"
   stage "$name/vot_tracking" "$metric" -u run_vot_failure_family_shards.py \
-    --root "$root/$name/vot/run" --poll-seconds 3600
+    --root "$root/$name/vot/run" --poll-seconds 300
   stage "$name/vot_metrics" "$metric" -u analyze_full.py vot --model "$name"
 done
 
