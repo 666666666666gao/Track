@@ -22450,3 +22450,17 @@ M67和M82训练Python进程仍分别在GPU0/GPU1，均完成75/152条序列、10
 ### §5.203 Full152第三次按小时状态检查（2026-09-25 04:59北京时间）
 
 两进程仍分别在GPU0/GPU1运行，均完成104/152条序列、151,668/219,802次跟踪调用、4,721次优化；暂无`train.exit`和final权重，Full152的性能指标仍未产生。GPU显存各约2466MiB，检查时利用率约71%/70%；数据盘余量仍约5.5GiB，日志无报错。以当前速度估计尚余约1小时25分钟，可能在北京时间06:25左右完成训练；实际以保存和退出码为准。按约定下一次约05:59检查；不会用训练日志均值替代完整外部评价。
+
+### §5.204 Full152配对训练完成、评测入口修正并开始正式推理（2026-09-25）
+
+北京时间约06:25，两组固定seed2027、同文字bank与同底座初始化的Full152训练均以退出码0完成：各遍历152条DepthTrack Train序列、219,802次非初始化跟踪调用、6,807次优化。两份`result.json`报告底座参数和buffer保持不变；final保存后用CPU重载核对了`complete`状态、152条、调用数、优化次数、seed、arm、原生底座SHA、训练spec SHA及最终文件SHA。旧130条训练结果保持封存，不把Full152模型的原开发22当未见验证集。
+
+| 新训练产物 | M67-Control-Full152 | M82-Category-Full152 |
+| --- | --- | --- |
+| `final.pth` SHA256 | `947f4c5abd02c4f49e1db80664ba8b5ec56db04e562b18098e4cb5f36e0ae72d` | `1515f5fa62bdee5c656d6dbdda99fd1e1daffbb857934d575d27d2157cc5a9a2` |
+| `result.json` SHA256 | `ef1325010fe2612cbd0ad3a38f02d8b402c41a5726c3c7fd8580165f4dc478bd` | `fdc88a46618f5f5692cad36c3855bfdd449a810f02194dcacffd597fef4f7fa6` |
+| 训练耗时 | 约16,338秒 | 约16,282秒 |
+
+训练结束后立即启动全量评测。首次绑定两模型及DepthTrack/CDTB输入均通过，但两项OPE在任何预测写出前退出：复用的旧`semantic_runtime.py`仍硬编码`completed_sequences == 130`，与已核验的Full152权重不符。错误日志明确指向该断言，**不是模型性能失败**。首次失败的评测根目录完整移至`/root/autodl-tmp/sttrack_full152_evaluation_20260925_rejected_130_gate`保留；重新建立原评测路径，并将旧接口五个Python文件私有复制。只把`semantic_runtime.py`这一条校验从130改为152，其余四文件与旧接口逐字节一致，语法和哈希检查通过；未修改训练权重、文字、原Hann、模板规则或评价指标。修正接口SHA256=`c5f537349e39de17fff38dd5aaf423c59ef8fb4984e88181255ee3faad7cd841`。
+
+北京时间06:29重新启动全量评测。新的两模型绑定、DepthTrack/CDTB输入绑定均退出码0，M67的DepthTrack Test50在GPU0、CDTB80在GPU1开始正式推理；此时没有任何新模型的完成态指标。固定绑定`selection.json` SHA256=`f691da932ae96a7042fb7105b7abd6eed6ee245b3a5252e84581d76c98c73444`，M67/M82 bundle SHA分别为`6a2cac8edf3491d019f2ece8e0c6c097720b13ccefb4e91a00b0ea7d6c6d4998`与`485428597f803c10f76b230d91ac66495919db0f84b6045751bd9ded2621d348`。执行顺序仍为M67的两项OPE和完整VOT，随后同协议M82三数据集；最终比较以每个模型同一final权重的九项指标为准。
