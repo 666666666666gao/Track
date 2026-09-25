@@ -22555,3 +22555,20 @@ M82-Full152使用§5.204固定的seed2027最终权重（SHA256=`1515f5fa62bdee5c
 另建`projects/sttrack_lachtt_v1/diagnostics/full152_state_readout_20260926/`，针对封存后验选出的CDTB四条序列`two_mugs`、`bottle_room_occ_1`、`robot_corridor_occ_1`、`jug`准备只读诊断。它先逐帧复现M82-Full152的正式Category框与六位小数分数，再在相同crop、模板、query和主干特征上比较“适配score＋适配size/offset”“适配score＋原生size/offset”“原生score＋适配size/offset”“原生score＋原生size/offset”四种读出。只有原Category路径提交状态；GT只在读出文件封存后进入后验分析。此诊断可区分选峰与几何的局部影响，不能把替代框视为已执行的长期救回，也不能将事后挑选的四条序列当无偏总体。源码已推送并上传独立远端目录，**尚未占用GPU、没有诊断结论**。
 
 下一步仍按顺序完成M82-Full152 VOT、核验两个Full152模型的三数据集九项正式指标及目标差距；随后执行上述只读与同权重诊断，根据证据决定新的实例核验／重现训练机制。不得在这份已运行的VOT中修改checkpoint、文字bank、冻结`prepare_full.py`或评价条件。
+
+### §5.211 利用空闲GPU完成M82-Full152四条CDTB同状态Head读出（2026-09-26）
+
+北京时间06:18，M82 VOT分片1、3分别完成441/441、442/442，GPU1显示空闲；分片0、2仍在GPU0继续。因CDTB预测早已封存，使用独立目录和GPU1执行§5.210准备的只读Head诊断，不触碰VOT冻结源、权重或输出。`readout.exit=0`、`analyze.exit=0`；四条序列在重放经过的全部帧上与M82-Full152正式Category框、六位小数分数一致。下面只统计事后预选的147个位置，其中有效GT共68帧；这些不是CDTB总体指标。
+
+| 轨迹 | 读出帧/有效GT帧 | 适配/原生Hann峰不同 | 适配score＋适配几何平均IoU | 适配score＋原生几何平均IoU | 两种几何下IoU≤0.1有效帧 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `two_mugs` | 10/10 | 0 | 0.904452 | 0.911455 | 0 |
+| `bottle_room_occ_1` | 46/10 | 18，全部在GT无效段 | 0.311865 | 0.320734 | 6 |
+| `robot_corridor_occ_1` | 43/15 | 9，全部在GT无效段 | 0.113463 | 0.131332 | 11 |
+| `jug` | 48/33 | 6，其中2帧GT有效 | 0 | 0 | 33 |
+
+在这些预选的有效GT帧，固定几何只换适配/原生空间score，重叠和严重错误数没有变化；换成原生size/offset会改变少量重叠值，但没有救回任一IoU≤0.1帧。`two_mugs`第399帧四种读出IoU都约0.881—0.892，Hann峰同为136；新权重修好该段不能归因为这**一帧**的适配score峰换选，更不能直接归因为文字中的条纹属性。`bottle`第574帧、`robot`第549帧、`jug`第286帧目标恢复有效时，四种读出的IoU都为0，与§5.209搜索crop不可达一致。
+
+值得进一步追查的是**GT无效阶段的状态推进**：同状态下`bottle`第506帧适配/原生Hann峰为153/137，`robot`第457帧为146/121，读出的框可相距很远；但这些时刻没有有效GT，不能断言哪个峰属于原目标。也不能把原生Head在**M82历史状态**上的输出当作原生STTrack独立长期轨迹。当前证据只说明，针对恢复首帧混用score/size/offset不足以解决这些已出crop的失锁，而此前无效标注阶段的适配分数与状态变化值得更早回溯。它仍不能把变化唯一归因于文字，因为适配器有直接RGB/Depth通路。
+
+源文件及后验结果保存在`projects/sttrack_lachtt_v1/diagnostics/full152_state_readout_20260926/`；147帧读出`receipt.json`与后验`analysis.json`分别为SHA256 `d0702f0b36fff7566da0b2a67cfc1fa0d31fa13bc18360837d9b1518cd697f81`、`ad59402909a2bbf9225ac774a3b28b0d8078879c26176cb8c6bddeda996e1622`。诊断过程没有GT驱动的状态选择；GT在读出封存后用于计算上述重叠。M82完整VOT仍在GPU0运行，**尚无VOT完成态指标**；同权重Empty/Swapped完整OPE尚未启动。
