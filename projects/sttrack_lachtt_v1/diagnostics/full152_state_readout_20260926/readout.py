@@ -53,7 +53,6 @@ def main():
     tracker.network.box_head.register_forward_hook(
         lambda module, inputs, output: capture.update(head_output=output))
     torch.set_grad_enabled(False)
-    ROOT.mkdir()
     reports = []
     for sequence, windows in EVENTS.items():
         case = cases[sequence]
