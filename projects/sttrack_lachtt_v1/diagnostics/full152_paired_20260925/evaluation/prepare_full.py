@@ -182,7 +182,7 @@ def bind_vot(name):
     wrapper.write_text('import sys\nsys.path.insert(0,'+repr(str(INTERFACE))+')\nfrom run_semantic_vot import run\nrun('+repr(str(target/'plan.json'))+')\n')
     shards=[]
     for s in frozen['shards']:
-        src=Path(s['root']);dest=run/('shard-%02d'%s['index']);gpu=s['index']%2
+        src=Path(s['root']);dest=run/('shard-%02d'%s['index']);gpu=s['index']//2
         assert sha(src/'config.yaml')==s['config_sha256'] and sha(src/'sequences/list.txt')==s['list_sha256']
         shutil.copytree(src/'sequences',dest/'sequences',symlinks=True)
         shutil.copyfile(src/'config.yaml',dest/'config.yaml')
