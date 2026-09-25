@@ -2,6 +2,6 @@
 
 Replay four posthoc CDTB cases with the sealed M82 Full152 category weight and verify every produced bbox and score against the official full-track files. At preselected frames, read four score/size/offset combinations from the same crop, template, query, backbone forward, and category history. Only the original adapted output commits tracker state. GT is not loaded in this readout; IoU can be evaluated afterward against sealed labels.
 
-This diagnostic separates whether a frame's change comes mainly from spatial score selection or size/offset geometry. It cannot prove a causal training mechanism or predict the complete counterfactual trajectory, because alternate readouts do not commit state. The four cases were selected after external results, so they are mechanism examples rather than an unbiased benchmark.
+Run `analyze.py` only after the readout is sealed; it opens the already bound CDTB labels and reports per-frame overlap and a small summary. This diagnostic separates whether a frame's change comes mainly from spatial score selection or size/offset geometry. It cannot prove a causal training mechanism or predict the complete counterfactual trajectory, because alternate readouts do not commit state. The four cases were selected after external results, so they are mechanism examples rather than an unbiased benchmark.
 
 Prepared separately from the frozen Full152 evaluation root; run only after the primary VOT evaluation completes.
