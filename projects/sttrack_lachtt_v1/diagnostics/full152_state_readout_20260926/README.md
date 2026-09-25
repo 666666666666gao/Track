@@ -4,4 +4,4 @@ Replay four posthoc CDTB cases with the sealed M82 Full152 category weight and v
 
 Run `analyze.py` only after the readout is sealed; it opens the already bound CDTB labels and reports per-frame overlap and a small summary. This diagnostic separates whether a frame's change comes mainly from spatial score selection or size/offset geometry. It cannot prove a causal training mechanism or predict the complete counterfactual trajectory, because alternate readouts do not commit state. The four cases were selected after external results, so they are mechanism examples rather than an unbiased benchmark.
 
-Prepared separately from the frozen Full152 evaluation root; run only after the primary VOT evaluation completes.
+Prepared separately from the frozen Full152 evaluation root. `run_readout.sh` uses GPU 1 only after both VOT shards assigned to that GPU finish; the remaining VOT shards continue on GPU 0. The diagnostic does not write into the VOT evaluation root.
