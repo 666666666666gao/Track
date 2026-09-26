@@ -23207,3 +23207,21 @@ VOT绑定退出0，分片控制器844217及四个VOT worker844218—844221已由
 全部4611个抽样的optimizer_steps_before_update一致，但4607个抽样score不同，303个监督标签不同。这支持“相同seed与配置没有保证完整递归路径逐位复现”；只见第1、50等抽样，不声称第50帧就是实际最早分叉，也没有逐次权重和原始算子输出定位初始来源。不得把差异唯一归因CUDA/GPU、导入顺序、数据增加或新保持损失。后续先分析逐序列拖累并完成Candidate配对结果，再决定是否需要单个短窗严格复现检查；不改当前VOT。
 
 脚本audit_control_training.py、报告control_training_audit.json和control_training_source.diff已保存。审计首次运行遇到条件监督字段缺失，确认两条路径的监督分支会改变记录字段后，改为显式记录<not recorded>，没有将缺失补成零。此修改仅在只读诊断，不涉及训练或推理。
+
+
+## §5.248 M89评测1:21进度与Control逐序列召回分解（2026-09-27北京时间）
+
+01:21远端实查确认queue834519、评测控制器841552、Control VOT分片控制器844217及四个worker844218—844221仍存活，两GPU利用率约79%/64%。VOT跟踪日志达到263/1765个anchor，分片63/70/61/69；尚无VOT完成态分析。以旧M82-Full152相同四处分片最后anchor的文件完成时间对齐，两次运行从首批anchor到这些位置均约75分钟；旧运行从这些位置到VOT结果完成约9小时43分钟。因此Control VOT暂估今日11:00左右结束。之后既定队列接续Candidate DepthTrack/CDTB并行评测约1小时40分、Candidate VOT约11小时，全部六组指标暂估9月28日00:00—02:00齐备。后续anchor耗时和分析收尾可能改变估计；没有据此推定任何未完成指标。
+
+Control的两项完整OPE已完成，另用已封存预测框、分数、GT和原评价源码只读复算逐序列P/R，以及取消报告分数筛选后的“全部已有框召回”。每条输出和GT SHA与receipt核对，复算宏P/R与正式指标误差小于1e-8；未改任何框、递归状态或正在运行的VOT。与旧M82-Full152对照如下，单位均为百分数或百分点：
+
+| 数据集 | 旧M82全部已有框R | M89-Control全部已有框R | 固定框轨迹差值 | M89-Control正式R | Control分数筛选损失 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| DepthTrack Test50 | 61.888061 | 57.491848 | −4.396213 | 55.959670 | 1.532178 |
+| CDTB80 | 69.102957 | 63.553656 | −5.549301 | 62.001626 | 1.552030 |
+
+Control相对旧M82的R下降主要已经存在于完整递归框轨迹；仅重新调整报告置信度无法补回这些框。旧、新阈值由各自完整数据集选取，逐序列P/R差值混合框与分数因素；“全部已有框R”在固定预测轨迹上移除了分数筛选，仍不是可部署的新策略，也不能推断具体首次跟丢原因。
+
+全部已有框R下降最明显的DepthTrack序列包括bag01_indoor −49.464、squirrel_wild −38.776、bandlight_indoor −32.084个百分点；CDTB包括robot_human_corridor_noocc_3_B −47.682、humans_shirts_room_occ_1_A −43.087、XMG_outside −41.338。同时也有明显正例，不能说全部序列下降。候选损失权重0的Control本身未复现旧M82，结合§5.247早期递归分叉，只能把本节视作Control损害定位，不能直接归因于候选损失或推断Candidate表现。
+
+只读脚本audit_control_ope_sequences.py，以及control_ope_sequence_audit.json、两份逐序列CSV已归档在native_candidate_preservation_20260926/completed。当前完整验收仍等Control VOT、Candidate两项OPE及Candidate VOT；下次远端进程检查约02:20北京时间，不中断现有队列。
