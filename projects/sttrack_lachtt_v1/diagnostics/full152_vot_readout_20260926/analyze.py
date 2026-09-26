@@ -29,8 +29,9 @@ def dense_boxes(maps, row):
     normalized = np.stack([(grid % 16 + m[3]) / 16, (grid // 16 + m[4]) / 16, m[1], m[2]], axis=1)
     values = (normalized * np.float32(256) / np.float32(256. / row['search_side'])).astype(np.float64)
     previous, (height, width) = row['previous_bbox'], row['image_hw']
-    values[:, 0] += previous[0] + .5 * previous[2] - .5 * row['search_side']
-    values[:, 1] += previous[1] + .5 * previous[3] - .5 * row['search_side']
+    half_side = .5 * 256. / (256. / row['search_side'])
+    values[:, 0] += previous[0] + .5 * previous[2] - half_side
+    values[:, 1] += previous[1] + .5 * previous[3] - half_side
     lower = values[:, :2] - .5 * values[:, 2:]
     upper = lower + values[:, 2:]
     lower = np.minimum(np.maximum(0, lower), [width - 10, height - 10])

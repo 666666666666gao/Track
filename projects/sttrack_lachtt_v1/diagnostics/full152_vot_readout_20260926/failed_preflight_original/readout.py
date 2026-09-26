@@ -93,9 +93,8 @@ def main():
                 def decode(out, response):
                     predicted = tracker.network.box_head.cal_bbox(response, out['size_map'], out['offset_map']).view(-1, 4)
                     cx, cy, bw, bh = (predicted.mean(dim=0) * 256. / resize).tolist()
-                    half_side = .5 * 256. / resize
-                    cx += previous[0] + .5 * previous[2] - half_side
-                    cy += previous[1] + .5 * previous[3] - half_side
+                    cx += previous[0] + .5 * previous[2] - .5 * side
+                    cy += previous[1] + .5 * previous[3] - .5 * side
                     return clip_box([cx - .5 * bw, cy - .5 * bh, bw, bh], height, width, margin=10)
 
                 variants = {}

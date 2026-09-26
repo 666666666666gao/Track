@@ -1,0 +1,7 @@
+WARNING: You are using tensorboardX instead sis you have a too old pytorch version.
+Traceback (most recent call last):
+  File "/root/autodl-tmp/sttrack_full152_vot_readout_20260926/readout.py", line 136, in <module>
+    main()
+  File "/root/autodl-tmp/sttrack_full152_vot_readout_20260926/readout.py", line 109, in main
+    assert variants['category']['hann_bbox'] == actual['target_bbox'], dict(anchor=case['anchor_key'], index=index, previous=previous, side=side, resize=resize, expected=actual['target_bbox'], observed=variants['category']['hann_bbox'], predicted=(tracker.network.box_head.cal_bbox(outputs['category']['score_map'] * tracker.output_window, size, offset).view(-1,4).mean(dim=0)*256./resize).tolist())
+AssertionError: {'anchor': 'backpack_blue_1@500B', 'index': 362, 'previous': [440.61456680297874, 43.57395172119129, 119.52680206298828, 126.55670166015625], 'side': 492, 'resize': 0.5203252032520326, 'expected': [434.61386489868187, 52.687805175781165, 109.24237823486328, 130.40296936035156], 'observed': [434.61386489868187, 52.687805175781136, 109.24237823486328, 130.40296936035156], 'predicted': [234.85708618164062, 257.0369873046875, 109.24237823486328, 130.40296936035156]}

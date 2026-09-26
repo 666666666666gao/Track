@@ -22894,3 +22894,22 @@ DepthTrack相对Category少1546个低重叠帧和10段H10；CDTB却多329个低�
 为避免对照提前结束后仍等到16:50，已将VOT候选诊断的CPU等待起点提前到**16:20**。14:57核对旧808026仍在初始sleep、无子进程且未产生preflight，确认源码/spec哈希与原回执一致后，停止该CPU等待进程并以同一脚本重新排队，现PID **827351**；原`queue_launch.json`作为历史保留，另存`queue_rescheduled_20260926.json`。16:20起每300秒检查一次，仍须8项完整、controls.exit=0且两GPU空闲，才做原单anchor前检。当前GPU内容对照未重启，诊断源码、数据、校验标准均未改变。VOT诊断本身的结束时间仍待GPU前检测速。
 
 采集清单`M67_empty_collection_20260926.json` SHA256=`287f7778f7914699a1cbfd1d25713df571b66bc193dbb181a7f49e8b1a60b653`；14:50快照SHA=`261fb62ecd0ecd6f84d23419e292ce845a40c86b70e8a602b33d34e4f61ccbfe`。新增只读脚本`audit_bottle_reappearance.py` SHA=`e5f0a1392bdfc4acf39673941dc38ea456f3619f32fabfb591ccff454b8828c7`，报告`M67_bottle_reappearance_category_empty.json` SHA=`6489f974830998edd1635d7805063ea8bec095bd86b18c2749fb5468a98093c8`，均位于既有`full152_content_20260926`源码/完成态目录。
+
+### §5.226 八项内容对照全部完成，VOT同状态诊断解码修复并双GPU启动（2026-09-26 16:38北京时间）
+
+M67/M82 Full152的Empty与Swapped在DepthTrack Test50、CDTB80共8项完整递归对照均已完成，controls.exit=0。最后M67 Swapped两项指标status=complete，分别覆盖50条/76,373帧与80条/101,956帧。既有Category正式三数据集指标不重复记录。
+
+| M67-Full152同权重Swapped | P（%） | R（%） | F（%） | 相对Category的ΔF（百分点） |
+| --- | ---: | ---: | ---: | ---: |
+| DepthTrack Test50 | 63.083908 | 62.206731 | 62.642249 | -0.233811 |
+| CDTB80 | 69.720516 | 66.024003 | 67.821929 | -1.166041 |
+
+结合§5.225，M67在DepthTrack的Empty F63.521906高于Category62.876060与Swapped62.642249；CDTB Category68.987969和Empty68.952574接近，Swapped67.821929更低。M82对应内容结果见§5.221/§5.224。此处Swapped仍只是不同类别字符串，并非核验冲突；Empty仍经过普通adapter。不能据此将Empty推广为统一最佳模型，也没有新增Empty完整VOT成绩。最后一波逐序列CPU分析待既定小时监控完成，当前不填尚未取回的H10等统计。
+
+VOT候选诊断第一次前检退出1，严格检查发现Category额外解码框与实际框不完全相等。保留原失败源、spec与日志后，针对性复现定位到backpack_blue_1@500B运行下标362：额外y=52.687805175781136，实际y=52.687805175781165，相差2.84217e-14像素。原因是诊断代码用0.5*side代替原跟踪器0.5*search_size/resize_factor，数学等价但浮点运算顺序不同。实际保存框/分数的逐步一致性在此前已通过，未发现该问题改变正式轨迹。
+
+最小修复仅在readout.py及对应CPU dense解码中恢复原半边长计算顺序；没有改变模型、候选、124事件清单、框/分数一致性标准或GT使用边界。decode_regression.json保存真实输入，旧计算重现不一致、修复计算与实际逐值相同。原失败现场保留failed_preflight_original，带数值的复现日志保留failed_preflight_instrumented，未删除原证据。原spec哈希ecb6ad8c19d39b3cc2b5b545c383410a587d4901d0ffd128128b9f1282575eb4仅因源码绑定更新为bbe4c86755a582561534c5c9d3362a1f1ab121871a0f9dbf4ab7704135fccfb8。
+
+修复后单anchor前检完成375次调用、20个观察位置，逐步TraX序列化框和float32分数一致，Category额外解码逐值一致，未提交Empty/native状态。总前检31.1099秒（包含加载），实际重放约24.0082秒。16:36:45北京时间正式启动双GPU分片，控制器830549，GPU0 worker830676、GPU1 worker830677，实际ps存活与GPU约72%/71%已核对；两分片各已完成至少2个anchor。总52,262调用、2,480读出位置，尚未完成全124事件，不能提前写候选容量结论。
+
+按前检含加载时间推算双分片约2168秒（36.1分钟），暂估17:10—17:30完成重放和CPU分析，接近完成窗口再检查，不频繁轮询。该阶段是失败诊断，不是新训练或新的正式成绩。下一步依据同状态全256候选、选峰与几何读出区分容量不足和选择错误，再决定最小机制实验；联合目标仍未达到。
