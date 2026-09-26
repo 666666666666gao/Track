@@ -23225,3 +23225,18 @@ Control相对旧M82的R下降主要已经存在于完整递归框轨迹；仅重
 全部已有框R下降最明显的DepthTrack序列包括bag01_indoor −49.464、squirrel_wild −38.776、bandlight_indoor −32.084个百分点；CDTB包括robot_human_corridor_noocc_3_B −47.682、humans_shirts_room_occ_1_A −43.087、XMG_outside −41.338。同时也有明显正例，不能说全部序列下降。候选损失权重0的Control本身未复现旧M82，结合§5.247早期递归分叉，只能把本节视作Control损害定位，不能直接归因于候选损失或推断Candidate表现。
 
 只读脚本audit_control_ope_sequences.py，以及control_ope_sequence_audit.json、两份逐序列CSV已归档在native_candidate_preservation_20260926/completed。当前完整验收仍等Control VOT、Candidate两项OPE及Candidate VOT；下次远端进程检查约02:20北京时间，不中断现有队列。
+
+
+## §5.249 M89-Control持续低重叠的观察范围分解（2026-09-27）
+
+继续复用§5.248的封存DepthTrack/CDTB轨迹，对同一GT有效帧计算重叠。定义“Control新增持续错误段”：Control IoU≤0.1、旧M82-Full152同帧IoU≥0.5，且连续至少10帧。每段起点用Control上一帧保存框和原生sample_target的search_factor=4几何，判断该帧GT中心是否落在实际搜索正方形内。分析没有重跑模型、改框或筛选正式指标。
+
+| 范围 | 新增持续错误段 | 起点GT中心在crop内 | 起点GT中心在crop外 | 段内累计帧 |
+| --- | ---: | ---: | ---: | ---: |
+| DepthTrack Test50 | 106 | 31 | 75 | 6278 |
+| CDTB80 | 100 | 42 | 58 | 7352 |
+| 合计 | 206 | 73 | 133 | 13630 |
+
+例子：DepthTrack human02_indoor的[889,1169)共280帧满足上述同帧差异；第889帧Control IoU0.093971、旧M82 IoU0.878100，目标中心仍在Control搜索区域内。CDTB XMG_outside的[1021,1911)共890帧满足差异；第1021帧Control IoU0、旧M82 IoU0.895137，目标中心在Control搜索区域外。这说明损害中既有“仍可观察但没有正确定位”的段，也有“当前局部输入已不可达”的段。起点内外只评价该段起点，不能当成整段每一帧的可达性；同帧差异段的起点也不一定是整条轨迹的首次分叉，不据此断言最初错误原因。
+
+audit_control_ope_sequences.py现在把所有段及起点观察范围写入control_ope_sequence_audit.json，并在两份逐序列CSV记录段数、帧数和最长段。旧、新bbox SHA与各自receipt核对，GT/可见帧一致，宏P/R复算仍与封存正式值在1e-8内一致。后续候选组评测若有收益，需同时检查其是否减少这些两类持续段；当前Control诊断仍不能代替Candidate或VOT完整验收。
