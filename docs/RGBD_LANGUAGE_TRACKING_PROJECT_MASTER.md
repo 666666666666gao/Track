@@ -23067,3 +23067,10 @@ M89两组训练继续运行；17:34实查均完成2/152条、4243次调用、134
 新增prepare_evaluation.py，仅用于训练结束后的验收与评测准备，不修改训练。audit-inputs已在服务器运行并退出0：三个数据集原plan、文字bank、OPE cases、指标源码、模型推理源码、接口、底座与文字协议实际文件hash均一致。
 
 bind入口要求两组training.exit=0、final/result完整状态、152条/219802调用/6807优化、seed2027、共同初始化、原生底座不变、M89 spec及源码hash、候选权重0/1、checkpoint与日志hash一致，然后在新目录生成bundle及三数据集plan。当前训练尚未结束，bind执行路径尚未实测；没有产生新评测结果。VOT工作区生成和完成后启动控制仍待实现。
+
+
+## §5.236 M89完整评测执行链准备（2026-09-26）
+
+增加prepare_evaluation.py bind-vot：从原生封存127序列/1765 anchor分片建立新工作区和独立tracker名，保持原配置、文字bank、双GPU分片；不复制预测。新增run_evaluation.sh按control→candidate执行，各组DepthTrack/CDTB双GPU并行后跑VOT；新增analyze_evaluation.py沿用既有完整覆盖、回执及VOT merge核对后汇总指标。
+
+本地Python语法、远端bash -n、分析入口导入、真实输入hash核查通过。仍未执行final绑定或GPU评测；训练未修改。下一步固定执行包hash并安排训练完成后的启动控制，再对真实final逐项验收。代码存在不等于全链已验收，当前没有M89正式性能结论。
