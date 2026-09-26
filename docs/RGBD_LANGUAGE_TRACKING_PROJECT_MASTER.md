@@ -23247,3 +23247,8 @@ audit_control_ope_sequences.py现在把所有段及起点观察范围写入contr
 对旧M82-Full152和M89-Control的DepthTrack/CDTB正式plan逐字段比较：两份plan的字段集合相同，每个数据集的cases_path及SHA、dataset_root、metric_source及SHA、text_bank_path及SHA完全一致。差异仅为各自bundle路径及SHA和预测输出路径。再比较两份bundle：底座checkpoint及SHA、架构、推理接口源码SHA、文字协议及SHA、默认模板控制、输出置信度、seed、训练规格SHA等字段一致；差异仅为final adapter路径及SHA，以及M89新增的candidate_weight=0和实验规格记录。两份OPE均有各自完整receipt、指标回执和序列覆盖校验。
 
 因此，Control相对旧M82的外部下降不是这次评测更换文字bank、序列清单、底座或计分代码造成的。直接观察到的是两个独立训练final的权重和递归轨迹不同；§5.247只定位到抽样内的早期微小分叉，尚不能唯一确定训练权重差异的初始来源。此绑定核对不替代Candidate配对评测，也不把同seed写成逐位确定性保证。
+
+
+## §5.251 M89-Control VOT第二小时进度（2026-09-27 02:20北京时间）
+
+02:19:51远端实际进程表确认评测queue834519、bash841552、Control VOT分片控制器844217及四个worker844218—844221均存活；两GPU利用率97%/95%，显存约4881/4883MiB。跟踪日志374/1765 anchor，四分片86/101/86/101。Control VOT及总评测均无完成态退出/结果，Candidate尚未进入OPE。与旧M82-Full152在四处分片相同最后anchor的文件完成时间对齐，当前进度仍与旧运行几乎同速：旧位置约9月25日15:10—15:12 UTC，旧VOT约23:58 UTC完成；据此Control VOT仍估今日11:00左右完成。后续Candidate OPE及VOT约至9月28日00:00—02:00齐备，均以实际结果为准。下一次进程检查约03:20，不修改运行包或重启任务。
