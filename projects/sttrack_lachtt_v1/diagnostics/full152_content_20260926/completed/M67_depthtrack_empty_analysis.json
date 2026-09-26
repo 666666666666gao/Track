@@ -1,0 +1,3759 @@
+{
+  "status": "complete",
+  "model": "M67",
+  "dataset": "depthtrack",
+  "alternative": "empty",
+  "analyzer_sha256": "5dbf98fc78e9510e37781bbeb3abad2c2ca29da824bbb4fd9261e2ce438cddbb",
+  "scope": "Sealed full recursive tracks. GT read only after both prediction families and metrics were complete. No alternative state is submitted.",
+  "caveats": [
+    "Empty still uses the trained additive adapter.",
+    "Swapped changes the category string and is not verified as semantic contradiction.",
+    "First saved difference is a trajectory observation, not a causal attribution.",
+    "Crop coverage uses the nominal factor-4 square around the preceding saved box.",
+    "H10 and rescue/damage intervals exclude initialization and break at invalid GT."
+  ],
+  "category_metrics_sha256": "e62548b431c01c4b7178d56e9e671b7e5866157ac32ee50ba4a7984d4f75f286",
+  "alternative_metrics_sha256": "57678f436e7e57ec6a5960c5c7f4ccd6b88bc26ddbb96a99fac2e2448581f3b6",
+  "category_receipt_sha256": "dbc1e80a7f25c6a1eedc79a4b78055e1bbc65d56c086d39c58e1531191ce6b4c",
+  "alternative_receipt_sha256": "2a4f6c02f6bcfefeac00d8352811a03c6dacaba242af370f6a808297377ed1d6",
+  "aggregate": {
+    "category": {
+      "metrics": {
+        "precision": 0.6479671562020972,
+        "recall": 0.6106598737497796,
+        "f_score": 0.6287605976736499,
+        "precision_percent": 64.79671562020972,
+        "recall_percent": 61.06598737497796,
+        "f_score_percent": 62.87605976736499,
+        "threshold": 0.365598,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "all_boxes_recall_percent": 63.135479180073915,
+      "valid_noninit_frames": 73339,
+      "valid_noninit_mean_iou": 0.5923370046938489,
+      "low_overlap_frames": 19055,
+      "h10_segments": 211,
+      "h10_frames": 18327,
+      "low_overlap_nominal_crop_outside_frames": 12037
+    },
+    "alternative": {
+      "metrics": {
+        "precision": 0.6401471793852745,
+        "recall": 0.6303662362456696,
+        "f_score": 0.6352190589219133,
+        "precision_percent": 64.01471793852745,
+        "recall_percent": 63.03662362456696,
+        "f_score_percent": 63.521905892191334,
+        "threshold": 0.345522,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "all_boxes_recall_percent": 64.0183768483488,
+      "valid_noninit_frames": 73339,
+      "valid_noninit_mean_iou": 0.61193988805286,
+      "low_overlap_frames": 17509,
+      "h10_segments": 201,
+      "h10_frames": 16751,
+      "low_overlap_nominal_crop_outside_frames": 10608
+    }
+  },
+  "rescue_segments": 45,
+  "rescue_frames": 3030,
+  "damage_segments": 30,
+  "damage_frames": 1419,
+  "per_sequence": [
+    {
+      "sequence": "adapter01_indoor",
+      "category": {
+        "valid_noninit_frames": 2673,
+        "noninit_overlap_sum": 1511.947850097899,
+        "low_overlap_frames": 624,
+        "h10_segments": 6,
+        "h10_frames": 600,
+        "h10_intervals": [
+          [
+            930,
+            943
+          ],
+          [
+            952,
+            965
+          ],
+          [
+            972,
+            1506
+          ],
+          [
+            1518,
+            1531
+          ],
+          [
+            1539,
+            1553
+          ],
+          [
+            1565,
+            1578
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 599,
+        "all_boxes_recall_percent": 56.579949517498086,
+        "reported_recall_percent": 52.27330394100588
+      },
+      "alternative": {
+        "valid_noninit_frames": 2673,
+        "noninit_overlap_sum": 1833.32646822091,
+        "low_overlap_frames": 211,
+        "h10_segments": 5,
+        "h10_frames": 195,
+        "h10_intervals": [
+          [
+            930,
+            943
+          ],
+          [
+            952,
+            965
+          ],
+          [
+            1237,
+            1253
+          ],
+          [
+            1565,
+            1625
+          ],
+          [
+            1653,
+            1746
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 195,
+        "all_boxes_recall_percent": 68.59859641813425,
+        "reported_recall_percent": 67.16647699824816
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          974,
+          1237
+        ],
+        [
+          1253,
+          1506
+        ],
+        [
+          1518,
+          1531
+        ],
+        [
+          1539,
+          1553
+        ]
+      ],
+      "alternative_damage_intervals": [
+        [
+          1579,
+          1625
+        ],
+        [
+          1655,
+          1746
+        ]
+      ],
+      "alternative_rescue_frames": 543,
+      "alternative_damage_frames": 137,
+      "all_boxes_recall_delta_pp": 12.018646900636163,
+      "reported_recall_delta_pp": 14.89317305724228
+    },
+    {
+      "sequence": "backpack_indoor",
+      "category": {
+        "valid_noninit_frames": 2051,
+        "noninit_overlap_sum": 1287.2967648145031,
+        "low_overlap_frames": 475,
+        "h10_segments": 5,
+        "h10_frames": 461,
+        "h10_intervals": [
+          [
+            529,
+            578
+          ],
+          [
+            851,
+            973
+          ],
+          [
+            1393,
+            1493
+          ],
+          [
+            1527,
+            1620
+          ],
+          [
+            2014,
+            2111
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 62.782493412012805,
+        "reported_recall_percent": 62.54714406635894
+      },
+      "alternative": {
+        "valid_noninit_frames": 2051,
+        "noninit_overlap_sum": 1294.099102081891,
+        "low_overlap_frames": 480,
+        "h10_segments": 5,
+        "h10_frames": 469,
+        "h10_intervals": [
+          [
+            529,
+            576
+          ],
+          [
+            851,
+            977
+          ],
+          [
+            1393,
+            1493
+          ],
+          [
+            1520,
+            1619
+          ],
+          [
+            2014,
+            2111
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 63.11399132952684,
+        "reported_recall_percent": 63.02888860780542
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.3314979175140351,
+      "reported_recall_delta_pp": 0.4817445414464814
+    },
+    {
+      "sequence": "bag01_indoor",
+      "category": {
+        "valid_noninit_frames": 2342,
+        "noninit_overlap_sum": 1443.6991844094368,
+        "low_overlap_frames": 511,
+        "h10_segments": 7,
+        "h10_frames": 503,
+        "h10_intervals": [
+          [
+            481,
+            504
+          ],
+          [
+            546,
+            642
+          ],
+          [
+            903,
+            938
+          ],
+          [
+            1238,
+            1257
+          ],
+          [
+            1930,
+            1967
+          ],
+          [
+            1977,
+            2022
+          ],
+          [
+            2031,
+            2279
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 447,
+        "all_boxes_recall_percent": 61.660229808341306,
+        "reported_recall_percent": 61.233864143071756
+      },
+      "alternative": {
+        "valid_noninit_frames": 2342,
+        "noninit_overlap_sum": 1435.073144201774,
+        "low_overlap_frames": 509,
+        "h10_segments": 10,
+        "h10_frames": 503,
+        "h10_intervals": [
+          [
+            481,
+            507
+          ],
+          [
+            546,
+            572
+          ],
+          [
+            577,
+            602
+          ],
+          [
+            605,
+            632
+          ],
+          [
+            903,
+            936
+          ],
+          [
+            1178,
+            1196
+          ],
+          [
+            1238,
+            1257
+          ],
+          [
+            1930,
+            1967
+          ],
+          [
+            1977,
+            2022
+          ],
+          [
+            2031,
+            2278
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 437,
+        "all_boxes_recall_percent": 61.29206761424558,
+        "reported_recall_percent": 60.95708614207729
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          632,
+          642
+        ]
+      ],
+      "alternative_damage_intervals": [
+        [
+          1179,
+          1196
+        ]
+      ],
+      "alternative_rescue_frames": 10,
+      "alternative_damage_frames": 17,
+      "all_boxes_recall_delta_pp": -0.36816219409572426,
+      "reported_recall_delta_pp": -0.2767780009944687
+    },
+    {
+      "sequence": "bag02_indoor",
+      "category": {
+        "valid_noninit_frames": 2757,
+        "noninit_overlap_sum": 1966.0055846919938,
+        "low_overlap_frames": 143,
+        "h10_segments": 5,
+        "h10_frames": 129,
+        "h10_intervals": [
+          [
+            738,
+            756
+          ],
+          [
+            868,
+            894
+          ],
+          [
+            920,
+            947
+          ],
+          [
+            971,
+            1000
+          ],
+          [
+            1020,
+            1049
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 125,
+        "all_boxes_recall_percent": 71.31999944495988,
+        "reported_recall_percent": 67.60133211204734
+      },
+      "alternative": {
+        "valid_noninit_frames": 2757,
+        "noninit_overlap_sum": 1967.246139296236,
+        "low_overlap_frames": 153,
+        "h10_segments": 6,
+        "h10_frames": 141,
+        "h10_intervals": [
+          [
+            675,
+            686
+          ],
+          [
+            738,
+            756
+          ],
+          [
+            868,
+            894
+          ],
+          [
+            920,
+            947
+          ],
+          [
+            971,
+            1001
+          ],
+          [
+            1020,
+            1049
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 132,
+        "all_boxes_recall_percent": 71.36497966991429,
+        "reported_recall_percent": 70.34808312395576
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.044980224954414894,
+      "reported_recall_delta_pp": 2.7467510119084153
+    },
+    {
+      "sequence": "ball01_wild",
+      "category": {
+        "valid_noninit_frames": 397,
+        "noninit_overlap_sum": 268.3541747675221,
+        "low_overlap_frames": 66,
+        "h10_segments": 3,
+        "h10_frames": 51,
+        "h10_intervals": [
+          [
+            73,
+            90
+          ],
+          [
+            103,
+            123
+          ],
+          [
+            515,
+            529
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 52,
+        "all_boxes_recall_percent": 67.67692833354826,
+        "reported_recall_percent": 66.5948597226563
+      },
+      "alternative": {
+        "valid_noninit_frames": 397,
+        "noninit_overlap_sum": 272.17455275471025,
+        "low_overlap_frames": 63,
+        "h10_segments": 3,
+        "h10_frames": 55,
+        "h10_intervals": [
+          [
+            73,
+            90
+          ],
+          [
+            103,
+            123
+          ],
+          [
+            186,
+            204
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 56,
+        "all_boxes_recall_percent": 68.63682230017845,
+        "reported_recall_percent": 67.06725517384984
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          515,
+          528
+        ]
+      ],
+      "alternative_damage_intervals": [
+        [
+          194,
+          204
+        ]
+      ],
+      "alternative_rescue_frames": 13,
+      "alternative_damage_frames": 10,
+      "all_boxes_recall_delta_pp": 0.9598939666301902,
+      "reported_recall_delta_pp": 0.47239545119354887
+    },
+    {
+      "sequence": "ball06_indoor",
+      "category": {
+        "valid_noninit_frames": 717,
+        "noninit_overlap_sum": 270.8355383179447,
+        "low_overlap_frames": 358,
+        "h10_segments": 6,
+        "h10_frames": 357,
+        "h10_intervals": [
+          [
+            324,
+            346
+          ],
+          [
+            349,
+            412
+          ],
+          [
+            413,
+            594
+          ],
+          [
+            632,
+            694
+          ],
+          [
+            698,
+            711
+          ],
+          [
+            740,
+            756
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 345,
+        "all_boxes_recall_percent": 37.86010282979731,
+        "reported_recall_percent": 31.140107805047812
+      },
+      "alternative": {
+        "valid_noninit_frames": 717,
+        "noninit_overlap_sum": 270.38785748936317,
+        "low_overlap_frames": 361,
+        "h10_segments": 6,
+        "h10_frames": 358,
+        "h10_intervals": [
+          [
+            324,
+            346
+          ],
+          [
+            349,
+            412
+          ],
+          [
+            413,
+            595
+          ],
+          [
+            632,
+            694
+          ],
+          [
+            698,
+            711
+          ],
+          [
+            740,
+            756
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 346,
+        "all_boxes_recall_percent": 37.79775173946563,
+        "reported_recall_percent": 33.261313612138515
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": -0.06235109033168129,
+      "reported_recall_delta_pp": 2.1212058070907034
+    },
+    {
+      "sequence": "ball10_wild",
+      "category": {
+        "valid_noninit_frames": 2015,
+        "noninit_overlap_sum": 762.6340345298847,
+        "low_overlap_frames": 1039,
+        "h10_segments": 5,
+        "h10_frames": 1029,
+        "h10_intervals": [
+          [
+            134,
+            419
+          ],
+          [
+            426,
+            555
+          ],
+          [
+            647,
+            719
+          ],
+          [
+            1527,
+            1580
+          ],
+          [
+            1599,
+            2089
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 1013,
+        "all_boxes_recall_percent": 37.878672347712545,
+        "reported_recall_percent": 35.835537008098015
+      },
+      "alternative": {
+        "valid_noninit_frames": 2015,
+        "noninit_overlap_sum": 1253.9754383986103,
+        "low_overlap_frames": 422,
+        "h10_segments": 5,
+        "h10_frames": 403,
+        "h10_intervals": [
+          [
+            134,
+            182
+          ],
+          [
+            521,
+            616
+          ],
+          [
+            647,
+            814
+          ],
+          [
+            1527,
+            1580
+          ],
+          [
+            1599,
+            1639
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 378,
+        "all_boxes_recall_percent": 62.25076579358188,
+        "reported_recall_percent": 61.427987201065
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          182,
+          231
+        ],
+        [
+          235,
+          309
+        ],
+        [
+          314,
+          334
+        ],
+        [
+          336,
+          348
+        ],
+        [
+          352,
+          418
+        ],
+        [
+          427,
+          494
+        ],
+        [
+          495,
+          521
+        ],
+        [
+          1639,
+          2047
+        ],
+        [
+          2048,
+          2089
+        ]
+      ],
+      "alternative_damage_intervals": [
+        [
+          555,
+          581
+        ],
+        [
+          582,
+          609
+        ],
+        [
+          719,
+          814
+        ]
+      ],
+      "alternative_rescue_frames": 763,
+      "alternative_damage_frames": 148,
+      "all_boxes_recall_delta_pp": 24.372093445869332,
+      "reported_recall_delta_pp": 25.592450192966986
+    },
+    {
+      "sequence": "ball11_wild",
+      "category": {
+        "valid_noninit_frames": 1533,
+        "noninit_overlap_sum": 1136.255032153799,
+        "low_overlap_frames": 190,
+        "h10_segments": 6,
+        "h10_frames": 180,
+        "h10_intervals": [
+          [
+            433,
+            450
+          ],
+          [
+            453,
+            501
+          ],
+          [
+            506,
+            524
+          ],
+          [
+            591,
+            606
+          ],
+          [
+            1183,
+            1194
+          ],
+          [
+            1218,
+            1289
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 175,
+        "all_boxes_recall_percent": 74.13657315213811,
+        "reported_recall_percent": 73.02636650447273
+      },
+      "alternative": {
+        "valid_noninit_frames": 1533,
+        "noninit_overlap_sum": 1185.150868285348,
+        "low_overlap_frames": 136,
+        "h10_segments": 4,
+        "h10_frames": 117,
+        "h10_intervals": [
+          [
+            453,
+            471
+          ],
+          [
+            591,
+            608
+          ],
+          [
+            1183,
+            1194
+          ],
+          [
+            1218,
+            1289
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 127,
+        "all_boxes_recall_percent": 77.32404617244771,
+        "reported_recall_percent": 76.4887022305972
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          439,
+          450
+        ],
+        [
+          471,
+          501
+        ],
+        [
+          506,
+          524
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 59,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 3.1874730203095964,
+      "reported_recall_delta_pp": 3.462335726124465
+    },
+    {
+      "sequence": "ball15_wild",
+      "category": {
+        "valid_noninit_frames": 164,
+        "noninit_overlap_sum": 143.12395413789443,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 87.34785099266328,
+        "reported_recall_percent": 86.96678000885254
+      },
+      "alternative": {
+        "valid_noninit_frames": 164,
+        "noninit_overlap_sum": 143.7786134528613,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 87.74461421385533,
+        "reported_recall_percent": 87.44688928173288
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.396763221192046,
+      "reported_recall_delta_pp": 0.4801092728803411
+    },
+    {
+      "sequence": "ball18_indoor",
+      "category": {
+        "valid_noninit_frames": 3698,
+        "noninit_overlap_sum": 3095.540443591115,
+        "low_overlap_frames": 21,
+        "h10_segments": 1,
+        "h10_frames": 15,
+        "h10_intervals": [
+          [
+            2069,
+            2084
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 7,
+        "all_boxes_recall_percent": 83.71290736931914,
+        "reported_recall_percent": 83.5536372577637
+      },
+      "alternative": {
+        "valid_noninit_frames": 3698,
+        "noninit_overlap_sum": 3154.0228892451178,
+        "low_overlap_frames": 19,
+        "h10_segments": 1,
+        "h10_frames": 14,
+        "h10_intervals": [
+          [
+            2070,
+            2084
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 7,
+        "all_boxes_recall_percent": 85.29394131508835,
+        "reported_recall_percent": 85.27317487069996
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 1.5810339457692066,
+      "reported_recall_delta_pp": 1.7195376129362643
+    },
+    {
+      "sequence": "ball20_indoor",
+      "category": {
+        "valid_noninit_frames": 1507,
+        "noninit_overlap_sum": 1258.9670244965746,
+        "low_overlap_frames": 63,
+        "h10_segments": 2,
+        "h10_frames": 62,
+        "h10_intervals": [
+          [
+            969,
+            1011
+          ],
+          [
+            1067,
+            1087
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 62,
+        "all_boxes_recall_percent": 83.55218995335375,
+        "reported_recall_percent": 82.78579541979109
+      },
+      "alternative": {
+        "valid_noninit_frames": 1507,
+        "noninit_overlap_sum": 1267.007289717656,
+        "low_overlap_frames": 63,
+        "h10_segments": 2,
+        "h10_frames": 62,
+        "h10_intervals": [
+          [
+            969,
+            1011
+          ],
+          [
+            1067,
+            1087
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 62,
+        "all_boxes_recall_percent": 84.08536403963237,
+        "reported_recall_percent": 83.51774880733352
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.5331740862786205,
+      "reported_recall_delta_pp": 0.7319533875424327
+    },
+    {
+      "sequence": "bandlight_indoor",
+      "category": {
+        "valid_noninit_frames": 1189,
+        "noninit_overlap_sum": 860.5496885172545,
+        "low_overlap_frames": 34,
+        "h10_segments": 1,
+        "h10_frames": 13,
+        "h10_intervals": [
+          [
+            210,
+            223
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 18,
+        "all_boxes_recall_percent": 72.39913348884491,
+        "reported_recall_percent": 68.1016666144582
+      },
+      "alternative": {
+        "valid_noninit_frames": 1189,
+        "noninit_overlap_sum": 848.022977564754,
+        "low_overlap_frames": 59,
+        "h10_segments": 2,
+        "h10_frames": 33,
+        "h10_intervals": [
+          [
+            209,
+            223
+          ],
+          [
+            1171,
+            1190
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 35,
+        "all_boxes_recall_percent": 71.3464687029205,
+        "reported_recall_percent": 70.03246111702316
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [
+        [
+          1171,
+          1190
+        ]
+      ],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 19,
+      "all_boxes_recall_delta_pp": -1.0526647859244065,
+      "reported_recall_delta_pp": 1.9307945025649644
+    },
+    {
+      "sequence": "beautifullight02_indoor",
+      "category": {
+        "valid_noninit_frames": 974,
+        "noninit_overlap_sum": 828.5491336834758,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 85.08196242907445,
+        "reported_recall_percent": 85.044468585129
+      },
+      "alternative": {
+        "valid_noninit_frames": 974,
+        "noninit_overlap_sum": 830.033880727659,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 85.23424417719579,
+        "reported_recall_percent": 85.23424417719579
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.15228174812133943,
+      "reported_recall_delta_pp": 0.18977559206679473
+    },
+    {
+      "sequence": "book03_indoor",
+      "category": {
+        "valid_noninit_frames": 715,
+        "noninit_overlap_sum": 120.86331563842029,
+        "low_overlap_frames": 574,
+        "h10_segments": 3,
+        "h10_frames": 572,
+        "h10_intervals": [
+          [
+            127,
+            473
+          ],
+          [
+            475,
+            509
+          ],
+          [
+            524,
+            716
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 55,
+        "all_boxes_recall_percent": 17.020016150617355,
+        "reported_recall_percent": 15.646623821238451
+      },
+      "alternative": {
+        "valid_noninit_frames": 715,
+        "noninit_overlap_sum": 124.03465048648908,
+        "low_overlap_frames": 569,
+        "h10_segments": 3,
+        "h10_frames": 562,
+        "h10_intervals": [
+          [
+            129,
+            473
+          ],
+          [
+            475,
+            501
+          ],
+          [
+            524,
+            716
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 42,
+        "all_boxes_recall_percent": 17.462940012079482,
+        "reported_recall_percent": 16.606129561639733
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.4429238614621269,
+      "reported_recall_delta_pp": 0.9595057404012817
+    },
+    {
+      "sequence": "bottle04_indoor",
+      "category": {
+        "valid_noninit_frames": 2160,
+        "noninit_overlap_sum": 1249.4054470578176,
+        "low_overlap_frames": 428,
+        "h10_segments": 6,
+        "h10_frames": 415,
+        "h10_intervals": [
+          [
+            273,
+            294
+          ],
+          [
+            677,
+            702
+          ],
+          [
+            1522,
+            1563
+          ],
+          [
+            1745,
+            1791
+          ],
+          [
+            1988,
+            2048
+          ],
+          [
+            2064,
+            2286
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 342,
+        "all_boxes_recall_percent": 57.86235294112993,
+        "reported_recall_percent": 50.01837992132323
+      },
+      "alternative": {
+        "valid_noninit_frames": 2160,
+        "noninit_overlap_sum": 1370.3850785233967,
+        "low_overlap_frames": 276,
+        "h10_segments": 6,
+        "h10_frames": 259,
+        "h10_intervals": [
+          [
+            273,
+            295
+          ],
+          [
+            676,
+            696
+          ],
+          [
+            1527,
+            1562
+          ],
+          [
+            1745,
+            1791
+          ],
+          [
+            1988,
+            2000
+          ],
+          [
+            2064,
+            2188
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 199,
+        "all_boxes_recall_percent": 63.4606699918277,
+        "reported_recall_percent": 60.00615714668795
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          2001,
+          2017
+        ],
+        [
+          2019,
+          2046
+        ],
+        [
+          2188,
+          2202
+        ],
+        [
+          2211,
+          2286
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 132,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 5.598317050697773,
+      "reported_recall_delta_pp": 9.987777225364717
+    },
+    {
+      "sequence": "card_indoor",
+      "category": {
+        "valid_noninit_frames": 2415,
+        "noninit_overlap_sum": 859.8691011795537,
+        "low_overlap_frames": 1157,
+        "h10_segments": 14,
+        "h10_frames": 1073,
+        "h10_intervals": [
+          [
+            44,
+            63
+          ],
+          [
+            114,
+            182
+          ],
+          [
+            308,
+            368
+          ],
+          [
+            605,
+            648
+          ],
+          [
+            1068,
+            1083
+          ],
+          [
+            1422,
+            1452
+          ],
+          [
+            1457,
+            1481
+          ],
+          [
+            1514,
+            1553
+          ],
+          [
+            1608,
+            1661
+          ],
+          [
+            1664,
+            2079
+          ],
+          [
+            2086,
+            2136
+          ],
+          [
+            2140,
+            2257
+          ],
+          [
+            2258,
+            2373
+          ],
+          [
+            2391,
+            2416
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 35.631999221008016,
+        "reported_recall_percent": 33.08754527663117
+      },
+      "alternative": {
+        "valid_noninit_frames": 2415,
+        "noninit_overlap_sum": 793.5864291497506,
+        "low_overlap_frames": 1229,
+        "h10_segments": 15,
+        "h10_frames": 1136,
+        "h10_intervals": [
+          [
+            47,
+            63
+          ],
+          [
+            114,
+            182
+          ],
+          [
+            308,
+            368
+          ],
+          [
+            555,
+            665
+          ],
+          [
+            1070,
+            1081
+          ],
+          [
+            1419,
+            1452
+          ],
+          [
+            1457,
+            1481
+          ],
+          [
+            1508,
+            1544
+          ],
+          [
+            1608,
+            1622
+          ],
+          [
+            1627,
+            2085
+          ],
+          [
+            2086,
+            2136
+          ],
+          [
+            2140,
+            2257
+          ],
+          [
+            2258,
+            2278
+          ],
+          [
+            2279,
+            2373
+          ],
+          [
+            2391,
+            2416
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 32.888511140304246,
+        "reported_recall_percent": 31.76334667578198
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [
+        [
+          568,
+          579
+        ]
+      ],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 11,
+      "all_boxes_recall_delta_pp": -2.74348808070377,
+      "reported_recall_delta_pp": -1.32419860084919
+    },
+    {
+      "sequence": "cat01_indoor",
+      "category": {
+        "valid_noninit_frames": 2951,
+        "noninit_overlap_sum": 2531.2651493312146,
+        "low_overlap_frames": 75,
+        "h10_segments": 2,
+        "h10_frames": 69,
+        "h10_intervals": [
+          [
+            1417,
+            1450
+          ],
+          [
+            1917,
+            1953
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 71,
+        "all_boxes_recall_percent": 85.78133974699239,
+        "reported_recall_percent": 85.6178364470215
+      },
+      "alternative": {
+        "valid_noninit_frames": 2951,
+        "noninit_overlap_sum": 2564.221406350929,
+        "low_overlap_frames": 44,
+        "h10_segments": 1,
+        "h10_frames": 34,
+        "h10_intervals": [
+          [
+            1417,
+            1451
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 37,
+        "all_boxes_recall_percent": 86.8977441175789,
+        "reported_recall_percent": 86.77552280210922
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          1917,
+          1953
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 36,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 1.1164043705865083,
+      "reported_recall_delta_pp": 1.1576863550877192
+    },
+    {
+      "sequence": "colacan03_indoor",
+      "category": {
+        "valid_noninit_frames": 1667,
+        "noninit_overlap_sum": 222.5742076794685,
+        "low_overlap_frames": 1418,
+        "h10_segments": 14,
+        "h10_frames": 1382,
+        "h10_intervals": [
+          [
+            288,
+            762
+          ],
+          [
+            764,
+            789
+          ],
+          [
+            824,
+            835
+          ],
+          [
+            836,
+            1056
+          ],
+          [
+            1057,
+            1102
+          ],
+          [
+            1105,
+            1151
+          ],
+          [
+            1153,
+            1183
+          ],
+          [
+            1345,
+            1444
+          ],
+          [
+            1522,
+            1751
+          ],
+          [
+            1768,
+            1797
+          ],
+          [
+            1814,
+            1831
+          ],
+          [
+            1895,
+            1923
+          ],
+          [
+            1927,
+            1961
+          ],
+          [
+            1977,
+            2072
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 1412,
+        "all_boxes_recall_percent": 13.403729477186364,
+        "reported_recall_percent": 13.313004775248888
+      },
+      "alternative": {
+        "valid_noninit_frames": 1667,
+        "noninit_overlap_sum": 223.42929202902724,
+        "low_overlap_frames": 1419,
+        "h10_segments": 14,
+        "h10_frames": 1382,
+        "h10_intervals": [
+          [
+            288,
+            762
+          ],
+          [
+            764,
+            789
+          ],
+          [
+            824,
+            835
+          ],
+          [
+            836,
+            1056
+          ],
+          [
+            1057,
+            1102
+          ],
+          [
+            1105,
+            1151
+          ],
+          [
+            1153,
+            1183
+          ],
+          [
+            1345,
+            1444
+          ],
+          [
+            1522,
+            1751
+          ],
+          [
+            1768,
+            1797
+          ],
+          [
+            1814,
+            1831
+          ],
+          [
+            1895,
+            1923
+          ],
+          [
+            1927,
+            1961
+          ],
+          [
+            1977,
+            2072
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 1412,
+        "all_boxes_recall_percent": 13.454993526920097,
+        "reported_recall_percent": 13.45409092095416
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.05126404973373333,
+      "reported_recall_delta_pp": 0.14108614570527145
+    },
+    {
+      "sequence": "cube02_indoor",
+      "category": {
+        "valid_noninit_frames": 3624,
+        "noninit_overlap_sum": 947.7752657611384,
+        "low_overlap_frames": 2550,
+        "h10_segments": 7,
+        "h10_frames": 2541,
+        "h10_intervals": [
+          [
+            581,
+            599
+          ],
+          [
+            642,
+            1259
+          ],
+          [
+            1262,
+            1941
+          ],
+          [
+            1962,
+            2266
+          ],
+          [
+            2774,
+            2789
+          ],
+          [
+            2889,
+            2914
+          ],
+          [
+            2933,
+            3816
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 2541,
+        "all_boxes_recall_percent": 26.17311077961761,
+        "reported_recall_percent": 25.878144918744095
+      },
+      "alternative": {
+        "valid_noninit_frames": 3624,
+        "noninit_overlap_sum": 1738.9279890051607,
+        "low_overlap_frames": 1639,
+        "h10_segments": 5,
+        "h10_frames": 1629,
+        "h10_intervals": [
+          [
+            174,
+            185
+          ],
+          [
+            581,
+            599
+          ],
+          [
+            642,
+            1259
+          ],
+          [
+            1262,
+            1940
+          ],
+          [
+            1962,
+            2267
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 1623,
+        "all_boxes_recall_percent": 47.998013489797536,
+        "reported_recall_percent": 47.617687332370906
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          2942,
+          3582
+        ],
+        [
+          3583,
+          3623
+        ],
+        [
+          3626,
+          3735
+        ],
+        [
+          3742,
+          3816
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 863,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 21.824902710179927,
+      "reported_recall_delta_pp": 21.73954241362681
+    },
+    {
+      "sequence": "cube03_indoor",
+      "category": {
+        "valid_noninit_frames": 593,
+        "noninit_overlap_sum": 335.97142636616826,
+        "low_overlap_frames": 99,
+        "h10_segments": 6,
+        "h10_frames": 70,
+        "h10_intervals": [
+          [
+            113,
+            126
+          ],
+          [
+            193,
+            203
+          ],
+          [
+            229,
+            240
+          ],
+          [
+            303,
+            315
+          ],
+          [
+            457,
+            470
+          ],
+          [
+            560,
+            571
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 56.72919635794078,
+        "reported_recall_percent": 55.05412092371349
+      },
+      "alternative": {
+        "valid_noninit_frames": 593,
+        "noninit_overlap_sum": 356.660082471976,
+        "low_overlap_frames": 60,
+        "h10_segments": 2,
+        "h10_frames": 26,
+        "h10_intervals": [
+          [
+            457,
+            473
+          ],
+          [
+            560,
+            570
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 60.21213509629224,
+        "reported_recall_percent": 58.74399244447027
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 3.4829387383514643,
+      "reported_recall_delta_pp": 3.689871520756782
+    },
+    {
+      "sequence": "cube05_indoor",
+      "category": {
+        "valid_noninit_frames": 2855,
+        "noninit_overlap_sum": 60.28617418196008,
+        "low_overlap_frames": 2706,
+        "h10_segments": 22,
+        "h10_frames": 2652,
+        "h10_intervals": [
+          [
+            8,
+            116
+          ],
+          [
+            132,
+            341
+          ],
+          [
+            346,
+            652
+          ],
+          [
+            658,
+            708
+          ],
+          [
+            712,
+            752
+          ],
+          [
+            756,
+            903
+          ],
+          [
+            904,
+            1084
+          ],
+          [
+            1088,
+            1125
+          ],
+          [
+            1152,
+            1207
+          ],
+          [
+            1217,
+            1357
+          ],
+          [
+            1362,
+            1387
+          ],
+          [
+            1388,
+            1455
+          ],
+          [
+            1539,
+            1654
+          ],
+          [
+            1690,
+            2241
+          ],
+          [
+            2244,
+            2259
+          ],
+          [
+            2265,
+            2285
+          ],
+          [
+            2296,
+            2451
+          ],
+          [
+            2487,
+            2510
+          ],
+          [
+            2522,
+            2628
+          ],
+          [
+            2632,
+            2649
+          ],
+          [
+            2688,
+            2703
+          ],
+          [
+            2704,
+            2975
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 1743,
+        "all_boxes_recall_percent": 2.1458744461470616,
+        "reported_recall_percent": 2.1458744461470616
+      },
+      "alternative": {
+        "valid_noninit_frames": 2855,
+        "noninit_overlap_sum": 61.747583365228486,
+        "low_overlap_frames": 2689,
+        "h10_segments": 21,
+        "h10_frames": 2623,
+        "h10_intervals": [
+          [
+            9,
+            116
+          ],
+          [
+            132,
+            341
+          ],
+          [
+            346,
+            652
+          ],
+          [
+            658,
+            708
+          ],
+          [
+            712,
+            752
+          ],
+          [
+            756,
+            903
+          ],
+          [
+            904,
+            1084
+          ],
+          [
+            1088,
+            1123
+          ],
+          [
+            1152,
+            1207
+          ],
+          [
+            1218,
+            1357
+          ],
+          [
+            1362,
+            1387
+          ],
+          [
+            1388,
+            1455
+          ],
+          [
+            1539,
+            1654
+          ],
+          [
+            1690,
+            2241
+          ],
+          [
+            2245,
+            2258
+          ],
+          [
+            2265,
+            2285
+          ],
+          [
+            2296,
+            2451
+          ],
+          [
+            2487,
+            2510
+          ],
+          [
+            2522,
+            2628
+          ],
+          [
+            2688,
+            2699
+          ],
+          [
+            2706,
+            2975
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 1742,
+        "all_boxes_recall_percent": 2.197044235477188,
+        "reported_recall_percent": 2.197044235477188
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.05116978933012639,
+      "reported_recall_delta_pp": 0.05116978933012639
+    },
+    {
+      "sequence": "cup01_indoor",
+      "category": {
+        "valid_noninit_frames": 1334,
+        "noninit_overlap_sum": 1073.975853066247,
+        "low_overlap_frames": 12,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 80.52253581020578,
+        "reported_recall_percent": 79.48975845978005
+      },
+      "alternative": {
+        "valid_noninit_frames": 1334,
+        "noninit_overlap_sum": 1071.2418933070935,
+        "low_overlap_frames": 14,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 80.31774481701075,
+        "reported_recall_percent": 79.71110969564532
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": -0.2047909931950329,
+      "reported_recall_delta_pp": 0.22135123586527072
+    },
+    {
+      "sequence": "cup02_indoor",
+      "category": {
+        "valid_noninit_frames": 1757,
+        "noninit_overlap_sum": 1202.7667660469294,
+        "low_overlap_frames": 371,
+        "h10_segments": 5,
+        "h10_frames": 368,
+        "h10_intervals": [
+          [
+            916,
+            946
+          ],
+          [
+            948,
+            1021
+          ],
+          [
+            1333,
+            1436
+          ],
+          [
+            1445,
+            1499
+          ],
+          [
+            1650,
+            1758
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 20,
+        "all_boxes_recall_percent": 68.47364994578668,
+        "reported_recall_percent": 67.42532973666131
+      },
+      "alternative": {
+        "valid_noninit_frames": 1757,
+        "noninit_overlap_sum": 1032.5352655383413,
+        "low_overlap_frames": 571,
+        "h10_segments": 7,
+        "h10_frames": 561,
+        "h10_intervals": [
+          [
+            916,
+            947
+          ],
+          [
+            959,
+            994
+          ],
+          [
+            1002,
+            1150
+          ],
+          [
+            1159,
+            1319
+          ],
+          [
+            1333,
+            1357
+          ],
+          [
+            1445,
+            1499
+          ],
+          [
+            1649,
+            1758
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 90,
+        "all_boxes_recall_percent": 58.790401907755474,
+        "reported_recall_percent": 58.403701149139444
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          1357,
+          1436
+        ]
+      ],
+      "alternative_damage_intervals": [
+        [
+          1021,
+          1150
+        ],
+        [
+          1159,
+          1319
+        ]
+      ],
+      "alternative_rescue_frames": 79,
+      "alternative_damage_frames": 289,
+      "all_boxes_recall_delta_pp": -9.683248038031202,
+      "reported_recall_delta_pp": -9.021628587521867
+    },
+    {
+      "sequence": "cup04_indoor",
+      "category": {
+        "valid_noninit_frames": 2163,
+        "noninit_overlap_sum": 1081.3361165711667,
+        "low_overlap_frames": 915,
+        "h10_segments": 5,
+        "h10_frames": 912,
+        "h10_intervals": [
+          [
+            1121,
+            1665
+          ],
+          [
+            1666,
+            1711
+          ],
+          [
+            1715,
+            1748
+          ],
+          [
+            1899,
+            1997
+          ],
+          [
+            2011,
+            2203
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 312,
+        "all_boxes_recall_percent": 50.01553218905577,
+        "reported_recall_percent": 49.782368432145155
+      },
+      "alternative": {
+        "valid_noninit_frames": 2163,
+        "noninit_overlap_sum": 971.5323225827353,
+        "low_overlap_frames": 1043,
+        "h10_segments": 6,
+        "h10_frames": 1042,
+        "h10_intervals": [
+          [
+            1121,
+            1665
+          ],
+          [
+            1666,
+            1711
+          ],
+          [
+            1713,
+            1804
+          ],
+          [
+            1828,
+            1891
+          ],
+          [
+            1899,
+            1997
+          ],
+          [
+            2011,
+            2212
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 336,
+        "all_boxes_recall_percent": 44.94141971269571,
+        "reported_recall_percent": 44.92182191299413
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [
+        [
+          1748,
+          1804
+        ],
+        [
+          1830,
+          1890
+        ]
+      ],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 116,
+      "all_boxes_recall_delta_pp": -5.074112476360057,
+      "reported_recall_delta_pp": -4.860546519151022
+    },
+    {
+      "sequence": "cup12_indoor",
+      "category": {
+        "valid_noninit_frames": 952,
+        "noninit_overlap_sum": 281.6711485964784,
+        "low_overlap_frames": 594,
+        "h10_segments": 11,
+        "h10_frames": 544,
+        "h10_intervals": [
+          [
+            136,
+            148
+          ],
+          [
+            151,
+            163
+          ],
+          [
+            165,
+            177
+          ],
+          [
+            180,
+            192
+          ],
+          [
+            193,
+            207
+          ],
+          [
+            210,
+            235
+          ],
+          [
+            460,
+            504
+          ],
+          [
+            525,
+            580
+          ],
+          [
+            581,
+            862
+          ],
+          [
+            885,
+            895
+          ],
+          [
+            939,
+            1006
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 514,
+        "all_boxes_recall_percent": 29.66119082859165,
+        "reported_recall_percent": 28.123062236160507
+      },
+      "alternative": {
+        "valid_noninit_frames": 952,
+        "noninit_overlap_sum": 347.2865768176006,
+        "low_overlap_frames": 508,
+        "h10_segments": 9,
+        "h10_frames": 445,
+        "h10_intervals": [
+          [
+            136,
+            148
+          ],
+          [
+            151,
+            163
+          ],
+          [
+            165,
+            177
+          ],
+          [
+            180,
+            192
+          ],
+          [
+            193,
+            207
+          ],
+          [
+            210,
+            235
+          ],
+          [
+            581,
+            862
+          ],
+          [
+            885,
+            895
+          ],
+          [
+            939,
+            1006
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 428,
+        "all_boxes_recall_percent": 36.54633544780699,
+        "reported_recall_percent": 35.115360187289504
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          469,
+          496
+        ],
+        [
+          527,
+          578
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 78,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 6.885144619215339,
+      "reported_recall_delta_pp": 6.992297951128997
+    },
+    {
+      "sequence": "developmentboard_indoor",
+      "category": {
+        "valid_noninit_frames": 1388,
+        "noninit_overlap_sum": 528.9180879524168,
+        "low_overlap_frames": 662,
+        "h10_segments": 7,
+        "h10_frames": 646,
+        "h10_intervals": [
+          [
+            516,
+            576
+          ],
+          [
+            709,
+            776
+          ],
+          [
+            861,
+            875
+          ],
+          [
+            915,
+            1019
+          ],
+          [
+            1053,
+            1201
+          ],
+          [
+            1264,
+            1374
+          ],
+          [
+            1384,
+            1527
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 339,
+        "all_boxes_recall_percent": 38.15105024855413,
+        "reported_recall_percent": 33.81629014593326
+      },
+      "alternative": {
+        "valid_noninit_frames": 1388,
+        "noninit_overlap_sum": 411.2457686999392,
+        "low_overlap_frames": 849,
+        "h10_segments": 3,
+        "h10_frames": 837,
+        "h10_intervals": [
+          [
+            587,
+            875
+          ],
+          [
+            915,
+            1201
+          ],
+          [
+            1264,
+            1527
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 810,
+        "all_boxes_recall_percent": 29.679321000715564,
+        "reported_recall_percent": 27.470684769640403
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          519,
+          543
+        ],
+        [
+          545,
+          576
+        ]
+      ],
+      "alternative_damage_intervals": [
+        [
+          598,
+          649
+        ],
+        [
+          655,
+          694
+        ],
+        [
+          777,
+          803
+        ],
+        [
+          804,
+          828
+        ],
+        [
+          843,
+          859
+        ],
+        [
+          1031,
+          1047
+        ]
+      ],
+      "alternative_rescue_frames": 55,
+      "alternative_damage_frames": 172,
+      "all_boxes_recall_delta_pp": -8.471729247838564,
+      "reported_recall_delta_pp": -6.3456053762928555
+    },
+    {
+      "sequence": "duck03_wild",
+      "category": {
+        "valid_noninit_frames": 487,
+        "noninit_overlap_sum": 409.6425034080729,
+        "low_overlap_frames": 4,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 84.14805397706414,
+        "reported_recall_percent": 84.03987230711543
+      },
+      "alternative": {
+        "valid_noninit_frames": 487,
+        "noninit_overlap_sum": 410.4237876293034,
+        "low_overlap_frames": 3,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 84.3081532027261,
+        "reported_recall_percent": 84.3081532027261
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.16009922566196622,
+      "reported_recall_delta_pp": 0.2682808956106726
+    },
+    {
+      "sequence": "dumbbells01_indoor",
+      "category": {
+        "valid_noninit_frames": 1020,
+        "noninit_overlap_sum": 761.936654599102,
+        "low_overlap_frames": 53,
+        "h10_segments": 1,
+        "h10_frames": 53,
+        "h10_intervals": [
+          [
+            308,
+            361
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 52,
+        "all_boxes_recall_percent": 74.72445196857022,
+        "reported_recall_percent": 72.22238936732846
+      },
+      "alternative": {
+        "valid_noninit_frames": 1020,
+        "noninit_overlap_sum": 767.2989843551892,
+        "low_overlap_frames": 51,
+        "h10_segments": 1,
+        "h10_frames": 51,
+        "h10_intervals": [
+          [
+            308,
+            359
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 50,
+        "all_boxes_recall_percent": 75.24965566652196,
+        "reported_recall_percent": 74.4546021378946
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.5252036979517385,
+      "reported_recall_delta_pp": 2.232212770566136
+    },
+    {
+      "sequence": "earphone01_indoor",
+      "category": {
+        "valid_noninit_frames": 1089,
+        "noninit_overlap_sum": 831.0494806314882,
+        "low_overlap_frames": 1,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 76.33481473683378,
+        "reported_recall_percent": 73.71435640910869
+      },
+      "alternative": {
+        "valid_noninit_frames": 1089,
+        "noninit_overlap_sum": 824.3056786235084,
+        "low_overlap_frames": 9,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 75.71611730490902,
+        "reported_recall_percent": 75.29394035667278
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": -0.6186974319247582,
+      "reported_recall_delta_pp": 1.579583947564089
+    },
+    {
+      "sequence": "file01_indoor",
+      "category": {
+        "valid_noninit_frames": 1620,
+        "noninit_overlap_sum": 1138.7595638148077,
+        "low_overlap_frames": 333,
+        "h10_segments": 6,
+        "h10_frames": 327,
+        "h10_intervals": [
+          [
+            680,
+            696
+          ],
+          [
+            700,
+            786
+          ],
+          [
+            789,
+            814
+          ],
+          [
+            817,
+            829
+          ],
+          [
+            830,
+            881
+          ],
+          [
+            1434,
+            1571
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 48,
+        "all_boxes_recall_percent": 70.31212608357852,
+        "reported_recall_percent": 69.72371937676293
+      },
+      "alternative": {
+        "valid_noninit_frames": 1620,
+        "noninit_overlap_sum": 1132.3903354577205,
+        "low_overlap_frames": 338,
+        "h10_segments": 6,
+        "h10_frames": 333,
+        "h10_intervals": [
+          [
+            680,
+            696
+          ],
+          [
+            703,
+            786
+          ],
+          [
+            789,
+            814
+          ],
+          [
+            817,
+            829
+          ],
+          [
+            831,
+            890
+          ],
+          [
+            1436,
+            1574
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 47,
+        "all_boxes_recall_percent": 69.91920638233931,
+        "reported_recall_percent": 69.39527095277323
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": -0.39291970123920805,
+      "reported_recall_delta_pp": -0.3284484239896983
+    },
+    {
+      "sequence": "flag_indoor",
+      "category": {
+        "valid_noninit_frames": 1370,
+        "noninit_overlap_sum": 1167.4475830857457,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 85.22593603834761,
+        "reported_recall_percent": 84.86967106842246
+      },
+      "alternative": {
+        "valid_noninit_frames": 1370,
+        "noninit_overlap_sum": 1170.4232670803685,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 85.442980822784,
+        "reported_recall_percent": 85.14575226475081
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.2170447844363821,
+      "reported_recall_delta_pp": 0.2760811963283487
+    },
+    {
+      "sequence": "glass01_indoor",
+      "category": {
+        "valid_noninit_frames": 2224,
+        "noninit_overlap_sum": 1787.507853883597,
+        "low_overlap_frames": 10,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 80.38237545544256,
+        "reported_recall_percent": 78.85525859975708
+      },
+      "alternative": {
+        "valid_noninit_frames": 2224,
+        "noninit_overlap_sum": 1788.26690057314,
+        "low_overlap_frames": 10,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 80.41648991339953,
+        "reported_recall_percent": 79.72187105488378
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.03411445795697432,
+      "reported_recall_delta_pp": 0.8666124551266989
+    },
+    {
+      "sequence": "hand01_indoor",
+      "category": {
+        "valid_noninit_frames": 1168,
+        "noninit_overlap_sum": 427.1180056017372,
+        "low_overlap_frames": 447,
+        "h10_segments": 12,
+        "h10_frames": 394,
+        "h10_intervals": [
+          [
+            120,
+            146
+          ],
+          [
+            147,
+            212
+          ],
+          [
+            213,
+            236
+          ],
+          [
+            237,
+            261
+          ],
+          [
+            262,
+            273
+          ],
+          [
+            274,
+            291
+          ],
+          [
+            292,
+            316
+          ],
+          [
+            317,
+            409
+          ],
+          [
+            776,
+            786
+          ],
+          [
+            950,
+            968
+          ],
+          [
+            971,
+            988
+          ],
+          [
+            1156,
+            1223
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 373,
+        "all_boxes_recall_percent": 36.62258388380985,
+        "reported_recall_percent": 19.640510599586133
+      },
+      "alternative": {
+        "valid_noninit_frames": 1168,
+        "noninit_overlap_sum": 423.6833095399751,
+        "low_overlap_frames": 489,
+        "h10_segments": 10,
+        "h10_frames": 439,
+        "h10_intervals": [
+          [
+            120,
+            133
+          ],
+          [
+            148,
+            212
+          ],
+          [
+            318,
+            331
+          ],
+          [
+            406,
+            578
+          ],
+          [
+            592,
+            643
+          ],
+          [
+            668,
+            679
+          ],
+          [
+            776,
+            789
+          ],
+          [
+            950,
+            968
+          ],
+          [
+            971,
+            988
+          ],
+          [
+            1156,
+            1223
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 338,
+        "all_boxes_recall_percent": 36.32876899400985,
+        "reported_recall_percent": 27.42301148237063
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          133,
+          145
+        ],
+        [
+          216,
+          235
+        ],
+        [
+          238,
+          261
+        ],
+        [
+          263,
+          273
+        ],
+        [
+          274,
+          291
+        ],
+        [
+          293,
+          316
+        ],
+        [
+          331,
+          380
+        ]
+      ],
+      "alternative_damage_intervals": [
+        [
+          409,
+          470
+        ],
+        [
+          495,
+          527
+        ],
+        [
+          543,
+          578
+        ],
+        [
+          593,
+          606
+        ],
+        [
+          609,
+          633
+        ]
+      ],
+      "alternative_rescue_frames": 153,
+      "alternative_damage_frames": 165,
+      "all_boxes_recall_delta_pp": -0.2938148898000037,
+      "reported_recall_delta_pp": 7.782500882784497
+    },
+    {
+      "sequence": "human02_indoor",
+      "category": {
+        "valid_noninit_frames": 1731,
+        "noninit_overlap_sum": 1401.102367167182,
+        "low_overlap_frames": 28,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 1,
+        "all_boxes_recall_percent": 80.95279256161558,
+        "reported_recall_percent": 80.64470801097139
+      },
+      "alternative": {
+        "valid_noninit_frames": 1731,
+        "noninit_overlap_sum": 1390.2580311942993,
+        "low_overlap_frames": 30,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 80.32667616595262,
+        "reported_recall_percent": 80.0374749432738
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": -0.6261163956629616,
+      "reported_recall_delta_pp": -0.6072330676975781
+    },
+    {
+      "sequence": "lock02_indoor",
+      "category": {
+        "valid_noninit_frames": 520,
+        "noninit_overlap_sum": 454.08158190996994,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 87.34771245872744,
+        "reported_recall_percent": 87.22743094881062
+      },
+      "alternative": {
+        "valid_noninit_frames": 520,
+        "noninit_overlap_sum": 457.19694351112366,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 87.94567053956308,
+        "reported_recall_percent": 87.94567053956308
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.5979580808356388,
+      "reported_recall_delta_pp": 0.7182395907524608
+    },
+    {
+      "sequence": "mobilephone03_indoor",
+      "category": {
+        "valid_noninit_frames": 662,
+        "noninit_overlap_sum": 539.4245408498168,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 81.51199711158623,
+        "reported_recall_percent": 79.07650797895876
+      },
+      "alternative": {
+        "valid_noninit_frames": 662,
+        "noninit_overlap_sum": 539.8072919886895,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 81.56972729844487,
+        "reported_recall_percent": 81.17641133709786
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.057730186858648835,
+      "reported_recall_delta_pp": 2.099903358139102
+    },
+    {
+      "sequence": "notebook01_indoor",
+      "category": {
+        "valid_noninit_frames": 1890,
+        "noninit_overlap_sum": 621.782371551443,
+        "low_overlap_frames": 877,
+        "h10_segments": 25,
+        "h10_frames": 810,
+        "h10_intervals": [
+          [
+            620,
+            651
+          ],
+          [
+            726,
+            778
+          ],
+          [
+            799,
+            889
+          ],
+          [
+            925,
+            964
+          ],
+          [
+            971,
+            987
+          ],
+          [
+            991,
+            1041
+          ],
+          [
+            1096,
+            1141
+          ],
+          [
+            1147,
+            1168
+          ],
+          [
+            1173,
+            1202
+          ],
+          [
+            1237,
+            1262
+          ],
+          [
+            1266,
+            1277
+          ],
+          [
+            1281,
+            1292
+          ],
+          [
+            1300,
+            1325
+          ],
+          [
+            1360,
+            1371
+          ],
+          [
+            1374,
+            1463
+          ],
+          [
+            1475,
+            1488
+          ],
+          [
+            1490,
+            1544
+          ],
+          [
+            1550,
+            1582
+          ],
+          [
+            1606,
+            1655
+          ],
+          [
+            1675,
+            1707
+          ],
+          [
+            1837,
+            1850
+          ],
+          [
+            1872,
+            1891
+          ],
+          [
+            1913,
+            1933
+          ],
+          [
+            1951,
+            1972
+          ],
+          [
+            1978,
+            1990
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 32,
+        "all_boxes_recall_percent": 32.9340228213349,
+        "reported_recall_percent": 32.29413625507195
+      },
+      "alternative": {
+        "valid_noninit_frames": 1890,
+        "noninit_overlap_sum": 618.8672940188651,
+        "low_overlap_frames": 881,
+        "h10_segments": 26,
+        "h10_frames": 824,
+        "h10_intervals": [
+          [
+            620,
+            654
+          ],
+          [
+            726,
+            778
+          ],
+          [
+            799,
+            889
+          ],
+          [
+            926,
+            964
+          ],
+          [
+            971,
+            987
+          ],
+          [
+            991,
+            1041
+          ],
+          [
+            1096,
+            1141
+          ],
+          [
+            1147,
+            1168
+          ],
+          [
+            1173,
+            1202
+          ],
+          [
+            1219,
+            1231
+          ],
+          [
+            1237,
+            1262
+          ],
+          [
+            1266,
+            1277
+          ],
+          [
+            1281,
+            1292
+          ],
+          [
+            1300,
+            1325
+          ],
+          [
+            1360,
+            1371
+          ],
+          [
+            1374,
+            1463
+          ],
+          [
+            1475,
+            1488
+          ],
+          [
+            1490,
+            1544
+          ],
+          [
+            1550,
+            1582
+          ],
+          [
+            1606,
+            1655
+          ],
+          [
+            1675,
+            1707
+          ],
+          [
+            1837,
+            1850
+          ],
+          [
+            1872,
+            1891
+          ],
+          [
+            1913,
+            1933
+          ],
+          [
+            1951,
+            1972
+          ],
+          [
+            1978,
+            1990
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 35,
+        "all_boxes_recall_percent": 32.77986747852275,
+        "reported_recall_percent": 32.44170249593428
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": -0.15415534281214605,
+      "reported_recall_delta_pp": 0.14756624086233217
+    },
+    {
+      "sequence": "pigeon01_wild",
+      "category": {
+        "valid_noninit_frames": 667,
+        "noninit_overlap_sum": 544.629523724188,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 81.68106642577662,
+        "reported_recall_percent": 79.4786736165205
+      },
+      "alternative": {
+        "valid_noninit_frames": 667,
+        "noninit_overlap_sum": 545.1087403064648,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 81.75280543509953,
+        "reported_recall_percent": 81.5146767972703
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.07173900932291133,
+      "reported_recall_delta_pp": 2.036003180749802
+    },
+    {
+      "sequence": "pigeon02_wild",
+      "category": {
+        "valid_noninit_frames": 301,
+        "noninit_overlap_sum": 248.1552295034711,
+        "low_overlap_frames": 11,
+        "h10_segments": 1,
+        "h10_frames": 10,
+        "h10_intervals": [
+          [
+            74,
+            84
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 9,
+        "all_boxes_recall_percent": 82.50173162366593,
+        "reported_recall_percent": 81.55170015532626
+      },
+      "alternative": {
+        "valid_noninit_frames": 301,
+        "noninit_overlap_sum": 249.28479238790263,
+        "low_overlap_frames": 10,
+        "h10_segments": 1,
+        "h10_frames": 10,
+        "h10_intervals": [
+          [
+            74,
+            84
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 10,
+        "all_boxes_recall_percent": 82.87575906884193,
+        "reported_recall_percent": 81.94671861063503
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.3740274451759973,
+      "reported_recall_delta_pp": 0.39501845530877233
+    },
+    {
+      "sequence": "pigeon04_wild",
+      "category": {
+        "valid_noninit_frames": 142,
+        "noninit_overlap_sum": 118.67164556954714,
+        "low_overlap_frames": 3,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 3,
+        "all_boxes_recall_percent": 83.68646543324975,
+        "reported_recall_percent": 78.04667781525956
+      },
+      "alternative": {
+        "valid_noninit_frames": 142,
+        "noninit_overlap_sum": 118.40106416495044,
+        "low_overlap_frames": 3,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 3,
+        "all_boxes_recall_percent": 83.49724766779751,
+        "reported_recall_percent": 82.36732281718955
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": -0.18921776545224134,
+      "reported_recall_delta_pp": 4.320645001929989
+    },
+    {
+      "sequence": "pot_indoor",
+      "category": {
+        "valid_noninit_frames": 816,
+        "noninit_overlap_sum": 712.4558845356808,
+        "low_overlap_frames": 19,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 5,
+        "all_boxes_recall_percent": 87.32630165675405,
+        "reported_recall_percent": 84.70148916276044
+      },
+      "alternative": {
+        "valid_noninit_frames": 816,
+        "noninit_overlap_sum": 715.5491723681628,
+        "low_overlap_frames": 17,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 5,
+        "all_boxes_recall_percent": 87.70491705852666,
+        "reported_recall_percent": 86.46521618570895
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.3786154017726062,
+      "reported_recall_delta_pp": 1.7637270229485154
+    },
+    {
+      "sequence": "roller_indoor",
+      "category": {
+        "valid_noninit_frames": 649,
+        "noninit_overlap_sum": 501.1487489549352,
+        "low_overlap_frames": 68,
+        "h10_segments": 2,
+        "h10_frames": 34,
+        "h10_intervals": [
+          [
+            187,
+            201
+          ],
+          [
+            750,
+            770
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 31,
+        "all_boxes_recall_percent": 77.25365368537464,
+        "reported_recall_percent": 73.86782094077638
+      },
+      "alternative": {
+        "valid_noninit_frames": 649,
+        "noninit_overlap_sum": 518.7660563613665,
+        "low_overlap_frames": 48,
+        "h10_segments": 1,
+        "h10_frames": 14,
+        "h10_intervals": [
+          [
+            187,
+            201
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 15,
+        "all_boxes_recall_percent": 79.96400867097945,
+        "reported_recall_percent": 78.54805277004004
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          751,
+          769
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 18,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 2.710354985604809,
+      "reported_recall_delta_pp": 4.680231829263661
+    },
+    {
+      "sequence": "shoes02_indoor",
+      "category": {
+        "valid_noninit_frames": 1296,
+        "noninit_overlap_sum": 421.21052862440774,
+        "low_overlap_frames": 772,
+        "h10_segments": 7,
+        "h10_frames": 747,
+        "h10_intervals": [
+          [
+            60,
+            203
+          ],
+          [
+            208,
+            558
+          ],
+          [
+            639,
+            651
+          ],
+          [
+            683,
+            718
+          ],
+          [
+            1063,
+            1073
+          ],
+          [
+            1081,
+            1181
+          ],
+          [
+            1220,
+            1317
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 290,
+        "all_boxes_recall_percent": 32.55285494405612,
+        "reported_recall_percent": 31.422035218085398
+      },
+      "alternative": {
+        "valid_noninit_frames": 1296,
+        "noninit_overlap_sum": 491.62579933784406,
+        "low_overlap_frames": 677,
+        "h10_segments": 7,
+        "h10_frames": 664,
+        "h10_intervals": [
+          [
+            163,
+            203
+          ],
+          [
+            208,
+            557
+          ],
+          [
+            639,
+            653
+          ],
+          [
+            683,
+            718
+          ],
+          [
+            1063,
+            1073
+          ],
+          [
+            1074,
+            1184
+          ],
+          [
+            1211,
+            1317
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 260,
+        "all_boxes_recall_percent": 37.9819428942054,
+        "reported_recall_percent": 36.476817806600295
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          60,
+          163
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 103,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 5.429087950149281,
+      "reported_recall_delta_pp": 5.054782588514897
+    },
+    {
+      "sequence": "squirrel_wild",
+      "category": {
+        "valid_noninit_frames": 942,
+        "noninit_overlap_sum": 732.1101619207682,
+        "low_overlap_frames": 57,
+        "h10_segments": 3,
+        "h10_frames": 46,
+        "h10_intervals": [
+          [
+            436,
+            455
+          ],
+          [
+            486,
+            496
+          ],
+          [
+            836,
+            853
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 37,
+        "all_boxes_recall_percent": 77.74232894175698,
+        "reported_recall_percent": 74.56596116152005
+      },
+      "alternative": {
+        "valid_noninit_frames": 942,
+        "noninit_overlap_sum": 757.6540655970739,
+        "low_overlap_frames": 26,
+        "h10_segments": 1,
+        "h10_frames": 11,
+        "h10_intervals": [
+          [
+            836,
+            847
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 14,
+        "all_boxes_recall_percent": 80.45112042386786,
+        "reported_recall_percent": 78.95587905384407
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          443,
+          455
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 12,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 2.7087914821108825,
+      "reported_recall_delta_pp": 4.389917892324021
+    },
+    {
+      "sequence": "stick_indoor",
+      "category": {
+        "valid_noninit_frames": 897,
+        "noninit_overlap_sum": 682.802235438865,
+        "low_overlap_frames": 4,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 76.14724225377115,
+        "reported_recall_percent": 73.41447878518665
+      },
+      "alternative": {
+        "valid_noninit_frames": 897,
+        "noninit_overlap_sum": 389.9675794913386,
+        "low_overlap_frames": 391,
+        "h10_segments": 2,
+        "h10_frames": 391,
+        "h10_intervals": [
+          [
+            412,
+            791
+          ],
+          [
+            891,
+            903
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 372,
+        "all_boxes_recall_percent": 43.537592370973115,
+        "reported_recall_percent": 43.06199567832438
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [
+        [
+          432,
+          509
+        ],
+        [
+          511,
+          558
+        ],
+        [
+          559,
+          571
+        ],
+        [
+          585,
+          605
+        ],
+        [
+          611,
+          739
+        ],
+        [
+          740,
+          791
+        ]
+      ],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 335,
+      "all_boxes_recall_delta_pp": -32.60964988279804,
+      "reported_recall_delta_pp": -30.352483106862266
+    },
+    {
+      "sequence": "toiletpaper01_indoor",
+      "category": {
+        "valid_noninit_frames": 1555,
+        "noninit_overlap_sum": 1342.8114093223492,
+        "low_overlap_frames": 1,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 86.3632011132615,
+        "reported_recall_percent": 84.60710968068554
+      },
+      "alternative": {
+        "valid_noninit_frames": 1555,
+        "noninit_overlap_sum": 1342.8502269694645,
+        "low_overlap_frames": 1,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 86.36569582065967,
+        "reported_recall_percent": 85.44357041274472
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.0024947073981707035,
+      "reported_recall_delta_pp": 0.8364607320591801
+    },
+    {
+      "sequence": "toy02_indoor",
+      "category": {
+        "valid_noninit_frames": 1139,
+        "noninit_overlap_sum": 938.8152704943027,
+        "low_overlap_frames": 2,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 82.43993600827217,
+        "reported_recall_percent": 81.4137007858984
+      },
+      "alternative": {
+        "valid_noninit_frames": 1139,
+        "noninit_overlap_sum": 947.7580585633419,
+        "low_overlap_frames": 1,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 83.22439110204752,
+        "reported_recall_percent": 83.0003767979732
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.7844550937753496,
+      "reported_recall_delta_pp": 1.586676012074804
+    },
+    {
+      "sequence": "toy09_indoor",
+      "category": {
+        "valid_noninit_frames": 1343,
+        "noninit_overlap_sum": 840.3296380035395,
+        "low_overlap_frames": 302,
+        "h10_segments": 1,
+        "h10_frames": 296,
+        "h10_intervals": [
+          [
+            1048,
+            1344
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 7,
+        "all_boxes_recall_percent": 62.59893139907285,
+        "reported_recall_percent": 61.96874189232676
+      },
+      "alternative": {
+        "valid_noninit_frames": 1343,
+        "noninit_overlap_sum": 966.3217577253627,
+        "low_overlap_frames": 166,
+        "h10_segments": 1,
+        "h10_frames": 160,
+        "h10_intervals": [
+          [
+            1065,
+            1225
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 7,
+        "all_boxes_recall_percent": 71.97334506885139,
+        "reported_recall_percent": 71.41308397832911
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [
+        [
+          1225,
+          1280
+        ],
+        [
+          1285,
+          1333
+        ],
+        [
+          1334,
+          1344
+        ]
+      ],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 113,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 9.374413669778534,
+      "reported_recall_delta_pp": 9.44434208600235
+    },
+    {
+      "sequence": "ukulele01_indoor",
+      "category": {
+        "valid_noninit_frames": 1607,
+        "noninit_overlap_sum": 462.57867996487767,
+        "low_overlap_frames": 978,
+        "h10_segments": 4,
+        "h10_frames": 966,
+        "h10_intervals": [
+          [
+            18,
+            29
+          ],
+          [
+            653,
+            972
+          ],
+          [
+            973,
+            1043
+          ],
+          [
+            1047,
+            1613
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 957,
+        "all_boxes_recall_percent": 28.82951989831329,
+        "reported_recall_percent": 26.81132084958977
+      },
+      "alternative": {
+        "valid_noninit_frames": 1607,
+        "noninit_overlap_sum": 467.31846435682434,
+        "low_overlap_frames": 972,
+        "h10_segments": 4,
+        "h10_frames": 968,
+        "h10_intervals": [
+          [
+            18,
+            31
+          ],
+          [
+            653,
+            972
+          ],
+          [
+            973,
+            1043
+          ],
+          [
+            1047,
+            1613
+          ]
+        ],
+        "low_overlap_nominal_crop_outside_frames": 958,
+        "all_boxes_recall_percent": 29.124282609255243,
+        "reported_recall_percent": 27.940476178980067
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": 0.29476271094195283,
+      "reported_recall_delta_pp": 1.1291553293902972
+    },
+    {
+      "sequence": "yogurt_indoor",
+      "category": {
+        "valid_noninit_frames": 1613,
+        "noninit_overlap_sum": 1025.3956570439973,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 63.5932873013629,
+        "reported_recall_percent": 63.037895033566826
+      },
+      "alternative": {
+        "valid_noninit_frames": 1613,
+        "noninit_overlap_sum": 1024.3982885418625,
+        "low_overlap_frames": 0,
+        "h10_segments": 0,
+        "h10_frames": 0,
+        "h10_intervals": [],
+        "low_overlap_nominal_crop_outside_frames": 0,
+        "all_boxes_recall_percent": 63.53149247471266,
+        "reported_recall_percent": 63.31617319484486
+      },
+      "first_saved_bbox_difference": 1,
+      "first_saved_score_difference": 1,
+      "alternative_rescue_intervals": [],
+      "alternative_damage_intervals": [],
+      "alternative_rescue_frames": 0,
+      "alternative_damage_frames": 0,
+      "all_boxes_recall_delta_pp": -0.061794826650242385,
+      "reported_recall_delta_pp": 0.2782781612780312
+    }
+  ]
+}

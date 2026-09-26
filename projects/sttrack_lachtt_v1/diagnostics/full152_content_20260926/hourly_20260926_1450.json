@@ -1,0 +1,64 @@
+{
+  "observed_utc": "2026-09-26T06:50:33.060659+00:00",
+  "controller_pid": 805285,
+  "controller_live": true,
+  "controls_exit": null,
+  "gpu": [
+    "0, 74 %, 2444 MiB",
+    "1, 53 %, 2444 MiB"
+  ],
+  "workers": [
+    "823404     328 /root/autodl-tmp/envs/sttrack/bin/python -u /root/autodl-tmp/sttrack_full152_evaluation_20260925/interface/run_semantic_ope.py --plan /root/autodl-tmp/sttrack_full152_content_20260926/M67/depthtrack/swapped/plan.json --mode track",
+    "823405     328 /root/autodl-tmp/envs/sttrack/bin/python -u /root/autodl-tmp/sttrack_full152_evaluation_20260925/interface/run_semantic_ope.py --plan /root/autodl-tmp/sttrack_full152_content_20260926/M67/cdtb/swapped/plan.json --mode track"
+  ],
+  "progress": {
+    "M82/depthtrack/empty": {
+      "completed_sequences": 50,
+      "completed_frames": 76373,
+      "cumulative_seconds": 4508.27326464653
+    },
+    "M82/cdtb/empty": {
+      "completed_sequences": 80,
+      "completed_frames": 101956,
+      "cumulative_seconds": 5883.971447467804
+    },
+    "M82/depthtrack/swapped": {
+      "completed_sequences": 50,
+      "completed_frames": 76373,
+      "cumulative_seconds": 4484.405611515045
+    },
+    "M82/cdtb/swapped": {
+      "completed_sequences": 80,
+      "completed_frames": 101956,
+      "cumulative_seconds": 5878.636617183685
+    },
+    "M67/depthtrack/empty": {
+      "completed_sequences": 50,
+      "completed_frames": 76373,
+      "cumulative_seconds": 4458.503507375717
+    },
+    "M67/cdtb/empty": {
+      "completed_sequences": 80,
+      "completed_frames": 101956,
+      "cumulative_seconds": 5846.30198097229
+    },
+    "M67/depthtrack/swapped": {
+      "completed_sequences": 2,
+      "completed_frames": 4886,
+      "cumulative_seconds": 286.355801820755
+    },
+    "M67/cdtb/swapped": {
+      "completed_sequences": 4,
+      "completed_frames": 5948,
+      "cumulative_seconds": 317.8543133735657
+    }
+  },
+  "metrics_ready": [
+    "M82/empty/depthtrack",
+    "M82/empty/cdtb",
+    "M82/swapped/depthtrack",
+    "M82/swapped/cdtb",
+    "M67/empty/depthtrack",
+    "M67/empty/cdtb"
+  ]
+}
