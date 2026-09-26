@@ -23190,3 +23190,20 @@ Control两项跟踪及指标计算退出码均为0，DepthTrack50条/76373帧、
 相对旧M82-Full152，本轮Control的DepthTrack F下降3.751837个百分点，CDTB F下降4.597540个百分点；相对原生F分别下降4.782176/3.677533个百分点。Control为新增候选损失权重0的重新训练控制，不能据此判定权重1机制失败；但复现差异较大，需在既定评测继续期间核对源码等价、训练路径分叉与逐序列损害，不凭相同seed宣称逐位复现，也不先把差异归于数值随机性。
 
 VOT绑定退出0，分片控制器844217及四个VOT worker844218—844221已由真实进程表确认运行，两GPU约97%/94%、各4883MiB。预定1765 anchor，无新EAO/ACC/ROB；按历史同规模约11小时，Control VOT暂估今日11:10左右结束，再接Candidate两项OPE和VOT。Candidate尚无外部指标，当前不能下新增保持损失的性能结论。训练与评测协议保持封存，旧结果保留。
+
+
+## §5.247 M89-Control与旧M82训练路径的抽样分叉审计（2026-09-27）
+
+针对§5.246对照组明显退化，CPU只读比较旧M82-Full152与M89权重0训练入口、两份result及4611个相同sequence/frame抽样。初始adapter、原生参数/buffer、training_spec、152序列/219802调用/6807优化、Raw竞争源码、保持源码及权重逐项相同；两份trace实际SHA与各自完成回执匹配。旧入口及新增入口源码diff归档，新增权重0分支直接返回同一个原loss对象且原训练中逐步断言通过，没有发现新增候选项参与该控制臂的证据。
+
+| 已保存抽样中的首次差异 | 序列/帧（零基） | 观察 |
+| --- | --- | --- |
+| bbox/previous_bbox | cube04_indoor / 50 | 两边均已优化1次；bbox最大坐标差约0.0000267像素，分数及记录损失仍相同 |
+| resize_factor与score | cube04_indoor / 200 | 两边均已优化6次；resize 2.2260869565 vs 2.2068965517，对应搜索边长115 vs116像素 |
+| 模板写入资格 | cube04_indoor / 350 | 旧版true，新Control false；两边均优化10次 |
+| 竞争正位置与native资格 | cube04_indoor / 550 | 正位置136 vs86，native eligible true vsfalse |
+| 监督标签 | bag04_indoor / 1050 | 旧centre_outside，新centre_inside；两边均优化113次 |
+
+全部4611个抽样的optimizer_steps_before_update一致，但4607个抽样score不同，303个监督标签不同。这支持“相同seed与配置没有保证完整递归路径逐位复现”；只见第1、50等抽样，不声称第50帧就是实际最早分叉，也没有逐次权重和原始算子输出定位初始来源。不得把差异唯一归因CUDA/GPU、导入顺序、数据增加或新保持损失。后续先分析逐序列拖累并完成Candidate配对结果，再决定是否需要单个短窗严格复现检查；不改当前VOT。
+
+脚本audit_control_training.py、报告control_training_audit.json和control_training_source.diff已保存。审计首次运行遇到条件监督字段缺失，确认两条路径的监督分支会改变记录字段后，改为显式记录<not recorded>，没有将缺失补成零。此修改仅在只读诊断，不涉及训练或推理。

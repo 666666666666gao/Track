@@ -1,0 +1,127 @@
+--- old_m82_train
++++ m89_train
+@@ -33,13 +33,27 @@
+ def main():
+     parser = argparse.ArgumentParser()
+     parser.add_argument('--arm', choices=['empty', 'category'], required=True)
++    parser.add_argument('--weight', type=int, choices=(0, 1), required=True)
++    parser.add_argument('--preflight', action='store_true')
+     args = parser.parse_args()
++    assert args.arm == 'category'
++    experiment = Path('/root/autodl-tmp/sttrack_native_candidate_preservation_20260926')
++    experiment_spec = json.loads((experiment / 'experiment_spec.json').read_text())
++    for name, digest in experiment_spec['source_sha256'].items():
++        assert sha(experiment / name) == digest
++    if not args.preflight:
++        checks = [json.loads((experiment / 'preflight' / name / 'result.json').read_text()) for name in ('control', 'candidate')]
++        assert all(c['status'] == 'preflight_complete' and c['total_track_calls'] == 768 and c['optimizer_steps'] == 24 for c in checks)
++        assert all(c['base_parameters_and_buffers_unchanged'] and c['experiment_spec_sha256'] == sha(experiment / 'experiment_spec.json') for c in checks)
++        assert checks[0]['initial_adapter_state_sha256'] == checks[1]['initial_adapter_state_sha256']
++        assert checks[1]['candidate_score_gradient_checked'] and checks[1]['candidate_nonzero_frames'] > 0
+     root = Path('/root/autodl-tmp/sttrack_full152_paired_20260925/M82')
+     assert (root / 'frozen.json').is_file()
+     spec_path = root / 'training_spec.json'
+     spec = json.loads(spec_path.read_text())
+     assert sha(spec_path) == json.loads((root / 'frozen.json').read_text())['training_spec_sha256']
+-    assert sha(__file__) == spec['training_script_sha256']
++    assert sha(root / 'train_causal.py') == spec['training_script_sha256']
++    assert sha(spec_path) == experiment_spec['base_training_spec_sha256']
+     assert sha(root / 'causal_training.py') == spec['causal_script_sha256']
+     assert sha(root / 'support_loss.py') == spec['support_loss_sha256']
+     assert sha(root / 'window_competition.py') == spec['window_loss_sha256']
+@@ -53,6 +67,7 @@
+         assert sha(root / 'code' / name) == digest, name
+     sys.path.insert(0, str(root / 'code'))
+     sys.path.insert(0, str(root))
++    from native_candidate_supervision import augment_loss
+     from causal_training import CausalTrainingTracker
+     from native_preservation import supervision
+     from lib.config.sttrack.config import cfg, update_config_from_file
+@@ -72,7 +87,7 @@
+     initial_sha = tensor_state_sha(tracker.network, adapter_only=True)
+     bank = torch.load(spec['banks']['fit'][args.arm]['path'], map_location='cpu')
+     assert set(bank['sequences']) == {r['sequence'] for r in spec['sequence_order']}
+-    output = root / 'training' / args.arm
++    output = experiment / ('preflight' if args.preflight else 'training') / ('control' if args.weight == 0 else 'candidate')
+     output.mkdir(parents=True)
+     optimizer = torch.optim.AdamW(tracker.network.semantic_adapter.parameters(),
+                                  lr=spec['learning_rate'], weight_decay=spec['weight_decay'])
+@@ -88,14 +103,17 @@
+             base_checkpoint_sha256=spec['native_checkpoint_sha256'], use_text=tracker.use_text,
+             optimizer=optimizer.state_dict(), completed_sequences=len(receipts), optimizer_steps=steps,
+             actual_dataset_optimizer_steps=steps, frame_count=frame_count, training_spec_sha256=sha(spec_path),
+-            status='complete' if complete else 'in_progress', seed=spec['seed'])
+-
++            status='complete' if complete else 'in_progress', seed=spec['seed'], candidate_weight=args.weight, experiment_spec_sha256=sha(experiment / 'experiment_spec.json'))
++
++    candidate_frames = candidate_nonzero_frames = 0
++    candidate_sum = 0.
++    candidate_gradient_checked = False
+     rank_frames = rank_negative_sum = 0
+     rank_loss_sum = 0.
+     native_eligible_frames = 0
+     preservation_kl_sum = preservation_kl_max = 0.
+     with (output / 'sequence_log.jsonl').open('x') as log, (output / 'sampled_state_trace.jsonl').open('x') as trace:
+-        for seq_index, row in enumerate(spec['sequence_order']):
++        for seq_index, row in enumerate(spec['sequence_order'][:1] if args.preflight else spec['sequence_order']):
+             folder = Path(spec['dataset_root']) / row['sequence']
+             assert sha(folder / 'groundtruth.txt') == row['groundtruth_sha256']
+             gt = np.loadtxt(folder / 'groundtruth.txt', delimiter=',').reshape(-1, 4)
+@@ -105,6 +123,8 @@
+                 assert row['groundtruth_sha256'] == '683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2'
+                 gt = gt[:n]
+             assert len(gt) == n
++            if args.preflight:
++                n = 769
+             index = bank['sequences'].index(row['sequence'])
+             info = dict(init_bbox=row['first_box'], text_tokens=bank['tokens'][index],
+                         text_mask=bank['mask'][index], empty_text=bank['empty'])
+@@ -127,6 +147,14 @@
+                 loss, diagnostic = supervision(tracker.network, out, gt[frame_index],
+                     state['previous_bbox'], state['resize_factor'], 256, output_window=tracker.output_window,
+                     preservation_weight=spec['preservation_weight'])
++                original_loss = loss
++                loss, diagnostic = augment_loss(loss, diagnostic, out, gt[frame_index], state['previous_bbox'], state['resize_factor'], tracker.output_window, args.weight, args.preflight and not candidate_gradient_checked)
++                if args.weight == 0:
++                    assert loss is original_loss
++                candidate_frames += int(diagnostic['candidate_eligible'])
++                candidate_sum += diagnostic['candidate_loss'] or 0.
++                candidate_nonzero_frames += int((diagnostic['candidate_loss'] or 0.) > 0.)
++                candidate_gradient_checked |= diagnostic['candidate_score_gradient_norm'] is not None
+                 labels[diagnostic['label']] += 1
+                 if diagnostic['native_eligible']:
+                     native_eligible_frames += 1
+@@ -167,6 +195,7 @@
+                 frames=n, track_calls=n-1, supervised_frames=supervised, label_counts=dict(labels),
+                 mean_training_loss=loss_sum/supervised if supervised else None, template_writes=writes,
+                 cumulative_competition_frames=rank_frames, cumulative_competition_loss_sum=rank_loss_sum, cumulative_competition_negatives=rank_negative_sum,
++                cumulative_candidate_eligible=candidate_frames, cumulative_candidate_nonzero=candidate_nonzero_frames, cumulative_candidate_loss=candidate_sum,
+                 cumulative_native_eligible_frames=native_eligible_frames, cumulative_preservation_kl_sum=preservation_kl_sum, maximum_preservation_kl=preservation_kl_max,
+                 maximum_preclip_gradient_norm=max_gradient_norm, total_optimizer_steps=steps,
+                 total_track_calls=frame_count, seconds=time.time()-sequence_start, elapsed_seconds=time.time()-started)
+@@ -174,13 +203,15 @@
+             log.write(json.dumps(record) + '\n'); log.flush(); trace.flush()
+             torch.save(checkpoint(False), output / 'latest.pth')
+             print(json.dumps(record), flush=True)
+-    assert frame_count == spec['total_training_track_calls']
++    assert frame_count == (768 if args.preflight else spec['total_training_track_calls'])
++    if args.preflight and args.weight == 1:
++        assert candidate_nonzero_frames > 0 and candidate_gradient_checked
+     assert tensor_state_sha(tracker.network) == base_before
+     assert all(p.grad is None for n, p in tracker.network.named_parameters() if not n.startswith('semantic_adapter.'))
+     for name, digest in integration['source_sha256'].items():
+         assert sha(root / 'code' / name) == digest
+     torch.save(checkpoint(True), output / 'final.pth')
+-    result = dict(status='one_full_causal_fit_pass_complete', arm=args.arm, null_support=True, support_loss_weight=spec['support_loss_weights'][args.arm], sequences=len(receipts),
++    result = dict(status='preflight_complete' if args.preflight else 'one_full_causal_fit_pass_complete', arm=args.arm, null_support=True, support_loss_weight=spec['support_loss_weights'][args.arm], sequences=len(receipts),
+         total_track_calls=frame_count, optimizer_steps=steps, training_label_counts=dict(aggregate),
+         elapsed_seconds=time.time()-started, initial_adapter_state_sha256=initial_sha,
+         base_state_before_sha256=base_before, base_parameters_and_buffers_unchanged=True,
+@@ -191,6 +222,7 @@
+         learned_parameters=289154, backward_through_crops_or_time=False,
+         competition_frames=rank_frames, competition_loss_sum=rank_loss_sum, competition_negatives=rank_negative_sum, window_loss_sha256=spec['window_loss_sha256'],
+         native_eligible_frames=native_eligible_frames, preservation_kl_sum=preservation_kl_sum, maximum_preservation_kl=preservation_kl_max, preservation_weight=spec['preservation_weight'], preservation_loss_sha256=spec['preservation_loss_sha256'],
++        candidate_eligible_frames=candidate_frames, candidate_nonzero_frames=candidate_nonzero_frames, candidate_loss_sum=candidate_sum, candidate_score_gradient_checked=candidate_gradient_checked, candidate_weight=args.weight, experiment_spec_sha256=sha(experiment / 'experiment_spec.json'),
+         evaluation_metrics_computed=False, observed_utc=datetime.now(timezone.utc).isoformat())
+     (output / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
+     print(json.dumps(result, indent=2), flush=True)
