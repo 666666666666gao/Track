@@ -1,0 +1,52 @@
+{
+  "observed_utc": "2026-09-26T05:50:16.663287+00:00",
+  "controller_pid": 805285,
+  "controller_live": true,
+  "controls_exit": null,
+  "gpu": [
+    "0, 73 %, 2444 MiB",
+    "1, 66 %, 2444 MiB"
+  ],
+  "workers": [
+    "814768    2581 /root/autodl-tmp/envs/sttrack/bin/python -u /root/autodl-tmp/sttrack_full152_evaluation_20260925/interface/run_semantic_ope.py --plan /root/autodl-tmp/sttrack_full152_content_20260926/M67/depthtrack/empty/plan.json --mode track",
+    "814769    2581 /root/autodl-tmp/envs/sttrack/bin/python -u /root/autodl-tmp/sttrack_full152_evaluation_20260925/interface/run_semantic_ope.py --plan /root/autodl-tmp/sttrack_full152_content_20260926/M67/cdtb/empty/plan.json --mode track"
+  ],
+  "progress": {
+    "M82/depthtrack/empty": {
+      "completed_sequences": 50,
+      "completed_frames": 76373,
+      "cumulative_seconds": 4508.27326464653
+    },
+    "M82/cdtb/empty": {
+      "completed_sequences": 80,
+      "completed_frames": 101956,
+      "cumulative_seconds": 5883.971447467804
+    },
+    "M82/depthtrack/swapped": {
+      "completed_sequences": 50,
+      "completed_frames": 76373,
+      "cumulative_seconds": 4484.405611515045
+    },
+    "M82/cdtb/swapped": {
+      "completed_sequences": 80,
+      "completed_frames": 101956,
+      "cumulative_seconds": 5878.636617183685
+    },
+    "M67/depthtrack/empty": {
+      "completed_sequences": 23,
+      "completed_frames": 44013,
+      "cumulative_seconds": 2568.694325208664
+    },
+    "M67/cdtb/empty": {
+      "completed_sequences": 33,
+      "completed_frames": 43557,
+      "cumulative_seconds": 2549.987159729004
+    }
+  },
+  "metrics_ready": [
+    "M82/empty/depthtrack",
+    "M82/empty/cdtb",
+    "M82/swapped/depthtrack",
+    "M82/swapped/cdtb"
+  ]
+}
