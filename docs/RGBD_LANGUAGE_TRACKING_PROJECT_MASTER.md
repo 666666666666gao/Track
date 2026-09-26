@@ -23240,3 +23240,10 @@ Control相对旧M82的R下降主要已经存在于完整递归框轨迹；仅重
 例子：DepthTrack human02_indoor的[889,1169)共280帧满足上述同帧差异；第889帧Control IoU0.093971、旧M82 IoU0.878100，目标中心仍在Control搜索区域内。CDTB XMG_outside的[1021,1911)共890帧满足差异；第1021帧Control IoU0、旧M82 IoU0.895137，目标中心在Control搜索区域外。这说明损害中既有“仍可观察但没有正确定位”的段，也有“当前局部输入已不可达”的段。起点内外只评价该段起点，不能当成整段每一帧的可达性；同帧差异段的起点也不一定是整条轨迹的首次分叉，不据此断言最初错误原因。
 
 audit_control_ope_sequences.py现在把所有段及起点观察范围写入control_ope_sequence_audit.json，并在两份逐序列CSV记录段数、帧数和最长段。旧、新bbox SHA与各自receipt核对，GT/可见帧一致，宏P/R复算仍与封存正式值在1e-8内一致。后续候选组评测若有收益，需同时检查其是否减少这些两类持续段；当前Control诊断仍不能代替Candidate或VOT完整验收。
+
+
+## §5.250 M89-Control外部评测绑定与旧M82逐字段核对（2026-09-27）
+
+对旧M82-Full152和M89-Control的DepthTrack/CDTB正式plan逐字段比较：两份plan的字段集合相同，每个数据集的cases_path及SHA、dataset_root、metric_source及SHA、text_bank_path及SHA完全一致。差异仅为各自bundle路径及SHA和预测输出路径。再比较两份bundle：底座checkpoint及SHA、架构、推理接口源码SHA、文字协议及SHA、默认模板控制、输出置信度、seed、训练规格SHA等字段一致；差异仅为final adapter路径及SHA，以及M89新增的candidate_weight=0和实验规格记录。两份OPE均有各自完整receipt、指标回执和序列覆盖校验。
+
+因此，Control相对旧M82的外部下降不是这次评测更换文字bank、序列清单、底座或计分代码造成的。直接观察到的是两个独立训练final的权重和递归轨迹不同；§5.247只定位到抽样内的早期微小分叉，尚不能唯一确定训练权重差异的初始来源。此绑定核对不替代Candidate配对评测，也不把同seed写成逐位确定性保证。
