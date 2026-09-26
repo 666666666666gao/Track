@@ -18,4 +18,4 @@ Before binding final weights, verify the M89 experiment spec, source hashes, arm
 
 After inference, verify exact dataset coverage, receipt hashes and VOT merge coverage before computing metrics. Report all eighteen main metrics, per-sequence gains and harms, and confirmed failed anchors. A single model must satisfy all project targets; do not combine best entries across arms or datasets. Training completion is not performance acceptance.
 
-Remaining implementation: final-checkpoint binder, new output/workspace generation and completion-controlled evaluation launch. No evaluation process has been started by preparing this plan.
+`prepare_evaluation.py audit-inputs` has passed against the actual remote files. `prepare_evaluation.py bind` validates both completed final checkpoints and creates fresh bundles and OPE/VOT plans; its final-binding path cannot yet run because training is ongoing. Remaining implementation: VOT workspace generation and completion-controlled evaluation launch. No evaluation process has been started by preparing this plan.

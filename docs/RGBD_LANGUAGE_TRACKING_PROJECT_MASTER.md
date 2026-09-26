@@ -23060,3 +23060,10 @@ M89两组训练继续运行；17:34实查均完成2/152条、4243次调用、134
 预先保存EVALUATION_PLAN.md及evaluation_inputs.json，固定复用已封存M82-Full152的三个Category bank、OPE cases及评价源码。每组最终权重重新生成全部预测，先DepthTrack/CDTB双GPU并行，再两GPU分片VOT；不复用历史预测，不按外部指标选择checkpoint。目标仍是同一模型九项指标达标。
 
 当前完成的是评测协议与输入路径/hash清单；final绑定器、新工作区和完成后启动控制尚待实现，未启动M89评测。两组训练源及预算没有改动。
+
+
+## §5.235 M89评测绑定器与真实输入核查（2026-09-26）
+
+新增prepare_evaluation.py，仅用于训练结束后的验收与评测准备，不修改训练。audit-inputs已在服务器运行并退出0：三个数据集原plan、文字bank、OPE cases、指标源码、模型推理源码、接口、底座与文字协议实际文件hash均一致。
+
+bind入口要求两组training.exit=0、final/result完整状态、152条/219802调用/6807优化、seed2027、共同初始化、原生底座不变、M89 spec及源码hash、候选权重0/1、checkpoint与日志hash一致，然后在新目录生成bundle及三数据集plan。当前训练尚未结束，bind执行路径尚未实测；没有产生新评测结果。VOT工作区生成和完成后启动控制仍待实现。
