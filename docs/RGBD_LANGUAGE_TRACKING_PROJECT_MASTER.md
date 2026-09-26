@@ -23164,3 +23164,15 @@ OPE两数据集并行，墙钟以CDTB约1小时40分钟为主；VOT间隔来自�
 22:27:18自动接续进程启动评测控制器841552；22:29实查GPU0/1为Control DepthTrack/CDTB worker841562/841563，利用率74%/72%，各2444MiB。新评测目录/root/autodl-tmp/sttrack_m89_evaluation_20260926，binding.json将两份final及训练result SHA固定。训练监控正常完成。两项OPE预计约23:45/次日00:10完成跟踪，再分析并接VOT；实际以完成态回执为准。当前尚无M89完整P/R/F或VOT指标。
 
 训练result、退出文件、monitor_complete、evaluation_process、evaluation_binding及selection已归档至native_candidate_preservation_20260926/completed并镜像远端。下一步按小时检查首波OPE，全部六项评测完成后运行独立九指标验收；仍以同一模型同时达标为停止条件。
+
+
+## §5.245 M89-Control首波OPE小时进度（2026-09-26 23:28北京时间）
+
+23:28实际进程表确认评测控制器841552、DepthTrack/CDTB worker841562/841563及上层queue834519存活，GPU利用率74%/59%，各2444MiB；尚无两项完整receipt或metrics，未填性能数字。
+
+| 数据集 | 已完成序列 | 已完成帧 / 总帧 | 已封存序列累计耗时 | 剩余跟踪估计 |
+| --- | ---: | ---: | ---: | ---: |
+| DepthTrack Test | 36 / 50 | 60812 / 76373 | 3602.35秒 | 约16分钟 |
+| CDTB | 48 / 80 | 62283 / 101956 | 3650.22秒 | 约39分钟 |
+
+进度来自每条完成后的日志及输出SHA记录，报告progress_20260926_2328.json。预计首波OPE在9月27日00:10左右完成跟踪与分析，然后接续Control全VOT；下一次应在预计完成附近核查退出、完整覆盖、指标及VOT真实进程。没有改动固定权重、输入协议或推理规则。
