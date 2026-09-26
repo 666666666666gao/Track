@@ -22645,4 +22645,6 @@ M82-Full152相对原生VOT的EAO/ACC/ROB分别下降3.953781/1.500172/3.430782�
 
 CPU准备、源文件语法、密集坐标/边缘clip算例及真实环境CLI导入已通过；**GPU前检、完整重放和候选结论尚未完成**。准备spec SHA256=`ecb6ad8c19d39b3cc2b5b545c383410a587d4901d0ffd128128b9f1282575eb4`。执行顺序已通过CPU等待进程排队，PID **808026**启动时经真实进程表核对：北京时间16:50起，仅每300秒检查现有内容对照控制器805285的完成条件，确认`controls.exit=0`、8项指标完整且两GPU空闲后，先运行一个anchor前检；通过后才双GPU重放，再运行CPU分析。当前仍为等待，不占用GPU，不改§5.213任务，也不重复启动Full152训练。
 
+补充全量CPU输入检查：124个实际初始化RGB与协议框均成功匹配冻结外部文字bank；52,262次重放调用及各初始化的保存框经既有TraX坐标转换后保持不变，分数与框数组均有限。这排除了这批准备输入中的bank键缺失或坐标格式不兼容，**不等于GPU计算已复现原轨迹**。检查源码为`check_replay_inputs.py`，`input_check.json` SHA256=`84f6b0159f5c17300183bb090ce25b60ce8d412f1517b44480628ebd21089ca1`；`actual_replay_parity_proven`明确为false。
+
 源码、规格和排队回执位于`projects/sttrack_lachtt_v1/diagnostics/full152_vot_readout_20260926/`。后续需观察`logs/queued_controller.log`、`preflight.exit`、两个分片回执与`analysis.json`。新诊断预计耗时要根据前检实际速度更新，不将内容对照17:00—18:00的预计结束时间当作所有研究或新模型验收的完成时间。候选缺失、选峰和几何读出分解之后，再决定下一项最小训练改动。
