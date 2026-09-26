@@ -22919,3 +22919,24 @@ VOT候选诊断第一次前检退出1，严格检查发现Category额外解码�
 新增summarize_completed_metrics.py，将4份原Category OPE参照与8份内容控制合并为12行CSV/JSON。逐份核验complete、指标与回执SHA、同模型bundle、同评价源码、序列唯一性、50/80条与76,373/101,956帧、百分数换算；8项控制另核验plan和text bank SHA绑定。全部通过。这是已保存指标的一致性核验，不是重新计算全部原始预测，也不是新的模型性能。
 
 统一表位于projects/sttrack_lachtt_v1/diagnostics/full152_content_20260926/completed/content_metrics_summary.csv及.json；JSON SHA256=7fb883304ffa2470b07abf383dffd04410c2bd32b5f722a81e390d299b8471ed。Desktop document目录另存RGBD_Full152_content_metrics_20260926.csv，方便筛选。指标已在前节逐组报告，此处不重复整表。结论仍是模型/数据集间内容收益不一致，不能按序列挑词或将某一条件的最好指标拼成同一模型。VOT双GPU重放继续按§5.226既定队列运行，尚不增加新训练。
+
+### §5.228 八项内容对照逐序列分析封存：M67替换词的损害与救回（2026-09-26 16:52北京时间）
+
+小时监控在16:50:48观察到8项完成，全部CPU分析通过并写analysis_complete.json，监控进程806248正常结束。controls.exit=0。最后两份分析与指标、回执SHA绑定，以及逐序列救回/损害帧求和核验通过。此前§5.226未填的轨迹统计现补齐，正式P/R/F不重复记录。
+
+| M67-Full152 Swapped固定轨迹 | DepthTrack Test50 | CDTB80 |
+| --- | ---: | ---: |
+| 全部已有框R（%） | 63.112930 | 66.985972 |
+| 有效非初始化帧均IoU | 0.591896 | 0.685416 |
+| IoU≤0.1帧 | 18,963 | 13,375 |
+| H10段／帧 | 210／18,243 | 105／13,117 |
+| 相对Category严格救回段／帧 | 41／2,079 | 20／1,393 |
+| 相对Category严格损害段／帧 | 33／2,032 | 22／2,851 |
+
+DepthTrack的全框R与原Category63.135479接近，但存在互相抵消的大幅逐序列变化：stick_indoor全框R下降41.492777个百分点，严格损害427帧；cup12_indoor提高26.180571，救回263帧。不能由总体均值接近推断文字没有影响。
+
+CDTB替换词全框R较Category下降1.227570个百分点；bag_outside下降54.535280、严格损害1279帧，trashcans_room_occ_1_B下降43.827937、损害415帧，two_mugs下降43.241334、损害472帧。也有正例thermos_office_occ_1全框R提高23.248866、救回325帧。这里two_mugs是M67-Full152的替换词轨迹，不能与旧M82或新M82的同名序列混写。全框R仍低于DepthTrack64.9/CDTB75.6目标，固定当前框仅校准置信度不足以达标。
+
+全部统计属于各内容从初始化独立推进后的轨迹比较，严格救回/损害定义沿用前节；不是在Category某个错误帧临时切换文字的恢复实验。Swapped没有语义真值标签，当前证据支持输入条件与历史轨迹敏感性，不支持把所有差异归给正确词义。
+
+完成标记SHA256=50fa2cc0fd62bdd2fc3f2694549c4176d6dd876a7ab2041a4b140990c9df30e7；最后两份分析JSON SHA分别79ec5c96c6061993d9c982dd957072ffa9de4603ef90000b5adb63fc1a49ec84、d923f4eaa03e46ea5f1cb6b5d1c0d3eb1895dcfad07d85937543d317769aac00，CSV/退出码/采集清单位于full152_content_20260926/completed。现有内容对照阶段完整结束；VOT同状态候选重放按§5.226继续，计划17:08验收进程与完成态，不提前给出未完成的候选归因。
