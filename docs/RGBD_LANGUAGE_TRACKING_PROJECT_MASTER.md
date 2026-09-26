@@ -23074,3 +23074,10 @@ bind入口要求两组training.exit=0、final/result完整状态、152条/219802
 增加prepare_evaluation.py bind-vot：从原生封存127序列/1765 anchor分片建立新工作区和独立tracker名，保持原配置、文字bank、双GPU分片；不复制预测。新增run_evaluation.sh按control→candidate执行，各组DepthTrack/CDTB双GPU并行后跑VOT；新增analyze_evaluation.py沿用既有完整覆盖、回执及VOT merge核对后汇总指标。
 
 本地Python语法、远端bash -n、分析入口导入、真实输入hash核查通过。仍未执行final绑定或GPU评测；训练未修改。下一步固定执行包hash并安排训练完成后的启动控制，再对真实final逐项验收。代码存在不等于全链已验收，当前没有M89正式性能结论。
+
+
+## §5.237 M89评测自动接续已启动（2026-09-26 17:46 CST）
+
+新增queue_evaluation.py并冻结evaluation_package.json，绑定训练控制器833704和M89 spec、评测脚本、原有分片程序及接口源码hash。自动接续进程834519已由真实ps确认Ss存活，17:45:45启动；首次18:27左右检查，之后每3600秒检查一次，不频繁轮询。
+
+只有training.exit及两组退出均为0、执行包hash未变、两GPU释放后才调用run_evaluation.sh。该入口先严格验收final和训练回执，再进行全量评测。异常停止，不自动重启、不重训。当前仅接续等待进程启动，GPU评测尚未启动。执行包SHA00d48ac98c693c80b31c42e9aa03c85c7caedb883c9fcdf84c16f11fca5b601b；回执保存在completed/evaluation_queue_launch.json。目标未达标，继续保持active。
