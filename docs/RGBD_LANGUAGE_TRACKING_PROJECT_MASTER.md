@@ -23081,3 +23081,10 @@ bind入口要求两组training.exit=0、final/result完整状态、152条/219802
 新增queue_evaluation.py并冻结evaluation_package.json，绑定训练控制器833704和M89 spec、评测脚本、原有分片程序及接口源码hash。自动接续进程834519已由真实ps确认Ss存活，17:45:45启动；首次18:27左右检查，之后每3600秒检查一次，不频繁轮询。
 
 只有training.exit及两组退出均为0、执行包hash未变、两GPU释放后才调用run_evaluation.sh。该入口先严格验收final和训练回执，再进行全量评测。异常停止，不自动重启、不重训。当前仅接续等待进程启动，GPU评测尚未启动。执行包SHA00d48ac98c693c80b31c42e9aa03c85c7caedb883c9fcdf84c16f11fca5b601b；回执保存在completed/evaluation_queue_launch.json。目标未达标，继续保持active。
+
+
+## §5.238 完整九指标验收器实测（2026-09-26）
+
+新增独立accept_results.py，核对两个模型六份完成态结果、结果文件hash、OPE覆盖回执及bundle到checkpoint绑定、VOT127序列/1765 anchor结果规模，再逐项比较九个目标。DepthTrack/CDTB按达到既定目标，VOT按用户要求严格超过77.9/82.1/93.7；同一个权重必须同时通过九项，不拼接单项。
+
+已在远端旧M67/M82 Full152六份真实封存结果上运行退出0，两模型均未达标，与既有结论一致；报告historical_acceptance_check.json保存完整18项差距，不再重复历史指标表。这是指标、覆盖和绑定验收，不宣称重新从原始预测复算，也不自动证明语义贡献。验收器独立于已运行的等待/评测执行包，不修改或重启队列；M89完成后再运行，当前没有新M89指标。
