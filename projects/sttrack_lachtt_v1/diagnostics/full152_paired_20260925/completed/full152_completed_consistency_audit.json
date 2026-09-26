@@ -4,6 +4,9 @@
   "all_results_sha256": "faeb9d341aa045c5ca63e13fca8742df0651707a2e2d436cfb8652556f6993de",
   "m82_vot_result_sha256": "a54bef4663d5a190ad613dc6f632e3a5cade27fb20fb871dc2c862f5b74bdb29",
   "m82_vot_merge_sha256": "26e7edae048ab5df0497dc0707a5dca272afc76a04c362e7edccc477924714f4",
+  "native_vot_result_sha256": "51213ef55085d270a56ae2952b8871c06557891d418ae572ec3fb932102f1d8b",
+  "old_m82_vot_result_sha256": "025424cb6fd3f845838dc3a6314d27a040c34c1d42d26cb67a828a1311f6ea38",
+  "full_m67_vot_result_sha256": "d049d57154ba88360e9b2ddd75e9e25fe2dbb005d853ab0084f7e0f027ff4e41",
   "metrics": {
     "M67": {
       "depthtrack": {
@@ -71,15 +74,41 @@
     "full_M82": 283
   },
   "full_M82_anchor_relation": {
+    "native": {
+      "new_failures": 124,
+      "rescued": 24,
+      "new_failure_median_progress": 304.0,
+      "new_failure_progress_bins": {
+        "0_49": 5,
+        "50_199": 33,
+        "200_499": 59,
+        "500_plus": 27
+      }
+    },
     "old_M82": {
       "new_failures": 105,
-      "rescued": 34
+      "rescued": 34,
+      "new_failure_median_progress": 319,
+      "new_failure_progress_bins": {
+        "0_49": 5,
+        "50_199": 24,
+        "200_499": 50,
+        "500_plus": 26
+      }
     },
     "full_M67": {
       "new_failures": 98,
-      "rescued": 47
+      "rescued": 47,
+      "new_failure_median_progress": 321.0,
+      "new_failure_progress_bins": {
+        "0_49": 2,
+        "50_199": 24,
+        "200_499": 49,
+        "500_plus": 23
+      }
     }
   },
+  "failure_timing_scope": "Posthoc relative run indices, including backward runs. Progress is the start of the first ten-frame confirmed low-overlap segment, not the confirmation index or a global video frame. Timing does not identify the cause of failure.",
   "full_M82_worst_vs_native": [
     {
       "sequence": "yogurt_indoor_1",

@@ -3,6 +3,7 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+import statistics
 
 
 HERE = Path(__file__).resolve().parent
@@ -51,6 +52,8 @@ def main():
     new = read(HERE / 'M82_vot_result.json')
     old = read(OLD / 'M82_vot_result.json')
     m67 = read(HERE / 'M67_vot_result.json')
+    native_path = HERE.parents[1] / 'native_vot_full127/result.json'
+    native_result = read(native_path)
     merge = read(HERE / 'M82_vot_merge_result.json')
     execution = read(HERE / 'M82_vot_execution.json')
     assert new['merge_sha256'] == sha(HERE / 'M82_vot_merge_result.json')
@@ -70,7 +73,7 @@ def main():
         counts[name][0] += 1
         counts[name][1] += bool(outcome['failed'])
     assert {name: {'anchors': v[0], 'confirmed_failures': v[1]} for name, v in counts.items()} == new['per_sequence_failures']
-    assert set(new['failure_outcomes']) == set(old['failure_outcomes']) == set(m67['failure_outcomes'])
+    assert set(new['failure_outcomes']) == set(old['failure_outcomes']) == set(m67['failure_outcomes']) == set(native_result['failure_outcomes'])
 
     with (OLD / 'M82_vot_per_sequence_comparison.csv').open(newline='') as source:
         native_rows = {row['sequence']: row for row in csv.DictReader(source)}
@@ -99,22 +102,32 @@ def main():
         writer.writerows(rows)
 
     relation = {}
-    for label, comparator in [('old_M82', old), ('full_M67', m67)]:
+    for label, comparator in [('native', native_result), ('old_M82', old), ('full_M67', m67)]:
+        new_failure_keys = [k for k in new['failure_outcomes']
+                            if new['failure_outcomes'][k]['failed'] and not comparator['failure_outcomes'][k]['failed']]
         relation[label] = dict(
-            new_failures=sum(new['failure_outcomes'][k]['failed'] and not comparator['failure_outcomes'][k]['failed']
-                             for k in new['failure_outcomes']),
+            new_failures=len(new_failure_keys),
             rescued=sum(not new['failure_outcomes'][k]['failed'] and comparator['failure_outcomes'][k]['failed']
-                        for k in new['failure_outcomes']))
+                        for k in new['failure_outcomes']),
+            new_failure_median_progress=statistics.median(new['failure_outcomes'][k]['progress'] for k in new_failure_keys),
+            new_failure_progress_bins={
+                label: sum(lower <= new['failure_outcomes'][k]['progress'] < upper for k in new_failure_keys)
+                for label, lower, upper in [('0_49', 0, 50), ('50_199', 50, 200),
+                                           ('200_499', 200, 500), ('500_plus', 500, float('inf'))]})
         assert relation[label]['new_failures'] - relation[label]['rescued'] == \
             new['confirmed_failures'] - comparator['confirmed_failures']
     result = dict(status='complete_consistency_audit', scope='Six result JSONs, checkpoint bindings, VOT merge metadata, 1765 anchor outcomes and per-sequence counts; raw VOT predictions and metric are not independently recomputed.',
                   all_results_sha256=sha(HERE / 'all_results.json'),
                   m82_vot_result_sha256=sha(HERE / 'M82_vot_result.json'),
                   m82_vot_merge_sha256=sha(HERE / 'M82_vot_merge_result.json'),
+                  native_vot_result_sha256=sha(native_path),
+                  old_m82_vot_result_sha256=sha(OLD / 'M82_vot_result.json'),
+                  full_m67_vot_result_sha256=sha(HERE / 'M67_vot_result.json'),
                   metrics={model: {dataset: metrics[(model, dataset)] for dataset in ('depthtrack', 'cdtb', 'vot')}
                            for model in ('M67', 'M82')},
                   confirmed_failures=dict(native=183, old_M82=212, full_M67=232, full_M82=283),
                   full_M82_anchor_relation=relation,
+                  failure_timing_scope='Posthoc relative run indices, including backward runs. Progress is the start of the first ten-frame confirmed low-overlap segment, not the confirmation index or a global video frame. Timing does not identify the cause of failure.',
                   full_M82_worst_vs_native=sorted(rows, key=lambda row: row['full_M82_minus_native'], reverse=True)[:12],
                   full_M82_best_vs_native=sorted(rows, key=lambda row: row['full_M82_minus_native'])[:12],
                   per_sequence_csv_sha256=sha(HERE / 'full152_vot_per_sequence_comparison.csv'))
