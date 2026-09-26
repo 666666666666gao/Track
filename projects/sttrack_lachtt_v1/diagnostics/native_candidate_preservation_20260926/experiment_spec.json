@@ -1,0 +1,35 @@
+{
+  "experiment": "GT-supported native candidate response preservation",
+  "seed": 2027,
+  "base_training_spec_sha256": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+  "source_sha256": {
+    "candidate_margin.py": "a15197c0672da15474ee8a9f1635b43ba52fa66853675ecbde74d74f6d4e8e1a",
+    "native_candidate_supervision.py": "ecce89abf138de7b4cc1de81a5f498037a4725dfdc7673643416f5c64054bbe7",
+    "train_candidate.py": "03b48d7f699896aee7d39c1f7097a048fa0eaece62a4e0dbdf1b376d86fa9924",
+    "test_candidate_margin.py": "1c97118c1925a59e5bb35e90846175531e43d8a7890f89d48d81541295fbfb21"
+  },
+  "weights": [
+    0,
+    1
+  ],
+  "training_sequences": 152,
+  "tracking_calls": 219802,
+  "expected_optimizer_steps": 6807,
+  "preflight_calls": 768,
+  "initialization": "Frozen M82 Full152 common zero adapter; formal arms do not resume preflight weights",
+  "positive": "Native selected box GT IoU>=0.5; student normalized unclipped geometry at native selected position GT IoU>=0.5",
+  "negatives": "Student normalized unclipped geometry GT IoU<=0.1, up to 9 highest Hann responses",
+  "loss": "mean ReLU(native relative response gap - student relative response gap)",
+  "unchanged": [
+    "Category text bank and five-slot protocol",
+    "Raw competition",
+    "native spatial KL",
+    "Hann decoding",
+    "default template/query/crop state",
+    "AdamW, learning rate, weight decay, gradient accumulation and clipping",
+    "frozen backbone/head parameters and buffers"
+  ],
+  "checkpoint": "Fixed final after full pass",
+  "inference_changes": false,
+  "preflight_revision_reason": "Initial 256 calls had only 13 eligible samples before the first optimizer update; sealed original M82 trace has post-update native-eligible states from about frame 500. Extend the same first sequence to 768, without changing formal training."
+}
