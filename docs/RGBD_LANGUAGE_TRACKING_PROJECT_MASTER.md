@@ -23051,3 +23051,12 @@ CDTB替换词全框R较Category下降1.227570个百分点；bag_outside下降54.
 远端根目录/root/autodl-tmp/sttrack_native_candidate_preservation_20260926，训练日志logs/training_control.log与training_candidate.log，输出training/control和training/candidate。独立小时监控833928已启动，间隔3600秒，首次约18:27，记录实际PID、逐序列累计调用/优化、新损失触发和GPU；不会自动重启失败任务。按原Full152约4.5小时及本次短前检速度，暂估两臂训练22:00—23:00完成，完整三数据集评测另计。下一步在训练期间准备绑定新final的统一评测入口，训练结束验收实际权重和完整预算后再启动。
 
 原M67/M82 Full152正式指标保持原记录，M89目前没有任何开发或外部指标。该配对检验新增约束的训练增量，不意味着语言内容已获得新贡献；仍需后续内容干预和同一模型的三数据集验收。
+
+
+## §5.234 M89评测输入协议预先固定（2026-09-26 17:38 CST）
+
+M89两组训练继续运行；17:34实查均完成2/152条、4243次调用、134次优化，GPU0/1与控制器、小时监控均存活。预计训练22:00—23:00结束，非完整评测结束时间。新增候选保持项已有1231次非零训练贡献，尚不代表性能改善。
+
+预先保存EVALUATION_PLAN.md及evaluation_inputs.json，固定复用已封存M82-Full152的三个Category bank、OPE cases及评价源码。每组最终权重重新生成全部预测，先DepthTrack/CDTB双GPU并行，再两GPU分片VOT；不复用历史预测，不按外部指标选择checkpoint。目标仍是同一模型九项指标达标。
+
+当前完成的是评测协议与输入路径/hash清单；final绑定器、新工作区和完成后启动控制尚待实现，未启动M89评测。两组训练源及预算没有改动。
