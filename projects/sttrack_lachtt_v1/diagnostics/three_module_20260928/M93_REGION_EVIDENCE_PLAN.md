@@ -6,7 +6,7 @@ Qwen2.5-VL-3B score for an *automatically generated* category is sensitive to
 pixels in the protocol target region, using 12 preselected DepthTrack Train
 fit130 first frames from the M92 assistant-screening pilot. The thirteenth
 case, `bike01_wild`, has no disjoint same-size corner region in its 640×360
-frame, so it cannot enter the balanced masking comparison.
+frame, so it cannot enter the nominal-box masking comparison.
 
 For each unchanged auto category, the same model, prompt, and two-image input
 format score the single next-token `Yes` versus `No` response under:
@@ -34,3 +34,9 @@ category correct nor proves usable tracking semantics. No public test frames,
 candidate labels, STTrack weights, search state, or benchmark metrics enter
 this pilot. Human review remains the prerequisite for naming a phrase
 `correct`, `conflicting`, or `unobservable` and for training Module A.
+
+Retrospective audit (2026-09-28): the implementation redraws a red border on
+the target mask only, and PIL rectangle endpoints/corner clipping make the
+actual changed-pixel areas unequal. The completed run is a nominally same-box
+comparison, not a strictly equal-area masking intervention. This limitation
+does not change the saved result values and must accompany their interpretation.

@@ -48,6 +48,21 @@ The JSON contains per-event choices/logits and aggregate correctness, but
 private M92 answer manifest remains outside GitHub. Remote run directory:
 `/root/autodl-tmp/sttrack_m94_candidate_vlm_20260928`.
 
+Retrospective review found a privacy limit: the published M92 packet generator
+uses a deterministic seeded A/B assignment tied to sequential audit IDs. A
+reader with that generator can reconstruct the answer mapping even without
+the private manifest. Thus label-file omission is verified, but unrecoverable
+blindness is not. Qwen's inputs still contain no assignment, and the recorded
+order-bias result is unchanged. An independent human blind-review packet must
+use an undisclosed permutation rather than reuse this publicly reconstructible
+assignment.
+
+The follow-up [`inputs_verified.json`](inputs_verified.json) checks one fixed
+event at processor-tensor level: its first three image blocks are identical,
+the two distinct candidate blocks swap exactly, and actual short generation
+returns `A` for both orders. This rules out a missing image swap for that
+checked event; it does not independently repeat all 24 events.
+
 No tracker checkpoint, recursive state, benchmark result, or semantic training
 label changed. Module A still needs independent first-frame phrase and
 candidate identity review; this Qwen protocol must not provide its labels.

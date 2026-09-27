@@ -9,7 +9,8 @@ because its 297×246 target box has no disjoint same-size corner region in a
 The unchanged automatically generated category was inserted into a one-word
 Yes/No question about the red-boxed target and its crop. The primary paired
 comparison keeps the target crop and question identical, masking either the
-full-frame target or an equally sized unrelated corner region. `target_both`
+full-frame target or an unrelated corner region with the same nominal box
+dimensions. The effective masking areas differ; see the audit below. `target_both`
 masks both the full-frame target and the crop and is an additional, unpaired
 sensitivity readout. Values below are `Yes` minus `No` first-token logits;
 the final column is `unrelated_full - target_full`, positive when masking the
@@ -40,9 +41,18 @@ semantic correctness. The assistant judgments are not independent human truth.
 
 The original one-case preflight used an unbalanced three-condition design. A
 first 13-case attempt was stopped by the explicit nonoverlap assertion at
-`021` and produced no complete result. The balanced 12-case protocol above
+`021` and produced no complete result. The nominal-box 12-case protocol above
 was fixed before the successful run; its 12/12 records have finite logits and
 verified first-image SHA-256 bindings.
+
+Retrospective source review found that the target's two-pixel red border is
+redrawn after gray masking, whereas the unrelated mask has no corresponding
+border. Inclusive PIL rectangle endpoints and clipping at image corners also
+change the effective area. Thus all 12 pairs have unequal changed-pixel areas:
+the exact helpers on a blank image yield target/control gray areas of 462/625
+pixels for `013`, 702/870 for `007`, and 65,436/67,230 for `023`. The unchanged
+logits above remain descriptive sensitivity results, but the comparison is
+not an equal-area causal control. No corrected masking run is substituted.
 
 Model: local Qwen2.5-VL-3B-Instruct, bfloat16, SDPA, seed2027; runtime
 `torch 2.5.1+cu121`, `transformers 4.51.3`, `qwen-vl-utils 0.0.11`.

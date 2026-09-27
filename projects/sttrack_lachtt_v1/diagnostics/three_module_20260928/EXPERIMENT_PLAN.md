@@ -15,11 +15,13 @@ No new three-module model or score exists yet.
 
 M93 has completed a read-only 12-case Train first-frame region-masking pilot
 with Qwen bfloat16. The generated category's Yes/No margin was more sensitive
-to masking the full-frame target than a same-size unrelated full-frame region
+to masking the full-frame target than a nominally same-box unrelated region
 in 11/12 cases. This tests image-region dependence only; it is not human
 semantic verification, an identity label, or tracking improvement. The
-successful balanced protocol, all cases, and limitations are in
+completed protocol, all cases, and limitations are in
 `m93_completed/RESULT.md`. A+B training still waits for independent review.
+Retrospective audit found unequal effective masking areas from red-border
+redrawing and PIL corner clipping, so this is not an equal-area causal control.
 
 M94 then tested Qwen as a read-only identity teacher on all 24 M92 hard
 candidate events, with both A/B orders and with/without unverified automatic
@@ -27,6 +29,30 @@ category. All 96 first-token decisions chose A: each condition scored 12/24
 in each order, zero events were correct in both orders, and zero were
 swap-consistent. This fails its predeclared teacher gate; do not use these
 outputs as Module A labels. Details are in `m94_completed/RESULT.md`.
+The first-event tensor-binding check verifies the image swap; actual short
+replies are A in both orders. The M92 answer manifest was omitted, but the
+published seeded generator makes its side assignment reconstructible. An
+independent human blind-review packet needs a new private assignment.
+
+M95 is a training-only feature-origin diagnostic, not a new selector training.
+M90's frozen first-use template pixels are from t0, but their post-TSG encoding
+also reads frame1 search. Collect auxiliary t0-template and t0-search RoIs
+without committing state, verify first real tracking-frame native parity, and
+compare pure cosine on the same candidates. See `M95_INITIAL_ORIGIN_PLAN.md`.
+M95 is complete: t0-template cosine changes development correctness8 to9;
+t0-search changes it to178, still below native268/495 and breaking91/264
+healthy events. Do not deploy cosine selection. M96 now compares two learned
+visual controls under the same12epoch budget, changing only the initial
+reference source. See `M96_ORIGIN_CONTROL_PLAN.md`.
+M96 is now complete: first-use/t0-search development correct choices270/271,
+mean IoU.528513/.527995, both healthy breaks0, transition correct4/3.
+The first-use control's final parameter tensors exactly reproduce M91.
+The one-choice gain does not justify recursive promotion; next semantic A+B
+training remains gated on independently reviewed Train evidence.
+
+The human candidate packet has been reissued as private `candidate_review_24_v2`
+with the same24 cases, privately permuted IDs and A/B choices. The original
+packet and M94 results remain intact. Both human sheets still have0/24 labels.
 
 ## Prior experiments that the new method must exceed
 

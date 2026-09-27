@@ -22,8 +22,9 @@ current full images are unchanged. The category is not a truth label.
 
 Report accuracy for each order, both-order accuracy, mapped-order
 consistency, A/B/N/U counts, and paired changes with auto text. Keep the
-hidden correct-side manifest private. Publish per-event predictions and
-correctness without the hidden side, plus aggregate counts. A/B bias must be
+hidden correct-side manifest private. Publish per-event predictions/logits
+and aggregate correctness only; per-event correctness would reveal the side.
+A/B bias must be
 judged against both orders. No tracking weights, state, training labels,
 reporting threshold, or public benchmark metric changes.
 

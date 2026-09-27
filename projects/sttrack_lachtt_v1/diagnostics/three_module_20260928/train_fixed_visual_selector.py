@@ -19,7 +19,7 @@ def read(path):
     return json.loads(Path(path).read_text())
 
 
-def load_panel(root):
+def load_panel(root, initial_search=None):
     preparation = read(root / 'preparation.json')
     assert sha(root / 'training_labels.json') == preparation['training_labels_sha256']
     labels = read(root / 'training_labels.json')
@@ -36,6 +36,8 @@ def load_panel(root):
             split = result[data['split']]
             candidate = data['candidate_rois'].float().mean(dim=-2)
             initial = data['initial_rois'].float().mean(dim=-2)
+            if initial_search is not None:
+                initial = initial_search[item['sequence']].float().mean(dim=-2)
             score = data['scores'].float()
             rank = torch.arange(10, dtype=torch.float32)[None, :, None].expand(len(score), -1, -1) / 9
             cell = torch.stack((data['candidate_cells'] % 16,
@@ -73,6 +75,23 @@ def load_panel(root):
     assert len(panel['fit']['key']) == 2544
     assert len(panel['development']['key']) == 495
     return panel, preparation
+
+
+def load_initial_search(origins, root):
+    references = {}
+    for shard in (0, 1):
+        receipt = read(origins / f'shard{shard}.json')
+        path = origins / f'shard{shard}.pt'
+        assert receipt['status'] == 'complete' and not receipt['smoke']
+        assert receipt['source_preparation_sha256'] == sha(root / 'preparation.json')
+        assert receipt['feature_sha256'] == sha(path)
+        data = torch.load(path, map_location='cpu')
+        assert not data['GT_loaded'] and not data['auxiliary_query_committed']
+        for index, record in enumerate(data['records']):
+            assert record['sequence'] not in references
+            references[record['sequence']] = data['search_rois'][index]
+    assert len(references) == 152
+    return references
 
 
 class Selector(nn.Module):
@@ -139,13 +158,20 @@ def main():
     parser.add_argument('--batch-size', type=int, default=64)
     parser.add_argument('--learning-rate', type=float, default=3e-4)
     parser.add_argument('--device', required=True)
+    parser.add_argument('--initial-origin', choices=('first_use_template', 't0_search'),
+                        default='first_use_template')
+    parser.add_argument('--origins', type=Path)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     random.seed(2027)
     np.random.seed(2027)
     torch.manual_seed(2027)
     torch.cuda.manual_seed_all(2027)
-    panel, preparation = load_panel(args.root)
+    initial_search = None
+    if args.initial_origin == 't0_search':
+        assert args.variant == 'visual' and args.origins is not None
+        initial_search = load_initial_search(args.origins, args.root)
+    panel, preparation = load_panel(args.root, initial_search)
     device = torch.device(args.device)
     model = Selector().to(device)
     visual_enabled = args.variant == 'visual'
@@ -178,6 +204,7 @@ def main():
     weights = args.output / 'final.pt'
     torch.save(model.state_dict(), weights)
     report = dict(status='complete_train_only', variant=args.variant,
+                  initial_origin=args.initial_origin,
                   seed=2027, epochs=args.epochs, batch_size=args.batch_size,
                   learning_rate=args.learning_rate,
                   preparation_sha256=sha(args.root / 'preparation.json'),
