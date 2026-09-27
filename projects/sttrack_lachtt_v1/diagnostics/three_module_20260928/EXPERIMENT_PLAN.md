@@ -8,8 +8,8 @@ CDTB80, and VOT-RGBD2022 full127. The project targets remain P/R/F at least
 65.2/64.9/65.1 and 72.9/75.6/74.2, and VOT EAO/ACC/ROB strictly above
 77.9/82.1/93.7. No existing M67, M82, or M89 result meets the joint target.
 
-The M89 same-weight Empty/Swapped OPE runs, 57-anchor VOT readout, and
-zero-weight training attribution probe are already queued. Preserve their
+The M89 same-weight Empty/Swapped OPE runs are complete. The 57-anchor VOT
+readout and zero-weight training attribution probe are queued. Preserve their
 checkpoints and protocols; this plan does not interrupt or reinterpret them.
 No new three-module model or score exists yet.
 
@@ -24,8 +24,11 @@ No new three-module model or score exists yet.
 
 ## Stage 0: close current attribution work
 
-Record M89 Category/Empty/Swapped with the same final weight on both OPE
-datasets. Finish the queued VOT readout and 64-frame zero-weight probe. Report
+M89 Category/Empty/Swapped with the same final weight are recorded on both OPE
+datasets. Category minus Empty F is -0.008334 pp on DepthTrack and +0.264581 pp
+on CDTB; CDTB Swapped has higher fixed-box recall than Category even though its
+F is lower. These results show content sensitivity without stable net semantic
+gain. Finish the queued VOT readout and 64-frame zero-weight probe. Report
 readout capacity, score/geometry effects, and actual first divergence with their
 proper fixed-state or recursive scope. These results guide which bottleneck to
 target; they do not select a public-test-specific rule.
