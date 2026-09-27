@@ -23470,3 +23470,11 @@ Candidate只通过VOT ACC一项（超过目标0.019751个百分点）；VOT EAO�
 逐序列失败审计中，Candidate相对原生新增失败最多的是`yogurt_indoor_1`（2→12，+10）；`box1_outside_1`为4→7、`boxes_room_occ_1_1`为2→5、`human02_indoor_2`为0→3、`stick_indoor_1`为7→10。相对旧M82，它修复`bag02_indoor_2`（12→5）、`glass01_indoor_2`（11→4）、`box1_outside_1`（13→7），但`bag01_indoor_2`由6→10。上述是各序列确认失败的描述性差值，不是EAO贡献分解，也不能直接推出首次失锁机制。完整逐序列CSV及审计摘要在`projects/sttrack_lachtt_v1/diagnostics/native_candidate_preservation_20260926/completed/`。
 
 下一阶段不能仅调报告分数：Candidate固定框全框R仅DepthTrack62.181289%、CDTB69.145811%，仍低于目标。优先在训练集内收窄M89零权重Control的短程复现差异，同时将候选保持与经首帧核验的实例语义判别分开验证；针对VOT新增失败和OPE长失锁，先回溯首次分叉、候选容量及搜索可达性，再决定是否加入新区域观察。当前M89并未完成文本内容的同权重验证，不能把VOT改善称为词义增益。
+
+## §5.272 M89同权重文本内容对照启动及VOT逐anchor差异（2026-09-27 23:58北京时间）
+
+M89-Candidate九项未达标后，先检验新权重的具体文字作用，不重复Full152训练。23:56:43北京时间启动同一Candidate final checkpoint的四项全量OPE内容对照：DepthTrack Test50与CDTB80各运行Empty、Swapped，按两个波次使用GPU0/GPU1；Category参照直接使用已封存的M89正式轨迹。Empty仅将类别槽0替换为空文字向量；Swapped沿用旧M82同一外部输入协议的确定性不同类别向量，两者保留原五槽mask、视觉初始化、Hann、模板规则及权重。旧M82已生成的两类文字bank与本次M89 Category bank来源SHA一致，新的计划仅改变文字bank路径/哈希及输出目录；准备阶段`checked_plan`和checkpoint绑定已通过。Swapped只是不同字符串，不宣称均为经核验的语义冲突；Empty仍经过加性adapter，也不等于原生STTrack。各内容条件从首帧独立推进完整递归，不能解读为固定同状态的单帧效应。
+
+运行根目录为`/root/autodl-tmp/sttrack_m89_content_20260927`，后台控制进程PID 235111，启动时两GPU均开始占用；四份完成态指标尚不存在。参照先前同接口八项内容评测约7小时的实际用时，当前四项预计需约3—4小时，暂估9月28日03:15—04:00完成并分析；按用户要求不频繁轮询，接近预计完成时再查，若速率改变再调整。该对照只诊断文本内容贡献，不是新的结构训练，也不会以外部成绩选checkpoint。
+
+另对VOT原生、旧M82-Full152、M89-Control、M89-Candidate四份同一1765个anchor的完整失败outcome逐一配对。Candidate相对原生有**57个新增失败anchor、24个修复anchor，净多33个**；相对旧M82有37个新增、104个修复，净少67个；相对本轮Control有30个新增、157个修复，净少127个。原生→Candidate新增失败中`yogurt_indoor_1`独占10个，`box1_outside_1`有5个；因此整体改善并非没有局部严重损害。该逐anchor分解比只比较全序列失败总数更准确，但仍不是EAO贡献或首帧机制归因。逐anchor CSV及摘要保存在M89诊断`completed/`下。
