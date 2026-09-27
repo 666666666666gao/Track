@@ -54,15 +54,15 @@ stable attributes, and allow `unknown`. Record current attribute visibility
 separately from support/conflict. An unobservable attribute is never a negative
 identity label.
 
-Collect a fixed set of own-history RGB-D search states on Train only, starting
-with native STTrack; include healthy frames, genuine same-class competitors,
-and local failure onsets. Cache all 256 native decoded boxes and score/size/
-offset maps; cache candidate-local RGB/Depth features for the 10 NMS peaks,
-their grid positions, and the immutable initial instance. These 10 candidate
-features provide competition context, while the full grid remains available
-for candidate-coverage diagnosis. Text is joined later from reviewed Train
-initializations. Preserve the source trajectory. GT is attached
-after candidate generation for training labels, never for runtime inputs.
+The native STTrack own-history Train cache is complete: 152 sequences and 3,502
+preselected events, with all 256 decoded boxes and score/size/offset maps,
+candidate-local RGB/Depth features for 10 NMS peaks, their grid positions, and
+the immutable initial instance. Former-fit130 valid events have 1,575 native
+correct choices, 1,814 Top-10 oracle hits, and 1,882 full-256 oracle hits;
+former-development22 has 268/305/324 among 495 valid events. This selected
+panel is not a uniform frame sample. Text is joined later from reviewed Train
+initializations. Preserve the source trajectory. GT is attached after
+candidate generation for training labels, never for runtime inputs.
 IoU labels supervise localization quality. A distinct physical-object negative
 requires separate visual evidence/annotation; low IoU alone is insufficient.
 
@@ -88,6 +88,11 @@ historical negative control, not the proposed innovation.
 Report both Top-10 and full-256 candidate coverage on Train: the VOT posthoc
 readout shows 10 of 36 correct dense candidate sets at failure onset have no
 correct member in the 10 NMS peaks, so Top-10 ranking has a measured ceiling.
+On the Train development panel, 37 native misses have a correct Top-10
+candidate, 19 more have one only in full-256, and 171 have none in full-256.
+At 60 selected sustained-low development onsets, 45 target centers are
+already outside the nominal crop. These categories require different later
+actions and must not be collapsed into a generic ranking error.
 
 For text attribution, use the *same trained weight and same cached state* with
 reviewed correct text, Empty, a semantically equivalent rewrite, and a
@@ -121,9 +126,11 @@ Only move forward when the semantic model improves mean IoU over native,
 does not increase H10 episodes or add an episode to a native-zero-episode
 sequence, and correct text beats same-weight Empty on mean IoU without more
 H10 episodes. Keep all sequence-level gains and harms visible. A high static
-candidate accuracy without recursive gain does not pass. If existing candidates
-are often missing, add a visual local box refinement *as a separate B change*
-and compare with frozen geometry at matched states and in full recursion.
+candidate accuracy without recursive gain does not pass. If Top-10 misses but
+full-256 contains a correct box, test broader proposals as a separate B change.
+If full-256 has no correct box while the target remains in-crop, test visual
+local box refinement separately. Out-of-crop failures require a new observation
+region under Stage 3. Compare each change at matched states and in recursion.
 
 ## Stage 3: C, then new observation only if needed
 
