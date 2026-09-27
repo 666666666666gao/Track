@@ -42,12 +42,16 @@ def main():
         metric = importlib.util.module_from_spec(metric_spec)
         metric_spec.loader.exec_module(metric)
         receipts = {}
+        reports = {}
         for arm, plan in plans.items():
             assert sha(plan['bundle_path']) == plan['bundle_sha256']
             path = Path(plan['output']) / 'receipt.json'
             receipt = read(path)
             assert receipt['status'] == 'complete' and len(receipt['sequences']) == len(cases)
             receipts[arm] = receipt
+            report = read(Path(plan['output']) / 'metrics.json')
+            assert report['status'] == 'complete' and report['receipt_sha256'] == sha(path)
+            reports[arm] = report
         rows = []
         for index, case in enumerate(cases):
             name = case['sequence']
@@ -57,6 +61,7 @@ def main():
             image = cv2.imread(str(Path(plans['category']['dataset_root']) / name / 'color/00000001.jpg'))
             height, width = image.shape[:2]
             overlaps = {}
+            recalls = {}
             visible = None
             for arm, plan in plans.items():
                 saved = receipts[arm]['sequences'][index]
@@ -66,6 +71,16 @@ def main():
                 boxes = metric._load_rows(path, 4)
                 assert len(boxes) == len(gt) == case['frames']
                 iou, mask = metric._vot_overlaps(boxes, gt, width, height)
+                score_path = Path(plan['output']) / f'{name}_all_scores.txt'
+                assert sha(score_path) == saved['confidence_sha256']
+                scores = metric._load_rows(score_path, 1).reshape(-1)
+                assert len(scores) == len(boxes)
+                threshold = reports[arm]['metrics']['threshold']
+                reported = 100 * float(iou[scores >= threshold].sum() / mask.sum())
+                all_boxes = 100 * float(iou.sum() / mask.sum())
+                recalls[arm] = dict(reported_recall_percent=reported,
+                                    all_boxes_recall_percent=all_boxes,
+                                    selection_cost_pp=all_boxes - reported)
                 if visible is None:
                     visible = mask
                 else:
@@ -75,6 +90,7 @@ def main():
             category, empty, swapped = (selected[arm] for arm in ('category', 'empty', 'swapped'))
             row = dict(sequence=name, valid_frames=int(visible.sum()),
                        mean_iou={arm: float(values.mean()) for arm, values in selected.items()},
+                       recall=recalls,
                        severe_low_frames={arm: int((values <= .1).sum()) for arm, values in selected.items()},
                        category_minus_empty_mean_iou=float((category - empty).mean()),
                        category_minus_swapped_mean_iou=float((category - swapped).mean()),
@@ -87,7 +103,11 @@ def main():
         for arm in ('category', 'empty', 'swapped'):
             weighted[arm] = dict(mean_iou=sum(row['mean_iou'][arm] * row['valid_frames'] for row in rows) /
                                 sum(row['valid_frames'] for row in rows),
-                                 severe_low_frames=sum(row['severe_low_frames'][arm] for row in rows))
+                                 severe_low_frames=sum(row['severe_low_frames'][arm] for row in rows),
+                                 reported_recall_percent=float(np.mean([row['recall'][arm]['reported_recall_percent'] for row in rows])),
+                                 all_boxes_recall_percent=float(np.mean([row['recall'][arm]['all_boxes_recall_percent'] for row in rows])),
+                                 selection_cost_pp=float(np.mean([row['recall'][arm]['selection_cost_pp'] for row in rows])))
+            assert abs(weighted[arm]['reported_recall_percent'] - reports[arm]['metrics']['recall_percent']) < 1e-8
         result['datasets'][dataset] = dict(sequences=len(rows),
             total_valid_frames=sum(row['valid_frames'] for row in rows),
             bundle_sha256=plans['category']['bundle_sha256'],
@@ -103,7 +123,9 @@ def main():
             rows=rows)
     destination = CONTENT / 'paired_content_trajectory_audit.json'
     destination.write_text(json.dumps(result, indent=2) + '\n')
-    print(json.dumps({name: {key: value for key, value in data.items() if key != 'rows'}
+    print(json.dumps({name: {'weighted': data['weighted'],
+                             'sequences': data['sequences'],
+                             'total_valid_frames': data['total_valid_frames']}
                       for name, data in result['datasets'].items()}, indent=2))
 
 

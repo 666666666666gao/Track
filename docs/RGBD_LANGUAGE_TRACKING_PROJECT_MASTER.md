@@ -23667,6 +23667,8 @@ Category减Empty的F：DepthTrack **−0.008334**、CDTB **+0.264581**个百分�
 
 文字的正负效果会在长轨迹中相互抵消。DepthTrack的`ball20_indoor`、`bag01_indoor`、`mobilephone03_indoor`，Category相对Empty的序列平均IoU分别低0.2979、0.1916、0.1883；`dumbbells01_indoor`和`cup04_indoor`分别高0.3052、0.1946。CDTB中`two_mugs`和`paperpunch`分别高0.3977、0.2815，而`backpack_robotarm_lab_occ`和`tennis_ball`分别低0.2785、0.1952。这些差异是三条独立递归轨迹的后验比较，不能单凭终值归因于正确语义、最初分叉点或具体模板写入。
 
-CDTB的Swapped帧均IoU高于Category（0.722243对0.710532），但正式F低于Category（69.719943对70.088471）。帧IoU只衡量有效框重叠，正式P/R/F还使用保存分数的阈值曲线与序列汇总；两种口径不可互换。这种反向结果提示要分别审计框轨迹与置信度，不能只用F差推断同状态候选是否选对，也不能用帧IoU反推F。
+固定各臂已经保存的框、取消报告分数筛选后，逐序列等权的全框R为：DepthTrack的Category／Empty／Swapped **62.181289／62.192817／61.485250%**，CDTB为**69.145811／68.833947／69.788330%**。正式R与全框R之差分别为DepthTrack **1.848994／1.878627／2.301230**、CDTB **1.148361／0.978679／1.136010**个百分点。这些只读上界不改变框或后续状态，不是新部署成绩；三臂全框R仍均低于项目的64.9%／75.6%召回目标。
 
-四组正式metrics/receipts、计划及日志已镜像到`projects/sttrack_lachtt_v1/diagnostics/m89_content_20260927/`；配对只读脚本`analyze_paired_content.py`及完整逐序列`paired_content_trajectory_audit.json`也已镜像，审计JSON SHA-256为`da038ac2837176f8bb79362e7ac89d62d8c30bac312265cc1cfe5236a99aad2e`。独立同状态VOT 57-anchor读出、64帧零权重探针及M90训练候选采集仍由既定依赖队列继续，不能提前填写其结果。
+CDTB的Swapped帧均IoU高于Category（0.722243对0.710532），全框R和正式R也更高，但正式P为70.821296%，低于Category的72.312177%，所以F反而较低（69.719943对70.088471）。帧IoU只衡量有效框重叠，正式P/R/F还受保存分数的阈值曲线与序列汇总影响；两种口径不可互换。这个结果不能被写成“原词在CDTB上具有更好的框轨迹”，更不能从独立递归运行推断固定同状态的单帧词义因果效应。
+
+四组正式metrics/receipts、计划及日志已镜像到`projects/sttrack_lachtt_v1/diagnostics/m89_content_20260927/`；配对只读脚本`analyze_paired_content.py`及完整逐序列`paired_content_trajectory_audit.json`也已镜像，审计JSON SHA-256为`7433c8113af85e7e6c3b937486770b0888c2a25966d036db78752af5d0988d71`。独立同状态VOT 57-anchor读出、64帧零权重探针及M90训练候选采集仍由既定依赖队列继续，不能提前填写其结果。
