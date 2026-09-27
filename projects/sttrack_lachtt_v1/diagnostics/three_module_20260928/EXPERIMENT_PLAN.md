@@ -66,6 +66,26 @@ candidate generation for training labels, never for runtime inputs.
 IoU labels supervise localization quality. A distinct physical-object negative
 requires separate visual evidence/annotation; low IoU alone is insufficient.
 
+Before semantic A+B training, run a fixed-state visual selector control to
+check whether the cached Top-10 features support any learned candidate choice.
+The training partition is former-fit130; former-development22 is held for a
+single reported fixed-state diagnostic, with no public-data input or recursive
+state action. Train identical zero-residual candidate heads with and without
+first-frame/current RGB-D RoI feature pairs. Both retain native candidate
+scores, candidate geometry, location and rank. Supervise each candidate's
+predicted localization quality with its Train GT IoU; this label is **not** a
+physical-instance identity label. Predeclare seed2027, 12 epochs, batch64,
+AdamW learning rate 3e-4, and final epoch (no development checkpoint search).
+Report native, learned, and Top-10 oracle IoU>=.5 counts, rescues, breaks,
+mean IoU, and healthy/transition strata. A direct feature-cosine control has
+already failed sharply (development 8/495 vs native 268/495, 262 breaks);
+the learned control tests feature/selection capacity, not the new A/B method.
+This control is now complete: on 495 former-development valid events, native,
+geometry, visual, and Top-10 oracle choose an IoU>=.5 box 268/273/270/305
+times. Geometry rescues/breaks 15/10; visual 3/1. The visual arm does not
+surpass geometry. Do not promote either static selector into recursion based on
+this result. Build independently reviewed semantic evidence before Stage-1 A+B.
+
 Module A receives immutable initial RGB-D instance tokens, reviewed phrase
 tokens, current candidate-local RGB-D features, and surrounding competitor
 context. Its explicit output per candidate and phrase is support, conflict, or
