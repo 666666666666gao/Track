@@ -23272,3 +23272,21 @@ Control全VOT跟踪和分析退出均为0，merge确认127条/1765个anchor/5295
 已把127条失败数与同协议原生、旧M82-Full152封存表逐条核对，anchor总数都为1765。较原生增失较多的例子：human02_indoor_2为0→15/23 anchor、box1_outside_1为4→18/50、humans_shirts_room_occ_1_A_1为0→12/17；也有bag02_indoor_2为7→5的改善。逐序列确认失败数是描述性诊断，不是EAO贡献的可加分解，也不能仅由序列名称推断原因。完整result、merge、分析JSON、两份退出码，以及control_vot_failure_comparison.csv和control_vot_failure_summary.json已经归档；audit_control_vot_failures.py复算总数183/283/343并检验每条anchor绑定。
 
 评测队列834519及控制器841552继续运行。11:05实查Candidate DepthTrack/CDTB两个worker36949/36950已在GPU0/1上跟踪；两项尚无完整receipt或指标。按历史OPE约1小时40分，Candidate OPE预计12:40前后完成，随后接同一Candidate final的全VOT约11小时；六组完整指标仍估9月28日00:00—02:00。现阶段不因Control负结果中断封存配对评测，也不把旧模型单项成绩拼入Candidate。
+
+
+## §5.254 M89-Candidate两项完整OPE与逐序列收益—损害（2026-09-27 12:50北京时间）
+
+Candidate的DepthTrack跟踪50/50条、76373帧，CDTB跟踪80/80条、101956帧；两项tracking/analysis退出均为0，receipt、指标、plan、最终checkpoint/bundle及计分源码SHA核对通过，输入文字bank、cases、底座、接口与Control一致。以下是同一候选损失权重1 final的正式外部结果，单位百分数；配对差值为Candidate减本轮权重0 Control的百分点：
+
+| Candidate数据集 | P | R | F | 相对Control ΔP / ΔR / ΔF | 项目R/F尚差 |
+| --- | ---: | ---: | ---: | --- | --- |
+| DepthTrack Test50 | 63.393049 | 60.332295 | 61.824813 | +3.699768 / +4.372625 / +4.058603 | 4.567705 / 3.275187 |
+| CDTB80 | 72.312177 | 67.997449 | 70.088471 | +3.320192 / +5.995823 / +4.778183 | 7.602551 / 4.111529 |
+
+Candidate明显改善了本轮Control，但两项均未达到既定目标；无论随后VOT如何，它都不能以同一final通过三数据集同时验收。相对原生STTrack，DepthTrack P提高0.977713而R/F下降2.349709/0.723573个百分点；CDTB P/F提高2.379064/1.100650而R低0.070295个百分点。相对旧M82-Full152，Candidate正式F仅在DepthTrack/CDTB高0.306766/0.180643个百分点。Control训练复现曾明显分叉，不能把Candidate与它的全部差距机械解释为新损失的可靠因果增益。
+
+同封存框、分数、GT和原评价函数的只读逐序列复算进一步区分框轨迹与报告分数。Candidate不筛选分数的全部已有框R为DepthTrack62.181289、CDTB69.145811；分别比本轮Control高4.689441/5.592155个百分点，却只比旧M82-Full152高0.293228/0.042854。即使这两条固定轨迹把所有已保存框计入，仍距目标R有2.718711/6.454189个百分点。这里的全框R不是部署结果，调整分数而不改框不足以达标。
+
+CDTB的收益与损害高度不均：相对旧M82-Full152，bottle_room_occ_1、jug、robot_corridor_occ_1的全框R分别从27.983→86.950、26.173→80.536、21.328→74.722；bag_outside、trashcan_room_occ_1、human_entry_occ_1则分别从83.889→35.539、64.131→17.449、55.551→16.056。DepthTrack还有pigeon02_wild −57.666、bag01_indoor −30.657个百分点的全框R损害。不能仅凭终值把这些变化归给模板或具体文字，需要回溯首次分叉。以Candidate IoU≤0.1而旧M82同帧≥0.5连续至少10帧为定义，DepthTrack有69段/3853帧、CDTB44段/4196帧；段起点crop内分别30/9段。该统计描述剩余长期伤害，不代表最初错误发生时的全部机制。
+
+只读脚本audit_control_ope_sequences.py现支持--model control/candidate，重新运行Control的报告SHA保持原值；新candidate_ope_sequence_audit.json与两份逐序列CSV、正式metrics/receipt/plan/exit及bundle已归档。12:48实查Candidate VOT控制器39586和四个worker39587—39590在两GPU上存活，进度14/1765；预计今日深夜完成并形成第六组完整指标，随后运行九项验收和配对归因。当前不能填写Candidate的EAO/ACC/ROB。

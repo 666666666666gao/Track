@@ -1,5 +1,6 @@
-"""Compare completed M89 Control OPE trajectories with sealed M82 Full152."""
+"""Compare completed M89 OPE trajectories with sealed M82 Full152."""
 
+import argparse
 import csv
 import importlib.util
 import json
@@ -14,13 +15,16 @@ import prepare_evaluation as common
 
 OLD = Path('/root/autodl-tmp/sttrack_full152_evaluation_20260925')
 ROOT = common.ROOT
-common.checked('control')
+parser = argparse.ArgumentParser()
+parser.add_argument('--model', choices=('control', 'candidate'), default='control')
+MODEL = parser.parse_args().model
+common.checked(MODEL)
 old_recall = common.read(OLD / 'posthoc/M82_recall_confidence_decomposition.json')
 summary = {'scope': 'Completed OPE, each model at its own dataset threshold; all-box recall fixes each saved trajectory.',
            'datasets': {}}
 
 for dataset in ('depthtrack', 'cdtb'):
-    root = ROOT / 'control' / dataset
+    root = ROOT / MODEL / dataset
     plan = common.read(root / 'plan.json')
     cases = common.read(Path(plan['cases_path']))
     predictions = Path(plan['output'])
@@ -89,12 +93,12 @@ for dataset in ('depthtrack', 'cdtb'):
             sequence_events.append(dict(sequence=name, start=start, end=int(group[-1]) + 1,
                                         frames=len(group), center_in_crop_at_start=bool(
                                             x1 <= cx < x1 + side and y1 <= cy < y1 + side),
-                                        control_iou_at_start=float(overlaps[start]),
+                                        **{MODEL + '_iou_at_start': float(overlaps[start])},
                                         old_m82_iou_at_start=float(old_overlaps[start])))
         events.extend(sequence_events)
         rows.append(dict(sequence=name, frames=len(score),
-                         control_p=100 * precision, control_r=100 * recall,
-                         control_all_box_r=100 * all_recall,
+                         **{MODEL + '_p': 100 * precision, MODEL + '_r': 100 * recall,
+                            MODEL + '_all_box_r': 100 * all_recall},
                          old_m82_p=float(previous['precision_percent']),
                          old_m82_r=float(previous['recall_percent']),
                          old_m82_all_box_r=float(previous_all['all_boxes_recall_percent']),
@@ -105,27 +109,27 @@ for dataset in ('depthtrack', 'cdtb'):
                          longest_new_only_run=max((event['frames'] for event in sequence_events), default=0)))
 
     assert set(old_rows) == set(old_all) == {row['sequence'] for row in rows}
-    assert abs(float(np.mean([row['control_p'] for row in rows])) - report['metrics']['precision_percent']) < 1e-8
-    assert abs(float(np.mean([row['control_r'] for row in rows])) - report['metrics']['recall_percent']) < 1e-8
+    assert abs(float(np.mean([row[MODEL + '_p'] for row in rows])) - report['metrics']['precision_percent']) < 1e-8
+    assert abs(float(np.mean([row[MODEL + '_r'] for row in rows])) - report['metrics']['recall_percent']) < 1e-8
     summary['datasets'][dataset] = dict(
         threshold=threshold,
-        control_metrics_sha256=common.sha(predictions / 'metrics.json'),
-        control_receipt_sha256=common.sha(predictions / 'receipt.json'),
-        mean_control_all_box_recall=float(np.mean([row['control_all_box_r'] for row in rows])),
+        **{MODEL + '_metrics_sha256': common.sha(predictions / 'metrics.json'),
+           MODEL + '_receipt_sha256': common.sha(predictions / 'receipt.json'),
+           'mean_' + MODEL + '_all_box_recall': float(np.mean([row[MODEL + '_all_box_r'] for row in rows]))},
         mean_old_m82_all_box_recall=float(np.mean([row['old_m82_all_box_r'] for row in rows])),
         rows=rows, sustained_new_only_events=events)
 
 out = ROOT / 'posthoc'
 out.mkdir(exist_ok=True)
-path = out / 'control_ope_sequence_audit.json'
+path = out / (MODEL + '_ope_sequence_audit.json')
 path.write_text(json.dumps(summary, indent=2) + '\n')
 for dataset, data in summary['datasets'].items():
-    with (out / f'control_{dataset}_sequence_audit.csv').open('w', newline='') as stream:
+    with (out / f'{MODEL}_{dataset}_sequence_audit.csv').open('w', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=list(data['rows'][0]))
         writer.writeheader()
         writer.writerows(data['rows'])
     ordered = sorted(data['rows'], key=lambda row: row['delta_all_box_r'])
-    print(dataset, 'mean_all_box_delta', data['mean_control_all_box_recall'] - data['mean_old_m82_all_box_recall'])
+    print(dataset, 'mean_all_box_delta', data['mean_' + MODEL + '_all_box_recall'] - data['mean_old_m82_all_box_recall'])
     print('largest_all_box_declines', [(row['sequence'], round(row['delta_all_box_r'], 3)) for row in ordered[:10]])
     print('largest_all_box_gains', [(row['sequence'], round(row['delta_all_box_r'], 3)) for row in ordered[-10:]])
     print('sustained_new_only', len(data['sustained_new_only_events']),
