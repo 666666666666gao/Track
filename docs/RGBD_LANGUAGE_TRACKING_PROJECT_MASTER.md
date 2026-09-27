@@ -23290,3 +23290,19 @@ Candidate明显改善了本轮Control，但两项均未达到既定目标；无�
 CDTB的收益与损害高度不均：相对旧M82-Full152，bottle_room_occ_1、jug、robot_corridor_occ_1的全框R分别从27.983→86.950、26.173→80.536、21.328→74.722；bag_outside、trashcan_room_occ_1、human_entry_occ_1则分别从83.889→35.539、64.131→17.449、55.551→16.056。DepthTrack还有pigeon02_wild −57.666、bag01_indoor −30.657个百分点的全框R损害。不能仅凭终值把这些变化归给模板或具体文字，需要回溯首次分叉。以Candidate IoU≤0.1而旧M82同帧≥0.5连续至少10帧为定义，DepthTrack有69段/3853帧、CDTB44段/4196帧；段起点crop内分别30/9段。该统计描述剩余长期伤害，不代表最初错误发生时的全部机制。
 
 只读脚本audit_control_ope_sequences.py现支持--model control/candidate，重新运行Control的报告SHA保持原值；新candidate_ope_sequence_audit.json与两份逐序列CSV、正式metrics/receipt/plan/exit及bundle已归档。12:48实查Candidate VOT控制器39586和四个worker39587—39590在两GPU上存活，进度14/1765；预计今日深夜完成并形成第六组完整指标，随后运行九项验收和配对归因。当前不能填写Candidate的EAO/ACC/ROB。
+
+
+## §5.255 M89三份OPE轨迹的严重低重叠与crop可达性（2026-09-27）
+
+在相同DepthTrack Test/CDTB有效GT帧上，用每份封存bbox和原评价源码计算IoU≤0.1帧；当帧搜索正方形按上一帧本模型预测bbox和原生sample_target的search_factor=4计算，再判断GT中心是否在其中。三份轨迹各用自己的历史状态，未用GT改变任何预测或分数。数字为帧数，不是宏P/R/F，也不是首次失锁原因：
+
+| 模型与数据集 | GT有效帧 | IoU≤0.1帧 | 其中GT中心在crop内 | 在crop外 |
+| --- | ---: | ---: | ---: | ---: |
+| 旧M82-Full152，DepthTrack | 73389 | 18622 | 6017 | 12605 |
+| M89-Control，DepthTrack | 73389 | 22730 | 6553 | 16177 |
+| M89-Candidate，DepthTrack | 73389 | 18735 | 6435 | 12300 |
+| 旧M82-Full152，CDTB | 91300 | 10799 | 2250 | 8549 |
+| M89-Control，CDTB | 91300 | 17609 | 3148 | 14461 |
+| M89-Candidate，CDTB | 91300 | 10952 | 1810 | 9142 |
+
+Candidate相对配对Control减少3995/6657个严重低重叠帧；相对旧M82则分别多113/153帧，显示总体错误帧数大体回到旧水平。Candidate在DepthTrack有12300/18735、CDTB有9142/10952个严重错误帧当帧目标中心在crop外（约65.65%/83.47%）。这说明局部不可达是错误持续的重要状态，不能证明这些段的最初失误是出crop造成的：先在crop内换跟或框尺度变错，也可能让后面长时间不可达。结合§5.254的正负序列，下一步需分别追查首次可见误选与重现阶段的新观察能力；不能只做全局置信度阈值调整。
