@@ -1,0 +1,196 @@
+{
+  "status": "complete_metric_and_binding_audit",
+  "source_sha256": "49e9014f4e56fefc9de49d43e6184caaab79755278fcf48f9dd883beb7ea39b3",
+  "model_checkpoints": {
+    "control": "9c8b3cf484b1f67bca379c06ce108fd3557865ea75b6fb15ed3d7b33eb68ba0a",
+    "candidate": "5157a9af1681c4b43bf160d474da3fe084355bc0b603f03705890d485226a682"
+  },
+  "metrics": [
+    {
+      "model": "control",
+      "dataset": "depthtrack",
+      "metric": "precision_percent",
+      "value": 59.69328134332322,
+      "target": 65.2,
+      "delta_pp": -5.506718656676782,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "control",
+      "dataset": "depthtrack",
+      "metric": "recall_percent",
+      "value": 55.95967005401341,
+      "target": 64.9,
+      "delta_pp": -8.940329945986598,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "control",
+      "dataset": "depthtrack",
+      "metric": "f_score_percent",
+      "value": 57.76620982092271,
+      "target": 65.1,
+      "delta_pp": -7.333790179077283,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "control",
+      "dataset": "cdtb",
+      "metric": "precision_percent",
+      "value": 68.99198520837595,
+      "target": 72.9,
+      "delta_pp": -3.908014791624055,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "control",
+      "dataset": "cdtb",
+      "metric": "recall_percent",
+      "value": 62.00162602256854,
+      "target": 75.6,
+      "delta_pp": -13.598373977431457,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "control",
+      "dataset": "cdtb",
+      "metric": "f_score_percent",
+      "value": 65.31028842166631,
+      "target": 74.2,
+      "delta_pp": -8.889711578333689,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "control",
+      "dataset": "vot",
+      "metric": "EAO",
+      "value": 72.68522189495928,
+      "target": 77.9,
+      "delta_pp": -5.214778105040722,
+      "comparison": ">",
+      "passed": false
+    },
+    {
+      "model": "control",
+      "dataset": "vot",
+      "metric": "ACC",
+      "value": 81.51734662763485,
+      "target": 82.1,
+      "delta_pp": -0.5826533723651437,
+      "comparison": ">",
+      "passed": false
+    },
+    {
+      "model": "control",
+      "dataset": "vot",
+      "metric": "ROB",
+      "value": 88.59470665866121,
+      "target": 93.7,
+      "delta_pp": -5.105293341338793,
+      "comparison": ">",
+      "passed": false
+    },
+    {
+      "model": "candidate",
+      "dataset": "depthtrack",
+      "metric": "precision_percent",
+      "value": 63.393049256708565,
+      "target": 65.2,
+      "delta_pp": -1.8069507432914378,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "candidate",
+      "dataset": "depthtrack",
+      "metric": "recall_percent",
+      "value": 60.332295046991206,
+      "target": 64.9,
+      "delta_pp": -4.5677049530088,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "candidate",
+      "dataset": "depthtrack",
+      "metric": "f_score_percent",
+      "value": 61.82481322979545,
+      "target": 65.1,
+      "delta_pp": -3.2751867702045416,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "candidate",
+      "dataset": "cdtb",
+      "metric": "precision_percent",
+      "value": 72.31217735074817,
+      "target": 72.9,
+      "delta_pp": -0.5878226492518337,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "candidate",
+      "dataset": "cdtb",
+      "metric": "recall_percent",
+      "value": 67.99744944925796,
+      "target": 75.6,
+      "delta_pp": -7.602550550742038,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "candidate",
+      "dataset": "cdtb",
+      "metric": "f_score_percent",
+      "value": 70.08847127762527,
+      "target": 74.2,
+      "delta_pp": -4.111528722374729,
+      "comparison": ">=",
+      "passed": false
+    },
+    {
+      "model": "candidate",
+      "dataset": "vot",
+      "metric": "EAO",
+      "value": 75.88798646046533,
+      "target": 77.9,
+      "delta_pp": -2.012013539534678,
+      "comparison": ">",
+      "passed": false
+    },
+    {
+      "model": "candidate",
+      "dataset": "vot",
+      "metric": "ACC",
+      "value": 82.11975120102773,
+      "target": 82.1,
+      "delta_pp": 0.019751201027730758,
+      "comparison": ">",
+      "passed": true
+    },
+    {
+      "model": "candidate",
+      "dataset": "vot",
+      "metric": "ROB",
+      "value": 92.53372333091187,
+      "target": 93.7,
+      "delta_pp": -1.166276669088134,
+      "comparison": ">",
+      "passed": false
+    }
+  ],
+  "all_nine_pass_by_model": {
+    "control": false,
+    "candidate": false
+  },
+  "any_single_model_passes": false,
+  "scope": "Metric files, coverage receipts and checkpoint bindings; not a raw-prediction recomputation or semantic attribution audit."
+}

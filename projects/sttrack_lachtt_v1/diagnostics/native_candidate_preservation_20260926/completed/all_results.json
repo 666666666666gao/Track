@@ -1,0 +1,111 @@
+{
+  "status": "six_Full152_evaluations_complete",
+  "models": {
+    "control": "9c8b3cf484b1f67bca379c06ce108fd3557865ea75b6fb15ed3d7b33eb68ba0a",
+    "candidate": "5157a9af1681c4b43bf160d474da3fe084355bc0b603f03705890d485226a682"
+  },
+  "results": [
+    {
+      "model": "control",
+      "dataset": "depthtrack",
+      "checkpoint_sha256": "9c8b3cf484b1f67bca379c06ce108fd3557865ea75b6fb15ed3d7b33eb68ba0a",
+      "result_path": "/root/autodl-tmp/sttrack_m89_evaluation_20260926/control/depthtrack/predictions/metrics.json",
+      "result_sha256": "f745774d5e2b91825a4ea98ec959ac47fea232253c21d1c776aab2b9b1655221",
+      "metrics": {
+        "precision": 0.5969328134332322,
+        "recall": 0.5595967005401341,
+        "f_score": 0.5776620982092271,
+        "precision_percent": 59.69328134332322,
+        "recall_percent": 55.95967005401341,
+        "f_score_percent": 57.76620982092271,
+        "threshold": 0.240206,
+        "sequences": 50,
+        "frames": 76373
+      }
+    },
+    {
+      "model": "control",
+      "dataset": "cdtb",
+      "checkpoint_sha256": "9c8b3cf484b1f67bca379c06ce108fd3557865ea75b6fb15ed3d7b33eb68ba0a",
+      "result_path": "/root/autodl-tmp/sttrack_m89_evaluation_20260926/control/cdtb/predictions/metrics.json",
+      "result_sha256": "07a4c35aa1198e4af10ce4e4787125dc9445ffcbc31ec95d63446d32c2e6f22c",
+      "metrics": {
+        "precision": 0.6899198520837595,
+        "recall": 0.6200162602256853,
+        "f_score": 0.6531028842166631,
+        "precision_percent": 68.99198520837595,
+        "recall_percent": 62.00162602256854,
+        "f_score_percent": 65.31028842166631,
+        "threshold": 0.340075,
+        "sequences": 80,
+        "frames": 101956
+      }
+    },
+    {
+      "model": "control",
+      "dataset": "vot",
+      "checkpoint_sha256": "9c8b3cf484b1f67bca379c06ce108fd3557865ea75b6fb15ed3d7b33eb68ba0a",
+      "result_path": "/root/autodl-tmp/sttrack_m89_evaluation_20260926/control/vot/result.json",
+      "result_sha256": "6b20ab2b189b507aa86288c6535515f9d877eb128c696b7996b37472106c2f1d",
+      "metrics": {
+        "EAO": 72.68522189495928,
+        "ACC": 81.51734662763485,
+        "ROB": 88.59470665866121
+      }
+    },
+    {
+      "model": "candidate",
+      "dataset": "depthtrack",
+      "checkpoint_sha256": "5157a9af1681c4b43bf160d474da3fe084355bc0b603f03705890d485226a682",
+      "result_path": "/root/autodl-tmp/sttrack_m89_evaluation_20260926/candidate/depthtrack/predictions/metrics.json",
+      "result_sha256": "3f0f47f785259d65b1975b49c40ebda430628cf3cca3d9ed5335d7b767fc41dd",
+      "metrics": {
+        "precision": 0.6339304925670857,
+        "recall": 0.603322950469912,
+        "f_score": 0.6182481322979545,
+        "precision_percent": 63.393049256708565,
+        "recall_percent": 60.332295046991206,
+        "f_score_percent": 61.82481322979545,
+        "threshold": 0.37526,
+        "sequences": 50,
+        "frames": 76373
+      }
+    },
+    {
+      "model": "candidate",
+      "dataset": "cdtb",
+      "checkpoint_sha256": "5157a9af1681c4b43bf160d474da3fe084355bc0b603f03705890d485226a682",
+      "result_path": "/root/autodl-tmp/sttrack_m89_evaluation_20260926/candidate/cdtb/predictions/metrics.json",
+      "result_sha256": "fb2f8e0c3072adaa3812e8721321fc2a0bc7229a79a7c222b1b81de6a58ca0f0",
+      "metrics": {
+        "precision": 0.7231217735074817,
+        "recall": 0.6799744944925796,
+        "f_score": 0.7008847127762527,
+        "precision_percent": 72.31217735074817,
+        "recall_percent": 67.99744944925796,
+        "f_score_percent": 70.08847127762527,
+        "threshold": 0.521128,
+        "sequences": 80,
+        "frames": 101956
+      }
+    },
+    {
+      "model": "candidate",
+      "dataset": "vot",
+      "checkpoint_sha256": "5157a9af1681c4b43bf160d474da3fe084355bc0b603f03705890d485226a682",
+      "result_path": "/root/autodl-tmp/sttrack_m89_evaluation_20260926/candidate/vot/result.json",
+      "result_sha256": "d013fd85f95e70ee56ff3798bd870ccb295984a055b507f390c87061d1a206af",
+      "metrics": {
+        "EAO": 75.88798646046533,
+        "ACC": 82.11975120102773,
+        "ROB": 92.53372333091187
+      }
+    }
+  ],
+  "checkpoint_selection_from_external_metrics": false,
+  "new_training_steps": {
+    "control": 6807,
+    "candidate": 6807
+  },
+  "independent_completed_audit": false
+}
