@@ -1,0 +1,3320 @@
+{
+  "status": "read_only_complete",
+  "datasets": {
+    "depthtrack": {
+      "sequences": 50,
+      "total_valid_frames": 73389,
+      "bundle_sha256": "e6c5f259ad7e428add7f608e7cec4dac63c48610e7dd5a81ea6b53c894d35478",
+      "receipt_sha256": {
+        "category": "3e5997a278fa321b2730c5138b5bbda65ea095c2e9d9b94013cfd7976a06627b",
+        "empty": "e046380a49dcf0765f38035039e283d5e00d48f6689b01abc02a1d8ee168e484",
+        "swapped": "dd4c627c6886142e7669ff739241569565fac842fccfad7c84a565110047fcd8"
+      },
+      "weighted": {
+        "category": {
+          "mean_iou": 0.5979858362368058,
+          "severe_low_frames": 18735
+        },
+        "empty": {
+          "mean_iou": 0.6019806339076946,
+          "severe_low_frames": 18397
+        },
+        "swapped": {
+          "mean_iou": 0.588177727850479,
+          "severe_low_frames": 19902
+        }
+      },
+      "category_vs_empty": {
+        "sequences_better": 22,
+        "sequences_worse": 28,
+        "category_bad_empty_good": 2208,
+        "empty_bad_category_good": 1905,
+        "worst": [
+          {
+            "sequence": "ball20_indoor",
+            "valid_frames": 1508,
+            "mean_iou": {
+              "category": 0.5112335666310358,
+              "empty": 0.8091531779191221,
+              "swapped": 0.5112369394820527
+            },
+            "severe_low_frames": {
+              "category": 623,
+              "empty": 115,
+              "swapped": 623
+            },
+            "category_minus_empty_mean_iou": -0.29791961128808636,
+            "category_minus_swapped_mean_iou": -3.372851016939365e-06,
+            "category_bad_empty_good": 504,
+            "empty_bad_category_good": 0,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "bag01_indoor",
+            "valid_frames": 2343,
+            "mean_iou": {
+              "category": 0.3906316032521154,
+              "empty": 0.5822329023729979,
+              "swapped": 0.5834479697672571
+            },
+            "severe_low_frames": {
+              "category": 1180,
+              "empty": 618,
+              "swapped": 598
+            },
+            "category_minus_empty_mean_iou": -0.19160129912088247,
+            "category_minus_swapped_mean_iou": -0.19281636651514167,
+            "category_bad_empty_good": 548,
+            "empty_bad_category_good": 6,
+            "category_bad_swapped_good": 558,
+            "swapped_bad_category_good": 7
+          },
+          {
+            "sequence": "mobilephone03_indoor",
+            "valid_frames": 663,
+            "mean_iou": {
+              "category": 0.6287797736957939,
+              "empty": 0.8170541872816288,
+              "swapped": 0.8176195464530531
+            },
+            "severe_low_frames": {
+              "category": 140,
+              "empty": 0,
+              "swapped": 0
+            },
+            "category_minus_empty_mean_iou": -0.18827441358583485,
+            "category_minus_swapped_mean_iou": -0.18883977275725916,
+            "category_bad_empty_good": 140,
+            "empty_bad_category_good": 0,
+            "category_bad_swapped_good": 140,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "cube02_indoor",
+            "valid_frames": 3625,
+            "mean_iou": {
+              "category": 0.2521186439495521,
+              "empty": 0.3207144555171346,
+              "swapped": 0.3114923651128874
+            },
+            "severe_low_frames": {
+              "category": 2590,
+              "empty": 2290,
+              "swapped": 2329
+            },
+            "category_minus_empty_mean_iou": -0.0685958115675825,
+            "category_minus_swapped_mean_iou": -0.05937372116333527,
+            "category_bad_empty_good": 301,
+            "empty_bad_category_good": 5,
+            "category_bad_swapped_good": 272,
+            "swapped_bad_category_good": 13
+          },
+          {
+            "sequence": "developmentboard_indoor",
+            "valid_frames": 1389,
+            "mean_iou": {
+              "category": 0.39325148764002665,
+              "empty": 0.441515527310298,
+              "swapped": 0.43517863536565465
+            },
+            "severe_low_frames": {
+              "category": 637,
+              "empty": 490,
+              "swapped": 524
+            },
+            "category_minus_empty_mean_iou": -0.04826403967027124,
+            "category_minus_swapped_mean_iou": -0.04192714772562802,
+            "category_bad_empty_good": 60,
+            "empty_bad_category_good": 1,
+            "category_bad_swapped_good": 73,
+            "swapped_bad_category_good": 2
+          },
+          {
+            "sequence": "adapter01_indoor",
+            "valid_frames": 2674,
+            "mean_iou": {
+              "category": 0.6615354604853046,
+              "empty": 0.7057929113077392,
+              "swapped": 0.4874526431732212
+            },
+            "severe_low_frames": {
+              "category": 304,
+              "empty": 133,
+              "swapped": 932
+            },
+            "category_minus_empty_mean_iou": -0.04425745082243448,
+            "category_minus_swapped_mean_iou": 0.17408281731208355,
+            "category_bad_empty_good": 187,
+            "empty_bad_category_good": 21,
+            "category_bad_swapped_good": 98,
+            "swapped_bad_category_good": 716
+          },
+          {
+            "sequence": "ball11_wild",
+            "valid_frames": 1534,
+            "mean_iou": {
+              "category": 0.7713699921902578,
+              "empty": 0.8047498692480213,
+              "swapped": 0.7144483922641287
+            },
+            "severe_low_frames": {
+              "category": 138,
+              "empty": 77,
+              "swapped": 245
+            },
+            "category_minus_empty_mean_iou": -0.033379877057763484,
+            "category_minus_swapped_mean_iou": 0.05692159992612911,
+            "category_bad_empty_good": 60,
+            "empty_bad_category_good": 1,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 105
+          },
+          {
+            "sequence": "squirrel_wild",
+            "valid_frames": 943,
+            "mean_iou": {
+              "category": 0.6857375825717728,
+              "empty": 0.7094605187555318,
+              "swapped": 0.6103083261551501
+            },
+            "severe_low_frames": {
+              "category": 175,
+              "empty": 133,
+              "swapped": 251
+            },
+            "category_minus_empty_mean_iou": -0.02372293618375907,
+            "category_minus_swapped_mean_iou": 0.07542925641662278,
+            "category_bad_empty_good": 32,
+            "empty_bad_category_good": 6,
+            "category_bad_swapped_good": 7,
+            "swapped_bad_category_good": 86
+          }
+        ],
+        "best": [
+          {
+            "sequence": "dumbbells01_indoor",
+            "valid_frames": 1021,
+            "mean_iou": {
+              "category": 0.7498125904606961,
+              "empty": 0.44464521957835346,
+              "swapped": 0.7648885801268865
+            },
+            "severe_low_frames": {
+              "category": 55,
+              "empty": 461,
+              "swapped": 37
+            },
+            "category_minus_empty_mean_iou": 0.3051673708823427,
+            "category_minus_swapped_mean_iou": -0.015075989666190483,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 396,
+            "category_bad_swapped_good": 19,
+            "swapped_bad_category_good": 1
+          },
+          {
+            "sequence": "cup04_indoor",
+            "valid_frames": 2164,
+            "mean_iou": {
+              "category": 0.704962222351136,
+              "empty": 0.5103259557429937,
+              "swapped": 0.8268828196718994
+            },
+            "severe_low_frames": {
+              "category": 419,
+              "empty": 897,
+              "swapped": 127
+            },
+            "category_minus_empty_mean_iou": 0.19463626660814248,
+            "category_minus_swapped_mean_iou": -0.12192059732076328,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 479,
+            "category_bad_swapped_good": 290,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "stick_indoor",
+            "valid_frames": 898,
+            "mean_iou": {
+              "category": 0.7791041807591639,
+              "empty": 0.6508871321636365,
+              "swapped": 0.7710038051353586
+            },
+            "severe_low_frames": {
+              "category": 0,
+              "empty": 119,
+              "swapped": 11
+            },
+            "category_minus_empty_mean_iou": 0.12821704859552738,
+            "category_minus_swapped_mean_iou": 0.008100375623805356,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 113,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 7
+          },
+          {
+            "sequence": "card_indoor",
+            "valid_frames": 2416,
+            "mean_iou": {
+              "category": 0.45186279797146617,
+              "empty": 0.3593007963825147,
+              "swapped": 0.44929101115478065
+            },
+            "severe_low_frames": {
+              "category": 866,
+              "empty": 1166,
+              "swapped": 902
+            },
+            "category_minus_empty_mean_iou": 0.09256200158895153,
+            "category_minus_swapped_mean_iou": 0.002571786816685575,
+            "category_bad_empty_good": 67,
+            "empty_bad_category_good": 328,
+            "category_bad_swapped_good": 10,
+            "swapped_bad_category_good": 42
+          },
+          {
+            "sequence": "cup12_indoor",
+            "valid_frames": 953,
+            "mean_iou": {
+              "category": 0.36869734498761725,
+              "empty": 0.2854636364573608,
+              "swapped": 0.3468116609134753
+            },
+            "severe_low_frames": {
+              "category": 503,
+              "empty": 609,
+              "swapped": 529
+            },
+            "category_minus_empty_mean_iou": 0.08323370853025637,
+            "category_minus_swapped_mean_iou": 0.021885684074141896,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 96,
+            "category_bad_swapped_good": 1,
+            "swapped_bad_category_good": 27
+          },
+          {
+            "sequence": "ball01_wild",
+            "valid_frames": 398,
+            "mean_iou": {
+              "category": 0.7674311728764895,
+              "empty": 0.6987684214545611,
+              "swapped": 0.6823249796552869
+            },
+            "severe_low_frames": {
+              "category": 18,
+              "empty": 52,
+              "swapped": 64
+            },
+            "category_minus_empty_mean_iou": 0.06866275142192853,
+            "category_minus_swapped_mean_iou": 0.08510619322120266,
+            "category_bad_empty_good": 1,
+            "empty_bad_category_good": 34,
+            "category_bad_swapped_good": 1,
+            "swapped_bad_category_good": 45
+          },
+          {
+            "sequence": "file01_indoor",
+            "valid_frames": 1621,
+            "mean_iou": {
+              "category": 0.7301829041020719,
+              "empty": 0.6776335469651013,
+              "swapped": 0.717938885503491
+            },
+            "severe_low_frames": {
+              "category": 284,
+              "empty": 380,
+              "swapped": 311
+            },
+            "category_minus_empty_mean_iou": 0.05254935713697072,
+            "category_minus_swapped_mean_iou": 0.012244018598580863,
+            "category_bad_empty_good": 1,
+            "empty_bad_category_good": 96,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 25
+          },
+          {
+            "sequence": "cat01_indoor",
+            "valid_frames": 2952,
+            "mean_iou": {
+              "category": 0.8567277734828648,
+              "empty": 0.8475094758912062,
+              "swapped": 0.8584192529816869
+            },
+            "severe_low_frames": {
+              "category": 82,
+              "empty": 117,
+              "swapped": 80
+            },
+            "category_minus_empty_mean_iou": 0.009218297591658521,
+            "category_minus_swapped_mean_iou": -0.0016914794988220354,
+            "category_bad_empty_good": 35,
+            "empty_bad_category_good": 68,
+            "category_bad_swapped_good": 23,
+            "swapped_bad_category_good": 22
+          }
+        ]
+      },
+      "rows": [
+        {
+          "sequence": "adapter01_indoor",
+          "valid_frames": 2674,
+          "mean_iou": {
+            "category": 0.6615354604853046,
+            "empty": 0.7057929113077392,
+            "swapped": 0.4874526431732212
+          },
+          "severe_low_frames": {
+            "category": 304,
+            "empty": 133,
+            "swapped": 932
+          },
+          "category_minus_empty_mean_iou": -0.04425745082243448,
+          "category_minus_swapped_mean_iou": 0.17408281731208355,
+          "category_bad_empty_good": 187,
+          "empty_bad_category_good": 21,
+          "category_bad_swapped_good": 98,
+          "swapped_bad_category_good": 716
+        },
+        {
+          "sequence": "backpack_indoor",
+          "valid_frames": 2052,
+          "mean_iou": {
+            "category": 0.6290317035547767,
+            "empty": 0.6281033822528201,
+            "swapped": 0.6324223030454416
+          },
+          "severe_low_frames": {
+            "category": 483,
+            "empty": 484,
+            "swapped": 470
+          },
+          "category_minus_empty_mean_iou": 0.0009283213019564364,
+          "category_minus_swapped_mean_iou": -0.003390599490664789,
+          "category_bad_empty_good": 2,
+          "empty_bad_category_good": 4,
+          "category_bad_swapped_good": 12,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "bag01_indoor",
+          "valid_frames": 2343,
+          "mean_iou": {
+            "category": 0.3906316032521154,
+            "empty": 0.5822329023729979,
+            "swapped": 0.5834479697672571
+          },
+          "severe_low_frames": {
+            "category": 1180,
+            "empty": 618,
+            "swapped": 598
+          },
+          "category_minus_empty_mean_iou": -0.19160129912088247,
+          "category_minus_swapped_mean_iou": -0.19281636651514167,
+          "category_bad_empty_good": 548,
+          "empty_bad_category_good": 6,
+          "category_bad_swapped_good": 558,
+          "swapped_bad_category_good": 7
+        },
+        {
+          "sequence": "bag02_indoor",
+          "valid_frames": 2758,
+          "mean_iou": {
+            "category": 0.7149052707465202,
+            "empty": 0.7077007245455906,
+            "swapped": 0.7237560538420016
+          },
+          "severe_low_frames": {
+            "category": 147,
+            "empty": 176,
+            "swapped": 104
+          },
+          "category_minus_empty_mean_iou": 0.007204546200929537,
+          "category_minus_swapped_mean_iou": -0.008850783095481362,
+          "category_bad_empty_good": 34,
+          "empty_bad_category_good": 52,
+          "category_bad_swapped_good": 53,
+          "swapped_bad_category_good": 21
+        },
+        {
+          "sequence": "ball01_wild",
+          "valid_frames": 398,
+          "mean_iou": {
+            "category": 0.7674311728764895,
+            "empty": 0.6987684214545611,
+            "swapped": 0.6823249796552869
+          },
+          "severe_low_frames": {
+            "category": 18,
+            "empty": 52,
+            "swapped": 64
+          },
+          "category_minus_empty_mean_iou": 0.06866275142192853,
+          "category_minus_swapped_mean_iou": 0.08510619322120266,
+          "category_bad_empty_good": 1,
+          "empty_bad_category_good": 34,
+          "category_bad_swapped_good": 1,
+          "swapped_bad_category_good": 45
+        },
+        {
+          "sequence": "ball06_indoor",
+          "valid_frames": 718,
+          "mean_iou": {
+            "category": 0.5363057622284081,
+            "empty": 0.5321730788768947,
+            "swapped": 0.5388607558916323
+          },
+          "severe_low_frames": {
+            "category": 208,
+            "empty": 214,
+            "swapped": 204
+          },
+          "category_minus_empty_mean_iou": 0.004132683351513292,
+          "category_minus_swapped_mean_iou": -0.0025549936632241867,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 5,
+          "category_bad_swapped_good": 2,
+          "swapped_bad_category_good": 2
+        },
+        {
+          "sequence": "ball10_wild",
+          "valid_frames": 2016,
+          "mean_iou": {
+            "category": 0.7225588245769853,
+            "empty": 0.7242924672953602,
+            "swapped": 0.09512791065560919
+          },
+          "severe_low_frames": {
+            "category": 176,
+            "empty": 172,
+            "swapped": 1774
+          },
+          "category_minus_empty_mean_iou": -0.001733642718374941,
+          "category_minus_swapped_mean_iou": 0.6274309139213758,
+          "category_bad_empty_good": 6,
+          "empty_bad_category_good": 3,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 1569
+        },
+        {
+          "sequence": "ball11_wild",
+          "valid_frames": 1534,
+          "mean_iou": {
+            "category": 0.7713699921902578,
+            "empty": 0.8047498692480213,
+            "swapped": 0.7144483922641287
+          },
+          "severe_low_frames": {
+            "category": 138,
+            "empty": 77,
+            "swapped": 245
+          },
+          "category_minus_empty_mean_iou": -0.033379877057763484,
+          "category_minus_swapped_mean_iou": 0.05692159992612911,
+          "category_bad_empty_good": 60,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 105
+        },
+        {
+          "sequence": "ball15_wild",
+          "valid_frames": 165,
+          "mean_iou": {
+            "category": 0.8730025569754134,
+            "empty": 0.8731316335779483,
+            "swapped": 0.8713413028203001
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.00012907660253521266,
+          "category_minus_swapped_mean_iou": 0.0016612541551133577,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "ball18_indoor",
+          "valid_frames": 3699,
+          "mean_iou": {
+            "category": 0.8699703692702232,
+            "empty": 0.8695386275483189,
+            "swapped": 0.8689029664986064
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.00043174172190425005,
+          "category_minus_swapped_mean_iou": 0.001067402771616801,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "ball20_indoor",
+          "valid_frames": 1508,
+          "mean_iou": {
+            "category": 0.5112335666310358,
+            "empty": 0.8091531779191221,
+            "swapped": 0.5112369394820527
+          },
+          "severe_low_frames": {
+            "category": 623,
+            "empty": 115,
+            "swapped": 623
+          },
+          "category_minus_empty_mean_iou": -0.29791961128808636,
+          "category_minus_swapped_mean_iou": -3.372851016939365e-06,
+          "category_bad_empty_good": 504,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "bandlight_indoor",
+          "valid_frames": 1190,
+          "mean_iou": {
+            "category": 0.7389554055063083,
+            "empty": 0.7409192026628795,
+            "swapped": 0.7504234974289331
+          },
+          "severe_low_frames": {
+            "category": 41,
+            "empty": 34,
+            "swapped": 31
+          },
+          "category_minus_empty_mean_iou": -0.001963797156571094,
+          "category_minus_swapped_mean_iou": -0.011468091922624822,
+          "category_bad_empty_good": 8,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 10,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "beautifullight02_indoor",
+          "valid_frames": 975,
+          "mean_iou": {
+            "category": 0.8493748934577602,
+            "empty": 0.8485256209189233,
+            "swapped": 0.8484635047437799
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0008492725388370264,
+          "category_minus_swapped_mean_iou": 0.0009113887139802502,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "book03_indoor",
+          "valid_frames": 716,
+          "mean_iou": {
+            "category": 0.053577647023832435,
+            "empty": 0.054655269323057525,
+            "swapped": 0.17331345288241906
+          },
+          "severe_low_frames": {
+            "category": 667,
+            "empty": 668,
+            "swapped": 570
+          },
+          "category_minus_empty_mean_iou": -0.0010776222992250842,
+          "category_minus_swapped_mean_iou": -0.11973580585858663,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 94,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "bottle04_indoor",
+          "valid_frames": 2161,
+          "mean_iou": {
+            "category": 0.6305664768889393,
+            "empty": 0.6347628621150143,
+            "swapped": 0.6028392997820912
+          },
+          "severe_low_frames": {
+            "category": 291,
+            "empty": 288,
+            "swapped": 381
+          },
+          "category_minus_empty_mean_iou": -0.0041963852260750376,
+          "category_minus_swapped_mean_iou": 0.02772717710684796,
+          "category_bad_empty_good": 25,
+          "empty_bad_category_good": 14,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 73
+        },
+        {
+          "sequence": "card_indoor",
+          "valid_frames": 2416,
+          "mean_iou": {
+            "category": 0.45186279797146617,
+            "empty": 0.3593007963825147,
+            "swapped": 0.44929101115478065
+          },
+          "severe_low_frames": {
+            "category": 866,
+            "empty": 1166,
+            "swapped": 902
+          },
+          "category_minus_empty_mean_iou": 0.09256200158895153,
+          "category_minus_swapped_mean_iou": 0.002571786816685575,
+          "category_bad_empty_good": 67,
+          "empty_bad_category_good": 328,
+          "category_bad_swapped_good": 10,
+          "swapped_bad_category_good": 42
+        },
+        {
+          "sequence": "cat01_indoor",
+          "valid_frames": 2952,
+          "mean_iou": {
+            "category": 0.8567277734828648,
+            "empty": 0.8475094758912062,
+            "swapped": 0.8584192529816869
+          },
+          "severe_low_frames": {
+            "category": 82,
+            "empty": 117,
+            "swapped": 80
+          },
+          "category_minus_empty_mean_iou": 0.009218297591658521,
+          "category_minus_swapped_mean_iou": -0.0016914794988220354,
+          "category_bad_empty_good": 35,
+          "empty_bad_category_good": 68,
+          "category_bad_swapped_good": 23,
+          "swapped_bad_category_good": 22
+        },
+        {
+          "sequence": "colacan03_indoor",
+          "valid_frames": 1668,
+          "mean_iou": {
+            "category": 0.13445810114492174,
+            "empty": 0.13475116993464953,
+            "swapped": 0.13486939590251662
+          },
+          "severe_low_frames": {
+            "category": 1419,
+            "empty": 1418,
+            "swapped": 1418
+          },
+          "category_minus_empty_mean_iou": -0.0002930687897277609,
+          "category_minus_swapped_mean_iou": -0.0004112947575948685,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "cube02_indoor",
+          "valid_frames": 3625,
+          "mean_iou": {
+            "category": 0.2521186439495521,
+            "empty": 0.3207144555171346,
+            "swapped": 0.3114923651128874
+          },
+          "severe_low_frames": {
+            "category": 2590,
+            "empty": 2290,
+            "swapped": 2329
+          },
+          "category_minus_empty_mean_iou": -0.0685958115675825,
+          "category_minus_swapped_mean_iou": -0.05937372116333527,
+          "category_bad_empty_good": 301,
+          "empty_bad_category_good": 5,
+          "category_bad_swapped_good": 272,
+          "swapped_bad_category_good": 13
+        },
+        {
+          "sequence": "cube03_indoor",
+          "valid_frames": 594,
+          "mean_iou": {
+            "category": 0.5925723161551205,
+            "empty": 0.583616143459651,
+            "swapped": 0.5910892017959567
+          },
+          "severe_low_frames": {
+            "category": 48,
+            "empty": 78,
+            "swapped": 68
+          },
+          "category_minus_empty_mean_iou": 0.00895617269546969,
+          "category_minus_swapped_mean_iou": 0.0014831143591638458,
+          "category_bad_empty_good": 3,
+          "empty_bad_category_good": 6,
+          "category_bad_swapped_good": 2,
+          "swapped_bad_category_good": 5
+        },
+        {
+          "sequence": "cube05_indoor",
+          "valid_frames": 2856,
+          "mean_iou": {
+            "category": 0.021936803946285447,
+            "empty": 0.02175348714362808,
+            "swapped": 0.021929719430061844
+          },
+          "severe_low_frames": {
+            "category": 2698,
+            "empty": 2696,
+            "swapped": 2697
+          },
+          "category_minus_empty_mean_iou": 0.00018331680265736605,
+          "category_minus_swapped_mean_iou": 7.084516223609074e-06,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "cup01_indoor",
+          "valid_frames": 1335,
+          "mean_iou": {
+            "category": 0.8096904165787985,
+            "empty": 0.8074424286343626,
+            "swapped": 0.8040654016087273
+          },
+          "severe_low_frames": {
+            "category": 10,
+            "empty": 9,
+            "swapped": 11
+          },
+          "category_minus_empty_mean_iou": 0.002247987944435817,
+          "category_minus_swapped_mean_iou": 0.005625014970071187,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 1,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "cup02_indoor",
+          "valid_frames": 1758,
+          "mean_iou": {
+            "category": 0.5308360399399118,
+            "empty": 0.5372278271599185,
+            "swapped": 0.566239570990955
+          },
+          "severe_low_frames": {
+            "category": 688,
+            "empty": 679,
+            "swapped": 621
+          },
+          "category_minus_empty_mean_iou": -0.006391787220006656,
+          "category_minus_swapped_mean_iou": -0.03540353105104325,
+          "category_bad_empty_good": 12,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 72,
+          "swapped_bad_category_good": 3
+        },
+        {
+          "sequence": "cup04_indoor",
+          "valid_frames": 2164,
+          "mean_iou": {
+            "category": 0.704962222351136,
+            "empty": 0.5103259557429937,
+            "swapped": 0.8268828196718994
+          },
+          "severe_low_frames": {
+            "category": 419,
+            "empty": 897,
+            "swapped": 127
+          },
+          "category_minus_empty_mean_iou": 0.19463626660814248,
+          "category_minus_swapped_mean_iou": -0.12192059732076328,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 479,
+          "category_bad_swapped_good": 290,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "cup12_indoor",
+          "valid_frames": 953,
+          "mean_iou": {
+            "category": 0.36869734498761725,
+            "empty": 0.2854636364573608,
+            "swapped": 0.3468116609134753
+          },
+          "severe_low_frames": {
+            "category": 503,
+            "empty": 609,
+            "swapped": 529
+          },
+          "category_minus_empty_mean_iou": 0.08323370853025637,
+          "category_minus_swapped_mean_iou": 0.021885684074141896,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 96,
+          "category_bad_swapped_good": 1,
+          "swapped_bad_category_good": 27
+        },
+        {
+          "sequence": "developmentboard_indoor",
+          "valid_frames": 1389,
+          "mean_iou": {
+            "category": 0.39325148764002665,
+            "empty": 0.441515527310298,
+            "swapped": 0.43517863536565465
+          },
+          "severe_low_frames": {
+            "category": 637,
+            "empty": 490,
+            "swapped": 524
+          },
+          "category_minus_empty_mean_iou": -0.04826403967027124,
+          "category_minus_swapped_mean_iou": -0.04192714772562802,
+          "category_bad_empty_good": 60,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 73,
+          "swapped_bad_category_good": 2
+        },
+        {
+          "sequence": "duck03_wild",
+          "valid_frames": 488,
+          "mean_iou": {
+            "category": 0.8480589736148393,
+            "empty": 0.8504419467703964,
+            "swapped": 0.8464934445967225
+          },
+          "severe_low_frames": {
+            "category": 3,
+            "empty": 2,
+            "swapped": 4
+          },
+          "category_minus_empty_mean_iou": -0.0023829731555571818,
+          "category_minus_swapped_mean_iou": 0.0015655290181168062,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "dumbbells01_indoor",
+          "valid_frames": 1021,
+          "mean_iou": {
+            "category": 0.7498125904606961,
+            "empty": 0.44464521957835346,
+            "swapped": 0.7648885801268865
+          },
+          "severe_low_frames": {
+            "category": 55,
+            "empty": 461,
+            "swapped": 37
+          },
+          "category_minus_empty_mean_iou": 0.3051673708823427,
+          "category_minus_swapped_mean_iou": -0.015075989666190483,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 396,
+          "category_bad_swapped_good": 19,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "earphone01_indoor",
+          "valid_frames": 1090,
+          "mean_iou": {
+            "category": 0.751962908643596,
+            "empty": 0.7436569908665087,
+            "swapped": 0.7397108690048013
+          },
+          "severe_low_frames": {
+            "category": 1,
+            "empty": 5,
+            "swapped": 1
+          },
+          "category_minus_empty_mean_iou": 0.008305917777087429,
+          "category_minus_swapped_mean_iou": 0.012252039638794685,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 3,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "file01_indoor",
+          "valid_frames": 1621,
+          "mean_iou": {
+            "category": 0.7301829041020719,
+            "empty": 0.6776335469651013,
+            "swapped": 0.717938885503491
+          },
+          "severe_low_frames": {
+            "category": 284,
+            "empty": 380,
+            "swapped": 311
+          },
+          "category_minus_empty_mean_iou": 0.05254935713697072,
+          "category_minus_swapped_mean_iou": 0.012244018598580863,
+          "category_bad_empty_good": 1,
+          "empty_bad_category_good": 96,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 25
+        },
+        {
+          "sequence": "flag_indoor",
+          "valid_frames": 1371,
+          "mean_iou": {
+            "category": 0.8533727392319855,
+            "empty": 0.8545042155185916,
+            "swapped": 0.8513235319068566
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 2
+          },
+          "category_minus_empty_mean_iou": -0.0011314762866061047,
+          "category_minus_swapped_mean_iou": 0.0020492073251288413,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 2
+        },
+        {
+          "sequence": "glass01_indoor",
+          "valid_frames": 2225,
+          "mean_iou": {
+            "category": 0.8083831024505025,
+            "empty": 0.81025663981291,
+            "swapped": 0.806134176469066
+          },
+          "severe_low_frames": {
+            "category": 10,
+            "empty": 11,
+            "swapped": 15
+          },
+          "category_minus_empty_mean_iou": -0.0018735373624074203,
+          "category_minus_swapped_mean_iou": 0.002248925981436464,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 8
+        },
+        {
+          "sequence": "hand01_indoor",
+          "valid_frames": 1169,
+          "mean_iou": {
+            "category": 0.3606159945090937,
+            "empty": 0.37933476250416354,
+            "swapped": 0.32303155218730134
+          },
+          "severe_low_frames": {
+            "category": 501,
+            "empty": 497,
+            "swapped": 610
+          },
+          "category_minus_empty_mean_iou": -0.01871876799506977,
+          "category_minus_swapped_mean_iou": 0.03758444232179244,
+          "category_bad_empty_good": 162,
+          "empty_bad_category_good": 162,
+          "category_bad_swapped_good": 171,
+          "swapped_bad_category_good": 240
+        },
+        {
+          "sequence": "human02_indoor",
+          "valid_frames": 1732,
+          "mean_iou": {
+            "category": 0.8163157884449351,
+            "empty": 0.8160962190401387,
+            "swapped": 0.8117051778727349
+          },
+          "severe_low_frames": {
+            "category": 30,
+            "empty": 28,
+            "swapped": 30
+          },
+          "category_minus_empty_mean_iou": 0.00021956940479624326,
+          "category_minus_swapped_mean_iou": 0.004610610572200244,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "lock02_indoor",
+          "valid_frames": 521,
+          "mean_iou": {
+            "category": 0.8757426553796736,
+            "empty": 0.8780354539116588,
+            "swapped": 0.8777261365542668
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0022927985319853173,
+          "category_minus_swapped_mean_iou": -0.0019834811745933884,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "mobilephone03_indoor",
+          "valid_frames": 663,
+          "mean_iou": {
+            "category": 0.6287797736957939,
+            "empty": 0.8170541872816288,
+            "swapped": 0.8176195464530531
+          },
+          "severe_low_frames": {
+            "category": 140,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.18827441358583485,
+          "category_minus_swapped_mean_iou": -0.18883977275725916,
+          "category_bad_empty_good": 140,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 140,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "notebook01_indoor",
+          "valid_frames": 1891,
+          "mean_iou": {
+            "category": 0.3545908654119518,
+            "empty": 0.354897232539029,
+            "swapped": 0.3953208780356104
+          },
+          "severe_low_frames": {
+            "category": 811,
+            "empty": 807,
+            "swapped": 809
+          },
+          "category_minus_empty_mean_iou": -0.00030636712707722465,
+          "category_minus_swapped_mean_iou": -0.04073001262365859,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 173,
+          "swapped_bad_category_good": 57
+        },
+        {
+          "sequence": "pigeon01_wild",
+          "valid_frames": 668,
+          "mean_iou": {
+            "category": 0.8136544423647908,
+            "empty": 0.8154209911442748,
+            "swapped": 0.8153108358752484
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0017665487794839816,
+          "category_minus_swapped_mean_iou": -0.0016563935104576218,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "pigeon02_wild",
+          "valid_frames": 302,
+          "mean_iou": {
+            "category": 0.19505941161324244,
+            "empty": 0.19501903464069953,
+            "swapped": 0.19374675021401785
+          },
+          "severe_low_frames": {
+            "category": 233,
+            "empty": 233,
+            "swapped": 233
+          },
+          "category_minus_empty_mean_iou": 4.037697254291208e-05,
+          "category_minus_swapped_mean_iou": 0.001312661399224606,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "pigeon04_wild",
+          "valid_frames": 143,
+          "mean_iou": {
+            "category": 0.8355483901066126,
+            "empty": 0.83425363411733,
+            "swapped": 0.8356112495075954
+          },
+          "severe_low_frames": {
+            "category": 3,
+            "empty": 3,
+            "swapped": 3
+          },
+          "category_minus_empty_mean_iou": 0.0012947559892826468,
+          "category_minus_swapped_mean_iou": -6.285940098265946e-05,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "pot_indoor",
+          "valid_frames": 817,
+          "mean_iou": {
+            "category": 0.8617409278614567,
+            "empty": 0.8754151487690609,
+            "swapped": 0.8793778761209677
+          },
+          "severe_low_frames": {
+            "category": 31,
+            "empty": 20,
+            "swapped": 16
+          },
+          "category_minus_empty_mean_iou": -0.013674220907604479,
+          "category_minus_swapped_mean_iou": -0.01763694825951127,
+          "category_bad_empty_good": 14,
+          "empty_bad_category_good": 3,
+          "category_bad_swapped_good": 15,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "roller_indoor",
+          "valid_frames": 650,
+          "mean_iou": {
+            "category": 0.8051869034114812,
+            "empty": 0.8064474513287181,
+            "swapped": 0.7390503134913965
+          },
+          "severe_low_frames": {
+            "category": 47,
+            "empty": 46,
+            "swapped": 101
+          },
+          "category_minus_empty_mean_iou": -0.0012605479172368376,
+          "category_minus_swapped_mean_iou": 0.06613658992008474,
+          "category_bad_empty_good": 1,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 45
+        },
+        {
+          "sequence": "shoes02_indoor",
+          "valid_frames": 1297,
+          "mean_iou": {
+            "category": 0.3057637631192156,
+            "empty": 0.30734567919189404,
+            "swapped": 0.3110070669763192
+          },
+          "severe_low_frames": {
+            "category": 790,
+            "empty": 787,
+            "swapped": 782
+          },
+          "category_minus_empty_mean_iou": -0.0015819160726784163,
+          "category_minus_swapped_mean_iou": -0.0052433038571035925,
+          "category_bad_empty_good": 3,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 8,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "squirrel_wild",
+          "valid_frames": 943,
+          "mean_iou": {
+            "category": 0.6857375825717728,
+            "empty": 0.7094605187555318,
+            "swapped": 0.6103083261551501
+          },
+          "severe_low_frames": {
+            "category": 175,
+            "empty": 133,
+            "swapped": 251
+          },
+          "category_minus_empty_mean_iou": -0.02372293618375907,
+          "category_minus_swapped_mean_iou": 0.07542925641662278,
+          "category_bad_empty_good": 32,
+          "empty_bad_category_good": 6,
+          "category_bad_swapped_good": 7,
+          "swapped_bad_category_good": 86
+        },
+        {
+          "sequence": "stick_indoor",
+          "valid_frames": 898,
+          "mean_iou": {
+            "category": 0.7791041807591639,
+            "empty": 0.6508871321636365,
+            "swapped": 0.7710038051353586
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 119,
+            "swapped": 11
+          },
+          "category_minus_empty_mean_iou": 0.12821704859552738,
+          "category_minus_swapped_mean_iou": 0.008100375623805356,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 113,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 7
+        },
+        {
+          "sequence": "toiletpaper01_indoor",
+          "valid_frames": 1556,
+          "mean_iou": {
+            "category": 0.8015437228356086,
+            "empty": 0.8020661477281513,
+            "swapped": 0.8007569811836766
+          },
+          "severe_low_frames": {
+            "category": 112,
+            "empty": 112,
+            "swapped": 113
+          },
+          "category_minus_empty_mean_iou": -0.0005224248925426168,
+          "category_minus_swapped_mean_iou": 0.0007867416519322438,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "toy02_indoor",
+          "valid_frames": 1140,
+          "mean_iou": {
+            "category": 0.8409528076675049,
+            "empty": 0.8366957326075585,
+            "swapped": 0.8414228694716892
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 2,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.00425707505994641,
+          "category_minus_swapped_mean_iou": -0.00047006180418426684,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "toy09_indoor",
+          "valid_frames": 1344,
+          "mean_iou": {
+            "category": 0.6442756272723752,
+            "empty": 0.6644915854962209,
+            "swapped": 0.6467570048452504
+          },
+          "severe_low_frames": {
+            "category": 304,
+            "empty": 302,
+            "swapped": 303
+          },
+          "category_minus_empty_mean_iou": -0.02021595822384573,
+          "category_minus_swapped_mean_iou": -0.002481377572875135,
+          "category_bad_empty_good": 2,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 2,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "ukulele01_indoor",
+          "valid_frames": 1608,
+          "mean_iou": {
+            "category": 0.2915682275939619,
+            "empty": 0.2943876344527817,
+            "swapped": 0.29599416149112223
+          },
+          "severe_low_frames": {
+            "category": 969,
+            "empty": 969,
+            "swapped": 968
+          },
+          "category_minus_empty_mean_iou": -0.002819406858819906,
+          "category_minus_swapped_mean_iou": -0.004425933897160355,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "yogurt_indoor",
+          "valid_frames": 1614,
+          "mean_iou": {
+            "category": 0.6151256004474455,
+            "empty": 0.6138404478486164,
+            "swapped": 0.6197539835687601
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.001285152598829155,
+          "category_minus_swapped_mean_iou": -0.004628383121314613,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        }
+      ]
+    },
+    "cdtb": {
+      "sequences": 80,
+      "total_valid_frames": 91300,
+      "bundle_sha256": "e6c5f259ad7e428add7f608e7cec4dac63c48610e7dd5a81ea6b53c894d35478",
+      "receipt_sha256": {
+        "category": "f7a803d01cf96a175729c12eb19a1196789dd2c18c56fc18745e9b420b71fe43",
+        "empty": "268e8310ce6c58ff94003708d513c88f040cf7b32ae520686ea0f342b43bdc8a",
+        "swapped": "bc2490a5b88d0a9c25c7ad5eb6c450916f8d048be176664614e5974c29b5e1fd"
+      },
+      "weighted": {
+        "category": {
+          "mean_iou": 0.7105318318791108,
+          "severe_low_frames": 10952
+        },
+        "empty": {
+          "mean_iou": 0.7065211176497208,
+          "severe_low_frames": 11381
+        },
+        "swapped": {
+          "mean_iou": 0.7222429542874573,
+          "severe_low_frames": 9900
+        }
+      },
+      "category_vs_empty": {
+        "sequences_better": 44,
+        "sequences_worse": 36,
+        "category_bad_empty_good": 1158,
+        "empty_bad_category_good": 1495,
+        "worst": [
+          {
+            "sequence": "backpack_robotarm_lab_occ",
+            "valid_frames": 1439,
+            "mean_iou": {
+              "category": 0.5217957824955453,
+              "empty": 0.8003015815825429,
+              "swapped": 0.5205325720136729
+            },
+            "severe_low_frames": {
+              "category": 525,
+              "empty": 106,
+              "swapped": 527
+            },
+            "category_minus_empty_mean_iou": -0.27850579908699763,
+            "category_minus_swapped_mean_iou": 0.001263210481872461,
+            "category_bad_empty_good": 463,
+            "empty_bad_category_good": 47,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 1
+          },
+          {
+            "sequence": "tennis_ball",
+            "valid_frames": 556,
+            "mean_iou": {
+              "category": 0.23209435730058575,
+              "empty": 0.4272573864909236,
+              "swapped": 0.4155779017385178
+            },
+            "severe_low_frames": {
+              "category": 397,
+              "empty": 266,
+              "swapped": 273
+            },
+            "category_minus_empty_mean_iou": -0.19516302919033787,
+            "category_minus_swapped_mean_iou": -0.1834835444379319,
+            "category_bad_empty_good": 125,
+            "empty_bad_category_good": 0,
+            "category_bad_swapped_good": 120,
+            "swapped_bad_category_good": 1
+          },
+          {
+            "sequence": "trashcans_room_occ_1_A",
+            "valid_frames": 679,
+            "mean_iou": {
+              "category": 0.14953783222848158,
+              "empty": 0.29631240312817325,
+              "swapped": 0.0877019094253753
+            },
+            "severe_low_frames": {
+              "category": 530,
+              "empty": 378,
+              "swapped": 616
+            },
+            "category_minus_empty_mean_iou": -0.14677457089969165,
+            "category_minus_swapped_mean_iou": 0.06183592280310629,
+            "category_bad_empty_good": 124,
+            "empty_bad_category_good": 28,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 29
+          },
+          {
+            "sequence": "trashcan_room_occ_1",
+            "valid_frames": 979,
+            "mean_iou": {
+              "category": 0.17448623864948648,
+              "empty": 0.3084943839650393,
+              "swapped": 0.17452985148921957
+            },
+            "severe_low_frames": {
+              "category": 793,
+              "empty": 618,
+              "swapped": 793
+            },
+            "category_minus_empty_mean_iou": -0.13400814531555283,
+            "category_minus_swapped_mean_iou": -4.361283973307073e-05,
+            "category_bad_empty_good": 144,
+            "empty_bad_category_good": 0,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "cartman",
+            "valid_frames": 773,
+            "mean_iou": {
+              "category": 0.4153070296435505,
+              "empty": 0.5322185074946901,
+              "swapped": 0.5323319243882364
+            },
+            "severe_low_frames": {
+              "category": 378,
+              "empty": 259,
+              "swapped": 257
+            },
+            "category_minus_empty_mean_iou": -0.11691147785113973,
+            "category_minus_swapped_mean_iou": -0.11702489474468591,
+            "category_bad_empty_good": 131,
+            "empty_bad_category_good": 11,
+            "category_bad_swapped_good": 131,
+            "swapped_bad_category_good": 11
+          },
+          {
+            "sequence": "human_entry_occ_2",
+            "valid_frames": 448,
+            "mean_iou": {
+              "category": 0.7528359143955365,
+              "empty": 0.8247419476856706,
+              "swapped": 0.7527744926746884
+            },
+            "severe_low_frames": {
+              "category": 36,
+              "empty": 0,
+              "swapped": 36
+            },
+            "category_minus_empty_mean_iou": -0.07190603329013404,
+            "category_minus_swapped_mean_iou": 6.142172084809079e-05,
+            "category_bad_empty_good": 35,
+            "empty_bad_category_good": 0,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "toy_office_occ_1",
+            "valid_frames": 670,
+            "mean_iou": {
+              "category": 0.2977703414327548,
+              "empty": 0.34548181477811424,
+              "swapped": 0.2991267073682779
+            },
+            "severe_low_frames": {
+              "category": 431,
+              "empty": 389,
+              "swapped": 431
+            },
+            "category_minus_empty_mean_iou": -0.0477114733453594,
+            "category_minus_swapped_mean_iou": -0.001356365935523048,
+            "category_bad_empty_good": 39,
+            "empty_bad_category_good": 0,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "two_tennis_balls",
+            "valid_frames": 655,
+            "mean_iou": {
+              "category": 0.611566281090053,
+              "empty": 0.6219088386805739,
+              "swapped": 0.6417184350244477
+            },
+            "severe_low_frames": {
+              "category": 169,
+              "empty": 161,
+              "swapped": 149
+            },
+            "category_minus_empty_mean_iou": -0.010342557590520818,
+            "category_minus_swapped_mean_iou": -0.030152153934394726,
+            "category_bad_empty_good": 15,
+            "empty_bad_category_good": 6,
+            "category_bad_swapped_good": 30,
+            "swapped_bad_category_good": 8
+          }
+        ],
+        "best": [
+          {
+            "sequence": "two_mugs",
+            "valid_frames": 1015,
+            "mean_iou": {
+              "category": 0.5582142544579946,
+              "empty": 0.16046614342947418,
+              "swapped": 0.5816005782856978
+            },
+            "severe_low_frames": {
+              "category": 352,
+              "empty": 805,
+              "swapped": 334
+            },
+            "category_minus_empty_mean_iou": 0.3977481110285204,
+            "category_minus_swapped_mean_iou": -0.02338632382770314,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 447,
+            "category_bad_swapped_good": 123,
+            "swapped_bad_category_good": 104
+          },
+          {
+            "sequence": "paperpunch",
+            "valid_frames": 747,
+            "mean_iou": {
+              "category": 0.7278465519582169,
+              "empty": 0.4463394162739844,
+              "swapped": 0.4417982570836092
+            },
+            "severe_low_frames": {
+              "category": 48,
+              "empty": 319,
+              "swapped": 319
+            },
+            "category_minus_empty_mean_iou": 0.2815071356842326,
+            "category_minus_swapped_mean_iou": 0.2860482948746077,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 260,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 260
+          },
+          {
+            "sequence": "boxes_backpack_room_occ_1",
+            "valid_frames": 908,
+            "mean_iou": {
+              "category": 0.7429394250125035,
+              "empty": 0.5544949161141559,
+              "swapped": 0.7319347271099169
+            },
+            "severe_low_frames": {
+              "category": 0,
+              "empty": 265,
+              "swapped": 0
+            },
+            "category_minus_empty_mean_iou": 0.18844450889834763,
+            "category_minus_swapped_mean_iou": 0.011004697902586635,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 244,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "trendNet_outside",
+            "valid_frames": 1680,
+            "mean_iou": {
+              "category": 0.8558120767829042,
+              "empty": 0.7281099208354855,
+              "swapped": 0.8482439582468376
+            },
+            "severe_low_frames": {
+              "category": 0,
+              "empty": 255,
+              "swapped": 16
+            },
+            "category_minus_empty_mean_iou": 0.1277021559474187,
+            "category_minus_swapped_mean_iou": 0.007568118536066699,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 255,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 16
+          },
+          {
+            "sequence": "cart_room_occ_1",
+            "valid_frames": 914,
+            "mean_iou": {
+              "category": 0.5808729136180782,
+              "empty": 0.490137496607337,
+              "swapped": 0.588620891094075
+            },
+            "severe_low_frames": {
+              "category": 109,
+              "empty": 261,
+              "swapped": 106
+            },
+            "category_minus_empty_mean_iou": 0.0907354170107413,
+            "category_minus_swapped_mean_iou": -0.007747977475996843,
+            "category_bad_empty_good": 1,
+            "empty_bad_category_good": 127,
+            "category_bad_swapped_good": 2,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "robot_human_corridor_noocc_1_A",
+            "valid_frames": 902,
+            "mean_iou": {
+              "category": 0.6771503055745944,
+              "empty": 0.604082445907282,
+              "swapped": 0.6837447120273421
+            },
+            "severe_low_frames": {
+              "category": 0,
+              "empty": 0,
+              "swapped": 0
+            },
+            "category_minus_empty_mean_iou": 0.07306785966731237,
+            "category_minus_swapped_mean_iou": -0.006594406452747824,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 0,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "trashcans_room_occ_1_B",
+            "valid_frames": 827,
+            "mean_iou": {
+              "category": 0.13724511136613438,
+              "empty": 0.10886315956619481,
+              "swapped": 0.11844569279060038
+            },
+            "severe_low_frames": {
+              "category": 607,
+              "empty": 723,
+              "swapped": 709
+            },
+            "category_minus_empty_mean_iou": 0.028381951799939582,
+            "category_minus_swapped_mean_iou": 0.018799418575534025,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 0,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 0
+          },
+          {
+            "sequence": "jug",
+            "valid_frames": 796,
+            "mean_iou": {
+              "category": 0.8053595339616866,
+              "empty": 0.7839445728463313,
+              "swapped": 0.7964668293429321
+            },
+            "severe_low_frames": {
+              "category": 0,
+              "empty": 20,
+              "swapped": 7
+            },
+            "category_minus_empty_mean_iou": 0.021414961115355225,
+            "category_minus_swapped_mean_iou": 0.008892704618754419,
+            "category_bad_empty_good": 0,
+            "empty_bad_category_good": 18,
+            "category_bad_swapped_good": 0,
+            "swapped_bad_category_good": 7
+          }
+        ]
+      },
+      "rows": [
+        {
+          "sequence": "XMG_outside",
+          "valid_frames": 1890,
+          "mean_iou": {
+            "category": 0.8806729920695491,
+            "empty": 0.880747254595931,
+            "swapped": 0.8802763000561614
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 1,
+            "swapped": 1
+          },
+          "category_minus_empty_mean_iou": -7.426252638188665e-05,
+          "category_minus_swapped_mean_iou": 0.0003966920133876632,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "backpack_blue",
+          "valid_frames": 917,
+          "mean_iou": {
+            "category": 0.7780587326433339,
+            "empty": 0.7873275854797849,
+            "swapped": 0.7813317063420946
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 2,
+            "swapped": 2
+          },
+          "category_minus_empty_mean_iou": -0.009268852836450903,
+          "category_minus_swapped_mean_iou": -0.0032729736987605787,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "backpack_robotarm_lab_occ",
+          "valid_frames": 1439,
+          "mean_iou": {
+            "category": 0.5217957824955453,
+            "empty": 0.8003015815825429,
+            "swapped": 0.5205325720136729
+          },
+          "severe_low_frames": {
+            "category": 525,
+            "empty": 106,
+            "swapped": 527
+          },
+          "category_minus_empty_mean_iou": -0.27850579908699763,
+          "category_minus_swapped_mean_iou": 0.001263210481872461,
+          "category_bad_empty_good": 463,
+          "empty_bad_category_good": 47,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "backpack_room_noocc_1",
+          "valid_frames": 1376,
+          "mean_iou": {
+            "category": 0.858252422052622,
+            "empty": 0.8566212608738867,
+            "swapped": 0.8566688003876664
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0016311611787351277,
+          "category_minus_swapped_mean_iou": 0.0015836216649553641,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "bag_outside",
+          "valid_frames": 2155,
+          "mean_iou": {
+            "category": 0.3553927803330564,
+            "empty": 0.35602507267294553,
+            "swapped": 0.8692360747988533
+          },
+          "severe_low_frames": {
+            "category": 1281,
+            "empty": 1281,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.000632292339889168,
+          "category_minus_swapped_mean_iou": -0.5138432944657969,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 1280,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "bicycle2_outside",
+          "valid_frames": 1170,
+          "mean_iou": {
+            "category": 0.7991206429936358,
+            "empty": 0.7948443555162759,
+            "swapped": 0.7944474257832485
+          },
+          "severe_low_frames": {
+            "category": 107,
+            "empty": 108,
+            "swapped": 113
+          },
+          "category_minus_empty_mean_iou": 0.0042762874773600345,
+          "category_minus_swapped_mean_iou": 0.004673217210387612,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 6
+        },
+        {
+          "sequence": "bicycle_outside",
+          "valid_frames": 1360,
+          "mean_iou": {
+            "category": 0.8793312378875766,
+            "empty": 0.8785482564129475,
+            "swapped": 0.8780694707504312
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0007829814746289203,
+          "category_minus_swapped_mean_iou": 0.0012617671371452858,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "bottle_box",
+          "valid_frames": 652,
+          "mean_iou": {
+            "category": 0.8057286517973108,
+            "empty": 0.8077155655459393,
+            "swapped": 0.7223531928298904
+          },
+          "severe_low_frames": {
+            "category": 25,
+            "empty": 26,
+            "swapped": 89
+          },
+          "category_minus_empty_mean_iou": -0.0019869137486284174,
+          "category_minus_swapped_mean_iou": 0.08337545896742055,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 61
+        },
+        {
+          "sequence": "bottle_room_noocc_1",
+          "valid_frames": 1253,
+          "mean_iou": {
+            "category": 0.8539789265294553,
+            "empty": 0.852012649673782,
+            "swapped": 0.8528153876624043
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0019662768556732964,
+          "category_minus_swapped_mean_iou": 0.001163538867051086,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "bottle_room_occ_1",
+          "valid_frames": 1430,
+          "mean_iou": {
+            "category": 0.8694973279848507,
+            "empty": 0.8719949620345717,
+            "swapped": 0.8721151287769688
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0024976340497211724,
+          "category_minus_swapped_mean_iou": -0.002617800792118117,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box1_outside",
+          "valid_frames": 2501,
+          "mean_iou": {
+            "category": 0.8262585225604637,
+            "empty": 0.8237382567540975,
+            "swapped": 0.8269109039918993
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.002520265806366158,
+          "category_minus_swapped_mean_iou": -0.0006523814314353165,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_1",
+          "valid_frames": 1098,
+          "mean_iou": {
+            "category": 0.7891058025954031,
+            "empty": 0.7889692731073757,
+            "swapped": 0.7886264038684007
+          },
+          "severe_low_frames": {
+            "category": 1,
+            "empty": 1,
+            "swapped": 1
+          },
+          "category_minus_empty_mean_iou": 0.00013652948802726487,
+          "category_minus_swapped_mean_iou": 0.00047939872700248254,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_10",
+          "valid_frames": 873,
+          "mean_iou": {
+            "category": 0.8025460958880339,
+            "empty": 0.8024985501600109,
+            "swapped": 0.8046115798802231
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 4.7545728023013314e-05,
+          "category_minus_swapped_mean_iou": -0.002065483992189233,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_2",
+          "valid_frames": 821,
+          "mean_iou": {
+            "category": 0.8555637643645037,
+            "empty": 0.8551111003500681,
+            "swapped": 0.8549700451263701
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0004526640144353585,
+          "category_minus_swapped_mean_iou": 0.0005937192381334767,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_3",
+          "valid_frames": 1827,
+          "mean_iou": {
+            "category": 0.7787144656849749,
+            "empty": 0.778038941014629,
+            "swapped": 0.7779660948014558
+          },
+          "severe_low_frames": {
+            "category": 14,
+            "empty": 14,
+            "swapped": 14
+          },
+          "category_minus_empty_mean_iou": 0.000675524670345979,
+          "category_minus_swapped_mean_iou": 0.0007483708835191401,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_4",
+          "valid_frames": 1225,
+          "mean_iou": {
+            "category": 0.8149525784835594,
+            "empty": 0.8132713937869593,
+            "swapped": 0.8148858283849378
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.00168118469659999,
+          "category_minus_swapped_mean_iou": 6.675009862151771e-05,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_5",
+          "valid_frames": 2190,
+          "mean_iou": {
+            "category": 0.8232687319318717,
+            "empty": 0.8236443912707171,
+            "swapped": 0.8236331358766545
+          },
+          "severe_low_frames": {
+            "category": 12,
+            "empty": 9,
+            "swapped": 12
+          },
+          "category_minus_empty_mean_iou": -0.00037565933884550106,
+          "category_minus_swapped_mean_iou": -0.0003644039447828592,
+          "category_bad_empty_good": 3,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_6",
+          "valid_frames": 1081,
+          "mean_iou": {
+            "category": 0.8620155719086412,
+            "empty": 0.8610017119073284,
+            "swapped": 0.8615129829618999
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.00101386000131278,
+          "category_minus_swapped_mean_iou": 0.0005025889467413279,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_7",
+          "valid_frames": 702,
+          "mean_iou": {
+            "category": 0.8361998209062153,
+            "empty": 0.83714271115241,
+            "swapped": 0.837300970930512
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0009428902461948342,
+          "category_minus_swapped_mean_iou": -0.0011011500242970097,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_8",
+          "valid_frames": 858,
+          "mean_iou": {
+            "category": 0.8430352599806481,
+            "empty": 0.8418747444937327,
+            "swapped": 0.8430742900068036
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0011605154869154992,
+          "category_minus_swapped_mean_iou": -3.9030026155255754e-05,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_darkroom_noocc_9",
+          "valid_frames": 758,
+          "mean_iou": {
+            "category": 0.8011456729401477,
+            "empty": 0.8027323969261153,
+            "swapped": 0.8057653529809871
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0015867239859676066,
+          "category_minus_swapped_mean_iou": -0.004619680040839341,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_humans_room_occ_1",
+          "valid_frames": 1047,
+          "mean_iou": {
+            "category": 0.8801831781750147,
+            "empty": 0.8686294074079738,
+            "swapped": 0.8806306388789714
+          },
+          "severe_low_frames": {
+            "category": 4,
+            "empty": 17,
+            "swapped": 4
+          },
+          "category_minus_empty_mean_iou": 0.011553770767040814,
+          "category_minus_swapped_mean_iou": -0.00044746070395680366,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 12,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_1",
+          "valid_frames": 876,
+          "mean_iou": {
+            "category": 0.7793828644483971,
+            "empty": 0.7776237232637976,
+            "swapped": 0.814218945025528
+          },
+          "severe_low_frames": {
+            "category": 43,
+            "empty": 40,
+            "swapped": 3
+          },
+          "category_minus_empty_mean_iou": 0.0017591411845995454,
+          "category_minus_swapped_mean_iou": -0.03483608057713098,
+          "category_bad_empty_good": 2,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 39,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_2",
+          "valid_frames": 406,
+          "mean_iou": {
+            "category": 0.8904761105393441,
+            "empty": 0.8903575343793738,
+            "swapped": 0.8911899218671114
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.00011857615997053131,
+          "category_minus_swapped_mean_iou": -0.0007138113277673949,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_3",
+          "valid_frames": 1143,
+          "mean_iou": {
+            "category": 0.8020421873908442,
+            "empty": 0.8038365661930544,
+            "swapped": 0.8046329799737817
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0017943788022102218,
+          "category_minus_swapped_mean_iou": -0.002590792582937429,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_4",
+          "valid_frames": 1266,
+          "mean_iou": {
+            "category": 0.8185320485444888,
+            "empty": 0.8186471780026551,
+            "swapped": 0.8186200414965846
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.00011512945816628298,
+          "category_minus_swapped_mean_iou": -8.799295209583447e-05,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_5",
+          "valid_frames": 1319,
+          "mean_iou": {
+            "category": 0.8620588602524392,
+            "empty": 0.861037754962828,
+            "swapped": 0.8608534262737868
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0010211052896110999,
+          "category_minus_swapped_mean_iou": 0.0012054339786522331,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_6",
+          "valid_frames": 1128,
+          "mean_iou": {
+            "category": 0.8776346120726941,
+            "empty": 0.8776632956846638,
+            "swapped": 0.8773145280562334
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -2.8683611969800674e-05,
+          "category_minus_swapped_mean_iou": 0.0003200840164607093,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_7",
+          "valid_frames": 1353,
+          "mean_iou": {
+            "category": 0.8395153835815707,
+            "empty": 0.8395189097672272,
+            "swapped": 0.8384876585132268
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -3.5261856564368245e-06,
+          "category_minus_swapped_mean_iou": 0.001027725068343881,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_8",
+          "valid_frames": 1058,
+          "mean_iou": {
+            "category": 0.8344570671278776,
+            "empty": 0.8357066583158503,
+            "swapped": 0.8364787966053221
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0012495911879726676,
+          "category_minus_swapped_mean_iou": -0.0020217294774445655,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_noocc_9",
+          "valid_frames": 1288,
+          "mean_iou": {
+            "category": 0.8259529134024753,
+            "empty": 0.8163463520300664,
+            "swapped": 0.8272874729986646
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.009606561372408961,
+          "category_minus_swapped_mean_iou": -0.0013345595961894027,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_occ_1",
+          "valid_frames": 1414,
+          "mean_iou": {
+            "category": 0.4957811489285865,
+            "empty": 0.49550401024538326,
+            "swapped": 0.49596866921391636
+          },
+          "severe_low_frames": {
+            "category": 542,
+            "empty": 543,
+            "swapped": 543
+          },
+          "category_minus_empty_mean_iou": 0.0002771386832031808,
+          "category_minus_swapped_mean_iou": -0.00018752028532983346,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "box_room_occ_2",
+          "valid_frames": 1188,
+          "mean_iou": {
+            "category": 0.4216269212359561,
+            "empty": 0.42051839717072415,
+            "swapped": 0.4213756334651122
+          },
+          "severe_low_frames": {
+            "category": 633,
+            "empty": 633,
+            "swapped": 633
+          },
+          "category_minus_empty_mean_iou": 0.0011085240652318527,
+          "category_minus_swapped_mean_iou": 0.00025128777084394683,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "boxes_backpack_room_occ_1",
+          "valid_frames": 908,
+          "mean_iou": {
+            "category": 0.7429394250125035,
+            "empty": 0.5544949161141559,
+            "swapped": 0.7319347271099169
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 265,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.18844450889834763,
+          "category_minus_swapped_mean_iou": 0.011004697902586635,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 244,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "boxes_humans_room_occ_1",
+          "valid_frames": 1854,
+          "mean_iou": {
+            "category": 0.7221033066668814,
+            "empty": 0.7224508957100714,
+            "swapped": 0.7081825080806285
+          },
+          "severe_low_frames": {
+            "category": 136,
+            "empty": 127,
+            "swapped": 158
+          },
+          "category_minus_empty_mean_iou": -0.0003475890431898675,
+          "category_minus_swapped_mean_iou": 0.01392079858625286,
+          "category_bad_empty_good": 31,
+          "empty_bad_category_good": 19,
+          "category_bad_swapped_good": 18,
+          "swapped_bad_category_good": 37
+        },
+        {
+          "sequence": "boxes_office_occ_1",
+          "valid_frames": 1237,
+          "mean_iou": {
+            "category": 0.5114844028544638,
+            "empty": 0.5106579433486238,
+            "swapped": 0.4783401491184989
+          },
+          "severe_low_frames": {
+            "category": 364,
+            "empty": 363,
+            "swapped": 412
+          },
+          "category_minus_empty_mean_iou": 0.0008264595058400518,
+          "category_minus_swapped_mean_iou": 0.03314425373596483,
+          "category_bad_empty_good": 1,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 43
+        },
+        {
+          "sequence": "boxes_room_occ_1",
+          "valid_frames": 1237,
+          "mean_iou": {
+            "category": 0.8267141923558127,
+            "empty": 0.8309919254354576,
+            "swapped": 0.8613479983176683
+          },
+          "severe_low_frames": {
+            "category": 40,
+            "empty": 38,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0042777330796449145,
+          "category_minus_swapped_mean_iou": -0.03463380596185552,
+          "category_bad_empty_good": 3,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 40,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "cart_room_occ_1",
+          "valid_frames": 914,
+          "mean_iou": {
+            "category": 0.5808729136180782,
+            "empty": 0.490137496607337,
+            "swapped": 0.588620891094075
+          },
+          "severe_low_frames": {
+            "category": 109,
+            "empty": 261,
+            "swapped": 106
+          },
+          "category_minus_empty_mean_iou": 0.0907354170107413,
+          "category_minus_swapped_mean_iou": -0.007747977475996843,
+          "category_bad_empty_good": 1,
+          "empty_bad_category_good": 127,
+          "category_bad_swapped_good": 2,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "cartman",
+          "valid_frames": 773,
+          "mean_iou": {
+            "category": 0.4153070296435505,
+            "empty": 0.5322185074946901,
+            "swapped": 0.5323319243882364
+          },
+          "severe_low_frames": {
+            "category": 378,
+            "empty": 259,
+            "swapped": 257
+          },
+          "category_minus_empty_mean_iou": -0.11691147785113973,
+          "category_minus_swapped_mean_iou": -0.11702489474468591,
+          "category_bad_empty_good": 131,
+          "empty_bad_category_good": 11,
+          "category_bad_swapped_good": 131,
+          "swapped_bad_category_good": 11
+        },
+        {
+          "sequence": "cartman_robotarm_lab_noocc",
+          "valid_frames": 2058,
+          "mean_iou": {
+            "category": 0.8124543585906254,
+            "empty": 0.8113164455305947,
+            "swapped": 0.8141094708334395
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0011379130600308114,
+          "category_minus_swapped_mean_iou": -0.001655112242814132,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "case",
+          "valid_frames": 848,
+          "mean_iou": {
+            "category": 0.358242954730302,
+            "empty": 0.35957762479283484,
+            "swapped": 0.3592092710790255
+          },
+          "severe_low_frames": {
+            "category": 493,
+            "empty": 493,
+            "swapped": 493
+          },
+          "category_minus_empty_mean_iou": -0.0013346700625329502,
+          "category_minus_swapped_mean_iou": -0.0009663163487235539,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "container_room_noocc_1",
+          "valid_frames": 1644,
+          "mean_iou": {
+            "category": 0.8738639212052116,
+            "empty": 0.8735850442871027,
+            "swapped": 0.8736485787485069
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0002788769181088566,
+          "category_minus_swapped_mean_iou": 0.00021534245670461327,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "dog_outside",
+          "valid_frames": 875,
+          "mean_iou": {
+            "category": 0.7739899560584641,
+            "empty": 0.7738846002077115,
+            "swapped": 0.7744543607969699
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.00010535585075263246,
+          "category_minus_swapped_mean_iou": -0.000464404738505915,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "human_entry_occ_1",
+          "valid_frames": 440,
+          "mean_iou": {
+            "category": 0.16055795141624432,
+            "empty": 0.16116518074457434,
+            "swapped": 0.1603603590036334
+          },
+          "severe_low_frames": {
+            "category": 344,
+            "empty": 344,
+            "swapped": 350
+          },
+          "category_minus_empty_mean_iou": -0.0006072293283300303,
+          "category_minus_swapped_mean_iou": 0.00019759241261093025,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "human_entry_occ_2",
+          "valid_frames": 448,
+          "mean_iou": {
+            "category": 0.7528359143955365,
+            "empty": 0.8247419476856706,
+            "swapped": 0.7527744926746884
+          },
+          "severe_low_frames": {
+            "category": 36,
+            "empty": 0,
+            "swapped": 36
+          },
+          "category_minus_empty_mean_iou": -0.07190603329013404,
+          "category_minus_swapped_mean_iou": 6.142172084809079e-05,
+          "category_bad_empty_good": 35,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "humans_corridor_occ_1",
+          "valid_frames": 638,
+          "mean_iou": {
+            "category": 0.7245449315678052,
+            "empty": 0.733840862582173,
+            "swapped": 0.7251241203649283
+          },
+          "severe_low_frames": {
+            "category": 12,
+            "empty": 3,
+            "swapped": 12
+          },
+          "category_minus_empty_mean_iou": -0.009295931014367648,
+          "category_minus_swapped_mean_iou": -0.000579188797122942,
+          "category_bad_empty_good": 9,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "humans_corridor_occ_2_A",
+          "valid_frames": 693,
+          "mean_iou": {
+            "category": 0.7691971271000908,
+            "empty": 0.7616254961214468,
+            "swapped": 0.7597272893336663
+          },
+          "severe_low_frames": {
+            "category": 5,
+            "empty": 14,
+            "swapped": 17
+          },
+          "category_minus_empty_mean_iou": 0.007571630978643859,
+          "category_minus_swapped_mean_iou": 0.009469837766424506,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 7,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 9
+        },
+        {
+          "sequence": "humans_corridor_occ_2_B",
+          "valid_frames": 874,
+          "mean_iou": {
+            "category": 0.7228679191916488,
+            "empty": 0.7212365228825721,
+            "swapped": 0.7164995979771952
+          },
+          "severe_low_frames": {
+            "category": 53,
+            "empty": 55,
+            "swapped": 62
+          },
+          "category_minus_empty_mean_iou": 0.0016313963090767367,
+          "category_minus_swapped_mean_iou": 0.0063683212144536915,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 1,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 8
+        },
+        {
+          "sequence": "humans_longcorridor_staricase_occ_1",
+          "valid_frames": 936,
+          "mean_iou": {
+            "category": 0.6864403165004495,
+            "empty": 0.6861431485465013,
+            "swapped": 0.685725109154413
+          },
+          "severe_low_frames": {
+            "category": 141,
+            "empty": 141,
+            "swapped": 142
+          },
+          "category_minus_empty_mean_iou": 0.00029716795394835535,
+          "category_minus_swapped_mean_iou": 0.0007152073460366524,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "humans_shirts_room_occ_1_A",
+          "valid_frames": 1450,
+          "mean_iou": {
+            "category": 0.7274124772125027,
+            "empty": 0.7336078938158898,
+            "swapped": 0.7325614102234633
+          },
+          "severe_low_frames": {
+            "category": 14,
+            "empty": 1,
+            "swapped": 6
+          },
+          "category_minus_empty_mean_iou": -0.006195416603387044,
+          "category_minus_swapped_mean_iou": -0.005148933010960578,
+          "category_bad_empty_good": 9,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 8,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "humans_shirts_room_occ_1_B",
+          "valid_frames": 1111,
+          "mean_iou": {
+            "category": 0.5412684145506962,
+            "empty": 0.5430023558838274,
+            "swapped": 0.545582007700295
+          },
+          "severe_low_frames": {
+            "category": 291,
+            "empty": 290,
+            "swapped": 284
+          },
+          "category_minus_empty_mean_iou": -0.0017339413331311795,
+          "category_minus_swapped_mean_iou": -0.004313593149598691,
+          "category_bad_empty_good": 13,
+          "empty_bad_category_good": 9,
+          "category_bad_swapped_good": 8,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "jug",
+          "valid_frames": 796,
+          "mean_iou": {
+            "category": 0.8053595339616866,
+            "empty": 0.7839445728463313,
+            "swapped": 0.7964668293429321
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 20,
+            "swapped": 7
+          },
+          "category_minus_empty_mean_iou": 0.021414961115355225,
+          "category_minus_swapped_mean_iou": 0.008892704618754419,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 18,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 7
+        },
+        {
+          "sequence": "mug_ankara",
+          "valid_frames": 754,
+          "mean_iou": {
+            "category": 0.33627416348346506,
+            "empty": 0.3364883505609107,
+            "swapped": 0.38398667212107884
+          },
+          "severe_low_frames": {
+            "category": 477,
+            "empty": 477,
+            "swapped": 432
+          },
+          "category_minus_empty_mean_iou": -0.000214187077445591,
+          "category_minus_swapped_mean_iou": -0.04771250863761378,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 43,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "mug_gs",
+          "valid_frames": 870,
+          "mean_iou": {
+            "category": 0.5801448793469033,
+            "empty": 0.587157515653246,
+            "swapped": 0.5905390685513573
+          },
+          "severe_low_frames": {
+            "category": 275,
+            "empty": 271,
+            "swapped": 269
+          },
+          "category_minus_empty_mean_iou": -0.007012636306342792,
+          "category_minus_swapped_mean_iou": -0.010394189204453914,
+          "category_bad_empty_good": 3,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 6,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "paperpunch",
+          "valid_frames": 747,
+          "mean_iou": {
+            "category": 0.7278465519582169,
+            "empty": 0.4463394162739844,
+            "swapped": 0.4417982570836092
+          },
+          "severe_low_frames": {
+            "category": 48,
+            "empty": 319,
+            "swapped": 319
+          },
+          "category_minus_empty_mean_iou": 0.2815071356842326,
+          "category_minus_swapped_mean_iou": 0.2860482948746077,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 260,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 260
+        },
+        {
+          "sequence": "person_outside",
+          "valid_frames": 1365,
+          "mean_iou": {
+            "category": 0.5144059997660928,
+            "empty": 0.5143037925450851,
+            "swapped": 0.5145302630539395
+          },
+          "severe_low_frames": {
+            "category": 458,
+            "empty": 458,
+            "swapped": 458
+          },
+          "category_minus_empty_mean_iou": 0.0001022072210077719,
+          "category_minus_swapped_mean_iou": -0.00012426328784666003,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "robot_corridor_noocc_1",
+          "valid_frames": 632,
+          "mean_iou": {
+            "category": 0.887086973044263,
+            "empty": 0.8867938757018778,
+            "swapped": 0.8869463051476153
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.00029309734238512647,
+          "category_minus_swapped_mean_iou": 0.0001406678966477261,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "robot_corridor_occ_1",
+          "valid_frames": 1521,
+          "mean_iou": {
+            "category": 0.7472178430825225,
+            "empty": 0.746715009215117,
+            "swapped": 0.746736322488899
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0005028338674054035,
+          "category_minus_swapped_mean_iou": 0.0004815205936235125,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "robot_human_corridor_noocc_1_A",
+          "valid_frames": 902,
+          "mean_iou": {
+            "category": 0.6771503055745944,
+            "empty": 0.604082445907282,
+            "swapped": 0.6837447120273421
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.07306785966731237,
+          "category_minus_swapped_mean_iou": -0.006594406452747824,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "robot_human_corridor_noocc_1_B",
+          "valid_frames": 902,
+          "mean_iou": {
+            "category": 0.5612224130953383,
+            "empty": 0.5695303179363852,
+            "swapped": 0.5662700387298383
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.00830790484104695,
+          "category_minus_swapped_mean_iou": -0.005047625634500016,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "robot_human_corridor_noocc_2",
+          "valid_frames": 972,
+          "mean_iou": {
+            "category": 0.7650153564187513,
+            "empty": 0.7593740499552072,
+            "swapped": 0.7639262867260997
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.005641306463543909,
+          "category_minus_swapped_mean_iou": 0.00108906969265145,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "robot_human_corridor_noocc_3_A",
+          "valid_frames": 1524,
+          "mean_iou": {
+            "category": 0.5800167392375425,
+            "empty": 0.5742045776854137,
+            "swapped": 0.5764279587979475
+          },
+          "severe_low_frames": {
+            "category": 1,
+            "empty": 2,
+            "swapped": 1
+          },
+          "category_minus_empty_mean_iou": 0.005812161552128761,
+          "category_minus_swapped_mean_iou": 0.003588780439594967,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "robot_human_corridor_noocc_3_B",
+          "valid_frames": 1027,
+          "mean_iou": {
+            "category": 0.5902499623238039,
+            "empty": 0.5912070606815043,
+            "swapped": 0.5878237602676649
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0009570983577003479,
+          "category_minus_swapped_mean_iou": 0.0024262020561390206,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "robot_lab_occ",
+          "valid_frames": 1631,
+          "mean_iou": {
+            "category": 0.8664694742146285,
+            "empty": 0.8614034388815264,
+            "swapped": 0.8615260772349399
+          },
+          "severe_low_frames": {
+            "category": 3,
+            "empty": 2,
+            "swapped": 7
+          },
+          "category_minus_empty_mean_iou": 0.0050660353331021275,
+          "category_minus_swapped_mean_iou": 0.004943396979688435,
+          "category_bad_empty_good": 1,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 4
+        },
+        {
+          "sequence": "teapot",
+          "valid_frames": 857,
+          "mean_iou": {
+            "category": 0.8631198731244787,
+            "empty": 0.8651799233725102,
+            "swapped": 0.8643530316697496
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.002060050248031341,
+          "category_minus_swapped_mean_iou": -0.0012331585452708207,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "tennis_ball",
+          "valid_frames": 556,
+          "mean_iou": {
+            "category": 0.23209435730058575,
+            "empty": 0.4272573864909236,
+            "swapped": 0.4155779017385178
+          },
+          "severe_low_frames": {
+            "category": 397,
+            "empty": 266,
+            "swapped": 273
+          },
+          "category_minus_empty_mean_iou": -0.19516302919033787,
+          "category_minus_swapped_mean_iou": -0.1834835444379319,
+          "category_bad_empty_good": 125,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 120,
+          "swapped_bad_category_good": 1
+        },
+        {
+          "sequence": "thermos_office_noocc_1",
+          "valid_frames": 971,
+          "mean_iou": {
+            "category": 0.8150369229121268,
+            "empty": 0.8138784823835516,
+            "swapped": 0.8503028885337308
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.0011584405285750545,
+          "category_minus_swapped_mean_iou": -0.03526596562160414,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "thermos_office_occ_1",
+          "valid_frames": 1314,
+          "mean_iou": {
+            "category": 0.4178657571149369,
+            "empty": 0.41737081761291256,
+            "swapped": 0.41648054392008327
+          },
+          "severe_low_frames": {
+            "category": 595,
+            "empty": 594,
+            "swapped": 600
+          },
+          "category_minus_empty_mean_iou": 0.0004949395020243575,
+          "category_minus_swapped_mean_iou": 0.0013852131948536319,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 4
+        },
+        {
+          "sequence": "toy_office_noocc_1",
+          "valid_frames": 986,
+          "mean_iou": {
+            "category": 0.7000357031080645,
+            "empty": 0.7001509686683701,
+            "swapped": 0.6996055598826146
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.00011526556030563231,
+          "category_minus_swapped_mean_iou": 0.000430143225449821,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "toy_office_occ_1",
+          "valid_frames": 670,
+          "mean_iou": {
+            "category": 0.2977703414327548,
+            "empty": 0.34548181477811424,
+            "swapped": 0.2991267073682779
+          },
+          "severe_low_frames": {
+            "category": 431,
+            "empty": 389,
+            "swapped": 431
+          },
+          "category_minus_empty_mean_iou": -0.0477114733453594,
+          "category_minus_swapped_mean_iou": -0.001356365935523048,
+          "category_bad_empty_good": 39,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "trashcan_room_occ_1",
+          "valid_frames": 979,
+          "mean_iou": {
+            "category": 0.17448623864948648,
+            "empty": 0.3084943839650393,
+            "swapped": 0.17452985148921957
+          },
+          "severe_low_frames": {
+            "category": 793,
+            "empty": 618,
+            "swapped": 793
+          },
+          "category_minus_empty_mean_iou": -0.13400814531555283,
+          "category_minus_swapped_mean_iou": -4.361283973307073e-05,
+          "category_bad_empty_good": 144,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "trashcans_room_occ_1_A",
+          "valid_frames": 679,
+          "mean_iou": {
+            "category": 0.14953783222848158,
+            "empty": 0.29631240312817325,
+            "swapped": 0.0877019094253753
+          },
+          "severe_low_frames": {
+            "category": 530,
+            "empty": 378,
+            "swapped": 616
+          },
+          "category_minus_empty_mean_iou": -0.14677457089969165,
+          "category_minus_swapped_mean_iou": 0.06183592280310629,
+          "category_bad_empty_good": 124,
+          "empty_bad_category_good": 28,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 29
+        },
+        {
+          "sequence": "trashcans_room_occ_1_B",
+          "valid_frames": 827,
+          "mean_iou": {
+            "category": 0.13724511136613438,
+            "empty": 0.10886315956619481,
+            "swapped": 0.11844569279060038
+          },
+          "severe_low_frames": {
+            "category": 607,
+            "empty": 723,
+            "swapped": 709
+          },
+          "category_minus_empty_mean_iou": 0.028381951799939582,
+          "category_minus_swapped_mean_iou": 0.018799418575534025,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "trendNetBag_outside",
+          "valid_frames": 1614,
+          "mean_iou": {
+            "category": 0.7948498671935286,
+            "empty": 0.795739762646166,
+            "swapped": 0.7947206410172531
+          },
+          "severe_low_frames": {
+            "category": 127,
+            "empty": 128,
+            "swapped": 127
+          },
+          "category_minus_empty_mean_iou": -0.000889895452637382,
+          "category_minus_swapped_mean_iou": 0.00012922617627532151,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "trendNet_outside",
+          "valid_frames": 1680,
+          "mean_iou": {
+            "category": 0.8558120767829042,
+            "empty": 0.7281099208354855,
+            "swapped": 0.8482439582468376
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 255,
+            "swapped": 16
+          },
+          "category_minus_empty_mean_iou": 0.1277021559474187,
+          "category_minus_swapped_mean_iou": 0.007568118536066699,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 255,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 16
+        },
+        {
+          "sequence": "trophy_outside",
+          "valid_frames": 1926,
+          "mean_iou": {
+            "category": 0.740978554400679,
+            "empty": 0.7268002876339228,
+            "swapped": 0.7258365196001256
+          },
+          "severe_low_frames": {
+            "category": 86,
+            "empty": 80,
+            "swapped": 82
+          },
+          "category_minus_empty_mean_iou": 0.014178266766756115,
+          "category_minus_swapped_mean_iou": 0.015142034800553388,
+          "category_bad_empty_good": 6,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 4,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "trophy_room_noocc_1",
+          "valid_frames": 1406,
+          "mean_iou": {
+            "category": 0.8308071499972041,
+            "empty": 0.8095498948973964,
+            "swapped": 0.8432892149558744
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": 0.021257255099807693,
+          "category_minus_swapped_mean_iou": -0.012482064958670457,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "trophy_room_occ_1",
+          "valid_frames": 1522,
+          "mean_iou": {
+            "category": 0.8333915505543779,
+            "empty": 0.8358187315338161,
+            "swapped": 0.8337112338004897
+          },
+          "severe_low_frames": {
+            "category": 0,
+            "empty": 0,
+            "swapped": 0
+          },
+          "category_minus_empty_mean_iou": -0.0024271809794381765,
+          "category_minus_swapped_mean_iou": -0.00031968324611188654,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 0,
+          "category_bad_swapped_good": 0,
+          "swapped_bad_category_good": 0
+        },
+        {
+          "sequence": "two_mugs",
+          "valid_frames": 1015,
+          "mean_iou": {
+            "category": 0.5582142544579946,
+            "empty": 0.16046614342947418,
+            "swapped": 0.5816005782856978
+          },
+          "severe_low_frames": {
+            "category": 352,
+            "empty": 805,
+            "swapped": 334
+          },
+          "category_minus_empty_mean_iou": 0.3977481110285204,
+          "category_minus_swapped_mean_iou": -0.02338632382770314,
+          "category_bad_empty_good": 0,
+          "empty_bad_category_good": 447,
+          "category_bad_swapped_good": 123,
+          "swapped_bad_category_good": 104
+        },
+        {
+          "sequence": "two_tennis_balls",
+          "valid_frames": 655,
+          "mean_iou": {
+            "category": 0.611566281090053,
+            "empty": 0.6219088386805739,
+            "swapped": 0.6417184350244477
+          },
+          "severe_low_frames": {
+            "category": 169,
+            "empty": 161,
+            "swapped": 149
+          },
+          "category_minus_empty_mean_iou": -0.010342557590520818,
+          "category_minus_swapped_mean_iou": -0.030152153934394726,
+          "category_bad_empty_good": 15,
+          "empty_bad_category_good": 6,
+          "category_bad_swapped_good": 30,
+          "swapped_bad_category_good": 8
+        }
+      ]
+    }
+  },
+  "no_model_training": true,
+  "no_runtime_policy_change": true,
+  "scope": "completed external OPE trajectory diagnosis, not a new deployable metric"
+}
