@@ -23504,3 +23504,8 @@ M89-Candidate九项未达标后，先检验新权重的具体文字作用，不�
 根据§5.273的57个Candidate新增失败anchor，沿用已通过的M82只读回放实现，重新绑定M89-Candidate的VOT final权重、Category bank、原始TraX轨迹及同一失败门。CPU准备完成：57个anchor、**25,656次计划重放调用**，双GPU均衡为12,819/12,837次；在每个确认失败段前10帧和后10帧读取一次，共**1,140个同状态位置**。封存每个anchor初始化框和Category已保存轨迹前缀，运行时只有Category提交bbox/query/模板；Empty与未适配Head只读取同一当前状态。计划在正式输出图封存后才读GT，分别检查全部256个密集框的合格候选容量、raw/Hann/Empty/native峰及评分—几何交叉读出。所有替代框都是单帧反事实，不直接算作已救回轨迹。
 
 CPU准备及Python/bash语法检查通过，spec SHA256=`99b13111a72c8d2ad215e78b5e8db9aaf0e353242df4999d06c9c8801001d373`，来源文件哈希绑定一致。**GPU回放尚未启动，不能填写候选容量或救回比例。**两个GPU正运行M89同权重Empty/Swapped OPE；待其完整完成、两卡空闲后先跑单anchor前检，核对封存bbox/score逐值复现与影子状态不提交，再运行双分片。新目录`projects/sttrack_lachtt_v1/diagnostics/m89_vot_readout_20260928/`保存准备脚本、spec和既定运行入口。该后验外部诊断只用于找出可训练机制，不以这57个测试anchor选阈值或权重。
+
+
+## §5.275 M89 VOT同状态候选诊断已排队，依赖文字对照完成（2026-09-28 00:17北京时间）
+
+在§5.274已封存的57-anchor、1140读出位置spec上，启动只占CPU的依赖队列PID 236486。队列每300秒检查现有M89同权重OPE内容对照的`complete.exit`；只有该对照全部四项跟踪和分析成功后，才运行单anchor前检，再以GPU0/GPU1并行读取两个57-anchor分片，最终CPU分析候选容量。既定`run_readout.sh`会核对前检的Category bbox/score与正式封存轨迹一致、反事实分支不提交状态；任何失败停在对应日志，不自动改权重、容差或重启。当前只是**等待依赖完成**，并未占用GPU或生成候选诊断结果。队列入口与`queue_launch.json`保存在`m89_vot_readout_20260928/`；两GPU仍由文字内容评测使用，后续按其预计完成时间附近查看正式指标和队列状态。
