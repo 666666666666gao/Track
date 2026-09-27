@@ -1,0 +1,548 @@
+{
+  "status": "complete_read_only_region_evidence_probe",
+  "scope": "DepthTrack Train fit130 first frames",
+  "seed": 2027,
+  "model": "/root/autodl-tmp/qwen/Qwen2.5-VL-3B-Instruct",
+  "dtype": "bfloat16",
+  "yes_token": 9454,
+  "no_token": 2753,
+  "model_input": "red-box full image plus target crop",
+  "conditions": [
+    "original",
+    "target_full_masked",
+    "unrelated_full_masked",
+    "target_both_masked"
+  ],
+  "mask_fill_rgb": [
+    128,
+    128,
+    128
+  ],
+  "records": [
+    {
+      "audit_id": "002",
+      "sequence": "bag03_indoor",
+      "image_sha256": "647f2b4d89dfc1fc3ce6d7564b8d833997f23ca83b6c96c056fef9de5561a2c1",
+      "auto_category": "case",
+      "target_box": [
+        257,
+        107,
+        386,
+        232
+      ],
+      "unrelated_mask_box": [
+        0,
+        235,
+        129,
+        360
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 2.5,
+          "yes_two_token_probability": 0.9241418242454529,
+          "input_tokens": 500
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 1.0,
+          "yes_two_token_probability": 0.7310585379600525,
+          "input_tokens": 500
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 2.375,
+          "yes_two_token_probability": 0.9149009585380554,
+          "input_tokens": 500
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": 0.125,
+          "yes_two_token_probability": 0.531209409236908,
+          "input_tokens": 500
+        }
+      },
+      "target_full_minus_original": -1.5,
+      "unrelated_full_minus_original": -0.125,
+      "target_both_minus_original": -2.375
+    },
+    {
+      "audit_id": "005",
+      "sequence": "ball02_indoor",
+      "image_sha256": "da5d30a40ff5f9af4b9bef13f316a9a7f411d99d06cad252d81eba8d192ecbf3",
+      "auto_category": "billiard ball",
+      "target_box": [
+        444,
+        40,
+        499,
+        92
+      ],
+      "unrelated_mask_box": [
+        0,
+        308,
+        55,
+        360
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 2.5,
+          "yes_two_token_probability": 0.9241418242454529,
+          "input_tokens": 502
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 0.75,
+          "yes_two_token_probability": 0.6791787147521973,
+          "input_tokens": 502
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 2.5,
+          "yes_two_token_probability": 0.9241418242454529,
+          "input_tokens": 502
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": -0.625,
+          "yes_two_token_probability": 0.3486451506614685,
+          "input_tokens": 502
+        }
+      },
+      "target_full_minus_original": -1.75,
+      "unrelated_full_minus_original": 0.0,
+      "target_both_minus_original": -3.125
+    },
+    {
+      "audit_id": "006",
+      "sequence": "ball03_indoor",
+      "image_sha256": "e37790e2f2bdcc61b2ab831989fa27a7a3e27911a3f167e0279afe737c4a95b1",
+      "auto_category": "apple",
+      "target_box": [
+        430,
+        104,
+        466,
+        141
+      ],
+      "unrelated_mask_box": [
+        0,
+        323,
+        36,
+        360
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 1.75,
+          "yes_two_token_probability": 0.851952850818634,
+          "input_tokens": 500
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": -0.75,
+          "yes_two_token_probability": 0.3208213150501251,
+          "input_tokens": 500
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 1.75,
+          "yes_two_token_probability": 0.851952850818634,
+          "input_tokens": 500
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": -3.75,
+          "yes_two_token_probability": 0.022977370768785477,
+          "input_tokens": 500
+        }
+      },
+      "target_full_minus_original": -2.5,
+      "unrelated_full_minus_original": 0.0,
+      "target_both_minus_original": -5.5
+    },
+    {
+      "audit_id": "007",
+      "sequence": "ball04_indoor",
+      "image_sha256": "de4fd6ded288540e5c09e94ec9ad9f078d59d28457975c0eedfae2f42cbc6278",
+      "auto_category": "ball",
+      "target_box": [
+        214,
+        132,
+        244,
+        161
+      ],
+      "unrelated_mask_box": [
+        610,
+        331,
+        640,
+        360
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 2.625,
+          "yes_two_token_probability": 0.9324532747268677,
+          "input_tokens": 500
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 0.75,
+          "yes_two_token_probability": 0.6791787147521973,
+          "input_tokens": 500
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 2.625,
+          "yes_two_token_probability": 0.9324532747268677,
+          "input_tokens": 500
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": -1.5,
+          "yes_two_token_probability": 0.18242551386356354,
+          "input_tokens": 500
+        }
+      },
+      "target_full_minus_original": -1.875,
+      "unrelated_full_minus_original": 0.0,
+      "target_both_minus_original": -4.125
+    },
+    {
+      "audit_id": "010",
+      "sequence": "ball08_wild",
+      "image_sha256": "fee0f7b5bd0fbf4f514e2d0ec46b76177b977092a96c90bb9b7d4d29e37ae735",
+      "auto_category": "basketball",
+      "target_box": [
+        173,
+        75,
+        222,
+        126
+      ],
+      "unrelated_mask_box": [
+        591,
+        309,
+        640,
+        360
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 2.375,
+          "yes_two_token_probability": 0.9149009585380554,
+          "input_tokens": 500
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 0.75,
+          "yes_two_token_probability": 0.6791787147521973,
+          "input_tokens": 500
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 2.375,
+          "yes_two_token_probability": 0.9149009585380554,
+          "input_tokens": 500
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": 0.625,
+          "yes_two_token_probability": 0.6513549089431763,
+          "input_tokens": 500
+        }
+      },
+      "target_full_minus_original": -1.625,
+      "unrelated_full_minus_original": 0.0,
+      "target_both_minus_original": -1.75
+    },
+    {
+      "audit_id": "011",
+      "sequence": "ball09_wild",
+      "image_sha256": "95eb21643a4f506f2073d6168850ccdff9facb92dc8e2d96a81b2f2b9362585b",
+      "auto_category": "basketball",
+      "target_box": [
+        478,
+        193,
+        529,
+        230
+      ],
+      "unrelated_mask_box": [
+        0,
+        0,
+        51,
+        37
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 1.0,
+          "yes_two_token_probability": 0.7310585379600525,
+          "input_tokens": 496
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 1.125,
+          "yes_two_token_probability": 0.7549149990081787,
+          "input_tokens": 496
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 0.75,
+          "yes_two_token_probability": 0.6791787147521973,
+          "input_tokens": 496
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": 0.75,
+          "yes_two_token_probability": 0.6791787147521973,
+          "input_tokens": 496
+        }
+      },
+      "target_full_minus_original": 0.125,
+      "unrelated_full_minus_original": -0.25,
+      "target_both_minus_original": -0.25
+    },
+    {
+      "audit_id": "012",
+      "sequence": "ball12_wild",
+      "image_sha256": "0bc1a78457b29fdbbb9e50adabcb2be9ca70b20c94dd099c3da6a69285b56e4a",
+      "auto_category": "soccer ball",
+      "target_box": [
+        371,
+        189,
+        423,
+        240
+      ],
+      "unrelated_mask_box": [
+        0,
+        0,
+        52,
+        51
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 2.125,
+          "yes_two_token_probability": 0.8933094143867493,
+          "input_tokens": 501
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 1.25,
+          "yes_two_token_probability": 0.7772998809814453,
+          "input_tokens": 501
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 2.25,
+          "yes_two_token_probability": 0.9046505093574524,
+          "input_tokens": 501
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": -0.375,
+          "yes_two_token_probability": 0.4073334336280823,
+          "input_tokens": 501
+        }
+      },
+      "target_full_minus_original": -0.875,
+      "unrelated_full_minus_original": 0.125,
+      "target_both_minus_original": -2.5
+    },
+    {
+      "audit_id": "013",
+      "sequence": "ball13_indoor",
+      "image_sha256": "ad93678eabe715d96c09241d3461782bbf64b7a0a49a295f0db0194408a8cf60",
+      "auto_category": "cup",
+      "target_box": [
+        307,
+        217,
+        332,
+        241
+      ],
+      "unrelated_mask_box": [
+        615,
+        0,
+        640,
+        24
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 0.25,
+          "yes_two_token_probability": 0.562176525592804,
+          "input_tokens": 500
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 0.25,
+          "yes_two_token_probability": 0.562176525592804,
+          "input_tokens": 500
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 0.5,
+          "yes_two_token_probability": 0.622459352016449,
+          "input_tokens": 500
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": 0.0,
+          "yes_two_token_probability": 0.5,
+          "input_tokens": 500
+        }
+      },
+      "target_full_minus_original": 0.0,
+      "unrelated_full_minus_original": 0.25,
+      "target_both_minus_original": -0.25
+    },
+    {
+      "audit_id": "023",
+      "sequence": "bike03_wild",
+      "image_sha256": "ef36c677c8c49cc86d0b0b4c568165b563bc0fd924e6678e0797fb2777657bf0",
+      "auto_category": "bike",
+      "target_box": [
+        95,
+        73,
+        344,
+        342
+      ],
+      "unrelated_mask_box": [
+        391,
+        0,
+        640,
+        269
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 2.25,
+          "yes_two_token_probability": 0.9046505093574524,
+          "input_tokens": 488
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 1.375,
+          "yes_two_token_probability": 0.7981867790222168,
+          "input_tokens": 488
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 2.25,
+          "yes_two_token_probability": 0.9046505093574524,
+          "input_tokens": 488
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": 0.875,
+          "yes_two_token_probability": 0.7057850360870361,
+          "input_tokens": 488
+        }
+      },
+      "target_full_minus_original": -0.875,
+      "unrelated_full_minus_original": 0.0,
+      "target_both_minus_original": -1.375
+    },
+    {
+      "audit_id": "024",
+      "sequence": "book01_indoor",
+      "image_sha256": "9127fde5eb6e5e72c4cdf5c7c616dd18fbf6423bb8784be5459afd09c49d374e",
+      "auto_category": "book",
+      "target_box": [
+        51,
+        232,
+        134,
+        263
+      ],
+      "unrelated_mask_box": [
+        557,
+        0,
+        640,
+        31
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 1.75,
+          "yes_two_token_probability": 0.851952850818634,
+          "input_tokens": 489
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 0.625,
+          "yes_two_token_probability": 0.6513549089431763,
+          "input_tokens": 489
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 1.875,
+          "yes_two_token_probability": 0.8670357465744019,
+          "input_tokens": 489
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": -0.75,
+          "yes_two_token_probability": 0.3208213150501251,
+          "input_tokens": 489
+        }
+      },
+      "target_full_minus_original": -1.125,
+      "unrelated_full_minus_original": 0.125,
+      "target_both_minus_original": -2.5
+    },
+    {
+      "audit_id": "026",
+      "sequence": "book04_indoor",
+      "image_sha256": "1b6c5dc8c2d662b892afe58ec0a29ea4b5dfad293a7c41995ff284ad67be4dcc",
+      "auto_category": "book",
+      "target_box": [
+        153,
+        167,
+        269,
+        208
+      ],
+      "unrelated_mask_box": [
+        524,
+        0,
+        640,
+        41
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 1.625,
+          "yes_two_token_probability": 0.8354835510253906,
+          "input_tokens": 496
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 1.375,
+          "yes_two_token_probability": 0.7981867790222168,
+          "input_tokens": 496
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 1.75,
+          "yes_two_token_probability": 0.851952850818634,
+          "input_tokens": 496
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": 1.0,
+          "yes_two_token_probability": 0.7310585379600525,
+          "input_tokens": 496
+        }
+      },
+      "target_full_minus_original": -0.25,
+      "unrelated_full_minus_original": 0.125,
+      "target_both_minus_original": -0.625
+    },
+    {
+      "audit_id": "029",
+      "sequence": "bottle01_indoor",
+      "image_sha256": "8676fba4f4883180b6eebed6075c4710fa66c092238ebac071aabc58f228ab80",
+      "auto_category": "bottle",
+      "target_box": [
+        349,
+        14,
+        404,
+        108
+      ],
+      "unrelated_mask_box": [
+        0,
+        266,
+        55,
+        360
+      ],
+      "conditions": {
+        "original": {
+          "yes_minus_no_logit": 1.625,
+          "yes_two_token_probability": 0.8354835510253906,
+          "input_tokens": 491
+        },
+        "target_full_masked": {
+          "yes_minus_no_logit": 0.625,
+          "yes_two_token_probability": 0.6513549089431763,
+          "input_tokens": 491
+        },
+        "unrelated_full_masked": {
+          "yes_minus_no_logit": 1.375,
+          "yes_two_token_probability": 0.7981867790222168,
+          "input_tokens": 491
+        },
+        "target_both_masked": {
+          "yes_minus_no_logit": 0.25,
+          "yes_two_token_probability": 0.562176525592804,
+          "input_tokens": 491
+        }
+      },
+      "target_full_minus_original": -1.0,
+      "unrelated_full_minus_original": -0.25,
+      "target_both_minus_original": -1.375
+    }
+  ],
+  "elapsed_seconds": 13.201390027999878,
+  "semantic_ground_truth": false,
+  "limitations": [
+    "Automatic category may be wrong and is not an independently verified label.",
+    "Gray masking changes image distribution; the target-full and unrelated-full masks are the paired full-image control with the same crop.",
+    "The target-both mask also alters the second image, so it is not paired with the unrelated-full mask.",
+    "Yes/No two-token probability is an uncalibrated VLM diagnostic, not identity confidence.",
+    "No tracking model, weights, crops, or final benchmark metrics are changed."
+  ]
+}

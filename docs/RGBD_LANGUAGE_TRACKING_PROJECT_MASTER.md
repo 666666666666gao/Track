@@ -23772,3 +23772,14 @@ M90 Train候选采集的小测也已通过：一条拟合序列的3个事件，`
 - `C:\Users\gb\Desktop\document\RGBD_INITIALIZATION_REVIEW_20260928\candidate_review_24\blind_review_24.html`，人工表`blind_review_24.csv`。
 
 两张人工表的人工结论列经检查全部为空。首帧表CSV／HTML SHA-256分别为`c8aed4bf2f13736a1551045a218d6d1a6358dd8bd190415865c3c2a3633c07bb`／`c955103becb899ee14f4cff7f2674a5343c10c0e73b1fb9f43b4e50994516b19`；候选表分别为`1ea6f03ff8807ab2ac7b17cb121a958931a3c7182a7ff251e2bc9f7257920405`／`53e779f2c643c076bd94dd863f10609e696b17a3a973083051429edc8c1140f6`。私有答案manifest SHA-256为`861851be9f2d124a53d0d08ab9a7c0d29aa10b2d061927a9d4dc66f3169fb71e`，**不进入公开仓库或人工展示页**。可复算源脚本`prepare_candidate_review.py`保存在仓库；24×3张当前事件图片及人工表只在本地私有文件夹，远端封存原始生成包`/root/autodl-tmp/sttrack_m92_candidate_review_20260928`。这些标注未完成前，A模块仍没有足够经核验的语义监督；不能把本轮称为三模块训练。
+
+
+### §5.293　M93训练集首帧区域证据只读诊断：目标像素通常影响类别回答，但仍不是语义真值（2026-09-28）
+
+模块A所需的24条首帧和24个盲法候选事件人工表目前均为**0/24已填写**。因此本轮没有把旧自动类别或助手初筛当作正确／冲突监督，没有启动A+B训练，也没有改动STTrack权重、推理规则和正式九项指标。为了先检查区域对比信号是否可测，使用服务器`/home/qwen25_env`里的Qwen2.5-VL-3B-Instruct，在DepthTrack Train旧拟合130内预选的13个首帧上做只读pilot。实际成对分析纳入12个：`bike01_wild`的297×246目标框在640×360图中找不到不重叠的等尺寸角落对照，因此按几何条件排除。
+
+每一例固定原自动类别、红框整帧＋目标crop、模型和Yes/No提问。主对照只改变整帧中被灰色遮挡的位置：一组遮目标，一组遮等尺寸、不重叠且离目标最远的角落；**第二张目标crop两组保持相同**。另做整帧目标与crop同时遮挡的附加读数，不与单图遮挡混作公平配对。使用bfloat16是因为新服务器此前确实在float16生成中出现非有限logit和感叹号；12×4次读出的Yes/No logit均有限，目标遮挡与无关遮挡的输入token数逐例相等，原图SHA绑定通过。初次三条件试跑在大目标的非重叠断言处停止，未形成完整结果；上述平衡后的方案在成功运行前修正。
+
+主统计为`(遮无关区域时Yes−No logit)−(遮目标区域时Yes−No logit)`。**12例中11例为正、1例为负，均值+1.1042、中位数+1.125 logit**。负例`ball09_wild`的自动类别`basketball`，助手初筛曾判断目标更像橄榄球；该判断尚无人独立确认。相反，`ball03_indoor`的`apple`被助手判为类别不确定，却有最大的+2.5区域差。因此不能把区域敏感直接解释成文字正确，更不能把Yes/No两token概率解释成已校准的实例身份置信度。灰色遮挡本身会改变输入分布；12例是有目的挑选的pilot，不可外推为152条的语义准确率。
+
+完成态逐例四条件数据位于仓库`projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m93_completed/balanced12.json`，SHA-256 `998b58e853e1d41b40131ab5e635e8fcdd346e34bcd896f71ec4e97d500fa97f`；复现实验脚本`audit_region_evidence.py` SHA-256 `08f325a61b3fad7d4e6b9c185a652b7c18d8960d3037ac805ca085ec281f300a`，方法与边界见`M93_REGION_EVIDENCE_PLAN.md`及`m93_completed/RESULT.md`。远端原始运行包在`/root/autodl-tmp/sttrack_m93_region_evidence_20260928`。下一关仍是独立首帧类别／属性与盲法候选身份核验；这些标签成立后，才可训练模块A并与M91视觉／几何控制比较。项目联合九项指标目标未达，goal保持active。

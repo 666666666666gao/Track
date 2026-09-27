@@ -13,6 +13,14 @@ zero-weight training attribution probe are complete. Preserve their
 checkpoints and protocols; this plan does not interrupt or reinterpret them.
 No new three-module model or score exists yet.
 
+M93 has completed a read-only 12-case Train first-frame region-masking pilot
+with Qwen bfloat16. The generated category's Yes/No margin was more sensitive
+to masking the full-frame target than a same-size unrelated full-frame region
+in 11/12 cases. This tests image-region dependence only; it is not human
+semantic verification, an identity label, or tracking improvement. The
+successful balanced protocol, all cases, and limitations are in
+`m93_completed/RESULT.md`. A+B training still waits for independent review.
+
 ## Prior experiments that the new method must exceed
 
 | Existing implementation | Measured scope and result | Consequence for the new experiment |
