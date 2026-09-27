@@ -49,6 +49,12 @@ Prepare first-frame RGB, Depth, protocol target box, surrounding context,
 original category/attribute text, and a review record. Existing M86 screening
 (110 supported/18 conflicting/24 uncertain over 152) is assistant judgment,
 not approved truth; it cannot directly become a supervised correctness label.
+Private reviewer packets are now ready: 24 first-frame cases and 24 blinded
+current-candidate A/B events from former-fit130. The latter were selected from
+28 eligible sequences where native candidate IoU<=.1, another Top-10 candidate
+IoU>=.6, and the two boxes have mutual IoU<=.1; A/B placement is balanced at
+12/12 with seed2027. Neither packet contains completed human labels, and the
+blinded candidate page does not show GT, model choice, IoU, or sequence names.
 For selected fitting events, record only visually supportable category and
 stable attributes, and allow `unknown`. Record current attribute visibility
 separately from support/conflict. An unobservable attribute is never a negative
