@@ -49,9 +49,12 @@ identity label.
 
 Collect a fixed set of own-history RGB-D search states on Train only, starting
 with native STTrack; include healthy frames, genuine same-class competitors,
-and local failure onsets. Cache the 256 native decoded boxes and score/size/
-offset maps plus candidate-local RGB/Depth features, the immutable initial
-instance, context, and text. Preserve the source trajectory. GT is attached
+and local failure onsets. Cache all 256 native decoded boxes and score/size/
+offset maps; cache candidate-local RGB/Depth features for the 10 NMS peaks,
+their grid positions, and the immutable initial instance. These 10 candidate
+features provide competition context, while the full grid remains available
+for candidate-coverage diagnosis. Text is joined later from reviewed Train
+initializations. Preserve the source trajectory. GT is attached
 after candidate generation for training labels, never for runtime inputs.
 IoU labels supervise localization quality. A distinct physical-object negative
 requires separate visual evidence/annotation; low IoU alone is insufficient.
