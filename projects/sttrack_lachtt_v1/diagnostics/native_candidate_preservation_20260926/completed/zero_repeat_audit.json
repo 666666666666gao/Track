@@ -1,0 +1,265 @@
+{
+  "status": "completed_read_only_audit",
+  "evidence": "M89 preflight/control and training/control use the same sealed script, weight zero, initial states, training spec and GPU0; both share the first 768 tracking calls of cube04_indoor.",
+  "trace_sha256": {
+    "preflight": "e00a864f51de2a5c9ab9e92280ed7e50811582d471c27bcb4e2d9bad4b830ef4",
+    "formal": "28607df687250b2f2810586a73c2f2263929b78a78cf84c260dffb8db6915947",
+    "old_m82": "71c4ca8e1f328838d55bc804b24155bff394aef2b9f381702a1c7a5cbe5264ed"
+  },
+  "preflight_vs_formal": {
+    "common_sampled_frames": 16,
+    "first_difference": {
+      "bbox": 50,
+      "previous_bbox": 50,
+      "best_score": 100,
+      "resize_factor": 200,
+      "template_write": 350,
+      "native_iou": 350,
+      "preservation_kl": 500,
+      "competition_loss": 250,
+      "competition_positive_index": 550
+    },
+    "difference_counts": {
+      "bbox": 15,
+      "previous_bbox": 15,
+      "best_score": 14,
+      "resize_factor": 8,
+      "template_write": 3,
+      "label": 0,
+      "native_iou": 6,
+      "preservation_kl": 5,
+      "competition_loss": 10,
+      "competition_positive_index": 1,
+      "competition_negatives": 0
+    },
+    "selected": {
+      "1": {
+        "preflight_bbox": [
+          269.9113254547119,
+          247.33291244506836,
+          32.278316497802734,
+          32.460060119628906
+        ],
+        "formal_bbox": [
+          269.9113254547119,
+          247.33291244506836,
+          32.278316497802734,
+          32.460060119628906
+        ],
+        "preflight_score": 0.9280951023101807,
+        "formal_score": 0.9280951023101807,
+        "preflight_resize": 1.9692307692307693,
+        "formal_resize": 1.9692307692307693,
+        "preflight_template_write": false,
+        "formal_template_write": false
+      },
+      "50": {
+        "preflight_bbox": [
+          277.7043113708496,
+          246.36732482910156,
+          29.164993286132812,
+          27.98138427734375
+        ],
+        "formal_bbox": [
+          277.70431900024414,
+          246.3672981262207,
+          29.164993286132812,
+          27.98138427734375
+        ],
+        "preflight_score": 0.8326826691627502,
+        "formal_score": 0.8326826691627502,
+        "preflight_resize": 2.226086956521739,
+        "formal_resize": 2.226086956521739,
+        "preflight_template_write": true,
+        "formal_template_write": true
+      },
+      "200": {
+        "preflight_bbox": [
+          277.42978858947754,
+          245.67993545532227,
+          29.165325164794922,
+          28.40949249267578
+        ],
+        "formal_bbox": [
+          277.4984827041626,
+          245.23260307312012,
+          29.15102195739746,
+          28.318485260009766
+        ],
+        "preflight_score": 0.8904485106468201,
+        "formal_score": 0.8899474143981934,
+        "preflight_resize": 2.226086956521739,
+        "formal_resize": 2.206896551724138,
+        "preflight_template_write": true,
+        "formal_template_write": true
+      },
+      "350": {
+        "preflight_bbox": [
+          278.29771995544434,
+          246.4464292526245,
+          29.760578155517578,
+          26.780725479125977
+        ],
+        "formal_bbox": [
+          277.9409341812134,
+          247.10538291931152,
+          30.085111618041992,
+          26.977985382080078
+        ],
+        "preflight_score": 0.7716602683067322,
+        "formal_score": 0.6910837888717651,
+        "preflight_resize": 2.245614035087719,
+        "formal_resize": 2.226086956521739,
+        "preflight_template_write": true,
+        "formal_template_write": false
+      },
+      "550": {
+        "preflight_bbox": [
+          272.1788787841797,
+          223.69313716888428,
+          34.662635803222656,
+          30.596338272094727
+        ],
+        "formal_bbox": [
+          285.20893478393555,
+          245.8920135498047,
+          34.10734939575195,
+          28.04529571533203
+        ],
+        "preflight_score": 0.8230143785476685,
+        "formal_score": 0.47190070152282715,
+        "preflight_resize": 1.9844961240310077,
+        "formal_resize": 2.064516129032258,
+        "preflight_template_write": true,
+        "formal_template_write": false
+      }
+    }
+  },
+  "preflight_vs_old_m82": {
+    "common_sampled_frames": 16,
+    "first_difference": {
+      "bbox": 100,
+      "previous_bbox": 100,
+      "best_score": 100,
+      "native_iou": 350,
+      "preservation_kl": 500,
+      "competition_loss": 400
+    },
+    "difference_counts": {
+      "bbox": 14,
+      "previous_bbox": 14,
+      "best_score": 11,
+      "resize_factor": 0,
+      "template_write": 0,
+      "label": 0,
+      "native_iou": 5,
+      "preservation_kl": 5,
+      "competition_loss": 7,
+      "competition_positive_index": 0,
+      "competition_negatives": 0
+    },
+    "selected": {
+      "1": {
+        "preflight_bbox": [
+          269.9113254547119,
+          247.33291244506836,
+          32.278316497802734,
+          32.460060119628906
+        ],
+        "formal_bbox": [
+          269.9113254547119,
+          247.33291244506836,
+          32.278316497802734,
+          32.460060119628906
+        ],
+        "preflight_score": 0.9280951023101807,
+        "formal_score": 0.9280951023101807,
+        "preflight_resize": 1.9692307692307693,
+        "formal_resize": 1.9692307692307693,
+        "preflight_template_write": false,
+        "formal_template_write": false
+      },
+      "50": {
+        "preflight_bbox": [
+          277.7043113708496,
+          246.36732482910156,
+          29.164993286132812,
+          27.98138427734375
+        ],
+        "formal_bbox": [
+          277.7043113708496,
+          246.36732482910156,
+          29.164993286132812,
+          27.98138427734375
+        ],
+        "preflight_score": 0.8326826691627502,
+        "formal_score": 0.8326826691627502,
+        "preflight_resize": 2.226086956521739,
+        "formal_resize": 2.226086956521739,
+        "preflight_template_write": true,
+        "formal_template_write": true
+      },
+      "200": {
+        "preflight_bbox": [
+          277.42978858947754,
+          245.67993545532227,
+          29.165325164794922,
+          28.40949249267578
+        ],
+        "formal_bbox": [
+          277.42981815338135,
+          245.67990398406982,
+          29.165342330932617,
+          28.4094181060791
+        ],
+        "preflight_score": 0.8904485106468201,
+        "formal_score": 0.8904444575309753,
+        "preflight_resize": 2.226086956521739,
+        "formal_resize": 2.226086956521739,
+        "preflight_template_write": true,
+        "formal_template_write": true
+      },
+      "350": {
+        "preflight_bbox": [
+          278.29771995544434,
+          246.4464292526245,
+          29.760578155517578,
+          26.780725479125977
+        ],
+        "formal_bbox": [
+          278.29795265197754,
+          246.44621562957764,
+          29.760578155517578,
+          26.780725479125977
+        ],
+        "preflight_score": 0.7716602683067322,
+        "formal_score": 0.7716602683067322,
+        "preflight_resize": 2.245614035087719,
+        "formal_resize": 2.245614035087719,
+        "preflight_template_write": true,
+        "formal_template_write": true
+      },
+      "550": {
+        "preflight_bbox": [
+          272.1788787841797,
+          223.69313716888428,
+          34.662635803222656,
+          30.596338272094727
+        ],
+        "formal_bbox": [
+          272.18046951293945,
+          223.69332885742188,
+          34.66261291503906,
+          30.59638214111328
+        ],
+        "preflight_score": 0.8230143785476685,
+        "formal_score": 0.8230196237564087,
+        "preflight_resize": 1.9844961240310077,
+        "formal_resize": 1.9844961240310077,
+        "preflight_template_write": true,
+        "formal_template_write": true
+      }
+    }
+  },
+  "limitation": "Saved samples do not identify the first numerical divergence. The preflight stops after frame 768 and does not prove that either short trajectory would reproduce a full 152-sequence model. The source of numerical differences is not established."
+}
