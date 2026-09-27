@@ -17,3 +17,12 @@ static blocker after this correction.
 GPU smoke must still verify actual parity, tensor shapes, and storage size
 before full collection. This review is not a performance result or proof of
 language use.
+
+The later two-GPU collection queue also received independent static review.
+Its first version would exit on a failed shard0 wait without waiting for
+shard1, and would leave no terminal receipt on failure. The queue now records
+both shard exit codes before deciding whether to analyze, and an EXIT trap
+records the script's real terminal status. The verifier checks smoke parity,
+artifact shapes, and free space based on measured smoke bytes before the
+two-shard launch. The reviewer found no remaining concrete static blocker.
+GPU smoke and full collection remain unverified until their own receipts exist.
