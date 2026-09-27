@@ -23257,3 +23257,18 @@ audit_control_ope_sequences.py现在把所有段及起点观察范围写入contr
 ## §5.252 M89-Control VOT第三小时进度（2026-09-27 03:20北京时间）
 
 03:20:42远端实查：queue834519、评测控制器841552、VOT控制器844217及worker844218—844221全部存活；两GPU正在工作，利用率快照96%/58%，显存4883/2444MiB。Control VOT日志已到497/1765 anchor，四分片111/138/112/136；完成态VOT退出和分析均不存在，Candidate OPE未启动。四分片最新anchor与旧M82同名结果文件的时间位置相符：旧运行约9月25日16:12—16:14 UTC达到这里、23:58 UTC完成，本轮约9月26日19:19—19:21 UTC达到这里。按配对历史余时仍估Control VOT今日11:00左右完成，全六组结果估9月28日00:00—02:00。此为进度估计，不填未完成的EAO/ACC/ROB；下一小时约04:20再查。
+
+
+## §5.253 M89-Control完整VOT负结果与Candidate自动接续（2026-09-27 11:06北京时间）
+
+Control全VOT跟踪和分析退出均为0，merge确认127条/1765个anchor/5295个结果文件；result状态complete_full127，per_sequence_failures覆盖127条、failure_outcomes覆盖1765个anchor，逐序列失败数求和343。result中的final权重及bundle SHA与Control绑定一致，merge及分析原始JSON SHA再次核对通过。真实结果如下，单位百分数：
+
+| 同一M89-Control final | EAO | ACC | ROB | 确认失败anchor | 判定 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| VOT-RGBD2022全127 | 72.685222 | 81.517347 | 88.594707 | 343 | 三项均未达目标 |
+
+相对原生STTrack的EAO/ACC/ROB分别下降4.636432/0.953843/5.074402个百分点，失败anchor多160个。相对旧M82-Full152，EAO下降0.682651、ROB下降1.643620，但ACC提高0.546328个百分点；失败anchor多60个。因此当前Control的主要新增损害包含长期失败，而不能只看正常帧定位精度。此处是权重0独立训练final的结果，不能替代尚未评完的权重1 Candidate。
+
+已把127条失败数与同协议原生、旧M82-Full152封存表逐条核对，anchor总数都为1765。较原生增失较多的例子：human02_indoor_2为0→15/23 anchor、box1_outside_1为4→18/50、humans_shirts_room_occ_1_A_1为0→12/17；也有bag02_indoor_2为7→5的改善。逐序列确认失败数是描述性诊断，不是EAO贡献的可加分解，也不能仅由序列名称推断原因。完整result、merge、分析JSON、两份退出码，以及control_vot_failure_comparison.csv和control_vot_failure_summary.json已经归档；audit_control_vot_failures.py复算总数183/283/343并检验每条anchor绑定。
+
+评测队列834519及控制器841552继续运行。11:05实查Candidate DepthTrack/CDTB两个worker36949/36950已在GPU0/1上跟踪；两项尚无完整receipt或指标。按历史OPE约1小时40分，Candidate OPE预计12:40前后完成，随后接同一Candidate final的全VOT约11小时；六组完整指标仍估9月28日00:00—02:00。现阶段不因Control负结果中断封存配对评测，也不把旧模型单项成绩拼入Candidate。
