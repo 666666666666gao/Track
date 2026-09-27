@@ -23783,3 +23783,17 @@ M90 Train候选采集的小测也已通过：一条拟合序列的3个事件，`
 主统计为`(遮无关区域时Yes−No logit)−(遮目标区域时Yes−No logit)`。**12例中11例为正、1例为负，均值+1.1042、中位数+1.125 logit**。负例`ball09_wild`的自动类别`basketball`，助手初筛曾判断目标更像橄榄球；该判断尚无人独立确认。相反，`ball03_indoor`的`apple`被助手判为类别不确定，却有最大的+2.5区域差。因此不能把区域敏感直接解释成文字正确，更不能把Yes/No两token概率解释成已校准的实例身份置信度。灰色遮挡本身会改变输入分布；12例是有目的挑选的pilot，不可外推为152条的语义准确率。
 
 完成态逐例四条件数据位于仓库`projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m93_completed/balanced12.json`，SHA-256 `998b58e853e1d41b40131ab5e635e8fcdd346e34bcd896f71ec4e97d500fa97f`；复现实验脚本`audit_region_evidence.py` SHA-256 `08f325a61b3fad7d4e6b9c185a652b7c18d8960d3037ac805ca085ec281f300a`，方法与边界见`M93_REGION_EVIDENCE_PLAN.md`及`m93_completed/RESULT.md`。远端原始运行包在`/root/autodl-tmp/sttrack_m93_region_evidence_20260928`。下一关仍是独立首帧类别／属性与盲法候选身份核验；这些标签成立后，才可训练模块A并与M91视觉／几何控制比较。项目联合九项指标目标未达，goal保持active。
+
+
+### §5.294　M94候选反向身份核验pilot未过门：交换A/B后仍一律选A（2026-09-28）
+
+在M92冻结的DepthTrack Train旧拟合130内**24个困难候选事件**上，已完成一项只读Qwen身份核验。这些事件由Train GT筛选：一个Top-10候选IoU≥0.6、原生候选IoU≤0.1、两候选互相IoU≤0.1，真实目标在展示A/B两侧各12次。Qwen只看到首帧协议红框整图及目标crop、当前无标记整图、A和B的RGB候选crop；不看到GT、序列名、跟踪器分数、正确侧，也不读Depth。每事件同时测试A/B顺序及反向顺序，分别不给类别、给未经人工核验的旧自动类别；读取`A/B/N/U`四个首token logit，`N`为两者都不是，`U`为视觉上无法确定。模型为本地Qwen2.5-VL-3B-Instruct、bfloat16、seed2027；24事件×2顺序×2文字条件=96次读出，全部完成且logit有限。
+
+| 输入文字 | 原A/B顺序正确 | 交换后正确 | 两种顺序同时正确 | 交换映射一致 | 每种顺序A/B/N/U输出 |
+|---|---:|---:|---:|---:|---|
+| 无类别 | 12/24 | 12/24 | **0/24** | **0/24** | **24/0/0/0** |
+| 未核验自动类别 | 12/24 | 12/24 | **0/24** | **0/24** | **24/0/0/0** |
+
+预先写定的教师门为双顺序正确至少20/24、交换不一致不超过2例；实际两项均明显失败。96次决策**全部选择排列在前的A**，所以单顺序12/24恰好等于隐藏答案A侧的数量，不能当作物理实例识别能力。文字改变部分原始logit，但没有改变任何选择。没有`neither`真实事件，故本轮不能估计N/U的正确弃权率。历史9事件Qwen2.5-VL-7B自由回答出现A=7、B=0、abstain=2，仍需注意两轮模型、事件和输入协议不同；本轮只否定这一3B、五图、首token协议，不能外推所有VLM。
+
+本轮没有用Qwen回答产生模块A训练标签，也没有提交任何跟踪框、模板或搜索历史。隐藏的正确A/B映射仍只在本地／远端私有M92答案manifest，**未进入GitHub**。公开逐例文件只含输入哈希、自动类别及A/B/N/U读数，正确率只聚合报告，不给逐例正确侧。复现实验脚本`projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/audit_candidate_vlm.py` SHA-256 `613446b7910f0c1c46e4ab374af2e109fbfc31ad0769f6acb832cfe0debcf07d`；完成态`m94_completed/full24.json` SHA-256 `00d262d6d24ebb5fab96dc792fe4029216ce5daf3f7cd5ba8bdb3f4297736d0b`，方法及门槛见`M94_CANDIDATE_VLM_PLAN.md`和`m94_completed/RESULT.md`。远端原始运行包在`/root/autodl-tmp/sttrack_m94_candidate_vlm_20260928`。M93虽测得自动类别对目标像素有响应，本轮说明这不等于候选同一实例核验。24条首帧及24个盲法候选事件的人工结论目前仍未填写，A+B语义训练尚不能把这些自动回答当真值；正式九项指标未变化，goal保持active。

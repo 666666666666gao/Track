@@ -21,6 +21,13 @@ semantic verification, an identity label, or tracking improvement. The
 successful balanced protocol, all cases, and limitations are in
 `m93_completed/RESULT.md`. A+B training still waits for independent review.
 
+M94 then tested Qwen as a read-only identity teacher on all 24 M92 hard
+candidate events, with both A/B orders and with/without unverified automatic
+category. All 96 first-token decisions chose A: each condition scored 12/24
+in each order, zero events were correct in both orders, and zero were
+swap-consistent. This fails its predeclared teacher gate; do not use these
+outputs as Module A labels. Details are in `m94_completed/RESULT.md`.
+
 ## Prior experiments that the new method must exceed
 
 | Existing implementation | Measured scope and result | Consequence for the new experiment |
