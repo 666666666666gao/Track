@@ -1,0 +1,29 @@
+{
+  "status": "short_prefix_comparison_complete",
+  "run_sha256": {
+    "old_a": "45f096e4737e1f1568f9549b0603d1056a54424398a71361248b7cff0226be41",
+    "zero": "033e19e660639fcd20428089c2d644c1aa688dc0c347d43a29ac7439ab47c9c9",
+    "old_b": "73ed3e98a9263b4ade06118edf0ad676b80100918b5352b110441f1654f0409d"
+  },
+  "common": {
+    "seed": 2027,
+    "sequence": "cube04_indoor",
+    "calls": 64,
+    "input_frames_sha256": "f78fb2994b15f1146186dbefb5587a750a71bbe9540307426be2159b5803560d",
+    "initial_adapter_sha256": "56d03acff2972871788dd51f0eff40d0b6d888aad79fe74db4c44cdfb276ca42"
+  },
+  "old_repeat": {
+    "first_frame_difference": {
+      "bbox": 34,
+      "previous_bbox": 35
+    },
+    "first_gradient_difference": 32,
+    "first_parameter_difference": 32
+  },
+  "zero_vs_old": {
+    "first_frame_difference": {},
+    "first_gradient_difference": 32,
+    "first_parameter_difference": 32
+  },
+  "limitation": "The same raw RGB-D frames are verified, but crop/query/template states are recursively predicted. This is a two-update diagnostic, not a full-training reproduction or causal performance ablation."
+}

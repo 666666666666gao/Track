@@ -8,8 +8,8 @@ CDTB80, and VOT-RGBD2022 full127. The project targets remain P/R/F at least
 65.2/64.9/65.1 and 72.9/75.6/74.2, and VOT EAO/ACC/ROB strictly above
 77.9/82.1/93.7. No existing M67, M82, or M89 result meets the joint target.
 
-The M89 same-weight Empty/Swapped OPE runs are complete. The 57-anchor VOT
-readout and zero-weight training attribution probe are queued. Preserve their
+The M89 same-weight Empty/Swapped OPE runs, 57-anchor VOT readout, and
+zero-weight training attribution probe are complete. Preserve their
 checkpoints and protocols; this plan does not interrupt or reinterpret them.
 No new three-module model or score exists yet.
 
@@ -28,10 +28,14 @@ M89 Category/Empty/Swapped with the same final weight are recorded on both OPE
 datasets. Category minus Empty F is -0.008334 pp on DepthTrack and +0.264581 pp
 on CDTB; CDTB Swapped has higher fixed-box recall than Category even though its
 F is lower. These results show content sensitivity without stable net semantic
-gain. Finish the queued VOT readout and 64-frame zero-weight probe. Report
-readout capacity, score/geometry effects, and actual first divergence with their
-proper fixed-state or recursive scope. These results guide which bottleneck to
-target; they do not select a public-test-specific rule.
+gain. At the 57 new VOT failure onsets, 36 Category states have a correct box
+among all 256 cells, but only 26 have one among the 10 NMS peaks; using native
+Hann scores gives 13 single-frame recoveries without committing state. The
+64-frame old/zero/old probe also shows gradient and weight hashes differ between
+two repetitions of the old objective. These are fixed-state capacity and short
+recursive diagnostics, not executed VOT recovery or proof of the full-training
+control gap. They guide which bottleneck to target without selecting a public-
+test-specific rule.
 
 ## Stage 1: training-only data and fixed-state A+B prototype
 
@@ -81,6 +85,9 @@ feature, and future state must all refer to the same candidate. Compare with
 native selection, a parameter-matched visual-only selector, and the old M44
 style selector under the same cached states. M47's multi-positive loss is a
 historical negative control, not the proposed innovation.
+Report both Top-10 and full-256 candidate coverage on Train: the VOT posthoc
+readout shows 10 of 36 correct dense candidate sets at failure onset have no
+correct member in the 10 NMS peaks, so Top-10 ranking has a measured ceiling.
 
 For text attribution, use the *same trained weight and same cached state* with
 reviewed correct text, Empty, a semantically equivalent rewrite, and a
