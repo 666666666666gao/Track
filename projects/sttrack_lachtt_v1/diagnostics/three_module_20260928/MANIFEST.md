@@ -17,3 +17,7 @@
 | 2026-09-28 08:17 | /experiment-bridge | m97_completed/ | interface sanity | One-case smoke, two GPU collection receipts, actual-input two-step probe, no semantic/official result |
 | 2026-09-28 08:17 | /experiment-bridge | m97_completed/RESULT_20260928_081706.md | result | Timestamped completion report |
 | 2026-09-28 08:17 | /experiment-bridge | m97_completed/RESULT.md | result | Latest completion report |
+| 2026-09-28 08:32 | /code-review-excellence | M98_REVIEW_20260928_083215.md | implementation | Fresh same-family provisional M98 source-review PASS; smoke and full input audit pending |
+| 2026-09-28 08:32 | /code-review-excellence | M98_REVIEW.md | implementation | Latest M98 source-review copy |
+| 2026-09-28 08:36 | /experiment-bridge | M98_CONTEXT_CACHE_PLAN.md | plan | Complete missing context/support on existing native Train states |
+| 2026-09-28 08:36 | /experiment-bridge | m98_started/ | collection | Actual smoke, M97 exact-field comparison and two-GPU launch receipts; full audit pending |

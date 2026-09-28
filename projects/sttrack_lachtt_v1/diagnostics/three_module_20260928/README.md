@@ -19,6 +19,9 @@ three-dataset official evaluations are complete; none meets the joint target.
   eight-case wiring/gradient checks. See [completed evidence](m97_completed/RESULT.md)
   and [plan](M97_AB_INTERFACE_PLAN.md). No semantic performance claim, full
   training, recursive action, C deployment, or public evaluation.
+- M98: [missing context/support collection started](m98_started/STARTED.md)
+  on both GPUs for the same152Train sequences/3502M90events. This prepares
+  complete A+B inputs; completion audit and semantic training remain pending.
 
 Reliable Train phrases, candidate physical identities and semantic visibility
 still require reviewed labels. IoU quality targets do not provide those labels.

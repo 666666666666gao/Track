@@ -11,7 +11,7 @@ CDTB80, and VOT-RGBD2022 full127. The project targets remain P/R/F at least
 The M89 same-weight Empty/Swapped OPE runs, 57-anchor VOT readout, and
 zero-weight training attribution probe are complete. Preserve their
 checkpoints and protocols; this plan does not interrupt or reinterpret them.
-No new three-module model or score exists yet.
+No final trained three-module tracker or new official score exists yet.
 
 M93 has completed a read-only 12-case Train first-frame region-masking pilot
 with Qwen bfloat16. The generated category's Yes/No margin was more sensitive
@@ -53,6 +53,15 @@ training remains gated on independently reviewed Train evidence.
 The human candidate packet has been reissued as private `candidate_review_24_v2`
 with the same24 cases, privately permuted IDs and A/B choices. The original
 packet and M94 results remain intact. Both human sheets still have0/24 labels.
+
+M97's isolated A+B prototype now passes actual-input wiring checks on eight
+Train events: both interaction directions have nonzero localization gradients,
+Empty increments are exactly0, quality is text-independent and selected fields
+share one index. No semantic labels, checkpoint, recursive action or C module
+were used. M98 completes the missing surrounding-context/support fields for the
+existing M90 states, rather than duplicating region tokens or changing native
+candidates. See `M98_CONTEXT_CACHE_PLAN.md`; it is data preparation only and
+does not waive the reviewed-label or content-versus-visual training gate.
 
 ## Prior experiments that the new method must exceed
 
