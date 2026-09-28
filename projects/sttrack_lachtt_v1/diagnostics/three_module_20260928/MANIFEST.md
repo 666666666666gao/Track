@@ -37,3 +37,4 @@
 | 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue_state.json | waiting queue | Startup-only state snapshot at09:11:54, not subsequent M98 evidence |
 | 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue_events.jsonl | waiting queue | Startup event snapshot |
 | 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue.log | waiting queue | Startup raw log snapshot |
+| 2026-09-28 09:40 | /monitor-experiment | m98_started/hourly_20260928_094050.json | verified wait | Live two-GPU collection,98/152completed sequences,140887/219194recorded calls; full audit/training stillpending |
