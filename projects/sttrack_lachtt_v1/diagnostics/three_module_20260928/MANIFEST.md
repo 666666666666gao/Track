@@ -38,3 +38,8 @@
 | 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue_events.jsonl | waiting queue | Startup event snapshot |
 | 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue.log | waiting queue | Startup raw log snapshot |
 | 2026-09-28 09:40 | /monitor-experiment | m98_started/hourly_20260928_094050.json | verified wait | Live two-GPU collection,98/152completed sequences,140887/219194recorded calls; full audit/training stillpending |
+| 2026-09-28 10:05 | /analyze-results | analyze_ab_visual_control.py | result analysis preparation | Completed-M99 row/gate recomputation and full event/sequence export; no training or promotion |
+| 2026-09-28 10:05 | /analyze-results | M99_ANALYSIS_PREPARATION.md | analysis scope | Runtime prerequisites, descriptive historical comparison and actual-use command |
+| 2026-09-28 10:05 | /analyze-results | m99_prepared/analysis_arithmetic_check.json | arithmetic verification | Actual990historical rows, M91/M96 overall summaries equal; not an M99 result |
+| 2026-09-28 10:04 | /experiment-bridge | M99_ANALYSIS_REVIEW_20260928_0958.md | implementation | Fresh same-family provisional analyzer PASS after terminal-print correction; actual historical arithmetic only, no M99 result |
+| 2026-09-28 10:04 | /experiment-bridge | M99_ANALYSIS_REVIEW.md | implementation | Latest M99 analyzer review copy |

@@ -4,6 +4,11 @@ This folder contains isolated development diagnostics. No new official tracker
 or new nine-metric result is represented here. M67/M82/M89 Full152 and their
 three-dataset official evaluations are complete; none meets the joint target.
 
+M99 completed-result analysis is prepared in `M99_ANALYSIS_PREPARATION.md`.
+The analyzer exports all fixed-state events/strata/sequences and independently
+recomputes the registered checks. Historical arithmetic replay is not a new
+M99 result; actual M99 execution and final weights remain required.
+
 - M90: native-equivalent Train state and candidate cache,152 sequences/3502events.
 - M91: fixed-state visual quality control; no recursive promotion.
 - M92: private human-review sheets. Original seeded A/B assignment was
