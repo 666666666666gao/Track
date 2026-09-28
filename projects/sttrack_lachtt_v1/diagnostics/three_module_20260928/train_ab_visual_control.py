@@ -145,6 +145,14 @@ def evaluate(model, panel, empty, device):
     return summarize(rows), rows
 
 
+def native_candidate_preservation(logits, native, target):
+    eligible = (target[:, :1] >= .5) & (target <= .1)
+    native_gap = native[:, :1] - native
+    learned_gap = logits[:, :1] - logits
+    penalty = F.relu(native_gap - learned_gap)
+    return (penalty * eligible).sum() / eligible.sum().clamp_min(1), eligible.sum()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--cache', type=Path, required=True)
@@ -154,6 +162,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--mode', choices=('cpu-smoke', 'gpu-sanity', 'train'), required=True)
     parser.add_argument('--device', required=True)
+    parser.add_argument('--native-preservation-weight', type=int, choices=(0, 1), default=0)
     args = parser.parse_args()
     torch.set_num_threads(1)
     random.seed(2027); np.random.seed(2027); torch.manual_seed(2027); torch.cuda.manual_seed_all(2027)
@@ -185,6 +194,7 @@ def main():
         if args.mode == 'train':
             indices_list = torch.randperm(len(fit['key']), generator=torch.Generator().manual_seed(2027+epoch)).split(64)
         losses = []
+        preservation_losses, eligible_pairs = [], 0
         for indices in indices_list:
             inputs = batch(fit, indices, empty, device)
             target = fit['iou'][indices].to(device)
@@ -192,6 +202,11 @@ def main():
             output = model(inputs)
             assert torch.equal(output['selection_logits'], output['visual_selection_logits'])
             loss = F.binary_cross_entropy_with_logits(output['visual_selection_logits'], target) + F.binary_cross_entropy_with_logits(output['quality_logits'], target)
+            if args.native_preservation_weight:
+                preservation, pairs = native_candidate_preservation(output['visual_selection_logits'], inputs['base_scores'], target)
+                loss = loss + args.native_preservation_weight * preservation
+                preservation_losses.append(float(preservation.detach()))
+                eligible_pairs += int(pairs)
             assert bool(torch.isfinite(loss))
             loss.backward()
             if args.mode != 'train' and len(losses) == 1:
@@ -202,6 +217,8 @@ def main():
             optimizer.step()
             losses.append(float(loss.detach()))
         row = dict(epoch=epoch+1, optimizer_steps=len(losses), mean_loss=sum(losses)/len(losses), seconds=time.time()-epoch_start)
+        if args.native_preservation_weight:
+            row.update(mean_native_preservation_loss=sum(preservation_losses)/len(preservation_losses), eligible_pairs=eligible_pairs)
         history.append(row)
         print(json.dumps(row), flush=True)
     check_frozen(model, frozen)
@@ -214,6 +231,7 @@ def main():
                   category_attribute_identity_labels_used=False, fixed_five_slot_empty_input=True,
                   no_public_evaluation=True, no_recursive_action=True,
                   active_capacity_matched_to_semantic_variant=False, empty_bank_sha256=sha(args.empty_bank))
+    result['native_preservation_weight'] = args.native_preservation_weight
     args.output.mkdir(parents=True, exist_ok=True)
     if args.mode == 'train':
         result['fit'], _ = evaluate(model, fit, empty, device)

@@ -263,3 +263,47 @@ The source-reviewed dependency queue was launched at09:11:54CST September28,
 PID261316, initially scheduled to check M98 at09:36:15 and hourly afterward.
 Its GPU sanity and training remain gated and unstarted at that launch snapshot.
 See `m99_prepared/QUEUE.md` and the handoff for actual status evidence.
+
+## Completed M98/M99 and current B diagnosis
+
+M98 is complete:152sequences/3502events/219194prefix calls, full input audit
+and queue exit0, native box/score parity0. M99's original final train failed its
+exact Empty score assertion. A measured expanded-versus-contiguous text-layout
+difference was fixed at the shared projection in one line; original score
+regression red and fixed40batch regression green are preserved. The unchanged
+producer then completed a fresh fixed12epoch/480update final run. Final weight
+reload exactly reproduced all495development rows.
+
+M99 has275correct versus native268, meanIoU.530180954 versus.524770723,
+10rescues and3breaks. Two breaks are healthy, so the predeclared protection
+check failed; three of four capacity checks passed. Do not automatically
+promote this Empty/localization-only control to semantic fitting or recursion.
+All official nine metrics and the independent-label gate remain unchanged.
+
+M100 now reads the same final scores and quality estimates across all3039valid
+fit/development events. See `M100_SCORE_DIAGNOSTIC_PLAN.md`: no optimization,
+new policy, checkpoint, teacher labels or public evaluation. Compare the two
+readouts and the residual-versus-native ranking gap before deciding a future
+Train-only B change. This is not permission to tune a sequence-specific rule
+or replace the fixed final with a development-best checkpoint.
+
+## Completed M100/M101: visual capacity with explicit native protection
+
+M100's64-fit sanity and all3039-event readout exited0. All495development
+rows and both split summaries exactly reproduced M99. Quality argmax did not
+fix any of the three selection breaks, and introduced five development breaks
+versus selection's three. It remains a diagnostic, not a replacement policy.
+
+M101's reviewed0/1 native-preservation pair actually ran on GPU0/1. Both
+two-step sanity runs and fixed12epoch/480update finals exited0; the pair driver
+exited0. Weight0 reproduced the old M99 final in every tensor, every development
+row, both summaries and saved-weight bytes. Weight1 has272/495correct,
+meanIoU.530707698,5rescues/1break, healthy264/264 with no changed choice.
+All four predeclared capacity checks pass. It trades fewer rescues for fewer
+harms versus weight0's275correct/10rescues/3breaks; no dominance is claimed.
+
+This supports preparation of the reviewed semantic A+B stage. It does not
+waive phrase/physical-competitor/visibility evidence, establish language benefit,
+or automatically permit recursive/C/public evaluation. Preserve the remaining
+transition break egg_indoor@46 and all gains/harms. Do not tune a sequence rule
+or repeat the fixed pair. Final full-three-dataset acceptance remains unchanged.

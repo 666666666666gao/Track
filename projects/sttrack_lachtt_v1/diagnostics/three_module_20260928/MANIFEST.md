@@ -55,3 +55,18 @@
 | 2026-09-28 11:05 | /experiment-bridge | m99_completed/final_train/result.json | actual fixed-state training | Fixed12ep480updates final; dev275/495 vs268,mean.530180954; healthy2breaks gateFAIL; no semantics/recursion/public metrics |
 | 2026-09-28 11:05 | /analyze-results | m99_completed/analysis/analysis.json | completed result arithmetic | All495events/22seq/strata retained and recomputed;3of4checks pass, no promotion |
 | 2026-09-28 11:05 | /experiment-bridge | m99_completed/reload_verification.json | actual final reload | New GPU process loaded final;495event rows and summaries exact; no optimization/recursive/official evaluation |
+| 2026-09-28 11:21 | /experiment-bridge | M100_SCORE_REVIEW_20260928_112104.md | implementation | Fresh same-family provisional M100 source-review PASS; AST and existing M99 row arithmetic only, GPU readout pending |
+| 2026-09-28 11:21 | /experiment-bridge | M100_SCORE_REVIEW.md | implementation | Latest M100 source-review copy |
+| 2026-09-28 11:34 | /experiment-bridge | M101_NATIVE_REVIEW_20260928_113431.md | implementation | Fresh same-family provisional M101 source PASS; weight0 AST equality, hinge and launcher gates correct, M100 rows recomputed; GPU/runtime gates pending |
+| 2026-09-28 11:34 | /experiment-bridge | M101_NATIVE_REVIEW.md | implementation | Latest M101 native-candidate preservation source-review copy |
+| 2026-09-28 11:43 | /experiment-bridge | inspect_ab_candidate_scores.py | implementation | Completed read-only fixed-final score/quality diagnostics, no state/policy |
+| 2026-09-28 11:43 | /experiment-bridge | M100_SCORE_DIAGNOSTIC_PLAN.md | scope | Predeclared3039-event score analysis |
+| 2026-09-28 11:43 | /experiment-bridge | m100_completed/full/result.json | actual GPU readout | All3039events,495dev rows and both split summaries exact; quality12rescues5breaks |
+| 2026-09-28 11:43 | /experiment-bridge | m100_completed/RESULT.md | result analysis | All fit/dev readouts and three selection breaks retained, no substitution/promotion |
+| 2026-09-28 11:43 | /experiment-bridge | M101_NATIVE_CANDIDATE_PLAN.md | scope | Fixed0/1 pair inherits reliable-native preservation in new B, no new semantic claim |
+| 2026-09-28 11:43 | /experiment-bridge | train_ab_visual_control.py | implementation | Weight0 exact old computation; weight1 fit-localization native gap preservation only |
+| 2026-09-28 11:43 | /experiment-bridge | run_ab_native_pair.py | implementation | Both actual GPU sanities before fixed two-arm training, no retry/promotion |
+| 2026-09-28 11:43 | /experiment-bridge | m101_completed/result.json | actual training | Both sanities/finals exit0;0weight tensor/row/summary reproduction exact;1weight all4capacity checks PASS |
+| 2026-09-28 11:43 | /experiment-bridge | m101_completed/analysis.json | result arithmetic | Both495-row strata recomputed;990events/44sequence records, all gains/harms preserved |
+| 2026-09-28 11:43 | /experiment-bridge | m101_completed/RESULT.md | result | 272/495 mean.530707698,5rescues1break, healthy264/264; no semantic/recursive/public acceptance |
+| 2026-09-28 11:43 | /experiment-bridge | idea-stage/docs/research_contract.md | research contract | Existing full-nine-target goal preserved; actual M100/M101 status, independent evidence requirements |
