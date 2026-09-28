@@ -334,3 +334,36 @@ misses. Full256coverage is324/495. Cached float32 prior/resize reconstructs crop
 coordinates; center-out does not imply the whole object is invisible. This is
 not a new model or official first-failure audit. Next B work should distinguish
 local geometry and observation limitations; selection alone cannot fill all gaps.
+
+## M103: distinguish local center/size and native box limits
+
+Run the read-only cached geometry diagnosis in M103_LOCAL_GEOMETRY_PLAN.md on
+all3039valid Train events. Use controlled GT-center-only and GT-size-only
+counterfactuals with original image/minimum10clipping; they are never a deployed
+prediction. Count local target support and full-crop/overlap intersections before
+implementing a separate zero-initialized B visual refiner. No optimization,
+semantic truth, C, recursive or public evaluation is authorized by this probe.
+Actual reviewed complete arithmetic is the next evidence step; no old run repeats.
+
+M103 actually completed CPU arithmetic with exit0 in5.440seconds. All3039rows
+and exact495native/Top-10 parity passed in the producer. Fit local dense misses
+number292: GT-size-only full256 hits218 versus GT-center-only78; Top-10 versions
+hit100/46. Local candidate refinement eligibility holds for205of these events,
+and2033fit events overall. These GT controls are not learned recovery.
+
+Proceed with the separate zero-initialized local visual B geometry experiment
+in M104_VISUAL_GEOMETRY_PLAN.md, after fresh source review and real two-update
+sanity. Retain frozen M101 selection, Empty input, the native10pixel rule and
+all3039event readouts. This is a new geometry branch, not another selector loss,
+semantic teacher, C, recursive action or public result. Fixed final only.
+
+M104 has now actually completed: GPU0 two-update sanity, GPU0 fixed384-update
+refiner and GPU1 frozen-parent readout all exited0 in32.252seconds. All30390
+zero-correction boxes equal native, gradients/frozen-parent checks passed,
+all3039selection indices stayed identical and final reload rows exactly matched.
+Development correct272->286 and meanIoU.530707698->.535297504,15rescues/1break
+versus M101. Healthy264->263: mobilephone02_indoor@65 .510501->.448263.
+Three of four predeclared checks pass; no automatic recursive/public promotion.
+Next isolate learned center/size effects with this same final in a read-only
+component diagnosis before changing geometry training. Do not weaken the gate.
+The user agreed to human review; actual filled labels have not been received.

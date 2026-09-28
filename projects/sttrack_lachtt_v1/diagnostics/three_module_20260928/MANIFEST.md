@@ -82,3 +82,21 @@
 | 2026-09-28 12:20 | /analyze-results | m102_completed/B_FIXED_GEOMETRY_CAPACITY.json | existing-result arithmetic | M101223errors:33have Top-10 candidate,190do not; no new GPU/model |
 | 2026-09-28 12:20 | /analyze-results | m102_completed/B_REACHABILITY.json; B_REACHABILITY_EVENTS.jsonl | cached CPU analysis | Existing495rows:33selection,19Top-10 omissions,65crop-in dense misses,106crop-out dense misses; no official inference |
 | 2026-09-28 12:20 | /experiment-bridge | m102_completed/RESULT.md | result | Negative teacher screen and complete fixed-state geometry decomposition retained, no semantic/tracker promotion |
+
+| 2026-09-28 12:38:54 | /experiment-bridge | M103_GEOMETRY_REVIEW_20260928_123854.md | implementation | Fresh same-family provisional initial FAIL: missing strata and requested joint profiles; historical495-row JSON arithmetic passed, M103 Torch runtime unexecuted |
+| 2026-09-28 12:38:54 | /experiment-bridge | M103_GEOMETRY_REVIEW.md | implementation | Latest M103 cached geometry predeployment source-review copy |
+
+| 2026-09-28 12:43:18 | /experiment-bridge | M103_GEOMETRY_REVIEW_20260928_124318.md | implementation | Fresh same-family provisional final PASS after strata/joint-profile fixes; AST, synthetic summary and historical495-row checks passed; actual3039 Torch run pending |
+| 2026-09-28 12:43:18 | /experiment-bridge | M103_GEOMETRY_REVIEW.md | implementation | Latest M103 source-review PASS copy; preserved initial FAIL and explicit pending CPU runtime scope |
+
+| 2026-09-28 13:00:01 | /experiment-bridge | M104_GEOMETRY_REVIEW_20260928_130001.md | implementation | Initial M104 source FAIL: real native float32 boxes violate zero geometry identity; narrow incremental clipping fix identified; no GPU run |
+| 2026-09-28 13:00:01 | /experiment-bridge | M104_GEOMETRY_REVIEW.md | implementation | Initial M104 review copy; corrected-source review follows separately |
+
+| 2026-09-28 13:01:36 | /experiment-bridge | M104_GEOMETRY_REVIEW_20260928_130136.md | implementation | Final M104 same-family provisional source PASS after real zero-identity clipping fix; 30390-box binary32 and 495-row summary checks pass; real Torch sanity pending |
+| 2026-09-28 13:01:36 | /experiment-bridge | M104_GEOMETRY_REVIEW.md | implementation | Latest M104 source PASS copy; initial FAIL retained and GPU/runtime acceptance explicit |
+
+| 2026-09-28 13:13 | /experiment-bridge | m103_completed/RESULT_20260928_1305.md | implementation | Actual CPU3039-event geometry diagnosis exit0; all10groups/495parity independently verified; GT controls undeployable |
+| 2026-09-28 13:13 | /experiment-bridge | m103_completed/RESULT.md | implementation | Latest complete M103 record, raw events and acceptance retained |
+| 2026-09-28 13:13 | /experiment-bridge | M104_VISUAL_GEOMETRY_PLAN.md | implementation | Frozen M101 selection plus separate zero-init59540-parameter local visual refiner; fixed budget and parent-relative gate |
+| 2026-09-28 13:13 | /experiment-bridge | m104_completed/RESULT_20260928_1313.md | implementation | Actual two-GPU sanity/train/reference exits0; dev272->286/15rescues1harm,3/4checks; no semantic/recursive/public promotion |
+| 2026-09-28 13:13 | /experiment-bridge | m104_completed/RESULT.md | implementation | Latest M104 actual result; all3039rows/selection/reload verified; healthy mobilephone harm preserved |
