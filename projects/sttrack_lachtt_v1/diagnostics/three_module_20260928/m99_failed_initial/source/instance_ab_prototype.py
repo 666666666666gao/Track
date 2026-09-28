@@ -48,7 +48,7 @@ class InstanceEvidence(nn.Module):
 
     def phrase_branch(self, text, text_mask, memory, memory_valid, current, current_valid):
         batch, count = current.shape[:2]
-        query = self.text(text.contiguous()) + self.phrase_slots
+        query = self.text(text) + self.phrase_slots
         query = query[:, None].expand(-1, count, -1, -1).reshape(batch * count, text.shape[1], -1)
         bound = query + self.phrase_read(query, memory, memory,
                                          key_padding_mask=~memory_valid, need_weights=False)[0]

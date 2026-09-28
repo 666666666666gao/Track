@@ -1,0 +1,46 @@
+{
+  "observed_utc": "2026-09-28T00:38:46.089126+00:00",
+  "purpose": "post-start actual GPU/model verification before hourly monitoring",
+  "shards": [
+    {
+      "shard": 0,
+      "pid": 259894,
+      "alive": true,
+      "process_is_collector": true,
+      "completed_sequences": 0,
+      "completed_events": 0,
+      "completed_prefix_calls": 0,
+      "last_record": null,
+      "log_tail": null
+    },
+    {
+      "shard": 1,
+      "pid": 259895,
+      "alive": true,
+      "process_is_collector": true,
+      "completed_sequences": 1,
+      "completed_events": 23,
+      "completed_prefix_calls": 1664,
+      "last_record": {
+        "completed": 1,
+        "total": 75,
+        "elapsed_seconds": 85.71752548217773,
+        "sequence": "bag04_indoor",
+        "split": "fit",
+        "events": 23,
+        "frames": 1664,
+        "maximum_box_error_px": 0.0,
+        "maximum_score_error": 0.0,
+        "candidate_regions_exact": true,
+        "candidate_boxes_exact": true,
+        "initial_region_exact": true,
+        "original_feature_sha256": "d675be7f957dcd0369d5c2ddc391279a249ee417fff25c862757477af4a86890",
+        "feature_sha256": "375bd09dad108660971608310c668692c0cd8048d1026d6f7ac22bfe44663619",
+        "bytes": 8525953
+      },
+      "log_tail": null
+    }
+  ],
+  "gpu": "0, 2444 MiB, 78 %\n1, 2444 MiB, 68 %\n",
+  "queue_exit": null
+}

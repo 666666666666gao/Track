@@ -1,0 +1,52 @@
+{
+  "status": "actual_Empty_layout_replay_red_and_caller_layout_green",
+  "original": {
+    "optimizer_steps": 3,
+    "failure": {
+      "batch": 3,
+      "optimizer_steps_before_failure": 3,
+      "finite": true,
+      "score_equality_assertion_failed": true,
+      "original_text_stride": [
+        0,
+        0,
+        1
+      ],
+      "used_text_stride": [
+        0,
+        0,
+        1
+      ],
+      "semantic_delta_max": 7.152557373046875e-07,
+      "phrase_delta_max": 1.7881393432617188e-07,
+      "score_delta_max": 4.76837158203125e-07,
+      "affected": [
+        {
+          "key": "candlecup_indoor@634",
+          "candidate": 0,
+          "score": -0.049161482602357864,
+          "visual_score": -0.04916148632764816
+        },
+        {
+          "key": "duck04_wild@515",
+          "candidate": 4,
+          "score": -6.943387031555176,
+          "visual_score": -6.943387508392334
+        }
+      ]
+    }
+  },
+  "contiguous": {
+    "optimizer_steps": 40,
+    "failure": null,
+    "semantic_delta_max": 0.0,
+    "phrase_delta_max": 0.0,
+    "score_delta_max": 0.0
+  },
+  "replay_sha256": "c89384f899e0d249bee43f17f64e53b53b907da554e3f54d880f529cdca3827c",
+  "production_fix_tested": true,
+  "no_checkpoint": true,
+  "no_development_or_public_evaluation": true,
+  "actual_expanded_input_regression_original_exit": 1,
+  "actual_expanded_input_regression_fixed_exit": 0
+}

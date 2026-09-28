@@ -43,3 +43,15 @@
 | 2026-09-28 10:05 | /analyze-results | m99_prepared/analysis_arithmetic_check.json | arithmetic verification | Actual990historical rows, M91/M96 overall summaries equal; not an M99 result |
 | 2026-09-28 10:04 | /experiment-bridge | M99_ANALYSIS_REVIEW_20260928_0958.md | implementation | Fresh same-family provisional analyzer PASS after terminal-print correction; actual historical arithmetic only, no M99 result |
 | 2026-09-28 10:04 | /experiment-bridge | M99_ANALYSIS_REVIEW.md | implementation | Latest M99 analyzer review copy |
+| 2026-09-28 10:44 | /experiment-bridge | M99_EMPTY_REPLAY_REVIEW_20260928_104415.md | implementation | Fresh same-family provisional FAIL: distinguish exact equality replay from nonfinite alternatives and record update diagnostics; no GPU execution |
+| 2026-09-28 10:44 | /experiment-bridge | M99_EMPTY_REPLAY_REVIEW.md | implementation | Latest Empty-layout replay predeployment review |
+| 2026-09-28 10:47 | /experiment-bridge | M99_EMPTY_REPLAY_REVIEW_20260928_104746.md | implementation | Fresh same-family provisional PASS after exact-symptom and finite-update diagnostic fixes; GPU replay remains unexecuted |
+| 2026-09-28 10:47 | /experiment-bridge | M99_EMPTY_REPLAY_REVIEW.md | implementation | Latest Empty-layout replay predeployment review; supersedes preserved initial FAIL |
+| 2026-09-28 10:52 | /diagnosing-bugs | m99_empty_layout/replay.json | actual GPU diagnostic | Original equality red after3updates; caller contiguous40updates exact cancellation, finite arithmetic; no checkpoint/evaluation |
+| 2026-09-28 10:52 | /diagnosing-bugs | M99_EMPTY_FIX_PREPARATION.md | repair scope | Shared projection layout fix proposed; production regression/training pending |
+| 2026-09-28 10:57 | /experiment-bridge | M99_EMPTY_FIX_REVIEW_20260928_105758.md | implementation | Fresh same-family provisional PASS: one-line shared Empty layout fix and faithful 40-batch regression source; actual fixed-source GPU gates pending |
+| 2026-09-28 10:57 | /experiment-bridge | M99_EMPTY_FIX_REVIEW.md | implementation | Latest M99 Empty production-fix source-review copy |
+| 2026-09-28 11:05 | /diagnosing-bugs | m99_empty_layout/regression_fixed_green.json | actual GPU regression | Original expanded-input score assertion red before one-line fix; all40fixed batches exact cancellation/finite; no checkpoint or evaluation |
+| 2026-09-28 11:05 | /experiment-bridge | m99_completed/final_train/result.json | actual fixed-state training | Fixed12ep480updates final; dev275/495 vs268,mean.530180954; healthy2breaks gateFAIL; no semantics/recursion/public metrics |
+| 2026-09-28 11:05 | /analyze-results | m99_completed/analysis/analysis.json | completed result arithmetic | All495events/22seq/strata retained and recomputed;3of4checks pass, no promotion |
+| 2026-09-28 11:05 | /experiment-bridge | m99_completed/reload_verification.json | actual final reload | New GPU process loaded final;495event rows and summaries exact; no optimization/recursive/official evaluation |

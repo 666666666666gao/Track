@@ -1,0 +1,85 @@
+{
+  "observed_utc": "2026-09-28T01:40:50.422460+00:00",
+  "observed_cst": "2026-09-28T09:40:50.422460+08:00",
+  "elapsed_since_launch_seconds": 3874.85657,
+  "shards": [
+    {
+      "shard": 0,
+      "sequences": 48,
+      "total_sequences": 77,
+      "events": 1076,
+      "frames": 66105,
+      "total_frames": 108335,
+      "last_progress": {
+        "completed": 48,
+        "total": 77,
+        "elapsed_seconds": 3830.779577255249,
+        "sequence": "cat03_indoor",
+        "split": "fit",
+        "events": 21,
+        "frames": 566,
+        "maximum_box_error_px": 0.0,
+        "maximum_score_error": 0.0,
+        "candidate_regions_exact": true,
+        "candidate_boxes_exact": true,
+        "initial_region_exact": true,
+        "original_feature_sha256": "e64572f37ececb68cd001a347cd0be41444f073730ec33727e5d615fb71d4bc0",
+        "feature_sha256": "592c56b1a292d3a49b30c2a84624595d233757007fa89dfb174bb33b84991cb0",
+        "bytes": 7788033
+      },
+      "projected_total_seconds": 6278.004772739541,
+      "projected_finish_cst": "2026-09-28T10:20:53.570663+08:00",
+      "maximum_box_error_px": 0.0,
+      "maximum_score_error": 0.0
+    },
+    {
+      "shard": 1,
+      "sequences": 50,
+      "total_sequences": 75,
+      "events": 1140,
+      "frames": 74782,
+      "total_frames": 110859,
+      "last_progress": {
+        "completed": 50,
+        "total": 75,
+        "elapsed_seconds": 3810.0942618846893,
+        "sequence": "ball16_indoor",
+        "split": "fit",
+        "events": 31,
+        "frames": 1909,
+        "maximum_box_error_px": 0.0,
+        "maximum_score_error": 0.0,
+        "candidate_regions_exact": true,
+        "candidate_boxes_exact": true,
+        "initial_region_exact": true,
+        "original_feature_sha256": "dc1263379603f89cea104c9a1eef64da83f4fdff700743a1537d0e9c43a1ba01",
+        "feature_sha256": "64eeb0f47a4b62602bf040172459db0ca4c508e268087d0c3908ab3546692573",
+        "bytes": 11477643
+      },
+      "projected_total_seconds": 5648.193947450921,
+      "projected_finish_cst": "2026-09-28T10:10:23.759837+08:00",
+      "maximum_box_error_px": 0.0,
+      "maximum_score_error": 0.0
+    }
+  ],
+  "completed_sequences": 98,
+  "completed_events": 2216,
+  "completed_frames": 140887,
+  "processes": "259894 /root/autodl-tmp/envs/sttrack/bin/python -u collect_train_contexts.py --cache /root/autodl-tmp/sttrack_m90_train_states_20260928 --origins /root/autodl-tmp/sttrack_m95_initial_origins_20260928 --output /root/autodl-tmp/sttrack_m98_train_contexts_20260928 --full152-spec /root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json --repository /root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1 --checkpoint /root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar --shard 0\n259895 /root/autodl-tmp/envs/sttrack/bin/python -u collect_train_contexts.py --cache /root/autodl-tmp/sttrack_m90_train_states_20260928 --origins /root/autodl-tmp/sttrack_m95_initial_origins_20260928 --output /root/autodl-tmp/sttrack_m98_train_contexts_20260928 --full152-spec /root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json --repository /root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1 --checkpoint /root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar --shard 1\n261316 /root/autodl-tmp/envs/sttrack/bin/python -u /home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/queue_ab_visual_control.py",
+  "gpu": "0, 67, 2446\n1, 76, 2446",
+  "free_bytes": 2260783104,
+  "M98_exit": null,
+  "M99_state": {
+    "observed_utc": "2026-09-28T01:36:15.103082+00:00",
+    "status": "verified_M98_wait",
+    "processes": [
+      "259892 SCREEN -dmS m98_context_collect_20260928 bash /home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/queue_train_contexts.sh",
+      "259893 bash /home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/queue_train_contexts.sh",
+      "259894 /root/autodl-tmp/envs/sttrack/bin/python -u collect_train_contexts.py --cache /root/autodl-tmp/sttrack_m90_train_states_20260928 --origins /root/autodl-tmp/sttrack_m95_initial_origins_20260928 --output /root/autodl-tmp/sttrack_m98_train_contexts_20260928 --full152-spec /root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json --repository /root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1 --checkpoint /root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar --shard 0",
+      "259895 /root/autodl-tmp/envs/sttrack/bin/python -u collect_train_contexts.py --cache /root/autodl-tmp/sttrack_m90_train_states_20260928 --origins /root/autodl-tmp/sttrack_m95_initial_origins_20260928 --output /root/autodl-tmp/sttrack_m98_train_contexts_20260928 --full152-spec /root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json --repository /root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1 --checkpoint /root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar --shard 1"
+    ]
+  },
+  "M99_exit": null,
+  "no_training_or_restarts": true,
+  "receipt_path": "/root/autodl-tmp/sttrack_m98_train_contexts_20260928/hourly_20260928_094050.json"
+}
