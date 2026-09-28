@@ -1,0 +1,53 @@
+# M105 runner pre-deployment review
+
+- verdict: **PASS — no blocking issue found in the reviewed runner and diagnosis source**
+- acceptance_status: **provisional (source only)**
+- review_independence: **same-family**
+- actual_reviewer: `/root/m105_runner_review`
+- actual_reviewer_model: **gpt-6-astra**
+- actual_reasoning_effort: **max**
+- fork_turns: **none**
+- attribution_source: actual reviewer settings supplied by the parent in this review assignment
+- reviewed_at: 2026-09-28T14:46:21+08:00
+- review_type: source inspection, local in-memory syntax/schema checks, and mocked controller control-flow checks; **not remote deployment or GPU acceptance**
+
+Only the following six task files were read: `run_m105_components.py`, `diagnose_learned_geometry_components.py`, `M105_GEOMETRY_COMPONENT_PLAN.md`, `M105_GEOMETRY_COMPONENT_RECHECK.md`, `m104_completed/driver.json`, and `m104_completed/train/result.json`. No dependency source, saved event rows, checkpoint, human annotation, or candidate/private mapping was opened. This report is the only artifact written by this reviewer; no code was changed.
+
+## Findings
+
+| Status | Check | Concrete evidence and conclusion |
+| --- | --- | --- |
+| PASS | CLI arguments | `run_m105_components.py:16–25,30` supplies exactly the diagnosis parser's required argument names at `diagnose_learned_geometry_components.py:35–39`: nine path arguments plus `split` and `device`. Both declared splits are accepted. The M104-only `--repository` and `--mode` flags are correctly absent because the M105 parser does not accept them. |
+| PASS | Interpreter and recorded data dependencies | `run_m105_components.py:14,17–25` matches the successful M104 train command at `m104_completed/driver.json:46–70`: interpreter `/root/autodl-tmp/envs/sttrack/bin/python`; cache, contexts, origins, Empty bank, geometry probe, parent checkpoint, parent result, and `cuda` device all match exactly. The new `--m104-directory` is precisely M104's recorded train output directory. M104 train and driver exits are zero at `driver.json:72,109`. |
+| PASS | Script/import directory wiring | The runner derives the sibling diagnosis script from its own file location (`run_m105_components.py:15`) and launches it with that directory as `cwd` (`:34`). The diagnosis retains named sibling imports for data loading, encoding, the refiner, and decoder (`diagnose_learned_geometry_components.py:10–13`). M104's recorded script directory is the same diagnostics directory (`m104_completed/driver.json:48`). This establishes source-level directory wiring, subject to the deployment limitation below. |
+| PASS | GPU allocation and concurrent launch | The only two runs are `('fit', 0)` and `('development', 1)` (`run_m105_components.py:29`); each receives its own `CUDA_VISIBLE_DEVICES` value (`:31–32`) and `--split` (`:30`). Both `Popen` calls occur inside the launch loop (`:34–37`) before the wait loop begins (`:40–41`). Waiting for fit first does not serialize the GPU workloads. No wrapper shell substitutes its exit status for the Python child. |
+| PASS | Fresh, separate outputs; no retry or deletion | The fixed run root must be absent and is created without `exist_ok` (`run_m105_components.py:11–13`). Split outputs and logs are distinct (`:30,33`); the diagnosis also rejects an existing split output (`diagnose_learned_geometry_components.py:41,142`). A pre-existing root fails before launching or opening logs. The controller starts each split once (`run_m105_components.py:29–37`), with no retry, delete, overwrite-of-prior-run, or optimization loop. |
+| PASS | Actual child exit values retained and failure propagated | Each child's direct `process.wait()` result is stored unchanged (`run_m105_components.py:41`), including negative signal statuses. It is written to the corresponding `fit.exit`/`development.exit` (`:43`) and remains in `driver.json` (`:47`). Both children are waited for, even when the first returns nonzero. The controller returns zero only if **all** stored child exits equal zero (`:44–46`), writes that aggregate to `driver.exit` (`:48`), and exits with it (`:50`). |
+| PASS | Same completed final and frozen parent | The diagnosis requires the original completed train result and completed weight-1 parent (`diagnose_learned_geometry_components.py:44–48`). It checks the parent hash against both records (`:49`) and loads only `m104-directory/final.pt`, with its hash checked against M104's saved final hash (`:50–51,63`). The allowed M104 result records parent SHA-256 `1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293` (`m104_completed/train/result.json:89`) and final SHA-256 `546bd218a14906beb28033717bb53cc17721e9bb6b3fb53f36a4bac15dff9f6e` (`:262`). There is no checkpoint selection, retraining, or checkpoint save in the reviewed diagnosis. |
+| PASS | Fixed population, ordering, and selection | Counts remain exactly 2,544 fit / 495 development (`diagnose_learned_geometry_components.py:55`), equal to the recorded M104 totals (`m104_completed/train/result.json:93,175`). Ordered keys must match every saved original row (`diagnose_learned_geometry_components.py:56`), and batches remain 64 (`:70–71`; M104 batch size is `result.json:6`). Every variant uses the fixed parent-selected index (`:87–89`), which must equal the saved selection (`:92`). |
+| PASS | Every existing row replay gate retained | The diagnosis checks strata, selected index, native IoU, parent selected IoU, full selected IoU, original candidate maximum, and full oracle maximum by exact equality (`diagnose_learned_geometry_components.py:90–97`). Ordered keys were already checked at `:56`. This matches the resolved source gate documented in `M105_GEOMETRY_COMPONENT_RECHECK.md:18–26`. The reviewer did not reread saved event rows or claim a new real replay. |
+| PASS | Full original summary schema retained | The 14 fields reconstructed at `diagnose_learned_geometry_components.py:118–131` are checked by complete dictionary equality at `:132`. A local schema comparison against the allowed M104 result confirmed that these are exactly the 14 fields of every original group in both splits. The original groups are `all`, `healthy`, `intermediate`, `late_low`, and `transition` (`m104_completed/train/result.json:91–254`). Per-row strata equality preserves membership; native-relative and parent-relative rescues/breaks remain distinct. |
+| PASS | Component intervention and immutability gates | Exactly one learned delta is computed per batch, then center-only/size-only components are zeroed; parent keeps the original boxes, while the three corrected variants call the existing decoder from those boxes (`diagnose_learned_geometry_components.py:72–82`). Every processed candidate box has exact zero-delta equality checked (`:83`) and all decoded outputs must be finite (`:84`). Parent/refiner are frozen and evaluated (`:59–66`), the readout loop uses `no_grad` (`:69`), and complete parameter/buffer state dictionaries must remain exactly unchanged (`:103–104`). GT first appears in the local overlap calculation after decoding (`:88`), not in the shown geometry forward arguments (`:73`). Shared module internals were outside the allowed read scope. |
+| PASS | Report coverage and retained interpretation limits | Per-candidate overlaps, fixed selected boxes, and learned selected deltas are retained (`diagnose_learned_geometry_components.py:98–101`); all/marginal/joint groups are produced and joint counts checked (`:105–114`), then event and result files are written (`:133–144`). The plan explicitly retains the healthy failure and forbids relaxing that gate (`M105_GEOMETRY_COMPONENT_PLAN.md:3–6`); M104 still records `healthy_new_breaks_zero: false` (`m104_completed/train/result.json:255–259`). The diagnosis makes no automatic variant promotion or tracker/public action, and states the clipping-interaction and non-official-metric interpretation (`diagnose_learned_geometry_components.py:137–138`; plan `:20–33`). |
+
+## Checks actually performed
+
+- Both Python files compiled in memory using local `E:/python.exe -B -S`; no target module imports, bytecode files, or actual runner execution occurred.
+- An AST-based comparison verified the interpreter, all eight shared input/device argument values, the M104 train-directory link, and exact equality between provided M105 argument names and parser-required names.
+- An AST-based schema comparison verified all 14 summary fields against all ten original M104 split/group summaries in the allowed result JSON.
+- The actual runner `main` function was compiled alone from its AST. Its filesystem, environment, clocks, output, and `subprocess.Popen` objects were replaced with in-memory doubles. No M105/M104 child, remote command, or GPU work was started.
+- Six mocked child-exit cases passed: `(0, 0) -> 0`, `(2, 0) -> 1`, `(0, 3) -> 1`, `(2, 3) -> 1`, `(-15, 0) -> 1`, and `(0, -9) -> 1`. In every case the original two child values survived unchanged in `driver.json` and the split exit files, the driver file and process status agreed, both logs were closed, and both children were launched before either wait.
+- The same checks verified fit GPU 0 / development GPU 1, distinct split outputs, and rejection of an existing root before any additional launch, log opening, or write. These are controller control-flow checks with doubles, not actual GPU/process acceptance.
+
+## WARN — acceptance boundary
+
+**No blocking source issue was found. Runtime acceptance remains outstanding.** The allowed evidence does not establish that the reviewed files have been deployed, that remote dependencies still have the recorded contents, or that the two physical GPUs are currently available. No remote interpreter/import check or real M105 replay was performed. Dependency implementations, real saved rows, and checkpoint bytes were intentionally not read.
+
+The actual run must still produce both zero child exits, a zero driver exit, verified checkpoint hashes, exact row/summary replay, all 30,390 zero-delta candidate-box checks, unchanged frozen states, and independently checked generated arithmetic. The source and mocked-controller PASS does not replace those facts (`M105_GEOMETRY_COMPONENT_PLAN.md:35–38`; `M105_GEOMETRY_COMPONENT_RECHECK.md:41`). There is no requested source change or additional defensive logic from this review.
+
+## Reviewed source identities
+
+- `run_m105_components.py` SHA-256: `266cd99afa9415cafbe3b141731746d2c4c47614907d5bd3533f6dfa34cc3e5c`
+- `diagnose_learned_geometry_components.py` SHA-256: `26ae8344efd95549d6710993f6b18a88f4cf7dce83318b8110dfa4309a465ce5`
+
+**Final classification: PASS (source), WARN (real-run acceptance pending), FAIL: none.**

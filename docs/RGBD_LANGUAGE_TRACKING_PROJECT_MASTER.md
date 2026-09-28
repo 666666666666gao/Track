@@ -24187,3 +24187,42 @@ goal保持active；本轮完成M103真实诊断及M104真实两GPU训练/读出�
 后续训练帧能够帮助标注类别，不等于这些信息在推理首帧就可获得；新增video_only_attributes与first_frame_category_observability分开记录。该训练视频辅助协议需披露，不能让公开评测初始化读取未来帧。pending及人工uncertain/unknown不得硬转成可靠类别/物理身份正负标签；审核过的同协议标签可复用，但全152初始化不覆盖未来新增候选事件。
 
 本轮没有新增GPU训练/公开指标，M104开发3/4门槛、healthy新增损害及既有三数据集九项保持不变；M105同final中心/尺寸分量只读诊断源码已准备并经fresh同族provisional复核修正后PASS，尚未部署/执行，源码PASS不代替GPU结果。新A语义监督仍待用户独立确认，但独立B诊断可继续。联合目标未达，goal保持active。
+
+
+### 5.314 M105同final中心/尺寸分量诊断实际完成，3039状态及独立GT算术核验（2026-09-28）
+
+§5.313中的M105“尚未部署/执行”现已被本节完成态取代。用户的多帧审核包保持原交付入口：全部152初始化＋24候选、多帧JPG／CSV／TXT共8批，本地整段预览及事件片段齐全。本轮再次实际执行文件/字段核查，176段媒体与3725本地链接一致；未收到用户确认CSV，不将网页版GPT或助手预填计成人工真值。
+
+**实际M105执行：**
+- 使用冻结M101父模型及M104同一final（SHA256 546bd218a14906beb28033717bb53cc17721e9bb6b3fb53f36a4bac15dff9f6e），保留Empty五槽、原10候选、固定父选择索引及原边界／最小10像素解码。对同一学习delta读出parent、full、center_only、size_only；没有优化、新checkpoint、语义教师、模板或递归状态提交。
+- 已完成源码/运行器fresh同族复核；首次源码审阅发现完整原summary未全部核验，已补齐全部14字段、逐行strata和joint分组后复核PASS。运行器真实CLI与STTrack环境相符，拒绝已有输出目录、不自动重试。
+- 2026-09-28 14:49:42.888至14:49:57.307 CST，GPU0 fit2544、GPU1 development495同时读取；两个child及driver均退出0，总14.418560秒。实际Torch1.13.1+cu116/CUDA11.6/Python3.8.20，未重建环境。按不足一分钟估计仅在预计结束后查了一次完成态，未频繁轮询。
+- 全3039原full行、选中索引、native/parent/full/Top10 IoU及原14字段summary逐值复现M104；30390个实际零delta候选框与原框逐值一致，父模型及refiner参数/buffer不变。
+- 13份运行输出已下载并逐文件SHA/字节匹配。独立本地accept_m105_components.py实际退出0：四读出×3039＝12156个选中框，以原数据集GT独立float32计算IoU逐值一致，全部边际及joint分组正确数／均值／救回／损害／候选上界算术一致。原training_labels.json绑定preparation哈希，非模型生成身份或语义真值。
+
+**固定状态读出结果（正确＝IoU≥0.5，救回/损害相对M101固定选框）：**
+
+| split／读出 | 正确数 | 平均IoU | 救回／损害 | Top10 GT候选上界 |
+|---|---:|---:|---:|---:|
+| fit2544 Parent | 1602 | 0.608313789 | 0／0 | 1814 |
+| fit Full | 1652 | 0.616710538 | 51／1 | 1866 |
+| fit Center-only | 1620 | 0.613920198 | 19／1 | 1818 |
+| fit Size-only | 1629 | 0.609808391 | 28／1 | 1840 |
+| development495 Parent | 272 | 0.530707698 | 0／0 | 305 |
+| development Full | 286 | 0.535297504 | 15／1 | 323 |
+| development Center-only | 276 | 0.533739096 | 4／0 | 310 |
+| development Size-only | 278 | 0.531034610 | 8／2 | 315 |
+
+**实测局部损害与判断边界：**
+- fit pine01_indoor@1276：parent0.500443041，full0.479231507，center0.479360998，size0.501299739；该状态中心修改单独导致过0.5正确框变不合格。
+- fit basket_indoor@67：parent0.503328264，full0.631534517，center0.581268668，size0.482185483；尺寸修改单独损害，但联合修改改善。因此不能简单把尺寸分支视作纯坏。
+- development mobilephone02_indoor@65：parent0.510501027，full0.448262632，center0.510886967，size0.448261052；此状态完整损害主要保留在尺寸读出。
+- development ball19_indoor@688：parent0.525265217，full0.518158853，center0.600251794，size0.448889107；单独尺寸额外损害，联合输出仍过0.5。
+- healthy正确数fit/development：Parent1559/264、Full1558/263、Center1558/264、Size1558/263；transition为22/4、22/4、22/4、22/3。原M104 healthy保护仍失败，不降低标准，不因Center开发无损害就直接选择它部署。
+- center/size救回交集每个split均1条；Full另有fit11条／development4条两单分量都未救回；fit各3条Center或Size单分量救回不在Full救回内。原解码含裁剪且IoU阈值非线性，不能相加解释贡献百分比。这是同状态几何干预，不是重新训练消融，也不是完整失锁原因或物理身份判断。
+
+**下一步：** 只用fit证据确定新的几何训练对照，重点使实际父模型选中的可靠框保住几何，同时保留联合精修的有效容量；development用于检查，不据手机/球序列写专属规则、不扫阈值/seed/final。原M104仅3/4门槛，不自动推进C、递归或三数据集正式评测。A语义训练仍等独立确认，视觉B工作可继续。
+
+原始结果、所有正负事件及独立验收在 projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m105_completed；源码、部署回执及fresh复核记录同目录保存。完成态完整性审阅记录为M105_COMPLETED_AUDIT.md/json：fresh gpt-6-astra/max、fork_turns=none审阅总体WARN（A溯源边界WARN，B–F PASS），无数值或当前GT前向泄漏阻断；独立重算3039行、12156选中框IoU、140原summary数值、672分量summary字段、131完整救回/损害记录及两权重真实字节SHA，确定性证据accepted，同族语义审阅provisional。审阅未重新读取远端原始groundtruth.txt，原GT出处采用已验证缓存／spec哈希链；30390零delta和冻结检查是源码绑定的已完成运行断言，不称新reviewer GPU复跑。计划原文“GT读取在解码之后”不够准确：GT元数据早已载入，解码后才用于IoU，未输入forward／selection。原计划与部署SHA保留，不追溯改写。
+
+本轮没有产生新三数据集九项正式指标，既有结果和联合目标保持不变，goal继续active。

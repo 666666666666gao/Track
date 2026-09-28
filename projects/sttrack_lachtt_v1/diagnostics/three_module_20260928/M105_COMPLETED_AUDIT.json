@@ -1,0 +1,888 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "bounded_local_provenance_and_runtime_attestation",
+  "summary": "All independently recomputed local arithmetic, source identities, checkpoint hashes and report numbers pass. No fabricated-GT mechanism, score normalization abuse, missing-result claim or current-GT forward leakage was found. WARN marks the raw-dataset/invariant evidence boundary and imprecise plan wording, not a numerical failure.",
+  "generated_at": "2026-09-28T07:04:30Z",
+  "date": "2026-09-28",
+  "project_dir": "C:\\Users\\gb\\.codex_track_publish_m29_20260902",
+  "artifact_dir": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928",
+  "agent_id": "/root/m105_completed_integrity",
+  "verdict_id": "/root/m105_completed_integrity",
+  "executor_model": "gpt-6-astra",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "max",
+  "fork_turns": "none",
+  "reviewer_metadata_source": "Parent assignment and preserved executor trace request; canonical task id is recorded because no separate UUID was exposed.",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "auditor": "gpt-6-astra-max",
+  "trace_path": ".aris/traces/experiment-audit/2026-09-28_m105_completed/",
+  "trace_status": "Executor-managed: request metadata existed during review; executor must preserve this final response and completion metadata. Reviewer wrote only the two assigned audit files.",
+  "audited_input_hashes": {
+    "diagnose_learned_geometry_components.py": "sha256:26ae8344efd95549d6710993f6b18a88f4cf7dce83318b8110dfa4309a465ce5",
+    "run_m105_components.py": "sha256:266cd99afa9415cafbe3b141731746d2c4c47614907d5bd3533f6dfa34cc3e5c",
+    "accept_m105_components.py": "sha256:f2cf9a5277a745ad9a8d14512b06ae09a332d19b4493352ca700f6ce99c4ded9",
+    "train_local_visual_geometry.py": "sha256:bfb63d22a4e3d2d5f86475854f31210000ebea3d14ce26b40b340b4695e562b8",
+    "train_ab_visual_control.py": "sha256:b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "instance_ab_prototype.py": "sha256:09db6833f161b6028e64905f2e73a69027e0caf28c611b6c9d81a9fa6862d9fb",
+    "analyze_train_states.py": "sha256:2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "prepare_train_states.py": "sha256:cceb53710cdbde8350000c25d6f0ed25b490e4084022b37c76062315ad641c79",
+    "M105_GEOMETRY_COMPONENT_PLAN.md": "sha256:10a21bc50032f1ed8f1bfba0273da401ad1a1f3765f8f928a1b86ff24ccd790a",
+    "M105_GEOMETRY_COMPONENT_REVIEW.md": "sha256:6427c6e4520bba36f9c6b449cedaa15b542f3ca2829ce653dfdbdeb9040ea4d2",
+    "M105_GEOMETRY_COMPONENT_RECHECK.md": "sha256:5eb9e771ac8642bf3b32ea7dfadb81bb8196768486758b498d233adff2fba644",
+    "M105_RUNNER_REVIEW.md": "sha256:16ef49925aba0d70d3230beef36ad110fae1b7dfc6dbfbb9d3cd850e9a0ea11f",
+    "M105_DEPLOY_RECEIPT.json": "sha256:e151059d985aed89969fd17f9de2e6157fc2c3684b6da917653f9f7dafe1a62d",
+    "m105_completed/driver.json": "sha256:386c10938632843b8ae10d8528a2b88db10a885fe1f9d27d9e0b1b35e9c79205",
+    "m105_completed/launch.json": "sha256:213442f240a4a5d025c3c9d215101f24ddc3aadec5c4273fc8b50a8f2aae57de",
+    "m105_completed/launch_receipt.json": "sha256:143cb2cde9655abc606050beb0f5a0cac8be79d459b4bdc952710e0709457f4d",
+    "m105_completed/download_receipt.json": "sha256:d11ceff6a5c9a2d480e035139c08434e4cf3f453e131c1f118ee5c60ecc773bc",
+    "m105_completed/acceptance.json": "sha256:c8623e76fb138a6cf5ecbbf27f33e72d21249a5e9ca69de36a48e72faee840ff",
+    "m105_completed/driver.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m105_completed/fit.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m105_completed/development.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m105_completed/controller.log": "sha256:1d41c7a9b4069eaeff6e7496a18a9b863063a6f051891bd677e76eb4dbd5e5ad",
+    "m105_completed/fit.log": "sha256:d32ad8cf9f47c40c788cc7a2d9cddc31c41b15c1a918f3579994ce2c0ea82da9",
+    "m105_completed/development.log": "sha256:b24526f80544ebac560eb687aebeac207020fdb7ff115f85cfdc100a4fdf54e2",
+    "m105_completed/fit/result.json": "sha256:d1ad44ee36bdf7d835910e4635b98d91c7a055107967c1f8c4c5d951f4a53053",
+    "m105_completed/fit/events.jsonl": "sha256:de10c0fcab2cadafcd75f1108af1bfdec232b250e3d2977f001d8166013874b5",
+    "m105_completed/development/result.json": "sha256:e36a8ac1aef140e1ed5da535d6c44ff937ad9d89cfba991745b012206ad7758a",
+    "m105_completed/development/events.jsonl": "sha256:b9fe5eca45e20b567517aa7239fbc4219d220f81add2583ecb98c7d43b864217",
+    "m104_completed/train/result.json": "sha256:315ff9ae562e71878d36e8fe84b04343a285f5c295e0f62cce3b449e87f14a7f",
+    "m104_completed/train/fit_events.jsonl": "sha256:0cf535db21f0baf6933686936e8acc129a2b7424c5ef08c230fe57b951a6676f",
+    "m104_completed/train/development_events.jsonl": "sha256:c339e6ec301e16a630501ae5f7a07cc62ef6da604967bcb40e3b00b63a5bf136",
+    "m105_inputs/preparation.json": "sha256:59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+    "m105_inputs/training_labels.json": "sha256:433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+    "m105_inputs/download_receipt.json": "sha256:86f20ffbabf072c6655b1ce5e71d021c35b850d24b4eb6393b805e65e8cf1792",
+    "collect_ab_interface_panel.py": "sha256:361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "train_fixed_visual_selector.py": "sha256:a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "M105_GEOMETRY_COMPONENT_REVIEW_20260928_135551.md": "sha256:6427c6e4520bba36f9c6b449cedaa15b542f3ca2829ce653dfdbdeb9040ea4d2",
+    "M105_GEOMETRY_COMPONENT_RECHECK_20260928_135901.md": "sha256:5eb9e771ac8642bf3b32ea7dfadb81bb8196768486758b498d233adff2fba644",
+    "m105_completed/RESULT.md": "sha256:9eb550fd92c9b3754619476430f4842ee62c39d1d553a4a876c8ed55b73e917a",
+    "m104_completed/train/final.pt": "sha256:546bd218a14906beb28033717bb53cc17721e9bb6b3fb53f36a4bac15dff9f6e",
+    "m101_completed/train_weight1/final.pt": "sha256:1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293",
+    "m101_completed/train_weight1/result.json": "sha256:92d7df716aa369b5ba85f71ac0cc07e943c0a4c5cd7e4788474bde68991024d6",
+    "../full152_paired_20260925/M82_training_spec.json": "sha256:3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "../m82_native_preservation/preflight/training_spec.json": "sha256:6163ef5b21f897ca9819c6358b03682c1278bc1b37e5ac93146ff47d332dd700",
+    "collect_train_states.py": "sha256:3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3"
+  },
+  "checks": {
+    "A": {
+      "name": "Ground-truth provenance",
+      "status": "WARN",
+      "details": "The target is dataset GT according to the checked preparation source and hash-matched source specification. The downloaded label bytes match their preparation/download hashes, and every evaluated key, split, stratum and valid box was checked. Current GT is excluded from forward inputs and parent selection. The audit did not read/re-hash the original remote groundtruth.txt files; their 152 recorded hashes are manifest evidence, not freshly verified raw-data bytes. The plan's literal statement that GT is read only after decoding is imprecise: labels and metadata are loaded first, while target boxes are consumed by overlap after decoding.",
+      "evidence": [
+        "prepare_train_states.py:69-78",
+        "prepare_train_states.py:84-105",
+        "prepare_train_states.py:107-120",
+        "../full152_paired_20260925/M82_training_spec.json:6-16",
+        "m105_inputs/preparation.json:3-19",
+        "m105_inputs/training_labels.json:1",
+        "train_ab_visual_control.py:24-28",
+        "train_ab_visual_control.py:56-76",
+        "train_ab_visual_control.py:86-94",
+        "train_local_visual_geometry.py:55-84",
+        "diagnose_learned_geometry_components.py:52-53",
+        "diagnose_learned_geometry_components.py:73-89",
+        "M105_GEOMETRY_COMPONENT_PLAN.md:23-24"
+      ]
+    },
+    "B": {
+      "name": "Score normalization",
+      "status": "PASS",
+      "details": "IoU is intersection divided by geometric union; event mean IoU divides by event count. Correctness, rescues, breaks and oracle coverage are raw threshold counts. No reported performance denominator is a max/min/mean of prediction scores. Candidate/oracle maxima are clearly separate GT diagnostics, not normalization. Box/prior normalization belongs to model features or regression targets.",
+      "evidence": [
+        "analyze_train_states.py:20-25",
+        "diagnose_learned_geometry_components.py:19-30",
+        "train_ab_visual_control.py:114-128",
+        "collect_ab_interface_panel.py:52-62",
+        "train_local_visual_geometry.py:49-52",
+        "m105_completed/RESULT.md:30-43"
+      ]
+    },
+    "C": {
+      "name": "Result existence, completion and numerical claims",
+      "status": "PASS",
+      "details": "All assigned results and logs exist. Both split exits and driver exit are zero; launch/driver/controller records agree. All 13 downloaded files exactly match byte counts/SHA256. Local M104 and M101 checkpoint bytes match the hashes in M104, M101 and both M105 outputs. RESULT.md tables, harms, marginal counts and rescue intersections match raw rows; its time is correctly rounded. M105 source has no optimizer or checkpoint-save call, and the completed output contains no checkpoint.",
+      "evidence": [
+        "m105_completed/driver.json:5-35",
+        "m105_completed/driver.json:38-73",
+        "m105_completed/driver.exit:1",
+        "m105_completed/fit.exit:1",
+        "m105_completed/development.exit:1",
+        "m105_completed/controller.log:1-2",
+        "m105_completed/download_receipt.json:4-57",
+        "M105_DEPLOY_RECEIPT.json:4-14",
+        "m104_completed/train/result.json:89-90",
+        "m104_completed/train/result.json:262",
+        "m101_completed/train_weight1/result.json:5186",
+        "m105_completed/fit/result.json:477-489",
+        "m105_completed/development/result.json:435-447",
+        "m105_completed/RESULT.md:10-26",
+        "m105_completed/RESULT.md:34-70"
+      ]
+    },
+    "D": {
+      "name": "Metric execution and raw-output validation",
+      "status": "PASS",
+      "details": "The M105 overlap routine is called after decoding at line 88; summaries are called at lines 112-113 and saved at lines 143-144. Independent stdlib arithmetic, without importing or invoking the executor acceptance program, exactly reproduced all 12,156 selected-box IoUs, 140 original M104 summary fields and 672 component summary fields. All 121,560 candidate IoU values are finite/in-range and each selected IoU indexes its candidate array correctly. All 131 retained rescue/break records equal raw-row filters. Runtime invariant statements are backed by executable assertions before output, not only result flags.",
+      "evidence": [
+        "diagnose_learned_geometry_components.py:83-104",
+        "diagnose_learned_geometry_components.py:112-144",
+        "m105_completed/fit/events.jsonl:1-2544",
+        "m105_completed/development/events.jsonl:1-495",
+        "m104_completed/train/fit_events.jsonl:1-2544",
+        "m104_completed/train/development_events.jsonl:1-495",
+        "m105_completed/acceptance.json:2-12",
+        "m105_completed/acceptance.json:438"
+      ]
+    },
+    "E": {
+      "name": "Scope and claims",
+      "status": "PASS",
+      "details": "Actual coverage is 2,544 valid events in 130 fit sequences and 495 valid events in 22 development sequences from one DepthTrack Train population. The preparation has 3,502 sampled events; 368 fit and 95 development events have invalid current GT and are excluded. One M104 seed/final (2027), four same-final readouts, ten original candidates and one fixed parent selection were tested. Five marginal groups per split and six/five exhaustive joint profiles are exact; overlapping marginals are not disjoint. RESULT.md preserves the failed healthy gate and excludes official, semantic/identity, recursive and retrained-ablation claims. Its proposed preservation training remains a hypothesis for a separately evaluated experiment.",
+      "evidence": [
+        "m105_inputs/preparation.json:11-26",
+        "prepare_train_states.py:62-91",
+        "train_ab_visual_control.py:60-61",
+        "m104_completed/train/result.json:4-9",
+        "m104_completed/train/result.json:255-262",
+        "m105_completed/fit/result.json:12-475",
+        "m105_completed/development/result.json:12-433",
+        "M105_GEOMETRY_COMPONENT_PLAN.md:20-33",
+        "m105_completed/RESULT.md:45-49",
+        "m105_completed/RESULT.md:64-93"
+      ]
+    },
+    "F": {
+      "name": "Evaluation classification",
+      "status": "PASS",
+      "evaluation_type": "real_gt",
+      "details": "Real-GT fixed-state localization diagnostic. Predicted boxes and cached features are inputs/predictions, while target boxes are dataset-derived labels. This is not synthetic_proxy, self_supervised_proxy, simulation_only or human_eval, and it is not an official benchmark metric. Dataset box GT does not certify physical-instance or semantic identity.",
+      "evidence": [
+        "prepare_train_states.py:69-105",
+        "train_ab_visual_control.py:66-75",
+        "diagnose_learned_geometry_components.py:73-89",
+        "m105_completed/acceptance.json:10-11",
+        "m105_completed/RESULT.md:76-80"
+      ]
+    }
+  },
+  "evaluation_type": "real_gt",
+  "deterministic_evidence": {
+    "status": "PASS",
+    "review_independence": "deterministic",
+    "acceptance_status": "accepted",
+    "boundary": "Acceptance covers byte identity and CPU recomputation from the audited artifacts, not independent raw-dataset reconstruction or GPU inference.",
+    "ordered_rows": 3039,
+    "selected_box_GT_IoU_exact_checks": 12156,
+    "candidate_IoU_values_finite_bounded_and_index_checked": 121560,
+    "original_summary_values_exact": 140,
+    "component_summary_values_exact": 672,
+    "complete_change_records_exact": 131,
+    "runtime_download_files_exact": 13,
+    "runtime_download_bytes": 4469888,
+    "input_download_files_exact": 2,
+    "deployed_entries_exact": 11,
+    "checkpoint_hashes_verified": true,
+    "result_md_numeric_tables_exact": true,
+    "source_call_checks": {
+      "collector_sha256": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+      "no_optimizer_or_torch_save_call": true,
+      "overlap_call_lines": [
+        88
+      ],
+      "summarize_call_lines": [
+        112,
+        113
+      ],
+      "assertions": [
+        41,
+        47,
+        48,
+        49,
+        51,
+        55,
+        56,
+        103,
+        104,
+        114,
+        132,
+        83,
+        84,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97
+      ],
+      "trace_relative_path": ".aris/traces/experiment-audit/2026-09-28_m105_completed/"
+    }
+  },
+  "runtime_invariants": {
+    "status": "PASS",
+    "evidence_class": "source_bound_completed_runtime",
+    "zero_delta_candidate_boxes": {
+      "fit": 25440,
+      "development": 4950,
+      "total": 30390
+    },
+    "complete_parameter_and_buffer_comparison": true,
+    "no_optimizer_or_checkpoint_save_call": true,
+    "independently_reexecuted_by_reviewer": false,
+    "sources": [
+      "diagnose_learned_geometry_components.py:59-69",
+      "diagnose_learned_geometry_components.py:83-84",
+      "diagnose_learned_geometry_components.py:103-104",
+      "m105_completed/driver.json:35",
+      "m105_completed/driver.json:68-73"
+    ]
+  },
+  "scope": {
+    "dataset": "DepthTrack Train",
+    "original_sampled_events": 3502,
+    "valid_events": 3039,
+    "fit_sequences": 130,
+    "development_sequences": 22,
+    "fit_events": 2544,
+    "development_events": 495,
+    "invalid_current_GT_excluded": 463,
+    "seed": 2027,
+    "final_weight_count": 1,
+    "variant_count": 4,
+    "trained_component_ablation": false,
+    "official_evaluation": false,
+    "recursive_tracking": false,
+    "semantic_or_identity_evaluation": false,
+    "all_original_summary_fields": [
+      "valid_gt",
+      "native_iou50",
+      "selected_iou50",
+      "oracle_iou50",
+      "rescues",
+      "breaks",
+      "native_mean_iou",
+      "selected_mean_iou",
+      "parent_correct",
+      "parent_mean_iou",
+      "parent_rescues",
+      "parent_breaks",
+      "original_top10_correct",
+      "original_miss_refined_hit"
+    ]
+  },
+  "split_evidence": {
+    "fit": {
+      "events": 2544,
+      "valid_sequences": 130,
+      "excluded_invalid_gt": 368,
+      "ordered_rows_exact": true,
+      "group_counts": {
+        "all": 2544,
+        "healthy": 1560,
+        "transition": 452,
+        "late_low": 178,
+        "intermediate": 381
+      },
+      "joint_counts": {
+        "healthy": 1560,
+        "transition": 425,
+        "late_low|transition": 26,
+        "intermediate": 380,
+        "late_low": 152,
+        "intermediate|transition": 1
+      },
+      "all": {
+        "parent": {
+          "events": 2544,
+          "selected_correct": 1602,
+          "selected_mean_iou": 0.6083137887764976,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "oracle_correct": 1814,
+          "original_miss_hit": 0,
+          "original_hit_miss": 0
+        },
+        "full": {
+          "events": 2544,
+          "selected_correct": 1652,
+          "selected_mean_iou": 0.6167105383052708,
+          "parent_rescues": 51,
+          "parent_breaks": 1,
+          "oracle_correct": 1866,
+          "original_miss_hit": 58,
+          "original_hit_miss": 6
+        },
+        "center_only": {
+          "events": 2544,
+          "selected_correct": 1620,
+          "selected_mean_iou": 0.6139201979478126,
+          "parent_rescues": 19,
+          "parent_breaks": 1,
+          "oracle_correct": 1818,
+          "original_miss_hit": 8,
+          "original_hit_miss": 4
+        },
+        "size_only": {
+          "events": 2544,
+          "selected_correct": 1629,
+          "selected_mean_iou": 0.6098083909640556,
+          "parent_rescues": 28,
+          "parent_breaks": 1,
+          "oracle_correct": 1840,
+          "original_miss_hit": 33,
+          "original_hit_miss": 7
+        }
+      },
+      "healthy": {
+        "parent": {
+          "events": 1560,
+          "selected_correct": 1559,
+          "selected_mean_iou": 0.8813412916010771,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "oracle_correct": 1560,
+          "original_miss_hit": 0,
+          "original_hit_miss": 0
+        },
+        "full": {
+          "events": 1560,
+          "selected_correct": 1558,
+          "selected_mean_iou": 0.8904460045771722,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "oracle_correct": 1560,
+          "original_miss_hit": 0,
+          "original_hit_miss": 0
+        },
+        "center_only": {
+          "events": 1560,
+          "selected_correct": 1558,
+          "selected_mean_iou": 0.8890974237368657,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "oracle_correct": 1560,
+          "original_miss_hit": 0,
+          "original_hit_miss": 0
+        },
+        "size_only": {
+          "events": 1560,
+          "selected_correct": 1558,
+          "selected_mean_iou": 0.8820468673339257,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "oracle_correct": 1559,
+          "original_miss_hit": 0,
+          "original_hit_miss": 1
+        }
+      },
+      "harms": {
+        "basket_indoor@67": {
+          "line": 274,
+          "strata": [
+            "healthy"
+          ],
+          "selected_iou": {
+            "parent": 0.503328263759613,
+            "full": 0.6315345168113708,
+            "center_only": 0.5812686681747437,
+            "size_only": 0.4821854829788208
+          }
+        },
+        "pine01_indoor@1276": {
+          "line": 2436,
+          "strata": [
+            "healthy"
+          ],
+          "selected_iou": {
+            "parent": 0.5004430413246155,
+            "full": 0.47923150658607483,
+            "center_only": 0.47936099767684937,
+            "size_only": 0.5012997388839722
+          }
+        }
+      },
+      "changes": {
+        "parent": {
+          "rescues": [],
+          "breaks": []
+        },
+        "full": {
+          "rescues": [
+            "cat02_indoor@329",
+            "cat02_indoor@606",
+            "leaves04_indoor@757",
+            "dumbbells02_indoor@679",
+            "bottle03_indoor@631",
+            "ball08_wild@817",
+            "cat04_indoor@259",
+            "duck06_wild@273",
+            "glass02_indoor@1287",
+            "cup09_indoor@1443",
+            "toy03_indoor@1161",
+            "toy06_indoor@950",
+            "hat01_indoor@729",
+            "bag03_indoor@752",
+            "adapter02_indoor@14",
+            "adapter02_indoor@539",
+            "leaves02_indoor@169",
+            "leaves02_indoor@433",
+            "trashbin_indoor@36",
+            "trashbin_indoor@39",
+            "human03_wild@531",
+            "bag04_indoor@76",
+            "bag04_indoor@1630",
+            "skateboard02_indoor@1183",
+            "skateboard02_indoor@1517",
+            "bottle01_indoor@85",
+            "skateboard01_indoor@502",
+            "skateboard01_indoor@503",
+            "ball03_indoor@857",
+            "ball17_wild@239",
+            "ball17_wild@1177",
+            "book01_indoor@32",
+            "colacan02_indoor@959",
+            "colacan02_indoor@2425",
+            "parkingsign_wild@219",
+            "suitcase_indoor@1273",
+            "ball05_indoor@396",
+            "toy04_indoor@900",
+            "toiletpaper04_indoor@644",
+            "hand02_indoor@603",
+            "mobilephone04_indoor@1519",
+            "flower01_indoor@644",
+            "clothes_indoor@739",
+            "trophy_indoor@328",
+            "cup11_indoor@765",
+            "cup05_indoor@161",
+            "file02_indoor@890",
+            "ball21_indoor@344",
+            "ball21_indoor@365",
+            "leaves05_indoor@303",
+            "pine01_indoor@774"
+          ],
+          "breaks": [
+            "pine01_indoor@1276"
+          ]
+        },
+        "center_only": {
+          "rescues": [
+            "cat04_indoor@259",
+            "duck06_wild@273",
+            "toy03_indoor@1161",
+            "mobilephone06_indoor@1138",
+            "bag03_indoor@752",
+            "adapter02_indoor@14",
+            "adapter02_indoor@539",
+            "bag04_indoor@76",
+            "bottle01_indoor@85",
+            "skateboard01_indoor@502",
+            "skateboard01_indoor@503",
+            "ball17_wild@1177",
+            "toy04_indoor@900",
+            "ball02_indoor@148",
+            "ball02_indoor@336",
+            "flower01_indoor@644",
+            "cup05_indoor@161",
+            "file02_indoor@890",
+            "ball21_indoor@344"
+          ],
+          "breaks": [
+            "pine01_indoor@1276"
+          ]
+        },
+        "size_only": {
+          "rescues": [
+            "cat02_indoor@329",
+            "cat02_indoor@606",
+            "leaves04_indoor@757",
+            "bottle03_indoor@631",
+            "ball08_wild@817",
+            "glass02_indoor@1287",
+            "cup09_indoor@1443",
+            "toy06_indoor@950",
+            "leaves02_indoor@433",
+            "trashbin_indoor@36",
+            "trashbin_indoor@39",
+            "human03_wild@531",
+            "bag04_indoor@1630",
+            "skateboard02_indoor@1183",
+            "skateboard02_indoor@1517",
+            "ball03_indoor@732",
+            "ball03_indoor@857",
+            "ball17_wild@1234",
+            "colacan02_indoor@2425",
+            "ball05_indoor@396",
+            "mobilephone04_indoor@1519",
+            "ball02_indoor@1134",
+            "clothes_indoor@739",
+            "trophy_indoor@328",
+            "cup11_indoor@765",
+            "file02_indoor@890",
+            "ball21_indoor@365",
+            "pine01_indoor@774"
+          ],
+          "breaks": [
+            "basket_indoor@67"
+          ]
+        }
+      },
+      "zero_delta_candidate_box_runtime_assertions_expected": 25440,
+      "result_elapsed_seconds": 12.826019957195967,
+      "gpu_peak_allocated_bytes": 318732288
+    },
+    "development": {
+      "events": 495,
+      "valid_sequences": 22,
+      "excluded_invalid_gt": 95,
+      "ordered_rows_exact": true,
+      "group_counts": {
+        "all": 495,
+        "healthy": 264,
+        "late_low": 41,
+        "intermediate": 69,
+        "transition": 127
+      },
+      "joint_counts": {
+        "healthy": 264,
+        "late_low": 35,
+        "intermediate": 69,
+        "transition": 121,
+        "late_low|transition": 6
+      },
+      "all": {
+        "parent": {
+          "events": 495,
+          "selected_correct": 272,
+          "selected_mean_iou": 0.5307076979870673,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "oracle_correct": 305,
+          "original_miss_hit": 0,
+          "original_hit_miss": 0
+        },
+        "full": {
+          "events": 495,
+          "selected_correct": 286,
+          "selected_mean_iou": 0.5352975043553431,
+          "parent_rescues": 15,
+          "parent_breaks": 1,
+          "oracle_correct": 323,
+          "original_miss_hit": 18,
+          "original_hit_miss": 0
+        },
+        "center_only": {
+          "events": 495,
+          "selected_correct": 276,
+          "selected_mean_iou": 0.5337390955262394,
+          "parent_rescues": 4,
+          "parent_breaks": 0,
+          "oracle_correct": 310,
+          "original_miss_hit": 5,
+          "original_hit_miss": 0
+        },
+        "size_only": {
+          "events": 495,
+          "selected_correct": 278,
+          "selected_mean_iou": 0.5310346102045091,
+          "parent_rescues": 8,
+          "parent_breaks": 2,
+          "oracle_correct": 315,
+          "original_miss_hit": 12,
+          "original_hit_miss": 2
+        }
+      },
+      "healthy": {
+        "parent": {
+          "events": 264,
+          "selected_correct": 264,
+          "selected_mean_iou": 0.8824474816069459,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "oracle_correct": 264,
+          "original_miss_hit": 0,
+          "original_hit_miss": 0
+        },
+        "full": {
+          "events": 264,
+          "selected_correct": 263,
+          "selected_mean_iou": 0.8853961328665415,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "oracle_correct": 264,
+          "original_miss_hit": 0,
+          "original_hit_miss": 0
+        },
+        "center_only": {
+          "events": 264,
+          "selected_correct": 264,
+          "selected_mean_iou": 0.886039960564989,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "oracle_correct": 264,
+          "original_miss_hit": 0,
+          "original_hit_miss": 0
+        },
+        "size_only": {
+          "events": 264,
+          "selected_correct": 263,
+          "selected_mean_iou": 0.8802599302972808,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "oracle_correct": 263,
+          "original_miss_hit": 0,
+          "original_hit_miss": 1
+        }
+      },
+      "harms": {
+        "ball19_indoor@688": {
+          "line": 302,
+          "strata": [
+            "transition"
+          ],
+          "selected_iou": {
+            "parent": 0.5252652168273926,
+            "full": 0.5181588530540466,
+            "center_only": 0.6002517938613892,
+            "size_only": 0.4488891065120697
+          }
+        },
+        "mobilephone02_indoor@65": {
+          "line": 462,
+          "strata": [
+            "healthy"
+          ],
+          "selected_iou": {
+            "parent": 0.5105010271072388,
+            "full": 0.44826263189315796,
+            "center_only": 0.5108869671821594,
+            "size_only": 0.4482610523700714
+          }
+        }
+      },
+      "changes": {
+        "parent": {
+          "rescues": [],
+          "breaks": []
+        },
+        "full": {
+          "rescues": [
+            "book06_indoor@21",
+            "cup13_indoor@697",
+            "flower02_wild@172",
+            "flower02_wild@384",
+            "flowerbasket_indoor@65",
+            "flowerbasket_indoor@308",
+            "flowerbasket_indoor@333",
+            "mobilephone01_indoor@969",
+            "bag05_indoor@100",
+            "beautifullight01_indoor@926",
+            "cup10_indoor@1132",
+            "egg_indoor@905",
+            "mobilephone02_indoor@265",
+            "notebook02_indoor@21",
+            "notebook02_indoor@1388"
+          ],
+          "breaks": [
+            "mobilephone02_indoor@65"
+          ]
+        },
+        "center_only": {
+          "rescues": [
+            "book06_indoor@21",
+            "flowerbasket_indoor@333",
+            "bag05_indoor@100",
+            "notebook02_indoor@1388"
+          ],
+          "breaks": []
+        },
+        "size_only": {
+          "rescues": [
+            "cup13_indoor@697",
+            "flower02_wild@384",
+            "flowerbasket_indoor@65",
+            "flowerbasket_indoor@308",
+            "mobilephone01_indoor@969",
+            "egg_indoor@905",
+            "notebook02_indoor@21",
+            "notebook02_indoor@1388"
+          ],
+          "breaks": [
+            "ball19_indoor@688",
+            "mobilephone02_indoor@65"
+          ]
+        }
+      },
+      "zero_delta_candidate_box_runtime_assertions_expected": 4950,
+      "result_elapsed_seconds": 11.203515947796404,
+      "gpu_peak_allocated_bytes": 317683712
+    }
+  },
+  "reported_intersections": {
+    "fit": {
+      "intersection": 1,
+      "full_neither": 11,
+      "center_not_full": 3,
+      "size_not_full": 3,
+      "healthy": [
+        1559,
+        1558,
+        1558,
+        1558
+      ],
+      "transition": [
+        22,
+        22,
+        22,
+        22
+      ]
+    },
+    "development": {
+      "intersection": 1,
+      "full_neither": 4,
+      "center_not_full": 0,
+      "size_not_full": 0,
+      "healthy": [
+        264,
+        263,
+        264,
+        263
+      ],
+      "transition": [
+        4,
+        4,
+        4,
+        3
+      ]
+    }
+  },
+  "source_groundtruth": {
+    "source_spec_actual_sha256": "sha256:3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "labels_actual_sha256": "sha256:433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+    "raw_dataset_root": "/root/autodl-tmp/depthtrack/train/sequences",
+    "recorded_raw_gt_hashes": 152,
+    "raw_groundtruth_rehash_performed": false
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "M105 completed both readouts on 3039 valid events with zero exits, zero optimization and no new checkpoint.",
+      "impact": "supported",
+      "evidence": [
+        "m105_completed/driver.json:35",
+        "m105_completed/driver.json:68-73",
+        "diagnose_learned_geometry_components.py:33-144"
+      ]
+    },
+    {
+      "id": "C2",
+      "claim": "Every original M104 full row/order/stratum and all 14 summary fields replay exactly.",
+      "impact": "supported",
+      "evidence": [
+        "diagnose_learned_geometry_components.py:56",
+        "diagnose_learned_geometry_components.py:91-97",
+        "diagnose_learned_geometry_components.py:118-132"
+      ],
+      "independent_counts": {
+        "rows": 3039,
+        "fields": 140
+      }
+    },
+    {
+      "id": "C3",
+      "claim": "12156 selected-box GT IoUs and all marginal/joint component arithmetic are exact.",
+      "impact": "supported",
+      "evidence": [
+        "m105_completed/fit/events.jsonl:1-2544",
+        "m105_completed/development/events.jsonl:1-495",
+        "m105_inputs/training_labels.json:1"
+      ],
+      "independent_counts": {
+        "selected_box_ious": 12156,
+        "component_fields": 672,
+        "change_records": 131
+      }
+    },
+    {
+      "id": "C4",
+      "claim": "30390 zero-delta candidate boxes and full parameter/buffer immutability passed.",
+      "impact": "supported_as_source_bound_runtime_evidence",
+      "evidence": [
+        "diagnose_learned_geometry_components.py:65-66",
+        "diagnose_learned_geometry_components.py:83",
+        "diagnose_learned_geometry_components.py:103-104",
+        "m105_completed/fit/result.json:478-479",
+        "m105_completed/development/result.json:436-437"
+      ]
+    },
+    {
+      "id": "C5",
+      "claim": "Discarding either component explains/removes all observed harm.",
+      "impact": "unsupported_and_not_claimed",
+      "evidence": [
+        "m105_completed/fit/events.jsonl:274",
+        "m105_completed/fit/events.jsonl:2436",
+        "m105_completed/development/events.jsonl:302",
+        "m105_completed/development/events.jsonl:462"
+      ]
+    },
+    {
+      "id": "C6",
+      "claim": "A preservation-training change will solve the problem.",
+      "impact": "untested_hypothesis",
+      "evidence": [
+        "m105_completed/RESULT.md:84-88"
+      ]
+    },
+    {
+      "id": "C7",
+      "claim": "Official, recursive, semantic, physical-identity or retrained-ablation improvement.",
+      "impact": "unsupported_and_explicitly_excluded",
+      "evidence": [
+        "m105_completed/RESULT.md:76-93"
+      ]
+    }
+  ],
+  "limitations_and_actions": [
+    {
+      "id": "L1",
+      "status": "WARN",
+      "details": "Original remote GT text files and cached feature tensors were not reread or reconstructed in this local-only audit. The 152 GT hashes in the hash-verified source spec establish recorded provenance; original GT byte correctness is not independently re-attested here.",
+      "action": "Keep the source/manifest provenance qualifier. If an end-to-end raw-dataset attestation is needed, independently compare original GT bytes to the recorded hashes and regenerate the label mapping; no M105 rerun is needed for the present bounded claims."
+    },
+    {
+      "id": "L2",
+      "status": "WARN",
+      "details": "All 30,390 zero-delta box checks and complete before/after parameter-buffer comparisons are source-bound completed-runtime assertions. Their intermediate tensors are not in the downloaded output. Only selected boxes are saved, so IoU for unselected candidate boxes was not independently recomputed from coordinates.",
+      "action": "Do not describe this CPU audit as independent GPU re-execution or as coordinate reconstruction of all 121,560 candidate-variant IoUs. The selected-box arithmetic and all summary arithmetic are independently accepted."
+    },
+    {
+      "id": "L3",
+      "status": "WARN",
+      "details": "M105_GEOMETRY_COMPONENT_PLAN.md:23 says GT is read only after decoding, although load_inputs/metadata load labels before forward. Source inspection shows no current-GT path into forward or selection.",
+      "action": "When quoting the plan, use the precise statement 'GT is consumed by overlap after decoding and does not enter the refiner forward or parent selection.' This is wording precision, not an identified leakage bug."
+    },
+    {
+      "id": "L4",
+      "status": "WARN",
+      "details": "Semantic audit is fresh-context but same model family. Readout evidence does not establish official tracking performance, multi-seed robustness, identity truth, semantic contribution, or that a proposed new preservation loss will work.",
+      "action": "Keep same-family/provisional metadata, preserve the failed healthy gate, and retain the current fixed-state claim ceiling."
+    }
+  ],
+  "blocking_source_or_arithmetic_findings": [],
+  "m104_healthy_protection_check": "still fails; not relaxed",
+  "method": {
+    "interpreter": "E:\\python.exe -B -S",
+    "execution": "CPU-only stdlib; no target module import, no model execution, no remote or GPU work, no original result writes.",
+    "independent_verifier_source": "import ast, collections, hashlib, json, math, struct\nfrom pathlib import Path\nD=Path(r\"C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\")\ndef read(name): return json.loads((D/name).read_text(encoding=\"utf-8\"))\ndef rows(name): return [json.loads(s) for s in (D/name).read_text(encoding=\"utf-8\").splitlines()]\ndef digest(name): return hashlib.sha256((D/name).read_bytes()).hexdigest()\ndef f(x): return struct.unpack(\"<f\",struct.pack(\"<f\",x))[0]\ndef box_iou(box,target):\n    a=list(map(f,box)); b=list(map(f,target))\n    widths=[]\n    for axis in (0,1):\n        upper=min(f(a[axis]+a[axis+2]),f(b[axis]+b[axis+2]))\n        lower=max(a[axis],b[axis])\n        widths.append(max(f(upper-lower),0.0))\n    intersection=f(widths[0]*widths[1])\n    area_a=f(a[2]*a[3]); area_b=f(b[2]*b[3])\n    denominator=f(f(area_a+area_b)-intersection)\n    assert denominator>0\n    return f(intersection/denominator)\nV=(\"parent\",\"full\",\"center_only\",\"size_only\")\ndef components(rr):\n    result={}\n    for name in V:\n        selected=[r[\"selected_iou\"][name] for r in rr]\n        parent=[r[\"selected_iou\"][\"parent\"] for r in rr]\n        best=[max(r[\"candidate_iou\"][name]) for r in rr]\n        original=[max(r[\"candidate_iou\"][\"parent\"]) for r in rr]\n        result[name]=dict(events=len(rr),selected_correct=sum(x>=.5 for x in selected),\n          selected_mean_iou=sum(selected)/len(rr),\n          parent_rescues=sum(a<.5 and b>=.5 for a,b in zip(parent,selected)),\n          parent_breaks=sum(a>=.5 and b<.5 for a,b in zip(parent,selected)),\n          oracle_correct=sum(x>=.5 for x in best),\n          original_miss_hit=sum(a<.5 and b>=.5 for a,b in zip(original,best)),\n          original_hit_miss=sum(a>=.5 and b<.5 for a,b in zip(original,best)))\n    return result\ndef legacy(rr):\n    native=[r[\"native_iou\"] for r in rr]\n    parent=[r[\"selected_iou\"][\"parent\"] for r in rr]\n    selected=[r[\"selected_iou\"][\"full\"] for r in rr]\n    oracle=[max(r[\"candidate_iou\"][\"full\"]) for r in rr]\n    original=[max(r[\"candidate_iou\"][\"parent\"]) for r in rr]\n    return dict(valid_gt=len(rr),native_iou50=sum(x>=.5 for x in native),\n      selected_iou50=sum(x>=.5 for x in selected),oracle_iou50=sum(x>=.5 for x in oracle),\n      rescues=sum(a<.5 and b>=.5 for a,b in zip(native,selected)),\n      breaks=sum(a>=.5 and b<.5 for a,b in zip(native,selected)),\n      native_mean_iou=sum(native)/len(rr),selected_mean_iou=sum(selected)/len(rr),\n      parent_correct=sum(x>=.5 for x in parent),parent_mean_iou=sum(parent)/len(rr),\n      parent_rescues=sum(a<.5 and b>=.5 for a,b in zip(parent,selected)),\n      parent_breaks=sum(a>=.5 and b<.5 for a,b in zip(parent,selected)),\n      original_top10_correct=sum(x>=.5 for x in original),\n      original_miss_refined_hit=sum(a<.5 and b>=.5 for a,b in zip(original,oracle)))\nmandatory=[\n\"diagnose_learned_geometry_components.py\",\"run_m105_components.py\",\"accept_m105_components.py\",\n\"train_local_visual_geometry.py\",\"train_ab_visual_control.py\",\"instance_ab_prototype.py\",\n\"analyze_train_states.py\",\"prepare_train_states.py\",\"M105_GEOMETRY_COMPONENT_PLAN.md\",\n\"M105_GEOMETRY_COMPONENT_REVIEW.md\",\"M105_GEOMETRY_COMPONENT_RECHECK.md\",\n\"M105_RUNNER_REVIEW.md\",\"M105_DEPLOY_RECEIPT.json\",\n\"m105_completed/driver.json\",\"m105_completed/launch.json\",\"m105_completed/launch_receipt.json\",\n\"m105_completed/download_receipt.json\",\"m105_completed/acceptance.json\",\"m105_completed/driver.exit\",\n\"m105_completed/fit.exit\",\"m105_completed/development.exit\",\"m105_completed/controller.log\",\n\"m105_completed/fit.log\",\"m105_completed/development.log\",\"m105_completed/fit/result.json\",\n\"m105_completed/fit/events.jsonl\",\"m105_completed/development/result.json\",\"m105_completed/development/events.jsonl\",\n\"m104_completed/train/result.json\",\"m104_completed/train/fit_events.jsonl\",\"m104_completed/train/development_events.jsonl\",\n\"m105_inputs/preparation.json\",\"m105_inputs/training_labels.json\",\"m105_inputs/download_receipt.json\",\n\"collect_ab_interface_panel.py\",\"train_fixed_visual_selector.py\"]\nhashes={n:\"sha256:\"+digest(n) for n in mandatory}\ndownload=read(\"m105_completed/download_receipt.json\")\nfor n,m in download[\"files\"].items():\n    p=D/\"m105_completed\"/n\n    assert p.stat().st_size==m[\"bytes\"] and hashlib.sha256(p.read_bytes()).hexdigest()==m[\"sha256\"],n\nassert sum(m[\"bytes\"] for m in download[\"files\"].values())==download[\"total_bytes\"]\ninput_receipt=read(\"m105_inputs/download_receipt.json\")\nfor n,m in input_receipt.items():\n    p=D/\"m105_inputs\"/n\n    assert p.stat().st_size==m[\"bytes\"] and hashlib.sha256(p.read_bytes()).hexdigest()==m[\"sha256\"],n\ndeploy=read(\"M105_DEPLOY_RECEIPT.json\")\nfor n,expected in deploy[\"files\"].items():\n    assert digest(n)==expected,n\n    hashes[n]=\"sha256:\"+digest(n)\nassert deploy[\"compile_exit\"]==0\noriginal=read(\"m104_completed/train/result.json\")\nassert original[\"status\"]==\"complete_fixed_state_visual_geometry\" and original[\"mode\"]==\"train\"\nassert original[\"source_sha256\"]==digest(\"train_local_visual_geometry.py\")\ndriver=read(\"m105_completed/driver.json\"); launch=read(\"m105_completed/launch.json\")\nassert driver[\"exit_code\"]==0\nassert [(r[\"split\"],r[\"gpu\"],r[\"exit_code\"]) for r in driver[\"runs\"]]==[(\"fit\",0,0),(\"development\",1,0)]\nassert launch==dict(started_utc=driver[\"started_utc\"],runs=[{k:v for k,v in r.items() if k!=\"exit_code\"} for r in driver[\"runs\"]])\nassert rows(\"m105_completed/controller.log\")==[launch,driver]\nfor n in (\"driver\",\"fit\",\"development\"):\n    assert (D/\"m105_completed\"/(n+\".exit\")).read_text().strip()==\"0\"\nfor run in driver[\"runs\"]:\n    assert \"-O\" not in run[\"command\"] and \"-OO\" not in run[\"command\"]\n    assert run[\"command\"][0]==\"/root/autodl-tmp/envs/sttrack/bin/python\"\n    assert run[\"command\"][run[\"command\"].index(\"--split\")+1]==run[\"split\"]\nlabels=read(\"m105_inputs/training_labels.json\"); prep=read(\"m105_inputs/preparation.json\")\nassert digest(\"m105_inputs/training_labels.json\")==prep[\"training_labels_sha256\"]\nassert len(labels)==prep[\"event_count\"]==3502\nassert collections.Counter(x[\"split\"] for x in labels.values())==prep[\"split_events\"]\nassert collections.Counter(t for x in labels.values() for t in x[\"strata\"])==prep[\"event_tags\"]\nsequence_splits={}; valid_sets={s:set() for s in (\"fit\",\"development\")}\nfor key,label in labels.items():\n    assert key==label[\"sequence\"]+\"@\"+str(label[\"frame\"])\n    assert label[\"split\"]==sequence_splits.setdefault(label[\"sequence\"],label[\"split\"])\n    assert len(label[\"strata\"])==len(set(label[\"strata\"]))\n    if label[\"current\"] is not None:\n        assert len(label[\"current\"])==4 and all(math.isfinite(x) for x in label[\"current\"])\n        assert all(x>0 for x in label[\"current\"][2:])\n        valid_sets[label[\"split\"]].add(key)\nassert collections.Counter(sequence_splits.values())==prep[\"split_sequences\"]\naccept=read(\"m105_completed/acceptance.json\")\nassert accept[\"status\"]==\"complete_local_m105_arithmetic_acceptance\"\nassert accept[\"actual_events\"]==3039 and accept[\"selected_boxes_GT_IoU_exact_checks\"]==12156\nassert accept[\"optimizer_steps\"]==0 and accept[\"checkpoint_saved\"] is False\nfor name in (\"complete_full_rows_replay_exact\",\"complete_marginal_and_joint_summaries_exact\",\"two_gpu_readouts_actual_exit0\"):\n    assert accept[name] is True\nout=dict(input_files=len(hashes),audited_input_hashes=hashes,download_receipt_files=len(download[\"files\"]),\n         download_bytes=download[\"total_bytes\"],input_download_files=len(input_receipt),\n         deployment_matches=len(deploy[\"files\"]),split_reports={},selected_box_checks=0,\n         candidate_iou_values_checked=0,legacy_summary_fields_checked=0,component_summary_fields_checked=0,\n         changed_records_checked=0,driver_elapsed_seconds=driver[\"elapsed_seconds\"])\nfor split,n in ((\"fit\",2544),(\"development\",495)):\n    rr=rows(\"m105_completed/\"+split+\"/events.jsonl\")\n    old=rows(\"m104_completed/train/\"+split+\"_events.jsonl\")\n    result=read(\"m105_completed/\"+split+\"/result.json\")\n    assert result[\"status\"]==\"complete_same_final_geometry_components\" and result[\"split\"]==split\n    assert len(rr)==len(old)==result[\"events\"]==n and result[\"variants\"]==list(V)\n    assert result[\"source_sha256\"]==digest(\"diagnose_learned_geometry_components.py\")\n    assert result[\"refiner_weight_sha256\"]==original[\"final_weight_sha256\"]\n    assert result[\"parent_weight_sha256\"]==original[\"parent_weight_sha256\"]\n    for name in (\"full_replay_original_rows_and_summaries_exact\",\"actual_all_zero_geometry_exact\",\n                 \"parent_and_refiner_parameters_buffers_unchanged\",\"no_GT_in_geometry_forward\",\n                 \"no_tracker_memory_semantic_or_public_action\"):\n        assert result[name] is True\n    assert result[\"optimizer_steps\"]==0 and result[\"checkpoint_saved\"] is False\n    assert len({r[\"key\"] for r in rr})==n\n    assert {r[\"key\"] for r in rr}==valid_sets[split]\n    groups=collections.defaultdict(list); joints=collections.defaultdict(list)\n    changes={v:dict(rescues=[],breaks=[]) for v in V}\n    harm_lines={}\n    for line,(r,prev) in enumerate(zip(rr,old),1):\n        reconstructed=dict(key=r[\"key\"],strata=r[\"strata\"],selected=r[\"selected\"],native_iou=r[\"native_iou\"],\n                           parent_iou=r[\"selected_iou\"][\"parent\"],selected_iou=r[\"selected_iou\"][\"full\"],\n                           oracle_iou=max(r[\"candidate_iou\"][\"full\"]),native_top10_iou=max(r[\"candidate_iou\"][\"parent\"]))\n        assert reconstructed==prev,(split,line)\n        label=labels[r[\"key\"]]\n        assert label[\"split\"]==split and label[\"strata\"]==r[\"strata\"]\n        assert 0<=r[\"selected\"]<10 and r[\"candidate_iou\"][\"parent\"][0]==r[\"native_iou\"]\n        assert len(r[\"selected_delta\"])==4 and all(math.isfinite(x) for x in r[\"selected_delta\"])\n        for v in V:\n            cand=r[\"candidate_iou\"][v]; box=r[\"selected_boxes\"][v]\n            assert len(cand)==10 and all(math.isfinite(x) and 0<=x<=1 for x in cand)\n            assert len(box)==4 and all(math.isfinite(x) for x in box) and min(box[2:])>=10\n            assert r[\"selected_iou\"][v]==cand[r[\"selected\"]]\n            assert box_iou(box,label[\"current\"])==r[\"selected_iou\"][v],(split,line,v)\n            out[\"selected_box_checks\"]+=1\n            out[\"candidate_iou_values_checked\"]+=len(cand)\n            parent=r[\"selected_iou\"][\"parent\"]; selected=r[\"selected_iou\"][v]\n            if parent<.5<=selected: changes[v][\"rescues\"].append(r)\n            if selected<.5<=parent:\n                changes[v][\"breaks\"].append(r)\n                harm_lines[r[\"key\"]]=dict(line=line,strata=r[\"strata\"],selected_iou=r[\"selected_iou\"])\n        groups[\"all\"].append(r)\n        for tag in r[\"strata\"]: groups[tag].append(r)\n        joints[\"|\".join(sorted(r[\"strata\"]))].append(r)\n    calculated={k:components(v) for k,v in groups.items()}\n    calculated_joint={k:components(v) for k,v in joints.items()}\n    assert calculated==result[\"summaries\"]==accept[\"accepted_summaries\"][split]\n    assert calculated_joint==result[\"joint_profiles\"]\n    assert {k:legacy(v) for k,v in groups.items()}==original[split]\n    assert changes==accept[\"all_variant_parent_changes\"][split]\n    assert sum(len(v) for v in joints.values())==n\n    out[\"legacy_summary_fields_checked\"]+=sum(len(legacy(v)) for v in groups.values())\n    out[\"component_summary_fields_checked\"]+=(len(groups)+len(joints))*len(V)*8\n    out[\"changed_records_checked\"]+=sum(len(records) for ch in changes.values() for records in ch.values())\n    logged=rows(\"m105_completed/\"+split+\".log\")\n    assert len(logged)==1 and logged[0]==dict(status=result[\"status\"],split=split,events=n,\n                   all=calculated[\"all\"],healthy=calculated[\"healthy\"],seconds=result[\"elapsed_seconds\"])\n    out[\"split_reports\"][split]=dict(events=n,valid_sequences=len({labels[r[\"key\"]][\"sequence\"] for r in rr}),\n        excluded_invalid_gt=prep[\"split_events\"][split]-n,\n        ordered_rows_exact=True,group_counts={k:len(v) for k,v in groups.items()},\n        joint_counts={k:len(v) for k,v in joints.items()},all=calculated[\"all\"],healthy=calculated[\"healthy\"],\n        harms=harm_lines,changes={v:{k:[r[\"key\"] for r in z] for k,z in c.items()} for v,c in changes.items()},\n        zero_delta_candidate_box_runtime_assertions_expected=n*10,\n        result_elapsed_seconds=result[\"elapsed_seconds\"],gpu_peak_allocated_bytes=result[\"gpu_peak_allocated_bytes\"])\nout[\"local_checkpoint_paths\"]=[str(p.relative_to(D)).replace(\"\\\\\",\"/\") for p in D.rglob(\"final.pt\")]\nout[\"readout_output_files\"]=[str(p.relative_to(D/\"m105_completed\")).replace(\"\\\\\",\"/\") for p in (D/\"m105_completed\").rglob(\"*\") if p.is_file()]\nout[\"m104_fixed_state_checks\"]=original[\"fixed_state_checks\"]\nout[\"m104_seed\"]=original[\"seed\"]\nout[\"all_checks\"]=\"PASS\"\nprint(json.dumps(out,ensure_ascii=False))",
+    "report_and_provenance_verifier_source": "import collections, hashlib, json, math, re\nfrom pathlib import Path\nD=Path(r\"C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\")\ndef rd(name):return json.loads((D/name).read_text(encoding=\"utf-8\"))\ndef sha(name):return hashlib.sha256((D/name).read_bytes()).hexdigest()\nextra=[\"m105_completed/RESULT.md\",\"m104_completed/train/final.pt\",\"m101_completed/train_weight1/final.pt\",\"m101_completed/train_weight1/result.json\",\n       \"../full152_paired_20260925/M82_training_spec.json\",\"../m82_native_preservation/preflight/training_spec.json\"]\nhashes={n:\"sha256:\"+sha(n) for n in extra}\noriginal=rd(\"m104_completed/train/result.json\"); parent=rd(\"m101_completed/train_weight1/result.json\")\nassert sha(\"m104_completed/train/final.pt\")==original[\"final_weight_sha256\"]\nassert sha(\"m101_completed/train_weight1/final.pt\")==original[\"parent_weight_sha256\"]==parent[\"final_weights_sha256\"]\nassert parent[\"native_preservation_weight\"]==1 and parent[\"status\"]==\"complete_visual_control\"\nprep=rd(\"m105_inputs/preparation.json\")\nassert sha(extra[4])==prep[\"source_spec_sha256\"]\nassert sha(extra[5])==prep[\"former_m82_spec_sha256\"]\nspec=rd(extra[4]); former=rd(extra[5]); labels=rd(\"m105_inputs/training_labels.json\")\nassert len(spec[\"sequence_order\"])==152\nassert [s[\"sequence\"] for s in spec[\"sequence_order\"][:130]]==[s[\"sequence\"] for s in former[\"sequence_order\"]]\nassert {s[\"sequence\"] for s in spec[\"sequence_order\"][130:]}==set(former[\"development_sequences\"])\nfor i,s in enumerate(spec[\"sequence_order\"]):\n    assert re.fullmatch(\"[0-9a-f]{64}\",s[\"groundtruth_sha256\"])\n    assert s[\"rgb_frames\"]==s[\"depth_frames\"] and s[\"groundtruth_rows\"]>=s[\"rgb_frames\"]\n    for key,l in labels.items():\n        if l[\"sequence\"]==s[\"sequence\"]:\n            assert l[\"split\"]==(\"fit\" if i<130 else \"development\")\n            assert 0<=l[\"frame\"]<s[\"rgb_frames\"]\nclaim=(D/extra[0]).read_text(encoding=\"utf-8\").splitlines()\nV=[\"parent\",\"full\",\"center_only\",\"size_only\"]\nclaim_rows=[line for line in claim if (line.startswith(\"| Fit\") or line.startswith(\"| Development\")) and \"@\" not in line]\nassert len(claim_rows)==8\ncross={}\nfor s in (\"fit\",\"development\"):\n    result=rd(\"m105_completed/\"+s+\"/result.json\")\n    rr=[json.loads(line) for line in (D/\"m105_completed\"/s/\"events.jsonl\").read_text().splitlines()]\n    for v in V:\n        line=claim_rows[(0 if s==\"fit\" else 4)+V.index(v)]\n        cells=[x.strip() for x in line.split(\"|\")[1:-1]]\n        m=result[\"summaries\"][\"all\"][v]\n        assert int(cells[2])==m[\"selected_correct\"]\n        assert cells[3]==format(m[\"selected_mean_iou\"],\".9f\")\n        assert list(map(int,cells[4:7]))==[m[\"parent_rescues\"],m[\"parent_breaks\"],m[\"oracle_correct\"]]\n    good={v:{r[\"key\"] for r in rr if r[\"selected_iou\"][\"parent\"]<.5<=r[\"selected_iou\"][v]} for v in V}\n    cross[s]=dict(intersection=len(good[\"center_only\"]&good[\"size_only\"]),\n      full_neither=len(good[\"full\"]-good[\"center_only\"]-good[\"size_only\"]),\n      center_not_full=len(good[\"center_only\"]-good[\"full\"]),size_not_full=len(good[\"size_only\"]-good[\"full\"]),\n      healthy=[result[\"summaries\"][\"healthy\"][v][\"selected_correct\"] for v in V],\n      transition=[result[\"summaries\"][\"transition\"][v][\"selected_correct\"] for v in V])\n    break_rows={r[\"key\"]:r for r in rr if any(r[\"selected_iou\"][v]<.5<=r[\"selected_iou\"][\"parent\"] for v in V)}\n    lines=[line for line in claim if line.startswith(\"| \"+(\"Fit\" if s==\"fit\" else \"Dev\")+\" \") and \"@\" in line]\n    assert len(lines)==len(break_rows)\n    for line in lines:\n        cells=[x.strip() for x in line.split(\"|\")[1:-1]]\n        key=cells[0].split()[1].strip(\",\")\n        assert cells[1:]==[format(break_rows[key][\"selected_iou\"][v],\".9f\") for v in V]\nassert cross[\"fit\"]==dict(intersection=1,full_neither=11,center_not_full=3,size_not_full=3,healthy=[1559,1558,1558,1558],transition=[22,22,22,22])\nassert cross[\"development\"]==dict(intersection=1,full_neither=4,center_not_full=0,size_not_full=0,healthy=[264,263,264,263],transition=[4,4,4,3])\nout=dict(hashes=hashes,checkpoint_hashes_verified=True,source_spec_hash_verified=True,former_spec_hash_verified=True,\n         raw_dataset_root=spec[\"dataset_root\"],raw_groundtruth_manifest_entries=len(spec[\"sequence_order\"]),\n         raw_groundtruth_rehash_performed=False,result_md_numeric_tables_exact=True,intersections=cross)\nprint(json.dumps(out))",
+    "source_verifier_source": "import ast,hashlib,json\nfrom pathlib import Path\nD=Path(r\"C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\")\np=D/\"diagnose_learned_geometry_components.py\"; root=ast.parse(p.read_text())\ncalls=[(n.lineno,ast.unparse(n.func)) for n in ast.walk(root) if isinstance(n,ast.Call)]\nassert not any(name.startswith(\"torch.optim.\") or name==\"torch.save\" for _,name in calls)\nmain=next(n for n in root.body if isinstance(n,ast.FunctionDef) and n.name==\"main\")\nprint(json.dumps(dict(collector_sha256=hashlib.sha256((D/\"collect_train_states.py\").read_bytes()).hexdigest(),\n   no_optimizer_or_torch_save_call=True,overlap_call_lines=[n for n,name in calls if name==\"overlaps\"],\n   summarize_call_lines=[n for n,name in calls if name==\"summarize\"],\n   assertions=[n.lineno for n in ast.walk(main) if isinstance(n,ast.Assert)],\n   trace_relative_path=\".aris/traces/experiment-audit/2026-09-28_m105_completed/\")))\n",
+    "verifier_correction": "The first report-table parser also selected the later per-event harm table and stopped at its row-count assertion. Restricting the report summary-table rows to those without event keys resolved the auditor parser error; no input or experiment source changed."
+  }
+}
