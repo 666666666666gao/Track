@@ -236,3 +236,24 @@ report all nine metrics, per-sequence gains and harms, VOT failure timing,
 content and visual-only controls, and compute cost. Stop only if this one model
 passes every target; otherwise locate the remaining observed failure class
 before making the next minimal change.
+
+## M99 implementation preparation: token/context visual capacity
+
+The M97 A+B wiring smoke passed; M98 is collecting the missing context and
+support fields on the same M90 states. Before semantic fitting, prepare the
+same-architecture Empty visual control described in
+`M99_AB_VISUAL_CONTROL_PLAN.md`: preserved local/context tokens and candidate
+interaction, legal M95 t0-search reference, fixed five-slot Empty input,
+GT-IoU BCE for visual selection and localization quality, seed2027, batch64,
+AdamW3e-4, fixed12 epochs/final only. Semantic-only and observation parameters
+are frozen. Report total and optimized counts separately; this preliminary
+visual-capacity control does **not** satisfy the effectively parameter-matched
+language-ablation requirement above. Later semantic comparisons still need
+the corresponding capacity disclosure and same-weight content interventions.
+
+During M98, only a three-event CPU loading/gradient smoke is allowed. Full
+input loading and GPU batch64 sanity require M98's successful terminal audit;
+the12-epoch run requires that sanity and a fresh source review to pass. No
+semantic/identity label is inferred from candidate IoU, no development epoch
+selection, and no tracker state or public evaluation is enabled. Record the
+predeclared capacity checks and all development rows even if the control fails.

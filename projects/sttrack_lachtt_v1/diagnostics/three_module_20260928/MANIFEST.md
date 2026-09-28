@@ -21,3 +21,10 @@
 | 2026-09-28 08:32 | /code-review-excellence | M98_REVIEW.md | implementation | Latest M98 source-review copy |
 | 2026-09-28 08:36 | /experiment-bridge | M98_CONTEXT_CACHE_PLAN.md | plan | Complete missing context/support on existing native Train states |
 | 2026-09-28 08:36 | /experiment-bridge | m98_started/ | collection | Actual smoke, M97 exact-field comparison and two-GPU launch receipts; full audit pending |
+| 2026-09-28 09:00 | /experiment-bridge | M99_AB_VISUAL_CONTROL_PLAN.md | plan | Token/context same-architecture Empty capacity control; effective capacity differs; full GPU stage pending M98 audit |
+| 2026-09-28 09:00 | /experiment-bridge | train_ab_visual_control.py | implementation | Fixed IoU selection/quality BCE, fit-only, seed2027/final12; no semantic/recursive action |
+| 2026-09-28 09:00 | /experiment-bridge | M99_REVIEW_20260928_085903.md | implementation | Fresh same-family provisional source-review PASS; actual runtime gates separate |
+| 2026-09-28 09:00 | /experiment-bridge | M99_REVIEW.md | implementation | Latest M99 review copy |
+| 2026-09-28 09:00 | /experiment-bridge | m99_prepared/ | CPU sanity | Three actual fit examples/two temporary updates, exit0, no checkpoint/development result |
+| 2026-09-28 09:00 | /experiment-bridge | m99_prepared/RESULT_20260928_090031.md | result | Timestamped CPU sanity/preparation report; full training unstarted |
+| 2026-09-28 09:00 | /experiment-bridge | m99_prepared/RESULT.md | result | Latest M99 preparation report |
