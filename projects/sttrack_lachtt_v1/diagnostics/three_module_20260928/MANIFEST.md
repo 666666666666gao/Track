@@ -11,3 +11,9 @@
 | 2026-09-28 | /experiment-bridge | m96_completed/ | fixed-state control | Same-budget visual-reference comparison, final reports, no recursive promotion |
 | 2026-09-28 07:41 | /experiment-bridge | M96_REVIEW_20260928_074109.md | implementation | Fresh same-family provisional M96 predeployment PASS |
 | 2026-09-28 07:41 | /experiment-bridge | M96_REVIEW.md | implementation | Latest review copy |
+| 2026-09-28 08:12 | /experiment-bridge | M97_REVIEW_20260928_081251.md | implementation | Fresh same-family provisional M97 source-review PASS after resize and actual-padding corrections; actual-input gate pending |
+| 2026-09-28 08:12 | /experiment-bridge | M97_REVIEW.md | implementation | Latest review copy |
+| 2026-09-28 08:17 | /experiment-bridge | M97_AB_INTERFACE_PLAN.md | plan | Eight-case isolated A+B actual-input wiring/gradient gate |
+| 2026-09-28 08:17 | /experiment-bridge | m97_completed/ | interface sanity | One-case smoke, two GPU collection receipts, actual-input two-step probe, no semantic/official result |
+| 2026-09-28 08:17 | /experiment-bridge | m97_completed/RESULT_20260928_081706.md | result | Timestamped completion report |
+| 2026-09-28 08:17 | /experiment-bridge | m97_completed/RESULT.md | result | Latest completion report |
