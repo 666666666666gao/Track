@@ -307,3 +307,30 @@ waive phrase/physical-competitor/visibility evidence, establish language benefit
 or automatically permit recursive/C/public evaluation. Preserve the remaining
 transition break egg_indoor@46 and all gains/harms. Do not tune a sequence rule
 or repeat the fixed pair. Final full-three-dataset acceptance remains unchanged.
+
+## Completed M102: independent single-candidate readout fails screening
+
+Both actual GPU sanity runs and disjoint twelve-event readout shards exited0,
+as did the driver; outer runtime44.935seconds. Exact image/grid pair swaps and
+finite selected logits passed. Full24event rankings were correct8/24 with the
+initial pair first,12/24 with the current pair first, and7/24 in both orders.
+Eleven ranks changed after swapping pairs. Both predeclared screening checks
+failed. Identical-initial self-pairs read Unknown and No. All raw readouts remain;
+these restricted token choices are not free replies or calibrated identity truth.
+No teacher labels, semantic training, tracker state or public metrics resulted.
+
+The existing M100/M101 fixed-geometry rows also show305/495candidate coverage
+versus272/495M101 selections. Of223selection errors,33have a valid cached
+candidate and190do not. This is Train-GT oracle arithmetic, not deployable
+recovery or physical identity. Split missing-candidate events by actual input
+reachability before deciding B geometry/new-observation changes. Independently
+supported phrases/competitors/visibility remain necessary for the A stage;
+neither failed Qwen readouts nor IoU can substitute for those semantic labels.
+
+The same cached CPU reachability decomposition is now complete. M101's223
+development errors comprise33Top-10 hits not selected,19Top-10 misses with a
+full256hit (17center-in/2out),65center-in full256misses and106center-out full256
+misses. Full256coverage is324/495. Cached float32 prior/resize reconstructs crop
+coordinates; center-out does not imply the whole object is invisible. This is
+not a new model or official first-failure audit. Next B work should distinguish
+local geometry and observation limitations; selection alone cannot fill all gaps.

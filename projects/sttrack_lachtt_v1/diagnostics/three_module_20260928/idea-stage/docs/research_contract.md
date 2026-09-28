@@ -51,3 +51,20 @@ meanIoU.530707698,5rescues/1break, healthy264/264; all four capacity checks pass
 It loses some rescues relative to weight0 and does not establish semantics,
 recursion or C. Prepare the evidence-supervised A+B stage while preserving
 its independent label requirements and the full eventual acceptance scope.
+
+M102's single-candidate Qwen readout is now complete: all four GPU children and
+the driver exited0; real image-pair swaps/selected finite logits passed. Both-order
+ranking is correct7/24 and changes11/24, failing both screening checks. Identical
+initial self-pairs read Unknown/No. Do not use these restricted token outputs as
+teacher identity, human labels or tracker actions. No semantic optimization,
+recursion, C or public evaluation has started. Keep all negative results.
+Fixed cached geometry also covers305/495development events; M101 selects272.
+Its223errors include33with a good candidate and190without one. Before extending
+B, separate observation reachability from regression failure using Train inputs.
+This is oracle localization analysis and does not waive semantic evidence.
+
+That cached reachability split has now completed on CPU:33selection errors,
+19Top-10 omissions with full256hits,65center-in dense misses and106center-out
+dense misses sum to223. Full256covers324/495. Do not equate center-out with
+complete invisibility, or this reused development panel with official failures.
+Continue B geometry/observation diagnosis without fabricating A semantic truth.

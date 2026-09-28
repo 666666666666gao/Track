@@ -1,0 +1,922 @@
+{
+  "status": "complete_single_candidate_identity_readout_shard",
+  "mode": "full",
+  "shard": 1,
+  "seed": 2027,
+  "dtype": "bfloat16",
+  "token_ids": {
+    "Yes": 9454,
+    "No": 2753,
+    "Unknown": 13790
+  },
+  "summary": {
+    "rank_consistent": 9,
+    "rank_changed": 3,
+    "initial_first_correct": 5,
+    "current_first_correct": 7,
+    "both_correct": 5,
+    "events": 12,
+    "initial_first_ranks": {
+      "B": 5,
+      "tie": 4,
+      "A": 3
+    },
+    "initial_first_token_choices": {
+      "No": 11,
+      "Unknown": 13
+    },
+    "current_first_ranks": {
+      "B": 5,
+      "tie": 3,
+      "A": 4
+    },
+    "current_first_token_choices": {
+      "No": 10,
+      "Unknown": 14
+    }
+  },
+  "rows": [
+    {
+      "audit_id": "002",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.875,
+              "No": 24.5,
+              "Unknown": 23.625
+            },
+            "three_token_probabilities": {
+              "Yes": 0.27419447898864746,
+              "No": 0.5122627019882202,
+              "Unknown": 0.2135428637266159
+            },
+            "yes_minus_no": -0.625,
+            "input_tokens": 980
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 24.0,
+              "No": 24.25,
+              "Unknown": 23.625
+            },
+            "three_token_probabilities": {
+              "Yes": 0.33655136823654175,
+              "No": 0.4321405291557312,
+              "Unknown": 0.23130816221237183
+            },
+            "yes_minus_no": -0.25,
+            "input_tokens": 988
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.875,
+              "No": 24.375,
+              "Unknown": 23.375
+            },
+            "three_token_probabilities": {
+              "Yes": 0.30719587206840515,
+              "No": 0.5064803957939148,
+              "Unknown": 0.18632373213768005
+            },
+            "yes_minus_no": -0.5,
+            "input_tokens": 980
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 24.125,
+              "No": 24.25,
+              "Unknown": 23.625
+            },
+            "three_token_probabilities": {
+              "Yes": 0.3650062382221222,
+              "No": 0.4136062562465668,
+              "Unknown": 0.22138747572898865
+            },
+            "yes_minus_no": -0.125,
+            "input_tokens": 988
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "B",
+        "current_first": "B"
+      }
+    },
+    {
+      "audit_id": "004",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 23.125,
+              "No": 24.125,
+              "Unknown": 24.25
+            },
+            "three_token_probabilities": {
+              "Yes": 0.14709129929542542,
+              "No": 0.39983561635017395,
+              "Unknown": 0.453073114156723
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 988
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 23.75,
+              "No": 23.875,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.29263949394226074,
+              "No": 0.33160400390625,
+              "Unknown": 0.37575656175613403
+            },
+            "yes_minus_no": -0.125,
+            "input_tokens": 992
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.875,
+              "No": 24.0,
+              "Unknown": 24.125
+            },
+            "three_token_probabilities": {
+              "Yes": 0.13209064304828644,
+              "No": 0.4068678021430969,
+              "Unknown": 0.4610416293144226
+            },
+            "yes_minus_no": -1.125,
+            "input_tokens": 988
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 23.625,
+              "No": 23.75,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.29263949394226074,
+              "No": 0.33160400390625,
+              "Unknown": 0.37575656175613403
+            },
+            "yes_minus_no": -0.125,
+            "input_tokens": 992
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "B",
+        "current_first": "B"
+      }
+    },
+    {
+      "audit_id": "006",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.125,
+              "No": 23.125,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.10556446015834808,
+              "No": 0.28695398569107056,
+              "Unknown": 0.6074815988540649
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 981
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.25,
+              "No": 23.25,
+              "Unknown": 24.125
+            },
+            "three_token_probabilities": {
+              "Yes": 0.09766482561826706,
+              "No": 0.26548051834106445,
+              "Unknown": 0.6368546485900879
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 969
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.25,
+              "No": 23.125,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.11796215921640396,
+              "No": 0.28297653794288635,
+              "Unknown": 0.5990613102912903
+            },
+            "yes_minus_no": -0.875,
+            "input_tokens": 981
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.25,
+              "No": 23.125,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.11796215921640396,
+              "No": 0.28297653794288635,
+              "Unknown": 0.5990613102912903
+            },
+            "yes_minus_no": -0.875,
+            "input_tokens": 969
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "tie",
+        "current_first": "tie"
+      }
+    },
+    {
+      "audit_id": "008",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 23.0,
+              "No": 23.875,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.16347463428974152,
+              "No": 0.3921552300453186,
+              "Unknown": 0.4443700909614563
+            },
+            "yes_minus_no": -0.875,
+            "input_tokens": 993
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.0,
+              "No": 23.875,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.17248068749904633,
+              "No": 0.41375964879989624,
+              "Unknown": 0.41375964879989624
+            },
+            "yes_minus_no": -0.875,
+            "input_tokens": 992
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.875,
+              "No": 23.75,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.16347463428974152,
+              "No": 0.3921552300453186,
+              "Unknown": 0.4443700909614563
+            },
+            "yes_minus_no": -0.875,
+            "input_tokens": 993
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 23.0,
+              "No": 23.75,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.18129488825798035,
+              "No": 0.38380128145217896,
+              "Unknown": 0.4349038302898407
+            },
+            "yes_minus_no": -0.75,
+            "input_tokens": 992
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "tie",
+        "current_first": "B"
+      }
+    },
+    {
+      "audit_id": "010",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.625,
+              "No": 23.875,
+              "Unknown": 24.125
+            },
+            "three_token_probabilities": {
+              "Yes": 0.1114574745297432,
+              "No": 0.3890247941017151,
+              "Unknown": 0.4995177388191223
+            },
+            "yes_minus_no": -1.25,
+            "input_tokens": 998
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.875,
+              "No": 23.875,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.14709129929542542,
+              "No": 0.39983561635017395,
+              "Unknown": 0.453073114156723
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 983
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.75,
+              "No": 23.75,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.1387227326631546,
+              "No": 0.37708744406700134,
+              "Unknown": 0.48418986797332764
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 998
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.75,
+              "No": 23.75,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.1387227326631546,
+              "No": 0.37708744406700134,
+              "Unknown": 0.48418986797332764
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 983
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "B",
+        "current_first": "tie"
+      }
+    },
+    {
+      "audit_id": "012",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.5,
+              "No": 24.125,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.22138747572898865,
+              "No": 0.4136062562465668,
+              "Unknown": 0.3650062382221222
+            },
+            "yes_minus_no": -0.625,
+            "input_tokens": 978
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.375,
+              "No": 24.125,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.20059192180633545,
+              "No": 0.4246530830860138,
+              "Unknown": 0.37475502490997314
+            },
+            "yes_minus_no": -0.75,
+            "input_tokens": 978
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.375,
+              "No": 24.0,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.22138747572898865,
+              "No": 0.4136062562465668,
+              "Unknown": 0.3650062382221222
+            },
+            "yes_minus_no": -0.625,
+            "input_tokens": 978
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.375,
+              "No": 24.125,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.2098318338394165,
+              "No": 0.44421398639678955,
+              "Unknown": 0.34595420956611633
+            },
+            "yes_minus_no": -0.75,
+            "input_tokens": 978
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "A",
+        "current_first": "A"
+      }
+    },
+    {
+      "audit_id": "014",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.125,
+              "No": 24.125,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.17137134075164795,
+              "No": 0.4658355414867401,
+              "Unknown": 0.36279308795928955
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 993
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.375,
+              "No": 24.125,
+              "Unknown": 23.75
+            },
+            "three_token_probabilities": {
+              "Yes": 0.21872307360172272,
+              "No": 0.46303674578666687,
+              "Unknown": 0.3182401955127716
+            },
+            "yes_minus_no": -0.75,
+            "input_tokens": 989
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.25,
+              "No": 24.25,
+              "Unknown": 23.625
+            },
+            "three_token_probabilities": {
+              "Yes": 0.1933012306690216,
+              "No": 0.5254471898078918,
+              "Unknown": 0.28125160932540894
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 993
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.75,
+              "No": 24.25,
+              "Unknown": 23.625
+            },
+            "three_token_probabilities": {
+              "Yes": 0.2831884026527405,
+              "No": 0.46689873933792114,
+              "Unknown": 0.24991288781166077
+            },
+            "yes_minus_no": -0.5,
+            "input_tokens": 989
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "B",
+        "current_first": "B"
+      }
+    },
+    {
+      "audit_id": "016",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.0,
+              "No": 23.875,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.17248068749904633,
+              "No": 0.41375964879989624,
+              "Unknown": 0.41375964879989624
+            },
+            "yes_minus_no": -0.875,
+            "input_tokens": 981
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 22.75,
+              "No": 23.75,
+              "Unknown": 23.75
+            },
+            "three_token_probabilities": {
+              "Yes": 0.15536242723464966,
+              "No": 0.42231881618499756,
+              "Unknown": 0.42231881618499756
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 992
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.5,
+              "No": 24.0,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.232696533203125,
+              "No": 0.3836517333984375,
+              "Unknown": 0.3836517333984375
+            },
+            "yes_minus_no": -0.5,
+            "input_tokens": 981
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.25,
+              "No": 24.0,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.20059192180633545,
+              "No": 0.4246530830860138,
+              "Unknown": 0.37475502490997314
+            },
+            "yes_minus_no": -0.75,
+            "input_tokens": 992
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "A",
+        "current_first": "A"
+      }
+    },
+    {
+      "audit_id": "018",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.5,
+              "No": 23.625,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.12445096671581268,
+              "No": 0.3833359479904175,
+              "Unknown": 0.4922131299972534
+            },
+            "yes_minus_no": -1.125,
+            "input_tokens": 993
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.25,
+              "No": 23.5,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.104506716132164,
+              "No": 0.3647643029689789,
+              "Unknown": 0.5307289361953735
+            },
+            "yes_minus_no": -1.25,
+            "input_tokens": 992
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.625,
+              "No": 23.75,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.12445096671581268,
+              "No": 0.3833359479904175,
+              "Unknown": 0.4922131299972534
+            },
+            "yes_minus_no": -1.125,
+            "input_tokens": 993
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.5,
+              "No": 23.75,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.11840738356113434,
+              "No": 0.4132823646068573,
+              "Unknown": 0.46831029653549194
+            },
+            "yes_minus_no": -1.25,
+            "input_tokens": 992
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "A",
+        "current_first": "A"
+      }
+    },
+    {
+      "audit_id": "020",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.625,
+              "No": 23.625,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.1387227326631546,
+              "No": 0.37708744406700134,
+              "Unknown": 0.48418986797332764
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 980
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.375,
+              "No": 23.375,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.11367896944284439,
+              "No": 0.3090115189552307,
+              "Unknown": 0.5773094892501831
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 975
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.5,
+              "No": 23.5,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.13032104074954987,
+              "No": 0.35424932837486267,
+              "Unknown": 0.515429675579071
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 980
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.375,
+              "No": 23.375,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.11367896944284439,
+              "No": 0.3090115189552307,
+              "Unknown": 0.5773094892501831
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 975
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "tie",
+        "current_first": "tie"
+      }
+    },
+    {
+      "audit_id": "022",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.5,
+              "No": 23.875,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.25575560331344604,
+              "No": 0.372122198343277,
+              "Unknown": 0.372122198343277
+            },
+            "yes_minus_no": -0.375,
+            "input_tokens": 993
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.625,
+              "No": 24.0,
+              "Unknown": 23.75
+            },
+            "three_token_probabilities": {
+              "Yes": 0.2786959409713745,
+              "No": 0.4055001735687256,
+              "Unknown": 0.3158038556575775
+            },
+            "yes_minus_no": -0.375,
+            "input_tokens": 993
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.625,
+              "No": 24.0,
+              "Unknown": 23.5
+            },
+            "three_token_probabilities": {
+              "Yes": 0.29962652921676636,
+              "No": 0.4359540045261383,
+              "Unknown": 0.26441946625709534
+            },
+            "yes_minus_no": -0.375,
+            "input_tokens": 993
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 23.25,
+              "No": 23.75,
+              "Unknown": 23.875
+            },
+            "three_token_probabilities": {
+              "Yes": 0.22138750553131104,
+              "No": 0.3650062680244446,
+              "Unknown": 0.41360628604888916
+            },
+            "yes_minus_no": -0.5,
+            "input_tokens": 993
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "tie",
+        "current_first": "A"
+      }
+    },
+    {
+      "audit_id": "024",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.875,
+              "No": 23.875,
+              "Unknown": 24.125
+            },
+            "three_token_probabilities": {
+              "Yes": 0.1387227326631546,
+              "No": 0.37708744406700134,
+              "Unknown": 0.48418986797332764
+            },
+            "yes_minus_no": -1.0,
+            "input_tokens": 981
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 23.125,
+              "No": 24.0,
+              "Unknown": 24.125
+            },
+            "three_token_probabilities": {
+              "Yes": 0.16347463428974152,
+              "No": 0.3921552300453186,
+              "Unknown": 0.4443700909614563
+            },
+            "yes_minus_no": -0.875,
+            "input_tokens": 999
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 22.875,
+              "No": 24.0,
+              "Unknown": 24.25
+            },
+            "three_token_probabilities": {
+              "Yes": 0.12445096671581268,
+              "No": 0.3833359479904175,
+              "Unknown": 0.4922131299972534
+            },
+            "yes_minus_no": -1.125,
+            "input_tokens": 981
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.125,
+              "No": 24.0,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.17248068749904633,
+              "No": 0.41375964879989624,
+              "Unknown": 0.41375964879989624
+            },
+            "yes_minus_no": -0.875,
+            "input_tokens": 999
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "B",
+        "current_first": "B"
+      }
+    }
+  ],
+  "elapsed_seconds": 22.99636459350586,
+  "no_teacher_label_or_tracker_state": true,
+  "no_GT_scores_category_or_candidate_letters_in_prompt": true,
+  "target_side_is_localization_proxy_not_human_identity_truth": true,
+  "independent_v2_assignment_not_read": true,
+  "no_public_benchmark_or_checkpoint": true
+}

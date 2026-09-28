@@ -70,3 +70,15 @@
 | 2026-09-28 11:43 | /experiment-bridge | m101_completed/analysis.json | result arithmetic | Both495-row strata recomputed;990events/44sequence records, all gains/harms preserved |
 | 2026-09-28 11:43 | /experiment-bridge | m101_completed/RESULT.md | result | 272/495 mean.530707698,5rescues1break, healthy264/264; no semantic/recursive/public acceptance |
 | 2026-09-28 11:43 | /experiment-bridge | idea-stage/docs/research_contract.md | research contract | Existing full-nine-target goal preserved; actual M100/M101 status, independent evidence requirements |
+| 2026-09-28 12:06 | /experiment-bridge | M102_SINGLE_REVIEW_20260928_120626.md | implementation | Fresh same-family provisional M102 source PASS after sanity correctness-leak fix; static and synthetic in-memory checks only; actual GPU sanities pending |
+| 2026-09-28 12:06 | /experiment-bridge | M102_SINGLE_REVIEW.md | implementation | Latest M102 single-candidate source-review copy |
+| 2026-09-28 12:07 | /experiment-bridge | M102_SINGLE_REVIEW_20260928_120716.md | implementation | M102 provisional PASS; revised plan sanity-privacy clarification reread and recorded; code checks unchanged |
+| 2026-09-28 12:07 | /experiment-bridge | M102_SINGLE_REVIEW.md | implementation | Latest M102 review including explicit plan clarification |
+
+| 2026-09-28 12:20 | /experiment-bridge | M102_SINGLE_CANDIDATE_PLAN.md | scope | Fixed24train-event single-candidate readout with exact image-pair swap, no labels/actions |
+| 2026-09-28 12:20 | /experiment-bridge | audit_single_candidate_vlm.py; run_single_candidate_pair.py | implementation | Reviewed two-GPU disjoint shards, sanity before full, no retries or prompt sweep |
+| 2026-09-28 12:20 | /experiment-bridge | m102_completed/ | actual GPU readout | All4children/driver exit0;24events96fullqueries;7both-order correct,11rank changes, screening FAIL |
+| 2026-09-28 12:20 | /analyze-results | m102_completed/verification.json | actual result verification | 19raw hashes/exits/binding/finite selected logits and prediction counters verified; no identity truth |
+| 2026-09-28 12:20 | /analyze-results | m102_completed/B_FIXED_GEOMETRY_CAPACITY.json | existing-result arithmetic | M101223errors:33have Top-10 candidate,190do not; no new GPU/model |
+| 2026-09-28 12:20 | /analyze-results | m102_completed/B_REACHABILITY.json; B_REACHABILITY_EVENTS.jsonl | cached CPU analysis | Existing495rows:33selection,19Top-10 omissions,65crop-in dense misses,106crop-out dense misses; no official inference |
+| 2026-09-28 12:20 | /experiment-bridge | m102_completed/RESULT.md | result | Negative teacher screen and complete fixed-state geometry decomposition retained, no semantic/tracker promotion |

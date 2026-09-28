@@ -1,0 +1,130 @@
+{
+  "status": "complete_single_candidate_sanity_only",
+  "mode": "sanity",
+  "shard": 0,
+  "seed": 2027,
+  "dtype": "bfloat16",
+  "token_ids": {
+    "Yes": 9454,
+    "No": 2753,
+    "Unknown": 13790
+  },
+  "summary": {
+    "rank_consistent": 0,
+    "rank_changed": 1,
+    "events": 1,
+    "initial_first_ranks": {
+      "tie": 1
+    },
+    "initial_first_token_choices": {
+      "No": 1,
+      "Unknown": 1
+    },
+    "current_first_ranks": {
+      "A": 1
+    },
+    "current_first_token_choices": {
+      "No": 2
+    }
+  },
+  "rows": [
+    {
+      "audit_id": "001",
+      "conditions": {
+        "initial_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.375,
+              "No": 24.125,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.20059192180633545,
+              "No": 0.4246530830860138,
+              "Unknown": 0.37475502490997314
+            },
+            "yes_minus_no": -0.75,
+            "input_tokens": 980
+          },
+          "B": {
+            "restricted_choice": "Unknown",
+            "logits": {
+              "Yes": 23.25,
+              "No": 24.0,
+              "Unknown": 24.125
+            },
+            "three_token_probabilities": {
+              "Yes": 0.18129488825798035,
+              "No": 0.38380128145217896,
+              "Unknown": 0.4349038302898407
+            },
+            "yes_minus_no": -0.75,
+            "input_tokens": 991
+          }
+        },
+        "current_first": {
+          "A": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.75,
+              "No": 24.25,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.25427523255348206,
+              "No": 0.4192289710044861,
+              "Unknown": 0.32649585604667664
+            },
+            "yes_minus_no": -0.5,
+            "input_tokens": 980
+          },
+          "B": {
+            "restricted_choice": "No",
+            "logits": {
+              "Yes": 23.625,
+              "No": 24.25,
+              "Unknown": 24.0
+            },
+            "three_token_probabilities": {
+              "Yes": 0.23130816221237183,
+              "No": 0.4321405291557312,
+              "Unknown": 0.33655136823654175
+            },
+            "yes_minus_no": -0.625,
+            "input_tokens": 991
+          }
+        }
+      },
+      "ranks": {
+        "initial_first": "tie",
+        "current_first": "A"
+      },
+      "exact_image_pair_swap": {
+        "A": true,
+        "B": true
+      },
+      "identical_initial_self_pair": {
+        "restricted_choice": "Unknown",
+        "logits": {
+          "Yes": 23.0,
+          "No": 24.0,
+          "Unknown": 24.125
+        },
+        "three_token_probabilities": {
+          "Yes": 0.14709129929542542,
+          "No": 0.39983561635017395,
+          "Unknown": 0.453073114156723
+        },
+        "yes_minus_no": -1.0,
+        "input_tokens": 991
+      }
+    }
+  ],
+  "elapsed_seconds": 3.350980520248413,
+  "no_teacher_label_or_tracker_state": true,
+  "no_GT_scores_category_or_candidate_letters_in_prompt": true,
+  "target_side_is_localization_proxy_not_human_identity_truth": true,
+  "independent_v2_assignment_not_read": true,
+  "no_public_benchmark_or_checkpoint": true
+}
