@@ -47,3 +47,16 @@ sanity permit the12epoch control. Training timing is not yet measured.
 No tracker state, new template, C control, public dataset or official nine-metric
 evaluation is enabled. Semantic A+B fitting still requires reviewed evidence;
 this control does not waive that gate or rename IoU as identity truth.
+
+## Scheduled dependency queue
+
+Prepare `queue_ab_visual_control.py` after the passing CPU smoke. Its first
+M98 status check is09:36:15CST/01:36:15UTC on September28, then hourly only.
+Before that time it starts no GPU work and performs no M98 status query.
+Absent a terminal receipt, an actual collector/audit/queue process must remain
+present; a missing handle stops the queue for diagnosis, without restart.
+M98 nonzero exit stops the successor. A successful complete input audit permits
+one GPU0 batch64/two-step sanity, then exactly the fixed12-epoch control if that
+sanity passes. Record child PIDs, logs, exit codes, measured memory and a clearly
+limited optimization-time projection. No automatic promotion follows the final
+capacity checks. Source review is required before this queue is deployed.

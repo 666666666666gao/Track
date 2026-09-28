@@ -28,3 +28,12 @@
 | 2026-09-28 09:00 | /experiment-bridge | m99_prepared/ | CPU sanity | Three actual fit examples/two temporary updates, exit0, no checkpoint/development result |
 | 2026-09-28 09:00 | /experiment-bridge | m99_prepared/RESULT_20260928_090031.md | result | Timestamped CPU sanity/preparation report; full training unstarted |
 | 2026-09-28 09:00 | /experiment-bridge | m99_prepared/RESULT.md | result | Latest M99 preparation report |
+| 2026-09-28 09:12 | /experiment-bridge | queue_ab_visual_control.py | implementation | First09:36/hourly actual-handle wait, M98 terminal audit then single GPU sanity/final control, no retries/promotions |
+| 2026-09-28 09:12 | /experiment-bridge | M99_QUEUE_REVIEW_20260928_091156.md | implementation | Fresh same-family provisional queue-source PASS, eight mocked cases, no runtime claim |
+| 2026-09-28 09:12 | /experiment-bridge | M99_QUEUE_REVIEW.md | implementation | Latest queue review copy |
+| 2026-09-28 09:12 | /experiment-bridge | m99_prepared/QUEUE_20260928_091154.md | waiting queue | Timestamped actual launch/live-process report, GPU jobs unstarted |
+| 2026-09-28 09:12 | /experiment-bridge | m99_prepared/QUEUE.md | waiting queue | Latest queue launch report |
+| 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue_launch.json | waiting queue | PID261316 actual launch, first status-check schedule |
+| 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue_state.json | waiting queue | Startup-only state snapshot at09:11:54, not subsequent M98 evidence |
+| 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue_events.jsonl | waiting queue | Startup event snapshot |
+| 2026-09-28 09:12 | /experiment-bridge | m99_prepared/queue.log | waiting queue | Startup raw log snapshot |

@@ -257,3 +257,9 @@ the12-epoch run requires that sanity and a fresh source review to pass. No
 semantic/identity label is inferred from candidate IoU, no development epoch
 selection, and no tracker state or public evaluation is enabled. Record the
 predeclared capacity checks and all development rows even if the control fails.
+
+The CPU actual-input smoke passed on three fit events/two temporary updates.
+The source-reviewed dependency queue was launched at09:11:54CST September28,
+PID261316, initially scheduled to check M98 at09:36:15 and hourly afterward.
+Its GPU sanity and training remain gated and unstarted at that launch snapshot.
+See `m99_prepared/QUEUE.md` and the handoff for actual status evidence.
