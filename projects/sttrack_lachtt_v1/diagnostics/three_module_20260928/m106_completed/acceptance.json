@@ -1,0 +1,2333 @@
+{
+  "status": "complete_local_m106_arithmetic_acceptance",
+  "events": 3039,
+  "independent_candidate_IoU_checks": 182340,
+  "unique_candidate_IoU_checks": 91170,
+  "control_M104_rows_summaries_and_checkpoint_bytes_exact": true,
+  "actual_four_children_exit0": true,
+  "all_marginal_summaries_exact": true,
+  "all_original_gates_exact": true,
+  "source_sha256": "3ac16f9261d626e8b9dded42ae02bb3f1aaf3a6456c5cd12d70f58f098e69c68",
+  "GT_provenance": "Hash-bound dataset-provided DepthTrack Train current boxes; not predictions, semantic labels, or physical identity truth.",
+  "scope": "Fixed Train cache geometry learning; no recursive/public/semantic claim.",
+  "summaries": {
+    "0": {
+      "fit": {
+        "all": {
+          "valid_gt": 2544,
+          "native_iou50": 1575,
+          "selected_iou50": 1652,
+          "oracle_iou50": 1866,
+          "rescues": 79,
+          "breaks": 2,
+          "native_mean_iou": 0.6002026092758873,
+          "selected_mean_iou": 0.6167105383052708,
+          "parent_correct": 1602,
+          "parent_mean_iou": 0.6083137887764976,
+          "parent_rescues": 51,
+          "parent_breaks": 1,
+          "original_top10_correct": 1814,
+          "original_miss_refined_hit": 58
+        },
+        "healthy": {
+          "valid_gt": 1560,
+          "native_iou50": 1560,
+          "selected_iou50": 1558,
+          "oracle_iou50": 1560,
+          "rescues": 0,
+          "breaks": 2,
+          "native_mean_iou": 0.881706770719626,
+          "selected_mean_iou": 0.8904460045771722,
+          "parent_correct": 1559,
+          "parent_mean_iou": 0.8813412916010771,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "original_top10_correct": 1560,
+          "original_miss_refined_hit": 0
+        },
+        "transition": {
+          "valid_gt": 452,
+          "native_iou50": 15,
+          "selected_iou50": 22,
+          "oracle_iou50": 64,
+          "rescues": 7,
+          "breaks": 0,
+          "native_mean_iou": 0.039728819805741375,
+          "selected_mean_iou": 0.053204871702138785,
+          "parent_correct": 22,
+          "parent_mean_iou": 0.052390173115701606,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 62,
+          "original_miss_refined_hit": 2
+        },
+        "late_low": {
+          "valid_gt": 178,
+          "native_iou50": 0,
+          "selected_iou50": 12,
+          "oracle_iou50": 32,
+          "rescues": 12,
+          "breaks": 0,
+          "native_mean_iou": 0.01293458835147596,
+          "selected_mean_iou": 0.08438710641773847,
+          "parent_correct": 11,
+          "parent_mean_iou": 0.0798848425303854,
+          "parent_rescues": 1,
+          "parent_breaks": 0,
+          "original_top10_correct": 30,
+          "original_miss_refined_hit": 2
+        },
+        "intermediate": {
+          "valid_gt": 381,
+          "native_iou50": 0,
+          "selected_iou50": 61,
+          "oracle_iou50": 214,
+          "rescues": 61,
+          "breaks": 0,
+          "native_mean_iou": 0.34474634664656295,
+          "selected_mean_iou": 0.37214576050130715,
+          "parent_correct": 11,
+          "parent_mean_iou": 0.35589710585870765,
+          "parent_rescues": 50,
+          "parent_breaks": 0,
+          "original_top10_correct": 166,
+          "original_miss_refined_hit": 54
+        }
+      },
+      "development": {
+        "all": {
+          "valid_gt": 495,
+          "native_iou50": 268,
+          "selected_iou50": 286,
+          "oracle_iou50": 323,
+          "rescues": 20,
+          "breaks": 2,
+          "native_mean_iou": 0.5247707230829154,
+          "selected_mean_iou": 0.5352975043553431,
+          "parent_correct": 272,
+          "parent_mean_iou": 0.5307076979870673,
+          "parent_rescues": 15,
+          "parent_breaks": 1,
+          "original_top10_correct": 305,
+          "original_miss_refined_hit": 18
+        },
+        "healthy": {
+          "valid_gt": 264,
+          "native_iou50": 264,
+          "selected_iou50": 263,
+          "oracle_iou50": 264,
+          "rescues": 0,
+          "breaks": 1,
+          "native_mean_iou": 0.8824474816069459,
+          "selected_mean_iou": 0.8853961328665415,
+          "parent_correct": 264,
+          "parent_mean_iou": 0.8824474816069459,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "original_top10_correct": 264,
+          "original_miss_refined_hit": 0
+        },
+        "late_low": {
+          "valid_gt": 41,
+          "native_iou50": 0,
+          "selected_iou50": 2,
+          "oracle_iou50": 10,
+          "rescues": 2,
+          "breaks": 0,
+          "native_mean_iou": 0.008312820036691137,
+          "selected_mean_iou": 0.05191567185882865,
+          "parent_correct": 2,
+          "parent_mean_iou": 0.05322492169216275,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 8,
+          "original_miss_refined_hit": 2
+        },
+        "intermediate": {
+          "valid_gt": 69,
+          "native_iou50": 0,
+          "selected_iou50": 17,
+          "oracle_iou50": 36,
+          "rescues": 17,
+          "breaks": 0,
+          "native_mean_iou": 0.33447598223237024,
+          "selected_mean_iou": 0.3705724813583968,
+          "parent_correct": 2,
+          "parent_mean_iou": 0.3469686867750209,
+          "parent_rescues": 15,
+          "parent_breaks": 0,
+          "original_top10_correct": 21,
+          "original_miss_refined_hit": 15
+        },
+        "transition": {
+          "valid_gt": 127,
+          "native_iou50": 4,
+          "selected_iou50": 4,
+          "oracle_iou50": 14,
+          "rescues": 1,
+          "breaks": 1,
+          "native_mean_iou": 0.026580349498201074,
+          "selected_mean_iou": 0.02779245526918511,
+          "parent_correct": 4,
+          "parent_mean_iou": 0.028433969941019543,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 13,
+          "original_miss_refined_hit": 1
+        }
+      }
+    },
+    "1": {
+      "fit": {
+        "all": {
+          "valid_gt": 2544,
+          "native_iou50": 1575,
+          "selected_iou50": 1641,
+          "oracle_iou50": 1856,
+          "rescues": 68,
+          "breaks": 2,
+          "native_mean_iou": 0.6002026092758873,
+          "selected_mean_iou": 0.6165845819264864,
+          "parent_correct": 1602,
+          "parent_mean_iou": 0.6083137887764976,
+          "parent_rescues": 40,
+          "parent_breaks": 1,
+          "original_top10_correct": 1814,
+          "original_miss_refined_hit": 46
+        },
+        "healthy": {
+          "valid_gt": 1560,
+          "native_iou50": 1560,
+          "selected_iou50": 1558,
+          "oracle_iou50": 1560,
+          "rescues": 0,
+          "breaks": 2,
+          "native_mean_iou": 0.881706770719626,
+          "selected_mean_iou": 0.8911651183397342,
+          "parent_correct": 1559,
+          "parent_mean_iou": 0.8813412916010771,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "original_top10_correct": 1560,
+          "original_miss_refined_hit": 0
+        },
+        "transition": {
+          "valid_gt": 452,
+          "native_iou50": 15,
+          "selected_iou50": 22,
+          "oracle_iou50": 64,
+          "rescues": 7,
+          "breaks": 0,
+          "native_mean_iou": 0.039728819805741375,
+          "selected_mean_iou": 0.05329840265297376,
+          "parent_correct": 22,
+          "parent_mean_iou": 0.052390173115701606,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 62,
+          "original_miss_refined_hit": 2
+        },
+        "late_low": {
+          "valid_gt": 178,
+          "native_iou50": 0,
+          "selected_iou50": 12,
+          "oracle_iou50": 32,
+          "rescues": 12,
+          "breaks": 0,
+          "native_mean_iou": 0.01293458835147596,
+          "selected_mean_iou": 0.08345057476274152,
+          "parent_correct": 11,
+          "parent_mean_iou": 0.0798848425303854,
+          "parent_rescues": 1,
+          "parent_breaks": 0,
+          "original_top10_correct": 30,
+          "original_miss_refined_hit": 2
+        },
+        "intermediate": {
+          "valid_gt": 381,
+          "native_iou50": 0,
+          "selected_iou50": 50,
+          "oracle_iou50": 204,
+          "rescues": 50,
+          "breaks": 0,
+          "native_mean_iou": 0.34474634664656295,
+          "selected_mean_iou": 0.3685443984867707,
+          "parent_correct": 11,
+          "parent_mean_iou": 0.35589710585870765,
+          "parent_rescues": 39,
+          "parent_breaks": 0,
+          "original_top10_correct": 166,
+          "original_miss_refined_hit": 42
+        }
+      },
+      "development": {
+        "all": {
+          "valid_gt": 495,
+          "native_iou50": 268,
+          "selected_iou50": 282,
+          "oracle_iou50": 317,
+          "rescues": 16,
+          "breaks": 2,
+          "native_mean_iou": 0.5247707230829154,
+          "selected_mean_iou": 0.535005414294728,
+          "parent_correct": 272,
+          "parent_mean_iou": 0.5307076979870673,
+          "parent_rescues": 11,
+          "parent_breaks": 1,
+          "original_top10_correct": 305,
+          "original_miss_refined_hit": 12
+        },
+        "healthy": {
+          "valid_gt": 264,
+          "native_iou50": 264,
+          "selected_iou50": 263,
+          "oracle_iou50": 264,
+          "rescues": 0,
+          "breaks": 1,
+          "native_mean_iou": 0.8824474816069459,
+          "selected_mean_iou": 0.8860554306796102,
+          "parent_correct": 264,
+          "parent_mean_iou": 0.8824474816069459,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "original_top10_correct": 264,
+          "original_miss_refined_hit": 0
+        },
+        "late_low": {
+          "valid_gt": 41,
+          "native_iou50": 0,
+          "selected_iou50": 2,
+          "oracle_iou50": 9,
+          "rescues": 2,
+          "breaks": 0,
+          "native_mean_iou": 0.008312820036691137,
+          "selected_mean_iou": 0.05228522311748437,
+          "parent_correct": 2,
+          "parent_mean_iou": 0.05322492169216275,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 8,
+          "original_miss_refined_hit": 1
+        },
+        "intermediate": {
+          "valid_gt": 69,
+          "native_iou50": 0,
+          "selected_iou50": 13,
+          "oracle_iou50": 31,
+          "rescues": 13,
+          "breaks": 0,
+          "native_mean_iou": 0.33447598223237024,
+          "selected_mean_iou": 0.3658511373011962,
+          "parent_correct": 2,
+          "parent_mean_iou": 0.3469686867750209,
+          "parent_rescues": 11,
+          "parent_breaks": 0,
+          "original_top10_correct": 21,
+          "original_miss_refined_hit": 10
+        },
+        "transition": {
+          "valid_gt": 127,
+          "native_iou50": 4,
+          "selected_iou50": 4,
+          "oracle_iou50": 14,
+          "rescues": 1,
+          "breaks": 1,
+          "native_mean_iou": 0.026580349498201074,
+          "selected_mean_iou": 0.027729320904518677,
+          "parent_correct": 4,
+          "parent_mean_iou": 0.028433969941019543,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 13,
+          "original_miss_refined_hit": 1
+        }
+      }
+    }
+  },
+  "joint_profiles": {
+    "0": {
+      "fit": {
+        "healthy": {
+          "valid_gt": 1560,
+          "native_iou50": 1560,
+          "selected_iou50": 1558,
+          "oracle_iou50": 1560,
+          "rescues": 0,
+          "breaks": 2,
+          "native_mean_iou": 0.881706770719626,
+          "selected_mean_iou": 0.8904460045771722,
+          "parent_correct": 1559,
+          "parent_mean_iou": 0.8813412916010771,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "original_top10_correct": 1560,
+          "original_miss_refined_hit": 0
+        },
+        "transition": {
+          "valid_gt": 425,
+          "native_iou50": 15,
+          "selected_iou50": 21,
+          "oracle_iou50": 60,
+          "rescues": 6,
+          "breaks": 0,
+          "native_mean_iou": 0.04188743735608809,
+          "selected_mean_iou": 0.05413506497615291,
+          "parent_correct": 21,
+          "parent_mean_iou": 0.05374485752271379,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 58,
+          "original_miss_refined_hit": 2
+        },
+        "late_low|transition": {
+          "valid_gt": 26,
+          "native_iou50": 0,
+          "selected_iou50": 1,
+          "oracle_iou50": 4,
+          "rescues": 1,
+          "breaks": 0,
+          "native_mean_iou": 0.0007123770192265511,
+          "selected_mean_iou": 0.034062464972241566,
+          "parent_correct": 1,
+          "parent_mean_iou": 0.027001920299461253,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 4,
+          "original_miss_refined_hit": 0
+        },
+        "intermediate": {
+          "valid_gt": 380,
+          "native_iou50": 0,
+          "selected_iou50": 61,
+          "oracle_iou50": 214,
+          "rescues": 61,
+          "breaks": 0,
+          "native_mean_iou": 0.3452937215762703,
+          "selected_mean_iou": 0.3727156827520383,
+          "parent_correct": 11,
+          "parent_mean_iou": 0.3564738248916049,
+          "parent_rescues": 50,
+          "parent_breaks": 0,
+          "original_top10_correct": 166,
+          "original_miss_refined_hit": 54
+        },
+        "late_low": {
+          "valid_gt": 152,
+          "native_iou50": 0,
+          "selected_iou50": 11,
+          "oracle_iou50": 28,
+          "rescues": 11,
+          "breaks": 0,
+          "native_mean_iou": 0.015025229763571252,
+          "selected_mean_iou": 0.09299526877025767,
+          "parent_correct": 10,
+          "parent_mean_iou": 0.0889306055435698,
+          "parent_rescues": 1,
+          "parent_breaks": 0,
+          "original_top10_correct": 26,
+          "original_miss_refined_hit": 2
+        },
+        "intermediate|transition": {
+          "valid_gt": 1,
+          "native_iou50": 0,
+          "selected_iou50": 0,
+          "oracle_iou50": 0,
+          "rescues": 0,
+          "breaks": 0,
+          "native_mean_iou": 0.13674387335777283,
+          "selected_mean_iou": 0.15557530522346497,
+          "parent_correct": 0,
+          "parent_mean_iou": 0.13674387335777283,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 0,
+          "original_miss_refined_hit": 0
+        }
+      },
+      "development": {
+        "healthy": {
+          "valid_gt": 264,
+          "native_iou50": 264,
+          "selected_iou50": 263,
+          "oracle_iou50": 264,
+          "rescues": 0,
+          "breaks": 1,
+          "native_mean_iou": 0.8824474816069459,
+          "selected_mean_iou": 0.8853961328665415,
+          "parent_correct": 264,
+          "parent_mean_iou": 0.8824474816069459,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "original_top10_correct": 264,
+          "original_miss_refined_hit": 0
+        },
+        "late_low": {
+          "valid_gt": 35,
+          "native_iou50": 0,
+          "selected_iou50": 2,
+          "oracle_iou50": 9,
+          "rescues": 2,
+          "breaks": 0,
+          "native_mean_iou": 0.009737874900123903,
+          "selected_mean_iou": 0.060815501320342136,
+          "parent_correct": 2,
+          "parent_mean_iou": 0.062349193982247794,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 7,
+          "original_miss_refined_hit": 2
+        },
+        "intermediate": {
+          "valid_gt": 69,
+          "native_iou50": 0,
+          "selected_iou50": 17,
+          "oracle_iou50": 36,
+          "rescues": 17,
+          "breaks": 0,
+          "native_mean_iou": 0.33447598223237024,
+          "selected_mean_iou": 0.3705724813583968,
+          "parent_correct": 2,
+          "parent_mean_iou": 0.3469686867750209,
+          "parent_rescues": 15,
+          "parent_breaks": 0,
+          "original_top10_correct": 21,
+          "original_miss_refined_hit": 15
+        },
+        "transition": {
+          "valid_gt": 121,
+          "native_iou50": 4,
+          "selected_iou50": 4,
+          "oracle_iou50": 13,
+          "rescues": 1,
+          "breaks": 1,
+          "native_mean_iou": 0.027898383357616,
+          "selected_mean_iou": 0.02917059354699594,
+          "parent_correct": 4,
+          "parent_mean_iou": 0.029843918863714725,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 12,
+          "original_miss_refined_hit": 1
+        },
+        "late_low|transition": {
+          "valid_gt": 6,
+          "native_iou50": 0,
+          "selected_iou50": 0,
+          "oracle_iou50": 1,
+          "rescues": 0,
+          "breaks": 0,
+          "native_mean_iou": 0.0,
+          "selected_mean_iou": 0.0,
+          "parent_correct": 0,
+          "parent_mean_iou": 0.0,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 1,
+          "original_miss_refined_hit": 0
+        }
+      }
+    },
+    "1": {
+      "fit": {
+        "healthy": {
+          "valid_gt": 1560,
+          "native_iou50": 1560,
+          "selected_iou50": 1558,
+          "oracle_iou50": 1560,
+          "rescues": 0,
+          "breaks": 2,
+          "native_mean_iou": 0.881706770719626,
+          "selected_mean_iou": 0.8911651183397342,
+          "parent_correct": 1559,
+          "parent_mean_iou": 0.8813412916010771,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "original_top10_correct": 1560,
+          "original_miss_refined_hit": 0
+        },
+        "transition": {
+          "valid_gt": 425,
+          "native_iou50": 15,
+          "selected_iou50": 21,
+          "oracle_iou50": 60,
+          "rescues": 6,
+          "breaks": 0,
+          "native_mean_iou": 0.04188743735608809,
+          "selected_mean_iou": 0.054362291011219734,
+          "parent_correct": 21,
+          "parent_mean_iou": 0.05374485752271379,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 58,
+          "original_miss_refined_hit": 2
+        },
+        "late_low|transition": {
+          "valid_gt": 26,
+          "native_iou50": 0,
+          "selected_iou50": 1,
+          "oracle_iou50": 4,
+          "rescues": 1,
+          "breaks": 0,
+          "native_mean_iou": 0.0007123770192265511,
+          "selected_mean_iou": 0.03205630283516187,
+          "parent_correct": 1,
+          "parent_mean_iou": 0.027001920299461253,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 4,
+          "original_miss_refined_hit": 0
+        },
+        "intermediate": {
+          "valid_gt": 380,
+          "native_iou50": 0,
+          "selected_iou50": 50,
+          "oracle_iou50": 204,
+          "rescues": 50,
+          "breaks": 0,
+          "native_mean_iou": 0.3452937215762703,
+          "selected_mean_iou": 0.36911046152052124,
+          "parent_correct": 11,
+          "parent_mean_iou": 0.3564738248916049,
+          "parent_rescues": 39,
+          "parent_breaks": 0,
+          "original_top10_correct": 166,
+          "original_miss_refined_hit": 42
+        },
+        "late_low": {
+          "valid_gt": 152,
+          "native_iou50": 0,
+          "selected_iou50": 11,
+          "oracle_iou50": 28,
+          "rescues": 11,
+          "breaks": 0,
+          "native_mean_iou": 0.015025229763571252,
+          "selected_mean_iou": 0.09224170022403805,
+          "parent_correct": 10,
+          "parent_mean_iou": 0.0889306055435698,
+          "parent_rescues": 1,
+          "parent_breaks": 0,
+          "original_top10_correct": 26,
+          "original_miss_refined_hit": 2
+        },
+        "intermediate|transition": {
+          "valid_gt": 1,
+          "native_iou50": 0,
+          "selected_iou50": 0,
+          "oracle_iou50": 0,
+          "rescues": 0,
+          "breaks": 0,
+          "native_mean_iou": 0.13674387335777283,
+          "selected_mean_iou": 0.1534404456615448,
+          "parent_correct": 0,
+          "parent_mean_iou": 0.13674387335777283,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 0,
+          "original_miss_refined_hit": 0
+        }
+      },
+      "development": {
+        "healthy": {
+          "valid_gt": 264,
+          "native_iou50": 264,
+          "selected_iou50": 263,
+          "oracle_iou50": 264,
+          "rescues": 0,
+          "breaks": 1,
+          "native_mean_iou": 0.8824474816069459,
+          "selected_mean_iou": 0.8860554306796102,
+          "parent_correct": 264,
+          "parent_mean_iou": 0.8824474816069459,
+          "parent_rescues": 0,
+          "parent_breaks": 1,
+          "original_top10_correct": 264,
+          "original_miss_refined_hit": 0
+        },
+        "late_low": {
+          "valid_gt": 35,
+          "native_iou50": 0,
+          "selected_iou50": 2,
+          "oracle_iou50": 8,
+          "rescues": 2,
+          "breaks": 0,
+          "native_mean_iou": 0.009737874900123903,
+          "selected_mean_iou": 0.06124840422333883,
+          "parent_correct": 2,
+          "parent_mean_iou": 0.062349193982247794,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 7,
+          "original_miss_refined_hit": 1
+        },
+        "intermediate": {
+          "valid_gt": 69,
+          "native_iou50": 0,
+          "selected_iou50": 13,
+          "oracle_iou50": 31,
+          "rescues": 13,
+          "breaks": 0,
+          "native_mean_iou": 0.33447598223237024,
+          "selected_mean_iou": 0.3658511373011962,
+          "parent_correct": 2,
+          "parent_mean_iou": 0.3469686867750209,
+          "parent_rescues": 11,
+          "parent_breaks": 0,
+          "original_top10_correct": 21,
+          "original_miss_refined_hit": 10
+        },
+        "transition": {
+          "valid_gt": 121,
+          "native_iou50": 4,
+          "selected_iou50": 4,
+          "oracle_iou50": 13,
+          "rescues": 1,
+          "breaks": 1,
+          "native_mean_iou": 0.027898383357616,
+          "selected_mean_iou": 0.029104328552676625,
+          "parent_correct": 4,
+          "parent_mean_iou": 0.029843918863714725,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 12,
+          "original_miss_refined_hit": 1
+        },
+        "late_low|transition": {
+          "valid_gt": 6,
+          "native_iou50": 0,
+          "selected_iou50": 0,
+          "oracle_iou50": 1,
+          "rescues": 0,
+          "breaks": 0,
+          "native_mean_iou": 0.0,
+          "selected_mean_iou": 0.0,
+          "parent_correct": 0,
+          "parent_mean_iou": 0.0,
+          "parent_rescues": 0,
+          "parent_breaks": 0,
+          "original_top10_correct": 1,
+          "original_miss_refined_hit": 0
+        }
+      }
+    }
+  },
+  "all_parent_changes": {
+    "0": {
+      "fit": {
+        "rescues": [
+          {
+            "key": "cat02_indoor@329",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.453014075756073,
+            "parent_iou": 0.453014075756073,
+            "selected_iou": 0.582834780216217,
+            "oracle_iou": 0.6310093402862549,
+            "native_top10_iou": 0.453014075756073
+          },
+          {
+            "key": "cat02_indoor@606",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49416664242744446,
+            "parent_iou": 0.49416664242744446,
+            "selected_iou": 0.5339887738227844,
+            "oracle_iou": 0.6344294548034668,
+            "native_top10_iou": 0.5897402763366699
+          },
+          {
+            "key": "leaves04_indoor@757",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4890937805175781,
+            "parent_iou": 0.4890937805175781,
+            "selected_iou": 0.5118573904037476,
+            "oracle_iou": 0.6667371392250061,
+            "native_top10_iou": 0.5091712474822998
+          },
+          {
+            "key": "dumbbells02_indoor@679",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.3926835358142853,
+            "parent_iou": 0.3926835358142853,
+            "selected_iou": 0.522844135761261,
+            "oracle_iou": 0.522844135761261,
+            "native_top10_iou": 0.3926835358142853
+          },
+          {
+            "key": "bottle03_indoor@631",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4542306661605835,
+            "parent_iou": 0.4542306661605835,
+            "selected_iou": 0.5773926377296448,
+            "oracle_iou": 0.5773926377296448,
+            "native_top10_iou": 0.4542306661605835
+          },
+          {
+            "key": "ball08_wild@817",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49914905428886414,
+            "parent_iou": 0.49914905428886414,
+            "selected_iou": 0.5390077829360962,
+            "oracle_iou": 0.6241046190261841,
+            "native_top10_iou": 0.5202445387840271
+          },
+          {
+            "key": "cat04_indoor@259",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4986845552921295,
+            "parent_iou": 0.4986845552921295,
+            "selected_iou": 0.5262071490287781,
+            "oracle_iou": 0.5262071490287781,
+            "native_top10_iou": 0.4986845552921295
+          },
+          {
+            "key": "duck06_wild@273",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4934406578540802,
+            "parent_iou": 0.4934406578540802,
+            "selected_iou": 0.5036738514900208,
+            "oracle_iou": 0.5619829297065735,
+            "native_top10_iou": 0.5166770219802856
+          },
+          {
+            "key": "glass02_indoor@1287",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.22324402630329132,
+            "parent_iou": 0.3951810598373413,
+            "selected_iou": 0.7304357886314392,
+            "oracle_iou": 0.7304357886314392,
+            "native_top10_iou": 0.3951810598373413
+          },
+          {
+            "key": "cup09_indoor@1443",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47690874338150024,
+            "parent_iou": 0.47690874338150024,
+            "selected_iou": 0.5430209636688232,
+            "oracle_iou": 0.7520468235015869,
+            "native_top10_iou": 0.7093414664268494
+          },
+          {
+            "key": "toy03_indoor@1161",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4836677312850952,
+            "parent_iou": 0.4836677312850952,
+            "selected_iou": 0.5049901604652405,
+            "oracle_iou": 0.6946237087249756,
+            "native_top10_iou": 0.6381268501281738
+          },
+          {
+            "key": "toy06_indoor@950",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4912182092666626,
+            "parent_iou": 0.4912182092666626,
+            "selected_iou": 0.5284732580184937,
+            "oracle_iou": 0.6295192241668701,
+            "native_top10_iou": 0.5437889099121094
+          },
+          {
+            "key": "hat01_indoor@729",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4241543114185333,
+            "parent_iou": 0.4241543114185333,
+            "selected_iou": 0.5083370208740234,
+            "oracle_iou": 0.5083370208740234,
+            "native_top10_iou": 0.4241543114185333
+          },
+          {
+            "key": "bag03_indoor@752",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47694242000579834,
+            "parent_iou": 0.47694242000579834,
+            "selected_iou": 0.500960648059845,
+            "oracle_iou": 0.6131322383880615,
+            "native_top10_iou": 0.5537680387496948
+          },
+          {
+            "key": "adapter02_indoor@14",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4869244396686554,
+            "parent_iou": 0.4869244396686554,
+            "selected_iou": 0.5247538685798645,
+            "oracle_iou": 0.6812110543251038,
+            "native_top10_iou": 0.633804976940155
+          },
+          {
+            "key": "adapter02_indoor@539",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4922492504119873,
+            "parent_iou": 0.4922492504119873,
+            "selected_iou": 0.5204633474349976,
+            "oracle_iou": 0.670092761516571,
+            "native_top10_iou": 0.5908941626548767
+          },
+          {
+            "key": "leaves02_indoor@169",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.401593416929245,
+            "parent_iou": 0.401593416929245,
+            "selected_iou": 0.515896737575531,
+            "oracle_iou": 0.515896737575531,
+            "native_top10_iou": 0.401593416929245
+          },
+          {
+            "key": "leaves02_indoor@433",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4923667907714844,
+            "parent_iou": 0.4923667907714844,
+            "selected_iou": 0.6073257327079773,
+            "oracle_iou": 0.6073257327079773,
+            "native_top10_iou": 0.4923667907714844
+          },
+          {
+            "key": "trashbin_indoor@36",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.45762965083122253,
+            "parent_iou": 0.45762965083122253,
+            "selected_iou": 0.5099565982818604,
+            "oracle_iou": 0.6034931540489197,
+            "native_top10_iou": 0.512072741985321
+          },
+          {
+            "key": "trashbin_indoor@39",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4585849642753601,
+            "parent_iou": 0.4585849642753601,
+            "selected_iou": 0.5273109674453735,
+            "oracle_iou": 0.6585204005241394,
+            "native_top10_iou": 0.5561917424201965
+          },
+          {
+            "key": "human03_wild@531",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4893088936805725,
+            "parent_iou": 0.4893088936805725,
+            "selected_iou": 0.5016681551933289,
+            "oracle_iou": 0.5016681551933289,
+            "native_top10_iou": 0.4893088936805725
+          },
+          {
+            "key": "bag04_indoor@76",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47551560401916504,
+            "parent_iou": 0.47551560401916504,
+            "selected_iou": 0.5628934502601624,
+            "oracle_iou": 0.6425530314445496,
+            "native_top10_iou": 0.5454816222190857
+          },
+          {
+            "key": "bag04_indoor@1630",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47188708186149597,
+            "parent_iou": 0.47188708186149597,
+            "selected_iou": 0.5512774586677551,
+            "oracle_iou": 0.6044524908065796,
+            "native_top10_iou": 0.47188708186149597
+          },
+          {
+            "key": "skateboard02_indoor@1183",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49148473143577576,
+            "parent_iou": 0.49148473143577576,
+            "selected_iou": 0.5231192111968994,
+            "oracle_iou": 0.841849684715271,
+            "native_top10_iou": 0.6806058883666992
+          },
+          {
+            "key": "skateboard02_indoor@1517",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49887463450431824,
+            "parent_iou": 0.49887463450431824,
+            "selected_iou": 0.6109263300895691,
+            "oracle_iou": 0.6109263300895691,
+            "native_top10_iou": 0.49887463450431824
+          },
+          {
+            "key": "bottle01_indoor@85",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4943305253982544,
+            "parent_iou": 0.4943305253982544,
+            "selected_iou": 0.5026945471763611,
+            "oracle_iou": 0.5192322134971619,
+            "native_top10_iou": 0.5158741474151611
+          },
+          {
+            "key": "skateboard01_indoor@502",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4650712311267853,
+            "parent_iou": 0.4650712311267853,
+            "selected_iou": 0.5098265409469604,
+            "oracle_iou": 0.5098265409469604,
+            "native_top10_iou": 0.4650712311267853
+          },
+          {
+            "key": "skateboard01_indoor@503",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4507395029067993,
+            "parent_iou": 0.4507395029067993,
+            "selected_iou": 0.5164990425109863,
+            "oracle_iou": 0.5212501287460327,
+            "native_top10_iou": 0.46565863490104675
+          },
+          {
+            "key": "ball03_indoor@857",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4470745325088501,
+            "parent_iou": 0.4470745325088501,
+            "selected_iou": 0.5048967599868774,
+            "oracle_iou": 0.5048967599868774,
+            "native_top10_iou": 0.4470745325088501
+          },
+          {
+            "key": "ball17_wild@239",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.48156100511550903,
+            "parent_iou": 0.48156100511550903,
+            "selected_iou": 0.5300396084785461,
+            "oracle_iou": 0.6594258546829224,
+            "native_top10_iou": 0.5338425636291504
+          },
+          {
+            "key": "ball17_wild@1177",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47149431705474854,
+            "parent_iou": 0.47149431705474854,
+            "selected_iou": 0.5008735060691833,
+            "oracle_iou": 0.5008735060691833,
+            "native_top10_iou": 0.47149431705474854
+          },
+          {
+            "key": "book01_indoor@32",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.32712432742118835,
+            "parent_iou": 0.32712432742118835,
+            "selected_iou": 0.6430099606513977,
+            "oracle_iou": 0.6430099606513977,
+            "native_top10_iou": 0.32712432742118835
+          },
+          {
+            "key": "colacan02_indoor@959",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.44374707341194153,
+            "parent_iou": 0.44374707341194153,
+            "selected_iou": 0.5232487320899963,
+            "oracle_iou": 0.5232487320899963,
+            "native_top10_iou": 0.44374707341194153
+          },
+          {
+            "key": "colacan02_indoor@2425",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.48391082882881165,
+            "parent_iou": 0.48391082882881165,
+            "selected_iou": 0.5962679982185364,
+            "oracle_iou": 0.8828525543212891,
+            "native_top10_iou": 0.5736317038536072
+          },
+          {
+            "key": "parkingsign_wild@219",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.41781696677207947,
+            "parent_iou": 0.41781696677207947,
+            "selected_iou": 0.6502754092216492,
+            "oracle_iou": 0.671974778175354,
+            "native_top10_iou": 0.41781696677207947
+          },
+          {
+            "key": "suitcase_indoor@1273",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.21256084740161896,
+            "parent_iou": 0.4516054391860962,
+            "selected_iou": 0.5338484048843384,
+            "oracle_iou": 0.5338484048843384,
+            "native_top10_iou": 0.4516054391860962
+          },
+          {
+            "key": "ball05_indoor@396",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47842898964881897,
+            "parent_iou": 0.47842898964881897,
+            "selected_iou": 0.5091336965560913,
+            "oracle_iou": 0.6725135445594788,
+            "native_top10_iou": 0.5301400423049927
+          },
+          {
+            "key": "toy04_indoor@900",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4961812496185303,
+            "parent_iou": 0.4961812496185303,
+            "selected_iou": 0.5152354836463928,
+            "oracle_iou": 0.6327377557754517,
+            "native_top10_iou": 0.6063334941864014
+          },
+          {
+            "key": "toiletpaper04_indoor@644",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.48259615898132324,
+            "parent_iou": 0.48259615898132324,
+            "selected_iou": 0.5036401748657227,
+            "oracle_iou": 0.5036401748657227,
+            "native_top10_iou": 0.48259615898132324
+          },
+          {
+            "key": "hand02_indoor@603",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.1442016363143921,
+            "parent_iou": 0.40434330701828003,
+            "selected_iou": 0.5590465664863586,
+            "oracle_iou": 0.6894814968109131,
+            "native_top10_iou": 0.45470190048217773
+          },
+          {
+            "key": "mobilephone04_indoor@1519",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4991651475429535,
+            "parent_iou": 0.4991651475429535,
+            "selected_iou": 0.5467495918273926,
+            "oracle_iou": 0.5765489339828491,
+            "native_top10_iou": 0.5069088935852051
+          },
+          {
+            "key": "flower01_indoor@644",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4914889633655548,
+            "parent_iou": 0.4914889633655548,
+            "selected_iou": 0.5143035054206848,
+            "oracle_iou": 0.5930332541465759,
+            "native_top10_iou": 0.5446783304214478
+          },
+          {
+            "key": "clothes_indoor@739",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.2360408902168274,
+            "parent_iou": 0.47228318452835083,
+            "selected_iou": 0.6447009444236755,
+            "oracle_iou": 0.697770893573761,
+            "native_top10_iou": 0.5116524696350098
+          },
+          {
+            "key": "trophy_indoor@328",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.38374245166778564,
+            "parent_iou": 0.38374245166778564,
+            "selected_iou": 0.5530015230178833,
+            "oracle_iou": 0.5530015230178833,
+            "native_top10_iou": 0.38374245166778564
+          },
+          {
+            "key": "cup11_indoor@765",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.2465628683567047,
+            "parent_iou": 0.47227147221565247,
+            "selected_iou": 0.6027626991271973,
+            "oracle_iou": 0.6027626991271973,
+            "native_top10_iou": 0.47227147221565247
+          },
+          {
+            "key": "cup05_indoor@161",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.48682811856269836,
+            "parent_iou": 0.48682811856269836,
+            "selected_iou": 0.5072717666625977,
+            "oracle_iou": 0.7659029960632324,
+            "native_top10_iou": 0.6806603670120239
+          },
+          {
+            "key": "file02_indoor@890",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49991485476493835,
+            "parent_iou": 0.49991485476493835,
+            "selected_iou": 0.5161235332489014,
+            "oracle_iou": 0.6205243468284607,
+            "native_top10_iou": 0.6032332181930542
+          },
+          {
+            "key": "ball21_indoor@344",
+            "strata": [
+              "late_low"
+            ],
+            "selected": 1,
+            "native_iou": 0.0,
+            "parent_iou": 0.47744348645210266,
+            "selected_iou": 0.502377450466156,
+            "oracle_iou": 0.502377450466156,
+            "native_top10_iou": 0.47744348645210266
+          },
+          {
+            "key": "ball21_indoor@365",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.42151397466659546,
+            "parent_iou": 0.42151397466659546,
+            "selected_iou": 0.6414756774902344,
+            "oracle_iou": 0.6414756774902344,
+            "native_top10_iou": 0.42151397466659546
+          },
+          {
+            "key": "leaves05_indoor@303",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4831375479698181,
+            "parent_iou": 0.4831375479698181,
+            "selected_iou": 0.5086660981178284,
+            "oracle_iou": 0.6976320743560791,
+            "native_top10_iou": 0.5589932799339294
+          },
+          {
+            "key": "pine01_indoor@774",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.44926556944847107,
+            "parent_iou": 0.44926556944847107,
+            "selected_iou": 0.671040415763855,
+            "oracle_iou": 0.671040415763855,
+            "native_top10_iou": 0.44926556944847107
+          }
+        ],
+        "breaks": [
+          {
+            "key": "pine01_indoor@1276",
+            "strata": [
+              "healthy"
+            ],
+            "selected": 0,
+            "native_iou": 0.5004430413246155,
+            "parent_iou": 0.5004430413246155,
+            "selected_iou": 0.47923150658607483,
+            "oracle_iou": 0.6511190533638,
+            "native_top10_iou": 0.6604223251342773
+          }
+        ]
+      },
+      "development": {
+        "rescues": [
+          {
+            "key": "book06_indoor@21",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4970468282699585,
+            "parent_iou": 0.4970468282699585,
+            "selected_iou": 0.5183348655700684,
+            "oracle_iou": 0.6577812433242798,
+            "native_top10_iou": 0.682995617389679
+          },
+          {
+            "key": "cup13_indoor@697",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4763621687889099,
+            "parent_iou": 0.4763621687889099,
+            "selected_iou": 0.6231260895729065,
+            "oracle_iou": 0.6231260895729065,
+            "native_top10_iou": 0.4763621687889099
+          },
+          {
+            "key": "flower02_wild@172",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.42740482091903687,
+            "parent_iou": 0.42740482091903687,
+            "selected_iou": 0.5039334893226624,
+            "oracle_iou": 0.5464481115341187,
+            "native_top10_iou": 0.455300509929657
+          },
+          {
+            "key": "flower02_wild@384",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47248971462249756,
+            "parent_iou": 0.47248971462249756,
+            "selected_iou": 0.60186767578125,
+            "oracle_iou": 0.60186767578125,
+            "native_top10_iou": 0.47248971462249756
+          },
+          {
+            "key": "flowerbasket_indoor@65",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.41658732295036316,
+            "parent_iou": 0.41658732295036316,
+            "selected_iou": 0.5567355751991272,
+            "oracle_iou": 0.5567355751991272,
+            "native_top10_iou": 0.41658732295036316
+          },
+          {
+            "key": "flowerbasket_indoor@308",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.43414127826690674,
+            "parent_iou": 0.43414127826690674,
+            "selected_iou": 0.6526567935943604,
+            "oracle_iou": 0.6526567935943604,
+            "native_top10_iou": 0.43414127826690674
+          },
+          {
+            "key": "flowerbasket_indoor@333",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49732348322868347,
+            "parent_iou": 0.49732348322868347,
+            "selected_iou": 0.5358677506446838,
+            "oracle_iou": 0.5577024817466736,
+            "native_top10_iou": 0.546359658241272
+          },
+          {
+            "key": "mobilephone01_indoor@969",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.40527814626693726,
+            "parent_iou": 0.40527814626693726,
+            "selected_iou": 0.5583449006080627,
+            "oracle_iou": 0.5583449006080627,
+            "native_top10_iou": 0.40527814626693726
+          },
+          {
+            "key": "bag05_indoor@100",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.494629442691803,
+            "parent_iou": 0.494629442691803,
+            "selected_iou": 0.5181100964546204,
+            "oracle_iou": 0.7083438038825989,
+            "native_top10_iou": 0.706716775894165
+          },
+          {
+            "key": "beautifullight01_indoor@926",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.33446115255355835,
+            "parent_iou": 0.33446115255355835,
+            "selected_iou": 0.5047755837440491,
+            "oracle_iou": 0.5047755837440491,
+            "native_top10_iou": 0.33446115255355835
+          },
+          {
+            "key": "cup10_indoor@1132",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4342803657054901,
+            "parent_iou": 0.4342803657054901,
+            "selected_iou": 0.5135210752487183,
+            "oracle_iou": 0.5135210752487183,
+            "native_top10_iou": 0.4342803657054901
+          },
+          {
+            "key": "egg_indoor@905",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4969009459018707,
+            "parent_iou": 0.4969009459018707,
+            "selected_iou": 0.5350770950317383,
+            "oracle_iou": 0.5350770950317383,
+            "native_top10_iou": 0.4969009459018707
+          },
+          {
+            "key": "mobilephone02_indoor@265",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.40068352222442627,
+            "parent_iou": 0.40068352222442627,
+            "selected_iou": 0.563381016254425,
+            "oracle_iou": 0.563381016254425,
+            "native_top10_iou": 0.40068352222442627
+          },
+          {
+            "key": "notebook02_indoor@21",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4909491539001465,
+            "parent_iou": 0.4909491539001465,
+            "selected_iou": 0.5147035717964172,
+            "oracle_iou": 0.6235869526863098,
+            "native_top10_iou": 0.5640377402305603
+          },
+          {
+            "key": "notebook02_indoor@1388",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4815414249897003,
+            "parent_iou": 0.4815414249897003,
+            "selected_iou": 0.5676017999649048,
+            "oracle_iou": 0.5676017999649048,
+            "native_top10_iou": 0.4815414249897003
+          }
+        ],
+        "breaks": [
+          {
+            "key": "mobilephone02_indoor@65",
+            "strata": [
+              "healthy"
+            ],
+            "selected": 0,
+            "native_iou": 0.5105010271072388,
+            "parent_iou": 0.5105010271072388,
+            "selected_iou": 0.44826263189315796,
+            "oracle_iou": 0.5203390717506409,
+            "native_top10_iou": 0.5586121082305908
+          }
+        ]
+      }
+    },
+    "1": {
+      "fit": {
+        "rescues": [
+          {
+            "key": "cat02_indoor@329",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.453014075756073,
+            "parent_iou": 0.453014075756073,
+            "selected_iou": 0.5599203705787659,
+            "oracle_iou": 0.6084727644920349,
+            "native_top10_iou": 0.453014075756073
+          },
+          {
+            "key": "cat02_indoor@606",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49416664242744446,
+            "parent_iou": 0.49416664242744446,
+            "selected_iou": 0.5207538604736328,
+            "oracle_iou": 0.6195170879364014,
+            "native_top10_iou": 0.5897402763366699
+          },
+          {
+            "key": "leaves04_indoor@757",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4890937805175781,
+            "parent_iou": 0.4890937805175781,
+            "selected_iou": 0.5057810544967651,
+            "oracle_iou": 0.6651096940040588,
+            "native_top10_iou": 0.5091712474822998
+          },
+          {
+            "key": "bottle03_indoor@631",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4542306661605835,
+            "parent_iou": 0.4542306661605835,
+            "selected_iou": 0.5584972500801086,
+            "oracle_iou": 0.5584972500801086,
+            "native_top10_iou": 0.4542306661605835
+          },
+          {
+            "key": "ball08_wild@817",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49914905428886414,
+            "parent_iou": 0.49914905428886414,
+            "selected_iou": 0.5229088664054871,
+            "oracle_iou": 0.6009763479232788,
+            "native_top10_iou": 0.5202445387840271
+          },
+          {
+            "key": "cat04_indoor@259",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4986845552921295,
+            "parent_iou": 0.4986845552921295,
+            "selected_iou": 0.5312269926071167,
+            "oracle_iou": 0.5312269926071167,
+            "native_top10_iou": 0.4986845552921295
+          },
+          {
+            "key": "glass02_indoor@1287",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.22324402630329132,
+            "parent_iou": 0.3951810598373413,
+            "selected_iou": 0.6778830885887146,
+            "oracle_iou": 0.6778830885887146,
+            "native_top10_iou": 0.3951810598373413
+          },
+          {
+            "key": "cup09_indoor@1443",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47690874338150024,
+            "parent_iou": 0.47690874338150024,
+            "selected_iou": 0.5243736505508423,
+            "oracle_iou": 0.7714781165122986,
+            "native_top10_iou": 0.7093414664268494
+          },
+          {
+            "key": "toy06_indoor@950",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4912182092666626,
+            "parent_iou": 0.4912182092666626,
+            "selected_iou": 0.5271452069282532,
+            "oracle_iou": 0.6171119213104248,
+            "native_top10_iou": 0.5437889099121094
+          },
+          {
+            "key": "bag03_indoor@752",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47694242000579834,
+            "parent_iou": 0.47694242000579834,
+            "selected_iou": 0.5002694129943848,
+            "oracle_iou": 0.5992610454559326,
+            "native_top10_iou": 0.5537680387496948
+          },
+          {
+            "key": "adapter02_indoor@14",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4869244396686554,
+            "parent_iou": 0.4869244396686554,
+            "selected_iou": 0.5184133648872375,
+            "oracle_iou": 0.669275164604187,
+            "native_top10_iou": 0.633804976940155
+          },
+          {
+            "key": "adapter02_indoor@539",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4922492504119873,
+            "parent_iou": 0.4922492504119873,
+            "selected_iou": 0.5137436389923096,
+            "oracle_iou": 0.6447417140007019,
+            "native_top10_iou": 0.5908941626548767
+          },
+          {
+            "key": "leaves02_indoor@433",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4923667907714844,
+            "parent_iou": 0.4923667907714844,
+            "selected_iou": 0.5762597322463989,
+            "oracle_iou": 0.5762597322463989,
+            "native_top10_iou": 0.4923667907714844
+          },
+          {
+            "key": "trashbin_indoor@39",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4585849642753601,
+            "parent_iou": 0.4585849642753601,
+            "selected_iou": 0.5139375925064087,
+            "oracle_iou": 0.6302725076675415,
+            "native_top10_iou": 0.5561917424201965
+          },
+          {
+            "key": "human03_wild@531",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4893088936805725,
+            "parent_iou": 0.4893088936805725,
+            "selected_iou": 0.5011652112007141,
+            "oracle_iou": 0.5011652112007141,
+            "native_top10_iou": 0.4893088936805725
+          },
+          {
+            "key": "bag04_indoor@76",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47551560401916504,
+            "parent_iou": 0.47551560401916504,
+            "selected_iou": 0.5486456155776978,
+            "oracle_iou": 0.6302770972251892,
+            "native_top10_iou": 0.5454816222190857
+          },
+          {
+            "key": "bag04_indoor@1630",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47188708186149597,
+            "parent_iou": 0.47188708186149597,
+            "selected_iou": 0.5232082009315491,
+            "oracle_iou": 0.5728698372840881,
+            "native_top10_iou": 0.47188708186149597
+          },
+          {
+            "key": "skateboard02_indoor@1183",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49148473143577576,
+            "parent_iou": 0.49148473143577576,
+            "selected_iou": 0.5145700573921204,
+            "oracle_iou": 0.7945897579193115,
+            "native_top10_iou": 0.6806058883666992
+          },
+          {
+            "key": "skateboard02_indoor@1517",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49887463450431824,
+            "parent_iou": 0.49887463450431824,
+            "selected_iou": 0.6269528865814209,
+            "oracle_iou": 0.6269528865814209,
+            "native_top10_iou": 0.49887463450431824
+          },
+          {
+            "key": "skateboard01_indoor@503",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4507395029067993,
+            "parent_iou": 0.4507395029067993,
+            "selected_iou": 0.5085507035255432,
+            "oracle_iou": 0.5187234282493591,
+            "native_top10_iou": 0.46565863490104675
+          },
+          {
+            "key": "ball03_indoor@857",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4470745325088501,
+            "parent_iou": 0.4470745325088501,
+            "selected_iou": 0.5048829317092896,
+            "oracle_iou": 0.5048829317092896,
+            "native_top10_iou": 0.4470745325088501
+          },
+          {
+            "key": "ball17_wild@239",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.48156100511550903,
+            "parent_iou": 0.48156100511550903,
+            "selected_iou": 0.505452573299408,
+            "oracle_iou": 0.6350237131118774,
+            "native_top10_iou": 0.5338425636291504
+          },
+          {
+            "key": "book01_indoor@32",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.32712432742118835,
+            "parent_iou": 0.32712432742118835,
+            "selected_iou": 0.5511811971664429,
+            "oracle_iou": 0.5511811971664429,
+            "native_top10_iou": 0.32712432742118835
+          },
+          {
+            "key": "colacan02_indoor@959",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.44374707341194153,
+            "parent_iou": 0.44374707341194153,
+            "selected_iou": 0.5103737115859985,
+            "oracle_iou": 0.5103737115859985,
+            "native_top10_iou": 0.44374707341194153
+          },
+          {
+            "key": "colacan02_indoor@2425",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.48391082882881165,
+            "parent_iou": 0.48391082882881165,
+            "selected_iou": 0.6076531410217285,
+            "oracle_iou": 0.8278250694274902,
+            "native_top10_iou": 0.5736317038536072
+          },
+          {
+            "key": "parkingsign_wild@219",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.41781696677207947,
+            "parent_iou": 0.41781696677207947,
+            "selected_iou": 0.577992856502533,
+            "oracle_iou": 0.6357885599136353,
+            "native_top10_iou": 0.41781696677207947
+          },
+          {
+            "key": "suitcase_indoor@1273",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.21256084740161896,
+            "parent_iou": 0.4516054391860962,
+            "selected_iou": 0.5256187915802002,
+            "oracle_iou": 0.5256187915802002,
+            "native_top10_iou": 0.4516054391860962
+          },
+          {
+            "key": "ball05_indoor@396",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47842898964881897,
+            "parent_iou": 0.47842898964881897,
+            "selected_iou": 0.5297139286994934,
+            "oracle_iou": 0.6485584378242493,
+            "native_top10_iou": 0.5301400423049927
+          },
+          {
+            "key": "toy04_indoor@900",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4961812496185303,
+            "parent_iou": 0.4961812496185303,
+            "selected_iou": 0.5134713649749756,
+            "oracle_iou": 0.6246757507324219,
+            "native_top10_iou": 0.6063334941864014
+          },
+          {
+            "key": "hand02_indoor@603",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.1442016363143921,
+            "parent_iou": 0.40434330701828003,
+            "selected_iou": 0.5171188116073608,
+            "oracle_iou": 0.635893702507019,
+            "native_top10_iou": 0.45470190048217773
+          },
+          {
+            "key": "mobilephone04_indoor@1519",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4991651475429535,
+            "parent_iou": 0.4991651475429535,
+            "selected_iou": 0.5372812151908875,
+            "oracle_iou": 0.5705731511116028,
+            "native_top10_iou": 0.5069088935852051
+          },
+          {
+            "key": "flower01_indoor@644",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4914889633655548,
+            "parent_iou": 0.4914889633655548,
+            "selected_iou": 0.5074024796485901,
+            "oracle_iou": 0.590491771697998,
+            "native_top10_iou": 0.5446783304214478
+          },
+          {
+            "key": "clothes_indoor@739",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.2360408902168274,
+            "parent_iou": 0.47228318452835083,
+            "selected_iou": 0.6313772797584534,
+            "oracle_iou": 0.7379686236381531,
+            "native_top10_iou": 0.5116524696350098
+          },
+          {
+            "key": "trophy_indoor@328",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.38374245166778564,
+            "parent_iou": 0.38374245166778564,
+            "selected_iou": 0.5272086262702942,
+            "oracle_iou": 0.5272086262702942,
+            "native_top10_iou": 0.38374245166778564
+          },
+          {
+            "key": "cup11_indoor@765",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 1,
+            "native_iou": 0.2465628683567047,
+            "parent_iou": 0.47227147221565247,
+            "selected_iou": 0.5742971897125244,
+            "oracle_iou": 0.5742971897125244,
+            "native_top10_iou": 0.47227147221565247
+          },
+          {
+            "key": "cup05_indoor@161",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.48682811856269836,
+            "parent_iou": 0.48682811856269836,
+            "selected_iou": 0.5042880773544312,
+            "oracle_iou": 0.7327070832252502,
+            "native_top10_iou": 0.6806603670120239
+          },
+          {
+            "key": "file02_indoor@890",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49991485476493835,
+            "parent_iou": 0.49991485476493835,
+            "selected_iou": 0.5142137408256531,
+            "oracle_iou": 0.6146913170814514,
+            "native_top10_iou": 0.6032332181930542
+          },
+          {
+            "key": "ball21_indoor@344",
+            "strata": [
+              "late_low"
+            ],
+            "selected": 1,
+            "native_iou": 0.0,
+            "parent_iou": 0.47744348645210266,
+            "selected_iou": 0.500421404838562,
+            "oracle_iou": 0.500421404838562,
+            "native_top10_iou": 0.47744348645210266
+          },
+          {
+            "key": "ball21_indoor@365",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.42151397466659546,
+            "parent_iou": 0.42151397466659546,
+            "selected_iou": 0.5826830267906189,
+            "oracle_iou": 0.5826830267906189,
+            "native_top10_iou": 0.42151397466659546
+          },
+          {
+            "key": "pine01_indoor@774",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.44926556944847107,
+            "parent_iou": 0.44926556944847107,
+            "selected_iou": 0.6108700633049011,
+            "oracle_iou": 0.6108700633049011,
+            "native_top10_iou": 0.44926556944847107
+          }
+        ],
+        "breaks": [
+          {
+            "key": "pine01_indoor@1276",
+            "strata": [
+              "healthy"
+            ],
+            "selected": 0,
+            "native_iou": 0.5004430413246155,
+            "parent_iou": 0.5004430413246155,
+            "selected_iou": 0.49121901392936707,
+            "oracle_iou": 0.664283037185669,
+            "native_top10_iou": 0.6604223251342773
+          }
+        ]
+      },
+      "development": {
+        "rescues": [
+          {
+            "key": "book06_indoor@21",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4970468282699585,
+            "parent_iou": 0.4970468282699585,
+            "selected_iou": 0.5149778723716736,
+            "oracle_iou": 0.6686241626739502,
+            "native_top10_iou": 0.682995617389679
+          },
+          {
+            "key": "cup13_indoor@697",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4763621687889099,
+            "parent_iou": 0.4763621687889099,
+            "selected_iou": 0.6145690083503723,
+            "oracle_iou": 0.6145690083503723,
+            "native_top10_iou": 0.4763621687889099
+          },
+          {
+            "key": "flower02_wild@384",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.47248971462249756,
+            "parent_iou": 0.47248971462249756,
+            "selected_iou": 0.5760554075241089,
+            "oracle_iou": 0.5760554075241089,
+            "native_top10_iou": 0.47248971462249756
+          },
+          {
+            "key": "flowerbasket_indoor@65",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.41658732295036316,
+            "parent_iou": 0.41658732295036316,
+            "selected_iou": 0.5356524586677551,
+            "oracle_iou": 0.5356524586677551,
+            "native_top10_iou": 0.41658732295036316
+          },
+          {
+            "key": "flowerbasket_indoor@308",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.43414127826690674,
+            "parent_iou": 0.43414127826690674,
+            "selected_iou": 0.616401731967926,
+            "oracle_iou": 0.616401731967926,
+            "native_top10_iou": 0.43414127826690674
+          },
+          {
+            "key": "flowerbasket_indoor@333",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.49732348322868347,
+            "parent_iou": 0.49732348322868347,
+            "selected_iou": 0.5276408791542053,
+            "oracle_iou": 0.553910493850708,
+            "native_top10_iou": 0.546359658241272
+          },
+          {
+            "key": "mobilephone01_indoor@969",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.40527814626693726,
+            "parent_iou": 0.40527814626693726,
+            "selected_iou": 0.5235267877578735,
+            "oracle_iou": 0.5235267877578735,
+            "native_top10_iou": 0.40527814626693726
+          },
+          {
+            "key": "bag05_indoor@100",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.494629442691803,
+            "parent_iou": 0.494629442691803,
+            "selected_iou": 0.5142086744308472,
+            "oracle_iou": 0.7078467607498169,
+            "native_top10_iou": 0.706716775894165
+          },
+          {
+            "key": "egg_indoor@905",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4969009459018707,
+            "parent_iou": 0.4969009459018707,
+            "selected_iou": 0.532658576965332,
+            "oracle_iou": 0.532658576965332,
+            "native_top10_iou": 0.4969009459018707
+          },
+          {
+            "key": "mobilephone02_indoor@265",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.40068352222442627,
+            "parent_iou": 0.40068352222442627,
+            "selected_iou": 0.5133535861968994,
+            "oracle_iou": 0.5133535861968994,
+            "native_top10_iou": 0.40068352222442627
+          },
+          {
+            "key": "notebook02_indoor@1388",
+            "strata": [
+              "intermediate"
+            ],
+            "selected": 0,
+            "native_iou": 0.4815414249897003,
+            "parent_iou": 0.4815414249897003,
+            "selected_iou": 0.5446473360061646,
+            "oracle_iou": 0.5446473360061646,
+            "native_top10_iou": 0.4815414249897003
+          }
+        ],
+        "breaks": [
+          {
+            "key": "mobilephone02_indoor@65",
+            "strata": [
+              "healthy"
+            ],
+            "selected": 0,
+            "native_iou": 0.5105010271072388,
+            "parent_iou": 0.5105010271072388,
+            "selected_iou": 0.4675859808921814,
+            "oracle_iou": 0.5179489254951477,
+            "native_top10_iou": 0.5586121082305908
+          }
+        ]
+      }
+    }
+  },
+  "all_control_pair_changes": {
+    "fit": {
+      "gained_correct": [],
+      "lost_correct": [
+        {
+          "key": "dumbbells02_indoor@679",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.522844135761261,
+          "preservation_iou": 0.49263519048690796
+        },
+        {
+          "key": "duck06_wild@273",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5036738514900208,
+          "preservation_iou": 0.49998652935028076
+        },
+        {
+          "key": "toy03_indoor@1161",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5049901604652405,
+          "preservation_iou": 0.4943324625492096
+        },
+        {
+          "key": "hat01_indoor@729",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5083370208740234,
+          "preservation_iou": 0.4887661635875702
+        },
+        {
+          "key": "leaves02_indoor@169",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.515896737575531,
+          "preservation_iou": 0.47613319754600525
+        },
+        {
+          "key": "trashbin_indoor@36",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5099565982818604,
+          "preservation_iou": 0.4863542318344116
+        },
+        {
+          "key": "bottle01_indoor@85",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5026945471763611,
+          "preservation_iou": 0.498558908700943
+        },
+        {
+          "key": "skateboard01_indoor@502",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5098265409469604,
+          "preservation_iou": 0.49803924560546875
+        },
+        {
+          "key": "ball17_wild@1177",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5008735060691833,
+          "preservation_iou": 0.49956628680229187
+        },
+        {
+          "key": "toiletpaper04_indoor@644",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5036401748657227,
+          "preservation_iou": 0.49798092246055603
+        },
+        {
+          "key": "leaves05_indoor@303",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5086660981178284,
+          "preservation_iou": 0.48072755336761475
+        }
+      ],
+      "iou_improved": 1046,
+      "iou_decreased": 1042,
+      "iou_equal": 456
+    },
+    "development": {
+      "gained_correct": [],
+      "lost_correct": [
+        {
+          "key": "flower02_wild@172",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5039334893226624,
+          "preservation_iou": 0.4869997799396515
+        },
+        {
+          "key": "beautifullight01_indoor@926",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5047755837440491,
+          "preservation_iou": 0.4814666211605072
+        },
+        {
+          "key": "cup10_indoor@1132",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5135210752487183,
+          "preservation_iou": 0.49198344349861145
+        },
+        {
+          "key": "notebook02_indoor@21",
+          "strata": [
+            "intermediate"
+          ],
+          "control_iou": 0.5147035717964172,
+          "preservation_iou": 0.49978408217430115
+        }
+      ],
+      "iou_improved": 170,
+      "iou_decreased": 185,
+      "iou_equal": 140
+    }
+  }
+}

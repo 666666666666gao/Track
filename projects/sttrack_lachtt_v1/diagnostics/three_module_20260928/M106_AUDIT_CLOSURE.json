@@ -1,0 +1,35 @@
+{
+  "status": "completed_negative_result_no_promotion",
+  "generated_at": "2026-09-28T07:58:44.234718+00:00",
+  "experiment": "M106",
+  "reviewer": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "review_independence": "same-family/provisional",
+  "audit_verdict": "WARN",
+  "audit_sections": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "WARN",
+    "F": "PASS"
+  },
+  "audit_reports": {
+    "M106_COMPLETED_AUDIT.md": "5e129b15a48bb9339c5b47aead4c9844586fcb7cabafa7fe4c596ab5311faeba",
+    "M106_COMPLETED_AUDIT.json": "4a19b82f453fa9a4431d186bcedd9f78f8f08770b7b703a5dcd3c74450467bc6"
+  },
+  "unchanged_audited_inputs": 217,
+  "deterministic_checks": "accepted: 91,170 unique candidate IoUs; every summary/gate; exact M104 control; 152 raw GT files and 7,004 cached-label comparisons",
+  "result": "both arms pass 3/4 preset gates and fail healthy_new_breaks_zero; weight1 loses 11 fit and 4 development successes relative to control, gains none",
+  "scope": "fixed sampled localization caches, one seed, fixed final; no recursive evaluation, public dataset metric, semantic claim or C promotion",
+  "qualifications": [
+    "Fresh auditor inspected files and independently recomputed arithmetic; did not connect remotely, import Torch, or execute GPU replay.",
+    "Actual executed clamp_min(0) has the recorded value formula; equality subgradient differs from F.relu in inspected local Torch 2.13 sources. Remote Torch 1.13.1 equality behavior was not independently executed by the auditor.",
+    "Static xywh/xyxy float32 diagnostic is source/arithmetic evidence, not measured initial remote gradients or a uniquely established cause.",
+    "Fit-selection diagnostic was generated after observing the comparison, uses fitting states only, and does not establish visibility or physical identity.",
+    "RESULT.md records audit pending at its creation time; this separate closure records the subsequent completed review without rewriting audited evidence."
+  ],
+  "next_experiment_status": "No M107 source or job created; next hypothesis is the mismatch between GT-best candidate training and actual selected candidate evidence.",
+  "human_semantic_labels_confirmed": 0,
+  "formal_nine_metrics_changed": false
+}

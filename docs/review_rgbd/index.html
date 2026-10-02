@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RGB-D 初始化描述多人审核</title>
+  <link rel="stylesheet" href="review.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">RGB-D TRACKING · INITIALIZATION REVIEW</div>
+      <h1>初始化描述多人审核</h1>
+      <p>红框表示协议指定的初始目标。结合前后帧和整段预览，判断自动描述是否真正指向这个目标；后续帧没有目标标注。</p>
+      <p class="notice">DepthTrack Train 的审核结果可供后续训练研究；CDTB 与 VOT 是外部评测数据，只用于输入核查与误差分析，不用于训练或调参。自动描述是待核验输入，不是事实标签。每位审核者的答案只存在自己的浏览器中，导出 CSV 后再交给项目负责人合并。</p>
+    </header>
+    <section class="toolbar">
+      <label>数据集<select id="dataset"><option value="depthtrack">DepthTrack Train · 152 条</option><option value="cdtb">CDTB · 80 条</option><option value="vot">VOT-RGBD2022 · 1,765 anchors</option></select></label>
+      <label>审核者编号<input id="reviewer" autocomplete="off" placeholder="例如 reviewer_01"></label>
+      <label>查找序列或编号<input id="search" placeholder="序列名、anchor 编号或 key"></label>
+      <label>审核范围起<input id="from" type="number" min="1"></label>
+      <label>审核范围止<input id="to" type="number" min="1"></label>
+      <button id="apply">应用范围</button>
+      <button id="export">导出我的 CSV</button>
+      <span id="progress" aria-live="polite"></span>
+    </section>
+    <nav class="navigation"><button id="previous">← 上一项</button><span id="position"></span><button id="next">下一项 →</button></nav>
+    <section id="case" class="case" aria-live="polite"></section>
+    <footer>审核建议：先看红框确认目标；再看无标记的邻近帧和整段预览理解外观变化。无法确认时选“不确定”，不要猜类别。视频按 25 fps 播放、抽取 5 fps，这是审核播放设置，不表示数据集实测采样率。数据来源：<a href="https://github.com/xiaozai/DeT">DepthTrack</a>、<a href="https://zenodo.org/records/5855099">CDTB</a>、<a href="https://www.votchallenge.net/vot2022/dataset.html">VOT-RGBD2022</a>。</footer>
+  </main>
+  <script src="review.js" defer></script>
+</body>
+</html>

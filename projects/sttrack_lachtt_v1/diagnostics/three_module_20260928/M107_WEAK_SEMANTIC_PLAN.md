@@ -1,0 +1,15 @@
+# M107 user-authorized model weak-label A+B pair
+
+The user supplied the Desktop initial-review directory and explicitly authorized training before human confirmation on 2026-09-28. The supplied reviewer is recorded as GPT-6 Astra Pro; this is external model weak supervision, not independent human truth.
+
+Use the existing M101 weight1 A+B visual model as the common parent. Keep the prototype architecture and native 10 candidate boxes unchanged. Both arms zero-initialize the previously unused semantic/phrase readout matrices and freeze the unused observation head. Train GPU0 with Empty and GPU1 with reviewed text. Both use the same valid-slot mask, parent, fitting order, seed2027, AdamW3e-4, batch64, fixed12epochs/480updates, and final checkpoint. No coefficient, seed or checkpoint scan.
+
+Encode all152 descriptions with the existing frozen CLIP ViT-L/14. Use the reviewed category/coarse label plus the first four supported first-frame attributes. Exclude video_only_attributes and all explanatory review notes. Preserve uncertain coarse descriptions as weak descriptions, not asserted categories. Three rows have additional supported attributes beyond the four-slot limit; preserve their omission in the private preparation manifest.
+
+Fit uses only the original130 fitting sequences and2544 valid cached states. The22 sequences/495 states remain development-only; their reviewed descriptions are input conditions, never optimization targets or candidate identity labels. Eleven explicit A/B choices from the24 fitting events provide weak pair rankings in both arms; thirteen unknown choices provide no ranking target. Low IoU labels remain localization quality, not physical identity truth.
+
+Loss: selection BCE with dataset IoU soft targets + visual quality BCE with those targets + existing native reliable candidate relation preservation + softplus(other score - chosen score) on applicable model-reviewed A/B pairs. All coefficients are fixed at one. Both arms receive the same weak identity targets, so the difference tests the contribution of text input to this task. Empty has inactive semantic gradients despite the same allocated architecture; it is not a claim of equal effective trainable capacity.
+
+Actual GPU sanity precedes training: finite losses/gradients, parent initial selections, Empty exact cancellation, and a nonzero text/semantic gradient in the weak-text arm. Save the fixed final and fitting/development rows. For each final, additionally evaluate development with both Empty and reviewed text without selecting a checkpoint. Report gains and losses relative to native and the M101 parent, healthy and transition groups, and all four existing fixed-state checks. Preserve negative results.
+
+This is fixed cached Train-state development. It is not complete recursive Full152 training, formal Test50/CDTB80/VOT127 evaluation, verified semantic accuracy, human identity truth, or automatic promotion to module C. Future Train frames used in annotation are additional training supervision, not an initialization inference feature. Human-confirmed labels will later define a distinct comparison.

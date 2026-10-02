@@ -1,0 +1,2145 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-09-28",
+  "auditor": "gpt-6-astra-max",
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_reasoning": "max",
+  "reviewer_family": "openai",
+  "fork_turns": "none",
+  "agent_task_name": "/root/m106_completed_integrity",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "trace_path": ".aris/traces/experiment-audit/2026-09-28_m106_completed/",
+  "verdict": "WARN",
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "reason_code": "qualified_fixed_cache_negative_result_with_runtime_and_boundary_semantics_limits",
+  "summary": "Independent local GT, arithmetic, byte-binding and control-equality checks pass. Scientific qualification remains a negative fixed-cache, single-seed comparison; both arms fail one of four original gates. Equality behavior of the implemented clamp_min loss and unverified remote runtime/dependency provenance require explicit qualifiers.",
+  "scientific_qualification": "NEGATIVE_FIXED_CACHE_COMPARISON_NO_PROMOTION",
+  "checks": {
+    "A": {
+      "name": "Ground-truth provenance",
+      "status": "PASS",
+      "details": "All 152 supplied raw localization GT files match receipt byte lengths and SHA256s. All 3,502 cached current labels and 3,502 previous labels exactly match their raw rows under the finite/positive-size validity rule; 3,039 current and 2,852 previous are valid. Preparation reads dataset groundtruth.txt, not model predictions. Original official-distribution identity and live remote invocation remain attestations, not independent remote observations.",
+      "evidence": [
+        "prepare_train_states.py:69-78",
+        "prepare_train_states.py:102-105",
+        "attest_m106_raw_gt.py:16-41",
+        "M106_RAW_GT_RECEIPT.json:5-18",
+        "m105_inputs/preparation.json:3-19",
+        "m105_inputs/training_labels.json:1",
+        "m106_gt_inputs/cube04_indoor.txt:10-11",
+        "m106_gt_inputs/pine01_indoor.txt:1276-1277",
+        "m106_gt_inputs/mobilephone02_indoor.txt:65-66"
+      ]
+    },
+    "B": {
+      "name": "Score normalization",
+      "status": "PASS",
+      "details": "Reported metrics are raw dataset IoUs, counts at inclusive IoU >= 0.5, and arithmetic means over valid sampled states. No denominator uses a prediction-score maximum/minimum/mean. GT-best/top10 maxima are explicitly oracle coverage, not a deployment metric or normalization divisor. Regression coordinate normalization and feature normalization are not reported evaluation normalization.",
+      "evidence": [
+        "analyze_train_states.py:20-25",
+        "train_ab_visual_control.py:114-128",
+        "train_selected_geometry_preservation.py:49-52",
+        "train_selected_geometry_preservation.py:101-115",
+        "collect_ab_interface_panel.py:52-62",
+        "m106_completed/summary.csv:1-21"
+      ]
+    },
+    "C": {
+      "name": "Result existence and numerical agreement",
+      "status": "PASS",
+      "details": "Read all 29 runtime-tree files, including both checkpoints, every row/log/exit/receipt, RESULT.md, acceptance.json and summary.csv. All 25 download-manifest SHA/size bindings, source bindings, log/result histories, four child exit markers, checkpoint hashes, identities/order, 91,170 unique IoUs, 30,390 saved row scalar fields, marginal/joint summaries, gates and parent/control change lists match. Control M104 bytes, six tensor storages, 3,039 ordered rows and summaries are exact. Local arithmetic acceptance does not itself authenticate remote execution.",
+      "evidence": [
+        "m106_completed/download_receipt.json:4-152",
+        "m106_completed/driver.json:5-151",
+        "m106_completed/controller.log:1-3",
+        "m106_completed/train_weight0.log:1-13",
+        "m106_completed/train_weight1.log:1-13",
+        "m106_completed/train_weight0/result.json:117-288",
+        "m106_completed/train_weight1/result.json:117-288",
+        "m106_completed/verification/result.json:1-20",
+        "m106_completed/acceptance.json:1-12",
+        "m106_completed/RESULT.md:7-27"
+      ]
+    },
+    "D": {
+      "name": "Metric invocation and source/evaluation integrity",
+      "status": "PASS",
+      "details": "Active evaluate calls use overlaps, summarize and the four recorded gates; save/reload and replay source invoke the same paths, and serialized outputs agree independently. The added loss is invoked only for weight1, with positive recorded epoch losses. Historical/reference-only modes are not used to manufacture reported metrics. Source inspection and consistent invocation receipts do not replace an auditor GPU replay or seal every imported runtime dependency. The clamp_min equality qualification is recorded separately.",
+      "evidence": [
+        "train_selected_geometry_preservation.py:87-116",
+        "train_selected_geometry_preservation.py:181-214",
+        "train_selected_geometry_preservation.py:230-247",
+        "verify_m106_checkpoint_replay.py:54-87",
+        "accept_m106_selected_geometry.py:94-141",
+        "M106_REPLAY_RECEIPT.json:2-6",
+        "m106_completed/train_weight1/result.json:14-107"
+      ]
+    },
+    "E": {
+      "name": "Evaluation scope and scientific qualification",
+      "status": "WARN",
+      "details": "One seed (2027), one control and one weight1 final on fixed cached Train states: 2,544 fit states from 130 sequences and 495 development states from 22 sequences; training uses 2,033 eligible fitting states. Sampling/strata depend on historical native errors and GT, invalid current GT is excluded, tags overlap, and neither independent test generalization nor recursive/official/public/semantic performance is evaluated. Claims in RESULT.md correctly restrict this scope, but neither arm passes all four gates. Weight1 loses 11/4 correct fit/development states versus control, gains zero, and leaves both parent-correct healthy breaks unrepaired.",
+      "evidence": [
+        "prepare_train_states.py:64-105",
+        "train_ab_visual_control.py:58-82",
+        "train_selected_geometry_preservation.py:138",
+        "train_selected_geometry_preservation.py:162-171",
+        "m106_completed/driver.json:5-146",
+        "m106_completed/train_weight0/result.json:281-285",
+        "m106_completed/train_weight1/result.json:281-285",
+        "m106_completed/RESULT.md:3-24",
+        "m106_completed/acceptance.json:2195-2330"
+      ]
+    },
+    "F": {
+      "name": "Evaluation-type classification",
+      "status": "PASS",
+      "classification": "real_gt",
+      "details": "Fixed-cache localization evaluation against supplied dataset GT. Oracle maxima and the post-comparison fitting diagnostic remain GT-based counterfactual/localization analyses, not human_eval or physical/semantic identity truth. Model predictions are boxes being judged and historical event-selection inputs, not the truth target. No synthetic/self-supervised/simulation result is promoted to real tracking performance.",
+      "evidence": [
+        "prepare_train_states.py:69-105",
+        "train_ab_visual_control.py:75",
+        "train_selected_geometry_preservation.py:64-66",
+        "train_selected_geometry_preservation.py:101-107",
+        "inspect_m106_fit_selection.py:19-40",
+        "M106_FIT_SELECTION_DIAGNOSTIC.json:2-19",
+        "m106_completed/RESULT.md:3-5"
+      ]
+    }
+  },
+  "qualifications": [
+    {
+      "code": "clamp_min_boundary_semantics",
+      "status": "WARN",
+      "details": "The implemented per-batch term is mean(1[parent IoU >= .5] * clamp_min(parent IoU - refined-selected IoU, 0)) on the existing eligible-fit batches. Before is a constant cached float32 IoU; after is the per-box IoU returned by giou_loss, not the GIoU loss. No GT is added to forward inputs or inference selection. The plan's mathematical relu notation is value-equivalent, but must not be interpreted as F.relu's zero boundary subgradient: standard clamp_min passes the gradient at equality. For a reliable row at before == after, scalar penalty is zero while dL/d(after) is -1/B; at before < after it is zero. This is corroborated by locally inspected PyTorch 2.13.0+cpu derivative source, not a test or source attestation of the stated remote Torch1.13.1 runtime.",
+      "evidence": [
+        "M106_SELECTED_GEOMETRY_PLAN.md:15",
+        "train_selected_geometry_preservation.py:187-199",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/lib/utils/box_ops.py:13-16",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/lib/utils/box_ops.py:86-94",
+        "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torchgen/packaged/autograd/derivatives.yaml:432-434",
+        "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torchgen/packaged/autograd/derivatives.yaml:2119-2121",
+        "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torch/_decomp/decompositions.py:240-241",
+        "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torch/version.py:4"
+      ]
+    },
+    {
+      "code": "iou_coordinate_path_rounding",
+      "status": "WARN",
+      "details": "Exact zero-delta box equality does not guarantee equality of cached xywh IoU and the xyxy-area IoU inside the preservation term. A separate stdlib float32 arithmetic diagnostic using unchanged serialized parent boxes and conventional xyxy area finds 681 exact-equal, 439 before>after and 471 before<after among 1,591 eligible reliable fitting rows; largest absolute difference 1.0132789611816406e-6. This is a local source-path diagnostic, not observed initial-step remote gradients or proof of the negative result's cause.",
+      "evidence": [
+        "analyze_train_states.py:20-25",
+        "train_selected_geometry_preservation.py:153-155",
+        "train_selected_geometry_preservation.py:189-197",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/lib/utils/box_ops.py:13-16",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/lib/utils/box_ops.py:43-55"
+      ]
+    },
+    {
+      "code": "runtime_attestation_limits",
+      "status": "WARN",
+      "details": "I did not connect to the server, use credentials, import Torch, train, or execute GPU replay. Locally checked bytes, tensor storages and arithmetic are independent deterministic evidence. Zero initialization, frozen parent throughout training, 495 parent-choice parity, final forward reload and replay-state immutability remain source assertions plus runtime receipt/log attestations. The bundle hashes trainer/runner/replayer, but not the complete imported runtime tree, feature/context/origin caches, M101 parent, image data or remote autograd kernels. Current local helper source and imported box_ops.py cannot independently prove their remote executed bytes.",
+      "evidence": [
+        "train_selected_geometry_preservation.py:128-161",
+        "train_selected_geometry_preservation.py:216-225",
+        "train_selected_geometry_preservation.py:239-247",
+        "verify_m106_checkpoint_replay.py:25-87",
+        "M106_DEPLOY_RECEIPT.json:2-49",
+        "M106_REPLAY_RECEIPT.json:2-6",
+        "m106_completed/verification/result.json:3-19"
+      ]
+    },
+    {
+      "code": "postcomparison_diagnostic_not_preregistered_test",
+      "status": "WARN",
+      "details": "All 2,033 fitting-diagnostic records and counters match independent recomputation and bound inputs. Correct/partial/low selected quality = 1,591/341/101; selected index equals the first GT-best argmax for 1,449; GT center is geometrically inside selected box/context-factor2 for 1,918/1,992. These were inspected after seeing the comparison, use no development rows, and are not a new accepted evaluation gate, causal explanation, usable-pixel evidence or semantic identity label. Probe global row order differs from primary geometry order; the code joins by unique key, and the exact key set/metadata match.",
+      "evidence": [
+        "inspect_m106_fit_selection.py:15-40",
+        "M106_FIT_SELECTION_DIAGNOSTIC.json:2-19",
+        "diagnose_b_geometry.py:110-128",
+        "m103_completed/events.jsonl:2708",
+        "m103_completed/events.jsonl:3006"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "M106 is a completed, locally arithmetically consistent fixed-cache negative comparison.",
+      "impact": "supported_with_runtime_provenance_qualifier"
+    },
+    {
+      "id": "C2",
+      "claim": "Weight0 reproduces this archived M104 checkpoint, all 3,039 rows and summaries.",
+      "impact": "supported_by_independent_bytes_tensors_and_arithmetic"
+    },
+    {
+      "id": "C3",
+      "claim": "Weight1 improves preservation capacity or clears the original promotion gate.",
+      "impact": "unsupported; 11/4 lost correct states, zero paired gains, both arms fail healthy_new_breaks_zero"
+    },
+    {
+      "id": "C4",
+      "claim": "Preservation has zero gradient whenever its scalar value is zero.",
+      "impact": "unsupported_at_equality_for_clamp_min; remote boundary execution not independently tested"
+    },
+    {
+      "id": "C5",
+      "claim": "Training/evaluation uses dataset localization GT, with no GT in refiner features or frozen selection.",
+      "impact": "supported_by_local_raw_GT_alignment_and_inspected_source; original runtime inputs not independently replayed"
+    },
+    {
+      "id": "C6",
+      "claim": "The fitting-only GT-best mismatch/geometry-support counts diagnose the cause of harm.",
+      "impact": "descriptive_counts_supported; causal_or_semantic_interpretation_unsupported"
+    },
+    {
+      "id": "C7",
+      "claim": "Recursive tracking, language contribution, robust multi-seed/public results, C-module readiness or nine-metric completion.",
+      "impact": "unsupported_and_not_claimed_in_RESULT"
+    }
+  ],
+  "actions": [
+    "Retain the negative comparison and both failed healthy-break gates; do not promote C, recursive tracking, public metrics or semantic claims.",
+    "Describe the executed loss as clamp_min with inclusive boundary subgradient semantics; a zero penalty is not proof of zero preservation gradient. Do not silently relabel this run as F.relu or rerun it under a changed loss.",
+    "Keep deterministic arithmetic/byte checks distinct from source and runtime attestations. Before stronger runtime-causal claims, bind the relevant imported sources/runtime and preserve replay/input provenance; no new execution is needed to retain this negative result.",
+    "Keep the additional fit-selection analysis explicitly post-comparison and fitting-only. The remaining 584 index disagreements and 115/41 geometric center exclusions are descriptive counts, not proof of usable visual evidence, cause, or physical identity.",
+    "Preserve dataset-localization classification, GT-conditioned sampling, single-seed/cache scope and the absence of independent human semantic labels."
+  ],
+  "deterministic_evidence": {
+    "status": "PASS",
+    "acceptance_status": "accepted_for_local_deterministic_facts_only",
+    "independent_of_executor_acceptance_script": true,
+    "method": "Fresh reviewer stdlib parsing/hashing, rounded float32 box arithmetic, direct summaries/gates/pair reconstruction, restricted checkpoint metadata/storage inspection, and direct raw-GT comparisons; no training-module import or executor acceptance-script execution.",
+    "primary": {
+      "status": "PASS",
+      "runtime_files_read": 29,
+      "download_manifest_bindings": 25,
+      "unique_candidate_iou_recomputed": 91170,
+      "saved_row_scalar_comparisons": 30390,
+      "total_serialized_coordinate_values": 364680,
+      "valid_gt_events": {
+        "fit": 2544,
+        "development": 495
+      },
+      "excluded_invalid_current_gt": {
+        "fit": 368,
+        "development": 95
+      },
+      "sequence_counts": {
+        "fit": 130,
+        "development": 22
+      },
+      "matching_AST_definitions": [
+        "LocalVisualRefiner",
+        "decode",
+        "normalized_target",
+        "metadata",
+        "encoded_inputs",
+        "evaluate"
+      ],
+      "all_gate_results": {
+        "correct_exceeds_parent": true,
+        "mean_iou_exceeds_parent": true,
+        "healthy_new_breaks_zero": false,
+        "transition_at_least_parent": true
+      },
+      "totals": {
+        "0": {
+          "fit": {
+            "valid_gt": 2544,
+            "native_iou50": 1575,
+            "selected_iou50": 1652,
+            "oracle_iou50": 1866,
+            "rescues": 79,
+            "breaks": 2,
+            "parent_correct": 1602,
+            "parent_rescues": 51,
+            "parent_breaks": 1,
+            "original_top10_correct": 1814,
+            "original_miss_refined_hit": 58,
+            "native_mean_iou": 0.6002026092758873,
+            "selected_mean_iou": 0.6167105383052708,
+            "parent_mean_iou": 0.6083137887764976
+          },
+          "development": {
+            "valid_gt": 495,
+            "native_iou50": 268,
+            "selected_iou50": 286,
+            "oracle_iou50": 323,
+            "rescues": 20,
+            "breaks": 2,
+            "parent_correct": 272,
+            "parent_rescues": 15,
+            "parent_breaks": 1,
+            "original_top10_correct": 305,
+            "original_miss_refined_hit": 18,
+            "native_mean_iou": 0.5247707230829154,
+            "selected_mean_iou": 0.5352975043553431,
+            "parent_mean_iou": 0.5307076979870673
+          }
+        },
+        "1": {
+          "fit": {
+            "valid_gt": 2544,
+            "native_iou50": 1575,
+            "selected_iou50": 1641,
+            "oracle_iou50": 1856,
+            "rescues": 68,
+            "breaks": 2,
+            "parent_correct": 1602,
+            "parent_rescues": 40,
+            "parent_breaks": 1,
+            "original_top10_correct": 1814,
+            "original_miss_refined_hit": 46,
+            "native_mean_iou": 0.6002026092758873,
+            "selected_mean_iou": 0.6165845819264864,
+            "parent_mean_iou": 0.6083137887764976
+          },
+          "development": {
+            "valid_gt": 495,
+            "native_iou50": 268,
+            "selected_iou50": 282,
+            "oracle_iou50": 317,
+            "rescues": 16,
+            "breaks": 2,
+            "parent_correct": 272,
+            "parent_rescues": 11,
+            "parent_breaks": 1,
+            "original_top10_correct": 305,
+            "original_miss_refined_hit": 12,
+            "native_mean_iou": 0.5247707230829154,
+            "selected_mean_iou": 0.535005414294728,
+            "parent_mean_iou": 0.5307076979870673
+          }
+        }
+      },
+      "paired": {
+        "fit": {
+          "gained_correct": 0,
+          "lost_correct": 11,
+          "iou_improved": 1046,
+          "iou_decreased": 1042,
+          "iou_equal": 456
+        },
+        "development": {
+          "gained_correct": 0,
+          "lost_correct": 4,
+          "iou_improved": 170,
+          "iou_decreased": 185,
+          "iou_equal": 140
+        }
+      },
+      "lost_row_evidence": {
+        "fit": [
+          {
+            "key": "dumbbells02_indoor@679",
+            "line": 339,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.522844135761261,
+            "weight1": 0.49263519048690796
+          },
+          {
+            "key": "duck06_wild@273",
+            "line": 709,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5036738514900208,
+            "weight1": 0.49998652935028076
+          },
+          {
+            "key": "toy03_indoor@1161",
+            "line": 778,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5049901604652405,
+            "weight1": 0.4943324625492096
+          },
+          {
+            "key": "hat01_indoor@729",
+            "line": 886,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5083370208740234,
+            "weight1": 0.4887661635875702
+          },
+          {
+            "key": "leaves02_indoor@169",
+            "line": 1123,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.515896737575531,
+            "weight1": 0.47613319754600525
+          },
+          {
+            "key": "trashbin_indoor@36",
+            "line": 1141,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5099565982818604,
+            "weight1": 0.4863542318344116
+          },
+          {
+            "key": "bottle01_indoor@85",
+            "line": 1332,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5026945471763611,
+            "weight1": 0.498558908700943
+          },
+          {
+            "key": "skateboard01_indoor@502",
+            "line": 1369,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5098265409469604,
+            "weight1": 0.49803924560546875
+          },
+          {
+            "key": "ball17_wild@1177",
+            "line": 1522,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5008735060691833,
+            "weight1": 0.49956628680229187
+          },
+          {
+            "key": "toiletpaper04_indoor@644",
+            "line": 1825,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5036401748657227,
+            "weight1": 0.49798092246055603
+          },
+          {
+            "key": "leaves05_indoor@303",
+            "line": 2300,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5086660981178284,
+            "weight1": 0.48072755336761475
+          }
+        ],
+        "development": [
+          {
+            "key": "flower02_wild@172",
+            "line": 167,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5039334893226624,
+            "weight1": 0.4869997799396515
+          },
+          {
+            "key": "beautifullight01_indoor@926",
+            "line": 328,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5047755837440491,
+            "weight1": 0.4814666211605072
+          },
+          {
+            "key": "cup10_indoor@1132",
+            "line": 394,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5135210752487183,
+            "weight1": 0.49198344349861145
+          },
+          {
+            "key": "notebook02_indoor@21",
+            "line": 477,
+            "strata": [
+              "intermediate"
+            ],
+            "control": 0.5147035717964172,
+            "weight1": 0.49978408217430115
+          }
+        ]
+      },
+      "postcomparison_counts": {
+        "events": 2033,
+        "correct": 1591,
+        "same_selected_and_GT_best": 1449,
+        "target_center_inside_selected_box": 1918,
+        "target_center_inside_selected_factor2_context": 1992,
+        "low": 101,
+        "partial": 341
+      },
+      "probe_primary_global_row_order_equal": false,
+      "static_zero_box_xywh_vs_xyxy_IoU_diagnostic": {
+        "eligible_reliable_events": 1591,
+        "counts": {
+          "before_lt_after": 471,
+          "before_gt_after": 439,
+          "equal": 681
+        },
+        "max_abs_difference": 0.0000010132789611816406,
+        "actual_remote_autograd_verified": false
+      },
+      "checkpoint_tensors": {
+        "m104_completed/train/final.pt": {
+          "projection.weight": {
+            "shape": [
+              16,
+              64
+            ],
+            "count": 1024,
+            "sha256": "7cfb5850f4b03b11eebdd7f49677b0ed4046c1ee751e31c6e90f815902eb2246",
+            "nonzero": 1024
+          },
+          "projection.bias": {
+            "shape": [
+              16
+            ],
+            "count": 16,
+            "sha256": "0744db121c3ad97677a2f769e03c59e2be723d850392ebf394371605ba97acae",
+            "nonzero": 16
+          },
+          "regression.0.weight": {
+            "shape": [
+              64,
+              909
+            ],
+            "count": 58176,
+            "sha256": "af21090939e142794c2fdf490f0605816905e6abe1356bf3d1ca89ad09ffe26f",
+            "nonzero": 58176
+          },
+          "regression.0.bias": {
+            "shape": [
+              64
+            ],
+            "count": 64,
+            "sha256": "793fc346761c579460d5dca13478fb48386aa3df3276d983d88ce1de6c6a3a70",
+            "nonzero": 64
+          },
+          "regression.2.weight": {
+            "shape": [
+              4,
+              64
+            ],
+            "count": 256,
+            "sha256": "5762a99a2d1b62b06500aaf5516ed989bb52e623b666bec6389db9105369485c",
+            "nonzero": 256
+          },
+          "regression.2.bias": {
+            "shape": [
+              4
+            ],
+            "count": 4,
+            "sha256": "0d8d8d666094f90a0c4bef9912f13a91c5c07cfbb7ad4936659864598e072950",
+            "nonzero": 4
+          }
+        },
+        "m106_completed/train_weight0/final.pt": {
+          "projection.weight": {
+            "shape": [
+              16,
+              64
+            ],
+            "count": 1024,
+            "sha256": "7cfb5850f4b03b11eebdd7f49677b0ed4046c1ee751e31c6e90f815902eb2246",
+            "nonzero": 1024
+          },
+          "projection.bias": {
+            "shape": [
+              16
+            ],
+            "count": 16,
+            "sha256": "0744db121c3ad97677a2f769e03c59e2be723d850392ebf394371605ba97acae",
+            "nonzero": 16
+          },
+          "regression.0.weight": {
+            "shape": [
+              64,
+              909
+            ],
+            "count": 58176,
+            "sha256": "af21090939e142794c2fdf490f0605816905e6abe1356bf3d1ca89ad09ffe26f",
+            "nonzero": 58176
+          },
+          "regression.0.bias": {
+            "shape": [
+              64
+            ],
+            "count": 64,
+            "sha256": "793fc346761c579460d5dca13478fb48386aa3df3276d983d88ce1de6c6a3a70",
+            "nonzero": 64
+          },
+          "regression.2.weight": {
+            "shape": [
+              4,
+              64
+            ],
+            "count": 256,
+            "sha256": "5762a99a2d1b62b06500aaf5516ed989bb52e623b666bec6389db9105369485c",
+            "nonzero": 256
+          },
+          "regression.2.bias": {
+            "shape": [
+              4
+            ],
+            "count": 4,
+            "sha256": "0d8d8d666094f90a0c4bef9912f13a91c5c07cfbb7ad4936659864598e072950",
+            "nonzero": 4
+          }
+        },
+        "m106_completed/train_weight1/final.pt": {
+          "projection.weight": {
+            "shape": [
+              16,
+              64
+            ],
+            "count": 1024,
+            "sha256": "66891e84cab6214633144129825c413f28cf333971379df8aafe33f43c7b5d4c",
+            "nonzero": 1024
+          },
+          "projection.bias": {
+            "shape": [
+              16
+            ],
+            "count": 16,
+            "sha256": "49c093e4abaf5524e7148eab7d20c7ac386c558376ce3d59de53b2a5e1500f66",
+            "nonzero": 16
+          },
+          "regression.0.weight": {
+            "shape": [
+              64,
+              909
+            ],
+            "count": 58176,
+            "sha256": "9ced41d9dbcb331394e9b41d16f3a3215a9b068695e924a587f9c88c4a14bad1",
+            "nonzero": 58176
+          },
+          "regression.0.bias": {
+            "shape": [
+              64
+            ],
+            "count": 64,
+            "sha256": "cacbf880635bd561127f789c519717353483b34c4287423ca17ef5468f63563d",
+            "nonzero": 64
+          },
+          "regression.2.weight": {
+            "shape": [
+              4,
+              64
+            ],
+            "count": 256,
+            "sha256": "b791a54254e440a954e2bddfda290133e5d0f5f5cccca5d72adb9df42e8e5b85",
+            "nonzero": 256
+          },
+          "regression.2.bias": {
+            "shape": [
+              4
+            ],
+            "count": 4,
+            "sha256": "59560347c0d63fb3e2a21f539180d7fb90808b89efd07b0e1cd9c2f8c5b8cf97",
+            "nonzero": 4
+          }
+        }
+      },
+      "parent_break_row_evidence": {
+        "0": {
+          "fit": [
+            {
+              "key": "pine01_indoor@1276",
+              "line": 2436,
+              "parent_iou": 0.5004430413246155,
+              "selected_iou": 0.47923150658607483
+            }
+          ],
+          "development": [
+            {
+              "key": "mobilephone02_indoor@65",
+              "line": 462,
+              "parent_iou": 0.5105010271072388,
+              "selected_iou": 0.44826263189315796
+            }
+          ]
+        },
+        "1": {
+          "fit": [
+            {
+              "key": "pine01_indoor@1276",
+              "line": 2436,
+              "parent_iou": 0.5004430413246155,
+              "selected_iou": 0.49121901392936707
+            }
+          ],
+          "development": [
+            {
+              "key": "mobilephone02_indoor@65",
+              "line": 462,
+              "parent_iou": 0.5105010271072388,
+              "selected_iou": 0.4675859808921814
+            }
+          ]
+        }
+      }
+    },
+    "raw_gt": {
+      "status": "PASS",
+      "raw_files_checked": 152,
+      "raw_rows_parsed": 219993,
+      "comparisons": {
+        "current_checked": 3502,
+        "current_valid": 3039,
+        "previous_checked": 3502,
+        "previous_valid": 2852
+      },
+      "manifest_split_130_22_matches_labels": true,
+      "examples": [
+        {
+          "key": "cube04_indoor@10",
+          "field": "current",
+          "raw_file": "m106_gt_inputs/cube04_indoor.txt",
+          "line": 11,
+          "cached_labels_line": 1,
+          "raw_value": [
+            275,
+            235,
+            36,
+            33
+          ]
+        },
+        {
+          "key": "cube04_indoor@10",
+          "field": "previous",
+          "raw_file": "m106_gt_inputs/cube04_indoor.txt",
+          "line": 10,
+          "cached_labels_line": 1,
+          "raw_value": [
+            274,
+            239,
+            36,
+            36
+          ]
+        },
+        {
+          "key": "pine01_indoor@1276",
+          "field": "current",
+          "raw_file": "m106_gt_inputs/pine01_indoor.txt",
+          "line": 1277,
+          "cached_labels_line": 1,
+          "raw_value": [
+            203,
+            55,
+            19,
+            44
+          ]
+        },
+        {
+          "key": "pine01_indoor@1276",
+          "field": "previous",
+          "raw_file": "m106_gt_inputs/pine01_indoor.txt",
+          "line": 1276,
+          "cached_labels_line": 1,
+          "raw_value": [
+            215,
+            58,
+            23,
+            56
+          ]
+        },
+        {
+          "key": "mobilephone02_indoor@65",
+          "field": "current",
+          "raw_file": "m106_gt_inputs/mobilephone02_indoor.txt",
+          "line": 66,
+          "cached_labels_line": 1,
+          "raw_value": [
+            248,
+            51,
+            25,
+            47
+          ]
+        },
+        {
+          "key": "mobilephone02_indoor@65",
+          "field": "previous",
+          "raw_file": "m106_gt_inputs/mobilephone02_indoor.txt",
+          "line": 65,
+          "cached_labels_line": 1,
+          "raw_value": [
+            248,
+            42,
+            21,
+            52
+          ]
+        }
+      ],
+      "limit": "Local supplied raw-file hashes and all current/previous cache values verified; original dataset distribution and live remote invocation remain receipt attestations, not an auditor connection."
+    }
+  },
+  "budget": {
+    "seed": 2027,
+    "full_arms": 2,
+    "full_epochs_per_arm": 12,
+    "full_updates_per_arm": 384,
+    "sanity_updates_per_arm": 2,
+    "submitted_total_optimizer_steps": 772,
+    "eligible_fit_events": 2033,
+    "full_fit_event_calls_per_arm": 24396,
+    "reliable_selected_calls_per_weight1_epoch": 1591,
+    "optimized_parameters_per_arm": 59540,
+    "last_batch_size": 49,
+    "weight0_extra_preservation_forward": false,
+    "weight1_extra_preservation_forward": true,
+    "compute_matched": false,
+    "selection": "fixed final checkpoint, no reported best-checkpoint/seed/coefficient sweep",
+    "limitation": "Submitted bundle accounting only, not a census of all remote runs."
+  },
+  "evidence_levels": {
+    "independent_local": [
+      "All 217 audited-file SHA256s",
+      "152 raw GT files / 7,004 cache-field comparisons",
+      "91,170 candidate IoUs / 30,390 saved scalar fields",
+      "All supplied marginal/joint summaries, gates and paired changes",
+      "Exact M104 control checkpoint bytes and six tensor-storage records",
+      "All primary row identities/order and valid-GT coverage",
+      "All fitting-only diagnostic rows and counters"
+    ],
+    "source_observed": [
+      "No GT in inspected forward inputs or frozen selection",
+      "GT used for sampling, validity, eligibility, fitting targets and offline metrics",
+      "Weight0 bypass; weight1 batch penalty; optimizer/budget/final-only path",
+      "Six shared M104 definitions AST-equal"
+    ],
+    "runtime_attested_not_auditor_replayed": [
+      "Zero-init equality on 3,039 rows",
+      "495 parent-selection parity",
+      "Parent parameters and buffers unchanged across training",
+      "Both final checkpoints forward-reloaded and replayed exactly",
+      "GPU allocation, finite gradients, actual original library versions",
+      "Original source-spec/dataset provenance and live remote invocation"
+    ]
+  },
+  "audited_input_hashes": {
+    "C:/Users/gb/.codex/skills/experiment-audit/SKILL.md": "sha256:0ab77f219f554cbe42f22b79d780528e61c5e58169af4c2f56acf59596ab8db7",
+    "C:/Users/gb/.codex/skills/shared-references/experiment-integrity.md": "sha256:22150fbdc5867e7790c88f968bccb367079c2db4c190ddce980709aea7e76f60",
+    "C:/Users/gb/.codex/skills/shared-references/local-codex-policy.md": "sha256:b0249bfccd48ff79a5976afa7a54c64a3cfb65a5496a2105c5bb21069d197783",
+    "C:/Users/gb/.codex/skills/shared-references/reviewer-independence.md": "sha256:1aa1756a99dc47009072f0ee7bf570d797bf7e2cc84439401e2a9312d73659b0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-09-28_m106_completed/request.txt": "sha256:401f7b63276a409197ab4a0328d8ac85021def5f88d7596a9bdef88b0ccf3077",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/lib/utils/box_ops.py": "sha256:b6dd8c9ca37ecc192c0ea2539aaff80385ff88a77ee56f3298ab5127f33785eb",
+    "accept_m106_selected_geometry.py": "sha256:3ac16f9261d626e8b9dded42ae02bb3f1aaf3a6456c5cd12d70f58f098e69c68",
+    "analyze_train_states.py": "sha256:2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "attest_m106_raw_gt.py": "sha256:a920e86a79c7ef889353f6ab2b15129253ab798ec058ae53657de7c15cd81529",
+    "collect_ab_interface_panel.py": "sha256:361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "diagnose_b_geometry.py": "sha256:02e5481a4b65726675e16364881b89dc5fc0cb4b2a0f80be99c8afe7c96b2747",
+    "inspect_m106_fit_selection.py": "sha256:fe097d123ca94d176c563ec4b10e9f88249cf187e8683412d83103c082b4f756",
+    "instance_ab_prototype.py": "sha256:09db6833f161b6028e64905f2e73a69027e0caf28c611b6c9d81a9fa6862d9fb",
+    "m103_completed/events.jsonl": "sha256:1a2d66f09bf1eef37b9ed59954725135298407fa4c59c04da1d232e89e689cd7",
+    "m104_completed/train/development_events.jsonl": "sha256:c339e6ec301e16a630501ae5f7a07cc62ef6da604967bcb40e3b00b63a5bf136",
+    "m104_completed/train/final.pt": "sha256:546bd218a14906beb28033717bb53cc17721e9bb6b3fb53f36a4bac15dff9f6e",
+    "m104_completed/train/fit_events.jsonl": "sha256:0cf535db21f0baf6933686936e8acc129a2b7424c5ef08c230fe57b951a6676f",
+    "m104_completed/train/result.json": "sha256:315ff9ae562e71878d36e8fe84b04343a285f5c295e0f62cce3b449e87f14a7f",
+    "m105_inputs/download_receipt.json": "sha256:86f20ffbabf072c6655b1ce5e71d021c35b850d24b4eb6393b805e65e8cf1792",
+    "m105_inputs/preparation.json": "sha256:59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+    "m105_inputs/training_labels.json": "sha256:433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+    "m106_completed/acceptance.json": "sha256:800c3cfffa1bcf4168f72de94ba0405f49ce378156138e2fdfd7027d713e6350",
+    "m106_completed/controller.log": "sha256:5e150272cccd89192e01b0a3bcf9a04678d8ecaabdfd983a9778fbf9625e34c8",
+    "m106_completed/controller_launch.json": "sha256:c6290cffcf2dad08b79848c9ff4d25576f11c2a8620b40f984e29b4f92d13650",
+    "m106_completed/download_receipt.json": "sha256:8f5464358b6079fd7b25005c6f8967c0509643e9bb45a5e78e8a9954d24ad536",
+    "m106_completed/driver.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m106_completed/driver.json": "sha256:06af89479eab0a0039e409016ca5b1283b9326ab5044704ad3ca910cdfacd5f2",
+    "m106_completed/launch.json": "sha256:a48bdb183b07939094918603887d8073bca0c9dbb0d11c53a1bfd8a51e8402d4",
+    "m106_completed/RESULT.md": "sha256:25917b4c3ad4dff2b46af65ba2df958392921bff022b4770235c5a4e839b07a6",
+    "m106_completed/sanity_weight0/result.json": "sha256:556756de8c780c19526cc611afdba4cdf06c6edbfafb2913919138cc2a9489e4",
+    "m106_completed/sanity_weight0.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m106_completed/sanity_weight0.log": "sha256:c8a85c2a7354f8a97ce0931cfa0d34da9285d870279650e8d96aee02c54decd7",
+    "m106_completed/sanity_weight1/result.json": "sha256:6ece35e507d3b8dffddb35bd71fe6efdbbb82b5793009c2d34182a6a1a1782a7",
+    "m106_completed/sanity_weight1.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m106_completed/sanity_weight1.log": "sha256:e8b02eb3dc2d4d5ff047cae67f79102e254a02ab472dd4acaa05b444c5a650d9",
+    "m106_completed/summary.csv": "sha256:d3ac11a8605e210365c1dceb0592d922174de05df2b6c2a1082a71406eab2481",
+    "m106_completed/train_weight0/development_events.jsonl": "sha256:c339e6ec301e16a630501ae5f7a07cc62ef6da604967bcb40e3b00b63a5bf136",
+    "m106_completed/train_weight0/final.pt": "sha256:546bd218a14906beb28033717bb53cc17721e9bb6b3fb53f36a4bac15dff9f6e",
+    "m106_completed/train_weight0/fit_events.jsonl": "sha256:0cf535db21f0baf6933686936e8acc129a2b7424c5ef08c230fe57b951a6676f",
+    "m106_completed/train_weight0/result.json": "sha256:02604d2b3827569b2c77da4b252c15bfc6636eb6481869d7067a4be7c23cc96b",
+    "m106_completed/train_weight0.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m106_completed/train_weight0.log": "sha256:57661e00746a0b2a8f38dc08f424bd7a0d4537d5566903c2b9797f5665dd7afd",
+    "m106_completed/train_weight1/development_events.jsonl": "sha256:2087c9a905481b2922feaa95795b8216d5b253f66cdb6b518d2c5f2bb314994c",
+    "m106_completed/train_weight1/final.pt": "sha256:57082505db00dd81467e5060a2145da6e365e3807f4580790d0a7c0cc9ccca25",
+    "m106_completed/train_weight1/fit_events.jsonl": "sha256:329bcfc8b201e457e1ad5ca725698195326de900b0f8236062728542029f182d",
+    "m106_completed/train_weight1/result.json": "sha256:bb76c51b6dd6aeea07ccb709338a4e513cb9fd254d9476694de9ad22ace469d4",
+    "m106_completed/train_weight1.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m106_completed/train_weight1.log": "sha256:3d9c9fb69dd44eb2068b556054ec60506365ba774a757a7746e6a34a1df3f1e5",
+    "m106_completed/verification/geometry_boxes.jsonl": "sha256:725705548b9dca56cafe27af00cb851ec31afb11bc91a191644f3ad80fd2a164",
+    "m106_completed/verification/result.json": "sha256:c06f83e7338724f424372749749d40029676eac136a56aaeb00ee68fe77bce8b",
+    "M106_DEPLOY_RECEIPT.json": "sha256:2c25f2db60926d8f15e8249259f768bf33806c787261c376d9868c043abf0ebe",
+    "M106_FIT_SELECTION_DIAGNOSTIC.json": "sha256:901afd7a7f1d5f5e53f32d7681b1d20e3a09d36cfc1b4b4c18c15c753eadb1ae",
+    "m106_gt_inputs/adapter02_indoor.txt": "sha256:33a964dea164f87c4c4adaf720aeed9f6209f4f3f5025fc9d597c03f84d14e78",
+    "m106_gt_inputs/bag03_indoor.txt": "sha256:fb4702c2f0e4c6a1e33251efb0f3c1c7f4eb5f26c1a3c79d9018913b2372d8ec",
+    "m106_gt_inputs/bag04_indoor.txt": "sha256:0d06a12db2f75b4428d77d0983050e51ed2e56153c24ab74871ab4abca315267",
+    "m106_gt_inputs/bag05_indoor.txt": "sha256:19fac45f89a26ebfc9f3609008139d917dd80c75c825b6fe9c9d085ec55ebf52",
+    "m106_gt_inputs/ball02_indoor.txt": "sha256:2147f99e45f7af89f466d6bfbe718ca4a95a75827324f1c736eaef810d9f2083",
+    "m106_gt_inputs/ball03_indoor.txt": "sha256:ce41f746332d2777ea7f5f97ae8f545bbfa9afbe93929eaca8f0f0ee70f057c7",
+    "m106_gt_inputs/ball04_indoor.txt": "sha256:db05ab15d9143192adc6a248c4a8d1fa66c339d028d067d60cae72c01ff85661",
+    "m106_gt_inputs/ball05_indoor.txt": "sha256:4a3bf9f327e4994423b75c3d1267b80ac71d05c5e9b93b08b509f6d83bff4a34",
+    "m106_gt_inputs/ball07_indoor.txt": "sha256:c9cb5a6fcfd0bd3f5b3582292e5c30625a4c30fee1c08e5eb247f5ae6ffaaab2",
+    "m106_gt_inputs/ball08_wild.txt": "sha256:a3570303bd54848f4b96234001d8a0f141460cf42effcb1ade9b2760e8e84bf9",
+    "m106_gt_inputs/ball09_wild.txt": "sha256:a3647edc0b7e4ffcbedbc970b0e48e88aa11c5fea9cf9a2f22b490a43f0f1a01",
+    "m106_gt_inputs/ball12_wild.txt": "sha256:feee35d47e25bcdfcaef049ebebd67f77892cb1b533c842ad5147c1cff6b8c9b",
+    "m106_gt_inputs/ball13_indoor.txt": "sha256:99c5e76747408d0c120b92ce172d37cbd39abc2836207837633eb92698547446",
+    "m106_gt_inputs/ball14_wild.txt": "sha256:f6d7da3590803baab88cadc089e76daa57b25fd1bcd2152abab118e41d085017",
+    "m106_gt_inputs/ball16_indoor.txt": "sha256:e39af82dd9ae52bbf6734c63cc916dfa043129fbcc4e0d675de09535ce0180a4",
+    "m106_gt_inputs/ball17_wild.txt": "sha256:a2e90cb9a2db72c3d4dd00bbeeb645b8f02b95094f714bb3f783ccb7e0dcd5e0",
+    "m106_gt_inputs/ball19_indoor.txt": "sha256:21a1bddce56f75dd67ca5b9fbb14eccafc46bd36b24a468fb9483290d68e125d",
+    "m106_gt_inputs/ball21_indoor.txt": "sha256:5230b453b3d069f8ade8e23aef0f3d18f9794d900a1a6264ebb830aff0ac0bb4",
+    "m106_gt_inputs/basket_indoor.txt": "sha256:d681b5a242bed11da0f5fe714491b49651ef1d1c4b4f43b92cfc6263c9d1e9ca",
+    "m106_gt_inputs/beautifullight01_indoor.txt": "sha256:0e89eed1894076dbfbbebed2f931163b27fa3572246d21b49662b5ccbd1a945a",
+    "m106_gt_inputs/bike01_wild.txt": "sha256:cd70a8371938cdac020502cf2c4e0c77f77180eecd6baabee70b269b2ec47f24",
+    "m106_gt_inputs/bike02_wild.txt": "sha256:4b90a9f1d4251f16d6dff2bf9864387d2954f0978145a524b0ed06ba3c03ea35",
+    "m106_gt_inputs/bike03_wild.txt": "sha256:dad8d95321f350d2a347f4f71504d8d82b57fd7fdd08ef617b63e2929f57c3e3",
+    "m106_gt_inputs/book01_indoor.txt": "sha256:9d0c8affacf73e01d0eed4d446aadaeb3e42f111d46b2e2d38ed86de40b9a19c",
+    "m106_gt_inputs/book02_indoor.txt": "sha256:25fc50ddf6083b81f0e202fbfbc83561d4d2cb13d445d9adb398e798473a7fc1",
+    "m106_gt_inputs/book04_indoor.txt": "sha256:d7009271319c37873f1ca7e4a615e7efed384818c4a5a4c36b02c3f4628cbfdc",
+    "m106_gt_inputs/book05_indoor.txt": "sha256:8e2f3008f581de3517e2d19185080261a796ec36506a62f07824ecbdf34196f1",
+    "m106_gt_inputs/book06_indoor.txt": "sha256:df6b93503aa8177ac8b0e32507124189f453bce6c5bcb5f993667850f77b58a1",
+    "m106_gt_inputs/bottle01_indoor.txt": "sha256:e226e68e5c5ec7dbe8b380aaa0c37ad6444b683ca4f6fa84bfc59968ee818e83",
+    "m106_gt_inputs/bottle02_indoor.txt": "sha256:48f14b53ca931b24f50e0e24cef612aaef8311a85736c0916f69b58d54c72522",
+    "m106_gt_inputs/bottle03_indoor.txt": "sha256:8cb3e98365c17668ebbbb937431a5a38d22f05804b352f353d51d834fd3a117a",
+    "m106_gt_inputs/bottle05_indoor.txt": "sha256:222999382c4ba7803d1ad6fd919d93fc290f1b0fd521f3c08dddd2c47e06b01f",
+    "m106_gt_inputs/bottle06_indoor.txt": "sha256:7dce3716c2635f7801abaefa8cda804ab943aa16ac77024d1ce11fa871437812",
+    "m106_gt_inputs/box_indoor.txt": "sha256:a34d48e631a3ec23016aa71f1951d350a72ad03beb878ed1ca18217875b98afd",
+    "m106_gt_inputs/candlecup_indoor.txt": "sha256:2c2ba43df1406dd9fd0ac25d776dde07980efc6ae94900d3bbcdc453a6fbfc01",
+    "m106_gt_inputs/car01_indoor.txt": "sha256:dca7e65de77cced65b4b06a589352fdde456152b9a75d9af8759082b8cf458d4",
+    "m106_gt_inputs/car02_indoor.txt": "sha256:ed1171be55b7782858af063f174b2ece551f35b6ee2b5a4d0e81b5fc53f87ec7",
+    "m106_gt_inputs/cart_indoor.txt": "sha256:e5b16fea25a7b2ddb32cf3132f97e385d6c27bd9af99c64cf12bd882b72c5226",
+    "m106_gt_inputs/cat02_indoor.txt": "sha256:db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d",
+    "m106_gt_inputs/cat03_indoor.txt": "sha256:d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f",
+    "m106_gt_inputs/cat04_indoor.txt": "sha256:6421ade8ca96dbc2da52ca02cedd69c415f37498775732b0cf780d81f2d292af",
+    "m106_gt_inputs/cat05_indoor.txt": "sha256:5d9144b7989d54a349cedafcf15f407db098d8af69019302bc05c2de0f09082a",
+    "m106_gt_inputs/chair01_indoor.txt": "sha256:fc25354c8769860a8c4404019368e34c1415367828009e6503bb7695581bf62a",
+    "m106_gt_inputs/chair02_indoor.txt": "sha256:4f05bc2ed056bdc6c9c5a2687ab6c074a2f32b95cae62bf6feebe89899f03ca2",
+    "m106_gt_inputs/clothes_indoor.txt": "sha256:e0717f89c1ad115ce87bb252bc7915ee1d0b34ab73c72fc8ca5a47a07612094b",
+    "m106_gt_inputs/colacan01_indoor.txt": "sha256:38443588eb1127d65c2ac800186759ad392581eef544588156c8c0f14b2ee866",
+    "m106_gt_inputs/colacan02_indoor.txt": "sha256:ca6587fa0aa38475f51d7dc443398b8e716d7b0a175346f310c60bb8b8360f57",
+    "m106_gt_inputs/colacan04_indoor.txt": "sha256:c556156a8252ea1e1b0c6a14cb4d63a374c8edf47b3dbdcdf129edfb562a0c2a",
+    "m106_gt_inputs/container01_indoor.txt": "sha256:c08d2571102bb7106e6530a0dea8512f6206e15ee765a3a52b2734978fba7e1e",
+    "m106_gt_inputs/container02_indoor.txt": "sha256:00cfbbbd0e55ccf24f191bda511d2a217c43a665f65ba0f64073d3b7b51fdccf",
+    "m106_gt_inputs/cube01_indoor.txt": "sha256:c7e7f55e9d0ed4bac64c18d658796fa340fe6dddd2467a877015d42c71d4185e",
+    "m106_gt_inputs/cube04_indoor.txt": "sha256:d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+    "m106_gt_inputs/cube06_indoor.txt": "sha256:19cf63610ae9b40e67f5e9b8f10ec62a42ad6662a693158eda64d18bb2b4c43a",
+    "m106_gt_inputs/cup03_indoor.txt": "sha256:aef83d01e39f78bded1998acf5650504e4833292f9efaafc712094bca7eeda3d",
+    "m106_gt_inputs/cup05_indoor.txt": "sha256:15d37ca8f694388415795e8df944d882347dbb5a2fd2e0a2e07e346164733149",
+    "m106_gt_inputs/cup06_indoor.txt": "sha256:ebba4639a8d94969986dc9dd60960c43701d1a1fafefaec270cdac99cc1b9e5f",
+    "m106_gt_inputs/cup07_indoor.txt": "sha256:a87da31a984f168cba69d158eb46e31373ef79d11b2d4fd50c4c1886737c8885",
+    "m106_gt_inputs/cup08_indoor.txt": "sha256:b7c606e0373f5cdba15ecb21efa1ce293bc6620c5ffa60ddb567a1394c67f1c8",
+    "m106_gt_inputs/cup09_indoor.txt": "sha256:6235e8bec9d88203c3bcc2adfa66db218730d79c619979fa575e77bd3cc2c5c5",
+    "m106_gt_inputs/cup10_indoor.txt": "sha256:237081c1453dc80861c19444a63b2a4f63bd56c8703285c408c3e4d52a3d55ae",
+    "m106_gt_inputs/cup11_indoor.txt": "sha256:14e516059c4ebb3500cb0626fa4ff5135cee275d9b2e3f8862faa83a4e4af761",
+    "m106_gt_inputs/cup13_indoor.txt": "sha256:bd048b8a08b71b5616f185f8e8f1727972d7addf6251881c35f94d2911099864",
+    "m106_gt_inputs/cup14_indoor.txt": "sha256:9ad3ecd17fdbf886c7edf1f56934e7d47ac192cf7b9b4c53d013451651656bda",
+    "m106_gt_inputs/duck01_wild.txt": "sha256:83aca68e7101f1261e7bafcff766bad3a0a68301f10921ded08f11192497263b",
+    "m106_gt_inputs/duck02_wild.txt": "sha256:ac48fd345b322c2bb305e68ec659c8872446f9023867e23851f3b6e12d11790e",
+    "m106_gt_inputs/duck04_wild.txt": "sha256:29848ca243337725cfeae195563bd6035fae1f14f34c32a0441918112772c986",
+    "m106_gt_inputs/duck05_wild.txt": "sha256:5ad1b542b94c9181d66bc1d84e033b747ecd9a8fa62fe4717d6a65f05d870004",
+    "m106_gt_inputs/duck06_wild.txt": "sha256:dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e",
+    "m106_gt_inputs/dumbbells02_indoor.txt": "sha256:18dac18d42fb4fa09483990feae0d084fff631c4629589fb4c7cfe880ff0052c",
+    "m106_gt_inputs/earphone02_indoor.txt": "sha256:9178128a1ed5d23438515fdea6bac208c800122a1d38d0963d44f0eb700ba782",
+    "m106_gt_inputs/egg_indoor.txt": "sha256:a4010da190dfc37a2c48efdc21c60993e398af6b9df87b91dc3aee813e5bc9bd",
+    "m106_gt_inputs/file02_indoor.txt": "sha256:b8f7d0914b2162609f993e8445b92cef3e2e1bb6e388cd21d1e62d835a154dfb",
+    "m106_gt_inputs/flower01_indoor.txt": "sha256:97ecc6e67a43c29a5ef5eceaff28a480f40487347788ff044bef19fcbaea13db",
+    "m106_gt_inputs/flower02_wild.txt": "sha256:517aa37496ae936121cc6ddbfaee6e845616a64a137bdcb8a8cfee489d2cc644",
+    "m106_gt_inputs/flower03_indoor.txt": "sha256:66480878783c4fcdf76d47234f1884cdffaddb775028bf2c7d8b12d2061da8ce",
+    "m106_gt_inputs/flowerbasket_indoor.txt": "sha256:0cc6a4a0bec64e746491603b06b076fd41f7fbce4c86c0d1455b2440302f0d1b",
+    "m106_gt_inputs/ghostmask_indoor.txt": "sha256:5aba29f532dd42f9df5bbfd1c6c5558c8632f9d62fbf5fc5d52470d799ef9406",
+    "m106_gt_inputs/glass02_indoor.txt": "sha256:8e019d223669c6f31adf10d3ee4162fca5404fd40be892f1c44f411fcc03ae4f",
+    "m106_gt_inputs/glass03_indoor.txt": "sha256:b4e6aa986c65391dfdb688c77403795f5626134f5088821ea3bd4b7284e184da",
+    "m106_gt_inputs/glass04_indoor.txt": "sha256:d24775109819cb517cbe764c3ef7990d25fe925049538864f4770864b40afbde",
+    "m106_gt_inputs/glass05_indoor.txt": "sha256:51cc8d500877bc4a321bc2bb6e810a30cb86711896764968d2700250f9352206",
+    "m106_gt_inputs/guitarbag_indoor.txt": "sha256:0d80234a96568cf983950b1f8b5bda33a01cb8cffd5cf1705f5c93f5621f9618",
+    "m106_gt_inputs/gymring_wild.txt": "sha256:b2df5de9aaaae941866b11586188ca7a5a94be1000a54e118df375cacf3d2346",
+    "m106_gt_inputs/hand02_indoor.txt": "sha256:fdb582d198c0d0e843a21891c4e8966cced3c2330dc3ded5110029ac67ccfab5",
+    "m106_gt_inputs/hat01_indoor.txt": "sha256:8898891868efd65a97b8138c99404a0ae24e760f808487870f1b7529a30270bf",
+    "m106_gt_inputs/hat02_indoor_320.txt": "sha256:5851dd6051472626d3b0432e492fae38c4fa7a06d12caaab93f44a6c5c1dbbd5",
+    "m106_gt_inputs/hat03_indoor.txt": "sha256:c7cd257073a4e20905e43f0bb3558cfb2d8bd4d391c6db18ae8bb8cf3cce9951",
+    "m106_gt_inputs/hat04_indoor.txt": "sha256:2d71dd08fff19e4be6ba64b51dff107674ac7c18d50dfe5e924e23e58989eaa1",
+    "m106_gt_inputs/human01_indoor.txt": "sha256:384febbcddeeafe3489749b1b143c5d357e0c2098b02f589f45f208a0f627271",
+    "m106_gt_inputs/human03_wild.txt": "sha256:608ef24142202c0e8e9af1b3752ee0709e043a5f085e30bc66068bcaa4196543",
+    "m106_gt_inputs/human04_wild.txt": "sha256:3a24191b7f4b4690c0c6c9c912754cdf658a702622686aa7891419f866a9a8b7",
+    "m106_gt_inputs/human05_wild.txt": "sha256:65e455611bc7c342891c0bbe60ca0f876c181196251fa9d80f963ead74542f9e",
+    "m106_gt_inputs/human06_indoor.txt": "sha256:0f723bba01cd765122da6a513f6e458623ba3345aafb5a94826d787c9b1ee134",
+    "m106_gt_inputs/leaves01_wild.txt": "sha256:d34f88a2e29041dcc3f0921878f934bae4f654e12f9e43d14aaad17e00e83561",
+    "m106_gt_inputs/leaves02_indoor.txt": "sha256:d6a2ad6c7f3a9720b75c5a2457201857edfba1beeeeea2c5e5e85a39807fd696",
+    "m106_gt_inputs/leaves03_wild.txt": "sha256:a8169078aadfb3484b795038128cb1d314e04f2626a9f974253ac55c8dd69b5a",
+    "m106_gt_inputs/leaves04_indoor.txt": "sha256:ede8be7594992f5bd8addd4a22c657ee5fa63857c5b54ac602f88381dd76dffb",
+    "m106_gt_inputs/leaves05_indoor.txt": "sha256:aa0b613b169058dbf47eafd1c74e75e9e3d617e4f3ed21136bb5093e3ce8a3c1",
+    "m106_gt_inputs/leaves06_wild.txt": "sha256:e5e14506d23aea54df25bd626b5d418240d15d1fa9b16739bac967fe464c7d74",
+    "m106_gt_inputs/lock01_wild.txt": "sha256:8812b746751f5f59ea8a16764ec70b7d1ded6c3ffcf963ad9245ac7ce84ac577",
+    "m106_gt_inputs/mac_indoor.txt": "sha256:7b7fbed57f079ebedae12870613d30719a69d98f458815d7a42c50be893adb1a",
+    "m106_gt_inputs/milkbottle_indoor.txt": "sha256:1d677d5d444fd4e14aec00fcdd9c4fbf3af1efb32bb8bcc1b53490610ab54f55",
+    "m106_gt_inputs/mirror_indoor.txt": "sha256:39399adcf38d1be5d83ed6bac42e777cb660e49f0c93b150a5e2f105f9674d41",
+    "m106_gt_inputs/mobilephone01_indoor.txt": "sha256:572ff6fde310d831e0fd2dd5201805a4f9d2cf18ec1dd63a227266872bf218ce",
+    "m106_gt_inputs/mobilephone02_indoor.txt": "sha256:d27bba52e1ebe7f816b9d2ce264d332404530765bcce830029070b146c52e45c",
+    "m106_gt_inputs/mobilephone04_indoor.txt": "sha256:c18af5d30957a339497ba8235ecbf6986dbc7ce66773afcfabdbdb0a3b03d55c",
+    "m106_gt_inputs/mobilephone05_indoor.txt": "sha256:70c425a3f893af73aca7bdac61cb111e47549d0c935b42af3a299a8f29919356",
+    "m106_gt_inputs/mobilephone06_indoor.txt": "sha256:4d96750a2019b57ad1ab7cfe0076f3fea8a1b03a8d293aec7826dc25f188ceff",
+    "m106_gt_inputs/mushroom01_indoor.txt": "sha256:fee7899ead7c9ba02f3afb6e6e0829656cff0ba0df64ca9fbef1304574661ced",
+    "m106_gt_inputs/mushroom02_wild.txt": "sha256:b7e602085a0c3af4ddd417b9dea144eab7d9d8bfec6517db261227f46090716d",
+    "m106_gt_inputs/mushroom03_wild.txt": "sha256:453dd8042c4d9f0decb712d3899e228197b62f432e3318bdd1da44f26bd172fd",
+    "m106_gt_inputs/mushroom04_indoor.txt": "sha256:bc2f201ef68a86eca6b19abef4dd410ed50aaec2569d6163cc0b57913c32540f",
+    "m106_gt_inputs/mushroom05_indoor.txt": "sha256:79887acbc43dc5468d4e9bdcf021df1347c869cc15ad336fc4e5fe7e42b5bb25",
+    "m106_gt_inputs/notebook02_indoor.txt": "sha256:fa3202cc8968e24785620c772584bc28e2a353c06799a0859ee6a2b8d8a880a0",
+    "m106_gt_inputs/notebook03_indoor.txt": "sha256:a7c2e9a80ae2a6303b3b06c21cf8c1ab2fd96d88ae77368eaa804f83644100a0",
+    "m106_gt_inputs/paintbottle_indoor.txt": "sha256:138c6884d76f8385a71bfd04c0ccc83b835ce67b9f37a9e8880da2abb2caca05",
+    "m106_gt_inputs/painting_indoor_320.txt": "sha256:452f8042e633005d48071913f4b63c71d24829f0a931891f142539d4664a2ec6",
+    "m106_gt_inputs/parkingsign_wild.txt": "sha256:397c45dcc9273890a8a0364f59ccb58f4d485bf5454e04af27cf0aee7e3b8343",
+    "m106_gt_inputs/pigeon03_wild.txt": "sha256:4281a4712dae248a85869058f68162c94984b6e287896287bf7e74e5440712fd",
+    "m106_gt_inputs/pigeon05_wild.txt": "sha256:7ce05357a9a6e942c8dca07cc44507ec36f431b6920f6150c11629ab594e4f7d",
+    "m106_gt_inputs/pigeon06_wild.txt": "sha256:d249393a979a8cfc4c541107b51329cc133e2e99c30f821c937359d5304df275",
+    "m106_gt_inputs/pigeon07_wild.txt": "sha256:91f2a4d1cbdd2808af3c0fc42f7a2a26a728eee5246b32a8c3ef12a2c06883d3",
+    "m106_gt_inputs/pine01_indoor.txt": "sha256:c06487c4c9e9de804050ebe5a7c25c90cc1dcb1d88c83279cd980cb0c5de5329",
+    "m106_gt_inputs/pine02_wild_320.txt": "sha256:0555c5378049662102ef0f382e3a4ddc2e5abdcc4fc5deb6ce2a9966bf5be16f",
+    "m106_gt_inputs/shoes01_indoor.txt": "sha256:cee9970156a03576505b05a59ecc55e8daf4ff5ef5f10ef23dbf5efad7123326",
+    "m106_gt_inputs/shoes03_indoor.txt": "sha256:4f3bc65b100348817f2d1856613d54c1f783759ed1a282b8df28eded96467f7c",
+    "m106_gt_inputs/skateboard01_indoor.txt": "sha256:afb682605337866d5ea72db4025dfbb70ee2acd2ea85719b5989a7626bb758d5",
+    "m106_gt_inputs/skateboard02_indoor.txt": "sha256:304a07f4b196eb9a855d1a1857beec4757141965a09c5e635b80cede70938b68",
+    "m106_gt_inputs/speaker_indoor.txt": "sha256:1a06abd953cb7833c232576238363cbe6c5248c486b3f221567d18dacf9a9a44",
+    "m106_gt_inputs/stand_indoor.txt": "sha256:15219e425e311f79e435a1c7526b3d04de6dbe1a035a6a1b5a4614e0ed4cef21",
+    "m106_gt_inputs/suitcase_indoor.txt": "sha256:946321102dd03c4d28f1f3ccb31434bb955982bcec7e88082ce86b1579442c6e",
+    "m106_gt_inputs/swing01_wild.txt": "sha256:2518e4ffc0ba579cbcce533e6aa33792b9f2a9f676651c2b79347dd24629657b",
+    "m106_gt_inputs/swing02_wild.txt": "sha256:9768e065c404b8acf47dc8dbe902f8eca8dd1736c501e97c5ad431cfac087741",
+    "m106_gt_inputs/teacup_indoor.txt": "sha256:33ecb768c92c86e7106b05ce42527bf80db3c81c1f58b8332e22ccbb11625f97",
+    "m106_gt_inputs/thermos01_indoor.txt": "sha256:4a9a8a13af7359b697edfffe887b26b8e316042171f2955b44ad874b8f25d99e",
+    "m106_gt_inputs/thermos02_indoor.txt": "sha256:96b26f5f41d8ad70a8d1c1c34751aa224b2c8e447c007dc7dec6eb9ab90c5dbc",
+    "m106_gt_inputs/toiletpaper02_indoor.txt": "sha256:23039f5b59a9259bbfc89dd6d38e3ed9dcce696e03b827fb8ea320eeaef5cd0c",
+    "m106_gt_inputs/toiletpaper03_indoor.txt": "sha256:5b1f12533be6068b6db0ec4a06cf5702660e4a904c6385e78fce892a352a3cc4",
+    "m106_gt_inputs/toiletpaper04_indoor.txt": "sha256:e01fe3e9d60dbfe0588a3a096ca3b136a5ed0e2017e8e401d2704e57caf1467d",
+    "m106_gt_inputs/toy01_indoor.txt": "sha256:0f69714f77bc1cde2549ff14dc6474262aadaf78cae2ba74e7baf67bb56642c0",
+    "m106_gt_inputs/toy03_indoor.txt": "sha256:aa4e58bcabae622280b2c73dcf1143118ff540a3cac0202f8eb5da8e779b6888",
+    "m106_gt_inputs/toy04_indoor.txt": "sha256:bb2d9f68b10422815d088d3d6aa9ecac6eed2bd3eb64c2d5b32c3fd239fed6d7",
+    "m106_gt_inputs/toy05_indoor.txt": "sha256:1bb2433f521ae44c146e6df9d7bbd825daa1d11e1b8df9f36d7d98e8ebd524ec",
+    "m106_gt_inputs/toy06_indoor.txt": "sha256:21ec622063569d66a1d4135a7f86b2b983070fbd3f2331d2bd18ec7aacb4cfc6",
+    "m106_gt_inputs/toy07_indoor_320.txt": "sha256:683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2",
+    "m106_gt_inputs/toy08_indoor.txt": "sha256:6c471ef8b84b8cd168a4ea3b7e578131a659bc59ca4207afb6d54bc819feec4d",
+    "m106_gt_inputs/toy10_indoor.txt": "sha256:018c4dd5c17df16c7e186a4ad2f48759ba4836cedfe8fbf43edc53ba40c61e14",
+    "m106_gt_inputs/toydog_indoor.txt": "sha256:837f3df1f6bac05974c27339219bc9d61c8943a73ba03f8aa7f7cf4aaa6c4b01",
+    "m106_gt_inputs/trashbin_indoor.txt": "sha256:a10a14dc93003e0b3f111f92ebe093ebff80d856f9d01637af43bc5dc057edb1",
+    "m106_gt_inputs/tree_wild.txt": "sha256:3563aa656258cfab370ff9aa39a887500afa9d80a20aa39d273f02074cd8089e",
+    "m106_gt_inputs/trophy_indoor.txt": "sha256:8cee409befcc8e7ddc51c9d971bcd323ae4b4d527607359c17421b222b1c9cf2",
+    "m106_gt_inputs/ukulele02_indoor.txt": "sha256:fd075a6c2a64bd319316c63b6be190b8e16565e5e1af99147b08d65f703733d9",
+    "M106_RAW_GT_RECEIPT.json": "sha256:dc456dfd37e626fcde809d31f7760eae301bf7da33238400439f28401f4f9bf2",
+    "M106_REPLAY_RECEIPT.json": "sha256:bdf20d097364e885f6e9aa1a7eb380427fc980568e29d7e61898d4c2302f0652",
+    "M106_SELECTED_GEOMETRY_PLAN.md": "sha256:9ced7ee2f76fe1ca9f5df3c038f6ec2a9e2f7b369a01d72fea02df932b7a7695",
+    "prepare_train_states.py": "sha256:cceb53710cdbde8350000c25d6f0ed25b490e4084022b37c76062315ad641c79",
+    "run_m106_selected_geometry.py": "sha256:9a3cd0fcc6d875256b7ae0cf7f8e1856f08ce5a8dcec7eb8218bae8c03bd9989",
+    "train_ab_visual_control.py": "sha256:b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "train_fixed_visual_selector.py": "sha256:a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "train_local_visual_geometry.py": "sha256:bfb63d22a4e3d2d5f86475854f31210000ebea3d14ce26b40b340b4695e562b8",
+    "train_selected_geometry_preservation.py": "sha256:14bf528777efcf338642f49d8a4b9b00b6e7641912bb89fc3a421afeaff4e7b4",
+    "verify_m106_checkpoint_replay.py": "sha256:7a7d4cfe069c80c329e8d4367f5e98649a493d8d6aec047dd4bbde9bc498a9d8",
+    "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torch/_decomp/decompositions.py": "sha256:c07db919fdf2008e59d2254ab1e723c934ca1fc3cfc452fa4a6f20cdc87a9c56",
+    "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torch/version.py": "sha256:2aba2b231a8cda9e560ecdf9eee9f34923f648a3bf7c9c156a690562a1cd6957",
+    "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torchgen/packaged/autograd/derivatives.yaml": "sha256:04035b0c074f246e82c96ccf0a8ef7d43d7cf9d65d556c4242c854d28fdf81d5"
+  },
+  "audited_inputs": {
+    "C:/Users/gb/.codex/skills/experiment-audit/SKILL.md": {
+      "sha256": "0ab77f219f554cbe42f22b79d780528e61c5e58169af4c2f56acf59596ab8db7",
+      "bytes": 10983,
+      "absolute_path": "C:/Users/gb/.codex/skills/experiment-audit/SKILL.md"
+    },
+    "C:/Users/gb/.codex/skills/shared-references/experiment-integrity.md": {
+      "sha256": "22150fbdc5867e7790c88f968bccb367079c2db4c190ddce980709aea7e76f60",
+      "bytes": 2355,
+      "absolute_path": "C:/Users/gb/.codex/skills/shared-references/experiment-integrity.md"
+    },
+    "C:/Users/gb/.codex/skills/shared-references/local-codex-policy.md": {
+      "sha256": "b0249bfccd48ff79a5976afa7a54c64a3cfb65a5496a2105c5bb21069d197783",
+      "bytes": 2948,
+      "absolute_path": "C:/Users/gb/.codex/skills/shared-references/local-codex-policy.md"
+    },
+    "C:/Users/gb/.codex/skills/shared-references/reviewer-independence.md": {
+      "sha256": "1aa1756a99dc47009072f0ee7bf570d797bf7e2cc84439401e2a9312d73659b0",
+      "bytes": 1843,
+      "absolute_path": "C:/Users/gb/.codex/skills/shared-references/reviewer-independence.md"
+    },
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-09-28_m106_completed/request.txt": {
+      "sha256": "401f7b63276a409197ab4a0328d8ac85021def5f88d7596a9bdef88b0ccf3077",
+      "bytes": 4749,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-09-28_m106_completed/request.txt"
+    },
+    "C:/Users/gb/.codex_track_publish_m29_20260902/lib/utils/box_ops.py": {
+      "sha256": "b6dd8c9ca37ecc192c0ea2539aaff80385ff88a77ee56f3298ab5127f33785eb",
+      "bytes": 2653,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/lib/utils/box_ops.py"
+    },
+    "accept_m106_selected_geometry.py": {
+      "sha256": "3ac16f9261d626e8b9dded42ae02bb3f1aaf3a6456c5cd12d70f58f098e69c68",
+      "bytes": 9935,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/accept_m106_selected_geometry.py"
+    },
+    "analyze_train_states.py": {
+      "sha256": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+      "bytes": 4469,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py"
+    },
+    "attest_m106_raw_gt.py": {
+      "sha256": "a920e86a79c7ef889353f6ab2b15129253ab798ec058ae53657de7c15cd81529",
+      "bytes": 2290,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/attest_m106_raw_gt.py"
+    },
+    "collect_ab_interface_panel.py": {
+      "sha256": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+      "bytes": 10788,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_ab_interface_panel.py"
+    },
+    "diagnose_b_geometry.py": {
+      "sha256": "02e5481a4b65726675e16364881b89dc5fc0cb4b2a0f80be99c8afe7c96b2747",
+      "bytes": 8840,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/diagnose_b_geometry.py"
+    },
+    "inspect_m106_fit_selection.py": {
+      "sha256": "fe097d123ca94d176c563ec4b10e9f88249cf187e8683412d83103c082b4f756",
+      "bytes": 2729,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/inspect_m106_fit_selection.py"
+    },
+    "instance_ab_prototype.py": {
+      "sha256": "09db6833f161b6028e64905f2e73a69027e0caf28c611b6c9d81a9fa6862d9fb",
+      "bytes": 7907,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py"
+    },
+    "m103_completed/events.jsonl": {
+      "sha256": "1a2d66f09bf1eef37b9ed59954725135298407fa4c59c04da1d232e89e689cd7",
+      "bytes": 1602506,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m103_completed/events.jsonl"
+    },
+    "m104_completed/train/development_events.jsonl": {
+      "sha256": "c339e6ec301e16a630501ae5f7a07cc62ef6da604967bcb40e3b00b63a5bf136",
+      "bytes": 113598,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m104_completed/train/development_events.jsonl"
+    },
+    "m104_completed/train/final.pt": {
+      "sha256": "546bd218a14906beb28033717bb53cc17721e9bb6b3fb53f36a4bac15dff9f6e",
+      "bytes": 240135,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m104_completed/train/final.pt"
+    },
+    "m104_completed/train/fit_events.jsonl": {
+      "sha256": "0cf535db21f0baf6933686936e8acc129a2b7424c5ef08c230fe57b951a6676f",
+      "bytes": 598289,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m104_completed/train/fit_events.jsonl"
+    },
+    "m104_completed/train/result.json": {
+      "sha256": "315ff9ae562e71878d36e8fe84b04343a285f5c295e0f62cce3b449e87f14a7f",
+      "bytes": 7401,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m104_completed/train/result.json"
+    },
+    "m105_inputs/download_receipt.json": {
+      "sha256": "86f20ffbabf072c6655b1ce5e71d021c35b850d24b4eb6393b805e65e8cf1792",
+      "bytes": 277,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m105_inputs/download_receipt.json"
+    },
+    "m105_inputs/preparation.json": {
+      "sha256": "59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+      "bytes": 1115,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m105_inputs/preparation.json"
+    },
+    "m105_inputs/training_labels.json": {
+      "sha256": "433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+      "bytes": 639474,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m105_inputs/training_labels.json"
+    },
+    "m106_completed/acceptance.json": {
+      "sha256": "800c3cfffa1bcf4168f72de94ba0405f49ce378156138e2fdfd7027d713e6350",
+      "bytes": 75371,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/acceptance.json"
+    },
+    "m106_completed/controller.log": {
+      "sha256": "5e150272cccd89192e01b0a3bcf9a04678d8ecaabdfd983a9778fbf9625e34c8",
+      "bytes": 10566,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/controller.log"
+    },
+    "m106_completed/controller_launch.json": {
+      "sha256": "c6290cffcf2dad08b79848c9ff4d25576f11c2a8620b40f984e29b4f92d13650",
+      "bytes": 645,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/controller_launch.json"
+    },
+    "m106_completed/download_receipt.json": {
+      "sha256": "8f5464358b6079fd7b25005c6f8967c0509643e9bb45a5e78e8a9954d24ad536",
+      "bytes": 6521,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/download_receipt.json"
+    },
+    "m106_completed/driver.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/driver.exit"
+    },
+    "m106_completed/driver.json": {
+      "sha256": "06af89479eab0a0039e409016ca5b1283b9326ab5044704ad3ca910cdfacd5f2",
+      "bytes": 5398,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/driver.json"
+    },
+    "m106_completed/launch.json": {
+      "sha256": "a48bdb183b07939094918603887d8073bca0c9dbb0d11c53a1bfd8a51e8402d4",
+      "bytes": 5242,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/launch.json"
+    },
+    "m106_completed/RESULT.md": {
+      "sha256": "25917b4c3ad4dff2b46af65ba2df958392921bff022b4770235c5a4e839b07a6",
+      "bytes": 3858,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/RESULT.md"
+    },
+    "m106_completed/sanity_weight0/result.json": {
+      "sha256": "556756de8c780c19526cc611afdba4cdf06c6edbfafb2913919138cc2a9489e4",
+      "bytes": 1344,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/sanity_weight0/result.json"
+    },
+    "m106_completed/sanity_weight0.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/sanity_weight0.exit"
+    },
+    "m106_completed/sanity_weight0.log": {
+      "sha256": "c8a85c2a7354f8a97ce0931cfa0d34da9285d870279650e8d96aee02c54decd7",
+      "bytes": 1214,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/sanity_weight0.log"
+    },
+    "m106_completed/sanity_weight1/result.json": {
+      "sha256": "6ece35e507d3b8dffddb35bd71fe6efdbbb82b5793009c2d34182a6a1a1782a7",
+      "bytes": 1361,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/sanity_weight1/result.json"
+    },
+    "m106_completed/sanity_weight1.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/sanity_weight1.exit"
+    },
+    "m106_completed/sanity_weight1.log": {
+      "sha256": "e8b02eb3dc2d4d5ff047cae67f79102e254a02ab472dd4acaa05b444c5a650d9",
+      "bytes": 1231,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/sanity_weight1.log"
+    },
+    "m106_completed/summary.csv": {
+      "sha256": "d3ac11a8605e210365c1dceb0592d922174de05df2b6c2a1082a71406eab2481",
+      "bytes": 2453,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/summary.csv"
+    },
+    "m106_completed/train_weight0/development_events.jsonl": {
+      "sha256": "c339e6ec301e16a630501ae5f7a07cc62ef6da604967bcb40e3b00b63a5bf136",
+      "bytes": 113598,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight0/development_events.jsonl"
+    },
+    "m106_completed/train_weight0/final.pt": {
+      "sha256": "546bd218a14906beb28033717bb53cc17721e9bb6b3fb53f36a4bac15dff9f6e",
+      "bytes": 240135,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight0/final.pt"
+    },
+    "m106_completed/train_weight0/fit_events.jsonl": {
+      "sha256": "0cf535db21f0baf6933686936e8acc129a2b7424c5ef08c230fe57b951a6676f",
+      "bytes": 598289,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight0/fit_events.jsonl"
+    },
+    "m106_completed/train_weight0/result.json": {
+      "sha256": "02604d2b3827569b2c77da4b252c15bfc6636eb6481869d7067a4be7c23cc96b",
+      "bytes": 8518,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight0/result.json"
+    },
+    "m106_completed/train_weight0.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight0.exit"
+    },
+    "m106_completed/train_weight0.log": {
+      "sha256": "57661e00746a0b2a8f38dc08f424bd7a0d4537d5566903c2b9797f5665dd7afd",
+      "bytes": 6915,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight0.log"
+    },
+    "m106_completed/train_weight1/development_events.jsonl": {
+      "sha256": "2087c9a905481b2922feaa95795b8216d5b253f66cdb6b518d2c5f2bb314994c",
+      "bytes": 113628,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight1/development_events.jsonl"
+    },
+    "m106_completed/train_weight1/final.pt": {
+      "sha256": "57082505db00dd81467e5060a2145da6e365e3807f4580790d0a7c0cc9ccca25",
+      "bytes": 240135,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight1/final.pt"
+    },
+    "m106_completed/train_weight1/fit_events.jsonl": {
+      "sha256": "329bcfc8b201e457e1ad5ca725698195326de900b0f8236062728542029f182d",
+      "bytes": 598424,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight1/fit_events.jsonl"
+    },
+    "m106_completed/train_weight1/result.json": {
+      "sha256": "bb76c51b6dd6aeea07ccb709338a4e513cb9fd254d9476694de9ad22ace469d4",
+      "bytes": 8751,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight1/result.json"
+    },
+    "m106_completed/train_weight1.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight1.exit"
+    },
+    "m106_completed/train_weight1.log": {
+      "sha256": "3d9c9fb69dd44eb2068b556054ec60506365ba774a757a7746e6a34a1df3f1e5",
+      "bytes": 7148,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/train_weight1.log"
+    },
+    "m106_completed/verification/geometry_boxes.jsonl": {
+      "sha256": "725705548b9dca56cafe27af00cb851ec31afb11bc91a191644f3ad80fd2a164",
+      "bytes": 7540793,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/verification/geometry_boxes.jsonl"
+    },
+    "m106_completed/verification/result.json": {
+      "sha256": "c06f83e7338724f424372749749d40029676eac136a56aaeb00ee68fe77bce8b",
+      "bytes": 1016,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_completed/verification/result.json"
+    },
+    "M106_DEPLOY_RECEIPT.json": {
+      "sha256": "2c25f2db60926d8f15e8249259f768bf33806c787261c376d9868c043abf0ebe",
+      "bytes": 3047,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M106_DEPLOY_RECEIPT.json"
+    },
+    "M106_FIT_SELECTION_DIAGNOSTIC.json": {
+      "sha256": "901afd7a7f1d5f5e53f32d7681b1d20e3a09d36cfc1b4b4c18c15c753eadb1ae",
+      "bytes": 742551,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M106_FIT_SELECTION_DIAGNOSTIC.json"
+    },
+    "m106_gt_inputs/adapter02_indoor.txt": {
+      "sha256": "33a964dea164f87c4c4adaf720aeed9f6209f4f3f5025fc9d597c03f84d14e78",
+      "bytes": 11304,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/adapter02_indoor.txt"
+    },
+    "m106_gt_inputs/bag03_indoor.txt": {
+      "sha256": "fb4702c2f0e4c6a1e33251efb0f3c1c7f4eb5f26c1a3c79d9018913b2372d8ec",
+      "bytes": 29717,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bag03_indoor.txt"
+    },
+    "m106_gt_inputs/bag04_indoor.txt": {
+      "sha256": "0d06a12db2f75b4428d77d0983050e51ed2e56153c24ab74871ab4abca315267",
+      "bytes": 22554,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bag04_indoor.txt"
+    },
+    "m106_gt_inputs/bag05_indoor.txt": {
+      "sha256": "19fac45f89a26ebfc9f3609008139d917dd80c75c825b6fe9c9d085ec55ebf52",
+      "bytes": 13213,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bag05_indoor.txt"
+    },
+    "m106_gt_inputs/ball02_indoor.txt": {
+      "sha256": "2147f99e45f7af89f466d6bfbe718ca4a95a75827324f1c736eaef810d9f2083",
+      "bytes": 24811,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball02_indoor.txt"
+    },
+    "m106_gt_inputs/ball03_indoor.txt": {
+      "sha256": "ce41f746332d2777ea7f5f97ae8f545bbfa9afbe93929eaca8f0f0ee70f057c7",
+      "bytes": 14319,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball03_indoor.txt"
+    },
+    "m106_gt_inputs/ball04_indoor.txt": {
+      "sha256": "db05ab15d9143192adc6a248c4a8d1fa66c339d028d067d60cae72c01ff85661",
+      "bytes": 22002,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball04_indoor.txt"
+    },
+    "m106_gt_inputs/ball05_indoor.txt": {
+      "sha256": "4a3bf9f327e4994423b75c3d1267b80ac71d05c5e9b93b08b509f6d83bff4a34",
+      "bytes": 9725,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball05_indoor.txt"
+    },
+    "m106_gt_inputs/ball07_indoor.txt": {
+      "sha256": "c9cb5a6fcfd0bd3f5b3582292e5c30625a4c30fee1c08e5eb247f5ae6ffaaab2",
+      "bytes": 35773,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball07_indoor.txt"
+    },
+    "m106_gt_inputs/ball08_wild.txt": {
+      "sha256": "a3570303bd54848f4b96234001d8a0f141460cf42effcb1ade9b2760e8e84bf9",
+      "bytes": 24022,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball08_wild.txt"
+    },
+    "m106_gt_inputs/ball09_wild.txt": {
+      "sha256": "a3647edc0b7e4ffcbedbc970b0e48e88aa11c5fea9cf9a2f22b490a43f0f1a01",
+      "bytes": 23852,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball09_wild.txt"
+    },
+    "m106_gt_inputs/ball12_wild.txt": {
+      "sha256": "feee35d47e25bcdfcaef049ebebd67f77892cb1b533c842ad5147c1cff6b8c9b",
+      "bytes": 31557,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball12_wild.txt"
+    },
+    "m106_gt_inputs/ball13_indoor.txt": {
+      "sha256": "99c5e76747408d0c120b92ce172d37cbd39abc2836207837633eb92698547446",
+      "bytes": 34403,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball13_indoor.txt"
+    },
+    "m106_gt_inputs/ball14_wild.txt": {
+      "sha256": "f6d7da3590803baab88cadc089e76daa57b25fd1bcd2152abab118e41d085017",
+      "bytes": 23643,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball14_wild.txt"
+    },
+    "m106_gt_inputs/ball16_indoor.txt": {
+      "sha256": "e39af82dd9ae52bbf6734c63cc916dfa043129fbcc4e0d675de09535ce0180a4",
+      "bytes": 29193,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball16_indoor.txt"
+    },
+    "m106_gt_inputs/ball17_wild.txt": {
+      "sha256": "a2e90cb9a2db72c3d4dd00bbeeb645b8f02b95094f714bb3f783ccb7e0dcd5e0",
+      "bytes": 21142,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball17_wild.txt"
+    },
+    "m106_gt_inputs/ball19_indoor.txt": {
+      "sha256": "21a1bddce56f75dd67ca5b9fbb14eccafc46bd36b24a468fb9483290d68e125d",
+      "bytes": 18979,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball19_indoor.txt"
+    },
+    "m106_gt_inputs/ball21_indoor.txt": {
+      "sha256": "5230b453b3d069f8ade8e23aef0f3d18f9794d900a1a6264ebb830aff0ac0bb4",
+      "bytes": 23247,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ball21_indoor.txt"
+    },
+    "m106_gt_inputs/basket_indoor.txt": {
+      "sha256": "d681b5a242bed11da0f5fe714491b49651ef1d1c4b4f43b92cfc6263c9d1e9ca",
+      "bytes": 12775,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/basket_indoor.txt"
+    },
+    "m106_gt_inputs/beautifullight01_indoor.txt": {
+      "sha256": "0e89eed1894076dbfbbebed2f931163b27fa3572246d21b49662b5ccbd1a945a",
+      "bytes": 17546,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/beautifullight01_indoor.txt"
+    },
+    "m106_gt_inputs/bike01_wild.txt": {
+      "sha256": "cd70a8371938cdac020502cf2c4e0c77f77180eecd6baabee70b269b2ec47f24",
+      "bytes": 19385,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bike01_wild.txt"
+    },
+    "m106_gt_inputs/bike02_wild.txt": {
+      "sha256": "4b90a9f1d4251f16d6dff2bf9864387d2954f0978145a524b0ed06ba3c03ea35",
+      "bytes": 4289,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bike02_wild.txt"
+    },
+    "m106_gt_inputs/bike03_wild.txt": {
+      "sha256": "dad8d95321f350d2a347f4f71504d8d82b57fd7fdd08ef617b63e2929f57c3e3",
+      "bytes": 9000,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bike03_wild.txt"
+    },
+    "m106_gt_inputs/book01_indoor.txt": {
+      "sha256": "9d0c8affacf73e01d0eed4d446aadaeb3e42f111d46b2e2d38ed86de40b9a19c",
+      "bytes": 21130,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/book01_indoor.txt"
+    },
+    "m106_gt_inputs/book02_indoor.txt": {
+      "sha256": "25fc50ddf6083b81f0e202fbfbc83561d4d2cb13d445d9adb398e798473a7fc1",
+      "bytes": 22479,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/book02_indoor.txt"
+    },
+    "m106_gt_inputs/book04_indoor.txt": {
+      "sha256": "d7009271319c37873f1ca7e4a615e7efed384818c4a5a4c36b02c3f4628cbfdc",
+      "bytes": 16376,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/book04_indoor.txt"
+    },
+    "m106_gt_inputs/book05_indoor.txt": {
+      "sha256": "8e2f3008f581de3517e2d19185080261a796ec36506a62f07824ecbdf34196f1",
+      "bytes": 22210,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/book05_indoor.txt"
+    },
+    "m106_gt_inputs/book06_indoor.txt": {
+      "sha256": "df6b93503aa8177ac8b0e32507124189f453bce6c5bcb5f993667850f77b58a1",
+      "bytes": 29911,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/book06_indoor.txt"
+    },
+    "m106_gt_inputs/bottle01_indoor.txt": {
+      "sha256": "e226e68e5c5ec7dbe8b380aaa0c37ad6444b683ca4f6fa84bfc59968ee818e83",
+      "bytes": 55269,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bottle01_indoor.txt"
+    },
+    "m106_gt_inputs/bottle02_indoor.txt": {
+      "sha256": "48f14b53ca931b24f50e0e24cef612aaef8311a85736c0916f69b58d54c72522",
+      "bytes": 37813,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bottle02_indoor.txt"
+    },
+    "m106_gt_inputs/bottle03_indoor.txt": {
+      "sha256": "8cb3e98365c17668ebbbb937431a5a38d22f05804b352f353d51d834fd3a117a",
+      "bytes": 45624,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bottle03_indoor.txt"
+    },
+    "m106_gt_inputs/bottle05_indoor.txt": {
+      "sha256": "222999382c4ba7803d1ad6fd919d93fc290f1b0fd521f3c08dddd2c47e06b01f",
+      "bytes": 7940,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bottle05_indoor.txt"
+    },
+    "m106_gt_inputs/bottle06_indoor.txt": {
+      "sha256": "7dce3716c2635f7801abaefa8cda804ab943aa16ac77024d1ce11fa871437812",
+      "bytes": 3735,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/bottle06_indoor.txt"
+    },
+    "m106_gt_inputs/box_indoor.txt": {
+      "sha256": "a34d48e631a3ec23016aa71f1951d350a72ad03beb878ed1ca18217875b98afd",
+      "bytes": 10394,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/box_indoor.txt"
+    },
+    "m106_gt_inputs/candlecup_indoor.txt": {
+      "sha256": "2c2ba43df1406dd9fd0ac25d776dde07980efc6ae94900d3bbcdc453a6fbfc01",
+      "bytes": 9814,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/candlecup_indoor.txt"
+    },
+    "m106_gt_inputs/car01_indoor.txt": {
+      "sha256": "dca7e65de77cced65b4b06a589352fdde456152b9a75d9af8759082b8cf458d4",
+      "bytes": 22422,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/car01_indoor.txt"
+    },
+    "m106_gt_inputs/car02_indoor.txt": {
+      "sha256": "ed1171be55b7782858af063f174b2ece551f35b6ee2b5a4d0e81b5fc53f87ec7",
+      "bytes": 11025,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/car02_indoor.txt"
+    },
+    "m106_gt_inputs/cart_indoor.txt": {
+      "sha256": "e5b16fea25a7b2ddb32cf3132f97e385d6c27bd9af99c64cf12bd882b72c5226",
+      "bytes": 26156,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cart_indoor.txt"
+    },
+    "m106_gt_inputs/cat02_indoor.txt": {
+      "sha256": "db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d",
+      "bytes": 10783,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cat02_indoor.txt"
+    },
+    "m106_gt_inputs/cat03_indoor.txt": {
+      "sha256": "d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f",
+      "bytes": 8216,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cat03_indoor.txt"
+    },
+    "m106_gt_inputs/cat04_indoor.txt": {
+      "sha256": "6421ade8ca96dbc2da52ca02cedd69c415f37498775732b0cf780d81f2d292af",
+      "bytes": 5867,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cat04_indoor.txt"
+    },
+    "m106_gt_inputs/cat05_indoor.txt": {
+      "sha256": "5d9144b7989d54a349cedafcf15f407db098d8af69019302bc05c2de0f09082a",
+      "bytes": 16316,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cat05_indoor.txt"
+    },
+    "m106_gt_inputs/chair01_indoor.txt": {
+      "sha256": "fc25354c8769860a8c4404019368e34c1415367828009e6503bb7695581bf62a",
+      "bytes": 14674,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/chair01_indoor.txt"
+    },
+    "m106_gt_inputs/chair02_indoor.txt": {
+      "sha256": "4f05bc2ed056bdc6c9c5a2687ab6c074a2f32b95cae62bf6feebe89899f03ca2",
+      "bytes": 27155,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/chair02_indoor.txt"
+    },
+    "m106_gt_inputs/clothes_indoor.txt": {
+      "sha256": "e0717f89c1ad115ce87bb252bc7915ee1d0b34ab73c72fc8ca5a47a07612094b",
+      "bytes": 11295,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/clothes_indoor.txt"
+    },
+    "m106_gt_inputs/colacan01_indoor.txt": {
+      "sha256": "38443588eb1127d65c2ac800186759ad392581eef544588156c8c0f14b2ee866",
+      "bytes": 43232,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/colacan01_indoor.txt"
+    },
+    "m106_gt_inputs/colacan02_indoor.txt": {
+      "sha256": "ca6587fa0aa38475f51d7dc443398b8e716d7b0a175346f310c60bb8b8360f57",
+      "bytes": 56510,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/colacan02_indoor.txt"
+    },
+    "m106_gt_inputs/colacan04_indoor.txt": {
+      "sha256": "c556156a8252ea1e1b0c6a14cb4d63a374c8edf47b3dbdcdf129edfb562a0c2a",
+      "bytes": 14938,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/colacan04_indoor.txt"
+    },
+    "m106_gt_inputs/container01_indoor.txt": {
+      "sha256": "c08d2571102bb7106e6530a0dea8512f6206e15ee765a3a52b2734978fba7e1e",
+      "bytes": 11877,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/container01_indoor.txt"
+    },
+    "m106_gt_inputs/container02_indoor.txt": {
+      "sha256": "00cfbbbd0e55ccf24f191bda511d2a217c43a665f65ba0f64073d3b7b51fdccf",
+      "bytes": 21110,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/container02_indoor.txt"
+    },
+    "m106_gt_inputs/cube01_indoor.txt": {
+      "sha256": "c7e7f55e9d0ed4bac64c18d658796fa340fe6dddd2467a877015d42c71d4185e",
+      "bytes": 38409,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cube01_indoor.txt"
+    },
+    "m106_gt_inputs/cube04_indoor.txt": {
+      "sha256": "d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+      "bytes": 36135,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cube04_indoor.txt"
+    },
+    "m106_gt_inputs/cube06_indoor.txt": {
+      "sha256": "19cf63610ae9b40e67f5e9b8f10ec62a42ad6662a693158eda64d18bb2b4c43a",
+      "bytes": 25302,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cube06_indoor.txt"
+    },
+    "m106_gt_inputs/cup03_indoor.txt": {
+      "sha256": "aef83d01e39f78bded1998acf5650504e4833292f9efaafc712094bca7eeda3d",
+      "bytes": 38420,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup03_indoor.txt"
+    },
+    "m106_gt_inputs/cup05_indoor.txt": {
+      "sha256": "15d37ca8f694388415795e8df944d882347dbb5a2fd2e0a2e07e346164733149",
+      "bytes": 28375,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup05_indoor.txt"
+    },
+    "m106_gt_inputs/cup06_indoor.txt": {
+      "sha256": "ebba4639a8d94969986dc9dd60960c43701d1a1fafefaec270cdac99cc1b9e5f",
+      "bytes": 35151,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup06_indoor.txt"
+    },
+    "m106_gt_inputs/cup07_indoor.txt": {
+      "sha256": "a87da31a984f168cba69d158eb46e31373ef79d11b2d4fd50c4c1886737c8885",
+      "bytes": 28766,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup07_indoor.txt"
+    },
+    "m106_gt_inputs/cup08_indoor.txt": {
+      "sha256": "b7c606e0373f5cdba15ecb21efa1ce293bc6620c5ffa60ddb567a1394c67f1c8",
+      "bytes": 20480,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup08_indoor.txt"
+    },
+    "m106_gt_inputs/cup09_indoor.txt": {
+      "sha256": "6235e8bec9d88203c3bcc2adfa66db218730d79c619979fa575e77bd3cc2c5c5",
+      "bytes": 24911,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup09_indoor.txt"
+    },
+    "m106_gt_inputs/cup10_indoor.txt": {
+      "sha256": "237081c1453dc80861c19444a63b2a4f63bd56c8703285c408c3e4d52a3d55ae",
+      "bytes": 29008,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup10_indoor.txt"
+    },
+    "m106_gt_inputs/cup11_indoor.txt": {
+      "sha256": "14e516059c4ebb3500cb0626fa4ff5135cee275d9b2e3f8862faa83a4e4af761",
+      "bytes": 27450,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup11_indoor.txt"
+    },
+    "m106_gt_inputs/cup13_indoor.txt": {
+      "sha256": "bd048b8a08b71b5616f185f8e8f1727972d7addf6251881c35f94d2911099864",
+      "bytes": 24708,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup13_indoor.txt"
+    },
+    "m106_gt_inputs/cup14_indoor.txt": {
+      "sha256": "9ad3ecd17fdbf886c7edf1f56934e7d47ac192cf7b9b4c53d013451651656bda",
+      "bytes": 27764,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/cup14_indoor.txt"
+    },
+    "m106_gt_inputs/duck01_wild.txt": {
+      "sha256": "83aca68e7101f1261e7bafcff766bad3a0a68301f10921ded08f11192497263b",
+      "bytes": 6734,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/duck01_wild.txt"
+    },
+    "m106_gt_inputs/duck02_wild.txt": {
+      "sha256": "ac48fd345b322c2bb305e68ec659c8872446f9023867e23851f3b6e12d11790e",
+      "bytes": 4278,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/duck02_wild.txt"
+    },
+    "m106_gt_inputs/duck04_wild.txt": {
+      "sha256": "29848ca243337725cfeae195563bd6035fae1f14f34c32a0441918112772c986",
+      "bytes": 10281,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/duck04_wild.txt"
+    },
+    "m106_gt_inputs/duck05_wild.txt": {
+      "sha256": "5ad1b542b94c9181d66bc1d84e033b747ecd9a8fa62fe4717d6a65f05d870004",
+      "bytes": 6809,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/duck05_wild.txt"
+    },
+    "m106_gt_inputs/duck06_wild.txt": {
+      "sha256": "dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e",
+      "bytes": 14058,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/duck06_wild.txt"
+    },
+    "m106_gt_inputs/dumbbells02_indoor.txt": {
+      "sha256": "18dac18d42fb4fa09483990feae0d084fff631c4629589fb4c7cfe880ff0052c",
+      "bytes": 19004,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/dumbbells02_indoor.txt"
+    },
+    "m106_gt_inputs/earphone02_indoor.txt": {
+      "sha256": "9178128a1ed5d23438515fdea6bac208c800122a1d38d0963d44f0eb700ba782",
+      "bytes": 20224,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/earphone02_indoor.txt"
+    },
+    "m106_gt_inputs/egg_indoor.txt": {
+      "sha256": "a4010da190dfc37a2c48efdc21c60993e398af6b9df87b91dc3aee813e5bc9bd",
+      "bytes": 49953,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/egg_indoor.txt"
+    },
+    "m106_gt_inputs/file02_indoor.txt": {
+      "sha256": "b8f7d0914b2162609f993e8445b92cef3e2e1bb6e388cd21d1e62d835a154dfb",
+      "bytes": 27733,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/file02_indoor.txt"
+    },
+    "m106_gt_inputs/flower01_indoor.txt": {
+      "sha256": "97ecc6e67a43c29a5ef5eceaff28a480f40487347788ff044bef19fcbaea13db",
+      "bytes": 14454,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/flower01_indoor.txt"
+    },
+    "m106_gt_inputs/flower02_wild.txt": {
+      "sha256": "517aa37496ae936121cc6ddbfaee6e845616a64a137bdcb8a8cfee489d2cc644",
+      "bytes": 9756,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/flower02_wild.txt"
+    },
+    "m106_gt_inputs/flower03_indoor.txt": {
+      "sha256": "66480878783c4fcdf76d47234f1884cdffaddb775028bf2c7d8b12d2061da8ce",
+      "bytes": 10808,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/flower03_indoor.txt"
+    },
+    "m106_gt_inputs/flowerbasket_indoor.txt": {
+      "sha256": "0cc6a4a0bec64e746491603b06b076fd41f7fbce4c86c0d1455b2440302f0d1b",
+      "bytes": 14199,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/flowerbasket_indoor.txt"
+    },
+    "m106_gt_inputs/ghostmask_indoor.txt": {
+      "sha256": "5aba29f532dd42f9df5bbfd1c6c5558c8632f9d62fbf5fc5d52470d799ef9406",
+      "bytes": 16871,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ghostmask_indoor.txt"
+    },
+    "m106_gt_inputs/glass02_indoor.txt": {
+      "sha256": "8e019d223669c6f31adf10d3ee4162fca5404fd40be892f1c44f411fcc03ae4f",
+      "bytes": 26029,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/glass02_indoor.txt"
+    },
+    "m106_gt_inputs/glass03_indoor.txt": {
+      "sha256": "b4e6aa986c65391dfdb688c77403795f5626134f5088821ea3bd4b7284e184da",
+      "bytes": 9671,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/glass03_indoor.txt"
+    },
+    "m106_gt_inputs/glass04_indoor.txt": {
+      "sha256": "d24775109819cb517cbe764c3ef7990d25fe925049538864f4770864b40afbde",
+      "bytes": 13996,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/glass04_indoor.txt"
+    },
+    "m106_gt_inputs/glass05_indoor.txt": {
+      "sha256": "51cc8d500877bc4a321bc2bb6e810a30cb86711896764968d2700250f9352206",
+      "bytes": 14925,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/glass05_indoor.txt"
+    },
+    "m106_gt_inputs/guitarbag_indoor.txt": {
+      "sha256": "0d80234a96568cf983950b1f8b5bda33a01cb8cffd5cf1705f5c93f5621f9618",
+      "bytes": 22585,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/guitarbag_indoor.txt"
+    },
+    "m106_gt_inputs/gymring_wild.txt": {
+      "sha256": "b2df5de9aaaae941866b11586188ca7a5a94be1000a54e118df375cacf3d2346",
+      "bytes": 19464,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/gymring_wild.txt"
+    },
+    "m106_gt_inputs/hand02_indoor.txt": {
+      "sha256": "fdb582d198c0d0e843a21891c4e8966cced3c2330dc3ded5110029ac67ccfab5",
+      "bytes": 12367,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/hand02_indoor.txt"
+    },
+    "m106_gt_inputs/hat01_indoor.txt": {
+      "sha256": "8898891868efd65a97b8138c99404a0ae24e760f808487870f1b7529a30270bf",
+      "bytes": 19381,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/hat01_indoor.txt"
+    },
+    "m106_gt_inputs/hat02_indoor_320.txt": {
+      "sha256": "5851dd6051472626d3b0432e492fae38c4fa7a06d12caaab93f44a6c5c1dbbd5",
+      "bytes": 17244,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/hat02_indoor_320.txt"
+    },
+    "m106_gt_inputs/hat03_indoor.txt": {
+      "sha256": "c7cd257073a4e20905e43f0bb3558cfb2d8bd4d391c6db18ae8bb8cf3cce9951",
+      "bytes": 17618,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/hat03_indoor.txt"
+    },
+    "m106_gt_inputs/hat04_indoor.txt": {
+      "sha256": "2d71dd08fff19e4be6ba64b51dff107674ac7c18d50dfe5e924e23e58989eaa1",
+      "bytes": 43792,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/hat04_indoor.txt"
+    },
+    "m106_gt_inputs/human01_indoor.txt": {
+      "sha256": "384febbcddeeafe3489749b1b143c5d357e0c2098b02f589f45f208a0f627271",
+      "bytes": 21654,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/human01_indoor.txt"
+    },
+    "m106_gt_inputs/human03_wild.txt": {
+      "sha256": "608ef24142202c0e8e9af1b3752ee0709e043a5f085e30bc66068bcaa4196543",
+      "bytes": 49784,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/human03_wild.txt"
+    },
+    "m106_gt_inputs/human04_wild.txt": {
+      "sha256": "3a24191b7f4b4690c0c6c9c912754cdf658a702622686aa7891419f866a9a8b7",
+      "bytes": 24131,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/human04_wild.txt"
+    },
+    "m106_gt_inputs/human05_wild.txt": {
+      "sha256": "65e455611bc7c342891c0bbe60ca0f876c181196251fa9d80f963ead74542f9e",
+      "bytes": 32641,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/human05_wild.txt"
+    },
+    "m106_gt_inputs/human06_indoor.txt": {
+      "sha256": "0f723bba01cd765122da6a513f6e458623ba3345aafb5a94826d787c9b1ee134",
+      "bytes": 7906,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/human06_indoor.txt"
+    },
+    "m106_gt_inputs/leaves01_wild.txt": {
+      "sha256": "d34f88a2e29041dcc3f0921878f934bae4f654e12f9e43d14aaad17e00e83561",
+      "bytes": 2352,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/leaves01_wild.txt"
+    },
+    "m106_gt_inputs/leaves02_indoor.txt": {
+      "sha256": "d6a2ad6c7f3a9720b75c5a2457201857edfba1beeeeea2c5e5e85a39807fd696",
+      "bytes": 17348,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/leaves02_indoor.txt"
+    },
+    "m106_gt_inputs/leaves03_wild.txt": {
+      "sha256": "a8169078aadfb3484b795038128cb1d314e04f2626a9f974253ac55c8dd69b5a",
+      "bytes": 10592,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/leaves03_wild.txt"
+    },
+    "m106_gt_inputs/leaves04_indoor.txt": {
+      "sha256": "ede8be7594992f5bd8addd4a22c657ee5fa63857c5b54ac602f88381dd76dffb",
+      "bytes": 27017,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/leaves04_indoor.txt"
+    },
+    "m106_gt_inputs/leaves05_indoor.txt": {
+      "sha256": "aa0b613b169058dbf47eafd1c74e75e9e3d617e4f3ed21136bb5093e3ce8a3c1",
+      "bytes": 38251,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/leaves05_indoor.txt"
+    },
+    "m106_gt_inputs/leaves06_wild.txt": {
+      "sha256": "e5e14506d23aea54df25bd626b5d418240d15d1fa9b16739bac967fe464c7d74",
+      "bytes": 10412,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/leaves06_wild.txt"
+    },
+    "m106_gt_inputs/lock01_wild.txt": {
+      "sha256": "8812b746751f5f59ea8a16764ec70b7d1ded6c3ffcf963ad9245ac7ce84ac577",
+      "bytes": 7261,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/lock01_wild.txt"
+    },
+    "m106_gt_inputs/mac_indoor.txt": {
+      "sha256": "7b7fbed57f079ebedae12870613d30719a69d98f458815d7a42c50be893adb1a",
+      "bytes": 23263,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mac_indoor.txt"
+    },
+    "m106_gt_inputs/milkbottle_indoor.txt": {
+      "sha256": "1d677d5d444fd4e14aec00fcdd9c4fbf3af1efb32bb8bcc1b53490610ab54f55",
+      "bytes": 38235,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/milkbottle_indoor.txt"
+    },
+    "m106_gt_inputs/mirror_indoor.txt": {
+      "sha256": "39399adcf38d1be5d83ed6bac42e777cb660e49f0c93b150a5e2f105f9674d41",
+      "bytes": 52740,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mirror_indoor.txt"
+    },
+    "m106_gt_inputs/mobilephone01_indoor.txt": {
+      "sha256": "572ff6fde310d831e0fd2dd5201805a4f9d2cf18ec1dd63a227266872bf218ce",
+      "bytes": 20091,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mobilephone01_indoor.txt"
+    },
+    "m106_gt_inputs/mobilephone02_indoor.txt": {
+      "sha256": "d27bba52e1ebe7f816b9d2ce264d332404530765bcce830029070b146c52e45c",
+      "bytes": 9658,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mobilephone02_indoor.txt"
+    },
+    "m106_gt_inputs/mobilephone04_indoor.txt": {
+      "sha256": "c18af5d30957a339497ba8235ecbf6986dbc7ce66773afcfabdbdb0a3b03d55c",
+      "bytes": 29803,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mobilephone04_indoor.txt"
+    },
+    "m106_gt_inputs/mobilephone05_indoor.txt": {
+      "sha256": "70c425a3f893af73aca7bdac61cb111e47549d0c935b42af3a299a8f29919356",
+      "bytes": 17830,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mobilephone05_indoor.txt"
+    },
+    "m106_gt_inputs/mobilephone06_indoor.txt": {
+      "sha256": "4d96750a2019b57ad1ab7cfe0076f3fea8a1b03a8d293aec7826dc25f188ceff",
+      "bytes": 18695,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mobilephone06_indoor.txt"
+    },
+    "m106_gt_inputs/mushroom01_indoor.txt": {
+      "sha256": "fee7899ead7c9ba02f3afb6e6e0829656cff0ba0df64ca9fbef1304574661ced",
+      "bytes": 24302,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mushroom01_indoor.txt"
+    },
+    "m106_gt_inputs/mushroom02_wild.txt": {
+      "sha256": "b7e602085a0c3af4ddd417b9dea144eab7d9d8bfec6517db261227f46090716d",
+      "bytes": 5228,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mushroom02_wild.txt"
+    },
+    "m106_gt_inputs/mushroom03_wild.txt": {
+      "sha256": "453dd8042c4d9f0decb712d3899e228197b62f432e3318bdd1da44f26bd172fd",
+      "bytes": 6147,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mushroom03_wild.txt"
+    },
+    "m106_gt_inputs/mushroom04_indoor.txt": {
+      "sha256": "bc2f201ef68a86eca6b19abef4dd410ed50aaec2569d6163cc0b57913c32540f",
+      "bytes": 23419,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mushroom04_indoor.txt"
+    },
+    "m106_gt_inputs/mushroom05_indoor.txt": {
+      "sha256": "79887acbc43dc5468d4e9bdcf021df1347c869cc15ad336fc4e5fe7e42b5bb25",
+      "bytes": 13654,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/mushroom05_indoor.txt"
+    },
+    "m106_gt_inputs/notebook02_indoor.txt": {
+      "sha256": "fa3202cc8968e24785620c772584bc28e2a353c06799a0859ee6a2b8d8a880a0",
+      "bytes": 37310,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/notebook02_indoor.txt"
+    },
+    "m106_gt_inputs/notebook03_indoor.txt": {
+      "sha256": "a7c2e9a80ae2a6303b3b06c21cf8c1ab2fd96d88ae77368eaa804f83644100a0",
+      "bytes": 14735,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/notebook03_indoor.txt"
+    },
+    "m106_gt_inputs/paintbottle_indoor.txt": {
+      "sha256": "138c6884d76f8385a71bfd04c0ccc83b835ce67b9f37a9e8880da2abb2caca05",
+      "bytes": 7236,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/paintbottle_indoor.txt"
+    },
+    "m106_gt_inputs/painting_indoor_320.txt": {
+      "sha256": "452f8042e633005d48071913f4b63c71d24829f0a931891f142539d4664a2ec6",
+      "bytes": 15702,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/painting_indoor_320.txt"
+    },
+    "m106_gt_inputs/parkingsign_wild.txt": {
+      "sha256": "397c45dcc9273890a8a0364f59ccb58f4d485bf5454e04af27cf0aee7e3b8343",
+      "bytes": 6434,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/parkingsign_wild.txt"
+    },
+    "m106_gt_inputs/pigeon03_wild.txt": {
+      "sha256": "4281a4712dae248a85869058f68162c94984b6e287896287bf7e74e5440712fd",
+      "bytes": 10208,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/pigeon03_wild.txt"
+    },
+    "m106_gt_inputs/pigeon05_wild.txt": {
+      "sha256": "7ce05357a9a6e942c8dca07cc44507ec36f431b6920f6150c11629ab594e4f7d",
+      "bytes": 17572,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/pigeon05_wild.txt"
+    },
+    "m106_gt_inputs/pigeon06_wild.txt": {
+      "sha256": "d249393a979a8cfc4c541107b51329cc133e2e99c30f821c937359d5304df275",
+      "bytes": 17215,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/pigeon06_wild.txt"
+    },
+    "m106_gt_inputs/pigeon07_wild.txt": {
+      "sha256": "91f2a4d1cbdd2808af3c0fc42f7a2a26a728eee5246b32a8c3ef12a2c06883d3",
+      "bytes": 9954,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/pigeon07_wild.txt"
+    },
+    "m106_gt_inputs/pine01_indoor.txt": {
+      "sha256": "c06487c4c9e9de804050ebe5a7c25c90cc1dcb1d88c83279cd980cb0c5de5329",
+      "bytes": 20330,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/pine01_indoor.txt"
+    },
+    "m106_gt_inputs/pine02_wild_320.txt": {
+      "sha256": "0555c5378049662102ef0f382e3a4ddc2e5abdcc4fc5deb6ce2a9966bf5be16f",
+      "bytes": 5573,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/pine02_wild_320.txt"
+    },
+    "m106_gt_inputs/shoes01_indoor.txt": {
+      "sha256": "cee9970156a03576505b05a59ecc55e8daf4ff5ef5f10ef23dbf5efad7123326",
+      "bytes": 24294,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/shoes01_indoor.txt"
+    },
+    "m106_gt_inputs/shoes03_indoor.txt": {
+      "sha256": "4f3bc65b100348817f2d1856613d54c1f783759ed1a282b8df28eded96467f7c",
+      "bytes": 21094,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/shoes03_indoor.txt"
+    },
+    "m106_gt_inputs/skateboard01_indoor.txt": {
+      "sha256": "afb682605337866d5ea72db4025dfbb70ee2acd2ea85719b5989a7626bb758d5",
+      "bytes": 35040,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/skateboard01_indoor.txt"
+    },
+    "m106_gt_inputs/skateboard02_indoor.txt": {
+      "sha256": "304a07f4b196eb9a855d1a1857beec4757141965a09c5e635b80cede70938b68",
+      "bytes": 30237,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/skateboard02_indoor.txt"
+    },
+    "m106_gt_inputs/speaker_indoor.txt": {
+      "sha256": "1a06abd953cb7833c232576238363cbe6c5248c486b3f221567d18dacf9a9a44",
+      "bytes": 47953,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/speaker_indoor.txt"
+    },
+    "m106_gt_inputs/stand_indoor.txt": {
+      "sha256": "15219e425e311f79e435a1c7526b3d04de6dbe1a035a6a1b5a4614e0ed4cef21",
+      "bytes": 11456,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/stand_indoor.txt"
+    },
+    "m106_gt_inputs/suitcase_indoor.txt": {
+      "sha256": "946321102dd03c4d28f1f3ccb31434bb955982bcec7e88082ce86b1579442c6e",
+      "bytes": 21871,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/suitcase_indoor.txt"
+    },
+    "m106_gt_inputs/swing01_wild.txt": {
+      "sha256": "2518e4ffc0ba579cbcce533e6aa33792b9f2a9f676651c2b79347dd24629657b",
+      "bytes": 8268,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/swing01_wild.txt"
+    },
+    "m106_gt_inputs/swing02_wild.txt": {
+      "sha256": "9768e065c404b8acf47dc8dbe902f8eca8dd1736c501e97c5ad431cfac087741",
+      "bytes": 10926,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/swing02_wild.txt"
+    },
+    "m106_gt_inputs/teacup_indoor.txt": {
+      "sha256": "33ecb768c92c86e7106b05ce42527bf80db3c81c1f58b8332e22ccbb11625f97",
+      "bytes": 11154,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/teacup_indoor.txt"
+    },
+    "m106_gt_inputs/thermos01_indoor.txt": {
+      "sha256": "4a9a8a13af7359b697edfffe887b26b8e316042171f2955b44ad874b8f25d99e",
+      "bytes": 25158,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/thermos01_indoor.txt"
+    },
+    "m106_gt_inputs/thermos02_indoor.txt": {
+      "sha256": "96b26f5f41d8ad70a8d1c1c34751aa224b2c8e447c007dc7dec6eb9ab90c5dbc",
+      "bytes": 21867,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/thermos02_indoor.txt"
+    },
+    "m106_gt_inputs/toiletpaper02_indoor.txt": {
+      "sha256": "23039f5b59a9259bbfc89dd6d38e3ed9dcce696e03b827fb8ea320eeaef5cd0c",
+      "bytes": 43917,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toiletpaper02_indoor.txt"
+    },
+    "m106_gt_inputs/toiletpaper03_indoor.txt": {
+      "sha256": "5b1f12533be6068b6db0ec4a06cf5702660e4a904c6385e78fce892a352a3cc4",
+      "bytes": 25337,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toiletpaper03_indoor.txt"
+    },
+    "m106_gt_inputs/toiletpaper04_indoor.txt": {
+      "sha256": "e01fe3e9d60dbfe0588a3a096ca3b136a5ed0e2017e8e401d2704e57caf1467d",
+      "bytes": 16251,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toiletpaper04_indoor.txt"
+    },
+    "m106_gt_inputs/toy01_indoor.txt": {
+      "sha256": "0f69714f77bc1cde2549ff14dc6474262aadaf78cae2ba74e7baf67bb56642c0",
+      "bytes": 17348,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toy01_indoor.txt"
+    },
+    "m106_gt_inputs/toy03_indoor.txt": {
+      "sha256": "aa4e58bcabae622280b2c73dcf1143118ff540a3cac0202f8eb5da8e779b6888",
+      "bytes": 18432,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toy03_indoor.txt"
+    },
+    "m106_gt_inputs/toy04_indoor.txt": {
+      "sha256": "bb2d9f68b10422815d088d3d6aa9ecac6eed2bd3eb64c2d5b32c3fd239fed6d7",
+      "bytes": 16335,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toy04_indoor.txt"
+    },
+    "m106_gt_inputs/toy05_indoor.txt": {
+      "sha256": "1bb2433f521ae44c146e6df9d7bbd825daa1d11e1b8df9f36d7d98e8ebd524ec",
+      "bytes": 19280,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toy05_indoor.txt"
+    },
+    "m106_gt_inputs/toy06_indoor.txt": {
+      "sha256": "21ec622063569d66a1d4135a7f86b2b983070fbd3f2331d2bd18ec7aacb4cfc6",
+      "bytes": 17865,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toy06_indoor.txt"
+    },
+    "m106_gt_inputs/toy07_indoor_320.txt": {
+      "sha256": "683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2",
+      "bytes": 20581,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toy07_indoor_320.txt"
+    },
+    "m106_gt_inputs/toy08_indoor.txt": {
+      "sha256": "6c471ef8b84b8cd168a4ea3b7e578131a659bc59ca4207afb6d54bc819feec4d",
+      "bytes": 29057,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toy08_indoor.txt"
+    },
+    "m106_gt_inputs/toy10_indoor.txt": {
+      "sha256": "018c4dd5c17df16c7e186a4ad2f48759ba4836cedfe8fbf43edc53ba40c61e14",
+      "bytes": 14394,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toy10_indoor.txt"
+    },
+    "m106_gt_inputs/toydog_indoor.txt": {
+      "sha256": "837f3df1f6bac05974c27339219bc9d61c8943a73ba03f8aa7f7cf4aaa6c4b01",
+      "bytes": 14165,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/toydog_indoor.txt"
+    },
+    "m106_gt_inputs/trashbin_indoor.txt": {
+      "sha256": "a10a14dc93003e0b3f111f92ebe093ebff80d856f9d01637af43bc5dc057edb1",
+      "bytes": 14533,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/trashbin_indoor.txt"
+    },
+    "m106_gt_inputs/tree_wild.txt": {
+      "sha256": "3563aa656258cfab370ff9aa39a887500afa9d80a20aa39d273f02074cd8089e",
+      "bytes": 22857,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/tree_wild.txt"
+    },
+    "m106_gt_inputs/trophy_indoor.txt": {
+      "sha256": "8cee409befcc8e7ddc51c9d971bcd323ae4b4d527607359c17421b222b1c9cf2",
+      "bytes": 8775,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/trophy_indoor.txt"
+    },
+    "m106_gt_inputs/ukulele02_indoor.txt": {
+      "sha256": "fd075a6c2a64bd319316c63b6be190b8e16565e5e1af99147b08d65f703733d9",
+      "bytes": 23693,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m106_gt_inputs/ukulele02_indoor.txt"
+    },
+    "M106_RAW_GT_RECEIPT.json": {
+      "sha256": "dc456dfd37e626fcde809d31f7760eae301bf7da33238400439f28401f4f9bf2",
+      "bytes": 64083,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M106_RAW_GT_RECEIPT.json"
+    },
+    "M106_REPLAY_RECEIPT.json": {
+      "sha256": "bdf20d097364e885f6e9aa1a7eb380427fc980568e29d7e61898d4c2302f0652",
+      "bytes": 1417,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M106_REPLAY_RECEIPT.json"
+    },
+    "M106_SELECTED_GEOMETRY_PLAN.md": {
+      "sha256": "9ced7ee2f76fe1ca9f5df3c038f6ec2a9e2f7b369a01d72fea02df932b7a7695",
+      "bytes": 2755,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M106_SELECTED_GEOMETRY_PLAN.md"
+    },
+    "prepare_train_states.py": {
+      "sha256": "cceb53710cdbde8350000c25d6f0ed25b490e4084022b37c76062315ad641c79",
+      "bytes": 6047,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_train_states.py"
+    },
+    "run_m106_selected_geometry.py": {
+      "sha256": "9a3cd0fcc6d875256b7ae0cf7f8e1856f08ce5a8dcec7eb8218bae8c03bd9989",
+      "bytes": 3120,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m106_selected_geometry.py"
+    },
+    "train_ab_visual_control.py": {
+      "sha256": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+      "bytes": 13963,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_ab_visual_control.py"
+    },
+    "train_fixed_visual_selector.py": {
+      "sha256": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+      "bytes": 11058,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_fixed_visual_selector.py"
+    },
+    "train_local_visual_geometry.py": {
+      "sha256": "bfb63d22a4e3d2d5f86475854f31210000ebea3d14ce26b40b340b4695e562b8",
+      "bytes": 14232,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_local_visual_geometry.py"
+    },
+    "train_selected_geometry_preservation.py": {
+      "sha256": "14bf528777efcf338642f49d8a4b9b00b6e7641912bb89fc3a421afeaff4e7b4",
+      "bytes": 16256,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_selected_geometry_preservation.py"
+    },
+    "verify_m106_checkpoint_replay.py": {
+      "sha256": "7a7d4cfe069c80c329e8d4367f5e98649a493d8d6aec047dd4bbde9bc498a9d8",
+      "bytes": 5564,
+      "absolute_path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/verify_m106_checkpoint_replay.py"
+    },
+    "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torch/_decomp/decompositions.py": {
+      "sha256": "c07db919fdf2008e59d2254ab1e723c934ca1fc3cfc452fa4a6f20cdc87a9c56",
+      "bytes": 222143,
+      "absolute_path": "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torch/_decomp/decompositions.py"
+    },
+    "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torch/version.py": {
+      "sha256": "2aba2b231a8cda9e560ecdf9eee9f34923f648a3bf7c9c156a690562a1cd6957",
+      "bytes": 323,
+      "absolute_path": "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torch/version.py"
+    },
+    "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torchgen/packaged/autograd/derivatives.yaml": {
+      "sha256": "04035b0c074f246e82c96ccf0a8ef7d43d7cf9d65d556c4242c854d28fdf81d5",
+      "bytes": 189604,
+      "absolute_path": "C:/Users/gb/AppData/Local/uv/cache/archive-v0/Fi_OUYJWFu9xFWZGDf8J2/torchgen/packaged/autograd/derivatives.yaml"
+    }
+  },
+  "deterministic_verification_scripts": {
+    "primary": "from pathlib import Path\nfrom collections import Counter, defaultdict, OrderedDict\nimport ast, csv, io, hashlib, json, math, pickle, struct, zipfile\n\nrepo=Path(r'C:\\Users\\gb\\.codex_track_publish_m29_20260902')\nbase=repo/'projects/sttrack_lachtt_v1/diagnostics/three_module_20260928'\nroot=base/'m106_completed'\ndef digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()\ndef read(p): return json.loads(p.read_text(encoding='utf-8-sig'))\ndef rows(p): return [json.loads(x) for x in p.read_text(encoding='utf-8-sig').splitlines()]\ndef single(x): return struct.unpack('<f',struct.pack('<f',x))[0]\ndef iou_xywh(b,t):\n    b=[single(v) for v in b];t=[single(v) for v in t]\n    right=[min(single(b[i]+b[i+2]),single(t[i]+t[i+2])) for i in [0,1]]\n    left=[max(b[i],t[i]) for i in [0,1]]\n    size=[max(0.0,single(right[i]-left[i])) for i in [0,1]]\n    inter=single(size[0]*size[1])\n    area_b=single(b[2]*b[3]); area_t=single(t[2]*t[3])\n    union=single(single(area_b+area_t)-inter)\n    assert union>0\n    v=single(inter/union)\n    assert math.isfinite(v) and 0<=v<=1\n    return v\ndef iou_xyxy(b,t):\n    b=[single(v) for v in b];t=[single(v) for v in t]\n    br=[single(b[i]+b[i+2]) for i in [0,1]]\n    tr=[single(t[i]+t[i+2]) for i in [0,1]]\n    extent=[max(0.0,single(min(br[i],tr[i])-max(b[i],t[i]))) for i in [0,1]]\n    inter=single(extent[0]*extent[1])\n    area_b=single(single(br[0]-b[0])*single(br[1]-b[1]))\n    area_t=single(single(tr[0]-t[0])*single(tr[1]-t[1]))\n    return single(inter/single(single(area_b+area_t)-inter))\ndef summarize(rr):\n    r={'valid_gt':len(rr)}\n    tests={'native_iou50':lambda x:x['native_iou']>=.5,\n           'selected_iou50':lambda x:x['selected_iou']>=.5,\n           'oracle_iou50':lambda x:x['oracle_iou']>=.5,\n           'rescues':lambda x:x['native_iou']<.5 and x['selected_iou']>=.5,\n           'breaks':lambda x:x['native_iou']>=.5 and x['selected_iou']<.5,\n           'parent_correct':lambda x:x['parent_iou']>=.5,\n           'parent_rescues':lambda x:x['parent_iou']<.5 and x['selected_iou']>=.5,\n           'parent_breaks':lambda x:x['parent_iou']>=.5 and x['selected_iou']<.5,\n           'original_top10_correct':lambda x:x['native_top10_iou']>=.5,\n           'original_miss_refined_hit':lambda x:x['native_top10_iou']<.5 and x['oracle_iou']>=.5}\n    for k,f in tests.items(): r[k]=sum(bool(f(x)) for x in rr)\n    for k,field in [('native_mean_iou','native_iou'),('selected_mean_iou','selected_iou'),('parent_mean_iou','parent_iou')]:\n        r[k]=sum(x[field] for x in rr)/len(rr)\n    return r\n\nruntime={}\nfor p in sorted(root.rglob('*')):\n    if not p.is_file():continue\n    b=p.read_bytes()\n    if p.suffix=='.json': runtime[p.relative_to(root).as_posix()]=json.loads(b)\n    elif p.suffix in ('.jsonl','.log'): runtime[p.relative_to(root).as_posix()]=[json.loads(l) for l in b.splitlines()]\n    elif p.suffix=='.exit': runtime[p.relative_to(root).as_posix()]=int(b)\n    elif p.suffix=='.csv': runtime[p.relative_to(root).as_posix()]=list(csv.DictReader(io.StringIO(b.decode())))\n    elif p.suffix=='.md': runtime[p.relative_to(root).as_posix()]=b.decode()\n    elif p.suffix=='.pt': runtime[p.relative_to(root).as_posix()]=b\n    else: raise AssertionError(p)\nassert len(runtime)==29\ndownload=runtime['download_receipt.json']\nassert len(download['files'])==25\nfor f in download['files']:\n    p=root/f['relative'];assert p.stat().st_size==f['bytes'] and digest(p)==f['sha256']\ndep=read(base/'M106_DEPLOY_RECEIPT.json')\nfor f in dep['files']:\n    p=base/f['path'];assert p.stat().st_size==f['bytes'] and digest(p)==f['sha256']\nfor name,h in dep['remote_checks']['files'].items():assert digest(base/name)==h\nassert dep['exit_code']==0 and dep['remote_stderr']==''\nassert all(c['exit_code']==0 and c['stderr']=='' for c in dep['remote_checks']['checks'])\nprep=read(base/'m105_inputs/preparation.json')\nlabels=read(base/'m105_inputs/training_labels.json')\nassert len(labels)==3502\nfor n,r in read(base/'m105_inputs/download_receipt.json').items():\n    p=base/'m105_inputs'/n;assert p.stat().st_size==r['bytes'] and digest(p)==r['sha256']\nassert digest(base/'m105_inputs/training_labels.json')==prep['training_labels_sha256']\ngeometry=runtime['verification/geometry_boxes.jsonl']\nassert len(geometry)==3039 and len({g['key'] for g in geometry})==3039\nassert set(g['key'] for g in geometry)=={k for k,v in labels.items() if v['current'] is not None}\nvalid_sets={s:{v['sequence'] for v in labels.values() if v['split']==s and v['current'] is not None} for s in ['fit','development']}\nassert len(valid_sets['fit'])==130 and len(valid_sets['development'])==22 and not(valid_sets['fit']&valid_sets['development'])\nfor k,v in labels.items():\n    assert k==v['sequence']+'@'+str(v['frame'])\n    assert v['split'] in ['fit','development']\n    for name in ['current','previous']:\n        if v[name] is not None:\n            assert len(v[name])==4 and all(math.isfinite(x) for x in v[name]) and v[name][2]>0 and v[name][3]>0\nassert Counter(x['split'] for x in labels.values())==prep['split_events']\nassert Counter(tag for x in labels.values() for tag in x['strata'])==prep['event_tags']\n\ndriver=runtime['driver.json']; launch=runtime['launch.json']; ctrl=runtime['controller.log']\nassert len(ctrl)==3 and ctrl[-1]==driver and ctrl[1]==launch\nassert launch['started_utc']==driver['started_utc']\nassert len(ctrl[0]['runs'])==2 and len(launch['runs'])==4\nexpected=[('sanity',0,0),('sanity',1,1),('train',0,0),('train',1,1)]\nassert [(r['mode'],r['weight'],r['gpu']) for r in driver['runs']]==expected\nassert driver['exit_code']==runtime['driver.exit']==0\nfor r in driver['runs']:\n    name=r['mode']+'_weight'+str(r['weight']);report=runtime[name+'/result.json'];log=runtime[name+'.log']\n    assert r['exit_code']==runtime[name+'.exit']==0\n    assert log[:-1]==report['history']\n    assert log[-1]=={k:v for k,v in report.items() if k!='history'}\n    assert report['mode']==r['mode'] and report['selected_preservation_weight']==r['weight']\n    assert report['seed']==2027 and report['learning_rate']==.0003 and report['batch_size']==64\n    assert report['eligible_fit_events']==2033 and report['optimized_parameters']==59540\n    assert report['source_sha256']==digest(base/'train_selected_geometry_preservation.py')\n    assert all(report[k] is True for k in ['actual3039zero_geometry_exact','actual495parent_selection_exact','parent_parameters_buffers_unchanged','no_GT_forward_gate','no_semantic_identity_labels_or_public_or_recursive_action'])\n    if r['mode']=='sanity':\n        assert report['optimizer_steps']==2 and not report['checkpoint_saved'] and not report['development_evaluated']\n        assert all(v>0 and math.isfinite(v) for v in report['gradient_norms'].values())\n    else:\n        assert report['optimizer_steps']==384 and len(report['history'])==12\n        assert [h['epoch'] for h in report['history']]==list(range(1,13))\n        assert all(h['optimizer_steps']==32 and math.isfinite(h['mean_loss']) for h in report['history'])\n        assert report['final_reload_all3039rows_exact']\n        assert digest(root/name/'final.pt')==report['final_weight_sha256']\n\nreplay=runtime['verification/result.json'];rr=read(base/'M106_REPLAY_RECEIPT.json')\nassert rr['exit_code']==0 and rr['stderr']==''\nassert json.loads(rr['stdout'])==replay\nassert digest(base/'verify_m106_checkpoint_replay.py')==rr['source_sha256']==replay['source_sha256']\nassert digest(root/'verification/geometry_boxes.jsonl')==replay['geometry_boxes_sha256']\nassert digest(base/'m105_inputs/training_labels.json')==replay['training_labels_sha256']\nassert replay['events']==3039 and replay['serialized_candidate_boxes']==91170 and replay['optimizer_steps']==0 and replay['checkpoints_created'] is False\nfor w in ['0','1']:\n    assert digest(root/('train_weight'+w)/'final.pt')==replay['final_weights_sha256'][w]\n    assert runtime['train_weight'+w+'/result.json']['parent_weight_sha256']==replay['parent_weight_sha256']\n\nbykey={g['key']:g for g in geometry}\nious={}\nfor g in geometry:\n    label=labels[g['key']]\n    assert g['split']==label['split'] and g['strata']==label['strata'] and 0<=g['selected']<10\n    assert set(g['boxes'])=={'parent','weight0','weight1'}\n    ious[g['key']]={}\n    for name,bb in g['boxes'].items():\n        assert len(bb)==10 and all(len(b)==4 and all(math.isfinite(v) for v in b) and b[2]>0 and b[3]>0 for b in bb)\n        ious[g['key']][name]=[iou_xywh(b,label['current']) for b in bb]\nsummaries={};profiles={};parent_changes={};paired={}\nold=read(base/'m104_completed/train/result.json')\nassert old['source_sha256']==digest(base/'train_local_visual_geometry.py')\nassert old['final_weight_sha256']==digest(base/'m104_completed/train/final.pt')==digest(root/'train_weight0/final.pt')==replay['M104_final_sha256']\nallrows={}\nfor w in ['0','1']:\n    summaries[w]={};profiles[w]={};parent_changes[w]={};allrows[w]={}\n    report=runtime['train_weight'+w+'/result.json']\n    for split,n in [('fit',2544),('development',495)]:\n        ev=runtime['train_weight'+w+'/'+split+'_events.jsonl'];allrows[w][split]=ev\n        assert len(ev)==n and len({r['key'] for r in ev})==n\n        gg=[g for g in geometry if g['split']==split]\n        assert [r['key'] for r in ev]==[g['key'] for g in gg]\n        assert set(r['key'] for r in ev)=={k for k,l in labels.items() if l['split']==split and l['current'] is not None}\n        groups=defaultdict(list);joint=defaultdict(list)\n        for r,g in zip(ev,gg):\n            p=ious[r['key']]['parent'];now=ious[r['key']]['weight'+w];s=r['selected']\n            assert r['strata']==g['strata'] and s==g['selected']\n            assert (r['native_iou'],r['parent_iou'],r['native_top10_iou'],r['selected_iou'],r['oracle_iou'])==(p[0],p[s],max(p),now[s],max(now))\n            groups['all'].append(r)\n            for tag in r['strata']:groups[tag].append(r)\n            joint['|'.join(sorted(r['strata']))].append(r)\n        summaries[w][split]={k:summarize(v) for k,v in groups.items()}\n        profiles[w][split]={k:summarize(v) for k,v in joint.items()}\n        assert summaries[w][split]==report[split]\n        parent_changes[w][split]={'rescues':[r for r in ev if r['parent_iou']<.5<=r['selected_iou']],\n                                  'breaks':[r for r in ev if r['selected_iou']<.5<=r['parent_iou']]}\n        if w=='0':\n            assert (base/'m104_completed/train'/(split+'_events.jsonl')).read_bytes()==(root/'train_weight0'/(split+'_events.jsonl')).read_bytes()\n            assert summaries[w][split]==old[split]\n    d=summaries[w]['development']\n    gates={'correct_exceeds_parent':d['all']['selected_iou50']>d['all']['parent_correct'],\n           'mean_iou_exceeds_parent':d['all']['selected_mean_iou']>d['all']['parent_mean_iou'],\n           'healthy_new_breaks_zero':d['healthy']['parent_breaks']==0,\n           'transition_at_least_parent':d['transition']['selected_iou50']>=d['transition']['parent_correct']}\n    assert gates==report['fixed_state_checks']\nfor split in ['fit','development']:\n    aa=allrows['0'][split];bb=allrows['1'][split];ev=[]\n    for a,b in zip(aa,bb):\n        assert a['key']==b['key'] and a['selected']==b['selected'] and a['strata']==b['strata']\n        ev.append({'key':a['key'],'strata':a['strata'],'control_iou':a['selected_iou'],'preservation_iou':b['selected_iou']})\n    paired[split]={'gained_correct':[r for r in ev if r['control_iou']<.5<=r['preservation_iou']],\n                   'lost_correct':[r for r in ev if r['preservation_iou']<.5<=r['control_iou']],\n                   'iou_improved':sum(r['preservation_iou']>r['control_iou'] for r in ev),\n                   'iou_decreased':sum(r['preservation_iou']<r['control_iou'] for r in ev),\n                   'iou_equal':sum(r['preservation_iou']==r['control_iou'] for r in ev)}\nacc=runtime['acceptance.json']\nassert acc['summaries']==summaries and acc['joint_profiles']==profiles and acc['all_parent_changes']==parent_changes and acc['all_control_pair_changes']==paired\nassert acc['source_sha256']==digest(base/'accept_m106_selected_geometry.py')\nassert acc['unique_candidate_IoU_checks']==91170 and acc['independent_candidate_IoU_checks']==182340\nfor r in runtime['summary.csv']:\n    expected=summaries[r['weight']][r['split']][r['group']]\n    assert all(float(r[k])==v for k,v in expected.items())\nassert len(runtime['summary.csv'])==20\nasts=[ast.parse((base/n).read_text()) for n in ['train_local_visual_geometry.py','train_selected_geometry_preservation.py']]\ndefs=[{n.name:ast.dump(n,include_attributes=False) for n in t.body if isinstance(n,(ast.FunctionDef,ast.ClassDef))} for t in asts]\nsame=[n for n in defs[0] if n!='main' and defs[0][n]==defs[1][n]]\nassert set(same)=={'LocalVisualRefiner','decode','normalized_target','metadata','encoded_inputs','evaluate'}\n\nclass Storage: pass\ndef rebuild(storage,offset,size,stride,requires_grad,backward_hooks):\n    return {'storage':storage,'offset':offset,'size':size,'stride':stride,'requires_grad':requires_grad}\nclass ReadOnlyMetadata(pickle.Unpickler):\n    def find_class(self,module,name):\n        allowed={('collections','OrderedDict'):OrderedDict,('torch','FloatStorage'):Storage,('torch._utils','_rebuild_tensor_v2'):rebuild}\n        assert (module,name) in allowed,(module,name)\n        return allowed[(module,name)]\n    def persistent_load(self,pid):\n        assert pid[0]=='storage' and pid[1] is Storage\n        return {'id':pid[2],'device':pid[3],'length':pid[4]}\nck={}\nfor name in ['m104_completed/train/final.pt','m106_completed/train_weight0/final.pt','m106_completed/train_weight1/final.pt']:\n    with zipfile.ZipFile(base/name) as z:\n        assert z.testzip() is None\n        obj=ReadOnlyMetadata(io.BytesIO(z.read('final/data.pkl'))).load()\n        ck[name]={}\n        for k,v in obj.items():\n            b=z.read('final/data/'+v['storage']['id'])\n            assert len(b)==v['storage']['length']*4 and v['offset']==0\n            vals=struct.unpack('<'+'f'*(len(b)//4),b)\n            assert math.prod(v['size'])==len(vals) and all(math.isfinite(x) for x in vals)\n            ck[name][k]={'shape':v['size'],'count':len(vals),'sha256':hashlib.sha256(b).hexdigest(),'nonzero':sum(x!=0 for x in vals)}\n        assert sum(v['count'] for v in ck[name].values())==59540 and len(obj)==6\nassert ck['m104_completed/train/final.pt']==ck['m106_completed/train_weight0/final.pt']\n\nprobes=rows(base/'m103_completed/events.jsonl')\nassert len(probes)==3039 and len({p['key'] for p in probes})==3039\nassert {p['key'] for p in probes}=={g['key'] for g in geometry}\nprobe_order_equal=([p['key'] for p in probes]==[g['key'] for g in geometry])\nprobe_by={p['key']:p for p in probes}\nfor p in probes:\n    g=bykey[p['key']]\n    assert p['split']==g['split'] and p['strata']==g['strata']\n    assert p['native_iou']==ious[p['key']]['parent'][0] and p['top10_iou']==max(ious[p['key']]['parent'])\n    assert p['refinement_eligible']==(p['full_gt_inside_crop'] and p['top10_iou']>=.1)\nassert Counter(p['split'] for p in probes if p['refinement_eligible'])=={'fit':2033,'development':346}\ninspection=read(base/'M106_FIT_SELECTION_DIAGNOSTIC.json')\nassert inspection['source_sha256']==digest(base/'inspect_m106_fit_selection.py')\nfor n,h in inspection['inputs_sha256'].items():assert digest(base/n)==h\nee=[];counter=Counter();boundaries=Counter();maxdiff=0.\nfor g in geometry:\n    if g['split']!='fit' or not probe_by[g['key']]['refinement_eligible']:continue\n    values=ious[g['key']]['parent'];s=g['selected'];best=max(range(10),key=values.__getitem__)\n    t=labels[g['key']]['current'];b=g['boxes']['parent'][s];center=[t[i]+.5*t[i+2] for i in [0,1]]\n    inside=lambda factor:all(abs(center[i]-(b[i]+.5*b[i+2]))<=factor*.5*b[i+2] for i in [0,1])\n    e={'key':g['key'],'selected':s,'GT_best_index':best,'selected_iou':values[s],'GT_best_iou':values[best],\n       'target_center_inside_selected_box':inside(1),'target_center_inside_selected_factor2_context':inside(2),\n       'same_selected_and_GT_best':s==best,'selected_quality':'correct' if values[s]>=.5 else 'partial' if values[s]>=.1 else 'low'}\n    ee.append(e);counter['events']+=1;counter[e['selected_quality']]+=1\n    for k in ['same_selected_and_GT_best','target_center_inside_selected_box','target_center_inside_selected_factor2_context']:counter[k]+=int(e[k])\n    if values[s]>=.5:\n        xy=iou_xyxy(b,t);d=values[s]-xy\n        boundaries['equal' if d==0 else 'before_gt_after' if d>0 else 'before_lt_after']+=1\n        maxdiff=max(maxdiff,abs(d))\nassert ee==inspection['events'] and counter==inspection['counts']\nfor h in runtime['train_weight1/result.json']['history']:assert h['reliable_selected_fit_calls']==counter['correct']\n\nlost_lines={}\nfor split in ['fit','development']:\n    lost={r['key'] for r in paired[split]['lost_correct']}\n    lost_lines[split]=[{'key':r['key'],'line':i,'strata':r['strata'],'control':allrows['0'][split][i-1]['selected_iou'],'weight1':r['selected_iou']} for i,r in enumerate(allrows['1'][split],1) if r['key'] in lost]\nsummary={'status':'PASS','runtime_files_read':len(runtime),'download_manifest_bindings':25,'unique_candidate_iou_recomputed':3039*10*3,\n         'saved_row_scalar_comparisons':3039*2*5,'total_serialized_coordinate_values':3039*10*3*4,\n         'valid_gt_events':dict(Counter(g['split'] for g in geometry)),'excluded_invalid_current_gt':dict(Counter(l['split'] for l in labels.values() if l['current'] is None)),\n         'sequence_counts':{k:len(v) for k,v in valid_sets.items()},'matching_AST_definitions':same,\n         'all_gate_results':gates,'totals':{w:{s:v['all'] for s,v in summaries[w].items()} for w in summaries},\n         'paired':{s:{k:len(v) if isinstance(v,list) else v for k,v in r.items()} for s,r in paired.items()},\n         'lost_row_evidence':lost_lines,'postcomparison_counts':dict(counter),'probe_primary_global_row_order_equal':probe_order_equal,\n         'static_zero_box_xywh_vs_xyxy_IoU_diagnostic':{'eligible_reliable_events':sum(boundaries.values()),'counts':dict(boundaries),'max_abs_difference':maxdiff,'actual_remote_autograd_verified':False},\n         'checkpoint_tensors':ck,\n         'parent_break_row_evidence':{w:{s:[{'key':r['key'],'line':allrows[w][s].index(r)+1,'parent_iou':r['parent_iou'],'selected_iou':r['selected_iou']} for r in cc['breaks']] for s,cc in ss.items()} for w,ss in parent_changes.items()}}\nprint(json.dumps(summary,indent=2))\n",
+    "raw_gt": "from pathlib import Path\nfrom collections import Counter\nimport hashlib,json,math\nbase=Path(r'C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928')\ndef sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()\nr=json.loads((base/'M106_RAW_GT_RECEIPT.json').read_text(encoding='utf-8'))\na=r['attestation'];prep=json.loads((base/'m105_inputs/preparation.json').read_text(encoding='utf-8'))\nlabels=json.loads((base/'m105_inputs/training_labels.json').read_text(encoding='utf-8'))\nassert r['exit_code']==0 and r['stderr']==''\nassert sha(base/'attest_m106_raw_gt.py')==a['source_sha256']\nassert a['source_spec_sha256']==prep['source_spec_sha256']\nassert sha(base/'m105_inputs/training_labels.json')==a['training_labels_sha256']==prep['training_labels_sha256']\nfiles=a['files']\nassert len(files)==152 and len({f['sequence'] for f in files})==152\nassert {p.stem for p in (base/'m106_gt_inputs').glob('*.txt')}=={f['sequence'] for f in files}\nraw={};sources={};offsets={}\nfor index,f in enumerate(files):\n    p=base/'m106_gt_inputs'/(f['sequence']+'.txt')\n    assert p.stat().st_size==f['bytes'] and sha(p)==f['sha256']==f['expected_spec_sha256']\n    rr=[];ll=[]\n    for line_no,line in enumerate(p.read_text(encoding='utf-8-sig').splitlines(),1):\n        if line.strip():rr.append([float(v) for v in line.split(',')]);ll.append(line_no)\n    assert all(len(v)==4 for v in rr)\n    assert len(rr)==f['raw_rows'] and len(rr)>=f['used_rgb_frames']\n    raw[f['sequence']]=rr;offsets[f['sequence']]=ll;sources[f['sequence']]=f\n    assert all(l['split']==('fit' if index<130 else 'development') for l in labels.values() if l['sequence']==f['sequence'])\ncounts=Counter();examples=[]\ndef valid(v):return all(math.isfinite(x) for x in v) and v[2]>0 and v[3]>0\nfor key,l in labels.items():\n    assert key==l['sequence']+'@'+str(l['frame'])\n    assert 0<l['frame']<sources[l['sequence']]['used_rgb_frames']\n    for name,offset in [('current',0),('previous',-1)]:\n        frame=l['frame']+offset;v=raw[l['sequence']][frame];target=v if valid(v) else None\n        assert target==l[name],(key,name,v,l[name])\n        counts[name+'_checked']+=1;counts[name+'_valid']+=target is not None\n        if key in {'cube04_indoor@10','pine01_indoor@1276','mobilephone02_indoor@65'}:\n            examples.append({'key':key,'field':name,'raw_file':'m106_gt_inputs/'+l['sequence']+'.txt','line':offsets[l['sequence']][frame],'cached_labels_line':1,'raw_value':target})\nassert counts['current_checked']==a['current_events_checked']==3502\nassert counts['current_valid']==a['valid_events_exact']==3039\nprint(json.dumps({'status':'PASS','raw_files_checked':152,'raw_rows_parsed':sum(len(v) for v in raw.values()),'comparisons':dict(counts),'manifest_split_130_22_matches_labels':True,\n                 'examples':examples,'limit':'Local supplied raw-file hashes and all current/previous cache values verified; original dataset distribution and live remote invocation remain receipt attestations, not an auditor connection.'},indent=2))\n"
+  },
+  "generated_at": "2026-09-28T07:51:02.408Z"
+}
+

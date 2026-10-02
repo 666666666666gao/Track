@@ -1,0 +1,53 @@
+{
+  "files": [
+    {
+      "path": "train_selected_geometry_preservation.py",
+      "bytes": 16256,
+      "sha256": "14bf528777efcf338642f49d8a4b9b00b6e7641912bb89fc3a421afeaff4e7b4"
+    },
+    {
+      "path": "run_m106_selected_geometry.py",
+      "bytes": 3120,
+      "sha256": "9a3cd0fcc6d875256b7ae0cf7f8e1856f08ce5a8dcec7eb8218bae8c03bd9989"
+    },
+    {
+      "path": "M106_SELECTED_GEOMETRY_PLAN.md",
+      "bytes": 2755,
+      "sha256": "9ced7ee2f76fe1ca9f5df3c038f6ec2a9e2f7b369a01d72fea02df932b7a7695"
+    }
+  ],
+  "six_M104_definitions_AST_exact": true,
+  "remote_checks": {
+    "checks": [
+      {
+        "command": [
+          "/root/autodl-tmp/envs/sttrack/bin/python",
+          "-m",
+          "py_compile",
+          "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_selected_geometry_preservation.py",
+          "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m106_selected_geometry.py"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "/root/autodl-tmp/envs/sttrack/bin/python",
+          "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_selected_geometry_preservation.py",
+          "--help"
+        ],
+        "exit_code": 0,
+        "stdout": "usage: train_selected_geometry_preservation.py [-h] --cache CACHE --contexts\n                                               CONTEXTS --origins ORIGINS\n                                               --empty-bank EMPTY_BANK\n                                               --geometry-probe GEOMETRY_PROBE\n                                               --parent-weight PARENT_WEIGHT\n                                               --parent-result PARENT_RESULT\n                                               --repository REPOSITORY\n                                               --output OUTPUT --mode\n                                               {sanity,train,reference}\n                                               --device DEVICE\n                                               --selected-preservation-weight\n                                               {0,1}\n\noptional arguments:\n  -h, --help            show this help message and exit\n  --cache CACHE\n  --contexts CONTEXTS\n  --origins ORIGINS\n  --empty-bank EMPTY_BANK\n  --geometry-probe GEOMETRY_PROBE\n  --parent-weight PARENT_WEIGHT\n  --parent-result PARENT_RESULT\n  --repository REPOSITORY\n  --output OUTPUT\n  --mode {sanity,train,reference}\n  --device DEVICE\n  --selected-preservation-weight {0,1}\n",
+        "stderr": ""
+      }
+    ],
+    "python": "3.8.20 (default, Oct  3 2024, 15:24:27) \n[GCC 11.2.0]",
+    "files": {
+      "train_selected_geometry_preservation.py": "14bf528777efcf338642f49d8a4b9b00b6e7641912bb89fc3a421afeaff4e7b4",
+      "run_m106_selected_geometry.py": "9a3cd0fcc6d875256b7ae0cf7f8e1856f08ce5a8dcec7eb8218bae8c03bd9989"
+    }
+  },
+  "remote_stderr": "",
+  "exit_code": 0
+}
