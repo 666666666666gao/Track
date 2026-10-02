@@ -1,6 +1,6 @@
 const qs = new URLSearchParams(location.search);
 const $ = id => document.getElementById(id);
-let manifest, cases = [], current = 0;
+let manifest, cases = [], current = 0, detailImage;
 
 function escapeHTML(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -37,7 +37,7 @@ function render() {
   const item = cases[current], answer = reviewer() ? saved(item) : {};
   $('case').innerHTML = `
     <div class="case-head"><div><h2>${escapeHTML(item.sequence)} · #${item.number}</h2><div class="muted">${escapeHTML(manifest.dataset.toUpperCase())} | 初始化帧 ${escapeHTML(item.frame)} | 序列共 ${item.sequence_frames} 帧</div></div><small class="muted">key ${escapeHTML(item.id)}</small></div>
-    <div class="evidence"><div><img class="board" src="${escapeHTML(item.board)}" alt="初始目标红框、放大图和无标记邻近帧" loading="lazy"><div class="video-area"><button type="button" id="load-video">加载整段低清预览并跳到初始化帧</button><video id="video" class="video" controls preload="none"></video></div></div>
+    <div class="evidence"><div><img class="board" src="${escapeHTML(item.board)}" alt="初始目标红框、放大图和无标记邻近帧" loading="lazy" decoding="async"><div class="board-tools"><button type="button" id="open-board">放大查看目标与前后帧</button><a href="${escapeHTML(item.board)}" target="_blank" rel="noopener">在新窗口打开原尺寸拼图</a></div><div class="video-area"><button type="button" id="load-video">加载整段低清预览并跳到初始化帧</button><video id="video" class="video" controls preload="none"></video></div></div>
     <div><section class="description"><h3>待审核的自动描述</h3><p>类别：<code>${escapeHTML(item.category)}</code></p><p>属性：${escapeHTML(item.attributes.join(' / ') || '无')}</p><p class="muted">这不是人工真值。红框只在初始化帧出现，邻近帧和视频不使用未来标注。</p></section>
     <form id="review-form" class="review-form"><h3>我的判断</h3><div class="status-options">
       <label><input type="radio" name="status" value="supported" ${answer.status === 'supported' ? 'checked' : ''}>描述支持目标</label>
@@ -49,6 +49,7 @@ function render() {
       <label class="wide">不确定或暂时不可见的属性<input name="uncertain_attributes" value="${escapeHTML(answer.uncertain_attributes)}"></label>
       <label class="wide">判断依据与备注<textarea name="note" placeholder="写明哪几帧帮助判断；不确定原因">${escapeHTML(answer.note)}</textarea></label>
     </div><p class="saved" id="saved-state">${answer.status ? '已保存在当前浏览器' : '选择判断后自动保存在当前浏览器'}</p></form></div></div>`;
+  $('open-board').addEventListener('click', openEvidence);
   $('load-video').addEventListener('click', () => {
     const player = $('video');
     player.src = item.video;
@@ -57,6 +58,27 @@ function render() {
   });
   $('review-form').addEventListener('input', saveCurrent);
   $('review-form').addEventListener('change', saveCurrent);
+}
+async function openEvidence() {
+  detailImage = $('case').querySelector('.board');
+  await detailImage.decode();
+  $('detail-region').value = 'target';
+  $('detail-zoom').value = '2';
+  $('detail-title').textContent = `${cases[current].sequence} · #${cases[current].number}`;
+  drawEvidence();
+  $('evidence-dialog').showModal();
+}
+function drawEvidence() {
+  const regions = {
+    target: [640, 0, 320, 380], initialization: [0, 0, 640, 380],
+    context: [0, 380, 960, 185], full: [0, 0, 960, 565]
+  };
+  const [x, y, width, height] = regions[$('detail-region').value];
+  const canvas = $('detail-canvas'), zoom = Number($('detail-zoom').value);
+  canvas.width = width; canvas.height = height;
+  canvas.style.width = `${width * zoom}px`; canvas.style.height = `${height * zoom}px`;
+  canvas.getContext('2d').drawImage(detailImage, x, y, width, height, 0, 0, width, height);
+  $('detail-scroll').scrollTop = 0; $('detail-scroll').scrollLeft = 0;
 }
 function saveCurrent() {
   if (!reviewer()) { $('saved-state').textContent = '请先填写审核者编号'; $('reviewer').focus(); return; }
@@ -98,4 +120,7 @@ $('search').addEventListener('input', applyFilter);
 $('previous').addEventListener('click', () => { current--; render(); });
 $('next').addEventListener('click', () => { current++; render(); });
 $('export').addEventListener('click', exportCSV);
+$('close-evidence').addEventListener('click', () => $('evidence-dialog').close());
+$('detail-region').addEventListener('change', drawEvidence);
+$('detail-zoom').addEventListener('change', drawEvidence);
 loadDataset($('dataset').value).catch(error => { $('case').textContent = error.message; });

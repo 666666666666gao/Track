@@ -28,6 +28,15 @@
     <section id="case" class="case" aria-live="polite"></section>
     <footer>审核建议：先看红框确认目标；再看无标记的邻近帧和整段预览理解外观变化。无法确认时选“不确定”，不要猜类别。视频按 25 fps 播放、抽取 5 fps，这是审核播放设置，不表示数据集实测采样率。数据来源：<a href="https://github.com/xiaozai/DeT">DepthTrack</a>、<a href="https://zenodo.org/records/5855099">CDTB</a>、<a href="https://www.votchallenge.net/vot2022/dataset.html">VOT-RGBD2022</a>。</footer>
   </main>
+  <dialog id="evidence-dialog" aria-labelledby="detail-title">
+    <div class="detail-toolbar"><h2 id="detail-title">放大查看</h2><button type="button" id="close-evidence">关闭</button></div>
+    <div class="detail-toolbar">
+      <label>查看区域<select id="detail-region"><option value="target">初始化目标放大区</option><option value="initialization">初始化完整画面与红框</option><option value="context">前后四帧</option><option value="full">完整拼图</option></select></label>
+      <label>显示倍率<select id="detail-zoom"><option value="1">1倍 · 原尺寸</option><option value="1.5">1.5倍</option><option value="2">2倍</option><option value="3">3倍</option></select></label>
+      <span class="muted">复用当前图片，不额外下载；放大显示不增加原图细节。可按 Esc 关闭。</span>
+    </div>
+    <div id="detail-scroll"><canvas id="detail-canvas" aria-label="当前所选区域的放大画面"></canvas></div>
+  </dialog>
   <script src="review.js" defer></script>
 </body>
 </html>

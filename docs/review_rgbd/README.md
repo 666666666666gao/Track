@@ -8,6 +8,12 @@ The 25-fps video timeline is a review playback setting, not a measurement of
 the original capture rate. Videos retain the full sequence duration and sample
 five images per review second at 320-pixel width.
 
+Use the image zoom button to inspect the initialization target, the full boxed
+initial frame, neighbor frames, or the whole board at 1x to 3x display scale.
+The viewer reuses the currently loaded JPEG; it downloads no additional media.
+Only one case is rendered at a time, and videos still load only on request.
+Display enlargement does not create detail absent from the source image.
+
 The displayed category and attributes are provisional automatic descriptions.
 Reviewers choose supported, conflicting, or uncertain, can correct the category
 and attributes, and export their own UTF-8 CSV. Answers are saved only in that
