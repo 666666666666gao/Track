@@ -1,0 +1,78 @@
+{
+  "status": "complete_M110_gpu_sanity",
+  "arm": "weak_text",
+  "mode": "sanity",
+  "seed": 2027,
+  "epochs": 1,
+  "batch_size": 64,
+  "learning_rate": 0.0003,
+  "optimizer_steps": 3,
+  "trainable_prefixes": [
+    "evidence.text.",
+    "evidence.phrase_slots",
+    "evidence.phrase_read.",
+    "evidence.text_read.",
+    "evidence.evidence.",
+    "semantic.",
+    "phrase."
+  ],
+  "optimized_parameters": 95683,
+  "source_sha256": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+  "prototype_sha256": "09db6833f161b6028e64905f2e73a69027e0caf28c611b6c9d81a9fa6862d9fb",
+  "input_helper_sha256": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+  "parent_sha256": "1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293",
+  "bank_sha256": "8ff9887ceae2a26f36867824a3a04941fb076fc15b0e93575538f5374633de10",
+  "labels_sha256": "95144cc4c47987fb1960e2d8f63cb9fa41531a83c6249ea7950d0f54845887a7",
+  "human_confirmed": false,
+  "weak_identity_pairs": 11,
+  "weak_rank_optimized": false,
+  "loss_components": [
+    "localization",
+    "preservation"
+  ],
+  "predecessor_trainer_sha256": "f66e862477da660e6d68e5f57f066d8acd83adbc2d85923421a41e11b31224e3",
+  "history": [
+    {
+      "epoch": 1,
+      "optimizer_steps": 3,
+      "mean_losses": [
+        0.6728962461153666,
+        0.6696678002675375,
+        0.003228453996901711,
+        0.0
+      ],
+      "weak_pair_calls": 0,
+      "seconds": 0.13477563858032227
+    }
+  ],
+  "empty_all3039_scores_quality_exact": true,
+  "frozen_parameters_buffers_exact": true,
+  "no_recursive_or_public_evaluation": true,
+  "elapsed_seconds": 1.397428035736084,
+  "gradient_norms": [
+    {
+      "evidence.text": 0.0,
+      "evidence.phrase_read": 0.0,
+      "evidence.text_read": 0.0,
+      "semantic": 0.03649613633751869,
+      "phrase": 0.0011587117332965136
+    },
+    {
+      "evidence.text": 0.004862712569320138,
+      "evidence.phrase_read": 0.0001937786587404844,
+      "evidence.text_read": 0.0017905200156747014,
+      "semantic": 0.036090485751628876,
+      "phrase": 0.0011468051234260201
+    },
+    {
+      "evidence.text": 0.009159663063655898,
+      "evidence.phrase_read": 0.0003867368382088898,
+      "evidence.text_read": 0.0036188711474096635,
+      "semantic": 0.039576128125190735,
+      "phrase": 0.0025255170185118914
+    }
+  ],
+  "checkpoint_saved": false,
+  "development_metrics_reported": false,
+  "gpu_peak_reserved_bytes": 574619648
+}

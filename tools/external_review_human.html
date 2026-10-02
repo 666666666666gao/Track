@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CDTB / VOT 人工复核</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f2f5f9;color:#183047;font:16px system-ui,'Microsoft YaHei',sans-serif}header{background:#183047;color:white;padding:22px 5vw}main{max-width:1250px;margin:24px auto;padding:0 20px}section{background:white;border-radius:12px;padding:20px;margin-bottom:20px}h1{font-size:24px;margin:0 0 8px}h2{font-size:18px;margin:0 0 12px}.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center}button,select,input,textarea{font:inherit;padding:9px;border:1px solid #c3cdd8;border-radius:6px}button{background:#eef4fb;cursor:pointer}button.primary{background:#16766e;color:white;border-color:#16766e}input,textarea{width:100%}input.short{width:130px}label{display:block;font-size:14px;font-weight:600;margin:12px 0 6px}small,.muted{color:#5d7184}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}img,video{width:100%;display:block;background:#111927;border-radius:6px}video{max-height:500px}.evidence{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}.id{font:12px monospace;overflow-wrap:anywhere}#message{margin-top:10px;color:#17665e}a{color:#126b86}@media(max-width:750px){.grid{grid-template-columns:1fr}}
+</style>
+<header><h1>CDTB / VOT：先导入 GPT 初审，再逐条人工确认</h1><div>红框只标记合法初始化帧的目标。邻近帧与整段视频用于辅助辨认，不提供后续 GT 框。</div></header>
+<main>
+<section><div class="bar"><label style="margin:0">审核人 <input class="short" id="reviewer" placeholder="姓名或代号"></label><select id="dataset"><option value="cdtb">CDTB · 80 条</option><option value="vot">VOT · 1765 个初始化点</option></select><select id="filter"><option value="all">全部案例</option><option value="pending">待人工确认</option><option value="done">已人工确认</option></select><button id="importButton">导入 GPT 初审 CSV</button><input type="file" id="importFile" accept=".csv" hidden><button id="exportButton" class="primary">导出全部审核 CSV</button></div><div id="message">结果保存在本浏览器；请及时导出 CSV。多人可分别填写，再交回汇总。模型初审不会自动变成人工确认。</div></section>
+<section><div class="bar"><button id="previous">上一条</button><button id="next">下一条</button><label style="margin:0">跳转编号 <input id="jump" class="short" type="number" min="1" value="1"></label><button id="jumpButton">跳转</button><strong id="progress"></strong></div><h2 id="caseTitle" style="margin-top:18px"></h2><div id="caseId" class="id"></div></section>
+<section><h2>初始化红框 + 附近四帧</h2><img id="board" alt="初始化与邻近帧图页"><p class="muted">上方：初始化图与目标放大图；下方：邻近帧。首尾越界的帧会截到序列边界。</p></section>
+<section><h2>整段序列代表帧</h2><img id="overview" alt="整段视频代表帧"><p class="muted">均匀抽取的低分辨率帧只用于身份辅助；精细属性请核对初始化放大图或视频。</p><video id="video" controls preload="metadata"></video><div class="bar" style="margin-top:10px"><button id="anchor">回到本次初始化时刻</button><button id="start">从序列开头播放</button><a id="downloadVideo">打开视频文件</a></div><p class="muted">视频为便于审核而重采样的预览。25 fps 是索引换算的播放设置，不是实测采集帧率。</p></section>
+<section class="grid"><div><h2>原自动描述（未视为真值）</h2><div id="original" class="evidence"></div></div><div><h2>GPT / 其他模型初审建议</h2><div id="proposal" class="evidence"></div></div></section>
+<section><h2>你的人工审核结果</h2><div class="grid"><div><label>审核状态</label><select id="human_status"><option value="pending">尚未人工确认</option><option value="confirmed">已确认</option><option value="corrected">人工修正</option><option value="uncertain">人工仍无法确定</option></select><label>初始化目标类别（英文短词优先）</label><input id="human_category"><label>初始化帧可支持的稳定属性（分号分隔）</label><input id="human_init_stable_attributes"></div><div><label>不确定 / 不可见的属性（分号分隔）</label><input id="human_uncertain_attributes"><label>备注：哪些判断依赖后续帧？是否存在身份歧义？</label><textarea id="human_notes" rows="6"></textarea></div></div><div class="bar" style="margin-top:18px"><button id="useProposal">将模型类别 / 属性复制到表单（仍待人工确认）</button><button id="save" class="primary">保存本条</button></div></section>
+<section><p>CDTB 与 VOT 是外部评测数据。多帧审核材料只用于审核与问题分析，不能成为 DepthTrack 训练监督或测试期未来帧输入。</p><p><a href="README_先读.md">完整使用说明</a> · <a href="GPT审核提示词.txt">GPT 审核提示词</a> · <a href="review_all_1845.csv">1845 条空白审核总表</a></p></section>
+</main>
+<script id="data" type="application/json">__REVIEW_DATA__</script>
+<script>
+const data=JSON.parse(document.querySelector('#data').textContent), rows=data.rows, fields=data.csv_fields;
+const $=id=>document.getElementById(id), manual=['human_status','human_category','human_init_stable_attributes','human_uncertain_attributes','human_notes'];
+const modelFields=fields.filter(k=>k.startsWith('model_')), key='rgbd-external-review-20261002', edits=JSON.parse(localStorage.getItem(key)||'{}');
+let active=[], position=0, current=null;
+$('reviewer').value=localStorage.getItem(key+'-reviewer')||'';
+function merged(r){return {...r,...(edits[r.case_id]||{})}}
+function persist(){localStorage.setItem(key,JSON.stringify(edits))}
+function show(){if(!active.length){$('caseTitle').textContent='此筛选条件下没有案例';return}current=active[position]; const r=merged(current);
+ $('caseTitle').textContent=`${r.dataset.toUpperCase()} #${r.anchor_number} · ${r.sequence} · 初始化 ${r.init_frame}`;
+ $('caseId').textContent=`case_id: ${r.case_id}`;
+ $('board').src=r.image_path;$('overview').src=r.overview_path;$('video').src=r.video_path;$('downloadVideo').href=r.video_path;$('jump').value=r.anchor_number;
+ $('original').textContent=`类别：${r.provisional_category}\n属性：${r.provisional_attributes}\n本次初始化帧索引（零基）：${r.init_frame_index}`;
+ $('proposal').textContent=r.model_status==='pending'?'尚未导入模型初审':`模型：${r.model_reviewer}\n实际看图：${r.model_image_reviewed}\n状态：${r.model_status}\n类别：${r.model_category}\n初始化稳定属性：${r.model_init_stable_attributes}\n不确定项：${r.model_uncertain_attributes}\n仅后续帧线索：${r.model_context_only_notes}\n证据：${r.model_evidence}`;
+ for(const f of manual)$(f).value=r[f]||'';
+ const done=rows.filter(x=>x.dataset===$('dataset').value&&merged(x).human_status!=='pending').length;
+ $('progress').textContent=`当前 ${position+1}/${active.length} · 本数据集人工处理 ${done}/${rows.filter(x=>x.dataset===$('dataset').value).length}`;
+}
+function select(){active=rows.filter(r=>r.dataset===$('dataset').value&&($('filter').value==='all'||(merged(r).human_status==='pending')===($('filter').value==='pending')));position=0;show()}
+$('dataset').onchange=select;$('filter').onchange=select;
+$('previous').onclick=()=>{position=Math.max(0,position-1);show()};$('next').onclick=()=>{position=Math.min(active.length-1,position+1);show()};
+$('jumpButton').onclick=()=>{const i=active.findIndex(r=>+r.anchor_number===+$('jump').value);if(i>=0){position=i;show()}};
+$('anchor').onclick=()=>{$('video').currentTime=+current.video_start_seconds};$('start').onclick=()=>{$('video').currentTime=0;$('video').play()};
+$('save').onclick=()=>{if(!$('reviewer').value.trim()){alert('请先填写审核人代号');return} const entry=edits[current.case_id]||{};for(const f of manual)entry[f]=$(f).value;entry.human_reviewer=$('reviewer').value.trim();entry.human_updated_at=new Date().toISOString();edits[current.case_id]=entry;persist();localStorage.setItem(key+'-reviewer',entry.human_reviewer);$('message').textContent='本条已保存，请在离开浏览器前导出 CSV。';show()};
+$('useProposal').onclick=()=>{const r=merged(current);$('human_category').value=r.model_category;$('human_init_stable_attributes').value=r.model_init_stable_attributes;$('human_uncertain_attributes').value=r.model_uncertain_attributes;$('human_status').value='pending'};
+function parseCSV(text){const out=[];let row=[],cell='',quoted=false;for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){cell+='"';i++}else quoted=!quoted}else if(c===','&&!quoted){row.push(cell);cell=''}else if(c==='\n'&&!quoted){row.push(cell.replace(/\r$/,''));out.push(row);row=[];cell=''}else cell+=c}if(cell||row.length){row.push(cell.replace(/\r$/,''));out.push(row)}out[0][0]=out[0][0].replace(/^\uFEFF/,'');return out}
+$('importButton').onclick=()=>$('importFile').click();
+$('importFile').onchange=async()=>{const file=$('importFile').files[0];if(!file)return;const table=parseCSV(await file.text()), header=table.shift(), records=table.filter(v=>v.some(x=>x!==''));const index=new Map(rows.map(r=>[r.case_id,r]));const ids=new Set();
+ for(const v of records){const r=Object.fromEntries(header.map((h,i)=>[h,v[i]||'']));if(!index.has(r.case_id)||ids.has(r.case_id)){alert('CSV 有未知或重复 case_id；未导入。');return} const src=index.get(r.case_id);if(r.dataset!==src.dataset||r.sequence!==src.sequence||r.init_frame!==src.init_frame){alert('CSV 来源字段不匹配；未导入。');return}ids.add(r.case_id)}
+ for(const v of records){const r=Object.fromEntries(header.map((h,i)=>[h,v[i]||'']));const entry=edits[r.case_id]||{};for(const f of modelFields)if(header.includes(f))entry[f]=r[f];edits[r.case_id]=entry}persist();$('message').textContent=`已导入 ${records.length} 条模型初审；人工确认字段未改动。`;show();$('importFile').value='';
+};
+function quote(v){return '"'+String(v??'').replaceAll('"','""')+'"'}
+$('exportButton').onclick=()=>{const text='\uFEFF'+[fields,...rows.map(r=>{const v=merged(r);return fields.map(k=>v[k])})].map(a=>a.map(quote).join(',')).join('\r\n')+'\r\n';const blob=new Blob([text],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='CDTB_VOT_review_'+($('reviewer').value.trim()||'reviewer')+'.csv';a.click();URL.revokeObjectURL(a.href)};
+select();
+</script></html>

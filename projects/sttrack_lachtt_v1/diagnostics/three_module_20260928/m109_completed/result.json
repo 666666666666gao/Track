@@ -1,0 +1,3499 @@
+{
+  "status": "complete_M109_two_gpu_readonly_diagnostic",
+  "source_sha256": "4d6c64018438f7d081197b231d6a1be95bef6e6de8ba03d8ddf64afb861a71ce",
+  "arms": {
+    "generic": {
+      "status": "complete_M109_readonly_fit_gradient_diagnostic",
+      "arm": "generic",
+      "source_sha256": "4f2fa439b4edefe1ea86f8e616a6818542acb1c55278c187a1e0ce3bb7b4eb1d",
+      "trainer_sha256": "f66e862477da660e6d68e5f57f066d8acd83adbc2d85923421a41e11b31224e3",
+      "parent_sha256": "1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293",
+      "final_sha256": "ec6af542b1cd4f7b10e5683ecacbe6b17c94c2799ed7c9b3bd372d5e3d054e48",
+      "bank_sha256": "8ff9887ceae2a26f36867824a3a04941fb076fc15b0e93575538f5374633de10",
+      "labels_sha256": "95144cc4c47987fb1960e2d8f63cb9fa41531a83c6249ea7950d0f54845887a7",
+      "fit_states": 2544,
+      "weak_pairs": 11,
+      "selected_epoch_order": 12,
+      "seed": 2027,
+      "order_seed": 2038,
+      "no_optimizer_or_training": true,
+      "no_development_model_evaluation": true,
+      "no_public_evaluation": true,
+      "model_state_exact": true,
+      "pairing": {
+        "preferred_higher_iou": 10,
+        "preferred_lower_iou": 1,
+        "equal_iou": 0,
+        "preferred_iou50": 10,
+        "other_iou50": 1
+      },
+      "batches": {
+        "initial": [
+          {
+            "batch": 0,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5358875393867493,
+              0.0,
+              0.21430492401123047
+            ],
+            "gradient_norms": [
+              0.012028738856315613,
+              0.0,
+              0.016144366934895515
+            ],
+            "weak_vs_localization_cosine": -0.21986031532287598,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.21986031532287598,
+            "weak_to_baseline_norm": 1.342149590887412,
+            "total_vs_baseline_cosine": 0.47404879331588745
+          },
+          {
+            "batch": 1,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.48084917664527893,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.013741900213062763,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 2,
+            "count": 64,
+            "weak_pairs": 2,
+            "losses": [
+              0.6008976101875305,
+              0.0,
+              1.5492992401123047
+            ],
+            "gradient_norms": [
+              0.03323296085000038,
+              0.0,
+              0.04809783399105072
+            ],
+            "weak_vs_localization_cosine": 0.3170151710510254,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.3170151710510254,
+            "weak_to_baseline_norm": 1.4472930717231043,
+            "total_vs_baseline_cosine": 0.7282894253730774
+          },
+          {
+            "batch": 3,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5006335377693176,
+              0.01801607571542263,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.016814855858683586,
+              0.0031705875881016254,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.005125060211867094,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998807907104
+          },
+          {
+            "batch": 4,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5725298523902893,
+              0.001808541128411889,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.019711291417479515,
+              0.004144961945712566,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.1484878808259964,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 5,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5602464079856873,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.02075076289474964,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998211860657
+          },
+          {
+            "batch": 6,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5265615582466125,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.022194771096110344,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998807907104
+          },
+          {
+            "batch": 7,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5121306777000427,
+              0.0036577475257217884,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.012750529684126377,
+              0.0034839843865484,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.0524996742606163,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 8,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5529341697692871,
+              0.042989131063222885,
+              1.2293990850448608
+            ],
+            "gradient_norms": [
+              0.023690761998295784,
+              0.0054237148724496365,
+              0.0770888552069664
+            ],
+            "weak_vs_localization_cosine": -0.8078500628471375,
+            "weak_vs_preservation_cosine": -0.5634717345237732,
+            "localization_vs_preservation_cosine": 0.20067675411701202,
+            "weak_vs_baseline_cosine": -0.8757912516593933,
+            "weak_to_baseline_norm": 3.04188694938019,
+            "total_vs_baseline_cosine": -0.7498375773429871
+          },
+          {
+            "batch": 9,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5787298083305359,
+              0.0009819233091548085,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.029195189476013184,
+              0.0037905951030552387,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.14736859500408173,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 10,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5540286898612976,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01092423778027296,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 11,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5774237513542175,
+              0.0016619430389255285,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.024915091693401337,
+              0.0017094843788072467,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.2994263470172882,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.000000238418579
+          },
+          {
+            "batch": 12,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5140524506568909,
+              0.0028136116452515125,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.010629337280988693,
+              0.007025360129773617,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.1269761472940445,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998807907104
+          },
+          {
+            "batch": 13,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5302314758300781,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.015544499270617962,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 14,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5630773305892944,
+              0.0,
+              1.7538684606552124
+            ],
+            "gradient_norms": [
+              0.03646020218729973,
+              0.0,
+              0.07078499346971512
+            ],
+            "weak_vs_localization_cosine": -0.2474932074546814,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.2474932074546814,
+            "weak_to_baseline_norm": 1.9414317316751422,
+            "total_vs_baseline_cosine": 0.2662161886692047
+          },
+          {
+            "batch": 15,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5471591949462891,
+              0.0,
+              1.3073278665542603
+            ],
+            "gradient_norms": [
+              0.021375274285674095,
+              0.0,
+              0.11525644361972809
+            ],
+            "weak_vs_localization_cosine": 0.7483043074607849,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.7483043074607849,
+            "weak_to_baseline_norm": 5.3920451302453705,
+            "total_vs_baseline_cosine": 0.8152246475219727
+          },
+          {
+            "batch": 16,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5863359570503235,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01840725913643837,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 17,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.578374981880188,
+              0.00019581842934712768,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.03543112054467201,
+              0.00401924317702651,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.14349469542503357,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 18,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5166322588920593,
+              0.02003473788499832,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01722724176943302,
+              0.007058784831315279,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.021258939057588577,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 19,
+            "count": 64,
+            "weak_pairs": 2,
+            "losses": [
+              0.5387830138206482,
+              0.0,
+              0.7641792297363281
+            ],
+            "gradient_norms": [
+              0.019829055294394493,
+              0.0,
+              0.06989984214305878
+            ],
+            "weak_vs_localization_cosine": -0.8861369490623474,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.8861369490623474,
+            "weak_to_baseline_norm": 3.525122155608637,
+            "total_vs_baseline_cosine": -0.7926280498504639
+          },
+          {
+            "batch": 20,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5510545969009399,
+              0.0,
+              0.09740185737609863
+            ],
+            "gradient_norms": [
+              0.025742074474692345,
+              0.0,
+              0.022445932030677795
+            ],
+            "weak_vs_localization_cosine": 0.8454884886741638,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.8454884886741638,
+            "weak_to_baseline_norm": 0.8719550575749027,
+            "total_vs_baseline_cosine": 0.9659078121185303
+          },
+          {
+            "batch": 21,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5294169187545776,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.016790159046649933,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998807907104
+          },
+          {
+            "batch": 22,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5974947810173035,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.022965749725699425,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 23,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4922889173030853,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.009010450914502144,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998807907104
+          },
+          {
+            "batch": 24,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5533719062805176,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.026238596066832542,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998211860657
+          },
+          {
+            "batch": 25,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5171355605125427,
+              0.009481349028646946,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.017993276938796043,
+              0.005140230525285006,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.13561387360095978,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.000000238418579
+          },
+          {
+            "batch": 26,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.46016865968704224,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.012557120993733406,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.000000238418579
+          },
+          {
+            "batch": 27,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5449579954147339,
+              0.005668449215590954,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.007956070825457573,
+              0.007868885062634945,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.3151886463165283,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 28,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5593183040618896,
+              0.0008401976665481925,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.021613650023937225,
+              0.004556858446449041,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.27046334743499756,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 29,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5336123704910278,
+              0.0016330608632415533,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.011949531733989716,
+              0.0029918868094682693,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.05494323745369911,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 30,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5262654423713684,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01811058074235916,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 31,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5592405796051025,
+              0.0,
+              4.119810104370117
+            ],
+            "gradient_norms": [
+              0.0309585053473711,
+              0.0,
+              0.1544710099697113
+            ],
+            "weak_vs_localization_cosine": 0.04858091101050377,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.04858091101050377,
+            "weak_to_baseline_norm": 4.989614590125182,
+            "total_vs_baseline_cosine": 0.2418885976076126
+          },
+          {
+            "batch": 32,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4984854757785797,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.011426377110183239,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 33,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.575133740901947,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.02257862314581871,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 34,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5276142358779907,
+              0.006748510524630547,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.024841681122779846,
+              0.005346902180463076,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.7177889347076416,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 35,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5129205584526062,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01929076574742794,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 36,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5134954452514648,
+              5.2920095185982063e-05,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.010521531105041504,
+              0.003954578656703234,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.06947124004364014,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999997615814209
+          },
+          {
+            "batch": 37,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5531631708145142,
+              0.0,
+              1.3020901679992676
+            ],
+            "gradient_norms": [
+              0.012138860300183296,
+              0.0,
+              0.03997531533241272
+            ],
+            "weak_vs_localization_cosine": 0.26093125343322754,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.26093125343322754,
+            "weak_to_baseline_norm": 3.2931687443350093,
+            "total_vs_baseline_cosine": 0.5048481225967407
+          },
+          {
+            "batch": 38,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4986572265625,
+              0.0015647411346435547,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.024141212925314903,
+              0.004233628511428833,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.8700297474861145,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 39,
+            "count": 48,
+            "weak_pairs": 0,
+            "losses": [
+              0.5462466478347778,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01526589598506689,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          }
+        ],
+        "final": [
+          {
+            "batch": 0,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5309104919433594,
+              0.0,
+              0.0782306045293808
+            ],
+            "gradient_norms": [
+              0.2621176540851593,
+              0.0,
+              0.6995417475700378
+            ],
+            "weak_vs_localization_cosine": -0.010370752774178982,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.010370752774178982,
+            "weak_to_baseline_norm": 2.6688082113796274,
+            "total_vs_baseline_cosine": 0.34233352541923523
+          },
+          {
+            "batch": 1,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4901069700717926,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.29231366515159607,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 2,
+            "count": 64,
+            "weak_pairs": 2,
+            "losses": [
+              0.5894290208816528,
+              0.0,
+              0.2365986704826355
+            ],
+            "gradient_norms": [
+              0.9802321195602417,
+              0.0,
+              2.1184966564178467
+            ],
+            "weak_vs_localization_cosine": -0.1428140252828598,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.1428140252828598,
+            "weak_to_baseline_norm": 2.161219382780745,
+            "total_vs_baseline_cosine": 0.3075370788574219
+          },
+          {
+            "batch": 3,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5023765563964844,
+              0.020181063562631607,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.22902420163154602,
+              0.2044871598482132,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.406042218208313,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.000000238418579
+          },
+          {
+            "batch": 4,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5948379039764404,
+              0.026522507891058922,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5050588846206665,
+              0.2336876541376114,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.008506923913955688,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 5,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5748546719551086,
+              0.015257620252668858,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.6413056254386902,
+              0.2029714435338974,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.11003512889146805,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 6,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5311903357505798,
+              0.03441157191991806,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5548662543296814,
+              0.28898629546165466,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.0952686294913292,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 7,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5106207132339478,
+              0.0005188926588743925,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.26059046387672424,
+              0.1087443083524704,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.11038928478956223,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 8,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5571678876876831,
+              0.03536861762404442,
+              0.05507023259997368
+            ],
+            "gradient_norms": [
+              0.4361582398414612,
+              0.6374922394752502,
+              0.8308725953102112
+            ],
+            "weak_vs_localization_cosine": -0.4574321508407593,
+            "weak_vs_preservation_cosine": -0.09621985256671906,
+            "localization_vs_preservation_cosine": -0.11729203164577484,
+            "weak_vs_baseline_cosine": -0.3578341007232666,
+            "weak_to_baseline_norm": 1.1397816466240263,
+            "total_vs_baseline_cosine": 0.48618435859680176
+          },
+          {
+            "batch": 9,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5976480841636658,
+              0.011647209525108337,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.8471395373344421,
+              0.28168731927871704,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.025549015030264854,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 10,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.571803629398346,
+              0.010912170633673668,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.22202429175376892,
+              0.42895835638046265,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.07300981134176254,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 11,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.594106137752533,
+              0.004611306823790073,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.7231810688972473,
+              0.26499930024147034,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.3381037414073944,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 12,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5240074396133423,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.3875805735588074,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 13,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.520885169506073,
+              0.001828050590120256,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.22506816685199738,
+              0.07638794928789139,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.13230663537979126,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 14,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.555413007736206,
+              0.00029377141618169844,
+              0.12688595056533813
+            ],
+            "gradient_norms": [
+              1.2302992343902588,
+              0.1550799310207367,
+              1.3236083984375
+            ],
+            "weak_vs_localization_cosine": -0.336656779050827,
+            "weak_vs_preservation_cosine": -0.10714585334062576,
+            "localization_vs_preservation_cosine": -0.09801305085420609,
+            "weak_vs_baseline_cosine": -0.35171717405319214,
+            "weak_to_baseline_norm": 1.080618930708888,
+            "total_vs_baseline_cosine": 0.522519588470459
+          },
+          {
+            "batch": 15,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5632298588752747,
+              0.0026719796005636454,
+              0.1170988529920578
+            ],
+            "gradient_norms": [
+              0.5110353231430054,
+              0.3556734621524811,
+              2.350572347640991
+            ],
+            "weak_vs_localization_cosine": 0.6846967339515686,
+            "weak_vs_preservation_cosine": 0.03801484405994415,
+            "localization_vs_preservation_cosine": 0.0944174975156784,
+            "weak_vs_baseline_cosine": 0.5594574809074402,
+            "weak_to_baseline_norm": 3.618476812229178,
+            "total_vs_baseline_cosine": 0.7100560069084167
+          },
+          {
+            "batch": 16,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5992625951766968,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.4322861433029175,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 17,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.6054701209068298,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.6168438792228699,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998211860657
+          },
+          {
+            "batch": 18,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5313748717308044,
+              0.06084428355097771,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.1974593997001648,
+              0.39006391167640686,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.1658235490322113,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 19,
+            "count": 64,
+            "weak_pairs": 2,
+            "losses": [
+              0.5501663088798523,
+              0.011369062587618828,
+              0.06654713302850723
+            ],
+            "gradient_norms": [
+              0.45937398076057434,
+              0.6456066966056824,
+              1.6278353929519653
+            ],
+            "weak_vs_localization_cosine": 0.30450525879859924,
+            "weak_vs_preservation_cosine": -0.5506037473678589,
+            "localization_vs_preservation_cosine": 0.10335054248571396,
+            "weak_vs_baseline_cosine": -0.25970470905303955,
+            "weak_to_baseline_norm": 1.9609131971845841,
+            "total_vs_baseline_cosine": 0.25086650252342224
+          },
+          {
+            "batch": 20,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5674204230308533,
+              0.0,
+              0.03413747251033783
+            ],
+            "gradient_norms": [
+              0.4539608359336853,
+              0.0,
+              0.5006554126739502
+            ],
+            "weak_vs_localization_cosine": 0.21556931734085083,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.21556931734085083,
+            "weak_to_baseline_norm": 1.1028603638113972,
+            "total_vs_baseline_cosine": 0.7544147372245789
+          },
+          {
+            "batch": 21,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5417322516441345,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.32773613929748535,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 22,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.6270951628684998,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.9624266624450684,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 23,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5151396989822388,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.17589600384235382,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 24,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5552688837051392,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.9962484240531921,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 25,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5214255452156067,
+              0.0009211378055624664,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.23593921959400177,
+              0.30206868052482605,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.6520753502845764,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 26,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.45586711168289185,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.36031898856163025,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998807907104
+          },
+          {
+            "batch": 27,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5653033256530762,
+              0.0043550701811909676,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.20705798268318176,
+              0.22923749685287476,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.13246563076972961,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 28,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5670830607414246,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.2117060273885727,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 29,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5379545092582703,
+              0.02051645517349243,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.2769860625267029,
+              0.24641601741313934,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.36907246708869934,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 30,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5426905155181885,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.34814146161079407,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 31,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5734719038009644,
+              0.010755440220236778,
+              0.13329331576824188
+            ],
+            "gradient_norms": [
+              1.0265403985977173,
+              0.3665929138660431,
+              2.075528383255005
+            ],
+            "weak_vs_localization_cosine": -0.3857778310775757,
+            "weak_vs_preservation_cosine": -0.3257093131542206,
+            "localization_vs_preservation_cosine": 0.08627522736787796,
+            "weak_vs_baseline_cosine": -0.46043258905410767,
+            "weak_to_baseline_norm": 1.8541039053783492,
+            "total_vs_baseline_cosine": 0.08854568749666214
+          },
+          {
+            "batch": 32,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5196728110313416,
+              0.007697329856455326,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.22354647517204285,
+              0.3894166946411133,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.033155135810375214,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 33,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5921441912651062,
+              0.004655277356505394,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.36205631494522095,
+              0.08130921423435211,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.032525427639484406,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 34,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5357505679130554,
+              0.003532969392836094,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.8687806725502014,
+              0.23028531670570374,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.04715979844331741,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 35,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.526172399520874,
+              0.005175525788217783,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.3721691071987152,
+              0.21307995915412903,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.1595587134361267,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 36,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5378562808036804,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.23925521969795227,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 37,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5592290163040161,
+              0.0,
+              0.08961471170186996
+            ],
+            "gradient_norms": [
+              0.22571024298667908,
+              0.0,
+              0.9318673014640808
+            ],
+            "weak_vs_localization_cosine": -0.14746275544166565,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.14746275544166565,
+            "weak_to_baseline_norm": 4.12859996574935,
+            "total_vs_baseline_cosine": 0.09536083787679672
+          },
+          {
+            "batch": 38,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4991472363471985,
+              0.005309566855430603,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.546081006526947,
+              0.16722413897514343,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.31934791803359985,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 39,
+            "count": 48,
+            "weak_pairs": 0,
+            "losses": [
+              0.5575172901153564,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.49309447407722473,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          }
+        ]
+      },
+      "elapsed_seconds": 15.349976062774658,
+      "scope": "Replay exact fit loss formulas/order at initial/final weights; no historical gradient replay. IoU is not physical identity."
+    },
+    "weak_text": {
+      "status": "complete_M109_readonly_fit_gradient_diagnostic",
+      "arm": "weak_text",
+      "source_sha256": "4f2fa439b4edefe1ea86f8e616a6818542acb1c55278c187a1e0ce3bb7b4eb1d",
+      "trainer_sha256": "f66e862477da660e6d68e5f57f066d8acd83adbc2d85923421a41e11b31224e3",
+      "parent_sha256": "1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293",
+      "final_sha256": "f1a11bd9e3f98b5cbc4386bb497224d098c3beeec01103331001b53408cf5168",
+      "bank_sha256": "8ff9887ceae2a26f36867824a3a04941fb076fc15b0e93575538f5374633de10",
+      "labels_sha256": "95144cc4c47987fb1960e2d8f63cb9fa41531a83c6249ea7950d0f54845887a7",
+      "fit_states": 2544,
+      "weak_pairs": 11,
+      "selected_epoch_order": 12,
+      "seed": 2027,
+      "order_seed": 2038,
+      "no_optimizer_or_training": true,
+      "no_development_model_evaluation": true,
+      "no_public_evaluation": true,
+      "model_state_exact": true,
+      "pairing": {
+        "preferred_higher_iou": 10,
+        "preferred_lower_iou": 1,
+        "equal_iou": 0,
+        "preferred_iou50": 10,
+        "other_iou50": 1
+      },
+      "batches": {
+        "initial": [
+          {
+            "batch": 0,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5358875393867493,
+              0.0,
+              0.21430492401123047
+            ],
+            "gradient_norms": [
+              0.01311409566551447,
+              0.0,
+              0.017452141270041466
+            ],
+            "weak_vs_localization_cosine": -0.2608192265033722,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.2608192265033722,
+            "weak_to_baseline_norm": 1.3307925849538031,
+            "total_vs_baseline_cosine": 0.45305413007736206
+          },
+          {
+            "batch": 1,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.48084917664527893,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01526634767651558,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 2,
+            "count": 64,
+            "weak_pairs": 2,
+            "losses": [
+              0.6008976101875305,
+              0.0,
+              1.5492992401123047
+            ],
+            "gradient_norms": [
+              0.03445952385663986,
+              0.0,
+              0.07152552157640457
+            ],
+            "weak_vs_localization_cosine": 0.021618444472551346,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.021618444472551346,
+            "weak_to_baseline_norm": 2.0756387080090954,
+            "total_vs_baseline_cosine": 0.4497236907482147
+          },
+          {
+            "batch": 3,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5006335377693176,
+              0.01801607571542263,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.017972107976675034,
+              0.004241046030074358,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.0246770940721035,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 4,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5725298523902893,
+              0.001808541128411889,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.019312111660838127,
+              0.005078606773167849,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.1440848410129547,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 5,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5602464079856873,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.023707041516900063,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 6,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5265615582466125,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.023181505501270294,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 7,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5121306777000427,
+              0.0036577475257217884,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.014315066859126091,
+              0.005212200805544853,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.06563565880060196,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 8,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5529341697692871,
+              0.042989131063222885,
+              1.2293990850448608
+            ],
+            "gradient_norms": [
+              0.026488082483410835,
+              0.00873528141528368,
+              0.0934538021683693
+            ],
+            "weak_vs_localization_cosine": -0.7066454291343689,
+            "weak_vs_preservation_cosine": -0.42894455790519714,
+            "localization_vs_preservation_cosine": 0.18232962489128113,
+            "weak_vs_baseline_cosine": -0.7650159001350403,
+            "weak_to_baseline_norm": 3.1824975734489196,
+            "total_vs_baseline_cosine": -0.5734531283378601
+          },
+          {
+            "batch": 9,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5787298083305359,
+              0.0009819233091548085,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.03128591552376747,
+              0.005233362317085266,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.1430646777153015,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 10,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5540286898612976,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.013818579725921154,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 11,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5774237513542175,
+              0.0016619430389255285,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.025645999237895012,
+              0.002351402770727873,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.27417221665382385,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 12,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5140524506568909,
+              0.0028136116452515125,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.012815911322832108,
+              0.008573814295232296,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.021082455292344093,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 13,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5302314758300781,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01796192303299904,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 14,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5630773305892944,
+              0.0,
+              1.7538684606552124
+            ],
+            "gradient_norms": [
+              0.038247376680374146,
+              0.0,
+              0.10756194591522217
+            ],
+            "weak_vs_localization_cosine": -0.2159147560596466,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.2159147560596466,
+            "weak_to_baseline_norm": 2.8122698927588248,
+            "total_vs_baseline_cosine": 0.14160262048244476
+          },
+          {
+            "batch": 15,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5471591949462891,
+              0.0,
+              1.3073278665542603
+            ],
+            "gradient_norms": [
+              0.021424032747745514,
+              0.0,
+              0.1467408537864685
+            ],
+            "weak_vs_localization_cosine": 0.6461811661720276,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.6461811661720276,
+            "weak_to_baseline_norm": 6.8493572388657915,
+            "total_vs_baseline_cosine": 0.7201640605926514
+          },
+          {
+            "batch": 16,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5863359570503235,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.020206773653626442,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998807907104
+          },
+          {
+            "batch": 17,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.578374981880188,
+              0.00019581842934712768,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.03573933243751526,
+              0.004905915819108486,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.13396231830120087,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 18,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5166322588920593,
+              0.02003473788499832,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.019734030589461327,
+              0.008521774783730507,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.025012992322444916,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 19,
+            "count": 64,
+            "weak_pairs": 2,
+            "losses": [
+              0.5387830138206482,
+              0.0,
+              0.7641792297363281
+            ],
+            "gradient_norms": [
+              0.022839050740003586,
+              0.0,
+              0.11659306287765503
+            ],
+            "weak_vs_localization_cosine": -0.5494850277900696,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": -0.5494850277900696,
+            "weak_to_baseline_norm": 5.10498725209438,
+            "total_vs_baseline_cosine": -0.38974833488464355
+          },
+          {
+            "batch": 20,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5510545969009399,
+              0.0,
+              0.09740185737609863
+            ],
+            "gradient_norms": [
+              0.028081532567739487,
+              0.0,
+              0.02697773277759552
+            ],
+            "weak_vs_localization_cosine": 0.7680028080940247,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.7680028080940247,
+            "weak_to_baseline_norm": 0.9606930359843668,
+            "total_vs_baseline_cosine": 0.9426619410514832
+          },
+          {
+            "batch": 21,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5294169187545776,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01922963187098503,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 22,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5974947810173035,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.023692576214671135,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 23,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4922889173030853,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.009801054373383522,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 24,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5533719062805176,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.029888654127717018,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 25,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5171355605125427,
+              0.009481349028646946,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.019558317959308624,
+              0.006896771024912596,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.144716277718544,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 26,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.46016865968704224,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.01542025338858366,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 27,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5449579954147339,
+              0.005668449215590954,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.00842873565852642,
+              0.0067699807696044445,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.2892250418663025,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998211860657
+          },
+          {
+            "batch": 28,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5593183040618896,
+              0.0008401976665481925,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.02308044023811817,
+              0.006085785571485758,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.2136847972869873,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 29,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5336123704910278,
+              0.0016330608632415533,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.012589829973876476,
+              0.004403950180858374,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.015079990960657597,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 30,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5262654423713684,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.018750617280602455,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 31,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5592405796051025,
+              0.0,
+              4.119810104370117
+            ],
+            "gradient_norms": [
+              0.029934968799352646,
+              0.0,
+              0.2005293220281601
+            ],
+            "weak_vs_localization_cosine": 0.04710940644145012,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.04710940644145012,
+            "weak_to_baseline_norm": 6.698831836848169,
+            "total_vs_baseline_cosine": 0.19291429221630096
+          },
+          {
+            "batch": 32,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4984854757785797,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.014744246378540993,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 33,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.575133740901947,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.02439456805586815,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 34,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5276142358779907,
+              0.006748510524630547,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.026234908029437065,
+              0.0065376837737858295,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.6623964309692383,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 35,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5129205584526062,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.020656809210777283,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 36,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5134954452514648,
+              5.2920095185982063e-05,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.012309507466852665,
+              0.005154437851160765,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.03981360048055649,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 37,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5531631708145142,
+              0.0,
+              1.3020901679992676
+            ],
+            "gradient_norms": [
+              0.012691173702478409,
+              0.0,
+              0.06598982214927673
+            ],
+            "weak_vs_localization_cosine": 0.2428285926580429,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.2428285926580429,
+            "weak_to_baseline_norm": 5.199662670789057,
+            "total_vs_baseline_cosine": 0.4092831313610077
+          },
+          {
+            "batch": 38,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4986572265625,
+              0.0015647411346435547,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.025164028629660606,
+              0.004061022307723761,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.6849690675735474,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 39,
+            "count": 48,
+            "weak_pairs": 0,
+            "losses": [
+              0.5462466478347778,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.018739929422736168,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          }
+        ],
+        "final": [
+          {
+            "batch": 0,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5053682923316956,
+              0.0005191497039049864,
+              0.06598477810621262
+            ],
+            "gradient_norms": [
+              0.6557345390319824,
+              0.12600798904895782,
+              0.5346730947494507
+            ],
+            "weak_vs_localization_cosine": 0.44464224576950073,
+            "weak_vs_preservation_cosine": 0.0939907357096672,
+            "localization_vs_preservation_cosine": 0.09377717226743698,
+            "weak_vs_baseline_cosine": 0.4466935992240906,
+            "weak_to_baseline_norm": 0.7871671323244798,
+            "total_vs_baseline_cosine": 0.8868340253829956
+          },
+          {
+            "batch": 1,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.46494197845458984,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.40584704279899597,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 2,
+            "count": 64,
+            "weak_pairs": 2,
+            "losses": [
+              0.5532127022743225,
+              0.0,
+              0.05277617275714874
+            ],
+            "gradient_norms": [
+              0.7554048299789429,
+              0.0,
+              0.8676100969314575
+            ],
+            "weak_vs_localization_cosine": 0.32583561539649963,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.32583561539649963,
+            "weak_to_baseline_norm": 1.1485366024938475,
+            "total_vs_baseline_cosine": 0.7846230268478394
+          },
+          {
+            "batch": 3,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.49646589159965515,
+              0.014183956198394299,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5667402148246765,
+              0.08054603636264801,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.16388174891471863,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998211860657
+          },
+          {
+            "batch": 4,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5439367294311523,
+              0.005971670150756836,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.9728875756263733,
+              0.20010218024253845,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.04599357396364212,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 5,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5577756762504578,
+              0.0022829477675259113,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.8927320241928101,
+              0.10677506774663925,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.006436092779040337,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 6,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5288974046707153,
+              0.007163734175264835,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.9502006769180298,
+              0.29510799050331116,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.39640122652053833,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 7,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.48478999733924866,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.41497913002967834,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 8,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5365411043167114,
+              0.027464674785733223,
+              0.02423432096838951
+            ],
+            "gradient_norms": [
+              0.462232381105423,
+              0.4146416187286377,
+              0.6086953282356262
+            ],
+            "weak_vs_localization_cosine": 0.12459059804677963,
+            "weak_vs_preservation_cosine": 0.04989491030573845,
+            "localization_vs_preservation_cosine": -0.1848476082086563,
+            "weak_vs_baseline_cosine": 0.1395314484834671,
+            "weak_to_baseline_norm": 1.0850022917167348,
+            "total_vs_baseline_cosine": 0.7311326265335083
+          },
+          {
+            "batch": 9,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5553595423698425,
+              0.00827438198029995,
+              -0.0
+            ],
+            "gradient_norms": [
+              1.064664602279663,
+              0.13742807507514954,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.19242171943187714,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 10,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5363609194755554,
+              0.00016179084195755422,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.4343538284301758,
+              0.19991914927959442,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.2555505335330963,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 11,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5608829855918884,
+              0.004473262466490269,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.7394313216209412,
+              0.0922597199678421,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.21398569643497467,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 12,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4926585257053375,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5369612574577332,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999998807907104
+          },
+          {
+            "batch": 13,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5183293223381042,
+              0.0006046295166015625,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.43029940128326416,
+              0.10164258629083633,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.027450507506728172,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 14,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5422261357307434,
+              0.0,
+              0.023334000259637833
+            ],
+            "gradient_norms": [
+              1.1979477405548096,
+              0.0,
+              0.46708205342292786
+            ],
+            "weak_vs_localization_cosine": 0.19190570712089539,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.19190570712089539,
+            "weak_to_baseline_norm": 0.38990186099988516,
+            "total_vs_baseline_cosine": 0.94207763671875
+          },
+          {
+            "batch": 15,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5190019011497498,
+              0.004256374202668667,
+              0.02416575700044632
+            ],
+            "gradient_norms": [
+              0.6380337476730347,
+              0.24805961549282074,
+              0.6084292531013489
+            ],
+            "weak_vs_localization_cosine": 0.408681184053421,
+            "weak_vs_preservation_cosine": -0.12533989548683167,
+            "localization_vs_preservation_cosine": 0.3146139085292816,
+            "weak_vs_baseline_cosine": 0.3046720623970032,
+            "weak_to_baseline_norm": 0.8071535584937012,
+            "total_vs_baseline_cosine": 0.8510294556617737
+          },
+          {
+            "batch": 16,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5708003044128418,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.628251850605011,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 17,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5665127635002136,
+              0.003346693702042103,
+              -0.0
+            ],
+            "gradient_norms": [
+              1.0063049793243408,
+              0.2577175796031952,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.24416393041610718,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 18,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4948091208934784,
+              0.0013891325797885656,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.33693060278892517,
+              0.16620083153247833,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.11105915904045105,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 19,
+            "count": 64,
+            "weak_pairs": 2,
+            "losses": [
+              0.5231120586395264,
+              0.0036770363803952932,
+              0.03545626252889633
+            ],
+            "gradient_norms": [
+              0.7476988434791565,
+              0.12435714155435562,
+              0.6505287289619446
+            ],
+            "weak_vs_localization_cosine": 0.08797899633646011,
+            "weak_vs_preservation_cosine": -0.3345104157924652,
+            "localization_vs_preservation_cosine": 0.11756673455238342,
+            "weak_vs_baseline_cosine": 0.031314749270677567,
+            "weak_to_baseline_norm": 0.8423730087722385,
+            "total_vs_baseline_cosine": 0.7731460928916931
+          },
+          {
+            "batch": 20,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5377581119537354,
+              0.0,
+              0.04496772587299347
+            ],
+            "gradient_norms": [
+              0.74220871925354,
+              0.0,
+              0.80939781665802
+            ],
+            "weak_vs_localization_cosine": 0.5879009366035461,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.5879009366035461,
+            "weak_to_baseline_norm": 1.0905258799331459,
+            "total_vs_baseline_cosine": 0.8808109760284424
+          },
+          {
+            "batch": 21,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5248448252677917,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.396539568901062,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 22,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5577606558799744,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              1.0013630390167236,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 23,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4695590138435364,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.27115243673324585,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 24,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5324969291687012,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.6177020072937012,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 25,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5044341087341309,
+              0.01375367771834135,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.31901323795318604,
+              0.38162001967430115,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.3097876310348511,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 26,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4478189945220947,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.4393269717693329,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 27,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5453400015830994,
+              0.013045570813119411,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.36046478152275085,
+              0.34851810336112976,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": -0.09253580868244171,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999999403953552
+          },
+          {
+            "batch": 28,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5366330742835999,
+              0.0047247884795069695,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5743445754051208,
+              0.2538033425807953,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.02878253161907196,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 0.9999997615814209
+          },
+          {
+            "batch": 29,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5086602568626404,
+              0.0025871735997498035,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.4602985382080078,
+              0.2940525412559509,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.18263131380081177,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 30,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5056621432304382,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5722588896751404,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.000000238418579
+          },
+          {
+            "batch": 31,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5365781784057617,
+              0.0032632804941385984,
+              0.018439235165715218
+            ],
+            "gradient_norms": [
+              0.9252162575721741,
+              0.2812822461128235,
+              0.5309250354766846
+            ],
+            "weak_vs_localization_cosine": -0.32262176275253296,
+            "weak_vs_preservation_cosine": -0.44372713565826416,
+            "localization_vs_preservation_cosine": 0.42126286029815674,
+            "weak_vs_baseline_cosine": -0.3939816355705261,
+            "weak_to_baseline_norm": 0.49414368784679036,
+            "total_vs_baseline_cosine": 0.8710268139839172
+          },
+          {
+            "batch": 32,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.49295732378959656,
+              0.00041096817585639656,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5414690375328064,
+              0.19646717607975006,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.013090458698570728,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 33,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5509913563728333,
+              0.001682298257946968,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.6726905703544617,
+              0.09558943659067154,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.034016456454992294,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 34,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5094344019889832,
+              0.0020869227591902018,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.6207494139671326,
+              0.2956300377845764,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.6482155323028564,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 35,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4938436448574066,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.4586281180381775,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          },
+          {
+            "batch": 36,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.5115516185760498,
+              0.00506096426397562,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5049121975898743,
+              0.22679923474788666,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": 0.2012142688035965,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 37,
+            "count": 64,
+            "weak_pairs": 1,
+            "losses": [
+              0.5291764736175537,
+              0.0,
+              0.018717892467975616
+            ],
+            "gradient_norms": [
+              0.35265594720840454,
+              0.0,
+              0.5623665452003479
+            ],
+            "weak_vs_localization_cosine": 0.05202353745698929,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": 0.05202353745698929,
+            "weak_to_baseline_norm": 1.59466060235761,
+            "total_vs_baseline_cosine": 0.562330961227417
+          },
+          {
+            "batch": 38,
+            "count": 64,
+            "weak_pairs": 0,
+            "losses": [
+              0.4854500889778137,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.8090373873710632,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0
+          },
+          {
+            "batch": 39,
+            "count": 48,
+            "weak_pairs": 0,
+            "losses": [
+              0.5170092582702637,
+              0.0,
+              -0.0
+            ],
+            "gradient_norms": [
+              0.5377278923988342,
+              0.0,
+              0.0
+            ],
+            "weak_vs_localization_cosine": null,
+            "weak_vs_preservation_cosine": null,
+            "localization_vs_preservation_cosine": null,
+            "weak_vs_baseline_cosine": null,
+            "weak_to_baseline_norm": 0.0,
+            "total_vs_baseline_cosine": 1.0000001192092896
+          }
+        ]
+      },
+      "elapsed_seconds": 15.20462417602539,
+      "scope": "Replay exact fit loss formulas/order at initial/final weights; no historical gradient replay. IoU is not physical identity."
+    }
+  },
+  "launches": [
+    {
+      "pid": 9305,
+      "gpu": 0,
+      "arm": "generic",
+      "args": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/diagnose_m109_training_gradients.py",
+        "--cache",
+        "/root/autodl-tmp/sttrack_m90_train_states_20260928",
+        "--contexts",
+        "/root/autodl-tmp/sttrack_m98_train_contexts_20260928",
+        "--origins",
+        "/root/autodl-tmp/sttrack_m95_initial_origins_20260928",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m107_weak_inputs/weak_labels.json",
+        "--parent",
+        "/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/final.pt",
+        "--completed",
+        "/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002",
+        "--output",
+        "/root/autodl-tmp/sttrack_m109_fit_gradients_20261002/generic",
+        "--arm",
+        "generic"
+      ],
+      "started": 1790935780.4135163,
+      "exit": 0,
+      "finished": 1790935797.181356
+    },
+    {
+      "pid": 9306,
+      "gpu": 1,
+      "arm": "weak_text",
+      "args": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/diagnose_m109_training_gradients.py",
+        "--cache",
+        "/root/autodl-tmp/sttrack_m90_train_states_20260928",
+        "--contexts",
+        "/root/autodl-tmp/sttrack_m98_train_contexts_20260928",
+        "--origins",
+        "/root/autodl-tmp/sttrack_m95_initial_origins_20260928",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m107_weak_inputs/weak_labels.json",
+        "--parent",
+        "/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/final.pt",
+        "--completed",
+        "/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002",
+        "--output",
+        "/root/autodl-tmp/sttrack_m109_fit_gradients_20261002/weak_text",
+        "--arm",
+        "weak_text"
+      ],
+      "started": 1790935780.4165409,
+      "exit": 0,
+      "finished": 1790935797.1817007
+    }
+  ],
+  "elapsed_seconds": 16.775137901306152
+}

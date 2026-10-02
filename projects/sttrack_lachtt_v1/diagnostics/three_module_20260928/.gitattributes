@@ -21,3 +21,10 @@ M108_IMPORT_PREFLIGHT.json -text
 M108_LAUNCH_RECEIPT.json -text
 M108_SOURCE_REVIEW.json -text
 M108_TERMINAL_OBSERVATION.json -text
+# Preserve actual SHA-bound M109/M110 diagnostic and training artifacts.
+m109_completed/** -text
+m110_completed/** -text
+M109*.json -text whitespace=cr-at-eol,-blank-at-eof
+M110*.json -text whitespace=cr-at-eol,-blank-at-eof
+M109_M110_HANDOFF_APPEND.md -text whitespace=-blank-at-eof
+M109_M110_SOURCE_AUDIT.md -text whitespace=cr-at-eol,-blank-at-eof

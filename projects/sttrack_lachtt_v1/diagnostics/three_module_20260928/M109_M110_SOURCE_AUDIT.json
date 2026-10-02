@@ -1,0 +1,1569 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "limited_endpoint_gradient_and_single_seed_cached_state_scope_without_net_semantic_gain",
+  "summary": "Completed M109 and M110 artifacts are internally consistent and independently recounted. Source/GT/hash/archive/frozen-tensor checks pass. Both M110 fixed-state gates pass, but a beneficial reviewed-text increment remains unsupported. Two wording findings were corrected and verified. No implementation, data or artifact-integrity blocker was found.",
+  "date": "2026-10-02",
+  "generated_at": "2026-10-02T10:51:54Z",
+  "auditor": "gpt-6-astra-max",
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_reasoning": "max",
+  "reviewer_family": "openai",
+  "executor_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "agent_id": "/root/m109_integrity_m110_source",
+  "verdict_id": "m109_m110_completed_20261002_same_family_provisional",
+  "audit_root": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928",
+  "trace_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-02_m109_m110_source",
+  "scope_expanded_to_completed_M110": true,
+  "checks": {
+    "gt_provenance": {
+      "status": "PASS",
+      "details": "Dataset-box localization GT, model-weak unconfirmed text/pair supervision, and sequence-disjoint fit/development uses are explicitly separated. Reviewer directly checked 152 dataset arrays and all 3,502 event targets; 11 used weak pairs are in the fit split. No identity correctness certification follows from IoU agreement.",
+      "evidence": [
+        "prepare_train_states.py:39-45",
+        "prepare_train_states.py:69-105",
+        "train_ab_visual_control.py:24-83",
+        "train_ab_visual_control.py:86-94",
+        "m107_weak_inputs/weak_labels.json:2-4",
+        "diagnose_m109_training_gradients.py:31-45",
+        "train_m110_no_weak_rank.py:62-87",
+        "train_m110_no_weak_rank.py:94-102"
+      ]
+    },
+    "score_normalization": {
+      "status": "PASS",
+      "details": "IoU is intersection/geometric union; summary means use state counts. M109 reports raw gradient norms plus standard vector cosines and weak/composite-baseline norm ratios, not rescaled tracking performance. All stored aggregates and vector identities checked within float tolerances; paired-batch means use nine equally weighted paired batches.",
+      "evidence": [
+        "analyze_train_states.py:20-25",
+        "train_ab_visual_control.py:114-128",
+        "train_ab_visual_control.py:148-153",
+        "diagnose_m109_training_gradients.py:12-14",
+        "diagnose_m109_training_gradients.py:64-83",
+        "summarize_m109_gradients.py:26-41",
+        "M109_GRADIENT_SUMMARY.json:13-270"
+      ]
+    },
+    "result_existence": {
+      "status": "PASS",
+      "details": "M109 root/arm data, logs, three zero exits and source/input/final hashes agree. M110 four arm processes, six zero exits, 480 steps per final, 8,058 raw rows, all summaries/gates, 28 mirrored files and all 28 archive members agree. Historical training sources, results, finals, bank and labels are preserved; the one historical note hash change and two current wording revisions are documented and independently diff-checked.",
+      "evidence": [
+        "m109_completed/controller.log:1-2",
+        "m109_completed/generic/result.json:2-25",
+        "m109_completed/weak_text/result.json:2-25",
+        "m110_completed/controller.log:1-6",
+        "m110_completed/train_generic/result.json:2-33",
+        "m110_completed/train_weak_text/result.json:2-33",
+        "M110_ARTIFACT_MIRROR.json:3-32",
+        "M108_AUDIT_CLOSURE.json:6-9",
+        "M109_M110_AUDIT_CLOSURE.json:1"
+      ]
+    },
+    "active_math_and_exclusion": {
+      "status": "PASS",
+      "details": "M109 actually calls autograd.grad on the three original losses over the 95,683 allowed coordinates, has no optimizer, and asserts state equality/None accumulated gradients. M110's sole optimization change is omitting weak from loss; the term is only detached for logging. Source diff and AST comparison verify all other trainer logic unchanged except status/provenance metadata. Direct CPU strict loads confirm 35 frozen parameter tensors and two buffers equal the parent for all four finals. GPU Empty outputs and gradient assertions remain recorded execution evidence, not reviewer forward replay.",
+      "evidence": [
+        "diagnose_m109_training_gradients.py:48-87",
+        "train_m108_frozen_semantics.py:95-110",
+        "train_m110_no_weak_rank.py:95-110",
+        "train_m110_no_weak_rank.py:12-35",
+        "train_m110_no_weak_rank.py:60-79",
+        "train_m110_no_weak_rank.py:113-155",
+        "run_m110_no_rank_pair.py:35-54",
+        "instance_ab_prototype.py:84-91",
+        "instance_ab_prototype.py:108-116"
+      ]
+    },
+    "scope": {
+      "status": "WARN",
+      "details": "M109 is a fit-only initial/final gradient diagnostic, not historical AdamW update reconstruction or causal evidence for persistent conflict. M110 is one seed, two fixed-state finals, 130/22 Train sequences and 2,544/495 cached states. Both original gates pass, but own-condition mean IoU is 0.0003047300107551344 below preserved Empty. The repeatedly consulted Train development panel is not a fresh final test. No reviewed-text benefit, identity accuracy, seed robustness, recursive recovery or official benchmark gain is established. Two minor wording findings were fixed and verified without numerical/source changes.",
+      "evidence": [
+        "M109_FIT_GRADIENT_PLAN.md:18-29",
+        "M109_RESULT_NOTE.md:21-30",
+        "M110_NO_WEAK_RANK_PLAN.md:9-35",
+        "M110_RESULT_NOTE.md:25-38",
+        "M108_COMPLETED_AUDIT.md:65-69",
+        "M110_CPU_RECOUNT.json:339-366",
+        "M109_M110_HANDOFF_APPEND.md:18-31"
+      ]
+    },
+    "evaluation_type": {
+      "status": "PASS",
+      "details": "Mixed diagnostic: localization and candidate-IoU comparisons are real_gt on selected cached Train states; model-reviewed text/A-B supervision is synthetic_proxy; tensor/Empty/no-mutation checks are engineering invariants (self_supervised_proxy in this taxonomy). Gradient diagnostics are objective-analysis statistics rather than a benchmark accuracy score. No human_eval or simulation_only experiment is established.",
+      "evidence": [
+        "train_ab_visual_control.py:75",
+        "m107_weak_inputs/weak_labels.json:2-4",
+        "diagnose_m109_training_gradients.py:64-86",
+        "train_m110_no_weak_rank.py:38-50",
+        "train_m110_no_weak_rank.py:113-118",
+        "M110_NO_WEAK_RANK_PLAN.md:18-22"
+      ]
+    }
+  },
+  "blocking_findings": [],
+  "personally_executed": [
+    "Read supplied sources and task notes; AST-parsed 14 Python files without executing their training entry points.",
+    "Compared M108/M110 trainer textual diff and normalized AST; the only optimization change is removing the weak-rank term.",
+    "Parsed all M109 completed files and independently recomputed 176 aggregate quantities from 160 batch records; checked vector norm/cosine algebra, finite values, zero-vector null semantics and launch/log/result consistency.",
+    "Read, hashed and compared 152 local dataset GT arrays (219,993 rows) and all 3,502 current/previous event targets; checked 130/22 sequence and 2,544/495 valid-state disjointness.",
+    "Checked the 11 explicit weak pairs are fitting states and recounted private pair relations; no private captions, choices or event keys appear in these reports.",
+    "Recounted all eight M110 JSONL files (8,058 rows), plus eight corresponding M108 JSONLs (8,058 rows), with math.fsum; checked index bounds, finite IoUs, oracle bounds, strata, parent references, all gates and same-final content comparisons.",
+    "Checked all M110 histories/logs/launches, both three-step sanity runs, fixed 12x40 training steps, logged weak-pair use and total-loss equals localization plus preservation.",
+    "Verified source/deploy/runtime hashes and all mirrored artifact hashes; opened the M110 archive and compared all 28 members byte-for-byte.",
+    "Checked 234 of 235 original M108 audit inventory hashes unchanged. The sole note difference was verified against the preserved original and M108_AUDIT_CLOSURE.json.",
+    "Used an existing CPU Torch environment for strict checkpoint loads and exact frozen-parameter/buffer tensor equality of all four M108/M110 finals against M101; checked M108 bank preservation of all nine M107 fields and phrase-count masks.",
+    "Recomputed Torch randperm(seed=2038) membership from stored fit row order; all four M109 snapshots have exactly the recorded 40 batches, 11 pairs and nine paired batches.",
+    "Directly read and diff-checked both corrected current notes and their preserved originals."
+  ],
+  "not_executed": [
+    "No SSH, network access, GPU launch, retraining, model forward/backward, optimizer update, CLIP encoding, feature extraction, recursive tracker or official evaluator.",
+    "No numerical recomputation of full gradient vectors from features: gradients themselves are not stored. Independent M109 checks concern raw recorded batch statistics, geometry identities and source math.",
+    "No fresh candidate-box IoU recomputation from the original feature cache. Dataset GT targets and consistency among stored row/relationship values were checked.",
+    "No reconstruction of historical AdamW moments, weight-decay updates, intermediate training gradients or CUDA training trajectory.",
+    "No independent replay of the full 3,039-state pre/post Empty score/quality arrays; only recorded runtime assertions exist for those arrays.",
+    "No certification of model-review semantic correctness, human identity truth, exhaustive polling history or the narrated prelaunch SSH timeout.",
+    "No repository-wide before/after audit of unrelated official benchmark artifacts."
+  ],
+  "audited_input_hashes": {
+    "train_m108_frozen_semantics.py": "sha256:f66e862477da660e6d68e5f57f066d8acd83adbc2d85923421a41e11b31224e3",
+    "prepare_m108_generic.py": "sha256:b107b71def89d11de7ec3445fc4c4cffd1bc5b7813202735194974ab1c6c06c6",
+    "run_m108_frozen_pair.py": "sha256:fbe8cbb5e3a14e7e04d2afc07e3fedb1fc850941cda7880ca9676aae5534d311",
+    "M108_CONTROLLER.py": "sha256:1afdbbc6237cc4605aa56e08d7c4203f583e3025689a7ef6f2cc4037c39035af",
+    "accept_m108_outputs.py": "sha256:c8881916ce279ad5d031a43a2fd6d7ba2e30bd435ccda592790edcdb6870e072",
+    "train_m107_weak_semantics.py": "sha256:a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "prepare_m107_weak_text.py": "sha256:004e96fde8c5053dfc7d96acbf17307f5c80c804f9d08e362d0fbe1b7ada0484",
+    "instance_ab_prototype.py": "sha256:09db6833f161b6028e64905f2e73a69027e0caf28c611b6c9d81a9fa6862d9fb",
+    "train_ab_visual_control.py": "sha256:b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "collect_train_states.py": "sha256:3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "collect_train_contexts.py": "sha256:9225a31ed336ce41a7f8f46d8d161eff320790cacc0d3104844408f93acf8b78",
+    "collect_initial_feature_origins.py": "sha256:441f70364d294d429a2a1cca96cc53e3a6695ac4314a52797eb059f4e913c885",
+    "analyze_train_states.py": "sha256:2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "prepare_train_states.py": "sha256:cceb53710cdbde8350000c25d6f0ed25b490e4084022b37c76062315ad641c79",
+    "collect_ab_interface_panel.py": "sha256:361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "train_fixed_visual_selector.py": "sha256:a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "M108_FROZEN_SEMANTIC_PLAN.md": "sha256:a56affbe54e003e89de42bbf09e223824ba01618dbaee3bc93194593509e1ab8",
+    "M108_DEPLOY_RECEIPT.json": "sha256:74397213046e7c7f59e29422d1ebe06359f10c959646f7a55ea1e9db5154e1c4",
+    "M108_IMPORT_PREFLIGHT.json": "sha256:d397a0e25cb8e81c57eda62063a9c91eb849c12eb4b1447934ad1af2b0e90da9",
+    "M108_LAUNCH_RECEIPT.json": "sha256:ff54096343331ce5af521d1f83565e23ff7d0a1f47acf7d47892692637affb21",
+    "M108_TERMINAL_OBSERVATION.json": "sha256:0cc75e65d0dc8583d860301d5bb220c1ca6d1720fa12343666333c986a8e5bed",
+    "M108_ARTIFACT_MIRROR.json": "sha256:705504af4041abcf6d1c2af896ee8ee9ddadbd2a680a5f9b1af12a3b99b1412c",
+    "M108_CPU_RECOUNT.json": "sha256:ca7f54cb4c4ff26487734fdf83722dc92338808c7c940131bb3f94902a4963c8",
+    "M108_RESULT_NOTE.md": "sha256:6c0981860b5b1ffa5a4222e74223cb2d9b39ac130e3554c76a0927bd33d36b8e",
+    "m101_completed/train_weight1/result.json": "sha256:92d7df716aa369b5ba85f71ac0cc07e943c0a4c5cd7e4788474bde68991024d6",
+    "m101_completed/train_weight1/final.pt": "sha256:1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293",
+    "m107_weak_inputs/weak_labels.json": "sha256:95144cc4c47987fb1960e2d8f63cb9fa41531a83c6249ea7950d0f54845887a7",
+    "m108_completed/archive_receipt.json": "sha256:7c058cd39003f5665139535ab8adc03e5a4011f6e98dd42ace8352915f0e14fe",
+    "m108_completed/controller.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m108_completed/controller.log": "sha256:f2db4beff03f559be9510982acf2a6a426ba8f43cc7df75891990437cd8b8821",
+    "m108_completed/driver.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m108_completed/prepare.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m108_completed/prepare.log": "sha256:a25bf8ca7a8ec763c7f62f4ff1f9e136a16f83a397565e23477c2ff358686d82",
+    "m108_completed/result.json": "sha256:cad1dd4a59a8be3dc7e1356ea144c2188aacb60aa92142004857683d1449f475",
+    "m108_completed/sanity_generic.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m108_completed/sanity_generic.log": "sha256:91872b37f4950a9c6e64f934bd1764491b3bc37965ac12dbb43d4144d4af27cc",
+    "m108_completed/sanity_launch.json": "sha256:478e42098617327d2eddcd9b1054bf296320683c5ccc7d25b0fcda97dd6ec5e2",
+    "m108_completed/sanity_weak_text.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m108_completed/sanity_weak_text.log": "sha256:bd9cdf84d69fbc09b84e5da3629b03c577643ba79c44f0d80e9817a903c16aaa",
+    "m108_completed/text.json": "sha256:19d18018cebe22a475e5fd5b2a1d2dd7bc51803c66365f44d9fbaef0b79481f7",
+    "m108_completed/train_generic.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m108_completed/train_generic.log": "sha256:7fb1f48ac1741d33071b2c267b91baaa8a630aeec175b10c33608bf526b9b731",
+    "m108_completed/train_launch.json": "sha256:59573c86c2cc4696a7f38aec989747f75935de5ad4b0aa520de3fbe44f372dac",
+    "m108_completed/train_weak_text.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m108_completed/train_weak_text.log": "sha256:9a5eafde187ff4cee52e375f899bf0b77bb0858e296d33bd983af40e6fe3458d",
+    "m108_completed/sanity_generic/result.json": "sha256:8773da01a0a006b72e1f55e28fff0dfefd85a5b80e453938ecfee0d0ad40ae3b",
+    "m108_completed/sanity_weak_text/result.json": "sha256:fab78046d200b0843449dc084533becbe83eddddb765a6498b41a0b10fba8b1d",
+    "m108_completed/train_generic/empty_development.jsonl": "sha256:a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m108_completed/train_generic/final.pt": "sha256:ec6af542b1cd4f7b10e5683ecacbe6b17c94c2799ed7c9b3bd372d5e3d054e48",
+    "m108_completed/train_generic/fit_events.jsonl": "sha256:d272738c6e2ebad7cb9202bf8f29c2c7e10af02eaf2dbab6314feaee500e051f",
+    "m108_completed/train_generic/generic_development.jsonl": "sha256:60ddc028af301bf1498f3ab3601b8567191c1ad16780383bc6762917fdf2f3c9",
+    "m108_completed/train_generic/result.json": "sha256:4db4ec815d671f637c2fec4cc657a163b0837b32bda88d94e88daf9a1f26271f",
+    "m108_completed/train_generic/weak_text_development.jsonl": "sha256:c6df39a1411d52a4c6e6d2a422e45d4a8d368ca946b624aaf82f5355ee070a1f",
+    "m108_completed/train_weak_text/empty_development.jsonl": "sha256:a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m108_completed/train_weak_text/final.pt": "sha256:f1a11bd9e3f98b5cbc4386bb497224d098c3beeec01103331001b53408cf5168",
+    "m108_completed/train_weak_text/fit_events.jsonl": "sha256:46997eec4ca2d2b3cc2e867add5c6d28124055a5163d68fc05935387cd483fb8",
+    "m108_completed/train_weak_text/generic_development.jsonl": "sha256:db2a39228e2f19932769d8dcc173fecb6a00e05a5813cccebbe66fdca65b3d3d",
+    "m108_completed/train_weak_text/result.json": "sha256:7144ce5d7265f60d774287e0528a3b066335b50a43731ec8a23e0190f1fe9036",
+    "m108_completed/train_weak_text/weak_text_development.jsonl": "sha256:4890f3c6f452c00bdc0bf8753bbf6680ceeee40e1362eada83d3f7faf00b4a4b",
+    "collection_completed/collect_shard0.json": "sha256:92d9459441eef74ff618ae47299f7bfc2b7538246cbf46d59a970ec4248a74a1",
+    "collection_completed/collect_shard1.json": "sha256:dd5cb08f258aa6ce04ce202cd19ad793e8920951e973e6a91f8a360f250d3243",
+    "m95_completed/shard0.json": "sha256:b88be9a9f7326e8b49f00878113c862e8e9752a6db55bd2f7b69ef4dcf726323",
+    "m95_completed/shard1.json": "sha256:ac2c65b1d466fb1a2e3716a635cbc183502fc5efe15e7520d378e13840c45166",
+    "m98_completed/shard0.json": "sha256:7bbd432a25db7d936e0832c5e9a2bd52e086c22e3db6e1078cab801e699e544d",
+    "m98_completed/shard1.json": "sha256:8e77d367f58218ea919c5234d5156b936e4264805f373751e5b0e6c58f51a28b",
+    "m98_completed/input_audit.json": "sha256:35faaf9703cd0c50c2c28281908867ffceba20bfa6c3f66891d7fd90202a9b49",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/初审/M107_private/weak_text.pt": "sha256:7acb2f5509b23bc0a900f6c252017672f04961394054a85deb9b01e697ef388c",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/初审/M108_private/text.pt": "sha256:8ff9887ceae2a26f36867824a3a04941fb076fc15b0e93575538f5374633de10",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/初审/候选审核_24条.csv": "sha256:dbea2c80274adc903b5b8fd33406dfb9f9347bbb9b86c5fa338612860a097ff1",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/初审/初始化审核_152条.csv": "sha256:bd568ed8a4c3177787e92712f391b5ac4715844b9c9b8945bc8535f4673d5638",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/初审/审核回执.json": "sha256:02bb093e8514f187abeb44020e677ce668a838c0d9ca4509a59654c0823234aa",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/初审/重点人工复核清单.md": "sha256:b479a9145594488064d60d785a7eb780a0f996a7612e6e8267cf8f89321420d6",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/m108_public_results_20261002.tar.gz": "sha256:89cfbb29b813b4045dbd0bcbb8da4d779be241e43e38756cd659b05d1e37da17",
+    "preparation.json": "sha256:59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+    "m105_inputs/preparation.json": "sha256:59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+    "m105_inputs/training_labels.json": "sha256:433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/M82_training_spec.json": "sha256:3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "m106_gt_inputs/cube04_indoor.txt": "sha256:d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+    "m106_gt_inputs/bag04_indoor.txt": "sha256:0d06a12db2f75b4428d77d0983050e51ed2e56153c24ab74871ab4abca315267",
+    "m106_gt_inputs/skateboard02_indoor.txt": "sha256:304a07f4b196eb9a855d1a1857beec4757141965a09c5e635b80cede70938b68",
+    "m106_gt_inputs/cat02_indoor.txt": "sha256:db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d",
+    "m106_gt_inputs/bottle02_indoor.txt": "sha256:48f14b53ca931b24f50e0e24cef612aaef8311a85736c0916f69b58d54c72522",
+    "m106_gt_inputs/bottle01_indoor.txt": "sha256:e226e68e5c5ec7dbe8b380aaa0c37ad6444b683ca4f6fa84bfc59968ee818e83",
+    "m106_gt_inputs/mushroom02_wild.txt": "sha256:b7e602085a0c3af4ddd417b9dea144eab7d9d8bfec6517db261227f46090716d",
+    "m106_gt_inputs/book04_indoor.txt": "sha256:d7009271319c37873f1ca7e4a615e7efed384818c4a5a4c36b02c3f4628cbfdc",
+    "m106_gt_inputs/toydog_indoor.txt": "sha256:837f3df1f6bac05974c27339219bc9d61c8943a73ba03f8aa7f7cf4aaa6c4b01",
+    "m106_gt_inputs/skateboard01_indoor.txt": "sha256:afb682605337866d5ea72db4025dfbb70ee2acd2ea85719b5989a7626bb758d5",
+    "m106_gt_inputs/toy05_indoor.txt": "sha256:1bb2433f521ae44c146e6df9d7bbd825daa1d11e1b8df9f36d7d98e8ebd524ec",
+    "m106_gt_inputs/toy01_indoor.txt": "sha256:0f69714f77bc1cde2549ff14dc6474262aadaf78cae2ba74e7baf67bb56642c0",
+    "m106_gt_inputs/cat05_indoor.txt": "sha256:5d9144b7989d54a349cedafcf15f407db098d8af69019302bc05c2de0f09082a",
+    "m106_gt_inputs/leaves01_wild.txt": "sha256:d34f88a2e29041dcc3f0921878f934bae4f654e12f9e43d14aaad17e00e83561",
+    "m106_gt_inputs/ball04_indoor.txt": "sha256:db05ab15d9143192adc6a248c4a8d1fa66c339d028d067d60cae72c01ff85661",
+    "m106_gt_inputs/chair01_indoor.txt": "sha256:fc25354c8769860a8c4404019368e34c1415367828009e6503bb7695581bf62a",
+    "m106_gt_inputs/swing02_wild.txt": "sha256:9768e065c404b8acf47dc8dbe902f8eca8dd1736c501e97c5ad431cfac087741",
+    "m106_gt_inputs/ball03_indoor.txt": "sha256:ce41f746332d2777ea7f5f97ae8f545bbfa9afbe93929eaca8f0f0ee70f057c7",
+    "m106_gt_inputs/duck04_wild.txt": "sha256:29848ca243337725cfeae195563bd6035fae1f14f34c32a0441918112772c986",
+    "m106_gt_inputs/speaker_indoor.txt": "sha256:1a06abd953cb7833c232576238363cbe6c5248c486b3f221567d18dacf9a9a44",
+    "m106_gt_inputs/mushroom03_wild.txt": "sha256:453dd8042c4d9f0decb712d3899e228197b62f432e3318bdd1da44f26bd172fd",
+    "m106_gt_inputs/mushroom05_indoor.txt": "sha256:79887acbc43dc5468d4e9bdcf021df1347c869cc15ad336fc4e5fe7e42b5bb25",
+    "m106_gt_inputs/mobilephone05_indoor.txt": "sha256:70c425a3f893af73aca7bdac61cb111e47549d0c935b42af3a299a8f29919356",
+    "m106_gt_inputs/ball17_wild.txt": "sha256:a2e90cb9a2db72c3d4dd00bbeeb645b8f02b95094f714bb3f783ccb7e0dcd5e0",
+    "m106_gt_inputs/pine02_wild_320.txt": "sha256:0555c5378049662102ef0f382e3a4ddc2e5abdcc4fc5deb6ce2a9966bf5be16f",
+    "m106_gt_inputs/basket_indoor.txt": "sha256:d681b5a242bed11da0f5fe714491b49651ef1d1c4b4f43b92cfc6263c9d1e9ca",
+    "m106_gt_inputs/book05_indoor.txt": "sha256:8e2f3008f581de3517e2d19185080261a796ec36506a62f07824ecbdf34196f1",
+    "m106_gt_inputs/leaves04_indoor.txt": "sha256:ede8be7594992f5bd8addd4a22c657ee5fa63857c5b54ac602f88381dd76dffb",
+    "m106_gt_inputs/book02_indoor.txt": "sha256:25fc50ddf6083b81f0e202fbfbc83561d4d2cb13d445d9adb398e798473a7fc1",
+    "m106_gt_inputs/dumbbells02_indoor.txt": "sha256:18dac18d42fb4fa09483990feae0d084fff631c4629589fb4c7cfe880ff0052c",
+    "m106_gt_inputs/bike02_wild.txt": "sha256:4b90a9f1d4251f16d6dff2bf9864387d2954f0978145a524b0ed06ba3c03ea35",
+    "m106_gt_inputs/book01_indoor.txt": "sha256:9d0c8affacf73e01d0eed4d446aadaeb3e42f111d46b2e2d38ed86de40b9a19c",
+    "m106_gt_inputs/bottle03_indoor.txt": "sha256:8cb3e98365c17668ebbbb937431a5a38d22f05804b352f353d51d834fd3a117a",
+    "m106_gt_inputs/glass04_indoor.txt": "sha256:d24775109819cb517cbe764c3ef7990d25fe925049538864f4770864b40afbde",
+    "m106_gt_inputs/colacan02_indoor.txt": "sha256:ca6587fa0aa38475f51d7dc443398b8e716d7b0a175346f310c60bb8b8360f57",
+    "m106_gt_inputs/candlecup_indoor.txt": "sha256:2c2ba43df1406dd9fd0ac25d776dde07980efc6ae94900d3bbcdc453a6fbfc01",
+    "m106_gt_inputs/ball08_wild.txt": "sha256:a3570303bd54848f4b96234001d8a0f141460cf42effcb1ade9b2760e8e84bf9",
+    "m106_gt_inputs/milkbottle_indoor.txt": "sha256:1d677d5d444fd4e14aec00fcdd9c4fbf3af1efb32bb8bcc1b53490610ab54f55",
+    "m106_gt_inputs/parkingsign_wild.txt": "sha256:397c45dcc9273890a8a0364f59ccb58f4d485bf5454e04af27cf0aee7e3b8343",
+    "m106_gt_inputs/teacup_indoor.txt": "sha256:33ecb768c92c86e7106b05ce42527bf80db3c81c1f58b8332e22ccbb11625f97",
+    "m106_gt_inputs/suitcase_indoor.txt": "sha256:946321102dd03c4d28f1f3ccb31434bb955982bcec7e88082ce86b1579442c6e",
+    "m106_gt_inputs/bottle06_indoor.txt": "sha256:7dce3716c2635f7801abaefa8cda804ab943aa16ac77024d1ce11fa871437812",
+    "m106_gt_inputs/toy08_indoor.txt": "sha256:6c471ef8b84b8cd168a4ea3b7e578131a659bc59ca4207afb6d54bc819feec4d",
+    "m106_gt_inputs/ball05_indoor.txt": "sha256:4a3bf9f327e4994423b75c3d1267b80ac71d05c5e9b93b08b509f6d83bff4a34",
+    "m106_gt_inputs/cube06_indoor.txt": "sha256:19cf63610ae9b40e67f5e9b8f10ec62a42ad6662a693158eda64d18bb2b4c43a",
+    "m106_gt_inputs/human05_wild.txt": "sha256:65e455611bc7c342891c0bbe60ca0f876c181196251fa9d80f963ead74542f9e",
+    "m106_gt_inputs/mushroom04_indoor.txt": "sha256:bc2f201ef68a86eca6b19abef4dd410ed50aaec2569d6163cc0b57913c32540f",
+    "m106_gt_inputs/swing01_wild.txt": "sha256:2518e4ffc0ba579cbcce533e6aa33792b9f2a9f676651c2b79347dd24629657b",
+    "m106_gt_inputs/ball09_wild.txt": "sha256:a3647edc0b7e4ffcbedbc970b0e48e88aa11c5fea9cf9a2f22b490a43f0f1a01",
+    "m106_gt_inputs/cup14_indoor.txt": "sha256:9ad3ecd17fdbf886c7edf1f56934e7d47ac192cf7b9b4c53d013451651656bda",
+    "m106_gt_inputs/hat03_indoor.txt": "sha256:c7cd257073a4e20905e43f0bb3558cfb2d8bd4d391c6db18ae8bb8cf3cce9951",
+    "m106_gt_inputs/toy04_indoor.txt": "sha256:bb2d9f68b10422815d088d3d6aa9ecac6eed2bd3eb64c2d5b32c3fd239fed6d7",
+    "m106_gt_inputs/toy10_indoor.txt": "sha256:018c4dd5c17df16c7e186a4ad2f48759ba4836cedfe8fbf43edc53ba40c61e14",
+    "m106_gt_inputs/human01_indoor.txt": "sha256:384febbcddeeafe3489749b1b143c5d357e0c2098b02f589f45f208a0f627271",
+    "m106_gt_inputs/glass05_indoor.txt": "sha256:51cc8d500877bc4a321bc2bb6e810a30cb86711896764968d2700250f9352206",
+    "m106_gt_inputs/notebook03_indoor.txt": "sha256:a7c2e9a80ae2a6303b3b06c21cf8c1ab2fd96d88ae77368eaa804f83644100a0",
+    "m106_gt_inputs/toiletpaper04_indoor.txt": "sha256:e01fe3e9d60dbfe0588a3a096ca3b136a5ed0e2017e8e401d2704e57caf1467d",
+    "m106_gt_inputs/lock01_wild.txt": "sha256:8812b746751f5f59ea8a16764ec70b7d1ded6c3ffcf963ad9245ac7ce84ac577",
+    "m106_gt_inputs/painting_indoor_320.txt": "sha256:452f8042e633005d48071913f4b63c71d24829f0a931891f142539d4664a2ec6",
+    "m106_gt_inputs/hat02_indoor_320.txt": "sha256:5851dd6051472626d3b0432e492fae38c4fa7a06d12caaab93f44a6c5c1dbbd5",
+    "m106_gt_inputs/bike01_wild.txt": "sha256:cd70a8371938cdac020502cf2c4e0c77f77180eecd6baabee70b269b2ec47f24",
+    "m106_gt_inputs/cat04_indoor.txt": "sha256:6421ade8ca96dbc2da52ca02cedd69c415f37498775732b0cf780d81f2d292af",
+    "m106_gt_inputs/toy07_indoor_320.txt": "sha256:683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2",
+    "m106_gt_inputs/toiletpaper03_indoor.txt": "sha256:5b1f12533be6068b6db0ec4a06cf5702660e4a904c6385e78fce892a352a3cc4",
+    "m106_gt_inputs/pigeon05_wild.txt": "sha256:7ce05357a9a6e942c8dca07cc44507ec36f431b6920f6150c11629ab594e4f7d",
+    "m106_gt_inputs/hand02_indoor.txt": "sha256:fdb582d198c0d0e843a21891c4e8966cced3c2330dc3ded5110029ac67ccfab5",
+    "m106_gt_inputs/mirror_indoor.txt": "sha256:39399adcf38d1be5d83ed6bac42e777cb660e49f0c93b150a5e2f105f9674d41",
+    "m106_gt_inputs/shoes03_indoor.txt": "sha256:4f3bc65b100348817f2d1856613d54c1f783759ed1a282b8df28eded96467f7c",
+    "m106_gt_inputs/gymring_wild.txt": "sha256:b2df5de9aaaae941866b11586188ca7a5a94be1000a54e118df375cacf3d2346",
+    "m106_gt_inputs/duck02_wild.txt": "sha256:ac48fd345b322c2bb305e68ec659c8872446f9023867e23851f3b6e12d11790e",
+    "m106_gt_inputs/mobilephone04_indoor.txt": "sha256:c18af5d30957a339497ba8235ecbf6986dbc7ce66773afcfabdbdb0a3b03d55c",
+    "m106_gt_inputs/duck06_wild.txt": "sha256:dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e",
+    "m106_gt_inputs/glass02_indoor.txt": "sha256:8e019d223669c6f31adf10d3ee4162fca5404fd40be892f1c44f411fcc03ae4f",
+    "m106_gt_inputs/cup07_indoor.txt": "sha256:a87da31a984f168cba69d158eb46e31373ef79d11b2d4fd50c4c1886737c8885",
+    "m106_gt_inputs/cup09_indoor.txt": "sha256:6235e8bec9d88203c3bcc2adfa66db218730d79c619979fa575e77bd3cc2c5c5",
+    "m106_gt_inputs/ball02_indoor.txt": "sha256:2147f99e45f7af89f466d6bfbe718ca4a95a75827324f1c736eaef810d9f2083",
+    "m106_gt_inputs/container02_indoor.txt": "sha256:00cfbbbd0e55ccf24f191bda511d2a217c43a665f65ba0f64073d3b7b51fdccf",
+    "m106_gt_inputs/toy03_indoor.txt": "sha256:aa4e58bcabae622280b2c73dcf1143118ff540a3cac0202f8eb5da8e779b6888",
+    "m106_gt_inputs/bike03_wild.txt": "sha256:dad8d95321f350d2a347f4f71504d8d82b57fd7fdd08ef617b63e2929f57c3e3",
+    "m106_gt_inputs/flower01_indoor.txt": "sha256:97ecc6e67a43c29a5ef5eceaff28a480f40487347788ff044bef19fcbaea13db",
+    "m106_gt_inputs/shoes01_indoor.txt": "sha256:cee9970156a03576505b05a59ecc55e8daf4ff5ef5f10ef23dbf5efad7123326",
+    "m106_gt_inputs/clothes_indoor.txt": "sha256:e0717f89c1ad115ce87bb252bc7915ee1d0b34ab73c72fc8ca5a47a07612094b",
+    "m106_gt_inputs/hat04_indoor.txt": "sha256:2d71dd08fff19e4be6ba64b51dff107674ac7c18d50dfe5e924e23e58989eaa1",
+    "m106_gt_inputs/toy06_indoor.txt": "sha256:21ec622063569d66a1d4135a7f86b2b983070fbd3f2331d2bd18ec7aacb4cfc6",
+    "m106_gt_inputs/ball14_wild.txt": "sha256:f6d7da3590803baab88cadc089e76daa57b25fd1bcd2152abab118e41d085017",
+    "m106_gt_inputs/cup03_indoor.txt": "sha256:aef83d01e39f78bded1998acf5650504e4833292f9efaafc712094bca7eeda3d",
+    "m106_gt_inputs/ball12_wild.txt": "sha256:feee35d47e25bcdfcaef049ebebd67f77892cb1b533c842ad5147c1cff6b8c9b",
+    "m106_gt_inputs/trophy_indoor.txt": "sha256:8cee409befcc8e7ddc51c9d971bcd323ae4b4d527607359c17421b222b1c9cf2",
+    "m106_gt_inputs/hat01_indoor.txt": "sha256:8898891868efd65a97b8138c99404a0ae24e760f808487870f1b7529a30270bf",
+    "m106_gt_inputs/cup11_indoor.txt": "sha256:14e516059c4ebb3500cb0626fa4ff5135cee275d9b2e3f8862faa83a4e4af761",
+    "m106_gt_inputs/cup06_indoor.txt": "sha256:ebba4639a8d94969986dc9dd60960c43701d1a1fafefaec270cdac99cc1b9e5f",
+    "m106_gt_inputs/cup05_indoor.txt": "sha256:15d37ca8f694388415795e8df944d882347dbb5a2fd2e0a2e07e346164733149",
+    "m106_gt_inputs/cat03_indoor.txt": "sha256:d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f",
+    "m106_gt_inputs/duck01_wild.txt": "sha256:83aca68e7101f1261e7bafcff766bad3a0a68301f10921ded08f11192497263b",
+    "m106_gt_inputs/tree_wild.txt": "sha256:3563aa656258cfab370ff9aa39a887500afa9d80a20aa39d273f02074cd8089e",
+    "m106_gt_inputs/cube01_indoor.txt": "sha256:c7e7f55e9d0ed4bac64c18d658796fa340fe6dddd2467a877015d42c71d4185e",
+    "m106_gt_inputs/mobilephone06_indoor.txt": "sha256:4d96750a2019b57ad1ab7cfe0076f3fea8a1b03a8d293aec7826dc25f188ceff",
+    "m106_gt_inputs/thermos01_indoor.txt": "sha256:4a9a8a13af7359b697edfffe887b26b8e316042171f2955b44ad874b8f25d99e",
+    "m106_gt_inputs/mushroom01_indoor.txt": "sha256:fee7899ead7c9ba02f3afb6e6e0829656cff0ba0df64ca9fbef1304574661ced",
+    "m106_gt_inputs/bag03_indoor.txt": "sha256:fb4702c2f0e4c6a1e33251efb0f3c1c7f4eb5f26c1a3c79d9018913b2372d8ec",
+    "m106_gt_inputs/file02_indoor.txt": "sha256:b8f7d0914b2162609f993e8445b92cef3e2e1bb6e388cd21d1e62d835a154dfb",
+    "m106_gt_inputs/ball16_indoor.txt": "sha256:e39af82dd9ae52bbf6734c63cc916dfa043129fbcc4e0d675de09535ce0180a4",
+    "m106_gt_inputs/chair02_indoor.txt": "sha256:4f05bc2ed056bdc6c9c5a2687ab6c074a2f32b95cae62bf6feebe89899f03ca2",
+    "m106_gt_inputs/ball21_indoor.txt": "sha256:5230b453b3d069f8ade8e23aef0f3d18f9794d900a1a6264ebb830aff0ac0bb4",
+    "m106_gt_inputs/ball13_indoor.txt": "sha256:99c5e76747408d0c120b92ce172d37cbd39abc2836207837633eb92698547446",
+    "m106_gt_inputs/leaves05_indoor.txt": "sha256:aa0b613b169058dbf47eafd1c74e75e9e3d617e4f3ed21136bb5093e3ce8a3c1",
+    "m106_gt_inputs/adapter02_indoor.txt": "sha256:33a964dea164f87c4c4adaf720aeed9f6209f4f3f5025fc9d597c03f84d14e78",
+    "m106_gt_inputs/ukulele02_indoor.txt": "sha256:fd075a6c2a64bd319316c63b6be190b8e16565e5e1af99147b08d65f703733d9",
+    "m106_gt_inputs/earphone02_indoor.txt": "sha256:9178128a1ed5d23438515fdea6bac208c800122a1d38d0963d44f0eb700ba782",
+    "m106_gt_inputs/leaves02_indoor.txt": "sha256:d6a2ad6c7f3a9720b75c5a2457201857edfba1beeeeea2c5e5e85a39807fd696",
+    "m106_gt_inputs/trashbin_indoor.txt": "sha256:a10a14dc93003e0b3f111f92ebe093ebff80d856f9d01637af43bc5dc057edb1",
+    "m106_gt_inputs/pigeon03_wild.txt": "sha256:4281a4712dae248a85869058f68162c94984b6e287896287bf7e74e5440712fd",
+    "m106_gt_inputs/guitarbag_indoor.txt": "sha256:0d80234a96568cf983950b1f8b5bda33a01cb8cffd5cf1705f5c93f5621f9618",
+    "m106_gt_inputs/pigeon06_wild.txt": "sha256:d249393a979a8cfc4c541107b51329cc133e2e99c30f821c937359d5304df275",
+    "m106_gt_inputs/pigeon07_wild.txt": "sha256:91f2a4d1cbdd2808af3c0fc42f7a2a26a728eee5246b32a8c3ef12a2c06883d3",
+    "m106_gt_inputs/paintbottle_indoor.txt": "sha256:138c6884d76f8385a71bfd04c0ccc83b835ce67b9f37a9e8880da2abb2caca05",
+    "m106_gt_inputs/stand_indoor.txt": "sha256:15219e425e311f79e435a1c7526b3d04de6dbe1a035a6a1b5a4614e0ed4cef21",
+    "m106_gt_inputs/human03_wild.txt": "sha256:608ef24142202c0e8e9af1b3752ee0709e043a5f085e30bc66068bcaa4196543",
+    "m106_gt_inputs/human06_indoor.txt": "sha256:0f723bba01cd765122da6a513f6e458623ba3345aafb5a94826d787c9b1ee134",
+    "m106_gt_inputs/pine01_indoor.txt": "sha256:c06487c4c9e9de804050ebe5a7c25c90cc1dcb1d88c83279cd980cb0c5de5329",
+    "m106_gt_inputs/duck05_wild.txt": "sha256:5ad1b542b94c9181d66bc1d84e033b747ecd9a8fa62fe4717d6a65f05d870004",
+    "m106_gt_inputs/human04_wild.txt": "sha256:3a24191b7f4b4690c0c6c9c912754cdf658a702622686aa7891419f866a9a8b7",
+    "m106_gt_inputs/leaves06_wild.txt": "sha256:e5e14506d23aea54df25bd626b5d418240d15d1fa9b16739bac967fe464c7d74",
+    "m106_gt_inputs/leaves03_wild.txt": "sha256:a8169078aadfb3484b795038128cb1d314e04f2626a9f974253ac55c8dd69b5a",
+    "m106_gt_inputs/toiletpaper02_indoor.txt": "sha256:23039f5b59a9259bbfc89dd6d38e3ed9dcce696e03b827fb8ea320eeaef5cd0c",
+    "m106_gt_inputs/box_indoor.txt": "sha256:a34d48e631a3ec23016aa71f1951d350a72ad03beb878ed1ca18217875b98afd",
+    "m106_gt_inputs/thermos02_indoor.txt": "sha256:96b26f5f41d8ad70a8d1c1c34751aa224b2c8e447c007dc7dec6eb9ab90c5dbc",
+    "m106_gt_inputs/bottle05_indoor.txt": "sha256:222999382c4ba7803d1ad6fd919d93fc290f1b0fd521f3c08dddd2c47e06b01f",
+    "m106_gt_inputs/mac_indoor.txt": "sha256:7b7fbed57f079ebedae12870613d30719a69d98f458815d7a42c50be893adb1a",
+    "m106_gt_inputs/cart_indoor.txt": "sha256:e5b16fea25a7b2ddb32cf3132f97e385d6c27bd9af99c64cf12bd882b72c5226",
+    "m106_gt_inputs/bag05_indoor.txt": "sha256:19fac45f89a26ebfc9f3609008139d917dd80c75c825b6fe9c9d085ec55ebf52",
+    "m106_gt_inputs/ball07_indoor.txt": "sha256:c9cb5a6fcfd0bd3f5b3582292e5c30625a4c30fee1c08e5eb247f5ae6ffaaab2",
+    "m106_gt_inputs/ball19_indoor.txt": "sha256:21a1bddce56f75dd67ca5b9fbb14eccafc46bd36b24a468fb9483290d68e125d",
+    "m106_gt_inputs/beautifullight01_indoor.txt": "sha256:0e89eed1894076dbfbbebed2f931163b27fa3572246d21b49662b5ccbd1a945a",
+    "m106_gt_inputs/book06_indoor.txt": "sha256:df6b93503aa8177ac8b0e32507124189f453bce6c5bcb5f993667850f77b58a1",
+    "m106_gt_inputs/car01_indoor.txt": "sha256:dca7e65de77cced65b4b06a589352fdde456152b9a75d9af8759082b8cf458d4",
+    "m106_gt_inputs/car02_indoor.txt": "sha256:ed1171be55b7782858af063f174b2ece551f35b6ee2b5a4d0e81b5fc53f87ec7",
+    "m106_gt_inputs/colacan01_indoor.txt": "sha256:38443588eb1127d65c2ac800186759ad392581eef544588156c8c0f14b2ee866",
+    "m106_gt_inputs/colacan04_indoor.txt": "sha256:c556156a8252ea1e1b0c6a14cb4d63a374c8edf47b3dbdcdf129edfb562a0c2a",
+    "m106_gt_inputs/container01_indoor.txt": "sha256:c08d2571102bb7106e6530a0dea8512f6206e15ee765a3a52b2734978fba7e1e",
+    "m106_gt_inputs/cup08_indoor.txt": "sha256:b7c606e0373f5cdba15ecb21efa1ce293bc6620c5ffa60ddb567a1394c67f1c8",
+    "m106_gt_inputs/cup10_indoor.txt": "sha256:237081c1453dc80861c19444a63b2a4f63bd56c8703285c408c3e4d52a3d55ae",
+    "m106_gt_inputs/cup13_indoor.txt": "sha256:bd048b8a08b71b5616f185f8e8f1727972d7addf6251881c35f94d2911099864",
+    "m106_gt_inputs/egg_indoor.txt": "sha256:a4010da190dfc37a2c48efdc21c60993e398af6b9df87b91dc3aee813e5bc9bd",
+    "m106_gt_inputs/flower02_wild.txt": "sha256:517aa37496ae936121cc6ddbfaee6e845616a64a137bdcb8a8cfee489d2cc644",
+    "m106_gt_inputs/flower03_indoor.txt": "sha256:66480878783c4fcdf76d47234f1884cdffaddb775028bf2c7d8b12d2061da8ce",
+    "m106_gt_inputs/flowerbasket_indoor.txt": "sha256:0cc6a4a0bec64e746491603b06b076fd41f7fbce4c86c0d1455b2440302f0d1b",
+    "m106_gt_inputs/ghostmask_indoor.txt": "sha256:5aba29f532dd42f9df5bbfd1c6c5558c8632f9d62fbf5fc5d52470d799ef9406",
+    "m106_gt_inputs/glass03_indoor.txt": "sha256:b4e6aa986c65391dfdb688c77403795f5626134f5088821ea3bd4b7284e184da",
+    "m106_gt_inputs/mobilephone01_indoor.txt": "sha256:572ff6fde310d831e0fd2dd5201805a4f9d2cf18ec1dd63a227266872bf218ce",
+    "m106_gt_inputs/mobilephone02_indoor.txt": "sha256:d27bba52e1ebe7f816b9d2ce264d332404530765bcce830029070b146c52e45c",
+    "m106_gt_inputs/notebook02_indoor.txt": "sha256:fa3202cc8968e24785620c772584bc28e2a353c06799a0859ee6a2b8d8a880a0",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/sources/candidate_review_private_selection_v2.json": "sha256:5c7e8023610f5f75f36147acb1b47119c73324e6bf6173cc78b94872a53c0cf5",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/audit_register.json": "sha256:26f1354360eb4bb79ed33cafd7d24a783d1b70b5fc46ce1bfb5b8a7c48d26e94",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/sources/text_manifest.json": "sha256:14ff0d72efc48aa06baae04859fec12d87b68c5107d2d92d8304cf9e6fdaf01d",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/manifest.json": "sha256:e6f069729c1bf43eeb30d5e6870fba2da962dede9708b9f7142e64b3914c6ac9",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/multiframe_review/full152_multiframe_model_prefill.csv": "sha256:b933f2341f2e7ad6a95d69727e06b3f548d49f8821e150415b3476341f73e658",
+    "m98_completed/full_launch.json": "sha256:67d80755dc7a8a4e325462b1bc022607cf8510bca1a80b771ffc5f8817e16a05",
+    "diagnose_m109_training_gradients.py": "sha256:4f2fa439b4edefe1ea86f8e616a6818542acb1c55278c187a1e0ce3bb7b4eb1d",
+    "run_m109_pair.py": "sha256:4d6c64018438f7d081197b231d6a1be95bef6e6de8ba03d8ddf64afb861a71ce",
+    "M109_CONTROLLER.py": "sha256:30d5493bfa36f090200479bfbbb14e7fa8af904843a8fcc3bbc88c615e23e623",
+    "summarize_m109_gradients.py": "sha256:0f9d2357f0e2eec9903897c159e62b891d66bb3b10445386adef08cb9715644e",
+    "M109_FIT_GRADIENT_PLAN.md": "sha256:72fe9e4fe74312d4a3820cd49a7a0d32cc0619a0afc1619f8665d35da0ca6c44",
+    "M109_RESULT_NOTE.md": "sha256:f0ea440d4509d7ccfbc02b0561f77b259cf1eaf89493c7983045b3e436cce834",
+    "M109_GRADIENT_SUMMARY.json": "sha256:ae38dc3566d94df1d37b0d779569cad6d25db1e515d1d40d721fbd3ebe8f7abe",
+    "M109_ARTIFACT_MIRROR.json": "sha256:8d22bc3c79653bfc408d3645c159b37f457df7a8222be47a2dad503d14580c90",
+    "M109_DEPLOY_PREFLIGHT.json": "sha256:9f7801ca53101f8f8dbd15174e5529544f021b05db7cf7c4ac0fad550f7605d7",
+    "M109_LAUNCH_RECEIPT.json": "sha256:bd59999be3424387365dfd7b5521d24030a34c7e8488f78e156ab08b0571f88e",
+    "M109_TERMINAL_OBSERVATION.json": "sha256:ce5e04cdacb4ad079ecbc6f2e1cc421cfe1c159a329c4877d97e0961a775e75d",
+    "train_m110_no_weak_rank.py": "sha256:ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "run_m110_no_rank_pair.py": "sha256:02c084d133f0241374299b7ffc53e3bc181808e18c7cc409a46eb4d33e280f6a",
+    "M110_CONTROLLER.py": "sha256:9e6601505c8bf75790dd008cf2db6b0db7932961fdf1d18447b7a4705d0a319c",
+    "M110_NO_WEAK_RANK_PLAN.md": "sha256:d038e0266a556cdcc0b1de01dd45cc76869a4bb520c7c7b68f1d14238385538b",
+    "M110_DEPLOY_PREFLIGHT.json": "sha256:22d6befd5a10f105ef08417672252f3c19ce7606349306d9cb28ba733e71abcd",
+    "M110_LAUNCH_RECEIPT.json": "sha256:a899a0562436e02c6b1de86c9d6a53ed5838842be6ac6fecae4e667570ad0d36",
+    "M110_TERMINAL_OBSERVATION.json": "sha256:071a295b46e8776b5f43a3a79f999d80453017991dd23f2d7c88a436301098b9",
+    "M110_ARTIFACT_MIRROR.json": "sha256:cdc0ce3e4439fc4f4ff3cdf74809e0245c38e282bf218bdd8c72a0bc6b1d0084",
+    "M110_CPU_RECOUNT.json": "sha256:f36c1b78a745a454c21a06e7df5e18ad56fed1562f6f22c2a22a4dd4b67229ab",
+    "accept_m110_outputs.py": "sha256:9832ce64ff0d79bfef8a625c882b7dd85fa4ae45c15a9cf94ca214945e29c45f",
+    "M108_COMPLETED_AUDIT.md": "sha256:33f05315cc2fb55ccb7c4ed0cb67da25880ebdbb0c542cdc175071b7587aa844",
+    "M108_COMPLETED_AUDIT.json": "sha256:28cf21ed5d13bd40303202c815b5549425169b99bcc3614c1af54e26b83c0ed0",
+    "m109_completed/controller.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m109_completed/controller.log": "sha256:06add2f987566bae25dd2ce004ba317e6cdba061f16b06dbdd762c90846caf85",
+    "m109_completed/generic/result.json": "sha256:d55b295da1516b111227787b19a67e6e323e0320c335085ec946831cb1b5780d",
+    "m109_completed/generic.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m109_completed/generic.log": "sha256:e05f85cbb53df7375216317609a619ed678b76f9591a93502d58f7e7a204ae97",
+    "m109_completed/launch.json": "sha256:fd7e5f45438d09262cd21289d8384a0bfa3500f756c7121a9cae6900daec4a22",
+    "m109_completed/result.json": "sha256:64830703e7dc1d8dbaa4b95df2ea5e34370407e5ace3899d408cf825b9b16deb",
+    "m109_completed/weak_text/result.json": "sha256:9ca044aaa51d93d2c6d954fa18e8533ca92973158503f8bd63cde0c1398cd421",
+    "m109_completed/weak_text.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m109_completed/weak_text.log": "sha256:959f30f7c1e3e0a1831a9916641ef3c8a6abedd9847c2eb38c859585b83eb2c3",
+    "m110_completed/controller.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m110_completed/controller.log": "sha256:4bb69f32ed5d9a442b11ef2e893c1551c16dfea276c43c210b5c7cd264d6a36e",
+    "m110_completed/driver.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m110_completed/result.json": "sha256:65315d8cc1b786f778d2a2b22f23857a2be6223147bbec8ecaab536f13ee4e9d",
+    "m110_completed/sanity_generic/result.json": "sha256:109ee3b35a1afd17ad16de9d420a961c1a406d426c566955dadddbe884d1dfed",
+    "m110_completed/sanity_generic.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m110_completed/sanity_generic.log": "sha256:8d1d5c2a7afe939b95b631bdb13cf50d20b6eb16c0bb39ab0aec0140244c1980",
+    "m110_completed/sanity_launch.json": "sha256:bd91d556d56cd7d9a08eb0620895c3e7c77145bb60702f94ceaf425c5c92e805",
+    "m110_completed/sanity_weak_text/result.json": "sha256:397368f79111d9948f5361f7ca2919f6dcce6fb2c4753277dd7ba590a4676c74",
+    "m110_completed/sanity_weak_text.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m110_completed/sanity_weak_text.log": "sha256:4c313a06746ca67419e77202b388c9ed66d8a9bf3957625cf327c8f471bbe156",
+    "m110_completed/train_generic/empty_development.jsonl": "sha256:a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m110_completed/train_generic/final.pt": "sha256:746ef5fc8d832627b07ffff17538b7d481379b9eac918bf62f9689a475df91e9",
+    "m110_completed/train_generic/fit_events.jsonl": "sha256:c3ac82fbb8a3f3e979515e15b268ce86dd2555c3120522b874814dd0b5daf32f",
+    "m110_completed/train_generic/generic_development.jsonl": "sha256:0ba76eaff85e0f5fdaf179d90edc3731b32f777af8c8adb77345fcd2dcc4640b",
+    "m110_completed/train_generic/result.json": "sha256:99c5eea08b8ceaefe2bf1f2eb982756c30d680990164d010620c99327bffd80d",
+    "m110_completed/train_generic/weak_text_development.jsonl": "sha256:e96eab64c8753ce6444fc5f0a6a4fe67c827cc6a645cdf30fc11d642bd13962c",
+    "m110_completed/train_generic.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m110_completed/train_generic.log": "sha256:d3b95be437fbfb93258cd16b3ca96ae657d4e29d0818409f319371e2baaf2e66",
+    "m110_completed/train_launch.json": "sha256:65d078f04e10fff9b4a010825c97f63df9913f45f8863cd92df0ecb2e09d11e9",
+    "m110_completed/train_weak_text/empty_development.jsonl": "sha256:a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m110_completed/train_weak_text/final.pt": "sha256:36f3cdf300522eeb68252f538d04c4b8e02eff6a69a45c09102c3bebf82da4cc",
+    "m110_completed/train_weak_text/fit_events.jsonl": "sha256:573a79e754e6cf50571a7eca9e4713cfcec90d1b88193708d5104f391dcb2cf7",
+    "m110_completed/train_weak_text/generic_development.jsonl": "sha256:a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m110_completed/train_weak_text/result.json": "sha256:bceb83bf41cf28813b1e6acf786e8b0ba9a18801905992869845c0eb76dcab0c",
+    "m110_completed/train_weak_text/weak_text_development.jsonl": "sha256:32c152879fe8bdc4264deaf0e64a0ac4fd7419330aeea60b92745d4079e5e8dd",
+    "m110_completed/train_weak_text.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m110_completed/train_weak_text.log": "sha256:56b2712851fe4569dc5154275440c8159ace25e6a525b839d9ef3bf71565f517",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/初审/M109_private/generic_private_pair_relations.json": "sha256:79afecefd67489b691ef42ebd0454117bce67b414ec1e5e665c8e8adb2c5d5db",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/初审/M109_private/weak_text_private_pair_relations.json": "sha256:79afecefd67489b691ef42ebd0454117bce67b414ec1e5e665c8e8adb2c5d5db",
+    "M108_AUDIT_CLOSURE.json": "sha256:c3685f1482056c9d0c6ddd55240297caa9eb745a64ed807f19f2dd4c8e9ee1c8",
+    "M110_RESULT_NOTE.md": "sha256:bf00698f81b90df15a16c60b9333e3b0518a93f06bf7c2a7cb29bc1587fd1e64",
+    "M109_M110_HANDOFF_APPEND.md": "sha256:10c3b613172c2c9c408cb6541f1f67549b04ad41f20d87c1f6de55666eb26444",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-02_m108_completed/audited_M108_RESULT_NOTE.md": "sha256:d822b395520c7a26a50f461614bd7a3468466907909e2e55f530c610400108c0",
+    "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/m110_public_results_20261002.tar.gz": "sha256:094206e9a16acf6c533c8f7dc6c867bc4b07adb3bcf8d7641ff5397470e78c43",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-02_m109_m110_source/original_M109_RESULT_NOTE.md": "sha256:7c2fbb507d1e1fa7c9ef9a5fa3c9ef60f17f2c945e7a04fff4a4a9b840f8f3a9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-02_m109_m110_source/original_M109_M110_HANDOFF_APPEND.md": "sha256:10977a148273361cd9255739cc9357261347d252f81c54597aad3d6f32bcd261",
+    "M109_M110_AUDIT_CLOSURE.json": "sha256:dc14edf24a77f7a20aadc61ee2007a8f3a1856ccd3c0b5502b5c5705db098d36"
+  },
+  "audited_hash_count": 306,
+  "deterministic_M109": {
+    "total_batch_records": 160,
+    "summary_numeric_values_checked": 176,
+    "max_absolute_summary_difference": 4.440892098500626e-16,
+    "algebraic_max_abs_residuals": {
+      "weak_to_baseline_ratio": 9.448042237458765e-8,
+      "weak_vs_baseline_cosine": 4.675102704965184e-8,
+      "total_vs_baseline_cosine": 2.384185791015625e-7
+    },
+    "summary": {
+      "generic": {
+        "pairing": {
+          "preferred_higher_iou": 10,
+          "preferred_lower_iou": 1,
+          "equal_iou": 0,
+          "preferred_iou50": 10,
+          "other_iou50": 1
+        },
+        "snapshots": {
+          "initial": {
+            "total_batches": 40,
+            "paired_batches": 9,
+            "paired_localization_norm": {
+              "count": 9,
+              "mean": 0.02393960373269187,
+              "median": 0.023690761998295784,
+              "minimum": 0.012028738856315613,
+              "maximum": 0.03646020218729973
+            },
+            "paired_preservation_norm": {
+              "count": 9,
+              "mean": 0.0006026349858277374,
+              "median": 0,
+              "minimum": 0,
+              "maximum": 0.0054237148724496365
+            },
+            "paired_weak_norm": {
+              "count": 9,
+              "mean": 0.06824051029980183,
+              "median": 0.06989984214305878,
+              "minimum": 0.016144366934895515,
+              "maximum": 0.1544710099697113
+            },
+            "weak_to_baseline_norm": {
+              "count": 9,
+              "mean": 2.871629669061661,
+              "median": 3.04188694938019,
+              "minimum": 0.8719550575749027,
+              "maximum": 5.3920451302453705
+            },
+            "weak_vs_baseline_cosine": {
+              "count": 9,
+              "mean": -0.0009957324299547407,
+              "median": 0.04858091101050377,
+              "minimum": -0.8861369490623474,
+              "maximum": 0.8454884886741638
+            },
+            "weak_vs_localization_cosine": {
+              "count": 9,
+              "mean": 0.006553288549184799,
+              "median": 0.04858091101050377,
+              "minimum": -0.8861369490623474,
+              "maximum": 0.8454884886741638
+            },
+            "weak_vs_preservation_cosine": {
+              "count": 1,
+              "mean": -0.5634717345237732,
+              "median": -0.5634717345237732,
+              "minimum": -0.5634717345237732,
+              "maximum": -0.5634717345237732
+            },
+            "opposing_weak_vs_baseline": 4,
+            "zero_preservation_batches": 24,
+            "all_localization_vs_preservation_cosine": {
+              "count": 16,
+              "mean": 0.16153731613303535,
+              "median": 0.13955428451299667,
+              "minimum": -0.3151886463165283,
+              "maximum": 0.8700297474861145
+            }
+          },
+          "final": {
+            "total_batches": 40,
+            "paired_batches": 9,
+            "paired_localization_norm": {
+              "count": 9,
+              "mean": 0.6206031143665314,
+              "median": 0.45937398076057434,
+              "minimum": 0.22571024298667908,
+              "maximum": 1.2302992343902588
+            },
+            "paired_preservation_norm": {
+              "count": 9,
+              "mean": 0.24004947145779928,
+              "median": 0.1550799310207367,
+              "minimum": 0,
+              "maximum": 0.6456066966056824
+            },
+            "paired_weak_norm": {
+              "count": 9,
+              "mean": 1.3843309150801764,
+              "median": 1.3236083984375,
+              "minimum": 0.5006554126739502,
+              "maximum": 2.350572347640991
+            },
+            "weak_to_baseline_norm": {
+              "count": 9,
+              "mean": 2.1905980462051273,
+              "median": 1.9609131971845841,
+              "minimum": 1.080618930708888,
+              "maximum": 4.12859996574935
+            },
+            "weak_vs_baseline_cosine": {
+              "count": 9,
+              "mean": -0.10614547868155771,
+              "median": -0.14746275544166565,
+              "minimum": -0.46043258905410767,
+              "maximum": 0.5594574809074402
+            },
+            "weak_vs_localization_cosine": {
+              "count": 9,
+              "mean": -0.030638109375205305,
+              "median": -0.1428140252828598,
+              "minimum": -0.4574321508407593,
+              "maximum": 0.6846967339515686
+            },
+            "weak_vs_preservation_cosine": {
+              "count": 5,
+              "mean": -0.20833278447389603,
+              "median": -0.10714585334062576,
+              "minimum": -0.5506037473678589,
+              "maximum": 0.03801484405994415
+            },
+            "opposing_weak_vs_baseline": 7,
+            "zero_preservation_batches": 17,
+            "all_localization_vs_preservation_cosine": {
+              "count": 23,
+              "mean": 0.05678776125221149,
+              "median": 0.033155135810375214,
+              "minimum": -0.406042218208313,
+              "maximum": 0.6520753502845764
+            }
+          }
+        }
+      },
+      "weak_text": {
+        "pairing": {
+          "preferred_higher_iou": 10,
+          "preferred_lower_iou": 1,
+          "equal_iou": 0,
+          "preferred_iou50": 10,
+          "other_iou50": 1
+        },
+        "snapshots": {
+          "initial": {
+            "total_batches": 40,
+            "paired_batches": 9,
+            "paired_localization_norm": {
+              "count": 9,
+              "mean": 0.025253315249250993,
+              "median": 0.026488082483410835,
+              "minimum": 0.012691173702478409,
+              "maximum": 0.038247376680374146
+            },
+            "paired_preservation_norm": {
+              "count": 9,
+              "mean": 0.0009705868239204088,
+              "median": 0,
+              "minimum": 0,
+              "maximum": 0.00873528141528368
+            },
+            "paired_weak_norm": {
+              "count": 9,
+              "mean": 0.09409157828324372,
+              "median": 0.0934538021683693,
+              "minimum": 0.017452141270041466,
+              "maximum": 0.2005293220281601
+            },
+            "weak_to_baseline_norm": {
+              "count": 9,
+              "mean": 3.801636754861379,
+              "median": 3.1824975734489196,
+              "minimum": 0.9606930359843668,
+              "maximum": 6.8493572388657915
+            },
+            "weak_vs_baseline_cosine": {
+              "count": 9,
+              "mean": -0.00727716585000356,
+              "median": 0.021618444472551346,
+              "minimum": -0.7650159001350403,
+              "maximum": 0.7680028080940247
+            },
+            "weak_vs_localization_cosine": {
+              "count": 9,
+              "mean": -0.000791557961040073,
+              "median": 0.021618444472551346,
+              "minimum": -0.7066454291343689,
+              "maximum": 0.7680028080940247
+            },
+            "weak_vs_preservation_cosine": {
+              "count": 1,
+              "mean": -0.42894455790519714,
+              "median": -0.42894455790519714,
+              "minimum": -0.42894455790519714,
+              "maximum": -0.42894455790519714
+            },
+            "opposing_weak_vs_baseline": 4,
+            "zero_preservation_batches": 24,
+            "all_localization_vs_preservation_cosine": {
+              "count": 16,
+              "mean": 0.1508207568549551,
+              "median": 0.1385134980082512,
+              "minimum": -0.2892250418663025,
+              "maximum": 0.6849690675735474
+            }
+          },
+          "final": {
+            "total_batches": 40,
+            "paired_batches": 9,
+            "paired_localization_norm": {
+              "count": 9,
+              "mean": 0.7196814450952742,
+              "median": 0.74220871925354,
+              "minimum": 0.35265594720840454,
+              "maximum": 1.1979477405548096
+            },
+            "paired_preservation_norm": {
+              "count": 9,
+              "mean": 0.13270540121528837,
+              "median": 0.12435714155435562,
+              "minimum": 0,
+              "maximum": 0.4146416187286377
+            },
+            "paired_weak_norm": {
+              "count": 9,
+              "mean": 0.6266342169708676,
+              "median": 0.6084292531013489,
+              "minimum": 0.46708205342292786,
+              "maximum": 0.8676100969314575
+            },
+            "weak_to_baseline_norm": {
+              "count": 9,
+              "mean": 0.9154960694376038,
+              "median": 0.8423730087722385,
+              "minimum": 0.38990186099988516,
+              "maximum": 1.59466060235761
+            },
+            "weak_vs_baseline_cosine": {
+              "count": 9,
+              "mean": 0.18732178004251587,
+              "median": 0.19190570712089539,
+              "minimum": -0.3939816355705261,
+              "maximum": 0.5879009366035461
+            },
+            "weak_vs_localization_cosine": {
+              "count": 9,
+              "mean": 0.21121522867017323,
+              "median": 0.19190570712089539,
+              "minimum": -0.32262176275253296,
+              "maximum": 0.5879009366035461
+            },
+            "weak_vs_preservation_cosine": {
+              "count": 5,
+              "mean": -0.15193836018443108,
+              "median": -0.12533989548683167,
+              "minimum": -0.44372713565826416,
+              "maximum": 0.0939907357096672
+            },
+            "opposing_weak_vs_baseline": 1,
+            "zero_preservation_batches": 17,
+            "all_localization_vs_preservation_cosine": {
+              "count": 23,
+              "mean": 0.14857200618185426,
+              "median": 0.11756673455238342,
+              "minimum": -0.1848476082086563,
+              "maximum": 0.6482155323028564
+            }
+          }
+        }
+      }
+    },
+    "driver_elapsed_seconds": 16.775137901306152
+  },
+  "groundtruth_checks": {
+    "arrays": 152,
+    "rows": 219993,
+    "event_targets": 3502,
+    "valid_states": {
+      "fit": 2544,
+      "development": 495
+    },
+    "sequences": {
+      "fit": 130,
+      "development": 22
+    },
+    "split_disjoint": true
+  },
+  "weak_label_checks": {
+    "human_confirmed": false,
+    "initial_rows": 152,
+    "candidate_rows": 24,
+    "used_fit_pairs": 11,
+    "pairing": {
+      "preferred_higher_iou": 10,
+      "preferred_lower_iou": 1,
+      "equal_iou": 0,
+      "preferred_iou50": 10,
+      "other_iou50": 1
+    },
+    "private_relation_arms_equal": true
+  },
+  "M110_recount": {
+    "rows": 8058,
+    "comparison_rows_total": 16116,
+    "numeric_values_compared": 1456,
+    "max_abs_summary_difference": 1.1102230246251565e-16,
+    "history_loss_identity_max_abs_difference": 3.830791706418979e-9,
+    "driver_elapsed_seconds": 48.982646226882935,
+    "sanity": {
+      "generic": {
+        "steps": 3,
+        "checkpoint_saved": false,
+        "last_nonzero_text_and_semantic": true,
+        "reported_gradient_norms": [
+          {
+            "evidence.text": 0,
+            "evidence.phrase_read": 0,
+            "evidence.text_read": 0,
+            "semantic": 0.03289199247956276,
+            "phrase": 0.0008630460361018777
+          },
+          {
+            "evidence.text": 0.005203829489119016,
+            "evidence.phrase_read": 0.00023625233347956964,
+            "evidence.text_read": 0.0018893376155467308,
+            "semantic": 0.03257191926240921,
+            "phrase": 0.000854656333103776
+          },
+          {
+            "evidence.text": 0.01006784839410102,
+            "evidence.phrase_read": 0.00047461500707868254,
+            "evidence.text_read": 0.0038525508968424004,
+            "semantic": 0.037218011915683746,
+            "phrase": 0.0022209405433386564
+          }
+        ]
+      },
+      "weak_text": {
+        "steps": 3,
+        "checkpoint_saved": false,
+        "last_nonzero_text_and_semantic": true,
+        "reported_gradient_norms": [
+          {
+            "evidence.text": 0,
+            "evidence.phrase_read": 0,
+            "evidence.text_read": 0,
+            "semantic": 0.03649613633751869,
+            "phrase": 0.0011587117332965136
+          },
+          {
+            "evidence.text": 0.004862712569320138,
+            "evidence.phrase_read": 0.0001937786587404844,
+            "evidence.text_read": 0.0017905200156747014,
+            "semantic": 0.036090485751628876,
+            "phrase": 0.0011468051234260201
+          },
+          {
+            "evidence.text": 0.009159663063655898,
+            "evidence.phrase_read": 0.0003867368382088898,
+            "evidence.text_read": 0.0036188711474096635,
+            "semantic": 0.039576128125190735,
+            "phrase": 0.0025255170185118914
+          }
+        ]
+      }
+    },
+    "launch_order": {
+      "sanity": {
+        "first_start": 1790936646.7398202,
+        "last_finish": 1790936660.5944188
+      },
+      "train": {
+        "first_start": 1790936660.6021802,
+        "last_finish": 1790936695.7010708
+      }
+    },
+    "results": {
+      "generic": {
+        "fit": {
+          "all": {
+            "valid_gt": 2544,
+            "native_iou50": 1575,
+            "selected_iou50": 1608,
+            "oracle_iou50": 1814,
+            "rescues": 35,
+            "breaks": 2,
+            "native_mean_iou": 0.6002026092758873,
+            "selected_mean_iou": 0.6100420086725781
+          },
+          "healthy": {
+            "valid_gt": 1560,
+            "native_iou50": 1560,
+            "selected_iou50": 1558,
+            "oracle_iou50": 1560,
+            "rescues": 0,
+            "breaks": 2,
+            "native_mean_iou": 0.881706770719626,
+            "selected_mean_iou": 0.8812020488083363
+          },
+          "transition": {
+            "valid_gt": 452,
+            "native_iou50": 15,
+            "selected_iou50": 28,
+            "oracle_iou50": 62,
+            "rescues": 13,
+            "breaks": 0,
+            "native_mean_iou": 0.039728819805741375,
+            "selected_mean_iou": 0.062391245940626
+          },
+          "late_low": {
+            "valid_gt": 178,
+            "native_iou50": 0,
+            "selected_iou50": 12,
+            "oracle_iou50": 30,
+            "rescues": 12,
+            "breaks": 0,
+            "native_mean_iou": 0.01293458835147596,
+            "selected_mean_iou": 0.08300513399575557
+          },
+          "intermediate": {
+            "valid_gt": 381,
+            "native_iou50": 0,
+            "selected_iou50": 12,
+            "oracle_iou50": 166,
+            "rescues": 12,
+            "breaks": 0,
+            "native_mean_iou": 0.34474634664656295,
+            "selected_mean_iou": 0.35708585211376503
+          }
+        },
+        "summary": {
+          "empty": {
+            "all": {
+              "valid_gt": 495,
+              "native_iou50": 268,
+              "selected_iou50": 272,
+              "oracle_iou50": 305,
+              "rescues": 5,
+              "breaks": 1,
+              "native_mean_iou": 0.5247707230829154,
+              "selected_mean_iou": 0.5307076979870673
+            },
+            "healthy": {
+              "valid_gt": 264,
+              "native_iou50": 264,
+              "selected_iou50": 264,
+              "oracle_iou50": 264,
+              "rescues": 0,
+              "breaks": 0,
+              "native_mean_iou": 0.8824474816069459,
+              "selected_mean_iou": 0.8824474816069459
+            },
+            "late_low": {
+              "valid_gt": 41,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 8,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.008312820036691137,
+              "selected_mean_iou": 0.05322492169216275
+            },
+            "intermediate": {
+              "valid_gt": 69,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 21,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.33447598223237024,
+              "selected_mean_iou": 0.3469686867750209
+            },
+            "transition": {
+              "valid_gt": 127,
+              "native_iou50": 4,
+              "selected_iou50": 4,
+              "oracle_iou50": 13,
+              "rescues": 1,
+              "breaks": 1,
+              "native_mean_iou": 0.026580349498201074,
+              "selected_mean_iou": 0.028433969941019543
+            }
+          },
+          "generic": {
+            "all": {
+              "valid_gt": 495,
+              "native_iou50": 268,
+              "selected_iou50": 272,
+              "oracle_iou50": 305,
+              "rescues": 5,
+              "breaks": 1,
+              "native_mean_iou": 0.5247707230829154,
+              "selected_mean_iou": 0.5304029679763121
+            },
+            "healthy": {
+              "valid_gt": 264,
+              "native_iou50": 264,
+              "selected_iou50": 264,
+              "oracle_iou50": 264,
+              "rescues": 0,
+              "breaks": 0,
+              "native_mean_iou": 0.8824474816069459,
+              "selected_mean_iou": 0.8824474816069459
+            },
+            "late_low": {
+              "valid_gt": 41,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 8,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.008312820036691137,
+              "selected_mean_iou": 0.05322492169216275
+            },
+            "intermediate": {
+              "valid_gt": 69,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 21,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.33447598223237024,
+              "selected_mean_iou": 0.3447825801761254
+            },
+            "transition": {
+              "valid_gt": 127,
+              "native_iou50": 4,
+              "selected_iou50": 4,
+              "oracle_iou50": 13,
+              "rescues": 1,
+              "breaks": 1,
+              "native_mean_iou": 0.026580349498201074,
+              "selected_mean_iou": 0.028433969941019543
+            }
+          },
+          "weak_text": {
+            "all": {
+              "valid_gt": 495,
+              "native_iou50": 268,
+              "selected_iou50": 272,
+              "oracle_iou50": 305,
+              "rescues": 5,
+              "breaks": 1,
+              "native_mean_iou": 0.5247707230829154,
+              "selected_mean_iou": 0.5307076979870673
+            },
+            "healthy": {
+              "valid_gt": 264,
+              "native_iou50": 264,
+              "selected_iou50": 264,
+              "oracle_iou50": 264,
+              "rescues": 0,
+              "breaks": 0,
+              "native_mean_iou": 0.8824474816069459,
+              "selected_mean_iou": 0.8824474816069459
+            },
+            "late_low": {
+              "valid_gt": 41,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 8,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.008312820036691137,
+              "selected_mean_iou": 0.05322492169216275
+            },
+            "intermediate": {
+              "valid_gt": 69,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 21,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.33447598223237024,
+              "selected_mean_iou": 0.3469686867750209
+            },
+            "transition": {
+              "valid_gt": 127,
+              "native_iou50": 4,
+              "selected_iou50": 4,
+              "oracle_iou50": 13,
+              "rescues": 1,
+              "breaks": 1,
+              "native_mean_iou": 0.026580349498201074,
+              "selected_mean_iou": 0.028433969941019543
+            }
+          }
+        },
+        "gates": {
+          "correct_exceeds_native": true,
+          "mean_iou_exceeds_native": true,
+          "healthy_breaks_zero": true,
+          "transition_correct_at_least_native": true
+        },
+        "same_weight_content": {
+          "reviewed_vs_generic": {
+            "changed_selection": 5,
+            "improved_iou": 1,
+            "harmed_iou": 0,
+            "mean_iou_change": 0.0003047300107551344
+          },
+          "reviewed_vs_empty": {
+            "changed_selection": 2,
+            "improved_iou": 0,
+            "harmed_iou": 0,
+            "mean_iou_change": 0
+          }
+        }
+      },
+      "weak_text": {
+        "fit": {
+          "all": {
+            "valid_gt": 2544,
+            "native_iou50": 1575,
+            "selected_iou50": 1605,
+            "oracle_iou50": 1814,
+            "rescues": 32,
+            "breaks": 2,
+            "native_mean_iou": 0.6002026092758873,
+            "selected_mean_iou": 0.6095297296274426
+          },
+          "healthy": {
+            "valid_gt": 1560,
+            "native_iou50": 1560,
+            "selected_iou50": 1558,
+            "oracle_iou50": 1560,
+            "rescues": 0,
+            "breaks": 2,
+            "native_mean_iou": 0.881706770719626,
+            "selected_mean_iou": 0.8812020488083363
+          },
+          "transition": {
+            "valid_gt": 452,
+            "native_iou50": 15,
+            "selected_iou50": 27,
+            "oracle_iou50": 62,
+            "rescues": 12,
+            "breaks": 0,
+            "native_mean_iou": 0.039728819805741375,
+            "selected_mean_iou": 0.0609541320647896
+          },
+          "late_low": {
+            "valid_gt": 178,
+            "native_iou50": 0,
+            "selected_iou50": 12,
+            "oracle_iou50": 30,
+            "rescues": 12,
+            "breaks": 0,
+            "native_mean_iou": 0.01293458835147596,
+            "selected_mean_iou": 0.0834771133440166
+          },
+          "intermediate": {
+            "valid_gt": 381,
+            "native_iou50": 0,
+            "selected_iou50": 11,
+            "oracle_iou50": 166,
+            "rescues": 11,
+            "breaks": 0,
+            "native_mean_iou": 0.34474634664656295,
+            "selected_mean_iou": 0.35704817251348747
+          }
+        },
+        "summary": {
+          "empty": {
+            "all": {
+              "valid_gt": 495,
+              "native_iou50": 268,
+              "selected_iou50": 272,
+              "oracle_iou50": 305,
+              "rescues": 5,
+              "breaks": 1,
+              "native_mean_iou": 0.5247707230829154,
+              "selected_mean_iou": 0.5307076979870673
+            },
+            "healthy": {
+              "valid_gt": 264,
+              "native_iou50": 264,
+              "selected_iou50": 264,
+              "oracle_iou50": 264,
+              "rescues": 0,
+              "breaks": 0,
+              "native_mean_iou": 0.8824474816069459,
+              "selected_mean_iou": 0.8824474816069459
+            },
+            "late_low": {
+              "valid_gt": 41,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 8,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.008312820036691137,
+              "selected_mean_iou": 0.05322492169216275
+            },
+            "intermediate": {
+              "valid_gt": 69,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 21,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.33447598223237024,
+              "selected_mean_iou": 0.3469686867750209
+            },
+            "transition": {
+              "valid_gt": 127,
+              "native_iou50": 4,
+              "selected_iou50": 4,
+              "oracle_iou50": 13,
+              "rescues": 1,
+              "breaks": 1,
+              "native_mean_iou": 0.026580349498201074,
+              "selected_mean_iou": 0.028433969941019543
+            }
+          },
+          "generic": {
+            "all": {
+              "valid_gt": 495,
+              "native_iou50": 268,
+              "selected_iou50": 272,
+              "oracle_iou50": 305,
+              "rescues": 5,
+              "breaks": 1,
+              "native_mean_iou": 0.5247707230829154,
+              "selected_mean_iou": 0.5307076979870673
+            },
+            "healthy": {
+              "valid_gt": 264,
+              "native_iou50": 264,
+              "selected_iou50": 264,
+              "oracle_iou50": 264,
+              "rescues": 0,
+              "breaks": 0,
+              "native_mean_iou": 0.8824474816069459,
+              "selected_mean_iou": 0.8824474816069459
+            },
+            "late_low": {
+              "valid_gt": 41,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 8,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.008312820036691137,
+              "selected_mean_iou": 0.05322492169216275
+            },
+            "intermediate": {
+              "valid_gt": 69,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 21,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.33447598223237024,
+              "selected_mean_iou": 0.3469686867750209
+            },
+            "transition": {
+              "valid_gt": 127,
+              "native_iou50": 4,
+              "selected_iou50": 4,
+              "oracle_iou50": 13,
+              "rescues": 1,
+              "breaks": 1,
+              "native_mean_iou": 0.026580349498201074,
+              "selected_mean_iou": 0.028433969941019543
+            }
+          },
+          "weak_text": {
+            "all": {
+              "valid_gt": 495,
+              "native_iou50": 268,
+              "selected_iou50": 272,
+              "oracle_iou50": 305,
+              "rescues": 5,
+              "breaks": 1,
+              "native_mean_iou": 0.5247707230829154,
+              "selected_mean_iou": 0.5304029679763121
+            },
+            "healthy": {
+              "valid_gt": 264,
+              "native_iou50": 264,
+              "selected_iou50": 264,
+              "oracle_iou50": 264,
+              "rescues": 0,
+              "breaks": 0,
+              "native_mean_iou": 0.8824474816069459,
+              "selected_mean_iou": 0.8824474816069459
+            },
+            "late_low": {
+              "valid_gt": 41,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 8,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.008312820036691137,
+              "selected_mean_iou": 0.05322492169216275
+            },
+            "intermediate": {
+              "valid_gt": 69,
+              "native_iou50": 0,
+              "selected_iou50": 2,
+              "oracle_iou50": 21,
+              "rescues": 2,
+              "breaks": 0,
+              "native_mean_iou": 0.33447598223237024,
+              "selected_mean_iou": 0.3447825801761254
+            },
+            "transition": {
+              "valid_gt": 127,
+              "native_iou50": 4,
+              "selected_iou50": 4,
+              "oracle_iou50": 13,
+              "rescues": 1,
+              "breaks": 1,
+              "native_mean_iou": 0.026580349498201074,
+              "selected_mean_iou": 0.028433969941019543
+            }
+          }
+        },
+        "gates": {
+          "correct_exceeds_native": true,
+          "mean_iou_exceeds_native": true,
+          "healthy_breaks_zero": true,
+          "transition_correct_at_least_native": true
+        },
+        "same_weight_content": {
+          "reviewed_vs_generic": {
+            "changed_selection": 6,
+            "improved_iou": 0,
+            "harmed_iou": 1,
+            "mean_iou_change": -0.0003047300107551344
+          },
+          "reviewed_vs_empty": {
+            "changed_selection": 6,
+            "improved_iou": 0,
+            "harmed_iou": 1,
+            "mean_iou_change": -0.0003047300107551344
+          }
+        }
+      }
+    },
+    "same_protocol_M110_minus_M108": {
+      "generic": {
+        "own_condition_mean_iou_change": -0.002035586197267847,
+        "own_condition_correct_change": -2,
+        "healthy_breaks_before": 2,
+        "healthy_breaks_after": 0,
+        "transition_correct_before": 5,
+        "transition_correct_after": 4,
+        "row_level_change": {
+          "changed_selection": 30,
+          "improved_iou": 5,
+          "harmed_iou": 11,
+          "mean_iou_change": -0.002035586197267879
+        }
+      },
+      "weak_text": {
+        "own_condition_mean_iou_change": 0.00014446406352397467,
+        "own_condition_correct_change": 0,
+        "healthy_breaks_before": 0,
+        "healthy_breaks_after": 0,
+        "transition_correct_before": 3,
+        "transition_correct_after": 4,
+        "row_level_change": {
+          "changed_selection": 15,
+          "improved_iou": 2,
+          "harmed_iou": 7,
+          "mean_iou_change": 0.00014446406352399576
+        }
+      }
+    },
+    "parent_fit_correct": 1602
+  },
+  "checkpoint_and_bank_inspection": {
+    "status": "cpu_checkpoint_bank_and_batch_checks_pass",
+    "python": "C:/Users/gb/AppData/Local/uv/cache/archive-v0/BhiD8AmYwGCba9pUBzFx6/Scripts/python.exe",
+    "torch_version": "2.14.0+cpu",
+    "process_exit": 0,
+    "model_forward": false,
+    "autograd": false,
+    "optimizer": false,
+    "checkpoint_checks": {
+      "m108_completed": {
+        "generic": {
+          "state_entries": 56,
+          "trainable_tensors": 19,
+          "trainable_elements": 95683,
+          "frozen_parameter_tensors": 35,
+          "frozen_parameter_elements": 146311,
+          "buffer_tensors": 2,
+          "buffer_elements": 56,
+          "changed_tensor_count": 18,
+          "strict_load": true,
+          "all_tensors_finite": true,
+          "frozen_parameters_buffers_exact": true,
+          "sha256": "ec6af542b1cd4f7b10e5683ecacbe6b17c94c2799ed7c9b3bd372d5e3d054e48"
+        },
+        "weak_text": {
+          "state_entries": 56,
+          "trainable_tensors": 19,
+          "trainable_elements": 95683,
+          "frozen_parameter_tensors": 35,
+          "frozen_parameter_elements": 146311,
+          "buffer_tensors": 2,
+          "buffer_elements": 56,
+          "changed_tensor_count": 18,
+          "strict_load": true,
+          "all_tensors_finite": true,
+          "frozen_parameters_buffers_exact": true,
+          "sha256": "f1a11bd9e3f98b5cbc4386bb497224d098c3beeec01103331001b53408cf5168"
+        }
+      },
+      "m110_completed": {
+        "generic": {
+          "state_entries": 56,
+          "trainable_tensors": 19,
+          "trainable_elements": 95683,
+          "frozen_parameter_tensors": 35,
+          "frozen_parameter_elements": 146311,
+          "buffer_tensors": 2,
+          "buffer_elements": 56,
+          "changed_tensor_count": 18,
+          "strict_load": true,
+          "all_tensors_finite": true,
+          "frozen_parameters_buffers_exact": true,
+          "sha256": "746ef5fc8d832627b07ffff17538b7d481379b9eac918bf62f9689a475df91e9"
+        },
+        "weak_text": {
+          "state_entries": 56,
+          "trainable_tensors": 19,
+          "trainable_elements": 95683,
+          "frozen_parameter_tensors": 35,
+          "frozen_parameter_elements": 146311,
+          "buffer_tensors": 2,
+          "buffer_elements": 56,
+          "changed_tensor_count": 18,
+          "strict_load": true,
+          "all_tensors_finite": true,
+          "frozen_parameters_buffers_exact": true,
+          "sha256": "36f3cdf300522eeb68252f538d04c4b8e02eff6a69a45c09102c3bebf82da4cc"
+        }
+      }
+    },
+    "bank": {
+      "sha256": "8ff9887ceae2a26f36867824a3a04941fb076fc15b0e93575538f5374633de10",
+      "original_fields_exact": 9,
+      "sequences": 152,
+      "mask_counts_match_phrases": true,
+      "human_confirmed": false
+    },
+    "m109_batch_order": {
+      "seed": 2038,
+      "batches": 40,
+      "weak_pairs": 11,
+      "paired_batches": 9,
+      "membership_counts_match_all_snapshots": true
+    },
+    "warning": "Torch reported NumPy unavailable; the executed tensor and randperm checks did not require NumPy."
+  },
+  "archive_verification": [
+    {
+      "path": "C:/Users/gb/Desktop/document/RGBD_INITIALIZATION_REVIEW_20260928/m110_public_results_20261002.tar.gz",
+      "sha256": "094206e9a16acf6c533c8f7dc6c867bc4b07adb3bcf8d7641ff5397470e78c43",
+      "bytes": 2027862,
+      "verified_members": 28
+    }
+  ],
+  "historical_preservation": {
+    "original_inventory_items": 235,
+    "unchanged_items": 234,
+    "sole_documented_note_change": {
+      "path": "M108_RESULT_NOTE.md",
+      "expected": "d822b395520c7a26a50f461614bd7a3468466907909e2e55f530c610400108c0",
+      "actual": "6c0981860b5b1ffa5a4222e74223cb2d9b39ac130e3554c76a0927bd33d36b8e"
+    },
+    "verified_note_diff": [
+      "--- audited_M108_RESULT_NOTE.md\n",
+      "+++ M108_RESULT_NOTE.md\n",
+      "@@ -67,4 +67,5 @@\n",
+      " ",
+      " Deterministic recount: `M108_CPU_RECOUNT.json`. Full integrity review:",
+      " `M108_COMPLETED_AUDIT.md/json` (fresh same-family reviewer; provisional assurance).",
+      "-Raw artifacts: `m108_completed/`. Public benchmark results are unchanged.",
+      "+Raw artifacts: `m108_completed/`. M108 produced no new official benchmark",
+      "+evaluation; no global artifact-immutability audit is claimed."
+    ],
+    "all_original_sources_results_weights_labels_banks_unchanged": true
+  },
+  "wording_findings_closed": {
+    "findings": [
+      "M109_RESULT_NOTE.md:30 originally stated global formal metrics were unchanged; changed to no new official evaluation, matching actual audit scope.",
+      "M109_M110_HANDOFF_APPEND.md:18 originally described a three-minute terminal check; actual receipt difference is about 239.75 seconds and the wording now states at least three minutes / about four minutes."
+    ],
+    "verified": {
+      "closure": {
+        "kind": "wording_only",
+        "unchanged_experiment_code_weights_results": true,
+        "items": {
+          "M109_RESULT_NOTE.md": {
+            "before": "7c2fbb507d1e1fa7c9ef9a5fa3c9ef60f17f2c945e7a04fff4a4a9b840f8f3a9",
+            "after": "f0ea440d4509d7ccfbc02b0561f77b259cf1eaf89493c7983045b3e436cce834",
+            "reason": "No global official artifact immutability audit was performed."
+          },
+          "M109_M110_HANDOFF_APPEND.md": {
+            "before": "10977a148273361cd9255739cc9357261347d252f81c54597aad3d6f32bcd261",
+            "after": "10c3b613172c2c9c408cb6541f1f67549b04ad41f20d87c1f6de55666eb26444",
+            "reason": "Actual terminal observation occurred239.75seconds after launch."
+          }
+        }
+      },
+      "files": {
+        "M109_RESULT_NOTE.md": {
+          "old_sha256": "7c2fbb507d1e1fa7c9ef9a5fa3c9ef60f17f2c945e7a04fff4a4a9b840f8f3a9",
+          "new_sha256": "f0ea440d4509d7ccfbc02b0561f77b259cf1eaf89493c7983045b3e436cce834",
+          "diff": [
+            "--- \n",
+            "+++ \n",
+            "@@ -27,4 +27,4 @@\n",
+            " The next controlled test is M110: retain captions, initialization and budget,",
+            " exclude the provisional A/B term from optimization, and run both text arms.",
+            " This tests the contribution of the auxiliary objective rather than correcting",
+            "-an identity label based solely on IoU. Formal three-dataset metrics are unchanged.",
+            "+an identity label based solely on IoU. This diagnostic performed no new official three-dataset evaluation."
+          ]
+        },
+        "M109_M110_HANDOFF_APPEND.md": {
+          "old_sha256": "10977a148273361cd9255739cc9357261347d252f81c54597aad3d6f32bcd261",
+          "new_sha256": "10c3b613172c2c9c408cb6541f1f67549b04ad41f20d87c1f6de55666eb26444",
+          "diff": [
+            "--- \n",
+            "+++ \n",
+            "@@ -15,7 +15,7 @@\n",
+            " ",
+            " 部署时第一次SSH连接超时，未上传文件、未启动训练；TCP检查恢复后重新部署。2026-10-02约18:24一次性启动控制器PID9913，GPU0使用object泛化描述，GPU1使用同一模型初审描述。两臂沿用M108底座、初始参数、text bank、mask、seed2027、拟合130／开发22序列与2544／495状态；每臂独立三步GPU预检后，固定12轮、480步AdamW训练，batch64、学习率3e-4。唯一优化变化是loss不再包含A/B softplus；该量仍计算并记录，不参与反向传播。旧M108源码及权重不改写。",
+            " ",
+            "-实际driver耗时48.982646秒；两臂sanity、两臂train、driver、controller共六个exit均为0。首次统一验收在启动后三分钟进行，未频繁轮询。全3039状态的Empty score／quality训练前后逐值一致，冻结参数和buffer不变，final保存／重载一致；真实GPU断言及逐行CPU复算均通过。这里仍是缓存状态原型训练，不是Full152递归训练，也不是三数据集正式成绩。",
+            "+实际driver耗时48.982646秒；两臂sanity、两臂train、driver、controller共六个exit均为0。等待至少三分钟后统一验收，实际终态读取在启动后约四分钟（239.75秒），未频繁轮询。全3039状态的Empty score／quality训练前后逐值一致，冻结参数和buffer不变，final保存／重载一致；真实GPU断言及逐行CPU复算均通过。这里仍是缓存状态原型训练，不是Full152递归训练，也不是三数据集正式成绩。",
+            " ",
+            " | 固定final／输入 | 正确数/495 | 平均IoU | 对同状态原生救回/损害 | healthy正确/264 | transition正确/127 |",
+            " |---|---:|---:|---:|---:|---:|"
+          ]
+        }
+      },
+      "closure_sha256": "dc14edf24a77f7a20aadc61ee2007a8f3a1856ccd3c0b5502b5c5705db098d36"
+    },
+    "experimental_values_and_sources_unchanged": true
+  },
+  "evaluation_types": {
+    "localization": "real_gt",
+    "weak_text_and_pair_supervision": "synthetic_proxy",
+    "engineering_invariants": "self_supervised_proxy",
+    "gradient_statistics": "mixed-supervision objective diagnostic, not performance evaluation"
+  },
+  "scientific_acceptance": {
+    "M110_generic_fixed_gates": "PASS",
+    "M110_weak_text_fixed_gates": "PASS",
+    "net_reviewed_text_benefit_over_preserved_Empty": false,
+    "official_or_recursive_improvement_supported": false,
+    "automatic_promotion": false
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "M109 completed read-only fit endpoint-gradient diagnostics.",
+      "impact": "supported_by_sources_logs_hashes_and_recount_not_new_GPU_replay"
+    },
+    {
+      "id": "C2",
+      "claim": "M109 proves persistent gradient conflict or the unique cause of development loss.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C3",
+      "claim": "M110 differs from M108 only by removing weak rank from the optimized loss.",
+      "impact": "supported_with_same_seed_cached_state_scope"
+    },
+    {
+      "id": "C4",
+      "claim": "M110 both own-condition finals pass the four pre-existing gates.",
+      "impact": "supported"
+    },
+    {
+      "id": "C5",
+      "claim": "M110 establishes a useful reviewed-text increment over the preserved Empty parent.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C6",
+      "claim": "The whole 3,039-state Empty score/quality invariant was independently forward-replayed by this reviewer.",
+      "impact": "not_executed_recorded_GPU_assertions_only"
+    },
+    {
+      "id": "C7",
+      "claim": "M108 experimental sources, weights, raw results and supervision remain unchanged.",
+      "impact": "supported_by_original_inventory_hashes"
+    },
+    {
+      "id": "C8",
+      "claim": "Numerical M109/M110 note and handoff tables match actual outputs.",
+      "impact": "supported_after_two_scope_timing_wording_corrections"
+    }
+  ],
+  "action_items": [
+    "Preserve and publish both fixed-gate passage and the lack of net semantic benefit; do not promote based on the original gates alone.",
+    "Keep the one-seed, selected cached Train-state, matched-mask, model-provisional supervision and reused-development qualifications.",
+    "Keep M109 language restricted to initial/final raw gradients; do not describe them as historical AdamW updates or a causal explanation of generalization.",
+    "Distinguish direct reviewer tensor/recount/hash checks from the recorded GPU Empty/gradient assertions.",
+    "No source fix, training rerun or new GPU task is required to report these results. The two wording actions are closed."
+  ],
+  "execution_notes": [
+    "The initial managed-Python environment had no Torch. The existing cached CPU Torch interpreter was used without installation.",
+    "Auditor-only preliminary probes encountered an incorrect private-label container key, stdout encoding of U+2212, a historical-note hash difference and Windows path separators in the recount hash map. These were resolved in the audit commands; no experimental file was altered.",
+    "The completed CPU Torch process was polled to exit 0 after its result output. No successful neural computation was repeated."
+  ],
+  "report_files": [
+    "M109_M110_SOURCE_AUDIT.md",
+    "M109_M110_SOURCE_AUDIT.json"
+  ]
+}
+
