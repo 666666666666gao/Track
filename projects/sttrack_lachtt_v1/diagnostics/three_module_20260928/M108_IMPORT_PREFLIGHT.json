@@ -1,0 +1,6 @@
+{
+  "exit": 0,
+  "stdout": "{\"status\": \"M108_native_AST_import_pass\", \"main_executed\": false, \"training_executed\": false}\n",
+  "stderr": "",
+  "remote_command": "/root/autodl-tmp/envs/sttrack/bin/python - <<'PY'\nimport ast,sys,json\nfrom pathlib import Path\np=Path('/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928')\nsys.path.insert(0,str(p))\nfor n in ['prepare_m108_generic.py','train_m108_frozen_semantics.py','run_m108_frozen_pair.py','M108_CONTROLLER.py']:ast.parse((p/n).read_text())\nimport prepare_m108_generic,train_m108_frozen_semantics,run_m108_frozen_pair\nprint(json.dumps({'status':'M108_native_AST_import_pass','main_executed':False,'training_executed':False}))\nPY"
+}

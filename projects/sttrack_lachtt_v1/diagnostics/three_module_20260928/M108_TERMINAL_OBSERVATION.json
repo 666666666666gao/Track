@@ -1,0 +1,104 @@
+{
+  "controller_process": "   PID STAT     ELAPSED COMMAND\n",
+  "exit_files": {
+    "prepare.exit": "0",
+    "sanity_generic.exit": "0",
+    "sanity_weak_text.exit": "0",
+    "train_generic.exit": "0",
+    "train_weak_text.exit": "0",
+    "driver.exit": "0",
+    "controller.exit": "0"
+  },
+  "controller_log_tail": [
+    "{\"pid\": 7375, \"gpu\": 0, \"arm\": \"generic\", \"mode\": \"sanity\", \"args\": [\"/root/autodl-tmp/envs/sttrack/bin/python\", \"-u\", \"/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m108_frozen_semantics.py\", \"--cache\", \"/root/autodl-tmp/sttrack_m90_train_states_20260928\", \"--contexts\", \"/root/autodl-tmp/sttrack_m98_train_contexts_20260928\", \"--origins\", \"/root/autodl-tmp/sttrack_m95_initial_origins_20260928\", \"--bank\", \"/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/text.pt\", \"--labels\", \"/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m107_weak_inputs/weak_labels.json\", \"--parent\", \"/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/final.pt\", \"--parent-result\", \"/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/result.json\", \"--output\", \"/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/sanity_generic\", \"--arm\", \"generic\", \"--mode\", \"sanity\"], \"started\": 1790932228.0646322}",
+    "{\"pid\": 7376, \"gpu\": 1, \"arm\": \"weak_text\", \"mode\": \"sanity\", \"args\": [\"/root/autodl-tmp/envs/sttrack/bin/python\", \"-u\", \"/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m108_frozen_semantics.py\", \"--cache\", \"/root/autodl-tmp/sttrack_m90_train_states_20260928\", \"--contexts\", \"/root/autodl-tmp/sttrack_m98_train_contexts_20260928\", \"--origins\", \"/root/autodl-tmp/sttrack_m95_initial_origins_20260928\", \"--bank\", \"/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/text.pt\", \"--labels\", \"/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m107_weak_inputs/weak_labels.json\", \"--parent\", \"/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/final.pt\", \"--parent-result\", \"/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/result.json\", \"--output\", \"/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/sanity_weak_text\", \"--arm\", \"weak_text\", \"--mode\", \"sanity\"], \"started\": 1790932228.0688388}",
+    "{\"pid\": 7521, \"gpu\": 0, \"arm\": \"generic\", \"mode\": \"train\", \"args\": [\"/root/autodl-tmp/envs/sttrack/bin/python\", \"-u\", \"/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m108_frozen_semantics.py\", \"--cache\", \"/root/autodl-tmp/sttrack_m90_train_states_20260928\", \"--contexts\", \"/root/autodl-tmp/sttrack_m98_train_contexts_20260928\", \"--origins\", \"/root/autodl-tmp/sttrack_m95_initial_origins_20260928\", \"--bank\", \"/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/text.pt\", \"--labels\", \"/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m107_weak_inputs/weak_labels.json\", \"--parent\", \"/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/final.pt\", \"--parent-result\", \"/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/result.json\", \"--output\", \"/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/train_generic\", \"--arm\", \"generic\", \"--mode\", \"train\"], \"started\": 1790932242.0669568}",
+    "{\"pid\": 7522, \"gpu\": 1, \"arm\": \"weak_text\", \"mode\": \"train\", \"args\": [\"/root/autodl-tmp/envs/sttrack/bin/python\", \"-u\", \"/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m108_frozen_semantics.py\", \"--cache\", \"/root/autodl-tmp/sttrack_m90_train_states_20260928\", \"--contexts\", \"/root/autodl-tmp/sttrack_m98_train_contexts_20260928\", \"--origins\", \"/root/autodl-tmp/sttrack_m95_initial_origins_20260928\", \"--bank\", \"/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/text.pt\", \"--labels\", \"/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m107_weak_inputs/weak_labels.json\", \"--parent\", \"/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/final.pt\", \"--parent-result\", \"/root/autodl-tmp/sttrack_m101_ab_native_pair_20260928/train_weight1/result.json\", \"--output\", \"/root/autodl-tmp/sttrack_m108_frozen_semantic_pair_20261002/train_weak_text\", \"--arm\", \"weak_text\", \"--mode\", \"train\"], \"started\": 1790932242.0724518}",
+    "{\"status\": \"complete_M108_frozen_semantic_pair\", \"elapsed_seconds\": 60.616015911102295}",
+    "{\"status\": \"terminal\", \"exit\": 0, \"finished\": 1790932278.5436761}"
+  ],
+  "status": "complete_M108_frozen_semantic_pair",
+  "elapsed_seconds": 60.616015911102295,
+  "arms": {
+    "generic": {
+      "gates": {
+        "correct_exceeds_native": true,
+        "mean_iou_exceeds_native": true,
+        "healthy_breaks_zero": false,
+        "transition_correct_at_least_native": true
+      },
+      "conditions": {
+        "empty": {
+          "valid_gt": 495,
+          "native_iou50": 268,
+          "selected_iou50": 272,
+          "oracle_iou50": 305,
+          "rescues": 5,
+          "breaks": 1,
+          "native_mean_iou": 0.5247707230829154,
+          "selected_mean_iou": 0.5307076979870673
+        },
+        "generic": {
+          "valid_gt": 495,
+          "native_iou50": 268,
+          "selected_iou50": 274,
+          "oracle_iou50": 305,
+          "rescues": 9,
+          "breaks": 3,
+          "native_mean_iou": 0.5247707230829154,
+          "selected_mean_iou": 0.53243855417358
+        },
+        "weak_text": {
+          "valid_gt": 495,
+          "native_iou50": 268,
+          "selected_iou50": 272,
+          "oracle_iou50": 305,
+          "rescues": 5,
+          "breaks": 1,
+          "native_mean_iou": 0.5247707230829154,
+          "selected_mean_iou": 0.5300109093792436
+        }
+      }
+    },
+    "weak_text": {
+      "gates": {
+        "correct_exceeds_native": true,
+        "mean_iou_exceeds_native": true,
+        "healthy_breaks_zero": true,
+        "transition_correct_at_least_native": false
+      },
+      "conditions": {
+        "empty": {
+          "valid_gt": 495,
+          "native_iou50": 268,
+          "selected_iou50": 272,
+          "oracle_iou50": 305,
+          "rescues": 5,
+          "breaks": 1,
+          "native_mean_iou": 0.5247707230829154,
+          "selected_mean_iou": 0.5307076979870673
+        },
+        "generic": {
+          "valid_gt": 495,
+          "native_iou50": 268,
+          "selected_iou50": 272,
+          "oracle_iou50": 305,
+          "rescues": 5,
+          "breaks": 1,
+          "native_mean_iou": 0.5247707230829154,
+          "selected_mean_iou": 0.5316299812463724
+        },
+        "weak_text": {
+          "valid_gt": 495,
+          "native_iou50": 268,
+          "selected_iou50": 272,
+          "oracle_iou50": 305,
+          "rescues": 5,
+          "breaks": 1,
+          "native_mean_iou": 0.5247707230829154,
+          "selected_mean_iou": 0.5302585039127882
+        }
+      }
+    }
+  }
+}
