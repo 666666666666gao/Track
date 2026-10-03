@@ -1,0 +1,161 @@
+{
+  "status": "complete_M111_source_review",
+  "verdict": "PASS",
+  "verdict_scope": "SOURCE_ONLY_WITH_LOCAL_BINDING_CHECKS",
+  "source_gate": "PASS_AFTER_RESOLVED_DTYPE_BLOCKER",
+  "reviewed_at": "2026-10-03T16:05:03.282194+08:00",
+  "reviewer_model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "independent_fresh_context": true,
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "model_fallback_used": false,
+  "blocking_issues": [],
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "severity": "BLOCKING",
+      "initial_status": "FAIL_SOURCE",
+      "status": "RESOLVED_SOURCE",
+      "title": "Half-precision cached initialization features were passed into float32 Linear layers",
+      "evidence": [
+        "collect_initial_feature_origins.py:66 stores search_reference.half()",
+        "collect_train_contexts.py:102-104 stores initial/context.half()",
+        "load_initial_search and initial_panel retain the cache dtype",
+        "original category_inputs used only .to(device)"
+      ],
+      "fix": "Main executor added the existing bool-preserving float conversion at train_m111_explicit_category_evidence.py:42-43. Reviewer re-read the final source; no experiment source was edited by this reviewer.",
+      "runtime_reproduction": false
+    }
+  ],
+  "checks": [
+    {
+      "id": "label_binding",
+      "status": "PASS",
+      "evidence": "117/117 private rows match the reviewed original generated_category, status, clear observability, sequence and class index; published eligibility hashes match the actual private inputs."
+    },
+    {
+      "id": "fit_development_separation",
+      "status": "PASS",
+      "evidence": "117 manifest splits match saved M98 cache receipts; the full 130/22 sequence sets are disjoint. The same-hash training-label copy recounts 2544/495 valid-IoU states. Only fit tensors/labels reach backward."
+    },
+    {
+      "id": "immutable_initial_inputs",
+      "status": "PASS_AFTER_FIX",
+      "evidence": "Only the five INITIAL_FIELDS enter category_inputs. The same first-frame RoI/context/masks/depth validity become its singleton current observation; slot0 alone is unmasked. Collection binds masks and ring positions to that first-frame crop. Revised numeric inputs are float32 and masks stay bool."
+    },
+    {
+      "id": "ce_shape_autograd",
+      "status": "PASS_SOURCE_ONLY",
+      "evidence": "Existing absolute evidence is [B,1,5,3]; [:,0,0] is [B,3], targets are long class IDs. No detach precedes CE; gradients reach text/slot/phrase-read/evidence parameters. CE does not directly train text_read, which retains the localization gradient path."
+    },
+    {
+      "id": "weight0_objective",
+      "status": "PASS_SOURCE_ONLY",
+      "evidence": "loss=base_loss when weight is zero; base_loss is the unchanged localization BCE plus native preservation. The extra forward is disconnected from backward and the model has no running normalization or nonzero dropout. Isolated CPU generators give the two arms the same draws."
+    },
+    {
+      "id": "frozen_visual_and_empty",
+      "status": "PASS_SOURCE_ONLY",
+      "evidence": "M110 trainable prefixes are reused exactly; all other parameters and all buffers are checked with torch.equal. Empty full-minus-null cancels and both scores and quality are compared before/after on all 3039 states. The sole prototype diff returns an already-computed tensor."
+    },
+    {
+      "id": "sanity_and_fixed_final",
+      "status": "PASS_SOURCE_ONLY",
+      "evidence": "Each arm has an independent 3-update sanity with finite-gradient checks, frozen/Empty checks and no saved checkpoint/category-dev metrics. Both must exit successfully before fresh 12-epoch finals. Driver requires 480 updates. final.pt tensors are deserialized and compared exactly, without best-epoch selection."
+    },
+    {
+      "id": "metrics_and_promotion",
+      "status": "PASS_SOURCE_ONLY",
+      "evidence": "Localization uses native dataset boxes through cached IoU targets; category metrics are explicitly model-weak-label agreement. All three content conditions, own-Empty paired changes, class confusion/recall, majority and mixed-query counts are reported. No recursive/public evaluation or promotion code is invoked."
+    },
+    {
+      "id": "private_public_boundary",
+      "status": "PASS_LOCAL",
+      "evidence": "M111 manifest and weak-label copies are ignored by Git and no per-category predictions, raw strings or review notes are emitted in results. Category bank is saved to the run output, not published by this driver. Review artifacts contain only aggregate counts and hashes."
+    },
+    {
+      "id": "python38_syntax",
+      "status": "PASS",
+      "evidence": "All five changed/new Python sources parse with Python-3.8 grammar under an already installed local Python 3.11 interpreter; this is not a Torch runtime test."
+    }
+  ],
+  "eligible_counts": {
+    "fit": {
+      "supported": 80,
+      "conflicting": 17,
+      "uncertain": 1
+    },
+    "development": {
+      "supported": 15,
+      "conflicting": 3,
+      "uncertain": 1
+    }
+  },
+  "query_diagnostics": {
+    "fit": {
+      "examples": 98,
+      "unique_original_queries": 59,
+      "mixed_query_groups": 6,
+      "mixed_query_examples": 21,
+      "constant_supported_correct": 80
+    },
+    "development": {
+      "examples": 19,
+      "unique_original_queries": 14,
+      "mixed_query_groups": 1,
+      "mixed_query_examples": 3,
+      "constant_supported_correct": 15
+    }
+  },
+  "valid_iou_states_by_split": {
+    "fit": 2544,
+    "development": 495
+  },
+  "full_sequence_split_counts": {
+    "fit": 130,
+    "development": 22
+  },
+  "full_sequence_split_overlap": 0,
+  "manifest_binding_matches": 117,
+  "source_sha256": {
+    "M111_EXPLICIT_CATEGORY_PLAN.md": "54812d49d44b1a3f62c1fb6f9366d484861c686716c7bbd88aa4e8330e553bbf",
+    "M111_LABEL_ELIGIBILITY.json": "7e0e49ae90b80aae7cddc308b1f8e8700ec2714e0f1827e7a0af8c0bc94866cc",
+    "prepare_m111_label_manifest.py": "f9bfb32239c5172ad7bf30200926bd7cc622bcfcfe8fd8afd1b0396b840b1deb",
+    "prepare_m111_category_bank.py": "21cf3f36fbf4073c2657f9de51acc0b452f6e06cc5a2cfe671ec878adfa5912f",
+    "train_m111_explicit_category_evidence.py": "bf73c3c661f73bac27e3861aba54409f07cd75829aaa5acec58d24ff8006e30d",
+    "run_m111_category_pair.py": "655fe2ecb03168b1b2b07a9e924e4e715089699c31cf117a8f2c283df2bad00b",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "collect_initial_feature_origins.py": "441f70364d294d429a2a1cca96cc53e3a6695ac4314a52797eb059f4e913c885",
+    "collect_train_contexts.py": "9225a31ed336ce41a7f8f46d8d161eff320790cacc0d3104844408f93acf8b78",
+    "audit_train_contexts.py": "f479af53aec6e38cd9b2e5f77aeff973daf5c6cc2499a45ba034a165d6f6690f",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086"
+  },
+  "private_input_sha256": {
+    "manifest": "10ca2e5b6e5c19951b89df63d179cfbaefa9def34e69e45eaeb4b4cc552ce3f8",
+    "weak_labels": "95144cc4c47987fb1960e2d8f63cb9fa41531a83c6249ea7950d0f54845887a7",
+    "initial_review_csv": "bd568ed8a4c3177787e92712f391b5ac4715844b9c9b8945bc8535f4673d5638"
+  },
+  "limitations": [
+    "SOURCE_ONLY acceptance with local JSON/CSV binding checks. No remote command, GPU forward, Torch autograd run, optimizer update, encoder execution, or M111 result was observed by this reviewer. Both actual GPU sanity jobs remain required before final jobs.",
+    "Fresh independent context but same model family: provisional acceptance, not cross-family acceptance.",
+    "Labels are authorized model weak labels, not human or dataset category truth. A clear-observability filter does not remove possible multiframe-review bias.",
+    "Class skew is 80/17/1 fit and 15/3/1 development. There is only one uncertain fitting example, and the mixed-label-query subset has only 21/3 examples. Aggregate category accuracy cannot establish general visual evidence use or current-candidate identity/visibility.",
+    "Original category queries differ from corrected candidate phrases. Transfer to held-out candidate selection must be measured versus the same final checkpoint's Empty condition; no claim follows from CE/accuracy alone.",
+    "The final checkpoint check proves tensor serialization equality, not a separately rerun inference after loading into a new model. Exact numerical reproduction of historical M110 weight0 has not been executed.",
+    "The local inference_inputs.json and actual feature tensors were not present at the initially assumed path. Sequence-split checks instead use explicitly identified saved M98 receipts, plus the verified same-hash M90 training-label copy. Actual cache availability, dtype assertions and resource capacity are left to the runtime gate."
+  ],
+  "gpu_validation": "NOT_RUN_BY_REVIEWER",
+  "runtime_autograd_validation": "NOT_RUN_BY_REVIEWER",
+  "remote_commands_executed": false,
+  "experiment_source_edits_by_reviewer": false,
+  "private_raw_labels_published": false,
+  "tool_notes": [
+    "The default python command failed with No pyvenv.cfg file; no test pass is attributed to that command. Syntax and JSON checks used the explicitly located existing Python 3.11 installation; torch is not installed there.",
+    "An attempted local inference_inputs.json read failed because the file was absent; the receipt-based verification above states the actual artifacts used."
+  ]
+}

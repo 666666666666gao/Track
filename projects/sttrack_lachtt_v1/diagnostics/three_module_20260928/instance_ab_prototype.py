@@ -88,7 +88,8 @@ class InstanceEvidence(nn.Module):
         null, null_evidence = self.phrase_branch(empty, data['text_mask'], memory, memory_valid,
                                                  current, current_valid)
         return dict(visual=visual, semantic_delta=full - null,
-                    phrase_delta=evidence - null_evidence, modality_weights=weights)
+                    phrase_delta=evidence - null_evidence, phrase_logits=evidence,
+                    modality_weights=weights)
 
 
 class InstanceCandidatePrototype(nn.Module):

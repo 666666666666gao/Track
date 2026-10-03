@@ -100,3 +100,7 @@
 | 2026-09-28 13:13 | /experiment-bridge | M104_VISUAL_GEOMETRY_PLAN.md | implementation | Frozen M101 selection plus separate zero-init59540-parameter local visual refiner; fixed budget and parent-relative gate |
 | 2026-09-28 13:13 | /experiment-bridge | m104_completed/RESULT_20260928_1313.md | implementation | Actual two-GPU sanity/train/reference exits0; dev272->286/15rescues1harm,3/4checks; no semantic/recursive/public promotion |
 | 2026-09-28 13:13 | /experiment-bridge | m104_completed/RESULT.md | implementation | Latest M104 actual result; all3039rows/selection/reload verified; healthy mobilephone harm preserved |
+| 2026-10-03 16:05:03 | /experiment-bridge | M111_SOURCE_REVIEW_20261003_160503.md | implementation | Fresh gpt-6-astra/max same-family provisional source PASS after dtype fix; local binding checks only, GPU sanity pending |
+| 2026-10-03 16:05:03 | /experiment-bridge | M111_SOURCE_REVIEW.md | implementation | Fresh gpt-6-astra/max same-family provisional source PASS after dtype fix; local binding checks only, GPU sanity pending |
+| 2026-10-03 16:05:03 | /experiment-bridge | M111_SOURCE_REVIEW_20261003_160503.json | implementation | Fresh gpt-6-astra/max same-family provisional source PASS after dtype fix; local binding checks only, GPU sanity pending |
+| 2026-10-03 16:05:03 | /experiment-bridge | M111_SOURCE_REVIEW.json | implementation | Fresh gpt-6-astra/max same-family provisional source PASS after dtype fix; local binding checks only, GPU sanity pending |
