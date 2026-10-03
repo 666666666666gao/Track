@@ -130,6 +130,19 @@ def selection_readout(model, panel, bank, device, parent_indices, output):
                  delta_mean_iou=sum(y['selected_iou'] - x['selected_iou'] for x, y in zip(empty, weak)) / len(weak),
                  threshold_rescues=sum(x['selected_iou'] < .5 <= y['selected_iou'] for x, y in zip(empty, weak)),
                  threshold_breaks=sum(y['selected_iou'] < .5 <= x['selected_iou'] for x, y in zip(empty, weak)))
+    delta['content_vs_own_empty'] = {}
+    for mode in ('generic', 'weak_text'):
+        assert [r['key'] for r in empty] == [r['key'] for r in rows[mode]]
+        groups = {}
+        for tag in ('all', 'healthy', 'transition'):
+            paired = [(x, y) for x, y in zip(empty, rows[mode]) if tag == 'all' or tag in x['strata']]
+            assert paired, tag
+            groups[tag] = dict(events=len(paired), empty_iou50=sum(x['selected_iou'] >= .5 for x, _ in paired),
+                               condition_iou50=sum(y['selected_iou'] >= .5 for _, y in paired),
+                               delta_mean_iou=sum(y['selected_iou'] - x['selected_iou'] for x, y in paired) / len(paired),
+                               rescues=sum(x['selected_iou'] < .5 <= y['selected_iou'] for x, y in paired),
+                               harms=sum(y['selected_iou'] < .5 <= x['selected_iou'] for x, y in paired))
+        delta['content_vs_own_empty'][mode] = groups
     return fit_summary, summaries, delta
 
 

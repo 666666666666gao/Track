@@ -1,0 +1,158 @@
+{
+  "verdict": "PASS",
+  "blocking": [],
+  "nonblocking": [],
+  "timestamp": "2026-10-03T18:01:11.317106+08:00",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "review_round": 2,
+  "review_scope": "Fresh round-1 direct source review retained; narrow direct reread and CPU recheck of added own-Empty reporting only.",
+  "historical_trainer_snapshot_commit": "b7f01434253ebf9ac4adc6fa11ac3b19e7f39d7f (round 1 only)",
+  "source_sha256": {
+    "M112_CURRENT_PHRASE_TRAINING_PLAN.md": "944fb369f6683c2b1b5aeefa899da5159f5c945a9b78a6943e195ddac49c85d7",
+    "train_m112_current_phrase_evidence.py": "043ec34fa46f3196895d39062c7a9568e6dc486e00a4ce0f0f49febcc2669674",
+    "run_m112_current_phrase_experiment.py": "51b35c40781d7758017ddc96f16c34d7138af8b0eefe6d552f88e8cfe476afda",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "train_m111_explicit_category_evidence.py": "bf73c3c661f73bac27e3861aba54409f07cd75829aaa5acec58d24ff8006e30d",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "prepare_m112_phrase_manifest.py": "9d3c67271653434c6dbc33950dd1982f5d30e3f91b73de29182e3152731c38ec",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784"
+  },
+  "private_source_sha256": {
+    "deploy_m112.py": "2929fb367514907b3174a47798c10f952a7fba8ac1cd9530691af55c1648eadd",
+    "launch_m112.py": "5cb7178e07a5667e6caf92111c6976cdcd9a79c41669c70b35c3fc3184ac5221"
+  },
+  "private_input_sha256": {
+    "current_phrase_training_manifest.json": "1527c6b86d1035f76ed85f07c2a08cc98726d47cb8c9b6db7509bcc7c3eca217",
+    "weak_labels.json": "95144cc4c47987fb1960e2d8f63cb9fa41531a83c6249ea7950d0f54845887a7"
+  },
+  "artifact_sha256": {
+    "m111_completed/train_weight0/result.json": "1df39a0bded7851ede1fc1ef506d493298896c2f6a962f6ba368729768c7a468",
+    "m111_completed/train_weight0/fit_events.jsonl": "573a79e754e6cf50571a7eca9e4713cfcec90d1b88193708d5104f391dcb2cf7",
+    "m111_completed/train_weight0/empty_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m111_completed/train_weight0/generic_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m111_completed/train_weight0/weak_text_development.jsonl": "32c152879fe8bdc4264deaf0e64a0ac4fd7419330aeea60b92745d4079e5e8dd",
+    "m110_completed/train_weak_text/result.json": "bceb83bf41cf28813b1e6acf786e8b0ba9a18801905992869845c0eb76dcab0c",
+    "m110_completed/train_weak_text/fit_events.jsonl": "573a79e754e6cf50571a7eca9e4713cfcec90d1b88193708d5104f391dcb2cf7",
+    "m110_completed/train_weak_text/empty_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m110_completed/train_weak_text/generic_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m110_completed/train_weak_text/weak_text_development.jsonl": "32c152879fe8bdc4264deaf0e64a0ac4fd7419330aeea60b92745d4079e5e8dd"
+  },
+  "checks": {
+    "source_and_embedded_remote_payload_syntax": "PASS",
+    "manifest_candidate_slot_and_fit_split_binding": "PASS",
+    "manifest_counts": {
+      "events": 24,
+      "actual_candidates": 48,
+      "rows": 202,
+      "supported": 98,
+      "conflicting": 15,
+      "unknown": 89,
+      "phrase_pairs": 101,
+      "supported_conflicting_pairs": 10,
+      "semantic_development_examples": 0
+    },
+    "static_trainable_parameters": 95683,
+    "training_budget": {
+      "seed": 2027,
+      "epochs": 12,
+      "steps": 480,
+      "batch_size": 64,
+      "last_batch_size": 48,
+      "optimizer": "AdamW",
+      "lr": 0.0003,
+      "phrase_batch_size": 32,
+      "phrase_generator": "independent CPU manual_seed(32027 + step)",
+      "evidence_coefficient": 1
+    },
+    "historical_control_final_weight_sha256": "36f3cdf300522eeb68252f538d04c4b8e02eff6a69a45c09102c3bebf82da4cc",
+    "stored_M111_control_rows_byte_equal_to_M110": {
+      "fit": 2544,
+      "empty_development": 495,
+      "generic_development": 495,
+      "weak_text_development": 495
+    },
+    "controller_cpu_mock_scenarios": {
+      "pass": "PASS",
+      "sanity_nonzero": "PASS",
+      "reference_nonzero": "PASS",
+      "bad_sanity_step": "PASS",
+      "bad_reference_step": "PASS",
+      "reference_rows_not_reproduced": "PASS",
+      "reference_frozen_false": "PASS",
+      "train_nonzero": "PASS",
+      "train_wrong_budget": "PASS"
+    },
+    "controller_mock_real_processes_started": 0,
+    "frozen_parameter_buffer_and_all3039_empty_checks": "PRESENT_NOT_EXECUTED",
+    "private_transport": "PASS_STATIC_NOT_EXECUTED",
+    "own_empty_reporting_fix": {
+      "status": "PASS_CPU_ONLY",
+      "direct_source_reread": true,
+      "unchanged_AST_outside_selection_readout": true,
+      "old_row_output_bytes_unchanged": true,
+      "old_condition_summaries_and_delta_fields_unchanged": true,
+      "actual_stored_control_group_counts": {
+        "all": 495,
+        "healthy": 264,
+        "transition": 127
+      },
+      "all_six_groups_hit_delta_equals_rescues_minus_harms": true,
+      "generic_transition_own_empty_harms": 0,
+      "generic_all_delta_mean_iou": 0.0,
+      "weak_text_all_delta_mean_iou": -0.0003047300107551344,
+      "synthetic_boundary_fixture": {
+        "threshold": 0.5,
+        "all_rescues": 1,
+        "all_harms": 1,
+        "healthy_rescues": 1,
+        "transition_harms": 1,
+        "delta_mean_iou": 0.044999999999999984
+      },
+      "full_controller_mocks_rerun": false,
+      "prior_nine_controller_mocks_retained": true
+    }
+  },
+  "gpu_executed": false,
+  "ssh_executed": false,
+  "deployment_executed": false,
+  "neural_forward_executed": false,
+  "optimizer_updates_executed": 0,
+  "code_patched_by_reviewer": false,
+  "limitations": [
+    "No actual M112 GPU sanity, training, frozen/Empty runtime acceptance, new checkpoint or timing was executed.",
+    "Default python failed: No pyvenv.cfg file. Existing uv Python 3.13 ran standard-library checks; torch/numpy absent. Nothing installed.",
+    "M101/control checkpoints, M108 tensor bank and remote caches were not deserialized locally. Historical weight identity is from result records; actual bytes/runtime outputs must still pass remote gates.",
+    "No SSH attempt. Endpoint access, live resources, deployed bytes and import availability remain unverified here.",
+    "The 202 model weak fitting targets, pending human confirmation, establish neither physical identity nor semantic heldout transfer.",
+    "Initial-as-current is an artificial read-only sensitivity intervention, not deployment truth.",
+    "Raw labels/review evidence notes are excluded. Generated *_phrase_rows.jsonl contains targets and must stay within private result scope."
+  ],
+  "next_gate": "Complete real deployment/import preflight and both GPU0 three-update sanity and GPU1 readonly reference with exact frozen/Empty/reproduced-row gates before the one fresh 480-update training.",
+  "previous_review": "M112_TRAINING_SOURCE_REVIEW_20261003_175849.json",
+  "resolved_findings": [
+    {
+      "id": "NB1",
+      "severity": "nonblocking",
+      "location": "train_m112_current_phrase_evidence.py:117-133; train_ab_visual_control.py:114-128",
+      "finding": "Only weak_text/all has an explicit paired comparison against its own Empty. Generic and healthy/transition condition summaries are present, but their breaks/rescues compare against native candidate 0, not Empty.",
+      "evidence": "Existing M111 weight0 generic/transition rows have native-relative breaks=1 but own-Empty breaks=0.",
+      "minimal_action": "Compute generic and weak_text own-Empty comparisons, including healthy/transition strata, from already saved aligned rows. No new model/loss/dataset/training run is needed.",
+      "status": "RESOLVED",
+      "resolution": "Adds generic and weak_text paired own-Empty summaries for all/healthy/transition. Actual stored-row and threshold-boundary reporting checks passed."
+    }
+  ],
+  "narrow_fix": {
+    "old_trainer_sha256": "c94ebf3227cb0fdb4843f5ec05bc70a74910bf750ff17b3b73847bc1621998e5",
+    "new_trainer_sha256": "043ec34fa46f3196895d39062c7a9568e6dc486e00a4ce0f0f49febcc2669674",
+    "location": "train_m112_current_phrase_evidence.py:133-145",
+    "model_input_loss_budget_controller_unchanged": true,
+    "changed_only_selection_readout": true
+  }
+}
