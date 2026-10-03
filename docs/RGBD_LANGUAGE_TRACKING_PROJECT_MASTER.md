@@ -24358,3 +24358,14 @@ JS语法检查和全部1997张布局尺寸检查通过。DOM模拟核对目标�
 公开入口仍是https://666666666666gao.github.io/Track/review_rgbd/?dataset=depthtrack ，另两项dataset分别为cdtb、vot。发布验收以Pages工作流和公开文件核对为准，另存发布回执。生成器、各数据集build_receipt、全媒体file_hashes、video validation及CLEAR_MEDIA_RECEIPT_20261003.json保存于docs/review_rgbd；这些回执标明生成／本地验收时点，不冒称后续所有状态。服务器原始产物保存在.aris/review_clear_20261003/output。
 
 本地备份与说明：C:\Users\gb\Desktop\document\RGBD_INITIALIZATION_REVIEW_20260928\clear_media_20261003。旧CDTB_VOT_GPT_REVIEW_20261002.zip字节没有改写，本次tar是新媒体备份，不是已重制的网页版GPT PDF/JPG审核包。DepthTrack已审核的口头状态不等于本轮加载了新的人工标签。CDTB／VOT及其后续帧只用于审核和诊断，不用于新增训练或模型选择。本轮没有GPU训练、正式跟踪评价或新增P/R/F、EAO/ACC/ROB；原联合目标保持未达。
+
+
+## 5.325 三数据集清晰素材上传与公开发布完成（2026-10-03 15:22）
+
+§5.324的素材现已实际上传并发布。最终媒体提交为60d766b29b8666c63bb02fe0f33615cd6c454a1f；GitHub远端main逐值核对一致。Pages工作流37106020869对应同一提交，完成状态success，链接：https://github.com/666666666666gao/Track/actions/runs/37106020869 。三套审核入口不变，DepthTrack Train152、CDTB80、VOT1765个案例分别读取新清晰图与整段视频；默认轻量预览和已有审核保存键不改写。
+
+公开HTTP验收共19项：index.html、review.js、review.css与本地验收回执4项，三套完整JSON清单3项，三数据集各首／中／尾清晰图9项，以及各1段完整视频3项。清单与已提交JSON一致；样图均为1920×1130并与本地SHA256一致；完整抽查视频与本地SHA256一致。所有本地生成文件完整校验沿用§5.324；这里没有宣称逐一HTTP下载全部1997张图片／359视频，也没有宣称实际浏览器渲染或播放验收。发布回执保存于本地clear_media_20261003/build_records/publication.json及仓库私有.aris/review_clear_20261003/publication.json。
+
+上传过程保留失败证据：本机HTTPS大包出现HTTP400及RPC post data rewind错误；增加发送缓冲后，本机进程中断。随后在服务器独立的临时bare库重建同一提交并核对2383个对象，没有更改训练工作树。旧Git2.25.1不能读取所用的计数式环境配置，改用其已验证支持的配置参数传递；一次不完整克隆的旧对象补读取又遇到GitHub443超时。为消除这批联网补读，从本机补齐旧提交快照9121个对象，188450610字节，SHA256 ab9960700ee86f895f55873aa2ca10c5ac4471721651b7b67a32cece05d4804a，仓库连接完整性检查通过。只继续现有对象的推送，没有重制媒体或重启训练。最终服务器推送exit0，实际104.05秒；不把它称为整个排障／上传总耗时。临时Git对象库位于服务器.aris/review_clear_20261003/publish_clear.git，原始媒体、本机Git对象和公开提交均保留。
+
+§5.324所写公开docs目录“约988MB”更正为约989MB（验收回执写入前989068111字节），仍低于10亿字节。旧GPT审核ZIP没有随网页更新被替换；本轮新媒体tar仍是素材备份。没有新增人工确认标签、GPU训练或正式跟踪指标，联合目标继续未达。
