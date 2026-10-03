@@ -1,0 +1,66 @@
+{
+  "status": "prepared_M112_current_phrase_model_weak_labels",
+  "human_confirmed": false,
+  "classes": [
+    "supported",
+    "conflicting",
+    "unknown"
+  ],
+  "optimized_split": "fit",
+  "input_sha256": {
+    "review": "ee18891c81287b83ff0a5b7dfded0ed6a6cc257dca9c7e79b1e86b5aee64df92",
+    "reviewer_input": "c8faed561e2889cffed2ec51edf41bf94e24de0aa427587729a7273c17067f09",
+    "private_binding": "35c8e9240b18cc5f1be7f0616529727bd3859bb0d46f7265c783849b508c6214",
+    "weak_labels": "95144cc4c47987fb1960e2d8f63cb9fa41531a83c6249ea7950d0f54845887a7"
+  },
+  "physical_instance_labels": false,
+  "depth_semantic_labels": false,
+  "protocol": "Current RGB phrase support/conflict/unknown. Train temporal context is teacher-only; unknown is not a negative identity label. No GT/IoU semantic labels.",
+  "events": 24,
+  "candidates": 48,
+  "phrase_candidate_rows": 202,
+  "development_label_events": 0,
+  "label_counts": {
+    "unknown": 89,
+    "supported": 98,
+    "conflicting": 15
+  },
+  "by_slot": {
+    "0": {
+      "unknown": 19,
+      "supported": 21,
+      "conflicting": 8
+    },
+    "1": {
+      "supported": 38,
+      "unknown": 6,
+      "conflicting": 4
+    },
+    "2": {
+      "supported": 23,
+      "unknown": 21,
+      "conflicting": 2
+    },
+    "3": {
+      "supported": 12,
+      "unknown": 29,
+      "conflicting": 1
+    },
+    "4": {
+      "supported": 4,
+      "unknown": 14
+    }
+  },
+  "phrase_pair_label_counts": {
+    "unknown/unknown": 27,
+    "supported/supported": 29,
+    "supported/unknown": 16,
+    "unknown/supported": 14,
+    "conflicting/supported": 9,
+    "conflicting/unknown": 4,
+    "unknown/conflicting": 1,
+    "supported/conflicting": 1
+  },
+  "manifest_sha256": "1527c6b86d1035f76ed85f07c2a08cc98726d47cb8c9b6db7509bcc7c3eca217",
+  "source_sha256": "9d3c67271653434c6dbc33950dd1982f5d30e3f91b73de29182e3152731c38ec"
+}

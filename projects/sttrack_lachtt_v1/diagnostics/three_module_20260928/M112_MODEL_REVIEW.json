@@ -1,0 +1,51 @@
+{
+  "status": "model_prefilled_human_review_pending",
+  "actual_model": "gpt-6-astra",
+  "actual_reasoning_effort": "max",
+  "reviewer": "gpt-6-astra/max",
+  "same_family_provisional": true,
+  "external_independent_model_review": false,
+  "supervision_type": "model_weak_supervision",
+  "human_confirmed": false,
+  "human_review_status": "pending",
+  "actual_cases_viewed": 24,
+  "actual_rows_labeled": 202,
+  "label_counts": {
+    "supported": 98,
+    "conflicting": 15,
+    "unknown": 89
+  },
+  "candidate_counts": [
+    {
+      "candidate": "A",
+      "row_count": 101,
+      "label_counts": {
+        "supported": 46,
+        "conflicting": 13,
+        "unknown": 42
+      }
+    },
+    {
+      "candidate": "B",
+      "row_count": 101,
+      "label_counts": {
+        "supported": 52,
+        "conflicting": 2,
+        "unknown": 47
+      }
+    }
+  ],
+  "slot_index_base": 0,
+  "actual_image_access_count": 120,
+  "distinct_image_files_viewed": 120,
+  "protocol_clarification": {
+    "input_omission": "reviewer_input.json did not explicitly declare slot indexing",
+    "clarification_received": "Parent confirmed existing blank/compiler use zero-based slot=0..N-1",
+    "final_action": "All CSV slots use zero-based indexing; no query or image was changed",
+    "blank_or_compiler_opened_by_reviewer": false
+  },
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "raw_labels_and_image_access_paths": "retained private on user Desktop",
+  "time": "2026-10-03T17:17:59.784420+08:00"
+}
