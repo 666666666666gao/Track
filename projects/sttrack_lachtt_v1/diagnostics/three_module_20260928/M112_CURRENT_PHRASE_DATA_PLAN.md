@@ -44,8 +44,10 @@ not independent semantic truth or held-out transfer evidence. Fresh data-source
 review passed, including the explicit zero-based slot protocol. A filled local
 HTML and the new CSV preserve reasons and remain human-confirmation pending.
 
-No M112 trainer, GPU sanity, optimizer updates or public evaluation has been
-launched. SSH43811 is presently unreachable. Restore that authorized
+The M112 trainer and two-card sanity/reference controller are now prepared
+under `M112_CURRENT_PHRASE_TRAINING_PLAN.md`; fresh source review is pending.
+No M112 GPU sanity, optimizer updates or public evaluation has been launched.
+SSH43811 is presently unreachable. Restore that authorized
 endpoint and complete the pending remote master-document synchronization before
 GPU deployment. Any future trainer still needs fresh source review and a real
 GPU sanity run under the existing experiment-bridge workflow. Keep seed2027,

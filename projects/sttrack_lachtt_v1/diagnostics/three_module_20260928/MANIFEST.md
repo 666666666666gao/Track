@@ -106,3 +106,5 @@
 | 2026-10-03 16:05:03 | /experiment-bridge | M111_SOURCE_REVIEW.json | implementation | Fresh gpt-6-astra/max same-family provisional source PASS after dtype fix; local binding checks only, GPU sanity pending |
 
 | 2026-10-03 17:05:03 | /experiment-bridge | M112_DATA_SOURCE_REVIEW.md; M112_DATA_SOURCE_REVIEW.json | data implementation | Actual fresh Astra/max source-only PASS;24fit/202exactquery bindings; visual model review pending, compiler/GPU unexecuted |
+
+| 2026-10-03T17:48:56.060749+08:00 | /experiment-bridge | M112_CURRENT_PHRASE_TRAINING_PLAN.md; train_m112_current_phrase_evidence.py; run_m112_current_phrase_experiment.py | implementation | Current-candidate CE/source prepared; fresh review pending; Python3.8 AST only; no SSH deployment/GPU updates; zero arm reused |
