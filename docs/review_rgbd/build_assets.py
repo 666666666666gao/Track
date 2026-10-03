@@ -6,7 +6,7 @@ import json
 import subprocess
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 
 CAPTION_ROOTS = {
@@ -29,14 +29,17 @@ def records_for(root):
     return plan, records, sha256(plan_path), sha256(record_path)
 
 
-def tile(canvas, source, box, title):
+def tile(canvas, source, box, title, scale=1):
     x, y, w, h = box
-    fitted = ImageOps.contain(source, (w, h - 20))
-    canvas.paste(fitted, (x + (w - fitted.width) // 2, y + 20 + (h - 20 - fitted.height) // 2))
-    ImageDraw.Draw(canvas).text((x + 5, y + 3), title, fill="white")
+    title_height = 20 * scale
+    fitted = ImageOps.contain(source, (w, h - title_height))
+    canvas.paste(fitted, (x + (w - fitted.width) // 2,
+                          y + title_height + (h - title_height - fitted.height) // 2))
+    font = ImageFont.load_default(size=10 * scale) if scale > 1 else None
+    ImageDraw.Draw(canvas).text((x + 5 * scale, y + 3 * scale), title, fill="white", font=font)
 
 
-def make_board(row, frames, index, output):
+def make_board(row, frames, index, output, scale=1, quality=72):
     original = Image.open(row["image"]).convert("RGB")
     assert len(original.size) == 2 and list(original.size) == row["image_size"]
     x1, y1, x2, y2 = row["target_xyxy"]
@@ -45,24 +48,27 @@ def make_board(row, frames, index, output):
     margin = max(x2 - x1, y2 - y1) * 0.65
     crop = original.crop((max(0, x1 - margin), max(0, y1 - margin),
                           min(original.width, x2 + margin), min(original.height, y2 + margin)))
-    board = Image.new("RGB", (960, 565), "#151923")
-    tile(board, marked, (0, 0, 640, 380), "INITIAL FRAME - RED BOX IS THE TARGET")
-    tile(board, crop, (640, 0, 320, 380), "INITIAL TARGET ENLARGED")
+    board = Image.new("RGB", (960 * scale, 565 * scale), "#151923")
+    tile(board, marked, (0, 0, 640 * scale, 380 * scale),
+         "INITIAL FRAME - RED BOX IS THE TARGET", scale)
+    tile(board, crop, (640 * scale, 0, 320 * scale, 380 * scale),
+         "INITIAL TARGET ENLARGED", scale)
     offsets = (-20, -5, 5, 20)
     for k, offset in enumerate(offsets):
         j = min(len(frames) - 1, max(0, index + offset))
         image = Image.open(frames[j]).convert("RGB")
-        tile(board, image, (k * 240, 380, 240, 185), f"CONTEXT FRAME {frames[j].stem} (NO BOX)")
+        tile(board, image, (k * 240 * scale, 380 * scale, 240 * scale, 185 * scale),
+             f"CONTEXT FRAME {frames[j].stem} (NO BOX)", scale)
     output.parent.mkdir(parents=True, exist_ok=True)
-    board.save(output, "JPEG", quality=72, optimize=True)
+    board.save(output, "JPEG", quality=quality, optimize=True)
 
 
-def make_video(folder, output):
+def make_video(folder, output, width=320, sampling_fps=5, crf=36):
     output.parent.mkdir(parents=True, exist_ok=True)
     command = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-nostdin", "-y",
                "-framerate", "25", "-pattern_type", "glob", "-i", str(folder / "*.jpg"),
-               "-vf", "fps=5,scale=320:-2", "-c:v", "libx264", "-preset", "veryfast",
-               "-crf", "36", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+               "-vf", f"fps={sampling_fps},scale={width}:-2", "-c:v", "libx264", "-preset", "veryfast",
+               "-crf", str(crf), "-pix_fmt", "yuv420p", "-movflags", "+faststart",
                "-threads", "2", str(output)]
     subprocess.run(command, check=True)
 
