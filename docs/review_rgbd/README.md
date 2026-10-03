@@ -17,11 +17,24 @@ IDs, browser answer keys and CSV fields remain unchanged.
 Display enlargement does not create detail absent from the source image.
 
 The displayed category and attributes are provisional automatic descriptions.
-Reviewers choose supported, conflicting, or uncertain, can correct the category
-and attributes, and export their own UTF-8 CSV. Answers are saved only in that
-reviewer's browser; the site does not silently aggregate or overwrite answers.
-Use a distinct reviewer ID and return the exported CSV to the project owner.
-Filters and numeric ranges allow people to divide the 1,765 VOT anchors.
+GPT-6 Astra Pro initial reviews have been imported for all 1,997 cases, including
+the user's DepthTrack 152-row CSV and CDTB/VOT 1,845-row CSV. Each case keeps its
+original generated description alongside the model's proposed category,
+initially supported attributes, uncertainty and separate later-frame notes.
+The source files are hashed in `data/model_review_receipt.json`;
+`data/gpt_initial_reviews.csv` is the normalized downloadable initial-review table.
+GPT opinions are not promoted to human confirmation. Existing browser answer
+keys and original case/media bindings are retained.
+
+Reviewers choose supported, conflicting, or uncertain, can copy and correct the
+GPT proposal, and export UTF-8 CSV for one or all datasets. Drafts are exported
+with `human_confirmed=false`. Answers remain in that reviewer's browser.
+Import accepts the site's human-review export schema, validates all case IDs,
+sequences and initialization frames before writing, retains newer local
+records, and separates reviewer IDs. This static site does not provide live
+shared server storage. Return exported CSV to the project owner for consolidation.
+Dataset cards, keyword search, pending/reviewed/model-uncertain filters and
+numeric ranges allow people to divide the 1,765 VOT anchors.
 
 Only DepthTrack Train review may inform future training. CDTB and VOT review is
 for input auditing and error analysis; its labels and later frames must not
@@ -39,3 +52,8 @@ It retains existing preview paths and descriptions, verifies original
 initialization-image hashes and source-manifest bindings, and writes versioned
 detail/video files plus build receipts. Later frames remain unmarked review
 evidence and do not enter external-dataset training.
+
+`import_model_reviews.py --depthtrack <152-row CSV> --external <1845-row CSV>`
+binds reviewed content to the existing manifests and validates original
+category, attributes and initialization identities. It changes no image/video
+path, tracking input, checkpoint, or experiment metric.

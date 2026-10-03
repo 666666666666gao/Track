@@ -1,42 +1,53 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RGB-D 初始化描述多人审核</title>
-  <link rel="stylesheet" href="review.css?v=20261003clear">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RGB-D 三数据集公开审核</title>
+<link rel="stylesheet" href="review.css?v=20261003gpt">
 </head>
-<body>
-  <main>
-    <header>
-      <div class="eyebrow">RGB-D TRACKING · INITIALIZATION REVIEW</div>
-      <h1>初始化描述多人审核</h1>
-      <p>红框表示协议指定的初始目标。结合前后帧和整段预览，判断自动描述是否真正指向这个目标；后续帧没有目标标注。</p>
-      <p class="notice">DepthTrack Train 的审核结果可供后续训练研究；CDTB 与 VOT 是外部评测数据，只用于输入核查与误差分析，不用于训练或调参。自动描述是待核验输入，不是事实标签。每位审核者的答案只存在自己的浏览器中，导出 CSV 后再交给项目负责人合并。</p>
-    </header>
-    <section class="toolbar">
-      <label>数据集<select id="dataset"><option value="depthtrack">DepthTrack Train · 152 条</option><option value="cdtb">CDTB · 80 条</option><option value="vot">VOT-RGBD2022 · 1,765 anchors</option></select></label>
-      <label>审核者编号<input id="reviewer" autocomplete="off" placeholder="例如 reviewer_01"></label>
-      <label>查找序列或编号<input id="search" placeholder="序列名、anchor 编号或 key"></label>
-      <label>审核范围起<input id="from" type="number" min="1"></label>
-      <label>审核范围止<input id="to" type="number" min="1"></label>
-      <button id="apply">应用范围</button>
-      <button id="export">导出我的 CSV</button>
-      <span id="progress" aria-live="polite"></span>
-    </section>
-    <nav class="navigation"><button id="previous">← 上一项</button><span id="position"></span><button id="next">下一项 →</button></nav>
-    <section id="case" class="case" aria-live="polite"></section>
-    <footer>审核建议：先看红框确认目标；点击“加载清晰图”检查细节，再看无标记的邻近帧和整段视频理解外观变化。无法确认时选“不确定”，不要猜类别。清晰拼图为 1920×1130；视频宽 640 像素，以 25 fps 排布、抽取 8 fps，属于审核播放设置，不表示数据集实测采样率。清晰图和视频都只在点击后加载。数据来源：<a href="https://github.com/xiaozai/DeT">DepthTrack</a>、<a href="https://zenodo.org/records/5855099">CDTB</a>、<a href="https://www.votchallenge.net/vot2022/dataset.html">VOT-RGBD2022</a>。</footer>
-  </main>
-  <dialog id="evidence-dialog" aria-labelledby="detail-title">
-    <div class="detail-toolbar"><h2 id="detail-title">放大查看</h2><button type="button" id="close-evidence">关闭</button></div>
-    <div class="detail-toolbar">
-      <label>查看区域<select id="detail-region"><option value="target">初始化目标放大区</option><option value="initialization">初始化完整画面与红框</option><option value="context">前后四帧</option><option value="full">完整拼图</option></select></label>
-      <label>显示倍率<select id="detail-zoom"><option value="1">1倍 · 原尺寸</option><option value="1.5">1.5倍</option><option value="2">2倍</option><option value="3">3倍</option></select></label>
-      <span class="muted">清晰图从原始帧重制，按需下载；额外放大不增加原图细节。可按 Esc 关闭。</span>
-    </div>
-    <div id="detail-scroll"><canvas id="detail-canvas" aria-label="当前所选区域的放大画面"></canvas></div>
-  </dialog>
-  <script src="review.js?v=20261003clear" defer></script>
-</body>
-</html>
+<body><main>
+<header class="page-header">
+<div class="brand"><span class="brand-mark">R</span><span>RGB-D <span class="muted">/ 初始化描述公开审核</span></span><span class="ready">GPT初审已导入 · 1,997条</span></div>
+<h1>看清目标，再确认描述。</h1>
+<p>先看初始化红框，再结合多帧和视频核对GPT初审。每个初始化点独立保存，三个数据集在这里完成审核。</p>
+</header>
+<section class="dataset-cards" aria-label="切换数据集">
+<button class="dataset-card" data-dataset="depthtrack"><span>DepthTrack Train</span><strong>152 <small>条</small></strong><span class="card-note">训练集初始化 · GPT初审齐全</span></button>
+<button class="dataset-card" data-dataset="cdtb"><span>CDTB</span><strong>80 <small>条</small></strong><span class="card-note">序列初始化 · GPT初审齐全</span></button>
+<button class="dataset-card" data-dataset="vot"><span>VOT-RGBD2022</span><strong>1,765 <small>点</small></strong><span class="card-note">127条序列的合法初始化点</span></button>
+</section>
+<section class="workspace-tools" aria-label="审核工具">
+<div class="toolbar">
+<label>数据集<select id="dataset"><option value="depthtrack">DepthTrack Train</option><option value="cdtb">CDTB</option><option value="vot">VOT-RGBD2022</option></select></label>
+<label>审核者编号<input id="reviewer" list="reviewer-list" autocomplete="off" placeholder="例如 reviewer_01"><datalist id="reviewer-list"></datalist></label>
+<label class="search-field">查找样本<input id="search" type="search" placeholder="序列名、编号、类别或关键词"></label>
+<label>筛选<select id="filter"><option value="all">全部样本</option><option value="pending">我尚未确认</option><option value="reviewed">我已审核</option><option value="model_uncertain">GPT不确定</option><option value="model_changed">GPT建议修正／冲突</option></select></label>
+</div>
+<div class="tool-actions">
+<details class="range-tools"><summary>分配审核范围</summary><div><label>起<input id="from" type="number" min="1"></label><label>止<input id="to" type="number" min="1"></label><button id="apply" class="secondary">应用范围</button><button id="share" class="secondary">复制当前审核链接</button></div></details>
+<div class="export-tools"><button id="import" class="secondary">导入人工CSV</button><input id="import-file" type="file" accept=".csv,text/csv" hidden><label class="sr-only" for="export-scope">导出范围</label><select id="export-scope"><option value="current">当前数据集</option><option value="all">全部数据集</option></select><button id="export">导出我的审核</button></div>
+</div>
+<div class="progress-row"><span id="progress" aria-live="polite"></span><progress id="progress-bar" max="100" value="0" aria-label="人工审核进度"></progress><span id="model-progress"></span></div>
+<p id="message" class="message" role="status"></p>
+</section>
+<nav class="navigation" aria-label="样本导航"><button id="previous" class="secondary">← 上一项</button><span id="position"></span><button id="next" class="secondary">下一项 →</button></nav>
+<section id="case" class="case" aria-live="polite"><p>正在读取审核清单…</p></section>
+<details class="guide"><summary>审核与多人协作说明</summary>
+<p>1. 填写自己的审核者编号。2. 查看红框、多帧及视频，核对GPT意见。3. 修正内容，明确选择判断。4. 导出CSV交回负责人。可按编号范围分工，也可导入其他人的审核文件后切换审核者编号查看。</p>
+<p>GPT初审不等于人工确认。“建议修正”也包含收窄表述、删除无法确认的材质，并不表示原描述全部错误。后续帧只帮助理解目标，不能把后帧才可见的属性当作初始化已知。无法确定时保留不确定。</p>
+<p>答案保存在各自浏览器，网站不实时同步多人答案。刷新、切换数据集不丢失已保存内容；换设备前请导出CSV。导入同一审核者的文件时，仅更新较新的记录，其他审核者的答案分开保存。</p>
+<p>DepthTrack Train可供训练研究；CDTB与VOT用于外部输入核查和误差分析。查看本网站不会修改跟踪器或训练输入。</p>
+<a href="data/gpt_initial_reviews.csv" download>下载三数据集GPT初审总表（1,997条）</a>
+</details>
+<footer>高清图按需加载：1920×1130；整段视频宽640像素、抽取8fps。25fps时间轴为审核播放设置，不表示实测采样率。<br>数据来源：<a href="https://github.com/xiaozai/DeT">DepthTrack</a> · <a href="https://zenodo.org/records/5855099">CDTB</a> · <a href="https://www.votchallenge.net/vot2022/dataset.html">VOT-RGBD2022</a></footer>
+</main>
+<dialog id="evidence-dialog" aria-labelledby="detail-title">
+<div class="detail-toolbar"><h2 id="detail-title">放大查看</h2><button type="button" id="close-evidence" class="secondary">关闭</button></div>
+<div class="detail-toolbar">
+<label>查看区域<select id="detail-region"><option value="target">初始化目标放大区</option><option value="initialization">初始化完整画面与红框</option><option value="context">前后四帧</option><option value="full">完整拼图</option></select></label>
+<label>显示倍率<select id="detail-zoom"><option value="1">1倍 · 原尺寸</option><option value="1.5">1.5倍</option><option value="2">2倍</option><option value="3">3倍</option></select></label>
+<span class="muted">放大不增加原图细节 · Esc关闭</span>
+</div><div id="detail-scroll"><canvas id="detail-canvas" aria-label="当前所选区域的放大画面"></canvas></div>
+</dialog>
+<script src="review.js?v=20261003gpt" type="module"></script>
+</body></html>

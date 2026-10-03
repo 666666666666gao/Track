@@ -24464,3 +24464,20 @@ M112 fresh-context gpt-6-astra/max首轮源码复核为WARN，无训练阻断；
 **真实部署尝试。** 18:02:53CST使用已复核脚本，先通过本地PASS及准确源码检查，再连接用户授权的SSH43811；实际以NoValidConnectionsError在认证前失败，未执行任何远端命令，没有上传新源码、同步远端交接文档或创建新GPU进程。M112_DEPLOY_ACCESS_FAILURE.json记录该限定范围。当前新增优化更新仍为0，sanity／只读参照／480步训练全部未开始，实时GPU状态未知；远端文档最后核实仍为§5.325。不自动反复重试，不回退旧端口，不重复已完成训练。
 
 本地与桌面文档继续同步并公开Git，服务器恢复连接后再完成保留前缀的远端文档同步、实时两卡空闲／环境预检和真实GPU验收，然后执行已冻结的M112计划。人工确认仍pending，202项fit语义标签不能证明开发语义泛化；暂无M112 checkpoint、完成时刻或正式九项指标。高清审核上传已完成；原联合目标未达，仍需后续实际实验支持。
+
+
+### 5.330 2026-10-03：用户关闭服务器；本地RGB-D资料集中，三数据集GPT初审导入统一公开审核网站
+
+用户明确服务器已关闭，当前任务为本地资料与公开审核整理。未再连接SSH、未上传服务器文件、未启动或重启GPU训练。M112实际优化仍为0，§5.329源码准备与复核保持，既有正式指标未变化；原九项联合指标目标仍未达。此前访问失败现有用户确认的关闭原因，不继续轮询关机服务器。
+
+**本地资料位置变更。** Desktop/document中的四个RGB-D目录（初始化审核、文字来源审计、协议比较、失败视频）及主交接文档、Full152指标CSV、M66图和M76图/表/PDF共10个顶层项目已移动到`C:\Users\gb\Desktop\document\RGBD_LANGUAGE_TRACKING`，没有删除或移动其他项目。`文件整理记录_20261003.json`记录原/新位置。主交接文档当前桌面路径为`C:\Users\gb\Desktop\document\RGBD_LANGUAGE_TRACKING\RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`，仓库canonical仍为docs下同名文档；本地两份按相同字节同步，远端最后核实§5.325仍为pending。历史旧绝对路径保留为当时证据，后续部署私有脚本须使用新路径重新检查，不能照抄旧路径启动。
+
+新目录的`README_从这里开始.md`提供主文档、原始初审CSV、指标、视频及审核包索引；`打开三数据集公开审核.url`直达统一网站；`人工审核结果`用于保存各审核者导出的CSV；`三数据集_GPT初审_1997条.csv`是统一整理表，原始GPT文件不改写。
+
+**确已收到的初审。** DepthTrack使用用户放入`初审/初始化审核_152条.csv`：152个精确audit_id，GPT-6 Astra Pro，supported105、conflicting36、uncertain11。CDTB/VOT使用`CDTB_VOT_全量审核结果_20261002/CDTB_VOT_1845_reviewed.csv`：CDTB80条（supported20、corrected56、uncertain4），VOT1765个合法初始化点（supported327、corrected1203、uncertain235）。总计1997条，未按同一VOT序列合并初始化点。两源SHA分别bd568ed8a4c3177787e92712f391b5ac4715844b9c9b8945bc8535f4673d5638与ace8acbfbe2cb8a0c764541c11b266027cc849adf42f7dd8b49a04c2e99a7aac。DepthTrack文件列来源是模型初审；CDTB/VOT原始human_status1845条全部pending。本轮没有将任何GPT判断冒充人工确认，用户另有人工完成结果时应独立导入保存。corrected包含收窄表述和删除未确认属性，不可解读为1259条原描述全部错误或生成准确率。
+
+**统一公开审核。** 入口继续为https://666666666666gao.github.io/Track/review_rgbd/，使用一个页面自由选择DepthTrack Train、CDTB和VOT；保留原960预览、1997份1920×1130高清拼图及359段640宽整段视频的全部ID和媒体路径。当前GPT类别、初始属性、不确定项、冲突项和证据显示在侧栏；原自动描述可展开对照，后续帧备注独立标记，不自动当初始化已知。加入我的未审核/已审核、GPT不确定及修正筛选，类别和证据关键词查找、编号范围与分享链接、审核进度，以及三数据集初审总表下载。
+
+“采用初审内容”只填入人工草稿，不自动选择人工判断。审核者明确选择支持、需修正/冲突或不确定后记录人工状态；旧浏览器rgbd-review-v1键继续保留。可导出当前或全部数据集的人工CSV，草稿human_confirmed=false；可导入网站导出格式的人工CSV，先核对全部key、序列及初始化帧，再写入；保留已有较新记录、分别保存不同审核者。静态公开网站没有实时共享后台，各自浏览器保存，人工CSV由负责人汇总。CDTB/VOT审核不自动进入训练或改变外部初始化bank，跟踪器/权重/推理协议未修改。
+
+**验证与边界。** 实际核对全部1997个唯一绑定、源类别/属性、初始化帧和旧manifest行；所有原media字段逐值不变且链接目标存在。JavaScript语法通过。JSDOM执行真实页面脚本，验证三个数据集切换、GPT草稿与人工状态分离、跨数据集保存、中文引号/逗号/多行备注导出导入、错误anchor导入前整体拒绝、较新本地记录保护、不同审核者隔离、11/4/235不确定筛选与范围/关键词搜索；统一1997条CSV往返逐值一致。浏览器CUA连接报nodeRepl.fetch request failed，iab不可用，未声称实际视觉预览通过。公开验证回执为UNIFIED_REVIEW_VALIDATION_20261003.json。网站发布后另核对GitHub Pages部署和HTTP文件；本节不包含新实验分数或GPU完成时刻。

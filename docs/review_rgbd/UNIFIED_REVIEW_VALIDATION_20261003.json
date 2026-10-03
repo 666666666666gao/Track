@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "total_initializations": 1997,
+  "dataset_counts": {
+    "depthtrack": 152,
+    "cdtb": 80,
+    "vot": 1765
+  },
+  "model_uncertain_counts": {
+    "depthtrack": 11,
+    "cdtb": 4,
+    "vot": 235
+  },
+  "all_original_media_and_initialization_rows_unchanged": true,
+  "gpt_inferred_human_confirmation": false,
+  "existing_browser_storage_keys_unchanged": true,
+  "checks": [
+    "original initialization IDs/category/attributes verified against supplied CSVs",
+    "all 1997 board/detail/video paths exist",
+    "dataset switching",
+    "model adoption leaves human status unconfirmed",
+    "draft and explicit human decision",
+    "saved state across datasets",
+    "Unicode multiline CSV roundtrip",
+    "all import rows validated before storage writes",
+    "older import retains newer local answer",
+    "reviewers kept separate",
+    "status filters/search/ranges",
+    "1997-row downloadable CSV exact roundtrip"
+  ],
+  "browser_visual_preview": "Not performed: enabled Edge CUA transport failed and in-app browser unavailable. Actual application DOM behavior checked in JSDOM.",
+  "server": "user intentionally shut down; no remote commands or training started",
+  "model_sources": [
+    {
+      "file": "初始化审核_152条.csv",
+      "sha256": "bd568ed8a4c3177787e92712f391b5ac4715844b9c9b8945bc8535f4673d5638"
+    },
+    {
+      "file": "CDTB_VOT_1845_reviewed.csv",
+      "sha256": "ace8acbfbe2cb8a0c764541c11b266027cc849adf42f7dd8b49a04c2e99a7aac"
+    }
+  ],
+  "source_files": {
+    "index.html": "e30ccd9c78d65b0a9f83c12ebe2f1090315e03934a3d5ca5730ec74a76d00c49",
+    "review.css": "a29239e1c6e2f85bb002246f4362d74a937929db80edcb5af2e59a736402e5cd",
+    "review.js": "22128abbc33087246d8462bd0c8dee8cd034468f72898ea814fd68795fa75db9",
+    "review-csv.mjs": "55a2c8cc067b8eb3f3e321db37c4f56ce6059de857950581d0006d8921c5db32",
+    "import_model_reviews.py": "2d862c91e4cd769f27c4442c6b6e5045a0491d97313a1722052431dd1fb9bd17"
+  }
+}
