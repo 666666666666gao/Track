@@ -1,20 +1,21 @@
-import {serializeCSV, parseCSV} from './review-csv.mjs?v=20261003gpt';
+import {serializeCSV, parseCSV} from './review-csv.mjs?v=20261006round';
+import {answerStorageKey, savedAnswer, INITIAL_ROUND} from './review-state.mjs?v=20261006round';
 const qs = new URLSearchParams(location.search);
 const $ = id => document.getElementById(id);
-const datasets = ['depthtrack', 'cdtb', 'vot'];
+const datasets = ['depthtrack', 'depthtrack_test', 'cdtb', 'vot'];
 const cache = new Map();
-const statusText = {supported:'原描述有支持', corrected:'建议修正', conflicting:'存在冲突', uncertain:'不确定'};
+const statusText = {supported:'有图像支持', corrected:'建议修正', conflicting:'存在冲突', uncertain:'不确定',not_visualized:'尚未实际看图'};
 let manifest, cases = [], current = 0, detailImage;
 
 function escapeHTML(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
 function reviewer() { return $('reviewer').value.trim(); }
-function storageKey(item, dataset = manifest.dataset, name = reviewer()) {
-  return `rgbd-review-v1:${dataset}:${name}:${item.id}`;
+function storageKey(item, dataset = manifest.dataset, name = reviewer(), round = cache.get(dataset).human_review_round) {
+  return answerStorageKey(dataset,name,item.id,round);
 }
 function saved(item, dataset = manifest.dataset) {
-  return JSON.parse(localStorage.getItem(storageKey(item, dataset)) || '{}');
+  return savedAnswer(item,cache.get(dataset),reviewer(),localStorage);
 }
 function message(text, error = false) {
   $('message').textContent = text;
@@ -34,7 +35,8 @@ function updateProgress() {
   $('progress').textContent = reviewer() ? `我的人工审核 ${count} / ${manifest.count}` : '填写审核者编号，开始人工核对';
   $('progress-bar').value = count / manifest.count * 100;
   const uncertain = manifest.rows.filter(item => item.model_review.status === 'uncertain').length;
-  $('model-progress').textContent = `GPT初审 ${manifest.count} / ${manifest.count} · 不确定 ${uncertain}条`;
+  const submitted = manifest.rows.filter(item => Object.keys(item.human_reviews).length).length;
+  $('model-progress').textContent = `GPT ${manifest.count}条 · 不确定 ${uncertain} · 已提交人审 ${submitted}/${manifest.count}`;
 }
 function applyFilter(preferredId) {
   if (!manifest) return;
@@ -68,14 +70,18 @@ function render() {
   updateProgress();
   if (!cases.length) { $('case').innerHTML = '<div class="empty-state">当前范围内没有匹配样本。可以切换筛选或调整范围。</div>'; return; }
   const item = cases[current], model = item.model_review, answer = reviewer() ? saved(item) : {};
-  const humanStatus = answer.status ? `我的判断：${{supported:'支持',conflicting:'冲突',uncertain:'不确定'}[answer.status]}` : '待人工确认';
+  const humanStatus = answer.status ? `我的判断：${{supported:'支持',conflicting:'冲突',uncertain:'不确定'}[answer.status]}` : '本轮待人工确认';
+  const submitted = Object.entries(item.human_reviews);
+  const proposalReview = manifest.review_subject === 'gpt_proposal';
   $('case').innerHTML = `
-    <div class="case-head"><div><h2>${escapeHTML(item.sequence)} <span class="muted">#${item.number}</span></h2><div class="muted">${escapeHTML(manifest.dataset.toUpperCase())} · 初始化帧 ${escapeHTML(item.frame)} · 序列共 ${item.sequence_frames}帧</div><div class="key">${escapeHTML(item.id)}</div></div><span id="human-status" class="badge">${humanStatus}</span></div>
+    <div class="case-head"><div><h2>${escapeHTML(item.sequence)} <span class="muted">#${item.number}</span></h2><div class="muted">${escapeHTML(manifest.display_name)} · 初始化帧 ${escapeHTML(item.frame)} · 序列共 ${item.sequence_frames}帧${proposalReview ? ' · 本轮重新核对GPT提议' : ''}</div><div class="key">${escapeHTML(item.id)}</div></div><span id="human-status" class="badge">${humanStatus}</span></div>
     <div class="evidence"><div>
       <img class="board" id="board" src="${escapeHTML(item.board)}" alt="初始化红框、目标放大区与无标记邻近帧，点击查看清晰图" loading="lazy" decoding="async" tabindex="0">
       <div class="board-tools"><button type="button" id="open-board">加载高清图 / 放大查看</button><a href="${escapeHTML(item.board_detail)}" target="_blank" rel="noopener">原尺寸拼图 ↗</a></div>
-      <div class="video-area"><button type="button" id="load-video" class="secondary">▶ 查看整段视频 · 跳到初始化帧</button><p>后续帧无目标标注；仅作审核上下文。</p><video id="video" class="video" controls preload="none" hidden></video></div>
-      <details class="original-description"><summary>原始自动描述 · 与GPT意见对照</summary><p>类别：<strong>${escapeHTML(item.category)}</strong></p><p>属性：${escapeHTML(item.attributes.join(' / ') || '无')}</p></details>
+      ${item.temporal_board ? `<details class="temporal-evidence"><summary>查看GPT用到的多帧图</summary><p>${escapeHTML(item.temporal_board_label)}</p><p>零基帧：${escapeHTML(item.temporal_board_frames)}</p><a href="${escapeHTML(item.temporal_board)}" target="_blank" rel="noopener"><img data-src="${escapeHTML(item.temporal_board)}" alt="多帧审核证据，点击查看原尺寸" loading="lazy"></a></details>` : ''}
+      ${item.original_frames ? `<details class="original-description"><summary>打开原始JPEG核对细节</summary><p>${item.original_frames.map(frame => `<a href="${escapeHTML(frame.path)}" target="_blank" rel="noopener">帧 ${frame.frame_index}</a>`).join(' · ')}</p></details>` : ''}
+      <div class="video-area"><button type="button" id="load-video" class="secondary">▶ 查看整段范围的抽样视频</button><p>${item.video_sample_fps || 8}fps抽样预览；后帧无目标标注，仅作审核上下文。</p><video id="video" class="video" controls preload="none" hidden></video></div>
+      ${manifest.reference_caption_available ? `<details class="original-description"><summary>原始自动描述 · 与GPT意见对照</summary><p>类别：<strong>${escapeHTML(item.category)}</strong></p><p>属性：${escapeHTML(item.attributes.join(' / ') || '无')}</p></details>` : '<p class="muted">本次未提供原自动caption；核对右侧GPT提出的首帧描述。</p>'}
     </div><div>
       <section class="model-card"><div class="section-heading"><h3>GPT初审意见</h3><span class="badge ${model.status}">${statusText[model.status]}</span></div>
       <p class="category-label">${escapeHTML(model.category)}</p>
@@ -83,19 +89,20 @@ function render() {
       <p class="model-line"><strong>仍需核对</strong><br>${escapeHTML(model.uncertain_attributes || '无额外记录')}</p>
       ${model.conflicting_attributes ? `<p class="model-line"><strong>属性冲突</strong><br>${escapeHTML(model.conflicting_attributes)}</p>` : ''}
       <details class="model-evidence"><summary>展开判断依据与多帧备注</summary><p>${escapeHTML(model.evidence)}</p>${model.evidence_frames ? `<p>参考帧：${escapeHTML(model.evidence_frames)}</p>` : ''}${model.initialization_observability ? `<p>初始化可辨性：${escapeHTML(model.initialization_observability)}</p>` : ''}<p><strong>多帧上下文（不自动作为初始化属性）</strong><br>${escapeHTML(model.context_only_notes || '无额外记录')}</p></details>
-      <p class="model-source">${escapeHTML(model.reviewer)} · ${escapeHTML(model.review_date)} · 初审参考，尚未代替人工确认</p></section>
-      <form id="review-form" class="review-form"><h3>我的人工核对</h3><p class="muted">可采用初审内容，再修正；只有明确选择判断才计入已审核。</p>
+      <p class="model-source">${escapeHTML(model.reviewer)} · ${escapeHTML(model.review_date)} · GPT提议需由人工核对</p></section>
+      ${submitted.length ? `<section class="submitted-review"><h3>已提交的人工核对</h3>${submitted.map(([name,record]) => `<div><strong>${escapeHTML(name)} · ${{supported:'支持',conflicting:'需修正／有冲突',uncertain:'不确定'}[record.status]}</strong><p>${escapeHTML(record.confirmed_category)}</p><p>首帧属性：${escapeHTML(record.stable_attributes || '未记录')}</p><p>不确定：${escapeHTML(record.uncertain_attributes || '未记录')}</p>${record.note ? `<p>${escapeHTML(record.note)}</p>` : ''}</div>`).join('')}</section>` : ''}
+      <form id="review-form" class="review-form"><h3>我的人工核对</h3><p class="muted">${proposalReview ? '本轮请核对GPT重审提议。' : '可参考已提交记录继续核对。'}只有明确选择判断才计入已审核。</p>
       <div class="form-grid">
         <label>确认类别<input name="confirmed_category" value="${escapeHTML(answer.confirmed_category)}" placeholder="无法确认可留空"></label>
         <label>初始化可见属性<input name="stable_attributes" value="${escapeHTML(answer.stable_attributes)}" placeholder="例如 striped; white"></label>
         <label class="wide">不确定或暂时不可见<input name="uncertain_attributes" value="${escapeHTML(answer.uncertain_attributes)}"></label>
         <label class="wide">依据与备注<textarea name="note" placeholder="哪些帧帮助判断？哪些细节无法确认？">${escapeHTML(answer.note)}</textarea></label>
       </div>
-      <div class="status-options" role="group" aria-label="对原描述的人工判断">
-        <label><input type="radio" name="status" value="supported" ${answer.status === 'supported' ? 'checked' : ''}>原描述支持目标</label>
+      <div class="status-options" role="group" aria-label="人工判断">
+        <label><input type="radio" name="status" value="supported" ${answer.status === 'supported' ? 'checked' : ''}>${proposalReview ? 'GPT提议有支持' : '原描述支持目标'}</label>
         <label><input type="radio" name="status" value="conflicting" ${answer.status === 'conflicting' ? 'checked' : ''}>需修正／有冲突</label>
         <label><input type="radio" name="status" value="uncertain" ${answer.status === 'uncertain' ? 'checked' : ''}>不确定</label>
-      </div><div class="form-actions"><button type="button" id="use-model" class="secondary">采用初审内容</button><button type="button" id="save-next">保存并下一项 →</button></div><p class="saved" id="saved-state">${answer.status ? '人工判断已保存在当前浏览器' : '选择判断后自动保存；草稿不计入已审核'}</p></form>
+      </div><div class="form-actions"><button type="button" id="use-model" class="secondary">采用初审内容</button><button type="button" id="save-next">保存并下一项 →</button></div><p class="saved" id="saved-state">${answer.status ? (answer._published ? '已载入你提交的人工记录；修改后保存在当前浏览器' : '本轮人工判断已保存在当前浏览器') : '选择判断后自动保存；草稿不计入已审核'}</p></form>
     </div></div>`;
   $('open-board').addEventListener('click', () => openEvidence().catch(error => message(error.message, true)));
   $('board').addEventListener('click', () => $('open-board').click());
@@ -106,6 +113,9 @@ function render() {
     player.load(); $('load-video').textContent = '视频已加载 · 下方播放';
   });
   $('review-form').addEventListener('input', saveCurrent);
+  document.querySelectorAll('.temporal-evidence').forEach(details => details.addEventListener('toggle', () => {
+    if (details.open) { const image = details.querySelector('img'); image.src = image.dataset.src; }
+  }, {once:true}));
   $('review-form').addEventListener('submit', event => event.preventDefault());
   $('use-model').addEventListener('click', () => {
     const form = $('review-form');
@@ -158,7 +168,7 @@ function saveCurrent() {
 }
 async function fetchManifest(dataset) {
   if (!cache.has(dataset)) {
-    const response = await fetch(`data/${dataset}.json?v=20261003gpt`);
+    const response = await fetch(`data/${dataset}.json?v=20261006round`);
     if (!response.ok) throw new Error(`无法读取${dataset}清单：HTTP ${response.status}`);
     cache.set(dataset, await response.json());
   }
@@ -168,12 +178,12 @@ async function exportCSV() {
   if (!reviewer()) { message('请先填写审核者编号。', true); return; }
   const scope = $('export-scope').value;
   const selected = scope === 'all' ? await Promise.all(datasets.map(fetchManifest)) : [manifest];
-  const header = ['reviewer_id','dataset','anchor_number','key','sequence','init_frame','status','confirmed_category','stable_attributes','uncertain_attributes','note','provisional_category','provisional_attributes','updated_at','human_confirmed','model_status','model_category','model_stable_attributes','model_uncertain_attributes','model_context_only_notes','model_evidence','model_reviewer'];
+  const header = ['reviewer_id','dataset','anchor_number','key','sequence','init_frame','status','confirmed_category','stable_attributes','uncertain_attributes','note','provisional_category','provisional_attributes','updated_at','human_confirmed','model_status','model_category','model_stable_attributes','model_uncertain_attributes','model_context_only_notes','model_evidence','model_reviewer','review_round','review_subject'];
   const rows = [];
   for (const dataset of selected) for (const item of dataset.rows) {
     const answer = saved(item,dataset.dataset), model = item.model_review;
     if (!answer.status && !answer.updated_at) continue;
-    rows.push([reviewer(),dataset.dataset,item.number,item.id,item.sequence,item.frame,answer.status,answer.confirmed_category,answer.stable_attributes,answer.uncertain_attributes,answer.note,item.category,item.attributes.join('; '),answer.updated_at,Boolean(answer.status),model.status,model.category,model.stable_attributes,model.uncertain_attributes,model.context_only_notes,model.evidence,model.reviewer]);
+    rows.push([reviewer(),dataset.dataset,item.number,item.id,item.sequence,item.frame,answer.status,answer.confirmed_category,answer.stable_attributes,answer.uncertain_attributes,answer.note,item.category,item.attributes.join('; '),answer.updated_at,Boolean(answer.status),model.status,model.category,model.stable_attributes,model.uncertain_attributes,model.context_only_notes,model.evidence,model.reviewer,dataset.human_review_round,dataset.review_subject]);
   }
   if (!rows.length) { message('还没有可导出的人工判断或草稿。', true); return; }
   const url = URL.createObjectURL(new Blob([serializeCSV(header,rows)], {type:'text/csv;charset=utf-8'}));
@@ -198,7 +208,8 @@ async function importCSV(file) {
     if (!item || row.sequence !== item.sequence || row.init_frame !== item.frame) throw new Error(`初始化点不匹配：${row.dataset}/${row.key}`);
     if (!row.reviewer_id.trim() || !['','supported','conflicting','uncertain'].includes(row.status)) throw new Error('审核者编号或判断值无效。');
     if (!Number.isFinite(Date.parse(row.updated_at))) throw new Error(`记录缺少有效保存时间：${row.key}`);
-    const key = storageKey(item,row.dataset,row.reviewer_id.trim());
+    const round = row.review_round || INITIAL_ROUND;
+    const key = storageKey(item,row.dataset,row.reviewer_id.trim(),round);
     if (unique.has(key)) throw new Error(`同一审核者的记录重复：${row.key}`);
     unique.add(key); names.add(row.reviewer_id.trim());
     plans.push({key, answer:Object.fromEntries(['status','confirmed_category','stable_attributes','uncertain_attributes','note','updated_at'].map(field => [field,row[field]]))});
@@ -221,6 +232,7 @@ async function loadDataset(dataset) {
   const loaded = await fetchManifest(dataset);
   if ($('dataset').value !== dataset) return;
   manifest = loaded;
+  for (const name of manifest.published_reviewers) rememberReviewer(name);
   $('from').value = qs.get('from') || 1; $('to').value = qs.get('to') || manifest.count;
   $('from').max = manifest.count; $('to').max = manifest.count;
   document.querySelectorAll('.dataset-card').forEach(card => {

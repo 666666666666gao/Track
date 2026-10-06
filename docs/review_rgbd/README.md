@@ -17,21 +17,30 @@ IDs, browser answer keys and CSV fields remain unchanged.
 Display enlargement does not create detail absent from the source image.
 
 The displayed category and attributes are provisional automatic descriptions.
-GPT-6 Astra Pro initial reviews have been imported for all 1,997 cases, including
-the user's DepthTrack 152-row CSV and CDTB/VOT 1,845-row CSV. Each case keeps its
+GPT-6 Astra Pro reviews have been imported for all 2,047 cases: DepthTrack
+Train152, Test50, CDTB80, and VOT1,765 legal initialization points. Each case keeps its
 original generated description alongside the model's proposed category,
 initially supported attributes, uncertainty and separate later-frame notes.
 The source files are hashed in `data/model_review_receipt.json`;
 `data/gpt_initial_reviews.csv` is the normalized downloadable initial-review table.
-GPT opinions are not promoted to human confirmation. Existing browser answer
-keys and original case/media bindings are retained.
+DepthTrack Train and Test use the supplied 2026-10-06 GPT re-review. Their 202
+current-round human decisions start pending, and previous DepthTrack human
+decisions are not used. CDTB/VOT include the user's 1,845 submitted human records
+under reviewer `gb`; the uploaded status values are retained exactly. GPT opinions
+are not promoted to human confirmation. Test50 has no supplied original caption,
+so its review concerns the GPT proposal rather than an unavailable old caption.
+Original case/media bindings are retained.
 
 Reviewers choose supported, conflicting, or uncertain, can copy and correct the
 GPT proposal, and export UTF-8 CSV for one or all datasets. Drafts are exported
 with `human_confirmed=false`. Answers remain in that reviewer's browser.
 Import accepts the site's human-review export schema, validates all case IDs,
 sequences and initialization frames before writing, retains newer local
-records, and separates reviewer IDs. This static site does not provide live
+records, and separates reviewer IDs and review rounds. DepthTrack uses round
+`20261006`; CDTB/VOT retain their original browser keys. A record imported without
+`review_round` belongs to the original round and cannot confirm this DepthTrack
+round. Submitted human records appear directly on the page; selecting `gb` loads
+them for continued review. This static site does not provide live
 shared server storage. Return exported CSV to the project owner for consolidation.
 Dataset cards, keyword search, pending/reviewed/model-uncertain filters and
 numeric ranges allow people to divide the 1,765 VOT anchors.
@@ -45,7 +54,11 @@ initialization observation.
 records, verifies the record-file hash and each image binding, then makes
 boards, manifests, and review videos. `build_depthtrack_assets.py` uses the
 existing DepthTrack Train initialization manifest and creates the same format.
-No future tracking annotations are included in site assets.
+External later frames are unmarked review context. Train152 additionally has
+nine-frame target crops located using training GT, explicitly labeled as offline
+review evidence. Test50 adds unmarked nine-frame sequence overviews, eleven
+original JPEGs per case, and 2fps sampled whole-sequence previews. These later
+frames do not become legal initialization information.
 
 `build_clear_assets.py` regenerates the clearer evidence for all three datasets.
 It retains existing preview paths and descriptions, verifies original
@@ -57,3 +70,9 @@ evidence and do not enter external-dataset training.
 binds reviewed content to the existing manifests and validates original
 category, attributes and initialization identities. It changes no image/video
 path, tracking input, checkpoint, or experiment metric.
+
+`import_review_round.py` binds the supplied Train152 CSV and Test50 ZIP CSV to
+their original blank templates, verifies identity and source bytes, imports the
+submitted CDTB/VOT human CSVs, and copies verified offline review materials.
+`REVIEW_ROUND_IMPORT_20261006.json` records hashes, coverage, and round boundaries.
+Re-running the same import over an already-imported round is intentionally rejected.

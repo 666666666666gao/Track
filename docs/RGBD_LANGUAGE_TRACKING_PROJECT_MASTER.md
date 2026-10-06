@@ -24497,3 +24497,31 @@ M112 fresh-context gpt-6-astra/max首轮源码复核为WARN，无训练阻断；
 **GPT执行要求与验证。** 提示词要求实际读取/显示图像，记录真实看过的图片和视频帧，支持/冲突/不确定与not_visualized分开，不根据文件名或原文字猜；不能把附件哈希验证当语义正确，也不能将GPT署名当人工确认。最终返回全152条CSV、重点复核表及真实审阅回执。JPG和CSV作为原始输入；ZIP读取依当前会话能力，说明保留直接提供解压图像与表的方式。已核对OpenAI当前上传/图像/数据分析说明，未将旧“视频完全不支持”缓存当现行能力，也不以PDF文字提取冒充图像审核。
 
 两ZIP实际CRC检查全部通过，全部归档成员SHA与本地源文件一致；152条CSV往返逐值一致、8批无重复遗漏、所有图像/视频相对路径与编号绑定。交付回执`DepthTrack_重新初审包_交付回执_20261005.json`记录上述范围。仅抽查展示素材，不声称本执行者或网页版GPT已经完成新的152条语义审阅。本轮无新的模型标签、人工确认、GPU更新或P/R/F、EAO/ACC/ROB，既有科学目标状态不变。
+
+
+### 5.332 2026-10-06：另建DepthTrack Test50网页GPT初审包，训练/测试分离，后帧只作离线核查
+
+用户确认此前152条是否为训练集，并要求测试集同样重新制作。本轮明确前包属于DepthTrack Train152；新包为独立DepthTrack Test50，两者序列交集0。任务在2026-10-05启动、跨午夜完成，因此文件名保留20261005，实际完成时间为2026-10-06T00:33:58.877426+08:00。未访问用户关闭的SSH服务器、未启动GPU或修改模型、文字bank、公开网站既有审核意见或正式指标。
+
+**完整交付。** 桌面项目新增`DepthTrack_Test50_GPT初审包_20261005`。主ZIP `DepthTrack_Test50_GPT初审_高清多帧_20261005.zip`为81,294,450字节（77.53MiB）、661个文件、SHAc46812f71d19cb921e8011435587985ca9b57adc2053518c297027b4b4a654d7，包含50张1920×1130初始化高清图、50张1920×1320整段九帧无标记概览、550张原始RGB JPEG、41列UTF-8 BOM全50条空白CSV、5份10条分批表、提示词、完整来源/字节哈希manifest和本地查看HTML。独立视频ZIP `DepthTrack_Test50_视频补充_20261005.zip`为66,898,543字节（63.80MiB）、52个文件、SHA8294afe7259fd60727fa1bdd49d1bedb724bf454a13777c4e2f80d35bb4ac9c6，含50段640宽、2fps抽样预览和CSV/JSON索引。两个ZIP内部同名根目录，可合并解压。550张原图与100张拼图全部解码通过；视频一共6105个采样帧，覆盖各序列首尾，不是全部76,373个源帧。
+
+**来源与实际校验。** 序列/帧数/初始化框取冻结native_ope/inputs.json，全50条共76,373帧。本地E盘保留全50条原始首帧和5条完整序列；作者DeT仓库公开的Test50 Zenodo记录5792146用于补充其余素材。50个官方ZIP的RGB成员清单/帧数、初始GT首行与冻结清单逐条一致，首帧JPEG与本地源逐字节一致；其余需用RGB通过HTTP Range读取，成员CRC核对。5条本地序列的视频采样亦按官方成员CRC核对。没有下载18.3GB整套RGB-D数据，没有声称全ZIP MD5已验证，manifest中的官方MD5仅是来源参考。下载中实际遇到请求429与数次传输截断，未将不完整响应作为有效图片；保留已完成条目，降低请求频率、分批合并所需成员范围，把通过CRC的原始视频采样帧缓存在E盘`RGB-D-L-work/DepthTrack_Test50_review_video_cache_20261005`。单个失败不取消其余素材，失败项记录为partial并单独补齐；最终50条全部完成后才打包。早期把ZIP物理存储顺序当帧顺序的检查不成立，已改为按真实文件名排序；最终帧号和成员CRC实际核对通过。这些是素材工程过程，不是实验失败或性能改进。
+
+**审核边界。** 只有首帧红框来自合法初始化GT；后帧概览、邻近帧及视频均为无GT标记的原始RGB全图，不用Test后续GT圈目标或裁目标。概览固定均匀取样，不依据测试成绩选帧。首帧字段与video_only_attributes/multiframe_review_note分开，后续才可见的信息不能写成首帧已知或作为DepthTrack Train标签。源JPEG编号00000001对应零基0；本包原图名统一零基。2fps预览按序列首尾均匀采样，近似25个源帧/秒安排时间轴，不是实测采集率；video_manifest.json保存每个预览帧对应的精确源索引。未恢复模糊源图没有的细节。
+
+**内容与验收。** 没有找到当前正式bfloat16 Test文字bank完整本地留存，因此不冒用历史sequence_hint描述；generated_*为空、reference_caption_available=no，要求GPT提出首帧区域支持的短类别/属性，supported在本包指所提类别得到图像支持，不能称核对过未提供的旧caption。新表没有旧GPT答案，审核字段空、model_image_reviewed=no、human_status=pending、human_confirmed=false。提示词要求逐条实际看图，记录真实使用的图像/视频帧，区分未知和not_visualized，不根据序列名猜，不替人工署名。50条CSV往返、5批唯一编号、全部ZIP成员SHA与本地一致、两个ZIP CRC及全部50视频ffprobe宽度/帧数/时长检查通过；只抽查展示部分图与视频帧，不声称已经完成新的50条语义初审。回执`DepthTrack_Test50_初审包_交付回执_20261005.json`保存实际验收。原Train152包、旧模型/人工结果保留；本轮没有新训练指标，原联合目标状态不变。
+
+
+### 5.333 2026-10-06：DepthTrack Train152/Test50新GPT结果导入公开网站，本轮人审重新开始，CDTB/VOT已提交人审保留
+
+用户要求读取桌面项目`人工审核结果`、重新导入DepthTrack的GPT重审（Train与Test），随后重新人工核对，并明确“DepthTrack旧轮的人工审核不用管”。本轮按该指令，不使用、不显示或计入旧DepthTrack152条人工结果；原CSV保持原字节留在用户目录。服务器已关闭，本轮无SSH、GPU、训练启动或实验指标更新。
+
+**实际新来源。** Train为项目根目录`DepthTrack_152_GPT初审结果.csv`，152个001—152唯一audit_id，SHA`e0d66742c9e970a6a20a82ea0ac75fe5637f912ee96f2c3f5069034ab252a342`；GPT-6 Astra Pro日期2026-10-06，supported104、conflicting38、uncertain10。Test从`DepthTrack_Test50_完整初审结果_20261006.zip`只读取CSV成员，50个TEST001—TEST050，CSV SHA`236a77087540c978cc039b704a8904a08e8796d739e6386ddefd6b1b134c35e1`，ZIP SHA`d4c017c2fe611aba6b6578ac1f95dc24fd7468d8ee3c64797601a4e2836cdbab`；supported43、uncertain7。原空白表的初始化ID、序列、帧号、帧数、图片/视频相对路径及提供的原描述逐字段核对。两份模型CSV均human_status=pending、human_confirmed=false；模型判定不冒充人工确认。Test未提供原自动caption，supported仅指GPT提出的类别受到图片支持，不称核验过未提供的旧描述。审阅者的image/video标记按提交CSV保留，不视为执行者独立逐图复核。
+
+**实际人审来源。** `人工审核结果/rgbd_cdtb_gb_80_review.csv`（SHA`dea42aa507134894bd3e267672b2a69f662a1d26ecd959406257e4b2e5895381`）及`rgbd_vot_gb_1765_review.csv`（SHA`3af4dc7a2d26a6484508b1cf37c7cc4cf33a7657e983c6c7c71f9b40abb52e1f`）全部通过key/序列/初始化帧/编号绑定，1845条human_confirmed=true、原status均conflicting，按原值导入gb记录；该状态包含需修正，不推断1845个生成类别全错或自动准确率。旧DepthTrack人审SHA`26cb6640eac4338c4c00b2a07162258f9b37b05bc80d7f05e9ecdaa5e2e7a0e5`不变，未进入当前网站人审数据或公开新来源CSV。新DepthTrack两份CSV另存`人工审核结果/DepthTrack_GPT重审_20261006`方便本地查看。
+
+**网站与轮次。** 原公开入口继续https://666666666666gao.github.io/Track/review_rgbd/，增加DepthTrack Test选项，统一Train152、Test50、CDTB80、VOT1765共2047项。DepthTrack当前轮次20261006，202条从待人工确认开始；浏览器旧rgbd-review-v1原键不删除，但新轮次独立键不读取旧答案，旧格式不带review_round的CSV也不会确认新轮次。CDTB/VOT保留原键、原GPT意见和所有原媒体字段；提交的人审内容单独显示，填gb可载入1845条，较新的本地编辑优先，其他审核者独立保存。“采用初审内容”仍只复制草稿，明确选择判断才计入人审；CSV新增review_round/review_subject，支持四数据集导出与导入。网站静态，不宣称多人实时共享后台。
+
+**素材与边界。** 沿用已验收原包，新增902份素材（181,209,585字节）：Train152份九帧GT辅助目标裁剪；Test50份960预览、50份1920×1130高清图、50份1920×1320九帧无标记概览、550份原始JPEG、50段640宽2fps抽样视频。Train后帧GT用途在页面显式标记；Test后帧不标GT、不裁目标，只作辨认上下文，不作为初始化已知或新增训练标签。图像/视频按需加载，未重做源视频或访问关机服务器。
+
+**验证。** 2047项数量及唯一绑定、202条pending/1845条已提交人审、Train/Test序列交集0、全部媒体路径存在，902份新增媒体逐字节SHA及字节数通过；CDTB/VOT旧行字段含GPT/媒体与HEAD完全相同，Train除模型意见外原字段相同，所有原用户文件保持。JavaScript语法通过；JSDOM执行真实页面脚本，覆盖四数据集切换、旧DepthTrack答案隔离、草稿不计确认、新轮次保存/导出、1845条gb载入及独立审核者、较新本地编辑、1847条包含本地测试记录的CSV往返、错anchor写入前拒绝、旧轮CSV不能确认新轮、Test11原图链接/多帧按需加载、不确定筛选10/7/4/235及2047条合并CSV往返。JSDOM测试记录仅在内存，不进入网站真实人审JSON。CUA Edge库存接口实际nodeRepl.fetch request failed，未宣称桌面/手机实际视觉预览通过。公开回执为REVIEW_ROUND_IMPORT_20261006.json、REVIEW_ROUND_DATA_VALIDATION_20261006.json及REVIEW_ROUND_UI_VALIDATION_20261006.json；发布状态另作真实Pages/HTTP完成核对。主交接文档canonical与桌面镜像继续同步，原正式九项指标及M112零更新状态不变。
