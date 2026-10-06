@@ -24860,3 +24860,7 @@ fresh请求gpt-6-astra/max源码审查PASS、blocking0、same-family/provisional
 所有三final保留fit和四个开发内容条件，检查主human相对自身Empty、同预算visual/generic的正确数和均值，以及健康与transition保护。通过后才成为自身递归候选；随后仍需B框容量/回归、C记忆/新观察、固定Full152唯一final三集九项完整验收。不能将固定状态增量替代正式目标；当前联合目标仍未达。
 
 M118_REGIONAL_DECODER_PLAN.md及四新Python源码已形成，Python3.8 AST检查实际通过（不是Torch/GPU测试）。fresh请求gpt-6-astra/max正在审查，same-family/provisional；本条尚无PASS或训练进程/新指标。最新授权服务器仍43811，永久人工CSV协议保持，序列名仅核查、未知不补写，不重做旧M67/M82/M89全量。
+
+**统计定义追加。** M118逐条结果的summarize救回/损害相对原native候选0、采用IoU0.5跨线；paired_vs_own_empty的rescue/harm采用≤0.1与≥0.5严重失配。相对Parent的全部跨线与严重变化另作明示分解，不混用数字；损失与验收门槛没有因此改变。
+
+**fresh源码复核追加。** M118_SOURCE_REVIEW.json/md实际PASS、blocking0；请求gpt-6-astra/max、same-family/provisional、无后端独立attestation。15份源/计划与私有部署脚本摘要、Python3.8 AST及原M117/M114 CPU口径重算通过。两处报告边界已澄清。GPU/SSH审查次数0，当前只准进入既定真实sanity，尚未声称训练完成。

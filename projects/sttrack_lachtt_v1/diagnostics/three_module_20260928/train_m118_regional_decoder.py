@@ -150,6 +150,8 @@ def main():
         decoder_sha256=sha(Path(__file__).with_name('dense_region_decoder.py')),
         inputs_sha256=sha(Path(__file__).with_name('m118_region_inputs.py')),
         loss_components=['GT_IoU_weighted_candidate_quality_order','reliable_Parent_gap_vs_worse_geometry'],
+        metric_definitions=dict(summarize_native='rescues/breaks cross IoU0.5 relative to original native candidate0 (<0.5 versus >=0.5).',
+            paired_vs_own_empty='rescue/harm count severe changes between <=0.1 and >=0.5; qualifying counts and mean IoU differences are separate fields.'),
         history=history, coordinates=coordinates, frozen_parent_actual_forward=True,
         empty_scores_quality_index_box_all3039_exact=True, buffers_exact=True, nonempty_quality_exact=True,
         selected_feature_boundary='The learned277-dimensional feature matches this forward selected candidate; it is not frozen or identical to the64-dimensional Parent feature. No tracker consumes it here.',
