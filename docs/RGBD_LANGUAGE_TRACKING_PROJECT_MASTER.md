@@ -24839,3 +24839,24 @@ fresh请求gpt-6-astra/max源码审查PASS、blocking0、same-family/provisional
 区域证据不能直接替换精确定位：与冻结M101 Parent272/.530707698相比，raw类别只读选择救回20、损害42（健康264中39损害），平均IoU.442466829；两边均合格的230状态中164定位变差、15改善。所有16个新编码内容/读出在fit/dev的Parent分解保存M117_PARENT_PARTITION.json，不据后验挑最佳部署规则。Empty-centered全短语253/.456874338亦救15、伤34，仍未整体超过视觉Parent；t0改善不意味着当前框全部正确。
 
 下一阶段保持永久人工文本协议，以M117区域证据构建容量匹配的A/B学习对照：A承担受首帧实例约束的当前区域语义对应，B区分类别相关候选的精确几何质量，不用纯语义argmax替换可靠视觉细定位。通过固定状态的具体内容增量、健康保护与定位精度后，再进入自身递归；C记忆/观察与Full152/同一final三集九项评价仍须独立执行。M47、多正例、普通候选图、Empty差分及M115直接评分均保留历史边界，不重新包装为新点，不把这次作者模块当原创贡献。
+
+
+### 5.345 2026-10-07：M118区域A/B训练实现与同结构对照准备
+
+上一轮M117实际改变了后续动作：区域语义对应改善，但纯语义选框仍损害精确定位。本轮新增DenseRegionDecoder：合法首帧/当前候选/外围的密集区域token经共享投影，查询读取视觉、视觉反向读取查询，再与冻结RGB-D Parent实例特征、原几何和质量联合产生选择增量。M117作者区域编码是已归属的基础，双向attention/Empty差分/关系监督有先例，不换名算原创；没有当前支持/冲突/未知语义标签，不声称已训练这三类职责。
+
+冻结M101 Parent在canonical64分组实际前向一次再缓存；密集grid维持M117精度、原crop/candidate/ROI-ring操作，训练不加载新编码器或权重。A/B共享full/Empty差分且候选均值中心化，Empty继续相消；几何/质量不改。本阶段是固定状态选择学习，未提交crop/query/template，也不称新Full152最终模型。
+
+| 本轮训练臂 | 输入查询 | 共同设置 | 实际状态 |
+|---|---|---|---|
+| human_text | 最终人工类别+最多4条稳定属性 | 同结构150528参数、seed2027、lr3e-4、B64、12epoch/480更新/final | 已实现、等待源码复核与实际sanity |
+| visual_query | 初始化局部密集RGB表示，无类别/属性字符串 | 相同 | 相同 |
+| generic | 相同有效槽均object | 相同 | 相同 |
+
+视觉query控制并未使用更小网络；共有额外冻结CLIP RGB容量、Empty常量和相同人工槽mask元信息，均披露。只有human_text是主线语义协议。模型GT输入为0，真实Train IoU仅训练候选质量次序：正IoU差加权的分数间隔；保持项保护Parent合格框相对所有定位更差候选的原间隔，允许更精确候选纠正。此职责针对M115/M117的合格框精度下降，并非再次仅靠多正例标签。
+
+固定Train2544fit/495反复使用development；无效GT不伪造正例。三臂各3步sanity全部实际通过、共同初值相同后才做完整预算；三状态reader对照、冻结Parent、Empty3039全状态score/quality/index/box、有限非零A/B梯度及final回读为执行门。277维selected_feature仅与同一次forward所选候选自洽，会随A训练变化，不是Parent64维恒等特征，当前没有tracker消费者，不能声称未来Empty历史也恒等。两卡先两有用臂，再第三臂，不填任务；预计4–10分钟，首次完成节点540秒后按实测进度调整，不频繁SSH。
+
+所有三final保留fit和四个开发内容条件，检查主human相对自身Empty、同预算visual/generic的正确数和均值，以及健康与transition保护。通过后才成为自身递归候选；随后仍需B框容量/回归、C记忆/新观察、固定Full152唯一final三集九项完整验收。不能将固定状态增量替代正式目标；当前联合目标仍未达。
+
+M118_REGIONAL_DECODER_PLAN.md及四新Python源码已形成，Python3.8 AST检查实际通过（不是Torch/GPU测试）。fresh请求gpt-6-astra/max正在审查，same-family/provisional；本条尚无PASS或训练进程/新指标。最新授权服务器仍43811，永久人工CSV协议保持，序列名仅核查、未知不补写，不重做旧M67/M82/M89全量。

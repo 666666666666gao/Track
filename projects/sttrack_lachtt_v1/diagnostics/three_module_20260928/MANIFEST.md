@@ -162,3 +162,5 @@
 | 2026-10-07T07:17:39.614405+08:00 | /experiment-bridge | m117_completed; M117_RESULT.md; M117_CPU_ANALYSIS.json; M117_ARTIFACT_MIRROR.json | completed | Four producers exit0, same human text/CLS/crop, GT localization CPU results only; no optimizer or formal score |
 
 | 2026-10-07T07:19:18.048700+08:00 | /experiment-bridge | M117_PARENT_PARTITION.json; M117_RESULT.md | posthoc_CPU | All16dense readouts against M101; region correspondence improves but fine localization/healthy losses prevent direct replacement; no NN replay |
+
+| 2026-10-07T07:39:09.463107+08:00 | /experiment-bridge | M118_REGIONAL_DECODER_PLAN.md; dense_region_decoder.py; m118_region_inputs.py; train_m118_regional_decoder.py; run_m118_regional_suite.py | implementation_review_pending | Common150528-parameter regional decoder/human-visual-generic controls, only Python3.8 AST verified; no NN execution |
