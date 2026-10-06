@@ -24668,3 +24668,11 @@ M114完成证据20份原字节和本地/服务器交接已实际核对，发布d
 **源审查具体修正。** 新trainer逐步核对视觉Parent推理分数，但初稿在优化时model.train()，冻结候选MHA会切换计算路径；记录环境M105为torch1.13.1+cu116，官方v1.13.1源码training/grad条件明确。改为优化期model.eval()而仍启用梯度，既无BatchNorm/Dropout影响也不放宽逐值检查。尚未做新NN，不宣称已测数值差异；这是保证同一父模型路径的源码修正。[PyTorch1.13.1官方实现](https://github.com/pytorch/pytorch/blob/v1.13.1/torch/nn/modules/activation.py)
 
 **M115最终fresh源审查已PASS。** gpt-6-astra/max/fork none，blocking0/nonblocking0，same-family/provisional；57份实际D源码/已完成证据及3份私有部署/采集/复算helper记录SHA，源审查不SSH、不访问凭据、不运行NN。eval修正已复读，GT数据、人工704短语/152序列、全部存储M113/M114计数与间隔、3臂同预算、10候选定位标签、原父模型2271保持对等核验通过。运行验收待真实GPU，未填正式指标。
+
+**M115原尝试实际终止，R1尚未启动。** 原controller6451已退出，两卡idle；两sanity各3更新实际完成，随后两full均在“随机批次视觉分数=顺序缓存分数”断言处exit1，generic未运行，没有完整final或新指标。原12份产物逐字节下载，相关原源码/plan/review/launch归档m115_failed_attempt。原full没有完整逐步回执，不填写确切优化次数。
+
+fresh rescue已审查一个零更新批次诊断并实际执行：Torch1.13.1+cu116，同模型eval、相同人审bank/Parent和随机种子；contiguous64复放逐值相同，epoch0 first random64的640分数中6个跨批次缓存比较不同，最大9.5367431640625e-7，argmax无变化。两组内full/Empty、grad/no_grad、零更新选择/视觉全部逐值相同，整个state_dict不变，优化0次。这证实该缓存断言即使零更新也会失败，不是文本/权重变动证明。
+
+最小修正只移除跨批次逐值断言：保持同一次forward的冻结Parent教师、eval路径、全部3039按同批分组Empty前后逐值检查、参数/buffer、非空质量、选择字段和旧预检门槛。不改学习目标/预算/文本，不加误差容忍、fallback或新前向。独立R1输出目录，原失败不覆盖。fresh rescue在复读最终修正/部署和采集源码；没有新正式P/R/F或VOT指标，目标仍未达。
+
+**R1最终fresh rescue源复核PASS。** 33项当前/归档D输入及4项R1私有脚本、原真实失败/零更新证据均复读；blocking0/nonblocking0，same-family/provisional。实际源差异仅原跨批次断言改为同forward教师说明，所有真实验收保留；finalizer回执名更正。下一步独立R1部署，不覆写原失败结果，源复核不是R1运行通过证明。

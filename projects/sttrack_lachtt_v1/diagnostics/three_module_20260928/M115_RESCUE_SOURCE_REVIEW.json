@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "review_id": "M115_RESCUE_SOURCE_REVIEW_20261007_025852",
+  "reviewed_at": "2026-10-07T02:58:52.187501+08:00",
+  "verdict": "PASS",
+  "blocking": [],
+  "nonblocking": [],
+  "model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "fork_turns": "none",
+  "fresh_context": true,
+  "model_attribution": "Parent task states gpt-6-astra / max / fork_turns=none was requested for this fresh reviewer. Serving-backend identity and actual effort were not independently attested.",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "scope": "Source-only rescue review, including direct local inspection of the actual zero-update GPU witness and preserved original failure artifacts. The reviewer did not execute SSH, GPU inference, optimization, deployment, collection, recount, or finalization.",
+  "root_cause": {
+    "failure": "The original trainer compared a live shuffled minibatch against rows of a separately batched contiguous Empty snapshot with torch.equal.",
+    "original_trainer_sha256": "87c8646dfa31ce42e3d0ea96bab13160a9485ef2cdfc76bb877cd69cd031efc0",
+    "original_line": 76,
+    "evidence": "The exact seed2027 first shuffled64 batch reproduces that comparison failure at zero updates, while same-batch content and grad-mode comparisons are exact and the entire model state_dict is unchanged.",
+    "scope_limit": "This witness establishes the invalid cross-batch bitwise-equality assumption in this failing path. It does not identify the underlying CUDA/kernel mechanism or establish invariance under every possible batch."
+  },
+  "resolved_during_review": [
+    {
+      "id": "cross_batch_bitwise_teacher_assertion",
+      "severity_before_fix": "blocking",
+      "file": "train_m115_semantic_choice.py",
+      "line": 76,
+      "resolution": "Only the failing assertion was replaced by a comment. The preservation loss continues to consume detached visual_selection_logits from the same live forward. No tolerance, second reference forward, fallback, optimization change, or architecture change was added."
+    },
+    {
+      "id": "R1_manifest_launch_reference",
+      "severity_before_fix": "nonblocking",
+      "file": "finalize_m115_r1_records.py",
+      "line": 81,
+      "resolution": "The finalizer MANIFEST row now cites M115_R1_DEPLOY_LAUNCH.json instead of the original failed-attempt launch receipt."
+    }
+  ],
+  "checks": [
+    {
+      "id": "actual_failure_and_archive",
+      "status": "PASS",
+      "details": "Both original human sanity processes completed three updates and passed exact Empty/freeze/quality checks. Both full processes exited1 at the cross-batch assertion; the controller stopped before generic. All12 observed output files match original byte counts and SHA, and original model/trainer/controller/plan/review/launch records are retained in m115_failed_attempt. Original full-attempt optimizer counts remain unclaimed because no complete step receipt exists."
+    },
+    {
+      "id": "bounded_zero_update_witness",
+      "status": "PASS",
+      "details": "Actual Torch1.13.1+cu116 witness exited0. Contiguous64 versus snapshot is exact. First shuffled64 differs in6/640 scores, maximum absolute difference9.5367431640625e-07, with0 argmax changes. Both groups have exact full/Empty visual, grad/no_grad visual, Empty grad/no_grad visual, and zero-initialized selection/visual comparisons. All state_dict tensors remain exact; optimizer_steps=0."
+    },
+    {
+      "id": "minimal_trainer_diff",
+      "status": "PASS",
+      "details": "Direct whole-file comparison proves the sole trainer edit is replacement of the offending assertion by its explanatory comment. Existing model.eval with enabled autograd, detached live Parent teacher, loss definitions, seed2027, batch64, lr3e-4,12 epochs/480 updates and all3 arms are unchanged."
+    },
+    {
+      "id": "preserved_exact_invariants",
+      "status": "PASS",
+      "details": "The trainer retains exact frozen parameter and buffer checks, exact all3039 Empty score/quality snapshots using identical ordered batch grouping before and after optimization, ordered nonempty quality equality, finite losses/gradients/outputs, sanity text/head nonzero-gradient checks, selected-field consistency, and final state_dict serialization equality. These remain R1 runtime acceptance checks, not R1 results at review time."
+    },
+    {
+      "id": "visual_teacher_semantics",
+      "status": "PASS",
+      "details": "The Parent visual and quality routes are independent of the trainable text interaction. Old semantic/phrase readouts remain zero and frozen. parent_preservation uses out[visual_selection_logits] from the same forward and detaches it, so deleting the unrelated cached equality assertion does not change the teacher or objective."
+    },
+    {
+      "id": "R1_deployment_and_preservation",
+      "status": "PASS",
+      "details": "The R1 deploy helper reads the rescue PASS and source hashes before network writes, checks both original full exit1 files and original owner absence, requires a new output/private root, preserves the old failed root, verifies protected human-bank/label and unchanged dependency bytes, and starts the unchanged sanity-first controller once on the same authorized two GPUs."
+    },
+    {
+      "id": "collection_and_recount",
+      "status": "PASS",
+      "details": "The collector waits once until launch+240s, records actual process/log/file state, and copies only a driver.exit0 completed suite with byte/SHA checks. The R1 recount requires six exit0 files,3/480 updates, invariant flags, human-label split consistency, private final checkpoints and actual persisted GT-IoU events. Its rows/recount/compare functions are AST-identical to the original reviewed helper. No final weights are included in the public text mirror."
+    },
+    {
+      "id": "finalizer_scope",
+      "status": "PASS",
+      "details": "The finalizer requires the actual completed R1 recount and six-exit0 suite before producing notes. Comparisons use the recorded final human, own-Empty and matched trained-generic outcomes. The observed prior Empty healthy baseline is264/264 with0 breaks, consistent with the healthy-breaks-zero comparison. It explicitly retains fixed-state scope, no automatic promotion, no recursive evaluation or new official metrics, and joint goal unmet."
+    },
+    {
+      "id": "static_and_unchanged_source_checks",
+      "status": "PASS",
+      "details": "Python3.8 AST parsing passed for8 initial relevant files and5 final corrected/new files (12 distinct files, trainer parsed before/after), plus3 embedded remote blocks. Ten unchanged current sources match the original review. Four archived code/plan hashes match the original review; all12 archived output bytes/SHA match the actual observation. The published witness is an exact byte copy of the locally received runtime witness."
+    }
+  ],
+  "actual_evidence": {
+    "original_observed_at": "2026-10-07T02:46:31.416970+08:00",
+    "original_owner_pid": 6451,
+    "original_owner_exists": false,
+    "original_sanity_steps": {
+      "human_bce": 3,
+      "human_choice": 3
+    },
+    "original_full_exits": {
+      "human_bce": 1,
+      "human_choice": 1
+    },
+    "original_full_optimizer_steps": null,
+    "original_generic_started": false,
+    "failed_output_files_verified": 12,
+    "witness_exit": 0,
+    "witness_observed_at": "2026-10-07T02:51:48.129559+08:00",
+    "witness": {
+      "status": "complete_M115_zero_update_batch_reference",
+      "torch_version": "1.13.1+cu116",
+      "seed": 2027,
+      "optimizer_steps": 0,
+      "parameters_buffers_exact": true,
+      "eval_mode": true,
+      "rows_per_group": 64,
+      "groups": {
+        "contiguous": {
+          "cross_batch": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          },
+          "same_batch_full_empty": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          },
+          "same_batch_grad_nograd": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          },
+          "same_batch_empty_grad_nograd": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          },
+          "zero_update_selection_visual": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          }
+        },
+        "random": {
+          "cross_batch": {
+            "exact": false,
+            "different_values": 6,
+            "max_absolute_delta": 9.5367431640625e-07,
+            "different_argmax": 0
+          },
+          "same_batch_full_empty": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          },
+          "same_batch_grad_nograd": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          },
+          "same_batch_empty_grad_nograd": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          },
+          "zero_update_selection_visual": {
+            "exact": true,
+            "different_values": 0,
+            "max_absolute_delta": 0.0,
+            "different_argmax": 0
+          }
+        }
+      }
+    },
+    "R1_runtime_status_at_review": "NOT_LAUNCHED, as reported by executor; this reviewer made no remote query"
+  },
+  "helper_review_scope": {
+    "semantic_choice_prototype.py": "Full model implementation and frozen/trainable routes reread",
+    "train_m115_semantic_choice.py": "Full original trainer reread and final single-line replacement verified",
+    "run_m115_choice_suite.py": "Full controller reread; unchanged against original review",
+    "instance_ab_prototype.py": "Full Parent and attention/evidence routes reread",
+    "train_m110_no_weak_rank.py": "inputs, condition_bank, snapshot and evaluate reread",
+    "train_m107_weak_semantics.py": "Input adapter reread; prior weak-label training is not called by M115",
+    "other_unchanged_dependencies": "Only unchanged-byte correspondence against the preserved original source review, not a fresh whole-file audit",
+    "diagnose_m115_batch_reference.py": "Full zero-update diagnostic reviewed before its actual execution",
+    "run_batch_reference_once.py": "Full original failure collector and diagnostic transport reviewed before execution",
+    "deploy_m115_choice_r1.py": "Full new-attempt source/dependency/state gate and one launch",
+    "collect_m115_r1_once.py": "Full scheduled one-shot observation and terminal mirror",
+    "accept_m115_r1_outputs.py": "Full stored-event recount and artifact scope",
+    "finalize_m115_r1_records.py": "Full actual-completion guard, comparisons and limited result notes"
+  },
+  "runtime_scope": {
+    "reviewer_NN_forwards": 0,
+    "reviewer_optimizer_steps": 0,
+    "reviewer_GPU_runs": 0,
+    "reviewer_SSH_calls": 0,
+    "reviewer_credentials_access": false,
+    "experiment_sources_or_labels_mutated_by_reviewer": false,
+    "actual_external_witness_read": true,
+    "R1_runtime_verified": false
+  },
+  "remaining_runtime_acceptance": [
+    "Run each new R1 sanity process before its full arm, using the isolated R1 output root.",
+    "Observe all3 actual480-update arms and all retained exact freeze/Empty/quality checks, final-state roundtrips and terminal exits.",
+    "Collect and independently recount actual persisted GT-IoU outcomes before finalizing any R1 result statement.",
+    "Fixed-state comparisons do not establish recursive tracking benefit, three effective modules, or the nine official metrics."
+  ],
+  "source_sha256": {
+    "semantic_choice_prototype.py": "a0ca6048e54a4c4bb127b38c04c9ad1ace5476ccee6c1f1b0698252000214370",
+    "train_m115_semantic_choice.py": "e40f31c43661baf735036be04b8975e9de329932a675e5aa94b366c8fc044231",
+    "run_m115_choice_suite.py": "022edfd84257206b39795e4fe2a46a9d74b2027e79c734e2b23b93b5224770a1",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "diagnose_m115_batch_reference.py": "b7a9d6f595bd386c988f8faa3011bb49ee03a1aeaa93eac858523bc039f9895a",
+    "M115_SEMANTIC_CHOICE_PLAN.md": "ef8e6a3608ec8d2328ac8da0db8a49cc8a47b082836afa1d22702885f46b2c83",
+    "M115_BATCH_REFERENCE.json": "6e4f54088e2ce42a86e3c6be919df1b792892219e1697fa952995d766bce0015",
+    "m115_failed_attempt/outputs/sanity_human_bce/result.json": "5dfbb974457f814dc7479f87cd19620571b9887fa2b7b256daf98ecdd9eca025",
+    "m115_failed_attempt/outputs/sanity_human_bce.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m115_failed_attempt/outputs/sanity_human_bce.log": "4f80b3fd99aec6a004d4489c31001d0d93bc4b205ff63949e92202001caa187a",
+    "m115_failed_attempt/outputs/sanity_human_choice/result.json": "a376094224e4c701cb3b9b808fc5ea6bd6877619a381409f71ccf8b5ffdc8684",
+    "m115_failed_attempt/outputs/sanity_human_choice.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m115_failed_attempt/outputs/sanity_human_choice.log": "a95a27e751c6be7935d8a9a8d27fdf789994881139dcaa0fdf53b390ca6a768f",
+    "m115_failed_attempt/outputs/sanity_human_pair_launch.json": "376cb39097b9470301fae28b643817323e6f56d5b1ebc16823d26246bb0287a7",
+    "m115_failed_attempt/outputs/train_human_bce.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "m115_failed_attempt/outputs/train_human_bce.log": "a898cd8a835e79069b42f119f6858f9986ff5dea9eca9f0d50e86f41978a6345",
+    "m115_failed_attempt/outputs/train_human_choice.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "m115_failed_attempt/outputs/train_human_choice.log": "a898cd8a835e79069b42f119f6858f9986ff5dea9eca9f0d50e86f41978a6345",
+    "m115_failed_attempt/outputs/train_human_pair_launch.json": "1b63c060a227e3613f96c548b9dacf03271457201f2acb43de12379a5e6e1546",
+    "m115_failed_attempt/source/M115_DEPLOY_LAUNCH.json": "b23cd51f3684b6f22f428cae86d2dc7e76c1906f30b065acbc47816fbae154de",
+    "m115_failed_attempt/source/M115_SEMANTIC_CHOICE_PLAN.md": "ed6b3cf60e5f3caaea943dfed7e2c5a2d51efad5fe0ff3d4ed1971b1a17a07b2",
+    "m115_failed_attempt/source/M115_SOURCE_REVIEW.json": "c630bf3fac1b45bea386e296b4a0890459a3eef4ed96b7683946959c0c857bfd",
+    "m115_failed_attempt/source/M115_SOURCE_REVIEW.md": "9113c3857a35745aa5f1769f05d61ed305eabe8c6dbc3f5c6b91fec471492280",
+    "m115_failed_attempt/source/run_m115_choice_suite.py": "022edfd84257206b39795e4fe2a46a9d74b2027e79c734e2b23b93b5224770a1",
+    "m115_failed_attempt/source/semantic_choice_prototype.py": "a0ca6048e54a4c4bb127b38c04c9ad1ace5476ccee6c1f1b0698252000214370",
+    "m115_failed_attempt/source/train_m115_semantic_choice.py": "87c8646dfa31ce42e3d0ea96bab13160a9485ef2cdfc76bb877cd69cd031efc0"
+  },
+  "private_transport_root": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m115_semantic_choice_r1_20261007",
+  "private_transport_sha256": {
+    "deploy_m115_choice_r1.py": "6341b7f758836ab552f932c83e41214261da984453a4d9176f0380b4ff6a95ec",
+    "collect_m115_r1_once.py": "4d463daa571da6f172e7a08fcba86fe6e969ebaaf47f229628a512a6e01d6ec3",
+    "accept_m115_r1_outputs.py": "69077784d9a573d9f8f181eecd5fe971071fed9de20f0baa5e4e9012112c9780",
+    "finalize_m115_r1_records.py": "189a269663830d957a2f8ded6be06b044b4f6cda3328c5fc71f8115e363f0253"
+  },
+  "diagnostic_transport_root": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m115_semantic_choice_20261007",
+  "diagnostic_transport_sha256": {
+    "run_batch_reference_once.py": "f001dfd2f8354405e0942c3e1eb87e64432b04089b612b070f0ba31a88b3aa86"
+  },
+  "diagnostic_evidence_sha256": {
+    "observation_20261007_024631.json": "04f913e1a085e9200e873c6be4b1128a27a3f132a12be4432f1f9f31c41036a2",
+    "batch_reference_execution_20261007_025148.json": "d0d9f89862798a2052dcb191b1e72f75300a9b739e435e0e633160e55ecda6d9",
+    "batch_reference.json": "6e4f54088e2ce42a86e3c6be919df1b792892219e1697fa952995d766bce0015"
+  }
+}

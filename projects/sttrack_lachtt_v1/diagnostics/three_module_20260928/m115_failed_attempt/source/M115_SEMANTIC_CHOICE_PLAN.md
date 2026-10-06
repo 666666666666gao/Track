@@ -52,13 +52,3 @@ Empty救回/损害、健康/transition保护；人工choice应改善自身Empty�
 M47跨帧partial matching多正例负结果保留，UVLTrack等候选竞争为明确近邻。
 本项若有效，后续仍须自身状态递归、B几何/候选容量、C记忆/新观察各自
 证明，不能仅一个小头宣称三个创新点。部署前fresh Astra/max源审查。
-
-## 实际失败及最小R1修正
-首轮两sanity各3更新通过，两full在跨批次逐值缓存比较停止，generic未启动；
-保留全部12份原文件与源版本，未得到完成态final/指标。没有完整逐步回执，
-不推断原失败full的确切优化次数。实际零更新first random64诊断复现6/640
-分数跨批差，最大9.5367431640625e-7、argmax不变；相同批次full/Empty及
-grad/no_grad逐值相同，参数/buffer不变。只移除跨批次比较，教师继续采用
-同一次forward的冻结Parent分数；保留完整顺序3039 Empty前后逐值比较、
-冻结参数/buffer、质量/所选字段及全部旧门槛，不引入误差容忍或fallback。
-独立R1输出目录重新从共同初值sanity，再执行同一三臂预算；不覆盖失败记录。

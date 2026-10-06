@@ -1,0 +1,71 @@
+{
+  "status": "complete_M115_gpu_sanity",
+  "arm": "human_bce",
+  "text_condition": "human_text",
+  "mode": "sanity",
+  "seed": 2027,
+  "epochs": 1,
+  "batch_size": 64,
+  "learning_rate": 0.0003,
+  "optimizer_steps": 3,
+  "optimized_parameters": 99907,
+  "human_confirmed": true,
+  "review_subject": "initialization_only",
+  "current_candidate_semantic_labels": 0,
+  "model_candidate_weak_labels_used": false,
+  "loss_components": [
+    "bce",
+    "reliable_parent_preservation"
+  ],
+  "source_sha256": "87c8646dfa31ce42e3d0ea96bab13160a9485ef2cdfc76bb877cd69cd031efc0",
+  "model_sha256": "a0ca6048e54a4c4bb127b38c04c9ad1ace5476ccee6c1f1b0698252000214370",
+  "parent_sha256": "1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293",
+  "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+  "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+  "history": [
+    {
+      "epoch": 1,
+      "optimizer_steps": 3,
+      "mean_losses": [
+        0.6702234943707784,
+        0.670036256313324,
+        0.0001872359741052302
+      ],
+      "localization_states": 192,
+      "preservation_pairs": 114,
+      "seconds": 0.12108707427978516
+    }
+  ],
+  "empty_all3039_scores_quality_exact": true,
+  "frozen_parameters_buffers_exact": true,
+  "nonempty_quality_exact": true,
+  "selected_fields_consistent": true,
+  "no_recursive_or_public_evaluation": true,
+  "elapsed_seconds": 3.0099902153015137,
+  "gradient_norms": [
+    {
+      "parent.evidence.text": 0.0,
+      "parent.evidence.phrase_read": 0.0,
+      "parent.evidence.text_read": 0.0,
+      "parent.evidence.evidence": 0.0,
+      "semantic_choice": 0.01089624222368002
+    },
+    {
+      "parent.evidence.text": 0.007230055997297313,
+      "parent.evidence.phrase_read": 0.0003624773205501697,
+      "parent.evidence.text_read": 0.0033111707325588213,
+      "parent.evidence.evidence": 0.0003818258510364103,
+      "semantic_choice": 0.3529216873139376
+    },
+    {
+      "parent.evidence.text": 0.002046958064283899,
+      "parent.evidence.phrase_read": 0.0001105431132373269,
+      "parent.evidence.text_read": 0.0008850466451804095,
+      "parent.evidence.evidence": 9.672827400208917e-05,
+      "semantic_choice": 0.14468287547424552
+    }
+  ],
+  "checkpoint_saved": false,
+  "development_metrics_reported": false,
+  "gpu_peak_reserved_bytes": 574619648
+}

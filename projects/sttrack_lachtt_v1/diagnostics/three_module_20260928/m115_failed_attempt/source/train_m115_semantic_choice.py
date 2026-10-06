@@ -73,7 +73,7 @@ def main():
         for ids in batches:
             optimizer.zero_grad(set_to_none=True)
             data=inputs(fit,ids,bank,text_condition,device);out=model(data);target=fit['iou'][ids].to(device)
-            # The teacher is the same-forward frozen Parent, not a differently batched cache.
+            assert torch.equal(out['visual_selection_logits'].detach().cpu(),initial['fit'][0][ids])
             if a.arm=='human_bce':
                 localization=F.binary_cross_entropy_with_logits(out['selection_logits'],target)
                 count=target.shape[0]
