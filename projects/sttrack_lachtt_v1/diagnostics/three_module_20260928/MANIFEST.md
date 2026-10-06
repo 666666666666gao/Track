@@ -149,3 +149,5 @@
 | 2026-10-07T03:12:50.187852+08:00 | /experiment-bridge | M115_SELECTION_PARTITION.json; M115_RESULT_NOTE.md | actual_CPU_partition | humanrelativefit746anddev122IoU declinesamongbothqualified; all3healthygatesfail; no identity labels or NN rerun |
 
 - M116 20261007_034452: M116_REGION_EVIDENCE_PLAN.md / region_patch_evidence.py / collect_m116_region_evidence.py / run_m116_region_pair.py / analyze_m116_region_evidence.py / M116_SOURCE_REVIEW.json/.md：源审查完成；实际部署/产物待真实执行，不填写正式指标。
+
+- M116 20261007_040108: M116_RESULT.md / M116_CPU_ANALYSIS.json / M116_ARTIFACT_MIRROR.json / m116_completed：实际GPU/GT定位分组/来源验收完成，优化0、正式指标未更新。
