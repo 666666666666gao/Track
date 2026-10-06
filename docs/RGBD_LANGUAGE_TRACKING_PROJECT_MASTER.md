@@ -24590,3 +24590,14 @@ CPU逐行复算两臂各2544拟合与495×3开发记录、全部子组、相对E
 Final SHA：human `7bad6670315979529a572ad23172e880c5f22a4db9995a49d356a21dbe762c67`；generic `dd520026a097fec607cb2f2db4d6f4a52f1a90e80f401cca373f9a3bdda06575`。
 
 **网站真实发布。** 源码提交52b23fbe8ba0586ec65958a20e970621a94ec718；Pages run37494581966 completed/success。HTTP实取15份页面/脚本/4组manifest/总表/回执/4个原始人审CSV，200且逐字节等于Git blob；源CSV SHA与用户原文件一致，2047人工确认已上线。回执HUMAN_REVIEW_PUBLICATION_20261007.json。无新媒体、未覆盖原审核CSV。
+
+### 5.337 2026-10-07：M114实际候选响应诊断准备，定位人工文本为何未转化为选择增量
+
+上一goal轮为实际进展：M113两卡3 sanity＋480更新各自完成、GT事件复算、2047人工文本网站发布、远端主文档及25份完成证据真实同步。当前Git为b9d6bfb，M113终态不是正在训练；没有新正式P/R/F或VOT指标，九项联合目标未达。不使用原goal中过时35786端口或旧密码，沿用用户后来授权43811连接。
+
+**本项范围。** 已实现diagnose_m114_text_response.py、run_m114_response_pair.py与analyze_m114_responses.py及专用私有部署入口。读取M113已完成的human/generic两个final，不做任何优化，模型eval/no_grad且全部参数固定；原Train130fit/22development的2544/495状态，三内容条件（Empty、object、人工文本）。先两卡各128状态sanity，再完整只读3039状态，严格重放既有选择编号及GT IoU，记录每个候选实际分数、相对Empty增量、语义/短语范数、真实GT框重叠；要求权重/buffer/质量不变、Empty逐值回到视觉、输出有限。原bank/标签/final不改，Test/CDTB/VOT不进入本项。
+
+**要区分的问题。** 语义响应是否主要为每个状态共有的分数平移，还是改变候选间差值；真实GT IoU目标下的BCE是否主要通过整体校准下降；当确有合格框及严重低重叠框时，两者最高分间隔改善还是恶化。公共均值与候选间能量、Empty/full/common-only的BCE以及GT定位组的间隔分别报告，不把BCE降低等同实例判别。低IoU只代表定位差，不标成不同物理实例；没有合格候选的状态单独统计，结果不提交到crop/query/模板，不能代填完整指标。
+
+四份Python实际通过Python3.8 AST；fresh gpt-6-astra/max源审查已启动，same-family/provisional，尚未部署或做新GPU读出。预计两卡sanity＋完整读取1–3分钟，按240秒接近完成时检查，不频繁轮询。方案为M114_RESPONSE_DIAGNOSTIC_PLAN.md；拿到实际响应后决定相对选择监督、视觉—语义对齐或候选容量的下一步，不预先宣布旧损失为根因，不重复M113或将M47旧多正例匹配换名当创新。未来正式训练/推理仍统一人工核验初始化文本。
+**M114最终源码复核实际PASS。** fresh gpt-6-astra/max审查blocking0/nonblocking0，same-family/provisional；41份相关D输入及私有部署入口精确SHA，152人审/704短语、130/22划分、全部M113事件与GT标签、能量分解/稳定BCE/间隔算术复核通过。原sanity“全部旧选择重放”措辞已改为明确first_batch_per_split/all_cached_states，并由controller核对；这是报告范围修正，没有改变模型或数据。actual既有数据保证fit68/dev16个nativeIoU≤0.1且oracleIoU≥0.5状态，不需要为假想空组新增fallback。审查未SSH/GPU，新运行验收另作实测。相关原理代码参照写在M114_REFERENCE_NOTES.md，官方UVLTrack master actor/Head明确将GT中心与困难背景竞争用于读出；不据此宣布直接移植成功或算法原创。

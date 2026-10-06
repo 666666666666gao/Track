@@ -1,0 +1,217 @@
+{
+  "status": "complete_M114_source_review",
+  "verdict": "PASS",
+  "blocking": [],
+  "nonblocking": [],
+  "model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "fresh_context": true,
+  "fork_turns": "none",
+  "repo_head": "b9d6bfbd01144bbac589859cae1ca5601a589dc7",
+  "scope": "M114 zero-update response diagnostic, private deployment transport source, reused model/input/GT lineage, actual completed M113 artifacts, and bounded stdlib arithmetic.",
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "severity": "nonblocking",
+      "status": "fixed_and_reread_before_final_verdict",
+      "files": [
+        "diagnose_m114_text_response.py",
+        "run_m114_response_pair.py"
+      ],
+      "finding": "The initial sanity receipt said all_stored_M113_selections_replayed although only the first 64 states per split were replayed.",
+      "resolution": "The final diagnostic emits stored_selection_replay_matches and replay_scope=first_batch_per_split/all_cached_states, and the controller validates the expected scope."
+    }
+  ],
+  "source_sha256": {
+    "analyze_m114_responses.py": "c49a885060dd9948ed071cbdd0c6fece82ca7b5e8a35a864ad76a2988432a092",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "diagnose_m114_text_response.py": "4cb9890b39e2a793bf1095266c029f184d48ac301b05f72245530e2c767f6702",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "m105_inputs/download_receipt.json": "86f20ffbabf072c6655b1ce5e71d021c35b850d24b4eb6393b805e65e8cf1792",
+    "m105_inputs/preparation.json": "59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+    "m105_inputs/training_labels.json": "433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+    "m113_completed/driver.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/prepare.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/result.json": "13ae39efc457ff9009b11d9e03e69131fd6ce38c8df3dea3e709b9b406625f9b",
+    "m113_completed/sanity_generic/result.json": "89907765a195bc7c0233292941be8c955a22b51876f804b577163918c796bcff",
+    "m113_completed/sanity_generic.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/sanity_human_text/result.json": "b592b42a524ce7d198acd3a35d641e8cdd1efc9cbf2ed99bb353da339ce2f0ff",
+    "m113_completed/sanity_human_text.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/sanity_launch.json": "6efc706f8faeacc2cba194fc304a86bc810c39be75bd77176e377db13bf6f416",
+    "m113_completed/train_generic/empty_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m113_completed/train_generic/fit_events.jsonl": "c3ac82fbb8a3f3e979515e15b268ce86dd2555c3120522b874814dd0b5daf32f",
+    "m113_completed/train_generic/generic_development.jsonl": "0ba76eaff85e0f5fdaf179d90edc3731b32f777af8c8adb77345fcd2dcc4640b",
+    "m113_completed/train_generic/human_text_development.jsonl": "6cbb80c77dace7505c80b844361c6927a45e8fb26d632862461d68a9ec5d70b3",
+    "m113_completed/train_generic/result.json": "014a1a3863e38551cfdea39c27f2704704251b50c03056d82254a643502a9d47",
+    "m113_completed/train_generic.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/train_human_text/empty_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m113_completed/train_human_text/fit_events.jsonl": "04191cc78b94e0cd1847cb1de729fe22650a4a56a9c3017c964f51c6192ca935",
+    "m113_completed/train_human_text/generic_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m113_completed/train_human_text/human_text_development.jsonl": "8c17311ae690540910ee9326120c7699aa3f1e4ae07132d6609e510efbb88451",
+    "m113_completed/train_human_text/result.json": "cd79eaff91dd92bacfa8ceacf3099fb2ad42c078c672cb20ad572f5b6b98d607",
+    "m113_completed/train_human_text.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/train_launch.json": "7d60b253e18e0416604a2e032dbc81884a324c18c0b32bd5338069a645d1af8b",
+    "M113_DOCUMENT_SYNC.json": "3b022ff3ad3a3c5e19d079f9a6b652b6827cc682a1bfcb94eeb419f26b9f1cfd",
+    "M114_RESPONSE_DIAGNOSTIC_PLAN.md": "aeae4345d4590a8e54f98ff2d15e6d29622cc4d5dac6ccc455195b12626d3f6d",
+    "prepare_human_initialization_labels.py": "368240abc467a64ed74ce80ed22654441594509bbc9f25af61c76d7616cf80a4",
+    "prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "prepare_train_states.py": "cceb53710cdbde8350000c25d6f0ed25b490e4084022b37c76062315ad641c79",
+    "run_m114_response_pair.py": "2c82ec63070f3f411fb60920eb6e2121f473467dc9c4279f8e4f47b8ff3d728e",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3"
+  },
+  "private_transport_sha256": {
+    "deploy_m114_response.py": "b872747b520b6e740c35cf72a186fc15fb0559ac1c31e691b6302cb3fd1c1ab5"
+  },
+  "reviewed_artifact_sha256": {
+    ".aris/m113_human_initialization_20261006/human_train_labels.json": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_depthtrack_gb_152_review.csv": "0bf3617f9c9d7565190ce88b5f2acf04548ff077aea27945eee873f1e7ebbea8"
+  },
+  "executed_checks": [
+    {
+      "kind": "stdlib_AST",
+      "status": "PASS",
+      "detail": "Parsed 15 relevant public Python sources plus the private transport script; no third-party import or NN execution."
+    },
+    {
+      "kind": "actual_human_review_data",
+      "status": "PASS",
+      "detail": "All 152 initialization labels and 704 retained phrases match confirmed_category plus the first four stable_attributes from the human-confirmed CSV. Omitted attributes, IDs, sequences, frame IDs, reviewers, status and review round also agree."
+    },
+    {
+      "kind": "actual_GT_split_binding",
+      "status": "PASS",
+      "detail": "The 3502-row persisted GT labels match preparation/download digests. All partitions match 130 fit/22 development human-label sequences; valid-GT key sets are exactly 2544 fit/495 development."
+    },
+    {
+      "kind": "actual_M113_artifacts",
+      "status": "PASS",
+      "detail": "Recounted all eight event files, every saved subgroup summary, both launch arrays, all six zero exit files, both three-step sanity and both 480-step final receipts. All inspected M113 artifacts match M113_DOCUMENT_SYNC digests; current M113 trainer matches result source_sha256."
+    },
+    {
+      "kind": "actual_margin_eligibility",
+      "status": "PASS",
+      "detail": "Actual native-poor/oracle-good events prove at least 68 fit and 16 development states contain both IoU classes, so full-split margins are nonempty without speculative fallback."
+    },
+    {
+      "kind": "stdlib_synthetic_arithmetic",
+      "status": "PASS",
+      "detail": "Actual analyzer functions passed hand-built checks: BCE at zero and +/-1000, pure common shift, candidate-specific shift, margin crossing, absent-class counters, energy identity, and independent log1p(exp(score))-target*score BCE. These are synthetic arithmetic checks, not model evidence."
+    },
+    {
+      "kind": "final_source_review",
+      "status": "PASS",
+      "detail": "Reread corrected diagnostic/controller and reviewed analyzer, input/model path and exact private deployment source. Final hashes are recorded."
+    }
+  ],
+  "source_assessment": {
+    "zero_update": "Strict checkpoint load, requires_grad_(False), eval/no_grad. No optimizer, backward, checkpoint write, training, seed search or automatic promotion. Constructor randomness is overwritten by strict state_dict loading; current attention modules have no active dropout.",
+    "GT_boundary": "load_inputs computes candidate IoUs against persisted dataset GT boxes. batch explicitly excludes iou from model tensors; key/strata remain outside model inputs. M110/M107 helpers reuse human text tokens/masks without invoking their training main functions.",
+    "conditions_and_invariants": "Empty/object/human_text use the same final and visual candidates. Empty selection equals visual exactly and semantic/phrase deltas equal zero. Quality must equal the same-batch Empty result for each condition. Selection/quality/semantic/phrase outputs must be finite. Every parameter and registered buffer equals the loaded state, and checkpoint bytes retain their digest.",
+    "replay_scope": "Per arm: sanity is 64 fit+64 development states, 384 condition rows and 256 stored comparisons. Full is 2544+495 states, 9117 rows and 4029 stored comparisons: own-arm fit only, all three development conditions. No unavailable fit cross-condition scores are claimed.",
+    "controller": "GPU0 human final/GPU1 generic final. Both sanity exits and status, zero-step, replay-scope, state-count, Empty/quality/weight gates must pass before full starts. Failure preserves logs without retry. Pair completion and driver.exit=0 appear only after full succeeds; analyzer requires both.",
+    "arithmetic": "Per-state common delta is sum(scores-empty)/K. Common energy is K*common^2; candidate-specific energy is sum((delta-common)^2). BCE averages all candidate GT-IoU targets. Margin=max(score at IoU>=0.5)-max(score at IoU<=0.1), with missing classes counted separately. Python first-maximum selection matches torch.argmax.",
+    "transport": "Only the supplied authorized endpoint at port43811; password from stdin. Checks accepted local review digests and its own exact digest, M113 terminal status and zero exit, absent M114 outputs/private directory, two idle GPUs (<100MiB,0% utilization), and disk space. Checks seven reused remote helpers and all uploaded bytes, preserves additive master content and starts exactly the reviewed controller. No install, new training, deletion, credential-file read or old-job termination.",
+    "scientific_scope": "Train fixed-state diagnostic only. Common score shifts/BCE changes are not physical-identity evidence. Low IoU means poor localization, not different-instance truth. No recursive tracker commit, official evaluation or nine-metric goal completion."
+  },
+  "actual_data_checks": {
+    "status": "PASS_bounded_local_source_data_arithmetic_checks",
+    "python": "3.12.12",
+    "ast_parsed": 16,
+    "label_rows": 152,
+    "label_splits": {
+      "fit": 130,
+      "development": 22
+    },
+    "phrases": 704,
+    "human_labels_match_all_confirmed_csv_phrases": true,
+    "gt_labels_count": 3502,
+    "valid_states": {
+      "fit": 2544,
+      "development": 495
+    },
+    "m113": {
+      "human_text": {
+        "final_sha256": "7bad6670315979529a572ad23172e880c5f22a4db9995a49d356a21dbe762c67",
+        "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+        "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+        "stored_rows_per_file": {
+          "fit": 2544,
+          "empty": 495,
+          "generic": 495,
+          "human_text": 495
+        },
+        "development_changes_vs_own_empty": {
+          "generic": {
+            "changed_selections": 0,
+            "iou_improvements": 0,
+            "iou_worsenings": 0,
+            "mean_iou_delta": 0
+          },
+          "human_text": {
+            "changed_selections": 5,
+            "iou_improvements": 1,
+            "iou_worsenings": 0,
+            "mean_iou_delta": 2.984461760280108e-06
+          }
+        },
+        "guaranteed_margin_eligible_by_native_poor_oracle_good": {
+          "fit": 68,
+          "development": 16
+        }
+      },
+      "generic": {
+        "final_sha256": "dd520026a097fec607cb2f2db4d6f4a52f1a90e80f401cca373f9a3bdda06575",
+        "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+        "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+        "stored_rows_per_file": {
+          "fit": 2544,
+          "empty": 495,
+          "generic": 495,
+          "human_text": 495
+        },
+        "development_changes_vs_own_empty": {
+          "generic": {
+            "changed_selections": 7,
+            "iou_improvements": 0,
+            "iou_worsenings": 1,
+            "mean_iou_delta": -0.0003047300107551344
+          },
+          "human_text": {
+            "changed_selections": 3,
+            "iou_improvements": 0,
+            "iou_worsenings": 0,
+            "mean_iou_delta": 0
+          }
+        },
+        "guaranteed_margin_eligible_by_native_poor_oracle_good": {
+          "fit": 68,
+          "development": 16
+        }
+      }
+    },
+    "all_m113_event_recounts_and_sync_digests_match": true,
+    "synthetic_arithmetic_checks": {
+      "bce_extremes": "PASS",
+      "common_only_shift": "PASS",
+      "candidate_specific_shift": "PASS",
+      "margin_and_ineligible_counts": "PASS",
+      "independent_bce_formula": "PASS"
+    }
+  },
+  "limitations": [
+    "No SSH, credentials access, remote resource probe, GPU/NN execution, deployment, or experiment source/data mutation was performed by this reviewer.",
+    "M113 checkpoint and bank digests agree across actual saved receipts; local weight/bank bytes were unavailable and were not rehashed. Reviewed M114 runtime must validate those bytes and execute numerical replay.",
+    "Persisted GT-label hash and preparation lineage were checked; raw dataset groundtruth files and remote feature tensors were not reread locally.",
+    "Analyzer function tests use synthetic arrays. Actual M114 response energies, BCE, margins and GPU replay results are not claimed.",
+    "Same-family fresh-context acceptance is provisional, not cross-family validation. Nine official metrics remain outstanding."
+  ],
+  "checked_at": "2026-10-07T01:01:22.497950+08:00"
+}
