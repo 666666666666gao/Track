@@ -1,0 +1,119 @@
+{
+  "verdict": "PASS",
+  "blocking": [],
+  "non_blocking": [],
+  "review_kind": "fresh_source_only",
+  "created_at": "2026-10-07T03:44:25.800922+08:00",
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "max",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "actual_backend_attestation": "unavailable_not_claimed",
+  "runtime_gpu_checks": 0,
+  "reviewer_ssh_calls": 0,
+  "source_sha256": {
+    "M116_REGION_EVIDENCE_PLAN.md": "2748de647b6f6dc67534a4ec86e7e622efb4b3d2a5def9baf130157be387d12d",
+    "region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "collect_m116_region_evidence.py": "8d6ceaaf84cdf2ed4f70c07b5e51b7f0e2a43995961c30f3b5aee5fe46f88959",
+    "run_m116_region_pair.py": "dfd7ecb0068b2dc1efd66519a78e3716265ed1577a5c5e8aa236e2dc0585d2fb",
+    "analyze_m116_region_evidence.py": "5056db64db1efb4e88345c8f1c0a05171c889646338a2d015a78c45d85055b3c",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "prepare_human_initialization_labels.py": "368240abc467a64ed74ce80ed22654441594509bbc9f25af61c76d7616cf80a4",
+    "diagnose_m114_text_response.py": "4cb9890b39e2a793bf1095266c029f184d48ac301b05f72245530e2c767f6702",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def"
+  },
+  "private_transport_sha256": {
+    "deploy_m116.py": "56cff28ac5847ad93f1b3c55e6511b1e85be505a8d0abbb618ea4cc43142b353"
+  },
+  "evidence_sha256": {
+    "m98_started/smoke_launch.json": "c22582d333c96d9edb6e933df7ec65adc45d75d55832437b7d0ae0d958172b23",
+    "collection_completed/collect_shard0.json": "92d9459441eef74ff618ae47299f7bfc2b7538246cbf46d59a970ec4248a74a1",
+    "collection_completed/collect_shard1.json": "dd5cb08f258aa6ce04ce202cd19ad793e8920951e973e6a91f8a360f250d3243",
+    "m114_completed/full_human_text/responses.jsonl": "4906a87f472335c6026619237196a2619c1421198b0941095e62f8ffcd5f4486",
+    "m114_completed/full_human_text/result.json": "6bf3d2b1a96d207457c01ad0e5ab5b3e6e6c646837a6a0f78796af90eec3974e"
+  },
+  "private_preparation_snapshot_sha256": {
+    "inputs.json": "3ae5e6b1fcbbf23286b0f24afa65497101bae38b3cbec1fb0390b64b55c41a52"
+  },
+  "source_checks": [
+    {
+      "area": "Human text and split provenance",
+      "result": "PASS",
+      "evidence": "Confirmed category is phrase slot 0, followed by at most four confirmed stable attributes. M113 encodes five slots plus separate object/Empty vectors. M116 checks bank/label/encoder provenance, sequence and split correspondence, and uses the unchanged M90 inference plan; no filename-derived replacement or later-frame semantic labels."
+    },
+    {
+      "area": "Native frame, crop and prior reconstruction",
+      "result": "PASS",
+      "evidence": "Current source calls the actual native get_rgbd_frame for each t0/event, samples the original six-channel RGB-D image at factor 4/output 256, then selects the first three channels. It reconstructs full-precision prior from expected_rows[frame-1], checks its float32 cast and resize factor against the M90 cache, and uses the same ceil/round crop geometry as native sample_target. Both historical M90 receipts record maximum_box_error_px=0 for every sequence. This is source/state provenance, not a historical pixel-tensor comparison."
+    },
+    {
+      "area": "CLIP extraction and capacity boundary",
+      "result": "PASS",
+      "evidence": "The hook captures the output of visual.transformer in LND order and converts to NLD. Manual CLS uses the same slice, ln_post and projection as the official/installed source within the same forward. Patch output is asserted [B,256,768]; official square 256-to-224 preprocessing introduces no outside-crop pixels. The plan identifies the extra frozen RGB capacity and treats patch projection as a grounding hypothesis."
+    },
+    {
+      "area": "Spatial coordinates and padding support",
+      "result": "PASS",
+      "evidence": "Row-major 16x16 token layout agrees with CLIP flattening. Global xywh points map through the actual rounded crop origin using align_corners=False. Candidate samples are the 4x4 bin centers; factor-2 context uses the twelve perimeter bins. Native padding validity is resized/pool-averaged to patch support and sampled with the same grid. Zero padding, coordinate-ramp and far-outside-zero assertions are present. Coverage is interpolation support, not attribute visibility or an independent segmented region."
+    },
+    {
+      "area": "Frozen execution and legal observations",
+      "result": "PASS",
+      "evidence": "Model is eval/float/requires_grad false, image forwards run under no_grad, and final parameters/buffers are checked exactly. Only original event frames plus legal initialization frame 0 are read. Collection does not read subsequent GT, instantiate an optimizer, modify a tracker, select an online candidate or write a trained checkpoint. Half feature grids, CLS, coverage and source crop origins are persisted; phrase scores use those same half features."
+    },
+    {
+      "area": "Sanity-first gating, coverage and persistence",
+      "result": "PASS",
+      "evidence": "Both GPU shards must finish sanity with exit 0, completion receipts, exact/frozen/GT guards and three events before either full shard is launched. Full collection requires 3502 total events and 152 sequences. Seed 2027, separate sanity/full directories, per-sequence features, response JSONL, process logs, exit files and completed receipts are defined. Failed runs are not retried or promoted by this source."
+    },
+    {
+      "area": "CPU analysis and candidate/GT correspondence",
+      "result": "PASS",
+      "evidence": "M114 load_inputs computes IoU from original M90 boxes without candidate reordering; its response writer preserves that vector. Actual M114 JSONL has 9117 rows, 3039 unique Empty states (2544 fit/495 development), ten IoUs per state, equal candidate IoUs across all three conditions, and matches its original receipt digest. M116 uses that same original cached box order and event key. CPU analysis excludes t0 and the 463 invalid-GT events from localization metrics, reports all eight fixed readouts, and performs no fitting or deployment. Actual original labels support 1296/223 good-poor states and 22146/3597 unequal-IoU qualified pairs in fit/development."
+    },
+    {
+      "area": "Private deployment and environment",
+      "result": "PASS",
+      "evidence": "Existing review digest gate is respected, source upload is byte-checked, prior M115 completion and both-card idleness are required, and free-space/output-existence gates precede a single detached controller. Native repository and full152-spec paths agree with the actual m98_started launch. Existing STTrack Python and local CLIP weight are used; no install, model download, deletion or fallback is introduced."
+    }
+  ],
+  "actual_local_checks": {
+    "python38_ast_files": 11,
+    "python38_ast_private_transport_files": 1,
+    "python38_ast_embedded_remote_blocks": 2,
+    "parser": "existing CPython 3.13 stdlib ast.parse(feature_version=(3,8)); no installs",
+    "historical_M90_shards": [
+      {
+        "sequences": 77,
+        "events": 1801,
+        "maximum_box_error_px": 0.0
+      },
+      {
+        "sequences": 75,
+        "events": 1701,
+        "maximum_box_error_px": 0.0
+      }
+    ],
+    "M114_raw_rows": 9117,
+    "M114_unique_valid_GT_states": 3039,
+    "M114_fit_development_states": [
+      2544,
+      495
+    ]
+  },
+  "limitations": [
+    "This is a source-only PASS. The reviewer made zero SSH calls and zero GPU/runtime M116 checks. GPU sanity, actual same-input CLS equality, finite cached half tensors, frozen-state equality and complete runtime coverage remain to be observed.",
+    "The successful private inputs.json snapshot reports Python 3.8.20, torch 1.13.1+cu116 and the existing official CLIP installation. It is preparation evidence, not an M116 execution result; prior preparation errors/timeouts are not erased or recast as experiment results.",
+    "M90 code permits a 1e-4 pixel replay difference, but the actual preserved receipts report zero maximum box error for all 152 sequences. Float32 cache checks alone would not prove discarded double bits or every historical pixel. The revised plan explicitly retains that limitation, and a future assertion failure must be inspected rather than silently relaxed.",
+    "CLIP final projection was trained on CLS; applying it to patch tokens remains an empirical hypothesis. Self-attention mixes the full crop, and interpolated padding support is neither identity truth nor attribute visibility. Added frozen RGB capacity must remain disclosed in later matched comparisons.",
+    "The original training events were GT-selected and human text is extra offline supervision. These are localization diagnostics on a fixed Train panel, not recursive tracking, identity/attribute verification, or formal benchmark improvements.",
+    "Requested reviewer routing is recorded as gpt-6-astra/max. No independently verified backend/model/effort attestation is available; acceptance remains same-family and provisional."
+  ],
+  "primary_sources": [
+    "https://github.com/openai/CLIP/blob/main/clip/model.py",
+    "https://github.com/openai/CLIP/blob/main/clip/clip.py"
+  ]
+}
