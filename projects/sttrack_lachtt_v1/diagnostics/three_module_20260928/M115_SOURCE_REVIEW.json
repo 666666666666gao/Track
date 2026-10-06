@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "review_id": "M115_SOURCE_REVIEW_20261007_024058",
+  "reviewed_at": "2026-10-07T02:40:58.334665+08:00",
+  "verdict": "PASS",
+  "blocking": [],
+  "nonblocking": [],
+  "model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "model_attribution": "Actual parent spawn arguments were confirmed as model=gpt-6-astra, reasoning_effort=max, fork_turns=none; serving-backend identity was not independently attested.",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "fresh_context": true,
+  "fork_turns": "none",
+  "scope": "Source-only predeployment review plus local stdlib recount of already completed M113/M114 artifacts.",
+  "checks": [
+    {
+      "id": "data_and_GT",
+      "status": "PASS",
+      "details": "Actual human labels contain 152 unique Train sequences, 704 phrases, 9 omitted attributes, 567 unique CLIP strings including Empty/object, and 130 fit / 22 development. Source preparation loads groundtruth.txt; load_inputs computes candidate box IoUs; batch removes iou from model inputs. Current candidate identity/attribute labels and Test/CDTB/VOT optimization inputs are absent."
+    },
+    {
+      "id": "architecture_and_freeze",
+      "status": "PASS",
+      "details": "The standalone 131->64->1 head has 8,512 parameters with bias-free zero-initialized final layer. Exactly 91,395 parent text-interaction parameters plus this head are trainable (99,907). Old semantic/phrase readouts are zeroed and frozen; visual selection and quality stay frozen. Full-minus-zero-semantic score is centered across candidates and added to the visual Parent score."
+    },
+    {
+      "id": "target_semantics",
+      "status": "PASS",
+      "details": "Relative CE normalizes GT IoU mass only for candidates with IoU>=0.5; no-good rows contribute zero rather than fabricated positives. Preservation uses the detached actual Parent argmax when its GT IoU>=0.5 and protects its score gaps against candidates with GT IoU<=0.1. IoU supervises localization, not physical identity or attribute truth."
+    },
+    {
+      "id": "matched_training",
+      "status": "PASS",
+      "details": "All three arms start fresh with seed2027 and the same Parent/head initialization, bank, AdamW lr3e-4, batch64, and fixed final checkpoint after 12 epochs / 480 updates. Per-epoch sample order is seed2027+epoch. Each arm has three-update sanity in a separate process before its 480-update training; sanity weights are not reused."
+    },
+    {
+      "id": "runtime_assertions_in_source",
+      "status": "PASS",
+      "details": "Source checks finite loss/gradients and outputs, nonzero text/head gradient in the final sanity update, frozen parameters/buffers, all3039 Empty scores/quality exact before versus after, per-batch visual scores exact, nonempty quality unchanged, all selected fields consistent, and state-dict serialization roundtrip. These are implementation checks, not a claimed M115 runtime pass."
+    },
+    {
+      "id": "evaluation_scope",
+      "status": "PASS",
+      "details": "Fixed Train development events are evaluated against GT IoU with group metrics and matched own-Empty comparisons. No checkpoint selection, automatic promotion, tracker-history commit, template-update threshold reuse, recursive benchmark, or official metric is implemented here."
+    },
+    {
+      "id": "controller_and_transport",
+      "status": "PASS",
+      "details": "Human BCE/choice sanity pair precedes their full pair on GPUs0/1; generic sanity then full training run on GPU0. Any nonzero child exit stops progression, with logs preserved and no retry. Deployment checks previous M114 terminal state, protected bank/label/Parent bindings and existing reviewed dependency bytes before the one launch. The observation helper waits until launch+240s, makes one observation, and copies artifacts only after driver.exit0 plus terminal suite status. Recount keeps .pt files private and checks recorded GT-event summaries, label splits, own-Empty statistics and final checkpoint hashes."
+    },
+    {
+      "id": "historical_evidence",
+      "status": "PASS",
+      "details": "Directly read/recounted M113/M114 and M47 evidence agrees with the plan. Human M113 and Empty both hit272/495, with only0.0000029844617603 mean-IoU increment. M114 human development common energy is92.18241788865826%; good/poor margins improve19 and shrink204 of223. The 190 no-good development states concern the10-candidate set, not all256 locations/crop coverage. M47 auxiliary cross-frame multi-positive matching retained default-priority action targets and failed its completed recursive gate."
+    },
+    {
+      "id": "scientific_inference",
+      "status": "PASS",
+      "details": "The plan does not infer a unique causal BCE failure from M113/M114, does not label poor-localization boxes as different physical instances, discloses changed Parent preservation versus M113, and limits the matched loss comparison to the two M115 human arms. No novelty or three-module claim is inferred merely from this head/loss."
+    },
+    {
+      "id": "local_static_checks",
+      "status": "PASS",
+      "details": "Python3.8 AST parsing passed for13 relevant D source files and all3 private helpers, plus3 embedded remote Python blocks. Only pure stdlib reporting functions were extracted in memory:8 existing M113 summaries and4 paired summaries matched. No Torch import, NN forward, optimizer step, SSH operation, credentials access, experiment launch or source mutation was performed by this reviewer."
+    }
+  ],
+  "resolved_during_review": [
+    {
+      "id": "frozen_parent_attention_execution_mode",
+      "file": "train_m115_semantic_choice.py",
+      "line": 72,
+      "original": "Optimization called model.train() while snapshot called model.eval() under no_grad.",
+      "evidence": "Recorded M105 environment is Torch1.13.1+cu116. Its official MultiheadAttention source changes execution path on self.training and permits the native path with grad enabled if all attention tensor arguments are frozen. The current candidate self-attention meets those frozen-path conditions.",
+      "resolution": "Executor changed only the optimization mode call to model.eval(), retained autograd, and disclosed it in the plan. Final source was reread. No assertion tolerance was weakened and no GPU failure reproduction is claimed.",
+      "primary_reference": "https://raw.githubusercontent.com/pytorch/pytorch/v1.13.1/torch/nn/modules/activation.py",
+      "reference_lines": "994-1059"
+    }
+  ],
+  "offline_evidence": {
+    "human_sequences": 152,
+    "human_phrases": 704,
+    "fit_sequences": 130,
+    "development_sequences": 22,
+    "fit_states": 2544,
+    "development_states": 495,
+    "candidates_per_state": 10,
+    "M114_full_response_rows": 18234,
+    "M113_stored_selections_replayed_per_arm": 4029,
+    "stored_exit_files_checked": 11,
+    "M113_human_development_hits": 272,
+    "M113_empty_development_hits": 272,
+    "M114_human_development_common_energy_fraction": 0.9218241788865826,
+    "M114_human_development_margin_improved": 19,
+    "M114_human_development_margin_shrunk": 204,
+    "no_good_candidates_fit": 730,
+    "no_good_candidates_development": 190,
+    "parent_preservation_fit_pairs": 2271,
+    "native_preservation_fit_pairs": 2165,
+    "python38_AST_files": 16,
+    "embedded_AST_blocks": 3,
+    "existing_summary_recounts": 8,
+    "existing_paired_recounts": 4
+  },
+  "runtime_scope": {
+    "M115_NN_forwards": 0,
+    "M115_optimizer_steps": 0,
+    "GPU_runs": 0,
+    "SSH_calls": 0,
+    "credentials_access": false,
+    "experiment_sources_mutated": false,
+    "local_torch_available": false,
+    "remote_environment_live_verified": false,
+    "prior_runtime_artifacts_read": true
+  },
+  "remaining_runtime_acceptance": [
+    "All three real GPU sanity runs must pass before their corresponding full runs.",
+    "Actual full-run finite/nonzero-gradient, frozen/Empty/quality/selection-field and checkpoint-roundtrip invariants remain to be observed.",
+    "Actual matched final-checkpoint development outcomes must support content benefit over own Empty and generic while preserving healthy states before considering a later recursive experiment.",
+    "No fixed-state result substitutes for same-final full recursive and nine official metrics."
+  ],
+  "helper_review_scope": {
+    "instance_ab_prototype.py": "Full model implementation",
+    "train_ab_visual_control.py": "Imports; load_inputs; batch; summarize; native preservation lineage",
+    "train_m110_no_weak_rank.py": "Imports; condition_bank; inputs; snapshot; evaluate",
+    "train_m107_weak_semantics.py": "Input adapter only; no weak-label training is invoked by M115",
+    "train_m113_human_initialization.py": "paired_vs_empty reuse and completed-run provenance",
+    "analyze_train_states.py": "sha and GT overlaps; candidate coverage scope",
+    "collect_ab_interface_panel.py": "Imports and geometry_features used by load_inputs",
+    "train_fixed_visual_selector.py": "load_initial_search and GT input lineage",
+    "prepare_train_states.py": "groundtruth.txt provenance, Train partitions and separate inference/label artifacts",
+    "prepare_m113_human_text.py": "Confirmed-phrase encoding and bank provenance",
+    "historical_M47_sources": "Loss/action semantics and completed negative result, not a new full M47 source audit",
+    "collect_m115_once.py": "One scheduled observation and terminal artifact copy; not executed",
+    "accept_m115_outputs.py": "Stored-event recount and private/public artifact path flow; no M115 outputs exist yet"
+  },
+  "source_sha256": {
+    "M115_SEMANTIC_CHOICE_PLAN.md": "ed6b3cf60e5f3caaea943dfed7e2c5a2d51efad5fe0ff3d4ed1971b1a17a07b2",
+    "semantic_choice_prototype.py": "a0ca6048e54a4c4bb127b38c04c9ad1ace5476ccee6c1f1b0698252000214370",
+    "train_m115_semantic_choice.py": "87c8646dfa31ce42e3d0ea96bab13160a9485ef2cdfc76bb877cd69cd031efc0",
+    "run_m115_choice_suite.py": "022edfd84257206b39795e4fe2a46a9d74b2027e79c734e2b23b93b5224770a1",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "prepare_train_states.py": "cceb53710cdbde8350000c25d6f0ed25b490e4084022b37c76062315ad641c79",
+    "prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "M105_DEPLOY_RECEIPT.json": "e151059d985aed89969fd17f9de2e6157fc2c3684b6da917653f9f7dafe1a62d",
+    "M113_RESULT_NOTE.md": "5bf3f30c803e61ca777c8f85a7200cceb1fcd06d478be702809731c4e2504fe2",
+    "M114_RESULT_NOTE.md": "5720d3787c18d4bc9a95a0135c58bd4f48012fb30b26dea924f977f0a474bea6",
+    "M114_RESPONSE_ANALYSIS.json": "8111574de9b8057afd949cfce6a877d1b2f457e7c715f39406aefffc5af433bb",
+    "M114_REFERENCE_NOTES.md": "3579732117200c2246b30d13f5001b4fa3dd4707a9ab43399c20a50febdab5e6",
+    "../../../../.aris/m113_human_initialization_20261006/human_train_labels.json": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+    "../m47/EXPERIMENT_TRACKER.md": "4dd7e01ef960cbe52eb55f25a16a0e067f5606602343cfbe375264b073096032",
+    "../m47/geometry_result.json": "c2df1099344ea29dfea3555647b04aa6f1b1d3ac245df316c76a2b659061065c",
+    "../m47/recursive_result.json": "a669372d8f89614cfc565207c163832f5090385f136f3e1db918219023e60409",
+    "../../overlay/lib/models/sttrack/lachtt_candidate_multipositive_loss.py": "fd1ead4a48451b585db8be7c43645b4dc0e527af250c2c2b5eb9aeea940d6b36",
+    "../../overlay/tools/train_sttrack_m47.py": "e1bf0fc7fb6a195e794f84eb72634325a4d6d0fd8c058cab9e88e0a29a7b4b60",
+    "../../overlay/tools/check_sttrack_m47_loss.py": "48dd4541e5ce119e91de00a5ba011593f3e96c52a55431ea2936c2c0cff77c8c",
+    "m113_completed/driver.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/prepare.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/result.json": "13ae39efc457ff9009b11d9e03e69131fd6ce38c8df3dea3e709b9b406625f9b",
+    "m113_completed/sanity_generic/result.json": "89907765a195bc7c0233292941be8c955a22b51876f804b577163918c796bcff",
+    "m113_completed/sanity_generic.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/sanity_human_text/result.json": "b592b42a524ce7d198acd3a35d641e8cdd1efc9cbf2ed99bb353da339ce2f0ff",
+    "m113_completed/sanity_human_text.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/sanity_launch.json": "6efc706f8faeacc2cba194fc304a86bc810c39be75bd77176e377db13bf6f416",
+    "m113_completed/train_generic/empty_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m113_completed/train_generic/fit_events.jsonl": "c3ac82fbb8a3f3e979515e15b268ce86dd2555c3120522b874814dd0b5daf32f",
+    "m113_completed/train_generic/generic_development.jsonl": "0ba76eaff85e0f5fdaf179d90edc3731b32f777af8c8adb77345fcd2dcc4640b",
+    "m113_completed/train_generic/human_text_development.jsonl": "6cbb80c77dace7505c80b844361c6927a45e8fb26d632862461d68a9ec5d70b3",
+    "m113_completed/train_generic/result.json": "014a1a3863e38551cfdea39c27f2704704251b50c03056d82254a643502a9d47",
+    "m113_completed/train_generic.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/train_human_text/empty_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m113_completed/train_human_text/fit_events.jsonl": "04191cc78b94e0cd1847cb1de729fe22650a4a56a9c3017c964f51c6192ca935",
+    "m113_completed/train_human_text/generic_development.jsonl": "a69e448a8870577516c7143b6595ece32993cf0d33ef7fae41337443d32e5582",
+    "m113_completed/train_human_text/human_text_development.jsonl": "8c17311ae690540910ee9326120c7699aa3f1e4ae07132d6609e510efbb88451",
+    "m113_completed/train_human_text/result.json": "cd79eaff91dd92bacfa8ceacf3099fb2ad42c078c672cb20ad572f5b6b98d607",
+    "m113_completed/train_human_text.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m113_completed/train_launch.json": "7d60b253e18e0416604a2e032dbc81884a324c18c0b32bd5338069a645d1af8b",
+    "m114_completed/result.json": "c7175f64f3395f18dad5aab6152ad327c5c0d48c87ef5161430351a03021dc06",
+    "m114_completed/full_human_text/result.json": "6bf3d2b1a96d207457c01ad0e5ab5b3e6e6c646837a6a0f78796af90eec3974e",
+    "m114_completed/full_human_text/responses.jsonl": "4906a87f472335c6026619237196a2619c1421198b0941095e62f8ffcd5f4486",
+    "m114_completed/full_generic/result.json": "bb3e11077a64e704212be25dfc2352175dc40596507e456b14bbfc514cab101c",
+    "m114_completed/full_generic/responses.jsonl": "f19965eab5a094aa42413428fa3b946f67c73597bdc59b037df577ee37eb3758",
+    "m114_completed/driver.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m114_completed/full_generic.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m114_completed/full_human_text.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m114_completed/sanity_generic.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m114_completed/sanity_human_text.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "private_transport_sha256": {
+    "deploy_m115_choice.py": "2af2c03aa23cd844c967d25fc7d38aa105695f7441191f1b9bce0d8e2735ebc3",
+    "collect_m115_once.py": "ef62afe975e035c7bfff0b1e46627298cd2c436c655df3da4f57ad13ee32c2aa",
+    "accept_m115_outputs.py": "a0b16aa0384881f2a45e916a1a272fb9ff31f01928224c7a9d56db745209261f"
+  }
+}

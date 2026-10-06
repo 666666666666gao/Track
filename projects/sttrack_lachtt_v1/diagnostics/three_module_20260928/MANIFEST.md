@@ -129,3 +129,10 @@
 - Checked actual M113 completion/event/GT/human-CSV bindings, 16 Python ASTs, bounded synthetic analyzer arithmetic, final source and private transport. No SSH, credentials access, GPU execution, or experiment mutation. All 41 source/evidence digests are in the JSON; nine official metrics remain outstanding.
 
 | 2026-10-07T02:22:50.874524+08:00 | /experiment-bridge | M114_DEPLOY_LAUNCH.json; m114_completed20files; M114_ARTIFACT_MIRROR.json; M114_RESPONSE_ANALYSIS.json; M114_RESULT_NOTE.md | completed | Actual all4 child exits0; zero updates; allstored replay exact; human dev common92.18%,204/223margin shrink; no official promotion |
+
+| 2026-10-07T02:33:08.845552+08:00 | /experiment-bridge | semantic_choice_prototype.py; train_m115_semantic_choice.py; run_m115_choice_suite.py; M115_SEMANTIC_CHOICE_PLAN.md | source_prepared_review_pending | Three matched arms, human permanent input, directchoice; no runtime claim |
+
+| 2026-10-07T02:40:58.334665+08:00 | /experiment-bridge | M115_SOURCE_REVIEW_20261007_024058.json | implementation | Fresh same-family provisional source PASS after eval-mode correction; 57 immutable inputs plus3 private helpers; prior-artifact stdlib checks only, no M115 runtime |
+| 2026-10-07T02:40:58.334665+08:00 | /experiment-bridge | M115_SOURCE_REVIEW_20261007_024058.md | implementation | Fresh same-family provisional source PASS after eval-mode correction; 57 immutable inputs plus3 private helpers; prior-artifact stdlib checks only, no M115 runtime |
+| 2026-10-07T02:40:58.334665+08:00 | /experiment-bridge | M115_SOURCE_REVIEW.json | implementation | Fresh same-family provisional source PASS after eval-mode correction; 57 immutable inputs plus3 private helpers; prior-artifact stdlib checks only, no M115 runtime |
+| 2026-10-07T02:40:58.334665+08:00 | /experiment-bridge | M115_SOURCE_REVIEW.md | implementation | Fresh same-family provisional source PASS after eval-mode correction; 57 immutable inputs plus3 private helpers; prior-artifact stdlib checks only, no M115 runtime |

@@ -68,3 +68,7 @@ That cached reachability split has now completed on CPU:33selection errors,
 dense misses sum to223. Full256covers324/495. Do not equate center-out with
 complete invisibility, or this reused development panel with official failures.
 Continue B geometry/observation diagnosis without fabricating A semantic truth.
+
+
+## 2026-10-07 permanent human-input protocol and measured next stage
+All main training and official initialization now use user-confirmed categories/stable attributes. Sequence prefixes are checking cues, not substitutes for confirmed CSV values. Preserve uncertainty (including two blank VOT categories), reviewed multiframe provenance, and split boundary: only DepthTrack Train is optimized. Empty/object remain explicitly labelled mechanism controls. M113 human input did not add qualifying choices; M114 actual response diagnosis shows mostly common score changes and shrunken good/poor localization margins. M115_SEMANTIC_CHOICE_PLAN.md therefore defines a new direct semantic scoring prototype with matched BCE/relative/generic controls, no automatic promotion. Nine-metric end state and A/B/C evidence requirements remain unchanged.

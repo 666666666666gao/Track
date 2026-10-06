@@ -24647,3 +24647,24 @@ DepthTrack Test/CDTB/VOT正式指标，九项目标未达。
 它不是“减空文本/多正例本身原创”的主张。M47旧方法是跨帧多有效partial
 matching辅助项，动作仍default-priority；已负结果保留，不能只换损失再宣称
 新方法。新模块需有真实推理职责、实质内容增量和后续完整递归证据。
+
+
+### 5.339 2026-10-07：永久人工初始化协议与M115直接候选评分准备
+
+用户最新确认今后训练/推理统一采用人工核验类别与稳定属性：自动类别有多项错误，序列名前缀可用于核查，但最终以confirmed_category/confirmed_attributes为准，不自动用文件名填补未知。全部152/50/80/1765条用户确认CSV已经导入；VOT两条空类别保留为空。训练仅使用DepthTrack Train人审；外部文本用于合法初始化，不进入优化/阈值/事件筛选。审核参考多帧，继续披露额外离线输入监督。此前自动文字实验作为历史保留，不覆写成已使用人审。
+
+M114完成证据20份原字节和本地/服务器交接已实际核对，发布d6dd1fb；没有重新训练M113。下一步新增semantic_choice_prototype.py直接语义评分头，冻结M101视觉和质量，训练91,395文本交互参数＋8,512评分参数。新选择增量为同视觉下完整/零语义分数差再候选去均值，Empty与零更新保持视觉；所选框、质量、特征一致。旧已封存共享模型没有修改。
+
+| 预先固定臂 | 输入 | 定位目标 | 更新预算 |
+|---|---|---|---:|
+| human_bce | 用户人工类别/稳定属性 | GT IoU BCE | 12轮480 |
+| human_choice | 相同人工文本 | 合格候选GT IoU分布相对CE | 12轮480 |
+| generic_choice | 有效槽object机制对照 | 相同相对CE | 12轮480 |
+
+全部seed2027、batch64、lr3e-4、同父模型/人审bank/Train130fit+22development缓存；每臂先3更新sanity，先两卡人工臂，再单卡generic，不跑无用任务填卡。共同保持实际Parent选中合格框对严重偏离框的原分数差；不同于M113原候选0保持，因此不能把跨轮变化称单因素因果。无合格框状态不伪造正例，IoU不当物理身份标签。所有开发内容条件及正负事件保存；这是固定状态原型，不是完整视频训练或三集正式指标。新的选择分数不作为已校准模板更新概率。
+
+源代码Python3.8 AST实际通过，fresh Astra/max源审查正在进行，尚未部署；预计sanity＋三臂完整2–4分钟，启动后240秒检查。方案M115_SEMANTIC_CHOICE_PLAN.md。保留M47跨帧多正例负结果及UVLTrack直接近邻，不将差分/去均值/softmax本身包装成新贡献。不自动晋升，只有人审相对自身Empty和同预算泛化有实质收益且健康保护通过，才继续自身状态递归；最终九项同权重目标仍未达。
+
+**源审查具体修正。** 新trainer逐步核对视觉Parent推理分数，但初稿在优化时model.train()，冻结候选MHA会切换计算路径；记录环境M105为torch1.13.1+cu116，官方v1.13.1源码training/grad条件明确。改为优化期model.eval()而仍启用梯度，既无BatchNorm/Dropout影响也不放宽逐值检查。尚未做新NN，不宣称已测数值差异；这是保证同一父模型路径的源码修正。[PyTorch1.13.1官方实现](https://github.com/pytorch/pytorch/blob/v1.13.1/torch/nn/modules/activation.py)
+
+**M115最终fresh源审查已PASS。** gpt-6-astra/max/fork none，blocking0/nonblocking0，same-family/provisional；57份实际D源码/已完成证据及3份私有部署/采集/复算helper记录SHA，源审查不SSH、不访问凭据、不运行NN。eval修正已复读，GT数据、人工704短语/152序列、全部存储M113/M114计数与间隔、3臂同预算、10候选定位标签、原父模型2271保持对等核验通过。运行验收待真实GPU，未填正式指标。
