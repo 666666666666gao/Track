@@ -143,3 +143,7 @@
 | 2026-10-07T02:58:52.187501+08:00 | /experiment-bridge | M115_RESCUE_SOURCE_REVIEW_20261007_025852.md | implementation | Fresh same-family provisional rescue source PASS; actual zero-update batch witness read;33 current/archive inputs and4 R1 private helpers; no R1 runtime claim |
 | 2026-10-07T02:58:52.187501+08:00 | /experiment-bridge | M115_RESCUE_SOURCE_REVIEW.json | implementation | Fresh same-family provisional rescue source PASS; actual zero-update batch witness read;33 current/archive inputs and4 R1 private helpers; no R1 runtime claim |
 | 2026-10-07T02:58:52.187501+08:00 | /experiment-bridge | M115_RESCUE_SOURCE_REVIEW.md | implementation | Fresh same-family provisional rescue source PASS; actual zero-update batch witness read;33 current/archive inputs and4 R1 private helpers; no R1 runtime claim |
+
+| 2026-10-07T03:08:43.173176+08:00 | /experiment-bridge | M115_R1_DEPLOY_LAUNCH.json; m115_completed; M115_R1_CPU_RECOUNT.json; M115_COMPARISON.json; M115_RESULT_NOTE.md | completed | SixNNexit0; actual3x480 plus3sanityeach; fixed-state only, allchecks=False; no automatic promotion or official metrics |
+
+| 2026-10-07T03:12:50.187852+08:00 | /experiment-bridge | M115_SELECTION_PARTITION.json; M115_RESULT_NOTE.md | actual_CPU_partition | humanrelativefit746anddev122IoU declinesamongbothqualified; all3healthygatesfail; no identity labels or NN rerun |
