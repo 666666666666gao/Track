@@ -1,0 +1,59 @@
+{
+  "status": "complete_M113_gpu_sanity",
+  "arm": "human_text",
+  "mode": "sanity",
+  "seed": 2027,
+  "epochs": 1,
+  "batch_size": 64,
+  "learning_rate": 0.0003,
+  "optimizer_steps": 3,
+  "optimized_parameters": 95683,
+  "human_confirmed": true,
+  "review_subject": "initialization_only",
+  "current_candidate_semantic_labels": 0,
+  "model_candidate_weak_labels_used": false,
+  "loss_components": [
+    "localization",
+    "preservation"
+  ],
+  "source_sha256": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+  "parent_sha256": "1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293",
+  "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+  "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+  "history": [
+    {
+      "epoch": 1,
+      "optimizer_steps": 3,
+      "mean_losses": [
+        0.6729304194450378,
+        0.6696943640708923,
+        0.003236060030758381
+      ],
+      "seconds": 0.1436002254486084
+    }
+  ],
+  "empty_all3039_scores_quality_exact": true,
+  "frozen_parameters_buffers_exact": true,
+  "no_recursive_or_public_evaluation": true,
+  "elapsed_seconds": 1.4501879215240479,
+  "gradient_norms": [
+    {
+      "evidence.text": 0.0,
+      "semantic": 0.033317942172288895,
+      "phrase": 0.0007095098844729364
+    },
+    {
+      "evidence.text": 0.0046114525696339115,
+      "semantic": 0.03299345821142197,
+      "phrase": 0.0007035257876850665
+    },
+    {
+      "evidence.text": 0.008927254879381508,
+      "semantic": 0.03653962165117264,
+      "phrase": 0.0017367140389978886
+    }
+  ],
+  "checkpoint_saved": false,
+  "development_metrics_reported": false,
+  "gpu_peak_reserved_bytes": 574619648
+}
