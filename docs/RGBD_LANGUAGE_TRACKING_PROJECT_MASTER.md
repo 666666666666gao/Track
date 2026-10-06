@@ -24790,3 +24790,16 @@ fresh gpt-6-astra/max源审查PASS或WARN且blocking0，same-family/provisional�
 
 
 **区域编码下一项依据。** CLIP Surgery原论文§3.2–3.3讨论普通CLIP背景响应，并以V–V一致attention和跳过FFN的新双路径处理密集表征；与本项负区域差相近，不是当前根因的证明。[原论文](https://arxiv.org/html/2304.05653)、[官方仓库](https://github.com/xmed-lab/CLIP_Surgery)。下一步可在同权重/crop/人审bank下做作者区域编码机制对照，结果有效后再训练容量匹配A/B；空字符串参照和双路径都有先例，不算项目新贡献。具体作者模型源码尚未成功取回，本轮未实现或启动该方向，M116_NEXT_REPRESENTATION_REFERENCE.md记录边界。
+
+
+### 5.343 2026-10-07：永久人审文本协议与M117区域编码对照准备
+
+用户再次确认：今后主线训练和正式推理使用最终人工核验的类别与稳定属性。序列名前缀仅作核查线索，不自动覆盖审核CSV，未知保持为空；Train优化，Test/CDTB/VOT仅提供合法初始化输入，使用多帧审核的额外监督继续披露。旧自动类别不重新成为默认文本，object/Empty仅作明示机制对照。
+
+M117已取得CLIP Surgery实际作者源码clip/clip_surgery_model.py，公开实现使用最后6块双路径，与论文深度7表述不同。新路径在原路径输入上计算V–V attention，累积无FFN残差；原CLIP前向/CLS和参数不修改，人工bank、原crop、10候选、分组和区域读取保持M116设置。算法为作者已有方法，不作为本项目新贡献。
+
+fresh请求gpt-6-astra/max源码审查PASS、blocking0、same-family/provisional，无实际后端独立attestation；仅源码和M116 CPU重算，尚未运行M117 GPU。两卡各3事件+t0 sanity实际通过作者对应、原CLS/冻结/来源后，才采集152Train序列3502事件+152t0，预计2–6分钟，240秒完成节点查看。无optimizer、tracker状态提交或新正式指标。
+
+全部预定raw读出与额外明示Empty-centered读出保留，不选开发最好项作部署。中心化Empty全零、首候选tie不算语义增量。B的精确定位、C记忆/观察、递归与同一Full152最终权重三数据集九项验收仍需后续真实验证。M116与旧训练不重复启动，当前联合目标仍未达。
+
+源码/计划及审查分别见M117_DENSE_REGION_PLAN.md、M117_SOURCE_REVIEW.json/md；作者原文件只在私有诊断路径用于sanity，未安装新环境或下载新权重。

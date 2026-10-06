@@ -151,3 +151,10 @@
 - M116 20261007_034452: M116_REGION_EVIDENCE_PLAN.md / region_patch_evidence.py / collect_m116_region_evidence.py / run_m116_region_pair.py / analyze_m116_region_evidence.py / M116_SOURCE_REVIEW.json/.md：源审查完成；实际部署/产物待真实执行，不填写正式指标。
 
 - M116 20261007_040108: M116_RESULT.md / M116_CPU_ANALYSIS.json / M116_ARTIFACT_MIRROR.json / m116_completed：实际GPU/GT定位分组/来源验收完成，优化0、正式指标未更新。
+
+| 2026-10-07T07:05:02.741523+08:00 | /experiment-bridge | M117_SOURCE_REVIEW_20261007_070502.json | implementation | M117 fresh source review PASS; same-family provisional; GPU checks 0 |
+| 2026-10-07T07:05:02.741523+08:00 | /experiment-bridge | M117_SOURCE_REVIEW.json | implementation | M117 fresh source review PASS; same-family provisional; GPU checks 0 |
+| 2026-10-07T07:05:02.741523+08:00 | /experiment-bridge | M117_SOURCE_REVIEW_20261007_070502.md | implementation | M117 fresh source review PASS; same-family provisional; GPU checks 0 |
+| 2026-10-07T07:05:02.741523+08:00 | /experiment-bridge | M117_SOURCE_REVIEW.md | implementation | M117 fresh source review PASS; same-family provisional; GPU checks 0 |
+
+| 2026-10-07T07:07:44.688605+08:00 | /experiment-bridge | M117_DENSE_REGION_PLAN.md; M117_BASELINE_CENTERED_CPU.json; dense_region_encoding.py; collect_m117_dense_region.py; run_m117_dense_pair.py; analyze_m117_dense_region.py | prepared/source_PASS | Human-confirmed protocol retained; no M117 GPU execution or formal result yet |

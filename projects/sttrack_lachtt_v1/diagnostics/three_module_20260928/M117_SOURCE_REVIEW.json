@@ -1,0 +1,109 @@
+{
+  "verdict": "PASS",
+  "blocking": [],
+  "non_blocking": [],
+  "reviewed_at": "2026-10-07T07:05:02.741523+08:00",
+  "reviewer_task": "/root/m117_dense_region_source_review",
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "max",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "actual_backend_attestation": false,
+  "backend_attribution_note": "Model and effort are the requested routing, not independently attested runtime backend identity.",
+  "scope": "Fresh source review plus stdlib checks on already completed M116/M114 local artifacts; no M117 GPU or performance acceptance.",
+  "source_sha256": {
+    "dense_region_encoding.py": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "collect_m117_dense_region.py": "76df8b2c31464281c1a37db292f9ae8f5134fee5f19568c08137ae0a5db4d2da",
+    "run_m117_dense_pair.py": "dd24da1eac2f236b27e6af6066fac38333a962b0b93bb75a2b7d048b500aa727",
+    "analyze_m117_dense_region.py": "dee1218819341f591138ad2044e0e6da94cc23fa0fdf2013b56fa97fe4cac38e",
+    "region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "collect_m116_region_evidence.py": "8d6ceaaf84cdf2ed4f70c07b5e51b7f0e2a43995961c30f3b5aee5fe46f88959",
+    "analyze_m116_region_evidence.py": "5056db64db1efb4e88345c8f1c0a05171c889646338a2d015a78c45d85055b3c",
+    "M117_DENSE_REGION_PLAN.md": "a4560319a9ad9da1e4fdb045bc2d56b0b50ef52aa3e8fa00c1f3e0c349dfc149"
+  },
+  "private_transport_sha256": {
+    "deploy_m117.py": "ad9cd8452c9356c846e4541ff313affcfd58bd9bb9707e9a5f57dcf3725184b0"
+  },
+  "author_reference_sha256": {
+    "clip_surgery_model.py": "8a55207f040c5c260d1499c067a9f7a49f071e6a73d3ea1a39d2a65940648742"
+  },
+  "author_reference": {
+    "canonical_url": "https://github.com/xmed-lab/CLIP_Surgery/blob/master/clip/clip_surgery_model.py",
+    "git_blob_sha1": "3fecea25c2450e5583cf827f50272588847e325a",
+    "bytes": 19868,
+    "public_implementation_depth": "last six blocks",
+    "paper_depth_discrepancy_disclosed": true
+  },
+  "checks": [
+    {
+      "check": "author_reference_origin",
+      "result": "PASS",
+      "evidence": "实际下载 clip/clip_surgery_model.py 的 19868 字节与 author_directory.json 和 author_sources_receipt.json 一致；重算 Git blob SHA1=3fecea25c2450e5583cf827f50272588847e325a。没有使用猜测的 model.py。"
+    },
+    {
+      "check": "VV_head_layout_and_accumulation",
+      "result": "PASS",
+      "evidence": "dense_region_encoding.py:15-32 对原路径 LND 输入先 ln_1，取 QKV 最后一个 width 的 V，重排为 B,H,N,D，按 D**-0.5 做 VV attention，再共享 out_proj。第一个新路径残差使用原输入，之后累加新路径，但每块 attention 始终读取该块原路径输入；不使用新路径 FFN。对应作者 Attention:71-103、ResidualAttentionBlock:253-280、VisionTransformer:317-355。"
+    },
+    {
+      "check": "original_path_and_reference_sanity",
+      "result": "PASS",
+      "evidence": "六个 pre-hook 返回 None，仅额外计算观察；原 MHA/FFN 与 encode_image 不被替换。作者参考为独立 VisionTransformer，strict 加载原 visual 权重；其 lazy surgery 只改自身。sanity 对相同输入的原 CLS 使用 torch.equal，对归一化 dense 空间输出使用 torch.testing.assert_close 默认容差，并记录原始及归一化最大差；没有额外容差、自动重试或原模型更新。"
+    },
+    {
+      "check": "M116_matched_geometry_inputs_and_storage",
+      "result": "PASS",
+      "evidence": "M117 与 M116 使用同一 native 六通道 factor4/256 crop 后取 RGB、同一 224 预处理、同一完整精度 prior、10 原候选、逐序列 split(16) 分组、同一 ROI/ring/有效观测 reader。每序列比较 M116 相同模式的 half CLS、padding 观测比例、crop origin、split 和 event_frames 的逐值相等。已完成 M116 的 collector/interface 摘要与当前依赖完全一致。"
+    },
+    {
+      "check": "human_input_GT_and_protected_baselines",
+      "result": "PASS",
+      "evidence": "人审 Train152 M113 bank 通过 human_confirmed、dataset、labels/encoder 摘要及序列/split 核查。收集器只读原 M90 已选事件和候选，后续 GT 仅由独立 CPU analyzer 从 M114 真值读出用于定位分组；没有 Test/CDTB/VOT、M112 当前候选弱标签、optimizer、checkpoint、tracker/query/template/C 状态提交。已有事件选择曾使用 Train GT 的边界保留于 M116 协议。新缓存独立目录且不存在时才创建，不写旧缓存/权重。"
+    },
+    {
+      "check": "sanity_then_full_and_transport",
+      "result": "PASS",
+      "evidence": "两卡各一个 fit 序列的 3 当前事件+t0 sanity 均 exit0，且作者对应、冻结状态、CLS 和无 GT 检查通过后，才启动两卡 full。full 强制合计 3502 事件/152 序列；异常保留原日志并停止。部署器先检查已完成 M116、新输出不存在、两卡空闲、4GiB 空间、审查文件摘要，再传输并逐字节回读、只启动一个 controller；没有下载、安装或清理操作。"
+    },
+    {
+      "check": "all_readouts_and_claim_boundaries",
+      "result": "PASS",
+      "evidence": "raw/Empty-centered 各保留四种内容×两种 reader，七列输入不重新编码。IoU>=.5 与 <=.1 组、合格框内部排序和固定状态 argmax 均只用于诊断；无开发最好规则选择。centered Empty 全零时首候选 tie 已明确披露为非语义增益。last-six 与论文深度7差异、复用作者方法、反复 development、未知/多帧人审、未解决 B/C、无正式三集指标均有边界说明。"
+    },
+    {
+      "check": "CPU_analyzer_against_actual_M116",
+      "result": "PASS",
+      "evidence": "使用本地 Python 3.13.12、stdlib 导入 M117 analyzer，读取实际 M116 3654 行和 M114 2544 fit/495 development 有效 GT；M116 原始 summary 的 144 个字段逐值相等，raw 与 centered 各12152条 margin records。另核对 centered Empty 的全部零分、全部 quality tie 和 argmax 首候选结果。未生成或冒充 M117 结果。"
+    }
+  ],
+  "local_verification": {
+    "python": "3.13.12",
+    "AST_feature_version": "3.8",
+    "AST_files": 11,
+    "embedded_deployment_AST_blocks": 2,
+    "M116_producers_exit0": 4,
+    "M116_elapsed_seconds": 108.4552903175354,
+    "M116_collector_interface_and_response_digests_exact": true,
+    "M116_observed_rows": 3654,
+    "valid_GT_counts": {
+      "fit": 2544,
+      "development": 495
+    },
+    "baseline_summary_fields_exact": 144,
+    "raw_margin_records": 12152,
+    "centered_margin_records": 12152,
+    "centered_empty_zero_and_first_candidate_tie_verified": true
+  },
+  "runtime_gpu_checks": 0,
+  "runtime_torch_checks": 0,
+  "ssh_calls": 0,
+  "experiment_code_edits": 0,
+  "limitations": [
+    "Source correctness does not establish successful M117 execution, author numerical agreement on the remote Torch 1.13.1+cu116 environment, runtime memory/time, or downstream tracking improvement. Existing sanity/full gates must actually pass.",
+    "The 2-6 minute M117 estimate is a plan based on measured M116 108.4552903175354 seconds, not a measured M117 result.",
+    "Python 3.8 AST parsing is a syntax check. The CPU-only analyzer was exercised locally with the supplied Python 3.13.12; it is not included in the remote GPU deployment payload."
+  ],
+  "recommended_action": "Proceed to the already specified sanity stage; full remains conditional on both actual sanity stages passing."
+}
