@@ -158,3 +158,7 @@
 | 2026-10-07T07:05:02.741523+08:00 | /experiment-bridge | M117_SOURCE_REVIEW.md | implementation | M117 fresh source review PASS; same-family provisional; GPU checks 0 |
 
 | 2026-10-07T07:07:44.688605+08:00 | /experiment-bridge | M117_DENSE_REGION_PLAN.md; M117_BASELINE_CENTERED_CPU.json; dense_region_encoding.py; collect_m117_dense_region.py; run_m117_dense_pair.py; analyze_m117_dense_region.py | prepared/source_PASS | Human-confirmed protocol retained; no M117 GPU execution or formal result yet |
+
+| 2026-10-07T07:17:39.614405+08:00 | /experiment-bridge | m117_completed; M117_RESULT.md; M117_CPU_ANALYSIS.json; M117_ARTIFACT_MIRROR.json | completed | Four producers exit0, same human text/CLS/crop, GT localization CPU results only; no optimizer or formal score |
+
+| 2026-10-07T07:19:18.048700+08:00 | /experiment-bridge | M117_PARENT_PARTITION.json; M117_RESULT.md | posthoc_CPU | All16dense readouts against M101; region correspondence improves but fine localization/healthy losses prevent direct replacement; no NN replay |

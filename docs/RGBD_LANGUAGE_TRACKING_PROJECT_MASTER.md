@@ -24803,3 +24803,39 @@ fresh请求gpt-6-astra/max源码审查PASS、blocking0、same-family/provisional
 全部预定raw读出与额外明示Empty-centered读出保留，不选开发最好项作部署。中心化Empty全零、首候选tie不算语义增量。B的精确定位、C记忆/观察、递归与同一Full152最终权重三数据集九项验收仍需后续真实验证。M116与旧训练不重复启动，当前联合目标仍未达。
 
 源码/计划及审查分别见M117_DENSE_REGION_PLAN.md、M117_SOURCE_REVIEW.json/md；作者原文件只在私有诊断路径用于sanity，未安装新环境或下载新权重。
+
+
+**实际启动追加。** 2026-10-07T07:12:26.925609+08:00：原controller PID14574已启动，双卡启动前各1MiB/0%利用，空闲24670625792字节。首次TCP认证前失败未执行远端命令，等待180秒后一次新连接成功；无NN重启。启动回执仅证明controller存在，不预先声称sanity/full通过。唯一完成节点观察器本地session14182，目标启动回执+240秒，此前不重复SSH。
+
+
+### 5.344 2026-10-07：M117双卡作者区域编码及GT定位读出完成
+
+原controller实际耗时111.703秒，四个生产进程exit0。两卡sanity作者归一化空间对应默认assert_close通过，原CLS逐值不变；同M116分组、crop/有效区域与CLS缓存匹配。缓存154份/1449673745字节保留服务器，20非二进制原文件已实际下载核对。所有raw/Empty-centered结果保留，详见M117_RESULT.md与M117_CPU_ANALYSIS.json。
+
+| 新编码 | 读出 | 内容 | argmax合格/495 | 平均IoU | 正间隔/223 |
+|---|---|---|---:|---:|---:|
+| dense | raw / region_cosine | human_category | 250/495 | 0.442466829 | 203/223 |
+| dense | raw / region_cosine | human_phrases | 245/495 | 0.429155558 | 194/223 |
+| dense | raw / region_cosine | generic | 159/495 | 0.305380308 | 157/223 |
+| dense | raw / region_cosine | empty | 101/495 | 0.227131003 | 106/223 |
+| dense | raw / region_minus_ring | human_category | 207/495 | 0.382706968 | 189/223 |
+| dense | raw / region_minus_ring | human_phrases | 193/495 | 0.369480057 | 177/223 |
+| dense | raw / region_minus_ring | generic | 119/495 | 0.259079157 | 127/223 |
+| dense | raw / region_minus_ring | empty | 86/495 | 0.206756502 | 84/223 |
+| dense | empty_centered / region_cosine | human_category | 244/495 | 0.452041597 | 197/223 |
+| dense | empty_centered / region_cosine | human_phrases | 253/495 | 0.456874338 | 192/223 |
+| dense | empty_centered / region_cosine | generic | 175/495 | 0.339770406 | 171/223 |
+| dense | empty_centered / region_cosine | empty | 268/495 | 0.524770723 | 0/223 |
+| dense | empty_centered / region_minus_ring | human_category | 238/495 | 0.435800578 | 199/223 |
+| dense | empty_centered / region_minus_ring | human_phrases | 238/495 | 0.447214650 | 195/223 |
+| dense | empty_centered / region_minus_ring | generic | 137/495 | 0.289075304 | 147/223 |
+| dense | empty_centered / region_minus_ring | empty | 268/495 | 0.524770723 | 0/223 |
+
+首帧全部152条分别报告，定位与初始语义依据不混写。中心化Empty全零、首候选tie不能解释为新语义增益。本项没有训练、状态提交或正式P/R/F、EAO/ACC/ROB，不自动晋升。永久人审CSV为主线输入，序列名仅核查；未知不补写。
+
+
+**实际结果与下一阶段。** 同一人工文本/视觉权重/观察区域下，作者双路径区域编码使raw类别读出由15/495提高到250/495、raw全部短语24→245；类别good/poor正间隔20/223→203/223。t0类别区域高于外围8/152→146/152，Empty-centered为151/152。新编码的raw人工类别250高于同编码object159和Empty101，表明在这个固定定位面板上存在具体文本内容对应；它不是独立物理身份审核，也不是新完整跟踪性能。
+
+区域证据不能直接替换精确定位：与冻结M101 Parent272/.530707698相比，raw类别只读选择救回20、损害42（健康264中39损害），平均IoU.442466829；两边均合格的230状态中164定位变差、15改善。所有16个新编码内容/读出在fit/dev的Parent分解保存M117_PARENT_PARTITION.json，不据后验挑最佳部署规则。Empty-centered全短语253/.456874338亦救15、伤34，仍未整体超过视觉Parent；t0改善不意味着当前框全部正确。
+
+下一阶段保持永久人工文本协议，以M117区域证据构建容量匹配的A/B学习对照：A承担受首帧实例约束的当前区域语义对应，B区分类别相关候选的精确几何质量，不用纯语义argmax替换可靠视觉细定位。通过固定状态的具体内容增量、健康保护与定位精度后，再进入自身递归；C记忆/观察与Full152/同一final三集九项评价仍须独立执行。M47、多正例、普通候选图、Empty差分及M115直接评分均保留历史边界，不重新包装为新点，不把这次作者模块当原创贡献。
