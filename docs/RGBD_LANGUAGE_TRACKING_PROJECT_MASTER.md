@@ -24787,3 +24787,6 @@ fresh gpt-6-astra/max源审查PASS或WARN且blocking0，same-family/provisional�
 
 
 **追加首帧只读描述。** 全152合法t0，人工类别的区域均值余弦高于外围仅8/152，平均区域减外围-0.060367928230。完整逐序列值保存在M116_INITIAL_SUPPORT.json；这是采集完成后的描述性补充，不是新增选择门槛、属性真值或训练结果。它支持当前普通CLIP patch直接投影缺少可靠区域响应，不能归为人审文字错误，也不能唯一认定某个attention机制是根因。后续应检验区域编码/语义对齐，保留人审输入与视觉容量匹配的对照。
+
+
+**区域编码下一项依据。** CLIP Surgery原论文§3.2–3.3讨论普通CLIP背景响应，并以V–V一致attention和跳过FFN的新双路径处理密集表征；与本项负区域差相近，不是当前根因的证明。[原论文](https://arxiv.org/html/2304.05653)、[官方仓库](https://github.com/xmed-lab/CLIP_Surgery)。下一步可在同权重/crop/人审bank下做作者区域编码机制对照，结果有效后再训练容量匹配A/B；空字符串参照和双路径都有先例，不算项目新贡献。具体作者模型源码尚未成功取回，本轮未实现或启动该方向，M116_NEXT_REPRESENTATION_REFERENCE.md记录边界。
