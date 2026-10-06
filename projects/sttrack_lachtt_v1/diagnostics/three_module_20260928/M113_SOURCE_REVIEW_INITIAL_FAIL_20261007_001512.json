@@ -1,0 +1,34 @@
+{
+  "verdict": "FAIL",
+  "record_type": "preserved_initial_defect_evidence_after_executor_fix",
+  "blocking": [
+    {
+      "id": "B1",
+      "file": "train_m113_human_initialization.py",
+      "line": 17,
+      "defect": "Initial filter r['strata']==group compared a list of tags with a string; no healthy/transition pairs were selected.",
+      "actual_evidence": {
+        "input": "m110_completed/train_generic/generic_development.jsonl and empty_development.jsonl",
+        "rows": 495,
+        "list_valued_strata": 495,
+        "healthy_members": 264,
+        "transition_members": 127,
+        "observed_exception": "AssertionError('healthy')"
+      },
+      "consequence": "Both full arms would fail while building paired_vs_own_empty after training and before final.pt/result.json.",
+      "minimal_fix": "Replace r['strata']==group with group in r['strata'].",
+      "current_status": "Executor applied the single-line fix; current final source reviewed separately."
+    }
+  ],
+  "nonblocking": [],
+  "source_hash_note": "The original full-file digest was not captured before the executor edit. This is preserved failure evidence, not an acceptance manifest for current bytes.",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "checked_at": "2026-10-07T00:15:12.859051+08:00",
+  "source_only": true,
+  "ssh_calls": 0,
+  "gpu_runs": 0,
+  "source_mutated_by_reviewer": false
+}

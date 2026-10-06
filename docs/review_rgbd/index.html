@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RGB-D 三数据集公开审核</title>
-<link rel="stylesheet" href="review.css?v=20261006round">
+<link rel="stylesheet" href="review.css?v=20261007human">
 </head>
 <body><main>
 <header class="page-header">
-<div class="brand"><span class="brand-mark">R</span><span>RGB-D <span class="muted">/ 初始化描述公开审核</span></span><span class="ready">2,047条 · DepthTrack本轮待核对202条</span></div>
+<div class="brand"><span class="brand-mark">R</span><span>RGB-D <span class="muted">/ 初始化描述公开审核</span></span><span class="ready">2,047条 · 已导入全部人工核验</span></div>
 <h1>看清目标，再确认描述。</h1>
-<p>DepthTrack Train与Test已导入2026年10月6日的GPT重审结果，请重新核对。CDTB与VOT已导入提交的1,845条人工记录。每个初始化点独立保存。</p>
+<p>四组均已导入gb提交的人工核验：Train 152条、Test 50条、CDTB 80条、VOT 1,765点。人工结论与GPT提议分别展示，每个初始化点独立保存。</p>
 </header>
 <section class="dataset-cards" aria-label="切换数据集">
-<button class="dataset-card" data-dataset="depthtrack"><span>DepthTrack Train</span><strong>152 <small>条</small></strong><span class="card-note">GPT重审已导入 · 本轮待人工核对</span></button>
-<button class="dataset-card" data-dataset="depthtrack_test"><span>DepthTrack Test</span><strong>50 <small>条</small></strong><span class="card-note">GPT提议已导入 · 本轮待人工核对</span></button>
+<button class="dataset-card" data-dataset="depthtrack"><span>DepthTrack Train</span><strong>152 <small>条</small></strong><span class="card-note">已导入本轮152条人工记录</span></button>
+<button class="dataset-card" data-dataset="depthtrack_test"><span>DepthTrack Test</span><strong>50 <small>条</small></strong><span class="card-note">已导入本轮50条人工记录</span></button>
 <button class="dataset-card" data-dataset="cdtb"><span>CDTB</span><strong>80 <small>条</small></strong><span class="card-note">已导入80条人工记录</span></button>
 <button class="dataset-card" data-dataset="vot"><span>VOT-RGBD2022</span><strong>1,765 <small>点</small></strong><span class="card-note">127条序列 · 已导入1,765条人工记录</span></button>
 </section>
@@ -37,7 +37,7 @@
 <p>1. 填写自己的审核者编号。2. 查看红框、多帧及视频，核对GPT意见。3. 修正内容，明确选择判断。4. 导出CSV交回负责人。可按编号范围分工，也可导入其他人的审核文件后切换审核者编号查看。</p>
 <p>GPT初审不等于人工确认。“建议修正”也包含收窄表述、删除无法确认的材质，并不表示原描述全部错误。后续帧只帮助理解目标，不能把后帧才可见的属性当作初始化已知。无法确定时保留不确定。</p>
 <p>答案保存在各自浏览器，网站不实时同步多人答案。刷新、切换数据集不丢失已保存内容；换设备前请导出CSV。导入同一审核者的文件时，仅更新较新的记录，其他审核者的答案分开保存。</p>
-<p>DepthTrack本轮从待审核开始，不使用旧轮人审。CDTB、VOT可直接查看已提交的人审内容；审核者编号填写gb可载入这份记录，其他审核者使用自己的编号。DepthTrack Test没有提供原始自动描述，此处核对的是GPT提出的初始化描述。</p>
+<p>DepthTrack只使用20261006新轮人审，不使用旧轮人审。四组均可直接查看已提交的内容；审核者编号填写gb可载入这份记录，其他审核者使用自己的编号。DepthTrack Test没有提供原始自动描述，此处人工核对的是GPT提出的初始化描述。</p>
 <p>DepthTrack Train的九帧目标裁剪使用训练标注，属于离线审核材料。Test的全序列概览未使用后续GT标框；后续帧只帮助辨认对象。测试集与外部数据集的审核内容不能作为新增训练标签。查看本网站不会修改跟踪器或训练输入。</p>
 <a href="data/gpt_initial_reviews.csv" download>下载GPT与已提交人工记录总表（2,047条）</a>
 </details>
@@ -51,5 +51,5 @@
 <span class="muted">放大不增加原图细节 · Esc关闭</span>
 </div><div id="detail-scroll"><canvas id="detail-canvas" aria-label="当前所选区域的放大画面"></canvas></div>
 </dialog>
-<script src="review.js?v=20261006round" type="module"></script>
+<script src="review.js?v=20261007human" type="module"></script>
 </body></html>

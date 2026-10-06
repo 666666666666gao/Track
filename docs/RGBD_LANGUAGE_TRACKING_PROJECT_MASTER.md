@@ -24528,3 +24528,35 @@ M112 fresh-context gpt-6-astra/max首轮源码复核为WARN，无训练阻断；
 
 
 **本轮真实发布核验完成。** 网站源码与素材提交94e6065；随后发现嵌套来源CSV被Git自动换行归一化，为保留用户提交文件的准确字节，对这四份来源CSV设置局部-text并重新写入，修正提交`2979fc1ce6994ed732e15e2539f6752845c7c94b`，四源Git blob SHA与原始文件一致。不是语义修改或人审状态变更。GitHub Pages run37428038947实际completed/success；随后HTTP实取18份页面/脚本/manifest/2047条总表/回执/原始来源CSV，200且逐字节等于该提交。两个mjs Content-Type为text/javascript；对四数据集首项共15份预览、高清、多帧、原始JPEG、视频链接HEAD200及Content-Length与本地一致。公开回执REVIEW_ROUND_PUBLICATION_20261006.json及桌面公开审核网站发布回执_20261006.json保存实际证据。Train152/Test50仍为本轮pending202；CDTB80/VOT1765已提交人审1845，旧DepthTrack人审未使用。原用户文件不变，未连接服务器或更新实验指标。
+
+### 5.334 2026-10-06：按用户授权删除本地DepthTrack Test原始下载与缓存，审核交付保持
+
+用户明确“可以删除本地下载的depthtrack test了”。先核对源码实际使用的E盘四个目录、绝对路径均位于E:\RGB-D-L-work，再使用PowerShell Remove-Item -LiteralPath原生删除，不跨壳拼接删除命令。已删除data/DepthTrackTest_batch0（5条完整序列）、data/DepthTrackTest_first_frames、DepthTrack_Test50_review_video_cache_20261005及tmp_depthtrack_test_first_samples；共26,575个文件，逻辑字节2,867,512,108（约2.67GiB）。操作前后E盘可用空间为11,701,919,744与14,628,540,416字节，该差值是当时磁盘观测，不作排他占用测量。
+
+四目录实际均不存在；桌面Test50审核包650张JPEG、50段视频仍在，新Test50模型CSV SHA仍236a77087540c978cc039b704a8904a08e8796d739e6386ddefd6b1b134c35e1；原始审核ZIP、返回结果、公开网站媒体、首帧协议与来源metadata均未删除。E盘models保留，没有连接服务器、改训练权重/bank或指标。网站可继续人工审核；若以后要用原始完整序列重制素材，须重新取得已删下载数据，不能再假定E盘这四条路径存在。清理回执位于桌面项目DepthTrack_Test本地下载清理回执_20261006.json；本地主交接文档与桌面镜像同步，本次不触发网站重部署。
+
+### 5.335 2026-10-07：全部人工初始化输入验收，未来统一人工文本；退役旧Qwen生成权重，准备M113双卡训练
+
+用户在2026-10-06晚确认服务器可以连接、全部审核完成并可直接使用；随后明确“以后都采用人工核验后的文本”，认为自动类别多处有误，序列名前缀可帮助辨认。新的持续协议以人工CSV的confirmed_category与stable_attributes为实际输入，不再调用Qwen重新生成或覆盖类别；序列名只作核查线索，不自动代替确认值。Test/CDTB/VOT的人审不进入新增训练，分别用于对应合法初始化点的输入核查与后续完整评价。人工审阅参考过多帧，须如实披露额外离线监督，不宣称自动初始化或无额外标注。
+
+**实际审核验收。** 四份用户提交CSV精确key/序列/帧号/编号匹配，共2047条human_confirmed=true。Train新文件0bf3617f9c9d7565190ce88b5f2acf04548ff077aea27945eee873f1e7ebbea8，152条轮次20261006，确认类别全非空，其中67条字符串与本轮GPT提议不同；这只是字符串变化，不作为生成准确率。Test新文件6ccfab037bc24ca44245bb88739a77bf668f931283da12cb18e37402d0a0443a，50条同轮次。CDTB80与VOT1765源CSV分别仍dea42aa5…5381及3af4dc7a…52e1f。所有状态按原值保留，conflicting包含修正，不推断这些类别全错；VOT2条确认类别为空，保留人工不确定，不根据序列名补造结论。旧DepthTrack人审不使用，新Train/Test全部明确独立轮次。网站本地四manifest已导入gb共2047条，原GPT提议和原媒体不变；实际JSDOM验证4组gb记录载入、其他审核者独立未确认、旧DepthTrack轮次隔离与2047条带轮次/最终类别导出，回执HUMAN_REVIEW_UI_VALIDATION_20261007.json。不声称本轮浏览器视觉预览，发布另核对。
+
+**服务器与空间。** 43811连接实际恢复，两张RTX3090各24GiB空闲；间隔连接期间实际遇到两次TCP TimeoutError，均发生认证前，不判训练失败，不切换过时端口。已真实取得/root/autodl-tmp完整一级目录占用及3153份pt/pth库存，其中大量pt为缓存，不冒称全部是模型权重。初次实际可用空间2,281,672,704字节。按用户“清理无用权重”及人工文本专用要求，核对Qwen2.5-VL-3B-Instruct两份与Qwen3_8B五份已不再使用的生成权重；逐文件绝对路径/字节数确认、实时GPU任务为空后仅删除这7份safetensors，逻辑23,890,854,752字节（22.25GiB）。删除后实际可用13,787,279,360字节（12.84GiB），不把逻辑字节总量等同于唯一释放空间。原配置/审计数据、CLIP ViT-L-14、SUTRACK/DropTrack底座、M101父模型、M111对照及M90/M95/M98缓存均保留。服务器与桌面均有QWEN_GENERATION_WEIGHTS_RETIRED_20261007回执，不再声称旧Qwen权重可随时加载。
+
+**M112处理。** 最新人工初始化协议取代其旧模型当前候选短语训练，原202项98/15/89模型标签不变，不冒充人工或替换为初始化类别。M112仍0更新、未部署/未运行，历史训练器与计划保留。目录迁移后的两处私有入口路径确已修正，fresh Astra/max路径审查source PASS、总体WARN/DO_NOT_LAUNCH，same-family/provisional；它不是M113或GPU验收。新部署前缀比较双方统一LF，只用于保持远端交接旧正文，仍上传及核对实际字节。
+
+**新M113架构与既定Stage1计划。** 复用M101的实例候选原型、原双向RGB-D/短语局部交互和M90/M95/M98真实状态，固定视觉参数及buffer，仅训练95,683语义参数。继承M110定位BCE+可靠原生候选保持，不再优化旧候选弱身份排序，也不以初始化人审伪造当前候选support/conflict/unknown标签。人工类别为槽0，稳定属性按提交管道符顺序至多4条；真实编译Train152得到704短语、9条超槽属性另存。unknown/后帧备注/note不编码；只从旧manifest复用130fit/22development划分，自动文字与候选标签不使用。冻结同一CLIP编码器生成新human bank及object泛化向量；不自动生成新文字。
+
+| 项目 | GPU0 | GPU1 | 共同行为 |
+|---|---|---|---|
+| 输入/训练臂 | human_text | generic(object) | 同bank槽数和mask、同M101父模型 |
+| GPU sanity | 3次更新 | 3次更新 | 两项exit0、有限非零梯度、视觉/buffer冻结、Empty相等后才开始完整训练 |
+| 完整训练 | 12轮/480更新 | 12轮/480更新 | seed2027、batch64、AdamW3e-4、固定final，不扫seed |
+| 开发读出 | Empty/generic/human_text | 同左 | 同权重内容干预，495状态相对自身Empty统计 |
+| 当前实际新优化更新 | 0 | 0 | 本节是部署前准备，不能填写新指标 |
+
+四份新源码实际通过Python3.8 AST；编译器实际152绑定/字段/划分exit0，不是神经测试。fresh M113代码审查正在执行。审查已实际发现分组strata是标签列表，首版paired_vs_empty误用字符串相等会在训练后报告时中止；已仅改为组名成员判断，真实495条旧M110记录CPU检查all495/healthy264/transition127及2条0.1/0.5边界通过。M113_CPU_REPORTING_CHECK.json明确是旧记录统计回归，不是新M113指标。最终源码复核和真实GPU验收尚待；没有借此晋升完整递归/C/正式三数据集。
+
+**下一步。** 源码复核通过后同步远端交接和新Train标签/四份已确认CSV，实际检查环境、两卡与输入依赖，先两卡sanity再固定训练；按预计3–6分钟量级、180–300秒间隔检查，不频繁轮询。该估计依据历史同类程序而非本轮实测。固定状态结果若不提供稳定语义增量，继续分析当前证据/候选和闭环限制；若有效，进入完整递归与状态/记忆验证，最终仍须同一final、统一人工初始化协议完成DepthTrack/CDTB/VOT的九项正式指标。既有正式指标表不重复填写，原联合目标未达。本节、源码、真实清理/审查/启动/完成记录持续写入交接及Git，不把未启动计划写成完成。
+
+**最终源码复核通过（实际00:15）。** fresh gpt-6-astra/max最终M113_SOURCE_REVIEW verdict PASS、blocking0、nonblocking0，same-family/provisional。13份Python、计划及私有部署入口有精确SHA，152人审绑定、130/22划分、真实旧495条统计及阈值边界复核通过；初始strata错误FAIL证据保留。审查未SSH、未做神经/GPU训练，不能代替下面的运行验收。开始按已审核入口执行远端部署及两卡sanity，实际启动/完成另存回执。

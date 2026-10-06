@@ -110,3 +110,10 @@
 | 2026-10-03T17:48:56.060749+08:00 | /experiment-bridge | M112_CURRENT_PHRASE_TRAINING_PLAN.md; train_m112_current_phrase_evidence.py; run_m112_current_phrase_experiment.py | implementation | Current-candidate CE/source prepared; fresh review pending; Python3.8 AST only; no SSH deployment/GPU updates; zero arm reused |
 
 | 2026-10-03T18:01:11.317106+08:00 | /experiment-bridge | M112_TRAINING_SOURCE_REVIEW.md/json; timestamp175849 WARN and180111 PASS | implementation | Fresh same-family provisional source review; actual stored-row/CPU mocks only; no NN/GPU/SSH by reviewer; reviewed deployment18:02 preauth connection failure |
+
+| 2026-10-07T00:15:12.859051+08:00 | /experiment-bridge | M113_SOURCE_REVIEW_INITIAL_FAIL_20261007_001512.json | implementation | Initial actual list/string grouping failure preserved; executor single-line fix reviewed separately |
+| 2026-10-07T00:15:12.859051+08:00 | /experiment-bridge | M113_SOURCE_REVIEW_INITIAL_FAIL_20261007_001512.md | implementation | Initial actual list/string grouping failure preserved; executor single-line fix reviewed separately |
+| 2026-10-07T00:15:12.859051+08:00 | /experiment-bridge | M113_SOURCE_REVIEW_20261007_001512.json | implementation | Fresh same-family provisional source PASS after concrete grouping fix; 152-label binding and actual495-row CPU reporting; no SSH/GPU |
+| 2026-10-07T00:15:12.859051+08:00 | /experiment-bridge | M113_SOURCE_REVIEW_20261007_001512.md | implementation | Fresh same-family provisional source PASS after concrete grouping fix; 152-label binding and actual495-row CPU reporting; no SSH/GPU |
+| 2026-10-07T00:15:12.859051+08:00 | /experiment-bridge | M113_SOURCE_REVIEW.json | implementation | Fresh same-family provisional source PASS after concrete grouping fix; 152-label binding and actual495-row CPU reporting; no SSH/GPU |
+| 2026-10-07T00:15:12.859051+08:00 | /experiment-bridge | M113_SOURCE_REVIEW.md | implementation | Fresh same-family provisional source PASS after concrete grouping fix; 152-label binding and actual495-row CPU reporting; no SSH/GPU |

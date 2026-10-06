@@ -1,0 +1,74 @@
+{
+  "status": "complete_submitted_human_initialization_import",
+  "observed_at": "2026-10-07T00:04:46.110096+08:00",
+  "total": 2047,
+  "confirmed": 2047,
+  "sources": [
+    {
+      "path": "data/source_human_reviews_20261007/rgbd_depthtrack_gb_152_review.csv",
+      "sha256": "0bf3617f9c9d7565190ce88b5f2acf04548ff077aea27945eee873f1e7ebbea8",
+      "bytes": 166987,
+      "dataset": "depthtrack",
+      "count": 152
+    },
+    {
+      "path": "data/source_human_reviews_20261007/rgbd_depthtrack_test_gb_50_review.csv",
+      "sha256": "6ccfab037bc24ca44245bb88739a77bf668f931283da12cb18e37402d0a0443a",
+      "bytes": 82321,
+      "dataset": "depthtrack_test",
+      "count": 50
+    },
+    {
+      "path": "data/source_human_reviews_20261007/rgbd_cdtb_gb_80_review.csv",
+      "sha256": "dea42aa507134894bd3e267672b2a69f662a1d26ecd959406257e4b2e5895381",
+      "bytes": 56645,
+      "dataset": "cdtb",
+      "count": 80
+    },
+    {
+      "path": "data/source_human_reviews_20261007/rgbd_vot_gb_1765_review.csv",
+      "sha256": "3af4dc7a2d26a6484508b1cf37c7cc4cf33a7657e983c6c7c71f9b40abb52e1f",
+      "bytes": 1063660,
+      "dataset": "vot",
+      "count": 1765
+    }
+  ],
+  "datasets": {
+    "depthtrack": {
+      "count": 152,
+      "confirmed": 152,
+      "review_round": "20261006",
+      "status": {
+        "conflicting": 151,
+        "supported": 1
+      }
+    },
+    "depthtrack_test": {
+      "count": 50,
+      "confirmed": 50,
+      "review_round": "20261006",
+      "status": {
+        "conflicting": 50
+      }
+    },
+    "cdtb": {
+      "count": 80,
+      "confirmed": 80,
+      "review_round": "initial",
+      "status": {
+        "conflicting": 80
+      }
+    },
+    "vot": {
+      "count": 1765,
+      "confirmed": 1765,
+      "review_round": "initial",
+      "status": {
+        "conflicting": 1765
+      }
+    }
+  },
+  "old_depthtrack_round_used": false,
+  "training_only_depthtrack_train": true,
+  "human_status_not_assumed_to_measure_generator_accuracy": true
+}

@@ -23,10 +23,10 @@ original generated description alongside the model's proposed category,
 initially supported attributes, uncertainty and separate later-frame notes.
 The source files are hashed in `data/model_review_receipt.json`;
 `data/gpt_initial_reviews.csv` is the normalized downloadable initial-review table.
-DepthTrack Train and Test use the supplied 2026-10-06 GPT re-review. Their 202
-current-round human decisions start pending, and previous DepthTrack human
-decisions are not used. CDTB/VOT include the user's 1,845 submitted human records
-under reviewer `gb`; the uploaded status values are retained exactly. GPT opinions
+DepthTrack Train and Test use the supplied 2026-10-06 GPT re-review and the user's
+new 20261006 human round. All four groups now include 2,047 submitted human
+records under reviewer `gb`; previous DepthTrack human decisions are not used.
+The uploaded status values and confirmed categories are retained exactly. GPT opinions
 are not promoted to human confirmation. Test50 has no supplied original caption,
 so its review concerns the GPT proposal rather than an unavailable old caption.
 Original case/media bindings are retained.
@@ -49,6 +49,14 @@ Only DepthTrack Train review may inform future training. CDTB and VOT review is
 for input auditing and error analysis; its labels and later frames must not
 enter training or model selection. Inference descriptions use only each legal
 initialization observation.
+
+The user's 2026-10-07 protocol requires human-confirmed initialization text for
+future training and inference. Train's confirmed category and stable attributes
+are training inputs; Test/CDTB/VOT records remain external initialization inputs.
+Sequence-name prefixes are review clues and never silently replace the submitted
+category. `import_confirmed_human_reviews.py` imports the submitted CSVs while
+preserving the original GPT proposals and media. Source records and coverage are
+in `HUMAN_REVIEW_IMPORT_20261007.json`.
 
 `build_assets.py` reads the frozen bfloat16 CDTB/VOT generation plans and
 records, verifies the record-file hash and each image binding, then makes

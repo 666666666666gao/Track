@@ -1,0 +1,132 @@
+{
+  "verdict": "PASS",
+  "blocking": [],
+  "nonblocking": [],
+  "source_sha256": {
+    "prepare_human_initialization_labels.py": "368240abc467a64ed74ce80ed22654441594509bbc9f25af61c76d7616cf80a4",
+    "prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+    "run_m113_human_pair.py": "04927cfe96487e20d1e417de2491290744878e4bb79727727509e513c1cfdc38",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "prepare_train_states.py": "cceb53710cdbde8350000c25d6f0ed25b490e4084022b37c76062315ad641c79",
+    "M113_HUMAN_INITIALIZATION_PLAN.md": "edff9d71fa534b894ecf5e3afcf11be19dbb3aa5ae2e02c1bb2f07c992db84a9"
+  },
+  "private_transport_sha256": {
+    "deploy_and_launch_m113.py": "9b22e4beaf1dbfbce497c9be575737a21874f13f88626dbbdefb9dbc808fae59"
+  },
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "max",
+  "checked_at": "2026-10-07T00:15:12.859051+08:00",
+  "scope": "Fresh source-only review and bounded local stdlib checks; no remote execution or neural inference/training.",
+  "resolved_findings": [
+    {
+      "id": "B1",
+      "file": "train_m113_human_initialization.py",
+      "line": 17,
+      "resolution": "List membership replaces list/string equality. Exact current function passes actual stored 495-row M110 inputs and inclusive rescue/harm boundary rows.",
+      "original_failure_evidence": "M113_SOURCE_REVIEW_INITIAL_FAIL_20261007_001512.json"
+    }
+  ],
+  "checks": [
+    {
+      "name": "human_initialization_binding",
+      "status": "PASS",
+      "evidence": [
+        "Independently read the actual rgbd_depthtrack_gb_152_review.csv, docs/review_rgbd/data/depthtrack.json, legacy m107_weak_inputs/weak_labels.json, and private human_train_labels.json.",
+        "All 152 distinct audit IDs, sequences, anchor numbers, and initialization frame 00000001 match; compiled order is ascending anchor_number.",
+        "Every source row is depthtrack, human_confirmed=true, review_round=20261006, review_subject=gpt_proposal; human confirmed_category overrides model/provisional fields.",
+        "All compiled phrases equal stripped confirmed_category plus the first four nonempty pipe-separated stable_attributes in source order: 704 phrases and 9 omitted attributes.",
+        "Literal split values are fit and development: original 130/22 sequence partition preserved; actual prior 2544 fit and 495 development row keys map to these same partitions.",
+        "Compiler reads the old manifest only for initial sequence/split. It does not compile uncertain_attributes, note, model/provisional/context/later-frame fields or candidates; no Test/CDTB/VOT rows enter the training labels."
+      ]
+    },
+    {
+      "name": "matched_semantic_pair",
+      "status": "PASS",
+      "evidence": [
+        "run_m113_human_pair.py maps GPU0 to human_text and GPU1 to generic; both use the same bank, labels, cache, contexts, origins, fixed M101 parent, seed2027, AdamW lr3e-4, batch64, and12epochs.",
+        "Generic repeats the CLIP object vector only in the identical valid slots; Empty uses the empty vector with the same mask. Human condition uses the current human bank despite the inherited internal helper mode name weak_text.",
+        "Reviewed source parameter arithmetic is49344+320+16640+16640+8451+4096+192=95683; runtime also asserts the optimized count.",
+        "Both load the same fixed M101 checkpoint and clear semantic/phrase readouts; source parent digest matches the stored M101 result, and all495 stored M110 Empty selections equal the M101 development selections.",
+        "The optimized loss is only IoU localization BCE plus native_candidate_preservation; no candidate weak rank, identity labels, or current-candidate support/conflict/unknown CE is accessed."
+      ]
+    },
+    {
+      "name": "frozen_parent_and_runtime_gates",
+      "status": "PASS_SOURCE_ONLY",
+      "evidence": [
+        "Only TRAIN_PREFIXES require gradients; all other parameters and every buffer are captured and checked with torch.equal. Frozen parameters must have no gradient.",
+        "The visual path depends on frozen projection/roles/modality/position/visual_read/geometry/candidate_read/selection/quality; semantic branches enter through full-minus-empty residuals. This model has LayerNorm and zero-default attention dropout, no updating running-stat buffers.",
+        "snapshot evaluates all2544fit+495development states, requires Empty selection logits exactly equal visual logits, and compares all scores and quality logits before/after with torch.equal.",
+        "Each3-step sanity checks finite loss/gradients and nonzero final evidence.text and semantic gradients, then frozen parameters/buffers and full Empty equivalence.",
+        "The driver requires both actual sanity exits0 and accepted3-step receipts before launching full training; each full arm must record480updates. No automatic retry or M112 call exists.",
+        "Only final.pt is written after training; the saved state_dict is reloaded and every tensor compared exactly. No development-based checkpoint or seed selection."
+      ]
+    },
+    {
+      "name": "metrics_and_reporting",
+      "status": "PASS",
+      "evidence": [
+        "GT lineage is prepare_train_states.py:69-105 groundtruth.txt -> valid current GT; load_inputs recomputes candidate IoU against label.current; evaluate indexes that IoU using actual model selection. Model outputs are not metric targets.",
+        "Final own-arm fit reporting and all three development content conditions (Empty/generic/human_text) persist per-event selections and GT IoUs.",
+        "Exact corrected paired_vs_empty executed locally on actual existing M110 generic/Empty rows: all495, healthy264, transition127; all arithmetic matches direct calculations.",
+        "Two inclusive threshold boundary examples produce rescue1/harm1 and zero mean delta in every group. These are reporter checks, not new M113 neural results.",
+        "Each final compares generic and human_text against its own Empty; rescue is Empty<=0.1 to condition>=0.5, harm is the reverse. Plan states these definitions."
+      ]
+    },
+    {
+      "name": "transport_and_plan",
+      "status": "PASS_SOURCE_ONLY",
+      "evidence": [
+        "Private transport targets connect.nmb2.seetacloud.com:43811 and /home/SUTrack_RGBD_L with the existing sttrack Python; credentials are read from stdin, not embedded.",
+        "It requires PASS/WARN with no blocking and exact existing reviewed source/private-transport hashes before connecting; existing remote dependency bytes must match.",
+        "Absent output/private directories and controller_launch.json guard the one launch; the controller uses exist_ok=False output creation and starts only the M113 pair.",
+        "Remote master is read and must be an exact LF-normalized prefix of the byte-identical repo/Desktop master extension before overwrite; uploaded master/source/labels are read back byte-equal.",
+        "The four approved CSVs are archived privately, but only human_train_labels.json is passed to the trainer. No generator or M112 launch is present.",
+        "Plan explicitly distinguishes initialization human confirmation from current-candidate identity/phrase labels; M112 remains unexecuted under this plan.",
+        "Plan discloses human review of Train later frames as offline supervision and limits the result to fixed Train states. It does not claim recursive or three-benchmark acceptance."
+      ]
+    },
+    {
+      "name": "syntax",
+      "status": "PASS",
+      "evidence": [
+        "13 reviewed public Python files, private transport, and all3 embedded remote scripts parse with Python3.8 grammar."
+      ]
+    }
+  ],
+  "limitations": [
+    "No SSH, installation, cleanup, CLIP encoding, neural forward, GPU sanity, optimizer update, or M113 metric execution by this reviewer.",
+    "The remote checkpoint/cache binaries and raw dataset GT were not reread. GT use is verified through the actual source chain; local existing receipts/rows support schema, partition, parent selection and reporter checks.",
+    "Actual GPU memory use, runtime import compatibility, finite/nonzero gradients, all3039 Empty equality, frozen tensor/buffer equality, and final tensor roundtrip await the mandated real runtime gates.",
+    "Human-confirmed initial text remains extra offline initialization supervision; it is not current-candidate identity supervision or a first-frame-only automatic annotation result.",
+    "Fixed-state development evidence cannot establish recursive tracking or DepthTrack/CDTB/VOT official metrics."
+  ],
+  "executed_checks": {
+    "label_rows": 152,
+    "prior_fit_rows": 2544,
+    "prior_development_rows": 495,
+    "paired_groups": {
+      "all": 495,
+      "healthy": 264,
+      "transition": 127
+    },
+    "boundary_rows": 2,
+    "public_python_ast_files": 13,
+    "embedded_remote_ast_scripts": 3,
+    "ssh_calls": 0,
+    "gpu_runs": 0,
+    "optimizer_updates": 0,
+    "new_M113_neural_metrics": 0
+  },
+  "source_mutated_by_reviewer": false
+}
