@@ -1,0 +1,370 @@
+{
+  "verdict": "PASS",
+  "blocking": [],
+  "non_blocking": [],
+  "conclusion": "当前输入绑定、文本编码、统一runtime、OPE与TraX入口及私有CPU绑定transport的审查范围内未发现真实源码阻断。仅放行当前canonical labels的一次CPU绑定；不代表绑定已经执行，也不放行/证明完整官方suite、GPU编码、模型推理或结果。",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "review_scope": "source-only",
+  "reviewer": {
+    "agent": "/root/m122_official_source_review",
+    "context": "fresh delegated source review; direct artifact reads",
+    "requested_model_by_installed_policy": "gpt-6-astra",
+    "requested_reasoning_effort_by_installed_policy": "max",
+    "actual_backend_independently_verified": false,
+    "actual_model_effort_attestation": "UNATTESTED; requested routing is not independent backend proof"
+  },
+  "runtime_scope": {
+    "torch_imports": 0,
+    "model_loads": 0,
+    "neural_forwards": 0,
+    "optimizer_updates": 0,
+    "ssh_connections": 0,
+    "network_calls": 0,
+    "gpu_queries": 0,
+    "package_installations": 0,
+    "experiment_launches": 0,
+    "training_process_operations": 0,
+    "implementation_edits": 0,
+    "review_artifacts_only": true
+  },
+  "release_scope": {
+    "allowed_next_action": "Single CPU-only legal initialization binding against canonical labels after ordinary static source/label synchronization.",
+    "canonical_labels_sha256": "6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f",
+    "allowed_to_claim_complete_official_suite": false,
+    "CPU_binding_executed_by_reviewer": false,
+    "GPU_encoder_executed_by_reviewer": false
+  },
+  "checks": [
+    {
+      "id": "confirmed_external_text_provenance",
+      "status": "PASS_SOURCE_AND_STATIC_METADATA",
+      "refs": [
+        "prepare_m122_external_human_labels.py:15",
+        "prepare_m122_external_human_labels.py:29",
+        "encode_m122_official_human_text.py:17"
+      ],
+      "evidence": "逐条核对当前 CSV、网站人审字段和 canonical labels：Test50、CDTB80、VOT1765 共1895条全部一致，第一槽为确认类别，之后最多四个确认稳定属性；未从 sequence 前缀、模型建议、uncertain/context/后帧备注生成短语。VOT88/backpack、1006/cup 与新 CSV b83f0b42…一致，外部类别全非空。Train152 CSV另行只复核确认/非空计数，四数据集合计2047。"
+    },
+    {
+      "id": "canonical_site_serialization_provenance",
+      "status": "PASS_STATIC_METADATA",
+      "refs": [
+        ".aris/m122_full_causal_20261007/EXTERNAL_PROVENANCE_REFRESH.json"
+      ],
+      "evidence": "原 labels 所记 VOT site SHA 34b8edae…精确对应当前网站 JSON 的 CRLF 字节版本；当前 LF SHA 056ed502…，不是人审内容变更。执行者已保留旧 labels 并刷新 canonical labels 的该来源摘要；本审查独立确认全部1895行数据对象完全相同，当前三份CSV/网站SHA均与 canonical labels 相等。当前 labels SHA 6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f。"
+    },
+    {
+      "id": "legal_initialization_key_and_membership",
+      "status": "PASS_SOURCE_AND_STATIC_METADATA",
+      "refs": [
+        "bind_m122_official_initializations.py:13",
+        "bind_m122_official_initializations.py:23",
+        "bind_m122_official_initializations.py:28",
+        "bind_m122_official_initializations.py:39",
+        "m122_official_runtime.py:39"
+      ],
+      "evidence": "binder 锁定原 OPE inputs 和 VOT initialization plan 的实际 SHA。OPE 使用原始 xywh 和第1帧 JPEG；CDTB再匹配人审 review_id。VOT 使用已冻结 wire xywh，不重做坐标修正，键为 RGB SHA 原始32字节加 >4d 后的SHA。以归档元数据独立重算1765个VOT键全部一致，序列/帧身份和四shard anchor集合一致（867 forward、898 backward、127序列）。OPE50/76373及80/101956成员/预算一致。CDTB与VOT的实际 review_id 交集为0，不报告虚构的跨数据集冲突。真实RGB字节、CDTB实际key和1895全局唯一性由待运行的CPU binder断言验证，本审查未打开原图片。"
+    },
+    {
+      "id": "CPU_binding_transport_boundary",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "bind_m122_official_initializations.py:2",
+        "bind_m122_official_initializations.py:32",
+        "bind_external_inputs.py:8",
+        "bind_external_inputs.py:15",
+        "bind_external_inputs.py:19"
+      ],
+      "evidence": "binder仅使用stdlib，打开标签/冻结初始化元数据以及合法初始化RGB，未打开后续GT或depth、未import Torch/CLIP。私有transport先要求本审查PASS且source/自身SHA完全一致，采用已知host key、stdin凭据和逐参数shlex.quote，只上传该CPU binder并逐字节核对远端源码/当前labels，执行一次绑定后回收私有产物与聚合回执；无NN、GPU/训练进度查询、后台job、自动重试或训练进程操作。此transport未由审查者运行。"
+    },
+    {
+      "id": "frozen_text_encoding_and_bank_identity",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "encode_m122_official_human_text.py:13",
+        "encode_m122_official_human_text.py:19",
+        "encode_m122_official_human_text.py:23",
+        "m122_official_runtime.py:29",
+        "prepare_m113_human_text.py:19"
+      ],
+      "evidence": "与Train采用同一指定ViT-L-14权重b8cca3fd…、float32/eval/no_grad、batch32、tokenize(truncate=False)；直接编码已绑定phrases，不翻译、不补词。现有1895行产生822种唯一短语（含空串）；编码器检查finite768维并生成(1895,5,768)和bool(1895,5)，类别mask全true。运行时核对bank格式、人审标记、1895唯一keys、tensor形状/finite以及binding和encoder权重SHA；plan还核对bank文件本身SHA。实际tokenization/编码与bank产物尚未执行，本结论不是bank运行验收。"
+    },
+    {
+      "id": "final_training_identity_gate",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "m122_official_runtime.py:7",
+        "m122_official_runtime.py:15",
+        "m122_official_runtime.py:36",
+        "train_m122_full_causal.py:122",
+        "train_m122_full_causal.py:136"
+      ],
+      "evidence": "checked_plan要求bundle SHA/schema、所列source字节及final/training_result/native_checkpoint/clip_weight SHA一致；training_result必须complete_M122_full152_training、659406 track_calls、456 sequence_runs、3 epochs、seed2027、冻结前后相等且final roundtrip相等，precision_weight与final SHA对应bundle。659406正确，不是656406。decoder用strict=True加载该final。最终bundle的实际来源完备性及两个臂各自跨三数据集同final仍需后续builder/scheduler审查，当前无bundle/final完成证明。"
+    },
+    {
+      "id": "one_score_geometry_and_template_runtime",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "m122_official_runtime.py:24",
+        "run_m122_official.py:17",
+        "run_m122_official.py:63",
+        "full_dense_tracker.py:88",
+        "full_dense_tracker.py:104",
+        "dense_target_decoder.py:114"
+      ],
+      "evidence": "OPE与TraX均调用OfficialDenseTracker→同一FullDenseTracker/DenseTargetDecoder。选中位置的最终double像素框、response分数、quality和feature使用同一selected_index；提交后的state/query推动下一crop。模板使用该同一位置未适配native Hann response，沿用50帧/.75阈值和128/2.0 crop，保留永久首模板；没有用新support×quality分数套旧模板阈值或另一个候选峰值。旧runtime/native相关字节均与已有M122审查一致。"
+    },
+    {
+      "id": "sequence_reset_and_GT_boundary",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "full_dense_tracker.py:75",
+        "full_dense_tracker.py:117",
+        "run_m122_official.py:21",
+        "run_m122_official.py:48",
+        "run_m122_official.py:67"
+      ],
+      "evidence": "每个合法初始化重置native template/state/frame_id/query及初始参照、固定短语；track路径no_grad，只输入当前RGB-D，不接收GT，不在线修改文字/优化器。OPE inference循环仅读取RGB/depth；GT仅在单独ope_analyze且完整prediction receipt存在、各结果SHA复核后打开。TraX只接收协议合法初始化框及后续图像，后续submit同runtime输出。人审使用多帧/视频辅助已在计划中如实披露；不能据此声称纯首帧自动caption协议。"
+    },
+    {
+      "id": "OPE_sealing_and_locked_official_metric",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "run_m122_official.py:28",
+        "run_m122_official.py:36",
+        "run_m122_official.py:43",
+        "run_m122_official.py:53",
+        "native_ope/source_snapshots/depthtrack_pr.py:63"
+      ],
+      "evidence": "OPE预测验证完整帧数、框/分数finite和正尺寸，以六小数写框及_all_scores并复读检查舍入；全部序列结束后检查冻结digest并重新检查plan/bundle，再写完整SHA回执。分析先复核plan、final、bank、case顺序/帧数、结果SHA和GT SHA，随后按锁定metric源码05879f2e…调用100阈值宏平均P/R/F。已直接读取并校验该本地metric原始源码，调用签名和返回sequences/frames匹配；未运行metric、未重算任何M122结果。"
+    },
+    {
+      "id": "TraX_bridge_and_remaining_suite_scope",
+      "status": "PASS_SOURCE_WITH_EXPLICIT_PENDING_INTEGRATION",
+      "refs": [
+        "run_m122_official.py:62",
+        "full152_paired_20260925/evaluation/interface/m39_vot_bridge.py:24",
+        "full152_paired_20260925/evaluation/interface/m39_vot_bridge.py:74",
+        "M122_OFFICIAL_EVALUATION_PLAN.md:13"
+      ],
+      "evidence": "bridge通过bundle['vot_bridge_path']显式spec_from_file_location加载，已核对canonical full152_paired_20260925/evaluation/interface/m39_vot_bridge.py SHA230acf10…；未错误地假定D目录中存在同名模块。wrapper接收RGB-D初始化wire rectangle并逐帧report bbox/confidence。当前entry本身不是VOT suite controller；四shard冻结划分、环境/timeout、完整5295结果文件合并、官方EAO/ACC/ROB分析和同final验收尚待准备/审查，因此不放行完整正式评测或宣称其已ready。"
+    },
+    {
+      "id": "source_import_closure_and_archived_native",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "local_import_graph",
+        "source_sha256",
+        "native_source_sha256",
+        "external_source_sha256"
+      ],
+      "evidence": "独立AST展开10个官方入口本地Python传递依赖；其top-level只定义类/函数与安全常量，不导入旧trainer或读取历史缓存。另绑定26个D源码/计划文件（24个Python3.8 AST通过），其中先前训练审查19个source/plan摘要均未变化；对于额外历史训练链仅复用原审查并验证字节，未冒称重新审查所有历史算法。private transport、2个外部Python源码、6个归档native Python也通过3.8 AST；7份native/YAML原字节与已有审查一致。Torch/CLIP/OpenCV/TraX/VOT包内部与实际远端解析环境未由此次执行验证。"
+    },
+    {
+      "id": "claim_boundary",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "M122_OFFICIAL_EVALUATION_PLAN.md:3",
+        "M122_OFFICIAL_EVALUATION_PLAN.md:7",
+        "M122_OFFICIAL_EVALUATION_PLAN.md:13"
+      ],
+      "evidence": "计划明确当前仅准备输入/编码/统一runtime/OPE+TraX入口；未宣称已生成M122正式预测、metrics、full complete、三模块贡献或联合达标。完整目标仍需每个固定final分别完成Test50/CDTB80/VOT127-1765全部九项。此次SOURCE PASS只放行当前canonical labels的一次CPU绑定准备步骤，不提前执行encoder或占用当前训练卡。"
+    }
+  ],
+  "limitations": [
+    "只检查本地源码、AST、原始归档元数据和当前人审CSV/网站文本；没有SSH、网络、原图读取、Torch导入、模型执行或GPU/训练状态查询。",
+    "真正1895个初始化RGB字节及全部key唯一性仍须CPU binder执行成功；其中1765个VOT key本次只从已保存image_sha256+wire bbox独立重算，不能称本次重新hash原图。",
+    "文本编码未运行，没有已生成/验收的官方bank；实际tokenization、模型加载、形状/finite检查和绑定SHA需由编码产物证实。",
+    "最终training_result/final/bundle及两个臂的OPE case计划尚未验收。后续bundle必须包含本次所审runtime闭包、native配置与canonical bridge/metric，不能把任意source map通过当作完整部署验证。",
+    "VOT完整四shard调度、协议/超时配置、失败确认、5295文件合并及官方分析尚待实现/审查；单TraX入口PASS不代表完整suite ready。",
+    "当前远端路径、包版本/导入解析、TraX握手和运行时数值行为未在本次运行验证。无需为此加入无证据的fallback/兼容层。",
+    "已有M122训练链19个源码/计划仅确认与先前PASS审查字节相同并读取本次相关final/runtime代码；本次没有重新执行训练、重放历史sanity或查询正在运行的训练。",
+    "该审查具有新上下文、同模型家族的独立审查身份，结论为provisional；实际后台模型/effort没有独立证明，不能声称跨家族接受。"
+  ],
+  "created_at": "2026-10-07T13:38:18.784277+08:00",
+  "source_sha256": {
+    "M122_FULL_CAUSAL_PLAN.md": "8f7a300dc6e37cd3ee3f9989593daaa516b1e7a1e8ef7255a125df67cdb82943",
+    "M122_OFFICIAL_EVALUATION_PLAN.md": "6515dc143fccbcff6b0466f941fbfc4d0ef293000552f27dfb248c508a858ba3",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "bind_m122_official_initializations.py": "a617e1161b252125de5a0237248e6eacafc3f7ac19798602c58c571f485271a1",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "dense_region_decoder.py": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "dense_region_encoding.py": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "dense_target_decoder.py": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "encode_m122_official_human_text.py": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+    "full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "m121_dense_inputs.py": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+    "m122_official_runtime.py": "a1fb1e04cf2f5394a96ed1fb1da6142f56f6dfa6477ec047e34c5b9d0b5b3e7b",
+    "prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "prepare_m122_external_human_labels.py": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4",
+    "region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "run_m122_full_causal.py": "6f13ab6905166faf7cd1c80f0e2a260f42d048d218fc2436c4d2dd2c4161c9da",
+    "run_m122_official.py": "d0eeacba480a19ccb717b36b7cf0d7d3fe3cb5395e7bf19d19b37868dd3354f9",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+    "train_m121_dense_target.py": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "train_m122_full_causal.py": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891"
+  },
+  "source_binding_note": "All four official Python entries, their complete 10-module D import closure, external-label preparer, Train encoder comparison source, official plan, and unchanged prior M122 training source/plan bindings are retained. Prior-chain hash equality is not presented as a fresh full semantic re-review.",
+  "private_transport_sha256": {
+    "bind_external_inputs.py": "8eb76d4705f766f9de2eceea989be458fc192624e1f8f2b183fc178991626b88"
+  },
+  "native_source_sha256": {
+    "lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "lib/utils/box_ops.py": "cee9d309a9c4a6c5f00fab575719bc7bf8d865127c91b10d4fb233996a111fbc",
+    "lib/train/dataset/depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "lib/models/layers/head.py": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344"
+  },
+  "native_archive_paths": {
+    "lib/models/sttrack/sttrack.py": ".aris/m120_native_grid_20261007/native_source/lib/models/sttrack/sttrack.py",
+    "lib/test/tracker/sttrack.py": ".aris/m120_native_grid_20261007/native_source/lib/test/tracker/sttrack.py",
+    "lib/train/data/processing_utils.py": ".aris/m120_native_grid_20261007/native_source/lib/train/data/processing_utils.py",
+    "lib/utils/box_ops.py": ".aris/m122_full_causal_20261007/native_source/lib/utils/box_ops.py",
+    "lib/train/dataset/depth_utils.py": ".aris/m122_full_causal_20261007/native_source/lib/train/dataset/depth_utils.py",
+    "lib/models/layers/head.py": ".aris/m121_dense_target_20261007/native_head.py",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": ".aris/m120_native_grid_20261007/native_source/experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml"
+  },
+  "external_source_sha256": {
+    "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/evaluation/interface/m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316",
+    "projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+  },
+  "evidence_sha256": {
+    ".aris/m122_full_causal_20261007/formal_input_sources/cdtb_metric_reference.json": "a00f5db6e853dd9ac59ef2e174ed7a06e991701e61bfd85badf29ae273c1b731",
+    ".aris/m122_full_causal_20261007/formal_input_sources/depthtrack_metric_reference.json": "bd89f02b8be95699cc845dae1a2473cc553a02771ee94093b84504878fa3892d",
+    ".aris/m122_full_causal_20261007/formal_input_sources/ope_inputs.json": "61541e35f7b9e3c40427df79067fc0be20b8622cf275e93025e4a1547bf68601",
+    ".aris/m122_full_causal_20261007/formal_input_sources/ope_spec.json": "e623ef63de89da423fc12b877f58d56219f88ef9f1232f20de9e42fb6c8665e1",
+    ".aris/m122_full_causal_20261007/formal_input_sources/SOURCE_RECEIPT.json": "c756a04e06e439e572a598f73d1484739fcf2e4f75d2950869b1065189cf78d0",
+    ".aris/m122_full_causal_20261007/formal_input_sources/vot_initialization_plan.json": "b4c23250a9363475746cb92023c1b67a39219f2babe95c6a98ea1c40109ea568",
+    ".aris/m122_full_causal_20261007/formal_input_sources/vot_shard_manifest.json": "8e76256f1c7c135a65a1b262506356769b59557db60eb83bc21ef1392890dd01",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_depthtrack_test_gb_50_review.csv": "6ccfab037bc24ca44245bb88739a77bf668f931283da12cb18e37402d0a0443a",
+    "docs/review_rgbd/data/depthtrack_test.json": "74262c1ae48ecd69e6a4be0823954e3988a294d730b482c700e90aa76a3f354b",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_cdtb_gb_80_review.csv": "dea42aa507134894bd3e267672b2a69f662a1d26ecd959406257e4b2e5895381",
+    "docs/review_rgbd/data/cdtb.json": "6c470761a7eb9eb821240c9fbf51cf9be163565a90387904323b1bf5c9cacf53",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_vot_gb_1765_review.csv": "b83f0b4240865d609921c1bf434621577bbe35ace4aceaa0f1242c981445cb9c",
+    "docs/review_rgbd/data/vot.json": "056ed502111950fc99daa89bda7f35cb2d9dd2e11a6587f1414bd5fc5ffd9208",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_depthtrack_gb_152_review.csv": "0bf3617f9c9d7565190ce88b5f2acf04548ff077aea27945eee873f1e7ebbea8",
+    ".aris/m122_full_causal_20261007/external_human_labels.json": "6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f",
+    ".aris/m122_full_causal_20261007/external_human_labels_before_site_LF_refresh.json": "4f920bac2fbca0b47bda20319b590f574d8cbd38d824b8dba3c001fb28621b8a",
+    ".aris/m122_full_causal_20261007/EXTERNAL_PROVENANCE_REFRESH.json": "957be3dc5fbbe228efeb6f25753547f38beee9c17dd82d396485c8ca3fa51a61"
+  },
+  "local_import_graph": {
+    "bind_m122_official_initializations.py": [],
+    "encode_m122_official_human_text.py": [
+      "bind_m122_official_initializations.py"
+    ],
+    "m122_official_runtime.py": [
+      "bind_m122_official_initializations.py",
+      "dense_target_decoder.py",
+      "full_dense_tracker.py"
+    ],
+    "run_m122_official.py": [
+      "bind_m122_official_initializations.py",
+      "m122_official_runtime.py"
+    ],
+    "dense_target_decoder.py": [
+      "dense_region_decoder.py",
+      "instance_ab_prototype.py"
+    ],
+    "full_dense_tracker.py": [
+      "dense_region_encoding.py",
+      "dense_target_decoder.py",
+      "region_patch_evidence.py"
+    ],
+    "dense_region_decoder.py": [
+      "instance_ab_prototype.py"
+    ],
+    "instance_ab_prototype.py": [],
+    "dense_region_encoding.py": [],
+    "region_patch_evidence.py": [
+      "instance_ab_prototype.py"
+    ]
+  },
+  "prior_review": {
+    "file": "M122_SOURCE_REVIEW.json",
+    "sha256": "3857584801fea4f40ee09e890585eaa1a0ee083f8eb140b11c7088ee166b8ec6",
+    "prior_source_files_byte_identical": 19
+  },
+  "data_checks": {
+    "labels": {
+      "depthtrack_test": {
+        "rows": 50,
+        "sequences": 50,
+        "all_confirmed": true,
+        "empty_categories": 0,
+        "phrases_equal_confirmed_category_and_first_four_stable_attributes": true,
+        "phrase_slot_count": {
+          "3": 2,
+          "4": 22,
+          "5": 26
+        },
+        "frames": 76373
+      },
+      "cdtb": {
+        "rows": 80,
+        "sequences": 80,
+        "all_confirmed": true,
+        "empty_categories": 0,
+        "phrases_equal_confirmed_category_and_first_four_stable_attributes": true,
+        "phrase_slot_count": {
+          "3": 9,
+          "4": 29,
+          "5": 42
+        },
+        "frames": 101956
+      },
+      "vot": {
+        "rows": 1765,
+        "sequences": 127,
+        "all_confirmed": true,
+        "empty_categories": 0,
+        "phrases_equal_confirmed_category_and_first_four_stable_attributes": true,
+        "phrase_slot_count": {
+          "1": 2,
+          "2": 142,
+          "3": 609,
+          "4": 844,
+          "5": 168
+        }
+      }
+    },
+    "train_confirmed_nonempty_categories": 152,
+    "all_four_datasets_confirmed_nonempty_categories": 2047,
+    "external_rows": 1895,
+    "unique_phrases_including_empty": 822,
+    "vot_wire_key_recomputations": 1765,
+    "vot_shard_anchor_identity_matches": 1765,
+    "vot_sequences": 127,
+    "vot_directions": {
+      "forward": 867,
+      "backward": 898
+    },
+    "cdtb_vot_review_id_intersection": 0,
+    "vot88_category": "backpack",
+    "vot1006_category": "cup",
+    "canonical_label_refresh_preserves_all_rows": true,
+    "all_csv_and_current_site_hashes_exact": true,
+    "six_original_formal_input_metadata_receipts_exact": true,
+    "actual_initialization_image_bytes_opened": false
+  },
+  "verification": {
+    "interpreter": "C:\\Users\\gb\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\python.exe",
+    "python38_AST_D_modules": 24,
+    "official_local_import_closure_modules": 10,
+    "python38_AST_private_transport": 1,
+    "python38_AST_external_sources": 2,
+    "python38_AST_archived_native_sources": 6,
+    "prior_source_hashes_unchanged": 19,
+    "native_source_hashes_exact": 7,
+    "neural_imports": 0,
+    "network_calls": 0
+  }
+}

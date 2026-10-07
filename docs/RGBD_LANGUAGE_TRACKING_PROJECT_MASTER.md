@@ -25122,3 +25122,36 @@ sanity实际混合帧成本提示此前12–21小时估计可能偏低，暂按�
 只有外部VOT初始化输入修正，Train152人审bank、正在运行M122权重/源码/crop/query/template历史完全不变，不重启训练。网站本地源已更新，公开Pages仍须实际部署验证后才称上线。M122_EXTERNAL_INPUT_CORRECTION记录新旧SHA、用户确认和待编码状态。
 
 12:46:00既定静态补同步实际完成13份文档，repo/桌面/服务器当时master SHAee53a931815499aea63089ec6fb37a33e88b801682e024ce60da3d621c026320一致；同一次仅SFTP读取已保存的OPE50/80和VOT1765初始化plan/shard元数据，未执行NN或查询进度。新增本节的服务器同步另外记录，不能沿用旧SHA声称本节已同步。原NN首次小时观察仍唯一13:34:04.084256，原timer91037继续等待，当前无新训练成绩。
+
+
+### 5.359 2026-10-07：M122首小时实际训练进度、耗时修正与完整评测入口准备
+
+原observer91037按13:34:04节点只读取一次，在13:34:18.654131+08:00返回原controller24539 alive/非终态，closed0。两卡均4206MiB，利用率59%/58%，没有查询温度/功率。原snapshot逐字节验证并另存m122_hour_observation_20261007_133418，早期sanity/start记录保留，尚未命名completed。
+
+| 完整自身历史训练 | GPU0 precision0 | GPU1 precision1 |
+|---|---:|---:|
+| 已完整结束首pass序列 | 20/152 | 23/152 |
+| 已完整序列跟踪调用 | 30855 | 33462 |
+| 累计优化次数 | 967 | 1049 |
+| 最近完整序列耗时 | 3569.061957秒 | 3561.052424秒 |
+| 三pass总耗时中心外推 | 21.187462小时 | 19.492918小时 |
+| 从该完整序列节点剩余外推 | 20.196056小时 | 18.503737小时 |
+
+上表只统计已经完整写入sequence_log的序列，不将正在执行的下一条计为完成。当前处于第一pass，全部预算各659406调用/456序列运行；三pass尚未结束，无新M122 final或正式指标。按较慢版本中心预计2026-10-08约09:45，暂保留约两小时余量；数据顺序、状态差异与I/O会影响速度，不保证固定结束时刻。三数据集评测另外计时。
+
+唯一下一原observer76464已实际等待14:34:18.654131+08:00，之前不NN/GPU轮询或启动重复controller。长训练仍按小时监控，接近预估完成才180–300秒。训练从共同人审final暖启动，当前GT动作后损失、无后续GT重置、自身crop/query/template历史及相同final验收要求不变。
+
+已准备bind_m122_official_initializations/encode_m122_official_human_text/m122_official_runtime/run_m122_official与M122_OFFICIAL_EVALUATION_PLAN。CPU绑定只读合法初始化图片，核对实际RGB字节与OPE原bbox/VOT已观测wire bbox；Test50/CDTB80/VOT1765共享1895条人审输入。独立源码审查正在执行，未执行绑定器/编码器、新OPE/VOT或GPU模型。统一runtime直接调用当前FullDenseTracker，OPE先封存所有预测再打开后续GT计分；TraX显式使用已有canonical bridge。完整final bundle、VOT shard调度/合并/官方分析仍须继续准备验收，不能声称整套验证已经就绪或完成。
+
+首轮评测SOURCE审查发现VOT网站来源SHA序列化差异：标签manifest是在两行修正后、Git目录eol=lf规范化之前生成，CRLF→LF没有任何类别/属性/identity字段变化。独立字节变换精确复现原SHA；现仅重生成canonical来源SHA，1895所有人审行完全相同。旧labels SHA4f920bac2fbca0b47bda20319b590f574d8cbd38d824b8dba3c001fb28621b8a留存，新SHA6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f。待静态同步后才实际CPU绑定；不改Trainbank或正在运行的十九份核心源码。用户确认的两类已实际Pages37574925334成功部署，六HTTP原字节核对，当前2047类别均非空；此前空值是历史阶段，不再用于正式输入。
+
+
+### 5.360 2026-10-07：实际人审初始化绑定完成，36组跨数据集相同观测已正确分离
+
+第一次官方准备静态同步TCP连接超时，未执行模型或改训练；保持原失败，约三分钟后只重做静态文件传输，9文件实际成功、master与Desktop/服务器同SHA a4bd4c74bb8db3a7bdc0a299e5690dab76329d23ecfe6679e2c68c35b6a115eb。之后首个实际CPU绑定器在1895唯一键断言失败，没有生成bank或启动推理。只读CPU诊断发现DepthTrack Test与VOT有36组完全相同RGB字节和初始化框，1895记录实际只有1859个原始观测键；不是空类别、图像损坏或串行错配。逐组原始证据保留。
+
+最小修正仅将bank查找键定义为dataset:observation_key，保留原始RGB/框观测键和每条用户审核文字；不跨数据集挑一种文字。独立SOURCE复审实际复算50条Test原始JPEG、1765 VOT归档RGB/wire框及CDTB80审查键，确认36组均Test↔VOT、各自短语不同，其中6组类别不同；1895个dataset键唯一、72次纯查找正确。仅binder两处和official runtime的dataset查找变更，编码器、OPE/TraX入口与19份运行中训练链不变。
+
+修正后一次CPU执行于14:05:36.683824+08:00真实exit0，1895合法初始化完整绑定：Test50/CDTB80/VOT1765，RGB bytes+精确协议框核验通过，未读取后续GT、模型执行0、训练/NN进度查询0。binding SHA3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e，binder4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a，canonical human labels6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f。用户确认VOT88 backpack、1006 cup继续生效，2047类别均非空，两条稳定属性未虚构补齐。
+
+完整final prepare、双GPU四分片/5295文件合并、官方VOT分析、六份成绩汇总与训练后排队源码已新建，正接受完整SOURCE复审，尚未部署队列、编码bank或执行正式推理。新队列要求原24539两臂3pass固定final及冻结/保存回读完成，初始CPU等待一小时、之后小时检查；不重启训练、不上传运行中核心，不按外部成绩选checkpoint。当前M122仍以13:34:18实际首小时记录为最后NN观察，唯一原observer76464仍等14:34:18；所有正式九项仍为空，目标ACTIVE_UNMET。

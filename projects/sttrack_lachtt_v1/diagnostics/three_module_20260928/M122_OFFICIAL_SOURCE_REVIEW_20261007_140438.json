@@ -1,0 +1,474 @@
+{
+  "verdict": "PASS",
+  "blocking": [],
+  "non_blocking": [],
+  "conclusion": "实际跨数据集碰撞修复正确；1895行经dataset命名空间保持各自人审输入且唯一。仅放行当前字节版本的一次修正后CPU绑定；GPU编码、final builder及完整官方suite仍未放行。",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "review_scope": "source-only plus local stdlib metadata and saved initialization-byte checks",
+  "reviewer": {
+    "agent": "/root/m122_binding_namespace_review",
+    "context": "fresh delegated source review; direct artifact reads",
+    "requested_model_by_installed_policy": "gpt-6-astra",
+    "requested_reasoning_effort_by_installed_policy": "max",
+    "actual_backend_independently_verified": false,
+    "actual_model_effort_attestation": "UNATTESTED; requested routing is not independent backend proof"
+  },
+  "runtime_scope": {
+    "torch_imports": 0,
+    "model_loads": 0,
+    "neural_forwards": 0,
+    "optimizer_updates": 0,
+    "ssh_connections": 0,
+    "network_calls": 0,
+    "gpu_queries": 0,
+    "neural_progress_queries": 0,
+    "package_installations": 0,
+    "experiment_launches": 0,
+    "training_process_operations": 0,
+    "implementation_edits": 0,
+    "review_artifacts_only": true,
+    "local_Test50_original_RGB_files_hashed": 50,
+    "pure_source_lookup_checks": 72
+  },
+  "release_scope": {
+    "allowed_next_action": "ONE corrected CPU-only legal initialization binding using the current pinned binder, unchanged private transport, canonical labels, and fixed 43811 known-host/stdin-credential route.",
+    "canonical_labels_sha256": "6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f",
+    "corrected_CPU_invocations_released": 1,
+    "CPU_binding_executed_by_reviewer": false,
+    "GPU_encoder_released": false,
+    "GPU_encoder_executed_by_reviewer": false,
+    "final_builder_released": false,
+    "complete_OPE_evaluation_released": false,
+    "complete_VOT_suite_released": false,
+    "allowed_to_claim_complete_official_suite": false
+  },
+  "checks": [
+    {
+      "id": "observed_collision_and_local_reproduction",
+      "status": "PASS_LOCAL_STDLIB",
+      "refs": [
+        "initialization_key_collision.json",
+        "M122_OFFICIAL_BINDING_COLLISION.json",
+        "bind_m122_official_initializations.py:49"
+      ],
+      "evidence": "独立读取50个Test原始首帧JPEG，逐一匹配原始收取receipt的SHA/大小/序列/框；以1765个VOT归档image_sha256+wire bbox重算键，CDTB80使用canonical review_id元数据。复得1895行、1859个raw observation keys、36组碰撞、1895个dataset keys。36组均恰为Test与VOT各1条；Test重新计算的RGB SHA与VOT保存SHA相等，>4d框字节相等。逐组核对私有诊断和公共摘要。该复算不冒称重新读取VOT/CDTB服务器原图。"
+    },
+    {
+      "id": "minimal_dataset_namespace_repair",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "bind_m122_official_initializations.py:35",
+        "bind_m122_official_initializations.py:37",
+        "bind_m122_official_initializations.py:47",
+        "m122_official_runtime.py:35",
+        "m122_official_runtime.py:41"
+      ],
+      "evidence": "与before_dataset_key_namespace及原133818审查逐字diff：binder仅在2处将bank key改为dataset+\":\"+原键并保存observation_key；原RGB SHA算法、>4d框、raw/wire坐标、review_id和整个人审row原样保留。runtime增加dataset合法值检查/保存，并用相同前缀查找。未增加alias、跨数据集替换、fallback、重新标注或GT输入。旧23个其余source/plan、全部19个训练source/plan字节相同。"
+    },
+    {
+      "id": "collision_label_and_runtime_index_preservation",
+      "status": "PASS_SOURCE_AND_LOCAL_METADATA_LOOKUP",
+      "refs": [
+        "encode_m122_official_human_text.py:23",
+        "encode_m122_official_human_text.py:27",
+        "m122_official_runtime.py:36",
+        "m122_official_runtime.py:40"
+      ],
+      "evidence": "36组碰撞的完整phrases全部不同，其中6组类别不同；不能合并或以一条替代另一条。encoder仍按binding rows顺序写tokens/mask/keys/datasets，1895个新key唯一。抽取当前源码的initialization_key和initialize两个纯函数，在已保存Test RGB摘要/真实框和记录sink上执行72次碰撞lookup，全部命中各自dataset行及原phrases；没有加载runtime类、Torch或模型。该检查是命名空间元数据验证，不是神经推理验收。"
+    },
+    {
+      "id": "confirmed_external_text_provenance",
+      "status": "PASS_SOURCE_AND_STATIC_METADATA",
+      "refs": [
+        "prepare_m122_external_human_labels.py:15",
+        "prepare_m122_external_human_labels.py:29",
+        ".aris/m122_full_causal_20261007/external_human_labels.json"
+      ],
+      "evidence": "重新逐行核对1895个canonical labels与三份最终CSV/网站人审字段；只编码confirmed_category及最多前四stable_attributes，顺序/omitted属性/人审标记/序列帧身份均一致。当前labels SHA6a1d128d…与旧审查字节相同；Train152另复核确认非空，总2047。共822种短语含空串。VOT88=backpack、1006=cup的用户更正来源仍是b83f0b42…CSV；不使用模型建议、名称前缀补词、uncertain/context或后帧备注。"
+    },
+    {
+      "id": "legal_initialization_and_protocol_membership",
+      "status": "PASS_SOURCE_AND_STATIC_METADATA",
+      "refs": [
+        "bind_m122_official_initializations.py:23",
+        "bind_m122_official_initializations.py:28",
+        "bind_m122_official_initializations.py:39"
+      ],
+      "evidence": "OPE输入SHA61541e35…及VOT plan SHA b4c23250…仍锁定。Test50/76373与CDTB80/101956成员/预算正确；OPE首帧raw xywh保持原值，CDTB仍要求原键等review_id。VOT仍验证实际RGB SHA、wire框键、序列/帧身份；1765个anchor与冻结四shard集合完全一致，127序列、867 forward/898 backward。dataset命名空间仅管理各自文字输入身份，不改变协议框或跟踪算法。"
+    },
+    {
+      "id": "CPU_binding_transport_boundary",
+      "status": "PASS_SOURCE",
+      "refs": [
+        ".aris/m122_full_causal_20261007/bind_external_inputs.py:8",
+        ".aris/m122_full_causal_20261007/bind_external_inputs.py:15",
+        "bind_m122_official_initializations.py:2"
+      ],
+      "evidence": "private transport与旧版本完全相同，执行前要求当前review PASS/无blocking、全26个D source摘要和自身摘要相同；采用已有known_hosts/default RejectPolicy、stdin密码、固定43811和逐参数shlex.quote。只上传并复核CPU binder/当前labels、一次前台运行及回收binding/聚合receipt。binder stdlib-only且仅打开合法初始化RGB及静态元数据，无后续GT/depth、NN/GPU/训练进度查询、后台job、自动重试或训练操作。本审查不执行transport；当前修正仍需真实一次CPU回执。"
+    },
+    {
+      "id": "frozen_text_encoding",
+      "status": "PASS_SOURCE_GPU_NOT_RELEASED",
+      "refs": [
+        "encode_m122_official_human_text.py:13",
+        "encode_m122_official_human_text.py:19",
+        "prepare_m113_human_text.py:19",
+        "m122_official_runtime.py:29"
+      ],
+      "evidence": "encoder字节未改：同Train指定ViT-L-14 b8cca3fd…、float32/eval/no_grad、batch32、tokenize(truncate=False)，直接编码已绑定phrases，输出1895×5×768及bool mask。新key随同序列写入bank；runtime核对格式、人审标记、1895唯一key、形状/finite、binding及encoder SHA，checked_plan另验bank文件SHA。实际tokenization/GPU编码/bank仍未运行，不在本次放行范围。"
+    },
+    {
+      "id": "final_and_training_identity",
+      "status": "PASS_SOURCE_FINAL_BUILDER_NOT_RELEASED",
+      "refs": [
+        "m122_official_runtime.py:7",
+        "m122_official_runtime.py:15",
+        "m122_official_runtime.py:37",
+        "train_m122_full_causal.py:122"
+      ],
+      "evidence": "checked_plan继续核对bundle/source/final/training_result/native/CLIP/bank/binding摘要和固定schema；训练完成条件仍为complete_M122_full152_training、659406调用、456序列、3pass、seed2027、冻结exact及final roundtrip exact，precision_weight/final与bundle相等；strict=True加载同final。未更改当前训练源码/预算/选择规则。实际final builder、完整source/native/bridge/metric清单和两臂各自三数据集同final尚待实现及后续审查。"
+    },
+    {
+      "id": "same_selected_state_history_and_GT_boundary",
+      "status": "PASS_SOURCE",
+      "refs": [
+        "full_dense_tracker.py:75",
+        "full_dense_tracker.py:88",
+        "full_dense_tracker.py:104",
+        "dense_target_decoder.py:114",
+        "run_m122_official.py:21"
+      ],
+      "evidence": "重新读取统一runtime和本地10模块闭包。OPE/TraX均使用OfficialDenseTracker→FullDenseTracker/DenseTargetDecoder；同selected_index提交double像素框/score/quality/feature，之后crop/query/history继续自身状态。每个合法初始化重置状态、永久首模板与固定短语；同位置native Hann response触发原50帧/.75模板规则，未把新支撑×质量分数代入旧门槛。track no_grad，仅当前RGB-D，不传GT、文字在线更新或优化器。人审多帧辅助协议在计划中披露。"
+    },
+    {
+      "id": "OPE_sealing_and_official_metric",
+      "status": "PASS_SOURCE_FULL_EVALUATION_NOT_RELEASED",
+      "refs": [
+        "run_m122_official.py:28",
+        "run_m122_official.py:36",
+        "run_m122_official.py:43",
+        "run_m122_official.py:53",
+        "native_ope/source_snapshots/depthtrack_pr.py:63"
+      ],
+      "evidence": "OPE完整帧数、finite/正尺寸、六小数写回及冻结digest检查不变；所有序列预测封存并有完整SHA receipt后，ope_analyze才复核结果/GT SHA并读取正式GT。直接读取锁定05879f2e…metric，调用100阈值宏平均P/R/F签名与返回帧数匹配。namespace不改变输出/置信度/阈值/评价集合。未执行metric或产生正式结果。"
+    },
+    {
+      "id": "TraX_and_suite_boundary",
+      "status": "PASS_SOURCE_VOT_SUITE_NOT_RELEASED",
+      "refs": [
+        "run_m122_official.py:62",
+        "full152_paired_20260925/evaluation/interface/m39_vot_bridge.py:24",
+        "M122_OFFICIAL_EVALUATION_PLAN.md"
+      ],
+      "evidence": "直接读取并校验canonical bridge 230acf10…；runtime由bundle明确路径加载RGB-D TraX bridge，使用合法wire rectangle和同runtime后续bbox/confidence。plan.dataset必须由未来VOT计划固定为vot。当前仅入口，不含完整四shard调度/环境及timeout/失败确认/5295文件合并/官方EAO-ACC-ROB分析；全部仍未放行。"
+    },
+    {
+      "id": "source_closure_and_claim_scope",
+      "status": "PASS_SOURCE_ONLY",
+      "refs": [
+        "source_sha256",
+        "local_import_graph",
+        "native_source_sha256",
+        "external_source_sha256"
+      ],
+      "evidence": "独立AST重建10个D模块闭包，24个D Python、1私有transport、1碰撞诊断器、2外部Python、6归档native Python通过Python3.8 AST；7 native/YAML摘要与旧审查相同。旧训练链其余算法按原审查复用并核对字节，不冒称重新运行或全链语义重审。当前仅放行一次corrected CPU binding；原PASS历史保留，本报告不证明GPU bank、full训练完成、正式九项、三模块贡献或联合达标。"
+    }
+  ],
+  "limitations": [
+    "仅源码、本地stdlib元数据/原始首帧SHA审查。SSH、网络、Torch/CLIP导入、模型加载/forward、优化器、GPU或训练进度查询均为0。未执行真实CPU binder或任何remote transport。",
+    "本次真正重新hash的初始化原图为本地Test50首帧；VOT1765仅独立重算已保存RGB SHA与wire bbox，CDTB80使用canonical review_id。当前服务器全部1895原图及修正binder完整回执仍须一次CPU执行确认。",
+    "72次lookup为从当前源码抽取的纯初始化键查找，使用已保存摘要和记录sink；不是Torch bank加载、真实tracker初始化或神经数值验证。",
+    "GPU文本编码和产物未验收；未证明实际tokenization、远端依赖/路径解析或TraX握手。",
+    "完整final/bundle builder、精确source/native/bridge/metric清单及两臂三数据集同final固定计划尚待后续实现和审查。",
+    "VOT完整四shard调度、协议/timeout、失败确认、1765 anchor/5295文件合并与官方EAO/ACC/ROB分析仍未放行。OPE完整正式运行同样未放行。",
+    "该审查为fresh context、same-family、provisional。策略请求gpt-6-astra/max，实际backend/model/effort独立attestation不可用；不能声称跨家族接受。"
+  ],
+  "created_at": "2026-10-07T14:04:38.524672+08:00",
+  "source_sha256": {
+    "M122_FULL_CAUSAL_PLAN.md": "8f7a300dc6e37cd3ee3f9989593daaa516b1e7a1e8ef7255a125df67cdb82943",
+    "M122_OFFICIAL_EVALUATION_PLAN.md": "3f5b417f863b1d9609e139ca3336127d4429d7868572b3d2d9954572be973676",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "bind_m122_official_initializations.py": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "dense_region_decoder.py": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "dense_region_encoding.py": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "dense_target_decoder.py": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "encode_m122_official_human_text.py": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+    "full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "m121_dense_inputs.py": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+    "m122_official_runtime.py": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "prepare_m122_external_human_labels.py": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4",
+    "region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "run_m122_full_causal.py": "6f13ab6905166faf7cd1c80f0e2a260f42d048d218fc2436c4d2dd2c4161c9da",
+    "run_m122_official.py": "d0eeacba480a19ccb717b36b7cf0d7d3fe3cb5395e7bf19d19b37868dd3354f9",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+    "train_m121_dense_target.py": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "train_m122_full_causal.py": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891"
+  },
+  "source_binding_note": "Current 26 D source/plan bytes pinned. Official 10-module local import closure read anew; additional unchanged historical training chain is inherited review plus byte equality, not a claimed full semantic re-review.",
+  "private_transport_sha256": {
+    "bind_external_inputs.py": "8eb76d4705f766f9de2eceea989be458fc192624e1f8f2b183fc178991626b88"
+  },
+  "native_source_sha256": {
+    "lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "lib/utils/box_ops.py": "cee9d309a9c4a6c5f00fab575719bc7bf8d865127c91b10d4fb233996a111fbc",
+    "lib/train/dataset/depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "lib/models/layers/head.py": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344"
+  },
+  "native_archive_paths": {
+    "lib/models/sttrack/sttrack.py": ".aris/m120_native_grid_20261007/native_source/lib/models/sttrack/sttrack.py",
+    "lib/test/tracker/sttrack.py": ".aris/m120_native_grid_20261007/native_source/lib/test/tracker/sttrack.py",
+    "lib/train/data/processing_utils.py": ".aris/m120_native_grid_20261007/native_source/lib/train/data/processing_utils.py",
+    "lib/utils/box_ops.py": ".aris/m122_full_causal_20261007/native_source/lib/utils/box_ops.py",
+    "lib/train/dataset/depth_utils.py": ".aris/m122_full_causal_20261007/native_source/lib/train/dataset/depth_utils.py",
+    "lib/models/layers/head.py": ".aris/m121_dense_target_20261007/native_head.py",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": ".aris/m120_native_grid_20261007/native_source/experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml"
+  },
+  "external_source_sha256": {
+    "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/evaluation/interface/m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316",
+    "projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+  },
+  "evidence_sha256": {
+    ".aris/m122_full_causal_20261007/formal_input_sources/cdtb_metric_reference.json": "a00f5db6e853dd9ac59ef2e174ed7a06e991701e61bfd85badf29ae273c1b731",
+    ".aris/m122_full_causal_20261007/formal_input_sources/depthtrack_metric_reference.json": "bd89f02b8be95699cc845dae1a2473cc553a02771ee94093b84504878fa3892d",
+    ".aris/m122_full_causal_20261007/formal_input_sources/ope_inputs.json": "61541e35f7b9e3c40427df79067fc0be20b8622cf275e93025e4a1547bf68601",
+    ".aris/m122_full_causal_20261007/formal_input_sources/ope_spec.json": "e623ef63de89da423fc12b877f58d56219f88ef9f1232f20de9e42fb6c8665e1",
+    ".aris/m122_full_causal_20261007/formal_input_sources/SOURCE_RECEIPT.json": "c756a04e06e439e572a598f73d1484739fcf2e4f75d2950869b1065189cf78d0",
+    ".aris/m122_full_causal_20261007/formal_input_sources/vot_initialization_plan.json": "b4c23250a9363475746cb92023c1b67a39219f2babe95c6a98ea1c40109ea568",
+    ".aris/m122_full_causal_20261007/formal_input_sources/vot_shard_manifest.json": "8e76256f1c7c135a65a1b262506356769b59557db60eb83bc21ef1392890dd01",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_depthtrack_test_gb_50_review.csv": "6ccfab037bc24ca44245bb88739a77bf668f931283da12cb18e37402d0a0443a",
+    "docs/review_rgbd/data/depthtrack_test.json": "74262c1ae48ecd69e6a4be0823954e3988a294d730b482c700e90aa76a3f354b",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_cdtb_gb_80_review.csv": "dea42aa507134894bd3e267672b2a69f662a1d26ecd959406257e4b2e5895381",
+    "docs/review_rgbd/data/cdtb.json": "6c470761a7eb9eb821240c9fbf51cf9be163565a90387904323b1bf5c9cacf53",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_vot_gb_1765_review.csv": "b83f0b4240865d609921c1bf434621577bbe35ace4aceaa0f1242c981445cb9c",
+    "docs/review_rgbd/data/vot.json": "056ed502111950fc99daa89bda7f35cb2d9dd2e11a6587f1414bd5fc5ffd9208",
+    "docs/review_rgbd/data/source_human_reviews_20261007/rgbd_depthtrack_gb_152_review.csv": "0bf3617f9c9d7565190ce88b5f2acf04548ff077aea27945eee873f1e7ebbea8",
+    ".aris/m122_full_causal_20261007/external_human_labels.json": "6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f",
+    ".aris/m122_full_causal_20261007/external_human_labels_before_site_LF_refresh.json": "4f920bac2fbca0b47bda20319b590f574d8cbd38d824b8dba3c001fb28621b8a",
+    ".aris/m122_full_causal_20261007/EXTERNAL_PROVENANCE_REFRESH.json": "957be3dc5fbbe228efeb6f25753547f38beee9c17dd82d396485c8ca3fa51a61",
+    ".aris/m122_full_causal_20261007/initialization_key_collision.json": "7cb42c2633ba3c64d95d824b313a9be14237acc8bfa7b1e7d0fd1937bc1a6bf7",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_BINDING_COLLISION.json": "2f3608a3d85c6d1b8497e2f48ddc10a4f691ca6be3f77ad47a22d019d01a3a96",
+    ".aris/m122_full_causal_20261007/diagnose_binding_duplicates.py": "a4a9dda58196512c17da54120d444e994ca61f73014efe72a36963944a6c9b75",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_SOURCE_REVIEW_20261007_133818.json": "0ba5420eeca7c53981333d79a8db9c8b45f0d1050eb7bd8a6009c90ed2e296b1",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_SOURCE_REVIEW_20261007_133818.md": "d115266d4ee711f78106ffd1da376dd56ce4f987aea1911a74183d9ebf42c4e1",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_SOURCE_REVIEW.json": "3857584801fea4f40ee09e890585eaa1a0ee083f8eb140b11c7088ee166b8ec6",
+    ".aris/m122_full_causal_20261007/before_dataset_key_namespace/bind_m122_official_initializations.py": "a617e1161b252125de5a0237248e6eacafc3f7ac19798602c58c571f485271a1",
+    ".aris/m122_full_causal_20261007/before_dataset_key_namespace/m122_official_runtime.py": "a1fb1e04cf2f5394a96ed1fb1da6142f56f6dfa6477ec047e34c5b9d0b5b3e7b",
+    ".aris/m122_full_causal_20261007/before_dataset_key_namespace/M122_OFFICIAL_SOURCE_REVIEW.json": "0ba5420eeca7c53981333d79a8db9c8b45f0d1050eb7bd8a6009c90ed2e296b1",
+    ".aris/m122_full_causal_20261007/before_dataset_key_namespace/M122_OFFICIAL_SOURCE_REVIEW.md": "d115266d4ee711f78106ffd1da376dd56ce4f987aea1911a74183d9ebf42c4e1",
+    ".aris/depthtrack_test_review_20261005/sources/TEST001/receipt.json": "e9eb8e824b18d66232b438abb5743c5d3d592b05f62f3a6143ef28c2e74be971",
+    ".aris/depthtrack_test_review_20261005/sources/TEST002/receipt.json": "fc0e9902ac09c21d4d4b68c789c97bcde937a451d90b1b041856605bfc23004a",
+    ".aris/depthtrack_test_review_20261005/sources/TEST003/receipt.json": "c6e2f52e5813e7969952c9e03f7f595cd5c588d4c840773600cded842882cb21",
+    ".aris/depthtrack_test_review_20261005/sources/TEST004/receipt.json": "d53ccad75aaf7c963ed5248bfd1d453ff58af87678bf5170b27e14d485abae13",
+    ".aris/depthtrack_test_review_20261005/sources/TEST005/receipt.json": "2ac137c8afcb2b6bac859e6ec844dce65a0dae7690a75593f7c2616a3a783d3c",
+    ".aris/depthtrack_test_review_20261005/sources/TEST006/receipt.json": "9a471bdc19b6804a602facda5b9505fa7091c0569a7d6deae497d110a9cb3a51",
+    ".aris/depthtrack_test_review_20261005/sources/TEST007/receipt.json": "e3d0112c807dac172cb9edc26cdc4cb56991c5562eea6c3b6263cde5d035cbaf",
+    ".aris/depthtrack_test_review_20261005/sources/TEST008/receipt.json": "3d54f37b5fd8ca80544206b1909bac7dff1a3b24450ed760acd8bec4bd9af022",
+    ".aris/depthtrack_test_review_20261005/sources/TEST009/receipt.json": "8468911d5f18684e5781db21d9ba24b7218903831d9b33f0665f3b88c7534112",
+    ".aris/depthtrack_test_review_20261005/sources/TEST010/receipt.json": "fa22448f9f0be309b2e3bbd43d1ae0cfa346d93e6de89a9a2e70d03f4173bcdc",
+    ".aris/depthtrack_test_review_20261005/sources/TEST011/receipt.json": "0e82e99d285e1b4e4f81493796cc024752a2ce3c27b1780797bf3b87604d7187",
+    ".aris/depthtrack_test_review_20261005/sources/TEST012/receipt.json": "57fb5de33969e604714be6ccb5355dae4aad0f8fb703c1cb0117d83d52f044e4",
+    ".aris/depthtrack_test_review_20261005/sources/TEST013/receipt.json": "2daabc686155d5238c7f3c59eb9a88d24bb24e65b4199ea89b7cba76e476fa19",
+    ".aris/depthtrack_test_review_20261005/sources/TEST014/receipt.json": "e2b22d2ffec99be270718da3ebd3dc1c0b267f1166d0a7ca41d379c78dd9f122",
+    ".aris/depthtrack_test_review_20261005/sources/TEST015/receipt.json": "f58154640b08196a904be65e3809ed96940bfac820a21d6c8b47befbf84ee7f6",
+    ".aris/depthtrack_test_review_20261005/sources/TEST016/receipt.json": "dbf9a88a3e91d5f041d4abff72d5b5a5c2f176b63490da1a66a545cc5679bbec",
+    ".aris/depthtrack_test_review_20261005/sources/TEST017/receipt.json": "70cc0b14020b3a37fb32979935dda68f80635bb166599973cbbcaafcea66c3bb",
+    ".aris/depthtrack_test_review_20261005/sources/TEST018/receipt.json": "e48654f5f0ef63377f7d8aaf4b4ed804d1096afde61b033ddce13fc2b9ac6016",
+    ".aris/depthtrack_test_review_20261005/sources/TEST019/receipt.json": "6cf02f9c18c1024c08544c3fff861bbfbeb26566c8c591d9aaf4273cf32b552a",
+    ".aris/depthtrack_test_review_20261005/sources/TEST020/receipt.json": "85425ed296eb2c940311f4115a000bc9b47d0fd57fda4d17d133c7ce3fcb33bc",
+    ".aris/depthtrack_test_review_20261005/sources/TEST021/receipt.json": "b1a4b84a71c67c6ac181127716b4249463ce74a02a3c146fa20c36be21a03aec",
+    ".aris/depthtrack_test_review_20261005/sources/TEST022/receipt.json": "41ffa4d82247251208ca3a5998c0c0d52930ab191bf09ccdf527f2e263cd48d6",
+    ".aris/depthtrack_test_review_20261005/sources/TEST023/receipt.json": "de43575157730a9e13f9a3e3e8cb6ff408c8023ea36f98e80c0a13aa046e8ac8",
+    ".aris/depthtrack_test_review_20261005/sources/TEST024/receipt.json": "887d9c9185f661f8600f0a19ce3e26e5cf5061362ed8e28f52925ad1e85bbd3c",
+    ".aris/depthtrack_test_review_20261005/sources/TEST025/receipt.json": "04dc856ff65e40088b39fab7737e07d9fec14b6c205aa7cfad3b819d5d743831",
+    ".aris/depthtrack_test_review_20261005/sources/TEST026/receipt.json": "925542e27c75ea4b62039437214034cd49835511eba75d90eda2184c0cc1181b",
+    ".aris/depthtrack_test_review_20261005/sources/TEST027/receipt.json": "840f59cc52d9164288f6d2426464ee264107508b99d5210538d88a4527dd58c0",
+    ".aris/depthtrack_test_review_20261005/sources/TEST028/receipt.json": "ce22bc6f1b1aae70778c8cb50ffc1f35977d777760b6305fac494d577e6d1d1d",
+    ".aris/depthtrack_test_review_20261005/sources/TEST029/receipt.json": "ad7d23a7e7b0994a8e4b76af4e83218f627093ecd9742f39d31052e91639a937",
+    ".aris/depthtrack_test_review_20261005/sources/TEST030/receipt.json": "43ff2626b1d179fae2ed657c4651b74bcd976cca5e6ac3bd021ed5a774b504e0",
+    ".aris/depthtrack_test_review_20261005/sources/TEST031/receipt.json": "85267c852a6d0361ca989f9f6bf34a5e98729e4ba91fa7025013b51ee9b8667e",
+    ".aris/depthtrack_test_review_20261005/sources/TEST032/receipt.json": "a4c8407a33cc6b2345a0e9fc1aa13febc1ff62ec53a9e219c5642aaf4ed8bced",
+    ".aris/depthtrack_test_review_20261005/sources/TEST033/receipt.json": "376861d08ce1440e0e4ec8abd87783b2c859f6012849bea44b58d03f7016a3f9",
+    ".aris/depthtrack_test_review_20261005/sources/TEST034/receipt.json": "915b4ae02fc10c7aa6d9e5edeb9934d630e8b699400c7fab17c6ab2da7b7febf",
+    ".aris/depthtrack_test_review_20261005/sources/TEST035/receipt.json": "66612dcdd78f6bd3802d7203ff700329dbd841590ac18357d6862431bb1dd60b",
+    ".aris/depthtrack_test_review_20261005/sources/TEST036/receipt.json": "d5e6a10ef983738bdcc2acca109f41308ec56fe6a2dc25c75a2b57cd04de9259",
+    ".aris/depthtrack_test_review_20261005/sources/TEST037/receipt.json": "c67139886237aca1aa857704f45ea149acc0ef921622d13396e0ca54933aa35e",
+    ".aris/depthtrack_test_review_20261005/sources/TEST038/receipt.json": "af382497f4d72672957ac545c7a71c9829f43b1d82bffbbfe203e7532cb43306",
+    ".aris/depthtrack_test_review_20261005/sources/TEST039/receipt.json": "cebf36361ef5be0043e19ec087fa942392a6a72acef21b71fe203d57d70ea855",
+    ".aris/depthtrack_test_review_20261005/sources/TEST040/receipt.json": "9f5b2334297ce80041190e3eb10622b9789e5d673d28bb5200131068c837b3be",
+    ".aris/depthtrack_test_review_20261005/sources/TEST041/receipt.json": "6771b0b190e1df035e6c22942cefce28e0ea93453db53aa5a01f04f17d964261",
+    ".aris/depthtrack_test_review_20261005/sources/TEST042/receipt.json": "87ad7c4abc83a7362acfd24a342792adc6987c1dccbe0b6f69477bfab74a2eb9",
+    ".aris/depthtrack_test_review_20261005/sources/TEST043/receipt.json": "7e1c2ba8d2553a5f31d7133b7d7208e562a4a4a2898a3c3a0eeab81b4dbfdb8e",
+    ".aris/depthtrack_test_review_20261005/sources/TEST044/receipt.json": "e2cc5586f689f1d2f85b7df81e8ee179273e777db5bfcb3a42d813da12df2951",
+    ".aris/depthtrack_test_review_20261005/sources/TEST045/receipt.json": "4870898b6c29b64f500849babaafbe70d9de236b7b85974e2d65852a1199f4c1",
+    ".aris/depthtrack_test_review_20261005/sources/TEST046/receipt.json": "58348cf4024550e27737419795135e229fd3224467d4103ed0e25619914a5293",
+    ".aris/depthtrack_test_review_20261005/sources/TEST047/receipt.json": "2420e2f7d04ca9c87eb88bf7bdda11901f1493c8aa0bad038a7059dd48e3d997",
+    ".aris/depthtrack_test_review_20261005/sources/TEST048/receipt.json": "d30928bb5a0aa5b857801d13fd86b39a5f0755d837632dbe1b8bc8f047967c73",
+    ".aris/depthtrack_test_review_20261005/sources/TEST049/receipt.json": "2a07395f0eeea17d63e06e1b1a504f20aebfd20ef3b51613c8249e0d27d410ea",
+    ".aris/depthtrack_test_review_20261005/sources/TEST050/receipt.json": "56eae9efd4b54881c08d50c47e9abf2a531782e396b64813e4916707f1fdecc2"
+  },
+  "initialization_image_sha256": {
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST001/00000000.jpg": "5a07dd0f9e91ac80bd74499ee4323a9d2a1077fc0b6160de61b77beebf7ee88b",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST002/00000000.jpg": "b9b3c85fec68048ccea0f9f3db8dc788a93700ae8b2ddaad34b7340cd1cd5087",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST003/00000000.jpg": "9dc3985f8d287effe7c14c5ca53c6ab6a30b6b2b4108f9032e3e5d600aae15cc",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST004/00000000.jpg": "7fb2f847c1fd4dc343af26158ad5f6c1ca90845a14c384e6db88e40df8534132",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST005/00000000.jpg": "2c6c27848dba0d8c756cee4b15636a79ebc486e5de23302ffcedb3e77231a47c",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST006/00000000.jpg": "60dd01a3db5d4022030909ec3e9c0b4b56b2c214adcf2262520b9799886c3ad7",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST007/00000000.jpg": "f53505812fb27b7ea45a890b06f7bde9c2cb8597890f1260617f0957c7b13657",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST008/00000000.jpg": "3defd7dc3766b2a604f2d66faf327fb43ba1835b6c0252d465e18b2d27f80b99",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST009/00000000.jpg": "b93c4ac00ab525ed71c0faa7e60f0ecc11653411b0010aaf728daa7c5a9b9599",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST010/00000000.jpg": "aeba6b2bb02479605f5da7c4f66772ae7e1b67450fe438cf18d47d517d335762",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST011/00000000.jpg": "e5fdc3a63127346f8e1fad58c5818d9edaf47105986b4d42c82fec98f364fe0b",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST012/00000000.jpg": "d5b91101368ad950c96fe56cccd085323fe8e47e254e746356c72514dbaed105",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST013/00000000.jpg": "dc10f07ea6451791548f9f0a09d3d3770cfc70084e5f1539a63c0fa9ed141571",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST014/00000000.jpg": "9de7588eb9b9ad79ef2d4f7fe935e6afdb0c92960c90103c4acd9680d5204140",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST015/00000000.jpg": "78bd8d7c07799142e9798e9ea54a64e84f3003749832b2eb05aad3445fa693fc",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST016/00000000.jpg": "b80a80867bd059e0d80d73a90119fd9cb754d0e72d1856c8bd399d1b47b8af0e",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST017/00000000.jpg": "67d4fa4c5aa18b67b2413b2b9193791b3a96e83cd6df4253c676e7049ed05b6c",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST018/00000000.jpg": "439825ea3bd9cf8ef91226de6b04f6ed9172193cd5990f06ec8e39fb12c073e2",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST019/00000000.jpg": "09aca0bdc0fa08373bc38273a6aeb5b497215c758b6c4b5868de0ca608d1b0f3",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST020/00000000.jpg": "528a6923b66c069aa2bd9f74a0df29c8b8322aedc0871a9a8cba7d8d19c27ab8",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST021/00000000.jpg": "39fffc8ffe6b85f28206e92be069ce3551ec96cd85b914598e86faa4a4ddc697",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST022/00000000.jpg": "839bd687fadca1932f0f054c72e06e7b1590f290ba06ac448597356d0dd30a87",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST023/00000000.jpg": "80095d9d359fec8310ea82fbe9cb6665669111ed5b269a21231763faa7760594",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST024/00000000.jpg": "01baee1058c647dfd5f4b28d9882fe9673978cc98a1e7d10d05b578fd8975e82",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST025/00000000.jpg": "c427d2d95f6fea22124439d8fd74d22ab44e0bae487372687cf71ea5c9c7cf6e",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST026/00000000.jpg": "b2d9e06211bfa3655f230e677971358f8b43edab6215de851d8c117a581920b1",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST027/00000000.jpg": "e8cdb31573e9f3a5ed827691ea76d3da50097225786a5bb9adba5276d759a265",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST028/00000000.jpg": "21c8fd4e03d7824772d47a9a153d4401c1c75477325d96842a894633cbdf2053",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST029/00000000.jpg": "6450db1caea55e207cb162401a80cd5d61c8cef4e5e685d40ce27203e5ad906e",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST030/00000000.jpg": "519ebae59bace4d7e2deacd28b0d37eca53d29b29ae2aa6cb8ebe27fb8248150",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST031/00000000.jpg": "45494cc42230ee56871ae732930790adc4a3d3bbc6456a838c91c321b382ecd1",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST032/00000000.jpg": "94c89851d2cecb714799f5bdb785fa6c652a51194c3a3bc0a4a57bc808f26165",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST033/00000000.jpg": "68db97f3db591ca1c65c829d6a80b4f9b2d771e34480dd6aeedb0e6e28677106",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST034/00000000.jpg": "0b2d1c2d1478d7b82063b5325dc9b14028df9c4264026f9879cb8e50836b5629",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST035/00000000.jpg": "d523215f0df1e37be93106b264fd160209a7dd8b6def9b114f70fce684744e5f",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST036/00000000.jpg": "973220532eef72f61eb6743f17d0b785c1a4cbe4a8721e3b98c9e4f0c0897cc8",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST037/00000000.jpg": "33c7e2fa0598bc0c8e5813e2fdd58d062d11972ae5dd1fab72834c18b27d0357",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST038/00000000.jpg": "a3895adfa361d04275ca81bd768d30506321534ed720320c01778ed42fb70731",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST039/00000000.jpg": "54789aa069059b00f535860219a2bae3f21e08c9dae1f4748572162d744508c9",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST040/00000000.jpg": "da542e0c2a02ed2fb5a516b45dd16a1ce2b2b428647de168aaf889047ff35c8a",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST041/00000000.jpg": "cd169613128869e421b78dfbdd082a7c1a9d93c2ba80da424dca9a67f6a0398b",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST042/00000000.jpg": "17dfda1acdcbb73bbc7b682bf6df87cd0a7beafaf40b2d204dba2af6e80dca4c",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST043/00000000.jpg": "fe12da471915a774c79ac473573551b455c4fc426368edc26685838340facfb6",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST044/00000000.jpg": "1ef415b135b863cd5800e76833f754a56a0e8d1a8ef79d588adcb3afa8665b0b",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST045/00000000.jpg": "70a954a4688d600d16efaedcff7268fccb8e308c4986a29aaa07ead608ee66e7",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST046/00000000.jpg": "cb744eabc79437670a22ff90982936e920f1e32b327cbc5974133c598a95927b",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST047/00000000.jpg": "fd49c263ec95255228c40f83a1972df97999eb71dd9df516d5c2544ad99f8547",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST048/00000000.jpg": "79d3c3fc3c497fba132bbf885a2cf6a14c7b150c53d3aa55ebb868f5dd5ae837",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST049/00000000.jpg": "2b94e64dfdc9d9b2cf376dc7402af5f05ceafe8e4156361f1a89405af5a54ac2",
+    "docs/review_rgbd/media/depthtrack_test/original_frames/TEST050/00000000.jpg": "f15b8ee74832103efbc70ee51520035960c823bbe7a12353be0f0ba625a62351"
+  },
+  "local_import_graph": {
+    "bind_m122_official_initializations.py": [],
+    "encode_m122_official_human_text.py": [
+      "bind_m122_official_initializations.py"
+    ],
+    "m122_official_runtime.py": [
+      "bind_m122_official_initializations.py",
+      "dense_target_decoder.py",
+      "full_dense_tracker.py"
+    ],
+    "run_m122_official.py": [
+      "bind_m122_official_initializations.py",
+      "m122_official_runtime.py"
+    ],
+    "dense_target_decoder.py": [
+      "dense_region_decoder.py",
+      "instance_ab_prototype.py"
+    ],
+    "full_dense_tracker.py": [
+      "dense_region_encoding.py",
+      "dense_target_decoder.py",
+      "region_patch_evidence.py"
+    ],
+    "dense_region_decoder.py": [
+      "instance_ab_prototype.py"
+    ],
+    "instance_ab_prototype.py": [],
+    "dense_region_encoding.py": [],
+    "region_patch_evidence.py": [
+      "instance_ab_prototype.py"
+    ]
+  },
+  "prior_review": {
+    "file": "M122_OFFICIAL_SOURCE_REVIEW_20261007_133818.json",
+    "sha256": "0ba5420eeca7c53981333d79a8db9c8b45f0d1050eb7bd8a6009c90ed2e296b1",
+    "created_at": "2026-10-07T13:38:18.784277+08:00",
+    "superseded_for_modified_CPU_binding": true,
+    "original_report_preserved": true,
+    "changed_current_source_files": [
+      "M122_OFFICIAL_EVALUATION_PLAN.md",
+      "bind_m122_official_initializations.py",
+      "m122_official_runtime.py"
+    ],
+    "unchanged_current_source_files": 23,
+    "training_review_file": "M122_SOURCE_REVIEW.json",
+    "training_review_sha256": "3857584801fea4f40ee09e890585eaa1a0ee083f8eb140b11c7088ee166b8ec6",
+    "prior_training_source_files_byte_identical": 19
+  },
+  "data_checks": {
+    "external_rows": 1895,
+    "raw_unique_observation_keys": 1859,
+    "duplicate_groups": 36,
+    "unique_dataset_keys": 1895,
+    "duplicate_groups_exactly_Test_VOT_pairs": true,
+    "duplicate_Test_computed_RGB_sha_matches_VOT_archived_sha": true,
+    "duplicate_packed_bbox_bytes_exact": true,
+    "duplicate_phrase_lists_differ": 36,
+    "duplicate_categories_differ": 6,
+    "local_Test_first_frame_SHA_and_original_receipts_verified": 50,
+    "vot_wire_key_recomputations": 1765,
+    "cdtb_key_source": "80 canonical review_id metadata; current CDTB images not rehashed by this reviewer",
+    "runtime_source_pure_lookup_cases": 72,
+    "lookup_exact_dataset_row_and_phrases": 72,
+    "all_confirmed_labels_and_site_fields_rechecked": 1895,
+    "train_confirmed_nonempty_categories": 152,
+    "all_four_datasets_confirmed_nonempty_categories": 2047,
+    "unique_phrases_including_empty": 822,
+    "counts": {
+      "depthtrack_test": 50,
+      "cdtb": 80,
+      "vot": 1765
+    },
+    "OPE_frames": {
+      "depthtrack_test": 76373,
+      "cdtb": 101956
+    },
+    "vot_sequences": 127,
+    "vot_shard_anchor_identity_matches": 1765,
+    "vot_directions": {
+      "forward": 867,
+      "backward": 898
+    },
+    "all_original_source_and_labels_fields_preserved": true,
+    "canonical_labels_sha_unchanged": true,
+    "six_original_formal_input_metadata_receipts_exact": true,
+    "original_binding_assertion_expected_failed": "len(records)==len(unique_raw_key)==1895; actual raw unique1859",
+    "no_alias_or_cross_dataset_label_substitution": true
+  },
+  "verification": {
+    "interpreter": "C:\\Users\\gb\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\python.exe",
+    "python38_AST_D_modules": 24,
+    "official_local_import_closure_modules": 10,
+    "python38_AST_private_transport": 1,
+    "python38_AST_private_collision_diagnostic": 1,
+    "python38_AST_external_sources": 2,
+    "python38_AST_archived_native_sources": 6,
+    "prior_source_hashes_unchanged": 19,
+    "native_source_hashes_exact": 7,
+    "neural_imports": 0,
+    "network_calls": 0
+  }
+}
