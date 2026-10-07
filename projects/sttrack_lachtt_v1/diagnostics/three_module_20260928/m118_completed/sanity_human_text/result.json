@@ -1,0 +1,81 @@
+{
+  "status": "complete_M118_gpu_sanity",
+  "arm": "human_text",
+  "mode": "sanity",
+  "seed": 2027,
+  "epochs": 1,
+  "batch_size": 64,
+  "learning_rate": 0.0003,
+  "optimized_parameters": 150528,
+  "optimizer_steps": 3,
+  "initial_state_sha256": "c4bd077267ab7c56cf96fc2b27640316d7a86ce07748b57fed13e693e4f5d403",
+  "human_confirmed_initialization": true,
+  "current_candidate_semantic_labels": 0,
+  "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+  "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+  "parent_sha256": "1d187d78c1dd76ebf59e41fd31af16fa69cecc37b4cb6c74fbdfe3ed5c237293",
+  "dense_driver_sha256": "84c35de699352faba6a757d8fa9af8690a068a3c23feab8cfc70880a522ee638",
+  "source_sha256": "2c6952b7f08f579ebd8a0df1a93fbfd0a7da97dfa9416c4a832c8938720e95c9",
+  "decoder_sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+  "inputs_sha256": "3a7bccd31125fd531875637d1616b6ea37e44cce7735eb6a6015c7fd759e0155",
+  "loss_components": [
+    "GT_IoU_weighted_candidate_quality_order",
+    "reliable_Parent_gap_vs_worse_geometry"
+  ],
+  "metric_definitions": {
+    "summarize_native": "rescues/breaks cross IoU0.5 relative to original native candidate0 (<0.5 versus >=0.5).",
+    "paired_vs_own_empty": "rescue/harm count severe changes between <=0.1 and >=0.5; qualifying counts and mean IoU differences are separate fields."
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "optimizer_steps": 3,
+      "mean_losses": [
+        0.19926035404205322,
+        0.19920156399408975,
+        5.879094245149948e-05
+      ],
+      "quality_pairs": 7347,
+      "preserve_pairs": 1068,
+      "seconds": 16.29575800895691
+    }
+  ],
+  "coordinates": {
+    "original_M117_region_ring_reader_default_close": true,
+    "tested_states": 3
+  },
+  "frozen_parent_actual_forward": true,
+  "empty_scores_quality_index_box_all3039_exact": true,
+  "buffers_exact": true,
+  "nonempty_quality_exact": true,
+  "selected_feature_boundary": "The learned277-dimensional feature matches this forward selected candidate; it is not frozen or identical to the64-dimensional Parent feature. No tracker consumes it here.",
+  "visual_query_control": "Initial local dense RGB representation repeated across the same valid query slots; no category/attribute strings.",
+  "no_recursive_or_public_evaluation": true,
+  "elapsed_seconds": 17.669768571853638,
+  "gpu_peak_reserved_bytes": 576716800,
+  "gradient_norms": [
+    {
+      "region_projection": 0.0,
+      "query_projection": 0.0,
+      "query_read": 0.0,
+      "visual_read": 0.0,
+      "decision": 0.014659280888736248
+    },
+    {
+      "region_projection": 0.0013630447720061056,
+      "query_projection": 0.0038267762156465324,
+      "query_read": 0.00018663356786419172,
+      "visual_read": 0.0005775200570496963,
+      "decision": 0.19214926658241893
+    },
+    {
+      "region_projection": 0.0001244569776872595,
+      "query_projection": 0.0003719425496910844,
+      "query_read": 1.499850850450457e-05,
+      "visual_read": 5.3568574628570786e-05,
+      "decision": 0.021268457980113453
+    }
+  ],
+  "checkpoint_saved": false,
+  "development_metrics_reported": false
+}
