@@ -1,0 +1,1485 @@
+{
+  "status": "complete_M119_GT_binding_pair",
+  "launches": [
+    {
+      "pid": 17372,
+      "args": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m119_gt_binding.py",
+        "--cache",
+        "/root/autodl-tmp/sttrack_m90_train_states_20260928",
+        "--dense",
+        "/root/autodl-tmp/sttrack_m117_dense_region_20261007",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--parent-rows",
+        "/root/autodl-tmp/sttrack_m118_regional_decoder_20261007/train_human_text",
+        "--output",
+        "/root/autodl-tmp/sttrack_m119_gt_binding_20261007/sanity_shard0",
+        "--shard",
+        "0",
+        "--mode",
+        "sanity"
+      ],
+      "gpu": 0,
+      "mode": "sanity",
+      "started": 1791333053.9548066,
+      "exit": 0,
+      "finished": 1791333059.2257304
+    },
+    {
+      "pid": 17373,
+      "args": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m119_gt_binding.py",
+        "--cache",
+        "/root/autodl-tmp/sttrack_m90_train_states_20260928",
+        "--dense",
+        "/root/autodl-tmp/sttrack_m117_dense_region_20261007",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--parent-rows",
+        "/root/autodl-tmp/sttrack_m118_regional_decoder_20261007/train_human_text",
+        "--output",
+        "/root/autodl-tmp/sttrack_m119_gt_binding_20261007/sanity_shard1",
+        "--shard",
+        "1",
+        "--mode",
+        "sanity"
+      ],
+      "gpu": 1,
+      "mode": "sanity",
+      "started": 1791333053.95619,
+      "exit": 0,
+      "finished": 1791333059.226024
+    },
+    {
+      "pid": 17512,
+      "args": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m119_gt_binding.py",
+        "--cache",
+        "/root/autodl-tmp/sttrack_m90_train_states_20260928",
+        "--dense",
+        "/root/autodl-tmp/sttrack_m117_dense_region_20261007",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--parent-rows",
+        "/root/autodl-tmp/sttrack_m118_regional_decoder_20261007/train_human_text",
+        "--output",
+        "/root/autodl-tmp/sttrack_m119_gt_binding_20261007/full_shard0",
+        "--shard",
+        "0",
+        "--mode",
+        "full"
+      ],
+      "gpu": 0,
+      "mode": "full",
+      "started": 1791333059.2280061,
+      "exit": 0,
+      "finished": 1791333072.8916523
+    },
+    {
+      "pid": 17513,
+      "args": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-u",
+        "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m119_gt_binding.py",
+        "--cache",
+        "/root/autodl-tmp/sttrack_m90_train_states_20260928",
+        "--dense",
+        "/root/autodl-tmp/sttrack_m117_dense_region_20261007",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--parent-rows",
+        "/root/autodl-tmp/sttrack_m118_regional_decoder_20261007/train_human_text",
+        "--output",
+        "/root/autodl-tmp/sttrack_m119_gt_binding_20261007/full_shard1",
+        "--shard",
+        "1",
+        "--mode",
+        "full"
+      ],
+      "gpu": 1,
+      "mode": "full",
+      "started": 1791333059.229277,
+      "exit": 0,
+      "finished": 1791333072.8920486
+    }
+  ],
+  "sanity": [
+    {
+      "status": "complete_M119_sanity_shard",
+      "mode": "sanity",
+      "shard": 0,
+      "seed": 2027,
+      "sequences": [
+        {
+          "sequence": "cube04_indoor",
+          "split": "fit",
+          "events": 3,
+          "source_feature_sha256": "0e53abea8dd5533818ef0d22ad38a6c31a9f9c541d31d68ccff6b1e430932b4d",
+          "original_M117_reader_default_close": true,
+          "seconds": 2.863398790359497
+        }
+      ],
+      "events": 3,
+      "valid_gt": 3,
+      "human_confirmed_initialization": true,
+      "current_attribute_visibility_truth": false,
+      "current_GT_loaded_for_readonly_analysis": true,
+      "optimizer_steps": 0,
+      "checkpoints_created": false,
+      "model_forward_executed": false,
+      "tracker_state_committed": false,
+      "no_public_evaluation": true,
+      "coordinates": {
+        "interior_coordinate_ramp_exact": true,
+        "outside_search_zero": true
+      },
+      "source_sha256": "ab8c61e16164e0ff306b8f1f534462050fdac9d81a4f10926c85d3e5da599528",
+      "interface_sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+      "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+      "GT_sha256": "433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+      "dense_receipt_sha256": "84c35de699352faba6a757d8fa9af8690a068a3c23feab8cfc70880a522ee638",
+      "parent_result_sha256": "7f5f0baa7ce12cc0bf3b060b0d8ef46d828a498912b8c360c53e2ec2638e0637",
+      "elapsed_seconds": 2.870712995529175,
+      "gpu_peak_reserved_bytes": 4194304
+    },
+    {
+      "status": "complete_M119_sanity_shard",
+      "mode": "sanity",
+      "shard": 1,
+      "seed": 2027,
+      "sequences": [
+        {
+          "sequence": "bag04_indoor",
+          "split": "fit",
+          "events": 3,
+          "source_feature_sha256": "67a9d83ed0272d63e95844c2f45ebfc7fba8fdf234ffff8419898caa61c9c1ea",
+          "original_M117_reader_default_close": true,
+          "seconds": 2.8191754817962646
+        }
+      ],
+      "events": 3,
+      "valid_gt": 2,
+      "human_confirmed_initialization": true,
+      "current_attribute_visibility_truth": false,
+      "current_GT_loaded_for_readonly_analysis": true,
+      "optimizer_steps": 0,
+      "checkpoints_created": false,
+      "model_forward_executed": false,
+      "tracker_state_committed": false,
+      "no_public_evaluation": true,
+      "coordinates": {
+        "interior_coordinate_ramp_exact": true,
+        "outside_search_zero": true
+      },
+      "source_sha256": "ab8c61e16164e0ff306b8f1f534462050fdac9d81a4f10926c85d3e5da599528",
+      "interface_sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+      "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+      "GT_sha256": "433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+      "dense_receipt_sha256": "84c35de699352faba6a757d8fa9af8690a068a3c23feab8cfc70880a522ee638",
+      "parent_result_sha256": "7f5f0baa7ce12cc0bf3b060b0d8ef46d828a498912b8c360c53e2ec2638e0637",
+      "elapsed_seconds": 2.826362371444702,
+      "gpu_peak_reserved_bytes": 4194304
+    }
+  ],
+  "full": [
+    {
+      "status": "complete_M119_full_shard",
+      "mode": "full",
+      "shard": 0,
+      "seed": 2027,
+      "sequences": [
+        {
+          "sequence": "cube04_indoor",
+          "split": "fit",
+          "events": 37,
+          "source_feature_sha256": "0e53abea8dd5533818ef0d22ad38a6c31a9f9c541d31d68ccff6b1e430932b4d",
+          "original_M117_reader_default_close": true,
+          "seconds": 2.8800575733184814
+        },
+        {
+          "sequence": "cat02_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "56c754f08b92d72b380323998441b89fc3a8b4a22f1f2203e40219e2f7f8a132",
+          "original_M117_reader_default_close": true,
+          "seconds": 2.9769399166107178
+        },
+        {
+          "sequence": "bottle02_indoor",
+          "split": "fit",
+          "events": 23,
+          "source_feature_sha256": "30d257dbf2a5388a1c0f7ea5ec64bb57325dfd9101a758bd5d092788b9e73697",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.0889387130737305
+        },
+        {
+          "sequence": "mushroom02_wild",
+          "split": "fit",
+          "events": 19,
+          "source_feature_sha256": "b9c30500374a0c8df63eb6cf2ac4d8962341ea3ad851510a9af2267c06526616",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.1765167713165283
+        },
+        {
+          "sequence": "book04_indoor",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "9c3d8af915605720a85f5a432a60097e57254dfd383404d4bcb22e5cf52f2476",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.2552175521850586
+        },
+        {
+          "sequence": "toydog_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "76aeb921792bbed6d1fd6ab5820c6e4270cac8ee266748b29ecddb2a3600d287",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.3518972396850586
+        },
+        {
+          "sequence": "toy05_indoor",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "cb553b206094babf03859e96c6cab85b524ea59365ded04b264af0b27d2df510",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.41141939163208
+        },
+        {
+          "sequence": "toy01_indoor",
+          "split": "fit",
+          "events": 15,
+          "source_feature_sha256": "ad487bdd3e9015877d723fd4fc76bd948c522dad79d91f4c56029e1f26b57bf6",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.4814717769622803
+        },
+        {
+          "sequence": "leaves01_wild",
+          "split": "fit",
+          "events": 22,
+          "source_feature_sha256": "7ba76f002ee885b17de6402cf5c8b382d32d3a4fc325f612e3911d22e67212de",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.584105968475342
+        },
+        {
+          "sequence": "chair01_indoor",
+          "split": "fit",
+          "events": 22,
+          "source_feature_sha256": "c32039cea02972c6d18932cbaa1e79826de5911c92de392352100edb508abffc",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.6848957538604736
+        },
+        {
+          "sequence": "swing02_wild",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "8fee38816483b2d362397afd186d817ee7ee399d2826105a873d912ca952974a",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.771099090576172
+        },
+        {
+          "sequence": "duck04_wild",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "689e0328a28226dd67f04f45d43cbe37ec1388996537b9298ca0a68b2c01b776",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.8322157859802246
+        },
+        {
+          "sequence": "speaker_indoor",
+          "split": "fit",
+          "events": 37,
+          "source_feature_sha256": "b85a5cc9a5d7a03d31c6180afc493ef929c704e33cc94be4add825a533a525e4",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.00426721572876
+        },
+        {
+          "sequence": "pine02_wild_320",
+          "split": "fit",
+          "events": 29,
+          "source_feature_sha256": "a7457808df1ba387eb3815af17f01452023bc20472ed19d985945d86edc755b5",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.139319658279419
+        },
+        {
+          "sequence": "basket_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "b0ac5ca89cf52a9523c7dce4c355e6fb290588e84b87829d386ea9922af6d93e",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.260729551315308
+        },
+        {
+          "sequence": "leaves04_indoor",
+          "split": "fit",
+          "events": 38,
+          "source_feature_sha256": "066de713b5a41b5f69f6e0e66207ae24693db7a99af00de9387c0b3db40d00b2",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.43831992149353
+        },
+        {
+          "sequence": "dumbbells02_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "6b20b8a65ecad84b91a6c38c7c90b5111fe01ff444c84bfdb3b69b4deb94abb9",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.5564470291137695
+        },
+        {
+          "sequence": "bottle03_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "cfa87333f915ccd02637fa5b47cc91e64b95bb96c04804c0bc2c39cc8c94e4d4",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.6501288414001465
+        },
+        {
+          "sequence": "candlecup_indoor",
+          "split": "fit",
+          "events": 14,
+          "source_feature_sha256": "d5872850e6d75040de2237027a045365c8b028bb6f9c352efe719cf99e816983",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.718748569488525
+        },
+        {
+          "sequence": "ball08_wild",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "f387f1b9b9dbd1dca36d3c499832991857c5a8eef23b9ce679778e63df8ad949",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.841768026351929
+        },
+        {
+          "sequence": "milkbottle_indoor",
+          "split": "fit",
+          "events": 23,
+          "source_feature_sha256": "c19c7a2f2feea0bbc06d286982b72e91fac335acffbec0530d8b037b17d66035",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.947528839111328
+        },
+        {
+          "sequence": "bottle06_indoor",
+          "split": "fit",
+          "events": 15,
+          "source_feature_sha256": "4043c70ddeb15265ff2dc40bb0ed2112780ee28218b9ddb0d492580d13a41470",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.02214789390564
+        },
+        {
+          "sequence": "toy08_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "cf5205cfcee56c288ee16d04fae11a79c177c058c2aedb727d6baf2493049fec",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.113720178604126
+        },
+        {
+          "sequence": "human05_wild",
+          "split": "fit",
+          "events": 25,
+          "source_feature_sha256": "55214a62436b6120a983cea40a65be3ef08c91a73aa238f293687140a8276cd1",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.224583864212036
+        },
+        {
+          "sequence": "ball09_wild",
+          "split": "fit",
+          "events": 28,
+          "source_feature_sha256": "7253854a1d9087ab8d46e76b48eb44eb727b63d9be9c46938374e44bc03638a5",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.352127552032471
+        },
+        {
+          "sequence": "hat03_indoor",
+          "split": "fit",
+          "events": 14,
+          "source_feature_sha256": "2d38655d5c2e500006f1a9103db38c0d3a060c6d60fc11cf6af2009b84e5c89c",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.419973134994507
+        },
+        {
+          "sequence": "toy10_indoor",
+          "split": "fit",
+          "events": 31,
+          "source_feature_sha256": "b8465c36dfe7439e6c5b8276555999e44ff2c08617cbc0cd1971e068c80d5028",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.558077096939087
+        },
+        {
+          "sequence": "glass05_indoor",
+          "split": "fit",
+          "events": 24,
+          "source_feature_sha256": "46a15fb74f6797d862747ea315b159561636f237cd3bf182fdbc448c848b88e3",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.665473699569702
+        },
+        {
+          "sequence": "notebook03_indoor",
+          "split": "fit",
+          "events": 15,
+          "source_feature_sha256": "1b75a927fd185556082aaf50a7e515aae2d757653a96215544572d21c140a47d",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.7344651222229
+        },
+        {
+          "sequence": "lock01_wild",
+          "split": "fit",
+          "events": 32,
+          "source_feature_sha256": "45bad5126a5ebf10ebeb802780fe947720c073e7f64bcd25f550dd9c76603217",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.877890586853027
+        },
+        {
+          "sequence": "hat02_indoor_320",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "3a28254c1b896fa0ce3a4d2d9c2d9c5727ed22701aefc1e9d46c757866277e47",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.960800647735596
+        },
+        {
+          "sequence": "cat04_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "a01d3821e2efda85144e48033915b4b9689bbe301ccc4acd24b560d86270d5b3",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.051624298095703
+        },
+        {
+          "sequence": "toy07_indoor_320",
+          "split": "fit",
+          "events": 33,
+          "source_feature_sha256": "ec22078893a1e1bc9404ac86697791cc898767c49c26c29e1ede8b8afb8f7796",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.1931374073028564
+        },
+        {
+          "sequence": "pigeon05_wild",
+          "split": "fit",
+          "events": 28,
+          "source_feature_sha256": "cf8710946d0d5959979c14ed5c35dafaf6237b38292ba861b174f2827f71d940",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.321047782897949
+        },
+        {
+          "sequence": "mirror_indoor",
+          "split": "fit",
+          "events": 14,
+          "source_feature_sha256": "fcdcc734666a33c0899be0b0f3a10af5d2fa2bf1416f2b57d42281ab7e2fc9ad",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.392325162887573
+        },
+        {
+          "sequence": "gymring_wild",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "e4d031c7e6649fef985831a9918f645943be301f93c2f7ae68f83d346e6a0903",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.4509618282318115
+        },
+        {
+          "sequence": "duck06_wild",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "a13aec03c16c2369669c25c6b862c4e17be01b140095d8c93f78f30880081b49",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.527287483215332
+        },
+        {
+          "sequence": "glass02_indoor",
+          "split": "fit",
+          "events": 17,
+          "source_feature_sha256": "bdb713d8c16f2aff18a5b8f957445ee026d485cfd57485dba2535740d68f4297",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.6074347496032715
+        },
+        {
+          "sequence": "cup09_indoor",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "952a7011f6a8e86ff68b15af6513ea6d5580fd05776462a15e044a4ef470cdc0",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.683958530426025
+        },
+        {
+          "sequence": "container02_indoor",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "7ccfaedba5319f4485be400e072038cc940778f68c166aa7c6f4211829b81de6",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.74347710609436
+        },
+        {
+          "sequence": "toy03_indoor",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "da964f974614838bb5f793684ec8a1dde8ff77972747dfe37d46503948654f4a",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.829100608825684
+        },
+        {
+          "sequence": "shoes01_indoor",
+          "split": "fit",
+          "events": 37,
+          "source_feature_sha256": "e14cedfcca1594ea791ea71f92efb99437d33530cc8e3ac12980ec16c7958011",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.996511697769165
+        },
+        {
+          "sequence": "toy06_indoor",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "dbf69e9238fe1bb6b06e3559926d0663dbea44f29d41efa5f2260074554b7f01",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.079206705093384
+        },
+        {
+          "sequence": "ball14_wild",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "2411d0db6e3c2d89029e35ed1d16829e6649820aec479c6aad2de0784bf573d1",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.19781494140625
+        },
+        {
+          "sequence": "ball12_wild",
+          "split": "fit",
+          "events": 35,
+          "source_feature_sha256": "ebee9c7dfd3073d3f7f4aed87c043aa2c33d70c69ebd4fefc2b7fb1d50fa7346",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.353124141693115
+        },
+        {
+          "sequence": "hat01_indoor",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "9833d97bc6fb222c7554e7a8c0b8c607537e52dcbc96d8a8fc725531ead50f97",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.439100980758667
+        },
+        {
+          "sequence": "cup06_indoor",
+          "split": "fit",
+          "events": 38,
+          "source_feature_sha256": "b6578ccc276b2957e25dd5dcff39ea478ccfc85cf466a9e13aea9e3e534bb5b2",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.6180384159088135
+        },
+        {
+          "sequence": "cat03_indoor",
+          "split": "fit",
+          "events": 21,
+          "source_feature_sha256": "e2b6596929df23f190ed3fa3404e397b14a516f6f9007dc5e82f954f5c4c1f0a",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.712684392929077
+        },
+        {
+          "sequence": "tree_wild",
+          "split": "fit",
+          "events": 25,
+          "source_feature_sha256": "f60d448df5de06f504a6c579e0ab905223e4605c2cc44b53940678cef6cdaed1",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.827010154724121
+        },
+        {
+          "sequence": "mobilephone06_indoor",
+          "split": "fit",
+          "events": 23,
+          "source_feature_sha256": "886a006b8f5a2b0c03140b293a31629a0baaac23cf008d28fa1367aa184ebad2",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.935269832611084
+        },
+        {
+          "sequence": "thermos01_indoor",
+          "split": "fit",
+          "events": 19,
+          "source_feature_sha256": "e037d94895d3c5719c38e4f79573df5eb5ae87cf8409a449740ecf037802c0dd",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.026812076568604
+        },
+        {
+          "sequence": "bag03_indoor",
+          "split": "fit",
+          "events": 29,
+          "source_feature_sha256": "0cecd4b44abb0e327fd3f00282906344b2ad7c2d403bd5fcad42a4630300e077",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.157339334487915
+        },
+        {
+          "sequence": "chair02_indoor",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "377d79ebe2060974290feb13c847fba3273f1520e8bf0d07278642936a3952c9",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.240358829498291
+        },
+        {
+          "sequence": "ball13_indoor",
+          "split": "fit",
+          "events": 38,
+          "source_feature_sha256": "9756ff2861d6818f760d22f629ace8c7855a6a403c15b2b2c290735e7bc18ac8",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.408417463302612
+        },
+        {
+          "sequence": "adapter02_indoor",
+          "split": "fit",
+          "events": 35,
+          "source_feature_sha256": "6f13f9b6e01caf406762b1a0096d17868219ecb1f5d66e1e79e5640c4340eade",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.573199033737183
+        },
+        {
+          "sequence": "ukulele02_indoor",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "3221c672c9400c7142c5320bf87982bc30eaf2533fe3873fc60791b4c3e3f15b",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.654003143310547
+        },
+        {
+          "sequence": "leaves02_indoor",
+          "split": "fit",
+          "events": 24,
+          "source_feature_sha256": "46328a5f0f7ffd62b842278669f8cb9d5fde598a28d1d961bde6e64f533dc50d",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.771888732910156
+        },
+        {
+          "sequence": "trashbin_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "4cd43f734767f8a22c50dc5c53f55f2550d2446535f6eb06a28932975f3d9c52",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.864864349365234
+        },
+        {
+          "sequence": "pigeon06_wild",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "55c5b9ea3ae99a7241e9671604446a6ad5b4248fcca98593982a82389623109a",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.942837476730347
+        },
+        {
+          "sequence": "pigeon07_wild",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "1cfdbb26b6eeaf176da49d1f7dcc8a68b6ec6d111b7f7a29e0d23ec747f70e25",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.016452550888062
+        },
+        {
+          "sequence": "human03_wild",
+          "split": "fit",
+          "events": 31,
+          "source_feature_sha256": "9d37e740b417eee2bff6290e8823689dfb3dc38d09e8430f56e0342e937764b8",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.159485340118408
+        },
+        {
+          "sequence": "leaves06_wild",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "c5c38797c31100b0292827210b2476c846aed41d9c3a291d79a12692277e417f",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.25538969039917
+        },
+        {
+          "sequence": "leaves03_wild",
+          "split": "fit",
+          "events": 30,
+          "source_feature_sha256": "5c1810ab24b4126bda0eafe30c5e283ab01c60dd4d91d7ee894ea2602024fc39",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.38777756690979
+        },
+        {
+          "sequence": "toiletpaper02_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "0c4925a901e14fc7f79fb49f32c1d27fea95247afc05bb9ef404486c13a98686",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.510213375091553
+        },
+        {
+          "sequence": "cart_indoor",
+          "split": "fit",
+          "events": 13,
+          "source_feature_sha256": "f5dfcb02159b0c4ba39828d20da196633cfe4f1001a08de9f6d687bfe2164853",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.576414823532104
+        },
+        {
+          "sequence": "ball07_indoor",
+          "split": "development",
+          "events": 38,
+          "source_feature_sha256": "538035106aae65dbb57cc5bd6fd63cd8336896d1033ded2383b6df8b4340ee87",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.743339538574219
+        },
+        {
+          "sequence": "book06_indoor",
+          "split": "development",
+          "events": 29,
+          "source_feature_sha256": "56263328d23d20866e3b9749ff62da4d2727e1f3589cb9c51059af4e157927ca",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.879283666610718
+        },
+        {
+          "sequence": "car02_indoor",
+          "split": "development",
+          "events": 23,
+          "source_feature_sha256": "21dda2298d4a2d427b84bb98f60c3103e76874bae4d71e3259f9a3efa53d0b4a",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.983086109161377
+        },
+        {
+          "sequence": "colacan04_indoor",
+          "split": "development",
+          "events": 36,
+          "source_feature_sha256": "d6e564bf271ecc88221a476cdc16c6dc23551303c81642482b4b398169ac0e4b",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.14128065109253
+        },
+        {
+          "sequence": "container01_indoor",
+          "split": "development",
+          "events": 17,
+          "source_feature_sha256": "0e35e503324ffe82fdb8d8d9d33c4990267c883f6b43c1bfaabf0224bf60ef89",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.222889184951782
+        },
+        {
+          "sequence": "cup08_indoor",
+          "split": "development",
+          "events": 22,
+          "source_feature_sha256": "eef14fdb29cc7bd8eb0e416193e600074880e542303aeab3c70c786399531bf1",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.323622703552246
+        },
+        {
+          "sequence": "cup13_indoor",
+          "split": "development",
+          "events": 29,
+          "source_feature_sha256": "0b125f9482fa22acd7b9d9ff905138a5c4c4c09bfd964dfde0ef89b8db6ea6b3",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.455098152160645
+        },
+        {
+          "sequence": "flower02_wild",
+          "split": "development",
+          "events": 26,
+          "source_feature_sha256": "29b8baa69f6ce6ee802b576de9e37ab002a7b70e7d756221fbe1bf7b13043b7a",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.57722544670105
+        },
+        {
+          "sequence": "flower03_indoor",
+          "split": "development",
+          "events": 14,
+          "source_feature_sha256": "282903a38f53f6aa72eb6e4a7b6b23b5ee5b1187550faddf778fb2425c60874d",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.642917156219482
+        },
+        {
+          "sequence": "flowerbasket_indoor",
+          "split": "development",
+          "events": 29,
+          "source_feature_sha256": "6014e7b010635a8e7e1e51fcc66dcf4ef197f72df6ee55ea09619edd94e812ed",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.778283834457397
+        },
+        {
+          "sequence": "ghostmask_indoor",
+          "split": "development",
+          "events": 29,
+          "source_feature_sha256": "4d514249a58edcb52345ff0c60bf9e9f2c2f92c88a491bc891cec4bef752de9a",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.920234441757202
+        },
+        {
+          "sequence": "mobilephone01_indoor",
+          "split": "development",
+          "events": 34,
+          "source_feature_sha256": "5c8ce67f7bfe815ba1ece22a5669fbe60dcb9a810d6859509602f1aafa0f35fb",
+          "original_M117_reader_default_close": true,
+          "seconds": 11.071049451828003
+        }
+      ],
+      "events": 1801,
+      "valid_gt": 1563,
+      "human_confirmed_initialization": true,
+      "current_attribute_visibility_truth": false,
+      "current_GT_loaded_for_readonly_analysis": true,
+      "optimizer_steps": 0,
+      "checkpoints_created": false,
+      "model_forward_executed": false,
+      "tracker_state_committed": false,
+      "no_public_evaluation": true,
+      "coordinates": {
+        "interior_coordinate_ramp_exact": true,
+        "outside_search_zero": true
+      },
+      "source_sha256": "ab8c61e16164e0ff306b8f1f534462050fdac9d81a4f10926c85d3e5da599528",
+      "interface_sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+      "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+      "GT_sha256": "433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+      "dense_receipt_sha256": "84c35de699352faba6a757d8fa9af8690a068a3c23feab8cfc70880a522ee638",
+      "parent_result_sha256": "7f5f0baa7ce12cc0bf3b060b0d8ef46d828a498912b8c360c53e2ec2638e0637",
+      "elapsed_seconds": 11.256401062011719,
+      "gpu_peak_reserved_bytes": 4194304
+    },
+    {
+      "status": "complete_M119_full_shard",
+      "mode": "full",
+      "shard": 1,
+      "seed": 2027,
+      "sequences": [
+        {
+          "sequence": "bag04_indoor",
+          "split": "fit",
+          "events": 23,
+          "source_feature_sha256": "67a9d83ed0272d63e95844c2f45ebfc7fba8fdf234ffff8419898caa61c9c1ea",
+          "original_M117_reader_default_close": true,
+          "seconds": 2.8132357597351074
+        },
+        {
+          "sequence": "skateboard02_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "98cdc6b32f7404cc4098b6960b4a16c75dd18b07a8c937e1153383bc6231e5ab",
+          "original_M117_reader_default_close": true,
+          "seconds": 2.9168591499328613
+        },
+        {
+          "sequence": "bottle01_indoor",
+          "split": "fit",
+          "events": 37,
+          "source_feature_sha256": "f40ca5acc90273aaefd2013735af4cf97a46e4f01e1831d4ab847883b30643e6",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.1043598651885986
+        },
+        {
+          "sequence": "skateboard01_indoor",
+          "split": "fit",
+          "events": 33,
+          "source_feature_sha256": "59fb564e01a14b2cc10417e5424b4c5001edba76ebb6b6f49edfb165a3672651",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.260215997695923
+        },
+        {
+          "sequence": "cat05_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "1821872f1e556c4218ede6d3e6a7eacff3834ec734f7ad249aa77930b12bab59",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.3828940391540527
+        },
+        {
+          "sequence": "ball04_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "ef1f3b46741f0aef72ed27af6b0170a3d112d833b00c547b216ce5e2c8a8965b",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.502732515335083
+        },
+        {
+          "sequence": "ball03_indoor",
+          "split": "fit",
+          "events": 23,
+          "source_feature_sha256": "77bb23420979c198f0aea07334b4658142c3924c5044a89a9d4f66b1307706e6",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.6120283603668213
+        },
+        {
+          "sequence": "mushroom03_wild",
+          "split": "fit",
+          "events": 15,
+          "source_feature_sha256": "a46eb05692758d470b03490dcb2a558f0483676b353b1649bd83f9e161bf723f",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.683669090270996
+        },
+        {
+          "sequence": "mushroom05_indoor",
+          "split": "fit",
+          "events": 25,
+          "source_feature_sha256": "7fae4c1c213824cd093d94604b0ddcccc2186ae2cf58323e4069a744514bd8d1",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.8072683811187744
+        },
+        {
+          "sequence": "mobilephone05_indoor",
+          "split": "fit",
+          "events": 25,
+          "source_feature_sha256": "820e6064781f6378a7ba32053eb09cbdb1f416fa474b0a0139aa97d9757397fc",
+          "original_M117_reader_default_close": true,
+          "seconds": 3.9296576976776123
+        },
+        {
+          "sequence": "ball17_wild",
+          "split": "fit",
+          "events": 25,
+          "source_feature_sha256": "52cc1a63b90ae82564590a782515b0944c1e152032652f4278243b844a417496",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.04933762550354
+        },
+        {
+          "sequence": "book05_indoor",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "108c29d6d5a83a08b1a6e6476e7bf1c40219cda644afde62f59236d7f3f2003f",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.1392598152160645
+        },
+        {
+          "sequence": "book02_indoor",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "9f573cb0b2e876143489fbd10e9940af3a88c16e0ab4a1ed83d1a7fb32b3c3e3",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.218241453170776
+        },
+        {
+          "sequence": "bike02_wild",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "7139ce0cceee161a3f6412ef5fce714386cd4dbda65aba7b84f5cbedfdcfbb8e",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.27859902381897
+        },
+        {
+          "sequence": "book01_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "eda645131587e53c0f119f21c79194a169101448d129e3b98e43e90a3d4be0cd",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.372278451919556
+        },
+        {
+          "sequence": "glass04_indoor",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "7d841ca492c34b8ec9603954a0973fa870114d9b0d55792e6d9adb28498887e9",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.456120014190674
+        },
+        {
+          "sequence": "colacan02_indoor",
+          "split": "fit",
+          "events": 38,
+          "source_feature_sha256": "f05ced1f2daadba50c7646c877e0e7a9aedcd91e60e90fd64d8d022bc2456c65",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.625017166137695
+        },
+        {
+          "sequence": "parkingsign_wild",
+          "split": "fit",
+          "events": 15,
+          "source_feature_sha256": "efde00db74437045792eb72930e8622396a4b75b311c062c7a734d224f910a7f",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.697334051132202
+        },
+        {
+          "sequence": "teacup_indoor",
+          "split": "fit",
+          "events": 25,
+          "source_feature_sha256": "cc8a89acfe594722d082a3010940b96d90c08e452456d73add1db78616f9a68a",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.811844348907471
+        },
+        {
+          "sequence": "suitcase_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "350c375472a4f1740ba12ed5a7d8bbb98d80160e2a7c319e37276b77b95f7fe9",
+          "original_M117_reader_default_close": true,
+          "seconds": 4.932120084762573
+        },
+        {
+          "sequence": "ball05_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "0c3560cff21a841142d77e7db3994cbc6992de1b7424c7f41d5ceec86c73acb0",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.054322004318237
+        },
+        {
+          "sequence": "cube06_indoor",
+          "split": "fit",
+          "events": 28,
+          "source_feature_sha256": "c162094c58323c44eba14ed84d501e836c6b56602098620467933cedbd2d1619",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.188194036483765
+        },
+        {
+          "sequence": "mushroom04_indoor",
+          "split": "fit",
+          "events": 19,
+          "source_feature_sha256": "ae6895037073ffd36c8ab0e312b9ccbf9098e731b0b930f9a4368c47eee544c5",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.281134366989136
+        },
+        {
+          "sequence": "swing01_wild",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "de59201f622dbd09c07623311874042aaa75e554a9e5b75ee491c1b8ff806435",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.341412544250488
+        },
+        {
+          "sequence": "cup14_indoor",
+          "split": "fit",
+          "events": 23,
+          "source_feature_sha256": "578173db7ffc929f133aaa220a73de3ae4d7d4b94cac02478556437ff257faf9",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.449542760848999
+        },
+        {
+          "sequence": "toy04_indoor",
+          "split": "fit",
+          "events": 14,
+          "source_feature_sha256": "ad72271915c66af5fc9c456aed824a5563a1f45ac2da6ced1abcf052f3e8713e",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.518755674362183
+        },
+        {
+          "sequence": "human01_indoor",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "8e7f99a4d72681a4a53b4ca8eb36c91a0190f8e4c6fa66c2d470bac4ae98ff9a",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.601316928863525
+        },
+        {
+          "sequence": "toiletpaper04_indoor",
+          "split": "fit",
+          "events": 23,
+          "source_feature_sha256": "d359e8383077a7044379959de7f9fc77f55b4821f7fa22b9758d5e29ed223026",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.7069666385650635
+        },
+        {
+          "sequence": "painting_indoor_320",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "fc0e789fb4c3a8c221f895cd2b3fd80c05a769ebdbcff38ce1d3514568720bf8",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.781074523925781
+        },
+        {
+          "sequence": "bike01_wild",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "12865a1c94258a8ff07b0d55f03eb5d5c182216077f870945d42bb46591792e8",
+          "original_M117_reader_default_close": true,
+          "seconds": 5.856596946716309
+        },
+        {
+          "sequence": "toiletpaper03_indoor",
+          "split": "fit",
+          "events": 35,
+          "source_feature_sha256": "7c57c76b7430f84d50f0ce9cb04ddc2def85b5a2f646eb5675ad792e9e10a1bd",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.018194913864136
+        },
+        {
+          "sequence": "hand02_indoor",
+          "split": "fit",
+          "events": 19,
+          "source_feature_sha256": "c312c89579ebdc80e480fdc5160dc77cca8485b63d85629830de36a8b4913328",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.105283975601196
+        },
+        {
+          "sequence": "shoes03_indoor",
+          "split": "fit",
+          "events": 19,
+          "source_feature_sha256": "bdb5693c85b3e0c3b153d11d941dda0b39d8406638473d50897cd5b3f0b89ef8",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.195988893508911
+        },
+        {
+          "sequence": "duck02_wild",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "05e3ee215228c5bb8ae790b35fd2862605e18529b5aa2a0e4e2fe281c852d79c",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.254620552062988
+        },
+        {
+          "sequence": "mobilephone04_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "6c71a56b16b606a50d43d39741708d0ada5631d23d0d483aa044127d6d0f2aed",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.346325635910034
+        },
+        {
+          "sequence": "cup07_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "cfbd3fffdd30396482212f47b4f29dfacbabc53ab95d38e45ebd83d1c090ca0d",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.469606161117554
+        },
+        {
+          "sequence": "ball02_indoor",
+          "split": "fit",
+          "events": 38,
+          "source_feature_sha256": "8a1ff4efff7b1246dfc70a66c07455af0ddf2caf2638f4402bfef628d528af4f",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.6425981521606445
+        },
+        {
+          "sequence": "bike03_wild",
+          "split": "fit",
+          "events": 18,
+          "source_feature_sha256": "9b43192a4eec8a371f8abcc82673c2c6d8bbe73329ec8671965df6dc19d05703",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.7250144481658936
+        },
+        {
+          "sequence": "flower01_indoor",
+          "split": "fit",
+          "events": 37,
+          "source_feature_sha256": "35f482acb3187a3941a124758343e49f7e615b2e0907c94fe2bc44b82b73f0a9",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.888029336929321
+        },
+        {
+          "sequence": "clothes_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "55c7d128acc527f952d106a7dc31756f39e851f9109af432da3025bb4b04c27e",
+          "original_M117_reader_default_close": true,
+          "seconds": 6.982183456420898
+        },
+        {
+          "sequence": "hat04_indoor",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "5a7f7b4c6da6d7151b32d24bf4bd066f27e8b9103513c667a1341405a1a37306",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.042590618133545
+        },
+        {
+          "sequence": "cup03_indoor",
+          "split": "fit",
+          "events": 33,
+          "source_feature_sha256": "6031ffbfeba6cb71936bfcff6738bf130578864f7c8bdcac48da10099d0fe338",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.186351776123047
+        },
+        {
+          "sequence": "trophy_indoor",
+          "split": "fit",
+          "events": 19,
+          "source_feature_sha256": "3413e10af0fc6f39e3e89a1262e4e34289fc88ef3620e65cf54664bf2ebabd3a",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.274943113327026
+        },
+        {
+          "sequence": "cup11_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "e273195c657b5be1375e406de66d733402eaa30156f03c5e222585f07da50e96",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.367365598678589
+        },
+        {
+          "sequence": "cup05_indoor",
+          "split": "fit",
+          "events": 38,
+          "source_feature_sha256": "79785655b23f3c1b1c5e1aa8a0a109d5e1b0697595c4fb0621eab5aa48b07d14",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.5410380363464355
+        },
+        {
+          "sequence": "duck01_wild",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "eaa4808e771503257df19f31e23cb7c37a3229b092878b9f40635d74b32815f9",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.600226640701294
+        },
+        {
+          "sequence": "cube01_indoor",
+          "split": "fit",
+          "events": 23,
+          "source_feature_sha256": "c10568fcf1dfc88e4c9c908bb8b5065ad749a49a08cbb4562b5deabf121440f0",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.708017587661743
+        },
+        {
+          "sequence": "mushroom01_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "3490173b028c2547307ea9724f78d5f68d200184d0825c5f24fdb3e420d38cb9",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.83115291595459
+        },
+        {
+          "sequence": "file02_indoor",
+          "split": "fit",
+          "events": 21,
+          "source_feature_sha256": "ffba322280e28f72f3004cde09f828ccd63cf947affa79b35a3cecf4ade5d30b",
+          "original_M117_reader_default_close": true,
+          "seconds": 7.931461334228516
+        },
+        {
+          "sequence": "ball16_indoor",
+          "split": "fit",
+          "events": 31,
+          "source_feature_sha256": "2e2fded5a614f9bb49f42b83a611518fd96c5207d20683a1a01fa86f4e1a1623",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.075662612915039
+        },
+        {
+          "sequence": "ball21_indoor",
+          "split": "fit",
+          "events": 17,
+          "source_feature_sha256": "5fe970ad3fbbe7c1aecf06fe9142cfc304c2c313167aab825294d907d659c6dd",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.157403945922852
+        },
+        {
+          "sequence": "leaves05_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "a35680baecbe100c770693b6cc81d54172dfc838f79f4661a2a2ea2ccf3dea52",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.24988865852356
+        },
+        {
+          "sequence": "earphone02_indoor",
+          "split": "fit",
+          "events": 29,
+          "source_feature_sha256": "bd3010ee24dc12b4340b4d581210f7e68f42a25c97639238c7a3b2eda24e53fa",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.381207942962646
+        },
+        {
+          "sequence": "pigeon03_wild",
+          "split": "fit",
+          "events": 14,
+          "source_feature_sha256": "ffb7a1852644e3fdb5917764243b1f122455ee8268316e5a69962065549092ee",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.445497751235962
+        },
+        {
+          "sequence": "guitarbag_indoor",
+          "split": "fit",
+          "events": 26,
+          "source_feature_sha256": "b8f6afd34a8316132e01eb24e8947df502f1dc3b0f40c4ce19bf0541bee7ca97",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.563204288482666
+        },
+        {
+          "sequence": "paintbottle_indoor",
+          "split": "fit",
+          "events": 21,
+          "source_feature_sha256": "6383f3b0a52b22c67f27888de3785ffed578699a76c402b7c498e6fd89f6dce1",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.663740873336792
+        },
+        {
+          "sequence": "stand_indoor",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "c4ff1967ebcd06ad99043170f80fff89e0fad27755bf4fd818310a15efa05a52",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.744089841842651
+        },
+        {
+          "sequence": "human06_indoor",
+          "split": "fit",
+          "events": 15,
+          "source_feature_sha256": "53b5fb752f2c4ddd420aca1325ca4745691bfade7cebc6c9512e126cc58c7cf7",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.813157081604004
+        },
+        {
+          "sequence": "pine01_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "987474e9739ccf26fbe94fd7272821ce1836d82249baf34ecfc9508eb8127999",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.905709266662598
+        },
+        {
+          "sequence": "duck05_wild",
+          "split": "fit",
+          "events": 12,
+          "source_feature_sha256": "3c9722f1f4d304ce06ea98de6119a4bc993d919b9b781579f27f6bdfb7b4810d",
+          "original_M117_reader_default_close": true,
+          "seconds": 8.966836214065552
+        },
+        {
+          "sequence": "human04_wild",
+          "split": "fit",
+          "events": 16,
+          "source_feature_sha256": "9f0a1f01390036b8ec2e55946773a73864dd57f1cc860f4bccb7f26761ac89a2",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.043676853179932
+        },
+        {
+          "sequence": "box_indoor",
+          "split": "fit",
+          "events": 31,
+          "source_feature_sha256": "d8d9e5478ffdb35aa55b8298f0842820eac55a4396c802aeddd1302bdfb5d00a",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.180338621139526
+        },
+        {
+          "sequence": "thermos02_indoor",
+          "split": "fit",
+          "events": 27,
+          "source_feature_sha256": "dccaf662ce634af67a7ba246be05c0f16518ce70c225805e3ad45c05bff57029",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.301426410675049
+        },
+        {
+          "sequence": "bottle05_indoor",
+          "split": "fit",
+          "events": 20,
+          "source_feature_sha256": "253c60c150d8daf531a5af9e92004a6f13fd03a0af4ef40c9dcbffe010f9be5b",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.394893169403076
+        },
+        {
+          "sequence": "mac_indoor",
+          "split": "fit",
+          "events": 13,
+          "source_feature_sha256": "de8740fb90ec561e9f4f4628f24cc0a4ffc31fe5f88923433fb25f546101f5d0",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.459711790084839
+        },
+        {
+          "sequence": "bag05_indoor",
+          "split": "development",
+          "events": 23,
+          "source_feature_sha256": "7fcc041d46d8d8b199f2732285001b5258623e2e640c53dfd888726ca13a5d27",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.56598973274231
+        },
+        {
+          "sequence": "ball19_indoor",
+          "split": "development",
+          "events": 21,
+          "source_feature_sha256": "16ca0a9459b5166faa4b319236f456b854a1f36837e75d95e8d59cf95fb2fbaf",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.668153285980225
+        },
+        {
+          "sequence": "beautifullight01_indoor",
+          "split": "development",
+          "events": 30,
+          "source_feature_sha256": "8ceb30557db3d131eeed104027a3c0eedc6e889a6792cf5f8d95f655ef9fe61e",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.803621053695679
+        },
+        {
+          "sequence": "car01_indoor",
+          "split": "development",
+          "events": 28,
+          "source_feature_sha256": "e0c49aa5abb114443f99ee4e31519a493e569b642aff9a9ae1130953ff00d063",
+          "original_M117_reader_default_close": true,
+          "seconds": 9.930144786834717
+        },
+        {
+          "sequence": "colacan01_indoor",
+          "split": "development",
+          "events": 33,
+          "source_feature_sha256": "7333215735c6b07af4bbdf9036ca4cead950e7bf06d54dfef1dd3d44eae014fc",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.077611923217773
+        },
+        {
+          "sequence": "cup10_indoor",
+          "split": "development",
+          "events": 23,
+          "source_feature_sha256": "365e38c392500967ef8ba1b2a8d79f166a1e008e7cb561ae192c2a37c3089311",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.18296217918396
+        },
+        {
+          "sequence": "egg_indoor",
+          "split": "development",
+          "events": 37,
+          "source_feature_sha256": "8a742bca0479c06254d0ac35a9bcd0ea5c91945ec0af8842adad66e2b3201ff9",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.349064588546753
+        },
+        {
+          "sequence": "glass03_indoor",
+          "split": "development",
+          "events": 28,
+          "source_feature_sha256": "06e3f4d3b090661425fce3ff4aa7ba49b76f08aec60cfedf5fa7183f9f804d82",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.473477125167847
+        },
+        {
+          "sequence": "mobilephone02_indoor",
+          "split": "development",
+          "events": 18,
+          "source_feature_sha256": "3fa037abb2f535e71d1955908b9566a5bb86fb55e7c461f31031e898439396c3",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.55681300163269
+        },
+        {
+          "sequence": "notebook02_indoor",
+          "split": "development",
+          "events": 23,
+          "source_feature_sha256": "c9754c9079146bcf476ab90b86e4b41b7748dcfe84383a4f5ae9ba979eed7b4f",
+          "original_M117_reader_default_close": true,
+          "seconds": 10.661673784255981
+        }
+      ],
+      "events": 1701,
+      "valid_gt": 1476,
+      "human_confirmed_initialization": true,
+      "current_attribute_visibility_truth": false,
+      "current_GT_loaded_for_readonly_analysis": true,
+      "optimizer_steps": 0,
+      "checkpoints_created": false,
+      "model_forward_executed": false,
+      "tracker_state_committed": false,
+      "no_public_evaluation": true,
+      "coordinates": {
+        "interior_coordinate_ramp_exact": true,
+        "outside_search_zero": true
+      },
+      "source_sha256": "ab8c61e16164e0ff306b8f1f534462050fdac9d81a4f10926c85d3e5da599528",
+      "interface_sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+      "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+      "GT_sha256": "433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f",
+      "dense_receipt_sha256": "84c35de699352faba6a757d8fa9af8690a068a3c23feab8cfc70880a522ee638",
+      "parent_result_sha256": "7f5f0baa7ce12cc0bf3b060b0d8ef46d828a498912b8c360c53e2ec2638e0637",
+      "elapsed_seconds": 10.836439609527588,
+      "gpu_peak_reserved_bytes": 6291456
+    }
+  ],
+  "elapsed_seconds": 18.940143585205078,
+  "optimizer_steps": 0,
+  "checkpoints_created": false,
+  "no_public_evaluation": true
+}

@@ -181,3 +181,9 @@
 | 2026-10-07T08:29:38.929798+08:00 | /experiment-bridge | M119_SOURCE_REVIEW.json | source_review_PASS | Fresh same-family provisional;3 actual reporting gaps resolved and rerecounted;8 code Python3.8 AST+2 embedded scripts;8 D source/plan+private digest;no M119 runtime;GPU/SSH0 |
 | 2026-10-07T08:29:38.929798+08:00 | /experiment-bridge | M119_SOURCE_REVIEW.md | source_review_PASS | Fresh same-family provisional;3 actual reporting gaps resolved and rerecounted;8 code Python3.8 AST+2 embedded scripts;8 D source/plan+private digest;no M119 runtime;GPU/SSH0 |
 | 2026-10-07T08:29:38.929798+08:00 | /experiment-bridge | .aris/m119_gt_binding_20261007/reviewer_source_checks_20261007.json (private) | reviewer_stdlib_source_evidence | Actual M117/M118 saved-row3readouts*2splits recount;not M119 runtime;no network/model execution |
+
+| 2026-10-07T08:38:48.626913+08:00 | /experiment-bridge | m119_completed; M119_GT_BINDING_ANALYSIS.json; M119_RESULT_20261007_083848.md; M119_ARTIFACT_MIRROR.json | complete-diagnostic | Actual two sanity/two full shards and 24original files, GT coverage/class/instance/precision partitions; optimization0/no formal score, all readouts retained |
+
+| 2026-10-07T08:57:18.870749+08:00 | /experiment-bridge | M120_NATIVE_GRID_PLAN.md; M119_DOCUMENT_SYNC_PENDING.json | planned / sync-pending | Next dense native inputs based on actual M119/M98 evidence; no new job/source/GPU yet, three TCP preauth documentation failures retained, complete original M119 not restarted |
+
+| 2026-10-07T09:05:31.071789+08:00 | /experiment-bridge | collect_m120_native_grids.py; M120_NATIVE_GRID_PLAN.md | collector-source-prepared | Actual missing RGB-D grids collector implemented/AST only; fresh source review, controller/deploy/server and Torch sanity pending; no NN/optimizer/formal result |
