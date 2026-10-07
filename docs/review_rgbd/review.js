@@ -1,5 +1,5 @@
-import {serializeCSV, parseCSV} from './review-csv.mjs?v=20261007human';
-import {answerStorageKey, savedAnswer, INITIAL_ROUND} from './review-state.mjs?v=20261007human';
+import {serializeCSV, parseCSV} from './review-csv.mjs?v=20261007categories';
+import {answerStorageKey, savedAnswer, INITIAL_ROUND} from './review-state.mjs?v=20261007categories';
 const qs = new URLSearchParams(location.search);
 const $ = id => document.getElementById(id);
 const datasets = ['depthtrack', 'depthtrack_test', 'cdtb', 'vot'];
@@ -168,7 +168,7 @@ function saveCurrent() {
 }
 async function fetchManifest(dataset) {
   if (!cache.has(dataset)) {
-    const response = await fetch(`data/${dataset}.json?v=20261007human`);
+    const response = await fetch(`data/${dataset}.json?v=20261007categories`);
     if (!response.ok) throw new Error(`无法读取${dataset}清单：HTTP ${response.status}`);
     cache.set(dataset, await response.json());
   }

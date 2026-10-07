@@ -5,7 +5,7 @@ from pathlib import Path
 SOURCES={
     'depthtrack_test':(50,'6ccfab037bc24ca44245bb88739a77bf668f931283da12cb18e37402d0a0443a'),
     'cdtb':(80,'dea42aa507134894bd3e267672b2a69f662a1d26ecd959406257e4b2e5895381'),
-    'vot':(1765,'3af4dc7a2d26a6484508b1cf37c7cc4cf33a7657e983c6c7c71f9b40abb52e1f')}
+    'vot':(1765,'b83f0b4240865d609921c1bf434621577bbe35ace4aceaa0f1242c981445cb9c')}
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
                 human_status_is_proposal_review_not_pending_label=row['status']))
         assert all(len(r['phrases'])<=5 for r in output)
         assert len({r['sequence'] for r in output})=={'depthtrack_test':50,'cdtb':80,'vot':127}[dataset]
-        assert sum(r['unknown_category_kept_empty'] for r in output)==(2 if dataset=='vot' else 0)
+        assert sum(r['unknown_category_kept_empty'] for r in output)==0
         prepared[dataset]=output;source.append(dict(dataset=dataset,file=path.name,sha256=digest,
             site_manifest_sha256=hashlib.sha256((args.site_data/(dataset+'.json')).read_bytes()).hexdigest(),count=count))
     result=dict(status='prepared_M122_external_human_labels_CPU_only',datasets=prepared,sources=source,
@@ -49,7 +49,7 @@ def main():
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(dict(status=result['status'],counts={k:len(v) for k,v in prepared.items()},
-        unknown_category=2,source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()),ensure_ascii=False),flush=True)
+        unknown_category=0,source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()),ensure_ascii=False),flush=True)
 
 
 if __name__=='__main__':main()
