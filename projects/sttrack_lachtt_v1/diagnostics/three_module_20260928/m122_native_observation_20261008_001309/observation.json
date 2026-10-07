@@ -1,0 +1,169 @@
+{
+  "status": "actual_native_SSH_M122_snapshot",
+  "observed_at": "2026-10-07T16:13:09.027861+00:00",
+  "observed_unix": 1791389589.0278742,
+  "controller_alive": true,
+  "terminal": false,
+  "queue_alive": true,
+  "gpu": "0, 4206, 65\n1, 4206, 53\n",
+  "system_free_bytes": 287170560,
+  "data_free_bytes": 18743734272,
+  "arms": [
+    {
+      "weight": 0,
+      "completed_sequence_runs": 252,
+      "last_complete": {
+        "epoch": 2,
+        "sequence": "bag03_indoor",
+        "sequence_index": 99,
+        "sequences_per_epoch": 152,
+        "track_calls": 2180,
+        "supervised_frames": 2114,
+        "template_writes": 13,
+        "loss_means": [
+          0.11967395120565784,
+          0.09715690200861152,
+          0.008155337725988481,
+          0.16916179911361465,
+          0.06105970025820913,
+          6.19550777051342e-05,
+          0.08544257848304164
+        ],
+        "counts": {
+          "observation_intersection": 2060,
+          "regression_positions": 3473,
+          "preservation_pairs": 18216
+        },
+        "total_track_calls": 364190,
+        "total_optimizer_steps": 11310,
+        "elapsed_seconds": 41832.38738775253
+      },
+      "all_recorded_losses_finite": true,
+      "completed_call_budget_fraction": 0.5523001003933844
+    },
+    {
+      "weight": 1,
+      "completed_sequence_runs": 276,
+      "last_complete": {
+        "epoch": 2,
+        "sequence": "leaves03_wild",
+        "sequence_index": 123,
+        "sequences_per_epoch": 152,
+        "track_calls": 727,
+        "supervised_frames": 451,
+        "template_writes": 0,
+        "loss_means": [
+          0.269210155976286,
+          0.08295377599955134,
+          0.007807213289584725,
+          0.12644364548777515,
+          0.30005336539797123,
+          0.00034944003265521476,
+          0.0025391181959402496
+        ],
+        "counts": {
+          "observation_intersection": 246,
+          "regression_positions": 403,
+          "preservation_pairs": 2070
+        },
+        "total_track_calls": 397276,
+        "total_optimizer_steps": 12314,
+        "elapsed_seconds": 41888.89543747902
+      },
+      "all_recorded_losses_finite": true,
+      "completed_call_budget_fraction": 0.602475561338538
+    }
+  ],
+  "files": [
+    {
+      "path": "sanity_launch.json",
+      "bytes": 2845,
+      "sha256": "6fb0c82010e03ecc576d544bf00438c8250bafe73a4d827c1e7ae4f2067486e9"
+    },
+    {
+      "path": "sanity_precision0/result.json",
+      "bytes": 4028,
+      "sha256": "d7da122e7854f4fe909b426bb9ef4db6b3b2ace9cb45458b249ecbe5cd840097"
+    },
+    {
+      "path": "sanity_precision0/sampled_state_trace.jsonl",
+      "bytes": 1091,
+      "sha256": "20669afad33d7f7d8422a69bc1cd7e44094962ead00612d2c9df2fc01bc78517"
+    },
+    {
+      "path": "sanity_precision0/sequence_log.jsonl",
+      "bytes": 510,
+      "sha256": "918018363f6fb28d0da6b8fcda201746d8411716185ec5f8120306f21f1a0797"
+    },
+    {
+      "path": "sanity_precision0.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "sanity_precision0.log",
+      "bytes": 666,
+      "sha256": "54f3fa388532d1c96342e134f769d2f833ef26aa3c6d692b178e85b4aaabb94f"
+    },
+    {
+      "path": "sanity_precision1/result.json",
+      "bytes": 4034,
+      "sha256": "5ca7343c5a25d8f0160b485af9c74afca878b94b1d0417d823bd76b4aa3286d1"
+    },
+    {
+      "path": "sanity_precision1/sampled_state_trace.jsonl",
+      "bytes": 1087,
+      "sha256": "7a40ea1a493b03120b68f3619ca4c4941f9bd6bda8b7e0e92a4d476df65c9c24"
+    },
+    {
+      "path": "sanity_precision1/sequence_log.jsonl",
+      "bytes": 512,
+      "sha256": "ef2234dcbf1d606e8bc010da1d6b83efa8df4c642171bebe5f6b3f88656df902"
+    },
+    {
+      "path": "sanity_precision1.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "sanity_precision1.log",
+      "bytes": 668,
+      "sha256": "87a9c8e7bc24b7f43a65a964c30ff78d444ae9e19c8545f586928b6bcf1f8552"
+    },
+    {
+      "path": "train_launch.json",
+      "bytes": 2737,
+      "sha256": "843a8bb8773181fcfee31c2ea7b7ee98832b4bffcc2c3fc330404faf13833b39"
+    },
+    {
+      "path": "train_precision0/sampled_state_trace.jsonl",
+      "bytes": 616904,
+      "sha256": "41a73455c1ae1415892adf436ad9bf53ccc5edc583409f5934746c90edf2758f"
+    },
+    {
+      "path": "train_precision0/sequence_log.jsonl",
+      "bytes": 133556,
+      "sha256": "58dbcc43cab9df0a84b4b4a8435f36a68b78e2c79051100186aec6cc16f70634"
+    },
+    {
+      "path": "train_precision0.log",
+      "bytes": 133640,
+      "sha256": "81896b2bdbb0030246db266e1204e758d38dcc9d85925897b274ff24fcbf2faf"
+    },
+    {
+      "path": "train_precision1/sampled_state_trace.jsonl",
+      "bytes": 673311,
+      "sha256": "a9af78d18d9fd5fc1fe90860633f4cab97c87b473a5d8f460cb7bdd9af23438a"
+    },
+    {
+      "path": "train_precision1/sequence_log.jsonl",
+      "bytes": 146607,
+      "sha256": "bb27f00adf16f2b4e75f4c0dbc833a5da247415e8941e0b913b693e1a62ed7f1"
+    },
+    {
+      "path": "train_precision1.log",
+      "bytes": 146691,
+      "sha256": "af6076c933afb7551269cae95fd641277f6ad99f10aebe01d6c5135a2fab2f2f"
+    }
+  ]
+}
