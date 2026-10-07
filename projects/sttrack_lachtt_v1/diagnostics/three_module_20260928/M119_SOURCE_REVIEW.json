@@ -1,0 +1,577 @@
+{
+  "schema_version": 1,
+  "review_subject": "M119 GT-region binding: pre-deployment source review",
+  "reviewed_at": "2026-10-07T08:29:38.929798+08:00",
+  "verdict": "PASS",
+  "blocking": [],
+  "non_blocking": [],
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "max",
+  "actual_backend_attestation": false,
+  "actual_model": "not independently attested",
+  "actual_effort": "not independently attested",
+  "reviewer_task": "/root/m119_gt_region_source_review",
+  "review_context": "Fresh delegated context; exact plan, new sources, reused sources and private deployer read directly. Original reporting findings were sent to executor, repaired by executor, then current sources reread and actual saved-row arithmetic rechecked before first formal review record.",
+  "scope": "Source plus completed M117/M118 and existing Train labels only. Local stdlib checks are source-function evidence, not M119 Torch/runtime acceptance.",
+  "GPU_calls": 0,
+  "SSH_calls": 0,
+  "network_calls": 0,
+  "package_installs": 0,
+  "model_downloads": 0,
+  "model_execution_calls": 0,
+  "reviewer_experiment_source_mutations": 0,
+  "source_sha256": {
+    "M119_GT_REGION_BINDING_PLAN.md": "250c1018d48486ad14a7cf724c008b683162757373ef007d1f9a28d5cab0f472",
+    "collect_m119_gt_binding.py": "ab8c61e16164e0ff306b8f1f534462050fdac9d81a4f10926c85d3e5da599528",
+    "run_m119_gt_binding.py": "5c41b12cd9aefdbc8cdc2e16d2e80b61620e7f8f4b0a68b47457850d8ac39449",
+    "analyze_m119_gt_binding.py": "cd0f9af47ef1fe72f7b473f3ff6d4dfa285ee412645db93739a05d78c2fd74be",
+    "region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f"
+  },
+  "private_transport_sha256": {
+    "deploy_m119.py": "cb8a58548c327e69a42542168dba2786df344128778c2538b7d27888c561b3ce"
+  },
+  "supporting_source_sha256": {
+    "collect_m117_dense_region.py": "76df8b2c31464281c1a37db292f9ae8f5134fee5f19568c08137ae0a5db4d2da",
+    "prepare_train_states.py": "cceb53710cdbde8350000c25d6f0ed25b490e4084022b37c76062315ad641c79",
+    "prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "m118_region_inputs.py": "3a7bccd31125fd531875637d1616b6ea37e44cce7735eb6a6015c7fd759e0155",
+    "train_m118_regional_decoder.py": "2c6952b7f08f579ebd8a0df1a93fbfd0a7da97dfa9416c4a832c8938720e95c9",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323"
+  },
+  "evidence_sha256": {
+    "m117_completed/result.json": "84c35de699352faba6a757d8fa9af8690a068a3c23feab8cfc70880a522ee638",
+    "m117_completed/driver.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m117_completed/full_shard0/phrase_responses.jsonl": "18318f49e213c12239ec1d3529a6d4571147eb47cf9abc38fb9c9810aebb3222",
+    "m117_completed/full_shard1/phrase_responses.jsonl": "0119a238bcf5bf3a15218b4e6f25722c11b8ab0f40d538b90e4d703c51b16af7",
+    "m118_completed/result.json": "7c48d8aa1888e25709ea011d5084e0ceed0ad1ff48ca7aac6229df7ac0cbbe17",
+    "m118_completed/driver.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m118_completed/train_human_text/result.json": "7f5f0baa7ce12cc0bf3b060b0d8ef46d828a498912b8c360c53e2ec2638e0637",
+    "m118_completed/train_human_text/fit_events.jsonl": "d98cac942288edbb86e9faf6ae51ab1b5c074190d419d6eb7f8f7cb396e64fb7",
+    "m118_completed/train_human_text/empty_development.jsonl": "3f0966e75db6a3eae8056889e75d25a2cb8badc194d267e3da78f79ac5ab2bfa",
+    "M118_COMPARISON.json": "036720e59c19db7565c3383fd962b600a18522baa5fe1720a9f0cf77d4a8dd19",
+    "m105_inputs/preparation.json": "59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+    "m105_inputs/training_labels.json": "433226372eb045b0dede646ec1fa016506390728724ceaaf194701bb1b213a0f"
+  },
+  "private_evidence_sha256": {
+    "human_train_labels.json": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+    "reviewer_source_checks_20261007.json": "c88fee3ea2be9b64074b879ec9f0223eff0004b74b1ac4c7adf1f7044856e06d"
+  },
+  "executed_checks": {
+    "python_runtime": "3.13.12 (main, Feb  3 2026, 22:53:26) [MSC v.1944 64 bit (AMD64)]",
+    "torch_available_in_review_interpreter": false,
+    "syntax_check": "ast.parse(feature_version=(3, 8)); no packages imported beyond stdlib",
+    "ast_python38_source_files_pass": 8,
+    "ast_python38_D_code_files_pass": 7,
+    "ast_python38_private_transport_files_pass": 1,
+    "ast_python38_embedded_remote_blocks_pass": 2,
+    "embedded_remote_block_lines": [
+      30,
+      53
+    ],
+    "source_hashes_rechecked_before_report": true,
+    "actual_artifact_evidence": {
+      "M117": {
+        "elapsed_seconds": 111.7028751373291,
+        "child_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "events": 3502,
+        "sequences": 152,
+        "shards": [
+          {
+            "shard": 0,
+            "sequences": 77,
+            "events": 1801
+          },
+          {
+            "shard": 1,
+            "sequences": 75,
+            "events": 1701
+          }
+        ]
+      },
+      "M118": {
+        "elapsed_seconds": 117.060142993927,
+        "child_exits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "full_optimizer_steps": [
+          480,
+          480,
+          480
+        ],
+        "human": {
+          "states": 495,
+          "correct": 272,
+          "parent_correct": 272,
+          "mean_iou": 0.5312612811714937,
+          "parent_mean_iou": 0.5307076979870673,
+          "cross_half_rescues": 4,
+          "cross_half_breaks": 4,
+          "severe_rescues": 2,
+          "severe_harms": 1,
+          "both_qualified": 268,
+          "both_qualified_better": 0,
+          "both_qualified_worse": 1,
+          "both_qualified_tied": 267,
+          "both_qualified_iou_delta": -0.1264815330505371,
+          "healthy": 264,
+          "healthy_correct": 263,
+          "healthy_mean_iou": 0.8792871199548244,
+          "transition": 127,
+          "transition_correct": 4
+        },
+        "own_empty": {
+          "states": 495,
+          "correct": 272,
+          "parent_correct": 272,
+          "mean_iou": 0.5307076979870673,
+          "parent_mean_iou": 0.5307076979870673,
+          "cross_half_rescues": 0,
+          "cross_half_breaks": 0,
+          "severe_rescues": 0,
+          "severe_harms": 0,
+          "both_qualified": 272,
+          "both_qualified_better": 0,
+          "both_qualified_worse": 0,
+          "both_qualified_tied": 272,
+          "both_qualified_iou_delta": 0.0,
+          "healthy": 264,
+          "healthy_correct": 264,
+          "healthy_mean_iou": 0.8824474816069459,
+          "transition": 127,
+          "transition_correct": 4
+        },
+        "matched_visual": {
+          "states": 495,
+          "correct": 272,
+          "parent_correct": 272,
+          "mean_iou": 0.5314100559735011,
+          "parent_mean_iou": 0.5307076979870673,
+          "cross_half_rescues": 1,
+          "cross_half_breaks": 1,
+          "severe_rescues": 0,
+          "severe_harms": 1,
+          "both_qualified": 271,
+          "both_qualified_better": 1,
+          "both_qualified_worse": 0,
+          "both_qualified_tied": 270,
+          "both_qualified_iou_delta": 0.0028920769691467285,
+          "healthy": 264,
+          "healthy_correct": 264,
+          "healthy_mean_iou": 0.8824474816069459,
+          "transition": 127,
+          "transition_correct": 3
+        },
+        "matched_generic": {
+          "states": 495,
+          "correct": 273,
+          "parent_correct": 272,
+          "mean_iou": 0.5334761815136203,
+          "parent_mean_iou": 0.5307076979870673,
+          "cross_half_rescues": 4,
+          "cross_half_breaks": 3,
+          "severe_rescues": 2,
+          "severe_harms": 1,
+          "both_qualified": 269,
+          "both_qualified_better": 0,
+          "both_qualified_worse": 0,
+          "both_qualified_tied": 269,
+          "both_qualified_iou_delta": 0.0,
+          "healthy": 264,
+          "healthy_correct": 263,
+          "healthy_mean_iou": 0.8797662166709249,
+          "transition": 127,
+          "transition_correct": 4
+        },
+        "overall_pass": false
+      },
+      "GT": {
+        "events": 3502,
+        "valid_by_split": {
+          "fit": 2544,
+          "development": 495
+        },
+        "invalid_by_split": {
+          "fit": 368,
+          "development": 95
+        },
+        "keys_split_and_strata_match_saved_M117_M118": true
+      },
+      "human_initialization": {
+        "sequences": 152,
+        "split_sequences": {
+          "fit": 130,
+          "development": 22
+        },
+        "phrases": 704,
+        "slot_histogram": {
+          "4": 47,
+          "5": 101,
+          "3": 3,
+          "2": 1
+        },
+        "labels_sha_matches_both_completed_stages": true,
+        "category_column": 0,
+        "generic_column": 5,
+        "empty_column": 6
+      }
+    },
+    "actual_saved_row_recount": {
+      "fit": {
+        "category_raw": {
+          "events": 2544,
+          "correct": 1497,
+          "parent_correct": 1602,
+          "oracle_correct": 1814,
+          "no_qualified_candidates": 730,
+          "parent_miss_with_qualified": 212,
+          "readout_miss_with_qualified": 317,
+          "mean_iou": 0.5076536896789704,
+          "parent_mean_iou": 0.6083137887764989,
+          "rescues": 52,
+          "breaks": 157,
+          "severe_rescues": 11,
+          "severe_harms": 43,
+          "healthy": 1560,
+          "healthy_correct": 1419,
+          "both_qualified": 1445,
+          "both_qualified_worse": 1061,
+          "both_qualified_better": 51,
+          "both_qualified_iou_delta": -166.43242728710175,
+          "healthy_parent_correct": 1559,
+          "healthy_rescues": 0,
+          "healthy_breaks": 140,
+          "healthy_mean_iou": 0.7241089440502364,
+          "healthy_parent_mean_iou": 0.8813412916010771,
+          "both_qualified_precision_delta": {
+            "count": 1445,
+            "positive": 51,
+            "mean": -0.11517815037169671,
+            "median": -0.102084219455719
+          },
+          "good_poor_geometry_margin": {
+            "count": 12237,
+            "positive": 11405,
+            "mean": 0.07984924060701618,
+            "median": 0.07673246413469315
+          }
+        },
+        "category_empty": {
+          "events": 2544,
+          "correct": 1497,
+          "parent_correct": 1602,
+          "oracle_correct": 1814,
+          "no_qualified_candidates": 730,
+          "parent_miss_with_qualified": 212,
+          "readout_miss_with_qualified": 317,
+          "mean_iou": 0.5187361959959695,
+          "parent_mean_iou": 0.6083137887764989,
+          "rescues": 58,
+          "breaks": 163,
+          "severe_rescues": 11,
+          "severe_harms": 47,
+          "healthy": 1560,
+          "healthy_correct": 1414,
+          "both_qualified": 1439,
+          "both_qualified_worse": 907,
+          "both_qualified_better": 58,
+          "both_qualified_iou_delta": -131.44264912605286,
+          "healthy_parent_correct": 1559,
+          "healthy_rescues": 0,
+          "healthy_breaks": 145,
+          "healthy_mean_iou": 0.743443479516636,
+          "healthy_parent_mean_iou": 0.8813412916010771,
+          "both_qualified_precision_delta": {
+            "count": 1439,
+            "positive": 58,
+            "mean": -0.0913430501223439,
+            "median": -0.06923145055770874
+          },
+          "good_poor_geometry_margin": {
+            "count": 12237,
+            "positive": 11400,
+            "mean": 0.07878442441508365,
+            "median": 0.07800360023975372
+          }
+        },
+        "category_ring": {
+          "events": 2544,
+          "correct": 1213,
+          "parent_correct": 1602,
+          "oracle_correct": 1814,
+          "no_qualified_candidates": 730,
+          "parent_miss_with_qualified": 212,
+          "readout_miss_with_qualified": 601,
+          "mean_iou": 0.43523714871802044,
+          "parent_mean_iou": 0.6083137887764989,
+          "rescues": 57,
+          "breaks": 446,
+          "severe_rescues": 10,
+          "severe_harms": 157,
+          "healthy": 1560,
+          "healthy_correct": 1136,
+          "both_qualified": 1156,
+          "both_qualified_worse": 800,
+          "both_qualified_better": 39,
+          "both_qualified_iou_delta": -146.3862452507019,
+          "healthy_parent_correct": 1559,
+          "healthy_rescues": 0,
+          "healthy_breaks": 423,
+          "healthy_mean_iou": 0.6085581365172775,
+          "healthy_parent_mean_iou": 0.8813412916010771,
+          "both_qualified_precision_delta": {
+            "count": 1156,
+            "positive": 39,
+            "mean": -0.1266317000438598,
+            "median": -0.11228141188621521
+          },
+          "good_poor_geometry_margin": {
+            "count": 12237,
+            "positive": 10586,
+            "mean": 0.07076227721281984,
+            "median": 0.07019840180873871
+          }
+        }
+      },
+      "development": {
+        "category_raw": {
+          "events": 495,
+          "correct": 250,
+          "parent_correct": 272,
+          "oracle_correct": 305,
+          "no_qualified_candidates": 190,
+          "parent_miss_with_qualified": 33,
+          "readout_miss_with_qualified": 55,
+          "mean_iou": 0.44246682932511017,
+          "parent_mean_iou": 0.5307076979870673,
+          "rescues": 20,
+          "breaks": 42,
+          "severe_rescues": 11,
+          "severe_harms": 13,
+          "healthy": 264,
+          "healthy_correct": 225,
+          "both_qualified": 230,
+          "both_qualified_worse": 164,
+          "both_qualified_better": 15,
+          "both_qualified_iou_delta": -26.155228972434998,
+          "healthy_parent_correct": 264,
+          "healthy_rescues": 0,
+          "healthy_breaks": 39,
+          "healthy_mean_iou": 0.693074072654726,
+          "healthy_parent_mean_iou": 0.8824474816069459,
+          "both_qualified_precision_delta": {
+            "count": 230,
+            "positive": 15,
+            "mean": -0.1137183868366739,
+            "median": -0.10407835245132446
+          },
+          "good_poor_geometry_margin": {
+            "count": 2195,
+            "positive": 2033,
+            "mean": 0.07954082442511187,
+            "median": 0.07577523589134216
+          }
+        },
+        "category_empty": {
+          "events": 495,
+          "correct": 244,
+          "parent_correct": 272,
+          "oracle_correct": 305,
+          "no_qualified_candidates": 190,
+          "parent_miss_with_qualified": 33,
+          "readout_miss_with_qualified": 61,
+          "mean_iou": 0.4520415970615837,
+          "parent_mean_iou": 0.5307076979870673,
+          "rescues": 20,
+          "breaks": 48,
+          "severe_rescues": 10,
+          "severe_harms": 19,
+          "healthy": 264,
+          "healthy_correct": 220,
+          "both_qualified": 224,
+          "both_qualified_worse": 125,
+          "both_qualified_better": 12,
+          "both_qualified_iou_delta": -17.543536067008972,
+          "healthy_parent_correct": 264,
+          "healthy_rescues": 0,
+          "healthy_breaks": 44,
+          "healthy_mean_iou": 0.7136654992619614,
+          "healthy_parent_mean_iou": 0.8824474816069459,
+          "both_qualified_precision_delta": {
+            "count": 224,
+            "positive": 12,
+            "mean": -0.07831935744200434,
+            "median": -0.0531715452671051
+          },
+          "good_poor_geometry_margin": {
+            "count": 2195,
+            "positive": 2008,
+            "mean": 0.08072279854624581,
+            "median": 0.07605762779712677
+          }
+        },
+        "category_ring": {
+          "events": 495,
+          "correct": 207,
+          "parent_correct": 272,
+          "oracle_correct": 305,
+          "no_qualified_candidates": 190,
+          "parent_miss_with_qualified": 33,
+          "readout_miss_with_qualified": 98,
+          "mean_iou": 0.3827069678858884,
+          "parent_mean_iou": 0.5307076979870673,
+          "rescues": 14,
+          "breaks": 79,
+          "severe_rescues": 7,
+          "severe_harms": 25,
+          "healthy": 264,
+          "healthy_correct": 187,
+          "both_qualified": 193,
+          "both_qualified_worse": 135,
+          "both_qualified_better": 8,
+          "both_qualified_iou_delta": -24.679055750370026,
+          "healthy_parent_correct": 264,
+          "healthy_rescues": 0,
+          "healthy_breaks": 77,
+          "healthy_mean_iou": 0.5920666359703649,
+          "healthy_parent_mean_iou": 0.8824474816069459,
+          "both_qualified_precision_delta": {
+            "count": 193,
+            "positive": 8,
+            "mean": -0.12787075518326438,
+            "median": -0.10879915952682495
+          },
+          "good_poor_geometry_margin": {
+            "count": 2195,
+            "positive": 1913,
+            "mean": 0.06906136693539,
+            "median": 0.06432853639125824
+          }
+        }
+      }
+    }
+  },
+  "findings": [
+    {
+      "id": "coordinates_frames_and_GT",
+      "result": "STATIC_PASS_WITH_REAL_KEY_CENSUS",
+      "references": [
+        "collect_m119_gt_binding.py:61",
+        "collect_m119_gt_binding.py:85",
+        "collect_m119_gt_binding.py:109",
+        "region_patch_evidence.py:14",
+        "collect_train_states.py:94",
+        "prepare_train_states.py:102"
+      ],
+      "evidence": "M90 labels use zero-based frame and global image xywh; original images are read at frame+1. Dense/native event_frames must equal the same plan list. Event tensor at uses crop_origins[at+1], while crop_origins[0] is the legal initialization. The reused 4x4 ROI algebra converts global xywh points into the existing rounded square crop and align_corners=False 16x16 grid. Overlaps receives CPU float32 native boxes and float32 actual current GT, exactly the existing Parent label path. Every valid candidate IoU list must equal the M118 saved list; invalid GT must have no Parent row. Local real artifacts confirm all3502 event keys and split/strata correspondence,3039 valid Parent keys,463 invalid separated. No current M119 tensor execution occurred."
+    },
+    {
+      "id": "human_bank_and_evidence_meanings",
+      "result": "PASS",
+      "references": [
+        "collect_m119_gt_binding.py:36",
+        "collect_m119_gt_binding.py:72",
+        "collect_m119_gt_binding.py:95",
+        "analyze_m119_gt_binding.py:11",
+        "prepare_m113_human_text.py:30",
+        "M119_GT_REGION_BINDING_PLAN.md:12"
+      ],
+      "evidence": "The original human-confirmed DepthTrack bank and label digest, sequence order and split identity are retained. Actual152 rows contain704 phrases, category plus at most4 stable attributes. Seven score columns are5 human slots, object, Empty. The four fixed outputs are raw category cosine, scalar category cosine minus Empty cosine, category minus ring, and visual initial-instance cosine. category_empty is not the prior M117 normalized centered-feature variant. The instance reader normalizes sampled patch directions, forms their observed-fraction-weighted mean, normalizes this region representation, and compares it with the corresponding fixed t0 representation. No text labels are inputs to that cosine. Categories, physical identity, localization quality and current attribute visibility remain distinct; no current attribute truth is fabricated."
+    },
+    {
+      "id": "geometry_coverage_and_localization_metrics",
+      "result": "PASS_AFTER_REPORTING_FIX",
+      "references": [
+        "collect_m119_gt_binding.py:115",
+        "analyze_m119_gt_binding.py:23",
+        "analyze_m119_gt_binding.py:76",
+        "M119_GT_REGION_BINDING_PLAN.md:23"
+      ],
+      "evidence": "GT center-in-crop, full-box-in-crop and full-box-in-crop-and-actual-image use the original global geometry and saved H,W. Observed_fraction is sampled/interpolated coarse mask support, not physical visibility. Full-observed GT regions are reported separately. Revised selected_summary emits oracle/no-qualified counts, misses despite a qualifying candidate, cross0.5 rescues/breaks, severe<=0.1 versus>=0.5 changes, actual Parent healthy baseline/paired changes, and both-qualified IoU delta sum/mean/median. Good-poor margin is pooled over all same-state qualifying/poor candidate pairs and is pair-weighted, not an equal-state statistic. Real-row source-function checks passed for all3available category readouts times bothsplits. Future instance and true-GT region values remain unexecuted."
+    },
+    {
+      "id": "same_reader_and_warm_runtime",
+      "result": "STATIC_PASS_RUNTIME_GATE_PENDING",
+      "references": [
+        "collect_m119_gt_binding.py:73",
+        "collect_m119_gt_binding.py:97",
+        "region_patch_evidence.py:39",
+        "run_m119_gt_binding.py:26"
+      ],
+      "evidence": "FP32 arithmetic rereads the same persisted half cache. Both t0 and every candidate region/ring score use original phrase_scores and default torch.testing.assert_close against saved M117 rows; no tolerance argument/relaxation exists. The unchanged geometry helper has completed M117/M118 historical execution evidence. New collection uses Torch1.13-era tensor APIs already present in completed code; no torch2-only API or weights_only change was introduced. Python3.8 grammar passed for7 D code files, private deployer and2 embedded remote scripts. Reviewer interpreter has no Torch and does not attest current GPU/runtime passes."
+    },
+    {
+      "id": "readonly_scope_and_sequencing",
+      "result": "PASS",
+      "references": [
+        "collect_m119_gt_binding.py:59",
+        "collect_m119_gt_binding.py:131",
+        "run_m119_gt_binding.py:6",
+        "run_m119_gt_binding.py:38"
+      ],
+      "evidence": "The collector only loads tensor/JSON caches and computes fixed samples/cosines/IoUs under no_grad; imported prototype classes are never instantiated. No encoder/model forward, optimizer, new checkpoint, tracker state commit, model download or environment change occurs. The runner waits for both first-fit3-event sanity children, checks successful outputs and reader flags, then starts both complete original shards. Actual saved first cases are cube04_indoor@10,12,14 and bag04_indoor@10,76,117. Full counts must be3502 events/3039 valid/152sequences. There is no automatic retry. Fresh output directories prevent overwriting completed M117/M118 outputs."
+    },
+    {
+      "id": "transport_single_launch_and_boundary",
+      "result": "STATIC_PASS",
+      "references": [
+        "deploy_m119.py:14",
+        "deploy_m119.py:23",
+        "deploy_m119.py:30",
+        "deploy_m119.py:45",
+        "deploy_m119.py:53"
+      ],
+      "evidence": "Before connection, deployer checks acceptable review verdict and exact reviewed source/private bytes. Credentials are read from stdin for the existing fixed authorized endpoint, never written or printed. Remote scripts are fixed literals with quoted interpreter path; Popen uses argument arrays. Preflight requires M118 terminal success, absent M119 output/private directories, exactly2 idle cards and existing disk headroom. Stable dependencies are compared; only named new files/review are uploaded with byte readback. One private marker and one detached controller launch are used, with logs and a launch receipt; there is no retry/relaunch/install/download/cleanup path. No remote call or credential read was executed by reviewer."
+    }
+  ],
+  "resolved_during_review": [
+    {
+      "issue": "Candidate insufficiency promised by plan was not present in initial analyzer summary.",
+      "evidence": "Existing real candidate sets have730 fit and190 development states without any candidateIoU>=0.5; this is an observed failure regime, not a hypothetical edge case.",
+      "resolution": "Executor added oracle_correct/no_qualified_candidates and Parent/readout miss-with-qualified counts. Independent source-function recount confirms1814/2544 and305/495 oracle counts and all additions across3readouts*2splits."
+    },
+    {
+      "issue": "Initial healthy summary lacked its actual Parent baseline and paired healthy rescues/breaks.",
+      "evidence": "The native-defined healthy fit stratum contains earphone02_indoor@294 where ParentIoU=.49332764744758606. For raw category,1560-1419=141 would overstate actual paired harms140; the correct baseline is1559.",
+      "resolution": "Executor added healthy Parent correctness/mean, paired rescues/breaks and the paired arithmetic invariant. Local real-row recheck confirms fit140 anddevelopment39 raw-category healthy breaks."
+    },
+    {
+      "issue": "Initial both-qualified precision summary counted improvements/declines without magnitude.",
+      "evidence": "Raw-category development has230 both-qualified states,164worse/15better, totalIoUdelta=-26.155228972434998 and mean=-.1137183868366739. Direction counts alone omit substantial localization degradation.",
+      "resolution": "Executor added total delta plus count/positive/mean/median statistics and clarified the fixed plan. All new precision fields independently recomputed from actual saved rows. Neural collection/driver/deployer and reused sources were unchanged."
+    }
+  ],
+  "assumptions": [
+    "The existing authorized remote host, warm Torch1.13/Python3.8 environment and cache/label paths remain the previously verified instance. Reviewer made no SSH call or host/runtime attestation.",
+    "Human-confirmed initialization is accepted as the permanent user-approved protocol. Stored human_status strings and sequence-name prefixes are not current-frame truth.",
+    "The task is a fixed cached Train diagnostic. Its event-selection strata and repeatedly used22-sequence development split do not constitute untouched generalization evidence."
+  ],
+  "remaining_runtime_requirements": [
+    "Run the existing once-only controller after final source review binding; both3-event sanity children must actually finish with unchanged default assert_close and exact current-GT/Parent candidateIoU checks before full.",
+    "Both full shards must actually finish all3502 events and152initial regions; retain463 invalid-GT rows separately and verify unique event/sequence counts and original split membership.",
+    "Analyze allfour fixed readouts for bothsplits after actual completion, including GT fully observed groups and all precision/coverage fields. Preserve raw outputs and avoid selecting a best readout as a trained model.",
+    "Any runtime failure requires its original log and state diagnosis before a source-changing correction; this review does not authorize replaying an unchanged deployer or an already launched controller."
+  ],
+  "interpretation_limits": [
+    "PASS is source-level readiness for the existing sanity gate, not M119 runtime/experiment success. No current true-GT cosine or initial-instance output has been generated by this review.",
+    "M118 remains completed negative: human272/495 mean.5312612811714937; ownEmpty272/.5307076979870673; matchedvisual272/.5314100559735011; generic273/.5334761815136203; humanhealthy263/264. This diagnosis does not revise that result.",
+    "Low IoU is localization error, not proof of another physical instance. Category similarity and initial visual correspondence do not provide calibrated identity correctness or current attribute visibility labels.",
+    "No recursive tracking, C-memory behavior, Full152 final model or formal Test/CDTB/VOT metrics are established. No promotion decision is implemented.",
+    "Same-family fresh context with requested gpt-6-astra/max is provisional and has no independent backend attestation.",
+    "source_sha256 binds exactly plan+3new code+4reused runtime dependencies. Additional read-only lineage files are in supporting_source_sha256/evidence_sha256; mutable manifests and reviewer outputs are excluded from source_sha256."
+  ]
+}
