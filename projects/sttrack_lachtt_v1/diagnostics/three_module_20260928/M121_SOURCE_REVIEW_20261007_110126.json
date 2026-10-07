@@ -1,0 +1,158 @@
+{
+  "reviewed_at": "2026-10-07T11:01:26.467062+08:00",
+  "reviewer_task": "/root/m121_dense_target_source_review",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "max",
+  "actual_backend_attestation": "unavailable",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "scope": "source-only; same-family fresh context; not runtime PASS",
+  "verdict": "PASS",
+  "blocking": [],
+  "nonblocking": [],
+  "resolved_findings": [
+    {
+      "id": "M121-B1",
+      "file": "train_m121_dense_target.py",
+      "lines": "141-167",
+      "finding": "Sanity records selected group gradient norms but never verifies actual learned parameter changes. position, search_fusion and visual_fusion are absent from the gradient group list.",
+      "minimal_fix": "Record finite nonzero group gradients and actual before/after group parameter changes, including every declared architectural group. Do not require every individual q/k tensor to be nonzero for repeated-slot controls.",
+      "resolution": "fixed_and_reread",
+      "fix_evidence": "train_m121_dense_target.py:14-16,147-185 covers every one of 15 declared trainable architectural groups with final-step finite/nonzero gradients and actual initial-to-final changed value counts/absolute/max deltas; post-update sanity checks box, score, feature and quality at the selected index. run_m121_dense_target.py:42 gates each real sanity report before fresh full training."
+    },
+    {
+      "id": "M121-B2",
+      "file": "train_m121_dense_target.py; run_m121_dense_target.py",
+      "lines": "evaluate 89-99; final reporting 169-175; controller 49-57",
+      "finding": "Plan-required decision evidence is missing: positive geometry refinement counts, static versus refined full256 summary, both-qualified fine-IoU changes, per-sequence comparisons, M101 paired historical reference and cross-arm content-control comparison. Reused summarize/paired_vs_empty do not supply these.",
+      "minimal_fix": "Report the existing output evidence explicitly for every arm and condition, and compare paired rows on their shared event keys. Keep qualification/geometry measures distinct from physical identity.",
+      "resolution": "fixed_and_reread",
+      "fix_evidence": "analyze_m121_dense_target.py:24-143 reports all 3 arms x 4 conditions, strata and sequences; native/Empty/M101 and matched capacity controls; both-qualified fine IoU, half-threshold and severe changes; native-position geometry and static/refined full256 coverage. All conditions enforce geometry/observation invariance. run_m121_dense_target.py:55-67 requires actual CPU report exit 0 before terminal suite completion. Actual M101/M118 saved-row recounts passed for report functions."
+    },
+    {
+      "id": "M121-N1",
+      "file": "m121_dense_inputs.py",
+      "lines": "99-100",
+      "finding": "Observation upper bound uses image dimensions, while actual native sample_target pads x2-W+1 and y2-H+1, so the sampled source window ends at image dimension minus one.",
+      "evidence": ".aris/m120_native_grid_20261007/native_source/lib/train/data/processing_utils.py:43-50",
+      "scope": "Exact source-window contract difference; no claim that any current Train existence label flips.",
+      "minimal_fix": "Use the actual source-window upper bound without adding a branch.",
+      "resolution": "fixed_and_reread",
+      "fix_evidence": "m121_dense_inputs.py:99 now uses image_shape.flip(-1)-1, matching the source window in actual native processing_utils.py:43-50 without an extra branch."
+    }
+  ],
+  "first_round_review_files": {
+    "M121_SOURCE_REVIEW_20261007_105320.json": "8e5eec02a26f839cf7f2d9f7d1deae006da86e24a5ae1889cfe3892035448d13",
+    "M121_SOURCE_REVIEW_20261007_105320.md": "62576af4b198b5e17ab5278208102fcbee88d74f4facf3d0da7b1f4d8cd2748b"
+  },
+  "additional_first_round_finding": "Before fixes, selected box/score/feature consistency checks were only in train-only evaluate; sanity lines 152-154 checked only Empty delta. This was reported separately after the first archived report and is resolved with B1.",
+  "source_sha256": {
+    "M121_DENSE_TARGET_PLAN.md": "665083d853c199b015f3247b5a495ffa78969b2dd618f30ad741376702dea45c",
+    "dense_target_decoder.py": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "m121_dense_inputs.py": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+    "train_m121_dense_target.py": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "run_m121_dense_target.py": "4cf53073030300714712050de84145ceb19b06077236ac8aa50e520603924190",
+    "analyze_m121_dense_target.py": "ffc344b559aa1eff87eaa024173445d3c0d0e49f46c7319ad708b22f27936ff1",
+    "dense_region_decoder.py": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+    "collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4"
+  },
+  "private_transport_sha256": {
+    "deploy_m121.py": "af1d40471f39eb0308e7ff30d5944b7ed91ad9eb7f180eadb992c54c4e5fcc90"
+  },
+  "supporting_source_sha256": {
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M120_NATIVE_GRID_PLAN.md": "e206dd16937244effda637169d6faf63a004482bbf3e7184484ede6fd9b0d6f7",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m120_native_grids.py": "17652e36c1fbab4d16142185976223370629a8be2f73a8b9985fc90f773fd82e",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m120_native_grids.py": "628fc485a01ece91f8f260cf82322947cb65b1e9dd9d38633fc98fdda416cdc2",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m117_dense_region.py": "76df8b2c31464281c1a37db292f9ae8f5134fee5f19568c08137ae0a5db4d2da",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    ".aris/m120_native_grid_20261007/native_source/lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    ".aris/m120_native_grid_20261007/native_source/lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    ".aris/m120_native_grid_20261007/native_source/lib/test/tracker/sttrack_candidate_set_observation.py": "666fe3a5cdbf3ad306da5a770bf8ba2a3d20910b2bc9865b3d190f5dc0437e82",
+    ".aris/m120_native_grid_20261007/native_source/lib/test/tracker/sttrack_local_spatial_observation.py": "98d7f72815780fa4158adcd6b10b0b437ff1f58e808196df6d7c25655736409d",
+    ".aris/m120_native_grid_20261007/native_source/lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    ".aris/m120_native_grid_20261007/native_source/experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+    ".aris/m121_dense_target_20261007/native_head.py": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326"
+  },
+  "supporting_artifact_sha256": {
+    ".aris/m113_human_initialization_20261006/human_train_labels.json": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m117_completed/result.json": "84c35de699352faba6a757d8fa9af8690a068a3c23feab8cfc70880a522ee638",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m117_completed/driver.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m101_completed/train_weight1/result.json": "92d7df716aa369b5ba85f71ac0cc07e943c0a4c5cd7e4788474bde68991024d6",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m101_completed/result.json": "758f833d02ddf5c20327de26005e295ab41fd9a468fc8f41209792000b60649c",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M120_RUNNING_STATUS.json": "dc8a35fb59f3eb2621bad88eca00cd4a78c754dacd3f8c8f54adb21e3aa8b182",
+    ".aris/m120_native_grid_20261007/NATIVE_SOURCE_READ.json": "e16646afb28d7e3cc630654c586005398560bd4fac845d03a7d7ef033a9e6e86",
+    ".aris/m121_dense_target_20261007/NATIVE_HEAD_SOURCE_READ.json": "5ae719a548d5f49e9462368dddd7f6098daca41e30d2928d4e9fcff143b2c419",
+    ".aris/m121_dense_target_20261007/executor_observation_contract.json": "aa50a26a38b765705dab4b2169a280023040bfc0e18a651b5a064ab0cbddbcc4",
+    ".aris/m121_dense_target_20261007/reviewer_metric_checks.json": "7dfab7aafff6f45d3833975502a7f87632a6f6db17411180697cf351628e7ff2",
+    ".aris/m121_dense_target_20261007/CPU_REPORT_SCHEMA_CONTRACT.json": "42e4de0a38cb41a607a70578fb652103997d42175c90b0d36d378219415e2acd",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_human_text/human_text_development.jsonl": "4b41a7ae6d3e7759bddfe6f4362fd117770d578828c52e058e893c2021a7fed1",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_human_text/empty_development.jsonl": "3f0966e75db6a3eae8056889e75d25a2cb8badc194d267e3da78f79ac5ab2bfa",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_human_text/generic_development.jsonl": "10ab2f444ef7dae07a04207a4564d69cbd4e30ed27f39112865f402e1276bfba",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_human_text/visual_query_development.jsonl": "038acba10aea3583d50707348ef445420d23c54a8205293936c1dffe0e6a5176",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_visual_query/human_text_development.jsonl": "96441735077045dc3113d2ee02a22327aea9bc47108f1490a8da85bc2d906d6a",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_visual_query/empty_development.jsonl": "3f0966e75db6a3eae8056889e75d25a2cb8badc194d267e3da78f79ac5ab2bfa",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_visual_query/generic_development.jsonl": "9e750cdf77c2dd19353d95347b77d1c5600db0d839c9c1e1f25f545e19d905fd",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_visual_query/visual_query_development.jsonl": "6d6a12325529ea3d301878b7b13160f4dee176b1f205221d176257092a9d5d28",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_generic/human_text_development.jsonl": "6c9e9af89ad2a8ec5f5484fccea68d6e807935ed0e3e4452d7f57e4236cdbbac",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_generic/empty_development.jsonl": "3f0966e75db6a3eae8056889e75d25a2cb8badc194d267e3da78f79ac5ab2bfa",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_generic/generic_development.jsonl": "dd27a5a10e8734a71a8862506b5a3eb1bbab4988e5fd2693c964a8ff83a1e8b7",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m118_completed/train_generic/visual_query_development.jsonl": "0d4c577b364304f16a2cf449e5272afa8f06bdc1b851fc65020aff20fe856d6f"
+  },
+  "reviewer_checks_artifact": {
+    "path": ".aris/m121_dense_target_20261007/reviewer_final_source_checks.json",
+    "sha256": "4e8464d7e8bf2c7a6be41edcca7a886b3a12e6dcdde3dbb6aa73003403b44a33"
+  },
+  "checks": {
+    "python38_source_asts_passed": 16,
+    "embedded_remote_python38_asts_passed": 2,
+    "all_15_architectural_parameter_groups_covered": true,
+    "native_actual_source_sha_checks_passed": 7,
+    "historical_M101_native_summary_reproduced": true,
+    "historical_M118_3_arms_4_conditions_495_rows_each_checked": true,
+    "keyed_pairing_order_invariant": true,
+    "M113_labels_actual_sha_verified": true,
+    "M113_split_counts": {
+      "fit": 130,
+      "development": 22
+    },
+    "M113_phrase_occurrences": 704,
+    "M117_local_complete_receipts_verified": true,
+    "source_imports_limited_to_stdlib_report_only": true,
+    "Torch_executions": 0,
+    "SSH_calls": 0,
+    "GPU_or_model_executions": 0,
+    "package_installs": 0,
+    "source_edits": 0
+  },
+  "source_findings": {
+    "architecture": "First frame fixed RGB/D/Fused/CLIP 4x4 references; full 256-position visual read; shared phrase binding/calibration and q-minus-empty support. Current query does not enter geometry/quality/observation.",
+    "tensor_contract": "Four 768 to 64 projections, 64 reference tokens, 256 search locations, 5 phrase slots, 134 semantic input channels and 128 geometry input channels are consistent. All model inputs are float32 except the boolean query mask; GT target/index metadata is excluded from inputs.",
+    "GT_contract": "Only complete genuine Train cache and confirmed initialization bank; invalid GT excluded. GT supervises localization, detached per-proposal IoU quality and actual source-window intersection. Partial intersection uses its center for support while full GT stays the regression target.",
+    "training_contract": "Same seed2027, initialization, per-epoch permutation, B64, AdamW 3e-4/.01, three sanity updates followed by fresh 16 epochs/640 updates. Fixed final weights only; all branches retain results and negative outcomes.",
+    "measurement_contract": "new_events_with_qualified_candidates and lost_events_with_qualified_candidates count events crossing existence of at least one IoU>=0.5 proposal. They are not proposal counts, physical identities or formal tracking scores.",
+    "historical_reference_boundary": "M101 is paired historical localization only; Empty at the human final is not independently trained visual control; other two M121 arms are capacity controls.",
+    "deployment_contract": "Known-host verification with default rejection; password read from stdin. Existing M120 driver exit 0/result/counts and idle two GPUs/free disk checked before source writes; dependency and uploaded bytes checked. No automatic retries, installs, cleanup or competing process takeover."
+  },
+  "runtime_acceptance": "NOT_EXECUTED_BY_REVIEWER",
+  "M120_last_inspected_local_status": {
+    "status": "actual_M120_first_hour_pair_running",
+    "observed_at": "2026-10-07T10:51:54.088866+08:00"
+  },
+  "runtime_gates_pending": [
+    "Original M120 actual complete driver.exit 0 with all 152 sequences/3502 events/219194 prefix frames and source-bound cache bytes",
+    "Deployment preflight on currently idle authorized GPUs and required free disk/source bytes",
+    "All three real M121 three-step sanity arms, including finite outputs, actual parameter updates and selection alignment",
+    "Fresh final-only full training of all three arms with exact reload and complete CPU comparison report",
+    "Content progression gates and later own-history/C/final benchmark evaluation; none are implied by this source PASS"
+  ],
+  "tool_note": "First discovered E:/Scripts/python.exe could not start: No pyvenv.cfg file. Existing CPython was then located via uv python find --offline --system; only stdlib AST/artifact/report checks ran, with no environment installation."
+}
