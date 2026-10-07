@@ -257,3 +257,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 - 2026-10-07 M122_POSTHOC_ROB_PLAN/analyze_m122_rob_contributions/M122_POSTHOC_ROB_SOURCE_REVIEW/M122_POSTHOC_ROB_ARCHIVED_CHECK: independent post-seal CPU diagnostic; real archived full127 arithmetic PASS, fresh same-family provisional SOURCE PASS; all32 active gate bytes unchanged, actual M122/installed-toolkit CLI pending.
 
 - 2026-10-07 M122_THIRD_HOUR_OBSERVATION/m122_hour_observation_20261007_153420: actual original24539 alive/nonterminal,68/72 complete first-pass sequences93950/98583calls2924/3070steps,18snapshot files exact; no final/formal metrics; sole next observer6608 at16:34:20.842585.
+
+- 2026-10-07 M122_SSH_MONITOR_FAILURE_20261007: original6608 DNS fail,76323 CLI date fail corrected only at invocation,58539 pre-auth TCP timeout; actual18:26:29 port43811 unreachable, no NN queries/restarts. Currentremote state unknown, lastverifiedNN15:34; requested current SSH entry, ACTIVE_UNMET first blocking goalturn.
