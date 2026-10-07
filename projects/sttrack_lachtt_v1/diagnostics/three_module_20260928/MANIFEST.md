@@ -273,3 +273,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 - 2026-10-07 M122_HOUR_PROGRESS_20261007_231244/m122_native_observation_20261007_231244: actual23:12:44 native observation; original24539/28100 alive, second pass82/99,332521/362010 calls,10321/11243 steps;20 snapshot files downloaded/18 digests exact; all32 local sources unchanged, no new final/formal metric; old70141 exit255 preserved, next10/8 00:12:44, native per-node connection only.
 
 - 2026-10-08 M122_HOUR_PROGRESS_20261008_001309/m122_native_observation_20261008_001309: actual00:13:09 direct native62131, original24539/28100 alive; second pass100/124,364190/397276 calls,11310/12314 steps;20 snapshot files/18 original digests exact,32 local gated sources unchanged, no new final/formal scores; next01:13:09.
+
+- 2026-10-08 M122_HOUR_PROGRESS_20261008_011447/m122_native_observation_20261008_011447: actual01:14:47, original24539/28100 alive; second pass124/147,397276/433004 calls,12314/13409 steps; nativeZIP517643B/SCP0/fullSHA exact/20 files/18 digests;32 local sources unchanged, no new final/formal metrics; previousvolatile784 missing/local42572 exited0 atsame schedulednode, next02:14:47.
