@@ -269,3 +269,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 - 2026-10-07 M122_HOUR_OBSERVATION_FAILURE_20261007_2137: second actual hourly TCP timeout before authentication/NN query; original8989/quiet703 consumed; last validNN19:37/CPU18:40; current entry question pending; no restart/fast retry; next sole95830 at22:37:28; source32 unchanged/server docs sync pending.
 
 - 2026-10-07 M122_NATIVE_SSH_RECOVERY_20261007_221029/m122_native_observation_20261007_221029: actual native SSH22:10:29; original24539/28100 alive; second pass56/76,208/228 of456 sequence runs,300048/325797 of659406 calls,9309/10109 steps; losses finite,32 gated local sources unchanged; no final/formal scores; native session70141, next23:10:29; network audit reset0; no protected resource deletion.
+
+- 2026-10-07 M122_HOUR_PROGRESS_20261007_231244/m122_native_observation_20261007_231244: actual23:12:44 native observation; original24539/28100 alive, second pass82/99,332521/362010 calls,10321/11243 steps;20 snapshot files downloaded/18 digests exact; all32 local sources unchanged, no new final/formal metric; old70141 exit255 preserved, next10/8 00:12:44, native per-node connection only.
