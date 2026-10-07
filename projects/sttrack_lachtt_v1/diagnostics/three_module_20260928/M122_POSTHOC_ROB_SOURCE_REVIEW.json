@@ -1,0 +1,175 @@
+{
+  "created_at_utc": "2026-10-07 07:15:58 UTC",
+  "verdict": "PASS",
+  "status": "PASS_SOURCE_ONLY",
+  "review_phase": "experiment-bridge Phase 2.5",
+  "reviewed_scope": "Standalone, CPU-only post-seal M122 ROB contribution accounting",
+  "reviewer_agent": "/root/m122_posthoc_rob_source_review",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_attribution": {
+    "workflow_requested_model": "gpt-6-astra",
+    "workflow_requested_reasoning_effort": "max",
+    "actual_backend_model_and_effort_independently_attested": false,
+    "note": "Fresh reviewer context; model/effort backend metadata are not exposed for independent verification."
+  },
+  "source_sha256": "63398f36955a1b936ba05e20c75807f40de3af6a242cd4ac83bd1a4cd0ca4e6e",
+  "blocking_findings": [],
+  "nonblocking_limitations": [
+    "The real M122 six-evaluation seal and scores are pending. This review computes no M122 result and is not an independent completed-result audit.",
+    "The local check uses Python 3.13 stdlib and Python 3.8 AST parsing. The installed Python 3.8 VOT toolkit import, source digest and complete CLI path were not executed; the CLI explicitly requires their verification after the real seal exists.",
+    "The diagnostic consumes the canonical collector's six-evaluation seal and linked selection/bundle/final/bank/binding digests. It does not independently re-audit four OPE reports, human label correctness, or recreate the 1,895-entry text bank.",
+    "The ledgers are additive official ROB accounting against native only. They establish neither EAO/ACC contributions, deployed improvement, a precision0-vs-precision1 causal effect, nor the mechanism of an individual failure."
+  ],
+  "checks": [
+    {
+      "check": "Official ROB formula and additive decomposition",
+      "verdict": "PASS",
+      "evidence": "account() lines 18-70 matches the historical full127 formula: sequence-length weighting of summed survived anchor frames / summed available anchor frames; total sequence frames 80,741. Native lower-case rob and model upper-case ROB match the actual archived and M122 producer schemas.",
+      "source_locations": [
+        "analyze_m122_rob_contributions.py:18",
+        "analyze_m122_rob_contributions.py:41",
+        "analyze_m122_rob_contributions.py:56",
+        "../full152_paired_20260925/completed/analyze_vot_rob_contributions.py:47"
+      ]
+    },
+    {
+      "check": "Complete sequence and anchor ledgers",
+      "verdict": "PASS",
+      "evidence": "All 127 sequences and 1,765 common anchors retained per model; sequence/anchor/run length/failure protocol equality checked. Independent real-data Fraction arithmetic and every per-sequence anchor subtotal agree. Both complete ledger sums match each model-native aggregate delta within 1e-10; new/rescued failures are separately reported."
+    },
+    {
+      "check": "Six-evaluation, two-final and human-bank integration",
+      "verdict": "PASS",
+      "evidence": "main() lines 80-102 requires the collector status, six rows, exact selection digest and ordered precision0/precision1 finals. VOT result digest/path/metrics/final/bundle/bank/binding match the seal; all 5,295 merge digests, official analysis digest and actual final bytes are checked. Existing prepare_m122_evaluation_suite.py:31-43,62-79,117-121 binds two actual third-pass finals to 50+80+1,765=1,895 distinct dataset-qualified human inputs. The diagnostic adds no checkpoint selection or input rebinding."
+    },
+    {
+      "check": "Schema and path compatibility",
+      "verdict": "PASS",
+      "evidence": "Reviewed against collect_m122_official_results.py, analyze_m122_vot.py, run_m122_vot_shards.py and prepare_m122_evaluation_suite.py. All result/status/digest/metric/failure keys and vot/run/master/analysis/<precisionN>_full127.json paths match those producers."
+    },
+    {
+      "check": "Python 3.8 compatibility and isolation",
+      "verdict": "PASS",
+      "evidence": "Five relevant modules pass Python 3.8 AST parsing; pure accounting executes using stdlib only with no torch/vot import. Main only reads sealed files, hashes final bytes, imports the official analysis source and writes a fresh output directory. No tracker/model/optimizer/training/queue mutation is present. All 32 existing gate source hashes still match the earlier receipt."
+    },
+    {
+      "check": "Claim scope",
+      "verdict": "PASS",
+      "evidence": "The plan and output scope explicitly restrict the result to ROB accounting, retain both improvements and harms, and exclude EAO/ACC decomposition and causal mechanism claims. Six-decimal boxes are correctly stated as insufficient for exact boundary crop reconstruction."
+    }
+  ],
+  "reviewed_path_hashes": {
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_rob_contributions.py": "63398f36955a1b936ba05e20c75807f40de3af6a242cd4ac83bd1a4cd0ca4e6e",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py": "5bcb7f0316f5fcab0205c0ca061152f7a47e3cc6bb57433b50bf7eca5ce555c6",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_vot.py": "97d90420c63f7785be28c144652dde2bc25ca9dd5c28c70bf245ba2b45abc5d0",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_vot_shards.py": "9c2b55bb77980bba5ec486b1ff171a1a1c4de31725167f49ad0f411345a365e8",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py": "1428b3488d37cbbb71ae66eeca896b553c14d4156c9ab65657c59f741d321cea",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_ROB_PLAN.md": "f75ebf687b2f9d0551532a4df6a0d8b00169622ea8aa614eefd87a2c22d6d7a1",
+    "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/completed/analyze_vot_rob_contributions.py": "0fbda0cd61cb354d9b4c9cda8823a88d873a67f89d936505cad0ac46cccb97ea",
+    "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/completed/Full152_VOT_ROB_contributions.json": "f8c027f62f4b7821641fec701f2445e83d663c14b0db4b6cfc8f60db04272d68",
+    ".aris/m122_full_causal_20261007/ROB_archived_function_check_20261007_1508.json": "71ca557f2b07689023577a636ff44bfb8e863c7afc6f38a618cd2fddfe99d602",
+    ".aris/m122_full_causal_20261007/complete_evaluation_reviewer_source_checks_20261007_141456.json": "079bb5cd02241b40481363d4a854d0b01e60ea60fba0a1d8bb4afe9e5c6caa3d",
+    "projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/result.json": "51213ef55085d270a56ae2952b8871c06557891d418ae572ec3fb932102f1d8b",
+    "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/completed/M67_vot_result.json": "d049d57154ba88360e9b2ddd75e9e25fe2dbb005d853ab0084f7e0f027ff4e41",
+    "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/completed/M82_vot_result.json": "a54bef4663d5a190ad613dc6f632e3a5cade27fb20fb871dc2c862f5b74bdb29"
+  },
+  "validation_evidence": {
+    "status": "PASS_LOCAL_REVIEWER_STDLIB_CHECKS",
+    "python": "3.13.12 (main, Feb  3 2026, 22:53:26) [MSC v.1944 64 bit (AMD64)]",
+    "python38_AST_files": [
+      "analyze_m122_rob_contributions.py",
+      "collect_m122_official_results.py",
+      "analyze_m122_vot.py",
+      "run_m122_vot_shards.py",
+      "prepare_m122_evaluation_suite.py"
+    ],
+    "all_32_immutable_source_hashes_match_prior_gate": true,
+    "reviewed_file_sha256": {
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_rob_contributions.py": "63398f36955a1b936ba05e20c75807f40de3af6a242cd4ac83bd1a4cd0ca4e6e",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py": "5bcb7f0316f5fcab0205c0ca061152f7a47e3cc6bb57433b50bf7eca5ce555c6",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_vot.py": "97d90420c63f7785be28c144652dde2bc25ca9dd5c28c70bf245ba2b45abc5d0",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_vot_shards.py": "9c2b55bb77980bba5ec486b1ff171a1a1c4de31725167f49ad0f411345a365e8",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py": "1428b3488d37cbbb71ae66eeca896b553c14d4156c9ab65657c59f741d321cea",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_ROB_PLAN.md": "f75ebf687b2f9d0551532a4df6a0d8b00169622ea8aa614eefd87a2c22d6d7a1",
+      "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/completed/analyze_vot_rob_contributions.py": "0fbda0cd61cb354d9b4c9cda8823a88d873a67f89d936505cad0ac46cccb97ea",
+      "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/completed/Full152_VOT_ROB_contributions.json": "f8c027f62f4b7821641fec701f2445e83d663c14b0db4b6cfc8f60db04272d68",
+      ".aris/m122_full_causal_20261007/ROB_archived_function_check_20261007_1508.json": "71ca557f2b07689023577a636ff44bfb8e863c7afc6f38a618cd2fddfe99d602",
+      ".aris/m122_full_causal_20261007/complete_evaluation_reviewer_source_checks_20261007_141456.json": "079bb5cd02241b40481363d4a854d0b01e60ea60fba0a1d8bb4afe9e5c6caa3d",
+      "projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/result.json": "51213ef55085d270a56ae2952b8871c06557891d418ae572ec3fb932102f1d8b",
+      "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/completed/M67_vot_result.json": "d049d57154ba88360e9b2ddd75e9e25fe2dbb005d853ab0084f7e0f027ff4e41",
+      "projects/sttrack_lachtt_v1/diagnostics/full152_paired_20260925/completed/M82_vot_result.json": "a54bef4663d5a190ad613dc6f632e3a5cade27fb20fb871dc2c862f5b74bdb29"
+    },
+    "reconstructed_historical_ROB_percent": {
+      "native": 93.6691093676817,
+      "M67": 92.10679490126314,
+      "M82": 90.23832654452518
+    },
+    "independent_fraction_ROB_percent": {
+      "native": 93.6691093676817,
+      "M67": 92.10679490126313,
+      "M82": 90.23832654452517
+    },
+    "contribution_checks": {
+      "M67": {
+        "sequences": 127,
+        "anchors": 1765,
+        "net_delta_pp": -1.562314466418556,
+        "sequence_sum_pp": -1.5623144664185666,
+        "anchor_sum_pp": -1.5623144664185669,
+        "new_failed_anchors": 66,
+        "rescued_failed_anchors": 17,
+        "confirmed_failures": 232,
+        "per_sequence_anchor_sums_match": true
+      },
+      "M82": {
+        "sequences": 127,
+        "anchors": 1765,
+        "net_delta_pp": -3.4307828231565196,
+        "sequence_sum_pp": -3.43078282315653,
+        "anchor_sum_pp": -3.43078282315653,
+        "new_failed_anchors": 124,
+        "rescued_failed_anchors": 24,
+        "confirmed_failures": 283,
+        "per_sequence_anchor_sums_match": true
+      }
+    },
+    "installed_toolkit_imported": false,
+    "torch_imported": false,
+    "CLI_executed": false,
+    "new_M122_results_computed": false,
+    "remote_connections": 0,
+    "neural_executions": 0,
+    "optimizer_steps": 0,
+    "new_modules": [
+      "_csv",
+      "_opcode",
+      "_opcode_metadata",
+      "_tokenize",
+      "_typing",
+      "_weakrefset",
+      "argparse",
+      "csv",
+      "dis",
+      "gettext",
+      "inspect",
+      "linecache",
+      "opcode",
+      "pkgutil",
+      "token",
+      "tokenize",
+      "typing",
+      "weakref"
+    ]
+  },
+  "proposed_source_changes": [],
+  "implementation_edits": 0,
+  "remote_connections": 0,
+  "GPU_or_running_job_queries": 0,
+  "package_installs": 0,
+  "neural_executions": 0,
+  "optimizer_steps": 0,
+  "prior_reviews_overwritten": false,
+  "actual_M122_accounting_executed": false,
+  "execution_condition": "The reviewed standalone source may be deployed separately, but its CLI must only run after the canonical complete two-final/six-evaluation seal exists and its own assertions pass."
+}

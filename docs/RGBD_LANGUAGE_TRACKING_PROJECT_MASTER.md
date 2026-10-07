@@ -25189,3 +25189,12 @@ M122完整prepare、双GPU冻结VOT分片/合并、官方analysis/失败计数�
 已部署28100 CPU评测队列经一次只读CPU验证实际存活，source gate通过后控制目录已创建、仍在第一小时被动等待；外部bank尚未编码、正式输出根尚未创建、NN进度查询0。11份静态文档/回执实际同步，§5.361时master SHA57c2c9ad98274674b77ef150c70b8f3a79b0dd53337b99917f9df7924846faf3与repo/Desktop/服务器相同。源码与初始化准备已实际发布acbe59107dda8b46471ff2567b1b995e14d573a8，原先MANIFEST新增CRLF触发Git字节保护已按既定LF规则修正，未改语义/实验源；该失败也独立保留。
 
 唯一下一原observer9290已实际等待15:34:19.850907+08:00；已消费的76464/72823及旧失败/发布句柄不再使用，不新增重复训练或提前NN/GPU轮询。完整训练后两个final各自执行统一人审协议全部三数据集；机器all_results行九项达标才停止，否则分析拖累与首次错误并继续，目标ACTIVE_UNMET。
+
+
+### 5.363 2026-10-07：为完整验收后准备独立ROB拖累总账，当前没有新正式成绩
+
+新增独立CPU脚本analyze_m122_rob_contributions.py和M122_POSTHOC_ROB_PLAN；只有两份固定final的六项完整评测封存后，才读取M122结果做逐序列、逐anchor ROB贡献核算。先验证相同1765 anchor、127序列、失败协议/运行长度、两份final/bundle、人审bank/初始化binding及各5295份合并文件SHA，再按官方序列长度权重还原ROB；序列和anchor两种贡献之和均须等于模型相对原生的正式ROB差值。输出全部正负序列/anchor，不只列有利案例，不将失败个数当作ROB，也不对EAO/ACC宣称同样的可加分解。
+
+本地实际用已归档原生、M67-Full152、M82-Full152三组完整结果检查，pure function准确重建全部ROB及贡献总和；fresh Astra/max SOURCE复审PASS/0 blocking，另核对独立有理数计算、Python3.8语法和全部32份当前训练/评测源码未变。审查属于same-family/provisional/source-only；历史检查不是新的M122成绩，实际安装环境CLI及M122核算均未执行。原始本地检查和审查报告独立保留，公开报告见M122_POSTHOC_ROB_SOURCE_REVIEW及M122_POSTHOC_ROB_ARCHIVED_CHECK。
+
+这是事后数值拖累定位，不自动证明文字错误、模板污染或候选排序等根因；这些仍需正式轨迹完成后的真实同状态回放。已保存六位小数的框不能据此声称精确复现历史crop取整边界。没有新增训练、提前SSH/NN/GPU进度查询或更改原评测队列；原最后实测仍14:34:19.850907，两臂43/45首pass序列，唯一observer9290仍等15:34:19.850907。训练中心ETA仍10月8日约09:30±2小时，完整三数据集推理另计，九项正式指标尚无新值，目标ACTIVE_UNMET。
