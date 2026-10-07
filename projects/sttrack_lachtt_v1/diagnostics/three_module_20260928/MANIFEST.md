@@ -187,3 +187,8 @@
 | 2026-10-07T08:57:18.870749+08:00 | /experiment-bridge | M120_NATIVE_GRID_PLAN.md; M119_DOCUMENT_SYNC_PENDING.json | planned / sync-pending | Next dense native inputs based on actual M119/M98 evidence; no new job/source/GPU yet, three TCP preauth documentation failures retained, complete original M119 not restarted |
 
 | 2026-10-07T09:05:31.071789+08:00 | /experiment-bridge | collect_m120_native_grids.py; M120_NATIVE_GRID_PLAN.md | collector-source-prepared | Actual missing RGB-D grids collector implemented/AST only; fresh source review, controller/deploy/server and Torch sanity pending; no NN/optimizer/formal result |
+
+| 2026-10-07T09:50:07.520436+08:00 | /experiment-bridge | M120_SOURCE_REVIEW_20261007_095007.json | source_review_PASS | Fresh same-family provisional source review; two concrete issues fixed and reread; 17 Python3.8 ASTs + 3 embedded blocks; no reviewer SSH/Torch/GPU/runtime acceptance |
+| 2026-10-07T09:50:07.520436+08:00 | /experiment-bridge | M120_SOURCE_REVIEW_20261007_095007.md | source_review_PASS | Fresh same-family provisional source review; two concrete issues fixed and reread; 17 Python3.8 ASTs + 3 embedded blocks; no reviewer SSH/Torch/GPU/runtime acceptance |
+| 2026-10-07T09:50:07.520436+08:00 | /experiment-bridge | M120_SOURCE_REVIEW.json | source_review_PASS | Fresh same-family provisional source review; two concrete issues fixed and reread; 17 Python3.8 ASTs + 3 embedded blocks; no reviewer SSH/Torch/GPU/runtime acceptance |
+| 2026-10-07T09:50:07.520436+08:00 | /experiment-bridge | M120_SOURCE_REVIEW.md | source_review_PASS | Fresh same-family provisional source review; two concrete issues fixed and reread; 17 Python3.8 ASTs + 3 embedded blocks; no reviewer SSH/Torch/GPU/runtime acceptance |

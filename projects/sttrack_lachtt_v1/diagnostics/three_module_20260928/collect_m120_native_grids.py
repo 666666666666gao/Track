@@ -86,7 +86,7 @@ def main():
             assert torch.equal(initial_roi,initial_rois[sequence])
             assert tracker.frame_id==0 and tracker.track_query_before is None and list(tracker.state)==init_box
             initial_valid=coverage(mask);capture.clear();del initial_output,initial_features
-            values={key:[] for key in list(branches)+['observed_fraction','crop_origin','prior_bbox']}
+            values={key:[] for key in list(branches)+['observed_fraction','crop_origin','prior_bbox','resize_factor']}
             maximum_box_error=maximum_score_error=0.
             for frame in range(1,max(frames)+1):
                 before=list(tracker.state);image=image_at(frame);public=tracker.track(image)
@@ -108,12 +108,13 @@ def main():
                     for key in branches:values[key].append(search[key])
                     values['observed_fraction'].append(coverage(mask))
                     values['crop_origin'].append(torch.tensor(crop_geometry(before),dtype=torch.float32))
-                    values['prior_bbox'].append(torch.tensor(before,dtype=torch.float32))
+                    values['prior_bbox'].append(torch.tensor(before,dtype=torch.float64))
+                    values['resize_factor'].append(torch.tensor(factor,dtype=torch.float64))
             data={k:torch.stack(v) for k,v in values.items()}
             assert len(data['rgb'])==len(frames)
             assert all(bool(torch.isfinite(v).all()) for v in data.values())
             data.update(initial_grids=initial,initial_observed_fraction=initial_valid,
-                initial_crop_origin=crop_geometry(init_box),initial_bbox=init_box,
+                initial_crop_origin=crop_geometry(init_box),initial_bbox=init_box,initial_resize_factor=float(resize),
                 sequence=sequence,split=case['split'],event_frames=frames,channels=channels,search_positions=256,
                 original_feature_sha256=source[sequence]['feature_sha256'],GT_loaded=False,text_loaded=False,
                 native_tracker_history_replayed=True,auxiliary_state_committed=False,optimizer_steps=0)

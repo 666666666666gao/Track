@@ -1,0 +1,19 @@
+# M120 source review
+
+PASS after two reported issues were fixed and the final sources were reread. No blocking or nonblocking findings remain. This is a fresh-context, same-family, provisional source-only review. Requested reviewer: gpt-6-astra / max; the actual backend is not independently attested. No runtime acceptance or model-success claim is made.
+
+Reviewed at: 2026-10-07T09:50:07.520436+08:00
+
+The actual fetched native implementation exposes the three required 256-position search grids. Native bbox/query/template history advances through the original tracker. The auxiliary legal first-frame forward passes a new query history and does not submit it to tracker state. M95 initialization RoIs, M90 candidate boxes/RoIs, native prefix boxes/scores, prior and resize retain their existing comparisons. Parameters/state_dict buffers are checked frozen after collection. Actual native padding masks and crop rounding supply observation coverage and geometry.
+
+The first finding was SSH host identity acceptance before password authentication. Current deploy, interface reader and one-shot observer load the existing trusted known_hosts entry and retain default rejection. The original already-executed interface-reader source is preserved separately; its earlier connection is not retrospectively relabeled. The second finding was omitted saved resize data and lossy native-prior storage. Final collector now stores event prior/resize as float64 and the initial resize as a Python float, retaining M90 float32 comparison views. Original review messages and actual final hashes are preserved in the JSON.
+
+Both 3-event sanities must exit 0 before the fixed GPU0/1 full pair starts. Completed M98 evidence and M90 linkage agree on 77/75 sequences, 1801/1701 events and 108335/110859 prefix frames: 152 sequences, 3502 events, 219194 frames total, with fit130/development22 unchanged. M98 elapsed times are 6291.734833478928 and 5663.761621952057 seconds, supporting the estimated 105-120 minute replay. Event grids require a theoretical 4,131,127,296 bytes, plus 179,306,496 bytes for full t0 grids; deployment requires more than 8 GiB free. These are budgets, not measured M120 outputs.
+
+Actual local checks passed: 17 Python 3.8 source ASTs, 3 embedded remote Python blocks, all six native source hashes/byte lengths, M90/M95/M98 preparation/checkpoint links, all 152 original-feature links, fixed split/count consistency, and three pure-stdlib native crop-formula cases. No SSH, Torch, GPU/model execution, install, or experiment-source edit was performed by this reviewer. Only these reports and the scoped manifest were written.
+
+The deploy receipt plans the first sanity observation at 180 seconds and first full observation at 3600 seconds. The observer waits for its supplied deadline and takes one read-only snapshot of the original controller and nonbinary files. Its PID-existence field does not prove non-zombie liveness or completion. Actual child exits, frozen-state checks, full totals, feature counts/bytes and timings still require runtime evidence. Half-grid storage is disclosed; later RoI interpolation from quantized grids is not promised to reproduce the old half-RoI caches bitwise.
+
+Future main training/formal inference continues to use final manually reviewed CSV categories and stable attributes. Sequence names are checking cues, and unknown values remain empty. M120 is explicitly native visual-input collection, with no GT/text loading, optimizer, alternative history, semantic result, new formal score, automatic retry, cleanup, new environment, or other-project action.
+
+Exact final source, private transport, native source and supporting-artifact SHA256 mappings are in the companion JSON. No runtime or scientific gate is waived by this PASS.

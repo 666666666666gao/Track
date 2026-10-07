@@ -1,0 +1,182 @@
+{
+  "status": "complete_M120_source_review_only",
+  "reviewed_at": "2026-10-07T09:50:07.520436+08:00",
+  "verdict": "PASS",
+  "blocking": [],
+  "non_blocking": [],
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "max",
+  "actual_backend_independently_attested": false,
+  "reviewer_context": "fresh context; same-family; provisional; source-only",
+  "runtime_acceptance": false,
+  "model_success_claim": false,
+  "scope": "M120 native visual-input collection and its current deployment/one-shot observation source only; no training, semantic result or public score.",
+  "source_sha256": {
+    "M120_NATIVE_GRID_PLAN.md": "e206dd16937244effda637169d6faf63a004482bbf3e7184484ede6fd9b0d6f7",
+    "collect_m120_native_grids.py": "17652e36c1fbab4d16142185976223370629a8be2f73a8b9985fc90f773fd82e",
+    "run_m120_native_grids.py": "628fc485a01ece91f8f260cf82322947cb65b1e9dd9d38633fc98fdda416cdc2",
+    "collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "collect_initial_feature_origins.py": "441f70364d294d429a2a1cca96cc53e3a6695ac4314a52797eb059f4e913c885",
+    "collect_train_contexts.py": "9225a31ed336ce41a7f8f46d8d161eff320790cacc0d3104844408f93acf8b78"
+  },
+  "private_transport_sha256": {
+    "deploy_m120.py": "0bd77ee8ac072f700fc6594d9313884d416b4fcee6adcb0d64d5ad873bb56409",
+    "inspect_native_interface.py": "6039f3df05d028cb1b48ed0711d41370e42a49d04d6fedbb2383408d86237b9e",
+    "observe_once.py": "6d9d458e16eecc0c8763da925ead01529467d36d550f7ba30e371bf6a3556ade"
+  },
+  "supporting_native_source_sha256": {
+    "lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "lib/test/tracker/sttrack_candidate_set_observation.py": "666fe3a5cdbf3ad306da5a770bf8ba2a3d20910b2bc9865b3d190f5dc0437e82",
+    "lib/test/tracker/sttrack_local_spatial_observation.py": "98d7f72815780fa4158adcd6b10b0b437ff1f58e808196df6d7c25655736409d",
+    "lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344"
+  },
+  "supporting_artifact_sha256": {
+    "M95_INITIAL_ORIGIN_PLAN.md": "94608694877b53daea081568025e4bbbc97cd1bac1d966e02463387b9caddafe",
+    "M98_CONTEXT_CACHE_PLAN.md": "eed92cf747985c284ad10f19442944d4f8bd8a2c089e81ae773cad685257e0c1",
+    "preparation.json": "59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+    "collection_completed/collect_shard0.json": "92d9459441eef74ff618ae47299f7bfc2b7538246cbf46d59a970ec4248a74a1",
+    "collection_completed/collect_shard1.json": "dd5cb08f258aa6ce04ce202cd19ad793e8920951e973e6a91f8a360f250d3243",
+    "m95_completed/shard0.json": "b88be9a9f7326e8b49f00878113c862e8e9752a6db55bd2f7b69ef4dcf726323",
+    "m95_completed/shard1.json": "ac2c65b1d466fb1a2e3716a635cbc183502fc5efe15e7520d378e13840c45166",
+    "m98_completed/shard0.json": "7bbd432a25db7d936e0832c5e9a2bd52e086c22e3db6e1078cab801e699e544d",
+    "m98_completed/shard1.json": "8e77d367f58218ea919c5234d5156b936e4264805f373751e5b0e6c58f51a28b",
+    "m98_completed/input_audit.json": "35faaf9703cd0c50c2c28281908867ffceba20bfa6c3f66891d7fd90202a9b49",
+    "m98_completed/shard0.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m98_completed/shard1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "m98_completed/queue.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "supporting_private_artifact_sha256": {
+    "NATIVE_SOURCE_READ.json": "e16646afb28d7e3cc630654c586005398560bd4fac845d03a7d7ef033a9e6e86",
+    "inspect_native_interface_original_20261007_094035.py": "26929fa7335c3d1bd9fb637deed9017d63a3202af4a8131bf3c9e5234804928b",
+    "executor_transport_checks.json": "88468c1ac497da849660e6ef323a11cdbb5b8c6bd25e11ec5586e0082006534b"
+  },
+  "resolved_findings": [
+    {
+      "id": "M120-R1",
+      "original_location": [
+        "deploy_m120.py:20",
+        "inspect_native_interface.py:9"
+      ],
+      "original_review_text": "Concrete transport blocker under the Phase 2.5 strict remote-command boundary: .aris/m120_native_grid_20261007/deploy_m120.py:20 and inspect_native_interface.py:9 instantiate SSHClient + AutoAddPolicy without loading or checking trusted host keys, then submit the root password (lines 21-22 / 10-11). This accepts any presented SSH host identity before password authentication. Use the existing trusted known-host entry for the authorized endpoint (RejectPolicy/default rejection), or an independently established pinned host key; do not fetch a new key and call that verification.",
+      "resolution": "Executor replaced AutoAddPolicy with existing known_hosts loading and default RejectPolicy in both helpers and the new observer. Reviewer reread final code and verified the existing endpoint entry locally. Original executed read helper remains separately preserved; its earlier read is not retroactively described as host-verified. Secure deploy rechecks all six files before launch."
+    },
+    {
+      "id": "M120-R2",
+      "original_location": [
+        "collect_m120_native_grids.py:89-116",
+        "M120_NATIVE_GRID_PLAN.md:16"
+      ],
+      "original_review_text": "One concrete collector contract gap remains: collect_m120_native_grids.py:89-116 never saves event resize_factor or initial resize although PLAN:16 explicitly requires prior/crop origin/resize; factor is only compared at line 106 then discarded. Minimal fix: append the actual event factor and store actual initial resize (prefer float64/Python float so this is the native geometry, not the M90 float32 comparison view). Also line 111 stores only float32 prior; keep the existing float32 M90 equality check, but save the original native before values as float64 if the stated exact-prior contract is intended. Actual rounded crop_origin currently is computed correctly from full-precision before.",
+      "original_collector_sha256": "bfd25e0135f933d21f5c0ed61779cb048371266bc843f2229f56a05e589e34a1",
+      "resolution": "Executor added float64 event resize_factor, float64 native prior_bbox and initial_resize_factor=float(resize). Existing M90 float32 equality checks and actual rounded crop-origin calculation were retained; final source reread and parsed."
+    }
+  ],
+  "correctness_checks": [
+    "Actual fetched native model lines 149-160 expose post-TSG RGB/depth and post-Mamba fused search tensors; collector takes these tensors directly, with 256 positions and driver-enforced 768 channels. Fused means the native returned pre-decode_fuse_search representation, as defined by that interface.",
+    "Auxiliary t0 forward passes track_query_before=None. The native model creates a local query list and its returned query is not submitted to tracker state. Collector asserts frame_id=0, state=init_box and tracker query remains None, then validates every subsequent native prefix bbox/score. Native track() continues its normal bbox/query/template updates.",
+    "M95 t0 search RoIs and M90 candidate boxes/RoIs are compared exactly at their original half/float32 cache precision. Prior/resize comparisons retain the M90 float32 contract; newly saved native prior and resize are float64, initial resize is a Python float, and rounded crop origin is computed from the unrounded native prior.",
+    "Padding coverage pools the actual sample_target resized boolean padding mask into the 16x16 grid. It denotes unpadded native crop pixels, not target visibility, identity truth, or valid-depth fraction. crop_geometry matches fetched sample_target ceil/round coordinates.",
+    "All network state_dict tensors are cloned before inference and checked for exact equality after collection; eval mode, requires_grad_(False), and no_grad are used. No optimizer, training entry point, GT labels, text bank, alternative bbox commit, new checkpoint, model download, installation, or retry is present.",
+    "Both fixed-GPU 3-event sanities must exit 0 and meet result checks before either full producer launches. Full totals are checked as 152 sequences, 3502 events and 219194 tracked prefix frames; the 152 legal t0 auxiliary reads are additional. Two sanity files and 152 full files are expected, not claimed produced.",
+    "Completed M90/M95/M98 receipts have matching preparation/checkpoint identities. M98 all-152 original-feature links match M90, and sequence/split/event/frame records agree in both shards; 130 fit and 22 development sequences remain fixed.",
+    "The existing known_hosts entry for the authorized 43811 endpoint was found locally with ssh-ed25519 type. All current private helpers load that file and keep default rejection of unknown/changed keys; no new key was fetched. Deployer verifies review sources, existing dependencies and all six native files before upload/launch, prechecks M119 completion, both idle GPUs and free space >8 GiB.",
+    "Deployer records first sanity at 180 seconds, first full observation at 3600 seconds, and a 6300-7200 second estimate. observe_once waits until its explicit deadline then performs one read-only snapshot of the original controller/nonbinary files; it does not retry, restart, install, download PT tensors, or mutate the remote experiment."
+  ],
+  "actual_source_checks": {
+    "python38_ast_files": [
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m120_native_grids.py",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m120_native_grids.py",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_train_states.py",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_fixed_visual_selector.py",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_initial_feature_origins.py",
+      "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_train_contexts.py",
+      ".aris/m120_native_grid_20261007/deploy_m120.py",
+      ".aris/m120_native_grid_20261007/inspect_native_interface.py",
+      ".aris/m120_native_grid_20261007/observe_once.py",
+      ".aris/m120_native_grid_20261007/native_source/lib/models/sttrack/sttrack.py",
+      ".aris/m120_native_grid_20261007/native_source/lib/test/tracker/sttrack.py",
+      ".aris/m120_native_grid_20261007/native_source/lib/test/tracker/sttrack_candidate_set_observation.py",
+      ".aris/m120_native_grid_20261007/native_source/lib/test/tracker/sttrack_local_spatial_observation.py",
+      ".aris/m120_native_grid_20261007/native_source/lib/train/data/processing_utils.py"
+    ],
+    "python38_ast_count": 17,
+    "embedded_python38_blocks": [
+      {
+        "file": "deploy_m120.py",
+        "line": 33
+      },
+      {
+        "file": "deploy_m120.py",
+        "line": 59
+      },
+      {
+        "file": "observe_once.py",
+        "line": 19
+      }
+    ],
+    "native_bytes_and_sha_exact": true,
+    "known_host_entry_type": "ssh-ed25519",
+    "M90_M95_M98_preparation_checkpoint_links_exact": true,
+    "M98_all152_original_feature_links_exact": true,
+    "split_sequences": {
+      "fit": 130,
+      "development": 22
+    },
+    "pure_stdlib_crop_formula_cases_passed": 3
+  },
+  "completed_M98_timing_evidence": [
+    {
+      "shard": 0,
+      "sequences": 77,
+      "events": 1801,
+      "frames": 108335,
+      "elapsed_seconds": 6291.734833478928
+    },
+    {
+      "shard": 1,
+      "sequences": 75,
+      "events": 1701,
+      "frames": 110859,
+      "elapsed_seconds": 5663.761621952057
+    }
+  ],
+  "budget": {
+    "event_grid_payload_bytes": 4131127296,
+    "initial_grid_payload_bytes": 179306496,
+    "payload_is_theoretical_not_measured": true,
+    "preflight_free_bytes_must_exceed": 8589934592,
+    "expected_full_seconds": [
+      6300,
+      7200
+    ]
+  },
+  "permanent_human_input_protocol": "Future main training/formal inference uses the final manually reviewed CSV categories and stable attributes. Sequence names are checking cues only; unknown values remain empty. This explicitly authorized native-only visual-input collector neither reads text nor changes that protocol.",
+  "limitations": [
+    "No M120 deployment, SSH connection, Torch import, GPU/model forward or install was performed by the reviewer. Runtime equality, finite tensors, frozen state, both sanity gates and full completion remain unaccepted until actual producer receipts.",
+    "Float16 grid storage is intentional. RoI exact checks use native tensors before grid quantization; re-sampling saved half grids is not asserted to be bitwise equal to old RoI caches.",
+    "Observer controller_alive is a /proc PID-existence observation, not independent proof of a running/non-zombie process or scientific completion. Completion requires driver.exit=0 and the complete-pair result; logs and child exits must be inspected on failure.",
+    "The six fetched native files are hashed actual local readback evidence from 2026-10-07T09:40:35+08:00; imported native implementation beyond those files is not independently backend-attested by this source review. Existing exact replay/RoI checks remain mandatory."
+  ],
+  "reviewer_operations": {
+    "ssh_connections": 0,
+    "gpu_executions": 0,
+    "torch_imports": 0,
+    "installs": 0,
+    "experiment_source_edits": 0
+  },
+  "output_files": [
+    "M120_SOURCE_REVIEW_20261007_095007.json",
+    "M120_SOURCE_REVIEW_20261007_095007.md",
+    "M120_SOURCE_REVIEW.json",
+    "M120_SOURCE_REVIEW.md"
+  ]
+}
