@@ -192,3 +192,8 @@
 | 2026-10-07T09:50:07.520436+08:00 | /experiment-bridge | M120_SOURCE_REVIEW_20261007_095007.md | source_review_PASS | Fresh same-family provisional source review; two concrete issues fixed and reread; 17 Python3.8 ASTs + 3 embedded blocks; no reviewer SSH/Torch/GPU/runtime acceptance |
 | 2026-10-07T09:50:07.520436+08:00 | /experiment-bridge | M120_SOURCE_REVIEW.json | source_review_PASS | Fresh same-family provisional source review; two concrete issues fixed and reread; 17 Python3.8 ASTs + 3 embedded blocks; no reviewer SSH/Torch/GPU/runtime acceptance |
 | 2026-10-07T09:50:07.520436+08:00 | /experiment-bridge | M120_SOURCE_REVIEW.md | source_review_PASS | Fresh same-family provisional source review; two concrete issues fixed and reread; 17 Python3.8 ASTs + 3 embedded blocks; no reviewer SSH/Torch/GPU/runtime acceptance |
+
+
+- 2026-10-07 M120_NATIVE_GRID_PLAN.md / collect_m120_native_grids.py / run_m120_native_grids.py: reviewed source, actual native-only input collection.
+- 2026-10-07 M120_DEPLOY_LAUNCH.json / M120_RUNNING_STATUS.json / m120_running/: actual original controller, both sanity0 and fullrunning; not completed result or training/public score.
+- 2026-10-07 M120_OBSERVATION_CONNECTION_FAILURE.json: first scheduled read TCPpreauth failure, no experiment restart; separate later actual successful observation.
