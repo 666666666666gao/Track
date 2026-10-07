@@ -263,3 +263,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 - 2026-10-07 M122_RECONNECTION_OBSERVATION_20261007/m122_hour_observation_20261007_183706: actual original24539 alive/nonterminal131/141 first-pass sequences187582/203297calls5822/6293steps; original28100 CPU queue alive/passive wait; no NN restart/formal metric; sole next6727 at19:37:06.100643.
 
 - 2026-10-07 M122_HOUR_PROGRESS_20261007_193728/m122_hour_observation_20261007_193728: actual original24539 alive/nonterminal; first pass complete both, second pass10 complete for precision1; 219802/238318calls,6807/7387steps; all32 active sources unchanged; no final/formal metrics; sole next33883 at20:37:28.886029.
+
+- 2026-10-07 M122_HOUR_OBSERVATION_FAILURE_20261007_2037: actual hourly33883 TCP timeout before authentication/NN query; last validNN19:37 and CPUqueue18:40; no restart/fast retry; source32 unchanged; next sole8989 at21:37:28; server master sync pending.
