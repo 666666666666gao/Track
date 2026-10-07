@@ -1,0 +1,256 @@
+{
+  "status": "actual_M122_native_hourly_progress",
+  "observation": {
+    "status": "actual_native_SSH_M122_snapshot",
+    "observed_at": "2026-10-07T18:16:05.881644+00:00",
+    "observed_unix": 1791396965.881658,
+    "controller_alive": true,
+    "terminal": false,
+    "queue_alive": true,
+    "gpu": "0, 4206, 63\n1, 4206, 66\n",
+    "system_free_bytes": 287125504,
+    "data_free_bytes": 18731778048,
+    "arms": [
+      {
+        "weight": 0,
+        "completed_sequence_runs": 295,
+        "last_complete": {
+          "epoch": 2,
+          "sequence": "cup13_indoor",
+          "sequence_index": 142,
+          "sequences_per_epoch": 152,
+          "track_calls": 1761,
+          "supervised_frames": 1658,
+          "template_writes": 13,
+          "loss_means": [
+            0.4220214005250845,
+            0.08544878456719103,
+            0.0069890319494995655,
+            0.11030060934433399,
+            0.8320408303474427,
+            0.00046839420464927714,
+            0.03934978204021013
+          ],
+          "counts": {
+            "observation_intersection": 778,
+            "regression_positions": 1251,
+            "preservation_pairs": 6552
+          },
+          "total_track_calls": 427055,
+          "total_optimizer_steps": 13225,
+          "elapsed_seconds": 48986.78357076645
+        },
+        "all_recorded_losses_finite": true,
+        "completed_call_budget_fraction": 0.6476359026153842
+      },
+      {
+        "weight": 1,
+        "completed_sequence_runs": 323,
+        "last_complete": {
+          "epoch": 3,
+          "sequence": "duck04_wild",
+          "sequence_index": 18,
+          "sequences_per_epoch": 152,
+          "track_calls": 709,
+          "supervised_frames": 709,
+          "template_writes": 6,
+          "loss_means": [
+            0.12210760708262537,
+            0.06406165304237764,
+            0.004932786805827134,
+            0.2845207027807222,
+            0.0006643430313357508,
+            1.1073050326589374e-06,
+            0.0014400157553897447
+          ],
+          "counts": {
+            "observation_intersection": 709,
+            "regression_positions": 1142,
+            "preservation_pairs": 6381
+          },
+          "total_track_calls": 467059,
+          "total_optimizer_steps": 14475,
+          "elapsed_seconds": 49233.40237784386
+        },
+        "all_recorded_losses_finite": true,
+        "completed_call_budget_fraction": 0.7083026238766404
+      }
+    ],
+    "files": [
+      {
+        "path": "sanity_launch.json",
+        "bytes": 2845,
+        "sha256": "6fb0c82010e03ecc576d544bf00438c8250bafe73a4d827c1e7ae4f2067486e9"
+      },
+      {
+        "path": "sanity_precision0/result.json",
+        "bytes": 4028,
+        "sha256": "d7da122e7854f4fe909b426bb9ef4db6b3b2ace9cb45458b249ecbe5cd840097"
+      },
+      {
+        "path": "sanity_precision0/sampled_state_trace.jsonl",
+        "bytes": 1091,
+        "sha256": "20669afad33d7f7d8422a69bc1cd7e44094962ead00612d2c9df2fc01bc78517"
+      },
+      {
+        "path": "sanity_precision0/sequence_log.jsonl",
+        "bytes": 510,
+        "sha256": "918018363f6fb28d0da6b8fcda201746d8411716185ec5f8120306f21f1a0797"
+      },
+      {
+        "path": "sanity_precision0.exit",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      {
+        "path": "sanity_precision0.log",
+        "bytes": 666,
+        "sha256": "54f3fa388532d1c96342e134f769d2f833ef26aa3c6d692b178e85b4aaabb94f"
+      },
+      {
+        "path": "sanity_precision1/result.json",
+        "bytes": 4034,
+        "sha256": "5ca7343c5a25d8f0160b485af9c74afca878b94b1d0417d823bd76b4aa3286d1"
+      },
+      {
+        "path": "sanity_precision1/sampled_state_trace.jsonl",
+        "bytes": 1087,
+        "sha256": "7a40ea1a493b03120b68f3619ca4c4941f9bd6bda8b7e0e92a4d476df65c9c24"
+      },
+      {
+        "path": "sanity_precision1/sequence_log.jsonl",
+        "bytes": 512,
+        "sha256": "ef2234dcbf1d606e8bc010da1d6b83efa8df4c642171bebe5f6b3f88656df902"
+      },
+      {
+        "path": "sanity_precision1.exit",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      {
+        "path": "sanity_precision1.log",
+        "bytes": 668,
+        "sha256": "87a9c8e7bc24b7f43a65a964c30ff78d444ae9e19c8545f586928b6bcf1f8552"
+      },
+      {
+        "path": "train_launch.json",
+        "bytes": 2737,
+        "sha256": "843a8bb8773181fcfee31c2ea7b7ee98832b4bffcc2c3fc330404faf13833b39"
+      },
+      {
+        "path": "train_precision0/sampled_state_trace.jsonl",
+        "bytes": 726133,
+        "sha256": "9e639821808dc9b1a12e22abbf43db733984cb43f066054aba5797b641d522bf"
+      },
+      {
+        "path": "train_precision0/sequence_log.jsonl",
+        "bytes": 156407,
+        "sha256": "0df7a6c7ebd32b3a03467f16c47abce744c5b8d0fb5624000875eb79d6d4771e"
+      },
+      {
+        "path": "train_precision0.log",
+        "bytes": 156491,
+        "sha256": "fc1859acdd3621c3b578a5918e2cf0715d16ab3be68f81a6c5d6e36358a066df"
+      },
+      {
+        "path": "train_precision1/sampled_state_trace.jsonl",
+        "bytes": 793078,
+        "sha256": "ce4743fccece0a352a4eb80e3ff690ce6054e1a776ba7cb25e32e0159b68a22d"
+      },
+      {
+        "path": "train_precision1/sequence_log.jsonl",
+        "bytes": 171630,
+        "sha256": "756a5a3e53cd0548d68034f13885575f2fc1a8950162f1e9e71049cf4efdfd88"
+      },
+      {
+        "path": "train_precision1.log",
+        "bytes": 171714,
+        "sha256": "d21e7c10c362c57caf77bf8664760bb149e0dedfb5981ed7468ba27972755725"
+      }
+    ]
+  },
+  "arms": [
+    {
+      "weight": 0,
+      "completed_sequence_runs": 295,
+      "last_complete": {
+        "epoch": 2,
+        "sequence": "cup13_indoor",
+        "sequence_index": 142,
+        "sequences_per_epoch": 152,
+        "track_calls": 1761,
+        "supervised_frames": 1658,
+        "template_writes": 13,
+        "loss_means": [
+          0.4220214005250845,
+          0.08544878456719103,
+          0.0069890319494995655,
+          0.11030060934433399,
+          0.8320408303474427,
+          0.00046839420464927714,
+          0.03934978204021013
+        ],
+        "counts": {
+          "observation_intersection": 778,
+          "regression_positions": 1251,
+          "preservation_pairs": 6552
+        },
+        "total_track_calls": 427055,
+        "total_optimizer_steps": 13225,
+        "elapsed_seconds": 48986.78357076645
+      },
+      "completed_call_budget_fraction": 0.6476359026153842,
+      "estimated_total_hours": 21.010941218386407,
+      "estimated_remaining_hours": 7.403501337617947
+    },
+    {
+      "weight": 1,
+      "completed_sequence_runs": 323,
+      "last_complete": {
+        "epoch": 3,
+        "sequence": "duck04_wild",
+        "sequence_index": 18,
+        "sequences_per_epoch": 152,
+        "track_calls": 709,
+        "supervised_frames": 709,
+        "template_writes": 6,
+        "loss_means": [
+          0.12210760708262537,
+          0.06406165304237764,
+          0.004932786805827134,
+          0.2845207027807222,
+          0.0006643430313357508,
+          1.1073050326589374e-06,
+          0.0014400157553897447
+        ],
+        "counts": {
+          "observation_intersection": 709,
+          "regression_positions": 1142,
+          "preservation_pairs": 6381
+        },
+        "total_track_calls": 467059,
+        "total_optimizer_steps": 14475,
+        "elapsed_seconds": 49233.40237784386
+      },
+      "completed_call_budget_fraction": 0.7083026238766404,
+      "estimated_total_hours": 19.308053710300047,
+      "estimated_remaining_hours": 5.6321086053434195
+    }
+  ],
+  "local_observed_at": "2026-10-08T02:16:05.881644+08:00",
+  "next_only_NN_observation": "2026-10-08T03:16:05.881644+08:00",
+  "original_controller_pid": 24539,
+  "original_queue_pid": 28100,
+  "snapshot_archive_SCP_exit": 0,
+  "snapshot_archive_bytes": 557222,
+  "snapshot_archive_sha256": "e310df6f1e38cf8b7fd675d9d85c9ea4cd313f8be03a7940061465fc4d7b63a9",
+  "original_snapshot_bytes_verified": true,
+  "original32_local_sources_unchanged": true,
+  "training_restarted": false,
+  "evaluation_queue_restarted": false,
+  "formal_metrics": null,
+  "native_session": 82453,
+  "network_blocked_audit": 0,
+  "estimate_scope": "training only; cumulative completed-sequence speed; about two-hour engineering margin; official inference additional",
+  "goal": "ACTIVE_UNMET"
+}
