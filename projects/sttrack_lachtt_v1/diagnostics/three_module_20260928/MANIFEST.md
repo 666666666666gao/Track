@@ -259,3 +259,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 - 2026-10-07 M122_THIRD_HOUR_OBSERVATION/m122_hour_observation_20261007_153420: actual original24539 alive/nonterminal,68/72 complete first-pass sequences93950/98583calls2924/3070steps,18snapshot files exact; no final/formal metrics; sole next observer6608 at16:34:20.842585.
 
 - 2026-10-07 M122_SSH_MONITOR_FAILURE_20261007: original6608 DNS fail,76323 CLI date fail corrected only at invocation,58539 pre-auth TCP timeout; actual18:26:29 port43811 unreachable, no NN queries/restarts. Currentremote state unknown, lastverifiedNN15:34; requested current SSH entry, ACTIVE_UNMET first blocking goalturn.
+
+- 2026-10-07 M122_RECONNECTION_OBSERVATION_20261007/m122_hour_observation_20261007_183706: actual original24539 alive/nonterminal131/141 first-pass sequences187582/203297calls5822/6293steps; original28100 CPU queue alive/passive wait; no NN restart/formal metric; sole next6727 at19:37:06.100643.
