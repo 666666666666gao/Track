@@ -1,0 +1,180 @@
+{
+  "status": "complete_M121_sanity",
+  "arm": "visual_query",
+  "seed": 2027,
+  "optimizer_steps": 3,
+  "optimized_parameters": 380167,
+  "initial_state_sha256": "b6cb799256b9b7726246b71523cfbdaa8605eaf1634ea90334d15da0141059b0",
+  "source": {
+    "sequences": 152,
+    "valid_gt": 3039,
+    "invalid_gt_excluded": 463,
+    "native_receipt_sha256": "03178d3ae489e1ed9d10467b557d06c303aaa4b14f4452f0d9c5f9880009eb94",
+    "dense_receipt_sha256": "84c35de699352faba6a757d8fa9af8690a068a3c23feab8cfc70880a522ee638",
+    "preparation_sha256": "59cedd45335583228f59451b818d9a4a5c06c3c67295bf2796c8bdefa18539aa",
+    "half_precision_feature_storage": true
+  },
+  "source_sha256": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+  "model_source_sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+  "loader_source_sha256": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+  "bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+  "labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+  "history": [
+    {
+      "epoch": 1,
+      "updates": 3,
+      "mean_losses": [
+        2.8746840159098306,
+        0.2211238145828247,
+        0.029509225860238075,
+        0.6917482018470764,
+        0.5505537788073221,
+        4.257375985616818e-05
+      ],
+      "seconds": 33.13389849662781,
+      "observation_intersection": 183,
+      "regression_positions": 264,
+      "preservation_pairs": 1044
+    }
+  ],
+  "native_response_zero_initialization_exact": true,
+  "initial_geometry_default_close_atol1e4": true,
+  "Empty_semantic_delta_same_forward_exact": true,
+  "geometry_has_no_current_text_input": true,
+  "no_phrase_visibility_or_physical_identity_truth": true,
+  "no_recursive_or_public_evaluation": true,
+  "elapsed_seconds": 33.18144774436951,
+  "gpu_peak_reserved_bytes": 1052770304,
+  "gradients": [
+    {
+      "native": 6.20206630975008,
+      "semantic_projection": 1.0772468131035566,
+      "position": 0.006423389073461294,
+      "search_fusion": 1.631595067679882,
+      "reference_read": 0.29895579256117344,
+      "visual_fusion": 1.2016992531716824,
+      "phrase_bind": 0.0,
+      "phrase_calibrate": 0.0,
+      "phrase_read": 0.0,
+      "visual_support": 4.373906314373016,
+      "semantic_support": 0.4946727752685547,
+      "geometry": 0.0,
+      "box_delta": 3.9811437129974365,
+      "quality": 1.0650779604911804,
+      "observation": 2.1364093646407127
+    },
+    {
+      "native": 3.9555083625018597,
+      "semantic_projection": 0.5641800509765744,
+      "position": 0.00677456334233284,
+      "search_fusion": 0.9531325101852417,
+      "reference_read": 0.25549517571926117,
+      "visual_fusion": 0.8424616158008575,
+      "phrase_bind": 0.0006445288981922204,
+      "phrase_calibrate": 0.0003587773408071371,
+      "phrase_read": 0.004595139434968587,
+      "visual_support": 4.533481776714325,
+      "semantic_support": 0.47497408220078796,
+      "geometry": 0.06018734956160188,
+      "box_delta": 3.461815357208252,
+      "quality": 1.0988489389419556,
+      "observation": 2.0735541582107544
+    },
+    {
+      "native": 2.60104813426733,
+      "semantic_projection": 0.39562657941132784,
+      "position": 0.005784324370324612,
+      "search_fusion": 0.5940716695040464,
+      "reference_read": 0.18326499499380589,
+      "visual_fusion": 0.6062154360115528,
+      "phrase_bind": 0.0013750945472565945,
+      "phrase_calibrate": 0.0007996152780833654,
+      "phrase_read": 0.009525065841444302,
+      "visual_support": 4.621784210205078,
+      "semantic_support": 0.529333230049815,
+      "geometry": 0.06558465678244829,
+      "box_delta": 1.890630453824997,
+      "quality": 1.3179360032081604,
+      "observation": 1.9761188700795174
+    }
+  ],
+  "parameter_changes": {
+    "native": {
+      "changed_values": 148032,
+      "absolute_delta": 101.60285602509975,
+      "maximum_delta": 0.0009099841117858887
+    },
+    "semantic_projection": {
+      "changed_values": 49280,
+      "absolute_delta": 33.344155468046665,
+      "maximum_delta": 0.0009017493575811386
+    },
+    "position": {
+      "changed_values": 128,
+      "absolute_delta": 0.08666159212589264,
+      "maximum_delta": 0.0009042024612426758
+    },
+    "search_fusion": {
+      "changed_values": 16576,
+      "absolute_delta": 10.383739788085222,
+      "maximum_delta": 0.0009016003459692001
+    },
+    "reference_read": {
+      "changed_values": 16640,
+      "absolute_delta": 11.529734589159489,
+      "maximum_delta": 0.0009024143218994141
+    },
+    "visual_fusion": {
+      "changed_values": 8384,
+      "absolute_delta": 5.646309331059456,
+      "maximum_delta": 0.0009021982550621033
+    },
+    "phrase_bind": {
+      "changed_values": 16640,
+      "absolute_delta": 7.16220473498106,
+      "maximum_delta": 0.0004812479019165039
+    },
+    "phrase_calibrate": {
+      "changed_values": 16640,
+      "absolute_delta": 6.623977970331907,
+      "maximum_delta": 0.00048194825649261475
+    },
+    "phrase_read": {
+      "changed_values": 16640,
+      "absolute_delta": 3.769430812448263,
+      "maximum_delta": 0.00048188865184783936
+    },
+    "visual_support": {
+      "changed_values": 65,
+      "absolute_delta": 0.04643473221221939,
+      "maximum_delta": 0.0009013227536343038
+    },
+    "semantic_support": {
+      "changed_values": 8704,
+      "absolute_delta": 3.8277742713689804,
+      "maximum_delta": 0.0009014019160531461
+    },
+    "geometry": {
+      "changed_values": 73792,
+      "absolute_delta": 29.44652294740081,
+      "maximum_delta": 0.0004813745617866516
+    },
+    "box_delta": {
+      "changed_values": 260,
+      "absolute_delta": 0.1804097907152027,
+      "maximum_delta": 0.0009014355018734932
+    },
+    "quality": {
+      "changed_values": 65,
+      "absolute_delta": 0.04767463722964749,
+      "maximum_delta": 0.0009013267117552459
+    },
+    "observation": {
+      "changed_values": 8321,
+      "absolute_delta": 6.071425784379244,
+      "maximum_delta": 0.0009021610021591187
+    }
+  },
+  "all_architectural_groups_updated": true,
+  "checkpoint_saved": false
+}

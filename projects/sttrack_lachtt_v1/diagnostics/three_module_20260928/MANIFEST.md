@@ -212,3 +212,10 @@
 
 - 2026-10-07 M120_HOUR_OBSERVATION.json / m120_hour_observation_20261007_105154: original first-hour running snapshot, all raw bytes retained, no model restart or formal score.
 - 2026-10-07 M121_DENSE_TARGET_PLAN.md / dense_target_decoder.py / m121_dense_inputs.py / train_m121_dense_target.py / run_m121_dense_target.py / analyze_m121_dense_target.py / M121_PREPARED_STATUS.json: source reviewed, permanent human text, matched controls; no neural execution yet.
+
+| 2026-10-07T12:29:52.108949+08:00 | /experiment-bridge | M122_SOURCE_REVIEW_20261007_122952.json | source_review_PASS | Fresh same-family provisional/source-only review; 18 D Python modules + private deployer + 2 embedded ASTs; native 7 source matches; no blockers, no Torch/SSH/model execution; actual input rows and runtime sanity remain unverified |
+| 2026-10-07T12:29:52.108949+08:00 | /experiment-bridge | M122_SOURCE_REVIEW_20261007_122952.md | source_review_PASS | Fresh same-family provisional/source-only review; 18 D Python modules + private deployer + 2 embedded ASTs; native 7 source matches; no blockers, no Torch/SSH/model execution; actual input rows and runtime sanity remain unverified |
+| 2026-10-07T12:29:52.108949+08:00 | /experiment-bridge | M122_SOURCE_REVIEW.json | source_review_PASS | Fresh same-family provisional/source-only review; 18 D Python modules + private deployer + 2 embedded ASTs; native 7 source matches; no blockers, no Torch/SSH/model execution; actual input rows and runtime sanity remain unverified |
+| 2026-10-07T12:29:52.108949+08:00 | /experiment-bridge | M122_SOURCE_REVIEW.md | source_review_PASS | Fresh same-family provisional/source-only review; 18 D Python modules + private deployer + 2 embedded ASTs; native 7 source matches; no blockers, no Torch/SSH/model execution; actual input rows and runtime sanity remain unverified |
+
+M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFACT_MIRROR；M122当前为完整自身历史源码入口，真实部署回执单列，不能用缓存指标代替正式九项。
