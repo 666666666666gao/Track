@@ -1,5 +1,5 @@
 {
-  "status": "actual_CPU_Train152_diagnostic_executed_result_review_pending",
+  "status": "complete_reviewed_CPU_Train152_sparse_diagnosis",
   "execution": {
     "status": "actual_CPU_training_diagnosis_exit_recorded",
     "started_at": "2026-10-08T21:09:31.028164+08:00",
@@ -20,12 +20,20 @@
   "source_review_verdict": "PASS",
   "source_review_blocking_count": 0,
   "source_review_same_family_provisional": true,
-  "result_review_pending": true,
+  "result_review_pending": false,
   "reviewer": "/root/m122_train_sample_result_review",
   "result_files_sha256": {
     "result.json": "8edd196770707f4e712ccfa8eea1c1c77f1c16ed5cfe82e7e86416f525fb1c6c",
     "sample_rows.json": "1b7cb3f5e6e4b5cbc945551352dc040ae08aa6bbc9d47482597ee940d24dc147",
     "per_sequence.csv": "a9db19c01c91c7c81d2de1d858660ae5d9303b7960f3e3d5761afb884a17afb5"
   },
-  "limits": "Historical training snapshots only; no new benchmark metric or C-module efficacy. Source plan remains the archived preexecution plan. Numeric diagnostic claims await the fresh result review."
+  "limits": "Historical changing-weight Train152 samples only; not final or heldout performance. No all-write error rate, text/template causal claim, C-module efficacy or new VOT score.",
+  "result_review_verdict": "PASS",
+  "result_review_blocking_count": 0,
+  "result_review_sha256": "6faab3014cf3e8fc951d337790feee971878d4433455f2e98fdd6c543084960b",
+  "result_review_same_family_provisional": true,
+  "independent_result_checks": 30855,
+  "local_inputs_independently_available": 193,
+  "public_audit_MD_EOF_normalized_only": true,
+  "primary_audit_MD_and_JSON_unchanged": true
 }

@@ -1,0 +1,669 @@
+{
+  "status": "complete_M122_sparse_training_diagnosis",
+  "evaluation_type": "real_gt_training_diagnostic",
+  "neural_executions": 0,
+  "neural_progress_queries": 0,
+  "source_sha256": "cf7ba331aaf034a79da3aaa422cca682a7112742080c3d385faf12564908add6",
+  "plan_sha256": "899a40b784711304590a56a94a5f52e2435ad9ba10fd0b7026b62035fe50b518",
+  "input_sha256": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\files.json": "7457e4929e31eb6d103f7ed8899f0bdf0afee14f5c290b1788c31938fbb0a827",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_2017\\observation.json": "fbdc7e81d082b0f49a766a362013a971fca084a3687aae07107b8cf4bba2673f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_input_export_receipt.json": "57998e17358c0c5b4410301ce7d2a43119b8eecee4d8e25e43c5d361c7f0c6c2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_2017\\train_precision0\\sequence_log.jsonl": "58d5e0ce3dc4a5b4f56016ebd992b8648182f253e6cb030589adf6749dccb4b2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_2017\\train_precision0\\sampled_state_trace.jsonl": "73abde7b98055f63181ecbe3a6ea8943b9d930ea3b13ab966217812667c7bb1f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_2017\\train_precision0\\result.json": "4a8a44f91bea42b6d4da4d4ba467ceda335c469e354bfdf5af7b7c0f7fc0712f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_2017\\train_precision1\\sequence_log.jsonl": "9bba687699a6fc3278be868370bc99ca9d4323cd26604170614758e8429eb5b8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_2017\\train_precision1\\sampled_state_trace.jsonl": "8bbf75c68ce840493dd972c7dc9342cca4a5395fa3ae9c3dd0e82a2c00a7df03",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_2017\\train_precision1\\result.json": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\training_spec.json": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\image_dimensions.json": "857016bba9a9cecc33177ba5a0540601288c7b184943713a60a314dbcd0a009e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\adapter02_indoor.txt": "33a964dea164f87c4c4adaf720aeed9f6209f4f3f5025fc9d597c03f84d14e78",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bag03_indoor.txt": "fb4702c2f0e4c6a1e33251efb0f3c1c7f4eb5f26c1a3c79d9018913b2372d8ec",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bag04_indoor.txt": "0d06a12db2f75b4428d77d0983050e51ed2e56153c24ab74871ab4abca315267",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bag05_indoor.txt": "19fac45f89a26ebfc9f3609008139d917dd80c75c825b6fe9c9d085ec55ebf52",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball02_indoor.txt": "2147f99e45f7af89f466d6bfbe718ca4a95a75827324f1c736eaef810d9f2083",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball03_indoor.txt": "ce41f746332d2777ea7f5f97ae8f545bbfa9afbe93929eaca8f0f0ee70f057c7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball04_indoor.txt": "db05ab15d9143192adc6a248c4a8d1fa66c339d028d067d60cae72c01ff85661",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball05_indoor.txt": "4a3bf9f327e4994423b75c3d1267b80ac71d05c5e9b93b08b509f6d83bff4a34",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball07_indoor.txt": "c9cb5a6fcfd0bd3f5b3582292e5c30625a4c30fee1c08e5eb247f5ae6ffaaab2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball08_wild.txt": "a3570303bd54848f4b96234001d8a0f141460cf42effcb1ade9b2760e8e84bf9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball09_wild.txt": "a3647edc0b7e4ffcbedbc970b0e48e88aa11c5fea9cf9a2f22b490a43f0f1a01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball12_wild.txt": "feee35d47e25bcdfcaef049ebebd67f77892cb1b533c842ad5147c1cff6b8c9b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball13_indoor.txt": "99c5e76747408d0c120b92ce172d37cbd39abc2836207837633eb92698547446",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball14_wild.txt": "f6d7da3590803baab88cadc089e76daa57b25fd1bcd2152abab118e41d085017",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball16_indoor.txt": "e39af82dd9ae52bbf6734c63cc916dfa043129fbcc4e0d675de09535ce0180a4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball17_wild.txt": "a2e90cb9a2db72c3d4dd00bbeeb645b8f02b95094f714bb3f783ccb7e0dcd5e0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball19_indoor.txt": "21a1bddce56f75dd67ca5b9fbb14eccafc46bd36b24a468fb9483290d68e125d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ball21_indoor.txt": "5230b453b3d069f8ade8e23aef0f3d18f9794d900a1a6264ebb830aff0ac0bb4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\basket_indoor.txt": "d681b5a242bed11da0f5fe714491b49651ef1d1c4b4f43b92cfc6263c9d1e9ca",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\beautifullight01_indoor.txt": "0e89eed1894076dbfbbebed2f931163b27fa3572246d21b49662b5ccbd1a945a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bike01_wild.txt": "cd70a8371938cdac020502cf2c4e0c77f77180eecd6baabee70b269b2ec47f24",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bike02_wild.txt": "4b90a9f1d4251f16d6dff2bf9864387d2954f0978145a524b0ed06ba3c03ea35",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bike03_wild.txt": "dad8d95321f350d2a347f4f71504d8d82b57fd7fdd08ef617b63e2929f57c3e3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\book01_indoor.txt": "9d0c8affacf73e01d0eed4d446aadaeb3e42f111d46b2e2d38ed86de40b9a19c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\book02_indoor.txt": "25fc50ddf6083b81f0e202fbfbc83561d4d2cb13d445d9adb398e798473a7fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\book04_indoor.txt": "d7009271319c37873f1ca7e4a615e7efed384818c4a5a4c36b02c3f4628cbfdc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\book05_indoor.txt": "8e2f3008f581de3517e2d19185080261a796ec36506a62f07824ecbdf34196f1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\book06_indoor.txt": "df6b93503aa8177ac8b0e32507124189f453bce6c5bcb5f993667850f77b58a1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bottle01_indoor.txt": "e226e68e5c5ec7dbe8b380aaa0c37ad6444b683ca4f6fa84bfc59968ee818e83",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bottle02_indoor.txt": "48f14b53ca931b24f50e0e24cef612aaef8311a85736c0916f69b58d54c72522",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bottle03_indoor.txt": "8cb3e98365c17668ebbbb937431a5a38d22f05804b352f353d51d834fd3a117a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bottle05_indoor.txt": "222999382c4ba7803d1ad6fd919d93fc290f1b0fd521f3c08dddd2c47e06b01f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\bottle06_indoor.txt": "7dce3716c2635f7801abaefa8cda804ab943aa16ac77024d1ce11fa871437812",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\box_indoor.txt": "a34d48e631a3ec23016aa71f1951d350a72ad03beb878ed1ca18217875b98afd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\candlecup_indoor.txt": "2c2ba43df1406dd9fd0ac25d776dde07980efc6ae94900d3bbcdc453a6fbfc01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\car01_indoor.txt": "dca7e65de77cced65b4b06a589352fdde456152b9a75d9af8759082b8cf458d4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\car02_indoor.txt": "ed1171be55b7782858af063f174b2ece551f35b6ee2b5a4d0e81b5fc53f87ec7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cart_indoor.txt": "e5b16fea25a7b2ddb32cf3132f97e385d6c27bd9af99c64cf12bd882b72c5226",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cat02_indoor.txt": "db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cat03_indoor.txt": "d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cat04_indoor.txt": "6421ade8ca96dbc2da52ca02cedd69c415f37498775732b0cf780d81f2d292af",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cat05_indoor.txt": "5d9144b7989d54a349cedafcf15f407db098d8af69019302bc05c2de0f09082a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\chair01_indoor.txt": "fc25354c8769860a8c4404019368e34c1415367828009e6503bb7695581bf62a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\chair02_indoor.txt": "4f05bc2ed056bdc6c9c5a2687ab6c074a2f32b95cae62bf6feebe89899f03ca2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\clothes_indoor.txt": "e0717f89c1ad115ce87bb252bc7915ee1d0b34ab73c72fc8ca5a47a07612094b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\colacan01_indoor.txt": "38443588eb1127d65c2ac800186759ad392581eef544588156c8c0f14b2ee866",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\colacan02_indoor.txt": "ca6587fa0aa38475f51d7dc443398b8e716d7b0a175346f310c60bb8b8360f57",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\colacan04_indoor.txt": "c556156a8252ea1e1b0c6a14cb4d63a374c8edf47b3dbdcdf129edfb562a0c2a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\container01_indoor.txt": "c08d2571102bb7106e6530a0dea8512f6206e15ee765a3a52b2734978fba7e1e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\container02_indoor.txt": "00cfbbbd0e55ccf24f191bda511d2a217c43a665f65ba0f64073d3b7b51fdccf",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cube01_indoor.txt": "c7e7f55e9d0ed4bac64c18d658796fa340fe6dddd2467a877015d42c71d4185e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cube04_indoor.txt": "d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cube06_indoor.txt": "19cf63610ae9b40e67f5e9b8f10ec62a42ad6662a693158eda64d18bb2b4c43a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup03_indoor.txt": "aef83d01e39f78bded1998acf5650504e4833292f9efaafc712094bca7eeda3d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup05_indoor.txt": "15d37ca8f694388415795e8df944d882347dbb5a2fd2e0a2e07e346164733149",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup06_indoor.txt": "ebba4639a8d94969986dc9dd60960c43701d1a1fafefaec270cdac99cc1b9e5f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup07_indoor.txt": "a87da31a984f168cba69d158eb46e31373ef79d11b2d4fd50c4c1886737c8885",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup08_indoor.txt": "b7c606e0373f5cdba15ecb21efa1ce293bc6620c5ffa60ddb567a1394c67f1c8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup09_indoor.txt": "6235e8bec9d88203c3bcc2adfa66db218730d79c619979fa575e77bd3cc2c5c5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup10_indoor.txt": "237081c1453dc80861c19444a63b2a4f63bd56c8703285c408c3e4d52a3d55ae",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup11_indoor.txt": "14e516059c4ebb3500cb0626fa4ff5135cee275d9b2e3f8862faa83a4e4af761",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup13_indoor.txt": "bd048b8a08b71b5616f185f8e8f1727972d7addf6251881c35f94d2911099864",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\cup14_indoor.txt": "9ad3ecd17fdbf886c7edf1f56934e7d47ac192cf7b9b4c53d013451651656bda",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\duck01_wild.txt": "83aca68e7101f1261e7bafcff766bad3a0a68301f10921ded08f11192497263b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\duck02_wild.txt": "ac48fd345b322c2bb305e68ec659c8872446f9023867e23851f3b6e12d11790e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\duck04_wild.txt": "29848ca243337725cfeae195563bd6035fae1f14f34c32a0441918112772c986",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\duck05_wild.txt": "5ad1b542b94c9181d66bc1d84e033b747ecd9a8fa62fe4717d6a65f05d870004",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\duck06_wild.txt": "dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\dumbbells02_indoor.txt": "18dac18d42fb4fa09483990feae0d084fff631c4629589fb4c7cfe880ff0052c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\earphone02_indoor.txt": "9178128a1ed5d23438515fdea6bac208c800122a1d38d0963d44f0eb700ba782",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\egg_indoor.txt": "a4010da190dfc37a2c48efdc21c60993e398af6b9df87b91dc3aee813e5bc9bd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\file02_indoor.txt": "b8f7d0914b2162609f993e8445b92cef3e2e1bb6e388cd21d1e62d835a154dfb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\flower01_indoor.txt": "97ecc6e67a43c29a5ef5eceaff28a480f40487347788ff044bef19fcbaea13db",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\flower02_wild.txt": "517aa37496ae936121cc6ddbfaee6e845616a64a137bdcb8a8cfee489d2cc644",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\flower03_indoor.txt": "66480878783c4fcdf76d47234f1884cdffaddb775028bf2c7d8b12d2061da8ce",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\flowerbasket_indoor.txt": "0cc6a4a0bec64e746491603b06b076fd41f7fbce4c86c0d1455b2440302f0d1b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ghostmask_indoor.txt": "5aba29f532dd42f9df5bbfd1c6c5558c8632f9d62fbf5fc5d52470d799ef9406",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\glass02_indoor.txt": "8e019d223669c6f31adf10d3ee4162fca5404fd40be892f1c44f411fcc03ae4f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\glass03_indoor.txt": "b4e6aa986c65391dfdb688c77403795f5626134f5088821ea3bd4b7284e184da",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\glass04_indoor.txt": "d24775109819cb517cbe764c3ef7990d25fe925049538864f4770864b40afbde",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\glass05_indoor.txt": "51cc8d500877bc4a321bc2bb6e810a30cb86711896764968d2700250f9352206",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\guitarbag_indoor.txt": "0d80234a96568cf983950b1f8b5bda33a01cb8cffd5cf1705f5c93f5621f9618",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\gymring_wild.txt": "b2df5de9aaaae941866b11586188ca7a5a94be1000a54e118df375cacf3d2346",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\hand02_indoor.txt": "fdb582d198c0d0e843a21891c4e8966cced3c2330dc3ded5110029ac67ccfab5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\hat01_indoor.txt": "8898891868efd65a97b8138c99404a0ae24e760f808487870f1b7529a30270bf",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\hat02_indoor_320.txt": "5851dd6051472626d3b0432e492fae38c4fa7a06d12caaab93f44a6c5c1dbbd5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\hat03_indoor.txt": "c7cd257073a4e20905e43f0bb3558cfb2d8bd4d391c6db18ae8bb8cf3cce9951",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\hat04_indoor.txt": "2d71dd08fff19e4be6ba64b51dff107674ac7c18d50dfe5e924e23e58989eaa1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\human01_indoor.txt": "384febbcddeeafe3489749b1b143c5d357e0c2098b02f589f45f208a0f627271",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\human03_wild.txt": "608ef24142202c0e8e9af1b3752ee0709e043a5f085e30bc66068bcaa4196543",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\human04_wild.txt": "3a24191b7f4b4690c0c6c9c912754cdf658a702622686aa7891419f866a9a8b7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\human05_wild.txt": "65e455611bc7c342891c0bbe60ca0f876c181196251fa9d80f963ead74542f9e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\human06_indoor.txt": "0f723bba01cd765122da6a513f6e458623ba3345aafb5a94826d787c9b1ee134",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\leaves01_wild.txt": "d34f88a2e29041dcc3f0921878f934bae4f654e12f9e43d14aaad17e00e83561",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\leaves02_indoor.txt": "d6a2ad6c7f3a9720b75c5a2457201857edfba1beeeeea2c5e5e85a39807fd696",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\leaves03_wild.txt": "a8169078aadfb3484b795038128cb1d314e04f2626a9f974253ac55c8dd69b5a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\leaves04_indoor.txt": "ede8be7594992f5bd8addd4a22c657ee5fa63857c5b54ac602f88381dd76dffb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\leaves05_indoor.txt": "aa0b613b169058dbf47eafd1c74e75e9e3d617e4f3ed21136bb5093e3ce8a3c1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\leaves06_wild.txt": "e5e14506d23aea54df25bd626b5d418240d15d1fa9b16739bac967fe464c7d74",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\lock01_wild.txt": "8812b746751f5f59ea8a16764ec70b7d1ded6c3ffcf963ad9245ac7ce84ac577",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mac_indoor.txt": "7b7fbed57f079ebedae12870613d30719a69d98f458815d7a42c50be893adb1a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\milkbottle_indoor.txt": "1d677d5d444fd4e14aec00fcdd9c4fbf3af1efb32bb8bcc1b53490610ab54f55",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mirror_indoor.txt": "39399adcf38d1be5d83ed6bac42e777cb660e49f0c93b150a5e2f105f9674d41",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mobilephone01_indoor.txt": "572ff6fde310d831e0fd2dd5201805a4f9d2cf18ec1dd63a227266872bf218ce",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mobilephone02_indoor.txt": "d27bba52e1ebe7f816b9d2ce264d332404530765bcce830029070b146c52e45c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mobilephone04_indoor.txt": "c18af5d30957a339497ba8235ecbf6986dbc7ce66773afcfabdbdb0a3b03d55c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mobilephone05_indoor.txt": "70c425a3f893af73aca7bdac61cb111e47549d0c935b42af3a299a8f29919356",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mobilephone06_indoor.txt": "4d96750a2019b57ad1ab7cfe0076f3fea8a1b03a8d293aec7826dc25f188ceff",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mushroom01_indoor.txt": "fee7899ead7c9ba02f3afb6e6e0829656cff0ba0df64ca9fbef1304574661ced",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mushroom02_wild.txt": "b7e602085a0c3af4ddd417b9dea144eab7d9d8bfec6517db261227f46090716d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mushroom03_wild.txt": "453dd8042c4d9f0decb712d3899e228197b62f432e3318bdd1da44f26bd172fd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mushroom04_indoor.txt": "bc2f201ef68a86eca6b19abef4dd410ed50aaec2569d6163cc0b57913c32540f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\mushroom05_indoor.txt": "79887acbc43dc5468d4e9bdcf021df1347c869cc15ad336fc4e5fe7e42b5bb25",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\notebook02_indoor.txt": "fa3202cc8968e24785620c772584bc28e2a353c06799a0859ee6a2b8d8a880a0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\notebook03_indoor.txt": "a7c2e9a80ae2a6303b3b06c21cf8c1ab2fd96d88ae77368eaa804f83644100a0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\paintbottle_indoor.txt": "138c6884d76f8385a71bfd04c0ccc83b835ce67b9f37a9e8880da2abb2caca05",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\painting_indoor_320.txt": "452f8042e633005d48071913f4b63c71d24829f0a931891f142539d4664a2ec6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\parkingsign_wild.txt": "397c45dcc9273890a8a0364f59ccb58f4d485bf5454e04af27cf0aee7e3b8343",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\pigeon03_wild.txt": "4281a4712dae248a85869058f68162c94984b6e287896287bf7e74e5440712fd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\pigeon05_wild.txt": "7ce05357a9a6e942c8dca07cc44507ec36f431b6920f6150c11629ab594e4f7d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\pigeon06_wild.txt": "d249393a979a8cfc4c541107b51329cc133e2e99c30f821c937359d5304df275",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\pigeon07_wild.txt": "91f2a4d1cbdd2808af3c0fc42f7a2a26a728eee5246b32a8c3ef12a2c06883d3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\pine01_indoor.txt": "c06487c4c9e9de804050ebe5a7c25c90cc1dcb1d88c83279cd980cb0c5de5329",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\pine02_wild_320.txt": "0555c5378049662102ef0f382e3a4ddc2e5abdcc4fc5deb6ce2a9966bf5be16f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\shoes01_indoor.txt": "cee9970156a03576505b05a59ecc55e8daf4ff5ef5f10ef23dbf5efad7123326",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\shoes03_indoor.txt": "4f3bc65b100348817f2d1856613d54c1f783759ed1a282b8df28eded96467f7c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\skateboard01_indoor.txt": "afb682605337866d5ea72db4025dfbb70ee2acd2ea85719b5989a7626bb758d5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\skateboard02_indoor.txt": "304a07f4b196eb9a855d1a1857beec4757141965a09c5e635b80cede70938b68",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\speaker_indoor.txt": "1a06abd953cb7833c232576238363cbe6c5248c486b3f221567d18dacf9a9a44",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\stand_indoor.txt": "15219e425e311f79e435a1c7526b3d04de6dbe1a035a6a1b5a4614e0ed4cef21",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\suitcase_indoor.txt": "946321102dd03c4d28f1f3ccb31434bb955982bcec7e88082ce86b1579442c6e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\swing01_wild.txt": "2518e4ffc0ba579cbcce533e6aa33792b9f2a9f676651c2b79347dd24629657b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\swing02_wild.txt": "9768e065c404b8acf47dc8dbe902f8eca8dd1736c501e97c5ad431cfac087741",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\teacup_indoor.txt": "33ecb768c92c86e7106b05ce42527bf80db3c81c1f58b8332e22ccbb11625f97",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\thermos01_indoor.txt": "4a9a8a13af7359b697edfffe887b26b8e316042171f2955b44ad874b8f25d99e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\thermos02_indoor.txt": "96b26f5f41d8ad70a8d1c1c34751aa224b2c8e447c007dc7dec6eb9ab90c5dbc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toiletpaper02_indoor.txt": "23039f5b59a9259bbfc89dd6d38e3ed9dcce696e03b827fb8ea320eeaef5cd0c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toiletpaper03_indoor.txt": "5b1f12533be6068b6db0ec4a06cf5702660e4a904c6385e78fce892a352a3cc4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toiletpaper04_indoor.txt": "e01fe3e9d60dbfe0588a3a096ca3b136a5ed0e2017e8e401d2704e57caf1467d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toy01_indoor.txt": "0f69714f77bc1cde2549ff14dc6474262aadaf78cae2ba74e7baf67bb56642c0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toy03_indoor.txt": "aa4e58bcabae622280b2c73dcf1143118ff540a3cac0202f8eb5da8e779b6888",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toy04_indoor.txt": "bb2d9f68b10422815d088d3d6aa9ecac6eed2bd3eb64c2d5b32c3fd239fed6d7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toy05_indoor.txt": "1bb2433f521ae44c146e6df9d7bbd825daa1d11e1b8df9f36d7d98e8ebd524ec",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toy06_indoor.txt": "21ec622063569d66a1d4135a7f86b2b983070fbd3f2331d2bd18ec7aacb4cfc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toy07_indoor_320.txt": "683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toy08_indoor.txt": "6c471ef8b84b8cd168a4ea3b7e578131a659bc59ca4207afb6d54bc819feec4d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toy10_indoor.txt": "018c4dd5c17df16c7e186a4ad2f48759ba4836cedfe8fbf43edc53ba40c61e14",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\toydog_indoor.txt": "837f3df1f6bac05974c27339219bc9d61c8943a73ba03f8aa7f7cf4aaa6c4b01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\trashbin_indoor.txt": "a10a14dc93003e0b3f111f92ebe093ebff80d856f9d01637af43bc5dc057edb1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\tree_wild.txt": "3563aa656258cfab370ff9aa39a887500afa9d80a20aa39d273f02074cd8089e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\trophy_indoor.txt": "8cee409befcc8e7ddc51c9d971bcd323ae4b4d527607359c17421b222b1c9cf2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\train_diagnostic_inputs_20261008\\groundtruth\\ukulele02_indoor.txt": "fd075a6c2a64bd319316c63b6be190b8e16565e5e1af99147b08d65f703733d9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_full_causal.py": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m121_dense_target.py": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m121_dense_inputs.py": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1"
+  },
+  "summaries": [
+    {
+      "model": "precision0",
+      "epoch": 1,
+      "full_track_calls": 219802,
+      "full_supervised_frames": 203376,
+      "full_GT_invalid_frames": 16426,
+      "full_GT_window_intersection_frames": 176481,
+      "full_template_writes": 1286,
+      "samples": 666,
+      "valid_GT_samples": 615,
+      "invalid_GT_samples": 51,
+      "severe_samples": 97,
+      "crop_center_out_samples": 86,
+      "GT_nonintersection_samples": 74,
+      "nonintersection_predicted_present_at_half": 13,
+      "sampled_writes_valid_GT": 105,
+      "sampled_writes_severe": 21,
+      "sampled_writes_invalid_GT": 7,
+      "sample_mean_iou": 0.7493114743147958,
+      "quality_sample_absolute_error_mean": 0.27138234121621796,
+      "observation_sample_brier": 0.04904002589291909,
+      "quality_bins": [
+        {
+          "bin_index": 0,
+          "count": 39,
+          "mean_quality": 0.023753519294610344,
+          "mean_loss_iou_CPU": 0.0
+        },
+        {
+          "bin_index": 1,
+          "count": 12,
+          "mean_quality": 0.1399484947323799,
+          "mean_loss_iou_CPU": 0.049220114946365356
+        },
+        {
+          "bin_index": 2,
+          "count": 11,
+          "mean_quality": 0.24370273405855353,
+          "mean_loss_iou_CPU": 0.11636168306524103
+        },
+        {
+          "bin_index": 3,
+          "count": 12,
+          "mean_quality": 0.34748295694589615,
+          "mean_loss_iou_CPU": 0.20981808953608075
+        },
+        {
+          "bin_index": 4,
+          "count": 25,
+          "mean_quality": 0.4716463303565979,
+          "mean_loss_iou_CPU": 0.6406398453563452
+        },
+        {
+          "bin_index": 5,
+          "count": 179,
+          "mean_quality": 0.555696759477008,
+          "mean_loss_iou_CPU": 0.8526635498807417
+        },
+        {
+          "bin_index": 6,
+          "count": 250,
+          "mean_quality": 0.6493929357528686,
+          "mean_loss_iou_CPU": 0.8527879332602024
+        },
+        {
+          "bin_index": 7,
+          "count": 86,
+          "mean_quality": 0.7322481371635614,
+          "mean_loss_iou_CPU": 0.8584843946750774
+        },
+        {
+          "bin_index": 8,
+          "count": 1,
+          "mean_quality": 0.8018137216567993,
+          "mean_loss_iou_CPU": 0.7687088251113892
+        }
+      ]
+    },
+    {
+      "model": "precision0",
+      "epoch": 2,
+      "full_track_calls": 219802,
+      "full_supervised_frames": 203376,
+      "full_GT_invalid_frames": 16426,
+      "full_GT_window_intersection_frames": 175137,
+      "full_template_writes": 1185,
+      "samples": 666,
+      "valid_GT_samples": 615,
+      "invalid_GT_samples": 51,
+      "severe_samples": 94,
+      "crop_center_out_samples": 84,
+      "GT_nonintersection_samples": 74,
+      "nonintersection_predicted_present_at_half": 13,
+      "sampled_writes_valid_GT": 88,
+      "sampled_writes_severe": 14,
+      "sampled_writes_invalid_GT": 4,
+      "sample_mean_iou": 0.7562578246526125,
+      "quality_sample_absolute_error_mean": 0.18754699292470964,
+      "observation_sample_brier": 0.041412427436632475,
+      "quality_bins": [
+        {
+          "bin_index": 0,
+          "count": 52,
+          "mean_quality": 0.013959294491682019,
+          "mean_loss_iou_CPU": 0.034146982889909014
+        },
+        {
+          "bin_index": 1,
+          "count": 7,
+          "mean_quality": 0.14587567001581192,
+          "mean_loss_iou_CPU": 0.0
+        },
+        {
+          "bin_index": 2,
+          "count": 7,
+          "mean_quality": 0.22422662803104945,
+          "mean_loss_iou_CPU": 0.0
+        },
+        {
+          "bin_index": 3,
+          "count": 4,
+          "mean_quality": 0.3633887693285942,
+          "mean_loss_iou_CPU": 0.23007473349571228
+        },
+        {
+          "bin_index": 4,
+          "count": 6,
+          "mean_quality": 0.43410609165827435,
+          "mean_loss_iou_CPU": 0.44647498925526935
+        },
+        {
+          "bin_index": 5,
+          "count": 23,
+          "mean_quality": 0.5443949854892233,
+          "mean_loss_iou_CPU": 0.6351819580127283
+        },
+        {
+          "bin_index": 6,
+          "count": 142,
+          "mean_quality": 0.663337337718883,
+          "mean_loss_iou_CPU": 0.844241885127316
+        },
+        {
+          "bin_index": 7,
+          "count": 326,
+          "mean_quality": 0.7532624019069906,
+          "mean_loss_iou_CPU": 0.8687623656737659
+        },
+        {
+          "bin_index": 8,
+          "count": 48,
+          "mean_quality": 0.8150221928954124,
+          "mean_loss_iou_CPU": 0.8753271761039892
+        }
+      ]
+    },
+    {
+      "model": "precision0",
+      "epoch": 3,
+      "full_track_calls": 219802,
+      "full_supervised_frames": 203376,
+      "full_GT_invalid_frames": 16426,
+      "full_GT_window_intersection_frames": 178757,
+      "full_template_writes": 1247,
+      "samples": 666,
+      "valid_GT_samples": 615,
+      "invalid_GT_samples": 51,
+      "severe_samples": 94,
+      "crop_center_out_samples": 84,
+      "GT_nonintersection_samples": 70,
+      "nonintersection_predicted_present_at_half": 14,
+      "sampled_writes_valid_GT": 97,
+      "sampled_writes_severe": 21,
+      "sampled_writes_invalid_GT": 6,
+      "sample_mean_iou": 0.7558497370494165,
+      "quality_sample_absolute_error_mean": 0.17089237774933694,
+      "observation_sample_brier": 0.044749082878413636,
+      "quality_bins": [
+        {
+          "bin_index": 0,
+          "count": 43,
+          "mean_quality": 0.01658225402249183,
+          "mean_loss_iou_CPU": 0.016498155761943308
+        },
+        {
+          "bin_index": 1,
+          "count": 11,
+          "mean_quality": 0.15774674307216296,
+          "mean_loss_iou_CPU": 0.17323541912165555
+        },
+        {
+          "bin_index": 2,
+          "count": 5,
+          "mean_quality": 0.2353492796421051,
+          "mean_loss_iou_CPU": 0.17723331451416016
+        },
+        {
+          "bin_index": 3,
+          "count": 13,
+          "mean_quality": 0.3445428036726438,
+          "mean_loss_iou_CPU": 0.21108367007512313
+        },
+        {
+          "bin_index": 4,
+          "count": 8,
+          "mean_quality": 0.4572465792298317,
+          "mean_loss_iou_CPU": 0.19440943747758865
+        },
+        {
+          "bin_index": 5,
+          "count": 13,
+          "mean_quality": 0.5547566276330215,
+          "mean_loss_iou_CPU": 0.6633692383766174
+        },
+        {
+          "bin_index": 6,
+          "count": 72,
+          "mean_quality": 0.6697658813662,
+          "mean_loss_iou_CPU": 0.7678870691193475
+        },
+        {
+          "bin_index": 7,
+          "count": 310,
+          "mean_quality": 0.7569067103247489,
+          "mean_loss_iou_CPU": 0.8671891369406254
+        },
+        {
+          "bin_index": 8,
+          "count": 140,
+          "mean_quality": 0.8246822020837239,
+          "mean_loss_iou_CPU": 0.8879054452691759
+        }
+      ]
+    },
+    {
+      "model": "precision1",
+      "epoch": 1,
+      "full_track_calls": 219802,
+      "full_supervised_frames": 203376,
+      "full_GT_invalid_frames": 16426,
+      "full_GT_window_intersection_frames": 173860,
+      "full_template_writes": 1276,
+      "samples": 666,
+      "valid_GT_samples": 615,
+      "invalid_GT_samples": 51,
+      "severe_samples": 99,
+      "crop_center_out_samples": 89,
+      "GT_nonintersection_samples": 82,
+      "nonintersection_predicted_present_at_half": 21,
+      "sampled_writes_valid_GT": 104,
+      "sampled_writes_severe": 14,
+      "sampled_writes_invalid_GT": 6,
+      "sample_mean_iou": 0.7492036706641777,
+      "quality_sample_absolute_error_mean": 0.25951370754955566,
+      "observation_sample_brier": 0.04340959814945849,
+      "quality_bins": [
+        {
+          "bin_index": 0,
+          "count": 48,
+          "mean_quality": 0.008947711153041382,
+          "mean_loss_iou_CPU": 0.01712789262334506
+        },
+        {
+          "bin_index": 1,
+          "count": 7,
+          "mean_quality": 0.1498407678944724,
+          "mean_loss_iou_CPU": 0.181596006665911
+        },
+        {
+          "bin_index": 2,
+          "count": 6,
+          "mean_quality": 0.24357889592647552,
+          "mean_loss_iou_CPU": 0.15807151794433594
+        },
+        {
+          "bin_index": 3,
+          "count": 8,
+          "mean_quality": 0.351449828594923,
+          "mean_loss_iou_CPU": 0.46278807771159336
+        },
+        {
+          "bin_index": 4,
+          "count": 28,
+          "mean_quality": 0.46375299032245365,
+          "mean_loss_iou_CPU": 0.5181916441236224
+        },
+        {
+          "bin_index": 5,
+          "count": 122,
+          "mean_quality": 0.5585877646188266,
+          "mean_loss_iou_CPU": 0.8611069692329305
+        },
+        {
+          "bin_index": 6,
+          "count": 263,
+          "mean_quality": 0.6520888732866642,
+          "mean_loss_iou_CPU": 0.8562897919701986
+        },
+        {
+          "bin_index": 7,
+          "count": 126,
+          "mean_quality": 0.7355064891633534,
+          "mean_loss_iou_CPU": 0.8234071547076816
+        },
+        {
+          "bin_index": 8,
+          "count": 7,
+          "mean_quality": 0.8103869557380676,
+          "mean_loss_iou_CPU": 0.7854705112321037
+        }
+      ]
+    },
+    {
+      "model": "precision1",
+      "epoch": 2,
+      "full_track_calls": 219802,
+      "full_supervised_frames": 203376,
+      "full_GT_invalid_frames": 16426,
+      "full_GT_window_intersection_frames": 178174,
+      "full_template_writes": 1246,
+      "samples": 666,
+      "valid_GT_samples": 615,
+      "invalid_GT_samples": 51,
+      "severe_samples": 90,
+      "crop_center_out_samples": 80,
+      "GT_nonintersection_samples": 74,
+      "nonintersection_predicted_present_at_half": 9,
+      "sampled_writes_valid_GT": 89,
+      "sampled_writes_severe": 8,
+      "sampled_writes_invalid_GT": 7,
+      "sample_mean_iou": 0.7598194680819091,
+      "quality_sample_absolute_error_mean": 0.15946627399015176,
+      "observation_sample_brier": 0.028869089345950397,
+      "quality_bins": [
+        {
+          "bin_index": 0,
+          "count": 61,
+          "mean_quality": 0.013264138723488791,
+          "mean_loss_iou_CPU": 0.04570733328334621
+        },
+        {
+          "bin_index": 1,
+          "count": 4,
+          "mean_quality": 0.13319085910916328,
+          "mean_loss_iou_CPU": 0.0
+        },
+        {
+          "bin_index": 2,
+          "count": 6,
+          "mean_quality": 0.25487881153821945,
+          "mean_loss_iou_CPU": 0.07873631517092387
+        },
+        {
+          "bin_index": 3,
+          "count": 4,
+          "mean_quality": 0.3567689433693886,
+          "mean_loss_iou_CPU": 0.26546677201986313
+        },
+        {
+          "bin_index": 4,
+          "count": 5,
+          "mean_quality": 0.4629797339439392,
+          "mean_loss_iou_CPU": 0.19371796846389772
+        },
+        {
+          "bin_index": 5,
+          "count": 12,
+          "mean_quality": 0.5535764843225479,
+          "mean_loss_iou_CPU": 0.45910796026388806
+        },
+        {
+          "bin_index": 6,
+          "count": 74,
+          "mean_quality": 0.6646853403465168,
+          "mean_loss_iou_CPU": 0.8197674860019941
+        },
+        {
+          "bin_index": 7,
+          "count": 312,
+          "mean_quality": 0.7573107137129858,
+          "mean_loss_iou_CPU": 0.880338767877756
+        },
+        {
+          "bin_index": 8,
+          "count": 136,
+          "mean_quality": 0.8263270600753672,
+          "mean_loss_iou_CPU": 0.8855310991296873
+        },
+        {
+          "bin_index": 9,
+          "count": 1,
+          "mean_quality": 0.9027407169342041,
+          "mean_loss_iou_CPU": 0.7279523015022278
+        }
+      ]
+    },
+    {
+      "model": "precision1",
+      "epoch": 3,
+      "full_track_calls": 219802,
+      "full_supervised_frames": 203376,
+      "full_GT_invalid_frames": 16426,
+      "full_GT_window_intersection_frames": 181725,
+      "full_template_writes": 1331,
+      "samples": 666,
+      "valid_GT_samples": 615,
+      "invalid_GT_samples": 51,
+      "severe_samples": 80,
+      "crop_center_out_samples": 67,
+      "GT_nonintersection_samples": 56,
+      "nonintersection_predicted_present_at_half": 12,
+      "sampled_writes_valid_GT": 112,
+      "sampled_writes_severe": 18,
+      "sampled_writes_invalid_GT": 7,
+      "sample_mean_iou": 0.7800566079975464,
+      "quality_sample_absolute_error_mean": 0.14268435570658353,
+      "observation_sample_brier": 0.03764242717679048,
+      "quality_bins": [
+        {
+          "bin_index": 0,
+          "count": 39,
+          "mean_quality": 0.01902577440859414,
+          "mean_loss_iou_CPU": 2.064450960367536e-05
+        },
+        {
+          "bin_index": 1,
+          "count": 5,
+          "mean_quality": 0.1292824625968933,
+          "mean_loss_iou_CPU": 0.0
+        },
+        {
+          "bin_index": 2,
+          "count": 5,
+          "mean_quality": 0.242529296875,
+          "mean_loss_iou_CPU": 0.42503273487091064
+        },
+        {
+          "bin_index": 3,
+          "count": 3,
+          "mean_quality": 0.36231138308842975,
+          "mean_loss_iou_CPU": 0.2135567863782247
+        },
+        {
+          "bin_index": 4,
+          "count": 9,
+          "mean_quality": 0.44747044642766315,
+          "mean_loss_iou_CPU": 0.08734607696533203
+        },
+        {
+          "bin_index": 5,
+          "count": 9,
+          "mean_quality": 0.5495790905422635,
+          "mean_loss_iou_CPU": 0.5607735912005106
+        },
+        {
+          "bin_index": 6,
+          "count": 32,
+          "mean_quality": 0.655683783814311,
+          "mean_loss_iou_CPU": 0.6939517380669713
+        },
+        {
+          "bin_index": 7,
+          "count": 223,
+          "mean_quality": 0.7633534838265902,
+          "mean_loss_iou_CPU": 0.8551406459005825
+        },
+        {
+          "bin_index": 8,
+          "count": 289,
+          "mean_quality": 0.8331894193966084,
+          "mean_loss_iou_CPU": 0.8909553872311816
+        },
+        {
+          "bin_index": 9,
+          "count": 1,
+          "mean_quality": 0.9056435823440552,
+          "mean_loss_iou_CPU": 0.746179461479187
+        }
+      ]
+    }
+  ],
+  "scope": "Own histories DURING three training passes, not inference with the final checkpoint or held-out benchmark results.",
+  "limitations": [
+    "Samples are frame1, every500th frame and last frame; not a representative all-frame IoU or all-write error rate.",
+    "Invalid GT is unknown, not an absence or identity-negative label.",
+    "CPU float32 overlap is a reimplementation for diagnosis; no GPU bitwise replay claim.",
+    "Recorded crop origins are used; no rounded-OPE-box reconstruction.",
+    "RGB dimensions/hashes were read on the remote CPU; RGB image bytes are not in this local package.",
+    "No text/module causal attribution, no inference threshold changes and no new C module efficacy claim."
+  ]
+}
