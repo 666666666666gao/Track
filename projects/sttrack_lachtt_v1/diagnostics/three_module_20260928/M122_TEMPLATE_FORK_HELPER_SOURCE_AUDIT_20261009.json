@@ -1,0 +1,489 @@
+{
+  "audit_skill": "experiment-audit",
+  "workflow_phase": "experiment-bridge Phase 2.5",
+  "date": "2026-10-09",
+  "timezone": "Asia/Shanghai",
+  "generated_at": "2026-10-08T18:18:51.358Z",
+  "verdict": "WARN",
+  "module_source_verdict": "PASS",
+  "runtime_verdict": "NOT_EXECUTED",
+  "reason_code": "source_only_helper_scope",
+  "blocking_count": 0,
+  "blocking_findings": [],
+  "summary": "新离线模板动作辅助模块的限定源码审核通过，未发现有证据的 BLOCKING 缺陷；总体 WARN 仅限定未实现 runner、未执行 K/K/GPU 和未核验外部运行时，不是完整实验 PASS。",
+  "scope": "Only template_write_forks.py and directly relevant local source/plan dependencies; no collection/preflight runner, C model/training implementation, label cache, deployment or new experiment results.",
+  "read_only": true,
+  "read_only_meaning": "Audited input/source files were read only; exactly two new private review artifacts are the authorized writes.",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "fresh_context": true,
+  "reviewer_task": "/root/m122_template_fork_helper_source_audit",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "backend_model_or_effort_independently_verified": false,
+  "backend_attestation": "Requested model/effort are metadata, not independently verified backend identity.",
+  "module_checks": {
+    "mutable_history": {
+      "status": "PASS",
+      "summary": "Separate tracker/native holders, bbox list, template list/storage, patch array, query list/storage and selected feature preserve current mutable history. The initial dictionary is copied while immutable initial/text tensor values remain shared.",
+      "evidence": [
+        "F:15-38",
+        "N:73-89",
+        "M:117-132",
+        "W:101-109",
+        "D:51-96",
+        "R:12-27"
+      ]
+    },
+    "current_frame_state": {
+      "status": "PASS",
+      "summary": "Event reconstruction starts from the post-step actor and restores only the two template-write fields. It retains the committed current frame/bbox/query/feature; the original actor retains its native-write trajectory.",
+      "evidence": [
+        "F:67-80",
+        "W:88-114"
+      ]
+    },
+    "candidate_consistency": {
+      "status": "PASS",
+      "summary": "Original step chooses one candidate index, checks score/feature/quality against that same index and records that index and current box. The event copies the record from that step and checks frame/bbox/predicate; it does not select a candidate again.",
+      "evidence": [
+        "W:95-114",
+        "D:116-123",
+        "F:73-80"
+      ]
+    },
+    "single_intervention_and_initial_slot": {
+      "status": "PASS",
+      "summary": "Each branch is copied from the same reconstructed submission. Only W replaces z_dict[1] and z_patch_arr. Initial-slot object aliasing is preserved when present, and slot 0 is not changed by an in-place write.",
+      "evidence": [
+        "N:77-79",
+        "W:107-109",
+        "F:15-21",
+        "F:78-89"
+      ]
+    },
+    "no_gt_reset": {
+      "status": "PASS",
+      "summary": "Helper rollouts accept images and step from branch-owned predicted state. No GT argument, reinitialize call, label calculation or GT-controlled crop/query/template path exists in this helper. This does not audit the unimplemented dataset/label runner.",
+      "evidence": [
+        "F:104-143",
+        "W:53-58",
+        "W:88-109",
+        "SP:14-73",
+        "P:36-48"
+      ]
+    },
+    "sequential_models_and_hooks": {
+      "status": "PASS",
+      "summary": "The two branches share eval-mode modules and execute sequentially. Project-level backbone.keep_rate is overwritten from the same fixed argument before use; CLIP pre-hooks are removed on normal encode completion. Inspected active Mamba/Python helpers expose no additional per-frame model cache.",
+      "evidence": [
+        "F:26-31",
+        "F:114-123",
+        "W:31-33",
+        "W:56-61",
+        "E:13-35",
+        "V:163-164",
+        "V:216-229",
+        "BB:145-158",
+        "A:1280-1314",
+        "A:1538-1575",
+        "A:1661-1689",
+        "A:1906-1919",
+        "A:1964-1977"
+      ]
+    },
+    "rng_and_window": {
+      "status": "PASS",
+      "summary": "The current CUDA device must match both branches. Python, NumPy, CPU Torch and the current CUDA RNG are saved, restored before each sequential branch, then restored to the entry state on normal return. A write-event frame divisible by 50 and at most 32 future images exclude the next periodic write.",
+      "evidence": [
+        "F:93-125",
+        "F:44-45",
+        "W:89",
+        "W:105"
+      ]
+    },
+    "keep_keep_comparison": {
+      "status": "PASS",
+      "summary": "K/K checks initial equality, exact per-frame Python record equality including candidate/frame/box/control fields, every recurrent query tensor and selected feature, then final submission state including templates/patch/initial/text. No probe was executed.",
+      "evidence": [
+        "F:41-56",
+        "F:128-138",
+        "W:110-114"
+      ]
+    },
+    "minimality": {
+      "status": "PASS",
+      "summary": "New helper has no fallback, compatibility layer, exception recovery, runtime hashing, feature flags or unrelated refactor. Assertions directly encode the fixed protocol and known list/state invariants. Old dependency conditionals are not changes introduced by this helper.",
+      "evidence": [
+        "F:1-143",
+        "P:32-48"
+      ]
+    }
+  },
+  "integrity_checks": {
+    "A_gt_provenance": {
+      "status": "PASS",
+      "summary": "Source-only no-GT-control property is supported. Dataset GT provenance and future-label validity are outside the helper and remain unverified.",
+      "evidence": [
+        "F:104-143",
+        "W:88-114",
+        "P:38-46"
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "summary": "The helper returns predictions/control evidence and computes no evaluation metric or teacher score normalization. Existing decoder response scaling is inference logic, not a reported experiment metric.",
+      "evidence": [
+        "F:118-143",
+        "D:111-123"
+      ]
+    },
+    "C_result_existence": {
+      "status": "WARN",
+      "summary": "No new experiment result or K/K receipt was supplied or examined. The plan/tracker describe work awaiting execution; this audit cannot certify result-file existence or metric values.",
+      "evidence": [
+        "P:3",
+        "P:87",
+        "P:95",
+        "T:3",
+        "T:8-12"
+      ]
+    },
+    "D_pipeline_invocation": {
+      "status": "WARN",
+      "summary": "Only helper functions are implemented in the audited change. No collection/preflight runner or end-to-end caller was audited; function definitions do not demonstrate execution.",
+      "evidence": [
+        "F:1-5",
+        "F:128-143",
+        "T:8-9"
+      ]
+    },
+    "E_scope": {
+      "status": "WARN",
+      "summary": "Module-only source review; not a full R1 pass, experiment audit acceptance, runtime-equivalence proof or deployment permission. First-12-event selection and actual replay remain outstanding.",
+      "evidence": [
+        "P:44-48",
+        "P:78-80",
+        "F:1-5"
+      ]
+    },
+    "F_evaluation_type": {
+      "status": "WARN",
+      "summary": "not_executed_source_only. There is no executed evaluation to classify as real_gt/synthetic_proxy or to use for a performance claim.",
+      "evidence": [
+        "F:141-143",
+        "P:38-42",
+        "T:8-12"
+      ]
+    }
+  },
+  "evaluation_type": "not_executed_source_only",
+  "scope_limitations": [
+    {
+      "kind": "unimplemented_runner_scope",
+      "details": "The caller must supply an owned pre-step template-list snapshot and old patch, the actual current FullDenseTracker.step record, and the matching unadvanced post-step actor. Native append/pop mutates the template list, so merely retaining that same list reference is not a pre-step snapshot. No runner exists in the reviewed scope to verify the call sequence. This is the helper's existing input contract, not a demonstrated implementation defect.",
+      "evidence": [
+        "F:3-5",
+        "F:15-21",
+        "F:67-80",
+        "W:107-109"
+      ]
+    },
+    {
+      "kind": "unimplemented_data_and_labels_scope",
+      "details": "Manifest-order first 12 events, fixed P1 final/Train152/seed2027, video-local t+1..t+n frames, tail truncation, GT validity and mean IoU difference, event inclusion/exclusion accounting and result persistence remain runner responsibilities. None was implemented or executed in this audit.",
+      "evidence": [
+        "P:24-26",
+        "P:32-44",
+        "P:79-87"
+      ]
+    },
+    {
+      "kind": "runtime_not_executed",
+      "details": "No Torch/NN import, GPU computation/query, SSH, training query, K/K replay, W/K replay or new deployment was performed. Exact equality assertions are a check implementation, not an observed successful check.",
+      "evidence": [
+        "F:93-143",
+        "P:44-48"
+      ]
+    },
+    {
+      "kind": "external_implementation_boundary",
+      "details": "Installed CLIP/PIL/torchvision preprocessing, PyTorch/timm/einops/OpenCV, external selective_scan and compiled CUDA kernels were not reviewed or executed. Inspected local sources and their SHA256 do not attest current loaded binaries or complete absence of side effects.",
+      "evidence": [
+        "W:5-8",
+        "W:32",
+        "W:60-61",
+        "V:26-38",
+        "A:18-32",
+        "A:61",
+        "A:1539",
+        "SP:3-7",
+        "S2:52-54",
+        "S3:43-45"
+      ]
+    },
+    {
+      "kind": "historical_evidence_boundary",
+      "details": "Earlier notes are context, not reviewer verdicts. Their local file identities were checked and relevant source claims re-derived. No source-export transfer, remote live state, original 52-item gate or original 32-file set was re-certified or expanded.",
+      "evidence": [
+        "S1:61-71",
+        "S2:21-23",
+        "S3:22-24"
+      ]
+    },
+    {
+      "kind": "deployment_prerequisites",
+      "details": "Plan requires current complete evaluation sealing/result review before new GPU work; source review plus actual first-12-event K/K and pre-action W/K receipts before full teacher collection. This audit grants neither full experiment PASS nor permission to deploy.",
+      "evidence": [
+        "P:3",
+        "P:44-48",
+        "P:78-80"
+      ]
+    }
+  ],
+  "action_items": [
+    {
+      "kind": "implementation_fix",
+      "required": false,
+      "details": "No source patch requested: no evidenced blocking defect found in the reviewed helper."
+    },
+    {
+      "kind": "planned_remaining_work",
+      "details": "Implement and separately review the caller/collection/preflight runner under the existing plan, then obtain real same-GPU first-12-event K/K and pre-action W/K receipts after the plan's GPU prerequisite. Do not infer those passes from this report.",
+      "evidence": [
+        "P:3",
+        "P:44-48",
+        "P:78-80"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "helper_source_semantics",
+      "status": "supported_with_stated_source_scope"
+    },
+    {
+      "id": "K/K_runtime_equality",
+      "status": "unverified_not_executed"
+    },
+    {
+      "id": "C1_causal_teacher_labels",
+      "status": "unproven"
+    },
+    {
+      "id": "C2_future_supervision_advantage",
+      "status": "unproven"
+    },
+    {
+      "id": "complete_R1_or_experiment_PASS",
+      "status": "not_granted"
+    }
+  ],
+  "deployment_authorized": false,
+  "full_experiment_pass": false,
+  "old_52_gate_expanded": false,
+  "original_32_sources_modified_by_reviewer": false,
+  "verification": {
+    "audited_inputs_unchanged_during_inspection": true,
+    "verified_input_count": 23,
+    "no_nn_or_gpu_execution": true,
+    "no_network_or_ssh": true,
+    "no_git_operation": true,
+    "no_runtime_hash_scheme_added": true,
+    "tests_run": [],
+    "inspection_note": "Local text/line/hash inspection only. A Python text-reader attempt failed at launcher with 'No pyvenv.cfg file'; PowerShell/.NET reads succeeded. No source module or Torch import was executed."
+  },
+  "audited_input_hashes": {
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py": "sha256:3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py": "sha256:0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/test/tracker/sttrack.py": "sha256:d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/models/sttrack/sttrack.py": "sha256:d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN.md": "sha256:cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md": "sha256:55f34d8b147e706b60124340913d349bb4d7ddd54c43523796407b810c3d354a",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_TEMPLATE_STATE_SNAPSHOT_RECHECK_20261009.md": "sha256:f98a3b80492a6d52e39db9ae8026e6642af89e604de993910efe93130a6e757b",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_RUNTIME_DEPENDENCY_STATE_RECHECK_20261009.md": "sha256:1f0f18a6e512dfb8f3eefaffb28b54ca3c3f71916a9ead261ae3af33b82f44bc",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_BACKBONE_DEPENDENCY_STATE_RECHECK_20261009.md": "sha256:a7d5639bd3413b03cb7df48e19186f5f0ec62554cf5b545f453c91447f2fb3c5",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py": "sha256:055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py": "sha256:71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py": "sha256:66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/test/tracker/data_utils.py": "sha256:873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5",
+    ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/test/tracker/basetracker.py": "sha256:f9bc6bbfb1a8f677f86e4f1eda024d89baaf454498a5f1321f1421df67a7aa36",
+    ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/models/sttrack/vit_care.py": "sha256:05096a6cec0448e49f82264ad34647e267a6a50a6d96d3ee07ba10d61ce6ef0e",
+    ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/models/layers/mamba.py": "sha256:a11e49551cea9c7a188b9b7783b541b315a1f684b86e1de364bb3ad6c04f00be",
+    ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/sttrack/base_backbone.py": "sha256:b8f7c576072471b78a0cb025264b7d35d926b9044df45945625b0a8f35751b5a",
+    ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/sttrack/utils.py": "sha256:557ce8e3d352e3ec69b2d21fcb0f8c18703b3152eff6f3f2e1a7470585e634ea",
+    ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/layers/patch_embed.py": "sha256:2259b7703f008748167dd65d12ac28a496235d1f20a1d5c84a3aa0da9c8c0499",
+    ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/layers/cross_layer.py": "sha256:5008a012c53aaa0f5b7bb567b95b6118cef138644be9955e566cdf8c298d114e",
+    "projects/sttrack_lachtt_v1/diagnostics/m55/code/control/lib/train/data/processing_utils.py": "sha256:7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/models/layers/head.py": "sha256:62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+    "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py": "sha256:85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1"
+  },
+  "input_inventory": [
+    {
+      "id": "F",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py",
+      "sha256": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+      "bytes": 6310,
+      "read_scope": "full"
+    },
+    {
+      "id": "W",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+      "sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+      "bytes": 7693,
+      "read_scope": "full"
+    },
+    {
+      "id": "N",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/test/tracker/sttrack.py",
+      "sha256": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+      "bytes": 10216,
+      "read_scope": "full"
+    },
+    {
+      "id": "M",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/models/sttrack/sttrack.py",
+      "sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+      "bytes": 10684,
+      "read_scope": "full"
+    },
+    {
+      "id": "P",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN.md",
+      "sha256": "cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+      "bytes": 13682,
+      "read_scope": "full"
+    },
+    {
+      "id": "T",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md",
+      "sha256": "55f34d8b147e706b60124340913d349bb4d7ddd54c43523796407b810c3d354a",
+      "bytes": 1819,
+      "read_scope": "full"
+    },
+    {
+      "id": "S1",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_TEMPLATE_STATE_SNAPSHOT_RECHECK_20261009.md",
+      "sha256": "f98a3b80492a6d52e39db9ae8026e6642af89e604de993910efe93130a6e757b",
+      "bytes": 18513,
+      "read_scope": "full"
+    },
+    {
+      "id": "S2",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_RUNTIME_DEPENDENCY_STATE_RECHECK_20261009.md",
+      "sha256": "1f0f18a6e512dfb8f3eefaffb28b54ca3c3f71916a9ead261ae3af33b82f44bc",
+      "bytes": 8931,
+      "read_scope": "full"
+    },
+    {
+      "id": "S3",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_BACKBONE_DEPENDENCY_STATE_RECHECK_20261009.md",
+      "sha256": "a7d5639bd3413b03cb7df48e19186f5f0ec62554cf5b545f453c91447f2fb3c5",
+      "bytes": 9174,
+      "read_scope": "full"
+    },
+    {
+      "id": "D",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+      "sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+      "bytes": 7739,
+      "read_scope": "full"
+    },
+    {
+      "id": "E",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+      "sha256": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+      "bytes": 3120,
+      "read_scope": "full"
+    },
+    {
+      "id": "R",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+      "sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+      "bytes": 7272,
+      "read_scope": "full; active dependency is sample_regions/weighted_mean at 12-27"
+    },
+    {
+      "id": "U",
+      "path": ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/test/tracker/data_utils.py",
+      "sha256": "873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5",
+      "bytes": 2494,
+      "read_scope": "full"
+    },
+    {
+      "id": "BT",
+      "path": ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/test/tracker/basetracker.py",
+      "sha256": "f9bc6bbfb1a8f677f86e4f1eda024d89baaf454498a5f1321f1421df67a7aa36",
+      "bytes": 3155,
+      "read_scope": "full"
+    },
+    {
+      "id": "V",
+      "path": ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/models/sttrack/vit_care.py",
+      "sha256": "05096a6cec0448e49f82264ad34647e267a6a50a6d96d3ee07ba10d61ce6ef0e",
+      "bytes": 21902,
+      "read_scope": "full"
+    },
+    {
+      "id": "A",
+      "path": ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/models/layers/mamba.py",
+      "sha256": "a11e49551cea9c7a188b9b7783b541b315a1f684b86e1de364bb3ad6c04f00be",
+      "bytes": 87654,
+      "read_scope": "imports/active-route search and lines 1-169,365-438,630-645,1092-1316,1437-1693,1863-1978; not full-file semantic review"
+    },
+    {
+      "id": "BB",
+      "path": ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/sttrack/base_backbone.py",
+      "sha256": "b8f7c576072471b78a0cb025264b7d35d926b9044df45945625b0a8f35751b5a",
+      "bytes": 6183,
+      "read_scope": "full"
+    },
+    {
+      "id": "UT",
+      "path": ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/sttrack/utils.py",
+      "sha256": "557ce8e3d352e3ec69b2d21fcb0f8c18703b3152eff6f3f2e1a7470585e634ea",
+      "bytes": 4438,
+      "read_scope": "full"
+    },
+    {
+      "id": "PE",
+      "path": ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/layers/patch_embed.py",
+      "sha256": "2259b7703f008748167dd65d12ac28a496235d1f20a1d5c84a3aa0da9c8c0499",
+      "bytes": 961,
+      "read_scope": "full"
+    },
+    {
+      "id": "CL",
+      "path": ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/layers/cross_layer.py",
+      "sha256": "5008a012c53aaa0f5b7bb567b95b6118cef138644be9955e566cdf8c298d114e",
+      "bytes": 3969,
+      "read_scope": "full"
+    },
+    {
+      "id": "SP",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/m55/code/control/lib/train/data/processing_utils.py",
+      "sha256": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+      "bytes": 6758,
+      "read_scope": "full; active dependency is sample_target at 14-81"
+    },
+    {
+      "id": "H",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/models/layers/head.py",
+      "sha256": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+      "bytes": 10778,
+      "read_scope": "lines 1-25,108-205"
+    },
+    {
+      "id": "CG",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+      "sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "bytes": 2237,
+      "read_scope": "full; active dependency is crop_geometry at 8-11"
+    }
+  ],
+  "output_paths": [
+    ".aris/m122_full_causal_20261007/TEMPLATE_FORK_HELPER_SOURCE_AUDIT_20261009_primary.md",
+    ".aris/m122_full_causal_20261007/TEMPLATE_FORK_HELPER_SOURCE_AUDIT_20261009_primary.json"
+  ]
+}
+
