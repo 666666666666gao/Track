@@ -1,0 +1,2067 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-08",
+  "generated_at": "2026-10-08T08:29:03.643Z",
+  "verdict": "PASS",
+  "blocking_count": 0,
+  "warning_count": 4,
+  "verdict_scope": "Qualified integrity and recorded completeness of the first four OPE metric artifacts only; not numerical replay, complete three-dataset acceptance, or semantic causal validation.",
+  "result_type": "real_gt",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_model_requested": "gpt-6-astra",
+  "reviewer_reasoning_requested": "max",
+  "reviewer_model_actual": null,
+  "reviewer_reasoning_actual": null,
+  "backend_identity": "independently unverified",
+  "review_backend": "native_codex",
+  "reviewer_task_path": "/root/m122_first_ope_results_integrity_review",
+  "primary_artifacts_read_directly": true,
+  "source_gate_used_as_result_verdict": false,
+  "other_reviewer_conclusions_used_as_verdict": false,
+  "execution": {
+    "SSH": false,
+    "network": false,
+    "GPU": false,
+    "training": false,
+    "evaluation_inference": false,
+    "metric_recomputation": false,
+    "experiment_source_or_data_modified": false,
+    "outputs_written": [
+      "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_FIRST_OPE_RESULT_AUDIT_20261008.md",
+      "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_FIRST_OPE_RESULT_AUDIT_20261008.json"
+    ],
+    "local_operations": "Read-only source/JSON/CSV/JSONL reads, stdlib/PowerShell hashing and arithmetic; only two new audit files written."
+  },
+  "integrity_checks_A_F": {
+    "A": {
+      "status": "WARN",
+      "topic": "Ground-truth provenance",
+      "finding": "The implemented and recorded metric path uses dataset groundtruth.txt, not generated targets. The local audit verifies declared GT hashes against the frozen native reference, but cannot rehash absent GT files or replay the numbers.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+          "line": 43,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:43",
+          "evidence": "Analysis requires completed predictions; validates all output TXT hashes and each dataset groundtruth.txt hash before scorer invocation at line 55."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 97,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:97",
+          "evidence": "Loads dataset GT, prediction boxes and confidence separately; frame lengths must agree."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+          "line": 88,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py:88",
+          "evidence": "Own previous predicted state controls the next crop; selected predicted box becomes next state at line 101; current GT is not a tracking argument."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+          "line": 82,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py:82",
+          "evidence": "Training GT is loaded from Train152, with action before loss at lines 89-94; this differs from external evaluation."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json",
+          "line": 54588,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json:54588",
+          "evidence": "Human input review used multiframe aids; strict first-frame-only information provenance is not established."
+        }
+      ]
+    },
+    "B": {
+      "status": "PASS",
+      "topic": "Score normalization",
+      "finding": "No division by the model's own maximum/minimum/mean score. Confidence determines 100 PR thresholds; per-sequence overlap means and visible-GT denominators are macro-averaged. The returned P/R pair is at maximum aggregate F, and percent fields are raw values times 100. This is scorer threshold selection, not checkpoint selection.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 25,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:25",
+          "evidence": "Prediction confidences generate threshold locations, not normalization denominators."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 123,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:123",
+          "evidence": "Precision averages selected overlaps; recall divides their sum by visible GT count."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 133,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:133",
+          "evidence": "Macro averaging, harmonic F and argmax-F operating point; percent conversion at lines 147-149."
+        }
+      ]
+    },
+    "C": {
+      "status": "PASS",
+      "topic": "Result existence and provenance within the stated four-OPE scope",
+      "finding": "All four metric JSONs exist with complete status. Their numeric objects exactly equal the corresponding analyzer logs; each analyzer exit file and recorded launch exit is 0. All 80 snapshot files match observation byte lengths and SHA256. All four chain links and both local saved-final hashes match. VOT/full-suite completion is explicitly absent.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/metrics.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/metrics.json:2",
+          "evidence": "Complete metric artifact; values at lines 4-12 and final/bundle/plan/receipt/scorer hashes at lines 14-18."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/predictions/metrics.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/predictions/metrics.json:2",
+          "evidence": "Complete metric artifact; values at lines 4-12 and final/bundle/plan/receipt/scorer hashes at lines 14-18."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/predictions/metrics.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/predictions/metrics.json:2",
+          "evidence": "Complete metric artifact; values at lines 4-12 and final/bundle/plan/receipt/scorer hashes at lines 14-18."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/predictions/metrics.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/predictions/metrics.json:2",
+          "evidence": "Complete metric artifact; values at lines 4-12 and final/bundle/plan/receipt/scorer hashes at lines 14-18."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/launches.json",
+          "line": 3,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/launches.json:3",
+          "evidence": "Four recorded ope_analyze invocations with exit 0 at lines 17,35,53,71."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/selection.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/selection.json:2",
+          "evidence": "Fixed third-pass selection, separate finals, and no external metric checkpoint selection."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/observation.json",
+          "line": 11,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/observation.json:11",
+          "evidence": "evaluation_terminal=false and no evaluation exit; training terminal status must not be read as suite completion."
+        }
+      ]
+    },
+    "D": {
+      "status": "PASS",
+      "topic": "Actual metric invocation / dead code",
+      "finding": "evaluate_depthtrack_results is imported from the hash-locked file and called with resolution=100 and the explicit complete case names, then written to metrics.json. Successful analyzer logs and exits corroborate this path. Original missing-vot import failures are retained; the later CPU analysis uses the existing mplt interpreter, preserving the same predictions, finals and scorer source. Pending VOT analysis/collection code is not counted as executed results.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+          "line": 53,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:53",
+          "evidence": "Locked import, actual call at line 55, write at line 57, print at line 59, CLI dispatch at line 81."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/resume_m122_evaluation_metrics.py",
+          "line": 65,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/resume_m122_evaluation_metrics.py:65",
+          "evidence": "Launches existing scorer for both models and two datasets."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision0_depthtrack_test_ope_analyze.log",
+          "line": 10,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision0_depthtrack_test_ope_analyze.log:10",
+          "evidence": "Original ModuleNotFoundError retained."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/resume_inputs.json",
+          "line": 3,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/resume_inputs.json:3",
+          "evidence": "Original launch, unchanged selection and resume-source hashes; no neural restart or repeated OPE predictions."
+        }
+      ]
+    },
+    "E": {
+      "status": "WARN",
+      "topic": "Scope and claim limits",
+      "finding": "Completed evidence is four OPE evaluations: two precision-weight variants, one seed (2027), Test50/76,373 frames and CDTB80/101,956 frames per variant. It is not six complete evaluations or full three-dataset acceptance. Each fixed final already fails OPE target thresholds. No controlled semantic-content ablation, independent C contribution, multi-seed robustness or general causal semantic advantage is established.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0/result.json",
+          "line": 5,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0/result.json:5",
+          "evidence": "Seed 2027; three passes, 456 sequence runs, 659406 track calls, 20421 optimizer steps."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision1/result.json",
+          "line": 5,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision1/result.json:5",
+          "evidence": "Same single seed and complete training count."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/observation.json",
+          "line": 57,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/observation.json:57",
+          "evidence": "precision0 VOT proxy is unsealed, merge/result absent; precision1 not launched at line 63."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py",
+          "line": 40,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py:40",
+          "evidence": "Nine strict per-row target comparisons require both OPE sets plus VOT."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+          "line": 25,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py:25",
+          "evidence": "The two variants change a precision-preservation loss weight; both retain human text, so their difference is not a text-vs-no-text experiment."
+        }
+      ]
+    },
+    "F": {
+      "status": "PASS",
+      "topic": "Evaluation type",
+      "classification": "real_gt",
+      "finding": "Dataset-GT OPE with human-confirmed initialization text and disclosed multiframe review aids. Human labels are model inputs, not human performance judgments; these scores are neither human_eval nor proxy metrics. Causal in the runtime name denotes own-history state progression only.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 97,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:97",
+          "evidence": "External dataset GT drives overlaps and visibility."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/external_human_labels.json",
+          "line": 31742,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/external_human_labels.json:31742",
+          "evidence": "Explicit multiframe/video-aided input provenance."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py",
+          "line": 17,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py:17",
+          "evidence": "Encodes confirmed phrases only, without translation or silent truncation, and with zero optimization."
+        }
+      ]
+    }
+  },
+  "each_metric_artifact_reviewed": [
+    {
+      "model": "precision0",
+      "dataset": "depthtrack_test",
+      "metrics": {
+        "precision": 0.6642388739793649,
+        "recall": 0.6324489153999057,
+        "f_score": 0.647954208955428,
+        "precision_percent": 66.42388739793648,
+        "recall_percent": 63.24489153999057,
+        "f_score_percent": 64.7954208955428,
+        "threshold": 0.075045,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "final_sha256": "ff4bbe26f24e96ba8c968927882d3d4e17d7720b28caf65de7f84d6dbacb5c85",
+      "metric_file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/metrics.json",
+      "metric_sha256": "04edc9994cc488e8cf7496f2243a58aed18b0777ebbbd8a991b936694154047d",
+      "prediction_rows_declared": 76373,
+      "sequence_receipts": 50,
+      "actual_local_prediction_txt_count": 0,
+      "gt_hashes_match_baseline": true,
+      "baseline_metrics": {
+        "precision": 0.6241533634819073,
+        "recall": 0.6268200379817269,
+        "f_score": 0.6254838584839805,
+        "precision_percent": 62.41533634819073,
+        "recall_percent": 62.682003798172694,
+        "f_score_percent": 62.54838584839805,
+        "threshold": 0.387226,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "difference_pp": {
+        "precision": 4.008551049745755,
+        "recall": 0.5628877418178746,
+        "f_score": 2.247035047144756
+      },
+      "receipt_lines": {
+        "\"status\"": [
+          2
+        ],
+        "\"frames\"": [
+          10,
+          17,
+          24,
+          31,
+          38,
+          45,
+          52,
+          59
+        ],
+        "\"subsequent_GT_opened\"": [
+          360
+        ],
+        "\"optimizer_steps\"": [
+          361
+        ],
+        "\"frozen_before_after_exact\"": [
+          363
+        ]
+      },
+      "status": "complete",
+      "review_status": "PASS_WITH_STATED_LOCAL_EVIDENCE_LIMITS",
+      "result_type": "real_gt",
+      "log_equals_metric": true,
+      "analyzer_exit": 0,
+      "local_final_sha_verified": true,
+      "receipt_plan_cases_bundle_source_bindings_verified": true,
+      "numerical_replay_performed": false,
+      "additional_evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/receipt.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/receipt.json:2",
+          "evidence": "Complete prediction receipt; exact declared sequence set and frame total."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_depthtrack_test_ope_analyze.log",
+          "line": 1,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_depthtrack_test_ope_analyze.log:1",
+          "evidence": "Exact numeric match to metric object."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_depthtrack_test_ope_analyze.exit",
+          "line": 1,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_depthtrack_test_ope_analyze.exit:1",
+          "evidence": "0"
+        }
+      ]
+    },
+    {
+      "model": "precision0",
+      "dataset": "cdtb",
+      "metrics": {
+        "precision": 0.7204466929719404,
+        "recall": 0.7017459804062065,
+        "f_score": 0.7109733868746733,
+        "precision_percent": 72.04466929719405,
+        "recall_percent": 70.17459804062065,
+        "f_score_percent": 71.09733868746733,
+        "threshold": 0.138744,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "final_sha256": "ff4bbe26f24e96ba8c968927882d3d4e17d7720b28caf65de7f84d6dbacb5c85",
+      "metric_file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/predictions/metrics.json",
+      "metric_sha256": "cbfb344f6e05077dbf061669b74fb8d25d618ce425834e2923d9d8d472ee29d7",
+      "prediction_rows_declared": 101956,
+      "sequence_receipts": 80,
+      "actual_local_prediction_txt_count": 0,
+      "gt_hashes_match_baseline": true,
+      "baseline_metrics": {
+        "precision": 0.6993311256529843,
+        "recall": 0.6806774352120221,
+        "f_score": 0.6898782086902927,
+        "precision_percent": 69.93311256529843,
+        "recall_percent": 68.0677435212022,
+        "f_score_percent": 68.98782086902926,
+        "threshold": 0.580139,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "difference_pp": {
+        "precision": 2.111556731895618,
+        "recall": 2.106854519418448,
+        "f_score": 2.1095178184380643
+      },
+      "receipt_lines": {
+        "\"status\"": [
+          2
+        ],
+        "\"frames\"": [
+          10,
+          17,
+          24,
+          31,
+          38,
+          45,
+          52,
+          59
+        ],
+        "\"subsequent_GT_opened\"": [
+          570
+        ],
+        "\"optimizer_steps\"": [
+          571
+        ],
+        "\"frozen_before_after_exact\"": [
+          573
+        ]
+      },
+      "status": "complete",
+      "review_status": "PASS_WITH_STATED_LOCAL_EVIDENCE_LIMITS",
+      "result_type": "real_gt",
+      "log_equals_metric": true,
+      "analyzer_exit": 0,
+      "local_final_sha_verified": true,
+      "receipt_plan_cases_bundle_source_bindings_verified": true,
+      "numerical_replay_performed": false,
+      "additional_evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/predictions/receipt.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/predictions/receipt.json:2",
+          "evidence": "Complete prediction receipt; exact declared sequence set and frame total."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_cdtb_ope_analyze.log",
+          "line": 1,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_cdtb_ope_analyze.log:1",
+          "evidence": "Exact numeric match to metric object."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_cdtb_ope_analyze.exit",
+          "line": 1,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_cdtb_ope_analyze.exit:1",
+          "evidence": "0"
+        }
+      ]
+    },
+    {
+      "model": "precision1",
+      "dataset": "depthtrack_test",
+      "metrics": {
+        "precision": 0.6620888223049124,
+        "recall": 0.6377789473824346,
+        "f_score": 0.6497065655606941,
+        "precision_percent": 66.20888223049124,
+        "recall_percent": 63.777894738243454,
+        "f_score_percent": 64.9706565560694,
+        "threshold": 0.075227,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "final_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+      "metric_file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/predictions/metrics.json",
+      "metric_sha256": "88002b20f3db413ad09512b29119e5c3121f3c288693c6c78294523f1fb1bce4",
+      "prediction_rows_declared": 76373,
+      "sequence_receipts": 50,
+      "actual_local_prediction_txt_count": 0,
+      "gt_hashes_match_baseline": true,
+      "baseline_metrics": {
+        "precision": 0.6241533634819073,
+        "recall": 0.6268200379817269,
+        "f_score": 0.6254838584839805,
+        "precision_percent": 62.41533634819073,
+        "recall_percent": 62.682003798172694,
+        "f_score_percent": 62.54838584839805,
+        "threshold": 0.387226,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "difference_pp": {
+        "precision": 3.7935458823005135,
+        "recall": 1.0958909400707597,
+        "f_score": 2.422270707671352
+      },
+      "receipt_lines": {
+        "\"status\"": [
+          2
+        ],
+        "\"frames\"": [
+          10,
+          17,
+          24,
+          31,
+          38,
+          45,
+          52,
+          59
+        ],
+        "\"subsequent_GT_opened\"": [
+          360
+        ],
+        "\"optimizer_steps\"": [
+          361
+        ],
+        "\"frozen_before_after_exact\"": [
+          363
+        ]
+      },
+      "status": "complete",
+      "review_status": "PASS_WITH_STATED_LOCAL_EVIDENCE_LIMITS",
+      "result_type": "real_gt",
+      "log_equals_metric": true,
+      "analyzer_exit": 0,
+      "local_final_sha_verified": true,
+      "receipt_plan_cases_bundle_source_bindings_verified": true,
+      "numerical_replay_performed": false,
+      "additional_evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/predictions/receipt.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/predictions/receipt.json:2",
+          "evidence": "Complete prediction receipt; exact declared sequence set and frame total."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_depthtrack_test_ope_analyze.log",
+          "line": 1,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_depthtrack_test_ope_analyze.log:1",
+          "evidence": "Exact numeric match to metric object."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_depthtrack_test_ope_analyze.exit",
+          "line": 1,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_depthtrack_test_ope_analyze.exit:1",
+          "evidence": "0"
+        }
+      ]
+    },
+    {
+      "model": "precision1",
+      "dataset": "cdtb",
+      "metrics": {
+        "precision": 0.7447906262771162,
+        "recall": 0.6979650332437328,
+        "f_score": 0.7206179519015304,
+        "precision_percent": 74.47906262771163,
+        "recall_percent": 69.79650332437328,
+        "f_score_percent": 72.06179519015305,
+        "threshold": 0.165786,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "final_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+      "metric_file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/predictions/metrics.json",
+      "metric_sha256": "fd4c545f30963277fef3e6eb111a7f6e67052912a370bfa7c615d08d90aba7a6",
+      "prediction_rows_declared": 101956,
+      "sequence_receipts": 80,
+      "actual_local_prediction_txt_count": 0,
+      "gt_hashes_match_baseline": true,
+      "baseline_metrics": {
+        "precision": 0.6993311256529843,
+        "recall": 0.6806774352120221,
+        "f_score": 0.6898782086902927,
+        "precision_percent": 69.93311256529843,
+        "recall_percent": 68.0677435212022,
+        "f_score_percent": 68.98782086902926,
+        "threshold": 0.580139,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "difference_pp": {
+        "precision": 4.545950062413198,
+        "recall": 1.728759803171073,
+        "f_score": 3.073974321123785
+      },
+      "receipt_lines": {
+        "\"status\"": [
+          2
+        ],
+        "\"frames\"": [
+          10,
+          17,
+          24,
+          31,
+          38,
+          45,
+          52,
+          59
+        ],
+        "\"subsequent_GT_opened\"": [
+          570
+        ],
+        "\"optimizer_steps\"": [
+          571
+        ],
+        "\"frozen_before_after_exact\"": [
+          573
+        ]
+      },
+      "status": "complete",
+      "review_status": "PASS_WITH_STATED_LOCAL_EVIDENCE_LIMITS",
+      "result_type": "real_gt",
+      "log_equals_metric": true,
+      "analyzer_exit": 0,
+      "local_final_sha_verified": true,
+      "receipt_plan_cases_bundle_source_bindings_verified": true,
+      "numerical_replay_performed": false,
+      "additional_evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/predictions/receipt.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/predictions/receipt.json:2",
+          "evidence": "Complete prediction receipt; exact declared sequence set and frame total."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_cdtb_ope_analyze.log",
+          "line": 1,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_cdtb_ope_analyze.log:1",
+          "evidence": "Exact numeric match to metric object."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_cdtb_ope_analyze.exit",
+          "line": 1,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_cdtb_ope_analyze.exit:1",
+          "evidence": "0"
+        }
+      ]
+    }
+  ],
+  "training_record_review": [
+    {
+      "model": "precision0",
+      "status": "complete_M122_full152_training",
+      "seed": 2027,
+      "epochs": 3,
+      "sequences": 152,
+      "sequence_runs": 456,
+      "track_calls": 659406,
+      "supervised_frames": 610128,
+      "optimizer_steps": 20421,
+      "final_sha256": "ff4bbe26f24e96ba8c968927882d3d4e17d7720b28caf65de7f84d6dbacb5c85",
+      "parameter_changes": {
+        "native": 148032,
+        "semantic_projection": 49280,
+        "position": 128,
+        "search_fusion": 16576,
+        "reference_read": 16640,
+        "visual_fusion": 8384,
+        "phrase_bind": 16640,
+        "phrase_calibrate": 16640,
+        "phrase_read": 16640,
+        "visual_support": 65,
+        "semantic_support": 8704,
+        "geometry": 73792,
+        "box_delta": 260,
+        "quality": 65,
+        "observation": 8321
+      },
+      "lines": {
+        "\"status\"": [
+          2
+        ],
+        "\"seed\"": [
+          5
+        ],
+        "\"sequence_runs\"": [
+          7
+        ],
+        "\"track_calls\"": [
+          8,
+          53,
+          79,
+          105,
+          131,
+          157,
+          183,
+          209
+        ],
+        "\"GT_reinitializations": [
+          41
+        ],
+        "\"GT_used_after": [
+          42
+        ],
+        "\"no_best_selection\"": [
+          11906
+        ],
+        "\"final_sha256\"": [
+          11908
+        ],
+        "\"final_state_roundtrip_exact\"": [
+          11909
+        ]
+      }
+    },
+    {
+      "model": "precision1",
+      "status": "complete_M122_full152_training",
+      "seed": 2027,
+      "epochs": 3,
+      "sequences": 152,
+      "sequence_runs": 456,
+      "track_calls": 659406,
+      "supervised_frames": 610128,
+      "optimizer_steps": 20421,
+      "final_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+      "parameter_changes": {
+        "native": 148032,
+        "semantic_projection": 49280,
+        "position": 128,
+        "search_fusion": 16576,
+        "reference_read": 16640,
+        "visual_fusion": 8384,
+        "phrase_bind": 16640,
+        "phrase_calibrate": 16640,
+        "phrase_read": 16640,
+        "visual_support": 65,
+        "semantic_support": 8704,
+        "geometry": 73792,
+        "box_delta": 260,
+        "quality": 65,
+        "observation": 8321
+      },
+      "lines": {
+        "\"status\"": [
+          2
+        ],
+        "\"seed\"": [
+          5
+        ],
+        "\"sequence_runs\"": [
+          7
+        ],
+        "\"track_calls\"": [
+          8,
+          53,
+          79,
+          105,
+          131,
+          157,
+          183,
+          209
+        ],
+        "\"GT_reinitializations": [
+          41
+        ],
+        "\"GT_used_after": [
+          42
+        ],
+        "\"no_best_selection\"": [
+          11906
+        ],
+        "\"final_sha256\"": [
+          11908
+        ],
+        "\"final_state_roundtrip_exact\"": [
+          11909
+        ]
+      }
+    }
+  ],
+  "human_input_record_review": [
+    {
+      "dataset": "depthtrack_test",
+      "rows": 50,
+      "sequences": 50,
+      "all_confirmed": true,
+      "reviewers": {
+        "gb": 50
+      },
+      "proposal_review_statuses": {
+        "conflicting": 50
+      },
+      "csv_sha256": "6ccfab037bc24ca44245bb88739a77bf668f931283da12cb18e37402d0a0443a",
+      "site_present": true,
+      "site_sha_match": true
+    },
+    {
+      "dataset": "cdtb",
+      "rows": 80,
+      "sequences": 80,
+      "all_confirmed": true,
+      "reviewers": {
+        "gb": 80
+      },
+      "proposal_review_statuses": {
+        "conflicting": 80
+      },
+      "csv_sha256": "dea42aa507134894bd3e267672b2a69f662a1d26ecd959406257e4b2e5895381",
+      "site_present": true,
+      "site_sha_match": true
+    },
+    {
+      "dataset": "vot",
+      "rows": 1765,
+      "sequences": 127,
+      "all_confirmed": true,
+      "reviewers": {
+        "gb": 1765
+      },
+      "proposal_review_statuses": {
+        "conflicting": 1765
+      },
+      "csv_sha256": "b83f0b4240865d609921c1bf434621577bbe35ace4aceaa0f1242c981445cb9c",
+      "site_present": true,
+      "site_sha_match": true
+    }
+  ],
+  "deterministic_verification": {
+    "checks_total": 129,
+    "checks_passed": 129,
+    "checks_failed": 0,
+    "snapshot_files_exact": 80,
+    "source_gate_files_exact": 52,
+    "all_checks": [
+      {
+        "check": "metric_source_locked",
+        "passed": true
+      },
+      {
+        "check": "selection_pair",
+        "passed": true
+      },
+      {
+        "check": "selection_gate",
+        "passed": true
+      },
+      {
+        "check": "selection_binding",
+        "passed": true
+      },
+      {
+        "check": "selection_bank_receipt",
+        "passed": true
+      },
+      {
+        "check": "bank_binding",
+        "passed": true
+      },
+      {
+        "check": "bank_source",
+        "passed": true
+      },
+      {
+        "check": "labels_binding",
+        "passed": true
+      },
+      {
+        "check": "binding_source",
+        "passed": true
+      },
+      {
+        "check": "resume_original_launch",
+        "passed": true
+      },
+      {
+        "check": "resume_selection",
+        "passed": true
+      },
+      {
+        "check": "resume_source",
+        "passed": true
+      },
+      {
+        "check": "all_80_observation_file_bytes_hash",
+        "passed": true
+      },
+      {
+        "check": "all_locally_mapped_gate_sources",
+        "passed": true
+      },
+      {
+        "check": "precision0_bundle_selection",
+        "passed": true
+      },
+      {
+        "check": "precision0_training_bundle",
+        "passed": true
+      },
+      {
+        "check": "precision0_final_all",
+        "passed": true
+      },
+      {
+        "check": "precision0_source_map_gate",
+        "passed": true
+      },
+      {
+        "check": "precision0_pair_training",
+        "passed": true
+      },
+      {
+        "check": "precision0_sequence_records_exact",
+        "passed": true
+      },
+      {
+        "check": "precision0_train_count",
+        "passed": true
+      },
+      {
+        "check": "precision0_loss_finite",
+        "passed": true
+      },
+      {
+        "check": "precision0_three_complete_epochs",
+        "passed": true
+      },
+      {
+        "check": "precision0_training_sources",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_plan_selection",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_case_sha",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_receipt_sha",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_final_fixed",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_bundle",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_bank",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_binding",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_metric_source",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_names_order_counts",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_GT_baseline_bind",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_complete_flags",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_log_metrics",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_actual_invocation",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_numeric_finite_bounds",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_F_and_percent",
+        "passed": true
+      },
+      {
+        "check": "precision0/depthtrack_test_human_initializations",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_plan_selection",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_case_sha",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_receipt_sha",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_final_fixed",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_bundle",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_bank",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_binding",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_metric_source",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_names_order_counts",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_GT_baseline_bind",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_complete_flags",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_log_metrics",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_actual_invocation",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_numeric_finite_bounds",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_F_and_percent",
+        "passed": true
+      },
+      {
+        "check": "precision0/cdtb_human_initializations",
+        "passed": true
+      },
+      {
+        "check": "precision1_bundle_selection",
+        "passed": true
+      },
+      {
+        "check": "precision1_training_bundle",
+        "passed": true
+      },
+      {
+        "check": "precision1_final_all",
+        "passed": true
+      },
+      {
+        "check": "precision1_source_map_gate",
+        "passed": true
+      },
+      {
+        "check": "precision1_pair_training",
+        "passed": true
+      },
+      {
+        "check": "precision1_sequence_records_exact",
+        "passed": true
+      },
+      {
+        "check": "precision1_train_count",
+        "passed": true
+      },
+      {
+        "check": "precision1_loss_finite",
+        "passed": true
+      },
+      {
+        "check": "precision1_three_complete_epochs",
+        "passed": true
+      },
+      {
+        "check": "precision1_training_sources",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_plan_selection",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_case_sha",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_receipt_sha",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_final_fixed",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_bundle",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_bank",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_binding",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_metric_source",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_names_order_counts",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_GT_baseline_bind",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_complete_flags",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_log_metrics",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_actual_invocation",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_numeric_finite_bounds",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_F_and_percent",
+        "passed": true
+      },
+      {
+        "check": "precision1/depthtrack_test_human_initializations",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_plan_selection",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_case_sha",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_receipt_sha",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_final_fixed",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_bundle",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_bank",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_binding",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_metric_source",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_names_order_counts",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_GT_baseline_bind",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_complete_flags",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_log_metrics",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_actual_invocation",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_numeric_finite_bounds",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_F_and_percent",
+        "passed": true
+      },
+      {
+        "check": "precision1/cdtb_human_initializations",
+        "passed": true
+      },
+      {
+        "check": "same_warm_and_initial",
+        "passed": true
+      },
+      {
+        "check": "saved_selection_before_all_track_and_metrics",
+        "passed": true
+      },
+      {
+        "check": "bindings_unique_1895",
+        "passed": true
+      },
+      {
+        "check": "binding_keys_recomputed",
+        "passed": true
+      },
+      {
+        "check": "depthtrack_test_bound_all_label_fields",
+        "passed": true
+      },
+      {
+        "check": "depthtrack_test_source_csv_sha",
+        "passed": true
+      },
+      {
+        "check": "depthtrack_test_csv_phrase_exact",
+        "passed": true
+      },
+      {
+        "check": "cdtb_bound_all_label_fields",
+        "passed": true
+      },
+      {
+        "check": "cdtb_source_csv_sha",
+        "passed": true
+      },
+      {
+        "check": "cdtb_csv_phrase_exact",
+        "passed": true
+      },
+      {
+        "check": "vot_bound_all_label_fields",
+        "passed": true
+      },
+      {
+        "check": "vot_source_csv_sha",
+        "passed": true
+      },
+      {
+        "check": "vot_csv_phrase_exact",
+        "passed": true
+      },
+      {
+        "check": "bank_receipt_phrase_count",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_ope_inputs.json",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_ope_spec.json",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_depthtrack_metric_reference.json",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_cdtb_metric_reference.json",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_vot_shard_manifest.json",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_vot_initialization_plan.json",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_finalize_vot_transaction_low22.py",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_depthtrack_pr.py",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_m39_vot_bridge.py",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_metadata_sha256.json",
+        "passed": true
+      },
+      {
+        "check": "receipt_file_shard_config.yaml",
+        "passed": true
+      },
+      {
+        "check": "all_52_source_hashes",
+        "passed": true
+      },
+      {
+        "check": "depthtrack_test_cases_official_inputs",
+        "passed": true
+      },
+      {
+        "check": "depthtrack_test_dataset_root",
+        "passed": true
+      },
+      {
+        "check": "cdtb_cases_official_inputs",
+        "passed": true
+      },
+      {
+        "check": "cdtb_dataset_root",
+        "passed": true
+      },
+      {
+        "check": "all_vot_initializations_bound_plan",
+        "passed": true
+      }
+    ],
+    "source_mapping_resolution": [
+      {
+        "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/models/layers/head.py",
+        "rejected_current_candidate": "C:/Users/gb/.codex_track_publish_m29_20260902/lib/models/layers/head.py",
+        "exact_archived_source": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/models/layers/head.py",
+        "sha256": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326"
+      },
+      {
+        "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/models/sttrack/sttrack.py",
+        "rejected_current_candidate": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/overlay/lib/models/sttrack/sttrack.py",
+        "exact_archived_source": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/models/sttrack/sttrack.py",
+        "sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13"
+      },
+      {
+        "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/test/tracker/sttrack.py",
+        "rejected_current_candidate": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/overlay/lib/test/tracker/sttrack.py",
+        "exact_archived_source": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/test/tracker/sttrack.py",
+        "sha256": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f"
+      },
+      {
+        "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/train/data/processing_utils.py",
+        "rejected_current_candidate": "C:/Users/gb/.codex_track_publish_m29_20260902/lib/train/data/processing_utils.py",
+        "exact_archived_source": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/train/data/processing_utils.py",
+        "sha256": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6"
+      }
+    ]
+  },
+  "source_gate_local_mapping": [
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_COMPLETE_EVALUATION_SUITE_PLAN.md",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_COMPLETE_EVALUATION_SUITE_PLAN.md",
+      "expected_sha256": "713d1a142a550f310ec8fe282eebf9d3ef2e551c539cafc8699aa98db2f7403a",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_FULL_CAUSAL_PLAN.md",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_FULL_CAUSAL_PLAN.md",
+      "expected_sha256": "8f7a300dc6e37cd3ee3f9989593daaa516b1e7a1e8ef7255a125df67cdb82943",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_EVALUATION_PLAN.md",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_EVALUATION_PLAN.md",
+      "expected_sha256": "3f5b417f863b1d9609e139ca3336127d4429d7868572b3d2d9954572be973676",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_vot.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_vot.py",
+      "expected_sha256": "97d90420c63f7785be28c144652dde2bc25ca9dd5c28c70bf245ba2b45abc5d0",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+      "expected_sha256": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py",
+      "expected_sha256": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_ab_interface_panel.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_ab_interface_panel.py",
+      "expected_sha256": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py",
+      "expected_sha256": "5bcb7f0316f5fcab0205c0ca061152f7a47e3cc6bb57433b50bf7eca5ce555c6",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_train_states.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_train_states.py",
+      "expected_sha256": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+      "expected_sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+      "expected_sha256": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+      "expected_sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py",
+      "expected_sha256": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+      "expected_sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+      "expected_sha256": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m121_dense_inputs.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m121_dense_inputs.py",
+      "expected_sha256": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py",
+      "expected_sha256": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m113_human_text.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m113_human_text.py",
+      "expected_sha256": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py",
+      "expected_sha256": "1428b3488d37cbbb71ae66eeca896b553c14d4156c9ab65657c59f741d321cea",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_external_human_labels.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_external_human_labels.py",
+      "expected_sha256": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+      "expected_sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_evaluation_suite.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_evaluation_suite.py",
+      "expected_sha256": "73098389d9db7e459966c2a3ff2a7e28a9c352eaf58da6fd23ebc8f2684704c3",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_full_causal.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_full_causal.py",
+      "expected_sha256": "6f13ab6905166faf7cd1c80f0e2a260f42d048d218fc2436c4d2dd2c4161c9da",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+      "expected_sha256": "d0eeacba480a19ccb717b36b7cf0d7d3fe3cb5395e7bf19d19b37868dd3354f9",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_vot_shards.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_vot_shards.py",
+      "expected_sha256": "9c2b55bb77980bba5ec486b1ff171a1a1c4de31725167f49ad0f411345a365e8",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_ab_visual_control.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_ab_visual_control.py",
+      "expected_sha256": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_fixed_visual_selector.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_fixed_visual_selector.py",
+      "expected_sha256": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m107_weak_semantics.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m107_weak_semantics.py",
+      "expected_sha256": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m110_no_weak_rank.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m110_no_weak_rank.py",
+      "expected_sha256": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m113_human_initialization.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m113_human_initialization.py",
+      "expected_sha256": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py",
+      "expected_sha256": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+      "expected_sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SRTrack_RGBD_L/lib/test/analysis/depthtrack_pr.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+      "expected_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/tools/finalize_vot_full127.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/finalize_vot_full127.py",
+      "expected_sha256": "cbbe55132a4e64157011c0cbfa9162bd583f09588e3e497dcf741a8d5174a6bb",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/tools/finalize_vot_transaction_low22.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/finalize_vot_transaction_low22.py",
+      "expected_sha256": "e96a375a3792a80ab12e5671db468f559d514558a05d1181fe7afec48bcb514a",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/overlay/experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml",
+      "expected_sha256": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/models/layers/head.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/models/layers/head.py",
+      "expected_sha256": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/models/sttrack/sttrack.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/models/sttrack/sttrack.py",
+      "expected_sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/test/tracker/sttrack.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/test/tracker/sttrack.py",
+      "expected_sha256": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/train/data/processing_utils.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/train/data/processing_utils.py",
+      "expected_sha256": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/train/dataset/depth_utils.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/native_source/lib/train/dataset/depth_utils.py",
+      "expected_sha256": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1/lib/utils/box_ops.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/native_source/lib/utils/box_ops.py",
+      "expected_sha256": "cee9d309a9c4a6c5f00fab575719bc7bf8d865127c91b10d4fb233996a111fbc",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_default_full127_v1_20260905/run/shard-00/config.yaml",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/shard_config.yaml",
+      "expected_sha256": "72b5f9d12dcbce623debda59810fab452c5a858972f6290379fbf5f3b3874677",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_default_full127_v1_20260905/run/shard_manifest.json",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/vot_shard_manifest.json",
+      "expected_sha256": "8e76256f1c7c135a65a1b262506356769b59557db60eb83bc21ef1392890dd01",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/inputs.json",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/ope_inputs.json",
+      "expected_sha256": "61541e35f7b9e3c40427df79067fc0be20b8622cf275e93025e4a1547bf68601",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/metrics_cdtb.json",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/cdtb_metric_reference.json",
+      "expected_sha256": "a00f5db6e853dd9ac59ef2e174ed7a06e991701e61bfd85badf29ae273c1b731",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/metrics_depthtrack.json",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/depthtrack_metric_reference.json",
+      "expected_sha256": "bd89f02b8be95699cc845dae1a2473cc553a02771ee94093b84504878fa3892d",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_default_rgbd_ope_v1_20260906/spec.json",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/ope_spec.json",
+      "expected_sha256": "e623ef63de89da423fc12b877f58d56219f88ef9f1232f20de9e42fb6c8665e1",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_full152_evaluation_20260925/interface/m39_vot_bridge.py",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/m39_vot_bridge.py",
+      "expected_sha256": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_full152_evaluation_20260925/vot_inputs/all_initializations/plan.json",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/vot_initialization_plan.json",
+      "expected_sha256": "b4c23250a9363475746cb92023c1b67a39219f2babe95c6a98ea1c40109ea568",
+      "sha_match": true
+    },
+    {
+      "remote": "/root/autodl-tmp/sttrack_full152_evaluation_20260925/vot_inputs/initializations/metadata_sha256.json",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/metadata_sha256.json",
+      "expected_sha256": "1633e2f543dd97fa0b2bff989a84e5d9b4e3ceb1537a0a42d084249c90f4b855",
+      "sha_match": true
+    },
+    {
+      "remote": "/home/SUTrack_RGBD_L/.aris/m122_full_causal_20261007/official_initialization_binding.json",
+      "local": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json",
+      "expected_sha256": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e",
+      "sha_match": true
+    }
+  ],
+  "recorded_stage_chronology": [
+    {
+      "stage": "encode",
+      "started": "2026-10-08T09:32:27.786859+08:00",
+      "finished": "2026-10-08T09:32:42.523130+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "prepare",
+      "started": "2026-10-08T09:32:42.526857+08:00",
+      "finished": "2026-10-08T09:32:51.126742+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision0_depthtrack_test_ope_track",
+      "started": "2026-10-08T09:32:51.130022+08:00",
+      "finished": "2026-10-08T11:29:14.058094+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision1_depthtrack_test_ope_track",
+      "started": "2026-10-08T09:32:51.132591+08:00",
+      "finished": "2026-10-08T11:29:14.058611+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision0_cdtb_ope_track",
+      "started": "2026-10-08T11:29:14.061577+08:00",
+      "finished": "2026-10-08T14:10:00.658666+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision1_cdtb_ope_track",
+      "started": "2026-10-08T11:29:14.064228+08:00",
+      "finished": "2026-10-08T14:10:00.659282+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision0_depthtrack_test_ope_analyze",
+      "started": "2026-10-08T14:10:00.662836+08:00",
+      "finished": "2026-10-08T14:10:02.438224+08:00",
+      "exit": 1
+    },
+    {
+      "stage": "precision1_depthtrack_test_ope_analyze",
+      "started": "2026-10-08T14:10:00.665597+08:00",
+      "finished": "2026-10-08T14:10:02.438681+08:00",
+      "exit": 1
+    },
+    {
+      "stage": "precision0_depthtrack_test_ope_analyze",
+      "started": "2026-10-08T15:35:31.394458+08:00",
+      "finished": "2026-10-08T15:35:36.315406+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision1_depthtrack_test_ope_analyze",
+      "started": "2026-10-08T15:35:31.396027+08:00",
+      "finished": "2026-10-08T15:35:36.323962+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision0_cdtb_ope_analyze",
+      "started": "2026-10-08T15:35:36.325827+08:00",
+      "finished": "2026-10-08T15:35:43.897432+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision1_cdtb_ope_analyze",
+      "started": "2026-10-08T15:35:36.327376+08:00",
+      "finished": "2026-10-08T15:35:43.934816+08:00",
+      "exit": 0
+    },
+    {
+      "stage": "precision0_vot",
+      "started": "2026-10-08T15:35:43.938536+08:00",
+      "finished": null,
+      "exit": null
+    }
+  ],
+  "premetric_selection": {
+    "selection_sha256": "2ff90eb580c4f09638b79e0ec665898982d113d904ac42a93ae18166c2b45975",
+    "selection_status": "M122_two_actual_third_pass_finals_frozen_before_metrics",
+    "prepare_finished": "2026-10-08T09:32:51.126742+08:00",
+    "first_prediction_started": "2026-10-08T09:32:51.130022+08:00",
+    "first_successful_metric_started": "2026-10-08T15:35:31.394458+08:00",
+    "external_metric_checkpoint_selection": false,
+    "model_mixing_per_row": false,
+    "limit": "Record/source chronology, not an external trusted timestamp service."
+  },
+  "incomplete_three_dataset_goal": {
+    "status": "INCOMPLETE_AND_JOINT_TARGETS_UNMET",
+    "ope_completed": 4,
+    "evaluations_required": 6,
+    "completed_vot_results": 0,
+    "full_suite_result_present": false,
+    "observation_time": "2026-10-08T08:12:28.672587+00:00",
+    "partial_target_checks": [
+      {
+        "model": "precision0",
+        "ope_passed_count": 1,
+        "ope_total": 6,
+        "checks": {
+          "depthtrack_test": {
+            "precision": {
+              "actual": 66.42388739793648,
+              "target": 65.2,
+              "passed": true
+            },
+            "recall": {
+              "actual": 63.24489153999057,
+              "target": 64.9,
+              "passed": false
+            },
+            "f_score": {
+              "actual": 64.7954208955428,
+              "target": 65.1,
+              "passed": false
+            }
+          },
+          "cdtb": {
+            "precision": {
+              "actual": 72.04466929719405,
+              "target": 72.9,
+              "passed": false
+            },
+            "recall": {
+              "actual": 70.17459804062065,
+              "target": 75.6,
+              "passed": false
+            },
+            "f_score": {
+              "actual": 71.09733868746733,
+              "target": 74.2,
+              "passed": false
+            }
+          }
+        },
+        "joint_nine_can_pass_for_these_finals": false,
+        "vot_metrics_status": "PENDING"
+      },
+      {
+        "model": "precision1",
+        "ope_passed_count": 2,
+        "ope_total": 6,
+        "checks": {
+          "depthtrack_test": {
+            "precision": {
+              "actual": 66.20888223049124,
+              "target": 65.2,
+              "passed": true
+            },
+            "recall": {
+              "actual": 63.777894738243454,
+              "target": 64.9,
+              "passed": false
+            },
+            "f_score": {
+              "actual": 64.9706565560694,
+              "target": 65.1,
+              "passed": false
+            }
+          },
+          "cdtb": {
+            "precision": {
+              "actual": 74.47906262771163,
+              "target": 72.9,
+              "passed": true
+            },
+            "recall": {
+              "actual": 69.79650332437328,
+              "target": 75.6,
+              "passed": false
+            },
+            "f_score": {
+              "actual": 72.06179519015305,
+              "target": 74.2,
+              "passed": false
+            }
+          }
+        },
+        "joint_nine_can_pass_for_these_finals": false,
+        "vot_metrics_status": "PENDING"
+      }
+    ],
+    "vot_proxy_is_not_score": true,
+    "substitute_historical_or_OPE_values_for_VOT": false
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "WARN",
+      "blocking": false,
+      "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/receipt.json",
+      "line": 8,
+      "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/receipt.json:8",
+      "evidence": "All four prediction directories contain zero local TXT files; the snapshot contains zero groundtruth.txt files. Sequence receipts contain 260 paired box/confidence SHA256 records in total. The remote analyzer code verifies these hashes and GT hashes before scoring, but those bytes are absent locally. The encoded official_human_text.pt and runtime backbone/CLIP weight bytes are also outside this snapshot; the bank hash is bound by the encoder receipt, plans and runtime assertions.",
+      "claim_impact": "The narrow audit supports recorded artifact completeness and provenance consistency. It is not an independent recomputation of 356658 OPE frame rows, direct validation of all original image/GT bytes, or tensor-level audit of the encoded bank."
+    },
+    {
+      "id": "F2",
+      "severity": "WARN",
+      "blocking": false,
+      "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/external_human_labels.json",
+      "line": 31742,
+      "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/external_human_labels.json:31742",
+      "evidence": "The primary labels disclose multiframe/video aids. All 1895 confirmed label rows match their source CSV phrases and bound initialization metadata; all three CSV and site-manifest hashes match. Dataset-qualified initialization keys recompute exactly from saved RGB SHA256 plus big-endian xywh doubles. The proposal-status field is 'conflicting' for these rows, but CSV human_confirmed is true and the confirmed content is preserved.",
+      "claim_impact": "Describe performance as using human-confirmed category/attributes with multiframe-aided review. Do not present it as automatic captions, no human input, or strictly first-frame-only semantic information. No online GT access does not erase this input-provenance qualification."
+    },
+    {
+      "id": "F3",
+      "severity": "WARN",
+      "blocking": false,
+      "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0/result.json",
+      "line": 5,
+      "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0/result.json:5",
+      "evidence": "Both full training records and all 912 JSONL sequence records establish one seed 2027, two precision-weight variants and three full Train152 passes. They share the same human-text warm start and all human inputs. There is no completed equal-budget full-training human-vs-empty or shuffled-content comparison in this audited result set.",
+      "claim_impact": "Report descriptive differences for these runs. Native-reference gains and precision0/precision1 differences do not identify semantic causation, multi-seed robustness, or independent A/B/C module contributions."
+    },
+    {
+      "id": "F4",
+      "severity": "WARN",
+      "blocking": false,
+      "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/observation.json",
+      "line": 11,
+      "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/observation.json:11",
+      "evidence": "As of 2026-10-08 16:12:28 +08:00, evaluation_terminal=false. precision0 VOT has only 29+28 nonempty-triplet proxies with no merge/result; precision1 VOT is not launched. No all_results.json or completed VOT result exists in the snapshot. Using the locked target code, precision0 passes 1/6 OPE targets and precision1 passes 2/6.",
+      "claim_impact": "The three-dataset evaluation is incomplete, and these fixed finals already cannot pass all nine targets because required OPE values are below thresholds. Pending VOT values must remain pending; no OPE, proxy count or historical VOT number can fill them."
+    },
+    {
+      "id": "F5",
+      "severity": "INFO",
+      "blocking": false,
+      "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+      "line": 53,
+      "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:53",
+      "evidence": "All 52 gate-listed source/data hashes have byte-exact local counterparts, including historical snapshots for four native files whose current working-tree counterparts differ. The scorer SHA256 is 05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc and uses VOT region overlaps plus the repository's long-term PR aggregation.",
+      "claim_impact": "The audit verifies reuse of the frozen native-reference scorer and its actual call. It does not certify a bit-identical upstream benchmark distribution or independently attest every installed package/backend identity. A source gate or earlier review is not an independent judgment of these result values."
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Both fixed third-pass finals have complete Test50 and CDTB80 OPE metric artifacts",
+      "status": "supported_with_local_evidence_limit",
+      "limit": "Recorded complete predictions/scoring supported by source/log/hash chain; raw output/GT replay unavailable locally."
+    },
+    {
+      "claim": "Each completed model row uses one final and one frozen human-input protocol",
+      "status": "supported",
+      "limit": "Final bytes locally hashed; encoded bank binds through records rather than local tensor bytes."
+    },
+    {
+      "claim": "Both finals are descriptively above the archived native reference on OPE P/R/F",
+      "status": "supported",
+      "limit": "Exact arithmetic on the supplied matching-scorer aggregate files; not proof of semantic benefit or robustness."
+    },
+    {
+      "claim": "M122 full three-dataset evaluation or joint nine-target goal is complete",
+      "status": "unsupported",
+      "limit": "VOT pending and OPE target failures."
+    },
+    {
+      "claim": "Semantic content, module C, or all three modules causally improve general performance",
+      "status": "unsupported",
+      "limit": "No adequate intervention/control or multi-seed evidence in this result set."
+    }
+  ],
+  "input_sha256": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/complete_evaluation_source_gate.json": "81ad7a35bc04c3c8eee770ab5eaf97eea6e63ac423e1ade44f1e4a569617314a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/external_human_labels.json": "6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/cdtb_metric_reference.json": "a00f5db6e853dd9ac59ef2e174ed7a06e991701e61bfd85badf29ae273c1b731",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/depthtrack_metric_reference.json": "bd89f02b8be95699cc845dae1a2473cc553a02771ee94093b84504878fa3892d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/ope_inputs.json": "61541e35f7b9e3c40427df79067fc0be20b8622cf275e93025e4a1547bf68601",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/ope_spec.json": "e623ef63de89da423fc12b877f58d56219f88ef9f1232f20de9e42fb6c8665e1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/SOURCE_RECEIPT.json": "c756a04e06e439e572a598f73d1484739fcf2e4f75d2950869b1065189cf78d0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/vot_initialization_plan.json": "b4c23250a9363475746cb92023c1b67a39219f2babe95c6a98ea1c40109ea568",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/formal_input_sources/vot_shard_manifest.json": "8e76256f1c7c135a65a1b262506356769b59557db60eb83bc21ef1392890dd01",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/native_source/lib/train/dataset/depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/native_source/lib/utils/box_ops.py": "cee9d309a9c4a6c5f00fab575719bc7bf8d865127c91b10d4fb233996a111fbc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/driver.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/encode.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/encode.log": "08ec5c0aa4aa6b3befb22b83467c7c5c9a6f0abe1cd35ee0df4854d910ec5ac7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/launches.json": "0c27940d79d90d930e63bc38f68c3983f616896fdfada29e19c275b897f25da6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/official_human_text.json": "5ac0b9acdc9bd92ad8c1af1ade01b1e67df89642664f3c043ca7d397e260630d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision0_cdtb_ope_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision0_cdtb_ope_track.log": "8a603b0cc2ab8a66e12b959c8cceac58775e29f95acd91065b26a06e4d8ed583",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision0_depthtrack_test_ope_analyze.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision0_depthtrack_test_ope_analyze.log": "04f8e57d7d9971ddf51cf6a490b83a5d14d1fbaa7a953c1e01ae7580e80a9cb7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision0_depthtrack_test_ope_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision0_depthtrack_test_ope_track.log": "a7cb0dd5338fbd819ae1f45feebc474d3c1a998e6876aee5efe8f8939c8eb35b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision1_cdtb_ope_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision1_cdtb_ope_track.log": "9ac3fa956ad65997dae3aaf962db5879f5bac8eb819d97fbb60b42dedf9dd745",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision1_depthtrack_test_ope_analyze.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision1_depthtrack_test_ope_analyze.log": "04f8e57d7d9971ddf51cf6a490b83a5d14d1fbaa7a953c1e01ae7580e80a9cb7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision1_depthtrack_test_ope_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/precision1_depthtrack_test_ope_track.log": "0ab076af6bba504e0a145d68a6612b164c7bcf44fe78f35bb61c7cda04da41a9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/prepare.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/prepare.log": "46d683edd5bdcd6f4ca01482c11a9dabad9f6117779fe77b3385c1453da3bd06",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_control/training_closed.json": "d212ca4a73c4be4d867210a8215bb8db770e8e2255d1ff3afcf5486af39d3e2b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/launches.json": "5f629ab926deb054e8991fd0876226e07d975232783dd1746ae709d3bda35350",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_cdtb_ope_analyze.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_cdtb_ope_analyze.log": "4458801afa3ec6a07db1185ed96c05d845961a8091578263cd5f71fd42038094",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_depthtrack_test_ope_analyze.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_depthtrack_test_ope_analyze.log": "36e98584fcf54e3044361a11fc395f06526400d18ae4459b2a1a8222598da753",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision0_vot.log": "dd07d6760b6d316bcd277e1c02db4258feeaf151bda798bde5d79ab46b8038e3",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_cdtb_ope_analyze.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_cdtb_ope_analyze.log": "7de54baa84fb817f5ac87b284e695036d001fd283c128b3368153cb6c6c71377",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_depthtrack_test_ope_analyze.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/precision1_depthtrack_test_ope_analyze.log": "ec47b17587b7e8ff1f133bee813120232e21bc00e0a02203740d893204f9401c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_control/resume_inputs.json": "dcb053616d28d593972615c9f0f3b118680c5ec5578cd7b084a969b33de5ffd2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_root/controller.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation_resume_root/launch.json": "05c73369a5b00ac0ecc91eb34cfb51a5dfd0f6db020304eb934ec231d4a419f8",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/bundle.json": "e514bc1721be562b3ee982444b78f09abcaea1584e314ca0971154e539919924",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/cases.json": "b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/plan.json": "48d34542a7d19a45895f1ac011f7ea0bcf457a0f9a495d85f799230c969699f0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/predictions/metrics.json": "cbfb344f6e05077dbf061669b74fb8d25d618ce425834e2923d9d8d472ee29d7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/cdtb/predictions/receipt.json": "c4dab6e9979ae4606c24479cfefa9b78973882fba2004604134b823606532f82",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/cases.json": "158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/plan.json": "c2d7f9773446ef215dc8a25258ed4f7407087169f7bd6051c503e75796fd6b7c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/metrics.json": "04edc9994cc488e8cf7496f2243a58aed18b0777ebbbd8a991b936694154047d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/depthtrack_test/predictions/receipt.json": "747f9c72d3a7dca18b8ff1f100c6d8226a4c4b6ce5dab144b30a1d58a518d5cb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/vot/run/controller_logs/shard-00.log": "7a8913a87d7204e071a8c34236062cca89ff3f8ed279bc13e7ce61d1e9c18f41",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/vot/run/controller_logs/shard-01.log": "3cb0f67ff769b0ac7a10551c235f06b48999e214ae9882071ce48a6fca93e812",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/vot/run/launch.json": "8e34376aade8871cde0423e41b2822b2593fd7b9c043c30243360d2fe6892cc2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision0/vot/run/shard_manifest.json": "1954e48ee1302a7527e884a5a472af684489d1d6826419ca06742a4f467cc685",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/bundle.json": "ab8f90cc1202dc8cac14dd9138b9e0db83e08e5d51795146df50d48d0d66a8cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/cases.json": "b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/plan.json": "fa58067626fab31db9e3b3160feb2bb03203359ca7841af5b218b75e353e3a0a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/predictions/metrics.json": "fd4c545f30963277fef3e6eb111a7f6e67052912a370bfa7c615d08d90aba7a6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/cdtb/predictions/receipt.json": "754c024821036eb425cf1ccd240ec5edbfb2a816fd2426d3d0834a4705f03977",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/cases.json": "158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/plan.json": "3b355b65701b783513809ed172422ae11396d7c60ef210419a08e4101c17951e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/predictions/metrics.json": "88002b20f3db413ad09512b29119e5c3121f3c288693c6c78294523f1fb1bce4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/depthtrack_test/predictions/receipt.json": "1a7d4b5bb7464674801d4514f1dd0e586f18113ca21bb4468d12c82ec65dc1c9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/precision1/vot/run/shard_manifest.json": "99eec1fec6fa3b93fc1d179aecd636130703cf2df69ee99a779b50fb0d2d964e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/evaluation/selection.json": "2ff90eb580c4f09638b79e0ec665898982d113d904ac42a93ae18166c2b45975",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/observation.json": "2c5bb64f7e057be81aa5452145a7a6c18baf58a3b0fc53fc302ace83a4dbd9a5",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/result.json": "c3a3b88f0723383ee98dafd26297d181cc94389b9a1701a8c03326b3d958c29b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_launch.json": "6fb0c82010e03ecc576d544bf00438c8250bafe73a4d827c1e7ae4f2067486e9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision0.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision0.log": "54f3fa388532d1c96342e134f769d2f833ef26aa3c6d692b178e85b4aaabb94f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision0/result.json": "d7da122e7854f4fe909b426bb9ef4db6b3b2ace9cb45458b249ecbe5cd840097",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision0/sampled_state_trace.jsonl": "20669afad33d7f7d8422a69bc1cd7e44094962ead00612d2c9df2fc01bc78517",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision0/sequence_log.jsonl": "918018363f6fb28d0da6b8fcda201746d8411716185ec5f8120306f21f1a0797",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision1.log": "87a9c8e7bc24b7f43a65a964c30ff78d444ae9e19c8545f586928b6bcf1f8552",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision1/result.json": "5ca7343c5a25d8f0160b485af9c74afca878b94b1d0417d823bd76b4aa3286d1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision1/sampled_state_trace.jsonl": "7a40ea1a493b03120b68f3619ca4c4941f9bd6bda8b7e0e92a4d476df65c9c24",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/sanity_precision1/sequence_log.jsonl": "ef2234dcbf1d606e8bc010da1d6b83efa8df4c642171bebe5f6b3f88656df902",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_launch.json": "f5aa03e5e3e7761778b1e5874203af37deb56f971560d168da6f00c13b4a898a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0.log": "c8f1b1407b03b97163fa910bd54d498dbbbb517b4f9e59191819bfa29a5e6cf3",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0/result.json": "4a8a44f91bea42b6d4da4d4ba467ceda335c469e354bfdf5af7b7c0f7fc0712f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0/sampled_state_trace.jsonl": "73abde7b98055f63181ecbe3a6ea8943b9d930ea3b13ab966217812667c7bb1f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision0/sequence_log.jsonl": "58d5e0ce3dc4a5b4f56016ebd992b8648182f253e6cb030589adf6749dccb4b2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision1.log": "2631c66a01869848db37c198eb445412131c9f2fae9e45285f85c9c8bf8a759e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision1/result.json": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision1/sampled_state_trace.jsonl": "8bbf75c68ce840493dd972c7dc9342cca4a5395fa3ae9c3dd0e82a2c00a7df03",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1612/train_precision1/sequence_log.jsonl": "9bba687699a6fc3278be868370bc99ca9d4323cd26604170614758e8429eb5b8",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/finalize_vot_full127.py": "cbbe55132a4e64157011c0cbfa9162bd583f09588e3e497dcf741a8d5174a6bb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/finalize_vot_transaction_low22.py": "e96a375a3792a80ab12e5671db468f559d514558a05d1181fe7afec48bcb514a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/metadata_sha256.json": "1633e2f543dd97fa0b2bff989a84e5d9b4e3ceb1537a0a42d084249c90f4b855",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/receipt.json": "4a1c5a01eb556dad32d73a2453b9af839e9c58527cfb830d18816c25ef81314b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/shard_config.yaml": "72b5f9d12dcbce623debda59810fab452c5a858972f6290379fbf5f3b3874677",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/trained_finals/precision0_final.pt": "ff4bbe26f24e96ba8c968927882d3d4e17d7720b28caf65de7f84d6dbacb5c85",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/trained_finals/precision1_final.pt": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/docs/review_rgbd/data/cdtb.json": "6c470761a7eb9eb821240c9fbf51cf9be163565a90387904323b1bf5c9cacf53",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/docs/review_rgbd/data/depthtrack_test.json": "74262c1ae48ecd69e6a4be0823954e3988a294d730b482c700e90aa76a3f354b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/docs/review_rgbd/data/source_human_reviews_20261007/rgbd_cdtb_gb_80_review.csv": "dea42aa507134894bd3e267672b2a69f662a1d26ecd959406257e4b2e5895381",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/docs/review_rgbd/data/source_human_reviews_20261007/rgbd_depthtrack_test_gb_50_review.csv": "6ccfab037bc24ca44245bb88739a77bf668f931283da12cb18e37402d0a0443a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/docs/review_rgbd/data/source_human_reviews_20261007/rgbd_vot_gb_1765_review.csv": "b83f0b4240865d609921c1bf434621577bbe35ace4aceaa0f1242c981445cb9c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/docs/review_rgbd/data/vot.json": "056ed502111950fc99daa89bda7f35cb2d9dd2e11a6587f1414bd5fc5ffd9208",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/models/layers/head.py": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/train/data/processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/completed_cdtb/metrics_cdtb.json": "a00f5db6e853dd9ac59ef2e174ed7a06e991701e61bfd85badf29ae273c1b731",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/completed_depthtrack/metrics_depthtrack.json": "bd89f02b8be95699cc845dae1a2473cc553a02771ee94093b84504878fa3892d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_vot.py": "97d90420c63f7785be28c144652dde2bc25ca9dd5c28c70bf245ba2b45abc5d0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_ab_interface_panel.py": "361559ef53623dc53665534243a0b4cfb078821dc852e20b34a75d14dca45086",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py": "5bcb7f0316f5fcab0205c0ca061152f7a47e3cc6bb57433b50bf7eca5ce555c6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_train_states.py": "3961c894e42411bb0cbb2eb245e0162b8765a742b08d5cd72ee9d8dfaa6618f3",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m121_dense_inputs.py": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_COMPLETE_EVALUATION_SUITE_PLAN.md": "713d1a142a550f310ec8fe282eebf9d3ef2e551c539cafc8699aa98db2f7403a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_FULL_CAUSAL_PLAN.md": "8f7a300dc6e37cd3ee3f9989593daaa516b1e7a1e8ef7255a125df67cdb82943",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_EVALUATION_PLAN.md": "3f5b417f863b1d9609e139ca3336127d4429d7868572b3d2d9954572be973676",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py": "1428b3488d37cbbb71ae66eeca896b553c14d4156c9ab65657c59f741d321cea",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_external_human_labels.py": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/resume_m122_evaluation_metrics.py": "6a364b7eb81a02cd4673a7d9209d837087f6aca912b6c0c217977104eef33280",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_evaluation_suite.py": "73098389d9db7e459966c2a3ff2a7e28a9c352eaf58da6fd23ebc8f2684704c3",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_full_causal.py": "6f13ab6905166faf7cd1c80f0e2a260f42d048d218fc2436c4d2dd2c4161c9da",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py": "d0eeacba480a19ccb717b36b7cf0d7d3fe3cb5395e7bf19d19b37868dd3354f9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_vot_shards.py": "9c2b55bb77980bba5ec486b1ff171a1a1c4de31725167f49ad0f411345a365e8",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_fixed_visual_selector.py": "a8c644a8ca2201c6c36a67c7146725a08ee8a9624fd9ef111da9ca596a930784",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m107_weak_semantics.py": "a9a1f17c2b15caed6b00dfa7d3fa73abfe1f7492f73ee05bc50652e1644bccf4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m110_no_weak_rank.py": "ad140851b189f363cd16a0fc5610a88720993bb89c59bfe50bc0632149ed4ef9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/models/sttrack/sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/test/tracker/sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/overlay/experiments/sttrack/deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344"
+  },
+  "final_summary": "PASS，仅限首四份 OPE 产物的完整性与来源一致性；0 项阻断，same-family / provisional。129 项本地核对通过，4 份指标与分析日志一致。VOT 未完成，两个 final 均未达到联合目标；多帧辅助人工输入、单 seed，以及本地缺少预测 TXT/GT/编码 bank 的限制已记录。\n\nC:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_FIRST_OPE_RESULT_AUDIT_20261008.md\nC:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_FIRST_OPE_RESULT_AUDIT_20261008.json"
+}
