@@ -322,3 +322,15 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 - M122_LTMU_UPDATE_INTERFACE_RECHECK_20261008.md + master5.394: actual22officialfiles/fixed121ddd07914a8577e336fed24fa47763b6780fdd, simplifiedDiMP_LTMU/GlobalTrack+MDNet, 20-framehistory lastCURRENTIoU label/index5sixthcolumn excluded fromMUinputs0-3/6/7; update BEFOREverification, DiMPclassifier memory not template swap. Original NaN0 notM122unknown policy/simplifiedreturnIoU0notpositiveproducer; no futureutility causalclaim. Sourceactual52c4602 2-filepush0/pubMD7fabca7d4ea3faf2ff9bcef912f254c665654f191b80e61dd7e16b981620b521/privateoriginalpreserved; CVF403/fullpaperunread disclosed. No NN/SSH/install/weights/sourcegate changes; currentonlywait50300/39360 due23:19:51.136316/lastNN22:19proxy545, ACTIVE_UNMET.
 
 - M122_HOUR_PROGRESS_20261008_232118 + rawsnapshot: nativeSSH41588/SCP24122 actual0,1236127B SHA23a4294b750fab06c433bed3d8cfa522796533c94d7fc245cc9d609940487dc8/82files80digests21logs exact. Resume129102+originalshards129116/129117 directlyalive, P0proxy303+359=662/P0secondwave+P1queued/nullofficialVOT; GPU0 1324MiB0% GPU1 4122MiB75%, bothlogs/counts progress withno exit/errors, no0util restart/filler. Delta117in3687.264751s recent114.2310/cumulative85.3150proxy/h =>remaining25.1070/33.6166h/engineering30-50h provisional. FoursealedOPE/finals/bundles/selection/32source+52gate/oldCPU results+reviews unchanged. NextONLY2026-10-09T00:21:18.401068 solelocal8864/26563; §395 followingalready-synced§394/e299..., goalACTIVE_UNMET.
+
+| 2026-10-08T23:58:56.449683+08:00 | /experiment-plan | refine-logs/m122_trusted_memory/TRAIN_SEQUENCE_SPLIT_20261008_235856.json | implementation | 待执行C写入收益计划/固定版本/C新增优化Train分组；不是性能结果 |
+
+| 2026-10-08T23:58:56.449683+08:00 | /experiment-plan | refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md | implementation | 待执行C写入收益计划/固定版本/C新增优化Train分组；不是性能结果 |
+
+| 2026-10-08T23:58:56.449683+08:00 | /experiment-plan | refine-logs/m122_trusted_memory/EXPERIMENT_PLAN.md | implementation | 待执行C写入收益计划/固定版本/C新增优化Train分组；不是性能结果 |
+
+| 2026-10-08T23:58:56.449683+08:00 | /experiment-plan | refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER_20261008_235856.md | implementation | 待执行C写入收益计划/固定版本/C新增优化Train分组；不是性能结果 |
+
+| 2026-10-08T23:58:56.449683+08:00 | /experiment-plan | refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md | implementation | 待执行C写入收益计划/固定版本/C新增优化Train分组；不是性能结果 |
+
+- master5.396: prespecified P1-frozen C-current/current-IoU vs C-future/32-frame write-keep gain; Train120/32 C-only split with A+B-all152 exposure disclosed, future labels not deployment input, source/result audits pending before new execution; original six-result suite first. No NN/progress queries/frozen source changes; next only NN Oct9 00:21.

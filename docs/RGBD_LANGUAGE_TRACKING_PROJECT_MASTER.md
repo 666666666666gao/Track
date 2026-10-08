@@ -25875,3 +25875,31 @@ VOT权重0协调器129115及首波分片129116/GPU0、129117/GPU1从15:35:44运�
 **封存与旧结果保护。** 原远端档案名hour_2319.zip，当地按实际时间保存hour_2321.zip；1236127字节，SHA 23a4294b750fab06c433bed3d8cfa522796533c94d7fc245cc9d609940487dc8。原生SCP24122实际exit0，chunk b39f78；82文件/80份原大小与摘要/21日志通过核对。四项既有OPE metric、固定第三pass final、selection/bundle与32份当地锁定神经源码逐字节保持，52文件门没有变更。已有OPE后验CPU分析/WARN和Train152稀疏状态CPU分析/PASS保留原字节和审查界限，没有重算或再次审查，不重复正式指标表。公开归档与小时JSON为m122_native_observation_20261008_232118、M122_HOUR_PROGRESS_20261008_232118.json。
 
 §5.394的新LTMU代码研究已完整写入主文档并同步：22a93ea0dc8628c7d1509cf99c31946f876bb682实际2文件push0；23:11静态3文本同步输入/原文前缀/目的地读回摘要均通过。相关当前IoU、可观测MU输入、更新先于验证以及未来写入效用的边界不变，本次不重复研究表，也没有实现新的C模块。两个OPE行仍未联合达标，继续两版完整VOT和最终九项完整验收，随后基于实际失锁/候选/记忆证据做Train内新方法，目标ACTIVE_UNMET。
+
+
+### 5.396 2026-10-08 23:58:56：下一版C的未来写入收益对照方案与Train内部固定分组；尚未启动
+
+本次使用experiment-plan技能，将§5.392已审核的Train稀疏诊断及§5.393—5.394的MemVLT/LTMU固定来源复核，具体化为下一版C的执行方案。计划、执行表和152条C新增优化分组已经落盘；没有新NN执行、GPU进度查询、新权重或新性能结果。当前最后真实VOT观察仍为§5.395的23:21，不因新文档重复查询。
+
+| 下一轮工作 | 具体实现/监督 | 与已完成工作的区别 | 当前状态 |
+|---|---|---|---|
+| 动作教师 | 固定P1 final的Train自身历史；同一候选提交后、模板裁剪前分别写入/保留动态槽，再各自推进最多32帧 | 现有稀疏框/标量trace缺少完整模板和query，不能伪造这两条历史；未来GT仅计算IoU差标签 | 待实现、源码审核和12事件K/K一致性预检 |
+| 同参数对照 | 原规则、C-current当前IoU监督、C-future未来平均IoU差监督；后两者输入、MLP容量、seed2027、10个epoch相同 | 不把当前定位质量当未来写入收益；新增分数仅控制模板动作，不乘定位分数 | 待教师采集与C拟合/开发 |
+| 内部开发分组 | Train152按固定SHA排序划C-fit120/C-dev32，沿用原清单顺序，不读取外部指标 | A+B已见过全部152条，32条只留出C新增优化，不能称整个模型未见验证 | 明确manifest已生成 |
+| Full152与正式验收 | 内部递归推进条件通过后采集C自身历史，再完整152条训练C；最终同一A+B+C完成三个数据集 | 不用Test/CDTB/VOT挑底座、checkpoint或阈值；现有两版M122先封存完整评价 | 待当前六项结果完成与审核 |
+
+固定新C工程底座为P1第三pass final SHA3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811；此选择预先写入计划，不等待VOT后再更换，亦不宣称P1全面支配P0。C初版只负责一个动态模板的保留/替换，永久首帧参照、人工核验文字、A+B候选和原搜索范围保留。当前/历史特征是部署输入，未来GT和分支结果只作训练标签；无效GT仍未知，不作为物理不存在或身份负例。相同公共样本用于当前质量和未来收益对照。
+
+研发推进条件为C-future在C开发32条完整自身历史上序列等权IoU优于原规则与C-current，且相对原规则H10不增；同时报告有益写入保留、事件覆盖和所有逐序列正负结果，不能以停止全部更新通过安全检查。32帧动作标签不等于独立身份或长期恢复真值。模板读取库、新搜索区域和在线MLLM均未进入本计划；剩余错误发生在写入之前或crop外时，应另诊断候选/观察问题，不能统一归咎模板。
+
+原P1三pass训练耗时69419.41770267487秒，约19.28GPU小时；单pass均摊约6.43小时，但含反传，不能当冻结教师速度。第一次Train回放与分支采集初排8—14GPU小时，依赖1000—3000资格事件这个明确假设，必须由12事件预检实测速率和实际事件数量更新。每个W/K事件对在同GPU运行，两GPU并行独立事件或两种C训练臂，避免把硬件差异混入动作收益。新GPU工作等当前两版VOT封存后再执行，不改现有分片。部署没有当前或未来GT输入；新增ML源码和结果仍需各自审核，本计划不冒充审核PASS。
+
+详细协议见[EXPERIMENT_PLAN.md](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN.md)，执行表见[EXPERIMENT_TRACKER.md](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md)。不重复已有正式指标表。当前goal仍ACTIVE_UNMET；下一次NN观察仍为2026-10-09T00:21:18.401068+08:00的唯一等待8864/session26563。所有32份锁定NN源码与52文件门不改，原始final和本轮结果不覆盖。
+
+本次文件摘要：
+
+- `refine-logs/m122_trusted_memory/TRAIN_SEQUENCE_SPLIT_20261008_235856.json` SHA256 `ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6`
+- `refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md` SHA256 `cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94`
+- `refine-logs/m122_trusted_memory/EXPERIMENT_PLAN.md` SHA256 `cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94`
+- `refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER_20261008_235856.md` SHA256 `55f34d8b147e706b60124340913d349bb4d7ddd54c43523796407b810c3d354a`
+- `refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md` SHA256 `55f34d8b147e706b60124340913d349bb4d7ddd54c43523796407b810c3d354a`
