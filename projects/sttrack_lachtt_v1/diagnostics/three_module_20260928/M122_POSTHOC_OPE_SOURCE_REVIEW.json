@@ -1,0 +1,701 @@
+{
+  "audit_skill": "experiment-audit",
+  "stage": "source",
+  "date": "2026-10-08",
+  "generated_at": "2026-10-08T09:50:26.306023+00:00",
+  "verdict": "PASS",
+  "overall_verdict": "PASS",
+  "integrity_status": "pass",
+  "blocking_count": 0,
+  "warning_count": 2,
+  "summary": "PASS for source readiness only: no blocking source, formula, provenance-chain, schema or Python 3.8 syntax defect found. New posthoc computation has not run.",
+  "source_ready_without_changes": true,
+  "completed_new_posthoc_result": false,
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reasoning": "max",
+  "review_backend": "native Codex",
+  "reviewer_family": "openai",
+  "actual_reviewer_model": null,
+  "actual_reasoning": null,
+  "backend_independently_attested": false,
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_task_path": "/root/m122_ope_posthoc_source_review",
+  "trace_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_source",
+  "checks": {
+    "A": {
+      "status": "PASS",
+      "topic": "Ground-truth provenance and legal posthoc inputs",
+      "blocking": false,
+      "details": [
+        "Ground truth is loaded from plan.dataset_root/sequence/groundtruth.txt and pinned to the GT SHA in the pinned cases file. It is never derived from predictions. Saved boxes and confidences are separate receipt-pinned inputs.",
+        "The locked scorer maps finite positive-size GT rectangles to VOT rectangles and invalid/unknown GT to Special(0), using image-bounded VOT rectangle overlap. The new script checks finite [0,1] overlaps and at least one valid GT frame per sequence.",
+        "The original runner seals all OPE prediction files before ope_analyze opens subsequent annotations. The new program contains no tracker, optimizer or neural invocation; reading evaluation GT here is posthoc only.",
+        "Human multiframe review is explicitly asserted and retained in the new result metadata. No strict first-frame-only semantic input claim is justified. Raw remote GT/TXT/RGB bytes were not available for this local review; A passes source provenance, not byte-level replay."
+      ],
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 81,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:81",
+          "evidence": "Separate receipt-pinned boxes and confidence loading; GT is independently loaded at line 83."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 89,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:89",
+          "evidence": "Calls the locked _vot_overlaps implementation; finite bounded overlap/visible-GT checks follow at line 90."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 40,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:40",
+          "evidence": "Prediction validation, dataset GT Rectangle/Special mapping, bounded calculate_overlaps and valid-GT mask."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+          "line": 37,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:37",
+          "evidence": "Prediction receipt is completed before the separate analyzer; lines 51-55 hash GT and invoke scoring."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/plan.json",
+          "line": 11,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/plan.json:11",
+          "evidence": "Dataset root is /root/autodl-tmp/depthtrack/test/sequences."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/plan.json",
+          "line": 11,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/plan.json:11",
+          "evidence": "Dataset root is /root/autodl-tmp/CDTB/sequences."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 48,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:48",
+          "evidence": "Multiframe-aided human input flag is required; retained at line 129."
+        }
+      ]
+    },
+    "B": {
+      "status": "PASS",
+      "topic": "Score normalization and aggregation",
+      "blocking": false,
+      "details": [
+        "For sequence s, selected frames satisfy confidence >= the existing model/dataset threshold. P_s is selected overlap mean (1 when no frames selected); R_s is selected overlap sum divided by the count of valid GT frames. Multiplication by 100 is only percentage conversion. No score is divided by its own prediction maximum, minimum or mean.",
+        "All-box R_s uses every saved overlap divided by the same valid-GT count. With the locked nonnegative overlap convention, removing filtering gives an upper bound on recall of these fixed boxes. It is not a new tracking score or an upper bound over alternative trajectories. The filtering cost is this cap minus original recall.",
+        "Dataset P and R are sequence-macro means. Dataset F is their harmonic mean, not mean per-sequence F. Reconstructed P/R/F must each agree with the corresponding already pinned aggregate file within 1e-8 percentage points.",
+        "The original scorer used model confidences to choose PR threshold locations and maximum aggregate F; that is threshold selection, not a prediction-statistics normalization denominator. The new source reuses the four saved finite thresholds and does not select new ones."
+      ],
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 74,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:74",
+          "evidence": "Loads the already saved threshold and requires a finite scalar."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 91,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:91",
+          "evidence": "Selection, precision, valid-GT recall and all-box recall formulas."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 104,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:104",
+          "evidence": "Macro P/R, harmonic aggregate F and exact 1e-8 agreement assertions."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 25,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:25",
+          "evidence": "Original threshold locations use confidence ranking."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 123,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:123",
+          "evidence": "Original selected-overlap formulas and macro aggregation at lines 133-142."
+        }
+      ]
+    },
+    "C": {
+      "status": "WARN",
+      "topic": "Existing results, identifier chains and planned outputs",
+      "blocking": false,
+      "details": [
+        "All 25 requested artifacts exist and were read directly; their final hashes equal the supplied pre-review input manifest. All four metric files have complete status and exactly match EXPECTED_METRICS in the new source.",
+        "Independently checked selection -> bundle -> plan -> cases/receipt/metrics and final/source/bank/binding identifiers, all referenced JSON keys, exact constructed remote OPE paths, sequence order, unique names, per-sequence frame counts and total counts. No current schema, key or path mismatch was found.",
+        "There are exactly 50/76,373 and 80/101,956 sequence/frame records per model: 260 sequence/model rows and 356,658 frame/model records overall. Both models use byte-identical cases per dataset. Four prior CPU analyzer logs equal the metric numeric objects and each corresponding exit file is 0.",
+        "Local prediction directories contain zero TXT, GT and RGB files. Remote final/bank/binding contents and actual image/GT/box bytes were not rehashed here; the new script will check its pinned remote inputs during execution. The first RGB file has a run-time recorded hash but no historical expected image hash in this script; it is used only for dimensions, matching the old scorer.",
+        "result.json and per_sequence.csv in the new dedicated remote output directory remain planned. This audit did not execute the new script or observe remote output existence; no all-box cap, H10 or signed-contribution number is asserted. The previous result audit was read as an artifact, not adopted as this verdict."
+      ],
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 11,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:11",
+          "evidence": "Four metric artifact SHA256 constants anchor the input chain."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 38,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:38",
+          "evidence": "Selection and bundle/plan/receipt/final/hash checks continue through line 70."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 77,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:77",
+          "evidence": "Complete sequence identity and row-count checks before metric computation."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 85,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:85",
+          "evidence": "First RGB is freshly hashed and decoded for dimensions, without an expected historical hash."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 133,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:133",
+          "evidence": "New result.json and per_sequence.csv writes occur only after all input rehashes."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md",
+          "line": 11,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md:11",
+          "evidence": "Plan states there are no new per-sequence or all-box recall values yet."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/metrics.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/metrics.json:2",
+          "evidence": "Complete existing OPE metric object, counts at lines 11-12 and provenance IDs at lines 14-18."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/metrics.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/metrics.json:2",
+          "evidence": "Complete existing OPE metric object with the expected source/final/plan/receipt IDs."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/metrics.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/metrics.json:2",
+          "evidence": "Complete existing OPE metric object with finite threshold 0.075227."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/metrics.json",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/metrics.json:2",
+          "evidence": "Complete existing OPE metric object with finite threshold 0.165786."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/launches.json",
+          "line": 8,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/launches.json:8",
+          "evidence": "Existing mplt CPU analyzer invocation, exit 0 at line 17; other three exits at lines 35,53,71."
+        }
+      ]
+    },
+    "D": {
+      "status": "PASS",
+      "topic": "Live call paths and mutation boundary",
+      "blocking": false,
+      "details": [
+        "__main__ calls main; main calls read/pinned, imports the exact hash-locked scorer, invokes _load_rows/_vot_overlaps and low_segments, computes every per-sequence/aggregate/contrast field and writes them. Every new helper and computation is reachable; none is dead code presented as a result.",
+        "The scorer main evaluation function is called by the existing runner. The new script deliberately uses only its lower-level loader/overlap functions because it must keep the original threshold. The scorer format_metrics helper is not called by these two entry points, but no claim depends on it.",
+        "All explicit persistent writes target the separate OUTPUT/result.json and OUTPUT/per_sequence.csv. OUTPUT must not exist; no parents or input paths are created. All recorded input hashes are checked again before output creation. There is no call to training, tracking, CUDA, a checkpoint serializer, a shell, networking or a controller.",
+        "The metric module top level contains imports and function definitions only. Python import machinery can create bytecode caches: use the existing interpreter with -B when the execution contract includes avoiding those incidental writes. This is a launch flag, not a source repair. Normal non-optimized execution is required because integrity gates are assert statements.",
+        "The JSON result is written before the CSV; completion should be accepted only after successful process exit and both outputs are present. This source review does not label either write as having happened."
+      ],
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 19,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:19",
+          "evidence": "pinned reads bytes and records a digest; read parses only JSON."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 37,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:37",
+          "evidence": "Rejects an already existing output directory."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 71,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:71",
+          "evidence": "Hash-pinned source import; helper calls at lines 81-89 and 96."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 120,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:120",
+          "evidence": "All signed per-sequence contributions are constructed, then summed and checked."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 125,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:125",
+          "evidence": "Rehashes all recorded input bytes before creating/writing output at lines 133-141."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 145,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:145",
+          "evidence": "Actual __main__ call."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 8,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:8",
+          "evidence": "Module imports cv2, numpy and VOT region helpers; no tracker entry point."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+          "line": 55,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:55",
+          "evidence": "Existing scorer evaluate_depthtrack_results call and metrics write at line 57."
+        }
+      ]
+    },
+    "E": {
+      "status": "PASS",
+      "topic": "Scope, fixed-box cap, H10 and attribution limits",
+      "blocking": false,
+      "details": [
+        "The source is restricted to precision0 and precision1, two datasets and four complete OPE inputs; it retains every one of the 260 sequence/model rows. Directly read training records both specify seed 2027 and are byte-bound to the corresponding bundles. This is one seed, not two independent seed replications.",
+        "Per-sequence P/R/F use that model/dataset original global threshold; per-sequence F is descriptive and cannot be averaged into official dataset F. The aggregate assertions enforce the correct distinction.",
+        "H10 is each consecutive run of valid-GT frames with IoU <= 0.1 for at least 10 frames. False sentinels and diff locate zero-based half-open [start,end) intervals; invalid GT interrupts a run. Longest_H10_frames is zero when no qualifying run exists. These counts are neither physical-absence labels nor VOT ROB.",
+        "Each signed contribution is (P1 all-box recall - P0 all-box recall)/dataset sequence count; the sum must equal the difference of the two macro caps. No negative sequence is filtered out. This is arithmetic between two entire recursive trajectories and does not isolate semantic content, loss, template or module effects.",
+        "The targets 64.9 and 75.6 are only recall reference levels. The >= Boolean means the fixed-box cap can reach at least that recall level; it does not establish strict joint P/R/F acceptance or a deployable improvement. Neither exact crop/query/template reconstruction from rounded TXT nor full VOT/full-goal completion is claimed."
+      ],
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 40,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:40",
+          "evidence": "Exactly two named models; line 50 fixes Test50/76,373 and CDTB80/101,956."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/train_precision0/result.json",
+          "line": 5,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/train_precision0/result.json:5",
+          "evidence": "Seed 2027; training record SHA matches precision0 bundle training_result_sha256."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/train_precision1/result.json",
+          "line": 5,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/train_precision1/result.json:5",
+          "evidence": "Same seed 2027; training record SHA matches precision1 bundle training_result_sha256."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 31,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:31",
+          "evidence": "False-padded transitions and length >= 10 define half-open H10 intervals."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 95,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:95",
+          "evidence": "Severe mask requires valid GT and IoU <= 0.1."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 110,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:110",
+          "evidence": "Fixed saved-box macro recall cap and recall-only target reachability."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 120,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:120",
+          "evidence": "Signed complete ledger and exact macro contribution identity."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 127,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:127",
+          "evidence": "Scope flags reject crop reconstruction, VOT and text causal increment claims."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md",
+          "line": 9,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md:9",
+          "evidence": "Full 260 rows, fixed-trajectory cap, signed arithmetic and invalid-GT limits are stated."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md",
+          "line": 13,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md:13",
+          "evidence": "Full two-model/three-dataset acceptance remains outside this diagnosis."
+        }
+      ]
+    },
+    "F": {
+      "status": "WARN",
+      "topic": "Evaluation classification and Python 3.8 launch readiness",
+      "blocking": false,
+      "details": [
+        "Classification is real_gt: dataset-provided annotations are used for descriptive diagnosis of sealed predictions. The H10 and fixed-box recall diagnostics are auxiliary real-GT analyses, not synthetic or self-supervised reference metrics.",
+        "All three reviewed Python sources parse successfully under Python 3.8 grammar using CPython 3.12.12 ast.parse(feature_version=(3,8)); the new AST also compiles without import or execution. Manual inspection finds no newer syntax, evaluated built-in-generic annotation, union annotation or newer standard-library API requirement.",
+        "Local original launch records name /root/miniconda3/envs/mplt/bin/python for all four successful CPU scorer runs, corroborated by log/metric equality and zero exit files. The new source uses the same cv2/numpy/VOT overlap dependency route and introduces no new package dependency.",
+        "The actual new script has not been imported or executed under remote Python 3.8 by this reviewer. Interpreter/package versions, current remote files, output-path absence and run-time assertions remain execution evidence to collect; this is a nonblocking source-review limit, not a defect or a completed-result claim.",
+        "The reviewed source is ready for the planned CPU launch without source changes, using that existing mplt interpreter in normal mode with -B. Retain a successful exit plus both output files and then perform a separate result audit before reporting new diagnostics."
+      ],
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 2,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:2",
+          "evidence": "Imports use Python 3.8-compatible standard modules plus existing cv2/numpy."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 71,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:71",
+          "evidence": "Dynamic import path reuses the locked VOT-based scorer."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 126,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:126",
+          "evidence": "datetime.now(timezone.utc), dict/list operations and output methods are Python 3.8 compatible."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/launches.json",
+          "line": 8,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/launches.json:8",
+          "evidence": "Concrete existing mplt interpreter path; CPU mode gpu=null at line 6 and exit 0 at line 17."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md",
+          "line": 11,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md:11",
+          "evidence": "Execution is planned in existing mplt without dependency installation; current new results absent."
+        }
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "L1",
+      "severity": "WARN",
+      "blocking": false,
+      "checks": [
+        "A",
+        "C"
+      ],
+      "summary": "Raw remote prediction/GT/RGB bytes and new numerical posthoc outputs are unavailable to this local source review.",
+      "action": "During the planned run, require all existing byte/shape/metric-agreement assertions to pass; archive both outputs and the real exit before a result audit.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 81,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:81",
+          "evidence": "Raw inputs are opened and pinned only when main actually runs."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 107,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:107",
+          "evidence": "Aggregate replay assertions have not been executed by this reviewer."
+        }
+      ]
+    },
+    {
+      "id": "L2",
+      "severity": "WARN",
+      "blocking": false,
+      "checks": [
+        "F"
+      ],
+      "summary": "Python 3.8 grammar compatibility is verified, but a new remote runtime execution is not.",
+      "action": "Use the already evidenced mplt interpreter; do not treat this source verdict as execution success.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 5,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:5",
+          "evidence": "Actual cv2/numpy imports require the execution environment."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/launches.json",
+          "line": 8,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/launches.json:8",
+          "evidence": "Existing mplt interpreter successfully performed the previous CPU scorer run."
+        }
+      ]
+    },
+    {
+      "id": "N1",
+      "severity": "INFO",
+      "blocking": false,
+      "checks": [
+        "D"
+      ],
+      "summary": "Dynamic source imports can generate Python bytecode caches even when analysis input files are only read.",
+      "action": "Launch with -B and without -O/-OO; no source change is requested.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 71,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:71",
+          "evidence": "SourceFileLoader execution can use Python bytecode caching."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 37,
+          "file:line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:37",
+          "evidence": "Integrity gates depend on normal assert execution."
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "evaluation_type": "real_gt",
+    "models": [
+      "precision0",
+      "precision1"
+    ],
+    "seeds": [
+      2027
+    ],
+    "seed_count": 1,
+    "datasets": {
+      "depthtrack_test": {
+        "sequences_per_model": 50,
+        "frames_per_model": 76373
+      },
+      "cdtb": {
+        "sequences_per_model": 80,
+        "frames_per_model": 101956
+      }
+    },
+    "existing_complete_OPE_artifacts": 4,
+    "planned_sequence_model_rows": 260,
+    "planned_frame_model_records": 356658,
+    "new_posthoc_outputs_observed": false,
+    "full_VOT_or_goal_completion_claim": false,
+    "causal_module_or_semantics_claim": false,
+    "human_review_used_multiframe_aids": true,
+    "rounded_TXT_exact_state_reconstruction_claim": false
+  },
+  "existing_metric_artifacts": [
+    {
+      "model": "precision0",
+      "dataset": "depthtrack_test",
+      "metric_file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/metrics.json",
+      "metric_sha256": "sha256:04edc9994cc488e8cf7496f2243a58aed18b0777ebbbd8a991b936694154047d",
+      "final_sha256": "ff4bbe26f24e96ba8c968927882d3d4e17d7720b28caf65de7f84d6dbacb5c85",
+      "metrics": {
+        "precision": 0.6642388739793649,
+        "recall": 0.6324489153999057,
+        "f_score": 0.647954208955428,
+        "precision_percent": 66.42388739793648,
+        "recall_percent": 63.24489153999057,
+        "f_score_percent": 64.7954208955428,
+        "threshold": 0.075045,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "provenance_chain_checked": true,
+      "new_posthoc_result": false
+    },
+    {
+      "model": "precision0",
+      "dataset": "cdtb",
+      "metric_file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/metrics.json",
+      "metric_sha256": "sha256:cbfb344f6e05077dbf061669b74fb8d25d618ce425834e2923d9d8d472ee29d7",
+      "final_sha256": "ff4bbe26f24e96ba8c968927882d3d4e17d7720b28caf65de7f84d6dbacb5c85",
+      "metrics": {
+        "precision": 0.7204466929719404,
+        "recall": 0.7017459804062065,
+        "f_score": 0.7109733868746733,
+        "precision_percent": 72.04466929719405,
+        "recall_percent": 70.17459804062065,
+        "f_score_percent": 71.09733868746733,
+        "threshold": 0.138744,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "provenance_chain_checked": true,
+      "new_posthoc_result": false
+    },
+    {
+      "model": "precision1",
+      "dataset": "depthtrack_test",
+      "metric_file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/metrics.json",
+      "metric_sha256": "sha256:88002b20f3db413ad09512b29119e5c3121f3c288693c6c78294523f1fb1bce4",
+      "final_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+      "metrics": {
+        "precision": 0.6620888223049124,
+        "recall": 0.6377789473824346,
+        "f_score": 0.6497065655606941,
+        "precision_percent": 66.20888223049124,
+        "recall_percent": 63.777894738243454,
+        "f_score_percent": 64.9706565560694,
+        "threshold": 0.075227,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "provenance_chain_checked": true,
+      "new_posthoc_result": false
+    },
+    {
+      "model": "precision1",
+      "dataset": "cdtb",
+      "metric_file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/metrics.json",
+      "metric_sha256": "sha256:fd4c545f30963277fef3e6eb111a7f6e67052912a370bfa7c615d08d90aba7a6",
+      "final_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+      "metrics": {
+        "precision": 0.7447906262771162,
+        "recall": 0.6979650332437328,
+        "f_score": 0.7206179519015304,
+        "precision_percent": 74.47906262771163,
+        "recall_percent": 69.79650332437328,
+        "f_score_percent": 72.06179519015305,
+        "threshold": 0.165786,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "provenance_chain_checked": true,
+      "new_posthoc_result": false
+    }
+  ],
+  "deterministic_verification": {
+    "initial_metadata_hash_schema_arithmetic_checks_passed": 51,
+    "primary_before_after_hash_matches": 25,
+    "training_records_hash_and_final_pairs_checked": 2,
+    "existing_analyzer_log_metric_and_zero_exit_pairs_checked": 4,
+    "python_3_8_grammar_sources_checked": 3,
+    "actual_python_3_8_execution": false,
+    "local_prediction_TXT_count": 0,
+    "local_GT_count": 0,
+    "local_RGB_count": 0,
+    "all_listed_artifacts_read": true,
+    "all_case_and_receipt_rows_parsed_and_checked": true,
+    "semantic_verdict_inherited_from_previous_audit": false
+  },
+  "execution": {
+    "SSH": false,
+    "network": false,
+    "GPU": false,
+    "neural_inference": false,
+    "training": false,
+    "new_analysis_imported_or_executed": false,
+    "metric_recomputation": false,
+    "source_or_analysis_input_mutation": false,
+    "dependencies_installed": false,
+    "child_agent_spawned": false,
+    "local_python": "CPython 3.12.12 stdlib; -B; Python 3.8 grammar parse only",
+    "reviewer_helper_errors": [
+      "A PowerShell metadata display initially called GetType on two null attribution fields; no input/source write occurred.",
+      "One supplemental training-record display expected a nonexistent sequences key and stopped before writes. The actual record schema was then read directly; this was a reviewer helper error, not a defect in the analysis source."
+    ],
+    "outputs_written": [
+      "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_SOURCE_REVIEW.md",
+      "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_SOURCE_REVIEW.json"
+    ]
+  },
+  "launch": {
+    "interpreter": "/root/miniconda3/envs/mplt/bin/python",
+    "python_flags": [
+      "-B",
+      "-u"
+    ],
+    "optimized_assert_disabled_mode_allowed": false,
+    "source_change_required": false,
+    "source_sha256": "sha256:673b5f516c93611386aca46fa839600e49fc4e3aeb91d3260f909ca5124a8626",
+    "status": "NOT_RUN_BY_REVIEWER",
+    "required_result_evidence": [
+      "actual successful process exit",
+      "dedicated result.json",
+      "dedicated per_sequence.csv with 260 data rows",
+      "runtime input hashes and all four original aggregate matches",
+      "separate completed-result audit"
+    ]
+  },
+  "audited_input_hashes": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py": "sha256:673b5f516c93611386aca46fa839600e49fc4e3aeb91d3260f909ca5124a8626",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md": "sha256:9e6cfad3bb0a55f797887a1e607cbdbcad3402e5763a43cba81f987fef77c4e0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py": "sha256:05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/complete_evaluation_source_gate.json": "sha256:81ad7a35bc04c3c8eee770ab5eaf97eea6e63ac423e1ade44f1e4a569617314a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py": "sha256:d0eeacba480a19ccb717b36b7cf0d7d3fe3cb5395e7bf19d19b37868dd3354f9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_FIRST_OPE_RESULT_AUDIT_20261008.json": "sha256:9f5d01b3606581f35c819799bc76031f11fe6a13dba74d0793214cd58a8ae702",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/selection.json": "sha256:2ff90eb580c4f09638b79e0ec665898982d113d904ac42a93ae18166c2b45975",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/bundle.json": "sha256:e514bc1721be562b3ee982444b78f09abcaea1584e314ca0971154e539919924",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/plan.json": "sha256:c2d7f9773446ef215dc8a25258ed4f7407087169f7bd6051c503e75796fd6b7c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/cases.json": "sha256:158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/receipt.json": "sha256:747f9c72d3a7dca18b8ff1f100c6d8226a4c4b6ce5dab144b30a1d58a518d5cb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/metrics.json": "sha256:04edc9994cc488e8cf7496f2243a58aed18b0777ebbbd8a991b936694154047d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/plan.json": "sha256:48d34542a7d19a45895f1ac011f7ea0bcf457a0f9a495d85f799230c969699f0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/cases.json": "sha256:b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/receipt.json": "sha256:c4dab6e9979ae4606c24479cfefa9b78973882fba2004604134b823606532f82",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/metrics.json": "sha256:cbfb344f6e05077dbf061669b74fb8d25d618ce425834e2923d9d8d472ee29d7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/bundle.json": "sha256:ab8f90cc1202dc8cac14dd9138b9e0db83e08e5d51795146df50d48d0d66a8cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/plan.json": "sha256:3b355b65701b783513809ed172422ae11396d7c60ef210419a08e4101c17951e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/cases.json": "sha256:158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/receipt.json": "sha256:1a7d4b5bb7464674801d4514f1dd0e586f18113ca21bb4468d12c82ec65dc1c9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/metrics.json": "sha256:88002b20f3db413ad09512b29119e5c3121f3c288693c6c78294523f1fb1bce4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/plan.json": "sha256:fa58067626fab31db9e3b3160feb2bb03203359ca7841af5b218b75e353e3a0a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/cases.json": "sha256:b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/receipt.json": "sha256:754c024821036eb425cf1ccd240ec5edbfb2a816fd2426d3d0834a4705f03977",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/metrics.json": "sha256:fd4c545f30963277fef3e6eb111a7f6e67052912a370bfa7c615d08d90aba7a6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/train_precision0/result.json": "sha256:4a8a44f91bea42b6d4da4d4ba467ceda335c469e354bfdf5af7b7c0f7fc0712f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/train_precision1/result.json": "sha256:765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/launches.json": "sha256:5f629ab926deb054e8991fd0876226e07d975232783dd1746ae709d3bda35350",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/resume_inputs.json": "sha256:dcb053616d28d593972615c9f0f3b118680c5ec5578cd7b084a969b33de5ffd2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/precision0_depthtrack_test_ope_analyze.log": "sha256:36e98584fcf54e3044361a11fc395f06526400d18ae4459b2a1a8222598da753",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/precision0_depthtrack_test_ope_analyze.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/precision0_cdtb_ope_analyze.log": "sha256:4458801afa3ec6a07db1185ed96c05d845961a8091578263cd5f71fd42038094",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/precision0_cdtb_ope_analyze.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/precision1_depthtrack_test_ope_analyze.log": "sha256:ec47b17587b7e8ff1f133bee813120232e21bc00e0a02203740d893204f9401c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/precision1_depthtrack_test_ope_analyze.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/precision1_cdtb_ope_analyze.log": "sha256:7de54baa84fb817f5ac87b284e695036d001fd283c128b3368153cb6c6c71377",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation_resume_control/precision1_cdtb_ope_analyze.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_source/001-source.request.json": "sha256:fc9a4fb2e31b74c3d7224d0a220fb29968e89e5321fdd507980b0109d8132ab7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_source/input_hashes_before.json": "sha256:2713dde3f53b650e713407bc07f3861a59928bd9663d54914729008e4ee73a0f",
+    "C:/Users/gb/.codex/skills/experiment-audit/SKILL.md": "sha256:0ab77f219f554cbe42f22b79d780528e61c5e58169af4c2f56acf59596ab8db7",
+    "C:/Users/gb/.codex/skills/shared-references/local-codex-policy.md": "sha256:b0249bfccd48ff79a5976afa7a54c64a3cfb65a5496a2105c5bb21069d197783",
+    "C:/Users/gb/.codex/skills/shared-references/reviewer-independence.md": "sha256:1aa1756a99dc47009072f0ee7bf570d797bf7e2cc84439401e2a9312d73659b0",
+    "C:/Users/gb/.codex/skills/shared-references/experiment-integrity.md": "sha256:22150fbdc5867e7790c88f968bccb367079c2db4c190ddce980709aea7e76f60",
+    "C:/Users/gb/.codex/skills/shared-references/review-tracing.md": "sha256:7f556fb9ef8922cfd0d047e5a2d857b0c7f9408492b8c8dcec00207e76405395",
+    "C:/Users/gb/SOUL.md": "sha256:95c467f710183b2c0397c29ec4ef886bb723671a39ee767dc4d59165f723b68f",
+    "C:/Users/gb/USER.md": "sha256:70ec164015065a98c2b7bf6ec8cd7d7d71156e0b05b85b4644b79b2a7e7b15cd",
+    "C:/Users/gb/memory/2026-10-08.md": "sha256:f3d230b643b2dcab753916f56bdfd1cd9b595adf7c86356437a3e2132cdb8823",
+    "C:/Users/gb/memory/2026-10-07.md": "sha256:0e15c61ebbc09941afb7e59148c943085341ce98c671a73f746de33e89b7617f"
+  },
+  "input_inventory": {
+    "requested_artifacts": 25,
+    "additional_primary_record_artifacts": 12,
+    "request_and_pre_review_manifest": 2,
+    "skill_and_policy_files": 5,
+    "workspace_continuity_files": 4,
+    "total_explicit_read_inputs": 48,
+    "note": "Continuity/governance files are hashed for complete explicit-read accounting and were not used as experiment evidence. Generated audit outputs are outputs, not audited inputs."
+  },
+  "claims": [
+    {
+      "claim": "The new source is ready for a CPU attempt without source changes",
+      "status": "supported_with_execution_conditions"
+    },
+    {
+      "claim": "The four previous OPE artifacts are complete and internally bound to the frozen two finals",
+      "status": "supported_with_raw_replay_limit"
+    },
+    {
+      "claim": "New per-sequence, all-box recall, H10 or signed-contribution results exist",
+      "status": "not_established_not_run"
+    },
+    {
+      "claim": "Full VOT/three-dataset goal, semantic causation or multi-seed robustness is established",
+      "status": "unsupported_out_of_scope"
+    }
+  ]
+}
