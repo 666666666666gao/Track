@@ -1,0 +1,174 @@
+{
+  "status": "actual_native_SSH_M122_snapshot",
+  "observed_at": "2026-10-08T00:56:08.399780+00:00",
+  "observed_unix": 1791420968.3997939,
+  "controller_alive": true,
+  "terminal": false,
+  "queue_alive": true,
+  "gpu": "0, 4206, 55\n1, 1, 0\n",
+  "system_free_bytes": 280616960,
+  "data_free_bytes": 18693165056,
+  "arms": [
+    {
+      "weight": 0,
+      "completed_sequence_runs": 444,
+      "last_complete": {
+        "epoch": 3,
+        "sequence": "container01_indoor",
+        "sequence_index": 139,
+        "sequences_per_epoch": 152,
+        "track_calls": 760,
+        "supervised_frames": 621,
+        "template_writes": 5,
+        "loss_means": [
+          0.23612072006926757,
+          0.07250905670405586,
+          0.006072249054689794,
+          0.4806117867022129,
+          0.013459256470380366,
+          7.410300395116851e-05,
+          0.08141330933204331
+        ],
+        "counts": {
+          "observation_intersection": 619,
+          "regression_positions": 1040,
+          "preservation_pairs": 5517
+        },
+        "total_track_calls": 641451,
+        "total_optimizer_steps": 19862,
+        "elapsed_seconds": 73299.63185739517
+      },
+      "all_recorded_losses_finite": true,
+      "completed_call_budget_fraction": 0.9727709483990137
+    },
+    {
+      "weight": 1,
+      "completed_sequence_runs": 456,
+      "last_complete": {
+        "epoch": 3,
+        "sequence": "notebook02_indoor",
+        "sequence_index": 151,
+        "sequences_per_epoch": 152,
+        "track_calls": 2645,
+        "supervised_frames": 2494,
+        "template_writes": 31,
+        "loss_means": [
+          1.9959236989180311,
+          0.3670200998652144,
+          0.04593491516460283,
+          0.23237589648726853,
+          0.6673141190559512,
+          0.0008239520104905173,
+          0.03391544246721167
+        ],
+        "counts": {
+          "observation_intersection": 2138,
+          "regression_positions": 2875,
+          "preservation_pairs": 9198
+        },
+        "total_track_calls": 659406,
+        "total_optimizer_steps": 20421,
+        "elapsed_seconds": 69417.00402235985
+      },
+      "all_recorded_losses_finite": true,
+      "completed_call_budget_fraction": 1.0
+    }
+  ],
+  "files": [
+    {
+      "path": "sanity_launch.json",
+      "bytes": 2845,
+      "sha256": "6fb0c82010e03ecc576d544bf00438c8250bafe73a4d827c1e7ae4f2067486e9"
+    },
+    {
+      "path": "sanity_precision0/result.json",
+      "bytes": 4028,
+      "sha256": "d7da122e7854f4fe909b426bb9ef4db6b3b2ace9cb45458b249ecbe5cd840097"
+    },
+    {
+      "path": "sanity_precision0/sampled_state_trace.jsonl",
+      "bytes": 1091,
+      "sha256": "20669afad33d7f7d8422a69bc1cd7e44094962ead00612d2c9df2fc01bc78517"
+    },
+    {
+      "path": "sanity_precision0/sequence_log.jsonl",
+      "bytes": 510,
+      "sha256": "918018363f6fb28d0da6b8fcda201746d8411716185ec5f8120306f21f1a0797"
+    },
+    {
+      "path": "sanity_precision0.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "sanity_precision0.log",
+      "bytes": 666,
+      "sha256": "54f3fa388532d1c96342e134f769d2f833ef26aa3c6d692b178e85b4aaabb94f"
+    },
+    {
+      "path": "sanity_precision1/result.json",
+      "bytes": 4034,
+      "sha256": "5ca7343c5a25d8f0160b485af9c74afca878b94b1d0417d823bd76b4aa3286d1"
+    },
+    {
+      "path": "sanity_precision1/sampled_state_trace.jsonl",
+      "bytes": 1087,
+      "sha256": "7a40ea1a493b03120b68f3619ca4c4941f9bd6bda8b7e0e92a4d476df65c9c24"
+    },
+    {
+      "path": "sanity_precision1/sequence_log.jsonl",
+      "bytes": 512,
+      "sha256": "ef2234dcbf1d606e8bc010da1d6b83efa8df4c642171bebe5f6b3f88656df902"
+    },
+    {
+      "path": "sanity_precision1.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "sanity_precision1.log",
+      "bytes": 668,
+      "sha256": "87a9c8e7bc24b7f43a65a964c30ff78d444ae9e19c8545f586928b6bcf1f8552"
+    },
+    {
+      "path": "train_launch.json",
+      "bytes": 2737,
+      "sha256": "843a8bb8773181fcfee31c2ea7b7ee98832b4bffcc2c3fc330404faf13833b39"
+    },
+    {
+      "path": "train_precision0/sampled_state_trace.jsonl",
+      "bytes": 1087343,
+      "sha256": "e22c15e4fc025cd135267ba45e0c151c94bd1e4399b9baa133ae69acea1cd109"
+    },
+    {
+      "path": "train_precision0/sequence_log.jsonl",
+      "bytes": 235505,
+      "sha256": "1649b20e8a10c994572d630fb0e4933976f9dd021ef1d31496a65c5a69ea73bc"
+    },
+    {
+      "path": "train_precision0.log",
+      "bytes": 235589,
+      "sha256": "e5a7d0b1ef2220de857126bc37953c82e3169dc2651c3bc1d947ff8b75ae5d7d"
+    },
+    {
+      "path": "train_precision1/result.json",
+      "bytes": 326225,
+      "sha256": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6"
+    },
+    {
+      "path": "train_precision1/sampled_state_trace.jsonl",
+      "bytes": 1116914,
+      "sha256": "8bbf75c68ce840493dd972c7dc9342cca4a5395fa3ae9c3dd0e82a2c00a7df03"
+    },
+    {
+      "path": "train_precision1/sequence_log.jsonl",
+      "bytes": 242493,
+      "sha256": "9bba687699a6fc3278be868370bc99ca9d4323cd26604170614758e8429eb5b8"
+    },
+    {
+      "path": "train_precision1.log",
+      "bytes": 242657,
+      "sha256": "2631c66a01869848db37c198eb445412131c9f2fae9e45285f85c9c8bf8a759e"
+    }
+  ]
+}
