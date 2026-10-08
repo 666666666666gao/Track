@@ -25977,3 +25977,21 @@ P0代理783/1765，比23:21的662增加121组，两个分片分别增加67/54；
 快照SCP69289正常exit0/e7e0e9；归档1,236,368字节、SHA23b1d54acd2369ace0f9435a801a7ef6f54de7fb2b0c0c10dd13fc099eb86952，82文件/80原始摘要/21日志核验。公开原始材料与小时JSON见m122_native_observation_20261009_012307及M122_HOUR_PROGRESS_20261009_012307.json。系统盘空闲264,011,776字节、数据盘18,397,151,232字节，本轮没有未经证实的权重清理、环境安装或其他项目探查。
 
 原本地等待已消费终止结果后，唯一新等待PID2696/session78776于01:26:06.846631启动、chunkc417ec，下一次NN观察固定02:23:07.026563+08:00；未来3807字节ASCII观察命令仅准备，未执行。目标仍ACTIVE_UNMET：两版VOT尚待封存及完整结果审核，已完成OPE尚未联合达标。下一版C仍按§5.396—5.398的固定计划，待本轮完成后执行K/K与写入/保持预检；不把静态依赖复核当作运行等价或新的性能进展。
+
+
+### 5.400 2026-10-09：补齐BaseBackbone/PatchEmbed/BSI项目调用；未来写入分支没有新增已证实的隐藏缓存
+
+在既定02:23检查点前，本次继续仅做静态源码研究。原生SSH78640于01:40:16.284395+08:00只读当前四份项目依赖源码，正常exit0/fb0053；SCP77185正常exit0/889801。ZIP6102字节、SHAe65e565fde4fa08b910d233b0048667e91715b4f8fca0dbaf6f4692309bef414，5文件含清单，四源码大小/摘要逐项核验。原native tracker/model/vit_care/wrapper四SHA导出前后不变，脚本不导入Torch或模型、不查询GPU/NN进度，原52门不改。四份当前源码与固定Git ee3e62ed3c2249b2325ad8be8300b52afb53957c 的既有m84副本逐字节相同，不因历史目录名称把同SHA源码称为错版，也不追溯扩大原门。
+
+| 本次当前源码与SHA | 已读代码事实 | 对后续C实验的约束与边界 |
+|---|---|---|
+| base_backbone.py / b8f7c576072471b78a0cb025264b7d35d926b9044df45945625b0a8f35751b5a | forward145—158派发到ViT覆盖的forward_features；finetune_track在模型构建时设置配置与位置参数。基类另一个forward_features不是当前派发目标 | 不把构建期参数注册当成每帧分支历史；保持现有配置/权重。该入口接收但未传递的ce_template_mask与ViT内部另建的几何mask不同，当前native.box_mask_z仍为None，不凭此新增修复或分支逻辑 |
+| patch_embed.py / 2259b7703f008748167dd65d12ac28a496235d1f20a1d5c84a3aa0da9c8c0499 | forward23—28读取卷积返回特征，再flatten/transpose/norm；没有self赋值或对传入模板载荷的索引写回 | 已读项目路径没有将位置编码写回z_dict载荷；外部Conv2d实现及CUDA运行仍是本次未核验边界 |
+| cross_layer.py / 5008a012c53aaa0f5b7bb567b95b6118cef138644be9955e566cdf8c298d114e | candidate_elimination的scatter_只修改新建token_mask；Up_Down99—108是局部线性/GELU读出，dropout调用实际为注释 | 不把局部mask或构造时零初始化误列为逐帧缓存或权重重置；不新增无证据的深拷贝/兼容/fallback |
+| utils.py / 557ce8e3d352e3ec69b2d21fcb0f8c18703b3152eff6f3f2e1a7470585e634ea | generate_template_mask6—30按特征网格/模板数新建中心几何mask；recover_tokens74—92部分路径返回原局部张量引用，另一条切片后cat | 几何mask不是目标存在性、Depth有效性或GT身份标签；返回引用也不是快照深拷贝，不据此免除query/z_dict可变容器的分支隔离 |
+
+完整证据与行号见[M122_BACKBONE_DEPENDENCY_STATE_RECHECK_20261009.md](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_BACKBONE_DEPENDENCY_STATE_RECHECK_20261009.md)。父任务独立复读关键forward、构建调用219行、PatchEmbed、scatter_和Up_Down接线；前两件主件48c3b013.../f45d03d9...保持原字节。本件仍是同一研究上下文的same-family/provisional延续，不是新鲜结果审核，请求后端/effort没有独立证明。原始8,194字节主件SHAc46b513cc6d0ee1cab219871302934c2a2f359a17228644eca8a66a84994f173，公开版仅修正固定同SHA链接、私有证据标记/前件链接及来源说明/EOF，SHA a7d5639bd3413b03cb7df48e19186f5f0ec62554cf5b545f453c91447f2fb3c5。
+
+本次没有发现额外应写入快照的项目级持久历史。已确认的query列表元素重绑、z_dict容器独立、初始模板只替换不原位覆盖、CLIP临时hook顺序生命周期和固定keep_rate覆盖仍按§5.397—5.398保留。外部PyTorch/timm/CLIP实现、两条Mamba扫描路径与编译内核仍未核验，真实同GPU K/K及动作前W/K一致性检查不能用静态读码替代。
+
+这不是新C实现或性能结果。最后真实NN仍是§5.399的01:23节点，完整VOT及联合九项未完成；原唯一等待2696/session78776仍指向02:23:07.026563，未来观察命令未执行。本轮不安装依赖、不下载/清理权重、不改变源模型或冻结波次，目标ACTIVE_UNMET。新C按§5.396计划在本轮封存/结果审核后执行。
