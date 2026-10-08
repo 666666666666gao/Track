@@ -25938,3 +25938,22 @@ P0代理783/1765，比23:21的662增加121组，两个分片分别增加67/54；
 研究原MD SHA48c3b0138626a5f8a79b031ab27faf00b26b830bd26c2f9ac634127eae159e58、17171字节保留私有原件；公开版仅将12个源码链接固定到6a1a78d2f87f65c264c4e88a5837f8c25a45610a、将私有gate链接明确标私有、规范EOF并注明发布修正，SHAf98a3b80492a6d52e39db9ae8026e6642af89e604de993910efe93130a6e757b。研究没有SSH、网络、GPU或NN执行，也没有修改源码、安装依赖或下载权重。C未实现/训练，K/K实际运行仍未进行。
 
 §5.396未来收益监督方案、固定Train120/32 C分组和执行表已实际7文件push0于00:01:26，commit6a1a78d2f87f65c264c4e88a5837f8c25a45610a；00:04:16静态7文件已与服务器输入/读回摘要一致。当前继续完成两版VOT及同一模型九项完整验收，未达联合目标；源研究用于将来正确隔离模板动作，不证明模板导致现有全部失锁，也不证明未来C有效。目标保持ACTIVE_UNMET。
+
+
+### 5.398 2026-10-09：补齐当前预处理、主干和Mamba源码；缩小未来分支状态的未确认范围
+
+§5.397静态复核留下的依赖身份缺口，本次用当前服务器文件的只读CPU导出继续核查。00:43:41.239410+08:00，原生SSH81888读取4份源码并归档，正常exit0/43b56c；SCP46136正常exit0/f0b5b2，ZIP22068字节、SHA1f5e1437f12977ecb7a7aa8b4201714a4f9d908e85fa1280ac3dd7595be6e733，5个文件含清单，4源码大小/摘要逐项核验。导出前后核对原生tracker/model/wrapper三项原SHA，无源码修改、NN或GPU进度查询。原32当地文件及52项门不改，本次证据没有追溯扩大旧门。
+
+| 新读源码/当前SHA | 已确认的调用与状态 | 对下一版C的约束及边界 |
+|---|---|---|
+| data_utils.py / 873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5；basetracker.py / f9bc6bbfb1a8f677f86e4f1eda024d89baaf454498a5f1321f1421df67a7aa36 | BaseTracker构造只写params与visdom=None；PreprocessorMM保存mean/std，process仅构造并归一化局部图像张量，没有可见逐帧self赋值 | 固定预处理状态可以按实际接口使用，没有证据要求额外历史缓存；不因此宣称所有框架无副作用 |
+| vit_care.py / 05096a6cec0448e49f82264ad34647e267a6a50a6d96d3ee07ba10d61ce6ef0e | forward_features163行实际写self.keep_rate，216/220—221行读；wrapper每次传同一native.keep_rate。直接模板载荷经PatchEmbed后才做局部特征更新 | 对象存在forward-time属性赋值，但当前规则覆盖后再读，不是新增历史缓存；保持同一固定规则，不把未知路径推成额外分支状态 |
+| mamba.py / a11e49551cea9c7a188b9b7783b541b315a1f684b86e1de364bb3ad6c04f00be | 活跃TSG调用外部selective_scan_fn_v1；融合路径cross_selective_scan_multimodal_k2→SelectiveScan.apply→selective_scan_cuda_core.fwd。已读活跃Python前向没有显式模型级跨帧inference cache | 不因存在未使用的其他Mamba实现或autograd ctx而发明历史缓存；外部扫描/编译内核仍未核验，K/K实测仍必要 |
+
+这些源码事实由同一Astra/max请求研究上下文继续核对，不是新鲜独立审核，归属仍same-family/provisional，实际后端/effort没有独立证明。原状态研究笔记48c3b013...保持不动；原文对当时未固定依赖的限定仍正确，本次新证据另行追加。父任务独立核对关键163行、预处理和BaseTracker构造，并验证四份源码与e302d048a0165c827f7a322df938484cd6e8c784中的既有同SHA副本逐字节一致；不能由目录名旧就判断源码错，也不能由同SHA副本断言旧52门已经覆盖它们。
+
+完整当前副本、行号与未核验边界见[M122_RUNTIME_DEPENDENCY_STATE_RECHECK_20261009.md](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_RUNTIME_DEPENDENCY_STATE_RECHECK_20261009.md)。BaseBackbone.forward/finetune_track、PatchEmbed、cross_layer/utils、timm/PyTorch/CLIP内部、外部扫描与编译CUDA内核仍在本次读取范围外。两条Mamba路径不能混称同一后端；模块导入时修改DropPath.__repr__不是逐帧历史状态。query/z_dict两列表的独立所有权、初始模板替换语义与顺序CLIP hook生命周期仍按§5.397处理，不因新证据取消K/K与动作前W/K一致性要求。
+
+此研究不执行模型、测试或新C，不读取当前GPU/分片进度，也没有安装依赖、下载权重或改写原NN源码。最后真实NN仍为§5.397的00:22节点；两版完整VOT及九项联合验收未完成，不重复已有指标/研究表。§5.396的C-current/C-future同参数实验仍待本轮封存后实现及审核。唯一等待34580/session1079、下一节点01:22:37.192651保持，目标ACTIVE_UNMET。
+
+本次原始中文笔记8,010字节，SHAf45d03d9fed1b5694fdc176ea48dd4e26689a3aacd7aba81eaaa36ff817f4f70；公开版仅修正4个固定同SHA源码链接、私有清单标记/前笔记链接及EOF/表头，SHA 1f0f18a6e512dfb8f3eefaffb28b54ca3c3f71916a9ead261ae3af33b82f44bc。私有原件与此前所有源研究原件/结果回执保持原字节；本次没有新的性能结果或运行时等价证明。
