@@ -26022,3 +26022,27 @@ P0代理851→895（441+441+6+7），本小时增44组，间隔3657.121172秒。
 新helper与接线说明公开供审阅，但不上传或导入正在运行的NN源码，不扩大旧52项源码门。R1仍为“helper准备及源码审核完成；runner/GPU预检未完成”，不能写成C训练、未来收益标签或模板控制有效。R0两版当前三数据集完整封存及结果审核之后，才执行新GPU预检；当前GPU继续优先完成既定VOT。
 
 唯一新本地等待PID49208/session22921于02:33:19.097674启动、chunk965b9b，实际创建时间/命令已核对；下一次NN观察固定03:24:04.147736+08:00，未来3807字节ASCII命令仅准备未执行。用户本轮再次确认43811入口开机；不据此额外提前查询。目标仍ACTIVE_UNMET，不拼模型结果；完成两个版本全VOT后按真实损害和训练集证据推进独立写入价值任务。
+
+
+### 5.402 2026-10-09：R1模板动作采集/回放入口及状态缓存完成源码审核；未启动新GPU工作
+
+本轮在不修改当前32份评测源码、旧52项门与冻结队列的前提下，新增run_template_write_pilot.py（10850字节，SHAd19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d）及template_write_event_cache.py（2659字节，SHA4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91）。两份源代码只做了Python3.8 AST检查，没有导入Torch或执行。4个源码/接线说明文件先按“审核中、未执行”发布，Gitf123bfbf532719d0838b32a5adf130d5adb35d26实际push0，publisher20025终止0/30bba8；及时公开新代码不意味着允许部署。
+
+| R1阶段 | 输入/输出及真实职责 | GPU安排 | 当前实际状态 |
+|---|---|---|---|
+| collect | 固定P1 final与同一人审Train bank，原manifest顺序的前12个真实50帧/.75写入；保存动作前状态、真实写入载荷及RNG | 短前缀只在GPU0采集，不拆同一状态 | 入口已实现并审核，事件未采集 |
+| replay0 | 偶数ordinal的6个事件；K/K与W/K逐帧自身预测，最多32未来帧 | GPU0内顺序配对 | 源码已审核，运行未执行 |
+| replay1 | 奇数ordinal的6个事件；相同协议，序列尾部只取实际帧 | GPU1内顺序配对 | --shard只分事件，物理GPU由启动命令绑定；尚未启动 |
+| 标签/回执 | 全部预测之后读取真实GT；当前有效IoU与未来有效帧mean(IoUW−IoUK)，无效为未知，负/零收益保留 | GT不传到控制路径 | 无标签或实际回执，不是全Train教师/C训练 |
+
+缓存只保存必要的张量/数组和Python状态，不序列化冻结模型、优化器或整个tracker。包含bbox、frame、两槽模板、patch、query、selected_feature、首帧视觉/文字、真实written模板/patch及RNG；按对象id保留单份快照内初始两槽别名，各分支拥有新的存储。worker用合法首帧初始化原生必要字段后恢复已保存事件，原frame不重置，未来每帧仅使用对应图像与各自预测。GT在K/K与W/K及原始轨迹记录完成后才读入，不用当前/未来IoU挑事件，不GT裁剪、query或模板，不以无效GT制造负身份标签。
+
+源码核对了原load_truth对toy07的既有1406 GT行/1367图像尾部截断，future索引为t+1至min(t+32,N−1)，不跨视频、不经过下个50帧常规写入点。旧M82 training_spec中的category-only说明没有被用来生成输入；实际bank/labels显式沿用P1训练回执的人审SHA。固定final仍为3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811，不根据待出的VOT结果改选底座。
+
+新鲜只读审核/root/m122_template_pilot_caller_source_audit完成：源码PASS、总体范围WARN、blocking_count0、runtime NOT_EXECUTED、deployment_authorized=false、full_experiment_pass=false。请求gpt-6-astra/max/forknone，same-family/provisional，实际后端模型/推理配置未独立证明。审核独立读了32件直接输入；这是本次输入数，不是重审旧32份源码全集或扩大旧52项门。没有发现需改的新源码错误；共享冻结模型顺序调用、query列表隔离、keep_rate固定覆盖和GT边界均符合已读路径。安装的外部框架、CUDA内核、实际bank加载及原始图像全体仍未核验。
+
+证据边界继续明确：--shard不负责两物理GPU绑定，必须由真实启动环境/进程回执证明；第二条K/K比较后不重复落盘，只保存第一条及W/K两条完整record/query/feature，K/K相等依赖真实成功运行回执。没有实际序列化往返、K/K一致性、事件覆盖、吞吐/显存/文件体积或写入收益；K/K重复性不能提升为恢复W与无中断原轨迹逐位相同。R1需两个worker真实结果、终止回执和原始材料共同审核后才能推进R2；当前不新增兼容、fallback或计划外防御框架。
+
+私有主件MD20115字节/SHA808e4541d72d8f20b9e77d7cf3dfbbdfe05b982997f26087d5d7610da1db927b，JSON21956字节/SHA9cf346fb782f6341308c6e1b22aa5e108bb0dd0d914b8ce159a7cf219caac4f5保持原字节。完整prompt、审核正文和元数据存于私有trace；公共报告仅加说明及行尾/EOF规范，JSON为原字节复制。审核输入T旧字节2217/SHA1bb29ef55a49cf318ac9af32f9ae13b9acb617e91b24d75c13c194c82133aafd保留于EXPERIMENT_TRACKER_20261009_031056_before_pilot_review_update.md；执行表现仅把R1状态更新为“源码准备完成，实测TODO”。接线说明和参数见refine-logs/m122_trusted_memory/TEMPLATE_PILOT_IMPLEMENTATION.md。
+
+本轮没有新的NN进度查询、权重、优化、C推理或正式指标。最后真实NN观察仍是§5.401的02:24/P0 proxy895、P1排队；不重复旧OPE表或据源码准备填写VOT。唯一原本地等待49208/session22921仍以03:24:04.147736+08:00为下一节点。先封存现有P0/P1完整三数据集及结果审核，再运行新pilot；通过后测事件体积/速率、建立真实教师，并比较同参数C-current与C-future及完整递归。目标持续ACTIVE_UNMET。

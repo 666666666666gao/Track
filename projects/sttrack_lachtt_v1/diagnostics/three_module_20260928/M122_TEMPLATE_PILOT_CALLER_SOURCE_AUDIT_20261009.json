@@ -1,0 +1,468 @@
+{
+  "audit_skill": [
+    "experiment-bridge Phase 2.5",
+    "experiment-audit"
+  ],
+  "date": "2026-10-09",
+  "generated_at": "2026-10-09T03:02:20.3885586+08:00",
+  "agent_task": "/root/m122_template_pilot_caller_source_audit",
+  "project_root": "C:/Users/gb/.codex_track_publish_m29_20260902",
+  "overall_verdict": "WARN",
+  "source_verdict": "PASS",
+  "integrity_status": "WARN",
+  "reason_code": "source_review_only_runtime_not_executed",
+  "blocking_count": 0,
+  "blocking_findings": [],
+  "source_changes_required": false,
+  "runtime": "NOT_EXECUTED",
+  "runtime_results_certified": false,
+  "deployment_authorized": false,
+  "deployment_reason": "EXPERIMENT_PLAN.md:3,78-80 and EXPERIMENT_TRACKER.md:7-12 require R0 completion and result audit before new GPU work; that gate remains incomplete. R1 runtime evidence is also required before full teacher/C work.",
+  "full_experiment_pass": false,
+  "read_only": true,
+  "read_only_scope": "Source, plan, tracker, historical reports and artifacts unchanged; only the two newly requested private report files are written.",
+  "local_only": true,
+  "fresh_context": true,
+  "prior_conclusions_inherited": false,
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "max",
+  "requested_backend": "Codex native reviewer agent",
+  "actual_model_independently_verified": false,
+  "actual_reasoning_effort_independently_verified": false,
+  "backend_configuration_independently_verified": false,
+  "backend_attestation": "UNVERIFIED; requested routing is not independent backend attestation.",
+  "summary": "No actual blocking source defect found in event caching and pilot caller. Observed Python state ownership, native-write reconstruction, manifest ordering, delayed real-GT labels, RNG pairing and frozen input binding match the bounded R1 plan. No pilot event, GPU replay, teacher label, C training or new performance result was executed or accepted.",
+  "checks": {
+    "event_state_restore": {
+      "status": "PASS",
+      "evidence": [
+        "C:18-49",
+        "R:129-134",
+        "N:63-89",
+        "W:75-115"
+      ],
+      "details": "Caches/restores bbox, frame, templates, patch, latest query, selected_feature, initial reference, words/mask/empty and RNG; legal t0 initialization constructs invariant native/model/preprocessor fields. box_mask_z is asserted None. No WriteEvent/tracker/model object enters saved payload."
+    },
+    "alias_and_permanent_slot": {
+      "status": "PASS",
+      "evidence": [
+        "N:77-79",
+        "C:10-15,22,39",
+        "F:15-21,83-89",
+        "W:107-109"
+      ],
+      "details": "Initial duplicate template object is cloned once per snapshot, preserving within-snapshot identity. W replaces slot1, leaves slot0 intact, and copies the companion patch."
+    },
+    "current_submission_and_order": {
+      "status": "PASS",
+      "evidence": [
+        "R:71-91",
+        "F:67-80",
+        "W:89-114"
+      ],
+      "details": "Caller takes an independent pre-step template list and old patch reference; step replaces the patch and appends/pops template slots. Event snapshots the just-committed frame/bbox/query/feature, undoing only template/patch. It collects first12 actual writes without GT filtering and leaves collection actor on its native-write trajectory."
+    },
+    "gt_provenance": {
+      "status": "PASS",
+      "evidence": [
+        "R:53-56,63-101,129-160",
+        "L:14-22",
+        "F:104-143",
+        "W:88-115"
+      ],
+      "details": "Only legal first_box initialization is used before prediction. Current/future GT is read after K/K and W/K finish. Dataset GT provides per-frame IoU and mean valid-future W-minus-K IoU; it never selects events or drives crops/query/templates."
+    },
+    "unknown_negative_and_normalization": {
+      "status": "PASS",
+      "evidence": [
+        "R:104-111,145-160",
+        "D:111-123"
+      ],
+      "details": "GT validity is finite xywh and positive extent. Invalid labels remain null; empty valid future set yields null delta. Negative/zero labels and ineligible events remain in receipts. No metric divides by model prediction statistics; decoder response remains inference logic."
+    },
+    "frames_and_tail": {
+      "status": "PASS",
+      "evidence": [
+        "R:53-56,72-85,126-150",
+        "F:107-119",
+        "L:14-22",
+        "SPEC:5-25,1186-1204,2897-2905",
+        "TOY:1,1367,1406"
+      ],
+      "details": "Internal frame f maps to image stem f+1 and GT[f]. Future indices are f+1 through min(f+32,N-1), within the same case. Events are at multiples of50 and <=32 future frames cannot reach next update. Archived toy07 GT has1406 rows with first row matching spec; existing loader truncates to1367 image frames."
+    },
+    "shared_dependencies": {
+      "status": "PASS",
+      "evidence": [
+        "M:117-132",
+        "F:24-38,114-124",
+        "E:11-35",
+        "V:161-238",
+        "BB:145-158",
+        "PE:23-28",
+        "UT:6-30",
+        "CL:50-76,99-108",
+        "A:1280-1314,1538-1575,1661-1689,1906-1919,1964-1977"
+      ],
+      "details": "Mutable query lists and tensors are branch-owned; initial/words are read-only on inspected path. CLIP hook closures are local and removed after sequential normal calls. backbone.keep_rate is overwritten from invariant native keep_rate each forward. Read active project forwards reveal no further cross-frame module history; external frameworks/kernels remain outside scope."
+    },
+    "frozen_inputs": {
+      "status": "PASS",
+      "evidence": [
+        "R:22-59,68,93,119,123,162",
+        "S:12-17",
+        "W:23-40",
+        "L:43-54",
+        "TRAINED:2-20,11908-11909"
+      ],
+      "details": "P1 final constant equals local final byte hash and archived trained result; spec hash equals trained result. Source checks bank/labels human-confirmed depthtrack provenance, trained bank/labels hashes, native checkpoint through spec and CLIP through bank, sequence set and seed2027. Models eval/frozen; no optimizer."
+    },
+    "rng_same_device": {
+      "status": "PASS",
+      "evidence": [
+        "C:28,36-46",
+        "R:46,85,116-136,164",
+        "F:93-124"
+      ],
+      "details": "Python,NumPy,Torch CPU and current CUDA RNG are cached; payload RNG is restored after initialization and future-image reading. Each pair restores same entry RNG per sequential branch and on normal return. All event tensors move to current CUDA device; pair checks equal/current device. ordinal%2 splits six events per worker. Actual physical GPU assignment is a later launcher responsibility."
+    },
+    "kk_and_raw_evidence": {
+      "status": "PASS",
+      "evidence": [
+        "R:135-143,156-160",
+        "F:128-138",
+        "C:52-54",
+        "W:110-114"
+      ],
+      "details": "K/K executes two independent keep branches and compares each full record/query/selected_feature plus final submission. True receipt is constructed only after successful comparisons. Raw storage includes first K/K trajectory and W/K trajectories, plus event input payload and native prefix. It does not retain second K/K trajectory, so its equality is runtime assertion evidence, not independently recomputable from both stored K/K branches."
+    },
+    "static_call_reachability": {
+      "status": "PASS",
+      "evidence": [
+        "R:18-20,75-82,129-145,172-187"
+      ],
+      "details": "main dispatch connects collect/replay to actual pack/unpack/probe/write_keep/load_truth calls. No claim that definitions or prior AST checking establish executed behavior."
+    },
+    "result_existence": {
+      "status": "WARN",
+      "evidence": [
+        "P:3,44-48,78-87",
+        "T:3,7-12",
+        "R:94-100,163-168"
+      ],
+      "details": "No new runtime result was produced or accepted by this audit. Source result constructors are not experiment evidence. Historical P1 result is used only for fixed input identity."
+    },
+    "scope": {
+      "status": "WARN",
+      "evidence": [
+        "P:44-48,78-83",
+        "R:1-5,88-101,163-167"
+      ],
+      "details": "Bounded first12-event R1 pilot preparation only; not full teacher, C optimization, R1 runtime PASS or complete experiment acceptance."
+    },
+    "eval_type": {
+      "status": "WARN",
+      "planned_type": "real_gt",
+      "executed_type": "not_executed_source_only",
+      "details": "Planned labels use dataset groundtruth.txt; no new executed evaluation receives real_gt status here."
+    }
+  },
+  "limitations": [
+    {
+      "kind": "not_a_source_defect",
+      "detail": "No Torch/NN import, AST/test execution, serialization round trip, event collection, GPU query/compute, SSH, network or live training query was performed."
+    },
+    {
+      "kind": "not_a_source_defect",
+      "detail": "The local Native/model copies and exported dependencies were read; remote repository identity, loaded binaries and installed CLIP/PIL/torchvision/PyTorch/timm/einops/OpenCV/selective_scan/CUDA internals were not re-attested."
+    },
+    {
+      "kind": "not_a_source_defect",
+      "detail": "--shard selects event membership; it does not select a physical device. Future distinct-GPU worker launch commands and visibility mapping have not been supplied or validated."
+    },
+    {
+      "kind": "not_a_source_defect",
+      "detail": "Only first K/K trajectory is retained; event payload/native prefix/W and K rows support replay and label checking, but do not independently prove second K/K equality or uninterrupted native-W continuation."
+    },
+    {
+      "kind": "not_a_source_defect",
+      "detail": "Raw RGB/depth image corpus, bank tensor payload and native/CLIP weights were not loaded. Final.pt was byte-hashed only; spec and archived trained-result fields were inspected. No full old result or52-gate re-audit is claimed."
+    }
+  ],
+  "claims": [
+    {
+      "id": "source_preparation",
+      "impact": "supported_with_scope",
+      "text": "New cache/caller wiring matches bounded R1 source protocol on inspected local path."
+    },
+    {
+      "id": "K_K_runtime_equality",
+      "impact": "unproven",
+      "text": "No actual runtime equality receipt observed."
+    },
+    {
+      "id": "C1_complete_teacher",
+      "impact": "unproven",
+      "text": "No full causal teacher collection accepted."
+    },
+    {
+      "id": "C2_future_supervision_improves_tracking",
+      "impact": "unproven",
+      "text": "No C training or new performance evidence."
+    }
+  ],
+  "input_root": "C:/Users/gb/.codex_track_publish_m29_20260902",
+  "input_count": 32,
+  "inputs_rehashed_before_report": true,
+  "inputs_rehashed_after_report": true,
+  "operation_notes": [
+    "An initial post-write readback command used an invalid PowerShell PSCustomObject literal and produced null-path errors; it did not verify the inputs or mutate them. The corrected readback used the original explicit32-path list, successfully rehashed all32 files, and matched every pre-report SHA/byte count. Only that successful readback is accepted."
+  ],
+  "all_audited_input_hashes_unchanged": true,
+  "audited_inputs": [
+    {
+      "id": "C",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_event_cache.py",
+      "read_scope": "full",
+      "bytes": 2659,
+      "sha256": "4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91"
+    },
+    {
+      "id": "R",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py",
+      "read_scope": "full",
+      "bytes": 10850,
+      "sha256": "d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d"
+    },
+    {
+      "id": "F",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py",
+      "read_scope": "full",
+      "bytes": 6310,
+      "sha256": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940"
+    },
+    {
+      "id": "W",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+      "read_scope": "full",
+      "bytes": 7693,
+      "sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778"
+    },
+    {
+      "id": "L",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+      "read_scope": "full; audit focuses on load_truth:14-22 and binding/main boundary",
+      "bytes": 11546,
+      "sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891"
+    },
+    {
+      "id": "S",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+      "read_scope": "full; audit focuses on sha:12-17",
+      "bytes": 4469,
+      "sha256": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def"
+    },
+    {
+      "id": "D",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+      "read_scope": "full",
+      "bytes": 7739,
+      "sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2"
+    },
+    {
+      "id": "E",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+      "read_scope": "full; active dense_patch_features:11-35",
+      "bytes": 3120,
+      "sha256": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33"
+    },
+    {
+      "id": "DR",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+      "read_scope": "full; active sample_regions/weighted_mean:12-27",
+      "bytes": 7272,
+      "sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b"
+    },
+    {
+      "id": "IP",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+      "read_scope": "1-45; active roi_positions:10-13",
+      "bytes": 7951,
+      "sha256": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f"
+    },
+    {
+      "id": "CG",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+      "read_scope": "full; active crop_geometry:8-11",
+      "bytes": 2237,
+      "sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1"
+    },
+    {
+      "id": "N",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/test/tracker/sttrack.py",
+      "read_scope": "full",
+      "bytes": 10216,
+      "sha256": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f"
+    },
+    {
+      "id": "M",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/tsg_semantics_20260906/source_snapshot/lib/models/sttrack/sttrack.py",
+      "read_scope": "full",
+      "bytes": 10684,
+      "sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13"
+    },
+    {
+      "id": "P",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN.md",
+      "read_scope": "full",
+      "bytes": 13682,
+      "sha256": "cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94"
+    },
+    {
+      "id": "T",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md",
+      "read_scope": "full",
+      "bytes": 2217,
+      "sha256": "1bb29ef55a49cf318ac9af32f9ae13b9acb617e91b24d75c13c194c82133aafd"
+    },
+    {
+      "id": "OLD",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_TEMPLATE_FORK_HELPER_SOURCE_AUDIT_20261009.md",
+      "read_scope": "full; background only; conclusions not inherited",
+      "bytes": 16047,
+      "sha256": "a4a5a90e4f9ae1de66db6edab6b7fc123d9e9d6fadbd1f2effde85cf2108237a"
+    },
+    {
+      "id": "U",
+      "path": ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/test/tracker/data_utils.py",
+      "read_scope": "full; active PreprocessorMM:16-27",
+      "bytes": 2494,
+      "sha256": "873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5"
+    },
+    {
+      "id": "BT",
+      "path": ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/test/tracker/basetracker.py",
+      "read_scope": "full; constructor and non-visual active path",
+      "bytes": 3155,
+      "sha256": "f9bc6bbfb1a8f677f86e4f1eda024d89baaf454498a5f1321f1421df67a7aa36"
+    },
+    {
+      "id": "V",
+      "path": ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/models/sttrack/vit_care.py",
+      "read_scope": "full",
+      "bytes": 21902,
+      "sha256": "05096a6cec0448e49f82264ad34647e267a6a50a6d96d3ee07ba10d61ce6ef0e"
+    },
+    {
+      "id": "A",
+      "path": ".aris/m122_full_causal_20261007/runtime_state_dependency_sources_20261009/lib/models/layers/mamba.py",
+      "read_scope": "active-route search plus 1-169,369-438,1092-1316,1437-1693,1863-1978; other classes and external kernels not fully audited",
+      "bytes": 87654,
+      "sha256": "a11e49551cea9c7a188b9b7783b541b315a1f684b86e1de364bb3ad6c04f00be"
+    },
+    {
+      "id": "BB",
+      "path": ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/sttrack/base_backbone.py",
+      "read_scope": "full",
+      "bytes": 6183,
+      "sha256": "b8f7c576072471b78a0cb025264b7d35d926b9044df45945625b0a8f35751b5a"
+    },
+    {
+      "id": "UT",
+      "path": ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/sttrack/utils.py",
+      "read_scope": "full",
+      "bytes": 4438,
+      "sha256": "557ce8e3d352e3ec69b2d21fcb0f8c18703b3152eff6f3f2e1a7470585e634ea"
+    },
+    {
+      "id": "PE",
+      "path": ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/layers/patch_embed.py",
+      "read_scope": "full",
+      "bytes": 961,
+      "sha256": "2259b7703f008748167dd65d12ac28a496235d1f20a1d5c84a3aa0da9c8c0499"
+    },
+    {
+      "id": "CL",
+      "path": ".aris/m122_full_causal_20261007/runtime_backbone_dependency_sources_20261009/lib/models/layers/cross_layer.py",
+      "read_scope": "full",
+      "bytes": 3969,
+      "sha256": "5008a012c53aaa0f5b7bb567b95b6118cef138644be9955e566cdf8c298d114e"
+    },
+    {
+      "id": "SP",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/m55/code/control/lib/train/data/processing_utils.py",
+      "read_scope": "full; active sample_target:14-81",
+      "bytes": 6758,
+      "sha256": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6"
+    },
+    {
+      "id": "H",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/models/layers/head.py",
+      "read_scope": "1-25,108-205",
+      "bytes": 10778,
+      "sha256": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326"
+    },
+    {
+      "id": "RGBD",
+      "path": "projects/sttrack_lachtt_v1/diagnostics/m84_centered/started/code/lib/train/dataset/depth_utils.py",
+      "read_scope": "full except first output truncation remedied by 1-132 reread; active get_rgbd_frame:7-68",
+      "bytes": 9538,
+      "sha256": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e"
+    },
+    {
+      "id": "SPEC",
+      "path": ".aris/m122_full_causal_20261007/train_diagnostic_inputs_20261008/training_spec.json",
+      "read_scope": "1-110,1186-1204,2897-2932 plus parsed 152 sequence counts/order metadata",
+      "bytes": 99659,
+      "sha256": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425"
+    },
+    {
+      "id": "COPYMAP",
+      "path": ".aris/m122_full_causal_20261007/train_diagnostic_inputs_20261008/files.json",
+      "read_scope": "1-50; metadata context only",
+      "bytes": 23970,
+      "sha256": "7457e4929e31eb6d103f7ed8899f0bdf0afee14f5c290b1788c31938fbb0a827"
+    },
+    {
+      "id": "TOY",
+      "path": ".aris/m122_full_causal_20261007/train_diagnostic_inputs_20261008/groundtruth/toy07_indoor_320.txt",
+      "read_scope": "all rows counted and hashed; first row and rows1367/1406 inspected; no IoU evaluated",
+      "bytes": 20581,
+      "sha256": "683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2"
+    },
+    {
+      "id": "TRAINED",
+      "path": ".aris/m122_full_causal_20261007/observations/hour_0224/train_precision1/result.json",
+      "read_scope": "1-80 and binding-field search incl11908-11909; historical metadata only, not new result audit",
+      "bytes": 326225,
+      "sha256": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6"
+    },
+    {
+      "id": "FINAL",
+      "path": ".aris/m122_full_causal_20261007/trained_finals/precision1_final.pt",
+      "read_scope": "byte hash/size only; not deserialized",
+      "bytes": 1538308,
+      "sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811"
+    }
+  ],
+  "input_binding_observations": {
+    "final_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+    "spec_sha256": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "trained_bank_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+    "trained_labels_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+    "spec_native_checkpoint_sha256": "cacbd799115be1aaeb049cee0db89270851e3b6dd68997553b4c2c31c1104f98",
+    "actual_frame_manifest_sequences": 152,
+    "sum_rgb_frames_minus_one": 219802,
+    "toy07_local_gt_rows": 1406,
+    "toy07_spec_rgb_depth_frames": 1367,
+    "bank_and_native_clip_payloads_reloaded": false
+  },
+  "actions_required_now": [],
+  "next_gate": "Only source preparation/review is currently authorized. Complete R0 and its result audit first; then run and audit the existing bounded R1 pilot before full teacher/C work.",
+  "report_files": [
+    ".aris/m122_full_causal_20261007/TEMPLATE_PILOT_CALLER_SOURCE_AUDIT_20261009_primary.md",
+    ".aris/m122_full_causal_20261007/TEMPLATE_PILOT_CALLER_SOURCE_AUDIT_20261009_primary.json"
+  ]
+}
