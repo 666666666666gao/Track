@@ -1,0 +1,648 @@
+{
+  "audit_skill": "experiment-audit",
+  "stage": "result",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "blocking_count": 0,
+  "nonblocking_count": 1,
+  "reason_code": "remote_raw_unavailable_for_independent_overlap_replay",
+  "summary": "No blocking integrity defect found in the completed sealed-OPE diagnostic. All local bytes, source/provenance links and 260-row/130-contrast arithmetic checks pass. One nonblocking warning limits raw-data independence: 783 recorded remote inputs were not locally available or independently replayed.",
+  "generated_at": "2026-10-08T10:18:34.045100+00:00",
+  "date": "2026-10-08",
+  "trace_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\traces\\experiment-audit\\2026-10-08_m122_ope_posthoc_result",
+  "agent_id": "/root/m122_ope_posthoc_result_review",
+  "verdict_id": "/root/m122_ope_posthoc_result_review:result:2026-10-08",
+  "reviewer_backend": "native_codex",
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_reasoning": "max",
+  "reviewer_family": "openai",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "actual_reviewer_model_independently_verified": null,
+  "actual_reasoning_effort_independently_verified": null,
+  "backend_independently_attested": false,
+  "model_attribution": "Requested native Codex routing only; backend/model/effort not independently attested.",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "independent_context": true,
+  "prior_audit_verdict_used": false,
+  "stage_scope": "completed_OPE_posthoc_diagnostic_only",
+  "evaluation_type": "real_gt",
+  "checks": {
+    "A": {
+      "name": "Ground truth provenance",
+      "status": "WARN",
+      "classification": "real_gt",
+      "details": "The inspected executed source loads dataset groundtruth.txt, pins its digest to cases.json, and applies the locked VOT bounded-rectangle overlap routine. It does not derive GT from predictions. All 260 GT ledger references resolve to the same 130 dataset GT digests across variants; first-RGB digests and legal initial boxes also match the independently hashed initialization binding. The original OPE runner opens subsequent GT only in the analysis path after sealed prediction files. However, the 130 remote GT files and RGB images themselves are absent from the supplied local evidence, so provenance is verified through source and linked records, not a fresh raw-byte/pixel replay. This is the sole nonblocking warning.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 83,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:83",
+          "detail": "Dataset GT pinned against case gt_sha256; boxes and scores come from separate receipt-pinned prediction files at lines 81-82."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 40,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:40",
+          "detail": "Finite positive-area dataset rectangles define visible GT; invalid/unknown boxes become Special(0), and bounded overlaps use calculate_overlaps."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+          "line": 48,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:48",
+          "detail": "Original analysis verifies sealed prediction hashes, then opens GT; locked evaluator is called at line 55."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/plan.json",
+          "line": 11,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/plan.json:11",
+          "detail": "DepthTrack dataset root is /root/autodl-tmp/depthtrack/test/sequences; CDTB plan line 11 gives /root/autodl-tmp/CDTB/sequences."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/cases.json",
+          "line": 11,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/cases.json:11",
+          "detail": "First dataset GT digest; all four full case tables were read and checked."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json",
+          "line": 23,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json:23",
+          "detail": "Bound first-RGB path/digest and initial box; all 130 OPE binding entries checked."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 7812,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:7812",
+          "detail": "804-entry remote input SHA256 ledger; raw files are recorded, not included in the local result archive."
+        }
+      ]
+    },
+    "B": {
+      "name": "Score normalization and numerical arithmetic",
+      "status": "PASS",
+      "details": "P is the overlap mean on frames selected by each original finite dataset threshold; R divides selected overlap sum by the count of valid dataset GT frames. Macro P/R average sequences equally, and official F is their harmonic mean. There is no normalization by prediction max/min/mean. Every CSV numeric field equals its JSON counterpart, all 260 sequence F/cost/count relations are consistent, and four independently recomputed macro P/R/F values match the original metrics within 2.842170943040401e-14 percentage points. The all-box R cap is the macro recall after removing confidence filtering while keeping every saved box and the valid-GT denominator fixed. All four caps remain below their R targets. All 130 signed contrast entries and both signed aggregate sums close.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 74,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:74",
+          "detail": "Reuse original finite threshold; P/R, all-box recall, and costs are computed at lines 91-105."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 106,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:106",
+          "detail": "Aggregate F is harmonic of macro P and R, followed by original metric assertions."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 117,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:117",
+          "detail": "Original threshold scan uses a common confidence grid and selects maximum macro F; this posthoc analysis does not rescan thresholds."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+          "line": 124,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:124",
+          "detail": "Standard selected-overlap precision and visible-GT recall denominators."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/per_sequence.csv",
+          "line": 1,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/per_sequence.csv:1",
+          "detail": "All 260 data rows and all 15 columns were checked, with 260 unique ordered model/dataset/sequence keys."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 24,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:24",
+          "detail": "P0 DepthTrack fixed-box R cap; other caps at lines 1789, 3518, 5168."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 6891,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:6891",
+          "detail": "Signed whole-trajectory contrast, with every sequence retained; CDTB contrast starts at line 7246."
+        }
+      ]
+    },
+    "C": {
+      "name": "Actual result existence, archive integrity and linkage",
+      "status": "PASS",
+      "details": "All 32 requested primary artifacts exist and were read in full. The original 92,670-byte result ZIP hashes to be46899a9690200909f767c9118d6ab93790ddee05060c18acc2f1119fb593ef, matching both terminal receipt and extraction record. All six archive members equal local extracted bytes; all five manifest sizes/digests match. analysis.exit contains 0; analysis.log is exactly the four JSON summaries. Native SSH/deploy/download receipts and execution.json record successful completion. All local selection/bundle/plan/cases/receipt/metrics/source links match; both variants keep the same own final across their two datasets, and the exact four original metric hashes match the analysis source constants. The 804-entry remote ledger is fully accounted for, with 21 entries independently rehashed locally and 783 remote-only entries explicitly bounded. No prior audit verdict was used as evidence of correctness.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_CPU_execution_native_receipt.json",
+          "line": 3,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_CPU_execution_native_receipt.json:3",
+          "detail": "Recorded actual SSH exit 0; complete native terminal summary at line 20."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_results_extraction.json",
+          "line": 3,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_results_extraction.json:3",
+          "detail": "Original archive size/hash, transfer exit and source linkage."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/files.json",
+          "line": 2,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/files.json:2",
+          "detail": "Five original member size/SHA256 records; verified directly against both ZIP and extracted bytes."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/analysis.exit",
+          "line": 1,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/analysis.exit:1",
+          "detail": "Archived analysis exit status is 0."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/analysis.log",
+          "line": 2,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/analysis.log:2",
+          "detail": "Actual log carries the completed diagnostic status and four summary rows."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/execution.json",
+          "line": 4,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/execution.json:4",
+          "detail": "Executed source hash, exit 0, interpreter/flags and 52-source before/after record."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/selection.json",
+          "line": 7,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/selection.json:7",
+          "detail": "P0 final/bundle/plan hashes; P1 final/bundle begins at line 29."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/metrics.json",
+          "line": 14,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/metrics.json:14",
+          "detail": "Final, bundle, plan, receipt and metric-source hash linkage; equivalent keys in all four original metrics."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 8618,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:8618",
+          "detail": "Result records the same executed analysis source hash."
+        }
+      ]
+    },
+    "D": {
+      "name": "Executed source and live numerical call paths",
+      "status": "PASS",
+      "details": "The compressed launcher embedded in the deployment command was decoded without execution and equals the inspected launcher text. The deployment ZIP hash equals the launcher pin; its analysis source and plan are byte-identical to the reviewed current local files. The launcher sets CUDA_VISIBLE_DEVICES empty, PYTHONOPTIMIZE=0 and PYTHONDONTWRITEBYTECODE=1, invokes the mplt Python with -B -u, and records actual exit 0. Assertions therefore remain enabled in the intended executed path. main -> pinned/read -> locked _load_rows/_vot_overlaps -> low_segments -> macro/contrast checks -> JSON/CSV/log is connected and outputs every reported field. Original run_m122_official.py invokes evaluate_depthtrack_results, whose threshold and macro functions feed the sealed metrics. format_metrics is a formatting utility, not an unexecuted claimed metric. Input hashes are checked again before outputs; launcher checks the original 52-source gate before and after. The archived receipt supports that remote guard; this audit did not independently rehash all 52 files on the server. No tracker/neural training or prediction path is called by this diagnostic.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_command.txt",
+          "line": 1,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_command.txt:1",
+          "detail": "Encoded launcher was decoded and compared with the local launcher, not run."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_launcher.py",
+          "line": 4,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_launcher.py:4",
+          "detail": "Parent launcher asserts __debug__; deployment/source/gate pins at lines 6, 15, 17."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_launcher.py",
+          "line": 19,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_launcher.py:19",
+          "detail": "Original locked sources checked before execution; rechecked at line 32."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_launcher.py",
+          "line": 20,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_launcher.py:20",
+          "detail": "CPU-only environment and assertions enabled; exact subprocess call at line 23."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 71,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:71",
+          "detail": "Pinned metric dynamically loaded and helpers actually called at lines 81-89."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 96,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:96",
+          "detail": "low_segments called on the real per-frame severe mask; H10 reaches JSON rows."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 125,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:125",
+          "detail": "Every pinned input reread before output writes; JSON/CSV/log emission follows at lines 134-142."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 145,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:145",
+          "detail": "main is actually the script entry point."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+          "line": 55,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:55",
+          "detail": "Original locked evaluation function is called; mode dispatch at line 81."
+        }
+      ]
+    },
+    "E": {
+      "name": "Scope, H10 meaning and attribution limits",
+      "status": "PASS",
+      "details": "The completed scope is exactly two frozen final variants x two OPE datasets: 50 sequences/76,373 frames and 80/101,956 per variant, hence 260 sequence-runs and 356,658 frame-runs. This repeats 130 unique sequences and 178,329 underlying frames across variants; it is not 260 distinct videos. There is one frozen final per configuration and no replicated-seed estimate in this evidence. All positive and negative sequences are retained (DepthTrack 27 positive/23 negative; CDTB 42/38). Every one of 625 recorded H10 intervals has valid integer, ordered, nonoverlapping zero-based half-open endpoints, length >=10, and count/longest/covered-frame consistency. Their actual framewise masks were not independently replayed. H10 is contiguous valid-GT IoU <=0.1; invalid GT interrupts runs and is not established physical absence. Human review used multiframe aids. Fixed saved boxes do not recover exact crops, query/template state or causal module effects. No VOT result, full nine-metric result, robustness, first-frame-only annotation, or full-goal completion is established.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md",
+          "line": 9,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md:9",
+          "detail": "Fixed-trajectory cap, signed arithmetic ledger and H10 limitations declared."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md",
+          "line": 11,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md:11",
+          "detail": "Six-decimal boxes cannot reconstruct exact crop/query/template state; plan is a preparation record, not a current results claim."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md",
+          "line": 13,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md:13",
+          "detail": "VOT and full goal are explicitly separate from this OPE diagnostic."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 31,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:31",
+          "detail": "H10 endpoint construction; valid-GT severe mask is defined at line 95."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 120,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:120",
+          "detail": "Each signed contribution is (P1-P0)/dataset sequence count; no causal attribution."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 4,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:4",
+          "detail": "Scope and explicit false full_VOT/exact_crop/text-causal flags at lines 8-13."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/bundle.json",
+          "line": 72,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/bundle.json:72",
+          "detail": "Human review used multiframe aids; P1 bundle has the same qualifier."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py",
+          "line": 40,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py:40",
+          "detail": "R target values match the original nine-metric acceptance thresholds, without satisfying its VOT requirements."
+        }
+      ]
+    },
+    "F": {
+      "name": "Evaluation type and completed-diagnostic classification",
+      "status": "PASS",
+      "classification": "real_gt",
+      "details": "real_gt, posthoc diagnostic on sealed saved OPE trajectories. GT is dataset-provided in the inspected code, rather than model-generated reference. Completion is supported for the diagnostic outputs and local arithmetic/hash checks only. This is not a neural rerun, deployable new score, independent replay from remote raw files, VOT completion, or full-goal acceptance. The semantic review uses a fresh native Codex agent context but remains same-family/provisional; requested gpt-6-astra/max routing is not independently attested.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 83,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:83",
+          "detail": "Ground truth comes from dataset groundtruth.txt."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 2,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:2",
+          "detail": "Completed diagnostic status, with neural_calls=0 and optimizer_steps=0 at lines 5-6."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 9,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:9",
+          "detail": "No full VOT claim."
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 7812,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:7812",
+          "detail": "Remote provenance ledger, distinguished from independently available local bytes."
+        }
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "W1",
+      "severity": "warning",
+      "blocking": false,
+      "title": "Remote raw inputs were not independently replayed",
+      "detail": "The result ledger lists 804 unique inputs. This reviewer directly rehashed 21 locally available ledger entries and verified all remaining digest relationships. The other 783 are 260 box TXT, 260 confidence TXT, 130 GT TXT, 130 first RGB files, two final weights, and one human-text bank. Source/receipts say these were checked on the server; no independent raw-byte or overlap replay is claimed.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json",
+          "line": 7812,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json:7812",
+          "detail": "Complete input ledger"
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 125,
+          "reference": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py:125",
+          "detail": "Runtime before/after input hash assertion"
+        }
+      ],
+      "required_claim_qualifier": "Locally verified archived-result arithmetic and provenance; remote raw overlap not independently replayed.",
+      "action": "Retain the qualifier. A later audit with original raw bytes can strengthen this claim; no source change is indicated by the present local checks."
+    }
+  ],
+  "scope": {
+    "models": 2,
+    "configurations": [
+      "precision0",
+      "precision1"
+    ],
+    "datasets": [
+      "depthtrack_test",
+      "cdtb"
+    ],
+    "unique_sequences": 130,
+    "unique_dataset_frames": 178329,
+    "sequence_runs": 260,
+    "frame_runs": 356658,
+    "final_weights_per_configuration": 1,
+    "replicated_seed_evidence": false,
+    "H10_intervals": 625,
+    "human_review_used_multiframe_aids": true,
+    "full_VOT_audited": false,
+    "full_goal_completed": false
+  },
+  "allowed_claims": [
+    "The CPU posthoc analysis of the four sealed OPE rows completed, and the archived local result/CSV/log/exit bytes and primary input links are consistent.",
+    "All 260 archived sequence rows reproduce the four original macro P/R and harmonic F values within 2.842170943040401e-14 percentage points, conditional on the archived remote-overlap computations.",
+    "For these fixed saved trajectories, removing confidence reporting filters yields the four recorded recall caps, each below its prescribed recall target; confidence filtering alone cannot make these fixed boxes meet that target.",
+    "The complete signed sequence ledger sums to +0.35245164487331 pp on DepthTrack and -0.60621304827621 pp on CDTB for P1 minus P0 all-box macro recall.",
+    "The reported H10 endpoints/counts are structurally and arithmetically consistent for this archived diagnostic; framewise overlap masks were not independently replayed."
+  ],
+  "unsupported_claims": [
+    "Independent verification of all original remote prediction/GT/RGB/final-weight/bank bytes or a fresh raw-overlap replay.",
+    "A new deployable tracker score, exact crop/query/template reconstruction, causal effect of an individual loss/text/module, or first actual state-divergence mechanism.",
+    "VOT EAO/ACC/ROB completion or performance, H10 as VOT robustness, full nine-metric acceptance, or full goal completion.",
+    "Replicated-seed robustness, statistical significance, or a first-frame-only human annotation protocol."
+  ],
+  "verified_aggregates": [
+    {
+      "model": "precision0",
+      "dataset": "depthtrack_test",
+      "sequences": 50,
+      "frames": 76373,
+      "original_threshold": 0.075045,
+      "macro_P": 66.4238873979365,
+      "macro_R": 63.24489153999057,
+      "harmonic_macro_F": 64.7954208955428,
+      "mean_sequence_F": 64.11531776381062,
+      "all_boxes_R": 64.04596513121925,
+      "score_selection_cost_pp": 0.8010735912286807,
+      "target_R": 64.9,
+      "target_shortfall_pp": 0.854034868780758,
+      "valid_GT_frames": 73389,
+      "selected_frames": 69425,
+      "severe_low_overlap_frames": 18376,
+      "H10_segments": 228,
+      "H10_covered_frames": 17392,
+      "longest_H10_frames": 883
+    },
+    {
+      "model": "precision0",
+      "dataset": "cdtb",
+      "sequences": 80,
+      "frames": 101956,
+      "original_threshold": 0.138744,
+      "macro_P": 72.04466929719405,
+      "macro_R": 70.17459804062064,
+      "harmonic_macro_F": 71.09733868746733,
+      "mean_sequence_F": 70.47309675617011,
+      "all_boxes_R": 71.05523547865803,
+      "score_selection_cost_pp": 0.8806374380373871,
+      "target_R": 75.6,
+      "target_shortfall_pp": 4.5447645213419605,
+      "valid_GT_frames": 91300,
+      "selected_frames": 90621,
+      "severe_low_overlap_frames": 10222,
+      "H10_segments": 99,
+      "H10_covered_frames": 9910,
+      "longest_H10_frames": 948
+    },
+    {
+      "model": "precision1",
+      "dataset": "depthtrack_test",
+      "sequences": 50,
+      "frames": 76373,
+      "original_threshold": 0.075227,
+      "macro_P": 66.20888223049123,
+      "macro_R": 63.77789473824347,
+      "harmonic_macro_F": 64.97065655606941,
+      "mean_sequence_F": 64.37956296750926,
+      "all_boxes_R": 64.39841677609256,
+      "score_selection_cost_pp": 0.6205220378490951,
+      "target_R": 64.9,
+      "target_shortfall_pp": 0.5015832239074456,
+      "valid_GT_frames": 73389,
+      "selected_frames": 70967,
+      "severe_low_overlap_frames": 16914,
+      "H10_segments": 200,
+      "H10_covered_frames": 16069,
+      "longest_H10_frames": 588
+    },
+    {
+      "model": "precision1",
+      "dataset": "cdtb",
+      "sequences": 80,
+      "frames": 101956,
+      "original_threshold": 0.165786,
+      "macro_P": 74.47906262771164,
+      "macro_R": 69.7965033243733,
+      "harmonic_macro_F": 72.06179519015306,
+      "mean_sequence_F": 70.60868565878624,
+      "all_boxes_R": 70.44902243038182,
+      "score_selection_cost_pp": 0.6525191060085157,
+      "target_R": 75.6,
+      "target_shortfall_pp": 5.150977569618178,
+      "valid_GT_frames": 91300,
+      "selected_frames": 87532,
+      "severe_low_overlap_frames": 10600,
+      "H10_segments": 98,
+      "H10_covered_frames": 10294,
+      "longest_H10_frames": 696
+    }
+  ],
+  "verified_contrasts": [
+    {
+      "dataset": "depthtrack_test",
+      "sequences": 50,
+      "positive": 27,
+      "negative": 23,
+      "ties": 0,
+      "positive_macro_contribution_pp": 3.367721557845561,
+      "negative_macro_contribution_pp": -3.0152699129722507,
+      "signed_macro_sum_pp": 0.35245164487331043,
+      "macro_all_boxes_R_difference_pp": 0.3524516448733124
+    },
+    {
+      "dataset": "cdtb",
+      "sequences": 80,
+      "positive": 42,
+      "negative": 38,
+      "ties": 0,
+      "positive_macro_contribution_pp": 3.3047192253879523,
+      "negative_macro_contribution_pp": -3.9109322736641596,
+      "signed_macro_sum_pp": -0.6062130482762071,
+      "macro_all_boxes_R_difference_pp": -0.6062130482762171
+    }
+  ],
+  "verified_totals": {
+    "rows": 260,
+    "frames": 356658,
+    "valid_GT_frames": 329378,
+    "selected_frames": 318545,
+    "severe_frames": 56112,
+    "H10_segments": 625,
+    "H10_covered_frames": 53665
+  },
+  "deterministic_local_verification": {
+    "status": "PASS",
+    "acceptance_status": "accepted",
+    "interpreter": "E:/python.exe",
+    "stdlib_only": true,
+    "assertion_count": 24036,
+    "primary_files_read": 32,
+    "numeric_max_abs_residuals": {
+      "row harmonic F": 2.842170943040401e-14,
+      "row common overlap sum": 1.4210854715202004e-14,
+      "row selection cost": 1.3322676295501878e-14,
+      "row all-box R equals visible-GT IoU": 2.842170943040401e-14,
+      "macro result": 1.4210854715202004e-14,
+      "macro original": 2.842170943040401e-14,
+      "original fraction-percent": 0.0,
+      "macro cap": 0.0,
+      "macro selection cost": 1.587618925213974e-14,
+      "macro cap-R cost": 9.547918011776346e-15,
+      "contrast signed difference": 0.0,
+      "contrast signed contribution": 0.0,
+      "contrast aggregate closure": 9.992007221626409e-15
+    },
+    "remote_contacts": 0,
+    "neural_calls": 0,
+    "original_inputs_mutated": false,
+    "verifier_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_result/002-independent-local-verifier.py",
+    "result_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_result/002-independent-local-verification.json"
+  },
+  "provenance_boundary": {
+    "input_ledger_entries": 804,
+    "independently_hashed_local_ledger_entries": 21,
+    "local_ledger_paths": {
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/selection.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/selection.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/bundle.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/bundle.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/depthtrack_test/plan.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/plan.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/depthtrack_test/cases.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/cases.json",
+      "/home/SUTrack_RGBD_L/.aris/m122_full_causal_20261007/official_initialization_binding.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json",
+      "/home/SRTrack_RGBD_L/lib/test/analysis/depthtrack_pr.py": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/depthtrack_test/predictions/metrics.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/metrics.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/depthtrack_test/predictions/receipt.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/receipt.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/cdtb/plan.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/plan.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/cdtb/cases.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/cases.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/cdtb/predictions/metrics.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/metrics.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/cdtb/predictions/receipt.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/receipt.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/bundle.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/bundle.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/depthtrack_test/plan.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/plan.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/depthtrack_test/cases.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/cases.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/depthtrack_test/predictions/metrics.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/metrics.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/depthtrack_test/predictions/receipt.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/receipt.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/cdtb/plan.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/plan.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/cdtb/cases.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/cases.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/cdtb/predictions/metrics.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/metrics.json",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/cdtb/predictions/receipt.json": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/receipt.json"
+    },
+    "remote_only_counts": {
+      "frozen_final_weight": 2,
+      "human_text_bank": 1,
+      "saved_box_TXT": 260,
+      "saved_confidence_TXT": 260,
+      "dataset_GT_TXT": 130,
+      "first_RGB": 130
+    },
+    "raw_overlap_replayed": false,
+    "remote_52_source_guard": "Recorded by inspected launcher and archived execution receipt; not independently rerun on server."
+  },
+  "archived_member_hashes": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment.zip!analyze_m122_ope_trajectories.py": "sha256:673b5f516c93611386aca46fa839600e49fc4e3aeb91d3260f909ca5124a8626",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment.zip!files.json": "sha256:9768109eeed902703998177ee44ead36dc1f8e5374daf31ae60548d3c47a47c4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment.zip!M122_POSTHOC_OPE_PLAN.md": "sha256:9e6cfad3bb0a55f797887a1e607cbdbcad3402e5763a43cba81f987fef77c4e0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment.zip!M122_POSTHOC_OPE_SOURCE_REVIEW.json": "sha256:ddd2271e28a58c17702b4f92482123487ebbf06a4222de1dffd145d404c002ad",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment.zip!M122_POSTHOC_OPE_SOURCE_REVIEW.md": "sha256:9ed94dc9398d35973bfcabfa64ee540ac3b8e59760ae635abcda6f689f7a6cd1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008.zip!analysis.log": "sha256:671bddeafa88ffe5906b537976893cde02d05e8b6722132c89d83bad65ad7cd9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008.zip!analysis.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008.zip!execution.json": "sha256:dad5f9251a5cc805ea56a445e68dfae2c5042be6825513274feab5098741fa88",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008.zip!result.json": "sha256:7fb754ada26f3e6d3fd673a02b8b9f9402f9dd0590787fda4fa11c2e44f445e8",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008.zip!per_sequence.csv": "sha256:e134b01a22d3d245e4d603c6e7bbc0ba7a54e93a1203d02e86bbfdc7f7fc12c0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008.zip!files.json": "sha256:fdc29ed6ed96e24b490be2e2ab422dda03ca7b1f1ef78d08a1dfbfedb122177d"
+  },
+  "audited_input_hashes": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_result/001-result-artifacts.request.json": "sha256:9d95f36b6549de53aa5fdf9f0ccf2b157577d74bd828b791f638ca703173e208",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py": "sha256:673b5f516c93611386aca46fa839600e49fc4e3aeb91d3260f909ca5124a8626",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_POSTHOC_OPE_PLAN.md": "sha256:9e6cfad3bb0a55f797887a1e607cbdbcad3402e5763a43cba81f987fef77c4e0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py": "sha256:05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/complete_evaluation_source_gate.json": "sha256:81ad7a35bc04c3c8eee770ab5eaf97eea6e63ac423e1ade44f1e4a569617314a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_launcher.py": "sha256:8eb42c711a0626f3eb9923c2ef0c0430c742c94a2baa1025fd25103b046ad152",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_CPU_execution_native_receipt.json": "sha256:46eb5fe9de60b9a0220b7d89b187411988c621f58f68005a46dea00ba71f1669",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_results_extraction.json": "sha256:43658015104ec1ed2344ad2d973853552ff3153647e036a35da6de75d5e49f11",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/files.json": "sha256:fdc29ed6ed96e24b490be2e2ab422dda03ca7b1f1ef78d08a1dfbfedb122177d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/execution.json": "sha256:dad5f9251a5cc805ea56a445e68dfae2c5042be6825513274feab5098741fa88",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/analysis.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/analysis.log": "sha256:671bddeafa88ffe5906b537976893cde02d05e8b6722132c89d83bad65ad7cd9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/result.json": "sha256:7fb754ada26f3e6d3fd673a02b8b9f9402f9dd0590787fda4fa11c2e44f445e8",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008/per_sequence.csv": "sha256:e134b01a22d3d245e4d603c6e7bbc0ba7a54e93a1203d02e86bbfdc7f7fc12c0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/selection.json": "sha256:2ff90eb580c4f09638b79e0ec665898982d113d904ac42a93ae18166c2b45975",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/bundle.json": "sha256:e514bc1721be562b3ee982444b78f09abcaea1584e314ca0971154e539919924",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/plan.json": "sha256:c2d7f9773446ef215dc8a25258ed4f7407087169f7bd6051c503e75796fd6b7c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/cases.json": "sha256:158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/receipt.json": "sha256:747f9c72d3a7dca18b8ff1f100c6d8226a4c4b6ce5dab144b30a1d58a518d5cb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/depthtrack_test/predictions/metrics.json": "sha256:04edc9994cc488e8cf7496f2243a58aed18b0777ebbbd8a991b936694154047d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/plan.json": "sha256:48d34542a7d19a45895f1ac011f7ea0bcf457a0f9a495d85f799230c969699f0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/cases.json": "sha256:b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/receipt.json": "sha256:c4dab6e9979ae4606c24479cfefa9b78973882fba2004604134b823606532f82",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision0/cdtb/predictions/metrics.json": "sha256:cbfb344f6e05077dbf061669b74fb8d25d618ce425834e2923d9d8d472ee29d7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/bundle.json": "sha256:ab8f90cc1202dc8cac14dd9138b9e0db83e08e5d51795146df50d48d0d66a8cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/plan.json": "sha256:3b355b65701b783513809ed172422ae11396d7c60ef210419a08e4101c17951e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/cases.json": "sha256:158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/receipt.json": "sha256:1a7d4b5bb7464674801d4514f1dd0e586f18113ca21bb4468d12c82ec65dc1c9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/depthtrack_test/predictions/metrics.json": "sha256:88002b20f3db413ad09512b29119e5c3121f3c288693c6c78294523f1fb1bce4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/plan.json": "sha256:fa58067626fab31db9e3b3160feb2bb03203359ca7841af5b218b75e353e3a0a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/cases.json": "sha256:b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/receipt.json": "sha256:754c024821036eb425cf1ccd240ec5edbfb2a816fd2426d3d0834a4705f03977",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1713/evaluation/precision1/cdtb/predictions/metrics.json": "sha256:fd4c545f30963277fef3e6eb111a7f6e67052912a370bfa7c615d08d90aba7a6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py": "sha256:5bcb7f0316f5fcab0205c0ca061152f7a47e3cc6bb57433b50bf7eca5ce555c6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py": "sha256:d0eeacba480a19ccb717b36b7cf0d7d3fe3cb5395e7bf19d19b37868dd3354f9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/extract_ope_posthoc_results.py": "sha256:eaf7a839574136221a6e4596bd9d7599ac95ec19ea6461a134c7f553dcc4ba84",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_ope_posthoc_deployment.py": "sha256:ef8a6fa2529b1f6a43cbfa9bf251ae10f9ef0b1c9e0132d7dd8fc2fa851587e6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment_command.txt": "sha256:37fe5b747bf1b4792c3887e25ed672deb7ec0e0dfaf8dfce50132fd250c95e00",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_deployment.zip": "sha256:c38b888e110bf7b68acfe7db2d18bc30e14b89ccad27b3308812dafbf423dc45",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/ope_posthoc_result_20261008.zip": "sha256:be46899a9690200909f767c9118d6ab93790ddee05060c18acc2f1119fb593ef",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json": "sha256:3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_result/002-independent-local-verification.json": "sha256:b20e66c19b4aa8db777ede664fdffe5992d1675987e9c91b238aa7b3dcf91420",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_result/002-independent-local-verifier.py": "sha256:b8bb240a7304fb71a66c70d8f316304a7d127ff46e5e2b55ad8b5b5a6f536d11",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-08_m122_ope_posthoc_result/003-write-result-audit.py": "sha256:19e172c8ee7cb5f331dde62eb57fffafca8a412d3504bc032027c8e80fed4dc9"
+  },
+  "outputs": {
+    "markdown": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M122_POSTHOC_OPE_RESULT_AUDIT.md",
+    "machine_json": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M122_POSTHOC_OPE_RESULT_AUDIT.json"
+  }
+}
