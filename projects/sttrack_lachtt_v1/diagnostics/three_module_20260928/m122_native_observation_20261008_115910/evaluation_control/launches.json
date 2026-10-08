@@ -1,0 +1,114 @@
+[
+  {
+    "stage": "encode",
+    "name": "encode",
+    "pid": 83585,
+    "gpu": 0,
+    "args": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py",
+      "--binding",
+      "/home/SUTrack_RGBD_L/.aris/m122_full_causal_20261007/official_initialization_binding.json",
+      "--clip-weight",
+      "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+      "--output",
+      "/root/autodl-tmp/sttrack_m122_official_controller_20261007/official_human_text.pt"
+    ],
+    "started": 1791423147.786859,
+    "exit": 0,
+    "finished": 1791423162.5231302
+  },
+  {
+    "stage": "prepare",
+    "name": "prepare",
+    "pid": 83688,
+    "gpu": null,
+    "args": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py",
+      "--training-root",
+      "/root/autodl-tmp/sttrack_m122_full_causal_20261007",
+      "--binding",
+      "/home/SUTrack_RGBD_L/.aris/m122_full_causal_20261007/official_initialization_binding.json",
+      "--bank",
+      "/root/autodl-tmp/sttrack_m122_official_controller_20261007/official_human_text.pt",
+      "--source-gate",
+      "/home/SUTrack_RGBD_L/.aris/m122_full_causal_20261007/complete_evaluation_source_gate.json",
+      "--output",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007"
+    ],
+    "started": 1791423162.5268574,
+    "exit": 0,
+    "finished": 1791423171.1267416
+  },
+  {
+    "stage": "depthtrack_test_ope_track",
+    "name": "precision0_depthtrack_test_ope_track",
+    "pid": 83712,
+    "gpu": 0,
+    "args": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+      "--plan",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/depthtrack_test/plan.json",
+      "--mode",
+      "ope_track"
+    ],
+    "started": 1791423171.1300223,
+    "exit": 0,
+    "finished": 1791430154.0580935
+  },
+  {
+    "stage": "depthtrack_test_ope_track",
+    "name": "precision1_depthtrack_test_ope_track",
+    "pid": 83713,
+    "gpu": 1,
+    "args": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+      "--plan",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/depthtrack_test/plan.json",
+      "--mode",
+      "ope_track"
+    ],
+    "started": 1791423171.1325905,
+    "exit": 0,
+    "finished": 1791430154.0586114
+  },
+  {
+    "stage": "cdtb_ope_track",
+    "name": "precision0_cdtb_ope_track",
+    "pid": 102639,
+    "gpu": 0,
+    "args": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+      "--plan",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision0/cdtb/plan.json",
+      "--mode",
+      "ope_track"
+    ],
+    "started": 1791430154.0615773
+  },
+  {
+    "stage": "cdtb_ope_track",
+    "name": "precision1_cdtb_ope_track",
+    "pid": 102640,
+    "gpu": 1,
+    "args": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-u",
+      "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py",
+      "--plan",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/cdtb/plan.json",
+      "--mode",
+      "ope_track"
+    ],
+    "started": 1791430154.0642283
+  }
+]

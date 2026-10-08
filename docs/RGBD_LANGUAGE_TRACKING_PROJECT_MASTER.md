@@ -25595,3 +25595,27 @@ P0 final SHA为ff4bbe26f24e96ba8c968927882d3d4e17d7720b28caf65de7f84d6dbacb5c85�
 本次冻结ZIP1101332字节，SHA e75a51f0def010c4706ebb8b33e3f53781ed99149cbddea8686b80b1e123deea，原生SCP19922正常exit0；44文件、42份训练/评测原件长度与SHA全通过，现有评测log未见Traceback，32份本地门控源码未改。归档m122_native_observation_20261008_105818与M122_HOUR_PROGRESS_20261008_105818.json。已完成双final检查引用M122_FINAL_PAIR_RECORD_CHECK_20261008_095720.json，不重新运行NN检查或重复下载权重。
 
 §5.381已发布aac57e3ebc735cd43bb0f2d406d4da16b88e56fb/push0，10:06:11.483367静态SSH8759正常exit0，repo/Desktop/server master当时一致为03bff357a3a19d7a4fad92f61a3eee2a64998f44bff5439e386bfb9ccbcefdef。本节点系统盘275046400字节、数据盘18621808640字节可用，没有删除、安装或其他项目操作。下一唯一NN观察11:58:18.402463+08:00，目标ACTIVE_UNMET，仍无新的完整正式九项指标。
+
+
+### 5.383 2026-10-08：M122两个DepthTrack预测完整封存，原队列进入两卡CDTB
+
+本轮沿用唯一本地等待23768/3981，11:02:11.648139启动、11:58:18.403283正常exit0，等待期间服务器/NN查询均为0。一次原生SSH80018于11:59:10.553144+08:00实测原完整评测队列28100存活，读出后正常exit0，没有重启作业。两个DepthTrack原worker已各正常exit0，原队列11:29:14启动CDTB两worker102639/102640。
+
+| 正式预测进度 | 保持权重0/GPU0 | 保持权重1/GPU1 |
+|---|---:|---:|
+| DepthTrack完整序列/帧 | 50/76373 | 50/76373 |
+| DepthTrack完整预测receipt | complete/exit0 | complete/exit0 |
+| DepthTrack完整预测耗时 | 6965.885秒 | 5799.456秒 |
+| CDTB完整保存序列 | 12/80 | 15/80 |
+| CDTB完整保存帧 | 18657/101956 | 22247/101956 |
+| CDTB累计完整序列耗时 | 1751.328秒 | 1762.619秒 |
+| GPU显存/利用率 | 4122MiB/81% | 4122MiB/56% |
+| 正式P/R/F | 尚未计算 | 尚未计算 |
+
+两个DepthTrack receipt的状态、50条顺序及76373帧数与冻结cases一致，50行记录与已结束worker日志逐行匹配；plan、final、bundle及人工bank SHA与固定selection相符。回执记录首帧后没有打开GT、优化步数0、没有在线更新文字、冻结底座前后相同。这里验收的是完整预测，不将它误写为已有正式指标；原队列按既定协议等两个CDTB预测也封存以后，才运行固定评价代码。
+
+按当前CDTB完成序列速度，剩余时间约2小时10分钟和1小时45分钟，两项OPE正式指标仍预计今天14:00—15:00附近完成，保留工程浮动。VOT随后按既定两GPU四分片执行，不改checkpoint、文字协议、推理配置或评价口径；VOT完成时间等首波anchor实测再校准。
+
+本次冻结ZIP1120018字节，SHA bc2b177742af53e81f5f234ce15d88554a8429c903a5ff8668609ae787b631a1，原生SCP29619正常exit0；50文件、48份训练/评测原件长度与SHA全通过。现有评测日志未见Traceback，32份本地门控源码未改，已结束训练结果和原冻结selection/计划字节与§5.381归档一致。归档m122_native_observation_20261008_115910与M122_HOUR_PROGRESS_20261008_115910.json。
+
+§5.382已发布dfc7702820dd3a19c3f2b950a04cd8e40552131a/push0，11:04:08.347313静态SSH19174正常exit0，repo/Desktop/server master当时一致为e2a0ebc163a04b1d2044d01fe7d2cd4aa4f479e3a9ef3bc849aa12b4ac395f5f。本节点系统盘271945728字节、数据盘18608357376字节可用，没有删除、安装或其他项目操作。下一唯一NN观察12:59:10.553144+08:00，目标ACTIVE_UNMET，仍无新的完整正式九项成绩。
