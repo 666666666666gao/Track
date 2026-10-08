@@ -25662,3 +25662,20 @@ P0目前剩5条、7011帧，按累计速度预计约11分钟完成；两项OPE�
 本次冻结ZIP1207269字节，SHA a674052cf483ffd55d18bfa3c2c7c1ac202a8b9572c1d5f638ae9109837421f0，原生SCP49395正常exit0；53文件、51份原件长度与SHA全通过，现有日志未见Traceback，32份本地门控源码未改。已经封存的训练/selection/计划和两份DepthTrack receipt字节与§5.383归档一致。归档m122_native_observation_20261008_140134与M122_HOUR_PROGRESS_20261008_140134.json。
 
 §5.384已发布246956fe4a610d7c7fd81ad1aaa5a794da8063b2/push0，13:09:52.263526静态SSH59481正常exit0，repo/Desktop/server master当时一致为0be7058849b54177e2dd4a50d2791657098b7081fab8d0f381943e3eb9b588c7。本节点系统盘269717504字节、数据盘18579845120字节可用，没有删除、安装或其他项目操作。下一唯一NN观察15:01:34.881359+08:00，目标ACTIVE_UNMET，仍无新的完整正式九项成绩。
+
+
+### 5.386 2026-10-08：M122四项全量预测已封存，修复CPU计分环境后接续VOT
+
+唯一小时等待23776/10415于15:01:34.881869正常exit0，等待期间服务器/NN查询0。原生SSH5276在15:11:20.231612+08:00实测：两个版本的DepthTrack均50条/76373帧，CDTB均80条/101956帧，四份完整预测receipt存在。两个三pass final不变，没有重新训练或重复OPE推理。
+
+原控制器28100已退出；最后两项DepthTrack CPU分析子进程125682/125683在14:10:02左右exit1。原控制目录缺driver.exit并不代表成功或仍在运行。两份原始错误日志一致：锁定depthtrack_pr.py导入vot.region时出现ModuleNotFoundError: No module named 'vot'。本节点四份metrics.json均不存在，两模型VOT均未launch；不能填写P/R/F，更不能把预测封存写成指标完成。节点GPU0/1均1MiB、0%。
+
+只读CPU探针20467正常exit0：同一锁定指标在sttrack环境复现缺vot/exit1，现有mplt环境导入和相同矩形重叠1.0检查通过/exit0；原run_m122_official.py在mplt的CLI导入也通过。没有安装、重建环境或调用神经推理。真正修复是CPU计分选择已有mplt解释器；原模型、指标公式、52份冻结源、权重、人工文字bank与OPE轨迹均保持。
+
+新增resume_m122_evaluation_metrics.py先验证八项原阶段记录、四份预测封存、final/bundle和未开始的VOT，使用独立控制目录重跑四项CPU分析，再接续原两卡四分片VOT、官方analysis和六项收集。原失败日志/exit不覆盖，VOT仍是这两份final的首次完整推理。新恢复控制器129102实际在2026-10-08T07:35:31.341948+00:00启动，原生SSH正常exit0；启动回执不等于子阶段完成。脚本SHA 6a364b7eb81a02cd4673a7d9209d837087f6aca912b6c0c217977104eef33280。
+
+新源经fresh Astra/max、fork none复核PASS/0 blocking，同family/provisional，后台型号无独立证实；这是source/launch审核，不是已完成结果审计。Py3.8语法通过，原32份本地入口SHA不变，运行期仍核查原52-source gate。没有选择新checkpoint，也没有根据外部指标训练或重生成文字。
+
+本次原始ZIP1219169字节，SHA b9c51d5fb2423c84db347c3db9b950e9c5cc66d9774b77a7303a84ec87207044，原生SCP29492 exit0，60文件/58原摘要/13日志逐字节和SHA检查通过。两份原bundle另行静态取回，分别10473字节，SHA与冻结selection一致；不修改原快照。详细原档m122_native_observation_20261008_151120，修复与阶段边界M122_HOUR_PROGRESS_20261008_151120.json、M122_METRICS_RESUME_PLAN.md、SOURCE_REVIEW。
+
+仅定时神经进度观察仍为每小时，下一节点16:11:20.231612+08:00；唯一等待51532/session92659从15:24:44.743748开始，中间不轮询训练。当前目标ACTIVE_UNMET，未产生新的完整九项结果；必须等两模型VOT完成后按同一final验收。

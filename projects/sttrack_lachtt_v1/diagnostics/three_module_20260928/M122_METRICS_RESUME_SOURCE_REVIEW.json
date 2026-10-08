@@ -1,0 +1,254 @@
+{
+  "audit_skill": "experiment-audit",
+  "review_scope": "source_and_single_owner_launch_only",
+  "generated_at": "2026-10-08T07:29:44.5520840+00:00",
+  "verdict": "PASS",
+  "blocking_count": 0,
+  "nonblocking_count": 3,
+  "summary": "PASS for the proposed single-owner source/launch path, with 0 blocking findings. The mplt switch addresses the observed import failure without replaying OPE inference; it does not establish completed metrics. Four OPE analyses and both full VOT evaluations remain to run, and completed outputs require a separate result audit. Any performance report must disclose initialization text reviewed with multiple frames and the single seed, 2027.",
+  "reviewer_model_requested": "gpt-6-astra",
+  "reviewer_reasoning_requested": "max",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "backend_identity": "independently unverified",
+  "agent_id": "/root/m122_metrics_resume_integrity_review",
+  "source_sha256": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/resume_m122_evaluation_metrics.py": "6a364b7eb81a02cd4673a7d9209d837087f6aca912b6c0c217977104eef33280",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_METRICS_RESUME_PLAN.md": "1761b5e6a33088830c1def5a2a9a0069e80b13033a79ca721a924ecddafff443"
+  },
+  "findings": [
+    {
+      "id": "N1",
+      "severity": "INFO",
+      "blocking": false,
+      "file_line": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision0/depthtrack_test/predictions/receipt.json:2",
+      "evidence": "All four actual receipts say complete_M122_official_OPE_predictions, not completed metrics. Their counts, per-sequence entries, plans, case hashes, final/bundle/bank pins and observation-manifest hashes agree. None of the four local prediction directories contains metrics.json or prediction TXT bytes. The actual observation reports absent metrics and VOT not launched. The import witness runs an import, one identical-rectangle overlap and --help only.",
+      "claim_impact": "No current P/R/F, EAO/ACC/ROB, full evaluation completion or joint-pass claim is supported by this audit. Later metrics and raw output hashes require a separate result audit.",
+      "additional_file_lines": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/observation.json:155",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_metrics_import_probe.py:11",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_metrics_import_probe.py:17",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py:47"
+      ]
+    },
+    {
+      "id": "N2",
+      "severity": "WARN",
+      "blocking": false,
+      "file_line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_EVALUATION_PLAN.md:5",
+      "evidence": "The frozen protocol explicitly discloses that human review used multiple frames/video aids; both actual bundles preserve human_review_used_multiframe_aids=true. Training records and runtime checks fix one seed, 2027, and two third-pass finals.",
+      "claim_impact": "Classify scores as real_gt performance under the disclosed human-confirmed text protocol. Do not describe the input as automatic captions, purely first-frame human review, or multi-seed robustness. Report both final-specific rows without mixing datasets across finals.",
+      "additional_file_lines": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/static_bundle_provenance_1511/precision0_bundle.json:72",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/static_bundle_provenance_1511/precision1_bundle.json:72",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py:16",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py:43"
+      ]
+    },
+    {
+      "id": "N3",
+      "severity": "LOW",
+      "blocking": false,
+      "file_line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_METRICS_RESUME_PLAN.md:9",
+      "evidence": "The plan says four CPU analyses are retried, but the original eight-record launch list contains only two attempted analyses, both DepthTrack. The original controller aborts after that phase, before either CDTB analysis. The resume controller correctly schedules all four analyses.",
+      "claim_impact": "Describe the action as retrying two failed DepthTrack analyses and running the two not-yet-started CDTB analyses. This wording defect does not affect the executable stage coverage.",
+      "additional_file_lines": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation_control/launches.json:119",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation_control/launches.json:137",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_evaluation_suite.py:37",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/resume_m122_evaluation_metrics.py:65"
+      ]
+    }
+  ],
+  "integrity_checks_A_F": {
+    "A": {
+      "status": "PASS",
+      "classification": "real_gt",
+      "evidence": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:48",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:97",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/finalize_vot_transaction_low22.py:213",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py:85"
+      ],
+      "details": "OPE scoring reads dataset groundtruth.txt only after sealed prediction hashes are checked; all 260 case entries across four plans match the locked dataset-reference GT hashes, initial boxes, sequence order and frame counts. VOT uses the frozen official workspace and dataset GT via FrameMapSequence. No model-derived GT is present in the reviewed scoring path. Raw remote GT bytes were not opened by this reviewer; runtime SHA checks remain required."
+    },
+    "B": {
+      "status": "PASS",
+      "evidence": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:117",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:128",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:133",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:143",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_vot.py:23"
+      ],
+      "details": "OPE uses overlap precision, visible-GT recall, macro averaging and standard best-F threshold selection. Confidence values determine thresholds, not a self-normalizing score denominator. Fractional P/R/F and percent values are returned together. VOT official fractions are multiplied by 100; confirmed failure counts are separate."
+    },
+    "C": {
+      "status": "WARN",
+      "evidence": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/observation.json:9",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/observation.json:155",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation_control/launches.json:119",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_METRICS_RESUME_PLAN.md:13",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py:45"
+      ],
+      "details": "The two actual failure logs and exit-1 files exist and agree with the original launch list. Four receipts and all four plan/case files exist and were independently inspected and hashed. No current metric JSON, VOT result, all_results.json or nine-metric row is established. The original requested bundle paths were absent; separately supplied unchanged bundle files were independently hashed against selection and all four plans. This is source/launch acceptance only."
+    },
+    "D": {
+      "status": "PASS",
+      "evidence": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/resume_m122_evaluation_metrics.py:65",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:55",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/resume_m122_evaluation_metrics.py:78",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_vot.py:29",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py:25"
+      ],
+      "details": "All claimed metric producers have executable downstream call sites: four OPE analyses, two VOT tracking runs and official analyses, VOT result sealing, then collection. The locked OPE return keys match both callers, FullDenseTracker returns the target_bbox/best_score keys used by OPE and TraX, and the failure helper returns the four values unpacked by the VOT sealer. Existing failed runs did not reach the metric producer, so this check does not assert result materialization."
+    },
+    "E": {
+      "status": "WARN",
+      "evidence": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_METRICS_RESUME_PLAN.md:11",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_EVALUATION_PLAN.md:5",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/selection.json:5",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/selection.json:27",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py:64"
+      ],
+      "details": "Planned coverage is two configurations at one seed, each with DepthTrack Test50/76,373 frames, CDTB80/101,956 frames and VOT127/1,765 anchors. Actual receipts cover the four OPE prediction passes, not completed metric runs. Both actual VOT manifests retain 127 unique sequences and 1,765 unique trajectories in frozen order, with shard sizes 441/441/441/442 and GPUs 0/1/0/1. Multiframe human input review and single-seed scope must be disclosed."
+    },
+    "F": {
+      "status": "PASS",
+      "evaluation_type": "real_gt",
+      "evidence": [
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py:97",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/finalize_vot_transaction_low22.py:232",
+        "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py:50"
+      ],
+      "details": "These are dataset-ground-truth evaluations with human-confirmed initialization text. Human labeling is an input source, not human scoring; neither synthetic_proxy nor human_eval accurately describes the metric computation."
+    }
+  },
+  "verified_facts": {
+    "original_stage_records": 8,
+    "original_successful_setup_and_prediction_records": 6,
+    "original_failed_DepthTrack_analysis_records": 2,
+    "actual_failed_line": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py:54",
+    "actual_error": "ModuleNotFoundError: No module named 'vot'",
+    "original_CDTB_analysis_started": false,
+    "ope_metadata_sets_checked": 4,
+    "ope_case_entries_checked": 260,
+    "ope_receipt_total_frames": 356658,
+    "frozen_source_gate_entries": 52,
+    "locally_found_gate_exact_hash_matches": 52,
+    "gate_mismatches": 0,
+    "bundles_independently_hashed": 2,
+    "bundle_source_maps_equal_gate": true,
+    "final_hashes": {
+      "precision0": "ff4bbe26f24e96ba8c968927882d3d4e17d7720b28caf65de7f84d6dbacb5c85",
+      "precision1": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811"
+    },
+    "training_records_checked": {
+      "seed": 2027,
+      "epochs_per_model": 3,
+      "sequence_runs_per_model": 456,
+      "track_calls_per_model": 659406
+    },
+    "binding_initializations": 1895,
+    "binding_unique_keys": 1895,
+    "binding_empty_categories": 0,
+    "vot_per_model": {
+      "sequences": 127,
+      "anchors": 1765,
+      "unique_trajectories": 1765,
+      "expected_result_files": 5295,
+      "shard_anchor_counts": [
+        441,
+        441,
+        441,
+        442
+      ],
+      "gpus": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "frozen_order_preserved": true
+    },
+    "import_witness": {
+      "sttrack_exit": 1,
+      "mplt_exit": 0,
+      "unchanged_entry_help_exit": 0,
+      "observed_original_controller_proc_exists": false,
+      "scope": "import, one identical-rectangle overlap and entry --help; no benchmark metric computation"
+    },
+    "original_failure_evidence_overwritten_by_controller": false,
+    "neural_training_calls_in_resume_source": 0,
+    "OPE_prediction_replay_calls_in_resume_source": 0
+  },
+  "launch_assessment": {
+    "status": "source_pass_for_one_fixed_new_control_directory",
+    "stage_coverage": "Retry both failed DepthTrack OPE analyses; run both unstarted CDTB OPE analyses; run full VOT tracking and official analysis for precision0 and precision1; seal VOT results; collect six evaluations and two coherent rows.",
+    "pin_enforcement": "The resume controller hashes original gate entries, bundles and finals; unchanged OPE entry rechecks plans, bank, binding, source closure, raw prediction files and GT; VOT runner checks frozen execution metadata before and after tracking; collection binds every row to the original selection.",
+    "single_owner_limits": "A fixed new --control directory is claimed with mkdir(exist_ok=False) before any child starts. The original PID must be absent and no metrics/VOT launch may exist. VOT additionally refuses an existing controller_logs directory or shard results. No duplicate execution is evidenced. Different new --control paths are not a shared lock for the same output: the launcher must issue one invocation and must not treat a second path as a retry.",
+    "failure_retention": "Original launches/logs/exits are only read. New logs and exits go to the fresh control directory; any failed phase stops without automatic retry. The original missing-driver.exit state is not a success sentinel.",
+    "current_live_state_attested": false
+  },
+  "limitations": [
+    "No SSH, network, GPU access, training, prediction inference or experiment execution was performed by this reviewer.",
+    "Final checkpoint tensors, the encoded PT bank, remote GT/image bytes and raw OPE prediction TXT files were not present in this review snapshot and were not rehashed here. Their metadata pins are coherent and the reviewed live entrypoints enforce their required hashes.",
+    "Source comparison to 52 frozen hashes is a byte-identity check, not a fresh line-by-line audit of every training/backbone source. The requested controller/evaluator sources and the inspected scoring/helper interfaces were read directly.",
+    "The import witness does not prove full numeric evaluator parity or benchmark completion.",
+    "The original hourly snapshot was not edited. The absent bundle paths were substituted only for review by the separately supplied byte-identical bundle artifacts.",
+    "Later completed metrics require an independent result audit; no performance target is accepted here."
+  ],
+  "audited_input_hashes": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/resume_m122_evaluation_metrics.py": "6a364b7eb81a02cd4673a7d9209d837087f6aca912b6c0c217977104eef33280",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_METRICS_RESUME_PLAN.md": "1761b5e6a33088830c1def5a2a9a0069e80b13033a79ca721a924ecddafff443",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_evaluation_suite.py": "73098389d9db7e459966c2a3ff2a7e28a9c352eaf58da6fd23ebc8f2684704c3",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py": "1428b3488d37cbbb71ae66eeca896b553c14d4156c9ab65657c59f741d321cea",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py": "d0eeacba480a19ccb717b36b7cf0d7d3fe3cb5395e7bf19d19b37868dd3354f9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_vot_shards.py": "9c2b55bb77980bba5ec486b1ff171a1a1c4de31725167f49ad0f411345a365e8",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_vot.py": "97d90420c63f7785be28c144652dde2bc25ca9dd5c28c70bf245ba2b45abc5d0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m122_official_results.py": "5bcb7f0316f5fcab0205c0ca061152f7a47e3cc6bb57433b50bf7eca5ce555c6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_OFFICIAL_EVALUATION_PLAN.md": "3f5b417f863b1d9609e139ca3336127d4429d7868572b3d2d9954572be973676",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_COMPLETE_EVALUATION_SUITE_PLAN.md": "713d1a142a550f310ec8fe282eebf9d3ef2e551c539cafc8699aa98db2f7403a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/depthtrack_pr.py": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/finalize_vot_full127.py": "cbbe55132a4e64157011c0cbfa9162bd583f09588e3e497dcf741a8d5174a6bb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/finalize_vot_transaction_low22.py": "e96a375a3792a80ab12e5671db468f559d514558a05d1181fe7afec48bcb514a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_analysis_sources/m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/complete_evaluation_source_gate.json": "81ad7a35bc04c3c8eee770ab5eaf97eea6e63ac423e1ade44f1e4a569617314a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/metric_import_probe_receipt.json": "bbca1056ede240ddb5ffaf774474112d183aa9cdc40af47a14e9b4d56411a2b9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/metric_import_probe_raw_stdout.txt": "0faf734cecf1c13bdfa313857fcac3350a553e37a1530362442ad33e1a0cd0b6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_metrics_import_probe.py": "68b7e69fcd944102b5d518e85fee08956d04e0bce1c71943d0881a0055b2c63b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/official_initialization_binding.json": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/static_bundle_provenance_1511/precision0_bundle.json": "e514bc1721be562b3ee982444b78f09abcaea1584e314ca0971154e539919924",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/static_bundle_provenance_1511/precision1_bundle.json": "ab8f90cc1202dc8cac14dd9138b9e0db83e08e5d51795146df50d48d0d66a8cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/observation.json": "7899f7c93de296133d41516af790e006d9cb2449fa17bbe573414428de46ff35",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation_control/launches.json": "0c27940d79d90d930e63bc38f68c3983f616896fdfada29e19c275b897f25da6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation_control/precision0_depthtrack_test_ope_analyze.log": "04f8e57d7d9971ddf51cf6a490b83a5d14d1fbaa7a953c1e01ae7580e80a9cb7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation_control/precision1_depthtrack_test_ope_analyze.log": "04f8e57d7d9971ddf51cf6a490b83a5d14d1fbaa7a953c1e01ae7580e80a9cb7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation_control/precision0_depthtrack_test_ope_analyze.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation_control/precision1_depthtrack_test_ope_analyze.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/selection.json": "2ff90eb580c4f09638b79e0ec665898982d113d904ac42a93ae18166c2b45975",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/train_precision0/result.json": "4a8a44f91bea42b6d4da4d4ba467ceda335c469e354bfdf5af7b7c0f7fc0712f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/train_precision1/result.json": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision0/depthtrack_test/plan.json": "c2d7f9773446ef215dc8a25258ed4f7407087169f7bd6051c503e75796fd6b7c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision0/depthtrack_test/cases.json": "158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision0/depthtrack_test/predictions/receipt.json": "747f9c72d3a7dca18b8ff1f100c6d8226a4c4b6ce5dab144b30a1d58a518d5cb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision0/cdtb/plan.json": "48d34542a7d19a45895f1ac011f7ea0bcf457a0f9a495d85f799230c969699f0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision0/cdtb/cases.json": "b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision0/cdtb/predictions/receipt.json": "c4dab6e9979ae4606c24479cfefa9b78973882fba2004604134b823606532f82",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision0/vot/run/shard_manifest.json": "1954e48ee1302a7527e884a5a472af684489d1d6826419ca06742a4f467cc685",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision1/depthtrack_test/plan.json": "3b355b65701b783513809ed172422ae11396d7c60ef210419a08e4101c17951e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision1/depthtrack_test/cases.json": "158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision1/depthtrack_test/predictions/receipt.json": "1a7d4b5bb7464674801d4514f1dd0e586f18113ca21bb4468d12c82ec65dc1c9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision1/cdtb/plan.json": "fa58067626fab31db9e3b3160feb2bb03203359ca7841af5b218b75e353e3a0a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision1/cdtb/cases.json": "b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision1/cdtb/predictions/receipt.json": "754c024821036eb425cf1ccd240ec5edbfb2a816fd2426d3d0834a4705f03977",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/hour_1511/evaluation/precision1/vot/run/shard_manifest.json": "99eec1fec6fa3b93fc1d179aecd636130703cf2df69ee99a779b50fb0d2d964e"
+  }
+}
