@@ -25903,3 +25903,38 @@ VOT权重0协调器129115及首波分片129116/GPU0、129117/GPU1从15:35:44运�
 - `refine-logs/m122_trusted_memory/EXPERIMENT_PLAN.md` SHA256 `cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94`
 - `refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER_20261008_235856.md` SHA256 `55f34d8b147e706b60124340913d349bb4d7ddd54c43523796407b810c3d354a`
 - `refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md` SHA256 `55f34d8b147e706b60124340913d349bb4d7ddd54c43523796407b810c3d354a`
+
+
+### 5.397 2026-10-09：M122全VOT进度代理783；未来模板分支的完整状态和query列表复核
+
+**本小时实际观察。** 唯一等待8864/session26563于00:21:18.401745正常exit0，chunk17dc33，期间服务器/NN查询0。到点后原生SSH41326执行一次既定观察，实际00:22:37.192651+08:00，正常排队logout并exit0，chunk5048b1。训练driver.exit=0；恢复控制器129102及原始分片129116/129117均直接核实存活，旧失败控制器28100仍不在。原冻结波次没有改变。
+
+| VOT模型/分片 | GPU | 非空bin/confidence/time输出组 | 当前执行状态 |
+|---|---|---:|---|
+| P0 / shard0 | 0 | 370 / 441 | 原PID129116存活 |
+| P0 / shard1 | 1 | 413 / 441 | 原PID129117存活 |
+| P0 / shard2 | 0 | 0 / 441 | 等待第二波 |
+| P0 / shard3 | 1 | 0 / 442 | 等待第二波 |
+| P1 / 全部 | 后续同样双卡波次 | 0 / 1765 | 等P0完整流程 |
+
+P0代理783/1765，比23:21的662增加121组，两个分片分别增加67/54；代理不是已封存anchor成绩。当前快照GPU0为4122MiB/81%，GPU1为4120MiB/70%；两条日志末尾分别87%/94%，较上一节点67%/78%继续推进。3份当前活动日志没有新的Traceback/RuntimeError/AssertionError/OOM/Killed文本，没有新增分片退出文件。不能由瞬时利用率推断全时段满载。P0/P1都还没有merge或正式VOT结果，EAO/ACC/ROB留空，四项已完成OPE不重复填写或重算。
+
+**预估与下次观察。** 相隔3678.791582秒，近期118.408448组/小时，累计89.166121组/小时；两版合计3530组还剩2747。近期/累计线性估计剩余23.199358/30.807665小时，分别对应10月9日23:34与10月10日07:11。工程规划由30—50小时更新为28—48小时，大致10月10日凌晨至10月11日凌晨；这是包含后续波次差异的排期范围，不是保证或统计置信区间，也未调整序列长度、失败早停及初始化成本。下一唯一NN观察为10月9日01:22:37.192651+08:00；当地唯一等待34580/session1079于00:25:06.630433启动，launch chunk dc1283。前一8864已消费正常退出，不再复用或重启。
+
+**封存。** 远端规划名hour_20261009_0021.zip，当地按实际观察时间保存hour_0022.zip；1236255字节，SHA256 eb1b81dc2080741df970afc2d52adabfcc68242ea6f648bb4f3b162b55ab34a6。SCP7554正常exit0、chunkfa8b28；82文件、80原摘要、21日志大小/摘要逐项核验。初次在stdin调用生成的提取器时__file__指向stdin，读取了错误相对目录而退出1/e69a86，尚未提取；随后只执行同一已生成提取器的真实文件路径，exit0/46f6bd。没有重新采集、重传或改动档案。四项OPE、实际第三pass final、selection/bundle、原32当地源码及52文件门不变；既有OPE后验/WARN、Train稀疏诊断/PASS原字节保留，不重复审核不变结果。公开档案/小时JSON为m122_native_observation_20261009_002237、M122_HOUR_PROGRESS_20261009_002237.json。
+
+**新的源码研究。** research技能要求的后台代理按请求Astra/max、fresh none上下文，只读复核本地精确SHA匹配的原生tracker/model、wrapper及有关配置、decoder、CLIP读取、crop/head和计划。归属为同家族临时研究，实际后端/effort没有独立证明；不是experiment-audit运行PASS。下列是代码事实，不能推广成已运行的分支等价证明：
+
+| 已核实的状态问题 | 源码依据 | 对§5.396下一C教师的实际约束 |
+|---|---|---|
+| query列表会在forward里改写 | 原生模型SHA d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13的117—132行直接重绑track_query_before的两个元素；wrapper在102行才创建detached新列表 | 保存与W/K恢复均必须各有独立query列表；只复制bbox或tracker对象不够 |
+| 动态模板和首帧槽的初始存储别名 | 原生tracker SHA d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f的79行用[template]*num_template；wrapper109行append/pop(1) | 分支各自拥有z_dict列表，按替换槽语义写入；不能原位覆盖共享初始模板存储而污染永久槽0 |
+| 辅助patch与selected_feature职责不同 | wrapper108行替换z_patch_arr，但实际后续wrapper不读取；103行保存selected_feature，旧wrapper不反馈它 | 前者随真实写入保留字段一致，后者是事件/C输入；不虚构已有递归特征或额外深复制需求 |
+| 冻结模型仍有临时Python状态 | dense_region_encoding.py SHA71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33的28—31行注册并移除6个CLIP前置hook | 顺序W/K观察在正常调用后移除hook；不能把同一个CLIP实例并发调用等同绝对只读共享 |
+| state_dict摘要不覆盖全部分支状态 | wrapper frozen_digest只覆盖native/CLIP张量，不覆盖query/template列表、Python hook、配置、随机状态或decoder | 必须执行既定的K/K与动作前W/K一致性检查；摘要相同不是完整快照隔离证明 |
+
+字段清单和固定链接见[M122_TEMPLATE_STATE_SNAPSHOT_RECHECK_20261009.md](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_TEMPLATE_STATE_SNAPSHOT_RECHECK_20261009.md)。其中同时区分实际wrapper与未调用的native.track；初始化语义参照、固定人审words/mask/empty、永久模板保持只读；当前padding mask不充当Depth可靠性或目标存在概率。精确匹配的CENTER head/decoder顶层没有额外显式递归缓存，但PreprocessorMM、backbone、Mamba/CLIP内部及编译内核未被本轮52门完整固定，不能声称静态清单穷尽运行时状态。无GT进入crop、query、模板动作或状态重置。
+
+研究原MD SHA48c3b0138626a5f8a79b031ab27faf00b26b830bd26c2f9ac634127eae159e58、17171字节保留私有原件；公开版仅将12个源码链接固定到6a1a78d2f87f65c264c4e88a5837f8c25a45610a、将私有gate链接明确标私有、规范EOF并注明发布修正，SHAf98a3b80492a6d52e39db9ae8026e6642af89e604de993910efe93130a6e757b。研究没有SSH、网络、GPU或NN执行，也没有修改源码、安装依赖或下载权重。C未实现/训练，K/K实际运行仍未进行。
+
+§5.396未来收益监督方案、固定Train120/32 C分组和执行表已实际7文件push0于00:01:26，commit6a1a78d2f87f65c264c4e88a5837f8c25a45610a；00:04:16静态7文件已与服务器输入/读回摘要一致。当前继续完成两版VOT及同一模型九项完整验收，未达联合目标；源研究用于将来正确隔离模板动作，不证明模板导致现有全部失锁，也不证明未来C有效。目标保持ACTIVE_UNMET。
