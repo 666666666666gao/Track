@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py", line 81, in <module>
+    {'ope_track':ope_track,'ope_analyze':ope_analyze,'vot_track':vot_track}[args.mode](args.plan)
+  File "/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m122_official.py", line 54, in ope_analyze
+    spec=importlib.util.spec_from_file_location('locked_M122_OPE_metric',plan['metric_source']);metric=importlib.util.module_from_spec(spec);spec.loader.exec_module(metric)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/SRTrack_RGBD_L/lib/test/analysis/depthtrack_pr.py", line 10, in <module>
+    from vot.region import Rectangle, RegionType, Special, calculate_overlaps
+ModuleNotFoundError: No module named 'vot'
