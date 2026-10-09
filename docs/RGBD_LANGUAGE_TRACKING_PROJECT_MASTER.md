@@ -26380,3 +26380,14 @@ P1已运行3.039826小时，剩余1519组。本区间速度64.963937组/小时�
 系统盘空闲259,506,176字节、数据盘18,082,623,488字节。没有安装、删除、权重下载、运行源码上传、NN重启、重复训练或推理。仍先封存R0两版三数据集并作新的结果审核，再按既定Train内R1/C计划继续；§5.414潜在监督覆盖统计与现有计划边界不变，没有新utility标签、额外监督训练或运行时控制修改。
 
 唯一下一本地计时PID12444/session97514于15:51:04.443511启动（51672a），CIM be843c在2026-10-09T15:51:39.8432655+08:00核对实际创建15:51:04.312446及命令。下一NN检查固定2026-10-09T16:50:16.652606+08:00，3807字节ASCII命令仅准备。每小时一次服务器进度检查，只对实际新结果或异常更新；目标保持ACTIVE_UNMET。
+
+
+### 5.417 模板学习直接先例核对：未来监督已有基础，C的配对收益仍待验证（2026-10-09）
+
+在下一固定16:50节点之前仅整理原论文和作者代码，没有查询服务器/NN进度。新增`M122_TEMPLATE_UPDATE_PRIOR_RECHECK_20261009.md/json`，按四个DOI/arXiv规范ID机械去重，区分原文事实、实现未确认项和当前C假设。
+
+[UpdateNet为ICCV 2019](https://arxiv.org/html/1908.00855v2#S3.SS4)，论文已有下一帧GT目标特征监督；作者代码固定7ade0364，完整发布缓存帧对齐尚未执行验证。[Recurrent Meta-learner](https://www.microsoft.com/en-us/research/publication/learning-to-update-for-object-tracking-with-recurrent-meta-learner/)已有后续搜索图匹配损失，[SiamRTU](https://www.researchgate.net/publication/347158533_Siamese_Regression_Tracking_With_Reinforced_Template_Updating)已有强化学习模板池更新回报。[BackTrack](https://arxiv.org/html/2308.10604)在推理时读取历史帧作正反向一致性核验，属于另一种证据；本次未核验其同行评审版本。不能主张首次用未来跟踪表现学习模板更新、首次RL更新或首次历史模板核验。
+
+当前C的待验证差异仍是：冻结AB、永久初始模板与一个动态槽位，在隔离的同状态写入/保留轨迹上计算后32帧有效GT的平均IoU差值，并与相同输入/参数/预算的当前IoU教师配对。先做K/K、状态隔离及成本检查，再作训练和自身历史验证。未来标签、C训练和运行收益尚未产生，原计划cd9402保持不变，不因文献核对扩展窗口、模板数或搜索规则。四篇原任务指标不作为本项目预计涨点。
+
+32份运行源码及三个未部署pilot文件摘要核对未变；没有新GPU任务、优化、源码上传、安装或PDF下载。两份只读抽取按research-lit技能分派，same-family provisional/backend UNATTESTED，不能充当独立验收；精简JSON不冒充原始代理逐字日志。下一NN检查仍固定16:50:16.652606，唯一原计时PID12444/session97514保持原归属。文档服务器同步并入下一个小时节点，本次不增加SSH连接。

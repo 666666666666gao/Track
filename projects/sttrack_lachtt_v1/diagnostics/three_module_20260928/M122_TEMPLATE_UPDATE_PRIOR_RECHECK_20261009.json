@@ -1,0 +1,155 @@
+{
+  "status": "primary_source_extraction_completed_not_novelty_or_runtime_verdict",
+  "created_at": "2026-10-09T16:18:41.332478+08:00",
+  "scope": "Four direct template-update comparators; bounded source recheck, not an exhaustive systematic review.",
+  "primary_identity_checks": "Original paper title/author/year/identifier matched against accessible primary records; no verify_papers.py, CrossRef/S2 triple verification, or independent acceptance audit was executed.",
+  "provenance": {
+    "read_only_extraction_shards": 2,
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "max",
+    "actual_backend_attestation": "UNATTESTED",
+    "same_family_provisional": true,
+    "artifact": "Condensed parent synthesis of returned structured extractions; not a raw agent transcript."
+  },
+  "sources": {
+    "web_primary": true,
+    "local_pdf_contribution": 0,
+    "zotero_available": false,
+    "obsidian_available": false,
+    "arxiv_helper_resolved": false,
+    "pdf_downloads": 0,
+    "unrequested_optional_sources_used": false
+  },
+  "entries": [
+    {
+      "dedup_key": "arxiv:1908.00855",
+      "title": "Learning the Model Update for Siamese Trackers",
+      "authors": [
+        "Lichao Zhang",
+        "Abel Gonzalez-Garcia",
+        "Joost van de Weijer",
+        "Martin Danelljan",
+        "Fahad Shahbaz Khan"
+      ],
+      "venue": "ICCV",
+      "year": 2019,
+      "sources": [
+        "https://openaccess.thecvf.com/content_ICCV_2019/html/Zhang_Learning_the_Model_Update_for_Siamese_Trackers_ICCV_2019_paper.html",
+        "https://arxiv.org/abs/1908.00855v2",
+        "https://arxiv.org/html/1908.00855v2#S3.SS4"
+      ],
+      "author_repository": "https://github.com/zhanglichao/updatenet",
+      "author_code_commit": "7ade0364c51d6460ef75781d37a12c8240c515dc",
+      "extraction_owner": "/root/m122_updatenet_prior_20261009",
+      "method": "学习合成新的模板特征；输入初始、累积、当前模板，输出新模板并加初始模板残差。",
+      "supervision": "论文3.4节以后一帧GT区域特征为MSE目标；多阶段缓存来自自身预测的模板，再训练更新器。",
+      "online_action": "逐帧合成并替换特征模板，非二元写入/保留；SiamRPN路径同时改变分类和回归核。",
+      "code_evidence": [
+        "code/updatenet.py",
+        "code/run_SiamRPN_upd.py",
+        "code/net_upd.py",
+        "templates_generate/train_updateNet.py",
+        "templates_generate/local_SiamRPN_lasot_acc.py"
+      ],
+      "unresolved": [
+        "训练脚本用template0[batch+gt_index-1]读取目标；部分生成依赖文件缺失，未执行数组生成，不能宣称发布缓存已逐项证明为下一帧。",
+        "缓存生成含零重叠后的GT重初始化，与当前C无GT重置协议不同。"
+      ]
+    },
+    {
+      "dedup_key": "arxiv:2308.10604",
+      "title": "BackTrack: Robust template update via Backward Tracking of candidate template",
+      "authors": [
+        "Dongwook Lee",
+        "Wonjun Choi",
+        "Seohyung Lee",
+        "ByungIn Yoo",
+        "Eunho Yang",
+        "Seongju Hwang"
+      ],
+      "venue": "arXiv preprint; 本次未核验同行评审版本",
+      "year": 2023,
+      "sources": [
+        "https://arxiv.org/abs/2308.10604",
+        "https://arxiv.org/html/2308.10604"
+      ],
+      "extraction_owner": "/root",
+      "method": "用当前候选模板在已存的历史帧上反向跟踪，将其与正向预测框的一致性作为接纳依据。",
+      "supervision": "本文方法在推理时作历史一致性检查，不依赖未来在线图像或GT，不产生当前C的W/K未来收益标签。",
+      "online_action": "永久初始模板和一个动态模板；候选通过历史一致性检查后替换动态模板。",
+      "unresolved": [
+        "论文附录提供简化代码，但本次没有确认可运行的固定作者实现。",
+        "附录HTML代码出现early_reject/tag_early_reject及切片形式不一致；未运行或视觉复核，不推广为完整作者代码有缺陷。"
+      ]
+    },
+    {
+      "dedup_key": "doi:10.1109/TIP.2019.2900577",
+      "arxiv_id": "1806.07078",
+      "title": "Learning to Update for Object Tracking with Recurrent Meta-learner",
+      "authors": [
+        "Bi Li",
+        "Wenxuan Xie",
+        "Wenjun Zeng",
+        "Wenyu Liu"
+      ],
+      "venue": "IEEE Transactions on Image Processing",
+      "year": 2019,
+      "volume": 28,
+      "issue": 7,
+      "pages": "3624-3635",
+      "sources": [
+        "https://www.microsoft.com/en-us/research/publication/learning-to-update-for-object-tracking-with-recurrent-meta-learner/",
+        "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/03/learn_to_update.pdf",
+        "https://arxiv.org/abs/1806.07078"
+      ],
+      "extraction_owner": "/root/m122_template_future_prior_20261009",
+      "method": "ConvGRU累积候选目标模型，再通过卷积读出更新的线性跟踪模型。",
+      "supervision": "较早目标观测产生更新模型，在后续搜索图上计算分类损失，并约束偏离初始模型的幅度；截断时间反传。",
+      "online_action": "逐帧更新隐状态，按间隔刷新模型。",
+      "unresolved": [
+        "本次没有确认数值更新间隔M。",
+        "有限搜索未找到可固定commit的作者实现；不等于证明不存在。"
+      ]
+    },
+    {
+      "dedup_key": "doi:10.1109/TIP.2020.3036723",
+      "title": "Siamese Regression Tracking With Reinforced Template Updating",
+      "authors": [
+        "Fei Zhao",
+        "Ting Zhang",
+        "Yibing Song",
+        "Ming Tang",
+        "Xiaobo Wang",
+        "Jinqiao Wang"
+      ],
+      "venue": "IEEE Transactions on Image Processing",
+      "year": 2021,
+      "volume": 30,
+      "pages": "628-640",
+      "online_year": 2020,
+      "sources": [
+        "https://www.researchgate.net/publication/347158533_Siamese_Regression_Tracking_With_Reinforced_Template_Updating",
+        "https://doi.org/10.1109/TIP.2020.3036723"
+      ],
+      "extraction_owner": "/root/m122_template_future_prior_20261009",
+      "method": "Actor选择模板池中的替换槽位，critic学习状态价值。",
+      "supervision": "IoU大于0.6奖励+1，否则-1；论文使用折扣回报，gamma=0.9，训练片段长度10到100帧。",
+      "online_action": "8模板池每10帧替换一个槽位；还有在线回归网络更新，不是单动态槽位的二元动作。",
+      "unresolved": [
+        "身份依据为合作者上传的完整论文，RG页面日期与论文页眉不同；采用论文Vol30/2021记录。",
+        "DOI和CrossRef本次访问失败，未声称跨库三重验证；没有固定作者代码commit。",
+        "PDF转文本的TD式索引仍待视觉或代码核对，不把提取式异常归为已确认算法错误。"
+      ]
+    }
+  ],
+  "running_local_source_count_unchanged": 32,
+  "pilot_sha256_unchanged": {
+    "template_write_forks.py": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+    "template_write_event_cache.py": "4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91",
+    "run_template_write_pilot.py": "d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d"
+  },
+  "immutable_C_plan_sha256": "cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+  "server_progress_queries": 0,
+  "neural_execution": false,
+  "experiment_plan_modified": false
+}
