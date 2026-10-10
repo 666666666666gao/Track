@@ -1,0 +1,98 @@
+{
+  "status": "actual_CurrentC_second_hour_observation_collected",
+  "observed_at": "2026-10-10T16:30:28.548952+00:00",
+  "gap_since_previous_NN_observation_seconds": 3632.789624,
+  "original_stdout_sha256": "ea21481b7df6aeac83b7c0b5aafe28a914671b3573d1b1b9cd4c8b5cc6957df2",
+  "original_timer": {
+    "session_id": 71834,
+    "process_id": 54140,
+    "cell": 742,
+    "terminal_chunk": "9850d2",
+    "exit_code": 0,
+    "consumed": true,
+    "restarted": false,
+    "raw_terminal": {
+      "status": "local_CurrentC_second_hourly_node_due",
+      "pid": 54140,
+      "started_at": "2026-10-10T23:32:42.835905+08:00",
+      "deadline": "2026-10-10T16:29:55.759328+00:00",
+      "server_queries": 0,
+      "NN_progress_queries": 0,
+      "sleep_interval_seconds": 300,
+      "restarted": false,
+      "duplicate_timer_created": false,
+      "original_first_timer_session_id": 79637,
+      "finished_at": "2026-10-11T00:29:55.759815+08:00"
+    }
+  },
+  "native_observer": {
+    "session_id": 65983,
+    "initial_chunk": "e2dec3",
+    "authentication_chunk": "79f292",
+    "terminal_chunk": "9d6b49",
+    "exit_code": 0
+  },
+  "GPU_snapshot": "0, 1, 0\n1, 4122, 70\n",
+  "supervisor": {
+    "pid": 391524,
+    "cmdline_exists": true,
+    "cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m122_current_quality_C_full152_20261010/code/m122_current_C_process_supervisor.py /root/autodl-tmp/m122_current_quality_C_full152_20261010 "
+  },
+  "OPE_progress": [
+    {
+      "dataset": "depthtrack_test",
+      "gpu": 0,
+      "complete_predictions": true,
+      "completed_sequences": 50,
+      "completed_frames": 76373,
+      "remaining_calls_upper_bound": 0,
+      "complete_metrics_observed": false
+    },
+    {
+      "dataset": "cdtb",
+      "gpu": 1,
+      "complete_predictions": false,
+      "completed_sequences_lower_bound": 72,
+      "completed_frames_lower_bound": 90078,
+      "remaining_calls_upper_bound": 11870,
+      "last_printed_sequence": "trashcans_room_occ_1_A",
+      "elapsed_seconds": 7183.114321708679,
+      "rough_remaining_seconds": 947.3098126645115,
+      "estimate_is_not_completion_promise": true,
+      "complete_metrics_observed": false
+    }
+  ],
+  "VOT_started": false,
+  "VOT_shard_progress": [
+    {
+      "index": 0,
+      "gpu": 0,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 0
+    },
+    {
+      "index": 1,
+      "gpu": 1,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 0
+    },
+    {
+      "index": 2,
+      "gpu": 0,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 0
+    },
+    {
+      "index": 3,
+      "gpu": 1,
+      "expected_anchors": 442,
+      "completed_nonempty_trajectory_triples": 0
+    }
+  ],
+  "formal_nine_metrics_complete": false,
+  "current_suite_terminal": false,
+  "M123_training_launched": false,
+  "NN_progress_queries": 1,
+  "additional_NN_calls": 0,
+  "next_NN_observation_not_before": "2026-10-10T17:30:28.548952+00:00"
+}

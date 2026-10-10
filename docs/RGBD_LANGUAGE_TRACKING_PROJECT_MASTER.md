@@ -27238,3 +27238,24 @@ fresh reviewer m123_joint_full152_source_integrity_20261011已完成SOURCE_ONLY_
 | 下一NN观察 | 不早于00:29:55.759328北京时间，每小时最多一次 |
 
 资源释放后直接运行train_m123_ABC_joint_full152.py：不插入sanity、M0、短片段或开发集试跑，不改变三轮预算。当前C学习自身当前选中框IoU，输入历史detach，不能宣称未来写入效用或跨时间端到端反传。训练快照只支持当前已实现的保存，尚未实现和证实任意中断恢复。全部正式九项成绩仍待新训练及后续完整评价；goal ACTIVE_UNMET。
+
+
+### 5.459 2026-10-11 00:30：原小时节点实测旧CurrentC评估进度；M123部署后源码复核完成，仍未启动
+
+本次原native71834/PID54140等待在00:29:55.759815北京时间真实exit0，终态9850d2；原functions cell742已消费，没有重建或重启。随后原SSH65983真实exit0，9d6b49终态，00:30:28.548952北京时间执行唯一一次NN/GPU观察，距上次3632.789624秒。原始stdout SHA ea21481b7df6aeac83b7c0b5aafe28a914671b3573d1b1b9cd4c8b5cc6957df2完整保留；这不是按预估补写的完成态。
+
+| 当前旧CurrentC同final评估 | 00:30实际观察 | 完成态边界 |
+|---|---|---|
+| DepthTrack Test50预测 | 全50条、76373帧，预测完成回执存在 | P/R/F尚未观察到，不由框完成反推指标 |
+| CDTB80预测 | 已完成72条、90078帧；剩余非初始化调用上界11870 | 按7183.114秒累计速度粗估剩约947秒；非完成承诺 |
+| VOT127/1765 anchors | 四shards预期441/441/441/442，实际完整轨迹三件套均为0 | 尚未启动，无EAO/ACC/ROB |
+| 旧suite进程 | supervisor391524的真实cmdline仍存在；supervisor exit/result/all_results未完成 | 不能宣布旧suite终态或完整九项 |
+| 两GPU | GPU0为1MiB/0%，GPU1为4122MiB/70% | 未同时释放，新M123未启动 |
+
+CDTB与两项OPE计分完成后，旧控制器按既定双卡两波运行VOT。没有提前中断旧评估、没有复用旧预测充当M123结果，也没有额外GPU查询。当前旧分支C的400次固定缓存拟合已经完成，但仅作为新联合训练的warm initialization，不计入完整ABC联合训练预算。
+
+M123部署包及启动辅助逻辑的独立只读复核已经完成：DEPLOYMENT_SOURCE_FOLLOWUP.json SHA 86712e86cd93d7f6d4f3a99d21622a538e34cb50bdc9250a2be2fec0a0cf0187，SOURCE_ONLY_PASS/0源码阻断，overall WARN说明真实资源准入和NN运行尚未发生。34代码文件、98源码pins、8静态输入一致，原60项封存审查材料未修改；启动辅助器只使用同一次新鲜小时观察的双卡资源快照，不追加GPU查询。source gate通过不等于实际准入通过。review independence为same-family/provisional，backend identity未获独立证明。
+
+新实验范围仍是官方DepthTrack Train全152条×3完整遍历，共456次序列运行、659406次非初始化调用，A+B+C全部450888参数联合更新，STTrack与CLIP冻结；使用最终人工核验文本。所有152条都用于训练，不设fit/dev、不按原22/32条选择checkpoint，Test50/CDTB80/VOT127只做固定final后的完整评价。GPU1冻结视觉观测、GPU0新增模块学习是两阶段分工，不是DDP或双倍速度。C监督自身当前所选框真实IoU，不能写成已验证未来记忆效用。
+
+原第三小时被动等待已经建立：native75282/PID30588，出生00:33:33.669755北京时间，00:34:49实际CIM确认同一进程，300秒本地sleep，无远端查询。下一次NN/GPU观察不早于01:30:28.548952北京时间，保留原native handle，不新建重复计时器。新训练仅在后续小时观察确认旧suite完整exit0且双卡空闲后直接启动完整预算，不插入短程试跑或开发集训练。M123当前NOT_LAUNCHED，所有新训练步数、final与九项指标尚不存在；goal ACTIVE_UNMET。
