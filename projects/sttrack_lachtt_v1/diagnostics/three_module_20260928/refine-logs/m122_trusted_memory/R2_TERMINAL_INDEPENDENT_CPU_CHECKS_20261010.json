@@ -1,0 +1,240 @@
+{
+  "status": "PASS",
+  "counts": {
+    "future_rows": 40954,
+    "future_positive": 18265,
+    "future_negative": 17531,
+    "events": 1297,
+    "event_positive": 607,
+    "eligible": 1257,
+    "current_GT_unknown": 35,
+    "future_GT_unavailable": 19,
+    "short_tail_events": 27,
+    "future_GT_unknown": 1657,
+    "future_zero": 3501,
+    "event_zero": 119,
+    "event_negative": 552,
+    "event_unknown": 19,
+    "excluded": 40,
+    "sequences_without_write_events": 10,
+    "native_track_calls": 219802,
+    "future_tracking_calls": 81908
+  },
+  "split_counts": {
+    "fit": {
+      "event_positive": 494,
+      "eligible": 993,
+      "event_zero": 87,
+      "event_negative": 425,
+      "event_unknown": 14,
+      "excluded": 27
+    },
+    "development": {
+      "event_positive": 113,
+      "eligible": 264,
+      "event_negative": 127,
+      "event_zero": 32,
+      "event_unknown": 5,
+      "excluded": 13
+    }
+  },
+  "missing_label_taxonomy": {
+    "both_current_and_future_unknown": 14,
+    "zero_future_image_tail": 4,
+    "short_tail_common_eligible": 23,
+    "excluded_current_GT_unknown": 35,
+    "excluded_future_GT_unavailable_only": 5
+  },
+  "zero_event_sequences": [
+    "leaves01_wild",
+    "ball03_indoor",
+    "ball05_indoor",
+    "toy07_indoor_320",
+    "hand02_indoor",
+    "pigeon07_wild",
+    "paintbottle_indoor",
+    "pine01_indoor",
+    "cup13_indoor",
+    "flower02_wild"
+  ],
+  "checks": [
+    {
+      "check": "input_and_archive_integrity",
+      "status": "PASS",
+      "details": {
+        "inputs": 227,
+        "input_bytes": 319741745,
+        "payload_files": 195,
+        "archive_members": 196,
+        "archive_sha256": "49dfc5cfe5ecdc4608ccd621d880757dc61a240e5427180d563e40d4256a3d94"
+      }
+    },
+    {
+      "check": "immutable_split",
+      "status": "PASS",
+      "details": {
+        "fit": 120,
+        "development": 32,
+        "ranking_recomputed": true,
+        "AB_saw_all152": true
+      }
+    },
+    {
+      "check": "all_GT_and_human_bank_initialization",
+      "status": "PASS",
+      "details": {
+        "GT_files": 152,
+        "bank_rows": 152,
+        "shared_references": 152,
+        "includes_zero_event_sequences": true,
+        "GT_rows_used": 219954
+      }
+    },
+    {
+      "check": "runtime_receipts_and_gate_binding",
+      "status": "PASS",
+      "details": {
+        "CPU_v3_exit": 0,
+        "original_CPU_exit": 1,
+        "gate77_exact_in_CPU_readback": true,
+        "gate_entries_locally_matched": 19,
+        "gate_entries_receipt_only": 58,
+        "v3_only_bool_conversion": true
+      }
+    },
+    {
+      "check": "all_original_native_opportunities",
+      "status": "PASS",
+      "details": {
+        "prefix_records": 219802,
+        "opportunities": 1297,
+        "shard_events": [
+          701,
+          596
+        ]
+      }
+    },
+    {
+      "check": "all_event_current_future_GT_and_C_inputs",
+      "status": "PASS",
+      "details": {
+        "counts": {
+          "future_rows": 40954,
+          "future_positive": 18265,
+          "future_negative": 17531,
+          "events": 1297,
+          "event_positive": 607,
+          "eligible": 1257,
+          "current_GT_unknown": 35,
+          "future_GT_unavailable": 19,
+          "short_tail_events": 27,
+          "future_GT_unknown": 1657,
+          "future_zero": 3501,
+          "event_zero": 119,
+          "event_negative": 552,
+          "event_unknown": 19,
+          "excluded": 40,
+          "sequences_without_write_events": 10,
+          "native_track_calls": 219802,
+          "future_tracking_calls": 81908
+        },
+        "split_counts": {
+          "fit": {
+            "event_positive": 494,
+            "eligible": 993,
+            "event_zero": 87,
+            "event_negative": 425,
+            "event_unknown": 14,
+            "excluded": 27
+          },
+          "development": {
+            "event_positive": 113,
+            "eligible": 264,
+            "event_negative": 127,
+            "event_zero": 32,
+            "event_unknown": 5,
+            "excluded": 13
+          }
+        },
+        "missing_label_taxonomy": {
+          "both_current_and_future_unknown": 14,
+          "zero_future_image_tail": 4,
+          "short_tail_common_eligible": 23,
+          "excluded_current_GT_unknown": 35,
+          "excluded_future_GT_unavailable_only": 5
+        },
+        "max_absolute_errors": {
+          "current_iou": 0,
+          "write_iou": 0,
+          "keep_iou": 0,
+          "delta_future": 0,
+          "CPU_current_iou": 0,
+          "CPU_delta_future": 0
+        },
+        "max_C_motion_abs_error": 2.9802322387695312e-08
+      }
+    }
+  ],
+  "stats": {
+    "tensor_value_hash_checks": 4651,
+    "native_track_calls": 219802,
+    "branch_records": 81908,
+    "query_hash_descriptors": 163816,
+    "different_W_K_feature_hashes": 40954,
+    "different_W_K_query_hashes": 40954
+  },
+  "maximum_absolute_errors": {
+    "current_iou": 0,
+    "write_iou": 0,
+    "keep_iou": 0,
+    "delta_future": 0,
+    "CPU_current_iou": 0,
+    "CPU_delta_future": 0
+  },
+  "maximum_motion_absolute_error": 2.9802322387695312e-08,
+  "AST_parsed_source_files": [
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_R2_teacher_controller_20261010.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_event_cache.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_forks.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_features.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw_v3.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_full_causal.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\evaluate_template_write_C.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_C_preflight.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_template_write_C_dev.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_C.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_actual_bootstrap_20261010.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_compact_query_v2_raw_evidence_remote_20261010.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py"
+  ],
+  "teacher_result_sha256": "24c8461b4d71c573fbaa4bf4f91c4e359cca1614c7fe81246ac0504a325c836c",
+  "teacher_shards_sha256": [
+    "831c988ac9d0ec578072b11d9faac4040c5733bc4ccfda5e32c4150c073a2627",
+    "4286f72adc0d5eef950d134c763cd5399585c4c48c4f94db51033f8f409b5068"
+  ],
+  "teacher_prefixes_sha256": [
+    "778590127e7ff48ace7c8c42d752f4e154fbd349e7828e6441fefcda59af1f9a",
+    "72178d2f15da48b804fee6c512f96138d495e85d4d1e8679c4fa1427f3b970f1"
+  ],
+  "CPU_readback_sha256": "e4607b1ce6b09a664890f416397a188eabe9c6c55315dd4b703af8a65ca1d5b2",
+  "NN_calls": 0,
+  "model_constructors": 0,
+  "optimizer_steps": 0,
+  "experiment_module_imports": 0,
+  "SSH_calls": 0,
+  "GPU_or_NN_queries": 0,
+  "CUDA_initialized": false,
+  "source_or_input_mutations": 0,
+  "full_local_PT_inspection": false,
+  "locally_loaded_PT_files": [
+    "inputs/human_text.pt"
+  ],
+  "python": "3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]",
+  "numpy": "1.21.6",
+  "torch": "1.13.1+cpu"
+}

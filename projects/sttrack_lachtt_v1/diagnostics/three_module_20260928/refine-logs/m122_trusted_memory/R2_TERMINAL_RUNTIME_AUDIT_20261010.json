@@ -1,0 +1,666 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-10",
+  "generated_at": "2026-10-10T10:46:41.725536+00:00",
+  "agent_id": "/root/m122_r2_terminal_runtime_integrity_20261010",
+  "verdict_id": "/root/m122_r2_terminal_runtime_integrity_20261010",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "requested_reviewer_backend": "codex",
+  "requested_fork_turns": "none",
+  "reviewer_model": "UNATTESTED",
+  "actual_backend_identity": "UNATTESTED",
+  "actual_reasoning_effort": "UNATTESTED",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "cross_family_accepted": false,
+  "review_call_status": "completed",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "scoped_terminal_raw_audit_complete_with_explicit_artifact_limits",
+  "summary": "The complete original fixed-P1 Train152 teacher passes independent scalar/GT/opportunity/C-input/bank accounting. Runtime PT checks are corroborated by the actual CPU readback; full local PT/model reconstruction and later C/performance claims remain outside scope.",
+  "blocking_count": 0,
+  "blocking_findings": [],
+  "nonblocking_count": 3,
+  "nonblocking_findings": [
+    {
+      "id": "N1",
+      "blocking": false,
+      "title": "Compact artifact scope and original runtime witnesses",
+      "details": "Only human_text.pt was loaded locally. Full original cache/template/reference/decoder/model tensors and image arrays are not local. Actual CPU readback covers 2746 original PT files and 2905 raw-file hashes;19 gate entries locally matched,58 receipt-only. All exported values/scalars/GT independently checked. Prefix query/features and neural origin of cached past/initial features are not independently reconstructed.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\readback\\result.json",
+          "line": 22037
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\readback\\result.json",
+          "line": 36582
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw_v3.py",
+          "line": 202
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\GATE_BINDING_SCOPE.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "N2",
+      "blocking": false,
+      "title": "Original history and C-optimizer-only holdout",
+      "details": "A+B saw all152;32 is not unseen whole-model validation. Teacher utilities belong to original history; changed C-policy histories require separately collected labels. C training/comparison/new final metrics and goal completion are not certified.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json",
+          "line": 10
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json",
+          "line": 11
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 26
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "id": "N3",
+      "blocking": false,
+      "title": "Immutable human-bank exception and historical spec metadata",
+      "details": "pine02_wild_320 retains five semicolon clauses in one attribute slot and historical human_status=conflicting with human_confirmed=true. Human adjudication was not recreated. M82 spec text/optimizer metadata is historical; active P1 context binds the actual human bank and labels. No immutable inputs changed.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\human_train_labels.json",
+          "line": 2186
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\human_train_labels.json",
+          "line": 2191
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\human_train_labels.json",
+          "line": 2195
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\training_spec.json",
+          "line": 2920
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py",
+          "line": 25
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "gt_provenance": {
+      "checklist": "A",
+      "status": "PASS",
+      "details": "All 152 dataset GT files are SHA-bound; all 1,297 current and 40,954 paired future labels independently reproduce. GT enters after W/K rollouts. All bank152/shared152 initialization semantics checked.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_full_causal.py",
+          "line": 14
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+          "line": 140
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py",
+          "line": 104
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\readback\\result.json",
+          "line": 19520
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\INDEPENDENT_GT_READBACK.json",
+          "line": 1
+        }
+      ]
+    },
+    "score_normalization": {
+      "checklist": "B",
+      "status": "PASS",
+      "details": "IoU uses geometric union; delta is signed valid-frame mean W-K. No normalization by prediction statistics. Equality/control witnesses are proxies, not accuracy.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py",
+          "line": 108
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+          "line": 149
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+          "line": 104
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\DETERMINISTIC_RESULT.json",
+          "line": 3
+        }
+      ]
+    },
+    "result_existence": {
+      "checklist": "C",
+      "status": "PASS",
+      "details": "Actual aggregate/shard/prefix/GT/compact inputs exist, every input hash matches; original CPU exit1 retained and v3 exit0 source/result/log/receipts corroborated. Gate77/frozen evidence qualified by local versus runtime-receipt scope.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\result.json",
+          "line": 165
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\execution.json",
+          "line": 3
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\CPU_readback.log",
+          "line": 1
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_failure_evidence_actual_20261010\\CPU\\CPU_readback.log",
+          "line": 22
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\GATE_BINDING_SCOPE.json",
+          "line": 1
+        }
+      ]
+    },
+    "dead_code": {
+      "checklist": "D",
+      "status": "PASS",
+      "details": "Controller/main calls and actual result files demonstrate execution of R2 metric path. Prospective C preflight/fit/development functions remain unexecuted and are not represented as results.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_R2_teacher_controller_20261010.py",
+          "line": 22
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+          "line": 186
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw_v3.py",
+          "line": 334
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py",
+          "line": 111
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_template_write_C_dev.py",
+          "line": 169
+        }
+      ]
+    },
+    "scope": {
+      "checklist": "E",
+      "status": "WARN",
+      "details": "Full original fixed-P1 Train152 teacher, seed2027. All152 already used by A+B;32 is a C-optimizer-only holdout. No learned C, changed-history, official performance or model-reconstruction certification.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json",
+          "line": 10
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json",
+          "line": 11
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 26
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 68
+        }
+      ]
+    },
+    "evaluation_type": {
+      "checklist": "F",
+      "status": "PASS",
+      "labels": [
+        "real_gt",
+        "synthetic_proxy"
+      ],
+      "details": "Tracking labels use dataset GT. W-prefix/K-K/frozen equalities are replay/control consistency proxies. Human-bank provenance is initialization, not new human evaluation of tracking outcomes.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+          "line": 135
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+          "line": 140
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_forks.py",
+          "line": 128
+        }
+      ]
+    }
+  },
+  "R2_terminal_raw_audit_complete": true,
+  "terminal_audit_scope": "Original completed R2 teacher stored-artifact integrity; compact actual values/scalars/GT plus source-bound actual CPU full-PT readback.",
+  "audited_teacher_result_sha256": "24c8461b4d71c573fbaa4bf4f91c4e359cca1614c7fe81246ac0504a325c836c",
+  "audited_teacher_shards_sha256": [
+    "831c988ac9d0ec578072b11d9faac4040c5733bc4ccfda5e32c4150c073a2627",
+    "4286f72adc0d5eef950d134c763cd5399585c4c48c4f94db51033f8f409b5068"
+  ],
+  "audited_teacher_prefixes_sha256": [
+    "778590127e7ff48ace7c8c42d752f4e154fbd349e7828e6441fefcda59af1f9a",
+    "72178d2f15da48b804fee6c512f96138d495e85d4d1e8679c4fa1427f3b970f1"
+  ],
+  "actual_CPU_v3_exit": 0,
+  "actual_original_CPU_exit": 1,
+  "actual_independent_checker_exit": 0,
+  "CPU_readback_sha256": "e4607b1ce6b09a664890f416397a188eabe9c6c55315dd4b703af8a65ca1d5b2",
+  "numerical_summary": {
+    "future_rows": 40954,
+    "future_positive": 18265,
+    "future_negative": 17531,
+    "events": 1297,
+    "event_positive": 607,
+    "eligible": 1257,
+    "current_GT_unknown": 35,
+    "future_GT_unavailable": 19,
+    "short_tail_events": 27,
+    "future_GT_unknown": 1657,
+    "future_zero": 3501,
+    "event_zero": 119,
+    "event_negative": 552,
+    "event_unknown": 19,
+    "excluded": 40,
+    "sequences_without_write_events": 10,
+    "native_track_calls": 219802,
+    "future_tracking_calls": 81908
+  },
+  "split_counts": {
+    "fit": {
+      "event_positive": 494,
+      "eligible": 993,
+      "event_zero": 87,
+      "event_negative": 425,
+      "event_unknown": 14,
+      "excluded": 27
+    },
+    "development": {
+      "event_positive": 113,
+      "eligible": 264,
+      "event_negative": 127,
+      "event_zero": 32,
+      "event_unknown": 5,
+      "excluded": 13
+    }
+  },
+  "missing_label_taxonomy": {
+    "both_current_and_future_unknown": 14,
+    "zero_future_image_tail": 4,
+    "short_tail_common_eligible": 23,
+    "excluded_current_GT_unknown": 35,
+    "excluded_future_GT_unavailable_only": 5
+  },
+  "zero_event_sequences": [
+    "leaves01_wild",
+    "ball03_indoor",
+    "ball05_indoor",
+    "toy07_indoor_320",
+    "hand02_indoor",
+    "pigeon07_wild",
+    "paintbottle_indoor",
+    "pine01_indoor",
+    "cup13_indoor",
+    "flower02_wild"
+  ],
+  "maximum_metric_absolute_errors": {
+    "current_iou": 0,
+    "write_iou": 0,
+    "keep_iou": 0,
+    "delta_future": 0,
+    "CPU_current_iou": 0,
+    "CPU_delta_future": 0
+  },
+  "maximum_C_motion_absolute_error": 2.9802322387695312e-08,
+  "motion_existing_rtol": 1e-06,
+  "motion_existing_atol": 1e-06,
+  "metric_existing_atol": 1e-12,
+  "tolerances_changed": false,
+  "C_input_contract": "M122-C-current128-past128-initial4x64-quality3-motion4-v1",
+  "C_input_shape": [
+    1,
+    519
+  ],
+  "C_input_dtype": "torch.float32",
+  "actual_value_tensor_hash_checks": 4651,
+  "raw_PT_files_loaded_locally": [
+    "inputs/human_text.pt"
+  ],
+  "full_original_PT_files_checked_by_actual_CPU": 2746,
+  "actual_CPU_raw_file_inventory_count": 2905,
+  "gate_entries_locally_byte_matched": 19,
+  "gate_entries_supported_by_actual_CPU_only": 58,
+  "original_input_count": 227,
+  "original_input_bytes": 319741745,
+  "input_manifest_sha256": "78c4e104ab3564ba72cf8149745571a5e7f9e0abb7c9b7e379ed369b23a86624",
+  "audited_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\C_split.json": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\R0_completed_audit_closure.json": "c06e255832c3ce9d3e7824e318474c410cb266f3f4fae45a58a320f49d33d01c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\R1_runtime_audit.json": "2274e8996018269acd03ed0019986e76c93b6e303630191ee7c626829f10f1ae",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\R1_runtime_audit_closure.json": "7bc8034efbe8a54f83c117ba11d5483a1cbd1a5f2615a0dd6a10cabf246a8d5a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\R2_source_audit.json": "aeb15133cf10e781a486fa3aab243d0b612686a5af28e56f44fde4eae8aaea77",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\R2_source_audit_closure.json": "4d5454816907608c7e2a50709741cb31a536b93ea1960bfc7a696cdfa42bc1bd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\actual_bootstrap_launch.json": "9328e93e994cceb4688d8c975cb772a547b79c1053875afdca79d7f4cead105a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\collect0.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\collect0.launch.json": "314eab53ab43154515a4031e1faf799aed12c7fd32f56fae69541e71f304c6ef",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\collect0.receipt.json": "16fe75c85615e9c88a1b6cb758928aeaf2364cb561677fc72f6db2e2f1300e38",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\collect1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\collect1.launch.json": "294c04abb0f69f3aca6644726d1612ebee189857681753fbe7056736c5ded66c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\collect1.receipt.json": "8c043b3c56ce4b19b867ee50f930dbe2780431899eaeb4526b43207a4c8ed54d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\controller.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\files.json": "acff23efef511adc7c3f0fd7fbc62a5757de9a6ec4a51e882bdcb96f3382b3b2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\gate.json": "26f555c0d1eb13ddac5469d333926780c2fc760a1e45866e51a497533874fbd7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\launch.json": "e896e79c159e74154ffd5ed0b3fee1d33c817b896e8f0c93b4387d732d948de1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\replay0.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\replay0.launch.json": "3825f6bc3ca9182b45a6a36c0b1256c3abc26a28411044149b620ea8f6a08b9b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\replay0.receipt.json": "b190dd0959be13bd410341e5e536e56e73451ab23c3b044e5c6a412f5b1831f7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\replay1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\replay1.launch.json": "9452f8b0c86a490c3d570e0d9fb9aa5d8eb2e8ad4e1dc4e12eacb9b29e77c06e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\replay1.receipt.json": "269d68c8b3b82d50e35de28554a00bb7d3603d7b847e6edca4c78070ebe58a66",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\result.json": "24c8461b4d71c573fbaa4bf4f91c4e359cca1614c7fe81246ac0504a325c836c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\stage_argv.json": "27d48bdf87f7e87da06485c946c3f0c88256f5117f521309c9bea0073390cf2c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\target_admission_receipt.json": "90085d587a7d264adfbfbbc53fad393047ab6067992947781306eccf8db2f013",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard0\\native_prefix.jsonl": "778590127e7ff48ace7c8c42d752f4e154fbd349e7828e6441fefcda59af1f9a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard0\\replay\\result.json": "831c988ac9d0ec578072b11d9faac4040c5733bc4ccfda5e32c4150c073a2627",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard0\\teacher_events.json": "274499b71eb1005b2b47cc1b88b9b938208842191a98ac6c0c1cc5c10aab3f5f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard1\\native_prefix.jsonl": "72178d2f15da48b804fee6c512f96138d495e85d4d1e8679c4fa1427f3b970f1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard1\\replay\\result.json": "4286f72adc0d5eef950d134c763cd5399585c4c48c4f94db51033f8f409b5068",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard1\\teacher_events.json": "2cca56a4db7d218860785e7461c2f36d4ec908c254a797b4f9b4535d43f715b4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\CPU_readback.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\bootstrap_result.json": "993d93c78571c1047378d8039e12870a04fb3042d7f59ea5c191bfa587ead875",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\execution.json": "52957c6a9584391f0a1b661cdea527c61dc7265f73841e5b351e71faf0b2bcbf",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\readback\\result.json": "e4607b1ce6b09a664890f416397a188eabe9c6c55315dd4b703af8a65ca1d5b2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\CPU_readback.log": "f70008a4b70916aa2282bdd0d4c0db742a1e3b316df0676614bb2e90fb65d521",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\compact\\all_event_scalar_records.jsonl": "0953b9f6922ccc20c9dc6555c96d4ea5aaa8e18df7ca7d745946495c398f9d8c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\compact\\all_shared_reference_semantics.jsonl": "01ec22a0c502680f90e8e27313865ecc92cf14e0e498a0456d2ef023fa8dded8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\training_spec.json": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\human_train_labels.json": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\human_text.pt": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cube04_indoor\\groundtruth.txt": "d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bag04_indoor\\groundtruth.txt": "0d06a12db2f75b4428d77d0983050e51ed2e56153c24ab74871ab4abca315267",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\skateboard02_indoor\\groundtruth.txt": "304a07f4b196eb9a855d1a1857beec4757141965a09c5e635b80cede70938b68",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cat02_indoor\\groundtruth.txt": "db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle02_indoor\\groundtruth.txt": "48f14b53ca931b24f50e0e24cef612aaef8311a85736c0916f69b58d54c72522",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle01_indoor\\groundtruth.txt": "e226e68e5c5ec7dbe8b380aaa0c37ad6444b683ca4f6fa84bfc59968ee818e83",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom02_wild\\groundtruth.txt": "b7e602085a0c3af4ddd417b9dea144eab7d9d8bfec6517db261227f46090716d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book04_indoor\\groundtruth.txt": "d7009271319c37873f1ca7e4a615e7efed384818c4a5a4c36b02c3f4628cbfdc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toydog_indoor\\groundtruth.txt": "837f3df1f6bac05974c27339219bc9d61c8943a73ba03f8aa7f7cf4aaa6c4b01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\skateboard01_indoor\\groundtruth.txt": "afb682605337866d5ea72db4025dfbb70ee2acd2ea85719b5989a7626bb758d5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy05_indoor\\groundtruth.txt": "1bb2433f521ae44c146e6df9d7bbd825daa1d11e1b8df9f36d7d98e8ebd524ec",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy01_indoor\\groundtruth.txt": "0f69714f77bc1cde2549ff14dc6474262aadaf78cae2ba74e7baf67bb56642c0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cat05_indoor\\groundtruth.txt": "5d9144b7989d54a349cedafcf15f407db098d8af69019302bc05c2de0f09082a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves01_wild\\groundtruth.txt": "d34f88a2e29041dcc3f0921878f934bae4f654e12f9e43d14aaad17e00e83561",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball04_indoor\\groundtruth.txt": "db05ab15d9143192adc6a248c4a8d1fa66c339d028d067d60cae72c01ff85661",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\chair01_indoor\\groundtruth.txt": "fc25354c8769860a8c4404019368e34c1415367828009e6503bb7695581bf62a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\swing02_wild\\groundtruth.txt": "9768e065c404b8acf47dc8dbe902f8eca8dd1736c501e97c5ad431cfac087741",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball03_indoor\\groundtruth.txt": "ce41f746332d2777ea7f5f97ae8f545bbfa9afbe93929eaca8f0f0ee70f057c7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck04_wild\\groundtruth.txt": "29848ca243337725cfeae195563bd6035fae1f14f34c32a0441918112772c986",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\speaker_indoor\\groundtruth.txt": "1a06abd953cb7833c232576238363cbe6c5248c486b3f221567d18dacf9a9a44",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom03_wild\\groundtruth.txt": "453dd8042c4d9f0decb712d3899e228197b62f432e3318bdd1da44f26bd172fd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom05_indoor\\groundtruth.txt": "79887acbc43dc5468d4e9bdcf021df1347c869cc15ad336fc4e5fe7e42b5bb25",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone05_indoor\\groundtruth.txt": "70c425a3f893af73aca7bdac61cb111e47549d0c935b42af3a299a8f29919356",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball17_wild\\groundtruth.txt": "a2e90cb9a2db72c3d4dd00bbeeb645b8f02b95094f714bb3f783ccb7e0dcd5e0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pine02_wild_320\\groundtruth.txt": "0555c5378049662102ef0f382e3a4ddc2e5abdcc4fc5deb6ce2a9966bf5be16f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\basket_indoor\\groundtruth.txt": "d681b5a242bed11da0f5fe714491b49651ef1d1c4b4f43b92cfc6263c9d1e9ca",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book05_indoor\\groundtruth.txt": "8e2f3008f581de3517e2d19185080261a796ec36506a62f07824ecbdf34196f1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves04_indoor\\groundtruth.txt": "ede8be7594992f5bd8addd4a22c657ee5fa63857c5b54ac602f88381dd76dffb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book02_indoor\\groundtruth.txt": "25fc50ddf6083b81f0e202fbfbc83561d4d2cb13d445d9adb398e798473a7fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\dumbbells02_indoor\\groundtruth.txt": "18dac18d42fb4fa09483990feae0d084fff631c4629589fb4c7cfe880ff0052c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bike02_wild\\groundtruth.txt": "4b90a9f1d4251f16d6dff2bf9864387d2954f0978145a524b0ed06ba3c03ea35",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book01_indoor\\groundtruth.txt": "9d0c8affacf73e01d0eed4d446aadaeb3e42f111d46b2e2d38ed86de40b9a19c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle03_indoor\\groundtruth.txt": "8cb3e98365c17668ebbbb937431a5a38d22f05804b352f353d51d834fd3a117a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\glass04_indoor\\groundtruth.txt": "d24775109819cb517cbe764c3ef7990d25fe925049538864f4770864b40afbde",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\colacan02_indoor\\groundtruth.txt": "ca6587fa0aa38475f51d7dc443398b8e716d7b0a175346f310c60bb8b8360f57",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\candlecup_indoor\\groundtruth.txt": "2c2ba43df1406dd9fd0ac25d776dde07980efc6ae94900d3bbcdc453a6fbfc01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball08_wild\\groundtruth.txt": "a3570303bd54848f4b96234001d8a0f141460cf42effcb1ade9b2760e8e84bf9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\milkbottle_indoor\\groundtruth.txt": "1d677d5d444fd4e14aec00fcdd9c4fbf3af1efb32bb8bcc1b53490610ab54f55",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\parkingsign_wild\\groundtruth.txt": "397c45dcc9273890a8a0364f59ccb58f4d485bf5454e04af27cf0aee7e3b8343",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\teacup_indoor\\groundtruth.txt": "33ecb768c92c86e7106b05ce42527bf80db3c81c1f58b8332e22ccbb11625f97",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\suitcase_indoor\\groundtruth.txt": "946321102dd03c4d28f1f3ccb31434bb955982bcec7e88082ce86b1579442c6e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle06_indoor\\groundtruth.txt": "7dce3716c2635f7801abaefa8cda804ab943aa16ac77024d1ce11fa871437812",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy08_indoor\\groundtruth.txt": "6c471ef8b84b8cd168a4ea3b7e578131a659bc59ca4207afb6d54bc819feec4d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball05_indoor\\groundtruth.txt": "4a3bf9f327e4994423b75c3d1267b80ac71d05c5e9b93b08b509f6d83bff4a34",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cube06_indoor\\groundtruth.txt": "19cf63610ae9b40e67f5e9b8f10ec62a42ad6662a693158eda64d18bb2b4c43a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human05_wild\\groundtruth.txt": "65e455611bc7c342891c0bbe60ca0f876c181196251fa9d80f963ead74542f9e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom04_indoor\\groundtruth.txt": "bc2f201ef68a86eca6b19abef4dd410ed50aaec2569d6163cc0b57913c32540f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\swing01_wild\\groundtruth.txt": "2518e4ffc0ba579cbcce533e6aa33792b9f2a9f676651c2b79347dd24629657b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball09_wild\\groundtruth.txt": "a3647edc0b7e4ffcbedbc970b0e48e88aa11c5fea9cf9a2f22b490a43f0f1a01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup14_indoor\\groundtruth.txt": "9ad3ecd17fdbf886c7edf1f56934e7d47ac192cf7b9b4c53d013451651656bda",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hat03_indoor\\groundtruth.txt": "c7cd257073a4e20905e43f0bb3558cfb2d8bd4d391c6db18ae8bb8cf3cce9951",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy04_indoor\\groundtruth.txt": "bb2d9f68b10422815d088d3d6aa9ecac6eed2bd3eb64c2d5b32c3fd239fed6d7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy10_indoor\\groundtruth.txt": "018c4dd5c17df16c7e186a4ad2f48759ba4836cedfe8fbf43edc53ba40c61e14",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human01_indoor\\groundtruth.txt": "384febbcddeeafe3489749b1b143c5d357e0c2098b02f589f45f208a0f627271",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\glass05_indoor\\groundtruth.txt": "51cc8d500877bc4a321bc2bb6e810a30cb86711896764968d2700250f9352206",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\notebook03_indoor\\groundtruth.txt": "a7c2e9a80ae2a6303b3b06c21cf8c1ab2fd96d88ae77368eaa804f83644100a0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toiletpaper04_indoor\\groundtruth.txt": "e01fe3e9d60dbfe0588a3a096ca3b136a5ed0e2017e8e401d2704e57caf1467d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\lock01_wild\\groundtruth.txt": "8812b746751f5f59ea8a16764ec70b7d1ded6c3ffcf963ad9245ac7ce84ac577",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\painting_indoor_320\\groundtruth.txt": "452f8042e633005d48071913f4b63c71d24829f0a931891f142539d4664a2ec6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hat02_indoor_320\\groundtruth.txt": "5851dd6051472626d3b0432e492fae38c4fa7a06d12caaab93f44a6c5c1dbbd5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bike01_wild\\groundtruth.txt": "cd70a8371938cdac020502cf2c4e0c77f77180eecd6baabee70b269b2ec47f24",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cat04_indoor\\groundtruth.txt": "6421ade8ca96dbc2da52ca02cedd69c415f37498775732b0cf780d81f2d292af",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy07_indoor_320\\groundtruth.txt": "683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toiletpaper03_indoor\\groundtruth.txt": "5b1f12533be6068b6db0ec4a06cf5702660e4a904c6385e78fce892a352a3cc4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pigeon05_wild\\groundtruth.txt": "7ce05357a9a6e942c8dca07cc44507ec36f431b6920f6150c11629ab594e4f7d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hand02_indoor\\groundtruth.txt": "fdb582d198c0d0e843a21891c4e8966cced3c2330dc3ded5110029ac67ccfab5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mirror_indoor\\groundtruth.txt": "39399adcf38d1be5d83ed6bac42e777cb660e49f0c93b150a5e2f105f9674d41",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\shoes03_indoor\\groundtruth.txt": "4f3bc65b100348817f2d1856613d54c1f783759ed1a282b8df28eded96467f7c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\gymring_wild\\groundtruth.txt": "b2df5de9aaaae941866b11586188ca7a5a94be1000a54e118df375cacf3d2346",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck02_wild\\groundtruth.txt": "ac48fd345b322c2bb305e68ec659c8872446f9023867e23851f3b6e12d11790e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone04_indoor\\groundtruth.txt": "c18af5d30957a339497ba8235ecbf6986dbc7ce66773afcfabdbdb0a3b03d55c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck06_wild\\groundtruth.txt": "dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\glass02_indoor\\groundtruth.txt": "8e019d223669c6f31adf10d3ee4162fca5404fd40be892f1c44f411fcc03ae4f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup07_indoor\\groundtruth.txt": "a87da31a984f168cba69d158eb46e31373ef79d11b2d4fd50c4c1886737c8885",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup09_indoor\\groundtruth.txt": "6235e8bec9d88203c3bcc2adfa66db218730d79c619979fa575e77bd3cc2c5c5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball02_indoor\\groundtruth.txt": "2147f99e45f7af89f466d6bfbe718ca4a95a75827324f1c736eaef810d9f2083",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\container02_indoor\\groundtruth.txt": "00cfbbbd0e55ccf24f191bda511d2a217c43a665f65ba0f64073d3b7b51fdccf",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy03_indoor\\groundtruth.txt": "aa4e58bcabae622280b2c73dcf1143118ff540a3cac0202f8eb5da8e779b6888",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bike03_wild\\groundtruth.txt": "dad8d95321f350d2a347f4f71504d8d82b57fd7fdd08ef617b63e2929f57c3e3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\flower01_indoor\\groundtruth.txt": "97ecc6e67a43c29a5ef5eceaff28a480f40487347788ff044bef19fcbaea13db",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\shoes01_indoor\\groundtruth.txt": "cee9970156a03576505b05a59ecc55e8daf4ff5ef5f10ef23dbf5efad7123326",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\clothes_indoor\\groundtruth.txt": "e0717f89c1ad115ce87bb252bc7915ee1d0b34ab73c72fc8ca5a47a07612094b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hat04_indoor\\groundtruth.txt": "2d71dd08fff19e4be6ba64b51dff107674ac7c18d50dfe5e924e23e58989eaa1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy06_indoor\\groundtruth.txt": "21ec622063569d66a1d4135a7f86b2b983070fbd3f2331d2bd18ec7aacb4cfc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball14_wild\\groundtruth.txt": "f6d7da3590803baab88cadc089e76daa57b25fd1bcd2152abab118e41d085017",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup03_indoor\\groundtruth.txt": "aef83d01e39f78bded1998acf5650504e4833292f9efaafc712094bca7eeda3d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball12_wild\\groundtruth.txt": "feee35d47e25bcdfcaef049ebebd67f77892cb1b533c842ad5147c1cff6b8c9b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\trophy_indoor\\groundtruth.txt": "8cee409befcc8e7ddc51c9d971bcd323ae4b4d527607359c17421b222b1c9cf2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hat01_indoor\\groundtruth.txt": "8898891868efd65a97b8138c99404a0ae24e760f808487870f1b7529a30270bf",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup11_indoor\\groundtruth.txt": "14e516059c4ebb3500cb0626fa4ff5135cee275d9b2e3f8862faa83a4e4af761",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup06_indoor\\groundtruth.txt": "ebba4639a8d94969986dc9dd60960c43701d1a1fafefaec270cdac99cc1b9e5f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup05_indoor\\groundtruth.txt": "15d37ca8f694388415795e8df944d882347dbb5a2fd2e0a2e07e346164733149",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cat03_indoor\\groundtruth.txt": "d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck01_wild\\groundtruth.txt": "83aca68e7101f1261e7bafcff766bad3a0a68301f10921ded08f11192497263b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\tree_wild\\groundtruth.txt": "3563aa656258cfab370ff9aa39a887500afa9d80a20aa39d273f02074cd8089e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cube01_indoor\\groundtruth.txt": "c7e7f55e9d0ed4bac64c18d658796fa340fe6dddd2467a877015d42c71d4185e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone06_indoor\\groundtruth.txt": "4d96750a2019b57ad1ab7cfe0076f3fea8a1b03a8d293aec7826dc25f188ceff",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\thermos01_indoor\\groundtruth.txt": "4a9a8a13af7359b697edfffe887b26b8e316042171f2955b44ad874b8f25d99e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom01_indoor\\groundtruth.txt": "fee7899ead7c9ba02f3afb6e6e0829656cff0ba0df64ca9fbef1304574661ced",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bag03_indoor\\groundtruth.txt": "fb4702c2f0e4c6a1e33251efb0f3c1c7f4eb5f26c1a3c79d9018913b2372d8ec",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\file02_indoor\\groundtruth.txt": "b8f7d0914b2162609f993e8445b92cef3e2e1bb6e388cd21d1e62d835a154dfb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball16_indoor\\groundtruth.txt": "e39af82dd9ae52bbf6734c63cc916dfa043129fbcc4e0d675de09535ce0180a4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\chair02_indoor\\groundtruth.txt": "4f05bc2ed056bdc6c9c5a2687ab6c074a2f32b95cae62bf6feebe89899f03ca2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball21_indoor\\groundtruth.txt": "5230b453b3d069f8ade8e23aef0f3d18f9794d900a1a6264ebb830aff0ac0bb4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball13_indoor\\groundtruth.txt": "99c5e76747408d0c120b92ce172d37cbd39abc2836207837633eb92698547446",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves05_indoor\\groundtruth.txt": "aa0b613b169058dbf47eafd1c74e75e9e3d617e4f3ed21136bb5093e3ce8a3c1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\adapter02_indoor\\groundtruth.txt": "33a964dea164f87c4c4adaf720aeed9f6209f4f3f5025fc9d597c03f84d14e78",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ukulele02_indoor\\groundtruth.txt": "fd075a6c2a64bd319316c63b6be190b8e16565e5e1af99147b08d65f703733d9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\earphone02_indoor\\groundtruth.txt": "9178128a1ed5d23438515fdea6bac208c800122a1d38d0963d44f0eb700ba782",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves02_indoor\\groundtruth.txt": "d6a2ad6c7f3a9720b75c5a2457201857edfba1beeeeea2c5e5e85a39807fd696",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\trashbin_indoor\\groundtruth.txt": "a10a14dc93003e0b3f111f92ebe093ebff80d856f9d01637af43bc5dc057edb1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pigeon03_wild\\groundtruth.txt": "4281a4712dae248a85869058f68162c94984b6e287896287bf7e74e5440712fd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\guitarbag_indoor\\groundtruth.txt": "0d80234a96568cf983950b1f8b5bda33a01cb8cffd5cf1705f5c93f5621f9618",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pigeon06_wild\\groundtruth.txt": "d249393a979a8cfc4c541107b51329cc133e2e99c30f821c937359d5304df275",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pigeon07_wild\\groundtruth.txt": "91f2a4d1cbdd2808af3c0fc42f7a2a26a728eee5246b32a8c3ef12a2c06883d3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\paintbottle_indoor\\groundtruth.txt": "138c6884d76f8385a71bfd04c0ccc83b835ce67b9f37a9e8880da2abb2caca05",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\stand_indoor\\groundtruth.txt": "15219e425e311f79e435a1c7526b3d04de6dbe1a035a6a1b5a4614e0ed4cef21",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human03_wild\\groundtruth.txt": "608ef24142202c0e8e9af1b3752ee0709e043a5f085e30bc66068bcaa4196543",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human06_indoor\\groundtruth.txt": "0f723bba01cd765122da6a513f6e458623ba3345aafb5a94826d787c9b1ee134",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pine01_indoor\\groundtruth.txt": "c06487c4c9e9de804050ebe5a7c25c90cc1dcb1d88c83279cd980cb0c5de5329",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck05_wild\\groundtruth.txt": "5ad1b542b94c9181d66bc1d84e033b747ecd9a8fa62fe4717d6a65f05d870004",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human04_wild\\groundtruth.txt": "3a24191b7f4b4690c0c6c9c912754cdf658a702622686aa7891419f866a9a8b7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves06_wild\\groundtruth.txt": "e5e14506d23aea54df25bd626b5d418240d15d1fa9b16739bac967fe464c7d74",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves03_wild\\groundtruth.txt": "a8169078aadfb3484b795038128cb1d314e04f2626a9f974253ac55c8dd69b5a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toiletpaper02_indoor\\groundtruth.txt": "23039f5b59a9259bbfc89dd6d38e3ed9dcce696e03b827fb8ea320eeaef5cd0c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\box_indoor\\groundtruth.txt": "a34d48e631a3ec23016aa71f1951d350a72ad03beb878ed1ca18217875b98afd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\thermos02_indoor\\groundtruth.txt": "96b26f5f41d8ad70a8d1c1c34751aa224b2c8e447c007dc7dec6eb9ab90c5dbc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle05_indoor\\groundtruth.txt": "222999382c4ba7803d1ad6fd919d93fc290f1b0fd521f3c08dddd2c47e06b01f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mac_indoor\\groundtruth.txt": "7b7fbed57f079ebedae12870613d30719a69d98f458815d7a42c50be893adb1a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cart_indoor\\groundtruth.txt": "e5b16fea25a7b2ddb32cf3132f97e385d6c27bd9af99c64cf12bd882b72c5226",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bag05_indoor\\groundtruth.txt": "19fac45f89a26ebfc9f3609008139d917dd80c75c825b6fe9c9d085ec55ebf52",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball07_indoor\\groundtruth.txt": "c9cb5a6fcfd0bd3f5b3582292e5c30625a4c30fee1c08e5eb247f5ae6ffaaab2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball19_indoor\\groundtruth.txt": "21a1bddce56f75dd67ca5b9fbb14eccafc46bd36b24a468fb9483290d68e125d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\beautifullight01_indoor\\groundtruth.txt": "0e89eed1894076dbfbbebed2f931163b27fa3572246d21b49662b5ccbd1a945a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book06_indoor\\groundtruth.txt": "df6b93503aa8177ac8b0e32507124189f453bce6c5bcb5f993667850f77b58a1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\car01_indoor\\groundtruth.txt": "dca7e65de77cced65b4b06a589352fdde456152b9a75d9af8759082b8cf458d4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\car02_indoor\\groundtruth.txt": "ed1171be55b7782858af063f174b2ece551f35b6ee2b5a4d0e81b5fc53f87ec7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\colacan01_indoor\\groundtruth.txt": "38443588eb1127d65c2ac800186759ad392581eef544588156c8c0f14b2ee866",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\colacan04_indoor\\groundtruth.txt": "c556156a8252ea1e1b0c6a14cb4d63a374c8edf47b3dbdcdf129edfb562a0c2a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\container01_indoor\\groundtruth.txt": "c08d2571102bb7106e6530a0dea8512f6206e15ee765a3a52b2734978fba7e1e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup08_indoor\\groundtruth.txt": "b7c606e0373f5cdba15ecb21efa1ce293bc6620c5ffa60ddb567a1394c67f1c8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup10_indoor\\groundtruth.txt": "237081c1453dc80861c19444a63b2a4f63bd56c8703285c408c3e4d52a3d55ae",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup13_indoor\\groundtruth.txt": "bd048b8a08b71b5616f185f8e8f1727972d7addf6251881c35f94d2911099864",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\egg_indoor\\groundtruth.txt": "a4010da190dfc37a2c48efdc21c60993e398af6b9df87b91dc3aee813e5bc9bd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\flower02_wild\\groundtruth.txt": "517aa37496ae936121cc6ddbfaee6e845616a64a137bdcb8a8cfee489d2cc644",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\flower03_indoor\\groundtruth.txt": "66480878783c4fcdf76d47234f1884cdffaddb775028bf2c7d8b12d2061da8ce",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\flowerbasket_indoor\\groundtruth.txt": "0cc6a4a0bec64e746491603b06b076fd41f7fbce4c86c0d1455b2440302f0d1b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ghostmask_indoor\\groundtruth.txt": "5aba29f532dd42f9df5bbfd1c6c5558c8632f9d62fbf5fc5d52470d799ef9406",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\glass03_indoor\\groundtruth.txt": "b4e6aa986c65391dfdb688c77403795f5626134f5088821ea3bd4b7284e184da",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone01_indoor\\groundtruth.txt": "572ff6fde310d831e0fd2dd5201805a4f9d2cf18ec1dd63a227266872bf218ce",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone02_indoor\\groundtruth.txt": "d27bba52e1ebe7f816b9d2ce264d332404530765bcce830029070b146c52e45c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\notebook02_indoor\\groundtruth.txt": "fa3202cc8968e24785620c772584bc28e2a353c06799a0859ee6a2b8d8a880a0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\files.json": "96bab0fc33afc1e7fcf7263efd80efa1907ee0f7175e1faa1b2fb8faea69309d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_compact_query_v2_raw_evidence_actual_20261010.zip": "49dfc5cfe5ecdc4608ccd621d880757dc61a240e5427180d563e40d4256a3d94",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py": "0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_R2_teacher_controller_20261010.py": "a1322100c56d36577582c76be79ca8693ffce8768e94fac4705f05428e17b323",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_event_cache.py": "4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_forks.py": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_features.py": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw.py": "fc5789875562bdb5efe8427c95ae40a2223828f02505cd8474b40f92fdebbe82",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw_v3.py": "bf3c6402d4efebb4f82cb19cb6c18fdb86f12f9ceabece79b635759fe5a2a187",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_full_causal.py": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\evaluate_template_write_C.py": "80a45896de70aa8f25010331b4fc42e44450b6fc74ca49bfb2d4dfe2aef9a415",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_C_preflight.py": "ee6cdc05ecc8ab35e55f7f1fc2b73b940933c4a9e12521fe950029a1a5b5f476",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_template_write_C_dev.py": "708805921124201608518669611bd2497d117bb13d6b83426bab3dfec834e44a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_C.py": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md": "cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\TRAIN_SEQUENCE_SPLIT_20261008_235856.json": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_actual_bootstrap_20261010.py": "a1843cfee5c6a16d6b1a71545b6c2f7a9e89a763ca4e71447db356956afc418c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_original_stdout_20261010.txt": "cbe2c58b7c78ccd04fdd85d8427e1abbe9dad9fc50bb1616a52e3c9e6ec01258",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_actual_join_01_20261010.json": "eca8634d02e4ba1f616030b5c841903229469f10b8849c033e39a287c9abf625",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_compact_query_v2_raw_evidence_remote_20261010.py": "225538e73090f3a7db964205554c12c40dcb457405db05e818a4566c2429fae7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_compact_query_v2_raw_package_original_stdout_20261010.txt": "1139facfefbcd1086de92159fa363a0f842c9b25c2dbe0702ad803ce61649281",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_compact_query_v2_package_actual_join_01_20261010.json": "5361ba6e54046b34cc6af4aa64cd18d9d085e16331f6dc6ce4eba32b794df7fd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_v3_compact_query_v2_evidence_download_actual_join_01_20261010.json": "669df5657cba81eabae55241aced71a472f144273fb932ffed185497e78caace",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_failure_evidence_actual_20261010\\CPU\\execution.json": "9441b9a783afb925f1ee467b0b326bb9bdfa5dfd4b5c53cff987240c79183318",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_failure_evidence_actual_20261010\\CPU\\CPU_readback.log": "58ff146b57d71f56084cea58cb05ff54ac48d5d27e416ad75251c58e38e8e9e5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_bool_serialization_source_audit_v3_20261010\\SOURCE_AUDIT.json": "edf72a0911a01cdffed82adf356b17a46dd77448d5d5d5eeada87b5c8ca1574c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_bool_serialization_source_audit_v3_20261010\\SOURCE_AUDIT.md": "71a2afcb84a31c0e730c49cf3767e1b3c158bca272b8ba7f8236fa8c07c54339",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_bool_serialization_source_audit_v3_20261010\\AUDIT_SEAL.json": "de12830109f138e49a7f7b44fc3fd6d3c002f47ec220a46bfa2213c567957755",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_actual_document_closeout_20261010.json": "070a8f99cc8055a1e4068fc2fc7963348f3ecc4c7746a451e14592971e338815"
+  },
+  "supplemental_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py": "d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d"
+  },
+  "all_original_inputs_directly_read": true,
+  "post_review_input_hashes_unchanged": true,
+  "supplemental_input_hashes_unchanged": true,
+  "historical_audits_unchanged": true,
+  "human_bank_binding_complete": true,
+  "human_review_recreated": false,
+  "AB_previously_saw_all152": true,
+  "development32_is_C_optimizer_holdout_only": true,
+  "full_local_PT_inspection": false,
+  "full_model_feature_reconstruction": false,
+  "uninterrupted_prefix_query_feature_equality_certified": false,
+  "neural_initial_reference_reconstructed": false,
+  "past_feature_neural_history_reconstructed": false,
+  "R3_preflight_executed": false,
+  "C_training_complete": false,
+  "C_comparison_complete": false,
+  "changed_C_history_labels_certified": false,
+  "new_C_benchmark_metrics": false,
+  "formal_nine_metrics_certified": false,
+  "full_goal_achieved": false,
+  "new_deployment_certified": false,
+  "NN_forward_calls": 0,
+  "model_constructors": 0,
+  "optimizer_steps": 0,
+  "experiment_module_imports": 0,
+  "CUDA_initialized": false,
+  "auditor_SSH_calls": 0,
+  "auditor_SCP_calls": 0,
+  "auditor_GPU_NN_queries": 0,
+  "package_installations": 0,
+  "timers_started": 0,
+  "source_changes": 0,
+  "input_mutations": 0,
+  "subagents_spawned": 0,
+  "deterministic_acceptance": "accepted for the listed local arithmetic/hash checks only; semantic overall review remains same-family/provisional",
+  "deterministic_script": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\verify_actual_evidence.py",
+  "deterministic_result": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\DETERMINISTIC_RESULT.json",
+  "local_scientific_check_failures": 0,
+  "auditor_probe_failures": [
+    {
+      "kind": "plan_display_decode",
+      "exception": "UnicodeDecodeError: gb18030 cannot decode byte 0x80 at position62",
+      "resolution": "Correct UTF-8 read with UTF-8 stdout; no input modification",
+      "tool_chunk": "d68d03",
+      "corrected_tool_chunk": "860063"
+    }
+  ],
+  "claims": [
+    {
+      "id": "original_teacher_complete",
+      "impact": "supported_with_scope"
+    },
+    {
+      "id": "real_GT_teacher_labels",
+      "impact": "supported"
+    },
+    {
+      "id": "W_prefix_records_exact",
+      "impact": "supported"
+    },
+    {
+      "id": "full_local_PT_or_model_reconstruction",
+      "impact": "not_certified"
+    },
+    {
+      "id": "learned_C_benefit_or_changed_history_labels",
+      "impact": "unsupported"
+    },
+    {
+      "id": "new_official_metrics_or_goal",
+      "impact": "unsupported"
+    }
+  ],
+  "trace_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\.aris\\traces\\experiment-audit\\2026-10-10_terminal_runtime",
+  "report_md_sha256": "8b33f09b99d07d954c22546fc0abffdf92c9914a0463ea8f026e6e26a4de1cf5"
+}

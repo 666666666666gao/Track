@@ -27039,3 +27039,28 @@ v3源码及实际准备好的启动配置续审完成：source PASS/overall WARN
 新的独立上下文审查m122_r2_terminal_runtime_integrity_20261010已经启动，只读取实际227项材料，重算真实GT标签、完整prefix机会、C输入语义/人审bank及固定120fit32dev分割。请求gpt-6-astra/max，实际UNATTESTED，同族provisional。当前审查仍在进行，R2_terminal_raw_audit_complete=false，C运行预检/两组训练/自身历史32dev/Full152/正式九项均未产生新结果。不得从源码PASS、CPU完成或哈希一致提前生成终态审查通过标记。
 
 本阶段没有新增NN进度查询、GPU查询或训练重启。下次NN观察仍不早于19:11:03.096101；若没有运行中的NN任务，不做空查询。终态审查完成后以实际flags/digests接入既定C预检及配对实验。goal ACTIVE_UNMET。
+
+### 5.450 2026-10-10：R2 fresh终态审查完成，R3双卡队列实现并进入源审
+
+上一goal turn是ACTUAL_PROGRESS：原R2及CPU_v3真正结束、序列化失败保存、文档§§5.447—5.449及Git7807673d/Desktop/server字节同步闭合；没有新增NN进度轮询。本turn读取当前文件与实际agent状态，确认fresh审查在运行，随后收到完成报告。R2 fresh终态判定WARN/0阻断，R2_terminal_raw_audit_complete=true；请求Astra/max，实际UNATTESTED，同族provisional。
+
+独立检查全部227项输入及ZIP195份payload对应字节，复算219802条prefix、1297事件及40954未来帧对，全部当前/future IoU与signed均值数值误差为0。全部519维输入重构，CPU/GPU运动量最大差2.98e-8，小于原1e-6容差。完整PT/decoder和77项gate中58项没有在本地逐张量检查，而由实际服务器CPU exit0全读和哈希回执提供限定证据；该范围在审查中明确保留。源审、GT实读与历史一致性proxy分别记录，不能扩大成模型特征重建或新C/正式性能认证。
+
+| C原teacher监督划分 | 事件数 | 使用规则 |
+|---|---:|---|
+| fit120共同可训练 | 993 | current/future同一集合，不只保留正收益 |
+| development32固定teacher | 264 | 不参与优化，仅固定状态诊断 |
+| 共同可训练总数 | 1257 | 当前GT有效且未来至少一帧有效 |
+| 当前GT未知排除 | 35 | 未知不写成负例 |
+| 只有未来全不可用排除 | 5 | 与当前未知互不重复 |
+| 总排除 | 40 | 全部原1297事件仍保留 |
+
+终态审查JSON SHAe082d4a5d92579fb39abe4b8b4db300bac4127ccb9e90b227d98287fe7197cc2，27份封存SHA5394cc30dedc5561b7fbef67feb328eeed940c031838949c92f647e26053c2d5，最终实检ecb5cc exit0。真实aggregate/two replay/two prefix digests与§5.448一致，现由独立报告签发所需机器字段，而非executor或CPU脚本补写。这是R3入场材料，不是C已经有效的结果。
+
+新增m122_R3_C_controller_20261010.py，只组织既定程序，SHA0d62893b3d840a1f4fb587b3fd6ffcf356012ba8fb0774772b564339d8100bc7。顺序固定为：GPU0常量动作256帧预检→GPU0 current/GPU1 future的120fit配对10epoch→核对共同数据/初始化/顺序及每臂320步→两卡各自完整32dev独立历史→CPU统一比较。仅阻塞subprocess/thread等待，没有进度轮询或自动重启。失败子进程先保存真实log/exit/receipt，后续阶段不启动；即使预定macro/H10门通过，也不自动进入R4。
+
+新队列没有改变C模型/损失/阈值、原生模板规则、A+B final或人审文本。入场在首次NN前要求真实R2终态报告、实际hash、controller源码审查及绑定文件。独立控制流fixture实际子进程exit3/队列return1并保存完整失败材料，Python3.8语法通过，fd37d0 exit0；它是隔离程序测试，不算NN运行。首次inline shell语法错误1a82c5及manifest误填旧审查文件名bc1b9a均保留；实际修正后的f50f63 exit0没有改变实验材料。
+
+R3 controller的21项源码/实际终态材料已交原fresh R3 reviewer续审，仍在进行；具体部署生成器已准备，但没有生成/上传新的R3包，没有新的NN进程、预检结果、C权重或32dev成绩。生成器只在真实controller源审PASS/0block后绑定其报告hash，执行前使用既有warm解释器，不安装/重建环境。新任务GPU资源入场检查不早于19:11:03.096101；运行后的进度仍每小时最多一次，无NN运行时不做空查询。
+
+若future C通过完整32dev及后续fresh结果审查，再建立C自身策略历史的Train152 W/K teacher，合并原事件并训练统一Full152 final，最终同一权重完成DepthTrack Test、CDTB和VOT全部九项。R4自身历史collector尚未实现/执行；该剩余工作没有被本次入场审查或控制队列替代。若当前失败先于合法写入，应继续回溯候选/身份/观察，不将所有问题归给模板。项目目标仍ACTIVE_UNMET。
