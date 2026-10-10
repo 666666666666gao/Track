@@ -1,0 +1,141 @@
+{
+  "status": "actual_CurrentC_sixth_hour_observation_collected",
+  "observed_at": "2026-10-10T20:32:33.475297+00:00",
+  "gap_since_previous_NN_observation_seconds": 3632.244823,
+  "original_stdout_sha256": "d2932c9ef557256e9fe44d2c8f8af6cb7a450e5881b113686844be5441725bec",
+  "original_timer": {
+    "session_id": 1386,
+    "process_id": 25808,
+    "cell": 842,
+    "terminal_chunk": "d3bb2b",
+    "exit_code": 0,
+    "consumed": true,
+    "restarted": false,
+    "raw_terminal": {
+      "status": "local_CurrentC_sixth_hourly_node_due",
+      "pid": 25808,
+      "started_at": "2026-10-11T03:33:30.260168+08:00",
+      "deadline": "2026-10-10T20:32:01.230474+00:00",
+      "server_queries": 0,
+      "NN_progress_queries": 0,
+      "sleep_interval_seconds": 300,
+      "restarted": false,
+      "duplicate_timer_created": false,
+      "original_fifth_timer_session_id": 21267,
+      "finished_at": "2026-10-11T04:32:01.230731+08:00"
+    }
+  },
+  "native_observer": {
+    "status": "actual_CurrentC_sixth_hour_original_observer_native_closed",
+    "session_id": 16207,
+    "initial": {
+      "chunk_id": "d8d0a1",
+      "wall_time_seconds": 10.0086431,
+      "session_id": 16207,
+      "original_token_count": 30,
+      "output": "\u001b[?9001h\u001b[?1004h\u001b[?25l\u001b[2J\u001b[m\u001b[Hroot@connect.nmb2.seetacloud.com's password:\u001b[1C\u001b]0;C:\\WINDOWS\\system32\\cmd.exe\u0007\u001b[?25h"
+    },
+    "authentication": {
+      "chunk_id": "5f1c3e",
+      "wall_time_seconds": 1.016377,
+      "session_id": 16207,
+      "original_token_count": 1,
+      "output": "\r\n"
+    },
+    "terminal": {
+      "chunk_id": "87c1c7",
+      "wall_time_seconds": 1.18e-05,
+      "exit_code": 0,
+      "original_token_count": 4,
+      "output": "\u001b[?9001l\u001b[?1004l"
+    }
+  },
+  "GPU_snapshot": "0, 4122, 73\n1, 1, 0\n",
+  "supervisor": {
+    "pid": 391524,
+    "cmdline_exists": true,
+    "cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m122_current_quality_C_full152_20261010/code/m122_current_C_process_supervisor.py /root/autodl-tmp/m122_current_quality_C_full152_20261010 "
+  },
+  "OPE_progress": [
+    {
+      "dataset": "depthtrack_test",
+      "complete_predictions": true,
+      "complete_metrics_observed": true,
+      "metrics": {
+        "precision": 0.673650693502503,
+        "recall": 0.6486510340917104,
+        "f_score": 0.6609145399091418,
+        "precision_percent": 67.3650693502503,
+        "recall_percent": 64.86510340917104,
+        "f_score_percent": 66.09145399091419,
+        "threshold": 0.089707,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "unchanged_since_previous_hour": true
+    },
+    {
+      "dataset": "cdtb",
+      "complete_predictions": true,
+      "complete_metrics_observed": true,
+      "metrics": {
+        "precision": 0.7459362462526584,
+        "recall": 0.6988623866187693,
+        "f_score": 0.7216324454647651,
+        "precision_percent": 74.59362462526585,
+        "recall_percent": 69.88623866187693,
+        "f_score_percent": 72.1632445464765,
+        "threshold": 0.166124,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "unchanged_since_previous_hour": true
+    }
+  ],
+  "VOT_shard_progress": [
+    {
+      "index": 0,
+      "gpu": 0,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 142,
+      "log_tail": "\u001b[33mA newer version of the VOT toolkit is available (0.9.0), please update.\u001b[0m\n1 %\n2 %\n3 %\n4 %\n5 %\n6 %\n7 %\n8 %\n9 %\n10 %\n11 %\n12 %\n13 %\n14 %\n15 %\n16 %\n17 %\n18 %\n19 %\n20 %\n21 %\n22 %\n23 %\n24 %\n25 %\n26 %\n27 %\n28 %\n29 %\n30 %\n"
+    },
+    {
+      "index": 1,
+      "gpu": 1,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 164,
+      "log_tail": "\u001b[33mA newer version of the VOT toolkit is available (0.9.0), please update.\u001b[0m\n1 %\n2 %\n3 %\n4 %\n5 %\n6 %\n7 %\n8 %\n9 %\n10 %\n11 %\n12 %\n13 %\n14 %\n15 %\n16 %\n17 %\n18 %\n19 %\n20 %\n21 %\n22 %\n23 %\n24 %\n25 %\n26 %\n27 %\n28 %\n29 %\n30 %\n"
+    },
+    {
+      "index": 2,
+      "gpu": 0,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 0
+    },
+    {
+      "index": 3,
+      "gpu": 1,
+      "expected_anchors": 442,
+      "completed_nonempty_trajectory_triples": 0
+    }
+  ],
+  "rough_VOT_eta": {
+    "completed_anchors": 306,
+    "total_anchors": 1765,
+    "remaining_anchors": 1459,
+    "elapsed_seconds": 13585.835658,
+    "last_hour_new_anchors": 80,
+    "last_hour_seconds": 3632.244823,
+    "cumulative_average_remaining_hours": 17.99358589780501,
+    "rough_extrapolation_not_completion_promise": true,
+    "last_hour_average_remaining_hours": 18.400851377628474
+  },
+  "formal_nine_metrics_complete": false,
+  "current_suite_terminal": false,
+  "M123_training_launched": false,
+  "NN_progress_queries": 1,
+  "additional_NN_calls": 0,
+  "next_NN_observation_not_before": "2026-10-10T21:32:33.475297+00:00",
+  "previous_goal_turn_classification": "PROGRESS_ACTUAL_HOURLY_VOT226_AND_DOCS_SYNC"
+}
