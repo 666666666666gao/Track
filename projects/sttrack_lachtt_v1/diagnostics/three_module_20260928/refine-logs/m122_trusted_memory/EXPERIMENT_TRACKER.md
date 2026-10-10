@@ -49,7 +49,7 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 
 2026-10-10 §5.453：实际20:19单次NN观察，preflight513calls/1eligible精确通过；双C各993fit/264fixed-dev/10epochs320steps真实exit0。Own32dev current≥25seq36812calls/future≥30seq45978calls，两卡79/78%。无完整IoU/H10/正式结果；第一timer30195正常0消费，第二唯一18966/PID49376，下一21:19:01，不提前查。
 
-| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | FIT_COMPLETE / TWO_OPE_COMPLETE / VOT_RUNNING：§5.460两完整OPE及真实零退出；§5.461有限报告审核WARN/0；02:31观察VOT165/1765，九项未完成；原timer21267，下一NN>=03:31:28 |
+| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | FIT_COMPLETE / TWO_OPE_COMPLETE / VOT_RUNNING：§5.460两完整OPE及真实零退出；§5.461有限报告审核WARN/0；03:32观察VOT226/1765，九项未完成；原timer1386，下一NN>=04:32:01 |
 
 2026-10-10 §5.454：实际R3六阶段与supervisor exit0，21:19:36唯一小时查询确认全部结束；32dev GT复算完成，Future门失败。原seed初始化摘要的本地重建差异未确定，不称逐张量初始化已独立认证。新质量分支待源码审核，不自动续跑Future；NN下一准入不早于22:19:36.400301。
 
@@ -70,3 +70,5 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 2026-10-11 §5.461：实际CurrentC两项OPE独立只读审查WARN/0有限报告阻断，81checks/28files/89sealedinputs；非逐帧独立复算/非完整ABC联合。修正QF152与M123两当前状态行，旧Future门/R4/R5历史不改。下一NN>=02:30:58，原51380/PID54312等待保留。
 
 2026-10-11 §5.462：02:31唯一小时实测CurrentC VOT165/1765 (74+91)，两卡74%/70%，本小时+96；累计/最近速率粗估剩17.03/16.81小时，不承诺终态；§5.460两OPE不重复。M123仍未启动，完整Train152 ABC协议不变。原21267/PID45392下一>=03:31:28。
+
+2026-10-11 §5.463：03:32唯一小时实测CurrentC VOT226/1765 (105+121)，两卡65%/72%，本小时+61；累计/最近速率粗估剩18.83/25.46小时，不承诺终态；两OPE原字节一致不重复。M123完整ABC全Train152/no-dev仍NOT_LAUNCHED，等待原VOT完结及两GPU实际空闲；原1386/PID25808下一>=04:32:01。
