@@ -27101,3 +27101,29 @@ R3 controller的21项源码/实际终态材料已交原fresh R3 reviewer续审�
 下一NN进度节点固定20:18:28.507863（UTC12:18:28.507863）之后。唯一被动本地timer于19:19:26.899658启动，原native session30195、initial246241，实际Python PID37988、CIM birth19:19:26.727001；每次sleep300s，remote queries0，禁止重建timer或重启实验。20:18以前仅本地记录和静态文档同步，不读取NN进度。用户“不要频繁轮询”继续适用。
 
 真正通过R3完整结果/覆盖审查后，才建立C自身历史的Full152 W/K teacher并训练最终C，与固定A+B形成统一final，三数据集全部九项完整验证。若不通过，按真实收益/损害/覆盖分析继续改进；R4自身历史collector尚未实现，不能将现有原生teacher标签直接当作新C策略历史标签。当前目标ACTIVE_UNMET。
+
+### 5.453 2026-10-10 20:19：首次小时观察确认预检及两组C训练完成，32dev仍在运行
+
+上一goal turn为VERIFIED_WAIT：原本地timer30195/PID37988及函数等待582真实运行；本turn继续消费相同句柄，第一300s返回dfad9d仍是原session30195，不因观测超时重启。后续同一函数583每300s接回原句柄，逐次保存join02—10；原timer实际于20:18:28.508233结束，最后53484f exit0，两个函数等待均真正结束。整个等待期间NN/GPU/日志远端查询0，没有重建timer或任务。
+
+到既定节点后才执行一次原observer：SSH77362（ca7964/7f87d9/9d8a34）真实exit0，原stdout SHA f7a027326a5ff57fc83ea8adcc0905a18ce14d72925ea6ffe91a6dc9cce7c198。实际NN观察20:19:01.180347，距19:18:28.507863新任务准入3632.672484s；只有1次NN进度观察，NN调用0/优化0/重启0。监督器PID385974在/proc仍有对应命令行；两个GPU各4130MiB，瞬时利用率79%/78%，两组自身历史开发仍在运行。controller.exit和controller.supervised.exit、总result均尚未产生。
+
+真实运行预检已19:19:37.492422 exit0，256帧两条独立历史及一次reject共513调用，native qualified write=1；始终write与绑定原生模板规则的当前输出/状态精确，reject保留当前框/query/此前模板精确，native/CLIP/decoder状态hash前后不变，优化0/C MLP0、首框后GT读取0。result SHA3158a5b26d0e69e5cee323d1d0e2db7e6224c33bb2fadcaa4612b3275852483e。这是真实接口边界预检，只有一个合资格写入，不扩大成训练后C性能或全部事件的拒绝正确性。
+
+| 实际完成的C拟合 | GPU | 公共fit/dev事件 | epochs/优化 | 最后fit MSE | 最后固定teacher dev MSE |
+|---|---:|---:|---:|---:|---:|
+| current：当前IoU目标 | 0 | 993/264 | 10/320 | 0.039251565175 | 0.031545847654 |
+| future：未来W−K均值目标 | 1 | 993/264 | 10/320 | 0.000935332137 | 0.000538952649 |
+
+两组真实训练子进程分别于19:19:45.779696和19:19:45.899164 exit0，训练result SHA分别7d8a8e3da78741422ac07b3046891de2d14bc7864337afc61384918d3f48a3e7、b6c8fb53e952e55a772c675b76e59069027e38ff6a2ea4eb6363c82208bf2d89。全部使用seed2027/固定final；controller通过相同数据/初始化/顺序校验后，才启动两组own-history开发。70,721参数C仅在此前R2数小时采集的519维固定特征上优化；MSE优化循环实际约1.67s/1.82s，完整子进程约8.3s，不能将其误写为重新训练A+B或视觉骨干。两个MSE标签含义/数值尺度不同，不能按误差小直接判future更强；固定teacher的264事件也不能替代自身历史32dev。
+
+| 20:19真实stdout顺序前缀下界 | 已完成序列 | 已完成调用下界/全量 | 最后完整打印序列 | 剩余调用上界 |
+|---|---:|---:|---|---:|
+| current | 25/32 | 36812/49366 | paintbottle_indoor（index115） | 12554 |
+| future | 30/32 | 45978/49366 | cup13_indoor（index142） | 3388 |
+
+以上按冻结spec/split及顺序eval源码，将最后完整打印序列之前的全部case接回，当前正在处理序列的内部帧进度未知，所以只写下界。不是读取完整预测result，也没有据此补填IoU/H10/P/R/F/VOT。按该下界速度估计，future约再4.4min，current约再20.2min，两臂大致20:40前后完成；这是同次观察的粗略估计，非完成承诺。即使其中一臂提前结束，也不追加低于一小时的NN查询。
+
+下一观察下限21:19:01.180347。新的唯一第二小时被动timer于20:22:52.480481启动，原native18966/5afff4、PythonPID49376、CIM birth20:22:52.373511；sleep300s，远端查询0。它在第一timer正常终态/句柄消费完毕且两卡开发实际活跃之后建立，未重建第一timer。单次第二observer已准备但未执行，不能写为已有第二观察或完整开发结果。
+
+完整32dev结束后由CPU比较future与冻结P1＋原模板规则、current对照的帧均/序列等权IoU、H10及接受/拒绝覆盖；这里的native baseline是冻结P1 A+B的native模板规则，不是独立原生STTrack。仍须fresh结果审查，之后按已冻结条件决定是否建立C自身历史Full152 W/K teacher和最终C训练。尚无新增正式九项，R4 collector仍未实现/执行，项目ACTIVE_UNMET。

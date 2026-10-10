@@ -46,3 +46,5 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 2026-10-10 §5.451：R3 controller源审PASS/WARN0block，134checks，49366calls/dev臂。具体90pin包及最小外层真实异常退出记录已准备，补充源审进行；R3未部署/未NN运行，不早于19:11资源入场，源审不作性能证书。
 
 2026-10-10 §5.452：concrete source PASS/WARN0block，137checks；实际19:18:28 supervised R3队列PID385974启动，预检→GPU0current/GPU1future120fit320steps→32dev49366calls/臂。运行结果未观察；唯一原timer30195/PID37988，20:18:28以后一次NN观察，零重启/空查询。
+
+2026-10-10 §5.453：实际20:19单次NN观察，preflight513calls/1eligible精确通过；双C各993fit/264fixed-dev/10epochs320steps真实exit0。Own32dev current≥25seq36812calls/future≥30seq45978calls，两卡79/78%。无完整IoU/H10/正式结果；第一timer30195正常0消费，第二唯一18966/PID49376，下一21:19:01，不提前查。

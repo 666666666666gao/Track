@@ -1,0 +1,80 @@
+{
+  "status": "actual_R3_first_hour_preflight_and_both_C_fits_complete_development_active",
+  "observed_at": "2026-10-10T12:19:01.180347+00:00",
+  "gap_since_actual_GPU_admission_seconds": 3632.672484,
+  "raw_stdout_sha256": "f7a027326a5ff57fc83ea8adcc0905a18ce14d72925ea6ffe91a6dc9cce7c198",
+  "preflight": {
+    "status": "complete_M122_R3_constant_action_preflight256",
+    "seed": 2027,
+    "elapsed_seconds": 47.09590983390808,
+    "native_qualified_writes": 1,
+    "always_write_output_and_submission_exact": true,
+    "rejection_keeps_current_output_query_and_previous_templates_exact": true
+  },
+  "preflight_result_sha256": "3158a5b26d0e69e5cee323d1d0e2db7e6224c33bb2fadcaa4612b3275852483e",
+  "current_fit": {
+    "status": "complete_M122_C_fixed_teacher_fit120",
+    "arm": "current",
+    "optimizer_steps": 320,
+    "epochs": 10,
+    "seed": 2027,
+    "common_fit_events": 993,
+    "common_development_events": 264,
+    "elapsed_seconds": 1.6696979999542236
+  },
+  "future_fit": {
+    "status": "complete_M122_C_fixed_teacher_fit120",
+    "arm": "future",
+    "optimizer_steps": 320,
+    "epochs": 10,
+    "seed": 2027,
+    "common_fit_events": 993,
+    "common_development_events": 264,
+    "elapsed_seconds": 1.8176019191741943
+  },
+  "C_fit_result_sha256": {
+    "current": "7d8a8e3da78741422ac07b3046891de2d14bc7864337afc61384918d3f48a3e7",
+    "future": "b6c8fb53e952e55a772c675b76e59069027e38ff6a2ea4eb6363c82208bf2d89"
+  },
+  "development_progress": [
+    {
+      "arm": "current",
+      "completed_sequences_lower_bound": 25,
+      "completed_calls_lower_bound": 36812,
+      "total_sequences": 32,
+      "total_calls": 49366,
+      "remaining_calls_upper_bound": 12554,
+      "last_printed_sequence": "paintbottle_indoor",
+      "last_printed_index": 115,
+      "own_history_result_complete": false,
+      "provenance": "Sequential evaluation source order through last completed sequence printed in the captured stdout tail; current sequence progress unobserved.",
+      "estimated_remaining_seconds": 1212.4578933875366,
+      "estimate_scope": "Rough extrapolation from completed-prefix calls and time since both fits ended; not a completion promise."
+    },
+    {
+      "arm": "future",
+      "completed_sequences_lower_bound": 30,
+      "completed_calls_lower_bound": 45978,
+      "total_sequences": 32,
+      "total_calls": 49366,
+      "remaining_calls_upper_bound": 3388,
+      "last_printed_sequence": "cup13_indoor",
+      "last_printed_index": 142,
+      "own_history_result_complete": false,
+      "provenance": "Sequential evaluation source order through last completed sequence printed in the captured stdout tail; current sequence progress unobserved.",
+      "estimated_remaining_seconds": 261.9794825352125,
+      "estimate_scope": "Rough extrapolation from completed-prefix calls and time since both fits ended; not a completion promise."
+    }
+  ],
+  "GPU_snapshot": "0, 4130, 79\n1, 4130, 78\n",
+  "original_timer_exit": 0,
+  "original_timer_consumed": true,
+  "NN_progress_queries": 1,
+  "NN_calls": 0,
+  "R3_complete": false,
+  "final_nine_metrics_completed": false,
+  "next_NN_observation_not_before": "2026-10-10T13:19:01.180347+00:00",
+  "active_NN_tasks_observed": true,
+  "restarted": false,
+  "recorded_at": "2026-10-10T12:21:33.216520+00:00"
+}
