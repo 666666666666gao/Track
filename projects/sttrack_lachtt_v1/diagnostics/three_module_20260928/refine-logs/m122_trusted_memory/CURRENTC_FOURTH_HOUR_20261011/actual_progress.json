@@ -1,0 +1,120 @@
+{
+  "status": "actual_CurrentC_fourth_hour_observation_collected",
+  "observed_at": "2026-10-10T18:31:28.226108+00:00",
+  "gap_since_previous_NN_observation_seconds": 3630.167238,
+  "original_stdout_sha256": "8fc716c7ce9f5aa66623a27b7a990624a2b1cd404c512ebf24a726ff85b8d141",
+  "original_timer": {
+    "session_id": 51380,
+    "process_id": 54312,
+    "cell": 804,
+    "terminal_chunk": "960603",
+    "exit_code": 0,
+    "consumed": true,
+    "restarted": false,
+    "raw_terminal": {
+      "status": "local_CurrentC_fourth_hourly_node_due",
+      "pid": 54312,
+      "started_at": "2026-10-11T01:35:11.836996+08:00",
+      "deadline": "2026-10-10T18:30:58.058870+00:00",
+      "server_queries": 0,
+      "NN_progress_queries": 0,
+      "sleep_interval_seconds": 300,
+      "restarted": false,
+      "duplicate_timer_created": false,
+      "original_third_timer_session_id": 75282,
+      "finished_at": "2026-10-11T02:30:58.059268+08:00"
+    }
+  },
+  "native_observer": {
+    "session_id": 53392,
+    "initial_chunk": "61803e",
+    "authentication_chunk": "527d00",
+    "terminal_chunk": "dc18f3",
+    "exit_code": 0
+  },
+  "GPU_snapshot": "0, 4122, 74\n1, 4120, 70\n",
+  "supervisor": {
+    "pid": 391524,
+    "cmdline_exists": true,
+    "cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m122_current_quality_C_full152_20261010/code/m122_current_C_process_supervisor.py /root/autodl-tmp/m122_current_quality_C_full152_20261010 "
+  },
+  "OPE_progress": [
+    {
+      "dataset": "depthtrack_test",
+      "complete_predictions": true,
+      "complete_metrics_observed": true,
+      "metrics": {
+        "precision": 0.673650693502503,
+        "recall": 0.6486510340917104,
+        "f_score": 0.6609145399091418,
+        "precision_percent": 67.3650693502503,
+        "recall_percent": 64.86510340917104,
+        "f_score_percent": 66.09145399091419,
+        "threshold": 0.089707,
+        "sequences": 50,
+        "frames": 76373
+      }
+    },
+    {
+      "dataset": "cdtb",
+      "complete_predictions": true,
+      "complete_metrics_observed": true,
+      "metrics": {
+        "precision": 0.7459362462526584,
+        "recall": 0.6988623866187693,
+        "f_score": 0.7216324454647651,
+        "precision_percent": 74.59362462526585,
+        "recall_percent": 69.88623866187693,
+        "f_score_percent": 72.1632445464765,
+        "threshold": 0.166124,
+        "sequences": 80,
+        "frames": 101956
+      }
+    }
+  ],
+  "VOT_shard_progress": [
+    {
+      "index": 0,
+      "gpu": 0,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 74,
+      "log_tail": "\u001b[33mA newer version of the VOT toolkit is available (0.9.0), please update.\u001b[0m\n1 %\n2 %\n3 %\n4 %\n5 %\n6 %\n7 %\n8 %\n9 %\n10 %\n11 %\n12 %\n13 %\n14 %\n15 %\n16 %\n17 %\n18 %\n"
+    },
+    {
+      "index": 1,
+      "gpu": 1,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 91,
+      "log_tail": "\u001b[33mA newer version of the VOT toolkit is available (0.9.0), please update.\u001b[0m\n1 %\n2 %\n3 %\n4 %\n5 %\n6 %\n7 %\n8 %\n9 %\n10 %\n11 %\n12 %\n13 %\n14 %\n15 %\n16 %\n17 %\n18 %\n"
+    },
+    {
+      "index": 2,
+      "gpu": 0,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 0
+    },
+    {
+      "index": 3,
+      "gpu": 1,
+      "expected_anchors": 442,
+      "completed_nonempty_trajectory_triples": 0
+    }
+  ],
+  "rough_VOT_eta": {
+    "completed_anchors": 165,
+    "total_anchors": 1765,
+    "remaining_anchors": 1600,
+    "elapsed_seconds": 6320.586469,
+    "last_hour_new_anchors": 96,
+    "last_hour_seconds": 3630.167238,
+    "cumulative_average_remaining_hours": 17.025148738047136,
+    "rough_extrapolation_not_completion_promise": true,
+    "last_hour_average_remaining_hours": 16.806329805555553
+  },
+  "formal_nine_metrics_complete": false,
+  "current_suite_terminal": false,
+  "M123_training_launched": false,
+  "NN_progress_queries": 1,
+  "additional_NN_calls": 0,
+  "next_NN_observation_not_before": "2026-10-10T19:31:28.226108+00:00"
+}
