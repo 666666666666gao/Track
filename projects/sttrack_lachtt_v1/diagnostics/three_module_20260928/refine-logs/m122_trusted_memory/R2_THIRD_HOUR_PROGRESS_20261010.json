@@ -1,0 +1,71 @@
+{
+  "status": "actual_third_hour_R2_collection_complete_replay_running",
+  "observed_at": "2026-10-10T08:52:45.946171+00:00",
+  "previous_observation_interval_seconds": 3631.837937,
+  "elapsed_wall_seconds": 10922.787274,
+  "source_observation_sha256": "ff3cca3a742dd14e6148d69b776faff80a9f6bc2cebf49e3f7c8bf422c3b2ac1",
+  "source_stdout_sha256": "a9ffd51a3629ec150c4cc75bdb22809da80bbb304c71ac18a043fbdc6549d20f",
+  "completed_collection_sequences": 152,
+  "collected_track_calls": 219802,
+  "collected_events": 1297,
+  "maximum_future_calls_if_all32": 83008,
+  "actual_expected_future_calls": null,
+  "terminal_teacher_proven": false,
+  "C_training_started": false,
+  "shards": [
+    {
+      "shard": 0,
+      "completed_sequences": 76,
+      "collected_calls": 107060,
+      "collected_events": 701,
+      "collection_loop_seconds": 9825.609372377396,
+      "stage": "replay_running_terminal_unproved",
+      "last_saved_rollout": {
+        "sequence_index": 36,
+        "sequence": "ball08_wild",
+        "frame": 500,
+        "provenance": "Last completed raw rollout filename visible in saved2500-byte replay log tail; not a full replay count."
+      },
+      "replayed_event_count": null,
+      "replay_calls": null,
+      "replay_ETA": null,
+      "gpu_instantaneous": {
+        "memory_MiB": 4130,
+        "utilization_percent": 91
+      },
+      "bounded_tail_error_tokens": {
+        "collect": [],
+        "replay": []
+      }
+    },
+    {
+      "shard": 1,
+      "completed_sequences": 76,
+      "collected_calls": 112742,
+      "collected_events": 596,
+      "collection_loop_seconds": 8553.490442991257,
+      "stage": "replay_running_terminal_unproved",
+      "last_saved_rollout": {
+        "sequence_index": 131,
+        "sequence": "ball07_indoor",
+        "frame": 2050,
+        "provenance": "Last completed raw rollout filename visible in saved2500-byte replay log tail; not a full replay count."
+      },
+      "replayed_event_count": null,
+      "replay_calls": null,
+      "replay_ETA": null,
+      "gpu_instantaneous": {
+        "memory_MiB": 4130,
+        "utilization_percent": 76
+      },
+      "bounded_tail_error_tokens": {
+        "collect": [],
+        "replay": []
+      }
+    }
+  ],
+  "next_NN_observation_not_before": "2026-10-10T09:52:45.946171+00:00",
+  "source_original_wait_terminal": "199f7b",
+  "original_wait_restarted": false,
+  "scope": "Actual collection completion and bounded replay tails; no new model metrics; no inferred replay completion or ETA."
+}
