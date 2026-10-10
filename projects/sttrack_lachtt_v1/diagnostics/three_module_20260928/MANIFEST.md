@@ -433,3 +433,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 2026-10-10 R2_FIRST_HOUR_OBSERVATION_20261010.json与R2_FIRST_HOUR_PROGRESS_20261010.json：仅一次原进程14:51小时实测及本地manifest求和/采集阶段估计，无新NN执行、C优化或正式性能，见§5.442。
 
 2026-10-10 run_template_write_C_preflight.py与R3_PREFLIGHT_SOURCE_AUDIT_20261010.md/json：固定首条Train256帧常量动作接线预检源码/原始审查报告；仅source PASS，运行/learned-C性能未验证，见§5.443。
+
+2026-10-10 R2_SECOND_HOUR_OBSERVATION_20261010.json及R2_SECOND_HOUR_PROGRESS_20261010.json：仅一次15:52原控制器实测与本地manifest求和/采集估计，无C优化/新正式指标，见§5.444。
