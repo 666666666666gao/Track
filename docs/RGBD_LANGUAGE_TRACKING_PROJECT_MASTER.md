@@ -26872,3 +26872,18 @@ R2三源独立审核已完成：source PASS、overall WARN、0阻断/5非阻断�
 完整C-dev32预测器不打开GT；预测完成后CPU分析读取真实Train GT，三路径按一致的非初始化有效GT分母计算帧均/序列等权IoU、IoU≤.1帧与H10（连续至少10帧，未知GT断开）。原规则轨迹复用R2的完整原前缀。另在共同原教师状态上比较正/负/零未来事件接纳；该标签不转移到C修改后的历史。自身C轨迹只直接记录写入总量、原资格数量、未知GT与低IoU写入等，真实动作收益仍需R4新W/K。
 
 推进条件仍为future macro IoU严格胜原规则/current、H10不增、覆盖与逐序列正负损害经过审核，再执行R4自身历史及Full152 C。§5.435的两行正式九项不变，goal ACTIVE_UNMET；C尚未有开发/外部性能结论。不新增seed、模型下载、在线MLLM、视图库、跨区域搜索或数据集专属阈值。
+
+
+### 5.441 2026-10-10：R3来源审查发现B1并定点修正，仍不提前轮询教师
+
+上一goal turn完成原R3请求trace与24份审查输入逐字节ZIP封存（174753B，SHA03390c6e69685e68772656fc7b918d83e865364fcff0f8a1c7cb908471b5bd9f），没有新的远端NN/GPU查询。唯一等待native76419/PID54468/创建13:51:14.532305的原命令在本turn本地CIM ce073a仍完全一致；首远端观察14:50:43.158897不提前，不以超时重启原控制器或计时器。
+
+fresh R3 v2实际正式审查FAIL：1阻断、3非阻断，734项静态检查通过、39份输入复核未变；没有SSH、NN或构造。B1是开发分析器未把原生完整前缀和两臂fit回执连接到同一份已审核R2终态：原代码只记录prefix SHA，未比较审核预期；也未消费fit的teacher_result_sha256/teacher_audit_sha256。这是实际来源接线缺口，不是已经产生错误C指标的证明，因为尚无C运行。原v2报告、源码、校验失败及封存ZIP原样保留，未将FAIL覆盖为PASS。
+
+只修改新的analyze_template_write_C_dev.py及其源码合同：新增必填--teacher-audit，要求completed/0阻断/terminal-raw-audit，实际aggregate SHA等于审核摘要，两个native_prefix SHA分别等于审核audited_teacher_prefixes_sha256[0/1]，两臂fit的teacher结果/审核SHA均与本次实际输入一致。结果也记录同一审核SHA。其余20项审查输入、训练/预测/模板包装器以及R2运行来源均未改；没有新增fallback、重试、损失、阈值或模型。
+
+v3已经同一fresh审查者复查，source PASS/0阻断；完整报告保留非阻断项的实际范围。请求模型Astra/max，实际后端UNATTESTED，同族/provisional；R3_launch_certified仍false。此源码通过不代表R2终态、标签、C初始化/梯度/更新、GPU接线或开发收益通过。实际教师终态审核还必须从真实两个前缀产出预期SHA，不得填占位值、借用启动回执或仅以经过时间认为完成。
+
+下一步保持：在唯一小时节点检查原双GPU教师；全量完成后封存并审核真实GT标签、W/K原始轨迹、同GPU与冻结摘要，再绑定具体R3包/运行入口，做原规则与新包装器的实际接线等价检查；随后同seed2027、同519维输入、同120/32数据、同70721参数结构与10epoch final训练current/future，完整递归开发并报告有益写入覆盖和逐序列损害。只有计划全部开发条件和结果审核通过，才进入R4自身历史/Full152 C及唯一final三数据集九项验收。
+
+目前没有C模型构造、前向、优化、部署、新C权重、开发或正式指标；§5.435正式两行成绩不重复填表也不改写。goal ACTIVE_UNMET。本turn只有源码来源修正与真实审查闭合，不增加正在运行的GPU任务，不提前读取训练日志。

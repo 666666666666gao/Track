@@ -88,12 +88,18 @@ def fixed_panel(root, arm):
 
 def main():
     parser = argparse.ArgumentParser()
-    for name in ['teacher-root', 'current-fit', 'future-fit', 'current-predictions', 'future-predictions', 'spec', 'split', 'output']:
+    for name in ['teacher-root', 'teacher-audit', 'current-fit', 'future-fit', 'current-predictions', 'future-predictions', 'spec', 'split', 'output']:
         parser.add_argument('--' + name, type=Path, required=True)
     args = parser.parse_args()
     assert not args.output.exists()
     assert sha(args.spec) == SPEC_SHA and sha(args.split) == SPLIT_SHA
     spec, split = read(args.spec), read(args.split)
+    audit = read(args.teacher_audit)
+    assert audit['review_call_status'] == 'completed' and audit['blocking_count'] == 0
+    assert audit['R2_terminal_raw_audit_complete']
+    audit_sha = sha(args.teacher_audit)
+    teacher_sha = sha(args.teacher_root / 'result.json')
+    assert teacher_sha == audit['audited_teacher_result_sha256']
     complete = read(args.teacher_root / 'result.json')
     assert complete['status'] == 'complete_M122_full_train_template_teacher' and (args.teacher_root / 'controller.exit').read_text().strip() == '0'
     assert complete['inputs']['spec_sha256'] == SPEC_SHA
@@ -106,7 +112,9 @@ def main():
         collected = read(folder / 'teacher_events.json')
         assert collected['inputs'] == complete['inputs'] and collected['shard'] == shard
         path = folder / 'native_prefix.jsonl'
-        source_hashes[str(path)] = sha(path)
+        prefix_sha = sha(path)
+        assert prefix_sha == audit['audited_teacher_prefixes_sha256'][shard]
+        source_hashes[str(path)] = prefix_sha
         for sequence, rows in load_predictions(path, sequences).items():
             native[sequence].extend(rows)
     trajectories = {'native': native}
@@ -114,6 +122,7 @@ def main():
     for arm, fitted_root, prediction_root in [('current', args.current_fit, args.current_predictions), ('future', args.future_fit, args.future_predictions)]:
         fit = read(fitted_root / 'result.json'); receipt = read(prediction_root / 'result.json')
         assert fit['status'] == 'complete_M122_C_fixed_teacher_fit120' and fit['arm'] == arm
+        assert fit['teacher_result_sha256'] == teacher_sha and fit['teacher_audit_sha256'] == audit_sha
         assert receipt['status'] == 'complete_M122_C_development32_own_history_predictions' and receipt['arm'] == arm
         assert receipt['inputs'] == complete['inputs'] and receipt['split_sha256'] == SPLIT_SHA
         assert receipt['C_final_sha256'] == fit['final_sha256'] == sha(fitted_root / 'final.pt')
@@ -154,7 +163,8 @@ def main():
     result = dict(status='complete_M122_C_development32_comparison', aggregates=aggregates, fixed_teacher_panels=panels,
         prescribed_macro_IoU_and_H10_gate_passed=bool(passed),
         gate_requires_fresh_result_audit_before_R4=True, coverage_review_required=True,
-        split_sha256=SPLIT_SHA, spec_sha256=SPEC_SHA, teacher_result_sha256=sha(args.teacher_root / 'result.json'),
+        split_sha256=SPLIT_SHA, spec_sha256=SPEC_SHA, teacher_result_sha256=teacher_sha,
+        teacher_audit_sha256=audit_sha,
         source_hashes=source_hashes, source_sha256=sha(Path(__file__)),
         metrics_scope='noninitialization frames with valid dataset GT; Train/C optimization holdout, A+B previously saw all152',
         H10_is_not_VOT_ROB=True, identity_or_crop_out_recovery_claim=False, formal_nine_metrics=False,

@@ -1,0 +1,630 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "source_verdict": "PASS",
+  "review_call_status": "completed",
+  "blocking_count": 0,
+  "nonblocking_count": 3,
+  "R3_launch_certified": false,
+  "reason_code": "B1_source_provenance_gap_closed_runtime_evidence_still_absent",
+  "summary": "The exact v3 analyzer closes the original B1 aggregate/prefix/audit/fit provenance joins. No source blocker remains in the supplied scope. Actual terminal R2 inputs, target execution and C outcomes remain unverified.",
+  "generated_at": "2026-10-10T06:33:23.784801+00:00",
+  "date": "2026-10-10",
+  "agent_id": "/root/m122_r3_c_source_integrity_20261010",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "requested_reviewer_backend": "codex",
+  "reviewer_model": "UNATTESTED",
+  "actual_backend_identity": "UNATTESTED",
+  "actual_reasoning_effort": "UNATTESTED",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "cross_family_accepted": false,
+  "routing_parameters_are_requested_not_attestation": true,
+  "review_mode": "focused continuation of original fresh-context reviewer; not a newly spawned independent reviewer",
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    {
+      "id": "N1",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "Execution and final-result scope remain unproved",
+      "details": "The local launch receipt establishes a recorded R2 controller launch only. Its runtime_completion_proven is false; neither a terminal teacher result nor its raw-result audit is in this input inventory. The preparation receipt says no C construction, forward, optimization, deployment or GPU job. Source checks do not establish R2 completion, actual teacher sample counts, actual C initialization equality/updates/final weights, development32 inference, R4 own-history collection/final Full152 training, or any new formal nine metrics.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_actual_launch_receipt_20261010.json",
+          "line": 18,
+          "end_line": 46
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_actual_launch_document_closeout_20261010.json",
+          "line": 61,
+          "end_line": 66
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_sources_prepared_v3_20261010.json",
+          "line": 1
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R3_C_SOURCE_CONTRACT_20261010.md",
+          "line": 3,
+          "end_line": 15
+        }
+      ]
+    },
+    {
+      "id": "N2",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "C holdout and fixed-teacher utility have explicit claim limits",
+      "details": "The deterministic 120/32 split is a holdout for C optimization only: A+B trained on all152. The fixed development panel covers common eligible native-teacher write states, and its positive/negative/zero utility labels must not be assigned to changed C-policy histories. Own-history metrics provide geometric trajectory and write counts, not new W/K causal labels. Nonqualified actions have no teacher counterfactual labels. Report coverage and per-sequence gains/harms before any advance; the macro-IoU/H10 boolean is not the whole acceptance gate. Historical M82/category-only metadata in the immutable training_spec is not the current human-bank protocol or C recipe.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/TRAIN_SEQUENCE_SPLIT_20261008_235856.json",
+          "line": 2,
+          "end_line": 14
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 24,
+          "end_line": 28
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 60,
+          "end_line": 72
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+          "line": 160,
+          "end_line": 180
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 70,
+          "end_line": 86
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 159,
+          "end_line": 171
+        }
+      ]
+    },
+    {
+      "id": "N3",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "Static compatibility and structural equality do not certify target runtime",
+      "details": "In this v3 continuation, all13 manifest Python files parse with Python3.8 grammar and the revised actual argparse fragment parses using stdlib only. The original v2 review previously examined26 local import sources/88 symbols and the tracker source equivalence; those are retained historical review evidence, not rerun target imports or a newly executed native witness. The other20 original manifest entries remain exact. No Python3.8/Torch1.13.1 native import, model construction, CUDA operation or always-write trajectory equivalence was run. A later concrete R3 deployment must bind its complete reached source closure, assertions-enabled argv, immutable inputs and actual terminal audit before any runtime certification.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py",
+          "line": 7,
+          "end_line": 24
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+          "line": 102,
+          "end_line": 157
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/evaluate_template_write_C.py",
+          "line": 23,
+          "end_line": 43
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+          "line": 23,
+          "end_line": 37
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+          "line": 27,
+          "end_line": 68
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R3_C_SOURCE_CONTRACT_20261010.md",
+          "line": 15
+        }
+      ]
+    }
+  ],
+  "closed_findings": [
+    {
+      "id": "B1",
+      "status": "CLOSED_SOURCE_ONLY",
+      "original_verdict": "FAIL",
+      "original_report_sha256": "bace730da0e11eb72c017c731c2901b0e72f6ebd2eee7615b246fb8b4d39e760",
+      "original_finding": {
+        "id": "B1",
+        "severity": "blocking",
+        "blocking": true,
+        "title": "Development comparison drops the audited teacher/native-prefix provenance chain",
+        "details": "Training binds its aggregate and replay-shard results to the terminal audit and records both teacher_result_sha256 and teacher_audit_sha256. The analyzer instead accepts a teacher root by completion status, exit code, spec and shared model-input metadata. It merely computes the current native_prefix.jsonl hash, without comparing it to an audited expected hash. It also never reads the fit results' teacher_result_sha256 or teacher_audit_sha256. Matching input/model metadata and comparing the two arms' common_dataset_sha256 do not establish that the native comparison trajectories came from the same audited teacher that produced the fit data. This is a concrete missing provenance join at the metric consumer; it is not an allegation that the unexecuted results are already corrupted.",
+        "evidence": [
+          {
+            "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+            "line": 39,
+            "end_line": 64
+          },
+          {
+            "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+            "line": 170,
+            "end_line": 174
+          },
+          {
+            "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+            "line": 91,
+            "end_line": 109
+          },
+          {
+            "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+            "line": 115,
+            "end_line": 128
+          },
+          {
+            "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+            "line": 152,
+            "end_line": 157
+          }
+        ],
+        "necessary_fix": "Change only the new R3 analyzer: require the actual terminal R2 audit; require completed/zero-blocker/terminal-raw-audit flags; compare the aggregate SHA to audited_teacher_result_sha256; compare each native-prefix SHA to that same audit's per-shard native-prefix hashes; and require each fit result's teacher_result_sha256 and teacher_audit_sha256 to equal those exact inputs. The future terminal audit must emit the per-shard expected prefix hashes. Do not modify or restart the currently running R2 sources. Preserve this v2 report and source snapshots, then audit the revised R3 input version."
+      },
+      "changed_files": [
+        "analyze_template_write_C_dev.py",
+        "M122_R3_C_SOURCE_CONTRACT_20261010.md"
+      ],
+      "closed_by": "Required teacher-audit input and flags; actual aggregate/native-prefix digest comparisons to that audit; both fit teacher-result/audit joins; teacher/audit/prefix provenance retained in output.",
+      "not_closed": [
+        "actual R2 terminal result and raw audit existence",
+        "target-runtime import/NN/equivalence checks",
+        "actual C training and full development32 results",
+        "R4 own-history/Full152 final training",
+        "same-weight formal nine metrics"
+      ],
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 91,
+          "end_line": 102
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 110,
+          "end_line": 118
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 122,
+          "end_line": 131
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 163,
+          "end_line": 168
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R3_C_SOURCE_CONTRACT_20261010.md",
+          "line": 11
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "A_gt_provenance": {
+      "status": "PASS",
+      "scope": "source only; all152 physical GT files and terminal teacher outputs not supplied",
+      "details": "Teacher collection uses legal first-box initialization and subsequent RGB/depth images without current/future GT selection. Replay finishes and saves W/K predicted trajectories before load_truth verifies per-sequence groundtruth.txt SHA, counts and first box; the historical toy07 1406-to1367 truncation is explicit. Current labels are real-GT current IoU; future labels are signed mean W-minus-K IoU over valid future frames. Both arms consume the same eligible cached C_input; only the label field differs. Deployment features are selected feature at t, feature at t-1, frozen first-frame RGB/depth/fused/CLIP reference, three predicted quality signals and four predicted-motion values. Current IoU and future rollouts/labels/images are absent from the C input and action. C inference never calls load_truth; the separate analyzer opens GT only after loading complete prediction artifacts.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 34,
+          "end_line": 70
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 129,
+          "end_line": 156
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+          "line": 14,
+          "end_line": 22
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+          "line": 7,
+          "end_line": 40
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+          "line": 22,
+          "end_line": 67
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/evaluate_template_write_C.py",
+          "line": 39,
+          "end_line": 68
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 139,
+          "end_line": 149
+        }
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "scope": "source formula and independent scalar checks; no actual NumPy metric execution",
+      "details": "IoU divides geometric intersection by geometric union. Future utility is the mean signed IoU difference over dataset-valid future frames. Frame mean divides by the number of valid noninitialization GT frames; macro IoU is an equal mean of32 sequence means. H10 counts contiguous valid-GT IoU<=0.1 runs of at least10 frames and invalid GT breaks a run. Its original sequence frame indices remain zero-based half-open even though frame0 is excluded. No metric divides by a model-output maximum/minimum/mean. Feature normalization and decoder probability/native response ratios are inference transforms, not metric normalization. C never multiplies the submitted tracking score.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py",
+          "line": 104,
+          "end_line": 111
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 140,
+          "end_line": 156
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 28,
+          "end_line": 57
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 150,
+          "end_line": 161
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+          "line": 97,
+          "end_line": 122
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+          "line": 47,
+          "end_line": 68
+        }
+      ]
+    },
+    "C_result_existence_and_binding": {
+      "status": "PASS",
+      "scope": "source integrity and actual local receipt existence; no terminal R2/C result certification",
+      "details": "All22 v3 manifest inputs plus the manifest and preparation receipt exist and were fully reread. Exactly the analyzer and source contract changed; the other20 entries match original v2 bytes/SHA. The analyzer now requires the terminal audit, checks its completed/zero-blocker/terminal-raw flags, validates the actual aggregate and both native-prefix hashes against that same audit, joins both fit teacher-result/audit hashes and emits audit provenance. This closes the original B1 source gap. The expected audit field audited_teacher_prefixes_sha256 must be supplied by the future actual terminal raw audit; neither this source review nor the R2 launch receipt can supply it. No C weights, C completed results, native-equivalence result or new official C metrics are present or certified.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 91,
+          "end_line": 118
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 122,
+          "end_line": 137
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 163,
+          "end_line": 171
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R3_C_SOURCE_CONTRACT_20261010.md",
+          "line": 7,
+          "end_line": 15
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_actual_launch_receipt_20261010.json",
+          "line": 18,
+          "end_line": 46
+        }
+      ]
+    },
+    "D_called_and_reached_code": {
+      "status": "PASS",
+      "scope": "statically reachable code; no executed training/inference call graph",
+      "details": "train.main gates the teacher audit before TemplateWriteC construction, obtains common_samples, runs both label choices through the same forward/MSE/backward/AdamW loop, computes heldout teacher MSE and writes only the tenth-epoch final and its roundtrip/prediction receipts. evaluate.main obtains the bound frozen P1 context and invokes TrustedTemplateTracker.initialize/step for every noninitialization frame of all32 development sequences. The tracker calls write_features, writer and accepts_write only in the original qualified branch and crops the template only after acceptance. analyze.main reaches load_predictions, summarize->overlaps and fixed_panel, then serializes their results. Historical objective/optimizer functions imported transitively are not called by C inference; the historical OPE analyzer is a separate guarded entry point and produces no C metrics here. Missing native runtime/import receipts remain N3, not proof of dead metric code. The new provenance assertions are reached before native-prefix loading, GT metric computation and the reported comparison gate; they are not unused helper functions.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+          "line": 102,
+          "end_line": 187
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/evaluate_template_write_C.py",
+          "line": 22,
+          "end_line": 88
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+          "line": 55,
+          "end_line": 68
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 89,
+          "end_line": 178
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py",
+          "line": 25,
+          "end_line": 60
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m122_ope_trajectories.py",
+          "line": 36,
+          "end_line": 145
+        }
+      ]
+    },
+    "E_actual_vs_prospective_scope": {
+      "status": "WARN",
+      "scope": "prepared source and historical launch records only",
+      "details": "The planned source scope is one seed2027, frozen P1, two70721-parameter C arms, common fit120/development32 data,10 epochs, batch32, AdamW3e-5/0.01 and a fixed final. The split has170436 fit and49366 development noninitialization frames; those are static video counts, not eligible teacher samples or executed C calls. No new C model was constructed or executed in this review. R2 terminal raw audit, target equivalence, actual two-arm training/evaluation, R4 own-history augmentation/Full152 final and one same-weight final nine-metric evaluation remain unsatisfied. No robustness, physical identity, language increment or crop-out recovery claim follows. The v3 review is a bounded continuation of the original fresh reviewer, not a second fresh or cross-family review.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py",
+          "line": 7,
+          "end_line": 24
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+          "line": 117,
+          "end_line": 181
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/evaluate_template_write_C.py",
+          "line": 48,
+          "end_line": 82
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 159,
+          "end_line": 171
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 66,
+          "end_line": 95
+        }
+      ]
+    },
+    "F_evaluation_classification": {
+      "status": "PASS",
+      "details": "Prospective current IoU, future signed W/K utility, C teacher-MSE and complete own-history geometric development metrics are real_gt Train diagnostics. W/prefix and K/K equality are self_supervised_proxy consistency checks, not accuracy. Human text is fixed model input, not human_eval. Independent scalar audit fixtures and AST/parser checks are verification artifacts, not experiment results, training data or performance. The 32-frame action utility is not an independent identity truth or evidence of official benchmark success.",
+      "classifications": {
+        "C_targets": "real_gt",
+        "C_development_geometry": "real_gt",
+        "W_prefix_and_KK": "self_supervised_proxy",
+        "human_text": "fixed human-provided input, not human_eval",
+        "auditor_arithmetic": "synthetic logic fixtures, not experiment results"
+      },
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 128,
+          "end_line": 171
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py",
+          "line": 128,
+          "end_line": 143
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 28,
+          "end_line": 57
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_template_write_C_dev.py",
+          "line": 169,
+          "end_line": 171
+        }
+      ]
+    }
+  },
+  "original_v2_report_sha256": "bace730da0e11eb72c017c731c2901b0e72f6ebd2eee7615b246fb8b4d39e760",
+  "original_v2_verdict": "FAIL",
+  "original_v2_report_unchanged": true,
+  "original_v2_manifest_sha256": "01e766b89817f3ba3ce974c4f6e32a6e1738ca0a2b1dd0f018cb4df9436bf448",
+  "input_manifest_sha256": "b7724d9eb7be353e9f9d0bfc0fe48fedb241af03538581abe3a4217489bd0bb6",
+  "prepared_receipt_sha256": "dc6b089e60beb789a91ae2ae60a639e72244a2b51347cdb8251cd69675fe3b00",
+  "input_count": 24,
+  "input_bytes": 815596,
+  "audited_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_C.py": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\evaluate_template_write_C.py": "80a45896de70aa8f25010331b4fc42e44450b6fc74ca49bfb2d4dfe2aef9a415",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_template_write_C_dev.py": "708805921124201608518669611bd2497d117bb13d6b83426bab3dfec834e44a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\M122_R3_C_SOURCE_CONTRACT_20261010.md": "7cd7706737f435734d5ddf771be0fee8b060bc781b7bc9b0a61acac4db4fa4e6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_features.py": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py": "0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_forks.py": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py": "d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_target_decoder.py": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_region_decoder.py": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m122_ope_trajectories.py": "673b5f516c93611386aca46fa839600e49fc4e3aeb91d3260f909ca5124a8626",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md": "cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\TRAIN_SEQUENCE_SPLIT_20261008_235856.json": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_source_audit_20261010\\EXPERIMENT_AUDIT.json": "aeb15133cf10e781a486fa3aab243d0b612686a5af28e56f44fde4eae8aaea77",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_source_audit_20261010\\DEPLOYMENT_SUPPLEMENT.json": "1fa158d31ced96a892a3135c188f58ee76aaee210c2ba633ba8e717c5287bedc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_actual_launch_receipt_20261010.json": "3cc38e8a340be1dee8b071e91a197aab846e456c8a8f48d7034ca0a27538bfe4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_actual_launch_document_closeout_20261010.json": "521e5d13508e14ca5ee90592e715e911facb6004061d932b3802bd7b2abe106d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R1_supplemental_inputs_20261010\\training_spec.json": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R1_supplemental_inputs_20261010\\trained-result.json": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_C_source_audit_20261010\\source_v3\\INPUT_MANIFEST.json": "b7724d9eb7be353e9f9d0bfc0fe48fedb241af03538581abe3a4217489bd0bb6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_C_sources_prepared_v3_20261010.json": "dc6b089e60beb789a91ae2ae60a639e72244a2b51347cdb8251cd69675fe3b00"
+  },
+  "artifacts_read": [
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_C.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\evaluate_template_write_C.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_template_write_C_dev.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\M122_R3_C_SOURCE_CONTRACT_20261010.md",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_features.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_forks.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_target_decoder.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_region_decoder.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m122_ope_trajectories.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\TRAIN_SEQUENCE_SPLIT_20261008_235856.json",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_source_audit_20261010\\EXPERIMENT_AUDIT.json",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_source_audit_20261010\\DEPLOYMENT_SUPPLEMENT.json",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_actual_launch_receipt_20261010.json",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_actual_launch_document_closeout_20261010.json",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R1_supplemental_inputs_20261010\\training_spec.json",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R1_supplemental_inputs_20261010\\trained-result.json",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_C_source_audit_20261010\\source_v3\\INPUT_MANIFEST.json",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_C_sources_prepared_v3_20261010.json"
+  ],
+  "all_inputs_post_review_unchanged": true,
+  "protected_v2_artifact_count": 51,
+  "all_protected_v2_unchanged": true,
+  "exact_changed_files": [
+    "analyze_template_write_C_dev.py",
+    "M122_R3_C_SOURCE_CONTRACT_20261010.md"
+  ],
+  "unchanged_other20_original_entries": true,
+  "future_terminal_audit_required_fields": [
+    "review_call_status=completed",
+    "blocking_count=0",
+    "R2_terminal_raw_audit_complete=true",
+    "audited_teacher_result_sha256",
+    "audited_teacher_shards_sha256[0/1] (unchanged training consumer)",
+    "audited_teacher_prefixes_sha256[0/1] (new analyzer consumer)"
+  ],
+  "source_binding_closure": {
+    "required_teacher_audit_argv": true,
+    "completed_zero_blocker_terminal_flags": true,
+    "aggregate_bound_to_same_audit": true,
+    "both_native_prefixes_bound_to_same_audit": true,
+    "both_fit_teacher_result_audit_joins": true,
+    "output_teacher_audit_and_prefix_provenance": true
+  },
+  "R2_terminal_artifacts_supplied": false,
+  "R2_terminal_raw_audit_complete": false,
+  "C_training_complete": false,
+  "C_native_GPU_equivalence_verified": false,
+  "C_recursive_development_complete": false,
+  "C_Full152_final_complete": false,
+  "C_final_nine_metrics_complete": false,
+  "new_C_benchmark_metrics": false,
+  "full_goal_achieved": false,
+  "feature_contract": {
+    "name": "M122-C-current128-past128-initial4x64-quality3-motion4-v1",
+    "input_dim": 519,
+    "dtype": "float32",
+    "layout": [
+      128,
+      128,
+      256,
+      3,
+      4
+    ],
+    "current_or_future_GT_or_rollout_deployment_input": false,
+    "legal_first_box_initialization": true
+  },
+  "architecture": {
+    "description": "519->128 ReLU->32 ReLU->1 linear",
+    "parameter_count_arithmetic": 70721,
+    "parameter_count_measured": false
+  },
+  "training_source_recipe": {
+    "seed": 2027,
+    "epochs": 10,
+    "batch": 32,
+    "loss": "MSE",
+    "optimizer": "AdamW",
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "checkpoint_selection": "fixed final",
+    "common_eligible_data": true,
+    "positive_filter": false,
+    "actual_two_arm_equality_verified": false
+  },
+  "planned_coverage": {
+    "fit": {
+      "sequences": 120,
+      "image_frames": 170556,
+      "noninitialization_frames": 170436
+    },
+    "development": {
+      "sequences": 32,
+      "image_frames": 49398,
+      "noninitialization_frames": 49366
+    }
+  },
+  "deterministic_checks": {
+    "current_v3_checks": 63,
+    "failed_checks": [],
+    "Python38_AST_sources": 13,
+    "actual_Python38_runtime": false,
+    "actual_Torch1131_runtime": false,
+    "current_checks_scope": "stdlib AST/parser and isolated Boolean provenance expressions only",
+    "prior_checks_reused_from_hash_bound_v2": {
+      "structural": 646,
+      "local_import_symbols": 88,
+      "not_rerun": true
+    },
+    "actual_NN_or_metrics_executed": false
+  },
+  "execution_counters": {
+    "experiment_module_imports": 0,
+    "Torch_imports": 0,
+    "NumPy_imports": 0,
+    "NN_constructors": 0,
+    "NN_forward_calls": 0,
+    "optimizer_steps": 0,
+    "rollout_calls": 0,
+    "training_calls": 0,
+    "inference_calls": 0,
+    "SSH_calls": 0,
+    "GPU_NN_progress_queries": 0,
+    "package_installs": 0,
+    "new_agents": 0,
+    "source_mutations": 0
+  },
+  "new_auditor_failures": [],
+  "historical_auditor_failures_preserved_at": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/AUDITOR_VERIFICATION_FAILURES.json",
+  "check_receipts": [
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/source_v3/B1_CHECK_RECEIPT.json",
+      "sha256": "e983d70b6bac053ccb0119efa4c70794f31e0620a2b1de5ab67a3519f5e19b7f"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/source_v3/INPUT_HASHES_BEFORE.json",
+      "sha256": "7f3a1d6453882143e38fb324aebb7360e60d917f26c281a93b26ea0ee368512c"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/source_v3/INPUT_HASHES_AFTER.json",
+      "sha256": "ec9495b11d12f528aab4e7b1dfd0c0e9257b2b9030072fdb2a257eed0cf824d8"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/source_v3/review_b1_v3.py",
+      "sha256": "23bc785b20239a50a92f3b6c59dfded1122af46bce00ae8e305395b5bc7f482b"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/source_v3/review_b1_v3.log",
+      "sha256": "5dd76e4511c0de229ce3f77e35eedfd0038c757ce23a0e1b24c3b19677acff9b"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/source_v3/B1_SOURCE_DIFF.patch",
+      "sha256": "61d0ec9be07f4041d33468b2b6714ad69c9c1f51ee4dcbf52e5f77aaae97095b"
+    }
+  ],
+  "trace_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/source_v3/private_trace",
+  "full_response_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R3_C_source_audit_20261010/source_v3/private_trace/002-v3-B1.response.md",
+  "raw_response_sha256": "7e18fe5f2ab15229565db75919b8fa2fd054f6ddd493f9cecae5587f4eb26ca7"
+}
