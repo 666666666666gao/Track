@@ -429,3 +429,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 2026-10-10 R3准备：template_write_C.py、trusted_template_tracker.py、train_template_write_C.py、evaluate_template_write_C.py、analyze_template_write_C_dev.py及M122_R3_C_SOURCE_CONTRACT_20261010.md；仅AST/源码审查中，无C运行、checkpoint或指标，原R2任务不改。
 
 2026-10-10 R3 v3仅修开发分析器与终态教师审核/prefix/fit的来源绑定，fresh source PASS/0阻断；v2 FAIL报告保留。没有R3运行/指标，不修改原R2进程，见§5.441及R3_SOURCE_AUDIT_V2/V3报告。
+
+2026-10-10 R2_FIRST_HOUR_OBSERVATION_20261010.json与R2_FIRST_HOUR_PROGRESS_20261010.json：仅一次原进程14:51小时实测及本地manifest求和/采集阶段估计，无新NN执行、C优化或正式性能，见§5.442。
