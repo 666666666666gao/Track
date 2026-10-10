@@ -1,0 +1,159 @@
+{
+  "status": "actual_CurrentC_fit_complete_two_OPE_tracks_running_first_hour",
+  "observed_at": "2026-10-10T15:29:55.759328+00:00",
+  "gap_since_admission_seconds": 3637.559237,
+  "original_stdout_sha256": "b03b349d1e192c57066a2f15225fd5065b0ad91d6628e1138d8c642a7920eb6d",
+  "fit": {
+    "status": "complete_M122_current_quality_C_full152",
+    "arm": "current",
+    "seed": 2027,
+    "epochs": 10,
+    "batch": 32,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "optimizer_steps": 400,
+    "final_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+    "base_final_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+    "frozen_base_roundtrip_exact": true,
+    "C_final_state_sha256": "fba13a01e0ca8f6afc8fc001759fe43d2f52bc2e78a6923dd2c16393a7e93885",
+    "initial_state_sha256": "d83b325dfdc6163a20bb7cc5bcb710f05e3b36816d82f954f7de772b254d65c8",
+    "parameters": 70721,
+    "common_events": 1257,
+    "fitted_event_sequences": 142,
+    "teacher_sequences": 152,
+    "teacher_native_track_calls": 219802,
+    "common_dataset_sha256": "5894dd48e03ca466cddd56311e8efbf31a9c4d979897b35d588ae10bc3ce5dc9",
+    "order_sha256": "e3a149daf88bd10aba987e51d085f0e4f237c5fbce1969dcbf437f40085bf729",
+    "exclusions": {
+      "current_GT_unknown": 35,
+      "future_GT_unavailable": 5
+    },
+    "teacher_result_sha256": "24c8461b4d71c573fbaa4bf4f91c4e359cca1614c7fe81246ac0504a325c836c",
+    "teacher_audit_sha256": "e082d4a5d92579fb39abe4b8b4db300bac4127ccb9e90b227d98287fe7197cc2",
+    "R3_result_audit_sha256": "0ac5bb5ac323cbc472da42ee1cc84c7cde97ff7548ec088192999a2305d18e42",
+    "source_sha256": "4b1f3922cd193a5c12b0c1b14bf18dcf08867330a47b60f8801ea37c8ef7eb2f",
+    "reusable_loader_source_sha256": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "model_source_sha256": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C_development_used_for_optimizer": true,
+    "former32_now_training": true,
+    "target": "current GT IoU at original frozen-P1 native-rule event; not future utility",
+    "own_C_history_teacher_recollected": false,
+    "backbone_models_instantiated": false,
+    "public_test_CDTB_VOT_used_for_optimization": false,
+    "checkpoint_selection": "fixed epoch10 final",
+    "deployment_threshold": 0.5,
+    "elapsed_seconds": 1.6593883037567139,
+    "epochs_log": [
+      {
+        "epoch": 1,
+        "fit_MSE": 0.6181650801414332,
+        "optimizer_steps": 40
+      },
+      {
+        "epoch": 2,
+        "fit_MSE": 0.32834244696697545,
+        "optimizer_steps": 80
+      },
+      {
+        "epoch": 3,
+        "fit_MSE": 0.12840662490615032,
+        "optimizer_steps": 120
+      },
+      {
+        "epoch": 4,
+        "fit_MSE": 0.055575741514231634,
+        "optimizer_steps": 160
+      },
+      {
+        "epoch": 5,
+        "fit_MSE": 0.04467592354050364,
+        "optimizer_steps": 200
+      },
+      {
+        "epoch": 6,
+        "fit_MSE": 0.040203660021201904,
+        "optimizer_steps": 240
+      },
+      {
+        "epoch": 7,
+        "fit_MSE": 0.036194297560626254,
+        "optimizer_steps": 280
+      },
+      {
+        "epoch": 8,
+        "fit_MSE": 0.033303140918224124,
+        "optimizer_steps": 320
+      },
+      {
+        "epoch": 9,
+        "fit_MSE": 0.031099059906482176,
+        "optimizer_steps": 360
+      },
+      {
+        "epoch": 10,
+        "fit_MSE": 0.029303617287181206,
+        "optimizer_steps": 400
+      }
+    ]
+  },
+  "fit_result_sha256": "b9cbaf752c839afbf5854138c36c1e5cd35f58d024c45a694e56b3164e74435c",
+  "selection_sha256": "27f993b09c9637989e0e0c9983a2d5769a120855f38d2182bfa67f404606edfa",
+  "OPE_progress": [
+    {
+      "dataset": "depthtrack_test",
+      "gpu": 0,
+      "completed_sequences_lower_bound": 20,
+      "completed_frames_lower_bound": 37919,
+      "completed_calls_lower_bound": 37899,
+      "total_sequences": 50,
+      "total_frames": 76373,
+      "remaining_calls_upper_bound": 38424,
+      "last_printed_sequence": "cube03_indoor",
+      "last_prefix_elapsed_seconds": 3440.423239707947,
+      "estimated_remaining_seconds": 3488.0820750557573,
+      "provenance": "All completed post-save JSON rows in captured full log; ongoing sequence frames unobserved.",
+      "estimate_scope": "Rough completed-prefix throughput extrapolation; not a completion promise.",
+      "complete_receipt_observed": false
+    },
+    {
+      "dataset": "cdtb",
+      "gpu": 1,
+      "completed_sequences_lower_bound": 34,
+      "completed_frames_lower_bound": 44690,
+      "completed_calls_lower_bound": 44656,
+      "total_sequences": 80,
+      "total_frames": 101956,
+      "remaining_calls_upper_bound": 57220,
+      "last_printed_sequence": "boxes_backpack_room_occ_1",
+      "last_prefix_elapsed_seconds": 3602.3981142044067,
+      "estimated_remaining_seconds": 4615.935598682734,
+      "provenance": "All completed post-save JSON rows in captured full log; ongoing sequence frames unobserved.",
+      "estimate_scope": "Rough completed-prefix throughput extrapolation; not a completion promise.",
+      "complete_receipt_observed": false
+    }
+  ],
+  "GPU_snapshot": "0, 4122, 82\n1, 4122, 76\n",
+  "native_observer": {
+    "session_id": 30746,
+    "initial_chunk": "953bab",
+    "authentication_chunk": "cc3795",
+    "terminal_chunk": "03263e",
+    "exit_code": 0
+  },
+  "original_timer": {
+    "session_id": 79637,
+    "process_id": 15008,
+    "join_cell": 678,
+    "terminal_join_number": 10,
+    "terminal_chunk": "b4ad99",
+    "exit_code": 0,
+    "consumed": true,
+    "restarted": false
+  },
+  "VOT_started": false,
+  "formal_nine_metrics_complete": false,
+  "NN_progress_queries": 1,
+  "active_NN_tasks_observed": true,
+  "next_NN_observation_not_before": "2026-10-10T16:29:55.759328+00:00",
+  "recorded_at": "2026-10-10T23:31:57.321505+08:00"
+}
