@@ -27147,3 +27147,24 @@ R3 controller的21项源码/实际终态材料已交原fresh R3 reviewer续审�
 原Future R4条件失败，未采集C自身历史、未启动原R4。现另准备Current质量C Full152：冻结同一P1，只用已审原teacher的1257共同事件（993+264，142条提供事件；排除35当前GT未知和5未来不可用），seed2027/10epoch/B32/lr3e-5/wd.01/400更新、固定final；原32此后为训练内。保存一份A+B+C composite final，原50/.75资格后Current>.5，统一人审核类别与首4属性，在Test50、CDTB80、VOT127全部重新推理。两卡并行OPE，随后双卡VOT；所有子进程阻塞等待，不轮询进展、不自动重试。当前仅源码准备并进行新source审查，尚未部署/训练/产生正式指标。这是已知当前IoU质量控制，不能包装成已经建立未来记忆价值或语言创新。
 
 此前R0 P0/P1完整九项及目标未达结论保持不变。新质量分支完整结果出来、审核后才判断是否改善；目标仍ACTIVE_UNMET。[独立新计划](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/CURRENT_QUALITY_FULL152_PLAN_20261010.md)。
+
+### 5.455 2026-10-10 22:29：Current质量C Full152独立队列启动，按小时观察
+
+新分支首次源码审查发现两项真实阻断：split绑定未命中四项原输入、源包缺少训练结束时同目录读取的共享文件。只修改部署准备器的路径与23源码打包清单，九份NN/评测源码、目标、超参数、输入与原P1均未变。v1 FAIL/2及257份封存保持原样；v2同审查员延续复核PASS/0、CurrentC_source_gate_ready=true，40项输入及197份封存回验一致。请求Astra/max，实际backend/model/effort仍UNATTESTED、same-family/provisional；该结果仅源码可进入实际启动，不是新的性能认证。[v2原报告](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/CURRENTC_ACTUAL_LAUNCH_20261010/v2_SOURCE_AUDIT.md)。
+
+正式准备器实际exit0，23份源码＋gate及两审查JSON共26成员、78995字节，ZIP SHA877a6333b81904be9eaa9ae36e77b76860357a51548be7da9cf76066a6dd695e；gate SHA37a6e621584b3ff5461f4f6b869a2ae230a0a961774d441ac97f163de13c453b，v2报告SHA20c57839135f7ac24e17fa89c549d678223e980760c869eaee9f9821cc6fd2a6。首次本地cmd引号导致命令无法识别，SSH未调用；改为无空格绝对路径后实际SCP49802和SSH11017均exit0，失败原记录保留。
+
+实际22:29:18.200091做一次资源准入，距21:19:36.400301上次NN观察4181.799790秒。两卡各1MiB/0%，数据盘空闲12463738880字节；远端包/四原输入/两审计/23源码hash实际通过，隔离根/root/autodl-tmp/m122_current_quality_C_full152_20261010仅创建一次，原监督器PID391524启动。仅证明原队列已提交，不冒充已观察到NN构造、400次优化、final保存或正式指标。
+
+| 固定阶段 | GPU/数据范围 | 实际完成状态 |
+|---|---|---|
+| Current质量C拟合 | GPU0，已审原teacher1257事件、10epoch/400更新 | 已提交，尚未观察完成 |
+| 单一composite final及绑定计划 | 不改冻结P1 A+B；同一人审文本 | 待队列实际回执 |
+| DepthTrack Test完整推理/计分 | GPU0，50条/76373帧 | 待队列实际回执 |
+| CDTB完整推理/计分 | GPU1，与DepthTrack并行，80条/101956帧 | 待队列实际回执 |
+| VOT完整推理/计分 | 双卡两波，127条/1765anchor/5295轨迹文件 | 待队列实际回执 |
+| 同一final九项收集与独立终态审查 | 固定六个≥与三个严格>验收 | 未完成，不预填指标 |
+
+所有子进程阻塞等待，保存实际stdout/stderr与退出码，无训练日志轮询、自动重试或环境重建。唯一原本地timer79637/initial6702bc于22:30:08.230076启动，PythonPID15008、CIM birth22:30:08.061063，每次sleep300s、远端查询0；下次NN/GPU观察不早于23:29:18.200091。不得因等待超时重建计时器或重启实验。后续静态文档同步不查看GPU/训练状态、不覆盖运行NN源码。
+
+本分支是Current IoU质量控制，不能包装成Future收益或语义创新已经成立；原Future科学门仍失败，原R4保持NOT_RUN。原32已加入C训练，不再当未见开发；所有1257标签仍只指原P1教师状态，没有重贴为新C历史真值。最终必须重新生成三数据集完整轨迹、同一权重完整九项后审查；此前P0/P1未达目标结论不变，goal ACTIVE_UNMET。

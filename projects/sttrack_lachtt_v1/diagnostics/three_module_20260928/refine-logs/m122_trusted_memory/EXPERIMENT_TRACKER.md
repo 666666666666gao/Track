@@ -49,6 +49,8 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 
 2026-10-10 §5.453：实际20:19单次NN观察，preflight513calls/1eligible精确通过；双C各993fit/264fixed-dev/10epochs320steps真实exit0。Own32dev current≥25seq36812calls/future≥30seq45978calls，两卡79/78%。无完整IoU/H10/正式结果；第一timer30195正常0消费，第二唯一18966/PID49376，下一21:19:01，不提前查。
 
-| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | SOURCE_REVIEW：独立新方案，尚未部署/训练；见CURRENT_QUALITY_FULL152_PLAN_20261010.md |
+| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | LAUNCHED：22:29:18实际supervisor391524；source v1 FAIL/2→v2 PASS/0；尚未观察训练/指标完成；原timer79637，23:29:18后查一次 |
 
 2026-10-10 §5.454：实际R3六阶段与supervisor exit0，21:19:36唯一小时查询确认全部结束；32dev GT复算完成，Future门失败。原seed初始化摘要的本地重建差异未确定，不称逐张量初始化已独立认证。新质量分支待源码审核，不自动续跑Future；NN下一准入不早于22:19:36.400301。
+
+2026-10-10 §5.455：Current质量Full152独立队列实际启动；原Future R4仍NOT_RUN。一次GPU准入距上次NN观察4181.799790秒，后续NN最多每小时一次；原被动timer79637/PID15008，下一23:29:18.200091。源码PASS不是训练或性能证明。
