@@ -60,3 +60,5 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 | M123-FullJoint152 | A+B+C联合完整训练 | 全Train152×3，659406调用，450888可训练参数；不划分开发集 | 同一final三数据集完整九项 | MUST | LOCAL_PREPARED / SOURCE_REVIEW_PENDING / NOT_LAUNCHED |
 
 2026-10-11 §5.457：用户明确直接训练完整DepthTrack Train152，不再保留开发分组。旧CurrentC缓存400步不算A+B+C完整训练；旧评价继续。新M123只做完整序列训练，不做新pilot，固定final。下一NN观察>=00:29:55.759328，原timer71834保留。
+
+2026-10-11 §5.458：M123 source-only PASS/0；00:18:45已实际部署34代码与98源码pins，全部hash匹配；完整ABC Train152×3仍NOT_LAUNCHED，没有新NN。原71834/PID54140在00:10实际CIM活着，下一小时观察>=00:29:55，不重新划分开发集。

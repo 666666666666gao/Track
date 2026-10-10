@@ -27218,3 +27218,23 @@ prepare于22:29:38.365651 exit0，新三数据集计划与唯一final在人审ba
 新入口train_m123_ABC_joint_full152.py及训练tracker已建立；另建官方runtime、评估准备、两项OPE、双卡VOT、指标收集和进程退出回执，旧运行中代码不变。本地26个入口及依赖完成AST语法解析；这是源码检查，不是模型前向、GPU容量或实际训练成功证明。新fresh source-only reviewer m123_joint_full152_source_integrity_20261011已启动，尚未给出结论。M123当前LOCAL_PREPARED / SOURCE_REVIEW_PENDING / NOT_LAUNCHED；没有新增optimizer step、checkpoint或正式指标。
 
 M123将在旧完整评价结束且两卡可用后启动。实际NN/GPU观察继续最多每小时一次；现有唯一timer71834/PID54140保留，下一次不早于2026-10-11 00:29:55.759328北京时间。编写本节及本地代码没有额外远端NN查询。现有P0/P1及历史模型完整指标仍未通过联合验收；goal ACTIVE_UNMET。
+
+
+### 5.458 2026-10-11 00:18：M123完整联合训练源码检查通过，已实际部署源码；尚未训练
+
+fresh reviewer m123_joint_full152_source_integrity_20261011已完成SOURCE_ONLY_PASS，0个源码阻断点，source_gate_ready=true；报告SHA be2ea5b11df60bf4b667ef0f73718e62128ac4085f56b61cad5f5400f6bff6ce。已直接读取26项计划源码与生成器，核对完整Train152、三轮659406调用、GT动作后损失边界、GPU1冻结观测/GPU0 A+B+C学习、A+B与C各自梯度图及同final完整评价。actual backend unattested，same-family/provisional；源码检查不证明实测梯度、数值稳定性、完整训练或指标。
+
+本次只执行标准库静态检查，未构造模型、未执行forward/backward、未查询SSH/GPU。审查记录了实际继承的m121_dense_inputs、7个导入依赖及原生STTrack/预处理路径。部署额外绑定这些真实解析路径与原有源码版本：34个代码文件，64个继承源码pins，共98个源码pins，另绑定训练spec、人工标签/bank、底座/CLIP及warm final/result。不是只封存本地26项后假设其余代码相同，也没有将导入的旧缓存训练main调用到新训练路径。
+
+实际部署包107177字节，SHA e7098261b665bce6bb972f3c5da0bd12f34b07cea51d0df3402665170b1c65c3，gate SHA fadc5a3b10bdfedb3a3f6953a7f70e76a2f05ed0f8eddb57bec448d1c6d49af0。原SCP6568与SSH1657均实际exit0；00:18:45.898304北京时间的原接收回执确认/root/autodl-tmp/m123_ABC_joint_full152_20261011已建立，98项源文件及8项静态输入SHA全部逐一匹配。整个部署无GPU查询、无NN进度读取、无neural call，不改运行中的旧CurrentC源码，没有创建训练进程。
+
+| 新实验当前状态 | 实际证据 |
+|---|---|
+| M123完整Train152联合协议 | 已固定，全152均训练，无开发分组，完整三轮后取final |
+| 新源码/继承依赖 | SOURCE_ONLY_PASS；真实服务器34代码/98源码pins匹配 |
+| 新训练启动 | NOT_LAUNCHED，optimizer steps/新final/三数据集指标均未产生 |
+| 旧CurrentC全量评估 | 保持原进程，不提前重新查询；最近NN观察仍是23:29:55 |
+| 原等待 | 本地PID54140在00:10:16的CIM中确认为同一出生时间的活进程；原native71834未重建 |
+| 下一NN观察 | 不早于00:29:55.759328北京时间，每小时最多一次 |
+
+资源释放后直接运行train_m123_ABC_joint_full152.py：不插入sanity、M0、短片段或开发集试跑，不改变三轮预算。当前C学习自身当前选中框IoU，输入历史detach，不能宣称未来写入效用或跨时间端到端反传。训练快照只支持当前已实现的保存，尚未实现和证实任意中断恢复。全部正式九项成绩仍待新训练及后续完整评价；goal ACTIVE_UNMET。
