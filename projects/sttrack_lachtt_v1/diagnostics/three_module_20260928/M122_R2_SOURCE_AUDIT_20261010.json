@@ -1,0 +1,2405 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "source_verdict": "PASS",
+  "deterministic_CPU_verdict": "PASS",
+  "runtime_verdict": "NOT_EXECUTED_R2",
+  "reason_code": "prepared_source_only_with_separate_launch_and_runtime_prerequisites",
+  "summary": "No blocking source defect found. Exact full-Train own-history teacher/519-value features/real-GT label path passes source and pure CPU checks; target admission, concrete gate and R2 runtime remain unverified.",
+  "blocking_scope": "prepared source correctness only",
+  "blocking_count": 0,
+  "nonblocking_count": 5,
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    {
+      "id": "N1",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "R2 source approval has no runtime completion claim",
+      "details": "No source integrity defect was established. Actual full-manifest collection/replay and a terminal raw-artifact/GT audit are still unexecuted in the reviewed evidence. The R1 report remains a one-prefix prior, and CPU checks do not extend it to all sequences or GPU kernels.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_teacher_source_prepared_20261010.json",
+          "line": 1,
+          "end_line": 12
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 3,
+          "end_line": 13
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.md",
+          "line": 37,
+          "end_line": 41
+        }
+      ]
+    },
+    {
+      "id": "N2",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "Target resource, storage and concrete launch material remain separate prerequisites",
+      "details": "The supplemental BytesIO sizing and arithmetic reproduce exactly: 14656995328 modeled PT bytes plus 1073741824 reserve = 15730737152 modeled free bytes. These are 13.650390625 and 14.650390625 GiB. The 12-container maximum, 64KiB rounding and 1GiB reserve are planning assumptions. No target-environment disk serializer/filesystem witness, current target free-space/resource admission or concrete SHA-bound R2 gate/argv/deployment inventory is supplied. Do not convert source PASS or this modeled threshold into launch readiness. The controller verifies provided bound_files but cannot attest an as-yet-unprovided gate inventory.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.py",
+          "line": 16,
+          "end_line": 57
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.json",
+          "line": 46,
+          "end_line": 61
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 7
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py",
+          "line": 12,
+          "end_line": 19
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py",
+          "line": 44,
+          "end_line": 53
+        }
+      ]
+    },
+    {
+      "id": "N3",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "The fixed 519-value input contract is prospective for both C arms",
+      "details": "The shared helper is current/past only and its order/dtype are fixed before collection. No C training/deployment implementation exists in this scope, so equality of two actually trained arms is not demonstrated. R3 must consume the same cached C_input/common eligible rows, pin this helper/contract/dimension in its spec, and source-audit deployment use before any C optimization. The 32-sequence split is a holdout for C optimization only; A+B already saw all 152 sequences.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+          "line": 7,
+          "end_line": 40
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 58,
+          "end_line": 60
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 126
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 151,
+          "end_line": 171
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 26,
+          "end_line": 26
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 46,
+          "end_line": 60
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/TRAIN_SEQUENCE_SPLIT_20261008_235856.json",
+          "line": 2,
+          "end_line": 14
+        }
+      ]
+    },
+    {
+      "id": "N4",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "Keep the immutable bank exception and historical spec semantics explicit",
+      "details": "The fixed bank and labels match trained P1, including pine02_wild_320 with five semicolon clauses in one attribute slot and human_status=conflicting despite the historical confirmation declaration. No regeneration occurs. The reused training_spec has historical M82 metadata and old text/optimizer fields; context uses its dataset/sequence/checkpoint/seed fields and takes the actual human bank/labels from the trained P1 binding. Do not reinterpret stale metadata as a new generated-text protocol, or silently rewrite the immutable bank/spec.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/human_train_labels.json",
+          "line": 2186,
+          "end_line": 2197
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 3
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py",
+          "line": 25,
+          "end_line": 43
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/training_spec.json",
+          "line": 2,
+          "end_line": 7
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/training_spec.json",
+          "line": 2897,
+          "end_line": 2932
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/trained-result.json",
+          "line": 16,
+          "end_line": 20
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.md",
+          "line": 124
+        }
+      ]
+    },
+    {
+      "id": "N5",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "The planned uninterrupted-W witness proves records, not unsaved prefix tensors",
+      "details": "All future W records are compared to a full same-GPU prefix in the new source, and frozen model/decoder digest values are now designed to be saved. The original prefix still stores only JSON control/prediction records, so its query and selected-feature tensors cannot be independently compared. Mutable fork ownership and restoration pass CPU container checks, while GPU transfer/RNG restoration, first-reference neural projection and real full-run W correspondence remain unexecuted. Preserve these proof limits in the later runtime audit.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 36,
+          "end_line": 53
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 128,
+          "end_line": 138
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 78,
+          "end_line": 89
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 159,
+          "end_line": 170
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_event_cache.py",
+          "line": 31,
+          "end_line": 49
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py",
+          "line": 93,
+          "end_line": 125
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 13
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "N1",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "R2 source approval has no runtime completion claim",
+      "details": "No source integrity defect was established. Actual full-manifest collection/replay and a terminal raw-artifact/GT audit are still unexecuted in the reviewed evidence. The R1 report remains a one-prefix prior, and CPU checks do not extend it to all sequences or GPU kernels.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_teacher_source_prepared_20261010.json",
+          "line": 1,
+          "end_line": 12
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 3,
+          "end_line": 13
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.md",
+          "line": 37,
+          "end_line": 41
+        }
+      ]
+    },
+    {
+      "id": "N2",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "Target resource, storage and concrete launch material remain separate prerequisites",
+      "details": "The supplemental BytesIO sizing and arithmetic reproduce exactly: 14656995328 modeled PT bytes plus 1073741824 reserve = 15730737152 modeled free bytes. These are 13.650390625 and 14.650390625 GiB. The 12-container maximum, 64KiB rounding and 1GiB reserve are planning assumptions. No target-environment disk serializer/filesystem witness, current target free-space/resource admission or concrete SHA-bound R2 gate/argv/deployment inventory is supplied. Do not convert source PASS or this modeled threshold into launch readiness. The controller verifies provided bound_files but cannot attest an as-yet-unprovided gate inventory.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.py",
+          "line": 16,
+          "end_line": 57
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.json",
+          "line": 46,
+          "end_line": 61
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 7
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py",
+          "line": 12,
+          "end_line": 19
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py",
+          "line": 44,
+          "end_line": 53
+        }
+      ]
+    },
+    {
+      "id": "N3",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "The fixed 519-value input contract is prospective for both C arms",
+      "details": "The shared helper is current/past only and its order/dtype are fixed before collection. No C training/deployment implementation exists in this scope, so equality of two actually trained arms is not demonstrated. R3 must consume the same cached C_input/common eligible rows, pin this helper/contract/dimension in its spec, and source-audit deployment use before any C optimization. The 32-sequence split is a holdout for C optimization only; A+B already saw all 152 sequences.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+          "line": 7,
+          "end_line": 40
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 58,
+          "end_line": 60
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 126
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 151,
+          "end_line": 171
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 26,
+          "end_line": 26
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 46,
+          "end_line": 60
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/TRAIN_SEQUENCE_SPLIT_20261008_235856.json",
+          "line": 2,
+          "end_line": 14
+        }
+      ]
+    },
+    {
+      "id": "N4",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "Keep the immutable bank exception and historical spec semantics explicit",
+      "details": "The fixed bank and labels match trained P1, including pine02_wild_320 with five semicolon clauses in one attribute slot and human_status=conflicting despite the historical confirmation declaration. No regeneration occurs. The reused training_spec has historical M82 metadata and old text/optimizer fields; context uses its dataset/sequence/checkpoint/seed fields and takes the actual human bank/labels from the trained P1 binding. Do not reinterpret stale metadata as a new generated-text protocol, or silently rewrite the immutable bank/spec.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/human_train_labels.json",
+          "line": 2186,
+          "end_line": 2197
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 3
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py",
+          "line": 25,
+          "end_line": 43
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/training_spec.json",
+          "line": 2,
+          "end_line": 7
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/training_spec.json",
+          "line": 2897,
+          "end_line": 2932
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/trained-result.json",
+          "line": 16,
+          "end_line": 20
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.md",
+          "line": 124
+        }
+      ]
+    },
+    {
+      "id": "N5",
+      "severity": "nonblocking",
+      "blocking": false,
+      "title": "The planned uninterrupted-W witness proves records, not unsaved prefix tensors",
+      "details": "All future W records are compared to a full same-GPU prefix in the new source, and frozen model/decoder digest values are now designed to be saved. The original prefix still stores only JSON control/prediction records, so its query and selected-feature tensors cannot be independently compared. Mutable fork ownership and restoration pass CPU container checks, while GPU transfer/RNG restoration, first-reference neural projection and real full-run W correspondence remain unexecuted. Preserve these proof limits in the later runtime audit.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 36,
+          "end_line": 53
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 128,
+          "end_line": 138
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 78,
+          "end_line": 89
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 159,
+          "end_line": 170
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_event_cache.py",
+          "line": 31,
+          "end_line": 49
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py",
+          "line": 93,
+          "end_line": 125
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 13
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-10-10T05:15:41.788757+00:00",
+  "date": "2026-10-10",
+  "agent_id": "/root/m122_r2_teacher_source_integrity_20261010",
+  "verdict_id": "/root/m122_r2_teacher_source_integrity_20261010:R2_source",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "requested_reviewer_backend": "codex",
+  "requested_fork_turns": "none",
+  "reviewer_model": "UNATTESTED",
+  "actual_backend_identity": "UNATTESTED",
+  "actual_reasoning_effort": "UNATTESTED",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "cross_family_accepted": false,
+  "review_call_status": "completed",
+  "routing_parameters_are_requested_not_attestation": true,
+  "deterministic_acceptance": "accepted only for hash-bound static and pure CPU tensor/serializer receipts",
+  "checks": {
+    "A_gt_provenance": {
+      "status": "PASS",
+      "scope": "source and fixed-material binding; no R2 runtime label audit",
+      "details": "The called label loader reads each sequence groundtruth.txt, verifies its locked SHA and frame count, and checks the legal first box. The sole historical toy07_indoor_320 exception truncates 1406 annotation rows to the already specified 1367 paired images. Collection never loads current/future GT: its own-history actor reads only the legal first image/box, fixed human bank and subsequent RGB/depth images. Replay serializes both predicted histories before load_truth. Current quality labels and future signed utility therefore have dataset-GT provenance by source, not prediction-derived reference. The physical P1 final, bank, labels and full Train spec were directly rehashed; the locally available cube04 GT was loaded on CPU and matched its spec/initial box. The other 151 raw sequence GT files and R2 label outputs were not supplied or reread, so full runtime provenance remains a later audit.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py",
+          "line": 25,
+          "end_line": 60
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 34,
+          "end_line": 90
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 117,
+          "end_line": 156
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+          "line": 14,
+          "end_line": 22
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/training_spec.json",
+          "line": 1187,
+          "end_line": 1203
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/trained-result.json",
+          "line": 16,
+          "end_line": 20
+        }
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "details": "IoU divides geometric intersection by geometric union, never by maximum/mean/minimum predicted confidence. delta_future is the arithmetic mean of signed IoU(write)-IoU(keep) over dataset-valid future frames. Invalid GT gives null IoUs; empty-valid-future gives a null delta. Negative and zero values are not clipped, thresholded, rectified or filtered. Decoder probability/native ratios and feature normalization are inference transforms; the imported historical preservation loss is not called by this teacher and does not supply its labels. CPU fixtures independently exercised negative, positive, zero, invalid-current, empty-future and all-invalid-future behavior. These fixtures are logic tests, not tracking results.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py",
+          "line": 104,
+          "end_line": 111
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 140,
+          "end_line": 158
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+          "line": 97,
+          "end_line": 115
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+          "line": 29,
+          "end_line": 40
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/032_train_m121_dense_target.py",
+          "line": 39,
+          "end_line": 66
+        }
+      ]
+    },
+    "C_result_existence": {
+      "status": "WARN",
+      "details": "The prepared source and its contract exist with all 20 manifest SHA/size bindings exact. The prepared receipt explicitly records zero NN calls, no deployment and source review pending at preparation time. Historical R1 completion/audit hashes close correctly and are retained as prior pilot evidence. No R2 gate.json, deployment/source readback, original controller launch, child launches/exits, teacher manifest, raw R2 PTs or completed result is present in this reviewed inventory. Four NN stages are planned in controller source; no R2 launch or full-teacher result is established. The CPU BytesIO receipt is real sizing evidence with a stated limit, not a missing R2 result substitute.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_teacher_source_prepared_20261010.json",
+          "line": 1,
+          "end_line": 23
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 1,
+          "end_line": 13
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py",
+          "line": 44,
+          "end_line": 76
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_audit_closure.json",
+          "line": 1,
+          "end_line": 17
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.json",
+          "line": 2,
+          "end_line": 61
+        }
+      ]
+    },
+    "D_called_computations": {
+      "status": "PASS",
+      "scope": "reachable source graph, not executed R2 call graph",
+      "details": "main routes through the fixed R1 context to collect or replay. collect calls initial_reference, actor.step, event_from_native_write, pack_event and write_features on every actual write. replay calls legal initialize, reconstructs the shared state, calls unpack_event, restores RNG, invokes W/K, compares every available W record to the full prefix, serializes trajectories and then computes GT labels. Every label/feature helper has a caller. The R1 collect/replay entry points, K/K probe, historical training main/optimizer, official benchmark evaluators and C optimization are not called. C_input is deliberately a saved future training input; R2 replay only checks its contract/shape, and no C decision head consumes it here.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 176,
+          "end_line": 194
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 34,
+          "end_line": 73
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 113,
+          "end_line": 158
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py",
+          "line": 141,
+          "end_line": 143
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+          "line": 34,
+          "end_line": 144
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py",
+          "line": 22,
+          "end_line": 41
+        }
+      ]
+    },
+    "E_scope": {
+      "status": "WARN",
+      "details": "The proposed source covers original Train152 once, seed 2027, fixed P1 final/human text, with 76 complete sequences per physical GPU and 219802 noninitialization steps in total. Shards imply 107060 and 112742 steps. 4324 is the maximum number of 50-frame checkpoints, not the unknown .75-qualified event count; their maximum W/K future calls sum to 273044 after tail truncation. The earlier observed evidence is only the 12-event cube04 prefix. This review runs zero tracking steps, produces zero R2 teacher samples, fits no C, and supplies no nine-metric final result. Sequence partition is deterministic and complete but not equal observed event/workload partition; conditional rate estimates must keep that qualifier.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 34,
+          "end_line": 89
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py",
+          "line": 63,
+          "end_line": 74
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 5,
+          "end_line": 7
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.md",
+          "line": 37,
+          "end_line": 41
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 70,
+          "end_line": 87
+        }
+      ]
+    },
+    "F_evaluation_type": {
+      "status": "PASS",
+      "details": "Prospective current/future IoU and delta labels are real_gt Train-only teacher diagnostics, conditional on the native policy accepting a write. W-versus-prefix record equality and historical K/K equality are self_supervised_proxy consistency evidence. Human text is human-provided initialization input, not human evaluation of tracking. Selected quality, observed-window intersection and native response are prediction features, not physical identity, phrase visibility, object existence or independent GT. CPU synthetic fixtures and zero-valued sizing placeholders are explicitly verification material and are never training samples or reported accuracy.",
+      "evidence": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 140,
+          "end_line": 171
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "line": 128,
+          "end_line": 138
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+          "line": 35,
+          "end_line": 38
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+          "line": 9,
+          "end_line": 13
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.py",
+          "line": 21,
+          "end_line": 38
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.md",
+          "line": 43,
+          "end_line": 47
+        }
+      ]
+    }
+  },
+  "claims": [
+    {
+      "id": "prepared-source",
+      "impact": "supported_with_scope",
+      "claim": "The exact reviewed R2 source has a coherent complete-Train own-history/WK/real-GT label path and fixed current/past 519-float32 feature transform; semantic approval remains same-family/provisional."
+    },
+    {
+      "id": "state-schema",
+      "impact": "supported_with_scope",
+      "claim": "CPU roundtrip of 12 actual old R1 event containers preserves their old field values/aliases after shared-reference separation; CPU state-copy isolation and pure feature/label arithmetic pass. This is not CUDA unpack/rollout execution."
+    },
+    {
+      "id": "size-model",
+      "impact": "supported_with_scope",
+      "claim": "The 12-container BytesIO measurements and modeled 14.650390625-GiB free-space arithmetic reproduce; target current capacity and full-run bytes are unverified."
+    },
+    {
+      "id": "R2-launched-or-complete",
+      "impact": "unsupported",
+      "claim": "No R2 launch, 152-sequence runtime completion, actual eligible event count or actual full-run costs are established."
+    },
+    {
+      "id": "W-correspondence",
+      "impact": "prospective_record_only",
+      "claim": "New source requires same-GPU W record correspondence to every available full-prefix future frame; no prefix query/feature tensor correspondence is claimed or stored."
+    },
+    {
+      "id": "C-benefit-or-nine-metrics",
+      "impact": "unsupported",
+      "claim": "No C optimizer, actual two-arm comparison, own-policy final C training, new benchmark improvement, multi-seed robustness or full-goal success has been demonstrated."
+    }
+  ],
+  "prerequisites": [
+    {
+      "id": "P1-target-admission",
+      "status": "UNFULFILLED",
+      "stage": "before_R2_launch",
+      "blocks_launch_certification": true,
+      "requirement": "Complete the target serializer/filesystem/storage witness or explicitly bound its difference from the CPU BytesIO model; obtain a current target disk/resource admission against the declared allocation, retain protected files, and document same physical GPU0/1 execution. No resource query was made by this reviewer."
+    },
+    {
+      "id": "P2-concrete-gate",
+      "status": "UNFULFILLED",
+      "stage": "before_R2_launch",
+      "blocks_launch_certification": true,
+      "requirement": "Prepare and verify the actual R2 gate.json and argv/deployment inventory: unchanged new/old reached source closure, immutable plan, exact P1 final/spec/trained result/bank/labels/native/CLIP, R0 six-result seal and R1/R2 audit hashes. Execute without Python assertion-disabling options; audit zero blocking flags are bound artifacts, not free-standing claims."
+    },
+    {
+      "id": "P3-terminal-raw-audit",
+      "status": "UNFULFILLED",
+      "stage": "after_R2_before_result_claim_or_C_fit",
+      "blocks_launch_certification": false,
+      "requirement": "Retain original child starts, exit/receipt/logs and controller terminal result; verify all 152 prefix sequences/219802 steps, every actual qualified write, matching per-event raw hashes, all W/K records and GT IoUs, exclusion/sign counts, same-GPU/source binding and frozen digests with a fresh experiment audit."
+    },
+    {
+      "id": "P4-C-comparison",
+      "status": "NOT_IMPLEMENTED_IN_SCOPE",
+      "stage": "R3_R4",
+      "blocks_launch_certification": false,
+      "requirement": "Source-audit and run the immutable same-input/same-parameter C-current/C-future fit/dev design, complete own-policy history collection and fixed-final Full152 C training only under the plan gates. No future branch data/GT labels may enter deployment features."
+    },
+    {
+      "id": "P5-nine-metrics",
+      "status": "UNEXECUTED_FOR_C",
+      "stage": "R5",
+      "blocks_launch_certification": false,
+      "requirement": "Evaluate one final A+B+C model on complete Test50, CDTB80 and VOT127/1765, then audit all nine metrics and P1 comparisons. No C benefit or research-goal completion follows from this source audit."
+    }
+  ],
+  "evaluation_types": {
+    "prospective_teacher_labels": "real_gt",
+    "W_prefix_records": "self_supervised_proxy",
+    "prior_KK": "self_supervised_proxy",
+    "human_text": "human-provided input, not human_eval",
+    "CPU_logic_fixtures": "synthetic verification fixtures, not experiment results",
+    "serializer_placeholders": "zero/value shape placeholders, not training examples"
+  },
+  "scope": {
+    "seed": 2027,
+    "proposed_dataset": "DepthTrack Train152",
+    "proposed_sequence_count": 152,
+    "proposed_source_track_calls": 219802,
+    "proposed_image_frames": 219954,
+    "shard_accounting": [
+      {
+        "shard": 0,
+        "sequences": 76,
+        "track_calls": 107060,
+        "maximum_50_frame_checkpoints": 2107
+      },
+      {
+        "shard": 1,
+        "sequences": 76,
+        "track_calls": 112742,
+        "maximum_50_frame_checkpoints": 2217
+      }
+    ],
+    "maximum_possible_50_frame_checkpoints": 4324,
+    "maximum_possible_future_WK_track_calls": 273044,
+    "potential_empty_windows": 17,
+    "potential_nonempty_truncated_windows": 80,
+    "potential_full32_windows": 4227,
+    "planned_NN_stages": 4,
+    "R2_actual_NN_stages_established": 0,
+    "R2_actual_sequences_established": 0,
+    "actual_R2_event_count": null,
+    "actual_R2_source_track_calls": null,
+    "actual_R2_future_track_calls": null,
+    "historical_R1_scope": {
+      "seed": 2027,
+      "condition": "fixed P1/human_text",
+      "final_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+      "dataset": "DepthTrack Train",
+      "sequence": "cube04_indoor",
+      "sequence_index": 0,
+      "bank_index": 51,
+      "sequences": 1,
+      "events": 12,
+      "prefix_track_calls": 1650,
+      "future_frame_locations": 384,
+      "future_valid_GT_frames": 375,
+      "future_invalid_GT_frames": 9,
+      "current_valid_GT_events": 12,
+      "common_eligible_events": 12,
+      "source_implied_future_tracking_calls": 1536,
+      "total_step_calls": 3186,
+      "source_implied_initializations": 13,
+      "source_implied_observe_calls": 3199,
+      "stored_future_rows": 1152,
+      "unpersisted_second_KK_rows": 384,
+      "optimizations": 0,
+      "full_teacher_or_C_training": false,
+      "new_official_benchmark_results": false,
+      "goal_achieved": false
+    },
+    "full_manifest_counts_are_static_bounds_not_runtime_counts": true
+  },
+  "feature_contract": {
+    "name": "M122-C-current128-past128-initial4x64-quality3-motion4-v1",
+    "shape": [
+      1,
+      519
+    ],
+    "dtype": "float32",
+    "offsets": {
+      "current": [
+        0,
+        128
+      ],
+      "previous": [
+        128,
+        256
+      ],
+      "reference_rgb_depth_fused_clip": [
+        256,
+        512
+      ],
+      "quality": [
+        512,
+        515
+      ],
+      "motion": [
+        515,
+        519
+      ]
+    },
+    "reference_order": [
+      "rgb",
+      "depth",
+      "fused",
+      "clip"
+    ],
+    "timestamps": {
+      "current": "t",
+      "previous": "t-1",
+      "reference": "legal first frame"
+    },
+    "future_or_GT_deployment_inputs": false,
+    "actual_C_current_and_C_future_consumers_reviewed": false
+  },
+  "source_invariants": {
+    "full_manifest_and_all_frames": true,
+    "GT_free_event_selection": true,
+    "native_interval50_threshold075": true,
+    "same_physical_GPU_collection_and_WK_required": true,
+    "branch_mutable_state_owned": true,
+    "single_dynamic_template_intervention": true,
+    "fixed_reference_read_only": true,
+    "current_and_past_C_only": true,
+    "serialized_predictions_before_labels": true,
+    "signed_delta_retained": true,
+    "negative_zero_unknown_events_retained": true,
+    "common_current_and_future_GT_eligibility": true,
+    "W_prefix_comparison": "record only; no prefix query/feature tensors",
+    "no_controller_busy_polling": true,
+    "complete_result_gated_by_children_and_counts": true,
+    "these_are_source_invariants_not_runtime_observations": true
+  },
+  "capacity": {
+    "source": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.py",
+    "source_sha256": "eb02643ba7400307aa43c9a0a87495e5014a9aeaa6227a4a567df65151939ee7",
+    "result": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.json",
+    "result_sha256": "2d33300bed665ee7d11785a4f1fdc15afc25100c5366cd5579d9844a98bcf03a",
+    "independently_reproduced": true,
+    "measured_class": "CPU BytesIO one-sequence 12-container sizing",
+    "modeled_PT_bytes": 14656995328,
+    "declared_reserve_bytes": 1073741824,
+    "modeled_required_free_bytes": 15730737152,
+    "modeled_required_free_GiB": 14.650390625,
+    "target_disk_serializer_witness": false,
+    "current_target_free_space_admission": false,
+    "current_target_GPU_resource_admission": false,
+    "strict_full_run_storage_bound_certified": false,
+    "limitations": [
+      "Only CPU Torch 1.13.1 BytesIO is measured, not target serializer or filesystem allocation.",
+      "12 one-sequence containers supply the maximum measured unit; 64KiB rounding and 1GiB reserve are planning choices, not measured full-Train storage.",
+      "4324 is an upper bound on original 50-frame checkpoints, not the observed .75-qualified event count.",
+      "Zero C/history tensors are serializer-shape fixtures and are not observed C features or training samples.",
+      "Fresh target disk/resource admission, exact launch gate and terminal raw R2 results remain absent from this scope."
+    ]
+  },
+  "R2_source_review_completed": true,
+  "R2_source_gate_blocking_count": 0,
+  "R2_launch_certified": false,
+  "R2_teacher_collection_executed": false,
+  "R2_terminal_raw_audit_complete": false,
+  "C_training_complete": false,
+  "C_comparison_complete": false,
+  "new_C_benchmark_metrics": false,
+  "full_goal_achieved": false,
+  "input_manifest_sha256": "e2a0d859c77515e0a69072fc8d10b1b388f402b0345308d8fc39bd57d6392024",
+  "original_inputs_count": 20,
+  "original_input_bytes": 1618008,
+  "original_manifest_unchanged": true,
+  "audited_input_hashes": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/INPUT_MANIFEST.json": "sha256:e2a0d859c77515e0a69072fc8d10b1b388f402b0345308d8fc39bd57d6392024",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py": "sha256:0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py": "sha256:a1322100c56d36577582c76be79ca8693ffce8768e94fac4705f05428e17b323",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py": "sha256:a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md": "sha256:18c9587df56ce0429cf8566deb0b7d6bddcbad09603e271a2c3458969d17ebc0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py": "sha256:d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_event_cache.py": "sha256:4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py": "sha256:3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py": "sha256:0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py": "sha256:055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py": "sha256:66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py": "sha256:ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py": "sha256:4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md": "sha256:cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/TRAIN_SEQUENCE_SPLIT_20261008_235856.json": "sha256:ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.md": "sha256:bad0d9da2f0062ff6f481d0b5ae500044fc2b32af7775d1856233bd01aefe2dc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.json": "sha256:2274e8996018269acd03ed0019986e76c93b6e303630191ee7c626829f10f1ae",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/training_spec.json": "sha256:3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/trained-result.json": "sha256:765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_audit_closure.json": "sha256:7bc8034efbe8a54f83c117ba11d5483a1cbd1a5f2615a0dd6a10cabf246a8d5a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_teacher_source_prepared_20261010.json": "sha256:a1033629b4eefc2ab111b0a4c19034827486534d0fee1f3b945de9da05bcd152",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/files.json": "sha256:1069c355e25469a9881302a3d0e6750af48166ed8349554c0c3a0fbf06de57e4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py": "sha256:2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/006_analyze_train_states.py": "sha256:2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/011_dense_region_decoder.py": "sha256:66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py": "sha256:71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/012_dense_region_encoding.py": "sha256:71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/013_dense_target_decoder.py": "sha256:055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/015_full_dense_tracker.py": "sha256:0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/016_instance_ab_prototype.py": "sha256:4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py": "sha256:85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/022_region_patch_evidence.py": "sha256:85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py": "sha256:40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/032_train_m121_dense_target.py": "sha256:40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/033_train_m122_full_causal.py": "sha256:ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/036_deep_rgbd_256_lachtt_v1.yaml": "sha256:b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/037_head.py": "sha256:62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/038_sttrack.py": "sha256:d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/039_sttrack.py": "sha256:d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/040_processing_utils.py": "sha256:7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/041_depth_utils.py": "sha256:f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/trained_finals/precision1_final.pt": "sha256:3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/human_text.pt": "sha256:a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/human_train_labels.json": "sha256:6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/GT/cube04_indoor/groundtruth.txt": "sha256:d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/pilot_events.json": "sha256:b7b93be2026c0ca840f26c10eff63e32667a03a45d39d8792ed1f60764bf97b1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_00.pt": "sha256:2abde85ebe3d272b6b461eb080e1c53cc102444275a8d09622c63755a32d605b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_01.pt": "sha256:40704798e220d39641a8a2ba9bb7f80a2a34532d32c7816b789f016187875afa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_02.pt": "sha256:895a4146186e5a0ad35012059ad75e1ae30c54ef8365cdcd253a9eb906f9c32e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_03.pt": "sha256:67c85abb98d97a207d9761185c9ab9227299c7e74d6aa74a945f150efde1c44d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_04.pt": "sha256:cf6db40ea140d1540a3a924fb3d3673b736747cbfe59d277e48f9c851909e58f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_05.pt": "sha256:e31c3f9abdf8d13b8912721c9b43113c074019aa6902be224bf3f909abdfe4ab",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_06.pt": "sha256:f6a242273b64145a40c7eb5a7fd779435cf90ee2a215bdbda0a514b838176f96",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_07.pt": "sha256:086bf904f9d6f194f5d5963ee8d1c7e05949b1337922cdbd884ed6562c9f300a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_08.pt": "sha256:55c33b20ae9149d502522c3aa7583656f555d85fd0b31c07e15f6d8823cd73cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_09.pt": "sha256:7af858fb85f3edb575786f2b5013758ac8af4538a173d4dea5f44a83fca19401",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_10.pt": "sha256:149bfb67c19ec4006a67ed7a87b62e7a8bfd94d5e726aa1965656cae9e577fdb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_11.pt": "sha256:24eaadaf7c45645fe9e491a9fb88956f6063bbd8828bc9c60a96cb7bb48cdabf",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.py": "sha256:eb02643ba7400307aa43c9a0a87495e5014a9aeaa6227a4a567df65151939ee7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.json": "sha256:2d33300bed665ee7d11785a4f1fdc15afc25100c5366cd5579d9844a98bcf03a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_00.pt": "sha256:bf53a4fed147e7630ea613af89f18fb1a9d61c0df067aaf42f65b667c73c4700",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_01.pt": "sha256:2f973df650ce81c9e3b97150ee30d1a5ba154e78001a0d45c3c9682fbd1922e0",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_02.pt": "sha256:eb129397a9239713d69f83dd5c45a9750c2aa2257f6958424a50dae0bad750da",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_03.pt": "sha256:4f306888e22a548cc2152db6e503c0c0ca38f687f761bd94a5b77b127a7b37ba",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_04.pt": "sha256:e15cd528c7da7b5405c1d4b014ab5cd4ebb585411d6997b44824e7e81c62a798",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_05.pt": "sha256:d5f46579f4b2bccd11e2ee7565ae9d673393f8470949a152a9cba0385e5d200f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_06.pt": "sha256:142f8f540ae7202b2b5fc2696fe03f48bbf482aaa63e4d4578025272e6b2081e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_07.pt": "sha256:121b8fe37c3e3face0dea50feaa29833f948405c4d9816bc8f37f3df03be2de7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_08.pt": "sha256:6c0b8e22afa46245460c57efdff163654f98c7ee7d20fed43465de15a89a09be",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_09.pt": "sha256:bd0397d2f700bdfc470ddf6788cae82fffa130f17f94281f0cb4c0c686595558",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_10.pt": "sha256:fe5ebcefe1c103dc5766bd1aa8c073118ca44e8ad1653eae5444f5f8131a8e3c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_11.pt": "sha256:1999e8e4a7de9edba28b010d6ba1c80a12c0f08934d3dd2847e82d06d89dc126"
+  },
+  "artifacts_read": [
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/INPUT_MANIFEST.json",
+      "bytes": 5692,
+      "sha256": "e2a0d859c77515e0a69072fc8d10b1b388f402b0345308d8fc39bd57d6392024",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 106
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+      "bytes": 11581,
+      "sha256": "0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169",
+      "expected_sha256": "0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169",
+      "read_mode": "full_bytes_and_text",
+      "lines": 194,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "collect",
+          "line": 23
+        },
+        {
+          "name": "replay",
+          "line": 94
+        },
+        {
+          "name": "main",
+          "line": 176
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_R2_teacher_controller_20261010.py",
+      "bytes": 4532,
+      "sha256": "a1322100c56d36577582c76be79ca8693ffce8768e94fac4705f05428e17b323",
+      "expected_sha256": "a1322100c56d36577582c76be79ca8693ffce8768e94fac4705f05428e17b323",
+      "read_mode": "full_bytes_and_text",
+      "lines": 82,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "verify",
+          "line": 12
+        },
+        {
+          "name": "pipeline",
+          "line": 22
+        },
+        {
+          "name": "main",
+          "line": 44
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+      "bytes": 2028,
+      "sha256": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+      "expected_sha256": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+      "read_mode": "full_bytes_and_text",
+      "lines": 40,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "initial_reference",
+          "line": 11
+        },
+        {
+          "name": "write_features",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/M122_R2_TEACHER_CONTRACT_20261010.md",
+      "bytes": 3856,
+      "sha256": "18c9587df56ce0429cf8566deb0b7d6bddcbad09603e271a2c3458969d17ebc0",
+      "expected_sha256": "18c9587df56ce0429cf8566deb0b7d6bddcbad09603e271a2c3458969d17ebc0",
+      "read_mode": "full_bytes_and_text",
+      "lines": 13
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_pilot.py",
+      "bytes": 10850,
+      "sha256": "d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d",
+      "expected_sha256": "d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d",
+      "read_mode": "full_bytes_and_text",
+      "lines": 187,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "context",
+          "line": 25
+        },
+        {
+          "name": "collect",
+          "line": 63
+        },
+        {
+          "name": "valid_gt",
+          "line": 104
+        },
+        {
+          "name": "iou",
+          "line": 108
+        },
+        {
+          "name": "replay",
+          "line": 114
+        },
+        {
+          "name": "main",
+          "line": 172
+        },
+        {
+          "name": "image",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_event_cache.py",
+      "bytes": 2659,
+      "sha256": "4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91",
+      "expected_sha256": "4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91",
+      "read_mode": "full_bytes_and_text",
+      "lines": 54,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "cpu_tensor",
+          "line": 6
+        },
+        {
+          "name": "move_templates",
+          "line": 10
+        },
+        {
+          "name": "pack_event",
+          "line": 18
+        },
+        {
+          "name": "unpack_event",
+          "line": 31
+        },
+        {
+          "name": "cpu_trajectory",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_forks.py",
+      "bytes": 6310,
+      "sha256": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+      "expected_sha256": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+      "read_mode": "full_bytes_and_text",
+      "lines": 143,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "copy_templates",
+          "line": 15
+        },
+        {
+          "name": "copy_tracker_state",
+          "line": 24
+        },
+        {
+          "name": "assert_same_submission",
+          "line": 41
+        },
+        {
+          "name": "WriteEvent",
+          "line": 59
+        },
+        {
+          "name": "event_from_native_write",
+          "line": 67
+        },
+        {
+          "name": "fork_event",
+          "line": 83
+        },
+        {
+          "name": "capture_rng",
+          "line": 93
+        },
+        {
+          "name": "restore_rng",
+          "line": 97
+        },
+        {
+          "name": "rollout_pair",
+          "line": 104
+        },
+        {
+          "name": "probe_keep_keep",
+          "line": 128
+        },
+        {
+          "name": "write_keep_rollouts",
+          "line": 141
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+      "bytes": 7693,
+      "sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+      "expected_sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+      "read_mode": "full_bytes_and_text",
+      "lines": 120,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "state_digest",
+          "line": 14
+        },
+        {
+          "name": "FullDenseTracker",
+          "line": 22
+        },
+        {
+          "name": "__init__",
+          "line": 23
+        },
+        {
+          "name": "frozen_digest",
+          "line": 39
+        },
+        {
+          "name": "pixels",
+          "line": 42
+        },
+        {
+          "name": "observe",
+          "line": 53
+        },
+        {
+          "name": "initialize",
+          "line": 75
+        },
+        {
+          "name": "step",
+          "line": 88
+        },
+        {
+          "name": "track",
+          "line": 117
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+      "bytes": 7739,
+      "sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+      "expected_sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+      "read_mode": "full_bytes_and_text",
+      "lines": 123,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "clip_boxes",
+          "line": 9
+        },
+        {
+          "name": "odds_residual",
+          "line": 18
+        },
+        {
+          "name": "DenseTargetDecoder",
+          "line": 25
+        },
+        {
+          "name": "__init__",
+          "line": 26
+        },
+        {
+          "name": "observe",
+          "line": 51
+        },
+        {
+          "name": "branch",
+          "line": 74
+        },
+        {
+          "name": "forward",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+      "bytes": 7272,
+      "sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+      "expected_sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+      "read_mode": "full_bytes_and_text",
+      "lines": 116,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "sample_regions",
+          "line": 12
+        },
+        {
+          "name": "weighted_mean",
+          "line": 26
+        },
+        {
+          "name": "DenseRegionDecoder",
+          "line": 30
+        },
+        {
+          "name": "__init__",
+          "line": 31
+        },
+        {
+          "name": "observe",
+          "line": 45
+        },
+        {
+          "name": "branch",
+          "line": 80
+        },
+        {
+          "name": "forward",
+          "line": 101
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+      "bytes": 11546,
+      "sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+      "expected_sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+      "read_mode": "full_bytes_and_text",
+      "lines": 144,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "load_truth",
+          "line": 14
+        },
+        {
+          "name": "precision_objective",
+          "line": 25
+        },
+        {
+          "name": "main",
+          "line": 34
+        },
+        {
+          "name": "first_image",
+          "line": 67
+        },
+        {
+          "name": "image",
+          "line": 83
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+      "bytes": 7951,
+      "sha256": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+      "expected_sha256": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+      "read_mode": "full_bytes_and_text",
+      "lines": 126,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "roi_positions",
+          "line": 10
+        },
+        {
+          "name": "masked_mean",
+          "line": 16
+        },
+        {
+          "name": "InstanceEvidence",
+          "line": 21
+        },
+        {
+          "name": "InstanceCandidatePrototype",
+          "line": 95
+        },
+        {
+          "name": "__init__",
+          "line": 22
+        },
+        {
+          "name": "encode",
+          "line": 39
+        },
+        {
+          "name": "phrase_branch",
+          "line": 49
+        },
+        {
+          "name": "forward",
+          "line": 63
+        },
+        {
+          "name": "__init__",
+          "line": 96
+        },
+        {
+          "name": "forward",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_PLAN_20261008_235856.md",
+      "bytes": 13682,
+      "sha256": "cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+      "expected_sha256": "cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+      "read_mode": "full_bytes_and_text",
+      "lines": 95
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/TRAIN_SEQUENCE_SPLIT_20261008_235856.json",
+      "bytes": 30160,
+      "sha256": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+      "expected_sha256": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 929
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.md",
+      "bytes": 38774,
+      "sha256": "bad0d9da2f0062ff6f481d0b5ae500044fc2b32af7775d1856233bd01aefe2dc",
+      "expected_sha256": "bad0d9da2f0062ff6f481d0b5ae500044fc2b32af7775d1856233bd01aefe2dc",
+      "read_mode": "full_bytes_and_text",
+      "lines": 146
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_result_audit_20261010/EXPERIMENT_AUDIT.json",
+      "bytes": 1023801,
+      "sha256": "2274e8996018269acd03ed0019986e76c93b6e303630191ee7c626829f10f1ae",
+      "expected_sha256": "2274e8996018269acd03ed0019986e76c93b6e303630191ee7c626829f10f1ae",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 10942
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/training_spec.json",
+      "bytes": 99659,
+      "sha256": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+      "expected_sha256": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 2932
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/trained-result.json",
+      "bytes": 326225,
+      "sha256": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+      "expected_sha256": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 11910
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_runtime_audit_closure.json",
+      "bytes": 677,
+      "sha256": "7bc8034efbe8a54f83c117ba11d5483a1cbd1a5f2615a0dd6a10cabf246a8d5a",
+      "expected_sha256": "7bc8034efbe8a54f83c117ba11d5483a1cbd1a5f2615a0dd6a10cabf246a8d5a",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 17
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_teacher_source_prepared_20261010.json",
+      "bytes": 1013,
+      "sha256": "a1033629b4eefc2ab111b0a4c19034827486534d0fee1f3b945de9da05bcd152",
+      "expected_sha256": "a1033629b4eefc2ab111b0a4c19034827486534d0fee1f3b945de9da05bcd152",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 21
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/files.json",
+      "bytes": 14546,
+      "sha256": "1069c355e25469a9881302a3d0e6750af48166ed8349554c0c3a0fbf06de57e4",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 314
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+      "bytes": 4469,
+      "sha256": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+      "read_mode": "full_bytes_and_text",
+      "lines": 92,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "sha",
+          "line": 12
+        },
+        {
+          "name": "overlaps",
+          "line": 20
+        },
+        {
+          "name": "summarize",
+          "line": 28
+        },
+        {
+          "name": "main",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/006_analyze_train_states.py",
+      "bytes": 4469,
+      "sha256": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+      "expected_sha256": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+      "read_mode": "full_bytes_and_text",
+      "lines": 92,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "sha",
+          "line": 12
+        },
+        {
+          "name": "overlaps",
+          "line": 20
+        },
+        {
+          "name": "summarize",
+          "line": 28
+        },
+        {
+          "name": "main",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/011_dense_region_decoder.py",
+      "bytes": 7272,
+      "sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+      "expected_sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+      "read_mode": "full_bytes_and_text",
+      "lines": 116,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "sample_regions",
+          "line": 12
+        },
+        {
+          "name": "weighted_mean",
+          "line": 26
+        },
+        {
+          "name": "DenseRegionDecoder",
+          "line": 30
+        },
+        {
+          "name": "__init__",
+          "line": 31
+        },
+        {
+          "name": "observe",
+          "line": 45
+        },
+        {
+          "name": "branch",
+          "line": 80
+        },
+        {
+          "name": "forward",
+          "line": 101
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+      "bytes": 3120,
+      "sha256": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+      "read_mode": "full_bytes_and_text",
+      "lines": 56,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "dense_patch_features",
+          "line": 11
+        },
+        {
+          "name": "verify_author_reference",
+          "line": 38
+        },
+        {
+          "name": "observe_original",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/012_dense_region_encoding.py",
+      "bytes": 3120,
+      "sha256": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+      "expected_sha256": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+      "read_mode": "full_bytes_and_text",
+      "lines": 56,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "dense_patch_features",
+          "line": 11
+        },
+        {
+          "name": "verify_author_reference",
+          "line": 38
+        },
+        {
+          "name": "observe_original",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/013_dense_target_decoder.py",
+      "bytes": 7739,
+      "sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+      "expected_sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+      "read_mode": "full_bytes_and_text",
+      "lines": 123,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "clip_boxes",
+          "line": 9
+        },
+        {
+          "name": "odds_residual",
+          "line": 18
+        },
+        {
+          "name": "DenseTargetDecoder",
+          "line": 25
+        },
+        {
+          "name": "__init__",
+          "line": 26
+        },
+        {
+          "name": "observe",
+          "line": 51
+        },
+        {
+          "name": "branch",
+          "line": 74
+        },
+        {
+          "name": "forward",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/015_full_dense_tracker.py",
+      "bytes": 7693,
+      "sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+      "expected_sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+      "read_mode": "full_bytes_and_text",
+      "lines": 120,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "state_digest",
+          "line": 14
+        },
+        {
+          "name": "FullDenseTracker",
+          "line": 22
+        },
+        {
+          "name": "__init__",
+          "line": 23
+        },
+        {
+          "name": "frozen_digest",
+          "line": 39
+        },
+        {
+          "name": "pixels",
+          "line": 42
+        },
+        {
+          "name": "observe",
+          "line": 53
+        },
+        {
+          "name": "initialize",
+          "line": 75
+        },
+        {
+          "name": "step",
+          "line": 88
+        },
+        {
+          "name": "track",
+          "line": 117
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/016_instance_ab_prototype.py",
+      "bytes": 7951,
+      "sha256": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+      "expected_sha256": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+      "read_mode": "full_bytes_and_text",
+      "lines": 126,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "roi_positions",
+          "line": 10
+        },
+        {
+          "name": "masked_mean",
+          "line": 16
+        },
+        {
+          "name": "InstanceEvidence",
+          "line": 21
+        },
+        {
+          "name": "InstanceCandidatePrototype",
+          "line": 95
+        },
+        {
+          "name": "__init__",
+          "line": 22
+        },
+        {
+          "name": "encode",
+          "line": 39
+        },
+        {
+          "name": "phrase_branch",
+          "line": 49
+        },
+        {
+          "name": "forward",
+          "line": 63
+        },
+        {
+          "name": "__init__",
+          "line": 96
+        },
+        {
+          "name": "forward",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+      "bytes": 2237,
+      "sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "read_mode": "full_bytes_and_text",
+      "lines": 50,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "crop_geometry",
+          "line": 8
+        },
+        {
+          "name": "region_samples",
+          "line": 14
+        },
+        {
+          "name": "phrase_scores",
+          "line": 31
+        },
+        {
+          "name": "coordinate_sanity",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/022_region_patch_evidence.py",
+      "bytes": 2237,
+      "sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "expected_sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "read_mode": "full_bytes_and_text",
+      "lines": 50,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "crop_geometry",
+          "line": 8
+        },
+        {
+          "name": "region_samples",
+          "line": 14
+        },
+        {
+          "name": "phrase_scores",
+          "line": 31
+        },
+        {
+          "name": "coordinate_sanity",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py",
+      "bytes": 13099,
+      "sha256": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+      "read_mode": "full_bytes_and_text",
+      "lines": 202,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "box_overlap",
+          "line": 19
+        },
+        {
+          "name": "focal",
+          "line": 31
+        },
+        {
+          "name": "objective",
+          "line": 39
+        },
+        {
+          "name": "digest",
+          "line": 69
+        },
+        {
+          "name": "evaluate",
+          "line": 76
+        },
+        {
+          "name": "main",
+          "line": 108
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/032_train_m121_dense_target.py",
+      "bytes": 13099,
+      "sha256": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+      "expected_sha256": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+      "read_mode": "full_bytes_and_text",
+      "lines": 202,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "box_overlap",
+          "line": 19
+        },
+        {
+          "name": "focal",
+          "line": 31
+        },
+        {
+          "name": "objective",
+          "line": 39
+        },
+        {
+          "name": "digest",
+          "line": 69
+        },
+        {
+          "name": "evaluate",
+          "line": 76
+        },
+        {
+          "name": "main",
+          "line": 108
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/033_train_m122_full_causal.py",
+      "bytes": 11546,
+      "sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+      "expected_sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+      "read_mode": "full_bytes_and_text",
+      "lines": 144,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "load_truth",
+          "line": 14
+        },
+        {
+          "name": "precision_objective",
+          "line": 25
+        },
+        {
+          "name": "main",
+          "line": 34
+        },
+        {
+          "name": "first_image",
+          "line": 67
+        },
+        {
+          "name": "image",
+          "line": 83
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/036_deep_rgbd_256_lachtt_v1.yaml",
+      "bytes": 1367,
+      "sha256": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+      "expected_sha256": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+      "read_mode": "full_bytes_and_text",
+      "lines": 68
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/037_head.py",
+      "bytes": 10778,
+      "sha256": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+      "expected_sha256": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+      "read_mode": "full_bytes_and_text",
+      "lines": 248,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "conv",
+          "line": 8
+        },
+        {
+          "name": "Corner_Predictor",
+          "line": 24
+        },
+        {
+          "name": "CenterPredictor",
+          "line": 98
+        },
+        {
+          "name": "MLP",
+          "line": 204
+        },
+        {
+          "name": "build_box_head",
+          "line": 224
+        },
+        {
+          "name": "__init__",
+          "line": 27
+        },
+        {
+          "name": "forward",
+          "line": 55
+        },
+        {
+          "name": "get_score_map",
+          "line": 67
+        },
+        {
+          "name": "soft_argmax",
+          "line": 83
+        },
+        {
+          "name": "__init__",
+          "line": 99
+        },
+        {
+          "name": "forward",
+          "line": 130
+        },
+        {
+          "name": "cal_bbox",
+          "line": 142
+        },
+        {
+          "name": "get_pred",
+          "line": 162
+        },
+        {
+          "name": "get_score_map",
+          "line": 175
+        },
+        {
+          "name": "__init__",
+          "line": 207
+        },
+        {
+          "name": "forward",
+          "line": 218
+        },
+        {
+          "name": "_sigmoid",
+          "line": 177
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/038_sttrack.py",
+      "bytes": 10684,
+      "sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+      "expected_sha256": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+      "read_mode": "full_bytes_and_text",
+      "lines": 237,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "STTrack",
+          "line": 15
+        },
+        {
+          "name": "build_sttrack",
+          "line": 199
+        },
+        {
+          "name": "__init__",
+          "line": 18
+        },
+        {
+          "name": "forward",
+          "line": 59
+        },
+        {
+          "name": "forward_head",
+          "line": 164
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/039_sttrack.py",
+      "bytes": 10216,
+      "sha256": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+      "expected_sha256": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+      "read_mode": "full_bytes_and_text",
+      "lines": 220,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "STTrack",
+          "line": 19
+        },
+        {
+          "name": "get_tracker_class",
+          "line": 219
+        },
+        {
+          "name": "__init__",
+          "line": 20
+        },
+        {
+          "name": "initialize",
+          "line": 63
+        },
+        {
+          "name": "track",
+          "line": 95
+        },
+        {
+          "name": "map_box_back",
+          "line": 191
+        },
+        {
+          "name": "map_box_back_batch",
+          "line": 199
+        },
+        {
+          "name": "add_hook",
+          "line": 207
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/040_processing_utils.py",
+      "bytes": 6758,
+      "sha256": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+      "expected_sha256": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+      "read_mode": "full_bytes_and_text",
+      "lines": 171,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "sample_target",
+          "line": 14
+        },
+        {
+          "name": "transform_image_to_crop",
+          "line": 86
+        },
+        {
+          "name": "jittered_center_crop",
+          "line": 112
+        },
+        {
+          "name": "transform_box_to_crop",
+          "line": 150
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R0_completed_audit_sources/041_depth_utils.py",
+      "bytes": 9538,
+      "sha256": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+      "expected_sha256": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+      "read_mode": "full_bytes_and_text",
+      "lines": 277,
+      "AST_parsed": true,
+      "definitions": [
+        {
+          "name": "get_rgbd_frame",
+          "line": 7
+        },
+        {
+          "name": "get_x_frame",
+          "line": 71
+        },
+        {
+          "name": "p_config",
+          "line": 135
+        },
+        {
+          "name": "get_layered_image_by_depth",
+          "line": 144
+        },
+        {
+          "name": "remove_bubbles",
+          "line": 174
+        },
+        {
+          "name": "get_target_depth",
+          "line": 196
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/trained_finals/precision1_final.pt",
+      "bytes": 1538308,
+      "sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+      "expected_sha256": "3fd4087ca0e9f892ce2b2a0647fa1b706bfc7e869099f6c24c129225ede96811",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/human_text.pt",
+      "bytes": 4084274,
+      "sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+      "expected_sha256": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/human_train_labels.json",
+      "bytes": 73412,
+      "sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+      "expected_sha256": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 2711
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_supplemental_inputs_20261010/GT/cube04_indoor/groundtruth.txt",
+      "bytes": 36135,
+      "sha256": "d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+      "expected_sha256": "d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+      "read_mode": "full_bytes_and_text",
+      "lines": 2576
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/pilot_events.json",
+      "bytes": 10337,
+      "sha256": "b7b93be2026c0ca840f26c10eff63e32667a03a45d39d8792ed1f60764bf97b1",
+      "expected_sha256": "b7b93be2026c0ca840f26c10eff63e32667a03a45d39d8792ed1f60764bf97b1",
+      "read_mode": "full_bytes_and_JSON_parse",
+      "lines": 552
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_00.pt",
+      "bytes": 4291843,
+      "sha256": "2abde85ebe3d272b6b461eb080e1c53cc102444275a8d09622c63755a32d605b",
+      "expected_sha256": "2abde85ebe3d272b6b461eb080e1c53cc102444275a8d09622c63755a32d605b",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_01.pt",
+      "bytes": 4689665,
+      "sha256": "40704798e220d39641a8a2ba9bb7f80a2a34532d32c7816b789f016187875afa",
+      "expected_sha256": "40704798e220d39641a8a2ba9bb7f80a2a34532d32c7816b789f016187875afa",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_02.pt",
+      "bytes": 4679361,
+      "sha256": "895a4146186e5a0ad35012059ad75e1ae30c54ef8365cdcd253a9eb906f9c32e",
+      "expected_sha256": "895a4146186e5a0ad35012059ad75e1ae30c54ef8365cdcd253a9eb906f9c32e",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_03.pt",
+      "bytes": 4679169,
+      "sha256": "67c85abb98d97a207d9761185c9ab9227299c7e74d6aa74a945f150efde1c44d",
+      "expected_sha256": "67c85abb98d97a207d9761185c9ab9227299c7e74d6aa74a945f150efde1c44d",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_04.pt",
+      "bytes": 4684673,
+      "sha256": "cf6db40ea140d1540a3a924fb3d3673b736747cbfe59d277e48f9c851909e58f",
+      "expected_sha256": "cf6db40ea140d1540a3a924fb3d3673b736747cbfe59d277e48f9c851909e58f",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_05.pt",
+      "bytes": 4682433,
+      "sha256": "e31c3f9abdf8d13b8912721c9b43113c074019aa6902be224bf3f909abdfe4ab",
+      "expected_sha256": "e31c3f9abdf8d13b8912721c9b43113c074019aa6902be224bf3f909abdfe4ab",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_06.pt",
+      "bytes": 4673281,
+      "sha256": "f6a242273b64145a40c7eb5a7fd779435cf90ee2a215bdbda0a514b838176f96",
+      "expected_sha256": "f6a242273b64145a40c7eb5a7fd779435cf90ee2a215bdbda0a514b838176f96",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_07.pt",
+      "bytes": 4672769,
+      "sha256": "086bf904f9d6f194f5d5963ee8d1c7e05949b1337922cdbd884ed6562c9f300a",
+      "expected_sha256": "086bf904f9d6f194f5d5963ee8d1c7e05949b1337922cdbd884ed6562c9f300a",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_08.pt",
+      "bytes": 4672065,
+      "sha256": "55c33b20ae9149d502522c3aa7583656f555d85fd0b31c07e15f6d8823cd73cc",
+      "expected_sha256": "55c33b20ae9149d502522c3aa7583656f555d85fd0b31c07e15f6d8823cd73cc",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_09.pt",
+      "bytes": 4671361,
+      "sha256": "7af858fb85f3edb575786f2b5013758ac8af4538a173d4dea5f44a83fca19401",
+      "expected_sha256": "7af858fb85f3edb575786f2b5013758ac8af4538a173d4dea5f44a83fca19401",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_10.pt",
+      "bytes": 4670401,
+      "sha256": "149bfb67c19ec4006a67ed7a87b62e7a8bfd94d5e726aa1965656cae9e577fdb",
+      "expected_sha256": "149bfb67c19ec4006a67ed7a87b62e7a8bfd94d5e726aa1965656cae9e577fdb",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/events/event_11.pt",
+      "bytes": 4669953,
+      "sha256": "24eaadaf7c45645fe9e491a9fb88956f6063bbd8828bc9c60a96cb7bb48cdabf",
+      "expected_sha256": "24eaadaf7c45645fe9e491a9fb88956f6063bbd8828bc9c60a96cb7bb48cdabf",
+      "read_mode": "full_bytes",
+      "CPU_tensor_loaded": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.py",
+      "bytes": 3354,
+      "sha256": "eb02643ba7400307aa43c9a0a87495e5014a9aeaa6227a4a567df65151939ee7"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.json",
+      "bytes": 1490,
+      "sha256": "2d33300bed665ee7d11785a4f1fdc15afc25100c5366cd5579d9844a98bcf03a"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_00.pt",
+      "bytes": 2508451,
+      "sha256": "bf53a4fed147e7630ea613af89f18fb1a9d61c0df067aaf42f65b667c73c4700"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_01.pt",
+      "bytes": 2508515,
+      "sha256": "2f973df650ce81c9e3b97150ee30d1a5ba154e78001a0d45c3c9682fbd1922e0"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_02.pt",
+      "bytes": 2508515,
+      "sha256": "eb129397a9239713d69f83dd5c45a9750c2aa2257f6958424a50dae0bad750da"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_03.pt",
+      "bytes": 2508515,
+      "sha256": "4f306888e22a548cc2152db6e503c0c0ca38f687f761bd94a5b77b127a7b37ba"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_04.pt",
+      "bytes": 2508515,
+      "sha256": "e15cd528c7da7b5405c1d4b014ab5cd4ebb585411d6997b44824e7e81c62a798"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_05.pt",
+      "bytes": 2508515,
+      "sha256": "d5f46579f4b2bccd11e2ee7565ae9d673393f8470949a152a9cba0385e5d200f"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_06.pt",
+      "bytes": 2508515,
+      "sha256": "142f8f540ae7202b2b5fc2696fe03f48bbf482aaa63e4d4578025272e6b2081e"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_07.pt",
+      "bytes": 2508515,
+      "sha256": "121b8fe37c3e3face0dea50feaa29833f948405c4d9816bc8f37f3df03be2de7"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_08.pt",
+      "bytes": 2508515,
+      "sha256": "6c0b8e22afa46245460c57efdff163654f98c7ee7d20fed43465de15a89a09be"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_09.pt",
+      "bytes": 2508515,
+      "sha256": "bd0397d2f700bdfc470ddf6788cae82fffa130f17f94281f0cb4c0c686595558"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard0/event_10.pt",
+      "bytes": 2508515,
+      "sha256": "fe5ebcefe1c103dc5766bd1aa8c073118ca44e8ad1653eae5444f5f8131a8e3c"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/observations/R1_1201/snapshot/output/replay_shard1/event_11.pt",
+      "bytes": 2508515,
+      "sha256": "1999e8e4a7de9edba28b010d6ba1c80a12c0f08934d3dd2847e82d06d89dc126"
+    }
+  ],
+  "supplemental_capacity_artifacts": [
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.py",
+      "sha256": "eb02643ba7400307aa43c9a0a87495e5014a9aeaa6227a4a567df65151939ee7",
+      "bytes": 3354
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_CPU_serializer_capacity_witness_20261010.json",
+      "sha256": "2d33300bed665ee7d11785a4f1fdc15afc25100c5366cd5579d9844a98bcf03a",
+      "bytes": 1490
+    }
+  ],
+  "skill_policy_hashes": [
+    {
+      "path": "C:/Users/gb/.codex/skills/experiment-audit/SKILL.md",
+      "bytes": 10983,
+      "sha256": "0ab77f219f554cbe42f22b79d780528e61c5e58169af4c2f56acf59596ab8db7"
+    },
+    {
+      "path": "C:/Users/gb/.codex/skills/shared-references/local-codex-policy.md",
+      "bytes": 2948,
+      "sha256": "b0249bfccd48ff79a5976afa7a54c64a3cfb65a5496a2105c5bb21069d197783"
+    },
+    {
+      "path": "C:/Users/gb/.codex/skills/shared-references/reviewer-independence.md",
+      "bytes": 1843,
+      "sha256": "1aa1756a99dc47009072f0ee7bf570d797bf7e2cc84439401e2a9312d73659b0"
+    },
+    {
+      "path": "C:/Users/gb/.codex/skills/shared-references/experiment-integrity.md",
+      "bytes": 2355,
+      "sha256": "22150fbdc5867e7790c88f968bccb367079c2db4c190ddce980709aea7e76f60"
+    },
+    {
+      "path": "C:/Users/gb/.codex/skills/shared-references/review-tracing.md",
+      "bytes": 4433,
+      "sha256": "7f556fb9ef8922cfd0d047e5a2d857b0c7f9408492b8c8dcec00207e76405395"
+    }
+  ],
+  "post_review_input_hashes_unchanged": true,
+  "all_audited_artifacts_post_review_unchanged": true,
+  "new_Python_lines_semantically_read": 316,
+  "new_contract_lines_semantically_read": 13,
+  "AST_parsed_source_file_instances": 29,
+  "deterministic_source_CPU_checks": 4646,
+  "deterministic_capacity_checks": 66,
+  "failed_CPU_checks": [],
+  "actual_CPU_receipts": [
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/CPU_SOURCE_RECEIPT.json",
+      "bytes": 382172,
+      "sha256": "f8d2c8a8cd8d1e4f014294d76fb8cfcacfe20e6bf4b848263104d96e2251d8c3"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/CAPACITY_SUPPLEMENT_RECEIPT.json",
+      "bytes": 15525,
+      "sha256": "e11e9f2469c2555c68da1ca441feb1dbde76078b8c3dda2c1cfeffe593cc45af"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/verify_r2_source_cpu_v1.py",
+      "bytes": 24611,
+      "sha256": "145aa2b3232924ba323af19d8ebbce62f739a1ab711838a97f821fba17fb17ab"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/verify_r2_source_cpu_v1.log",
+      "bytes": 807,
+      "sha256": "cc0a71b119de2b6d1579e2a55aafaf3ea3c5241474f06c1bd32d00a314381b76"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/verify_r2_capacity_supplement_v1.py",
+      "bytes": 6661,
+      "sha256": "dc885a3389dfd0008354c3188d611978e20e570584d1e86eccf7e9026e2f3cf3"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/verify_r2_capacity_supplement_v1.log",
+      "bytes": 297,
+      "sha256": "353e4e4b26185965eb7b6f5e3025b89d1e72e280bd40e5518bc390e587c64d21"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/AUDITOR_VERIFICATION_FAILURES.json",
+      "bytes": 1324,
+      "sha256": "cb3e4999f4b4c8b688b9b9f6973a1f5eed55bb59083e4d3caf05c22212166313"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/initial_inventory_checker_failed.ps1",
+      "bytes": 690,
+      "sha256": "4e81c85ded8c157638a9081443c48984f1bde5d1f406cf50a3de7f57b161850b"
+    }
+  ],
+  "auditor_verification_failures": [
+    {
+      "kind": "auditor_PowerShell_parse_error",
+      "tool_chunk": "72af15",
+      "exit_code": 1,
+      "source_file": "initial_inventory_checker_failed.ps1",
+      "output_as_returned": "Environment configured. Type 'openclaw' to start.\r\nParserError: \r\nLine |\r\n   2 |  �� ath $f.path).Length; Hash=$h; Matches=($h -eq $f.sha256)} } | Convert ��\r\n     |                                                                ~\r\n     | �������չܵ�Ԫ�ء�\r\n",
+      "explanation": "A PowerShell foreach statement was piped directly, causing an empty-pipe-element parse error before execution.",
+      "resolution": "The next inventory command captured foreach output into an array before piping. All 20 files matched. Only audit tooling changed; no experiment input was modified.",
+      "successful_followup_tool_chunk": "863f4e"
+    }
+  ],
+  "NN_forward_calls": 0,
+  "model_constructors": 0,
+  "rollout_calls": 0,
+  "optimizer_calls": 0,
+  "experiment_module_imports": 0,
+  "CUDA_initialized": false,
+  "package_installations": 0,
+  "auditor_SSH_calls": 0,
+  "auditor_GPU_NN_progress_queries": 0,
+  "subagents_spawned": 0,
+  "source_changes": 0,
+  "input_mutations": 0,
+  "model_or_training_samples_written": 0,
+  "actual_parameter_free_CPU_operations": [
+    "write_features",
+    "sample_regions",
+    "weighted_mean",
+    "roi_positions",
+    "cpu_tensor",
+    "move_templates",
+    "copy_templates",
+    "copy_tracker_state",
+    "assert_same_submission",
+    "WriteEvent",
+    "fork_event",
+    "valid_gt",
+    "iou"
+  ],
+  "unexecuted_runtime_definitions": [
+    "initial_reference neural projections",
+    "context",
+    "collect",
+    "replay",
+    "pack_event CUDA RNG capture",
+    "unpack_event CUDA transfers",
+    "capture_rng/restore_rng CUDA RNG",
+    "rollout_pair",
+    "write_keep_rollouts",
+    "controller pipeline/main"
+  ],
+  "trace_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/private_trace",
+  "full_response_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R2_source_audit_20261010/private_trace/001-source-review.response.md",
+  "raw_response_sha256": "e7010bfdee380d7749cee5cbbc9f802ea4792b7d7b62ee196a2081ec2b190270"
+}

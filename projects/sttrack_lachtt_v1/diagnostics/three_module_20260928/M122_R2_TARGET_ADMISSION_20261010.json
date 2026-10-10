@@ -1,0 +1,54 @@
+{
+  "status": "actual_R2_target_CPU_filesystem_storage_GPU_admitted",
+  "observed_at": "2026-10-10T05:26:33.885332+00:00",
+  "python": "3.8.20 (default, Oct  3 2024, 15:24:27) \n[GCC 11.2.0]",
+  "torch_version": "1.13.1+cu116",
+  "CUDA_initialized": false,
+  "NN_calls": 0,
+  "NN_progress_queries": 0,
+  "GPU_resource_queries": 1,
+  "optimizations": 0,
+  "teacher_samples_written": 0,
+  "serializer_scope": "real R1 containers with explicit zero C/history shape placeholders for capacity only; not teacher examples",
+  "units": {
+    "event": 1572864,
+    "reference": 3211264,
+    "rollout": 1703936
+  },
+  "checkpoint_upper_count": 4324,
+  "required_free_data_bytes": 15730737152,
+  "data_free_bytes": 17449340928,
+  "system_free_bytes": 258441216,
+  "gpus": [
+    {
+      "index": 0,
+      "memory_used_MiB": 1,
+      "memory_total_MiB": 24576,
+      "utilization_percent": 0
+    },
+    {
+      "index": 1,
+      "memory_used_MiB": 1,
+      "memory_total_MiB": 24576,
+      "utilization_percent": 0
+    }
+  ],
+  "witnesses": [
+    {
+      "path": "/root/autodl-tmp/m122_R2_target_admission_20261010/event_filesystem_witness.pt",
+      "bytes": 1523987,
+      "sha256": "0935924a0224473b24006a8c6bad50a73c3079fc81490ee4b14b5190144080fa"
+    },
+    {
+      "path": "/root/autodl-tmp/m122_R2_target_admission_20261010/reference_filesystem_witness.pt",
+      "bytes": 3171367,
+      "sha256": "095f3fdcd5b8530b8296ae1d1d97f167d4eb626fde3b0430051493b0351ac475"
+    },
+    {
+      "path": "/root/autodl-tmp/m122_R2_target_admission_20261010/rollout_filesystem_witness.pt",
+      "bytes": 1675815,
+      "sha256": "3b2e14e3a002eed07bddab9808ce81d86613f925b99d50a2956b71abe3dd7c97"
+    }
+  ],
+  "new_R2_NN_launched": false
+}
