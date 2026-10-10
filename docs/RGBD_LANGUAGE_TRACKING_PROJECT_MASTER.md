@@ -27127,3 +27127,23 @@ R3 controller的21项源码/实际终态材料已交原fresh R3 reviewer续审�
 下一观察下限21:19:01.180347。新的唯一第二小时被动timer于20:22:52.480481启动，原native18966/5afff4、PythonPID49376、CIM birth20:22:52.373511；sleep300s，远端查询0。它在第一timer正常终态/句柄消费完毕且两卡开发实际活跃之后建立，未重建第一timer。单次第二observer已准备但未执行，不能写为已有第二观察或完整开发结果。
 
 完整32dev结束后由CPU比较future与冻结P1＋原模板规则、current对照的帧均/序列等权IoU、H10及接受/拒绝覆盖；这里的native baseline是冻结P1 A+B的native模板规则，不是独立原生STTrack。仍须fresh结果审查，之后按已冻结条件决定是否建立C自身历史Full152 W/K teacher和最终C训练。尚无新增正式九项，R4 collector仍未实现/执行，项目ACTIVE_UNMET。
+
+### 5.454 2026-10-10：R3完整结果复核结束，Future未晋升，另准备Current质量Full152分支
+
+两组C各320次优化、32条完整自身历史开发已实际完成；全部六阶段、控制器及监督器均exit0，最后20:35:27结束。21:19:36.400301才执行一次既定小时查询，距上次观察3635.219954秒；两卡均1MiB/0%，无NN运行。原timer18966正常结束并已消费，未重建空timer或任务。此后只有本地复核和静态代码准备；下一GPU准入/NN查询不早于22:19:36.400301。
+
+| 32条开发条件 | 帧均IoU | 序列等权IoU | IoU≤0.1帧 | H10 | 合资格/实际写入 | 低IoU写入 |
+|---|---:|---:|---:|---:|---:|---:|
+| 冻结P1 A+B，原模板规则 | 0.740338754077 | 0.764334383531 | 6955 | 63 | 277/277 | 27 |
+| Current质量C | 0.755051096280 | 0.774631107471 | 6205 | 60 | 265/255 | 7 |
+| Future收益C | 0.746099497196 | 0.762334417857 | 6702 | 62 | 269/139 | 8 |
+
+每组49366个非初始化调用、46088个有效GT帧；H10不是VOT ROB，表中参照不是独立原生STTrack。Current宏IoU提升1.029672pp、低帧少750、H10少3；仅cup03/flower01/ball13三条改善，29条相同，没有本组负序列。Future宏IoU较P1下降0.199997pp、较Current下降1.229669pp，未通过两项严格优于条件；H10项通过。Future相对P1有14条改善、8条受损，hat02/bottle02/human06是主要损害，不能只以写入更少称安全。
+
+同一原teacher264状态中，Future接受正收益60/113、负收益70/126；恒零预测MSE0.000159181205，比Future的0.000538952640更小。该固定状态监督尚未建立可靠收益判别；239个非零标签中188个绝对差≤0.01。标签不能转贴给改变C策略后的历史。这支持检查监督信号与泛化，不证明唯一根因是标签小或平台差异。
+
+全部66原文件及导出清单已下载，压缩包SHA0dbd8d04051d2ab0649fa70e46945838279b8a62a70e1fa58b723e494c5c9693。fresh审查独立复算三组全部逐帧IoU/H10/动作、共同数据/顺序、528个小C预测及已保存预检张量；WARN、0阻断限终态归档，R3_terminal_raw_audit_complete=true。请求Astra/max，实际模型/effort未证明，same-family/provisional。远端两臂初始化摘要相同，但本地seed重建摘要不同、原初始张量未导出，原因未确定；没有将其改称独立完全复现。完整视觉网络与部分远端依赖仅由实际断言/hash见证，详细限制见[完整审查](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/R3_actual_complete_20261010/EXPERIMENT_AUDIT.md)。原全部失败检查及stderr保留。
+
+原Future R4条件失败，未采集C自身历史、未启动原R4。现另准备Current质量C Full152：冻结同一P1，只用已审原teacher的1257共同事件（993+264，142条提供事件；排除35当前GT未知和5未来不可用），seed2027/10epoch/B32/lr3e-5/wd.01/400更新、固定final；原32此后为训练内。保存一份A+B+C composite final，原50/.75资格后Current>.5，统一人审核类别与首4属性，在Test50、CDTB80、VOT127全部重新推理。两卡并行OPE，随后双卡VOT；所有子进程阻塞等待，不轮询进展、不自动重试。当前仅源码准备并进行新source审查，尚未部署/训练/产生正式指标。这是已知当前IoU质量控制，不能包装成已经建立未来记忆价值或语言创新。
+
+此前R0 P0/P1完整九项及目标未达结论保持不变。新质量分支完整结果出来、审核后才判断是否改善；目标仍ACTIVE_UNMET。[独立新计划](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/CURRENT_QUALITY_FULL152_PLAN_20261010.md)。

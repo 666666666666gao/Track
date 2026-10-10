@@ -1,0 +1,942 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-10",
+  "generated_at": "2026-10-10T13:49:14.986505+00:00",
+  "agent_id": "/root/m122_r3_actual_terminal_result_integrity_20261010",
+  "verdict_id": "/root/m122_r3_actual_terminal_result_integrity_20261010",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "requested_reviewer_backend": "codex",
+  "requested_fork_turns": "none",
+  "reviewer_model": "UNATTESTED",
+  "actual_backend_identity": "UNATTESTED",
+  "actual_reasoning_effort": "UNATTESTED",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "cross_family_accepted": false,
+  "review_call_status": "completed",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "terminal_raw_results_verified_with_initializer_and_runtime_tensor_limits",
+  "summary": "R3 original terminal evidence and all exported scalar metrics are consistent; Future fails the prespecified scientific gate. Common initial runtime digests agree, but local seeded reconstruction differs and original initial tensors are absent. Archive the scoped result; do not promote any branch or claim formal completion.",
+  "blocking_count": 0,
+  "blocking_scope": "No integrity blocker to archiving the verified terminal predictions and negative Future result. This is not a deployment/advancement decision or proof of every hidden tensor.",
+  "blocking_findings": [],
+  "nonblocking_count": 4,
+  "nonblocking_findings": [
+    {
+      "id": "N1",
+      "blocking": false,
+      "title": "Initial tensors are not independently reconstructed",
+      "details": "Both remote arm receipts record d83b325dfdc6163a20bb7cc5bcb710f05e3b36816d82f954f7de772b254d65c8. Fresh local Windows Python3.7.6/Torch1.13.1+cpu seed2027 construction yields94c2419332b132d5b8ce8fa1cf06626494d67f91b127f65e312f966aa65e6815. The cause is unestablished; no original initial tensor file was exported. This mismatch is not reclassified as an exact PASS. Common initialization is supported by the matched actual digests and source seed placement, but independent initial-tensor equality/reconstruction is not certified. It does not change directly recomputed terminal predictions or the failed Future advancement gate.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current\\result.json",
+          "line": 11,
+          "text": "  \"initial_state_sha256\": \"d83b325dfdc6163a20bb7cc5bcb710f05e3b36816d82f954f7de772b254d65c8\","
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\FIT_PREFLIGHT_RECOMPUTED.json",
+          "line": 26,
+          "text": "  \"local_seeded_initial_sha256\": \"94c2419332b132d5b8ce8fa1cf06626494d67f91b127f65e312f966aa65e6815\","
+        }
+      ]
+    },
+    {
+      "id": "N2",
+      "blocking": false,
+      "title": "Full runtime tensor and remote dependency scope",
+      "details": "Only the small final C states, human text bank and saved preflight histories are loaded locally. Full visual models/images and original R2 PT cache files are not reconstructed. 24/90 gate entries match supplied local bytes;66 are runtime gate-assertion witnesses. Learned own-history logs omit519-D features and full candidate/query tensors; all scalar state chains/actions are checked, while same-candidate/query semantics and freezing beyond the saved preflight arrays rely on pinned source and actual recorded assertions/digests. Preflight has only cube04 frames1..256 and one eligible event at250; prior template/full-output tensors are not all exported.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\trusted_template_tracker.py",
+          "line": 44,
+          "text": "        actor.native.state = out['selected_box'][0].detach().cpu().tolist()"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\evaluate_template_write_C.py",
+          "line": 68,
+          "text": "    assert frozen == after and decoder_before == decoder_after and C_before == C_after"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\run_template_write_C_preflight.py",
+          "line": 186,
+          "text": "    torch.save(dict(full_256_frame_histories=rows, actual_qualified_rejection_checks=rejects,"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\BINDINGS_CHECKED.json",
+          "line": 227,
+          "text": "  \"gate_entries_recorded_runtime_only\": 66,"
+        }
+      ]
+    },
+    {
+      "id": "N3",
+      "blocking": false,
+      "title": "Engineering development scope and proxy distinction",
+      "details": "No multi-seed or formal-three-dataset robustness claim. Teacher future targets are actual GT-based W/K utility labels, but apply only to original states; they cannot label changed C-own-history states. Current gains and Future failure are descriptive within C-dev32. No learned identity, language semantics, depth reliability or crop-out recovery claim follows.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json",
+          "line": 11,
+          "text": "  \"backbone_A_B_previously_trained_on_all_152\": true,"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 64,
+          "text": "**开发推进条件。** C-future应同时优于原规则和C-current的序列等权IoU，且相对原规则H10不增加；同时报告逐序列收益与损害及有益写入保留，不能只报总体均值。未满足时不进入正式新评价；查看未来收益标签、模型预测和自身状态分布，决定重构C还是保持原规则。该条件是训练内部工程选择，不把32条称为最终泛化证据。"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\train_template_write_C.py",
+          "line": 164,
+          "text": "    panel_path.write_text(json.dumps(dict(scope='same original teacher states; not labels for changed C-policy history',"
+        }
+      ]
+    },
+    {
+      "id": "N4",
+      "blocking": false,
+      "title": "Tracker/current narrative lag",
+      "details": "The bound tracker R3 row still says SOURCE_PASS and latest appendix/master5.453 says development running. These are stale intermediate statements, not evidence that terminal files are missing. Update the current tracker after sealing this audit; preserve old review inputs and historic status records.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_TRACKER.md",
+          "line": 10,
+          "text": "| R3 | 分离当前质量与未来写入价值 | 同参数C-current/C-future，C-fit120/C-dev32 | 完整递归序列等权IoU胜两参照、H10不增、有益写入覆盖报告 | MUST | SOURCE_PASS：v2来源B1已定点修正，v3 fresh PASS/0阻断；五源/519维/70721参数结构算术，无C构造/训练/指标，仍须R2终态原始审核和实际接线 |"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\docs\\RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md",
+          "line": 27105,
+          "text": "### 5.453 2026-10-10 20:19：首次小时观察确认预检及两组C训练完成，32dev仍在运行"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "A_gt_provenance": {
+      "status": "PASS",
+      "details": "All152 supplied groundtruth files match the frozen training spec; all32 development trajectories use the dataset annotations, excluding initialization and invalid GT. All1297 current/future teacher labels are independently recalculated from dataset GT and exported W/K boxes. Preflight equality uses model outputs as a disclosed proxy, not accuracy.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\analyze_template_write_C_dev.py",
+          "line": 140,
+          "text": "        path = Path(spec['dataset_root']) / case['sequence'] / 'groundtruth.txt'"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\analyze_template_write_C_dev.py",
+          "line": 29,
+          "text": "    valid = np.isfinite(truth).all(axis=1) & (truth[:, 2:] > 0).all(axis=1)"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\train_template_write_C.py",
+          "line": 68,
+          "text": "            assert row['common_C_training_eligible'] == (row['current_GT_valid'] and row['valid_future_frames'] > 0)"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\train_template_write_C.py",
+          "line": 55,
+          "text": "        source = folder / 'replay/result.json'"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\run_template_write_C_preflight.py",
+          "line": 186,
+          "text": "    torch.save(dict(full_256_frame_histories=rows, actual_qualified_rejection_checks=rejects,"
+        }
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "details": "IoU uses geometric intersection/union; frame mean divides by valid dataset-GT frame count, macro by 32 sequences, action rates by explicit own-history qualified-event counts. H10 counts contiguous valid-GT IoU<=0.1 runs of at least10 frames; unknown GT breaks runs. No own-output max/min normalization. Feature L2/motion transforms are inputs, not performance denominators.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\analyze_template_write_C_dev.py",
+          "line": 153,
+          "text": "            frame_mean_IoU=sum(r['IoU_sum'] for r in rows) / sum(r['valid_GT_frames'] for r in rows),"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\analyze_template_write_C_dev.py",
+          "line": 46,
+          "text": "    severe = valid & (values <= .1)"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\template_write_features.py",
+          "line": 38,
+          "text": "    result = torch.cat((current, previous, reference, quality, motion), dim=-1).float()"
+        }
+      ]
+    },
+    "C_existence_numeric_completion": {
+      "status": "WARN",
+      "details": "257 original input hashes, 67 ZIP members, all6 stages, aggregate/supervisor exits and metrics agree. A separate 9-file raw R2 supplement is hash-bound to the sealed prior audit and independently read. Historical tracker table/master still predate terminal results; update the current status after archiving this review. Remote model/dependency and initializer tensor limitations remain explicit.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\m122_R3_process_supervisor_20261010.py",
+          "line": 20,
+          "text": "    completed = subprocess.run(command, cwd=gate['code_root'])"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_second_hour_observer_original_stdout_20261010.txt",
+          "line": 2,
+          "text": "{\"status\": \"actual_R3_second_scheduled_hourly_observation\", \"observed_at\": \"2026-10-10T13:19:36.400301+00:00\", \"supervisor_pid\": 385974, \"supervisor_cmdline\": null, \"stages\": [{\"stage\": \"preflight\", \"exit\": 0, \"receipt.json\": {\"stage\": \"preflight\", \"command\": [\"/root/autodl-tmp/envs/sttrack/bin/python\", \"-B\", \"-u\", \"/root/autodl-tmp/m122_R3_C_paired_20261010/code/run_template_write_C_preflight.py\", \"--spec\", \"/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json\", \"--trained-re"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_second_hour_observer_actual_native_receipts_20261010.json",
+          "line": 2,
+          "text": "  \"session_id\": 65866,"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current\\result.json",
+          "line": 11,
+          "text": "  \"initial_state_sha256\": \"d83b325dfdc6163a20bb7cc5bcb710f05e3b36816d82f954f7de772b254d65c8\","
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\FIT_PREFLIGHT_RECOMPUTED.json",
+          "line": 26,
+          "text": "  \"local_seeded_initial_sha256\": \"94c2419332b132d5b8ce8fa1cf06626494d67f91b127f65e312f966aa65e6815\","
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\BINDINGS_CHECKED.json",
+          "line": 227,
+          "text": "  \"gate_entries_recorded_runtime_only\": 66,"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_TRACKER.md",
+          "line": 10,
+          "text": "| R3 | 分离当前质量与未来写入价值 | 同参数C-current/C-future，C-fit120/C-dev32 | 完整递归序列等权IoU胜两参照、H10不增、有益写入覆盖报告 | MUST | SOURCE_PASS：v2来源B1已定点修正，v3 fresh PASS/0阻断；五源/519维/70721参数结构算术，无C构造/训练/指标，仍须R2终态原始审核和实际接线 |"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\docs\\RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md",
+          "line": 27105,
+          "text": "### 5.453 2026-10-10 20:19：首次小时观察确认预检及两组C训练完成，32dev仍在运行"
+        }
+      ]
+    },
+    "D_actual_calls_dead_code": {
+      "status": "PASS",
+      "details": "Main controller calls preflight, two fits, two complete development workers and comparison; native launch receipts/log outputs match these commands. Overlaps is used by summarize, summarize is called for all3x32, fixed_panel is called for both arms. Source dependencies contain older pilot/candidate-coverage entry points that are not invoked as R3 performance metrics; their definitions are not claimed as executed R3 results.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\m122_R3_C_controller_20261010.py",
+          "line": 127,
+          "text": "    comparison = run(root, gate, 'comparison', command, '')"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\analyze_template_write_C_dev.py",
+          "line": 149,
+          "text": "            summaries[name].append(summarize(case['sequence'], rows[case['sequence']], case, truth))"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\analyze_template_write_C_dev.py",
+          "line": 159,
+          "text": "    panels = {arm: fixed_panel(root, arm) for arm, root in [('current', args.current_fit), ('future', args.future_fit)]}"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\evaluate_template_write_C.py",
+          "line": 54,
+          "text": "                _, _, record = tracker.step(image(case, frame))"
+        }
+      ]
+    },
+    "E_scope": {
+      "status": "WARN",
+      "details": "Single seed2027, one paired fit, one DepthTrack Train-derived C optimization holdout of32 sequences. A+B saw all152. Of120 C-fit partition sequences,113 supply993 eligible events;29 of32 development sequences supply264 common fixed-teacher events. Own-history performance covers all32. No formal Test50/CDTB80/VOT127 metrics or whole-model unseen validation are certified.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json",
+          "line": 11,
+          "text": "  \"backbone_A_B_previously_trained_on_all_152\": true,"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 26,
+          "text": "仅用于C选型的序列分组见`TRAIN_SEQUENCE_SPLIT_20261008_235856.json`：对原Train manifest的152个序列按SHA256(`M122-C-seed2027/`加序列名)排序，前32条作C开发、余120条作C拟合。分组不读取指标、类别名字或公开测试失败。顺序仍按原manifest。**基础A+B已经训练过全部152条，故这32条只是C新增优化的留出，不能称为整个模型的未见验证。** 协议确定后，C的最终新增训练使用完整152条；正式泛化仍由Test50、CDTB80、VOT127报告。"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md",
+          "line": 64,
+          "text": "**开发推进条件。** C-future应同时优于原规则和C-current的序列等权IoU，且相对原规则H10不增加；同时报告逐序列收益与损害及有益写入保留，不能只报总体均值。未满足时不进入正式新评价；查看未来收益标签、模型预测和自身状态分布，决定重构C还是保持原规则。该条件是训练内部工程选择，不把32条称为最终泛化证据。"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\train_template_write_C.py",
+          "line": 164,
+          "text": "    panel_path.write_text(json.dumps(dict(scope='same original teacher states; not labels for changed C-policy history',"
+        }
+      ]
+    },
+    "F_evaluation_type": {
+      "status": "PASS",
+      "classifications": {
+        "own_history_native_current_future": "real_gt (custom Train/C development tracking metrics)",
+        "fixed_teacher_current_MSE": "real_gt-derived current-IoU surrogate regression",
+        "fixed_teacher_future_MSE_and_sign_panels": "real_gt-derived short-horizon action-utility surrogate, only at original teacher states",
+        "constant_action_preflight": "synthetic_proxy (reference predictions/query/features from the same fixed tracker)",
+        "text_bank_and_state_hash_checks": "self_supervised_proxy / deterministic identity checks, not semantic contribution",
+        "formal_three_dataset_performance": "not evaluated by this R3 audit"
+      },
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\analyze_template_write_C_dev.py",
+          "line": 140,
+          "text": "        path = Path(spec['dataset_root']) / case['sequence'] / 'groundtruth.txt'"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\train_template_write_C.py",
+          "line": 164,
+          "text": "    panel_path.write_text(json.dumps(dict(scope='same original teacher states; not labels for changed C-policy history',"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\run_template_write_C_preflight.py",
+          "line": 186,
+          "text": "    torch.save(dict(full_256_frame_histories=rows, actual_qualified_rejection_checks=rejects,"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json",
+          "line": 11,
+          "text": "  \"backbone_A_B_previously_trained_on_all_152\": true,"
+        }
+      ]
+    }
+  },
+  "R3_terminal_raw_audit_complete": true,
+  "terminal_audit_scope": "Complete read/hash audit of supplied terminal export, independent all32x3 noninitial valid-GT scalar recount, actual receipt consistency, final small-C/fixed-teacher array verification and saved preflight arrays; unexported/full-runtime tensor reconstruction explicitly excluded.",
+  "audited_R3_result_sha256": "cf6be3425557e674f441cc35d7711f2e021bda604afebf7883cbd749ab900cf1",
+  "audited_comparison_sha256": "721973dbdae8d3f3b68be9a2ec50a1c09a05ad882792bc303c6008d341413a37",
+  "audited_preflight_sha256": "3158a5b26d0e69e5cee323d1d0e2db7e6224c33bb2fadcaa4612b3275852483e",
+  "audited_fit_results_sha256": {
+    "current": "7d8a8e3da78741422ac07b3046891de2d14bc7864337afc61384918d3f48a3e7",
+    "future": "b6c8fb53e952e55a772c675b76e59069027e38ff6a2ea4eb6363c82208bf2d89"
+  },
+  "audited_C_final_sha256": {
+    "current": "60d0a200941801bf4097c25311200885c9c9bf6263dc503a29ce91b2e5b12259",
+    "future": "9020c67d50bcddfa48ab004d39cd093424ce0c1a203f6e0165b818d43f15ac48"
+  },
+  "audited_prediction_sha256": {
+    "current": "873a1e663c8071355e182bdd3d57d9a476ebddb47f145f074a8a3a42bd1b9079",
+    "future": "53d5bb14619c291e8f9a9493afefc173210ced4ddc857737fec563dfad00dab3"
+  },
+  "audited_teacher_prefixes_sha256": [
+    "778590127e7ff48ace7c8c42d752f4e154fbd349e7828e6441fefcda59af1f9a",
+    "72178d2f15da48b804fee6c512f96138d495e85d4d1e8679c4fa1427f3b970f1"
+  ],
+  "scientific_gate_passed": false,
+  "scientific_gate_conditions": {
+    "future_macro_above_native": false,
+    "future_macro_above_current": false,
+    "future_H10_not_above_native": true
+  },
+  "scientific_failure_count": 2,
+  "scientific_result": "future supervision increment not established; both macro superiority requirements fail; H10 constraint passes",
+  "scientific_gate_failure_is_integrity_blocker": false,
+  "metrics": {
+    "native": {
+      "sequences": 32,
+      "valid_frames": 46088,
+      "frame_mean_IoU": 0.7403387540774188,
+      "sequence_equal_mean_IoU": 0.7643343835312135,
+      "low_overlap_frames": 6955,
+      "H10_segments": 63,
+      "native_rule_qualified_events": 277,
+      "accepted_writes": 277,
+      "accepted_writes_unknown_GT": 13,
+      "accepted_writes_low_IoU": 27
+    },
+    "current": {
+      "sequences": 32,
+      "valid_frames": 46088,
+      "frame_mean_IoU": 0.7550510962802148,
+      "sequence_equal_mean_IoU": 0.7746311074705311,
+      "low_overlap_frames": 6205,
+      "H10_segments": 60,
+      "native_rule_qualified_events": 265,
+      "accepted_writes": 255,
+      "accepted_writes_unknown_GT": 8,
+      "accepted_writes_low_IoU": 7
+    },
+    "future": {
+      "sequences": 32,
+      "valid_frames": 46088,
+      "frame_mean_IoU": 0.7460994971957641,
+      "sequence_equal_mean_IoU": 0.7623344178573704,
+      "low_overlap_frames": 6702,
+      "H10_segments": 62,
+      "native_rule_qualified_events": 269,
+      "accepted_writes": 139,
+      "accepted_writes_unknown_GT": 9,
+      "accepted_writes_low_IoU": 8
+    }
+  },
+  "macro_deltas": {
+    "current_minus_native": 0.010296723939317576,
+    "future_minus_native": -0.001999965673843085,
+    "future_minus_current": -0.01229668961316066
+  },
+  "all_noninitial_frames_per_arm": 49366,
+  "valid_GT_frames_per_arm": 46088,
+  "unknown_GT_frames_excluded_per_arm": 3278,
+  "independent_metric_absolute_tolerance": 1e-12,
+  "independent_metric_relative_tolerance": 1e-13,
+  "max_per_sequence_floating_errors": {
+    "IoU_sum": 4.547473508864641e-13,
+    "mean_IoU": 2.220446049250313e-16
+  },
+  "exact_count_or_segment_mismatches": 0,
+  "own_history_action_counts": {
+    "native": {
+      "rejected": 0,
+      "qualified_GT_valid": 264,
+      "qualified_GT_unknown": 13,
+      "qualified_low_IoU": 27,
+      "nonqualified_frames": 49089,
+      "accepted_per_own_qualified": 1.0,
+      "qualified_per_all_noninitial": 0.00561114937406312
+    },
+    "current": {
+      "rejected": 10,
+      "qualified_GT_valid": 253,
+      "qualified_GT_unknown": 12,
+      "qualified_low_IoU": 13,
+      "nonqualified_frames": 49101,
+      "accepted_per_own_qualified": 0.9622641509433962,
+      "qualified_per_all_noninitial": 0.005368067090710206
+    },
+    "future": {
+      "rejected": 130,
+      "qualified_GT_valid": 257,
+      "qualified_GT_unknown": 12,
+      "qualified_low_IoU": 15,
+      "nonqualified_frames": 49097,
+      "accepted_per_own_qualified": 0.516728624535316,
+      "qualified_per_all_noninitial": 0.00544909451849451
+    }
+  },
+  "qualified_event_key_intersections": {
+    "native_current": 264,
+    "native_future": 234,
+    "current_future": 233
+  },
+  "teacher_events": 1297,
+  "common_fit_events": 993,
+  "common_development_events": 264,
+  "eligible_event_contributing_sequences": {
+    "fit": 113,
+    "development": 29
+  },
+  "common_dataset_sha256": "5894dd48e03ca466cddd56311e8efbf31a9c4d979897b35d588ae10bc3ce5dc9",
+  "common_order_sha256": "f6407db612286d2ce5568b7ac0b03c5929f034a9f9dbc9c3af19a3d509e99b3f",
+  "recorded_common_initial_sha256": "d83b325dfdc6163a20bb7cc5bcb710f05e3b36816d82f954f7de772b254d65c8",
+  "local_seeded_initial_sha256": "94c2419332b132d5b8ce8fa1cf06626494d67f91b127f65e312f966aa65e6815",
+  "runtime_initial_hashes_both_arms_equal": true,
+  "initialization_independent_reproduction_certified": false,
+  "initial_tensor_artifact_available": false,
+  "fixed_teacher_panels": {
+    "current": {
+      "positive": 113,
+      "positive_accepted": 113,
+      "accepted": 246,
+      "negative": 126,
+      "negative_accepted": 126,
+      "zero": 25,
+      "zero_accepted": 7
+    },
+    "future": {
+      "positive": 113,
+      "positive_accepted": 60,
+      "accepted": 139,
+      "negative": 126,
+      "negative_accepted": 70,
+      "zero": 25,
+      "zero_accepted": 9
+    }
+  },
+  "final_weights_and_panel_checks": {
+    "current": {
+      "parameters": 70721,
+      "final_sha256": "60d0a200941801bf4097c25311200885c9c9bf6263dc503a29ce91b2e5b12259",
+      "final_state_digest": "bf51767b174542ce6488c2dc28122adf662bbece2a9555dc3b779fae05fc134f",
+      "MSE_recomputed_from_saved_predictions": 0.03154585112991478,
+      "zero_prediction_MSE": 0.7538600137330066,
+      "final_logged_MSE": 0.03154584765434265,
+      "cpu_GPU_prediction_max_abs": 2.384185791015625e-07,
+      "action_disagreements": 0,
+      "epochs": 10,
+      "optimizer_steps": 320
+    },
+    "future": {
+      "parameters": 70721,
+      "final_sha256": "9020c67d50bcddfa48ab004d39cd093424ce0c1a203f6e0165b818d43f15ac48",
+      "final_state_digest": "9e0b05438ce30d1900a732cddefcb426c60e2e8301ee34076e09e55b7cd97a5f",
+      "MSE_recomputed_from_saved_predictions": 0.0005389526400531701,
+      "zero_prediction_MSE": 0.00015918120451386674,
+      "final_logged_MSE": 0.000538952648639679,
+      "cpu_GPU_prediction_max_abs": 7.450580596923828e-08,
+      "action_disagreements": 0,
+      "epochs": 10,
+      "optimizer_steps": 320
+    }
+  },
+  "preflight_array_checks": {
+    "histories": 256,
+    "queries_and_selected_features_exact": true,
+    "qualified_events": 1,
+    "rejected_frame": 250,
+    "rejection_query_feature_record_exact": true,
+    "C_input_matches_original_teacher": true,
+    "retained_templates_have_no_independent_before_tensor_in_export": true
+  },
+  "paired_sequence_delta_counts": {
+    "current_minus_native": {
+      "positive": 3,
+      "negative": 0,
+      "exact_zero": 29
+    },
+    "future_minus_native": {
+      "positive": 14,
+      "negative": 8,
+      "exact_zero": 10
+    },
+    "future_minus_current": {
+      "positive": 13,
+      "negative": 9,
+      "exact_zero": 10
+    }
+  },
+  "gate_entries_locally_byte_matched": 24,
+  "gate_entries_runtime_witness_only": 66,
+  "formal_nine_metrics_certified": false,
+  "full_goal_achieved": false,
+  "R4_launched_by_auditor": false,
+  "R4_or_new_Full152_authorized": false,
+  "Current_C_promoted": false,
+  "changed_C_history_teacher_labels_certified": false,
+  "full_visual_model_reconstruction": false,
+  "all_learned_history_query_feature_tensors_checked": false,
+  "AB_previously_saw_all152": true,
+  "development32_is_C_optimizer_holdout_only": true,
+  "original_input_count": 257,
+  "original_input_bytes": 221114638,
+  "input_manifest_sha256": "984000b22612206800d706fe31f009228757ea3cecd7e39e9d4ac8d893f0fbf8",
+  "audited_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_complete_raw_results_actual_20261010.zip": "0dbd8d04051d2ab0649fa70e46945838279b8a62a70e1fa58b723e494c5c9693",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_completed_raw_export_original_stdout_20261010.txt": "bb61cbf3bc519b6144c60a95a86b70e76f5eb7781cac3be6a59a11e5414e538a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_second_hour_observer_original_stdout_20261010.txt": "68cd810c6fbd95596e848c8be8a611e59c1b93ea6e39ddecba63d589b99cad69",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_second_hour_observer_actual_native_receipts_20261010.json": "7eeda2927c5e82b9be83b27ccc716e1ffd0595e60cc18a90fa179f3f89153d4b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_second_hour_actual_terminal_analysis_20261010.json": "06847e280195289d10ace22013789260cfe6d317a0c377a91e968736568b495b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_second_original_wait_join_10_20261010.json": "a390ce2b26798bca37108ed194cd32a3dd0eae4e83663c0756d2277ad3638b65",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\actual_bootstrap_launch.json": "a43ed9991b59383fa5521f85078078682842a6a6fda39a34b430dc4acdc98162",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\analyze_template_write_C_dev.py": "708805921124201608518669611bd2497d117bb13d6b83426bab3dfec834e44a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\evaluate_template_write_C.py": "80a45896de70aa8f25010331b4fc42e44450b6fc74ca49bfb2d4dfe2aef9a415",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\m122_R3_C_controller_20261010.py": "0d62893b3d840a1f4fb587b3fd6ffcf356012ba8fb0774772b564339d8100bc7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\m122_R3_process_supervisor_20261010.py": "12e06e7e459359cb8e939fe25e62d5867b9239e25375223d5f6767d5761e90b5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\run_template_write_C_preflight.py": "ee6cdc05ecc8ab35e55f7f1fc2b73b940933c4a9e12521fe950029a1a5b5f476",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\template_write_C.py": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\template_write_features.py": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\train_template_write_C.py": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\trusted_template_tracker.py": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\comparison\\result.json": "721973dbdae8d3f3b68be9a2ec50a1c09a05ad882792bc303c6008d341413a37",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\comparison.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\comparison.launch.json": "87159660ed8be2cd02de7dcad7d96ef13012a9b1afcf45c53965bbb13a10e674",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\comparison.log": "884322c08e8340a39a465cc66cf9ca3ad7565c96229a860202c44473fa3a3a3e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\comparison.receipt.json": "61f7af87f60bdd295345c3d711be8e156f38bb5e9194e4064f908c05f4521734",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\controller.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\controller.log": "b9b7893aaf715749981c90f007176585baf28b011cb8237d614156773e30ef1f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\controller.supervised.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\controller.supervisor.launch.json": "3a5a3933e83e8fcab64770458679e5190ebecc8f641aba8b8a4d3cb89bcae54a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\controller.supervisor.terminal.json": "5c3b0ec8f59769d22d031da509c5031cb9df01f7885e15463220cf011106a788",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_current\\predictions.jsonl": "873a1e663c8071355e182bdd3d57d9a476ebddb47f145f074a8a3a42bd1b9079",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_current\\result.json": "d400f3f6932aad89613236a8173d9f27cc9cdb3288b7da3fa2fc310ec4ac1e48",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_current.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_current.launch.json": "f356101af1ef60e4a17e2548627e1941b67b6e587f0e1482d4cc2a6f31b7da53",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_current.log": "2f7e065c969624d7bd8a417a58392a340db54c39b85ffb9a5ce614b72bc9e0dc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_current.receipt.json": "959fd77eecc9fd6bf60dbc885da8b9fb9f21c44132ac2b79f3e0904ec071c350",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_future\\predictions.jsonl": "53d5bb14619c291e8f9a9493afefc173210ced4ddc857737fec563dfad00dab3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_future\\result.json": "b3bd04701f1a41b8aac416f112e1853f90d11528ab474034304aadd98c5bd4b9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_future.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_future.launch.json": "3aa596761ba75020a8f1c7556d8947c46355118bbcc98ef66f0aa6e2e5a9205d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_future.log": "d0cad6193c261aabc8dd74f77d18e5bbe5d8de7134b973cad18bd31211153f40",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\development_future.receipt.json": "5abea1dcc1f514763ad8f101b07ebd5fd607ed4846e43e43d4e7b5a2ca040162",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\EXPORT_FILE_MANIFEST.json": "6180dd88fba74614da6740d38591d52d706d7b931f3f76225dc9b4228074d6ee",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\files.json": "4837de64d90712df6355dfe9099bd0e1751716057eab80cf0a82ecd7d33448cf",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current\\common_dataset_manifest.json": "afd3a11dab9d10f3ca3c01430de1f30355d4a246a02c873e6fa66684f96fe0f3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current\\epoch_log.jsonl": "15cfbaa23b576cc7e77cc434646419a8749daa1752a3b8f8da8dcc74ab61bb67",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current\\final.pt": "60d0a200941801bf4097c25311200885c9c9bf6263dc503a29ce91b2e5b12259",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current\\fixed_teacher_development_predictions.json": "b63cb22abdebf6bf775352ccbc0fe2ecc7cd7d69934b62162473e4a919728890",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current\\result.json": "7d8a8e3da78741422ac07b3046891de2d14bc7864337afc61384918d3f48a3e7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current.launch.json": "2a8646d4d69f440e29661cc816118e04c70f5bbc081c66a54609c2d94d44789b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current.log": "ade2e3ac1a9efdccc90cd57638f1ccb918dc8b2b1a1f3c4aa0f282e3fe14821f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current.receipt.json": "1f7c460b066c1fad4e2b9327d8d96baf091df30eaa5bcbd616ccf8645f3e7729",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future\\common_dataset_manifest.json": "afd3a11dab9d10f3ca3c01430de1f30355d4a246a02c873e6fa66684f96fe0f3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future\\epoch_log.jsonl": "b1959d230251c5ac50689bd2c07c8188a49b544f552b3a48ec320f97d2ff8c47",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future\\final.pt": "9020c67d50bcddfa48ab004d39cd093424ce0c1a203f6e0165b818d43f15ac48",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future\\fixed_teacher_development_predictions.json": "a660e2e5ac48ed6a7fabe050f0952afc30c099545fe85ffee706f5161f4230bb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future\\result.json": "b6c8fb53e952e55a772c675b76e59069027e38ff6a2ea4eb6363c82208bf2d89",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future.launch.json": "c16a08bac82fae32e49cd5e11caa0e3a0052f2005edc042b2d276b70b2f0e936",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future.log": "5a10e8ea42f1bf3e62cee040d20126bbfc61dec6d115f641ac3041926da1b881",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future.receipt.json": "f12cfeb805e14495db69946c997c63792352b94270b93cdd1f7d4ee543526e3b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\gate.json": "5d6c44813523560346f6b28d3556132d9e7ad6f88efe79bc97b67d58a889cef2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\launch.json": "d6cd3d28753ef0a61f9c2444d17dade1920be49b0ec9b65a65731e2768b481bd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\preflight\\raw_histories.pt": "c11ca778b6cd73f782429d384c7000145018977ad1667ee4c8a338a04dc90727",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\preflight\\records.jsonl": "540dd62e18b966459b43309d0bbf15f7afc801bea1a0503d65bcd876efe91d30",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\preflight\\result.json": "3158a5b26d0e69e5cee323d1d0e2db7e6224c33bb2fadcaa4612b3275852483e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\preflight.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\preflight.launch.json": "1cb833f591fb9ce3fe3f295de392448206f92eac9ec52ccce5d72568fd7f5231",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\preflight.log": "c51d97b41318cd8cd7c56a821c5d01c54c98903d0a6c3b16056ff2ca7d1dd7d1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\preflight.receipt.json": "6f73a3e5289d4f0660be02be22d57ac3f581cf7703fe6f0df94bf753c3b7cda6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\R2_TERMINAL_AUDIT.json": "e082d4a5d92579fb39abe4b8b4db300bac4127ccb9e90b227d98287fe7197cc2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\R3_C_SOURCE_AUDIT.json": "1d07d83a897d8365d3aa4f7518260589e0e21e443ccef8f38f7322bcfe045d9f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\R3_CONTROLLER_SOURCE_AUDIT.json": "6b28cd12ee7fb29efebefc2be2de2459a2bfa410c9456bb54e52b9bec2fcb907",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\R3_PREFLIGHT_SOURCE_AUDIT.json": "a79aefb6c4b8d3026aa13bacedecc2309c213fe2a66196203ed3caa62aad5202",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\result.json": "cf6be3425557e674f441cc35d7711f2e021bda604afebf7883cbd749ab900cf1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\target_admission.json": "2348888f2588e66d5d42f0b8539ac375958c8b0d016152a3023afc6c7fc3715f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py": "d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_forks.py": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_event_cache.py": "4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_features.py": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_C.py": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\evaluate_template_write_C.py": "80a45896de70aa8f25010331b4fc42e44450b6fc74ca49bfb2d4dfe2aef9a415",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_template_write_C_dev.py": "708805921124201608518669611bd2497d117bb13d6b83426bab3dfec834e44a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_C_preflight.py": "ee6cdc05ecc8ab35e55f7f1fc2b73b940933c4a9e12521fe950029a1a5b5f476",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_R3_C_controller_20261010.py": "0d62893b3d840a1f4fb587b3fd6ffcf356012ba8fb0774772b564339d8100bc7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_R3_process_supervisor_20261010.py": "12e06e7e459359cb8e939fe25e62d5867b9239e25375223d5f6767d5761e90b5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_PLAN_20261008_235856.md": "cd9402aff88baa717e6a04875159818f6e1ab108a488610cf0ebbe7a15ea6f94",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\TRAIN_SEQUENCE_SPLIT_20261008_235856.json": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\docs\\RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md": "d9a643eb2bdb4721310ebcdb5b6ebdc9d787377f5eb99278eca3ebe86b55c590",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_TRACKER.md": "3aa467b75aa1ea456c8004f27cec2b2254574b54cf44a089e4c9721f938811cb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\EXPERIMENT_AUDIT.json": "e082d4a5d92579fb39abe4b8b4db300bac4127ccb9e90b227d98287fe7197cc2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_runtime_integrity_audit_20261010\\AUDIT_SEAL.json": "5394cc30dedc5561b7fbef67feb328eeed940c031838949c92f647e26053c2d5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_controller_source_audit_20261010\\SOURCE_AUDIT.json": "6b28cd12ee7fb29efebefc2be2de2459a2bfa410c9456bb54e52b9bec2fcb907",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_deployment_source_audit_20261010\\SOURCE_AUDIT.json": "f644c176dafd186c409903f8a117ea2c819eba951eb60ee67090eec119b17d6b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_C_source_audit_20261010\\source_v3\\EXPERIMENT_AUDIT.json": "1d07d83a897d8365d3aa4f7518260589e0e21e443ccef8f38f7322bcfe045d9f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_C_source_audit_20261010\\source_preflight_v1\\PREFLIGHT_SOURCE_AUDIT.json": "a79aefb6c4b8d3026aa13bacedecc2309c213fe2a66196203ed3caa62aad5202",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R1_supplemental_inputs_20261010\\training_spec.json": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\adapter02_indoor\\groundtruth.txt": "33a964dea164f87c4c4adaf720aeed9f6209f4f3f5025fc9d597c03f84d14e78",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bag03_indoor\\groundtruth.txt": "fb4702c2f0e4c6a1e33251efb0f3c1c7f4eb5f26c1a3c79d9018913b2372d8ec",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bag04_indoor\\groundtruth.txt": "0d06a12db2f75b4428d77d0983050e51ed2e56153c24ab74871ab4abca315267",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bag05_indoor\\groundtruth.txt": "19fac45f89a26ebfc9f3609008139d917dd80c75c825b6fe9c9d085ec55ebf52",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball02_indoor\\groundtruth.txt": "2147f99e45f7af89f466d6bfbe718ca4a95a75827324f1c736eaef810d9f2083",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball03_indoor\\groundtruth.txt": "ce41f746332d2777ea7f5f97ae8f545bbfa9afbe93929eaca8f0f0ee70f057c7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball04_indoor\\groundtruth.txt": "db05ab15d9143192adc6a248c4a8d1fa66c339d028d067d60cae72c01ff85661",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball05_indoor\\groundtruth.txt": "4a3bf9f327e4994423b75c3d1267b80ac71d05c5e9b93b08b509f6d83bff4a34",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball07_indoor\\groundtruth.txt": "c9cb5a6fcfd0bd3f5b3582292e5c30625a4c30fee1c08e5eb247f5ae6ffaaab2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball08_wild\\groundtruth.txt": "a3570303bd54848f4b96234001d8a0f141460cf42effcb1ade9b2760e8e84bf9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball09_wild\\groundtruth.txt": "a3647edc0b7e4ffcbedbc970b0e48e88aa11c5fea9cf9a2f22b490a43f0f1a01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball12_wild\\groundtruth.txt": "feee35d47e25bcdfcaef049ebebd67f77892cb1b533c842ad5147c1cff6b8c9b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball13_indoor\\groundtruth.txt": "99c5e76747408d0c120b92ce172d37cbd39abc2836207837633eb92698547446",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball14_wild\\groundtruth.txt": "f6d7da3590803baab88cadc089e76daa57b25fd1bcd2152abab118e41d085017",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball16_indoor\\groundtruth.txt": "e39af82dd9ae52bbf6734c63cc916dfa043129fbcc4e0d675de09535ce0180a4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball17_wild\\groundtruth.txt": "a2e90cb9a2db72c3d4dd00bbeeb645b8f02b95094f714bb3f783ccb7e0dcd5e0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball19_indoor\\groundtruth.txt": "21a1bddce56f75dd67ca5b9fbb14eccafc46bd36b24a468fb9483290d68e125d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ball21_indoor\\groundtruth.txt": "5230b453b3d069f8ade8e23aef0f3d18f9794d900a1a6264ebb830aff0ac0bb4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\basket_indoor\\groundtruth.txt": "d681b5a242bed11da0f5fe714491b49651ef1d1c4b4f43b92cfc6263c9d1e9ca",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\beautifullight01_indoor\\groundtruth.txt": "0e89eed1894076dbfbbebed2f931163b27fa3572246d21b49662b5ccbd1a945a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bike01_wild\\groundtruth.txt": "cd70a8371938cdac020502cf2c4e0c77f77180eecd6baabee70b269b2ec47f24",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bike02_wild\\groundtruth.txt": "4b90a9f1d4251f16d6dff2bf9864387d2954f0978145a524b0ed06ba3c03ea35",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bike03_wild\\groundtruth.txt": "dad8d95321f350d2a347f4f71504d8d82b57fd7fdd08ef617b63e2929f57c3e3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book01_indoor\\groundtruth.txt": "9d0c8affacf73e01d0eed4d446aadaeb3e42f111d46b2e2d38ed86de40b9a19c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book02_indoor\\groundtruth.txt": "25fc50ddf6083b81f0e202fbfbc83561d4d2cb13d445d9adb398e798473a7fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book04_indoor\\groundtruth.txt": "d7009271319c37873f1ca7e4a615e7efed384818c4a5a4c36b02c3f4628cbfdc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book05_indoor\\groundtruth.txt": "8e2f3008f581de3517e2d19185080261a796ec36506a62f07824ecbdf34196f1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\book06_indoor\\groundtruth.txt": "df6b93503aa8177ac8b0e32507124189f453bce6c5bcb5f993667850f77b58a1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle01_indoor\\groundtruth.txt": "e226e68e5c5ec7dbe8b380aaa0c37ad6444b683ca4f6fa84bfc59968ee818e83",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle02_indoor\\groundtruth.txt": "48f14b53ca931b24f50e0e24cef612aaef8311a85736c0916f69b58d54c72522",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle03_indoor\\groundtruth.txt": "8cb3e98365c17668ebbbb937431a5a38d22f05804b352f353d51d834fd3a117a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle05_indoor\\groundtruth.txt": "222999382c4ba7803d1ad6fd919d93fc290f1b0fd521f3c08dddd2c47e06b01f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\bottle06_indoor\\groundtruth.txt": "7dce3716c2635f7801abaefa8cda804ab943aa16ac77024d1ce11fa871437812",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\box_indoor\\groundtruth.txt": "a34d48e631a3ec23016aa71f1951d350a72ad03beb878ed1ca18217875b98afd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\candlecup_indoor\\groundtruth.txt": "2c2ba43df1406dd9fd0ac25d776dde07980efc6ae94900d3bbcdc453a6fbfc01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\car01_indoor\\groundtruth.txt": "dca7e65de77cced65b4b06a589352fdde456152b9a75d9af8759082b8cf458d4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\car02_indoor\\groundtruth.txt": "ed1171be55b7782858af063f174b2ece551f35b6ee2b5a4d0e81b5fc53f87ec7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cart_indoor\\groundtruth.txt": "e5b16fea25a7b2ddb32cf3132f97e385d6c27bd9af99c64cf12bd882b72c5226",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cat02_indoor\\groundtruth.txt": "db4723e61d50464bc5124bc5d27ff1cdb9bbaefbacd76fd109c762490ebcfd1d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cat03_indoor\\groundtruth.txt": "d1290ff9f5837d882b274bdd1f19c9680bfab53b72c06aff547fc9e6953fe43f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cat04_indoor\\groundtruth.txt": "6421ade8ca96dbc2da52ca02cedd69c415f37498775732b0cf780d81f2d292af",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cat05_indoor\\groundtruth.txt": "5d9144b7989d54a349cedafcf15f407db098d8af69019302bc05c2de0f09082a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\chair01_indoor\\groundtruth.txt": "fc25354c8769860a8c4404019368e34c1415367828009e6503bb7695581bf62a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\chair02_indoor\\groundtruth.txt": "4f05bc2ed056bdc6c9c5a2687ab6c074a2f32b95cae62bf6feebe89899f03ca2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\clothes_indoor\\groundtruth.txt": "e0717f89c1ad115ce87bb252bc7915ee1d0b34ab73c72fc8ca5a47a07612094b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\colacan01_indoor\\groundtruth.txt": "38443588eb1127d65c2ac800186759ad392581eef544588156c8c0f14b2ee866",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\colacan02_indoor\\groundtruth.txt": "ca6587fa0aa38475f51d7dc443398b8e716d7b0a175346f310c60bb8b8360f57",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\colacan04_indoor\\groundtruth.txt": "c556156a8252ea1e1b0c6a14cb4d63a374c8edf47b3dbdcdf129edfb562a0c2a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\container01_indoor\\groundtruth.txt": "c08d2571102bb7106e6530a0dea8512f6206e15ee765a3a52b2734978fba7e1e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\container02_indoor\\groundtruth.txt": "00cfbbbd0e55ccf24f191bda511d2a217c43a665f65ba0f64073d3b7b51fdccf",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cube01_indoor\\groundtruth.txt": "c7e7f55e9d0ed4bac64c18d658796fa340fe6dddd2467a877015d42c71d4185e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cube04_indoor\\groundtruth.txt": "d32cecf11f9e9bfd15c7bed815ac0208c991df8a7b89c2388219907f6e6b6bb4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cube06_indoor\\groundtruth.txt": "19cf63610ae9b40e67f5e9b8f10ec62a42ad6662a693158eda64d18bb2b4c43a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup03_indoor\\groundtruth.txt": "aef83d01e39f78bded1998acf5650504e4833292f9efaafc712094bca7eeda3d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup05_indoor\\groundtruth.txt": "15d37ca8f694388415795e8df944d882347dbb5a2fd2e0a2e07e346164733149",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup06_indoor\\groundtruth.txt": "ebba4639a8d94969986dc9dd60960c43701d1a1fafefaec270cdac99cc1b9e5f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup07_indoor\\groundtruth.txt": "a87da31a984f168cba69d158eb46e31373ef79d11b2d4fd50c4c1886737c8885",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup08_indoor\\groundtruth.txt": "b7c606e0373f5cdba15ecb21efa1ce293bc6620c5ffa60ddb567a1394c67f1c8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup09_indoor\\groundtruth.txt": "6235e8bec9d88203c3bcc2adfa66db218730d79c619979fa575e77bd3cc2c5c5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup10_indoor\\groundtruth.txt": "237081c1453dc80861c19444a63b2a4f63bd56c8703285c408c3e4d52a3d55ae",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup11_indoor\\groundtruth.txt": "14e516059c4ebb3500cb0626fa4ff5135cee275d9b2e3f8862faa83a4e4af761",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup13_indoor\\groundtruth.txt": "bd048b8a08b71b5616f185f8e8f1727972d7addf6251881c35f94d2911099864",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\cup14_indoor\\groundtruth.txt": "9ad3ecd17fdbf886c7edf1f56934e7d47ac192cf7b9b4c53d013451651656bda",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck01_wild\\groundtruth.txt": "83aca68e7101f1261e7bafcff766bad3a0a68301f10921ded08f11192497263b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck02_wild\\groundtruth.txt": "ac48fd345b322c2bb305e68ec659c8872446f9023867e23851f3b6e12d11790e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck04_wild\\groundtruth.txt": "29848ca243337725cfeae195563bd6035fae1f14f34c32a0441918112772c986",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck05_wild\\groundtruth.txt": "5ad1b542b94c9181d66bc1d84e033b747ecd9a8fa62fe4717d6a65f05d870004",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\duck06_wild\\groundtruth.txt": "dfd69275038758c44fd778ea88b899b28c17337be0ff03bdcd4189d008910e1e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\dumbbells02_indoor\\groundtruth.txt": "18dac18d42fb4fa09483990feae0d084fff631c4629589fb4c7cfe880ff0052c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\earphone02_indoor\\groundtruth.txt": "9178128a1ed5d23438515fdea6bac208c800122a1d38d0963d44f0eb700ba782",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\egg_indoor\\groundtruth.txt": "a4010da190dfc37a2c48efdc21c60993e398af6b9df87b91dc3aee813e5bc9bd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\file02_indoor\\groundtruth.txt": "b8f7d0914b2162609f993e8445b92cef3e2e1bb6e388cd21d1e62d835a154dfb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\flower01_indoor\\groundtruth.txt": "97ecc6e67a43c29a5ef5eceaff28a480f40487347788ff044bef19fcbaea13db",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\flower02_wild\\groundtruth.txt": "517aa37496ae936121cc6ddbfaee6e845616a64a137bdcb8a8cfee489d2cc644",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\flower03_indoor\\groundtruth.txt": "66480878783c4fcdf76d47234f1884cdffaddb775028bf2c7d8b12d2061da8ce",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\flowerbasket_indoor\\groundtruth.txt": "0cc6a4a0bec64e746491603b06b076fd41f7fbce4c86c0d1455b2440302f0d1b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ghostmask_indoor\\groundtruth.txt": "5aba29f532dd42f9df5bbfd1c6c5558c8632f9d62fbf5fc5d52470d799ef9406",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\glass02_indoor\\groundtruth.txt": "8e019d223669c6f31adf10d3ee4162fca5404fd40be892f1c44f411fcc03ae4f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\glass03_indoor\\groundtruth.txt": "b4e6aa986c65391dfdb688c77403795f5626134f5088821ea3bd4b7284e184da",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\glass04_indoor\\groundtruth.txt": "d24775109819cb517cbe764c3ef7990d25fe925049538864f4770864b40afbde",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\glass05_indoor\\groundtruth.txt": "51cc8d500877bc4a321bc2bb6e810a30cb86711896764968d2700250f9352206",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\guitarbag_indoor\\groundtruth.txt": "0d80234a96568cf983950b1f8b5bda33a01cb8cffd5cf1705f5c93f5621f9618",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\gymring_wild\\groundtruth.txt": "b2df5de9aaaae941866b11586188ca7a5a94be1000a54e118df375cacf3d2346",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hand02_indoor\\groundtruth.txt": "fdb582d198c0d0e843a21891c4e8966cced3c2330dc3ded5110029ac67ccfab5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hat01_indoor\\groundtruth.txt": "8898891868efd65a97b8138c99404a0ae24e760f808487870f1b7529a30270bf",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hat02_indoor_320\\groundtruth.txt": "5851dd6051472626d3b0432e492fae38c4fa7a06d12caaab93f44a6c5c1dbbd5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hat03_indoor\\groundtruth.txt": "c7cd257073a4e20905e43f0bb3558cfb2d8bd4d391c6db18ae8bb8cf3cce9951",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\hat04_indoor\\groundtruth.txt": "2d71dd08fff19e4be6ba64b51dff107674ac7c18d50dfe5e924e23e58989eaa1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human01_indoor\\groundtruth.txt": "384febbcddeeafe3489749b1b143c5d357e0c2098b02f589f45f208a0f627271",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human03_wild\\groundtruth.txt": "608ef24142202c0e8e9af1b3752ee0709e043a5f085e30bc66068bcaa4196543",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human04_wild\\groundtruth.txt": "3a24191b7f4b4690c0c6c9c912754cdf658a702622686aa7891419f866a9a8b7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human05_wild\\groundtruth.txt": "65e455611bc7c342891c0bbe60ca0f876c181196251fa9d80f963ead74542f9e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\human06_indoor\\groundtruth.txt": "0f723bba01cd765122da6a513f6e458623ba3345aafb5a94826d787c9b1ee134",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves01_wild\\groundtruth.txt": "d34f88a2e29041dcc3f0921878f934bae4f654e12f9e43d14aaad17e00e83561",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves02_indoor\\groundtruth.txt": "d6a2ad6c7f3a9720b75c5a2457201857edfba1beeeeea2c5e5e85a39807fd696",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves03_wild\\groundtruth.txt": "a8169078aadfb3484b795038128cb1d314e04f2626a9f974253ac55c8dd69b5a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves04_indoor\\groundtruth.txt": "ede8be7594992f5bd8addd4a22c657ee5fa63857c5b54ac602f88381dd76dffb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves05_indoor\\groundtruth.txt": "aa0b613b169058dbf47eafd1c74e75e9e3d617e4f3ed21136bb5093e3ce8a3c1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\leaves06_wild\\groundtruth.txt": "e5e14506d23aea54df25bd626b5d418240d15d1fa9b16739bac967fe464c7d74",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\lock01_wild\\groundtruth.txt": "8812b746751f5f59ea8a16764ec70b7d1ded6c3ffcf963ad9245ac7ce84ac577",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mac_indoor\\groundtruth.txt": "7b7fbed57f079ebedae12870613d30719a69d98f458815d7a42c50be893adb1a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\milkbottle_indoor\\groundtruth.txt": "1d677d5d444fd4e14aec00fcdd9c4fbf3af1efb32bb8bcc1b53490610ab54f55",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mirror_indoor\\groundtruth.txt": "39399adcf38d1be5d83ed6bac42e777cb660e49f0c93b150a5e2f105f9674d41",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone01_indoor\\groundtruth.txt": "572ff6fde310d831e0fd2dd5201805a4f9d2cf18ec1dd63a227266872bf218ce",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone02_indoor\\groundtruth.txt": "d27bba52e1ebe7f816b9d2ce264d332404530765bcce830029070b146c52e45c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone04_indoor\\groundtruth.txt": "c18af5d30957a339497ba8235ecbf6986dbc7ce66773afcfabdbdb0a3b03d55c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone05_indoor\\groundtruth.txt": "70c425a3f893af73aca7bdac61cb111e47549d0c935b42af3a299a8f29919356",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mobilephone06_indoor\\groundtruth.txt": "4d96750a2019b57ad1ab7cfe0076f3fea8a1b03a8d293aec7826dc25f188ceff",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom01_indoor\\groundtruth.txt": "fee7899ead7c9ba02f3afb6e6e0829656cff0ba0df64ca9fbef1304574661ced",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom02_wild\\groundtruth.txt": "b7e602085a0c3af4ddd417b9dea144eab7d9d8bfec6517db261227f46090716d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom03_wild\\groundtruth.txt": "453dd8042c4d9f0decb712d3899e228197b62f432e3318bdd1da44f26bd172fd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom04_indoor\\groundtruth.txt": "bc2f201ef68a86eca6b19abef4dd410ed50aaec2569d6163cc0b57913c32540f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\mushroom05_indoor\\groundtruth.txt": "79887acbc43dc5468d4e9bdcf021df1347c869cc15ad336fc4e5fe7e42b5bb25",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\notebook02_indoor\\groundtruth.txt": "fa3202cc8968e24785620c772584bc28e2a353c06799a0859ee6a2b8d8a880a0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\notebook03_indoor\\groundtruth.txt": "a7c2e9a80ae2a6303b3b06c21cf8c1ab2fd96d88ae77368eaa804f83644100a0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\paintbottle_indoor\\groundtruth.txt": "138c6884d76f8385a71bfd04c0ccc83b835ce67b9f37a9e8880da2abb2caca05",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\painting_indoor_320\\groundtruth.txt": "452f8042e633005d48071913f4b63c71d24829f0a931891f142539d4664a2ec6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\parkingsign_wild\\groundtruth.txt": "397c45dcc9273890a8a0364f59ccb58f4d485bf5454e04af27cf0aee7e3b8343",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pigeon03_wild\\groundtruth.txt": "4281a4712dae248a85869058f68162c94984b6e287896287bf7e74e5440712fd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pigeon05_wild\\groundtruth.txt": "7ce05357a9a6e942c8dca07cc44507ec36f431b6920f6150c11629ab594e4f7d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pigeon06_wild\\groundtruth.txt": "d249393a979a8cfc4c541107b51329cc133e2e99c30f821c937359d5304df275",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pigeon07_wild\\groundtruth.txt": "91f2a4d1cbdd2808af3c0fc42f7a2a26a728eee5246b32a8c3ef12a2c06883d3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pine01_indoor\\groundtruth.txt": "c06487c4c9e9de804050ebe5a7c25c90cc1dcb1d88c83279cd980cb0c5de5329",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\pine02_wild_320\\groundtruth.txt": "0555c5378049662102ef0f382e3a4ddc2e5abdcc4fc5deb6ce2a9966bf5be16f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\shoes01_indoor\\groundtruth.txt": "cee9970156a03576505b05a59ecc55e8daf4ff5ef5f10ef23dbf5efad7123326",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\shoes03_indoor\\groundtruth.txt": "4f3bc65b100348817f2d1856613d54c1f783759ed1a282b8df28eded96467f7c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\skateboard01_indoor\\groundtruth.txt": "afb682605337866d5ea72db4025dfbb70ee2acd2ea85719b5989a7626bb758d5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\skateboard02_indoor\\groundtruth.txt": "304a07f4b196eb9a855d1a1857beec4757141965a09c5e635b80cede70938b68",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\speaker_indoor\\groundtruth.txt": "1a06abd953cb7833c232576238363cbe6c5248c486b3f221567d18dacf9a9a44",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\stand_indoor\\groundtruth.txt": "15219e425e311f79e435a1c7526b3d04de6dbe1a035a6a1b5a4614e0ed4cef21",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\suitcase_indoor\\groundtruth.txt": "946321102dd03c4d28f1f3ccb31434bb955982bcec7e88082ce86b1579442c6e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\swing01_wild\\groundtruth.txt": "2518e4ffc0ba579cbcce533e6aa33792b9f2a9f676651c2b79347dd24629657b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\swing02_wild\\groundtruth.txt": "9768e065c404b8acf47dc8dbe902f8eca8dd1736c501e97c5ad431cfac087741",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\teacup_indoor\\groundtruth.txt": "33ecb768c92c86e7106b05ce42527bf80db3c81c1f58b8332e22ccbb11625f97",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\thermos01_indoor\\groundtruth.txt": "4a9a8a13af7359b697edfffe887b26b8e316042171f2955b44ad874b8f25d99e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\thermos02_indoor\\groundtruth.txt": "96b26f5f41d8ad70a8d1c1c34751aa224b2c8e447c007dc7dec6eb9ab90c5dbc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toiletpaper02_indoor\\groundtruth.txt": "23039f5b59a9259bbfc89dd6d38e3ed9dcce696e03b827fb8ea320eeaef5cd0c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toiletpaper03_indoor\\groundtruth.txt": "5b1f12533be6068b6db0ec4a06cf5702660e4a904c6385e78fce892a352a3cc4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toiletpaper04_indoor\\groundtruth.txt": "e01fe3e9d60dbfe0588a3a096ca3b136a5ed0e2017e8e401d2704e57caf1467d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy01_indoor\\groundtruth.txt": "0f69714f77bc1cde2549ff14dc6474262aadaf78cae2ba74e7baf67bb56642c0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy03_indoor\\groundtruth.txt": "aa4e58bcabae622280b2c73dcf1143118ff540a3cac0202f8eb5da8e779b6888",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy04_indoor\\groundtruth.txt": "bb2d9f68b10422815d088d3d6aa9ecac6eed2bd3eb64c2d5b32c3fd239fed6d7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy05_indoor\\groundtruth.txt": "1bb2433f521ae44c146e6df9d7bbd825daa1d11e1b8df9f36d7d98e8ebd524ec",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy06_indoor\\groundtruth.txt": "21ec622063569d66a1d4135a7f86b2b983070fbd3f2331d2bd18ec7aacb4cfc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy07_indoor_320\\groundtruth.txt": "683e8ae7ae401b71b8d10e9bb489c3956a150163606f5bac925a911f395444e2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy08_indoor\\groundtruth.txt": "6c471ef8b84b8cd168a4ea3b7e578131a659bc59ca4207afb6d54bc819feec4d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toy10_indoor\\groundtruth.txt": "018c4dd5c17df16c7e186a4ad2f48759ba4836cedfe8fbf43edc53ba40c61e14",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\toydog_indoor\\groundtruth.txt": "837f3df1f6bac05974c27339219bc9d61c8943a73ba03f8aa7f7cf4aaa6c4b01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\trashbin_indoor\\groundtruth.txt": "a10a14dc93003e0b3f111f92ebe093ebff80d856f9d01637af43bc5dc057edb1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\tree_wild\\groundtruth.txt": "3563aa656258cfab370ff9aa39a887500afa9d80a20aa39d273f02074cd8089e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\trophy_indoor\\groundtruth.txt": "8cee409befcc8e7ddc51c9d971bcd323ae4b4d527607359c17421b222b1c9cf2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\dataset_GT\\ukulele02_indoor\\groundtruth.txt": "fd075a6c2a64bd319316c63b6be190b8e16565e5e1af99147b08d65f703733d9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\human_text.pt": "a599e063b79b9458aab9e63ec21b9f4ac9735e420bceeec95275bfd1289603b2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\human_train_labels.json": "6ffb6e9907fee6a520e31fa78b4d3ff044a46a7daf8ad1aaa42c4d638b8c50c2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\training_spec.json": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\C_split.json": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard0\\native_prefix.jsonl": "778590127e7ff48ace7c8c42d752f4e154fbd349e7828e6441fefcda59af1f9a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard1\\native_prefix.jsonl": "72178d2f15da48b804fee6c512f96138d495e85d4d1e8679c4fa1427f3b970f1"
+  },
+  "supplemental_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\result.json": "24c8461b4d71c573fbaa4bf4f91c4e359cca1614c7fe81246ac0504a325c836c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\controller.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard0\\replay\\result.json": "831c988ac9d0ec578072b11d9faac4040c5733bc4ccfda5e32c4150c073a2627",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard1\\replay\\result.json": "4286f72adc0d5eef950d134c763cd5399585c4c48c4f94db51033f8f409b5068",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard0\\teacher_events.json": "274499b71eb1005b2b47cc1b88b9b938208842191a98ac6c0c1cc5c10aab3f5f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\teacher_shard1\\teacher_events.json": "2cca56a4db7d218860785e7461c2f36d4ec908c254a797b4f9b4535d43f715b4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\compact\\all_event_scalar_records.jsonl": "0953b9f6922ccc20c9dc6555c96d4ea5aaa8e18df7ca7d745946495c398f9d8c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\compact\\all_shared_reference_semantics.jsonl": "01ec22a0c502680f90e8e27313865ecc92cf14e0e498a0456d2ef023fa8dded8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\CPU_v3\\readback\\result.json": "e4607b1ce6b09a664890f416397a188eabe9c6c55315dd4b703af8a65ca1d5b2"
+  },
+  "post_review_input_hashes_unchanged": true,
+  "supplemental_input_hashes_unchanged": true,
+  "historical_audits_unchanged": true,
+  "actual_independent_metrics_exit": 0,
+  "actual_independent_fit_preflight_scoped_exit": 0,
+  "actual_independent_bindings_exit": 0,
+  "actual_original_stage_exits": {
+    "preflight": 0,
+    "fit_current": 0,
+    "fit_future": 0,
+    "development_current": 0,
+    "development_future": 0,
+    "comparison": 0
+  },
+  "actual_original_controller_exit": 0,
+  "actual_original_supervisor_exit": 0,
+  "auditor_probe_failures": [
+    {
+      "run": "bindings_attempt1",
+      "exit_code": 1,
+      "source": "check_bindings_attempt1_failed.py",
+      "source_sha256": "76a4a7f59b3da8493777b866293f1a4198a461972fb3e9e37de59135fdc39f74",
+      "stdout": "bindings_attempt1.stdout.txt",
+      "stderr": "bindings_attempt1.stderr.txt",
+      "receipt": "bindings_attempt1.receipt.json",
+      "classification": "auditor checker harness failure"
+    },
+    {
+      "run": "fit_preflight_attempt1",
+      "exit_code": 1,
+      "source": "check_fits_and_preflight_attempt1_failed.py",
+      "source_sha256": "4c3d4de9de2ea3030d3c890365a8231a3cf8b1f39b9a1d2e8b09290f41100133",
+      "stdout": "fit_preflight_attempt1.stdout.txt",
+      "stderr": "fit_preflight_attempt1.stderr.txt",
+      "receipt": "fit_preflight_attempt1.receipt.json",
+      "classification": "initialization reproduction limitation"
+    },
+    {
+      "run": "fit_preflight_attempt2_diagnostic",
+      "exit_code": 1,
+      "source": "check_fits_and_preflight_attempt2_diagnostic_failed.py",
+      "source_sha256": "fbcccff72efa5f6ce60bcdbc98f2db33d96306188aabb90b6dff78e6b45f28cc",
+      "stdout": "fit_preflight_attempt2_diagnostic.stdout.txt",
+      "stderr": "fit_preflight_attempt2_diagnostic.stderr.txt",
+      "receipt": "fit_preflight_attempt2_diagnostic.receipt.json",
+      "classification": "initialization reproduction limitation"
+    },
+    {
+      "run": "metrics_attempt1",
+      "exit_code": 1,
+      "source": "check_metrics_attempt1_failed.py",
+      "source_sha256": "9c02ed1d2d25818fb6a7dddca01c0193a5b3d10223d16af27ffad7996b4e67ff",
+      "stdout": "metrics_attempt1.stdout.txt",
+      "stderr": "metrics_attempt1.stderr.txt",
+      "receipt": "metrics_attempt1.receipt.json",
+      "classification": "auditor checker harness failure"
+    },
+    {
+      "run": "report_generation",
+      "exit_code": 1,
+      "source": "write_report_attempt1_failed.py",
+      "source_sha256": "16b6669655f9ca2346b303daa58eea03a8d742ca1a494461cf530c539d4ab6ad",
+      "stdout": "report_generation.stdout.txt",
+      "stderr": "report_generation.stderr.txt",
+      "receipt": "report_generation.receipt.json",
+      "classification": "auditor checker harness failure"
+    },
+    {
+      "run": "report_generation_attempt2",
+      "exit_code": 1,
+      "source": "write_report_attempt2_failed.py",
+      "source_sha256": "85f2cc20315d4fb164578d6a9b86439ef55f7a0616fcd883d25253b22ee3103f",
+      "stdout": "report_generation_attempt2.stdout.txt",
+      "stderr": "report_generation_attempt2.stderr.txt",
+      "receipt": "report_generation_attempt2.receipt.json",
+      "classification": "auditor checker harness failure"
+    }
+  ],
+  "auditor_failed_run_count": 6,
+  "failed_initializer_checks_reclassified_as_exact_pass": false,
+  "local_torch": {
+    "python": "3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]",
+    "torch": "1.13.1+cpu",
+    "numpy": "1.21.6",
+    "CUDA_initialized": false
+  },
+  "auditor_SSH_calls": 0,
+  "auditor_SCP_calls": 0,
+  "auditor_GPU_queries": 0,
+  "visual_NN_forward_calls": 0,
+  "small_C_CPU_inference_batches": 2,
+  "small_C_CPU_predictions": 528,
+  "small_C_seeded_initial_constructions_in_successful_check": 1,
+  "optimizer_steps_executed": 0,
+  "NN_training_executed": false,
+  "package_installations": 0,
+  "subagents_spawned": 0,
+  "input_mutations": 0,
+  "experiment_source_module_imports": 0,
+  "claims": [
+    {
+      "id": "C_terminal",
+      "claim": "R3 actual preflight, paired fitting and full32 development/comparison completed",
+      "impact": "supported within exported raw scope"
+    },
+    {
+      "id": "C_numeric",
+      "claim": "All three development metric rows match raw predictions and real dataset GT",
+      "impact": "supported; independent deterministic recount"
+    },
+    {
+      "id": "C_future_increment",
+      "claim": "Future utility supervision improves macro IoU over both native-rule P1 and current-quality C",
+      "impact": "unsupported; observed failure of both required macro inequalities"
+    },
+    {
+      "id": "C_current_gain",
+      "claim": "Current-quality C improves this fixed C-dev32 macro IoU versus P1 native rule",
+      "impact": "supported descriptive engineering result, +0.010296723939317576;3 positive sequence deltas,0 negative,29 exact ties; not formal generalization"
+    },
+    {
+      "id": "C_initialization",
+      "claim": "Both initial states independently reconstructed exactly",
+      "impact": "not certified; local mismatch and absent original initial tensors"
+    },
+    {
+      "id": "C_formal",
+      "claim": "R4/Full152/final three-dataset metrics or whole goal completed",
+      "impact": "unsupported and not authorized by this audit"
+    },
+    {
+      "id": "C_semantic",
+      "claim": "Language/identity/crop-out recovery contribution established",
+      "impact": "unsupported"
+    }
+  ],
+  "deterministic_acceptance": "accepted only for the explicitly successful byte/count/scalar/state checks; initialization reconstruction remains not certified",
+  "deterministic_results": [
+    "METRICS_RECOMPUTED.json",
+    "METRICS_ALL_FRAME_VALUES.npz",
+    "PER_SEQUENCE_RECOMPUTED.csv",
+    "FIT_PREFLIGHT_RECOMPUTED.json",
+    "TEACHER_LABELS_RECOMPUTED.json",
+    "FIXED_PANEL_CPU_PREDICTIONS.json",
+    "BINDINGS_CHECKED.json",
+    "BINDINGS_CHECK_DETAIL.json",
+    "GATE_BINDING_SCOPE.json",
+    "EVIDENCE_FINAL_CHECK.json"
+  ],
+  "trace_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\trace",
+  "small_C_seeded_initial_constructions_total": 3,
+  "report_md_sha256": "f227eb890d9c68b41e0b227691c4dac62dcb1baebfae879d47e9a14044cdf4f6"
+}

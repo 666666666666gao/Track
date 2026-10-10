@@ -6,10 +6,10 @@
 |---|---|---|---|---|---|
 | R0 | 封存当前承诺完整验收 | 现有P0/P1，三数据集 | 两个一致完整九项行；结果审核 | MUST | COMPLETE：两版各9项完整指标已封存；fresh WARN/0阻断/5非阻断，P0 2/9、P1 3/9，联合目标未达到 |
 | R1 | 证明模板动作可隔离 | 新C接口；P1固定final，Train前12合法事件 | K/K一致、W/K本帧动作前一致、无GT进入控制 | MUST | COMPLETE：三阶段exit0；12事件/一条序列；fresh WARN/0阻断/5非阻断，原GT/张量CPU复核；全量教师与C收益未证明 |
-| R2 | 建立真实动作教师 | P1固定final Train152自身历史；所有原规则资格事件 | W/K 32帧有效GT平均IoU差；输入SHA和全量事件回执 | MUST | RUNNING：15:52实际第二次小时观察，原376499运行，GPU0/1采集52/67条、累计调用≥173852/219802；均未回放完成，无C优化；下一观察16:52:14.108234 |
-| R3 | 分离当前质量与未来写入价值 | 同参数C-current/C-future，C-fit120/C-dev32 | 完整递归序列等权IoU胜两参照、H10不增、有益写入覆盖报告 | MUST | SOURCE_PASS：v2来源B1已定点修正，v3 fresh PASS/0阻断；五源/519维/70721参数结构算术，无C构造/训练/指标，仍须R2终态原始审核和实际接线 |
-| R4 | 覆盖C自身历史并形成final | 合并原规则/C历史Train152事件，只更新C | Full152固定预算、实际事件数与冻结摘要封存 | MUST | TODO：R3通过才执行 |
-| R5 | 同一最终模型正式评价 | 唯一A+B+C，Test50/CDTB80/VOT127 | 全九项目标及新增损害、耗时、结果审核 | MUST | TODO：R4封存后执行 |
+| R2 | 建立真实动作教师 | P1固定final Train152自身历史；所有原规则资格事件 | W/K 32帧有效GT平均IoU差；输入SHA和全量事件回执 | MUST | COMPLETE：152/219802调用、1297事件/81908未来调用；真实终态CPU与fresh审核完成 |
+| R3 | 分离当前质量与未来写入价值 | 同参数C-current/C-future，C-fit120/C-dev32 | 完整递归序列等权IoU胜两参照、H10不增、有益写入覆盖报告 | MUST | COMPLETE：两组320更新和32dev全部exit0；fresh WARN/0阻断限定归档；Current宏IoU+1.0297pp/H10−3，Future宏IoU−0.2000pp/H10−1，Future科学门失败 |
+| R4 | 覆盖C自身历史并形成final | 合并原规则/C历史Train152事件，只更新C | Full152固定预算、实际事件数与冻结摘要封存 | MUST | NOT_RUN：原Future晋升条件失败；未采集C自身历史，不由Current替代为已完成 |
+| R5 | 同一最终模型正式评价 | 唯一A+B+C，Test50/CDTB80/VOT127 | 全九项目标及新增损害、耗时、结果审核 | MUST | NOT_RUN：原Future R4未执行；新Current质量分支正式成绩尚未产生 |
 
 人工文本沿用最终核验类别和首4属性，单seed2027。当前VOT安排与每小时观察不变；不启动额外进程占用正在评测的GPU，不声称C已实现、训练、读取新视角或恢复crop外目标。
 
@@ -48,3 +48,7 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 2026-10-10 §5.452：concrete source PASS/WARN0block，137checks；实际19:18:28 supervised R3队列PID385974启动，预检→GPU0current/GPU1future120fit320steps→32dev49366calls/臂。运行结果未观察；唯一原timer30195/PID37988，20:18:28以后一次NN观察，零重启/空查询。
 
 2026-10-10 §5.453：实际20:19单次NN观察，preflight513calls/1eligible精确通过；双C各993fit/264fixed-dev/10epochs320steps真实exit0。Own32dev current≥25seq36812calls/future≥30seq45978calls，两卡79/78%。无完整IoU/H10/正式结果；第一timer30195正常0消费，第二唯一18966/PID49376，下一21:19:01，不提前查。
+
+| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | SOURCE_REVIEW：独立新方案，尚未部署/训练；见CURRENT_QUALITY_FULL152_PLAN_20261010.md |
+
+2026-10-10 §5.454：实际R3六阶段与supervisor exit0，21:19:36唯一小时查询确认全部结束；32dev GT复算完成，Future门失败。原seed初始化摘要的本地重建差异未确定，不称逐张量初始化已独立认证。新质量分支待源码审核，不自动续跑Future；NN下一准入不早于22:19:36.400301。
