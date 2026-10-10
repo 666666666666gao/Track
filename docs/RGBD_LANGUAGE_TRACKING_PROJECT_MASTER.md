@@ -27280,3 +27280,18 @@ VOT双GPU阶段已在00:46:07.639639北京时间真正启动，worker PIDs395115
 新的M123仍NOT_LAUNCHED：其A+B+C在全152条自身预测连续轨迹上联合更新、固定3轮659406调用/450888参数，冻结底座与CLIP，不划开发集、不跑短程训练。旧CurrentC固定缓存400步不能替代它。保留现有VOT完整评估，后续小时节点确认旧suite终态exit0、完整九项文件及双卡空闲后，直接运行已部署完整联合预算。
 
 唯一下一次被动等待为native51380/PID54312，出生01:35:11.708052，北京时间01:35:32实际CIM核实同一进程；每次本地sleep300秒、无远端查询。下一NN/GPU观察不早于02:30:58.058870北京时间。之前等待已实际终态；本次新等待文件名在开始sleep前的一次断言失败未形成计时器，已保留终态f43e42，不重写旧第三小时回执。goal ACTIVE_UNMET。
+
+
+### 5.461 2026-10-11：CurrentC实际两项OPE有限范围审查闭合；修正当前台账状态
+
+fresh reviewer current_c_actual_ope_integrity_20261011已完成实际结果只读审查：WARN、0个阻止“已完成且实际回执支持的两项OPE”这一有限报告的发现。原JSON SHA dcf1d07c125d2480a1d34a249fe730563fcb36f1c63ff4003d6297df271fb0ea；81项标准库确定性核对通过，28个采集文件逐字节与原观察绑定，89个审查封存输入保留。报告原文和嵌入追踪完整公开，未改写为更强的PASS；requested Astra/max、actual identity UNATTESTED、same-family/provisional。
+
+确认了：两数据集完整序列顺序/帧数、所有track/analyze真实exit0、同一cc71 final与人工文字/binding、锁定评价源码、原生GT读取而非预测生成GT。通过原始P1 metadata与已核对的CurrentC fit/source gate纯JSON重建，同一bundle及两plan SHA精确匹配当前实际回执。这些重建有明确标签，不能写成原当前plan文件被重新下载。
+
+本次未读取130份完整bbox/confidence数组、未重新计算逐帧重叠和PR曲线、未重哈希远端checkpoint与bank张量；因此§5.460的两项是“完成回执支持的完整OPE结果”，不是本次独立逐帧复算成绩。计分为锁定继承项目PR实现，使用VOT矩形重叠和序列宏平均；未重新证明与upstream官方实现逐位一致。PR最佳F阈值不等于模板更新阈值：旧CurrentC仍是原生50帧/>0.75资格加C>0.5，不是凭本次指标调参。
+
+初始化binding记录1895个合法key（50/80/1765），每项都有已确认的1—5条短语，并匹配协议框/帧。人工标注明确使用过多帧辅助，不能称盲首帧自动生成或本次重新人工复审；正式模型使用固定最终人工输入，没有在线改写文字。旧C训练为142条贡献事件、1257个合格缓存样本/400更新，旧A+B的完整三轮属于此前P1历史，不能合称新ABC联合完成。
+
+审查使用其封存时的台账，指出QF152和M123当前状态行落后。本次只更新这两行：QF152为FIT_COMPLETE/TWO_OPE_COMPLETE/VOT_RUNNING；M123为SOURCE_READY/SOURCE_STAGED/NOT_LAUNCHED。之前append的§5.460是较新的实际观察，原Future门失败、R4 NOT_RUN和R5未完成历史保持。源审和结果审查均不替代用户要求的M123完整Train152 ABC训练。
+
+所有性能数字沿用§5.460，不重复造新成绩。VOT仍只在01:30:58的原观察证实69/1765、无完整终态；没有额外NN/GPU查询。原被动等待native51380/PID54312仍保留，下一服务器观察不早于02:30:58.058870北京时间。完整九项、M123完整联合训练和其同final三数据集评价均未完成；goal ACTIVE_UNMET。

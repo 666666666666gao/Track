@@ -49,7 +49,7 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 
 2026-10-10 §5.453：实际20:19单次NN观察，preflight513calls/1eligible精确通过；双C各993fit/264fixed-dev/10epochs320steps真实exit0。Own32dev current≥25seq36812calls/future≥30seq45978calls，两卡79/78%。无完整IoU/H10/正式结果；第一timer30195正常0消费，第二唯一18966/PID49376，下一21:19:01，不提前查。
 
-| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | FIT_COMPLETE/OPE_RUNNING：400更新真实exit0；23:29单次观察DT≥20/50、CD≥34/80，双GPU活跃；VOT未启动；原timer71834，次日00:29:55后查一次 |
+| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | FIT_COMPLETE / TWO_OPE_COMPLETE / VOT_RUNNING：§5.460两完整OPE及真实零退出；§5.461有限报告审核WARN/0；01:30观察VOT69/1765，九项未完成；原timer51380，下一NN>=02:30:58 |
 
 2026-10-10 §5.454：实际R3六阶段与supervisor exit0，21:19:36唯一小时查询确认全部结束；32dev GT复算完成，Future门失败。原seed初始化摘要的本地重建差异未确定，不称逐张量初始化已独立认证。新质量分支待源码审核，不自动续跑Future；NN下一准入不早于22:19:36.400301。
 
@@ -57,7 +57,7 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 
 2026-10-10 §5.456：CurrentC Full152固定final cc71e0b4…已训练完成；32former-dev已训练内。DT37919帧/CD44690帧已打印保存回执，完整OPE和VOT尚未完成，不预填指标。原第一timer79637正常exit0消费，第二唯一71834/PID54140。下一NN观察>=2026-10-11 00:29:55.759328；目前仅一小时一次观察。
 
-| M123-FullJoint152 | A+B+C联合完整训练 | 全Train152×3，659406调用，450888可训练参数；不划分开发集 | 同一final三数据集完整九项 | MUST | LOCAL_PREPARED / SOURCE_REVIEW_PENDING / NOT_LAUNCHED |
+| M123-FullJoint152 | A+B+C联合完整训练 | 全Train152×3，659406调用，450888可训练参数；不划分开发集 | 同一final三数据集完整九项 | MUST | SOURCE_READY / SOURCE_STAGED / NOT_LAUNCHED：§5.458—5.459源审及实际部署已闭合，等待旧VOT和双卡释放；缓存C拟合不替代此训练 |
 
 2026-10-11 §5.457：用户明确直接训练完整DepthTrack Train152，不再保留开发分组。旧CurrentC缓存400步不算A+B+C完整训练；旧评价继续。新M123只做完整序列训练，不做新pilot，固定final。下一NN观察>=00:29:55.759328，原timer71834保留。
 
@@ -66,3 +66,5 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 2026-10-11 §5.459：00:30唯一小时实测CurrentC DT50预测完成、CD72/80、VOT0/1765，未有完整九项；M123 deployment SOURCE_ONLY_PASS/0但NOT_LAUNCHED，双卡未空闲。保留原75282/PID30588第三小时等待，下一NN>=01:30:28.548952；全Train152×3联合ABC，不划开发集。
 
 2026-10-11 §5.460：CurrentC实际两项OPE完成，同cc71final：DT67.365069/64.865103/66.091454，CD74.593625/69.886239/72.163245；不是新M123。VOT69/1765，完整九项未有。NN唯一01:30:58，下次>=02:30:58，原51380/PID54312被动等待保留。M123完整全Train152 ABC联合仍NOT_LAUNCHED，无开发划分。实际OPE审查pending，目标未通过。
+
+2026-10-11 §5.461：实际CurrentC两项OPE独立只读审查WARN/0有限报告阻断，81checks/28files/89sealedinputs；非逐帧独立复算/非完整ABC联合。修正QF152与M123两当前状态行，旧Future门/R4/R5历史不改。下一NN>=02:30:58，原51380/PID54312等待保留。
