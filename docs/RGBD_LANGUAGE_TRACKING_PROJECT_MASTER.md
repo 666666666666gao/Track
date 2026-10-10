@@ -26908,3 +26908,21 @@ v3已经同一fresh审查者复查，source PASS/0阻断；完整报告保留非
 原13:51等待已正常结束。新的唯一local passive timer在14:56:11.518485输出启动：PID53744、CIM创建14:56:11.4248、native31246/701d7a，CIM09c330核对真实live及原命令。下一NN观察不早于15:51:15.915699，仍每小时最多一次，本地sleep300秒。下一observer仅准备，stdout直接落本地独占文件以保留原始JSON，未执行；不会改动正在运行的R2三源。
 
 R2当前只是实际采集进展，尚无终态W/K标签或C收益。R3源码PASS仍不等于运行；必须待全教师终态原始审核、真实prefix摘要、具体包/接线检查，才启动同输入/预算current与future C及完整32开发。R4自身历史和Full152 C、最终同权重九项仍待执行。§5.435正式指标不重复、不改写，goal ACTIVE_UNMET。
+
+### 5.443 2026-10-10 15:27：C接线预检源码审查通过，实际运行仍未执行，保持每小时观察
+
+本turn延续R2双卡全Train教师与既定C计划，仅在本地完成run_template_write_C_preflight.py及其源码审查和文档整理。没有SSH训练进度/GPU查询、Torch/实验导入、模型构造、C优化或正式评价。唯一local passive timer仍是原PID53744/birth14:56:11.4248/native31246；CIM22dfcd核对原创建时间与命令一致。下一远端NN观察不早于15:51:15.915699，仍每小时最多一次，不重建或重启计时器。
+
+预检针对已有零权重训练也出现微小数值→crop→query/模板→监督分叉的实测风险。固定Train首条cube04_indoor的合法首帧框，拟运行前256个非初始化帧的原路径和constant1包裹路径；两条历史独立持有可变状态、query、模板和初始化特征，共享冻结模型。比较当前所有解码输出、框、分数、query、选中特征、模板及完整Python/NumPy/Torch/CUDA RNG；原输出与后状态在第二路径前真实clone，并检查原live状态未被第二路径改写。
+
+只在原路径真正具备50帧/.75写入资格时，从实际前状态复制一条constant0单步，检查其拒绝发生在模板crop前、保留先前模板/patch，同时当前框/query/feature/score仍与constant1一致。constant1/0是parameters为空的明确测试夹具，不是已学C，也不是完整always-reject历史；不使用当前/未来GT选择帧或事件。固定窗口至少需要一个真实合格写入，未遇到则不扩展窗口或强造事件。预期tracker.step调用为512加真实写入数，不冒充全部神经子模块forward次数。
+
+原fresh-context reviewer续审25manifest项及manifest/prepared两份共27输入；source PASS、overall WARN、0阻断、3项非阻断限制。248标准库检查通过，原v3的22项、70历史审查材料和24本地import source不变。请求gpt-6-astra/max/native Codex，实际身份与effort UNATTESTED，same-family/provisional，不把路由请求作为实际模型证明。完整A—F报告、request/response/meta/final、原输入快照、检查日志/失败回执及seal均保留。
+
+源码顺序明确：teacher终态审核完成/0阻断/terminal_raw标记、aggregate SHA、controller.exit=0与complete状态在context前校验；teacher.inputs与实际输入的关联在context构造冻结模型返回后、首次初始化前校验。不声称所有输入来源门都在构造前执行。具体部署还必须绑定完整source/argv/真实教师审核并保持assertions启用，后续实际目标Python3.8/Torch1.13.1 import与运行证据独立验收。
+
+三项限制是：全教师终态raw审核和预检实际产物未有；固定序列常量动作检查不能证明learned-C/32dev/全递归/Full152/九项收益；目标部署/import/ABI/运行仍未验证。runtime_preflight_passed=false、R3_launch_certified=false；原R3 v2 FAIL/B1与v3源码修正保持，不补写实际terminal flag。预检运行后将保存256帧原/constant1记录、CPU query/selected feature及真实拒绝事件的模板/patch/C输入；不是保存所有逐帧decoder张量或完整模板历史。
+
+审查检查器首次将AST重排括号误判为独立模板断言缺失，原FAIL脚本/日志/回执保留；仅规范化检查器表达式后通过，没有改动实验源码。此前本地event_cache.py路径不存在错误亦保留，真实绑定是template_write_event_cache.py。源码11170字节SHA ee6cdc05ecc8ab35e55f7f1fc2b73b940933c4a9e12521fe950029a1a5b5f476；manifest SHA7df62732f1037c870d6a49d757f66402bbecc389b9d3ce19b6de7eb135284ecc；报告MD SHA4120047e0e53c1e87be0cc2da05c18c52d527d59a065f97d069e49740ab77428、JSON SHAa79aefb6c4b8d3026aa13bacedecc2309c213fe2a66196203ed3caa62aad5202；封存ZIP SHAb23d8327f058aaa27a31426c8669a8aaad4af37de8c8b5a65e28ab6175a77b71。
+
+§5.442的14:51两卡采集实测仍是最新实际进度，不用当前时间推算已完成；仅采集线性工程估计约16:15—16:40，W/K回放、终态审核、C两臂与32dev、R4自身历史/Full152及同final三数据集九项仍待实际证据。此前正式指标不改写，goal ACTIVE_UNMET。此次Git保存新源码与原始报告；远端静态同步只含md/json，不部署或修改正在执行的NN源码。
