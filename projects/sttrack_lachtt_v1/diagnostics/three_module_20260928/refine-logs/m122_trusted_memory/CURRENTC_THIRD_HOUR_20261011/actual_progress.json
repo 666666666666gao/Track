@@ -1,0 +1,118 @@
+{
+  "status": "actual_CurrentC_third_hour_observation_collected",
+  "observed_at": "2026-10-10T17:30:58.058870+00:00",
+  "gap_since_previous_NN_observation_seconds": 3629.509918,
+  "original_stdout_sha256": "1724f83bca30a7b5162de3243f910bc450d7b9374a071c0ac23c53011c002c75",
+  "original_timer": {
+    "session_id": 75282,
+    "process_id": 30588,
+    "cell": 770,
+    "terminal_chunk": "835dc7",
+    "exit_code": 0,
+    "consumed": true,
+    "restarted": false,
+    "raw_terminal": {
+      "status": "local_CurrentC_third_hourly_node_due",
+      "pid": 30588,
+      "started_at": "2026-10-11T00:33:33.793618+08:00",
+      "deadline": "2026-10-10T17:30:28.548952+00:00",
+      "server_queries": 0,
+      "NN_progress_queries": 0,
+      "sleep_interval_seconds": 300,
+      "restarted": false,
+      "duplicate_timer_created": false,
+      "original_second_timer_session_id": 71834,
+      "finished_at": "2026-10-11T01:30:28.549652+08:00"
+    }
+  },
+  "native_observer": {
+    "session_id": 73471,
+    "initial_chunk": "26b982",
+    "authentication_chunk": "39c80f",
+    "terminal_chunk": "71cd18",
+    "exit_code": 0
+  },
+  "GPU_snapshot": "0, 4122, 79\n1, 778, 0\n",
+  "supervisor": {
+    "pid": 391524,
+    "cmdline_exists": true,
+    "cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m122_current_quality_C_full152_20261010/code/m122_current_C_process_supervisor.py /root/autodl-tmp/m122_current_quality_C_full152_20261010 "
+  },
+  "OPE_progress": [
+    {
+      "dataset": "depthtrack_test",
+      "gpu": 0,
+      "complete_predictions": true,
+      "completed_sequences": 50,
+      "completed_frames": 76373,
+      "remaining_calls_upper_bound": 0,
+      "complete_metrics_observed": true,
+      "metrics": {
+        "precision": 0.673650693502503,
+        "recall": 0.6486510340917104,
+        "f_score": 0.6609145399091418,
+        "precision_percent": 67.3650693502503,
+        "recall_percent": 64.86510340917104,
+        "f_score_percent": 66.09145399091419,
+        "threshold": 0.089707,
+        "sequences": 50,
+        "frames": 76373
+      }
+    },
+    {
+      "dataset": "cdtb",
+      "gpu": 1,
+      "complete_predictions": true,
+      "completed_sequences": 80,
+      "completed_frames": 101956,
+      "remaining_calls_upper_bound": 0,
+      "complete_metrics_observed": true,
+      "metrics": {
+        "precision": 0.7459362462526584,
+        "recall": 0.6988623866187693,
+        "f_score": 0.7216324454647651,
+        "precision_percent": 74.59362462526585,
+        "recall_percent": 69.88623866187693,
+        "f_score_percent": 72.1632445464765,
+        "threshold": 0.166124,
+        "sequences": 80,
+        "frames": 101956
+      }
+    }
+  ],
+  "VOT_started": true,
+  "VOT_shard_progress": [
+    {
+      "index": 0,
+      "gpu": 0,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 34,
+      "log_tail": "\u001b[33mA newer version of the VOT toolkit is available (0.9.0), please update.\u001b[0m\n1 %\n2 %\n3 %\n4 %\n5 %\n6 %\n7 %\n8 %\n"
+    },
+    {
+      "index": 1,
+      "gpu": 1,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 35,
+      "log_tail": "\u001b[33mA newer version of the VOT toolkit is available (0.9.0), please update.\u001b[0m\n1 %\n2 %\n3 %\n4 %\n5 %\n"
+    },
+    {
+      "index": 2,
+      "gpu": 0,
+      "expected_anchors": 441,
+      "completed_nonempty_trajectory_triples": 0
+    },
+    {
+      "index": 3,
+      "gpu": 1,
+      "expected_anchors": 442,
+      "completed_nonempty_trajectory_triples": 0
+    }
+  ],
+  "formal_nine_metrics_complete": false,
+  "current_suite_terminal": false,
+  "M123_training_launched": false,
+  "NN_progress_queries": 1,
+  "additional_NN_calls": 0,
+  "next_NN_observation_not_before": "2026-10-10T18:30:58.058870+00:00"
+}
