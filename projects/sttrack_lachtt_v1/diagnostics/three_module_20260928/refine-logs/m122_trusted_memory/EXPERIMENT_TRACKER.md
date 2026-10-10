@@ -56,3 +56,7 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 2026-10-10 §5.455：Current质量Full152独立队列实际启动；原Future R4仍NOT_RUN。一次GPU准入距上次NN观察4181.799790秒，后续NN最多每小时一次；原被动timer79637/PID15008，下一23:29:18.200091。源码PASS不是训练或性能证明。
 
 2026-10-10 §5.456：CurrentC Full152固定final cc71e0b4…已训练完成；32former-dev已训练内。DT37919帧/CD44690帧已打印保存回执，完整OPE和VOT尚未完成，不预填指标。原第一timer79637正常exit0消费，第二唯一71834/PID54140。下一NN观察>=2026-10-11 00:29:55.759328；目前仅一小时一次观察。
+
+| M123-FullJoint152 | A+B+C联合完整训练 | 全Train152×3，659406调用，450888可训练参数；不划分开发集 | 同一final三数据集完整九项 | MUST | LOCAL_PREPARED / SOURCE_REVIEW_PENDING / NOT_LAUNCHED |
+
+2026-10-11 §5.457：用户明确直接训练完整DepthTrack Train152，不再保留开发分组。旧CurrentC缓存400步不算A+B+C完整训练；旧评价继续。新M123只做完整序列训练，不做新pilot，固定final。下一NN观察>=00:29:55.759328，原timer71834保留。
