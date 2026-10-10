@@ -1,0 +1,365 @@
+{
+  "audit_skill": "experiment-audit",
+  "report_type": "minimal_assertions_launch_configuration_supplement",
+  "date": "2026-10-10",
+  "generated_at": "2026-10-10T10:02:04.237468+00:00",
+  "agent_id": "/root/m122_r2_rawcheck_source_integrity_20261010",
+  "review_call_status": "completed",
+  "source_verdict": "PASS",
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "blocking_count": 0,
+  "blocking_findings": [],
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "requested_reviewer_backend": "codex",
+  "actual_backend_identity": "UNATTESTED",
+  "reviewer_model": "UNATTESTED",
+  "actual_reasoning_effort": "UNATTESTED",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "original_fork_turns": "none",
+  "bounded_continuation": true,
+  "new_fork_created": false,
+  "only_changes": [
+    "outer PYTHONOPTIMIZE=0 CUDA_VISIBLE_DEVICES empty prefix",
+    "unique exclusive stdout path"
+  ],
+  "wrapper_changed_lines": [
+    3,
+    4
+  ],
+  "N3_outer_environment_component": "CLOSED_CONFIGURATION_ONLY_FOR_NEW_WRAPPER",
+  "N3_target_compatibility_runtime_component": "UNPROVEN",
+  "original_conditional_report_preserved": true,
+  "original_conditional_report_sha256": "cb7f9d63d100ae57d2122a8f1a5b1fa13281d9ff2fdf4f75793e0049cf138658",
+  "original_deployment_seal_sha256": "2fb01ddca7a00cb494e94f0553be93ca437f0567de274753e1e6a526014fbc7f",
+  "original_v1_seal_sha256": "610e8716f0354e270ed4f9a86225629aa1830b2100113e03892c5e2a3ea1714d",
+  "original_v2_seal_sha256": "fe4785b2d77888400c1bd21680568b055bfa8a78de8b963f81eca98a4cd0524f",
+  "new_wrapper_sha256": "5864188a02ae4202d65ee459f4d6f1010f6da66cb8c4fe898cba6814ac8d9741",
+  "old_wrapper_sha256": "aefc1bd6949146c8cfbb8b7114ae059d8e87aac87bed89faf432b24d5fa28148",
+  "bootstrap_sha256": "bc0eaec10dea9dfbc188cd2d1c41ec2b8fee1c372ed8c7b2c17fb8336f33d95e",
+  "source_sha256": "fc5789875562bdb5efe8427c95ae40a2223828f02505cd8474b40f92fdebbe82",
+  "ZIP_sha256": "6b99aae715a65bf06d2353ed60f88cf7de175bdbad8700407283ea439eb1e923",
+  "new_wrapper_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_native_ssh_assertions_20261010.py",
+  "new_stdout_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_assertions_original_stdout_20261010.txt",
+  "explicit_outer_environment": {
+    "PYTHONOPTIMIZE": "0",
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "child_environment_unchanged": {
+    "PYTHONOPTIMIZE": "0",
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "exact_normalized_AST_equal": true,
+  "compressed_body_and_decoded_bytes_unchanged": true,
+  "prior68_sealed_files_unchanged": true,
+  "prior45_original_inputs_unchanged": true,
+  "v1_47_sealed_files_unchanged": true,
+  "v2_43_sealed_files_unchanged": true,
+  "v1_original_archive_48_members_unchanged": true,
+  "audited_input_hashes": [
+    {
+      "index": 1,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_native_ssh_assertions_20261010.py",
+      "bytes": 3550,
+      "sha256": "5864188a02ae4202d65ee459f4d6f1010f6da66cb8c4fe898cba6814ac8d9741",
+      "role": "requested_primary",
+      "snapshot": "direct_input_snapshots\\01_R2_terminal_CPU_deployment_native_ssh_assertions_20261010.py"
+    },
+    {
+      "index": 2,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\prepare_R2_CPU_assertions_launch_20261010.py",
+      "bytes": 2535,
+      "sha256": "606ba4dee4bb279d7a6370dc267bbfa2ac497a952f1fc0933590cd09f5bb89dc",
+      "role": "requested_primary",
+      "snapshot": "direct_input_snapshots\\02_prepare_R2_CPU_assertions_launch_20261010.py"
+    },
+    {
+      "index": 3,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_CPU_assertions_launch_prepared_20261010.json",
+      "bytes": 1476,
+      "sha256": "a3cba908f1e6487c70b70d372564e32a8ff9e88fe22578126d5abf46627e8b06",
+      "role": "requested_primary",
+      "snapshot": "direct_input_snapshots\\03_R2_CPU_assertions_launch_prepared_20261010.json"
+    },
+    {
+      "index": 4,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_native_ssh_20261010.py",
+      "bytes": 3496,
+      "sha256": "aefc1bd6949146c8cfbb8b7114ae059d8e87aac87bed89faf432b24d5fa28148",
+      "role": "requested_primary",
+      "snapshot": "direct_input_snapshots\\04_R2_terminal_CPU_deployment_native_ssh_20261010.py"
+    },
+    {
+      "index": 5,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_prepared_20261010\\CPU_BOOTSTRAP.py",
+      "bytes": 5293,
+      "sha256": "bc0eaec10dea9dfbc188cd2d1c41ec2b8fee1c372ed8c7b2c17fb8336f33d95e",
+      "role": "requested_primary",
+      "snapshot": "direct_input_snapshots\\05_CPU_BOOTSTRAP.py"
+    },
+    {
+      "index": 6,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_prepared_20261010.zip",
+      "bytes": 23876,
+      "sha256": "6b99aae715a65bf06d2353ed60f88cf7de175bdbad8700407283ea439eb1e923",
+      "role": "requested_primary",
+      "snapshot": "direct_input_snapshots\\06_R2_terminal_CPU_deployment_prepared_20261010.zip"
+    },
+    {
+      "index": 7,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_source_audit_20261010\\DEPLOYMENT_AUDIT.json",
+      "bytes": 40988,
+      "sha256": "cb7f9d63d100ae57d2122a8f1a5b1fa13281d9ff2fdf4f75793e0049cf138658",
+      "role": "requested_primary",
+      "snapshot": "direct_input_snapshots\\07_DEPLOYMENT_AUDIT.json"
+    },
+    {
+      "index": 8,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_source_audit_20261010\\AUDIT_SEAL.json",
+      "bytes": 12964,
+      "sha256": "2fb01ddca7a00cb494e94f0553be93ca437f0567de274753e1e6a526014fbc7f",
+      "role": "requested_primary",
+      "snapshot": "direct_input_snapshots\\08_AUDIT_SEAL.json"
+    },
+    {
+      "index": 9,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw.py",
+      "bytes": 21305,
+      "sha256": "fc5789875562bdb5efe8427c95ae40a2223828f02505cd8474b40f92fdebbe82",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\09_verify_template_write_teacher_raw.py"
+    },
+    {
+      "index": 10,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_native_scp_20261010.py",
+      "bytes": 644,
+      "sha256": "e3368d2a563a7c51d6459c0e843f8ff78881d6e9e3a8b4e575da2f2456b1f8e1",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\10_R2_terminal_CPU_deployment_native_scp_20261010.py"
+    },
+    {
+      "index": 11,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_prepared_20261010\\files.json",
+      "bytes": 605,
+      "sha256": "3fb67d57d9129621a8eeed13dc84b129ab8e41d9d37bf3bfebd16ea2bb0452c2",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\11_files.json"
+    },
+    {
+      "index": 12,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_source_audit_20261010\\DEPLOYMENT_AUDIT.md",
+      "bytes": 29421,
+      "sha256": "ff252d6ea60ae3c665200b0497907820adc1e25e9b6bd8a7e849f9061bef507f",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\12_DEPLOYMENT_AUDIT.md"
+    },
+    {
+      "index": 13,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_source_audit_20261010\\INPUT_MANIFEST.json",
+      "bytes": 3932,
+      "sha256": "25606470e11ba17bbc0b181682c07a8dce51ae9cde66ba187ddaa7ae56b47d53",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\13_INPUT_MANIFEST.json"
+    },
+    {
+      "index": 14,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_raw_readback_source_audit_20261010\\SOURCE_AUDIT.json",
+      "bytes": 38233,
+      "sha256": "40f6df29b6d226cfa7b311458d44ef7ec6d6d665207a502fdd1bf7163af3e745",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\14_SOURCE_AUDIT.json"
+    },
+    {
+      "index": 15,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_raw_readback_source_audit_20261010\\AUDIT_SEAL.json",
+      "bytes": 9045,
+      "sha256": "610e8716f0354e270ed4f9a86225629aa1830b2100113e03892c5e2a3ea1714d",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\15_AUDIT_SEAL.json"
+    },
+    {
+      "index": 16,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_raw_readback_source_audit_20261010\\source_v2\\SOURCE_AUDIT.json",
+      "bytes": 40810,
+      "sha256": "8a1cb50d188d66ed75e1f7185a8db714ac3765083f8683e38b512a4c9359cfec",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\16_SOURCE_AUDIT.json"
+    },
+    {
+      "index": 17,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_raw_readback_source_audit_20261010\\source_v2\\AUDIT_SEAL.json",
+      "bytes": 8361,
+      "sha256": "fe4785b2d77888400c1bd21680568b055bfa8a78de8b963f81eca98a4cd0524f",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\17_AUDIT_SEAL.json"
+    },
+    {
+      "index": 18,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_raw_readback_source_v1_original_20261010.zip",
+      "bytes": 3631904,
+      "sha256": "c243cc496cbb088c0d9d49f167bea78ad6de2146ccc715e1c6bfd1e9bc3d2099",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\18_R2_raw_readback_source_v1_original_20261010.zip"
+    },
+    {
+      "index": 19,
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_raw_readback_source_prepared_v2_20261010.json",
+      "bytes": 1772,
+      "sha256": "0f585e644338d5e406295d2e0ced321d7c2dbf77b6949a3a00df974cc4494110",
+      "role": "supplemental_provenance",
+      "snapshot": "direct_input_snapshots\\19_R2_raw_readback_source_prepared_v2_20261010.json"
+    }
+  ],
+  "checks": {
+    "A_gt_provenance": {
+      "status": "PASS",
+      "scope": "unchanged source",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_prepared_20261010\\CPU_BOOTSTRAP.py",
+          "line": 37,
+          "end_line": 42
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw.py",
+          "line": 83,
+          "end_line": 105
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw.py",
+          "line": 188,
+          "end_line": 214
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+          "line": 137,
+          "end_line": 150
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_full_causal.py",
+          "line": 14,
+          "end_line": 22
+        }
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "scope": "unchanged source",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw.py",
+          "line": 43,
+          "end_line": 58
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\verify_template_write_teacher_raw.py",
+          "line": 249,
+          "end_line": 295
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_target_decoder.py",
+          "line": 111,
+          "end_line": 115
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_features.py",
+          "line": 29,
+          "end_line": 39
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py",
+          "line": 68,
+          "end_line": 96
+        }
+      ]
+    },
+    "C_result_existence": {
+      "status": "WARN",
+      "details": "Configuration exists; actual target runtime and terminal teacher absent."
+    },
+    "D_called_path": {
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_native_ssh_assertions_20261010.py",
+          "line": 3
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_native_ssh_assertions_20261010.py",
+          "line": 4
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_prepared_20261010\\CPU_BOOTSTRAP.py",
+          "line": 5
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_prepared_20261010\\CPU_BOOTSTRAP.py",
+          "line": 43
+        }
+      ],
+      "details": "Exact prefix forces outer assertions and empty CUDA visibility before Python startup; original body and child invocation unchanged."
+    },
+    "E_scope": {
+      "status": "WARN",
+      "details": "No launch, runtime, C training, formal metrics or goal completion claim."
+    },
+    "F_evaluation_type": {
+      "status": "PASS",
+      "type": "source_configuration_verification",
+      "prospective_GT_type": "real_gt"
+    }
+  },
+  "remaining_limits": [
+    "actual target Python3.8/Torch1.13.1 compatibility/import unproven",
+    "terminal teacher raw artifacts and semantic certificate absent",
+    "saved-state consistency cannot reconstruct model features or changed-policy labels",
+    "returned-child failure receipt and native SSH stderr/exit boundary unchanged",
+    "C/downstream/formal metrics claims remain unproved"
+  ],
+  "necessary_additional_source_corrections": [],
+  "deployment_executed": false,
+  "actual_CPU_readback_executed": false,
+  "actual_CPU_exit": null,
+  "R2_terminal_artifacts_supplied": false,
+  "R2_terminal_raw_audit_complete": false,
+  "independent_terminal_audit_certified": false,
+  "claimed_runtime_PASS": false,
+  "target_Python38_executed": false,
+  "target_Torch1131_import_executed": false,
+  "goal_achieved": false,
+  "execution_counters": {
+    "SSH_calls": 0,
+    "SCP_calls": 0,
+    "GPU_queries": 0,
+    "NN_progress_queries": 0,
+    "Torch_imports": 0,
+    "NumPy_imports": 0,
+    "experiment_imports": 0,
+    "model_constructors": 0,
+    "NN_forward_calls": 0,
+    "optimizer_steps": 0,
+    "training_calls": 0,
+    "inference_calls": 0,
+    "package_installations": 0,
+    "experiment_source_mutations": 0,
+    "input_mutations": 0,
+    "new_agents": 0
+  },
+  "timer": {
+    "pid": 30632,
+    "native_session": 21826,
+    "inspected": false,
+    "modified": false,
+    "no_NN_observation_before": "2026-10-10T17:52:45.946171+08:00"
+  },
+  "new_failed_auditor_checks": [],
+  "historical_failures_and_reports_preserved": true,
+  "trace_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_source_audit_20261010\\assertions_launch_v2\\private_trace",
+  "full_response_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_CPU_deployment_source_audit_20261010\\assertions_launch_v2\\private_trace\\004-assertions-launch.response.md",
+  "report_md_sha256": "0512f7cc434d9a404ddd5920c9a422e27da0a8e32aaa3a2fab76252621351d64",
+  "full_response_sha256": "0512f7cc434d9a404ddd5920c9a422e27da0a8e32aaa3a2fab76252621351d64",
+  "deterministic_checks_sha256": "025f89e5ddc469c730419afc84fa72843e115d107875e1764f2cc0e04400c9ab"
+}

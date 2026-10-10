@@ -1,0 +1,35 @@
+{
+  "status": "actual_fourth_hour_R2_controller_and_four_stages_terminal_zero",
+  "observed_at": "2026-10-10T10:11:03.096101+00:00",
+  "previous_observation_interval_seconds": 4697.14993,
+  "sequences": 152,
+  "native_track_calls": 219802,
+  "events": 1297,
+  "future_tracking_calls": 81908,
+  "controller_and_stages_terminal_zero": true,
+  "terminal_raw_audit_complete": false,
+  "C_training_started": false,
+  "new_formal_metrics": false,
+  "next_NN_observation_not_before": "2026-10-10T11:11:03.096101+00:00",
+  "CPU_launch": {
+    "native_session": 45634,
+    "initial_chunk": "70ef51",
+    "authentication_chunk": "3ee502",
+    "stdout": "R2_terminal_CPU_deployment_assertions_original_stdout_20261010.txt",
+    "launch_only": true,
+    "terminal_exit_observed": false
+  },
+  "source_reviews": [
+    {
+      "trace": "003-terminal-CPU-deployment",
+      "report_sha256": "cb7f9d63d100ae57d2122a8f1a5b1fa13281d9ff2fdf4f75793e0049cf138658",
+      "full_response_sha256": "ff252d6ea60ae3c665200b0497907820adc1e25e9b6bd8a7e849f9061bef507f"
+    },
+    {
+      "trace": "004-CPU-assertions-launch",
+      "report_sha256": "607cdfebee4b713fad43ec2d63e417a671e1685e1fa4afeefb39308d8230255a",
+      "full_response_sha256": "0512f7cc434d9a404ddd5920c9a422e27da0a8e32aaa3a2fab76252621351d64"
+    }
+  ],
+  "scope": "Observed completion of original teacher process and both collection/replay stages; CPU runtime and fresh terminal audit remain separate."
+}

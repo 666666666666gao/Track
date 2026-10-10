@@ -26988,3 +26988,42 @@ R2当前只是实际采集进展，尚无终态W/K标签或C收益。R3源码PAS
 当前没有C优化、新权重或正式九项指标。完整teacher的实际退出及aggregate仍需等待；结束后运行已复核的CPU回读，保存真实aggregate/shard/prefix SHA及原始材料，交由fresh终态审计。通过后依次执行constant-action预检、current/future C配对训练、32序列自身历史验证；只有按既定门通过，才继续C自身历史/Full152 final及同一权重三数据集完整验收。目标仍ACTIVE_UNMET。
 
 本turn只发布观察与文档；向服务器同步md/json静态记录，不改R2、A+B、C或其他运行NN源码。已有正式P0/P1指标不重复登记。没有依据给W/K全teacher、后续C或最终三数据集提前填写完成时间。
+
+### 5.447 2026-10-10：终态CPU部署源码复核，外层断言启动条件明确固定
+
+在原定小时等待期间，R2终态CPU部署的源码审查完成：source PASS、overall WARN、0阻塞、5项限制；检查21个隔离AST条件及18份Python3.8语法输入，新封存68份文件。原报告SHA cb7f9d63d100ae57d2122a8f1a5b1fa13281d9ff2fdf4f75793e0049cf138658，封存SHA2fb01ddca7a00cb494e94f0553be93ca437f0567de274753e1e6a526014fbc7f；该报告保留外层启动环境条件，不将源码检查写成运行完成。
+
+外层包装器明确加入PYTHONOPTIMIZE=0及CUDA_VISIBLE_DEVICES空值，另用独占stdout路径。补充审查source PASS/overall WARN/0阻塞，N3环境前提在配置层关闭；原压缩bootstrap/ZIP、68份部署封存、v1的47份和v2的43份均未改动。补充报告SHA607cdfebee4b713fad43ec2d63e417a671e1685e1fa4afeefb39308d8230255a，35份封存SHA98d7c616ececb2c439c4b469b20695b29f11ec80e669ab1efaf1cacb4fc3519a。请求Astra/max，实际后端UNATTESTED，same-family/provisional；两报告皆不签发终态teacher审计标记。
+
+### 5.448 2026-10-10 18:11—18:22：R2全teacher结束，CPU首次JSON保存失败与最小修正后的真实完成
+
+原PID30632/birth16:57:07.50656/native21826计时器于17:52:45.946971正常结束；本turn只重接原handle一次，33803f exit0，没有重建。唯一NN观察为SSH99219/df473a，认证27c104，终态b30a99 exit0；实际18:11:03.096101，距上次16:52:45.946171为4697.14993秒，满足一小时。原controller376499已经退出且controller.exit=0，collect/replay两shard四份exit皆为0。本次观察后没有继续查询GPU或NN日志。
+
+| 物理GPU | 完整采集序列 | 原轨迹调用 | 完整事件 | W/K未来调用 | 采集循环秒 | 回放循环秒 | 退出 |
+|---|---:|---:|---:|---:|---:|---:|---|
+| 0 | 76 | 107060 | 701 | 44246 | 9825.609372 | 4201.622506 | collect/replay均0 |
+| 1 | 76 | 112742 | 596 | 37662 | 8553.490443 | 2773.960010 | collect/replay均0 |
+| 合计 | 152 | 219802 | 1297 | 81908 | 两卡并行 | 两卡并行 | controller0 |
+
+首次终态CPU回读于18:12:31.255046开始、18:12:57.937919退出1；原源码SHAfc5789875562bdb5efe8427c95ae40a2223828f02505cd8474b40f92fdebbe82。真实日志显示已到最后JSON保存行327，错误是NumPy bool_不能被json.dumps直接序列化；bootstrap按约定保存子进程日志、CPU_readback.exit和execution.json后拒绝成功标记。该失败不写成轨迹或GT不一致，也不因循环已结束就补造完整result。原失败目录和38文件证据包保留，ZIP SHA79f99b3e4547655ef0c2277cdf80c3133009c3e83c705f4312069ba5421a2372。
+
+唯一修正是在valid(box)的原判断外显式bool(...)，不改判断含义、数据、标签、损失或NN代码。旧v2文件和旧封存保留，新版本verify_template_write_teacher_raw_v3.py SHA bf3c6402d4efebb4f82cb19cb6c18fdb86f12f9ceabece79b635759fe5a2a187。本地NumPy1.21.6隔离函数检查4个有效/无效数组，原返回bool_、新返回原生bool，判定完全相同且严格JSON保存通过；实际bcbd9b exit0。源码续审已提交，尚不能提前写成该续审已通过。
+
+在全新CPU_v3目录执行相同全量回读，真实18:22:09.104311—18:22:35.306885、26.202574秒，子进程和SSH28102/798f03均exit0；实际结果SHAe4607b1ce6b09a664890f416397a188eabe9c6c55315dd4b703af8a65ca1d5b2。重新逐一检查全部原生219802记录、152份初始化参照、1297缓存及两路原始回放、真实GT、固定human bank/标签、77项保护文件及原aggregate/shard/prefix SHA。回读没有NN构造、forward、优化或实验模块导入，CUDA未初始化。
+
+| CPU实读统计 | 数量 | 统计范围 |
+|---|---:|---|
+| 全部事件 | 1297 | 完整Train152原生合格机会 |
+| 未来均值收益正/负/零/未知 | 607 / 552 / 119 / 19 | W-K，GT有效未来帧均值；未知不填零 |
+| C共同可训练/排除 | 1257 / 40 | 当前GT有效且至少一帧未来GT有效 |
+| 当前GT未知 | 35 | 与未来不可用可重叠，不相加作排除总数 |
+| 未来GT全不可用 | 19 | 不删除未知事件 |
+| 短尾事件/无写入事件序列 | 27 / 10 | 短尾仍保留，所有152参照检查 |
+| 未来成对帧 | 40954 | 两路调用81908 |
+| 未来帧正/负/零/GT未知 | 18265 / 17531 / 3501 / 1657 | 有效GT IoU差；非官方指标 |
+
+actual teacher aggregate SHA24c8461b4d71c573fbaa4bf4f91c4e359cca1614c7fe81246ac0504a325c836c；两replay shard SHA831c988ac9d0ec578072b11d9faac4040c5733bc4ccfda5e32c4150c073a2627 / 4286f72adc0d5eef950d134c763cd5399585c4c48c4f94db51033f8f409b5068；prefix SHA778590127e7ff48ace7c8c42d752f4e154fbd349e7828e6441fefcda59af1f9a / 72178d2f15da48b804fee6c512f96138d495e85d4d1e8679c4fa1427f3b970f1。它们是运行材料绑定，不是最终性能指标。
+
+CPU完成仍不自动签发独立终态审计：回读不重建RGB-D/CLIP/model前向，也不能从只保存record的prefix还原全部历史特征；原teacher标签不代表新C策略历史。正在整理全部原始标量轨迹、C输入、初始化语义、完整prefix和GT供fresh终态审查；大模板张量保留服务器，并由真实CPU全读及SHA检查提供限定证据。只有实际终态审查确认必需digests/标记，才进入C运行预检及120fit/32dev配对。尚无C优化、新final或正式九项指标；既有P0/P1仍未联合达标，goal ACTIVE_UNMET。
+
+下次NN进度观察不早于19:11:03.096101；终态CPU执行、证据打包和静态文档同步不增加NN进度查询。各新增任务保持原handle，长任务等待180—300秒，不以等待超时重启。本文与Git/桌面同步，服务器同步仅md/json静态记录；不修改运行NN源码。

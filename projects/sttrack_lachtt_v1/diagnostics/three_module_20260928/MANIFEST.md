@@ -439,3 +439,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 2026-10-10 verify_template_write_teacher_raw.py及R2_RAW_READBACK_SOURCE_AUDIT_V1/V2.md/json：终态CPU回读源码与完整两轮源码审计，见§5.445；源码PASS不代表实际回读、终态审计或新训练完成。
 
 2026-10-10 R2_THIRD_HOUR_OBSERVATION_20261010.json及R2_THIRD_HOUR_PROGRESS_20261010.json：真实完整采集152序列/219802 calls/1297 events及未完成W/K回放状态，见§5.446；不代表终态teacher/C/性能结果。
+
+2026-10-10：新增verify_template_write_teacher_raw_v3.py，仅bool序列化修正、旧v2保留；终态R2观察、部署源审/环境补充、真实CPU失败及v3完成回执与NumPy检查见§§5.447—5.448及refine-logs/m122_trusted_memory/R2_CPU_*、R2_FOURTH_HOUR_*；不等于独立终态证书或正式性能。
