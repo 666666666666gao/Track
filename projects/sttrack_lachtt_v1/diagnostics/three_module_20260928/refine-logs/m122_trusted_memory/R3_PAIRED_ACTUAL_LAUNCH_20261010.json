@@ -1,0 +1,61 @@
+{
+  "status": "actual_R3_supervised_fixed_queue_launch_received",
+  "actual_launch": {
+    "status": "actual_R3_C_supervisor_spawned",
+    "supervisor_pid": 385974,
+    "command": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-B",
+      "-u",
+      "/root/autodl-tmp/m122_R3_C_paired_20261010/code/m122_R3_process_supervisor_20261010.py",
+      "/root/autodl-tmp/m122_R3_C_paired_20261010"
+    ],
+    "root": "/root/autodl-tmp/m122_R3_C_paired_20261010",
+    "initial_poll_exit": null,
+    "started_at": "2026-10-10T11:18:28.586137+00:00",
+    "admission": {
+      "status": "actual_R3_new_task_resource_admission",
+      "observed_at": "2026-10-10T11:18:28.507863+00:00",
+      "GPU_snapshot": "0, 1, 24576\n1, 1, 24576\n",
+      "GPU_admission_queries": 1,
+      "NN_progress_queries": 0,
+      "NN_calls": 0,
+      "data_free_bytes": 12565049344,
+      "required_free_disk_bytes": 536870912,
+      "warm_existing_interpreter": "/root/autodl-tmp/envs/sttrack/bin/python",
+      "environment_rebuilt": false,
+      "packages_installed": 0,
+      "teacher_audit_sha256": "e082d4a5d92579fb39abe4b8b4db300bac4127ccb9e90b227d98287fe7197cc2",
+      "controller_source_audit_sha256": "6b28cd12ee7fb29efebefc2be2de2459a2bfa410c9456bb54e52b9bec2fcb907"
+    },
+    "gate_sha256": "5d6c44813523560346f6b28d3556132d9e7ad6f88efe79bc97b67d58a889cef2",
+    "archive_sha256": "92e6ec855f600ae4c638be72084049687696cfa474a0efc566f4735e01c85bf9",
+    "stage_order": "GPU0 preflight, then paired GPU0 current/GPU1 future fits/development32, then CPU analysis",
+    "runtime_preflight_passed": false,
+    "paired_C_training_completed": false,
+    "development32_completed": false,
+    "final_nine_metrics_completed": false,
+    "next_NN_observation_not_before": "2026-10-10T12:18:28.507863+00:00"
+  },
+  "original_stdout_sha256": "a3a67a25d1c60ea30b2acd494808354faeedd6b7398dfec3ea9c583d550fc493",
+  "native_session_id": 64986,
+  "initial_chunk": "dd042c",
+  "authentication_chunk": "30ffb9",
+  "native_terminal": {
+    "chunk_id": "e1739b",
+    "exit_code": 0
+  },
+  "scp_session_id": 75560,
+  "scp_initial_chunk": "21dbb6",
+  "scp_authentication_chunk": "216977",
+  "scp_terminal": {
+    "chunk_id": "d391f3",
+    "exit_code": 0
+  },
+  "progress_queries": 0,
+  "restarts": 0,
+  "NN_progress_queries": 0,
+  "optimizer_steps_not_observed": true,
+  "formal_metrics_newly_produced": false,
+  "recorded_at": "2026-10-10T11:19:25.805173+00:00"
+}

@@ -447,3 +447,5 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 2026-10-10 新增m122_R3_C_controller_20261010.py（固定预检→双卡fit→双卡32dev→CPU比较，无轮询/自动R4）；实际R2终态审查、独立CPU复算、closure为R2_TERMINAL_*_20261010，证据范围和R3未运行状态见§5.450。
 
 2026-10-10 新增m122_R3_process_supervisor_20261010.py，只记录实际controller退出/日志，无重试/轮询。R3_CONTROLLER_SOURCE_*_20261010记录134项源审及原始closeout，具体包待审/未运行，见§5.451。
+
+2026-10-10 R3_DEPLOYMENT_SOURCE_AUDIT/R3_CONCRETE_SOURCE_ADMISSION/R3_PAIRED_ACTUAL_LAUNCH/R3_FIRST_HOURLY_ORIGINAL_WAIT_OWNER_20261010：源审与实际新队列启动/被动小时等待分别保存，不作性能证书，详见§5.452。

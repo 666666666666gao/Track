@@ -27076,3 +27076,28 @@ R3 controller的21项源码/实际终态材料已交原fresh R3 reviewer续审�
 原fresh reviewer正在对具体ZIP、gate、bootstrap和外层监督器补充源审，源controller PASS不替代具体部署审查/真实NN预检。此刻没有上传/启动R3，runtime_preflight_passed和R3_launch_certified仍false。最新远端NN观察仍18:11:03.096101，19:11:03.096101之前不查询GPU/NN。待补充源审完成，实际运行256帧常量动作预检，再将GPU0 current/GPU1 future配对训练和32dev放入同一固定队列。
 
 本节没有新增正式指标或提前宣称C有效；后续仍需真实结果审查、按既定条件建立C自身历史teacher及Full152最终训练、同一final三数据集九项验收。目标ACTIVE_UNMET。
+
+### 5.452 2026-10-10 19:18：R3配对C队列实际启动，20:18后才查看一次进度
+
+§5.451 Git ceeb5c99fa16630557931c7f5f426b981b885331真实push exit0、原session7163终态95428d exit0；§§5.450—5.451的10份静态md/json已于19:09:54.087372同步服务器，原SCP3018/d04984、SSH29282/8bb6c2均exit0，repo/Desktop/Git/server master SHA51f748dc25a5ff89f7301766a63385d0e25677b93e13cd289b0ab96cfcd6582a。仅静态记录写入，没有覆盖运行中NN源码或查询进度。
+
+随后具体部署补充源审完成并封存：source/deployment PASS，overall WARN，0阻断/2范围限制，137项scoped检查；29个真实reached项目模块均有实际路径SHA，90项为原77加新13。22主输入及160历史R3材料字节未变；原134项controller检查未重复运行。监督器的隔离无NN断言夹具真实OS exit1、child receipt exit1，stderr traceback留存，无虚假result。报告JSON SHAf644c176dafd186c409903f8a117ea2c819eba951eb60ee67090eec119b17d6b，MD SHA3d2b1665234680401cfebac708b8eea9986729ba3c36393306625eca2c5c522d，46份封存ZIP SHAbfa7e9f591ad28715f38e0df857afdb349a0545460a5a8d9e03189f02156b018。实际backend UNATTESTED/same-family/provisional，源审不作运行或性能证书。
+
+明确保留两项边界：实际split路径不在90项清单内，清单绑定的是相同SHA的teacher/C_split副本；实际split仍由fit/eval/analyzer内置固定SHA在模型构造前验证。监督器记录子controller异常真实退出，但监督器自身在subprocess返回前若异常，仍可能没有terminal receipt；没有加入自动重试/宽泛try/except。一次GPU准入检查和一次本地子进程initial poll分别记录，不是NN进度轮询。
+
+实际包上传原SCP75560（21dbb6/216977/d391f3）exit0；真实SSH64986（dd042c/30ffb9/e1739b）exit0。19:18:28.507863进行新任务资源入场，距上一18:11:03.096101实际NN观察超过一小时，两卡均1MiB、各24576MiB总显存，数据盘可用12565049344字节；复用warm解释器，安装数0、环境重建false。19:18:28.586137启动隔离根/root/autodl-tmp/m122_R3_C_paired_20261010的实际supervisor PID385974，initial_poll_exit=None。这个PID是监督器，不冒充已观察的controller/NN子进程PID。
+
+| 固定阶段 | GPU/范围 | 预算与提交规则 |
+|---|---|---|
+| 真实运行预检 | GPU0，cube04前256帧 | native/constant-write own-history与一次真实reject，必须通过actual输出/query/模板断言 |
+| current C对照 | GPU0，120fit的993公共事件 | 519→128→32→1，70721参数，10epochs/320优化，seed2027，current>.5 |
+| future C方案 | GPU1，同一993公共事件 | 同初始化/顺序/预算，signed W-K回归，future>0 |
+| 固定teacher开发诊断 | 两臂各264事件 | 不参与优化，共同资格，未知不当负例 |
+| 完整自身历史开发 | 两卡各32序列 | 每臂49366次跟踪调用，第一框后不读GT、不GT重置 |
+| 统一CPU比较 | 32序列真实GT | future macro-IoU严格胜native及current，H10不多于native；还需fresh结果/覆盖审查 |
+
+以上训练与开发均由同一固定controller按退出码串行阶段/两卡配对推进，不做进度轮询、自动重启或自动R4。在实际bootstrap回执时，runtime_preflight_passed/paired_C_training_completed/development32_completed/final_nine_metrics_completed均false；本节只确认队列实际启动，没有提前填写C训练步数、开发成绩或新的正式九项。
+
+下一NN进度节点固定20:18:28.507863（UTC12:18:28.507863）之后。唯一被动本地timer于19:19:26.899658启动，原native session30195、initial246241，实际Python PID37988、CIM birth19:19:26.727001；每次sleep300s，remote queries0，禁止重建timer或重启实验。20:18以前仅本地记录和静态文档同步，不读取NN进度。用户“不要频繁轮询”继续适用。
+
+真正通过R3完整结果/覆盖审查后，才建立C自身历史的Full152 W/K teacher并训练最终C，与固定A+B形成统一final，三数据集全部九项完整验证。若不通过，按真实收益/损害/覆盖分析继续改进；R4自身历史collector尚未实现，不能将现有原生teacher标签直接当作新C策略历史标签。当前目标ACTIVE_UNMET。
