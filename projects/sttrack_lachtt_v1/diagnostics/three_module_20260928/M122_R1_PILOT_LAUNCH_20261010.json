@@ -1,0 +1,117 @@
+{
+  "status": "actual_M122_R1_pilot_launched_runtime_result_pending",
+  "recorded_at": "2026-10-10T11:04:42.669701+08:00",
+  "actual_launch": {
+    "scp": {
+      "initial": {
+        "chunk_id": "508cca",
+        "wall_time_seconds": 10.0153707,
+        "session_id": 9815,
+        "original_token_count": 30,
+        "output": "\u001b[?9001h\u001b[?1004h\u001b[?25l\u001b[2J\u001b[m\u001b[Hroot@connect.nmb2.seetacloud.com's password:\u001b[1C\u001b]0;C:\\WINDOWS\\system32\\cmd.exe\u0007\u001b[?25h"
+      },
+      "authentication_output": {
+        "chunk_id": "ba5c99",
+        "wall_time_seconds": 0.2522295,
+        "session_id": 9815,
+        "original_token_count": 1,
+        "output": "\r\n"
+      },
+      "terminal": {
+        "chunk_id": "e22058",
+        "wall_time_seconds": 1.18e-05,
+        "exit_code": 0,
+        "original_token_count": 45,
+        "output": "R1_pilot_deployment.zip                         0%    0     0.0KB/s   --:-- ETA\rR1_pilot_deployment.zip                       100%   49KB  58.5KB/s   00:00    \r\n\u001b[?9001l\u001b[?1004l"
+      },
+      "session": 9815,
+      "exit_code": 0
+    },
+    "launch": {
+      "initial": {
+        "chunk_id": "f8012d",
+        "wall_time_seconds": 10.0079513,
+        "session_id": 5189,
+        "original_token_count": 30,
+        "output": "\u001b[?9001h\u001b[?1004h\u001b[?25l\u001b[2J\u001b[m\u001b[Hroot@connect.nmb2.seetacloud.com's password:\u001b[1C\u001b]0;C:\\WINDOWS\\system32\\cmd.exe\u0007\u001b[?25h"
+      },
+      "authentication_output": {
+        "chunk_id": "3d1f72",
+        "wall_time_seconds": 0.2641832,
+        "session_id": 5189,
+        "original_token_count": 1,
+        "output": "\r\n"
+      },
+      "terminal": {
+        "chunk_id": "c177ba",
+        "wall_time_seconds": 5.89e-05,
+        "exit_code": 0,
+        "original_token_count": 168,
+        "output": "M122_R1_LAUNCH_BEGIN\r\n{\r\n  \"status\": \"actual_M122_R1_pilot_controller_launched\",\r\n  \"pid\": 371925,\r\n  \"started_at\": \"2026-10-10T03:01:33.301177+00:00\",\r\n  \"command\": [\r\n    \"/root/autodl-tmp/envs/sttrack/bin/python\",\r\n    \"-B\",\r\n    \"-u\",\r\n    \"/root/autodl-tmp/m122_template_pilot_20261010/controller.py\"\r\n  ],\r\n  \"gpu_preflight\": \"0, 1, 0\\n1, 1, 0\\n\",\r\n  \"original_NN_sources_modified\": false,\r\n  \"new_pilot_sources\": 3,\r\n  \"optimizations\": 0,\r\n  \"full_teacher_or_C_training\": false,\r\n  \"R0_audit_sha256\": \"c129c2d452450d9c5f63c76c31c3927c1e0d398641c53dcc2c5aed4b394cccc3\",\r\n  \"first_progress_check_not_before_seconds\": 3600\r\n}\r\nM122_R1_LAUNCH_COMPLETE\r\n\u001b[?9001l\u001b[?1004l"
+      },
+      "session": 5189,
+      "exit_code": 0
+    },
+    "receipt": {
+      "status": "actual_M122_R1_pilot_controller_launched",
+      "pid": 371925,
+      "started_at": "2026-10-10T03:01:33.301177+00:00",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m122_template_pilot_20261010/controller.py"
+      ],
+      "gpu_preflight": "0, 1, 0\n1, 1, 0\n",
+      "original_NN_sources_modified": false,
+      "new_pilot_sources": 3,
+      "optimizations": 0,
+      "full_teacher_or_C_training": false,
+      "R0_audit_sha256": "c129c2d452450d9c5f63c76c31c3927c1e0d398641c53dcc2c5aed4b394cccc3",
+      "first_progress_check_not_before_seconds": 3600
+    },
+    "NN_progress_queries_after_start": 0,
+    "attempts_preserved": [
+      "R1_pilot_first_scp_failure.json",
+      "R1_pilot_second_scp_failure.json",
+      "R1_pilot_first_launch_failure.json"
+    ],
+    "controller_restarts": 0
+  },
+  "hourly_local_wait": {
+    "owner": {
+      "pid": 40216,
+      "creation_time": "2026-10-10T11:02:45.396439+08:00",
+      "command_line": "\"C:\\Users\\gb\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\python.exe\" -X utf8 C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_passive_hourly_wait.py",
+      "actual_native_session": 18314,
+      "launch_chunk_id": "5935e3",
+      "verified_at": "R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST3.8/源码审核，未导入或运行。原输入T保留于EXPERIMENT_TRACKER_20261009_031056_before_pilot_review_update.md。全Train教师与C优化仍未开始。",
+      "actual_CIM_chunk": "2a2202",
+      "deadline": "2026-10-10T12:01:33.301177+08:00",
+      "server_queries": 0,
+      "neural_queries": 0
+    },
+    "actual_initial_tool": {
+      "chunk_id": "5935e3",
+      "wall_time_seconds": 10.0167912,
+      "session_id": 18314,
+      "original_token_count": 50,
+      "output": "{\"status\": \"local_R1_hourly_wait_running\", \"pid\": 40216, \"started_at\": \"2026-10-10T11:02:45.556617+08:00\", \"deadline\": \"2026-10-10T12:01:33.301177+08:00\", \"server_queries\": 0, \"neural_queries\": 0}\r\n"
+    },
+    "actual_CIM_tool": {
+      "chunk_id": "2a2202",
+      "wall_time_seconds": 0.8653626,
+      "exit_code": 0,
+      "original_token_count": 714,
+      "output": "{\r\n  \"ProcessId\": 40216,\r\n  \"CreationDate\": \"2026-10-10T11:02:45.396439+08:00\",\r\n  \"CommandLine\": \"\\\"C:\\\\Users\\\\gb\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13-windows-x86_64-none\\\\python.exe\\\" -X utf8 C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/R1_passive_hourly_wait.py\"\r\n}\r\n2026-10-10T11:03:07.6746632+08:00\r\n# M122之后：可信模板写入执行表\r\n\r\n创建时间：2026-10-08T23:58:56.449683+08:00。本表是待执行计划，不是训练或结果回执。详细协议见[EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md)，C拟合/开发分组见`TRAIN_SEQUENCE_SPLIT_20261008_235856.json`。\r\n\r\n| Run ID | 目的 | 系统/数据 | 首要验收 | 优先级 | 状态 |\r\n|---|---|---|---|---|---|\r\n| R0 | 封存当前承诺完整验收 | 现有P0/P1，三数据集 | 两个一致完整九项行；结果审核 | MUST | RUNNING：10月9日02:24真实观察；P0第一波两分片exit0、各441，第二波两GPU已启动；P0 proxy895/1765，P1排队，正式VOT为空 |\r\n| R1 | 证明模板动作可隔离 | 新C接口；P1固定final，Train前12合法事件 | K/K一致、W/K本帧动作前一致、无GT进入控制 | MUST | PREPARED：helper、状态缓存、collect/replay caller已实现；两次源码审核均源码PASS/范围WARN/0阻断；12事件采集、缓存往返、GPU K/K/W/K实测仍TODO，R0结束前不启动新GPU工作 |\r\n| R2 | 建立真实动作教师 | P1固定final Train152自身历史；所有原规则资格事件 | W/K 32帧有效GT平均IoU差；输入SHA和全量事件回执 | MUST | TODO：不得使用稀疏标量trace伪造状态 |\r\n| R3 | 分离当前质量与未来写入价值 | 同参数C-current/C-future，C-fit120/C-dev32 | 完整递归序列等权IoU胜两参照、H10不增、有益写入覆盖报告 | MUST | TODO：seed2027，原A+B曾见过开发32条需披露 |\r\n| R4 | 覆盖C自身历史并形成final | 合并原规则/C历史Train152事件，只更新C | Full152固定预算、实际事件数与冻结摘要封存 | MUST | TODO：R3通过才执行 |\r\n| R5 | 同一最终模型正式评价 | 唯一A+B+C，Test50/CDTB80/VOT127 | 全九项目标及新增损害、耗时、结果审核 | MUST | TODO：R4封存后执行 |\r\n\r\n人工文本沿用最终核验类别和首4属性，单seed2027。当前VOT安排与每小时观察不变；不启动额外进程占用正在评测的GPU，不声称C已实现、训练、读取新视角或恢复crop外目标。\r\n\r\n状态更新：2026-10-09T02:35:10.941114+08:00；旧审核输入T保持于EXPERIMENT_TRACKER_20261008_235856.md。没有把静态helper审核当作R1运行完成。\r\n\r\nR1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST3.8/源码审核，未导入或运行。原输入T保留于EXPERIMENT_TRACKER_20261009_031056_before_pilot_review_update.md。全Train教师与C优化仍未开始。\r\n"
+    }
+  },
+  "remote_root": "/root/autodl-tmp/m122_template_pilot_20261010",
+  "controller_sha256": "166b96c15fd6068abe0b8717a9131f88b62f16ee9d28abbbf4765f37a6764cb8",
+  "optimizations": 0,
+  "original32_NN_sources_changed": false,
+  "pilot3_NN_sources_changed": false,
+  "R1_runtime_complete": false,
+  "full_teacher_or_C_training": false,
+  "goal": "ACTIVE_UNMET"
+}
