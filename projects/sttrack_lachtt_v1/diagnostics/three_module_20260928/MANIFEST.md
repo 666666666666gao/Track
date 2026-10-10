@@ -418,3 +418,8 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 - M122_R0_COMPLETE_RESULTS_20261010.json + M122_R0_COMPLETED_RESULT_AUDIT_20261010.md/json + m122_native_R0_completed_20261010_102205 + master5.435: all six actually sealed, both VOT1765/127, failures234/230; two finals stay separate. Fresh183-file/52-source/two-real-final integrity audit closed, same-family/provisional, raw VOT bytes not locally recounted, one Train attribute tokenization discrepancy disclosed; goal ACTIVE_UNMET. No R0 restart/remaining progress polling; fixed-P1 R1 pilot next.
 
 - m122_R1_pilot_controller_20261010.py + M122_R1_PILOT_LAUNCH_20261010.json + tracker updated + master5.436: actual SSH5189/c177ba exit0, PID371925 launch11:01:33; unchanged3 pilot/32 old NN sources, no optimizer/full teacher/C. First NN progress12:01:33, solelocal40216/native18314. Original SCP37541/60343 exit255 and firstSSH75926 exit1 preserved; arg-list transport9815 exit0/nested actual archive binding resolved, no NN restart. Runtime/pair utility results pending.
+
+
+2026-10-10 R1运行结果：M122_R1_RUNTIME_RESULT_AUDIT_20261010.md/json、M122_R1_COMPLETED_PILOT_RESULTS_20261010.json、M122_R1_AUDIT_CLOSURE_20261010.json；一条Train前缀/12事件，WARN0阻断，非C训练。R2三源与M122_R2_TEACHER_CONTRACT_20261010.md及M122_R2_TEACHER_SOURCE_PREPARED_20261010.json仅准备/源码审核，未部署或运行。
+
+公开R1审报告MD仅作CRLF→LF和末尾单换行的显示副本，数值/正文不改；私有原报告保持SHAbad0d9da2f0062ff6f481d0b5ae500044fc2b32af7775d1856233bd01aefe2dc，公开显示副本SHAff00a8a7a8d0e450b9869afbba44ced3d74aeba1f3e0a25da9e4a00e87798816。JSON和闭合回执中的原审报告SHA对应私有原字节，不能与显示副本SHA混写。首轮Git diff check实际因原MD末尾空行退出2，未commit/push；原失败保留，未修改任何审查输入或NN源。
