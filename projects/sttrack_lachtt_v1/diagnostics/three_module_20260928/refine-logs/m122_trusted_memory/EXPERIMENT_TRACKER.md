@@ -123,3 +123,5 @@ Oct12 sec5.488 local-only M124 epoch ledger: actual incomplete snapshot64/95 par
 Oct12 sec5.489 actual03:48:21 epoch1 saved120/152,173959calls/5401steps; no completedepoch or OPE. Original99410 consumed0; next67058/PID35864 due04:48:21.593390. Cart onlyonecart: errorstartsinsidecrop, accurateclass remains soft response evidence; unique candidate cause unmeasured/read-only replay notexecuted. NNsource unchanged.
 
 Oct12 sec5.490 actual04:48:59 epoch1 saved143/152,207253calls/6418steps; no completedepoch or OPE. Original67058 consumed0; next8991/PID35560 due05:48:59.759113. Existing cart175->176 GTboxcenter motion24.2058px versus submitted404.2770px; GT remainsinsidecrop, unique candidate cause unmeasured. NNsource unchanged.
+
+Oct12 sec5.491 actual firstepoch Train152 complete05:08:08 exit0,219802calls/6807AB+C steps; final75aee7ac...; observed05:49 Test15/50 CDTB23/80 bboxfiles, no fullOPE metrics/best. BothGPU4122MiB74/77pct instant. Original8991 consumed0; next92589/PID4184 due06:49:41.554377. Real completed-training parser branch/source hashes checked; completedmetrics branch unexercised. No NNsource change/restart.
