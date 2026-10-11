@@ -1,0 +1,628 @@
+{
+  "audit_skill": "experiment-audit",
+  "scope": "SOURCE_ONLY",
+  "status": "completed_readonly_source_review",
+  "source_verdict": "SOURCE_ONLY_PASS",
+  "blocking_count": 0,
+  "blockers": [],
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "reason_code": "source_pass_with_unexecuted_runtime_and_scope_limits",
+  "review_call_status": "completed",
+  "agent_id": "/root/current_c_onset_readonly_source_integrity_20261012",
+  "verdict_id": "/root/current_c_onset_readonly_source_integrity_20261012",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "actual_backend": "UNATTESTED",
+  "actual_reviewer_model": "UNATTESTED",
+  "actual_reviewer_reasoning_effort": "UNATTESTED",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "context_independence": "fresh_direct_artifact_review",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-11T17:17:53.466888+00:00",
+  "date": "2026-10-12",
+  "review_basis": "All 15 manifest artifacts and necessary source dependencies read directly; no executor verdict used as review conclusion.",
+  "manifest_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_onset_readonly_source_audit_20261012\\INPUT_MANIFEST.json",
+  "manifest_sha256": "ba6896423f8b07eed28c409bc253132d21498fbcffb8e5cf04aaf87f712b3bbe",
+  "audited_inputs_count": 15,
+  "necessary_dependency_count": 18,
+  "all_inputs_unchanged": true,
+  "audited_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\replay_currentC_cdtb_onsets.py": "49e314232de10edac76812a56a60886571c1e7cf1734b7bf0175812c2c4033dd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_current_C_official_runtime.py": "7fa5748b57981188c8aac2ab6d396af1140a87cecf069b1fcd5b21ed8658bd10",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_official_runtime.py": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_official.py": "ba6329e7af713ae2b5c05a262d8b377df74dc872b266aaae4f1a291286854706",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_target_decoder.py": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_C.py": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\bind_m122_official_initializations.py": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_state_dependency_sources_20261009\\lib\\test\\tracker\\data_utils.py": "873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_actual_locked_CDTB_metric_source_20261012.py": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_actual_launch_publication_final_closeout_20261012.json": "d9419a7b6ea83bb7caf84426437606a357f87d525c91ab264092f5cf47e26b88",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_failure_onset_images_20261011\\onset_rows.json": "f9216a8f916931dd78e5b67885ed1900b26596e51357ba5592de75f0efbbb7f9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_readonly_onset_replay_PLAN_20261012.json": "b0399386cd8d64b73810dc5df80f1849ad52b86d69f4d3c42748d7f98799145b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_features.py": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_region_encoding.py": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_region_decoder.py": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\encode_m122_official_human_text.py": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m122_external_human_labels.py": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m122_current_C_evaluation.py": "f652ccf009264cd011a70b591b2497d5637d4071a1f8b6916cd8cd3cc6ec4483",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\038_sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\039_sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\040_processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\041_depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\042_box_ops.py": "cee9d309a9c4a6c5f00fab575719bc7bf8d865127c91b10d4fb233996a111fbc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\036_deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\037_head.py": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\files.json": "1069c355e25469a9881302a3d0e6750af48166ed8349554c0c3a0fbf06de57e4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_initialization_binding.json": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e"
+  },
+  "checks": {
+    "A_gt_provenance": {
+      "status": "PASS",
+      "level": "SOURCE_ONLY",
+      "details": [
+        "正式 CurrentC 类复用 base plan、bundle、训练结果、final、native checkpoint、CLIP 与 bank/binding 哈希检查；加载 A_B 与原 base final 逐张量相等，C 使用 current arm。此处检查的是源码约束，未加载实际权重或 bank 张量。",
+        "每条序列只在 frame=0 使用 case.init_bbox，并按 RGB SHA + 原始 double xywh 绑定文字。官方 binding 的 1895 个 key 已独立重算一致，三个选中 CDTB 条目均为第 1 帧、human_confirmed。",
+        "后续 groundtruth.txt 在 replayed_predictions.json 写入及 SHA256 生成后才被哈希和解析；GT 只进入重叠/诊断标注，未进入 tracker step、Empty 分支、状态提交或模板决策。",
+        "人工文字合法初始化绑定不等同于盲首帧协议：已有资料明确使用多帧/视频辅助人工审阅，仅编码类别与稳定属性；不能把文字或 phrase cosine 当作当前实例身份真值。"
+      ],
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\replay_currentC_cdtb_onsets.py",
+          "lines": [
+            39,
+            41,
+            43,
+            53,
+            58,
+            63,
+            64,
+            66,
+            114,
+            117,
+            124,
+            125,
+            126,
+            169
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_current_C_official_runtime.py",
+          "lines": [
+            9,
+            11,
+            18,
+            20,
+            23,
+            30,
+            47,
+            48,
+            49,
+            50,
+            56,
+            58,
+            59,
+            61,
+            63,
+            68,
+            71
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_official_runtime.py",
+          "lines": [
+            9,
+            11,
+            12,
+            18,
+            19,
+            20
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\bind_m122_official_initializations.py",
+          "lines": [
+            13,
+            33,
+            35,
+            37,
+            50,
+            53,
+            54
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\encode_m122_official_human_text.py",
+          "lines": [
+            14,
+            18,
+            19,
+            24,
+            25,
+            27,
+            29,
+            33
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m122_external_human_labels.py",
+          "lines": [
+            25,
+            26,
+            31,
+            34,
+            45,
+            46
+          ]
+        }
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "level": "SOURCE_ONLY",
+      "details": [
+        "候选 IoU 由锁定的 VOT bounded rectangle overlap 与数据集 GT 计算，不以预测自身 max/min/mean 作指标分母。native/full/visual/quality/semantic 原始候选数值均被保存。",
+        "response / quality 是移除同一候选乘法质量因子的局部读数，原 full response 同时保留；它不是性能百分比归一化，也不被提交为跟踪动作。浮点舍入仍存在。",
+        "锁定指标源码的 PR 阈值取自 confidence 只用于选择集合；precision 对选中重叠取均值，recall 分母为有效 GT 数，F 使用通常调和式。本诊断不调用全套 PR/F，也不产生新官方指标。",
+        "native 候选从 data.boxes.float() 保存，因此仅为 float32 的观察表示；源码结果显式否认 exact float64 native output。不能扩大成完整 native tracker baseline。"
+      ],
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\replay_currentC_cdtb_onsets.py",
+          "lines": [
+            83,
+            85,
+            86,
+            91,
+            96,
+            98,
+            99,
+            100,
+            120,
+            136,
+            148,
+            149,
+            160,
+            162,
+            163,
+            184
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_target_decoder.py",
+          "lines": [
+            109,
+            111,
+            114,
+            115
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+          "lines": [
+            42,
+            46,
+            49,
+            51,
+            63,
+            68
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_actual_locked_CDTB_metric_source_20261012.py",
+          "lines": [
+            40,
+            47,
+            49,
+            55,
+            58,
+            117,
+            124,
+            128,
+            129,
+            136,
+            139
+          ]
+        }
+      ]
+    },
+    "C_result_existence": {
+      "status": "WARN",
+      "level": "SOURCE_ONLY_NOT_EXECUTED",
+      "details": [
+        "15 项清单文件实际存在且初始/最终哈希均匹配；onset_rows.json 是已有保存轨迹的 CPU 诊断，不能用作新的神经回放证据。",
+        "新计划明确 prepared_not_deployed_not_executed / actual_NN_calls=0 / optimizer_steps=0；审查目录所在 .aris 子树未发现 replayed_predictions.json。该本地文件盘点不证明远端进程状态，本次没有进行远端查询。",
+        "代码只有完成前缀、冻结状态检查、GT 后标注与最终 prediction SHA 校验后才写 complete_readonly... 的 result.json。尚未执行这些路径，不能把待执行 assert 或返回字典中的 True 字段当作实测通过。",
+        "M124 publication closeout 仅能说明已有发布收据与当时状态字段，不是主完整 suite 终止或 GPU 释放证明；部署/执行准入保持未满足、未核验。"
+      ],
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_readonly_onset_replay_PLAN_20261012.json",
+          "lines": [
+            2,
+            15,
+            16,
+            17,
+            22
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_failure_onset_images_20261011\\onset_rows.json",
+          "lines": [
+            2,
+            973,
+            974,
+            975,
+            976
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\replay_currentC_cdtb_onsets.py",
+          "lines": [
+            110,
+            111,
+            114,
+            117,
+            169,
+            170,
+            175,
+            187
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_actual_launch_publication_final_closeout_20261012.json",
+          "lines": [
+            18,
+            19,
+            28,
+            33,
+            35,
+            36
+          ]
+        }
+      ]
+    },
+    "D_dead_code_and_real_interfaces": {
+      "status": "PASS",
+      "level": "SOURCE_ONLY",
+      "details": [
+        "main 由 __main__ 入口调用；actor.trusted.step 与正式 actor.track->trusted.track->step 使用同一动作路径。step 返回 out,data,record，诊断没有误解返回协议。",
+        "PreprocessorMM.process 返回一个 torch Tensor；原生初始化 z_dict=[template]*num_template，模板检查直接 clone/equal 张量，未错误使用 .tensors 字段。原生 network.forward 返回 out_dict 列表，observe 正确取 outputs[0] 与 candidate_features。",
+        "模板写入只在正式 step 的 native 50 帧/.75 条件与 current C prediction>.5 后发生，append(template)/pop(1) 保持首模板；Empty 分支仅调用 decoder(alternate)，没有 native forward、tracker step、query/template 写入。",
+        "预测封存后，_load_rows 与 _vot_overlaps 调用结果确实写入 diagnostics/result；全量 evaluate_depthtrack_results 和 format_metrics 不属于新诊断的执行路径。",
+        "train_template_write_C 仅提供 state_digest；其训练 main 受 __main__ 保护，不因导入执行。analyze_train_states 与历史 DenseRegionDecoder/InstanceCandidatePrototype 的指标/模型类并非本诊断路径，不可据其存在宣称执行。"
+      ],
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\replay_currentC_cdtb_onsets.py",
+          "lines": [
+            66,
+            75,
+            79,
+            106,
+            107,
+            108,
+            109,
+            126,
+            136,
+            148,
+            156,
+            168,
+            187,
+            192,
+            193
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py",
+          "lines": [
+            27,
+            32,
+            35,
+            44,
+            45,
+            46,
+            48,
+            55,
+            56,
+            58,
+            59,
+            61,
+            62,
+            63,
+            66,
+            67,
+            68,
+            71,
+            72,
+            73
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_C.py",
+          "lines": [
+            21,
+            24
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+          "lines": [
+            56,
+            59,
+            73
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py",
+          "lines": [
+            18,
+            31,
+            102,
+            186,
+            187
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_state_dependency_sources_20261009\\lib\\test\\tracker\\data_utils.py",
+          "lines": [
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\039_sttrack.py",
+          "lines": [
+            31,
+            77,
+            79,
+            84,
+            85
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\038_sttrack.py",
+          "lines": [
+            59,
+            65,
+            147,
+            149,
+            150,
+            161,
+            162
+          ]
+        }
+      ]
+    },
+    "E_scope": {
+      "status": "WARN",
+      "level": "SOURCE_ONLY",
+      "details": [
+        "计划恰为 cart 0..197、trashcans A 0..492、backpack 0..216，三条自身历史前缀共 908 帧（含 3 次初始化）、905 次跟踪步；另有 30 次 Empty decoder 调用，30x256 候选。905 不是所有底层神经模块调用总数。当前实际新回放为 0。",
+        "固定事后选出的 30 个失效附近样本，不是全 CDTB80/完整轨迹恢复实验，不是独立测试集泛化证明；25 帧 GT 有效，backpack 的 184/192/193/194/195 无有效 GT，不可用这些帧的零重叠或 oracle 排名判定候选失败。",
+        "每条序列从首帧连续走自身 history，不读取保存框重置，不回放单帧 GT 状态。保存框/分数只在封存后比较。5.01e-7 容差对应已有 6 位小数保存边界。",
+        "若前缀框或分数与保存轨迹不同，只能描述当前回放状态。即使 bbox 在容差内一致，也没有保存原始 query/template 全状态作比对，不能据此证明原始故障内部状态精确复现。",
+        "Empty、native score、without-quality 及几何替代只是同一回放状态的候选读数，不提交反事实动作，因此不能宣称因果完整轨迹改进或恢复。不得用 CDTB 调阈值/训练，亦无新结构设计。",
+        "进入执行前，仍必须实际取得 M124 主完整 suite 终止与 GPU 释放证据，使用指定官方 plan/cc71... final 与合法 bank 的锁定链；本审查没有准入操作，不能作为 GPU 或模型 runtime PASS。"
+      ],
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\replay_currentC_cdtb_onsets.py",
+          "lines": [
+            21,
+            22,
+            23,
+            24,
+            58,
+            63,
+            66,
+            70,
+            71,
+            127,
+            131,
+            132,
+            133,
+            138,
+            139,
+            140,
+            141,
+            171,
+            172,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_readonly_onset_replay_PLAN_20261012.json",
+          "lines": [
+            3,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            16,
+            21,
+            22,
+            23,
+            24
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_official.py",
+          "lines": [
+            33,
+            34,
+            35
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_failure_onset_images_20261011\\onset_rows.json",
+          "lines": [
+            670,
+            671,
+            696,
+            697,
+            722,
+            723,
+            748,
+            749,
+            774,
+            775
+          ]
+        }
+      ]
+    },
+    "F_evaluation_type": {
+      "status": "PASS",
+      "classification": "real_gt",
+      "execution_state": "planned_NOT_EXECUTED",
+      "secondary_input_protocol": "human_confirmed_initialization_text_with_multiframe_review_aids",
+      "details": [
+        "拟执行的是数据集 GT 事后标注的三前缀、同状态候选诊断；旧 prediction 只作轨迹一致性参考，不是 GT。",
+        "不是 synthetic_proxy、自监督代理、simulation_only 或 human_eval 性能测量；人工标签是模型输入协议。评审中纯数据 fixtures 仅验证元数据/控制流，不是模型性能实验。"
+      ],
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\replay_currentC_cdtb_onsets.py",
+          "lines": [
+            124,
+            126,
+            127,
+            136,
+            137,
+            147,
+            148,
+            149,
+            185
+          ]
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_actual_locked_CDTB_metric_source_20261012.py",
+          "lines": [
+            40,
+            49,
+            50,
+            51,
+            54,
+            55,
+            58
+          ]
+        }
+      ]
+    }
+  },
+  "supplementary_checks": [
+    {
+      "id": "S1_own_history",
+      "status": "PASS",
+      "details": "一次初始化后 range(0,max+1) 连续跟踪；旧保存轨迹仅在预测封存后加载；无 GT reset。"
+    },
+    {
+      "id": "S2_alternative_no_submission",
+      "status": "PASS",
+      "details": "替代仅 decoder 读数，state/query/selected_feature/z_dict 在替代前后被逐值检查；正式 CurrentC 仍可按自身策略写模板。"
+    },
+    {
+      "id": "S3_weights_and_frozen_state",
+      "status": "PASS",
+      "level": "SOURCE_ONLY_NOT_RUNTIME",
+      "details": "torch.no_grad 覆盖 main；native/CLIP eval+requires_grad False、A_B/C eval、C requires_grad False。native/CLIP/A_B/C 的 state_dict digest 前后检查，且 checked_plan 重查源文件和 checkpoint/bank。未执行，不能说实测保持。"
+    },
+    {
+      "id": "S4_currentC_identity",
+      "status": "PASS",
+      "level": "SOURCE_ONLY_NOT_RUNTIME",
+      "details": "指定原官方 plan；运行时 checked_plan 校验 CurrentC current/seed2027/400steps/1257events 及复合 final、A_B 等于 base。请求目标 final 为 cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0。未读取远端 plan、权重、实际 bank 张量。"
+    },
+    {
+      "id": "S5_source_integrity",
+      "status": "PASS",
+      "details": "15 个输入与 18 个必要源码/绑定依赖前后 SHA 一致，INPUT_MANIFEST 自身也未改。"
+    }
+  ],
+  "deterministic_evidence": {
+    "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_onset_readonly_source_audit_20261012\\_private_trace\\DETERMINISTIC_CHECKS.json",
+    "check_count": 9,
+    "AST_files": 27,
+    "human_keys_recomputed": 1895,
+    "saved_crop_metadata_rows": 30,
+    "valid_GT_rows": 25,
+    "invalid_GT_rows": 5,
+    "model_runtime_checks": 0,
+    "project_modules_imported": []
+  },
+  "operations": {
+    "NN_calls": 0,
+    "GPU_queries": 0,
+    "SSH_calls": 0,
+    "model_loads": 0,
+    "optimizer_steps": 0,
+    "training_progress_queries": 0,
+    "source_edits": 0,
+    "remote_deployments": 0
+  },
+  "runtime_status": "NOT_EXECUTED",
+  "runtime_verdict": "NOT_EVALUATED",
+  "GPU_admission": "NOT_CHECKED_NOT_GRANTED",
+  "resource_gate": {
+    "M124_full_suite_terminal_required": true,
+    "released_GPU_required": true,
+    "actual_terminal_verified": false,
+    "actual_GPU_release_verified": false,
+    "deployment_or_execution_permitted_by_this_report": false
+  },
+  "evaluation_type": "real_gt",
+  "evaluation_type_scope": "planned post-seal local diagnostics; zero new execution",
+  "limitations": [
+    "source-only verdict does not establish runtime viability, GPU admission, checkpoint/bank tensor identity, or prediction parity",
+    "no network, SSH, GPU, model loading, neural calls, optimizer steps, or training/progress queries were performed",
+    "original saved history internal state cannot be certified by six-decimal bbox equality",
+    "native candidate geometry is the observation float32 representation",
+    "human text used multiframe aids; no blind-first-frame or current-instance semantic-truth claim",
+    "five selected samples have invalid GT; they cannot support candidate coverage/failure claims",
+    "three selected prefixes and local candidate alternatives do not establish full-trajectory rescue or full-benchmark improvement",
+    "M124 completion and GPU release remain mandatory future admission conditions, not verified by this review"
+  ],
+  "action_items": [
+    "无需为本次 SOURCE_ONLY 结论修改输入源码。保持当前未部署/未执行状态。",
+    "只有主 M124 完整 suite 实际终止且 GPU 释放后，才能进入独立部署/执行准入；本报告不替代该证据。",
+    "未来执行要使用计划指定 CurrentC 官方 plan 和 final 身份；保留所有 hash/assert 的真实结果，失败即保持失败，不能改写成功字段。",
+    "后续解释必须联合报告保存轨迹的 bbox 与 confidence 差异；无有效 GT 帧保持不可判定；不可把 float32 native候选或同状态 oracle 容量写成完整恢复。"
+  ],
+  "claim_impact": [
+    {
+      "claim": "只读诊断源码已完成审查且无源码阻塞项",
+      "impact": "supported_SOURCE_ONLY_provisional"
+    },
+    {
+      "claim": "实际模型/GPU/Empty一致性与冻结状态运行验证通过",
+      "impact": "unsupported_NOT_EXECUTED"
+    },
+    {
+      "claim": "原始故障状态已复现或候选读数证明完整恢复",
+      "impact": "unsupported"
+    },
+    {
+      "claim": "三条前缀的事后 real-GT 同状态诊断",
+      "impact": "planned_only_until_actual_results"
+    }
+  ],
+  "trace_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_onset_readonly_source_audit_20261012\\_private_trace",
+  "audit_seal_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_onset_readonly_source_audit_20261012\\AUDIT_SEAL.json"
+}

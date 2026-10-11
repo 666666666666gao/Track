@@ -111,3 +111,5 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 
 
 M124 actual Oct12 00:15: max20 full Train152 joint, every epoch Test50/CDTB80, consecutive dual F decline patience2, best equal mean F then complete VOT. User-authorized external checkpoint selection disclosed. R3 source-only0block, old37seq/54906calls/1711steps recovered; supervisor500073/controller500074/trainer500075 CPUstartup witnessed. No new complete metric. CurrentC CDTB onset frames: cart no secondcart jumped towardperson beforeoutcrop; backpackreappearanceoutside; trashcanstwoinstances. Hourly only native35639/PID48336 due01:15:52. Goalactive/unmet.
+
+2026-10-12 §5.485: M124 epoch1 actual64/152 complete, 89069calls/2773steps; +34163calls/+1062steps from carried prefix. No complete epoch metric. Original35639 timer ended; next unique61508/PID7584 due02:19:08.927911. CurrentC onset candidate replay source-onlyPASS0/WARN, unexecuted; after M124 terminal/GPU release only. Accurate cart category/no secondcart still local jump at176-177 while insidecrop; causal candidate reason pending. Goalactive/unmet.
