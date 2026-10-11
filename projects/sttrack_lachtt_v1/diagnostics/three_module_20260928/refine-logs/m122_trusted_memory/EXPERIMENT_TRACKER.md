@@ -119,3 +119,5 @@ Oct12 sec5.486 localCPU saved-summary: C/P1 bbox+score SHA exact78/80, changed m
 Oct12 sec5.487 actual02:42 observation: epoch1 saved95/152,134597calls/4197steps (+45528/+1424), no completedepoch metric. Remaining85205calls rough2.60-2.61h excludesOPE. Original61508 exited0; next unique99410/PID32436 due03:42:30.406579. Existing cart176 rawIoU0.155953 versusofficial0.155981; GT cropcenter[.513,.535], sourceRGBconversioncorrect; no uniquecause. No runtimeNN source change.
 
 Oct12 sec5.488 local-only M124 epoch ledger: actual incomplete snapshot64/95 parsed, full-completion/metric branches notyet runtime-exercised. CSV underdesktopproject experimentdiagnostics, snapshot02:42. No extraGPU/NN/server call or training change; sameoriginal99410 timer due03:42:30.406579.
+
+Oct12 sec5.489 actual03:48:21 epoch1 saved120/152,173959calls/5401steps; no completedepoch or OPE. Original99410 consumed0; next67058/PID35864 due04:48:21.593390. Cart onlyonecart: errorstartsinsidecrop, accurateclass remains soft response evidence; unique candidate cause unmeasured/read-only replay notexecuted. NNsource unchanged.
