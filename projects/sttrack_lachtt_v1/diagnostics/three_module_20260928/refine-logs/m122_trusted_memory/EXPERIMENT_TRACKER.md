@@ -117,3 +117,5 @@ M124 actual Oct12 00:15: max20 full Train152 joint, every epoch Test50/CDTB80, c
 Oct12 sec5.486 localCPU saved-summary: C/P1 bbox+score SHA exact78/80, changed mug_gs/two_mugs; allboxR changed onlymug_gs +8.42048pp, macro+0.10526pp. Seriouslow10203/10509 in>=10frame segments; 98 onsets inside45/outside53, inside-to-out24/allinside21. No server/NN/progress query, no currenttraining change. Original timer61508 alive, due02:19:08.927911.
 
 Oct12 sec5.487 actual02:42 observation: epoch1 saved95/152,134597calls/4197steps (+45528/+1424), no completedepoch metric. Remaining85205calls rough2.60-2.61h excludesOPE. Original61508 exited0; next unique99410/PID32436 due03:42:30.406579. Existing cart176 rawIoU0.155953 versusofficial0.155981; GT cropcenter[.513,.535], sourceRGBconversioncorrect; no uniquecause. No runtimeNN source change.
+
+Oct12 sec5.488 local-only M124 epoch ledger: actual incomplete snapshot64/95 parsed, full-completion/metric branches notyet runtime-exercised. CSV underdesktopproject experimentdiagnostics, snapshot02:42. No extraGPU/NN/server call or training change; sameoriginal99410 timer due03:42:30.406579.
