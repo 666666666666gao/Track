@@ -27947,3 +27947,17 @@ R最低五条为boxes_backpack_room_occ_1、cart_room_occ_1、robot_corridor_occ
 已核对观察器读取epoch目录中的dataset_analyze.exit后才收集evaluation/dataset/predictions/metrics.json，目录与实际run写入位置一致，没有修改正确的旧逻辑。实际完成训练数据首次走通本地ledger完整训练分支；完整指标、best和早停整理分支仍待真实完成数据。封存的actual_epoch01_training_result/receipt不是独立重新执行NN的性能审计，不据此宣布三数据集完成或目标达标。
 
 原最多20轮、每轮全Test/CDTB、连续两轮相邻双F严格下降早停、两F等权均值best且持平保留较早轮、只对selected best完整VOT127/1765协议不变。下一唯一原被动timer92589/PID4184，birth05:58:10.521294，deadline06:49:41.554377；零查询的300秒本地等待。下一只读观察器已准备，尚未执行。神经网络源码、标签、预测、模板规则没有中途修改，无新诊断NN或训练重启。Goal ACTIVE_UNMET。
+
+
+### 5.492 M124首轮两项全量OPE进展43/50和60/80（2026-10-12 06:50）
+
+原第六小时timer92589/PID4184于06:49:41.564421真实退出0，7次同句柄join，未重启。唯一第六次GPU/NN进度观察06:50:17.764372，距上一真实观察3636.209995秒；native19071实际退出0，原supervisor500073的cmdline仍存在，无终态全套result。训练仍为第1轮完整152条、219802次调用、6807次A_B及C优化，05:08:08完成；final SHA75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db未变。
+
+| 本轮完整推理 | 05:49框文件 | 06:50框文件 | 新增 | 正式P / R / F |
+|---|---:|---:|---:|---|
+| DepthTrack Test50 | 15 / 50 | 43 / 50 | 28 | 未完成，不填写 |
+| CDTB80 | 23 / 80 | 60 / 80 | 37 | 未完成，不填写 |
+
+两项仍没有完成态metrics.json；无best、epoch_history新行或早停决策，不从部分序列估算P/R/F。按最近一次序列文件增长速度粗算，剩余7条Test约15.15分钟、20条CDTB约32.76分钟；这是序列计数推算，不是帧数估计，序列长度不同，不能作为完成承诺或完成态证据。GPU0/1各4122MiB、瞬采81%/77%，只代表实际观察时两张卡都在全量推理，不代表整个时段利用率。
+
+本地逐轮ledger/CSV和README更新到此次实际快照，原epoch01完成训练result/receipt不改写。下一唯一原被动timer88703/PID34708，实际birth07:00:33.681119、parent13968、deadline07:50:17.764372；保持300秒本地等待。下一观察器仅准备且包含时间下限，未执行。零新增诊断NN，未修改训练、标签、搜索、模板规则，也未重启训练。CurrentC候选起点回放仍是source-only准备，待本轮完整任务结束及GPU释放后再执行。Goal ACTIVE_UNMET。
