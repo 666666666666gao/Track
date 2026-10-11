@@ -1,0 +1,104 @@
+{
+  "status": "actual_CPU_existing_cart_parent_CurrentC_saved_hash_comparison",
+  "sequence": "cart_room_occ_1",
+  "original_diagnostic_stdout_sha256": "bcdc6791cf67d71b77e08cacad8b91cefed1c7a89260f98ade04183dfe64de72",
+  "captured_prediction_file_sha256": {
+    "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/cdtb/predictions/cart_room_occ_1.txt": "6542aa507f0ab13166cdc17ac2a273b83fab616a185a7926eaf790ae1c7247a9",
+    "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/cdtb/predictions/cart_room_occ_1_all_scores.txt": "fdcf75136136e7000b8246f683172e2e89e384a96ffbbbd9db09ea999f7a1724",
+    "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/cdtb/predictions/cart_room_occ_1.txt": "6542aa507f0ab13166cdc17ac2a273b83fab616a185a7926eaf790ae1c7247a9",
+    "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/cdtb/predictions/cart_room_occ_1_all_scores.txt": "fdcf75136136e7000b8246f683172e2e89e384a96ffbbbd9db09ea999f7a1724"
+  },
+  "saved_bbox_hashes_equal": true,
+  "saved_score_hashes_equal": true,
+  "models": [
+    {
+      "model": "CurrentC",
+      "frames": 999,
+      "valid_GT_frames": 914,
+      "R_percent": 15.706100419172367,
+      "all_saved_boxes_R_percent": 16.225578804830928,
+      "serious_low_IoU_frames": 737,
+      "long_low_IoU_segments": [
+        {
+          "start": 177,
+          "end": 546,
+          "length": 369,
+          "mean_IoU": 3.0079308141092894e-05,
+          "start_center_in_crop": true,
+          "center_outside_frames": 359
+        },
+        {
+          "start": 556,
+          "end": 593,
+          "length": 37,
+          "mean_IoU": 0.0,
+          "start_center_in_crop": false,
+          "center_outside_frames": 37
+        },
+        {
+          "start": 607,
+          "end": 624,
+          "length": 17,
+          "mean_IoU": 0.0,
+          "start_center_in_crop": false,
+          "center_outside_frames": 17
+        },
+        {
+          "start": 685,
+          "end": 999,
+          "length": 314,
+          "mean_IoU": 0.0,
+          "start_center_in_crop": false,
+          "center_outside_frames": 314
+        }
+      ]
+    },
+    {
+      "model": "P1",
+      "frames": 999,
+      "valid_GT_frames": 914,
+      "R_percent": 15.706100419172367,
+      "all_saved_boxes_R_percent": 16.225578804830928,
+      "serious_low_IoU_frames": 737,
+      "long_low_IoU_segments": [
+        {
+          "start": 177,
+          "end": 546,
+          "length": 369,
+          "mean_IoU": 3.0079308141092894e-05,
+          "start_center_in_crop": true,
+          "center_outside_frames": 359
+        },
+        {
+          "start": 556,
+          "end": 593,
+          "length": 37,
+          "mean_IoU": 0.0,
+          "start_center_in_crop": false,
+          "center_outside_frames": 37
+        },
+        {
+          "start": 607,
+          "end": 624,
+          "length": 17,
+          "mean_IoU": 0.0,
+          "start_center_in_crop": false,
+          "center_outside_frames": 17
+        },
+        {
+          "start": 685,
+          "end": 999,
+          "length": 314,
+          "mean_IoU": 0.0,
+          "start_center_in_crop": false,
+          "center_outside_frames": 314
+        }
+      ]
+    }
+  ],
+  "scope": "Compare already captured file hashes and diagnostics only. No raw checkpoint/prediction re-read or new NN replay. Same recorded output does not prove hidden-state equality or the internal candidate/geometry cause. The parent already had this failure and CurrentC did not change the saved trajectory for this sequence.",
+  "NN_calls": 0,
+  "GPU_queries": 0,
+  "server_queries": 0,
+  "training_progress_queries": 0
+}

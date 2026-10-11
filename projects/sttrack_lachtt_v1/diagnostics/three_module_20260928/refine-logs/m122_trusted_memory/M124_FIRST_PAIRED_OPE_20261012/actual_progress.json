@@ -1,0 +1,160 @@
+{
+  "status": "actual_M124_epoch01_two_complete_OPE_metrics_and_epoch02_progress",
+  "observed_at": "2026-10-11T23:52:51.026749+00:00",
+  "original_stdout_sha256": "08744c10a35060820587d88e9a82998500b958ce4f7a60cbfac49317fbe7e368",
+  "completed_train_epochs": 1,
+  "completed_paired_OPE_epochs": 1,
+  "epoch01_final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+  "epoch01_metrics": {
+    "depthtrack_test": {
+      "status": "complete",
+      "metrics": {
+        "precision": 0.6649349532102259,
+        "recall": 0.625276864704031,
+        "f_score": 0.6444964105933219,
+        "precision_percent": 66.49349532102259,
+        "recall_percent": 62.5276864704031,
+        "f_score_percent": 64.44964105933218,
+        "threshold": 0.076366,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+      "bundle_sha256": "8c7bbb059c3e8cf085edbf26a8eac403c865ec39bce6e46674de476a25ec69f9",
+      "plan_sha256": "bec3d54ff2ca9e66832204c3d047ed19fc26ae8785ed1b8c05cf7972802e2c8e",
+      "receipt_sha256": "71b4d4b0b27ca7ee59ccb9b75a456413c752ee41da16106a1fb28f2049683ab1",
+      "metric_source_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+    },
+    "cdtb": {
+      "status": "complete",
+      "metrics": {
+        "precision": 0.740461236028442,
+        "recall": 0.7127384268855087,
+        "f_score": 0.726335396305224,
+        "precision_percent": 74.0461236028442,
+        "recall_percent": 71.27384268855087,
+        "f_score_percent": 72.6335396305224,
+        "threshold": 0.180816,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+      "bundle_sha256": "8c7bbb059c3e8cf085edbf26a8eac403c865ec39bce6e46674de476a25ec69f9",
+      "plan_sha256": "f30435b5ade9bf0f2b58eedf07f1968959b1c8c3f3e7a7de9681482f4cb9d4a5",
+      "receipt_sha256": "bc36f31e1c4d747bf5f6d8cbb25685a49142a13b4ce4ea13cf80915df43d880a",
+      "metric_source_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+    }
+  },
+  "epoch01_OPE_tracking_receipts": {
+    "depthtrack_test": {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-11T21:08:16.403685+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T23:03:48.861274+00:00"
+    },
+    "cdtb": {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-11T21:08:16.404247+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T23:22:30.991207+00:00"
+    }
+  },
+  "epoch01_delta_pp": {
+    "depthtrack_test": {
+      "CurrentC": {
+        "precision_percent": -0.8715740292277019,
+        "recall_percent": -2.3374169387679444,
+        "f_score_percent": -1.6418129315820096
+      },
+      "native_STTrack": {
+        "precision_percent": 4.078159321022589,
+        "recall_percent": -0.15431752959690215,
+        "f_score_percent": 1.901255059332179
+      },
+      "target": {
+        "precision_percent": 1.29349532102259,
+        "recall_percent": -2.3723135295969087,
+        "f_score_percent": -0.6503589406678145
+      }
+    },
+    "cdtb": {
+      "CurrentC": {
+        "precision_percent": -0.5475010224216419,
+        "recall_percent": 1.387604026673941,
+        "f_score_percent": 0.47029508404590104
+      },
+      "native_STTrack": {
+        "precision_percent": 4.113010602844199,
+        "recall_percent": 3.206098688550867,
+        "f_score_percent": 3.64571863052241
+      },
+      "target": {
+        "precision_percent": 1.1461236028441988,
+        "recall_percent": -4.326157311449123,
+        "f_score_percent": -1.5664603694775963
+      }
+    }
+  },
+  "selected_best": {
+    "epoch": 1,
+    "score": 68.5415903449273,
+    "F_percent": [
+      64.44964105933218,
+      72.6335396305224
+    ],
+    "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+    "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit",
+    "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation",
+    "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+    "external_metric_checkpoint_selection": true
+  },
+  "best_is_trained_epoch_only_not_claim_of_beating_CurrentC": true,
+  "consecutive_dual_declines": 0,
+  "early_stop": false,
+  "paired_metrics_completed_at": "2026-10-11T23:22:43.302411+00:00",
+  "epoch02_saved_complete_sequences": 9,
+  "epoch02_calls_this_epoch": 16157,
+  "epoch02_optimizer_steps_this_epoch": 507,
+  "total_track_calls": 235959,
+  "total_optimizer_steps": 7314,
+  "epoch02_latest_sequence": "toydog_indoor",
+  "epoch02_saved_elapsed_seconds": 1750.0618929862976,
+  "epoch02_rough_training_remaining_hours": 6.127226489330297,
+  "rough_estimate_is_committed_call_count_based_not_completion_promise": true,
+  "VOT_result_for_M124_observed": false,
+  "controller_terminal_result_observed": false,
+  "gap_since_previous_NN_observation_seconds": 3753.262377,
+  "GPU_snapshot": "0, 1890, 6\n1, 4118, 50\n",
+  "GPU_queries": 1,
+  "NN_progress_queries": 1,
+  "NN_forward_calls": 0,
+  "next_NN_observation_not_before": "2026-10-12T00:52:51.026749+00:00",
+  "original_wait_native_session_id": 88703,
+  "original_wait_consumed": true,
+  "original_wait_restarted": false,
+  "observer_native_session_id": 96751,
+  "observer_exit_code": 0,
+  "scope": "Captured formal metrics and stage receipts checked, not an independent raw prediction/GT re-computation or completed full-nine audit."
+}
