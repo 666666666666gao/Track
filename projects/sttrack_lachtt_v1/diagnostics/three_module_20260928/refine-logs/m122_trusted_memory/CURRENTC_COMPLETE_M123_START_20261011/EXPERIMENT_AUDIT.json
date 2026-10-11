@@ -1,0 +1,1146 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "bounded_recorded_results_supported_with_evidence_limits_and_stale_tracker",
+  "summary": "CurrentC recorded terminal results support the bounded report with qualifiers. Four of nine fixed gates pass, joint target fails. No blockers to reporting these records within CLAIM_SCOPE; broader raw-reproduction, ABC-completion and blind-caption claims remain unsupported.",
+  "generated_at": "2026-10-11T15:21:19.359509+00:00",
+  "date": "2026-10-11",
+  "agent_id": "/root/current_c_full_three_actual_integrity_20261011",
+  "verdict_id": "/root/current_c_full_three_actual_integrity_20261011:CurrentC-recorded-results-20261011",
+  "requested_backend": "codex",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning": "max",
+  "actual_backend": "UNATTESTED",
+  "reviewer_model": "UNATTESTED",
+  "reviewer_reasoning": "UNATTESTED",
+  "executor_model": "UNATTESTED",
+  "reviewer_family": "openai",
+  "executor_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "model_attribution": "Fresh native child agent. Requested routing recorded; no actual model/backend/effort attestation exposed. No cross-family acceptance.",
+  "read_only_except_private_audit_directory": true,
+  "SSH": 0,
+  "GPU_queries": 0,
+  "neural_imports": 0,
+  "neural_forwards": 0,
+  "experiment_mutations": 0,
+  "global_memory_changes": 0,
+  "claim_scope": {
+    "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full_three_actual_integrity_20261011\\CLAIM_SCOPE.md",
+    "line_start": 1,
+    "line_end": 8,
+    "sha256": "6a43a03221c475f3dd93902ad059e9e841eebda5b2fc82fb024bd18e86b9cf2f"
+  },
+  "checks": {
+    "A": {
+      "status": "PASS",
+      "name": "Ground-truth provenance",
+      "details": "OPE initializes from the legal first-frame box and passes only RGB/depth images to subsequent actor.track calls. Its analysis path checks saved prediction hashes before loading the frozen evaluator, which opens dataset groundtruth.txt separately from saved predictions and confidence. Ground truth is not made from tracker output.\n\nVOT's dataset loader reads groundtruth*.txt or groundtruth.txt; multistart analysis compares the returned trajectories with those dataset regions. Region rasterization uses intersection/union with image bounds and ignore masks. The official legal start box is an initialization input.\n\nInherited AB training loads and hashes dataset GT, executes the model step and then applies GT to the training objective. The declared toy07 alignment truncation is explicit in the loader. The teacher collects model-state rollouts before loading GT to compute current IoU and short-horizon labels; CurrentC uses the current-IoU field as a regression target. A prediction's overlap with real GT is supervised quality, not fabricated model-generated ground truth.\n\nThe complete raw current GT/image/prediction corpus is not supplied; the PASS is for the available source and recorded execution, not an independently replayed universal no-leak certificate.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_official.py",
+          "line_start": 23,
+          "line_end": 29,
+          "sha256": "ba6329e7af713ae2b5c05a262d8b377df74dc872b266aaae4f1a291286854706"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_official.py",
+          "line_start": 49,
+          "line_end": 57,
+          "sha256": "ba6329e7af713ae2b5c05a262d8b377df74dc872b266aaae4f1a291286854706"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\depthtrack_pr.py",
+          "line_start": 97,
+          "line_end": 111,
+          "sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+          "line_start": 131,
+          "line_end": 153,
+          "sha256": "0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_full_causal.py",
+          "line_start": 14,
+          "line_end": 22,
+          "sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_full_causal.py",
+          "line_start": 89,
+          "line_end": 94,
+          "sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\dataset\\common.py",
+          "line_start": 86,
+          "line_end": 98,
+          "sha256": "91a917779f538aad3a17bbea9f184dac34133d32511a168a4ba6f6c6dfef7237"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\analysis\\multistart.py",
+          "line_start": 108,
+          "line_end": 135,
+          "sha256": "5a09065e2315387405f4cb8f96c0b8fd32d7428996a34eedd92ac4e2a4deeb02"
+        }
+      ]
+    },
+    "B": {
+      "status": "PASS",
+      "name": "Score normalization",
+      "details": "OPE confidence values define a threshold grid. At each threshold, precision is mean GT overlap over selected predictions, recall divides overlap sum by visible-GT count, sequence curves are macro-averaged, and the reported point maximizes harmonic F. Multiplication by 100 converts units. There is no division of reported performance by the model's own maximum/minimum/mean. The max-F point is the declared PR metric, not external checkpoint selection.\n\nVOT accuracy uses overlap/progress, robustness uses progress/run length with sequence weighting, and EAO averages the expected-overlap curve over the declared interval. The stack orders EAO, EAO curve, then AR, matching the current reader's index extraction. Feature normalization, depth transformations and inference-score transformations are model operations, not hidden final-score denominators.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\depthtrack_pr.py",
+          "line_start": 25,
+          "line_end": 60,
+          "sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\depthtrack_pr.py",
+          "line_start": 117,
+          "line_end": 153,
+          "sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\analysis\\multistart.py",
+          "line_start": 115,
+          "line_end": 135,
+          "sha256": "5a09065e2315387405f4cb8f96c0b8fd32d7428996a34eedd92ac4e2a4deeb02"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\analysis\\multistart.py",
+          "line_start": 175,
+          "line_end": 188,
+          "sha256": "5a09065e2315387405f4cb8f96c0b8fd32d7428996a34eedd92ac4e2a4deeb02"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\analysis\\multistart.py",
+          "line_start": 333,
+          "line_end": 356,
+          "sha256": "5a09065e2315387405f4cb8f96c0b8fd32d7428996a34eedd92ac4e2a4deeb02"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\analysis\\multistart.py",
+          "line_start": 425,
+          "line_end": 442,
+          "sha256": "5a09065e2315387405f4cb8f96c0b8fd32d7428996a34eedd92ac4e2a4deeb02"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\stack\\vot2022\\rgbd.yaml",
+          "line_start": 1,
+          "line_end": 16,
+          "sha256": "7a2822e3a1500e674d000ae73e526f888e8cf058454cfa70311eba8a0103f35a"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m122_current_C_vot.py",
+          "line_start": 23,
+          "line_end": 25,
+          "sha256": "cc06010d81468299d5458478b3a2a2f5be02e16c89c71dd23a7d392b9cbcf5fe"
+        }
+      ]
+    },
+    "C": {
+      "status": "WARN",
+      "name": "Actual files, numbers and completion",
+      "details": "Actual exported metric keys and numbers agree with the collector/controller. The two original observer exports contain 74 embedded artifact texts (28 early, 46 terminal); their UTF-8 byte hashes exactly match the supplied extracted files. All ten stages have matching launches/receipts and zero exits, as do controller and supervisor. The collector finished at 2026-10-11T13:39:06.699428+00:00, supervisor at 13:39:06.723425+00:00. This supports CurrentC completion at the recorded times.\n\nCurrent raw OPE trajectories, VOT trajectory files and original full official analysis JSON are not supplied locally. The current composite checkpoint/bundle/bank and current complete plans are paths/digests plus recorded assertions; their raw contents were not independently reconstructed. A digest list is not raw numerical reproduction.\n\nThe sealed tracker row 52 still says VOT_RUNNING 1763/1765; row 60 still says M123 NOT_LAUNCHED. Later actual terminal/launch records supersede these current-status strings. This is a documentation lag, not evidence that terminal metric files are missing. Synchronize current rows after sealing; preserve the frozen input and historical statements.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\all_results.json",
+          "line_start": 26,
+          "line_end": 107,
+          "sha256": "312f9c3319fc41c9cf3eb21e03ad08806eb8f66d02963ff7d6b1ebd1103d1b1b"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\cdtb\\predictions\\metrics.json",
+          "line_start": 2,
+          "line_end": 18,
+          "sha256": "57b0d68dac50ee7653d21f02dc54f17a3e679d742630361e8fb1562217a83420"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\depthtrack_test\\predictions\\metrics.json",
+          "line_start": 2,
+          "line_end": 18,
+          "sha256": "8c16be1499e5a5e8af3a6208f495753f3892ed710b62fd170878d2498021cf7e"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\vot\\result.json",
+          "line_start": 2,
+          "line_end": 15,
+          "sha256": "12de43ea2dd662d5453df4d725ed448a5abdf25d42cd567abdb364c9816173bd"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\vot\\result.json",
+          "line_start": 16413,
+          "line_end": 16421,
+          "sha256": "12de43ea2dd662d5453df4d725ed448a5abdf25d42cd567abdb364c9816173bd"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\controller.supervisor.terminal.json",
+          "line_start": 2,
+          "line_end": 14,
+          "sha256": "64b7c49d8575cc36aa9fa1e74040b37ee1b9d1ab1171de92e780164db8aaaffb"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\result.json",
+          "line_start": 153,
+          "line_end": 193,
+          "sha256": "03eafa1ef2110b889376c32489fe9313180fc5016708949af6e2c4e3ae4f192e"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_original_observer_stdout_20261011.txt",
+          "line_start": 1,
+          "line_end": 1,
+          "sha256": "da8359d2cfbbcd832be6e566f247c87d160173a00c8d11f3f129ea87cf6bed2a"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_TRACKER.md",
+          "line_start": 52,
+          "line_end": 60,
+          "sha256": "7ab2d97f8eb2095afd4139287b6d973450d967ab1c3492e3ae3a430739e2db43"
+        }
+      ]
+    },
+    "D": {
+      "status": "PASS",
+      "name": "Metric call reachability",
+      "details": "The controller explicitly runs both PR analyses, native VOT evaluate, native VOT analysis, VOT sealing and final collection; matching stage receipts support execution. evaluate_depthtrack_results and collect_confirmed_failure_outcomes are called, and outputs appear in actual result files. The VOT launch calls python -m vot analysis with the current master workspace, JSON format, current_quality_C_full152_full127 analysis name and sttrack_m122_P1_current_quality_C_full152 tracker.\n\nOlder imported diagnostic functions such as summarize and paired_vs_empty, and formatting helpers, are not claimed as executed CurrentC test metrics. None substitutes for a missing one of the nine scores. Available local source dependencies were followed; missing VOT support modules and live library identity remain disclosed rather than labeled inspected.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_full_suite.py",
+          "line_start": 14,
+          "line_end": 29,
+          "sha256": "2bf1a5f297ab812d60ec3e5c751fa1a8afbb8997a4516bddaec2d65a151c7a41"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_full_suite.py",
+          "line_start": 47,
+          "line_end": 78,
+          "sha256": "2bf1a5f297ab812d60ec3e5c751fa1a8afbb8997a4516bddaec2d65a151c7a41"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_official.py",
+          "line_start": 49,
+          "line_end": 57,
+          "sha256": "ba6329e7af713ae2b5c05a262d8b377df74dc872b266aaae4f1a291286854706"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_vot_shards.py",
+          "line_start": 34,
+          "line_end": 61,
+          "sha256": "b2a255727be2e826b5223a7271b32541d1e35e5416a9c21edc88700d731528df"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_official_analysis.launch.json",
+          "line_start": 2,
+          "line_end": 19,
+          "sha256": "3769d2e9d1b8ca44568e8d679cd1b98613ec3d05c366c9f7cd8b30fd3fee1629"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_official_analysis.receipt.json",
+          "line_start": 2,
+          "line_end": 21,
+          "sha256": "fc2a534f5672a30a66c12345496a9eaa517b4ab9d8647c737e067b76c388054f"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m122_current_C_vot.py",
+          "line_start": 23,
+          "line_end": 35,
+          "sha256": "cc06010d81468299d5458478b3a2a2f5be02e16c89c71dd23a7d392b9cbcf5fe"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\finalize_vot_transaction_low22.py",
+          "line_start": 193,
+          "line_end": 258,
+          "sha256": "e96a375a3792a80ab12e5671db468f559d514558a05d1181fe7afec48bcb514a"
+        }
+      ]
+    },
+    "E": {
+      "status": "WARN",
+      "name": "Scope, training and protocol",
+      "details": "One fixed selected CurrentC composite final was evaluated on the complete recorded DepthTrack Test50, CDTB80 and VOT127/1765-anchor scopes. One fixed training seed/configuration is documented. This supports descriptive complete-scope single-run reporting, not multi-seed robustness, causal language benefit, novelty, SOTA or deployment safety.\n\nCurrentC is inherited complete AB training plus cached current-quality C regression, not newly completed full ABC joint training. Teacher coverage is 152 sequences, but 1257 eligible cached events come from 142. The former C development32 partition now belongs to training, so its earlier development numbers are not a held-out validation score for this new final.\n\nHuman text is manually reviewed with multiframe/video aids. Online causal state after legal initialization does not make this blind automatic first-frame captioning. M123 is a separate startup receipt/process-tree observation only; there is no observed optimizer count, completed training or new score in this audit.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\fit\\result.json",
+          "line_start": 2,
+          "line_end": 39,
+          "sha256": "b9cbaf752c839afbf5854138c36c1e5cd35f58d024c45a694e56b3164e74435c"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_current_C_full152.py",
+          "line_start": 36,
+          "line_end": 38,
+          "sha256": "4b1f3922cd193a5c12b0c1b14bf18dcf08867330a47b60f8801ea37c8ef7eb2f"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_current_C_full152.py",
+          "line_start": 52,
+          "line_end": 89,
+          "sha256": "4b1f3922cd193a5c12b0c1b14bf18dcf08867330a47b60f8801ea37c8ef7eb2f"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py",
+          "line_start": 39,
+          "line_end": 99,
+          "sha256": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\selection.json",
+          "line_start": 2,
+          "line_end": 46,
+          "sha256": "27f993b09c9637989e0e0c9983a2d5769a120855f38d2182bfa67f404606edfa"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_initialization_binding.json",
+          "line_start": 2,
+          "line_end": 20,
+          "sha256": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\bind_m122_official_initializations.py",
+          "line_start": 33,
+          "line_end": 54,
+          "sha256": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\encode_m122_official_human_text.py",
+          "line_start": 17,
+          "line_end": 33,
+          "sha256": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m122_external_human_labels.py",
+          "line_start": 24,
+          "line_end": 46,
+          "sha256": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M123_actual_full_joint_launch_20261011.json",
+          "line_start": 13,
+          "line_end": 23,
+          "sha256": "bbdc16e64287c5ead2831e8b7d3e4e047648ecdefa92f09cbc7b09e0535f4291"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M123_actual_full_joint_launch_20261011.json",
+          "line_start": 26,
+          "line_end": 69,
+          "sha256": "bbdc16e64287c5ead2831e8b7d3e4e047648ecdefa92f09cbc7b09e0535f4291"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_TRACKER.md",
+          "line_start": 62,
+          "line_end": 62,
+          "sha256": "7ab2d97f8eb2095afd4139287b6d973450d967ab1c3492e3ae3a430739e2db43"
+        }
+      ]
+    },
+    "F": {
+      "status": "PASS",
+      "name": "Evaluation classification",
+      "details": "DepthTrack Test, CDTB and VOT RGB-D are real_gt evaluations. Manual human-reviewed text is additional initialization input; it does not turn the objective tracking metric into human_eval.\n\nCurrentC training MSE is real_gt-derived surrogate regression on cached teacher current IoU, not test accuracy or future-utility evidence. Hashes, source contracts, observation-key reconstruction, coverage and metadata ROB are deterministic consistency checks, not another performance benchmark. M123 startup is not an evaluation result.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\depthtrack_pr.py",
+          "line_start": 97,
+          "line_end": 111,
+          "sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\dataset\\common.py",
+          "line_start": 86,
+          "line_end": 98,
+          "sha256": "91a917779f538aad3a17bbea9f184dac34133d32511a168a4ba6f6c6dfef7237"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py",
+          "line_start": 131,
+          "line_end": 153,
+          "sha256": "0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\fit\\result.json",
+          "line_start": 34,
+          "line_end": 37,
+          "sha256": "b9cbaf752c839afbf5854138c36c1e5cd35f58d024c45a694e56b3164e74435c"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\all_results.json",
+          "line_start": 105,
+          "line_end": 106,
+          "sha256": "312f9c3319fc41c9cf3eb21e03ad08806eb8f66d02963ff7d6b1ebd1103d1b1b"
+        }
+      ]
+    }
+  },
+  "blockers_for_bounded_report": [],
+  "blocking_count": 0,
+  "findings": [
+    {
+      "id": "Q1",
+      "severity": "WARN",
+      "blocking_for_bounded_report": false,
+      "title": "Raw current numerical/tensor reproduction is unavailable",
+      "details": "Current original trajectories/analysis, complete raw GT/images, checkpoint/bank and live environment are not independently reproduced.",
+      "action": "Report recorded results with this boundary; export exact raw artifacts before any stronger reproduction claim.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\all_results.json",
+          "line_start": 26,
+          "line_end": 107,
+          "sha256": "312f9c3319fc41c9cf3eb21e03ad08806eb8f66d02963ff7d6b1ebd1103d1b1b"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\cdtb\\predictions\\metrics.json",
+          "line_start": 2,
+          "line_end": 18,
+          "sha256": "57b0d68dac50ee7653d21f02dc54f17a3e679d742630361e8fb1562217a83420"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\depthtrack_test\\predictions\\metrics.json",
+          "line_start": 2,
+          "line_end": 18,
+          "sha256": "8c16be1499e5a5e8af3a6208f495753f3892ed710b62fd170878d2498021cf7e"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\vot\\result.json",
+          "line_start": 2,
+          "line_end": 15,
+          "sha256": "12de43ea2dd662d5453df4d725ed448a5abdf25d42cd567abdb364c9816173bd"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\vot\\result.json",
+          "line_start": 16413,
+          "line_end": 16421,
+          "sha256": "12de43ea2dd662d5453df4d725ed448a5abdf25d42cd567abdb364c9816173bd"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\controller.supervisor.terminal.json",
+          "line_start": 2,
+          "line_end": 14,
+          "sha256": "64b7c49d8575cc36aa9fa1e74040b37ee1b9d1ab1171de92e780164db8aaaffb"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\result.json",
+          "line_start": 153,
+          "line_end": 193,
+          "sha256": "03eafa1ef2110b889376c32489fe9313180fc5016708949af6e2c4e3ae4f192e"
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "severity": "WARN",
+      "blocking_for_bounded_report": false,
+      "title": "Cached C is not new full ABC training",
+      "details": "Inherited AB three-pass history plus 400 C-only updates on 1257 cached events from 142 sequences; teacher scope 152, former development32 now trained.",
+      "action": "Keep CurrentC and the separate M123 joint run distinct.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\fit\\result.json",
+          "line_start": 2,
+          "line_end": 39,
+          "sha256": "b9cbaf752c839afbf5854138c36c1e5cd35f58d024c45a694e56b3164e74435c"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_current_C_full152.py",
+          "line_start": 36,
+          "line_end": 38,
+          "sha256": "4b1f3922cd193a5c12b0c1b14bf18dcf08867330a47b60f8801ea37c8ef7eb2f"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_current_C_full152.py",
+          "line_start": 52,
+          "line_end": 89,
+          "sha256": "4b1f3922cd193a5c12b0c1b14bf18dcf08867330a47b60f8801ea37c8ef7eb2f"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py",
+          "line_start": 39,
+          "line_end": 99,
+          "sha256": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e"
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "severity": "WARN",
+      "blocking_for_bounded_report": false,
+      "title": "Manual multiframe human initialization",
+      "details": "Manual category and at most four attributes; multiframe aids explicitly recorded. No blind automatic caption claim.",
+      "action": "State this protocol in every comparison.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_initialization_binding.json",
+          "line_start": 2,
+          "line_end": 20,
+          "sha256": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\bind_m122_official_initializations.py",
+          "line_start": 33,
+          "line_end": 54,
+          "sha256": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\encode_m122_official_human_text.py",
+          "line_start": 17,
+          "line_end": 33,
+          "sha256": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m122_external_human_labels.py",
+          "line_start": 24,
+          "line_end": 46,
+          "sha256": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4"
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "severity": "WARN",
+      "blocking_for_bounded_report": false,
+      "title": "Tracker current rows are stale",
+      "details": "Row52 VOT_RUNNING and row60 NOT_LAUNCHED predate actual terminal and launch records.",
+      "action": "Update current rows after this seal; preserve history.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_TRACKER.md",
+          "line_start": 52,
+          "line_end": 60,
+          "sha256": "7ab2d97f8eb2095afd4139287b6d973450d967ab1c3492e3ae3a430739e2db43"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\result.json",
+          "line_start": 187,
+          "line_end": 194,
+          "sha256": "03eafa1ef2110b889376c32489fe9313180fc5016708949af6e2c4e3ae4f192e"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M123_actual_full_joint_launch_20261011.json",
+          "line_start": 65,
+          "line_end": 69,
+          "sha256": "bbdc16e64287c5ead2831e8b7d3e4e047648ecdefa92f09cbc7b09e0535f4291"
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "severity": "WARN",
+      "blocking_for_bounded_report": false,
+      "title": "Local source closure and runtime attestation limits",
+      "details": "Available native/VOT snapshots were statically read. FrameMapSequence, Trajectory and analysis processor implementations were not present in available RGB-D checkout snapshots. External PyTorch/timm/CLIP/selective_scan internals and live runtime version are not attested.",
+      "action": "Do not call this complete neural/runtime certification.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m122_current_C_vot.py",
+          "line_start": 14,
+          "line_end": 30,
+          "sha256": "cc06010d81468299d5458478b3a2a2f5be02e16c89c71dd23a7d392b9cbcf5fe"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\analysis\\multistart.py",
+          "line_start": 108,
+          "line_end": 135,
+          "sha256": "5a09065e2315387405f4cb8f96c0b8fd32d7428996a34eedd92ac4e2a4deeb02"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_state_dependency_sources_20261009\\lib\\models\\layers\\mamba.py",
+          "line_start": 19,
+          "line_end": 32,
+          "sha256": "a11e49551cea9c7a188b9b7783b541b315a1f684b86e1de364bb3ad6c04f00be"
+        }
+      ]
+    },
+    {
+      "id": "Q6",
+      "severity": "WARN",
+      "blocking_for_bounded_report": false,
+      "title": "Initial tensors and generality not certified",
+      "details": "Current fit records an initial-state digest but supplies no original initial tensors. Historical local initializer mismatch is neither reproduced nor resolved here. Single seed/final does not establish robust superiority.",
+      "action": "Do not upgrade matching recorded digests to independent tensor equality; restrict to descriptive results.",
+      "evidence": [
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\fit\\result.json",
+          "line_start": 4,
+          "line_end": 14,
+          "sha256": "b9cbaf752c839afbf5854138c36c1e5cd35f58d024c45a694e56b3164e74435c"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\EXPERIMENT_AUDIT.md",
+          "line_start": 81,
+          "line_end": 81,
+          "sha256": "f227eb890d9c68b41e0b227691c4dac62dcb1baebfae879d47e9a14044cdf4f6"
+        },
+        {
+          "file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full_three_actual_integrity_20261011\\CLAIM_SCOPE.md",
+          "line_start": 3,
+          "line_end": 8,
+          "sha256": "6a43a03221c475f3dd93902ad059e9e841eebda5b2fc82fb024bd18e86b9cf2f"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Recorded nine CurrentC metrics from one final under manual initialization",
+      "impact": "supported_with_qualifier",
+      "qualifier": "Actual result/receipt bytes; no independent complete raw GT/prediction reproduction."
+    },
+    {
+      "id": "C2",
+      "claim": "All nine fixed targets jointly met",
+      "impact": "unsupported",
+      "detail": "4/9 pass, joint_pass false."
+    },
+    {
+      "id": "C3",
+      "claim": "Inherited complete AB plus cached current-C fit completed",
+      "impact": "supported_with_qualifier",
+      "qualifier": "AB history-record arithmetic; C-only400updates,142event-bearing/152teacher sequences."
+    },
+    {
+      "id": "C4",
+      "claim": "CurrentC completed new full-sequence ABC joint training",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C5",
+      "claim": "Separate M123 full Train152/no-development job has startup process evidence",
+      "impact": "supported_with_qualifier",
+      "qualifier": "At recorded timestamps only; no optimizer-update count, completion or new metrics. M123 implementation/completion is outside this sealed result audit."
+    },
+    {
+      "id": "C6",
+      "claim": "Blind automatic first-frame captions",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C7",
+      "claim": "Dataset-GT evaluation without subsequent GT in available online forward source",
+      "impact": "supported_with_qualifier",
+      "qualifier": "Static source and receipts; initialization language was reviewed with multiframe aids."
+    },
+    {
+      "id": "C8",
+      "claim": "Independent complete raw metrics/current checkpoint tensor reproduction",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C9",
+      "claim": "Cross-family acceptance, semantic novelty, causal language gain, multi-seed robustness, SOTA or deployment safety",
+      "impact": "unsupported"
+    }
+  ],
+  "CurrentC_full_three_actual_result_audit_complete": true,
+  "bounded_recorded_result_reporting_supported": true,
+  "raw_complete_metric_recomputation": false,
+  "current_final_tensor_reproduction": false,
+  "metrics_percent": {
+    "depthtrack_test": {
+      "precision": 67.3650693502503,
+      "recall": 64.86510340917104,
+      "f_score": 66.09145399091419
+    },
+    "cdtb": {
+      "precision": 74.59362462526585,
+      "recall": 69.88623866187693,
+      "f_score": 72.1632445464765
+    },
+    "vot": {
+      "EAO": 76.10448251978671,
+      "ACC": 82.33234401126766,
+      "ROB": 91.64343981633608
+    }
+  },
+  "gates": {
+    "depthtrack_P": {
+      "operator": ">=",
+      "target_percent": 65.2,
+      "passed": true
+    },
+    "depthtrack_R": {
+      "operator": ">=",
+      "target_percent": 64.9,
+      "passed": false
+    },
+    "depthtrack_F": {
+      "operator": ">=",
+      "target_percent": 65.1,
+      "passed": true
+    },
+    "cdtb_P": {
+      "operator": ">=",
+      "target_percent": 72.9,
+      "passed": true
+    },
+    "cdtb_R": {
+      "operator": ">=",
+      "target_percent": 75.6,
+      "passed": false
+    },
+    "cdtb_F": {
+      "operator": ">=",
+      "target_percent": 74.2,
+      "passed": false
+    },
+    "vot_EAO": {
+      "operator": ">",
+      "target_percent": 77.9,
+      "passed": false
+    },
+    "vot_ACC": {
+      "operator": ">",
+      "target_percent": 82.1,
+      "passed": true
+    },
+    "vot_ROB": {
+      "operator": ">",
+      "target_percent": 93.7,
+      "passed": false
+    }
+  },
+  "passed_gates": 4,
+  "total_gates": 9,
+  "all9_joint_pass": false,
+  "coverage": {
+    "OPE": {
+      "depthtrack_test": {
+        "sequence_names": [
+          "adapter01_indoor",
+          "backpack_indoor",
+          "bag01_indoor",
+          "bag02_indoor",
+          "ball01_wild",
+          "ball06_indoor",
+          "ball10_wild",
+          "ball11_wild",
+          "ball15_wild",
+          "ball18_indoor",
+          "ball20_indoor",
+          "bandlight_indoor",
+          "beautifullight02_indoor",
+          "book03_indoor",
+          "bottle04_indoor",
+          "card_indoor",
+          "cat01_indoor",
+          "colacan03_indoor",
+          "cube02_indoor",
+          "cube03_indoor",
+          "cube05_indoor",
+          "cup01_indoor",
+          "cup02_indoor",
+          "cup04_indoor",
+          "cup12_indoor",
+          "developmentboard_indoor",
+          "duck03_wild",
+          "dumbbells01_indoor",
+          "earphone01_indoor",
+          "file01_indoor",
+          "flag_indoor",
+          "glass01_indoor",
+          "hand01_indoor",
+          "human02_indoor",
+          "lock02_indoor",
+          "mobilephone03_indoor",
+          "notebook01_indoor",
+          "pigeon01_wild",
+          "pigeon02_wild",
+          "pigeon04_wild",
+          "pot_indoor",
+          "roller_indoor",
+          "shoes02_indoor",
+          "squirrel_wild",
+          "stick_indoor",
+          "toiletpaper01_indoor",
+          "toy02_indoor",
+          "toy09_indoor",
+          "ukulele01_indoor",
+          "yogurt_indoor"
+        ],
+        "sequences": 50,
+        "frames": 76373,
+        "track_calls": 76323,
+        "raw_bbox_files_locally_present": 0
+      },
+      "cdtb": {
+        "sequence_names": [
+          "XMG_outside",
+          "backpack_blue",
+          "backpack_robotarm_lab_occ",
+          "backpack_room_noocc_1",
+          "bag_outside",
+          "bicycle2_outside",
+          "bicycle_outside",
+          "bottle_box",
+          "bottle_room_noocc_1",
+          "bottle_room_occ_1",
+          "box1_outside",
+          "box_darkroom_noocc_1",
+          "box_darkroom_noocc_10",
+          "box_darkroom_noocc_2",
+          "box_darkroom_noocc_3",
+          "box_darkroom_noocc_4",
+          "box_darkroom_noocc_5",
+          "box_darkroom_noocc_6",
+          "box_darkroom_noocc_7",
+          "box_darkroom_noocc_8",
+          "box_darkroom_noocc_9",
+          "box_humans_room_occ_1",
+          "box_room_noocc_1",
+          "box_room_noocc_2",
+          "box_room_noocc_3",
+          "box_room_noocc_4",
+          "box_room_noocc_5",
+          "box_room_noocc_6",
+          "box_room_noocc_7",
+          "box_room_noocc_8",
+          "box_room_noocc_9",
+          "box_room_occ_1",
+          "box_room_occ_2",
+          "boxes_backpack_room_occ_1",
+          "boxes_humans_room_occ_1",
+          "boxes_office_occ_1",
+          "boxes_room_occ_1",
+          "cart_room_occ_1",
+          "cartman",
+          "cartman_robotarm_lab_noocc",
+          "case",
+          "container_room_noocc_1",
+          "dog_outside",
+          "human_entry_occ_1",
+          "human_entry_occ_2",
+          "humans_corridor_occ_1",
+          "humans_corridor_occ_2_A",
+          "humans_corridor_occ_2_B",
+          "humans_longcorridor_staricase_occ_1",
+          "humans_shirts_room_occ_1_A",
+          "humans_shirts_room_occ_1_B",
+          "jug",
+          "mug_ankara",
+          "mug_gs",
+          "paperpunch",
+          "person_outside",
+          "robot_corridor_noocc_1",
+          "robot_corridor_occ_1",
+          "robot_human_corridor_noocc_1_A",
+          "robot_human_corridor_noocc_1_B",
+          "robot_human_corridor_noocc_2",
+          "robot_human_corridor_noocc_3_A",
+          "robot_human_corridor_noocc_3_B",
+          "robot_lab_occ",
+          "teapot",
+          "tennis_ball",
+          "thermos_office_noocc_1",
+          "thermos_office_occ_1",
+          "toy_office_noocc_1",
+          "toy_office_occ_1",
+          "trashcan_room_occ_1",
+          "trashcans_room_occ_1_A",
+          "trashcans_room_occ_1_B",
+          "trendNetBag_outside",
+          "trendNet_outside",
+          "trophy_outside",
+          "trophy_room_noocc_1",
+          "trophy_room_occ_1",
+          "two_mugs",
+          "two_tennis_balls"
+        ],
+        "sequences": 80,
+        "frames": 101956,
+        "track_calls": 101876,
+        "raw_bbox_files_locally_present": 0
+      }
+    },
+    "VOT": {
+      "sequences": 127,
+      "anchors": 1765,
+      "result_file_hash_entries": 5295,
+      "anchor_run_frames": 1327004,
+      "anchor_track_calls": 1325239,
+      "source_video_frames": 80741,
+      "confirmed_failures": 232,
+      "ROB_metadata_recomputed": 91.64343981633613,
+      "analysis_sha256": "1b551123f5d9dc4f420dcfbdc7894f934f86d99c65a666ddf708ebfe82882751",
+      "raw_current_analysis_locally_present": false,
+      "raw_current_trajectories_locally_present": 0
+    },
+    "training": {
+      "AB_recorded_updates": 20421,
+      "AB_calls": 659406,
+      "C_updates": 400,
+      "C_common_events": 1257,
+      "C_fitted_event_sequences": 142,
+      "C_parameters": 70721,
+      "no_C_event_sequences": [
+        "ball03_indoor",
+        "ball05_indoor",
+        "cup13_indoor",
+        "flower02_wild",
+        "hand02_indoor",
+        "leaves01_wild",
+        "paintbottle_indoor",
+        "pigeon07_wild",
+        "pine01_indoor",
+        "toy07_indoor_320"
+      ]
+    }
+  },
+  "identity_bindings": {
+    "final_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+    "bundle_sha256": "eb8a540f4b3ced87c1c25217ff4eb4c2d950f4a4d15e103f9af0eaa39439d991",
+    "bank_sha256": "78cbae28b4b63ecab768d747a889ca120c62e1368ce80fa7f798ee6508bc29a9",
+    "binding_sha256": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e",
+    "verification_level": "Consistent current fit/selection/OPE/VOT/all-results strings plus source and actual terminal receipts; current binary/bundle reconstruction not performed"
+  },
+  "official_VOT_analysis": {
+    "command_file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_official_analysis.launch.json",
+    "receipt_file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_official_analysis.receipt.json",
+    "analysis_sha256_recorded": "1b551123f5d9dc4f420dcfbdc7894f934f86d99c65a666ddf708ebfe82882751",
+    "raw_analysis_supplied": false,
+    "confirmed_FAIL_count": 232,
+    "metadata_ROB_recomputed": 91.64343981633613,
+    "live_toolkit_version_independently_attested": false
+  },
+  "M123": {
+    "status": "startup_receipt_and_process_tree_only",
+    "launch_time": "2026-10-11T14:35:57.014382+00:00",
+    "process_observation_time": "2026-10-11T14:39:44.281460+00:00",
+    "training_completed_proven": false,
+    "optimizer_updates_observed": false,
+    "new_metrics_proven": false,
+    "no_development_split_declared": true
+  },
+  "deterministic_evidence": {
+    "status": "PASS",
+    "check_count": 2042,
+    "failures": [],
+    "review_independence": "deterministic",
+    "acceptance_status": "accepted",
+    "scope": "Only enumerated byte/structured consistency, coverage/count arithmetic, recorded-progress ROB and fixed gates; no complete raw metrics or neural execution"
+  },
+  "input_integrity": {
+    "manifest_sha256": "4341bfc17740963f85733094acc948c52d2c7999e5a60c24e0db6c949ae7c799",
+    "manifest_unchanged": true,
+    "listed_files": 142,
+    "before_all_match": true,
+    "after_all_unchanged": true,
+    "additional_files": 53,
+    "additional_after_all_unchanged": true,
+    "check_time": "2026-10-11T15:05:47.825855+00:00"
+  },
+  "audited_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full152_deployment_20261010.zip": "877a6333b81904be9eaa9ae36e77b76860357a51548be7da9cf76066a6dd695e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full152_gate_20261010.json": "37a6e621584b3ff5461f4f6b869a2ae230a0a961774d441ac97f163de13c453b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full152_source_audit_v2_20261010\\SOURCE_AUDIT.json": "20c57839135f7ac24e17fa89c549d678223e980760c869eaee9f9821cc6fd2a6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full152_source_audit_v2_20261010\\SOURCE_AUDIT.md": "c0b05e375d271de7ca73427b7253d08849d7dbc57f4f69dca4dbbc8fb0be273a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\actual_launch.json": "91dc7e18325334f96f09655904d61df50143f2b3eb3dda25d837ad58272ccb21",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\cdtb_analyze.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\cdtb_analyze.launch.json": "78178bdcc91aa1c3b1114af53b5b4d27cbed41b9dfa963fe3b8e2140d2a36f61",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\cdtb_analyze.receipt.json": "f95d2f1d1dbb443ffae98591638a6c1e9562e3dd92cdef3c66570af0fd33c240",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\cdtb_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\cdtb_track.launch.json": "c6b74efeaa84010855ac969d4c2b4d704171f501e6bdc3f7ffc93145eaf7eaae",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\cdtb_track.receipt.json": "7f2f5a944f6ec31ef39b65a799ae6050e429209e27d1e5d41f01b6cb62026bd1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\controller.supervisor.launch.json": "09d2fa3f4f0f3637698d3b713e1aeb0c734437c3aa6af5ce30c14bb8e0fd3aa2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\depthtrack_test_analyze.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\depthtrack_test_analyze.launch.json": "607cfbe9daca1f7d3a3868322e3427d650decc26e17618b2fe744403e216e9b2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\depthtrack_test_analyze.receipt.json": "877dc18434046ef84960e398de694910ab425a2d83cb0c8801414c9316818ee8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\depthtrack_test_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\depthtrack_test_track.launch.json": "2aa6bda5e644acd71034bd2b0826dda6ea681860f4c5ac24be8f0cd3b6e52231",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\depthtrack_test_track.receipt.json": "f06e1b10332ce83954cf37ede04dc5511487aa716306d07d7d44dca156f8494a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\evaluation\\cdtb\\predictions\\metrics.json": "57b0d68dac50ee7653d21f02dc54f17a3e679d742630361e8fb1562217a83420",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\evaluation\\cdtb\\predictions\\receipt.json": "646ee25a9f794418b9f843dfc81275f1f6376bfd2ad39aa3445fc5830c526ded",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\evaluation\\depthtrack_test\\predictions\\metrics.json": "8c16be1499e5a5e8af3a6208f495753f3892ed710b62fd170878d2498021cf7e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\evaluation\\depthtrack_test\\predictions\\receipt.json": "deed4e5ce9c93a31c7aa3332162c135962c096d55b60c7964f68b5ffd1a0c11d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\evaluation\\selection.json": "27f993b09c9637989e0e0c9983a2d5769a120855f38d2182bfa67f404606edfa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\evaluation\\vot\\run\\launch.json": "11333917ab8acfb036ef6733a3adc5b6c1b51055acabd87416893893d66e5efe",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\fit\\result.json": "b9cbaf752c839afbf5854138c36c1e5cd35f58d024c45a694e56b3164e74435c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\fit_current_all152.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\fit_current_all152.launch.json": "6c5dbdb2019806a6bbc264a5fef612bb8355ec41ee3b4566cf3fcd75d1dbce41",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\fit_current_all152.receipt.json": "746d55624cde5eac8fca91a945c87fd36e0025c2637091bd4d9f61e13ddf4c8d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\prepare.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\prepare.launch.json": "9b436fff51ac3a62779ddd90b07c5030f2c97d5f81c37eee67f6aeb28ca92c92",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\prepare.receipt.json": "ced8d32941efe4a4ec627493501e4869f9c883daa75fa985e11f9fb550ba0542",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_actual_files_20261011\\vot_track.launch.json": "8c236a451d13eff3e7b8bfad06c8021febbdd8f1c9c5ae19c51002ab3d232653",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_third_hour_original_observer_stdout_20261011.txt": "1724f83bca30a7b5162de3243f910bc450d7b9374a071c0ac23c53011c002c75",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\actual_launch.json": "91dc7e18325334f96f09655904d61df50143f2b3eb3dda25d837ad58272ccb21",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\cdtb_analyze.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\cdtb_analyze.launch.json": "78178bdcc91aa1c3b1114af53b5b4d27cbed41b9dfa963fe3b8e2140d2a36f61",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\cdtb_analyze.receipt.json": "f95d2f1d1dbb443ffae98591638a6c1e9562e3dd92cdef3c66570af0fd33c240",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\cdtb_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\cdtb_track.launch.json": "c6b74efeaa84010855ac969d4c2b4d704171f501e6bdc3f7ffc93145eaf7eaae",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\cdtb_track.receipt.json": "7f2f5a944f6ec31ef39b65a799ae6050e429209e27d1e5d41f01b6cb62026bd1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\collect.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\collect.launch.json": "c7f0725e0084b2f2d00c7b541b60afc6f0b4ae9dae2607922085706d78c13163",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\collect.receipt.json": "8d58a79bf041da313845978d5f1ba90dca31a073177bb0be02928fcbaaac8d7e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\controller.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\controller.supervised.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\controller.supervisor.launch.json": "09d2fa3f4f0f3637698d3b713e1aeb0c734437c3aa6af5ce30c14bb8e0fd3aa2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\controller.supervisor.terminal.json": "64b7c49d8575cc36aa9fa1e74040b37ee1b9d1ab1171de92e780164db8aaaffb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\depthtrack_test_analyze.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\depthtrack_test_analyze.launch.json": "607cfbe9daca1f7d3a3868322e3427d650decc26e17618b2fe744403e216e9b2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\depthtrack_test_analyze.receipt.json": "877dc18434046ef84960e398de694910ab425a2d83cb0c8801414c9316818ee8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\depthtrack_test_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\depthtrack_test_track.launch.json": "2aa6bda5e644acd71034bd2b0826dda6ea681860f4c5ac24be8f0cd3b6e52231",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\depthtrack_test_track.receipt.json": "f06e1b10332ce83954cf37ede04dc5511487aa716306d07d7d44dca156f8494a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\all_results.json": "312f9c3319fc41c9cf3eb21e03ad08806eb8f66d02963ff7d6b1ebd1103d1b1b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\cdtb\\predictions\\metrics.json": "57b0d68dac50ee7653d21f02dc54f17a3e679d742630361e8fb1562217a83420",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\cdtb\\predictions\\receipt.json": "646ee25a9f794418b9f843dfc81275f1f6376bfd2ad39aa3445fc5830c526ded",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\depthtrack_test\\predictions\\metrics.json": "8c16be1499e5a5e8af3a6208f495753f3892ed710b62fd170878d2498021cf7e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\depthtrack_test\\predictions\\receipt.json": "deed4e5ce9c93a31c7aa3332162c135962c096d55b60c7964f68b5ffd1a0c11d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\selection.json": "27f993b09c9637989e0e0c9983a2d5769a120855f38d2182bfa67f404606edfa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\vot\\result.json": "12de43ea2dd662d5453df4d725ed448a5abdf25d42cd567abdb364c9816173bd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\vot\\run\\launch.json": "7270ae2d7a9ccb46ce8bbf59b46ff2140919f23556430226885a184eb50a25f1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\vot\\run\\merge_result.json": "49a0bed5a1f39c6891715a4bd8f8a2cd4c1eeafe03062153cd6120d36de59394",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\fit\\result.json": "b9cbaf752c839afbf5854138c36c1e5cd35f58d024c45a694e56b3164e74435c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\fit_current_all152.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\fit_current_all152.launch.json": "6c5dbdb2019806a6bbc264a5fef612bb8355ec41ee3b4566cf3fcd75d1dbce41",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\fit_current_all152.receipt.json": "746d55624cde5eac8fca91a945c87fd36e0025c2637091bd4d9f61e13ddf4c8d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\prepare.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\prepare.launch.json": "9b436fff51ac3a62779ddd90b07c5030f2c97d5f81c37eee67f6aeb28ca92c92",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\prepare.receipt.json": "ced8d32941efe4a4ec627493501e4869f9c883daa75fa985e11f9fb550ba0542",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\result.json": "03eafa1ef2110b889376c32489fe9313180fc5016708949af6e2c4e3ae4f192e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_official_analysis.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_official_analysis.launch.json": "3769d2e9d1b8ca44568e8d679cd1b98613ec3d05c366c9f7cd8b30fd3fee1629",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_official_analysis.receipt.json": "fc2a534f5672a30a66c12345496a9eaa517b4ab9d8647c737e067b76c388054f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_seal.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_seal.launch.json": "6b1846044dd8150e77c908df215f4dbb330813cbe014b5d91da3fa6882fd676c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_seal.receipt.json": "1a9520f190d216159953274da755b7a584f718382a3d97f952c6c55f85be2429",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_track.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_track.launch.json": "8c236a451d13eff3e7b8bfad06c8021febbdd8f1c9c5ae19c51002ab3d232653",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\vot_track.receipt.json": "c8016f9deae3596f5ed2bdb390b057910fd87e2d974980a35ddc59e90b97e40f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_progress_20261011.json": "9d17ed0acab2c01746f6b56b03da36ba5d0c8fcf7a0c44a5d299818bcb630adc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_original_observer_native_receipt_20261011.json": "fdd6c2a7671a9142ff95c4b646e9d56d8b38a6916640cdc086fc3a923a4748f4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_original_observer_stdout_20261011.txt": "da8359d2cfbbcd832be6e566f247c87d160173a00c8d11f3f129ea87cf6bed2a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M123_actual_full_joint_launch_20261011.json": "bbdc16e64287c5ead2831e8b7d3e4e047648ecdefa92f09cbc7b09e0535f4291",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M123_full_joint_original_launch_stdout_20261011.txt": "91805e42d6137c605a7c1be6b1d48b92e567df3a85036277a7bba071e8f0b864",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M123_original_startup_process_verification_stdout_20261011.txt": "7aba8ca99cdef4298d1167c3c2a867d05d45a2f9bdf1dcef45cfb8958efa362b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\depthtrack_pr.py": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\receipt.json": "4a1c5a01eb556dad32d73a2453b9af839e9c58527cfb830d18816c25ef81314b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_initialization_binding.json": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R1_supplemental_inputs_20261010\\training_spec.json": "3569d9c42b8db332281ad70bec719650b876e8b9003c48ba73b17d1451e4b425",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\inputs\\C_split.json": "ccffeff5f42df16a544fe402d53c0a8410d200574d24c3b87383040164a92fc6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\template_write_C.py": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\template_write_features.py": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\train_template_write_C.py": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\code\\trusted_template_tracker.py": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\R2_TERMINAL_AUDIT.json": "e082d4a5d92579fb39abe4b8b4db300bac4127ccb9e90b227d98287fe7197cc2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\EXPERIMENT_AUDIT.json": "0ac5bb5ac323cbc472da42ee1cc84c7cde97ff7548ec088192999a2305d18e42",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\EXPERIMENT_AUDIT.md": "f227eb890d9c68b41e0b227691c4dac62dcb1baebfae879d47e9a14044cdf4f6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\FIT_PREFLIGHT_RECOMPUTED.json": "70ab9a6cd16701a25da8b776ba984fe27395f901cf079404829a7ca383d0ab2c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\INPUT_MANIFEST.json": "984000b22612206800d706fe31f009228757ea3cecd7e39e9d4ac8d893f0fbf8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_runtime_integrity_audit_20261010\\TEACHER_LABELS_RECOMPUTED.json": "5c01971e6085ffc6a842375343a3fc8cc059444bbe2185382138861afb80841e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\execution_binding.json": "10df0ddf57f97509e6c981967b1ed66ee59ba22f057f74439e92baa89b7dcc79",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\EXPERIMENT_AUDIT.md": "7d054a213bd71f4f6b54d1029a8d2e2e8e8f8fadf66dfb08acf074b804ea3c15",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\inputs.json": "61541e35f7b9e3c40427df79067fc0be20b8622cf275e93025e4a1547bf68601",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\spec.json": "e623ef63de89da423fc12b877f58d56219f88ef9f1232f20de9e42fb6c8665e1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m122_current_C_vot.py": "cc06010d81468299d5458478b3a2a2f5be02e16c89c71dd23a7d392b9cbcf5fe",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_train_states.py": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\bind_m122_official_initializations.py": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\collect_m122_current_C_results.py": "3c110955bceee8546f5dc942fb561ff1994f19b2a8470318e8902471ffdf5f62",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_region_decoder.py": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_region_encoding.py": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\dense_target_decoder.py": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\encode_m122_official_human_text.py": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\instance_ab_prototype.py": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_current_C_official_runtime.py": "7fa5748b57981188c8aac2ab6d396af1140a87cecf069b1fcd5b21ed8658bd10",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_current_C_process_supervisor.py": "dbbfdc8a5d49ce99ebb5c4caf74b14f323e01b12d1bd0f7138277555eb0e4a66",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_native_observation_20261010_051718\\evaluation\\precision1\\bundle.json": "ab8f90cc1202dc8cac14dd9138b9e0db83e08e5d51795146df50d48d0d66a8cc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_native_observation_20261010_051718\\evaluation\\precision1\\cdtb\\cases.json": "b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_native_observation_20261010_051718\\evaluation\\precision1\\cdtb\\plan.json": "fa58067626fab31db9e3b3160feb2bb03203359ca7841af5b218b75e353e3a0a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_native_observation_20261010_051718\\evaluation\\precision1\\depthtrack_test\\cases.json": "158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_native_observation_20261010_051718\\evaluation\\precision1\\depthtrack_test\\plan.json": "3b355b65701b783513809ed172422ae11396d7c60ef210419a08e4101c17951e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_native_observation_20261010_051718\\train_precision1\\result.json": "765cb793b932898de33fc6bbfc00866cc0b598bab1dfb6aa5537bcbf196b7ed6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_official_runtime.py": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m122_current_C_evaluation.py": "f652ccf009264cd011a70b591b2497d5637d4071a1f8b6916cd8cd3cc6ec4483",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m122_evaluation_suite.py": "1428b3488d37cbbb71ae66eeca896b553c14d4156c9ab65657c59f741d321cea",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\refine-logs\\m122_trusted_memory\\EXPERIMENT_TRACKER.md": "7ab2d97f8eb2095afd4139287b6d973450d967ab1c3492e3ae3a430739e2db43",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\region_patch_evidence.py": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\resume_m122_evaluation_metrics.py": "6a364b7eb81a02cd4673a7d9209d837087f6aca912b6c0c217977104eef33280",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_full_suite.py": "2bf1a5f297ab812d60ec3e5c751fa1a8afbb8997a4516bddaec2d65a151c7a41",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_official.py": "ba6329e7af713ae2b5c05a262d8b377df74dc872b266aaae4f1a291286854706",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_current_C_vot_shards.py": "b2a255727be2e826b5223a7271b32541d1e35e5416a9c21edc88700d731528df",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m122_official.py": "d0eeacba480a19ccb717b36b7cf0d7d3fe3cb5395e7bf19d19b37868dd3354f9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_pilot.py": "d19aaedcfd18560992645098a778ffbeb232cf4d453be4df127069e235c0003d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_template_write_teacher.py": "0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_C.py": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_features.py": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_current_C_full152.py": "4b1f3922cd193a5c12b0c1b14bf18dcf08867330a47b60f8801ea37c8ef7eb2f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m122_full_causal.py": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_template_write_C.py": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full_three_actual_integrity_20261011\\CLAIM_SCOPE.md": "6a43a03221c475f3dd93902ad059e9e841eebda5b2fc82fb024bd18e86b9cf2f"
+  },
+  "additional_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m121_dense_target.py": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m121_dense_inputs.py": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_event_cache.py": "4582167683cc2b28f69821249c7e5309fd92b5247cba4e7aff9643047153bb91",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\template_write_forks.py": "3f6143c7d27a74051cc2faf27ad7a9cc1cd1e4e9d42cf5f9d1a015d42dde7940",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m122_external_human_labels.py": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m113_human_text.py": "a81bdbd23ede1dd24d3c497a71544b426a90067858676b684a2debb7362ccde0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\finalize_vot_transaction_low22.py": "e96a375a3792a80ab12e5671db468f559d514558a05d1181fe7afec48bcb514a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\finalize_vot_full127.py": "cbbe55132a4e64157011c0cbfa9162bd583f09588e3e497dcf741a8d5174a6bb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_analysis_sources\\m39_vot_bridge.py": "230acf10f378a6babfacf9979ea07a1ce89c34952cc0c6b9568376249e265316",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\036_deep_rgbd_256_lachtt_v1.yaml": "b6bda3238c9dd001aab62d87234d9ccecf1ae1cee3bd7bea5f21d6368ff4b344",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\037_head.py": "62cb2f363ea8bce491c9e6fc528076dd1e14c7d371ad69d6efd0b4062d063326",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\038_sttrack.py": "d62cd0b2e6b383fd2049212f22d62334d32ea972150871522b874515e57ecb13",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\039_sttrack.py": "d67d551a612b80cee5b19a00f6fecd5d0f7ed0c907e800f452873afd684cc58f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\040_processing_utils.py": "7aca916f5e5f62e1865fbd322ffb63dc08197c544a241938b6c822d4bfb89bf6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\041_depth_utils.py": "f97336af94a3ec196ad239603896fc0a2387dd1d61b48a4fbe2e055d9466e92e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\042_box_ops.py": "cee9d309a9c4a6c5f00fab575719bc7bf8d865127c91b10d4fb233996a111fbc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\043_config.yaml": "72b5f9d12dcbce623debda59810fab452c5a858972f6290379fbf5f3b3874677",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\044_shard_manifest.json": "8e76256f1c7c135a65a1b262506356769b59557db60eb83bc21ef1392890dd01",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\050_plan.json": "b4c23250a9363475746cb92023c1b67a39219f2babe95c6a98ea1c40109ea568",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R0_completed_audit_sources\\051_metadata_sha256.json": "1633e2f543dd97fa0b2bff989a84e5d9b4e3ceb1537a0a42d084249c90f4b855",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\analysis\\multistart.py": "5a09065e2315387405f4cb8f96c0b8fd32d7428996a34eedd92ac4e2a4deeb02",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\experiment\\multistart.py": "9f87f8663a8f903e087b7be3c79ea563d440aa5cf996c93eab8667f90e68782d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\stack\\vot2022\\rgbd.yaml": "7a2822e3a1500e674d000ae73e526f888e8cf058454cfa70311eba8a0103f35a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\region\\__init__.py": "111e19a38ceae96ed523d927badf0227e68634a18e682d2fdac94f179428f403",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\region\\shapes.py": "63f45525a94f78a372e580d4df71bfe928a807c197e710d21bfaf86d71ccd0e5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\region\\raster.py": "ba6797ae9013cf31700eb4671d73e50480fcda62a65adb529fff3c4d777a23b9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\region\\io.py": "b20592c87907c9fd73bfae57aeb3a2bef1bc2fdac9d81c553d6de8e5b2d86c03",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\dataset\\__init__.py": "efca5a1132437f16e0a24b1b7e70b22e87ea7b113c7fc21508c1e43e078ba8e1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\dataset\\common.py": "91a917779f538aad3a17bbea9f184dac34133d32511a168a4ba6f6c6dfef7237",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_vot_full127\\source_snapshot\\vot\\analysis\\__init__.py": "646011e49a8176d06c1cb327550558ed6e9f370a0fc042ecc4c41290327bfad9",
+    "C:\\Users\\gb\\.codex\\skills\\experiment-audit\\SKILL.md": "0ab77f219f554cbe42f22b79d780528e61c5e58169af4c2f56acf59596ab8db7",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\reviewer-independence.md": "1aa1756a99dc47009072f0ee7bf570d797bf7e2cc84439401e2a9312d73659b0",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\experiment-integrity.md": "22150fbdc5867e7790c88f968bccb367079c2db4c190ddce980709aea7e76f60",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\review-tracing.md": "7f556fb9ef8922cfd0d047e5a2d857b0c7f9408492b8c8dcec00207e76405395",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\local-codex-policy.md": "b0249bfccd48ff79a5976afa7a54c64a3cfb65a5496a2105c5bb21069d197783",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\integration-contract.md": "5d393c31b36e98ae99c17ab9cf5879853c0cb595bbd9f4973ffe7bcd6549f4e7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_current\\common_dataset_manifest.json": "afd3a11dab9d10f3ca3c01430de1f30355d4a246a02c873e6fa66684f96fe0f3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R3_terminal_actual\\fit_future\\common_dataset_manifest.json": "afd3a11dab9d10f3ca3c01430de1f30355d4a246a02c873e6fa66684f96fe0f3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\R2_terminal_actual\\teacher\\result.json": "24c8461b4d71c573fbaa4bf4f91c4e359cca1614c7fe81246ac0504a325c836c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_state_dependency_sources_20261009\\lib\\test\\tracker\\basetracker.py": "f9bc6bbfb1a8f677f86e4f1eda024d89baaf454498a5f1321f1421df67a7aa36",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_state_dependency_sources_20261009\\lib\\test\\tracker\\data_utils.py": "873337d0419ecfdd08b64123cdc22a4936ccdd6af98a092bc2106c32cf401fe5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_state_dependency_sources_20261009\\lib\\models\\layers\\mamba.py": "a11e49551cea9c7a188b9b7783b541b315a1f684b86e1de364bb3ad6c04f00be",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_state_dependency_sources_20261009\\lib\\models\\sttrack\\vit_care.py": "05096a6cec0448e49f82264ad34647e267a6a50a6d96d3ee07ba10d61ce6ef0e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_backbone_dependency_sources_20261009\\lib\\models\\layers\\cross_layer.py": "5008a012c53aaa0f5b7bb567b95b6118cef138644be9955e566cdf8c298d114e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_backbone_dependency_sources_20261009\\lib\\models\\layers\\patch_embed.py": "2259b7703f008748167dd65d12ac28a496235d1f20a1d5c84a3aa0da9c8c0499",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_backbone_dependency_sources_20261009\\lib\\models\\sttrack\\base_backbone.py": "b8f7c576072471b78a0cb025264b7d35d926b9044df45945625b0a8f35751b5a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\runtime_backbone_dependency_sources_20261009\\lib\\models\\sttrack\\utils.py": "557ce8e3d352e3ec69b2d21fcb0f8c18703b3152eff6f3f2e1a7470585e634ea",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\m84_centered\\started\\code\\lib\\config\\sttrack\\config.py": "40e909f05468d44fe0c40c9e027a363a1a63a4d94f10004e3e7343c50787f7e4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\m84_centered\\started\\code\\lib\\test\\utils\\hann.py": "94de2151485d5911797afc5a2a431a4dcf99c6b293835b5b2d86bb27945bd504",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\m84_centered\\started\\code\\lib\\utils\\ce_utils.py": "513f12ba31150f8b2a15ed89b719967ec3c4de0659620675bd58b7c9cb052868",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\m84_centered\\started\\code\\lib\\models\\layers\\frozen_bn.py": "6398d16294268830ede7992e616d7176ae484759f86fb977a6b73fccb86e8db8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_ab_visual_control.py": "b1f5c1a458c380eae481b5f4ebccdc619524b8eb8a275ceb5d25fc7a24f49323",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m113_human_initialization.py": "aa07a6959b7c83aae5c4ecd4374ea4f6a54691d58b97168e26bcfb31daab15e3"
+  },
+  "source_review_coverage_file": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full_three_actual_integrity_20261011\\SOURCE_REVIEW_COVERAGE.json",
+  "trace_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_full_three_actual_integrity_20261011\\.aris\\traces\\experiment-audit\\2026-10-11_run01",
+  "trace_disclosures": [
+    "Direct Policy C files inside authorized private audit directory.",
+    "First skill-read output was not persisted in command list; actual exit/chunk metadata retained, exact source subsequently copied/hashed/read again.",
+    "Unrelated workspace bootstrap memory text explicitly redacted from RGB-D trace and not used as evidence.",
+    "Some actual returned tool outputs were truncated; complete underlying numbered snapshots/structured evidence separately retained.",
+    "Only actual captured native objects labeled verbatim; no missing output or model identity fabricated."
+  ]
+}

@@ -49,7 +49,7 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 
 2026-10-10 §5.453：实际20:19单次NN观察，preflight513calls/1eligible精确通过；双C各993fit/264fixed-dev/10epochs320steps真实exit0。Own32dev current≥25seq36812calls/future≥30seq45978calls，两卡79/78%。无完整IoU/H10/正式结果；第一timer30195正常0消费，第二唯一18966/PID49376，下一21:19:01，不提前查。
 
-| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | FIT_COMPLETE / TWO_OPE_COMPLETE / VOT_RUNNING：§5.460两完整OPE及真实零退出；§5.461有限报告审核WARN/0；21:32观察VOT1763/1765，九项未完成；原timer64382，下一NN>=22:32:44 |
+| QF152新分支 | Current质量C固定final与全验证 | 冻结P1；原teacher1257事件、400更新、单一composite final | 同一final完整九项及结果审核 | MUST | COMPLETE_ALL9：§5.481同final全50/80/127、1765anchors，232失败；fresh受限报告WARN/0，4/9通过，未达联合目标 |
 
 2026-10-10 §5.454：实际R3六阶段与supervisor exit0，21:19:36唯一小时查询确认全部结束；32dev GT复算完成，Future门失败。原seed初始化摘要的本地重建差异未确定，不称逐张量初始化已独立认证。新质量分支待源码审核，不自动续跑Future；NN下一准入不早于22:19:36.400301。
 
@@ -57,7 +57,7 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 
 2026-10-10 §5.456：CurrentC Full152固定final cc71e0b4…已训练完成；32former-dev已训练内。DT37919帧/CD44690帧已打印保存回执，完整OPE和VOT尚未完成，不预填指标。原第一timer79637正常exit0消费，第二唯一71834/PID54140。下一NN观察>=2026-10-11 00:29:55.759328；目前仅一小时一次观察。
 
-| M123-FullJoint152 | A+B+C联合完整训练 | 全Train152×3，659406调用，450888可训练参数；不划分开发集 | 同一final三数据集完整九项 | MUST | SOURCE_READY / SOURCE_STAGED / NOT_LAUNCHED：§5.458—5.459源审及实际部署已闭合，等待旧VOT和双卡释放；缓存C拟合不替代此训练 |
+| M123-FullJoint152 | A+B+C联合完整训练 | 全Train152×3，659406调用，450888可训练参数；不划分开发集 | 同一final三数据集完整九项 | MUST | ACTUAL_STARTED：22:35唯一启动，22:39真实完整trainer命令；§5.482用户改为M124最多20轮/每轮两OPE/双下降早停/best再VOT，交接源码修复审查中，尚未切换 |
 
 2026-10-11 §5.457：用户明确直接训练完整DepthTrack Train152，不再保留开发分组。旧CurrentC缓存400步不算A+B+C完整训练；旧评价继续。新M123只做完整序列训练，不做新pilot，固定final。下一NN观察>=00:29:55.759328，原timer71834保留。
 
@@ -106,3 +106,5 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 2026-10-11 §5.479：20:30唯一小时实测VOT1719/1765，+97；首波441/441各0，次波395/442，余46均GPU0。GPU0瞬采4122MiB78%，GPU1已空出1MiB0%；分片3保存exit仍尚无，全轮/root/all_results尚无，OPE字节不变。GPU0余0.810小时加分析收尾粗估。M123 ABC全Train152三完整pass/no-dev仍NOT_LAUNCHED，下一原92508/PID13156节点>=21:30:35。
 
 2026-10-11 §5.480：21:32唯一小时实测VOT1763/1765，+44；首波441/441各0，次波439/442，尚余2个均GPU0。GPU0瞬采4122MiB76%，GPU1free1MiB0%；无全轮终态或九项结果，OPE字节不变。末两个平均外推2.8分钟不作承诺。M123完整ABC全Train152/no-dev admission仍未执行，下一原64382/PID22600节点>=22:32:44。
+
+2026-10-11 §§5.481—5.482：CurrentC全九项真实完成4/9，fresh WARN/0已封存；M123全Train152已启动。用户明确20轮逐轮Test50/CDTB80选best/双下降早停，M124准备审查未切换；新协议使用外部两OPE选模必须披露。CDTB全框R70.554278，分数损失仅0.66804pp；严重低重叠10509/crop外8151，主要需修轨迹/实例选择/重新观察。

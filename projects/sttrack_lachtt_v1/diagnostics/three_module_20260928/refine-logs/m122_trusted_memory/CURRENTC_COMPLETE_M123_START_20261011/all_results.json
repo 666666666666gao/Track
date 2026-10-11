@@ -1,0 +1,108 @@
+{
+  "status": "three_M122_CurrentC_full_evaluations_complete",
+  "selection_sha256": "27f993b09c9637989e0e0c9983a2d5769a120855f38d2182bfa67f404606edfa",
+  "models": [
+    {
+      "name": "current_quality_C_full152",
+      "final_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+      "bundle_sha256": "eb8a540f4b3ced87c1c25217ff4eb4c2d950f4a4d15e103f9af0eaa39439d991",
+      "plans": {
+        "depthtrack_test": {
+          "path": "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/depthtrack_test/plan.json",
+          "sha256": "79e0ee6530c9a63d4b09879fafb28acc102918d5f088ec60c1f7d8ac2f1c2dee"
+        },
+        "cdtb": {
+          "path": "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/cdtb/plan.json",
+          "sha256": "ccc4eff25249feeebde8575d1389088305279deead03c033ac9579edf1a797ea"
+        },
+        "vot": {
+          "path": "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/vot/plan.json",
+          "sha256": "623fb4fbc8a29f4f4ad20800b5abb86339bc8098b9fec506be2051ff9ea282ca",
+          "run": "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/vot/run"
+        }
+      }
+    }
+  ],
+  "results": [
+    {
+      "model": "current_quality_C_full152",
+      "dataset": "depthtrack_test",
+      "final_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+      "bundle_sha256": "eb8a540f4b3ced87c1c25217ff4eb4c2d950f4a4d15e103f9af0eaa39439d991",
+      "result_path": "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/depthtrack_test/predictions/metrics.json",
+      "result_sha256": "8c16be1499e5a5e8af3a6208f495753f3892ed710b62fd170878d2498021cf7e",
+      "metrics_percent": {
+        "precision": 67.3650693502503,
+        "recall": 64.86510340917104,
+        "f_score": 66.09145399091419
+      }
+    },
+    {
+      "model": "current_quality_C_full152",
+      "dataset": "cdtb",
+      "final_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+      "bundle_sha256": "eb8a540f4b3ced87c1c25217ff4eb4c2d950f4a4d15e103f9af0eaa39439d991",
+      "result_path": "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/cdtb/predictions/metrics.json",
+      "result_sha256": "57b0d68dac50ee7653d21f02dc54f17a3e679d742630361e8fb1562217a83420",
+      "metrics_percent": {
+        "precision": 74.59362462526585,
+        "recall": 69.88623866187693,
+        "f_score": 72.1632445464765
+      }
+    },
+    {
+      "model": "current_quality_C_full152",
+      "dataset": "vot",
+      "final_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+      "bundle_sha256": "eb8a540f4b3ced87c1c25217ff4eb4c2d950f4a4d15e103f9af0eaa39439d991",
+      "result_path": "/root/autodl-tmp/m122_current_quality_C_full152_20261010/evaluation/vot/result.json",
+      "result_sha256": "12de43ea2dd662d5453df4d725ed448a5abdf25d42cd567abdb364c9816173bd",
+      "metrics_percent": {
+        "EAO": 76.10448251978671,
+        "ACC": 82.33234401126766,
+        "ROB": 91.64343981633608
+      },
+      "confirmed_failures": 232
+    }
+  ],
+  "gates": [
+    {
+      "model": "current_quality_C_full152",
+      "final_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+      "metrics_percent": {
+        "depthtrack_test": {
+          "precision": 67.3650693502503,
+          "recall": 64.86510340917104,
+          "f_score": 66.09145399091419
+        },
+        "cdtb": {
+          "precision": 74.59362462526585,
+          "recall": 69.88623866187693,
+          "f_score": 72.1632445464765
+        },
+        "vot": {
+          "EAO": 76.10448251978671,
+          "ACC": 82.33234401126766,
+          "ROB": 91.64343981633608
+        }
+      },
+      "passed": {
+        "depthtrack_P": true,
+        "depthtrack_R": false,
+        "depthtrack_F": true,
+        "cdtb_P": true,
+        "cdtb_R": false,
+        "cdtb_F": false,
+        "vot_EAO": false,
+        "vot_ACC": true,
+        "vot_ROB": false
+      },
+      "joint_pass": false
+    }
+  ],
+  "any_joint_pass": false,
+  "external_metric_checkpoint_selection": false,
+  "human_review_used_multiframe_aids": true,
+  "external_optimizer_steps": 0,
+  "independent_completed_audit": false
+}

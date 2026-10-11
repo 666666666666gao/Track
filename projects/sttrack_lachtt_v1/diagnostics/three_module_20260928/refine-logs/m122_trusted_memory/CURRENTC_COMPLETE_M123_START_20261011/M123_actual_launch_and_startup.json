@@ -1,0 +1,70 @@
+{
+  "launch": {
+    "status": "actual_M123_full_joint_supervisor_spawned",
+    "supervisor_pid": 496826,
+    "command": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-B",
+      "-u",
+      "/root/autodl-tmp/m123_ABC_joint_full152_20261011/code/m123_joint_process_supervisor.py",
+      "/root/autodl-tmp/m123_ABC_joint_full152_20261011"
+    ],
+    "root": "/root/autodl-tmp/m123_ABC_joint_full152_20261011",
+    "started_at": "2026-10-11T14:35:57.014382+00:00",
+    "hourly_snapshot_observed_at": "2026-10-11T14:34:49.891541+00:00",
+    "hourly_snapshot_GPU": "0, 1, 0\n1, 1, 0\n",
+    "original_hourly_observation_sha256": "da8359d2cfbbcd832be6e566f247c87d160173a00c8d11f3f129ea87cf6bed2a",
+    "gate_sha256": "fadc5a3b10bdfedb3a3f6953a7f70e76a2f05ed0f8eddb57bec448d1c6d49af0",
+    "initial_poll_exit": null,
+    "additional_GPU_queries": 0,
+    "no_development_split": true,
+    "full_joint_training_only": true,
+    "training_completed": false,
+    "next_NN_observation_not_before": "2026-10-11T15:34:49.891541+00:00"
+  },
+  "initial_process_verification": {
+    "status": "actual_M123_initial_process_tree_verification",
+    "observed_at": "2026-10-11T14:39:44.281460+00:00",
+    "processes": [
+      {
+        "pid": 496826,
+        "cmdline_exists": true,
+        "cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m123_ABC_joint_full152_20261011/code/m123_joint_process_supervisor.py /root/autodl-tmp/m123_ABC_joint_full152_20261011 ",
+        "children": [
+          496827
+        ]
+      },
+      {
+        "pid": 496827,
+        "cmdline_exists": true,
+        "cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m123_ABC_joint_full152_20261011/code/run_m123_joint_full_suite.py /root/autodl-tmp/m123_ABC_joint_full152_20261011 ",
+        "children": [
+          496828
+        ]
+      },
+      {
+        "pid": 496828,
+        "cmdline_exists": true,
+        "cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m123_ABC_joint_full152_20261011/code/train_m123_ABC_joint_full152.py --spec /root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json --repository /root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1 --checkpoint /root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar --clip-weight /root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt --bank /root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt --labels /home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json --warm-final /root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt --warm-result /root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json --output /root/autodl-tmp/m123_ABC_joint_full152_20261011/fit ",
+        "children": []
+      }
+    ],
+    "files": {
+      "actual_launch.json": "{\n  \"status\": \"actual_M123_full_joint_supervisor_spawned\",\n  \"supervisor_pid\": 496826,\n  \"command\": [\n    \"/root/autodl-tmp/envs/sttrack/bin/python\",\n    \"-B\",\n    \"-u\",\n    \"/root/autodl-tmp/m123_ABC_joint_full152_20261011/code/m123_joint_process_supervisor.py\",\n    \"/root/autodl-tmp/m123_ABC_joint_full152_20261011\"\n  ],\n  \"root\": \"/root/autodl-tmp/m123_ABC_joint_full152_20261011\",\n  \"started_at\": \"2026-10-11T14:35:57.014382+00:00\",\n  \"hourly_snapshot_observed_at\": \"2026-10-11T14:34:49.891541+00:00\",\n  \"hourly_snapshot_GPU\": \"0, 1, 0\\n1, 1, 0\\n\",\n  \"original_hourly_observation_sha256\": \"da8359d2cfbbcd832be6e566f247c87d160173a00c8d11f3f129ea87cf6bed2a\",\n  \"gate_sha256\": \"fadc5a3b10bdfedb3a3f6953a7f70e76a2f05ed0f8eddb57bec448d1c6d49af0\",\n  \"initial_poll_exit\": null,\n  \"additional_GPU_queries\": 0,\n  \"no_development_split\": true,\n  \"full_joint_training_only\": true,\n  \"training_completed\": false,\n  \"next_NN_observation_not_before\": \"2026-10-11T15:34:49.891541+00:00\"\n}\n",
+      "controller.supervisor.launch.json": "{\n  \"supervisor_pid\": 496826,\n  \"controller_command\": [\n    \"/root/autodl-tmp/envs/sttrack/bin/python\",\n    \"-B\",\n    \"-u\",\n    \"/root/autodl-tmp/m123_ABC_joint_full152_20261011/code/run_m123_joint_full_suite.py\",\n    \"/root/autodl-tmp/m123_ABC_joint_full152_20261011\"\n  ],\n  \"started_at\": \"2026-10-11T14:35:57.043742+00:00\",\n  \"progress_queries\": 0,\n  \"automatic_retries\": 0\n}\n",
+      "train_ABC_complete_all152.launch.json": "{\n  \"stage\": \"train_ABC_complete_all152\",\n  \"command\": [\n    \"/root/autodl-tmp/envs/sttrack/bin/python\",\n    \"-B\",\n    \"-u\",\n    \"/root/autodl-tmp/m123_ABC_joint_full152_20261011/code/train_m123_ABC_joint_full152.py\",\n    \"--spec\",\n    \"/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json\",\n    \"--repository\",\n    \"/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1\",\n    \"--checkpoint\",\n    \"/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar\",\n    \"--clip-weight\",\n    \"/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt\",\n    \"--bank\",\n    \"/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt\",\n    \"--labels\",\n    \"/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json\",\n    \"--warm-final\",\n    \"/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt\",\n    \"--warm-result\",\n    \"/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json\",\n    \"--output\",\n    \"/root/autodl-tmp/m123_ABC_joint_full152_20261011/fit\"\n  ],\n  \"gpu\": null,\n  \"started_at\": \"2026-10-11T14:35:58.540793+00:00\"\n}\n"
+    },
+    "GPU_queries": 0,
+    "NN_progress_queries": 0,
+    "NN_log_reads": 0,
+    "NN_forward_calls": 0,
+    "purpose": "single startup verification of executed complete-training command, not training metric monitoring"
+  },
+  "original_launch_stdout_sha256": "91805e42d6137c605a7c1be6b1d48b92e567df3a85036277a7bba071e8f0b864",
+  "original_startup_stdout_sha256": "7aba8ca99cdef4298d1167c3c2a867d05d45a2f9bdf1dcef45cfb8958efa362b",
+  "status": "actual_complete_Train152_ABC_training_process_live",
+  "training_completed": false,
+  "optimizer_steps_observed": false,
+  "no_development_split": true,
+  "NN_progress_queries": 0
+}

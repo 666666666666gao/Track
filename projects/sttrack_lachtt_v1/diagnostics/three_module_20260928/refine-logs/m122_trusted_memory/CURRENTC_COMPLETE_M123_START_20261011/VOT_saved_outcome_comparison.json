@@ -1,0 +1,984 @@
+{
+  "status": "saved_VOT_outcome_arithmetic_complete",
+  "inputs": {
+    "P1": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_1021\\evaluation\\precision1\\vot\\result.json",
+      "sha256": "38860a66105fdd30097695c7da16f83c83bc70079ec922c3f76de3ebaf0c13c8"
+    },
+    "CurrentC": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_twentythird_hour_actual_files_20261011\\evaluation\\vot\\result.json",
+      "sha256": "12de43ea2dd662d5453df4d725ed448a5abdf25d42cd567abdb364c9816173bd"
+    }
+  },
+  "metrics_percent": {
+    "P1": {
+      "EAO": 76.14346674318894,
+      "ACC": 82.34034076704376,
+      "ROB": 91.68978305410563
+    },
+    "CurrentC": {
+      "EAO": 76.10448251978671,
+      "ACC": 82.33234401126766,
+      "ROB": 91.64343981633608
+    }
+  },
+  "delta_CurrentC_minus_P1_pp": {
+    "EAO": -0.03898422340222396,
+    "ACC": -0.007996755776090936,
+    "ROB": -0.046343237769548296
+  },
+  "anchors": 1765,
+  "sequences": 127,
+  "P1_confirmed_failures": 230,
+  "CurrentC_confirmed_failures": 232,
+  "additional_failed_anchor_count": 2,
+  "rescued_anchor_count": 0,
+  "additional_failed_anchors": [
+    {
+      "anchor_key": "flag_indoor_1@400F",
+      "sequence": "flag_indoor_1",
+      "P1_failed": false,
+      "CurrentC_failed": true,
+      "P1_progress": 966,
+      "CurrentC_progress": 951,
+      "run_length": 966
+    },
+    {
+      "anchor_key": "notebook01_indoor_1@250F",
+      "sequence": "notebook01_indoor_1",
+      "P1_failed": false,
+      "CurrentC_failed": true,
+      "P1_progress": 466,
+      "CurrentC_progress": 423,
+      "run_length": 466
+    }
+  ],
+  "rescued_anchors": [],
+  "both_failed_changed_progress_count": 3,
+  "both_failed_changed_progress": [
+    {
+      "anchor_key": "cup02_indoor_1@1250B",
+      "sequence": "cup02_indoor_1",
+      "P1_failed": true,
+      "CurrentC_failed": true,
+      "P1_progress": 231,
+      "CurrentC_progress": 234,
+      "run_length": 1251
+    },
+    {
+      "anchor_key": "toy09_indoor_1@250F",
+      "sequence": "toy09_indoor_1",
+      "P1_failed": true,
+      "CurrentC_failed": true,
+      "P1_progress": 798,
+      "CurrentC_progress": 472,
+      "run_length": 1089
+    },
+    {
+      "anchor_key": "toy09_indoor_1@400F",
+      "sequence": "toy09_indoor_1",
+      "P1_failed": true,
+      "CurrentC_failed": true,
+      "P1_progress": 648,
+      "CurrentC_progress": 322,
+      "run_length": 939
+    }
+  ],
+  "all_outcome_fields_unchanged_count": 1760,
+  "per_sequence": [
+    {
+      "sequence": "XMG_outside_2",
+      "anchors": 19,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "adapter01_indoor_1",
+      "anchors": 19,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "backpack_blue_1",
+      "anchors": 20,
+      "P1_failures": 3,
+      "CurrentC_failures": 3,
+      "delta": 0
+    },
+    {
+      "sequence": "backpack_indoor_1",
+      "anchors": 10,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "backpack_robotarm_lab_occ_1",
+      "anchors": 12,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "backpack_room_noocc_1_1",
+      "anchors": 29,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "bag01_indoor_1",
+      "anchors": 8,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "bag01_indoor_2",
+      "anchors": 21,
+      "P1_failures": 4,
+      "CurrentC_failures": 4,
+      "delta": 0
+    },
+    {
+      "sequence": "bag01_indoor_4",
+      "anchors": 9,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "bag02_indoor_1",
+      "anchors": 11,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "bag02_indoor_2",
+      "anchors": 27,
+      "P1_failures": 5,
+      "CurrentC_failures": 5,
+      "delta": 0
+    },
+    {
+      "sequence": "bag_outside_2",
+      "anchors": 13,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "bag_outside_3",
+      "anchors": 15,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "ball06_indoor_1",
+      "anchors": 8,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "ball06_indoor_2",
+      "anchors": 8,
+      "P1_failures": 6,
+      "CurrentC_failures": 6,
+      "delta": 0
+    },
+    {
+      "sequence": "ball11_wild_1",
+      "anchors": 6,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "ball11_wild_2",
+      "anchors": 5,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "ball11_wild_5",
+      "anchors": 13,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "ball20_indoor_1",
+      "anchors": 9,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "ball20_indoor_4",
+      "anchors": 7,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "bandlight_indoor_1",
+      "anchors": 25,
+      "P1_failures": 8,
+      "CurrentC_failures": 8,
+      "delta": 0
+    },
+    {
+      "sequence": "bicycle2_outside_1",
+      "anchors": 19,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "bottle_box_5",
+      "anchors": 4,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box1_outside_1",
+      "anchors": 50,
+      "P1_failures": 7,
+      "CurrentC_failures": 7,
+      "delta": 0
+    },
+    {
+      "sequence": "box_darkroom_noocc_10_1",
+      "anchors": 18,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_darkroom_noocc_1_1",
+      "anchors": 23,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_darkroom_noocc_2_1",
+      "anchors": 17,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "box_darkroom_noocc_3_1",
+      "anchors": 37,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_darkroom_noocc_4_1",
+      "anchors": 26,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_darkroom_noocc_5_1",
+      "anchors": 45,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_darkroom_noocc_6_1",
+      "anchors": 23,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_darkroom_noocc_7_1",
+      "anchors": 15,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_humans_room_occ_1_1",
+      "anchors": 10,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_room_noocc_3_1",
+      "anchors": 24,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_room_noocc_4_1",
+      "anchors": 26,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_room_noocc_7_1",
+      "anchors": 28,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_room_occ_2_1",
+      "anchors": 11,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "box_room_occ_2_2",
+      "anchors": 5,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "boxes_backpack_room_occ_1_2",
+      "anchors": 7,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "boxes_humans_room_occ_1_1",
+      "anchors": 6,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "boxes_humans_room_occ_1_4",
+      "anchors": 7,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "boxes_humans_room_occ_1_5",
+      "anchors": 4,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "boxes_room_occ_1_1",
+      "anchors": 18,
+      "P1_failures": 12,
+      "CurrentC_failures": 12,
+      "delta": 0
+    },
+    {
+      "sequence": "boxes_room_occ_1_2",
+      "anchors": 6,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cartman_1",
+      "anchors": 9,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cartman_robotarm_lab_noocc_1",
+      "anchors": 42,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "case_1",
+      "anchors": 8,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cat01_indoor_1",
+      "anchors": 29,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cat01_indoor_3",
+      "anchors": 23,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "colacan03_indoor_1",
+      "anchors": 5,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "colacan03_indoor_3",
+      "anchors": 10,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "colacan03_indoor_7",
+      "anchors": 6,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "container_room_noocc_1_1",
+      "anchors": 34,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cube02_indoor_1",
+      "anchors": 13,
+      "P1_failures": 8,
+      "CurrentC_failures": 8,
+      "delta": 0
+    },
+    {
+      "sequence": "cube02_indoor_2",
+      "anchors": 13,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cube05_indoor_1",
+      "anchors": 4,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "cube05_indoor_2",
+      "anchors": 4,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cube05_indoor_3",
+      "anchors": 7,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cube05_indoor_4",
+      "anchors": 7,
+      "P1_failures": 2,
+      "CurrentC_failures": 2,
+      "delta": 0
+    },
+    {
+      "sequence": "cube05_indoor_5",
+      "anchors": 11,
+      "P1_failures": 8,
+      "CurrentC_failures": 8,
+      "delta": 0
+    },
+    {
+      "sequence": "cube05_indoor_6",
+      "anchors": 16,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "cup01_indoor_1",
+      "anchors": 16,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "cup02_indoor_1",
+      "anchors": 36,
+      "P1_failures": 36,
+      "CurrentC_failures": 36,
+      "delta": 0
+    },
+    {
+      "sequence": "cup04_indoor_1",
+      "anchors": 23,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "developmentboard_indoor_4",
+      "anchors": 9,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "dog_outside_1",
+      "anchors": 19,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "duck03_wild_1",
+      "anchors": 6,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "duck03_wild_2",
+      "anchors": 6,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "dumbbells01_indoor_1",
+      "anchors": 7,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "dumbbells01_indoor_2",
+      "anchors": 12,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "earphone01_indoor_1",
+      "anchors": 20,
+      "P1_failures": 6,
+      "CurrentC_failures": 6,
+      "delta": 0
+    },
+    {
+      "sequence": "file01_indoor_1",
+      "anchors": 14,
+      "P1_failures": 8,
+      "CurrentC_failures": 8,
+      "delta": 0
+    },
+    {
+      "sequence": "flag_indoor_1",
+      "anchors": 27,
+      "P1_failures": 1,
+      "CurrentC_failures": 2,
+      "delta": 1
+    },
+    {
+      "sequence": "glass01_indoor_1",
+      "anchors": 5,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "glass01_indoor_2",
+      "anchors": 19,
+      "P1_failures": 13,
+      "CurrentC_failures": 13,
+      "delta": 0
+    },
+    {
+      "sequence": "human02_indoor_1",
+      "anchors": 3,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "human02_indoor_2",
+      "anchors": 23,
+      "P1_failures": 6,
+      "CurrentC_failures": 6,
+      "delta": 0
+    },
+    {
+      "sequence": "human02_indoor_3",
+      "anchors": 9,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "humans_corridor_occ_1_1",
+      "anchors": 4,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "humans_shirts_room_occ_1_A_1",
+      "anchors": 17,
+      "P1_failures": 8,
+      "CurrentC_failures": 8,
+      "delta": 0
+    },
+    {
+      "sequence": "humans_shirts_room_occ_1_A_2",
+      "anchors": 13,
+      "P1_failures": 7,
+      "CurrentC_failures": 7,
+      "delta": 0
+    },
+    {
+      "sequence": "humans_shirts_room_occ_1_B_1",
+      "anchors": 12,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "humans_shirts_room_occ_1_B_2",
+      "anchors": 11,
+      "P1_failures": 4,
+      "CurrentC_failures": 4,
+      "delta": 0
+    },
+    {
+      "sequence": "jug_1",
+      "anchors": 6,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "lamp02_indoor_1",
+      "anchors": 21,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "mobilephone03_indoor_2",
+      "anchors": 10,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "mug_ankara_1",
+      "anchors": 7,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "mug_gs_1",
+      "anchors": 10,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "notebook01_indoor_1",
+      "anchors": 16,
+      "P1_failures": 2,
+      "CurrentC_failures": 3,
+      "delta": 1
+    },
+    {
+      "sequence": "paperpunch_3",
+      "anchors": 5,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "person_outside_1",
+      "anchors": 17,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "pigeon01_wild_1",
+      "anchors": 15,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "pigeon02_wild_1",
+      "anchors": 7,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "pigeon04_wild_1",
+      "anchors": 3,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "pot_indoor_1",
+      "anchors": 2,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "pot_indoor_2",
+      "anchors": 3,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "pot_indoor_3",
+      "anchors": 5,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "robot_corridor_occ_1_1",
+      "anchors": 9,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_1_B_1",
+      "anchors": 19,
+      "P1_failures": 3,
+      "CurrentC_failures": 3,
+      "delta": 0
+    },
+    {
+      "sequence": "robot_lab_occ_1",
+      "anchors": 21,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "roller_indoor_1",
+      "anchors": 5,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "roller_indoor_2",
+      "anchors": 3,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "roller_indoor_4",
+      "anchors": 3,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "shoes02_indoor_1",
+      "anchors": 13,
+      "P1_failures": 12,
+      "CurrentC_failures": 12,
+      "delta": 0
+    },
+    {
+      "sequence": "shoes02_indoor_2",
+      "anchors": 4,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "squirrel_wild_1",
+      "anchors": 9,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "squirrel_wild_2",
+      "anchors": 8,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "squirrel_wild_3",
+      "anchors": 4,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "stick_indoor_1",
+      "anchors": 19,
+      "P1_failures": 11,
+      "CurrentC_failures": 11,
+      "delta": 0
+    },
+    {
+      "sequence": "teapot_1",
+      "anchors": 7,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "toiletpaper01_indoor_1",
+      "anchors": 5,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "toiletpaper01_indoor_2",
+      "anchors": 25,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "toy02_indoor_1",
+      "anchors": 24,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "toy09_indoor_1",
+      "anchors": 26,
+      "P1_failures": 26,
+      "CurrentC_failures": 26,
+      "delta": 0
+    },
+    {
+      "sequence": "toy_office_noocc_1_1",
+      "anchors": 21,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "trashcan_room_occ_1_2",
+      "anchors": 3,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "trashcans_room_occ_1_A_1",
+      "anchors": 2,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "trashcans_room_occ_1_B_1",
+      "anchors": 5,
+      "P1_failures": 3,
+      "CurrentC_failures": 3,
+      "delta": 0
+    },
+    {
+      "sequence": "trashcans_room_occ_1_B_3",
+      "anchors": 3,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "trendNetBag_outside_1",
+      "anchors": 31,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "trendNet_outside_1",
+      "anchors": 17,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "trendNet_outside_2",
+      "anchors": 17,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "trophy_outside_2",
+      "anchors": 14,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "two_mugs_1",
+      "anchors": 4,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "two_tennis_balls_1",
+      "anchors": 4,
+      "P1_failures": 0,
+      "CurrentC_failures": 0,
+      "delta": 0
+    },
+    {
+      "sequence": "two_tennis_balls_3",
+      "anchors": 4,
+      "P1_failures": 1,
+      "CurrentC_failures": 1,
+      "delta": 0
+    },
+    {
+      "sequence": "yogurt_indoor_1",
+      "anchors": 34,
+      "P1_failures": 7,
+      "CurrentC_failures": 7,
+      "delta": 0
+    }
+  ],
+  "NN_calls": 0,
+  "remote_queries": 0,
+  "raw_trajectory_or_IoU_recomputed": false,
+  "causal_attribution_to_C": false,
+  "limits": "Saved analyzer outcome labels only. Changes in complete recursive trajectories do not identify the first divergent decision, template contents, or semantic cause. Equal failure counts do not establish equal failure timing or EAO/ROB. External sequences are diagnostic, not sequence-specific training rules."
+}
