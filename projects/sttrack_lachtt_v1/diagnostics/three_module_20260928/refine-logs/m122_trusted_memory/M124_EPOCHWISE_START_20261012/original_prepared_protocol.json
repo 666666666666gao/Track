@@ -1,0 +1,47 @@
+{
+  "status": "M124_user_requested_epochwise_protocol_sources_prepared_not_deployed",
+  "maximum_epochs": 20,
+  "training_sequences": 152,
+  "no_development_split": true,
+  "seed": 2027,
+  "ABC_joint_trainable_parameters": 450888,
+  "pretrained_STTrack_and_CLIP_frozen": true,
+  "own_history_complete_sequences": true,
+  "evaluate_every_complete_epoch": [
+    "DepthTrack_Test50",
+    "CDTB80"
+  ],
+  "stop_rule": "two consecutive epochs both F scores strictly lower than the immediately preceding epoch",
+  "initial_comparison_reference": "captured CurrentC same warm final complete OPE scores",
+  "best_score": "arithmetic mean of both F scores; earliest epoch retained on ties",
+  "eligible_best_checkpoints": "completed training epochs 1 through 20; original warm model retained separately",
+  "selected_best_then_full_VOT": true,
+  "checkpoint_selection_uses_external_Test50_CDTB80": true,
+  "no_external_test_or_CDTB_gradient_training": true,
+  "hourly_monitor_minimum_seconds": 3600,
+  "migration": "old live trainer stopped once after source review; resume actual saved complete-sequence boundary",
+  "legacy_RNG_absent_disclosed": true,
+  "next_checkpoints_include_optimizer_and_RNG": true,
+  "old_M123_source_and_original_records_preserved": true,
+  "source_sha256": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epochwise_vot.py": "2089a4ad42f6f6ab5b8c6fab5d1b2403c1c94fb0a1f2499a3aa587b1d8b91dc4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\collect_m124_epochwise_results.py": "7a48b9af70c96ffc462ce00c32a38ef9cc053aeb0eba2598e1f8a0a2b202374f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m124_epochwise_official_runtime.py": "60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m124_epochwise_process_supervisor.py": "7e85ae12eb74f030eb35558e0b08066253596403e2df41fa8a19a2d66cc2cec5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m124_epochwise_selection.py": "24d73496437a60dea724bca14b51c8e8f0742657fb242ef4c793ea37ee9c4a24",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\migrate_m123_to_m124_epochwise.py": "93316a15dde103d00a0371fd0d68b87f809d8a66f4b508333e7c31dc464d91b8",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m124_epochwise_evaluation.py": "ad05b5029b6e27e5c163c8ffa190d1db83312f011331f5d8dd426e89192ee8cb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py": "e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_suite.py": "63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\train_m124_joint_epoch.py": "6bc43f9f113c3a648e9a674ad3f7f18d1114e4f84880edf18fa61d40e804081c"
+  },
+  "actual_migration_completed": false,
+  "actual_new_controller_launched": false,
+  "source_review_complete": false,
+  "controller": "run_m124_epochwise_suite.py",
+  "initial_comparison_F_percent": [
+    66.09145399091419,
+    72.1632445464765
+  ],
+  "intended_remote_root": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011"
+}

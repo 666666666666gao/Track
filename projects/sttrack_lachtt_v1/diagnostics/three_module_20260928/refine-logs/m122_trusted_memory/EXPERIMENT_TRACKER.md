@@ -108,3 +108,6 @@ R1接线状态更新：2026-10-09T03:10:56.401364+08:00；新source caller仅AST
 2026-10-11 §5.480：21:32唯一小时实测VOT1763/1765，+44；首波441/441各0，次波439/442，尚余2个均GPU0。GPU0瞬采4122MiB76%，GPU1free1MiB0%；无全轮终态或九项结果，OPE字节不变。末两个平均外推2.8分钟不作承诺。M123完整ABC全Train152/no-dev admission仍未执行，下一原64382/PID22600节点>=22:32:44。
 
 2026-10-11 §§5.481—5.482：CurrentC全九项真实完成4/9，fresh WARN/0已封存；M123全Train152已启动。用户明确20轮逐轮Test50/CDTB80选best/双下降早停，M124准备审查未切换；新协议使用外部两OPE选模必须披露。CDTB全框R70.554278，分数损失仅0.66804pp；严重低重叠10509/crop外8151，主要需修轨迹/实例选择/重新观察。
+
+
+M124 actual Oct12 00:15: max20 full Train152 joint, every epoch Test50/CDTB80, consecutive dual F decline patience2, best equal mean F then complete VOT. User-authorized external checkpoint selection disclosed. R3 source-only0block, old37seq/54906calls/1711steps recovered; supervisor500073/controller500074/trainer500075 CPUstartup witnessed. No new complete metric. CurrentC CDTB onset frames: cart no secondcart jumped towardperson beforeoutcrop; backpackreappearanceoutside; trashcanstwoinstances. Hourly only native35639/PID48336 due01:15:52. Goalactive/unmet.

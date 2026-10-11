@@ -1,0 +1,127 @@
+{
+  "audit_skill": "experiment-audit",
+  "phase": "R2",
+  "audit_scope": "SOURCE_ONLY",
+  "verdict": "SOURCE_ONLY_FAIL",
+  "source_verdict": "SOURCE_ONLY_FAIL",
+  "overall_verdict": "FAIL",
+  "integrity_status": "fail",
+  "blocking_count": 1,
+  "reason_code": "required_pre_signal_checkpoint_validation_incomplete",
+  "summary": "R1 checkpoint-read/post-stop-source race and generator drift are addressed, but canonical recovery preparation and model/Adam roundtrip validation still execute after SIGTERM.",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "max",
+  "reviewer_model": "UNATTESTED",
+  "reviewer_reasoning": "UNATTESTED",
+  "actual_backend": "UNATTESTED",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "agent_id": "/root/m124_epochwise_source_integrity_20261011",
+  "verdict_id": "/root/m124_epochwise_source_integrity_20261011:R2",
+  "executor_substitution": false,
+  "generated_at": "2026-10-11T15:56:55.170Z",
+  "R1_report_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_20261011/SOURCE_AUDIT.json",
+  "R1_report_sha256": "a1c0b21077f66dc97edc98d796baf02c4ee5033604530358e6ba84fcecc41921",
+  "R1_seal_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_20261011/AUDIT_SEAL.json",
+  "R1_seal_sha256": "e3c71099745f815d718a1b18db89b05163c4485b61f24ffac5251a1657fac0da",
+  "R1_artifacts_unchanged": 159,
+  "intake_count": 29,
+  "before_after_file_count": 68,
+  "changed_since_R1_count": 2,
+  "findings": [
+    {
+      "id": "R2-B1",
+      "blocking": true,
+      "severity": "MEDIUM",
+      "title": "Canonical recovery checkpoint and model/Adam roundtrip checks still occur after SIGTERM",
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/migrate_m123_to_m124_epochwise.py",
+      "lines": {
+        "signal": 73,
+        "canonical_build": "87-102",
+        "save_reload": "103-104",
+        "model_Adam_validation": "105-112"
+      },
+      "details": "The stable raw pre-stop snapshot is now preserved correctly, and the live post-stop latest.pt is no longer used for recovery. However, source order is torch.load(raw bytes) at 52, os.kill(SIGTERM) at 73, torch.save(canonical) at 103, reload at 104, and A_B/C/Adam roundtrip assertions at 105-112. The canonical checkpoint's first A_B/C digest and optimizer structure accesses are also below the signal. Thus failures in preparing or checking the actual handoff resume.pt can still occur after stopping the original trainer. This leaves the explicit R2 requirement to complete recovery preparation/validation before SIGTERM unmet. No actual checkpoint corruption, missing key or failed write is claimed.",
+      "minimum_fix": "Move the existing provenance/canonical resume.pt construction, save, reload and complete A_B/C/Adam roundtrip validation above SIGTERM; they depend only on the already captured pre-stop bytes and committed log prefix. Preserve post-stop copy/exit verification below SIGTERM, and only record the factual post-stop-copy provenance flag after those copies succeed. Do not add retry/fallback or alter old trainer/model/loss/evaluation sources."
+    }
+  ],
+  "checks": [
+    {
+      "id": "R2-C1",
+      "status": "PASS_SOURCE",
+      "topic": "Stable raw checkpoint read and sealed raw snapshot",
+      "evidence": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/migrate_m123_to_m124_epochwise.py:46-71",
+      "details": "One read is surrounded by inode/size/mtime_ns checks, byte count matches, CPU torch.load consumes BytesIO(checkpoint_bytes), and the retained raw file SHA matches the captured bytes before SIGTERM. Concurrent-read/deserialization failures occur before the signal; no retry/fallback is added."
+    },
+    {
+      "id": "R2-C2",
+      "status": "PASS_SOURCE",
+      "topic": "Committed sequence-log prefix only",
+      "evidence": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/migrate_m123_to_m124_epochwise.py:54-70",
+      "details": "Raw log bytes are retained, but parsing slices to saved.completed_sequences first. Sequence identity, ordering, calls and optimizer counters are checked before SIGTERM. Three pure JSON source-fragment fixtures confirm that an incomplete uncommitted suffix is ignored while missing/malformed committed rows fail."
+    },
+    {
+      "id": "R2-C3",
+      "status": "PASS_SOURCE",
+      "topic": "Post-stop latest is historical evidence only",
+      "evidence": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/migrate_m123_to_m124_epochwise.py:81-112",
+      "details": "Post-stop latest.pt is only copied and SHA checked. Canonical data derives from the saved object deserialized from pre-stop bytes. No post-stop torch.load(old latest) remains."
+    },
+    {
+      "id": "R2-C4",
+      "status": "FAIL",
+      "topic": "Recovery preparation and model/Adam validation before signal",
+      "evidence": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/migrate_m123_to_m124_epochwise.py:73,97-112",
+      "details": "The stable raw pre-stop snapshot is now preserved correctly, and the live post-stop latest.pt is no longer used for recovery. However, source order is torch.load(raw bytes) at 52, os.kill(SIGTERM) at 73, torch.save(canonical) at 103, reload at 104, and A_B/C/Adam roundtrip assertions at 105-112. The canonical checkpoint's first A_B/C digest and optimizer structure accesses are also below the signal. Thus failures in preparing or checking the actual handoff resume.pt can still occur after stopping the original trainer. This leaves the explicit R2 requirement to complete recovery preparation/validation before SIGTERM unmet. No actual checkpoint corruption, missing key or failed write is claimed."
+    },
+    {
+      "id": "R2-C5",
+      "status": "PASS_SOURCE",
+      "topic": "Generator parity including legacy frozen/RNG branch",
+      "evidence": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_m124_epochwise_sources_20261011.py:33-34",
+      "details": "All six outputs reconstructed in memory exactly match the actual source bytes. The legacy None check and the resume_RNG_saved branch are now reproduced correctly. R1-B2 is closed."
+    },
+    {
+      "id": "R2-C6",
+      "status": "PASS_HASH_INHERITED_SOURCE_REVIEW",
+      "topic": "Training and user protocol unchanged",
+      "evidence": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_R2_20261011/R1_comparison.json",
+      "details": "Among R1's 63 tracked inputs/dependencies, only migration and generator changed. The actual trainer, A+B+C model/loss, source user protocol, per-epoch OPE controller, strict dual-decline stop, equal-mean earliest-tie selection and best-only full VOT remain byte-identical to R1. R1's positive source checks and all evidence limits carry forward."
+    },
+    {
+      "id": "R2-C7",
+      "status": "PASS_HASH",
+      "topic": "R1 preserved and R2 intake matched",
+      "evidence": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_R2_20261011/R1_comparison.json",
+      "details": "All 29 R2 intake hashes match; all 159 artifacts inside R1's seal plus the R1 seal itself are unchanged. 68 R2 input/dependency/metadata files were snapshotted for final before/after checking."
+    },
+    {
+      "id": "R2-C8",
+      "status": "SOURCE_ONLY",
+      "topic": "A-F integrity boundary",
+      "evidence": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_20261011/SOURCE_AUDIT.json",
+      "details": "No GT/metric/scope implementation changed. A/B/F positive source classifications and C/D/E warnings from R1 remain applicable: real dataset-GT intended, no self-max metric normalization, no actual M124 result, no untouched-Test50/CDTB claim, one seed and human multiframe aids. This R2 audit does not reclassify an unrun source pipeline as a completed experiment."
+    }
+  ],
+  "evidence_limits": [
+    "Continuation of the same-family/provisional R1 reviewer; requested gpt-6-astra/max, actual model/effort/backend UNATTESTED. No executor substitution.",
+    "Only the two changed source files are substantively re-reviewed. Unchanged protocol/training/evaluation and dependencies are verified by exact SHA and inherit the R1 source review; they were not needlessly rerun.",
+    "No SSH, GPU/NN action, training-progress query, process query/signal, actual checkpoint deserialization, target package import or model execution occurred. Pure source-string and JSON fragments were the only executed target logic.",
+    "Snapshot stability checks are source-verified, not tested against the real concurrently written latest.pt. Actual old checkpoint contents, Adam state, live process identity, migration request, deployment paths and installed package versions remain unobserved.",
+    "The preserved raw checkpoint now protects the saved boundary; the remaining finding is the explicit ordering requirement for preparing and validating canonical recovery state before signalling, not a claim that R2 has already damaged data.",
+    "Existing legacy RNG/full-frozen-digest absence, seed2027 reset, repeated partial sequence, external metric selection and no bitwise-continuation claim are unchanged.",
+    "R1's full evidence limitations remain in force, including no raw OPE/VOT recomputation, no performance/result claim, no upstream toolkit byte-equivalence attestation and no actual deployment admission.",
+    "The source USER_PROTOCOL is immutable intended-protocol history and retains its original source hash map. Exact R2 code identity is carried by R2 INPUT_MANIFEST; a later deployment request must use the reviewed revised source SHA values.",
+    "Native exec_command exposes a combined stdout/stderr stream; exact returned output is preserved and separate stderr is marked unavailable. The final tool-return envelope is held in the conversation/parent trace because a seal cannot recursively contain itself."
+  ],
+  "resolution_of_R1": {
+    "B1": "PARTIALLY_CLOSED: stable raw pre-stop preservation and committed prefix fixed; recovery preparation/validation order remains R2-B1",
+    "B2": "CLOSED: 6/6 reconstructed output bytes exact"
+  },
+  "trace_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_R2_20261011/review_trace",
+  "hash_before_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_R2_20261011/hashes_before.json",
+  "hash_after_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_R2_20261011/hash_afterchecks.json",
+  "deterministic_validation_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_R2_20261011/deterministic_validation.json",
+  "audit_seal_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epochwise_source_audit_R2_20261011/AUDIT_SEAL.json",
+  "runtime_admission": false
+}
