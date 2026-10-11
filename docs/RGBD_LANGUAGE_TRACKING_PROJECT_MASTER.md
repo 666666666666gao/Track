@@ -27440,3 +27440,26 @@ M123完整A+B+C仍NOT_LAUNCHED，已部署审查的全官方Train152三轮/65940
 M123完整A+B+C仍NOT_LAUNCHED；全官方Train152三轮/659406计划非初始化调用、450888可训练参数、人工核验文字、自身预测历史及冻结STTrack/CLIP的既定已部署协议不变，不划开发集。待原VOT实际完成及两卡可用后启动，再以同一个固定final完整验证Test50、CDTB80、VOT127/1765 anchors。当前缓存C拟合不替代完整联合训练，完整九项仍未完成。
 
 唯一下一被动等待native32880/PID24380真实08:36:06.169864启动，CIM核实出生时间08:36:06.035633及命令一致；每300秒本地sleep、远端查询0，下次NN/GPU不早于09:35:17.973203。下一观察器仅准备，原第十等待已消费，NN/评价未重启。goal ACTIVE_UNMET。
+
+
+### 5.469 2026-10-11 09:36：CurrentC VOT推进至809/1765；M123完整训练与C推理输入只读核对一致
+
+原第十一小时等待native32880/PID24380在09:35:17.976191北京时间真实exit0（cf12cb，functions cell925），原句柄300秒join、远端查询0。唯一小时SSH50161于09:36:18.422416执行NN/GPU观察，距前次3660.449213秒，b1834f/exit0。原stdout SHAa0c6ada3d994ad0d3bf331ac248277e8c9f12a3fefad4703e58f6036efd7bd02；8de7df本地分析真实exit0，28项原返回文件SHA核对通过，两完整OPE指标文件与前次逐字节一致，不重复§5.460指标表。
+
+| CurrentC VOT shard | GPU | 完整非空轨迹三件套 | 预期anchors |
+|---|---:|---:|---:|
+| 第一波0 | 0 | 381 | 441 |
+| 第一波1 | 1 | 428 | 441 |
+| 第二波2 | 0 | 0 | 441 |
+| 第二波3 | 1 | 0 | 442 |
+| 合计 | 两卡 | 809 | 1765 |
+
+第一波已有809/882个anchor，两shard本小时分别新增62与52，合计114；尚余第一波73个和第二波883个。原supervisor391524实际cmdline存在，root/supervisor终态、完整VOT及all_results未出现。GPU0采样4122MiB/82%，GPU1采样4122MiB/75%。捕获的阶段尾部无Traceback、RuntimeError、CUDA out of memory，限定于已保存尾部；原评测继续。
+
+累计VOT耗时31810.782777秒，余956个anchor。按累计速率粗估10.442小时，按最近小时速率粗估8.527小时，即当前约9—10小时量级。估计受anchor长度、失败停止与阶段切换影响，不承诺固定完成时刻；计数不作为EAO/ACC/ROB。
+
+等待期间只读重看m123_joint_full_tracker.py、train_m123_ABC_joint_full152.py、m123_joint_official_runtime.py、trusted_template_tracker.py及template_write_features.py，确认源码中的C输入一致：当前128＋上一帧128＋初始化256＋质量3＋运动4，共519维；两条step路径都每帧更新selected_feature，因此推理只在原生写入资格事件计算C时仍取上一帧特征，未改成上一资格事件。训练对当前实际选框GT IoU监督，C输入detach，框/query/模板先提交、GT随后只用于loss。该核对是源码检查，未构造模型、导入Torch、执行额外NN或修改源码，不能作新训练/运行通过证据。
+
+M123完整A+B+C仍NOT_LAUNCHED；全官方Train152三轮/659406计划非初始化调用、450888可训练参数、人工核验文字、自身预测历史和冻结STTrack/CLIP的既定已部署协议不变，不划开发集。待原VOT真实完成与两卡可用后启动，同一个固定final完整验证Test50、CDTB80、VOT127/1765 anchors；完整九项尚未有，当前缓存C拟合不替代完整联合训练。
+
+唯一下一被动等待native21613/PID45532真实09:37:25.701037启动，CIM核实出生时间09:37:25.515465与命令一致；每300秒本地sleep、远端查询0，下次NN/GPU不早于10:36:18.422416。下一观察器仅准备，原第十一等待已消费，NN/评价未重启。goal ACTIVE_UNMET。
