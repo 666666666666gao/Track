@@ -1,0 +1,62 @@
+{
+  "status": "completed_local_saved_CDTB_summary_analysis",
+  "source_sha256": "bcdc6791cf67d71b77e08cacad8b91cefed1c7a89260f98ade04183dfe64de72",
+  "formal_metrics": {
+    "CurrentC": {
+      "P": 74.59362462526585,
+      "R": 69.88623866187693,
+      "F": 72.1632445464765,
+      "threshold": 0.166124,
+      "all_saved_boxes_R": 70.55427838723436,
+      "serious_low_IoU_frames": 10509,
+      "low_crop_outside_frames": 8151,
+      "long_low_IoU_segment_count": 98
+    },
+    "P1": {
+      "P": 74.47906262771164,
+      "R": 69.7965033243733,
+      "F": 72.06179519015306,
+      "threshold": 0.165786,
+      "all_saved_boxes_R": 70.44902243038182,
+      "serious_low_IoU_frames": 10600,
+      "low_crop_outside_frames": 8242,
+      "long_low_IoU_segment_count": 98
+    }
+  },
+  "sequences": 80,
+  "frames": 101956,
+  "identical_saved_bbox_files": 78,
+  "identical_saved_score_files": 78,
+  "changed_saved_bbox_sequences": [
+    "mug_gs",
+    "two_mugs"
+  ],
+  "changed_saved_score_sequences": [
+    "mug_gs",
+    "two_mugs"
+  ],
+  "changed_all_boxes_R_sequences": [
+    {
+      "sequence": "mug_gs",
+      "delta_all_boxes_R_pp": 8.42047654820297
+    }
+  ],
+  "macro_all_boxes_R_delta_pp": 0.10525595685253712,
+  "long_low_IoU_segment_count": 98,
+  "long_low_IoU_segment_frames": 10203,
+  "long_segments_share_of_serious_low_frames_percent": 97.08821010562374,
+  "segment_start_center_inside_count": 45,
+  "segment_start_center_outside_count": 53,
+  "started_inside_then_any_center_outside_count": 24,
+  "all_segment_centers_inside_count": 21,
+  "valid_GT_reappearance_events": 159,
+  "valid_GT_reappearance_center_outside_events": 78,
+  "bottom5_target75_6_signed_gap_contribution_pp": 3.4474834629561038,
+  "formal_R_gap_to_target_pp": 5.713761338123064,
+  "NN_calls": 0,
+  "GPU_queries": 0,
+  "server_queries": 0,
+  "training_progress_queries": 0,
+  "scope": "Existing completed CurrentC versus P1 saved-file hashes and summary only; no new model performance, checkpoint selection, trajectory replay or raw-NN verification.",
+  "limits": "GT validity transitions do not prove physical absence. Segment onset is not necessarily the earliest causal divergence. File identity is saved six-decimal output identity, not hidden-state identity. Equal recall does not imply equal boxes. Signed per-sequence target gaps are arithmetic decomposition, not causal recovery or sequence-specific targets."
+}

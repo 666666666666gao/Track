@@ -27826,3 +27826,24 @@ R1 SOURCE_ONLY_FAIL/2及R2 FAIL/1原报告封存保留，R3 SOURCE_ONLY_PASS/0�
 新replay_currentC_cdtb_onsets.py仅准备：三个自身历史前缀共905次计划跟踪、30个诊断状态及30次只读Empty decoder，比较原生/Full/Empty/不乘quality评分与原生候选/精修几何；不向主历史提交替代分支，不用GT重置crop/query/template；预测和候选封存后才读取后续GT。当前0实际NN/GPU/SSH执行，待M124完整suite实际终止且GPU释放后再运行，不占本轮训练。回放框/分数即使匹配6位保存轨迹也不证明原始query/template张量逐位相同，float32原生候选不冒充原生Head float64解码；单帧读出不是完整轨迹救回。
 
 fresh SOURCE_ONLY_PASS/0，overall WARN；15 intake/18依赖前后SHA不变，27 AST/9纯数据检查，无模型加载。requested gpt-6-astra/max、actual UNATTESTED、same-family/provisional。源码检查不等于运行放行或性能证据。原plan的review_complete=false保留为准备时历史，后续独立审查报告另列，不改已审查输入。未用公开CDTB失败调训练标签、规则或阈值。Goal ACTIVE_UNMET。
+
+
+### 5.486 CurrentC召回损失集中性与C实际作用范围（2026-10-12，本地只读）
+
+仅处理此前已完成的80条/101,956帧CurrentC/P1汇总，原CPU诊断JSON SHA=bcdc6791cf67d71b77e08cacad8b91cefed1c7a89260f98ade04183dfe64de72；检查400项保存输入SHA，重新聚合80条P/R/F与全框R均一致，0 NN/GPU/服务器/训练进度查询，未修改正在运行的M124。
+
+| 新派生观察 | 数值 | 结论边界 |
+|---|---:|---|
+| CurrentC/P1保存框和分数文件均SHA相同 | 78/80条 | 6位保存输出一致，不证明内部query/template完全相同 |
+| 保存框或分数文件改变 | mug_gs、two_mugs | 文件变化不保证指标或身份改善 |
+| 全框R真正改变 | 仅mug_gs，+8.42047654820297pp | 贡献整体+0.10525595685254pp；two_mugs虽文件不同，全框R相同 |
+| 严重低重叠帧属于至少10帧持续段 | 10,203/10,509，97.0882% | 当前轨迹主要损害集中于持续错误，不是因果根因定位 |
+| 98段起点中心在crop内/外 | 45/53段 | 持续低重叠段起点不一定是最早分叉 |
+| 45个crop内起点之后曾出crop/全程在内 | 24/21段 | 局部错误与后续不可达应分开处理 |
+| GT无效→有效的合法后续事件，中心在crop外 | 78/159次 | GT状态转换不证明真实物理出画或遮挡 |
+
+本版C相比A+B的保存轨迹影响范围有限；当前联合训练能否扩大收益仍须完整逐轮结果，不能提前宣布C普遍解决恢复。准确类别也不会自动改变其动作职责：当前最高响应仍提交状态，可定位性没有驱动新区域搜索，C主要控制动态模板。
+
+R最低五条为boxes_backpack_room_occ_1、cart_room_occ_1、robot_corridor_occ_1、humans_corridor_occ_2_B、tennis_ball。若将这五条的R算术替换为75.6，其他75条不变，宏平均增加3.44748346295610pp，仍未达目标。这是损害集中性的反事实算术，不是恢复成绩、不设逐序列目标、不按测试序列写规则。原始全80条及P1/CurrentC比较见all80_sequence_diagnostics.csv，分析脚本和summary.json已单独保存；既有正式九项不重复改写。
+
+下一步仍按用户既定完整M124协议训练并逐轮评价；已准备的CurrentC同状态候选回放须等M124实际完整suite终止/GPU释放再执行。目标是分别判断有正确候选却选错、候选质量不足及观察不可达，不据统计预设唯一原因。原第二小时计时器61508/PID7584实际仍在运行，下一NN观察>=02:19:08.927911，不重建、不提前查询。Goal ACTIVE_UNMET。
