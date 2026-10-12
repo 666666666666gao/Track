@@ -28278,3 +28278,32 @@ GPU0/1瞬采1890MiB/6%、4118MiB/50%。两卡角色仍GPU1冻结观察、GPU0可
 下一唯一原timer61182/PID48256，parent8648、birth13:27:21.290420、actual start13:27:21.488746、deadline14:24:38.140404，精确脚本实际CIM已核对。functions1746仅做300秒同句柄本地join；下一完整日志观察器精确绑定新deadline，仅准备未执行。既有timer已终态消费，不因无输出重复启动等待或训练。
 
 完整Train152/no-dev、自身历史、人工文字、冻结底座、seed2027、max20、每轮完整Test50/CDTB80、相邻双F连续两轮严格下降、等权F均值best且持平较早轮、最终同一best全VOT127/1765继续执行。第1轮旧prefix37条和legacy_handoff_RNG_exact=false、detach/no-BPTT、C当前IoU目标等边界不改写。候选回放仍待整个当前套件终态/GPU释放。已有台账/回执不构成独立全量预测/GT/NN full-nine完成证明。
+
+
+### 5.504 M124第2轮全Train152完成、两项OPE启动与本地计时中断实录（2026-10-12 14:26）
+
+第2轮训练阶段13:58:41.861472真实退出0，result为complete_M124_joint_Train152_epoch；最后152条日志index0..151完整。final SHA1d44ec68e788d31ebeddd528edc8de2afdf960cb67aa2392a952e4cb9048ab41，区别于第1轮final。完整指标尚未产生，不因训练完成提前评价性能。
+
+| 实际训练/评价状态 | 第2轮或当前值 |
+|---|---:|
+| 本轮完整训练序列 | 152 / 152 |
+| 本轮跟踪调用 | 219,802 |
+| 本轮A_B及C各自优化 | 6,807 |
+| 累计完整序列运行 | 304 |
+| 累计调用 / A_B及C各自优化 | 439,604 / 13,614 |
+| 累计A_B / C监督帧 | 406,752 / 406,448 |
+| 第2轮训练elapsed | 23,740.67051744461秒 |
+| 第2轮Test50已保存bbox文件 | 9 / 50 |
+| 第2轮CDTB80已保存bbox文件 | 14 / 80 |
+
+截至14:26，两张GPU分别进行两项完整OPE，瞬采GPU0/1均4122MiB、80%/64%。第2轮两项正式P/R/F仍留空，best仍第1轮、双下降streak0、early_stop=false；第3轮不能在两项评价完以前据此宣布启动。第1轮四份metric/stage原始字节继续一致，六项指标见§5.493，不重复。没有M124 VOT或root终态，Goal ACTIVE_UNMET。
+
+按首轮整对OPE约2小时15分钟参考，第2轮约16:15左右；按当前初期9/50、14/80序列数粗外推约16:35，长度和状态不同，均非完成保证。不能由部分结果估计正式PR或提前换best。
+
+原本地timer61182/PID48256/functions1746在13:54实际消失：functions1746 not found、native61182 Unknown process id、精确CIM6f2429无原PID，原terminal与joins文件不存在。原exit未知，不能写exit0或伪装原等待已正常消费。这不等于服务器训练停止，未重启训练或提前查询NN。保留loss JSON、原owner及实际查验记录。
+
+仅补剩余时间的本地timer36810/PID20356，parent20948、birth13:57:55.263268，actual start13:57:55.317583，精确CIMcd48b2确认；检查节点始终14:24:38.140404。替代计时14:24:38.141166真实退出0，5次同句柄join，functions8终态已消费。原clock重新启动标记仅属于本地倒计时，不属于训练；原owner与未知exit单独保留。记录helper初版93986d因Windows字符串Unicode转义在解析前失败，未写记录/启动计时，原源码归档；只修本地字符串后63f5bd完成，没有重新执行NN观察。
+
+唯一第十三次小时GPU/NN观察14:26:11.156796，native65689/1bf3dc退出0，距前次3693.016392秒，快照SHA03fc93e44ea5522ef15ef02d7ae1634a7b6421754ccaf44fec2e6920325fa08c。1次GPU/NN进度查询、0额外NN前向。第2轮全训练ledger分支实际解析成功；原始tensor/预测/GT全量独立验证及full-nine完成审计仍未执行，回执的frozen/roundtrip字段不扩大成独立验证。
+
+下一唯一原timer71742/PID4612，parent5176、birth14:32:53.495895、actual start14:32:53.564522、deadline15:26:11.156796，精确CIM8b4959已确认，functions21仅做300秒同句柄本地join。下一完整日志观察器status/deadline精确更新，仅准备未执行。完整Train152/no-dev、人工文字、冻结底座、seed2027、max20、每轮完整Test50/CDTB80、相邻双F连续两轮严格下降、等权F均值best且持平较早轮、最终同一best全VOT127/1765均不变。初轮legacy handoff边界与C当前IoU目标继续披露。CurrentC候选NN回放仍等待整个M124套件终态及GPU释放。
