@@ -1,0 +1,52 @@
+{
+  "status": "actual_M124_epoch03_paired_OPE_partial",
+  "observed_at": "2026-10-12T16:14:19.670315+00:00",
+  "original_stdout_sha256": "16cfde1db91213a492bda20b34d57593125659ea804a7a1b9c1efd0383f627b5",
+  "completed_train_epochs": 3,
+  "completed_paired_OPE_epochs": 2,
+  "epoch03_saved_complete_sequences": 152,
+  "epoch03_track_calls": 219802,
+  "epoch03_optimizer_steps": 6807,
+  "epoch03_C_optimizer_steps": 6807,
+  "total_track_calls": 659406,
+  "total_optimizer_steps": 20421,
+  "total_C_optimizer_steps": 20421,
+  "epoch03_final_sha256": "3b9e613b4af8c3a2f009200ae8ecb6facf94b56b2033647ef344f08be07175af",
+  "prediction_bbox_file_counts": {
+    "depthtrack_test": 28,
+    "cdtb": 42
+  },
+  "prediction_bbox_file_count_scope": "Observed artifact file counts only; no partial PR inference or per-file completeness audit.",
+  "selected_best": {
+    "epoch": 1,
+    "score": 68.5415903449273,
+    "F_percent": [
+      64.44964105933218,
+      72.6335396305224
+    ],
+    "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+    "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit",
+    "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation",
+    "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+    "external_metric_checkpoint_selection": true
+  },
+  "consecutive_dual_declines": 0,
+  "early_stop": false,
+  "controller_terminal_result_observed": false,
+  "VOT_result_for_M124_observed": false,
+  "GPU_snapshot": "0, 4122, 80\n1, 4122, 77\n",
+  "GPU_snapshot_scope": "instantaneous utilization/memory only",
+  "gap_since_previous_NN_observation_seconds": 3882.933751,
+  "GPU_queries": 1,
+  "NN_progress_queries": 1,
+  "NN_forward_calls": 0,
+  "original_wait_session_id": 27359,
+  "original_wait_process_id": 39380,
+  "original_wait_consumed": true,
+  "original_wait_exit_code": 0,
+  "original_wait_join_count_this_functions_owner": 11,
+  "observer_native_session_id": 90628,
+  "observer_exit_code": 0,
+  "next_NN_observation_not_before": "2026-10-12T17:14:19.670315+00:00",
+  "training_restarted": false
+}
