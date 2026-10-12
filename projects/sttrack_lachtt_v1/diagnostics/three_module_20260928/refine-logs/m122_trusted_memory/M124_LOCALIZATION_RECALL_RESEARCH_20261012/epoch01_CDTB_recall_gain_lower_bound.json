@@ -1,0 +1,19 @@
+{
+  "status": "actual_CPU_M124_epoch01_CDTB_unfiltered_recall_gain_lower_bound",
+  "old_currentC_formal_R_percent": 69.88623866187693,
+  "old_currentC_unfiltered_R_percent": 70.55427838723436,
+  "new_M124_epoch01_formal_R_percent": 71.27384268855087,
+  "new_M124_epoch01_unfiltered_R_percent": null,
+  "lower_bound_new_unfiltered_minus_old_unfiltered_pp": 0.7195643013165096,
+  "new_final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+  "sources": {
+    "CurrentC_CDTB_recall_diagnostic_original_stdout_20261011.json": "bcdc6791cf67d71b77e08cacad8b91cefed1c7a89260f98ade04183dfe64de72",
+    "M124_epoch01_actual_cdtb_metrics_20261012.json": "68973ac268c758a46e60d2493bf397b45ddd7b58126cfdf83ecf28a30217e853"
+  },
+  "deduction": "Under the locked nonnegative-overlap recall metric, removing confidence filtering cannot decrease recall. New unfiltered R >= new formal R, so the new-minus-old unfiltered recall gain is at least the recorded difference.",
+  "limits": "Computed from captured completed metrics, not a new raw-prediction recomputation. The new unfiltered recall remains uncomputed; this does not identify candidate, language, geometry or template causality, nor prove fewer loss episodes.",
+  "NN_calls": 0,
+  "GPU_queries": 0,
+  "server_queries": 0,
+  "training_progress_queries": 0
+}

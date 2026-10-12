@@ -27996,3 +27996,37 @@ R最低五条为boxes_backpack_room_occ_1、cart_room_occ_1、robot_corridor_occ
 另对已捕获的CDTB诊断做零NN比较：cart_room_occ_1的P1与CurrentC，bbox SHA均6542aa507f0ab13166cdc17ac2a273b83fab616a185a7926eaf790ae1c7247a9，score SHA均fdcf75136136e7000b8246f683172e2e89e384a96ffbbbd9db09ea999f7a1724。两者999帧、有效GT914帧、全框R16.225579%、严重低重叠737帧，四段长失锁区间一致。该失败已存在于父模型，C未改变这条保存轨迹；不能说新增C才造成该错误。只比较原捕获哈希与统计，不证明隐藏状态一致或唯一内部根因。准确类别保留，后续优先做A+B候选/选择只读回放，仍在当前完整任务结束与GPU释放后执行，不中途改策略。
 
 下一唯一原被动timer4524/PID15572，birth07:55:36.671890、parent32436，deadline08:52:51.026749，300秒本地等待。下一观察器仅准备，尚未执行。最多20轮、每轮两项完整OPE、连续两轮相邻双F严格下降、等权均值best且持平保留较早轮、selected best全VOT协议不变。Goal ACTIVE_UNMET。
+
+
+### 5.494 准确类别下的定位错误、首轮召回增量下界及开源状态动作研究（2026-10-12，零新增NN）
+
+本节补充本地已捕获结果的算术分析和官方源码研究，不是新的服务器进度观察。最近GPU/训练观察仍为07:52:51，第2轮记录9/152；原timer4524/PID15572在本地实际CIM再次确认存活，birth07:55:36.671890、parent32436，仍由原functions1528做300秒同句柄等待，下一NN查询不早于08:52:51.026749。不重启训练或timer。
+
+用户指出推车没有干扰物、人工类别正确。对CurrentC已保存多帧图和运动记录复核后，这条应明确归为“目标仍在输入内时先出现定位/选择错误”，不能统一叫作同类换跟或caption错误。所示帧只有一辆推车；175→176帧GT标注中心运动约24.2058像素，预测中心跳约404.2770像素，176帧IoU0.155981、177帧0.008515，目标中心仍在crop内；197帧才已在crop外。176帧保存分数约0.044999，且不是模板50帧写入节点。P1与CurrentC该序列已保存bbox/score哈希相同，错误已存在于父模型，不能说新增C造成首跳框。
+
+当前DenseTargetDecoder中，文本full-null与视觉残差共同调整候选响应，经质量分支组合后argmax选框；它不是已经验证可靠的类别硬判别器。几何修正读取视觉特征，准确类别不保证中心/尺寸正确。FullDenseTracker/TrustedTemplateTracker将选中框提交为下一搜索状态；observation概率只记录，C控制模板写入，并未拒绝错误位置提交或发起新区域观察。这是已确认的职责限制，但不是首次错误的唯一根因。尚未读出该状态全部256候选，正确框未生成、评分排错、框精修破坏三者仍待同状态回放区分。已准备回放保持source-only，等待本轮完整训练评测终止与GPU释放，不在本轮中途执行额外NN或改动作规则。
+
+**首轮CDTB改善不能全归于报告分数。** 在同一锁定、非负重叠的召回评价下，取消置信度过滤不会降低R，因此新权重全框R至少等于其正式R：
+
+| 已完成评价/派生界限 | CDTB R (%) | 性质 |
+|---|---:|---|
+| 旧CurrentC全部保存框 | 70.554278 | 既有CPU诊断实际值 |
+| M124第1轮正式R | 71.273843 | 完整80条/101956帧实际指标 |
+| M124第1轮全框R | 未补算 | 不用下界填写实际结果 |
+| 新减旧全框R的下界 | ≥0.719564 pp | 已捕获完整指标的算术推导 |
+
+该下界说明至少约0.72个百分点的无过滤重叠召回净改善，不能完全由报告阈值变化解释。它没有重新下载或重算新权重全部预测，不能证明减少了多少失锁段，更不能唯一归因于文本、候选、几何或C模板。原始输入SHA与限制保存在epoch01_CDTB_recall_gain_lower_bound.json；新全框R仍明确为null。两项首轮完整主指标不重复本节列出，见§5.493。整体目标仍未达标。
+
+**官方实现的职责对照。** 固定pytracking提交7eb9e74bd3d40e29dbcec444902237da13de247b、LTMU提交121ddd07914a8577e336fed24fa47763b6780fdd核对真实调用顺序：
+
+| 官方路径 | 可靠性实际影响的动作 | 借鉴边界 |
+|---|---|---|
+| DiMP not_found | 不提交位置/精修，不学习classifier | uncertain仍可能提交位置，不能说所有不确定帧都冻结 |
+| KeepTrack not_found | 保留位置、按历史尺度重估局部观察，不学习classifier | 局部尺度调整不是全图恢复；presence输出也不自动成为恢复动作 |
+| DiMP+LTMU | 局部跟踪后触发全图候选、独立验证及接受条件 | Meta-Updater控制学习且可覆盖初始flag门控；验证失败不回滚此前局部提交，不能简化成可靠回退 |
+
+对应直接源码：[DiMP位置提交/学习](https://github.com/visionml/pytracking/blob/7eb9e74bd3d40e29dbcec444902237da13de247b/pytracking/tracker/dimp/dimp.py#L123-L175)、[KeepTrack状态/尺度](https://github.com/visionml/pytracking/blob/7eb9e74bd3d40e29dbcec444902237da13de247b/pytracking/tracker/keep_track/keep_track.py#L160-L235)、[LTMU局部、检测、验证及更新顺序](https://github.com/Daikenan/LTMU/blob/121ddd07914a8577e336fed24fa47763b6780fdd/DiMP_LTMU/Dimp_LTMU.py#L373-L529)。完整细节、默认参数和版本证据见research-notes/LOCALIZATION_STATE_ACTION_PRIMARY_SOURCES_20261012.md。
+
+可借鉴的是把可靠性判断、位置提交、新观察、记忆写入分别连接到实际动作；不能直接搬用其他模型阈值，更不能只增加一个记录分数却宣称解决失锁。后续须先区分“输入内有正确候选但选择错”与“当前没有合格候选/观察不足”，再决定需要改变哪个职责。M44候选关联、M47多正例匹配已真实训练并失败，不能当未做过的新方法。这次源码研究没有训练、GPU/SSH进度查询或性能消融，也不是独立性能审核。
+
+本轮人工核验文字、A+B+C、完整Train152 own history、冻结STTrack/CLIP、seed2027、max20、逐轮完整Test/CDTB、相邻双F连续两轮严格下降早停、等权F选择训练后best及最终同权重VOT127/1765保持不变。Goal ACTIVE_UNMET。
