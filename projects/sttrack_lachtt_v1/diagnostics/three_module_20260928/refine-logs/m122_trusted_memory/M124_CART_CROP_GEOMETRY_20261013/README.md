@@ -11,4 +11,4 @@
 
 使用保存的上一预测框，按边长ceil(4×sqrt(w×h))和居中取整计算，10个样本均与保存crop一致。这仅是已保存几何的核对，不证明第一帧错误来自评分、候选缺失或框精修。相对尺寸是几何跨度，不是有效token数、实际像素质量或特征感受野；没有读取重采样张量或进行NN回放。
 
-[既有多帧图](../M124_FIRST_PAIRED_OPE_20261012/cart_room_occ_1.jpg)。人工文字与运行训练不变；同状态候选诊断仍待完整M124及选定best全VOT终态。Goal ACTIVE_UNMET。
+[既有多帧图](cart_room_occ_1.jpg)。人工文字与运行训练不变；同状态候选诊断仍待完整M124及选定best全VOT终态。Goal ACTIVE_UNMET。
