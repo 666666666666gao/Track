@@ -28434,3 +28434,25 @@ R1源码审查发现实际阻塞：best字典被GT-best候选整数覆盖，最�
 等待窗口内核对selection/suite/collector实际源码，保存M124_FINAL_ACCEPTANCE_CHECKLIST_20261012.md。清单列出Train152/自身历史/冻结/每轮两项完整OPE/连续双下降早停/等权F较早tie best所需实际证据，以及同一选定final的Test50、CDTB80、VOT127/1765预测、receipt、plan/bank/bundle、merge/analysis和退出链。formal_nine_metrics不等于联合达标；收集器保留independent_completed_audit=False，最终须检查真实产物后再下结论。Test/CDTB用于选择、人工多帧核验、E1继承前缀/RNG限制继续披露，不拼旧CurrentC或其他权重。
 
 本节仅准备检查清单，不是执行最终审核或宣称完成。最近服务器观察仍18:32、第3轮50/152；19:22:28本地CIM确认原28588/39032同birth存活，functions149原等待保留，下一服务器检查不早于19:32:20.203063。零新增GPU/NN/服务器进度查询，无训练或策略修改。Goal ACTIVE_UNMET。
+
+
+### 5.512 M124第3轮完整Train152训练结束并进入逐轮双数据集评测（2026-10-12 23:09）
+
+本次实际服务器观察23:09:36.736564；训练真实回执于22:57:21.345767正常exit0。第3轮完整遍历152条序列，日志索引0–151、最后notebook02_indoor。下表只新增本轮训练预算，前两轮正式P/R/F继续见§5.493/5.506，不重复记录，也不将训练loss换算成性能指标。
+
+| 训练记录 | 第3轮新增 | 三轮累计 |
+|---|---:|---:|
+| 完整序列运行 | 152 | 456 |
+| 非初始化跟踪调用 | 219,802 | 659,406 |
+| A+B优化次数 | 6,807 | 20,421 |
+| C优化次数 | 6,807 | 20,421 |
+
+本轮final SHA-256：3b9e613b4af8c3a2f009200ae8ecb6facf94b56b2033647ef344f08be07175af。捕获result报告frozen_before_after_exact、final_state_roundtrip_exact和完整epoch checkpoint为true；本地核对E3初始可训练状态与E2最终状态一致，bank/人工标签/spec/训练源码/tracker指纹一致。仍为既定冻结STTrack/CLIP、A+B+C联合、自身预测历史、完整Train152、seed2027；没有外部梯度或GT重初始化。这些是捕获回执/日志的一致性核对，不替代最终原始权重及完整预测产物的独立审计。E1继承37条前缀与RNG不exact的限制继续保留，不能写成从零重训。
+
+第3轮两项OPE已产生DepthTrack Test 3份、CDTB 5份bbox文件，未见完成态metrics或阶段退出回执；文件数不证明每份完整，也不估算PR。GPU0/1瞬采4122MiB/81%、4122MiB/76%，不是整个评测平均。第3轮尚不能参与best或早停判断：当前best仍E1、已有streak0；最多20轮、连续两轮两个F均严格下降才停、等权F选best及较早tie规则不变。最终只对选定best跑完整VOT，当前没有M124 VOT或联合九项达标证据。
+
+等待窗口内只用既存完成态receipt做CPU时间分析：E1/E2两张卡并行完成DepthTrack Test/CDTB tracking分别耗时8054.587522/8245.547442秒（约2小时14/17分），未追加服务器或NN查询。若本轮耗时近似，预计10月13日01:10—01:30取得完整两项指标；推理启动、CPU计分/控制器开销和运行变化使此估计不保证。具体完成仍以正式回执为准。
+
+原小时观察native69347/8886e1真实exit0；距22:08快照3646.408654秒，1次GPU/NN进度观察、0额外NN前向。快照SHA-256 d40a11c083392b81c193d90e3185dddee7210cf762b0be38933b1b4f30afa614。之前非E3捕获文件字节均未变。原等待55478/PID18468/functions215于23:08:50.328357到时真实exit0，8次本functions owner的native join已保存，早前e2b017单独记录。新的唯一27359/PID39380（parent26776、birth23:14:17.44603）/functions233保留300秒等待；下一检查不早于10月13日00:09:36.736564。
+
+阶段原始捕获、回执、预算、ledger和既存OPE耗时分析在M124_EPOCH03_TRAIN_COMPLETE_20261012；后续逐小时部分进度仍更新M124_CURRENT_STATUS.md。没有改运行源、损失、学习率、搜索、模板或手动重启；准确类别案例的候选NN回放继续等整个M124套件终态并释放GPU。Goal ACTIVE_UNMET。
