@@ -1,0 +1,87 @@
+{
+  "status": "actual_M124_epoch02_paired_OPE_complete_epoch03_training_started",
+  "observed_at": "2026-10-12T08:27:31.671243+00:00",
+  "original_stdout_sha256": "17c9b35be9bd94c5c59b16d4ff537316915ba23b1cae148fcd9b2121f6f4e739",
+  "completed_train_epochs": 2,
+  "completed_paired_OPE_epochs": 2,
+  "epoch02_final_sha256": "1d44ec68e788d31ebeddd528edc8de2afdf960cb67aa2392a952e4cb9048ab41",
+  "epoch02_metrics": {
+    "depthtrack_test": {
+      "precision": 0.6819866074231768,
+      "recall": 0.6207499910182965,
+      "f_score": 0.6499290507981451,
+      "precision_percent": 68.19866074231768,
+      "recall_percent": 62.074999101829654,
+      "f_score_percent": 64.9929050798145,
+      "threshold": 0.041805,
+      "sequences": 50,
+      "frames": 76373
+    },
+    "cdtb": {
+      "precision": 0.7440346155295777,
+      "recall": 0.6872944147468972,
+      "f_score": 0.7145398784136414,
+      "precision_percent": 74.40346155295778,
+      "recall_percent": 68.72944147468972,
+      "f_score_percent": 71.45398784136414,
+      "threshold": 0.31897,
+      "sequences": 80,
+      "frames": 101956
+    }
+  },
+  "epoch02_delta_from_epoch01_pp": {
+    "depthtrack_test": {
+      "precision": 1.7051654212950922,
+      "recall": -0.45268736857344294,
+      "f_score": 0.5432640204823258
+    },
+    "cdtb": {
+      "precision": 0.3573379501135747,
+      "recall": -2.54440121386115,
+      "f_score": -1.1795517891582676
+    }
+  },
+  "epoch02_mean_F": 68.22344646058932,
+  "selected_best": {
+    "epoch": 1,
+    "score": 68.5415903449273,
+    "F_percent": [
+      64.44964105933218,
+      72.6335396305224
+    ],
+    "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+    "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit",
+    "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation",
+    "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+    "external_metric_checkpoint_selection": true
+  },
+  "best_selection_and_early_stop_history_recomputed": true,
+  "consecutive_dual_declines": 0,
+  "early_stop": false,
+  "epoch03_training_started_at": "2026-10-12T08:16:28.326154+00:00",
+  "epoch03_saved_complete_sequences": 2,
+  "epoch03_track_calls": 4243,
+  "epoch03_optimizer_steps": 134,
+  "total_track_calls": 443847,
+  "total_optimizer_steps": 13748,
+  "total_C_optimizer_steps": 13748,
+  "controller_terminal_result_observed": false,
+  "VOT_result_for_M124_observed": false,
+  "controller_cmdline_observed": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/m124_epochwise_process_supervisor.py /root/autodl-tmp/m124_ABC_joint_epoch20_20261011 ",
+  "GPU_snapshot": "0, 1890, 6\n1, 4118, 49\n",
+  "gap_since_previous_NN_observation_seconds": 3645.602126,
+  "GPU_queries": 1,
+  "NN_progress_queries": 1,
+  "NN_forward_calls": 0,
+  "original_wait_session_id": 55952,
+  "original_wait_process_id": 30244,
+  "original_wait_exit_code": 0,
+  "original_wait_consumed": true,
+  "original_wait_join_count": 12,
+  "original_wait_finished_at": "2026-10-12T08:26:46.069552+00:00",
+  "observer_native_session_id": 17935,
+  "observer_exit_code": 0,
+  "next_NN_observation_not_before": "2026-10-12T09:27:31.671243+00:00",
+  "training_restarted": false,
+  "scope": "Complete captured epoch02 metrics/stage receipts and exact controller arithmetic; not independent raw prediction/GT or NN re-execution, and no full-nine completion claim."
+}
