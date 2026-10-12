@@ -28253,3 +28253,28 @@ target = 1[area(GT ∩ crop ∩ image) > 0]。
 依据：`m121_dense_inputs.py` L97–108；`train_m121_dense_target.py` L40–74；`train_m122_full_causal.py` L25–32；`train_m124_joint_epoch.py` L129–147；`dense_target_decoder.py` L97–125；`m123_joint_full_tracker.py` L55–88；`template_write_features.py` L30–43；`template_write_C.py` L22–25。源SHA见同目录source_pins.json。官方跟踪器的状态/验证/检测职责对照已在§5.494记录，本次不移植或宣称新创新。
 
 本次不是新指标、文本消融或因果验证。M124第2轮指标与VOT仍未产生；原timer34413/PID42640和13:23:59.580152小时检查节点保持，Goal ACTIVE_UNMET。
+
+
+### 5.503 M124第2轮139条实际进度与下一小时唯一原等待（2026-10-12 13:24）
+
+上一阶段已完成§5.501失败起点变化及§5.502监督职责整理。前者Git18e26053、5份静态文件12:48:21闭合；后者Git21832294a46c0d4031d9927530500fc1234f57a8、master SHA4098272f975449cbe5faf5482cd1cd1d72e6caf2652090b8534d1a5ef5928db3、4份静态文件13:02:51闭合。均为已有CPU轨迹或本地源码整理，没有新NN或当前训练修改。
+
+原timer34413/PID42640在13:23:59.588809真实退出0，11次同句柄join，functions1682终态已消费，未重启。唯一第十二次GPU/NN进度观察13:24:38.140404，native23361/6939bb退出0，距前次3638.560252秒，原始快照SHA9d9801fd6e9288dcdf96d37c249badb5b4a6f831a1e8188d218386fdb95af0aa，0额外NN前向。
+
+| 第2轮已保存完整序列记录 | 12:23 | 13:24 | 增量 |
+|---|---:|---:|---:|
+| 完整序列 | 115 / 152 | 139 / 152 | +24 |
+| 本轮跟踪调用 | 167,230 | 201,087 | +33,857 |
+| 本轮A_B及C各自优化 | 5,194 | 6,226 | +1,032 |
+| 总累积调用 | 387,032 | 420,889 | +33,857 |
+| 总累积A_B及C各自优化 | 12,001 | 13,033 | +1,032 |
+
+最新colacan04_indoor（index138），elapsed21697.101371526718秒，第2轮0..138完整日志实收。训练final和两项正式指标继续留空。按提交调用/elapsed粗算剩余训练0.560925小时，约34分钟/14:00；之后完整Test50/CDTB80推理与计分，首轮约2小时15分钟仅作安排参考，非完成承诺。
+
+第1轮四份metric/stage原始字节继续一致，完整指标见§5.493不重复。训练后best仍第1轮、均值68.541590%、双下降streak0、early_stop=false。保留CurrentC独立，不把训练后best说成已胜过它，也不填未产生的第2轮及M124 VOT成绩。当前无controller/root终态，Goal ACTIVE_UNMET。
+
+GPU0/1瞬采1890MiB/6%、4118MiB/50%。两卡角色仍GPU1冻结观察、GPU0可训练ABC，非DDP；不能由瞬采断言整轮GPU0空闲。没有温度/功率查询、候选NN回放或中途修改网络/损失/搜索/模板/选模规则。
+
+下一唯一原timer61182/PID48256，parent8648、birth13:27:21.290420、actual start13:27:21.488746、deadline14:24:38.140404，精确脚本实际CIM已核对。functions1746仅做300秒同句柄本地join；下一完整日志观察器精确绑定新deadline，仅准备未执行。既有timer已终态消费，不因无输出重复启动等待或训练。
+
+完整Train152/no-dev、自身历史、人工文字、冻结底座、seed2027、max20、每轮完整Test50/CDTB80、相邻双F连续两轮严格下降、等权F均值best且持平较早轮、最终同一best全VOT127/1765继续执行。第1轮旧prefix37条和legacy_handoff_RNG_exact=false、detach/no-BPTT、C当前IoU目标等边界不改写。候选回放仍待整个当前套件终态/GPU释放。已有台账/回执不构成独立全量预测/GT/NN full-nine完成证明。
