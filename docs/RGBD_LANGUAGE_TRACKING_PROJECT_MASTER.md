@@ -28420,3 +28420,10 @@ P均提高而R均下降，不能仅凭P宣布整体改善。DepthTrack F64.99290
 R1源码审查发现实际阻塞：best字典被GT-best候选整数覆盖，最终selected_epoch读取会TypeError。保留R1原源码/生成器/报告字节后仅将元数据改为selected_best，并补同权重/输入receipt绑定。R2源码PASS、0阻塞，总体WARN；28份Python通过3.8语法解析，stdlib fixture验证最终表达式可序列化/到达写调用及四字段错配拒绝。它没有运行torch/模型、读取真实图像/GT或产生实验result。actual model/effort UNATTESTED，same-family/provisional；R1/R2报告和原字节在M124_REGION_SEMANTIC_AND_SELECTED_REPLAY_20261012，私有调用trace不提交。
 
 尚需在整个M124训练、逐轮OPE及最终best VOT结束、GPU释放后核验真实终态/产物链/运行依赖，再决定是否运行。formal_nine_metrics只是指标可用，不表示联合通过；若全九项达标按用户要求停止。当前仅同步准备源码与研究文档，未执行回放，未修改44项锁定运行源码、损失、学习率、搜索、模板策略或训练进程。Goal ACTIVE_UNMET。
+
+
+### 5.510 M124逐小时进度索引及第3轮50条完成观察（2026-10-12）
+
+18:32:20.203063实际一次检查：原控制器继续，第3轮50/152完整序列，本轮73399calls/2289次A+B及C优化，累计513003/15903；相对17:31新增22条/33783calls/1051优化。前两轮指标、best/history/state及历史回执字节未变化，第3轮无完成态指标，最佳仍第1轮，双下降计数0。GPU瞬时值与ETA仅为观察/估计，不是完整训练性能或达标证据。
+
+后续小时进度集中更新[当前状态](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/M124_CURRENT_STATUS.md)，完整新指标或阶段变化另追加正式记录，不重复已报告表格。本小时完整结构化证据保存在M124_EPOCH03_50_FULL_SEQUENCES_20261012；原66948/PID39128/functions107正常exit0、11joins并消费，新的唯一45653/PID28588/functions149等待至19:32:20.203063。本小时GPU/NN进度查询各1、额外NN forward0，不重启训练或修改策略；候选回放待全部suite完成且GPU释放。Goal ACTIVE_UNMET。
