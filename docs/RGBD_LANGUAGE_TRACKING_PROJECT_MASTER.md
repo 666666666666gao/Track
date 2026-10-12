@@ -28516,3 +28516,12 @@ R1源码审查发现实际阻塞：best字典被GT-best候选整数覆盖，最�
 本次只新增CPU分析脚本/本地比较和文档，不导入模型、执行NN、查询GPU或训练进度，不更改运行根源码/优化器/搜索/模板。训练最多20轮、每轮两项OPE、best和早停协议继续；原native28385/PID40856/functions299只等待，下一NN进度检查不早于02:15:18.593590。最终完整VOT尚待选定best；Goal ACTIVE_UNMET。
 
 新独立上下文R1总体WARN，限定范围阻塞0，A/C/E WARN、B/D/F PASS；原MD/JSON字节保留，requested Astra/max与actual UNATTESTED分列、same-family/provisional。审查的限制与实际请求/运行时归因见报告；远端CPU输出捕获不等同于本地重新持有每份原始预测/GT/checkpoint，也不构成最终全九项验收。私有审查prompt/元数据/原报告不提交。
+
+
+### 5.515 准确类别但定位失败：推车人工文本与现有评测输入绑定再核查（2026-10-13）
+
+针对用户“没有干扰物、类别准确为何仍定位错误”的问题，本地stdlib CPU检查native d2a795真实exit0。人工CSV、外部标签和官方初始化绑定中的cart_room_occ_1短语均为cart / blue tubular rails / dark flat platform / dark wheels；没有将属性置空或使用旧自动类别。绑定零基87行、首帧bbox及999帧信息一致，由保存图像摘要+精确bbox计算的初始化key与人工review_id一致。保存的CDTB plan与编码回执的bank/binding SHA对应一致，编码源SHA一致；已固定CurrentC runtime源码要求继承同一bank/binding并按初始化key选行。
+
+CSV的conflicting是对旧提案的冲突判定，human_confirmed=true，不能当成未审核；不确定的exact material没有进入短语。检查结果与源SHA见M124_CART_TEXT_BINDING_20261013/checked_input_binding.json。本次没有新读取远端bank张量或RGB字节，没有NN回放，不扩张为完整运行或词义因果证明。
+
+§5.494/5.509已有多帧证据和首次跳框数值不重复记录。准确文字已按元数据进入该案例的输入链，但模型通过软响应调整参与选框，不能保证每次视觉定位正确。首次错误属于候选缺失、评分或几何精修的哪一环仍未确定，待完整suite终态后用选定best固定同状态回放。CurrentC历史错误不能直接当作当前M124新权重错误。原训练、03:16小时检查节点及唯一等待owner不变；无服务器/GPU/进度查询、额外NN或运行源修改，Goal ACTIVE_UNMET。

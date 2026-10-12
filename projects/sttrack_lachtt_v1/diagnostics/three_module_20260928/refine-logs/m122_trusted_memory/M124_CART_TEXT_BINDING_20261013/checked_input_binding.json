@@ -1,0 +1,64 @@
+{
+  "status": "PASS_existing_local_cart_human_text_metadata_binding",
+  "checked_at": "2026-10-12T18:43:18.784848+00:00",
+  "sequence": "cart_room_occ_1",
+  "phrases": [
+    "cart",
+    "blue tubular rails",
+    "dark flat platform",
+    "dark wheels"
+  ],
+  "bank_index_in_bound_rows": 87,
+  "initial_bbox": [
+    954.0,
+    432.9,
+    328.0,
+    299.7
+  ],
+  "initial_image_sha256_from_saved_binding": "d94e7eaaebcb2d267f45727920c072e1dcc53ae808d5b77aef987db071e80daf",
+  "initialization_key_recomputed_from_saved_image_digest_and_bbox": "17a8b1c1ce363b2c708d9c53515d36ada6fe41c3239f857835aa59d52dbcd7c7",
+  "human_proposal_status": "conflicting",
+  "human_confirmed": true,
+  "uncertain_attributes_not_in_phrases": "exact material",
+  "bank_sha256_from_existing_plan_and_encoding_receipt": "78cbae28b4b63ecab768d747a889ca120c62e1368ce80fa7f798ee6508bc29a9",
+  "sources": {
+    "human_csv": {
+      "path": "C:\\Users\\gb\\Desktop\\document\\RGBD_LANGUAGE_TRACKING\\人工审核结果\\rgbd_cdtb_gb_80_review.csv",
+      "sha256": "dea42aa507134894bd3e267672b2a69f662a1d26ecd959406257e4b2e5895381"
+    },
+    "labels": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\external_human_labels.json",
+      "sha256": "6a1d128d58f47a8b5ecb41153614c595bf2442a0808fc533c024b45e9c52520f"
+    },
+    "binding": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\official_initialization_binding.json",
+      "sha256": "3bf7aa31a3f819ec746b37dc221e55c531a1235726cda3efedc4990c607cb26e"
+    },
+    "encoding_receipt": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\observations\\hour_1549\\evaluation_control\\official_human_text.json",
+      "sha256": "5ac0b9acdc9bd92ad8c1af1ade01b1e67df89642664f3c043ca7d397e260630d"
+    },
+    "cases": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_native_observation_20261010_051718\\evaluation\\precision1\\cdtb\\cases.json",
+      "sha256": "b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887"
+    },
+    "base_plan": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_native_observation_20261010_051718\\evaluation\\precision1\\cdtb\\plan.json",
+      "sha256": "fa58067626fab31db9e3b3160feb2bb03203359ca7841af5b218b75e353e3a0a"
+    },
+    "encoder_source": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\encode_m122_official_human_text.py",
+      "sha256": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f"
+    },
+    "current_C_runtime_source": {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_current_C_official_runtime.py",
+      "sha256": "7fa5748b57981188c8aac2ab6d396af1140a87cecf069b1fcd5b21ed8658bd10"
+    }
+  },
+  "scope": "Local CSV, labels, binding, saved base evaluation plan/encoding receipt, and pinned CurrentC runtime source. Runtime source requires CurrentC to inherit the same bank and binding and selects by RGB digest plus exact initial bbox. No new bank-tensor or RGB-byte readback, no neural replay, and no unique cause of first localization failure established.",
+  "NN_calls": 0,
+  "GPU_queries": 0,
+  "server_queries": 0,
+  "training_progress_queries": 0,
+  "running_training_source_changes": 0
+}
