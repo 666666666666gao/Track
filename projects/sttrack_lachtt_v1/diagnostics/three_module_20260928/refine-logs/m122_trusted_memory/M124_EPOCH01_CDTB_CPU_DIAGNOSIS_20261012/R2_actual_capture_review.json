@@ -1,0 +1,1544 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-12",
+  "generated_at": "2026-10-12T04:13:30.210112+00:00",
+  "round": "R2_ACTUAL_CAPTURE",
+  "review_mode": "ACTUAL_CAPTURE_LOCAL_ONLY",
+  "status": "WARN_ACTUAL_CAPTURE",
+  "verdict": "WARN",
+  "overall_verdict": "WARN",
+  "capture_consistency_status": "PASS",
+  "blocking_issues": 0,
+  "blocking_issue_details": [],
+  "warning_count": 5,
+  "reviewer_task_path": "/root/m124_epoch01_cdtb_cpu_source_integrity_20261012",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning": "max",
+  "actual_reviewer_model": "UNATTESTED",
+  "actual_reviewer_reasoning": "UNATTESTED",
+  "reviewer_model": "UNATTESTED",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "attribution_note": "Native follow-up of the same reviewer. No backend model/effort proof supplied; requested routing is not attestation. No external model or subagent used.",
+  "trace_owner": "parent executor retains actual follow-up request and response",
+  "summary": "Captured epoch01 CDTB diagnosis, native terminal lineage, all 80 GT pairs, all 2240 CSV cells and comparison arithmetic are consistent with the pinned sources. No blocker. Limits remain on remote/raw verification, telemetry, causal interpretation and runtime-version attribution.",
+  "checks": {
+    "source_and_native_binding": {
+      "status": "PASS",
+      "details": "All 18 R1 inputs and both original R1 report files remain byte-identical. The native wrapper compressed payload equals the pinned producer bytes. Captured producer, saved-metric, final and metric digests match locally computed or independently inspected archived pins. The captured raw prediction receipt digest matches formal metrics, distinct from the stage receipt.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_20261012.py",
+          "line": 3,
+          "end_line": 6
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 7,
+          "end_line": 10
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 23,
+          "end_line": 43
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 77
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+          "line": 1,
+          "json_pointer": "/analysis_source_sha256"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_actual_cdtb_metrics_20261012.json",
+          "line": 14,
+          "end_line": 18
+        }
+      ]
+    },
+    "native_terminal": {
+      "status": "PASS",
+      "details": "The supplied archived native records contain invocation/auth session 18420 and terminal chunk 0dd4cc with exit_code 0. The pinned wrapper returns subprocess.run(...).returncode and redirects stdout to the exact captured file. This verifies the supplied capture lineage; it is not a new host or backend attestation.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_receipts_20261012.json",
+          "line": 2,
+          "end_line": 21
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_20261012.py",
+          "line": 4,
+          "end_line": 6
+        }
+      ]
+    },
+    "coverage_and_GT_pairing": {
+      "status": "PASS",
+      "details": "Captured data has exactly 80 unique M124_epoch01 rows, 101956 frames and 91300 valid-GT frames. Names/order, per-sequence frame counts, valid-GT counts, all 80 GT hashes, and every GT-validity reappearance frame agree with CurrentC. Exactly 325 input-map entries equal 5 metadata entries plus 80 boxes, 80 scores, 80 GT files and 80 first RGB images. Every row prediction/score hash matches its captured input map.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+          "line": 1,
+          "json_pointer": "/per_sequence"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+          "line": 1,
+          "json_pointer": "/inputs_sha256"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_original_stdout_20261011.json",
+          "line": 1,
+          "json_pointer": "/per_sequence"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_original_stdout_20261011.json",
+          "line": 1,
+          "json_pointer": "/inputs_sha256"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\all80_sequence_diagnostics.csv",
+          "line": 1,
+          "end_line": 81
+        }
+      ]
+    },
+    "aggregate_recomputation": {
+      "status": "PASS",
+      "details": "Independent math.fsum macro means and harmonic F reproduce captured P/R/F, all-box R, serious-low counts, outside counts and segment counts; maximum aggregate roundoff is 1.4210854715202004e-14. Formal P/R/F and threshold match the sealed metrics JSON. Counts, segment ranges/non-overlap, and reappearance bookkeeping are internally consistent.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+          "line": 1,
+          "json_pointer": "/aggregate"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+          "line": 1,
+          "json_pointer": "/per_sequence"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_actual_cdtb_metrics_20261012.json",
+          "line": 3,
+          "end_line": 12
+        }
+      ]
+    },
+    "comparison_and_CSV": {
+      "status": "PASS",
+      "details": "All 80 CSV rows, 28 columns and 2240 cells match independently constructed paired rows with zero parsed numeric difference. All 29 summary fields (including source-declared metadata literals) match the captures; both top-8 orderings and all per-sequence contribution sums agree. No target comparison code was executed by the reviewer.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\all80_sequence_diagnostics.csv",
+          "line": 1,
+          "end_line": 81
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\summary.json",
+          "line": 5,
+          "end_line": 31
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\summary.json",
+          "line": 32,
+          "end_line": 515
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\summary.json",
+          "line": 516,
+          "end_line": 534
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch01_CDTB_saved_comparison_20261012.py",
+          "line": 14,
+          "end_line": 44
+        }
+      ]
+    },
+    "intake_crosscheck": {
+      "status": "WARN",
+      "details": "Eleven derived intake fields were crosschecked directly against local files/captures/native receipt rather than accepting intake assertions. Other fields such as server_CPU_analysis_invocations=1, training_source_changed=False and training_restarted=False are unconditionally written source literals, not independent remote observations.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\intake_m124_epoch01_CDTB_CPU_diagnostic_20261012.py",
+          "line": 9,
+          "end_line": 26
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_actual_intake_20261012.json",
+          "line": 3,
+          "end_line": 34
+        }
+      ]
+    },
+    "A_to_F_integrity_scope": {
+      "status": "PASS",
+      "details": "Real dataset GT remains separate from model predictions; no self-normalizing metric is introduced. Source call path is reachable and generated capture exists. Accepted scope is the captured real_gt CPU trajectory diagnosis and its arithmetic comparison, not a raw-dataset re-evaluation, causal intervention, actual Python-version attestation, NN inference, or full-three/full-nine completion.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 46,
+          "end_line": 78
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch01_CDTB_saved_comparison_20261012.py",
+          "line": 38
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\summary.json",
+          "line": 534
+        }
+      ]
+    }
+  },
+  "warnings": [
+    {
+      "id": "W01",
+      "blocking": false,
+      "title": "Actual-capture audit is not an independent raw-dataset or host audit",
+      "details": "This review directly checked the captured JSON, CSV, source, archived terminal and their hashes. It did not reopen the remote plan/cases/raw prediction receipt/boxes/scores/GT/images or the final checkpoint. The 325 recorded hashes and successful pinned-source run bind the capture; they do not equal 325 independent remote rehashes by this reviewer. The terminal archive has no session_id in its completion object and no command/time attestation beyond the supplied archival grouping. Its wall_time_seconds is a tool-call wait duration, not the diagnostic runtime.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_receipts_20261012.json",
+          "line": 2,
+          "end_line": 21
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+          "line": 1,
+          "json_pointer": "/inputs_sha256"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_actual_cdtb_metrics_20261012.json",
+          "line": 14,
+          "end_line": 18
+        }
+      ]
+    },
+    {
+      "id": "W02",
+      "blocking": false,
+      "title": "Intake bookkeeping is not observational telemetry",
+      "details": "intake source line 25 hardcodes NN/query counters, one analysis invocation, training_source_changed=False and training_restarted=False. The producer also declares zero counters. The no-NN/query conclusion is supported by the inspected pinned call graph, not runtime instrumentation. Local source pins are unchanged; the review does not certify global remote training activity or the absence of unrelated restarts.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\intake_m124_epoch01_CDTB_CPU_diagnostic_20261012.py",
+          "line": 25
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_actual_intake_20261012.json",
+          "line": 28,
+          "end_line": 34
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 77
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_20261012.py",
+          "line": 3,
+          "end_line": 6
+        }
+      ]
+    },
+    {
+      "id": "W03",
+      "blocking": false,
+      "title": "One harmless floating-point sign residue is preserved",
+      "details": "bag_outside has confidence_R_loss_pp=-1.1102230246251565e-14, while its reported R and all-box R both equal 85.07310467499526. The producer computes the loss before multiplying/rounding the two reported percentages. This is machine-precision roundoff, not a real negative screening loss. An initial exact nonnegative check flagged it; a documented 1e-10 arithmetic tolerance passes. No captured data was clamped or changed.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+          "line": 1,
+          "json_pointer": "/per_sequence/4"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\all80_sequence_diagnostics.csv",
+          "line": 6
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 61
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "id": "W04",
+      "blocking": false,
+      "title": "Crop and causal limits remain",
+      "details": "Crops are reconstructed from previous %.6f saved boxes with native factor-4 geometry, not replayed internal tensors. The 54 inside / 37 outside long-segment onsets and 60 outside GT-validity reappearances are descriptive; invalid GT does not prove physical absence. CurrentC and M124 use different trained weights/own histories and different best-F thresholds. The suite discloses external Test50/CDTB checkpoint selection. No module/text causality, deployable recovery or untouched-holdout claim follows.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py",
+          "line": 33,
+          "end_line": 35
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 63,
+          "end_line": 77
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch01_CDTB_saved_comparison_20261012.py",
+          "line": 38
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\summary.json",
+          "line": 519,
+          "end_line": 534
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_suite.py",
+          "line": 58,
+          "end_line": 74
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_suite.py",
+          "line": 99,
+          "end_line": 102
+        }
+      ]
+    },
+    {
+      "id": "W05",
+      "blocking": false,
+      "title": "Runtime version and metric archive qualifications remain",
+      "details": "The capture supports successful execution of the pinned producer under the configured mplt environment; no Python version/package inventory was collected. R1 Python 3.8 grammar checks and the new intake grammar check do not attest an actual Python 3.8 runtime. The local metric source raw CRLF hash remains 446416a7..., while its LF-normalized hash exactly equals the runtime/captured 05879f2e... pin. These two byte identities remain explicitly distinct.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_20261012.py",
+          "line": 3
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\prepare_m124_epoch01_cdtb_CPU_diagnostic_native_20261012.py",
+          "line": 14
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+          "line": 23
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+          "line": 1,
+          "json_pointer": "/metric_source_sha256"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_source_review_R1_20261012.json",
+          "line": 1
+        }
+      ]
+    }
+  ],
+  "audited_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py": "sha256:508802fa97a762aa8e9f6309ac38c10290f44ce1bdc97dcfe2ad573199454143",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py": "sha256:e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_locked_metric_source_20261011.py": "sha256:446416a741bdc0d35a359ffdf28280b743b430e8680ee365ec018bea0a652048",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_actual_cdtb_metrics_20261012.json": "sha256:68973ac268c758a46e60d2493bf397b45ddd7b58126cfdf83ecf28a30217e853",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_actual_cdtb_track_receipt_20261012.json": "sha256:0909fa00b58eccda00508c8f85201ee79a7d69c8307bc450182923b299bde3ea",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_remote_20261011.py": "sha256:14ac1fcb71b1b0473dee4c01fdda36bdba9ff6fdc126527ad5992cc555932962",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\prepare_m124_epoch01_cdtb_CPU_diagnostic_native_20261012.py": "sha256:568fd3e76b39d2fce4edaf7e7b4230213f78782d34b27c371f29380290afcdae",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_20261012.py": "sha256:3f7ef34bd10241b6517323702e38b9329b8d53d6df6dc6266f9e3c95e077b8a7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch01_CDTB_saved_comparison_20261012.py": "sha256:5fc6460d0894513dfe3373449418ecb55d1e3d7504d1839059bf5656909e8a12",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_original_stdout_20261011.json": "sha256:bcdc6791cf67d71b77e08cacad8b91cefed1c7a89260f98ade04183dfe64de72",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "sha256:0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py": "sha256:1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_suite.py": "sha256:63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\lib\\train\\data\\processing_utils.py": "sha256:3f1b7a11b5559f7766e589501597bb96493f63f6a2a836557638922144c73dfe",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m124_epochwise_official_runtime.py": "sha256:60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_official_runtime.py": "sha256:25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m124_epochwise_evaluation.py": "sha256:ad05b5029b6e27e5c163c8ffa190d1db83312f011331f5d8dd426e89192ee8cb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_native_20261011.py": "sha256:c46520cdd2f55b878bc0869a09f8d556c7274ecbeeb9b79fd5b38268d28efcb9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_source_review_R1_20261012.json": "sha256:da3fb1398c631f9083ca3b07b6e197c5f828604ae0d3e1135cd098b6234c0597",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_source_review_R1_20261012.md": "sha256:0d925afb1442dcd91364cb94fac366c76516269b20c9941b43c694246cffec0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json": "sha256:238b30bab4d573e3a4bde0ee00e63a235aa6c26fbc9cdc1127ed80dbea47b4f7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_receipts_20261012.json": "sha256:20a290ec5cb93a77b2a0fa6f9e4fe56a9a2d86ad8f0f38a7ceff146aacd62aba",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_actual_intake_20261012.json": "sha256:48b39bc2683868e421096f8bdfc44c3a2d63786ba3a98d10a77e10e504d4aaa1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\intake_m124_epoch01_CDTB_CPU_diagnostic_20261012.py": "sha256:83ec285ad06fb7681c72520d91186e5db3574a25997e8a537f999fbe0d03daf4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\summary.json": "sha256:f64a532b53a2cd749b7d583facfdeef207a1c0842b5fe4d7720901c106f1b3fe",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\all80_sequence_diagnostics.csv": "sha256:262c136d6980709707943f64046d6777266824eba78137d70f5585383a331259"
+  },
+  "source_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py": "508802fa97a762aa8e9f6309ac38c10290f44ce1bdc97dcfe2ad573199454143",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py": "e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_locked_metric_source_20261011.py": "446416a741bdc0d35a359ffdf28280b743b430e8680ee365ec018bea0a652048",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_remote_20261011.py": "14ac1fcb71b1b0473dee4c01fdda36bdba9ff6fdc126527ad5992cc555932962",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\prepare_m124_epoch01_cdtb_CPU_diagnostic_native_20261012.py": "568fd3e76b39d2fce4edaf7e7b4230213f78782d34b27c371f29380290afcdae",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_20261012.py": "3f7ef34bd10241b6517323702e38b9329b8d53d6df6dc6266f9e3c95e077b8a7",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch01_CDTB_saved_comparison_20261012.py": "5fc6460d0894513dfe3373449418ecb55d1e3d7504d1839059bf5656909e8a12",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_suite.py": "63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\lib\\train\\data\\processing_utils.py": "3f1b7a11b5559f7766e589501597bb96493f63f6a2a836557638922144c73dfe",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m124_epochwise_official_runtime.py": "60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_official_runtime.py": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m124_epochwise_evaluation.py": "ad05b5029b6e27e5c163c8ffa190d1db83312f011331f5d8dd426e89192ee8cb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_native_20261011.py": "c46520cdd2f55b878bc0869a09f8d556c7274ecbeeb9b79fd5b38268d28efcb9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\intake_m124_epoch01_CDTB_CPU_diagnostic_20261012.py": "83ec285ad06fb7681c72520d91186e5db3574a25997e8a537f999fbe0d03daf4"
+  },
+  "inspected_artifacts": [
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch01_cdtb_saved_trajectory.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_m124_epoch01_cdtb_saved_trajectory.py",
+      "sha256": "508802fa97a762aa8e9f6309ac38c10290f44ce1bdc97dcfe2ad573199454143",
+      "bytes": 7016,
+      "lines": 80,
+      "lf_normalized_sha256": "508802fa97a762aa8e9f6309ac38c10290f44ce1bdc97dcfe2ad573199454143"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py",
+      "sha256": "e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+      "bytes": 6281,
+      "lines": 84,
+      "lf_normalized_sha256": "e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_locked_metric_source_20261011.py",
+      "relative_path": ".aris/m122_full_causal_20261007/CurrentC_CDTB_locked_metric_source_20261011.py",
+      "sha256": "446416a741bdc0d35a359ffdf28280b743b430e8680ee365ec018bea0a652048",
+      "bytes": 7301,
+      "lines": 158,
+      "lf_normalized_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_actual_cdtb_metrics_20261012.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_actual_cdtb_metrics_20261012.json",
+      "sha256": "68973ac268c758a46e60d2493bf397b45ddd7b58126cfdf83ecf28a30217e853",
+      "bytes": 785,
+      "lines": 19
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_actual_cdtb_track_receipt_20261012.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_actual_cdtb_track_receipt_20261012.json",
+      "sha256": "0909fa00b58eccda00508c8f85201ee79a7d69c8307bc450182923b299bde3ea",
+      "bytes": 485,
+      "lines": 17
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_remote_20261011.py",
+      "relative_path": ".aris/m122_full_causal_20261007/CurrentC_CDTB_recall_diagnostic_remote_20261011.py",
+      "sha256": "14ac1fcb71b1b0473dee4c01fdda36bdba9ff6fdc126527ad5992cc555932962",
+      "bytes": 5604,
+      "lines": 60,
+      "lf_normalized_sha256": "ed4c70f5117d9f2d9945198d1e87153c8cb385f27af2386efdd44abab54393cf"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\prepare_m124_epoch01_cdtb_CPU_diagnostic_native_20261012.py",
+      "relative_path": ".aris/m122_full_causal_20261007/prepare_m124_epoch01_cdtb_CPU_diagnostic_native_20261012.py",
+      "sha256": "568fd3e76b39d2fce4edaf7e7b4230213f78782d34b27c371f29380290afcdae",
+      "bytes": 2075,
+      "lines": 20,
+      "lf_normalized_sha256": "568fd3e76b39d2fce4edaf7e7b4230213f78782d34b27c371f29380290afcdae"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_20261012.py",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_CDTB_CPU_diagnostic_native_20261012.py",
+      "sha256": "3f7ef34bd10241b6517323702e38b9329b8d53d6df6dc6266f9e3c95e077b8a7",
+      "bytes": 5117,
+      "lines": 6,
+      "lf_normalized_sha256": "0dd0f2da47b6f47771c5237650ceb67d8dec99d50eda8817943acb069e7747a3"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch01_CDTB_saved_comparison_20261012.py",
+      "relative_path": ".aris/m122_full_causal_20261007/analyze_m124_epoch01_CDTB_saved_comparison_20261012.py",
+      "sha256": "5fc6460d0894513dfe3373449418ecb55d1e3d7504d1839059bf5656909e8a12",
+      "bytes": 5705,
+      "lines": 44,
+      "lf_normalized_sha256": "5fc6460d0894513dfe3373449418ecb55d1e3d7504d1839059bf5656909e8a12"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_original_stdout_20261011.json",
+      "relative_path": ".aris/m122_full_causal_20261007/CurrentC_CDTB_recall_diagnostic_original_stdout_20261011.json",
+      "sha256": "bcdc6791cf67d71b77e08cacad8b91cefed1c7a89260f98ade04183dfe64de72",
+      "bytes": 194388,
+      "lines": 1
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+      "sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+      "bytes": 7693,
+      "lines": 120,
+      "lf_normalized_sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\trusted_template_tracker.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+      "sha256": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+      "bytes": 4173,
+      "lines": 73,
+      "lf_normalized_sha256": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_suite.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py",
+      "sha256": "63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc",
+      "bytes": 6989,
+      "lines": 107,
+      "lf_normalized_sha256": "63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\lib\\train\\data\\processing_utils.py",
+      "relative_path": "lib/train/data/processing_utils.py",
+      "sha256": "3f1b7a11b5559f7766e589501597bb96493f63f6a2a836557638922144c73dfe",
+      "bytes": 6913,
+      "lines": 168,
+      "lf_normalized_sha256": "a2406f133c78e8685ba197c95a5a8a8796677ff3c3f03d067cbaff737a05c2f7"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m124_epochwise_official_runtime.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py",
+      "sha256": "60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+      "bytes": 4419,
+      "lines": 77,
+      "lf_normalized_sha256": "60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\m122_official_runtime.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py",
+      "sha256": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+      "bytes": 2986,
+      "lines": 44,
+      "lf_normalized_sha256": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\prepare_m124_epochwise_evaluation.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m124_epochwise_evaluation.py",
+      "sha256": "ad05b5029b6e27e5c163c8ffa190d1db83312f011331f5d8dd426e89192ee8cb",
+      "bytes": 7981,
+      "lines": 129,
+      "lf_normalized_sha256": "ad05b5029b6e27e5c163c8ffa190d1db83312f011331f5d8dd426e89192ee8cb"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\CurrentC_CDTB_recall_diagnostic_native_20261011.py",
+      "relative_path": ".aris/m122_full_causal_20261007/CurrentC_CDTB_recall_diagnostic_native_20261011.py",
+      "sha256": "c46520cdd2f55b878bc0869a09f8d556c7274ecbeeb9b79fd5b38268d28efcb9",
+      "bytes": 3822,
+      "lines": 6,
+      "lf_normalized_sha256": "5ca77098459874c8e9d0bec05ebf429b2b9455d0bc6db9c9dd979fea34357b72"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_source_review_R1_20261012.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_CDTB_CPU_diagnostic_source_review_R1_20261012.json",
+      "sha256": "da3fb1398c631f9083ca3b07b6e197c5f828604ae0d3e1135cd098b6234c0597",
+      "bytes": 38280,
+      "lines": 641
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_source_review_R1_20261012.md",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_CDTB_CPU_diagnostic_source_review_R1_20261012.md",
+      "sha256": "0d925afb1442dcd91364cb94fac366c76516269b20c9941b43c694246cffec0d",
+      "bytes": 27023,
+      "lines": 188
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_CDTB_CPU_diagnostic_original_stdout_20261012.json",
+      "sha256": "238b30bab4d573e3a4bde0ee00e63a235aa6c26fbc9cdc1127ed80dbea47b4f7",
+      "bytes": 139211,
+      "lines": 1
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_native_receipts_20261012.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_CDTB_CPU_diagnostic_native_receipts_20261012.json",
+      "sha256": "20a290ec5cb93a77b2a0fa6f9e4fe56a9a2d86ad8f0f38a7ceff146aacd62aba",
+      "bytes": 814,
+      "lines": 23
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_actual_intake_20261012.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_CDTB_CPU_diagnostic_actual_intake_20261012.json",
+      "sha256": "48b39bc2683868e421096f8bdfc44c3a2d63786ba3a98d10a77e10e504d4aaa1",
+      "bytes": 1414,
+      "lines": 35
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\intake_m124_epoch01_CDTB_CPU_diagnostic_20261012.py",
+      "relative_path": ".aris/m122_full_causal_20261007/intake_m124_epoch01_CDTB_CPU_diagnostic_20261012.py",
+      "sha256": "83ec285ad06fb7681c72520d91186e5db3574a25997e8a537f999fbe0d03daf4",
+      "bytes": 3117,
+      "lines": 27,
+      "lf_normalized_sha256": "83ec285ad06fb7681c72520d91186e5db3574a25997e8a537f999fbe0d03daf4"
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\summary.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_CDTB_saved_comparison_20261012/summary.json",
+      "sha256": "f64a532b53a2cd749b7d583facfdeef207a1c0842b5fe4d7720901c106f1b3fe",
+      "bytes": 26744,
+      "lines": 535
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_saved_comparison_20261012\\all80_sequence_diagnostics.csv",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch01_CDTB_saved_comparison_20261012/all80_sequence_diagnostics.csv",
+      "sha256": "262c136d6980709707943f64046d6777266824eba78137d70f5585383a331259",
+      "bytes": 29330,
+      "lines": 81
+    }
+  ],
+  "original_R1_preserved": {
+    "markdown_sha256": "0d925afb1442dcd91364cb94fac366c76516269b20c9941b43c694246cffec0d",
+    "json_sha256": "da3fb1398c631f9083ca3b07b6e197c5f828604ae0d3e1135cd098b6234c0597",
+    "original_18_input_hashes_unchanged": true
+  },
+  "source_and_capture_pins": {
+    "raw_stdout_sha256": "238b30bab4d573e3a4bde0ee00e63a235aa6c26fbc9cdc1127ed80dbea47b4f7",
+    "native_launcher_sha256": "3f7ef34bd10241b6517323702e38b9329b8d53d6df6dc6266f9e3c95e077b8a7",
+    "producer_sha256": "508802fa97a762aa8e9f6309ac38c10290f44ce1bdc97dcfe2ad573199454143",
+    "embedded_payload_matches_producer": true,
+    "embedded_bootstrap_sha256": "1809a4d9fedc2c1472674addf8ab02236553c18d31c41fa8b4c497f5912b7441",
+    "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+    "saved_metrics_sha256": "68973ac268c758a46e60d2493bf397b45ddd7b58126cfdf83ecf28a30217e853",
+    "metric_source_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "remote_input_metadata": {
+      "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/cdtb/plan.json": "f30435b5ade9bf0f2b58eedf07f1968959b1c8c3f3e7a7de9681482f4cb9d4a5",
+      "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1/cdtb/cases.json": "b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887",
+      "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/cdtb/predictions/metrics.json": "68973ac268c758a46e60d2493bf397b45ddd7b58126cfdf83ecf28a30217e853",
+      "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/cdtb/predictions/receipt.json": "bc36f31e1c4d747bf5f6d8cbb25685a49142a13b4ce4ea13cf80915df43d880a",
+      "/home/SRTrack_RGBD_L/lib/test/analysis/depthtrack_pr.py": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+    },
+    "CurrentC_raw_stdout_sha256": "bcdc6791cf67d71b77e08cacad8b91cefed1c7a89260f98ade04183dfe64de72",
+    "summary_sha256": "f64a532b53a2cd749b7d583facfdeef207a1c0842b5fe4d7720901c106f1b3fe",
+    "CSV_sha256": "262c136d6980709707943f64046d6777266824eba78137d70f5585383a331259"
+  },
+  "native_capture": {
+    "archived_receipts_sha256": "20a290ec5cb93a77b2a0fa6f9e4fe56a9a2d86ad8f0f38a7ceff146aacd62aba",
+    "invocation_chunk_id": "4204fd",
+    "auth_chunk_id": "0112a5",
+    "invocation_auth_session_id": 18420,
+    "terminal_chunk_id": "0dd4cc",
+    "terminal_exit_code": 0,
+    "terminal_session_id": null,
+    "terminal_session_id_note": "Completion object omits session_id; lineage uses the supplied archival grouping and exact wrapper/capture.",
+    "producer_observed_at": "2026-10-12T04:04:24.870646+00:00",
+    "producer_observed_at_is_self_reported": true,
+    "new_remote_call_by_reviewer": false
+  },
+  "deterministic_actual_checks": {
+    "coverage": {
+      "unique_sequences": 80,
+      "frames": 101956,
+      "valid_GT_frames": 91300,
+      "paired_GT_hashes": 80,
+      "paired_GT_reappearance_frame_sets": 80,
+      "recorded_input_hash_bindings": 325,
+      "metadata_inputs": 5,
+      "prediction_inputs": 80,
+      "confidence_inputs": 80,
+      "GT_inputs": 80,
+      "first_RGB_inputs": 80
+    },
+    "recomputed_aggregate": {
+      "P": 74.04612360284422,
+      "R": 71.27384268855087,
+      "F": 72.6335396305224,
+      "threshold": 0.180816,
+      "all_saved_boxes_R": 72.75005956074581,
+      "serious_low_IoU_frames": 8466,
+      "low_crop_outside_frames": 4982,
+      "long_low_IoU_segment_count": 91
+    },
+    "maximum_aggregate_roundoff": 1.4210854715202004e-14,
+    "maximum_screening_loss_roundoff_pp": 1.1102230246251565e-14,
+    "arithmetic_tolerance_pp": 1e-10,
+    "strict_nonnegative_roundoff_exceptions": [
+      {
+        "sequence": "bag_outside",
+        "value_pp": -1.1102230246251565e-14,
+        "R_percent": 85.07310467499526,
+        "all_saved_boxes_R_percent": 85.07310467499526,
+        "csv_line": 6
+      }
+    ],
+    "segment_and_reappearance_internal_consistency": true,
+    "CSV": {
+      "rows": 80,
+      "columns": 28,
+      "cells_compared": 2240,
+      "maximum_float_difference": 0,
+      "integer_and_text_cells_exact": true
+    },
+    "summary": {
+      "fields_compared": 29,
+      "all_fields_equal": true,
+      "top8_gain_and_loss_orderings_equal": true,
+      "contribution_sum_and_R_decomposition_consistent": true,
+      "metadata_counter_literals_are_not_runtime_measurements": true
+    },
+    "intake": {
+      "derived_fields_crosschecked": 11,
+      "all_derived_fields_equal": true,
+      "intake_not_used_as_independent_evidence": true
+    },
+    "checker": {
+      "executable": "E:\\python.exe",
+      "python": "3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]",
+      "target_modules_executed": 0,
+      "new_intake_python38_syntax": "PASS"
+    },
+    "raw_trajectory_overlap_recomputed_by_reviewer": false,
+    "remote_files_rehashed_by_reviewer": 0
+  },
+  "sequence_GT_pair_bindings": [
+    {
+      "sequence": "XMG_outside",
+      "frames": 1911,
+      "valid_GT_frames": 1890,
+      "CurrentC_GT_sha256": "6fba02f2f4ee66b33ab35a0ca39cbc2d2cc50e17d0f55d49786a36c5affc98f3",
+      "M124_GT_sha256": "6fba02f2f4ee66b33ab35a0ca39cbc2d2cc50e17d0f55d49786a36c5affc98f3",
+      "M124_bbox_sha256": "9079a8251eeefdae3f538f6341c73d359ce2c88c5fc647d78af0f2d813786b91",
+      "M124_confidence_sha256": "5a666694c2c7d652805870772fad543319d5fb7c0656d70c50dfaec1323819b4",
+      "csv_line": 2
+    },
+    {
+      "sequence": "backpack_blue",
+      "frames": 1001,
+      "valid_GT_frames": 917,
+      "CurrentC_GT_sha256": "ff12cfb65924487dfd3bf407fdb67e2d201c65d0e38c7de81652ff38dd80b1e5",
+      "M124_GT_sha256": "ff12cfb65924487dfd3bf407fdb67e2d201c65d0e38c7de81652ff38dd80b1e5",
+      "M124_bbox_sha256": "160936a00851a35b653c27d99d5440f8d93ded3a6b08f684777617795157c0b1",
+      "M124_confidence_sha256": "8b969ac30e34d83cea73457f6e18260df20d30a21a9258adc7aa51c91609282b",
+      "csv_line": 3
+    },
+    {
+      "sequence": "backpack_robotarm_lab_occ",
+      "frames": 1653,
+      "valid_GT_frames": 1439,
+      "CurrentC_GT_sha256": "bb8fe6c3f9e9f359c5e4b3df5acc2aa403b79d376889daef7138c7c274ae72f8",
+      "M124_GT_sha256": "bb8fe6c3f9e9f359c5e4b3df5acc2aa403b79d376889daef7138c7c274ae72f8",
+      "M124_bbox_sha256": "0d83c7544d42c8fc1cb6b9d6c524c805f96541a84d0ed607abdc7992abf47b3c",
+      "M124_confidence_sha256": "d37fb8b83d2a9598b1071d42d43a63a20bf5187cbde077e94789b09bb2284010",
+      "csv_line": 4
+    },
+    {
+      "sequence": "backpack_room_noocc_1",
+      "frames": 1383,
+      "valid_GT_frames": 1376,
+      "CurrentC_GT_sha256": "3ccae934b8ffa214e36301e28adb8bd565ba5d439fb904b985b721fc7f8c40f1",
+      "M124_GT_sha256": "3ccae934b8ffa214e36301e28adb8bd565ba5d439fb904b985b721fc7f8c40f1",
+      "M124_bbox_sha256": "619a75a0e6e12c0e6c74f601899c4a2f67b241e3c704219b8ead0971cc56e8f6",
+      "M124_confidence_sha256": "ea8b153c671fd690b784f062da8f8877f1a5c19a02dc5ffe406e5094e3441517",
+      "csv_line": 5
+    },
+    {
+      "sequence": "bag_outside",
+      "frames": 2340,
+      "valid_GT_frames": 2155,
+      "CurrentC_GT_sha256": "487a837e7d48be792ca0bc22d903196ada5325982270c925b89dcbcf4945f91b",
+      "M124_GT_sha256": "487a837e7d48be792ca0bc22d903196ada5325982270c925b89dcbcf4945f91b",
+      "M124_bbox_sha256": "6fb9a99186d7f44fd456992587aae884c8cb2c5c9c7050f3c5e3eb37ff7bcb9b",
+      "M124_confidence_sha256": "6a4f69f0a9ce326fb1f407ca56e149c2d3d32bf320c87b768e19e9fbd6d56821",
+      "csv_line": 6
+    },
+    {
+      "sequence": "bicycle2_outside",
+      "frames": 1605,
+      "valid_GT_frames": 1170,
+      "CurrentC_GT_sha256": "3ae589e9045869bc80f75ab55ebc19ec3c79eaf2cbc45136e3872ad3a8061039",
+      "M124_GT_sha256": "3ae589e9045869bc80f75ab55ebc19ec3c79eaf2cbc45136e3872ad3a8061039",
+      "M124_bbox_sha256": "a79e3353a6acbb4f7f0a94c74b30e9fc8d4eb9debb7434fe85f20f833016b722",
+      "M124_confidence_sha256": "1cf18bfb69095cd0df8097198723ccbff8ed3374aa583e342a8d2aec77e8fe02",
+      "csv_line": 7
+    },
+    {
+      "sequence": "bicycle_outside",
+      "frames": 1373,
+      "valid_GT_frames": 1360,
+      "CurrentC_GT_sha256": "a94e7cc1e234332020e50410ef12759c902bc4fb895f5187f9a383409c16fb83",
+      "M124_GT_sha256": "a94e7cc1e234332020e50410ef12759c902bc4fb895f5187f9a383409c16fb83",
+      "M124_bbox_sha256": "6aeb8b35b474f7bdfccfd91f9d4d8b624f144258889a314f26c8f58231f948ee",
+      "M124_confidence_sha256": "8a5915bdefbf588996d1f6bcf72482a37fd5554cff4a6ab3fbefcb1f4dac7734",
+      "csv_line": 8
+    },
+    {
+      "sequence": "bottle_box",
+      "frames": 950,
+      "valid_GT_frames": 652,
+      "CurrentC_GT_sha256": "906b93ec7503a554b58f9841064264e69aed49696a915e0fc35b533445e08d49",
+      "M124_GT_sha256": "906b93ec7503a554b58f9841064264e69aed49696a915e0fc35b533445e08d49",
+      "M124_bbox_sha256": "41c2f143ed2dfa1f85cff582178a85eb77e381574bb5a88cff3aa7aad87a3c5f",
+      "M124_confidence_sha256": "5f07922f3a64999be32a6200e5b7afcfa5ab75c511eaf54ef751b5653175b375",
+      "csv_line": 9
+    },
+    {
+      "sequence": "bottle_room_noocc_1",
+      "frames": 1253,
+      "valid_GT_frames": 1253,
+      "CurrentC_GT_sha256": "9b7f18a883def10c92d3fe5cdae5e02a06bb203ab0577097f8ad76a1f69de357",
+      "M124_GT_sha256": "9b7f18a883def10c92d3fe5cdae5e02a06bb203ab0577097f8ad76a1f69de357",
+      "M124_bbox_sha256": "ccf3780e45a7645129f40b28f3de1e548d0ed189b1198bf7373007941728f96b",
+      "M124_confidence_sha256": "1fb4ecba29bb3333ff03ba14066deedd24e62e3ab98924277e328fff8c2b521f",
+      "csv_line": 10
+    },
+    {
+      "sequence": "bottle_room_occ_1",
+      "frames": 1522,
+      "valid_GT_frames": 1430,
+      "CurrentC_GT_sha256": "3abe3267f338a92460a6050af3f6850e9b79361de9e6082f02aa5c7d0adce302",
+      "M124_GT_sha256": "3abe3267f338a92460a6050af3f6850e9b79361de9e6082f02aa5c7d0adce302",
+      "M124_bbox_sha256": "93728a6353b0e77c2246c0b76526e49133e9286873ad038f08da0a83f4bf8928",
+      "M124_confidence_sha256": "492fa36874a3f625e196b789667dc6ea9cd1b5e862e1770d4c83980921160438",
+      "csv_line": 11
+    },
+    {
+      "sequence": "box1_outside",
+      "frames": 2501,
+      "valid_GT_frames": 2501,
+      "CurrentC_GT_sha256": "4f8f27a0dfa072182c657ce03b557fd2b9496b55059541f358ad3695ea959f39",
+      "M124_GT_sha256": "4f8f27a0dfa072182c657ce03b557fd2b9496b55059541f358ad3695ea959f39",
+      "M124_bbox_sha256": "20a3cd317002203a7c1959036c33d4697a686213a0c7f924f063a147284125af",
+      "M124_confidence_sha256": "9483d1ba0358f7f2b7f690bb4b7f3700f9b3b6c7201d77776c299b5fa9b14400",
+      "csv_line": 12
+    },
+    {
+      "sequence": "box_darkroom_noocc_1",
+      "frames": 1165,
+      "valid_GT_frames": 1098,
+      "CurrentC_GT_sha256": "22f1550f7cbcfe5333429ff9d99f2335a7e9fda42afdb2631463950f7f8602c3",
+      "M124_GT_sha256": "22f1550f7cbcfe5333429ff9d99f2335a7e9fda42afdb2631463950f7f8602c3",
+      "M124_bbox_sha256": "cfa8768f2b711382cd97375324ef25e22f4650a13231f36dc9c364959c3b9668",
+      "M124_confidence_sha256": "cb0f2fac5eb40101c332e31c5287451a21f9fa22f9dbc83b47e231bc05248419",
+      "csv_line": 13
+    },
+    {
+      "sequence": "box_darkroom_noocc_10",
+      "frames": 873,
+      "valid_GT_frames": 873,
+      "CurrentC_GT_sha256": "ace13e51fc2b50ad82ad29c943ebef67cce9c0c4ab152bff32f0c7f8863e67ea",
+      "M124_GT_sha256": "ace13e51fc2b50ad82ad29c943ebef67cce9c0c4ab152bff32f0c7f8863e67ea",
+      "M124_bbox_sha256": "79a6268aa5da44b7595192c406e3897f9e3f26d260f852574d5ae8cda6d53195",
+      "M124_confidence_sha256": "6c0f4a3075a1e4083288d0d980a0fe5849ee2b3cee2b4553625349aa45abd145",
+      "csv_line": 14
+    },
+    {
+      "sequence": "box_darkroom_noocc_2",
+      "frames": 850,
+      "valid_GT_frames": 821,
+      "CurrentC_GT_sha256": "269172e59742b80ecba134e0f7e15f53f9358e4275026f9ce78222239c4431a9",
+      "M124_GT_sha256": "269172e59742b80ecba134e0f7e15f53f9358e4275026f9ce78222239c4431a9",
+      "M124_bbox_sha256": "0e0b9b16a490c92e8cc7b056391b7177ffa1a7c7beab3f3820fbafbbd367cadf",
+      "M124_confidence_sha256": "3cde8f969d4d5bad4c06b6608218bb8346ac90f7e2c7887cacd18e805fe79685",
+      "csv_line": 15
+    },
+    {
+      "sequence": "box_darkroom_noocc_3",
+      "frames": 1867,
+      "valid_GT_frames": 1827,
+      "CurrentC_GT_sha256": "a95396631fb78f2698ef3e64556d00c26baad8e0131d67c10294200a86366e98",
+      "M124_GT_sha256": "a95396631fb78f2698ef3e64556d00c26baad8e0131d67c10294200a86366e98",
+      "M124_bbox_sha256": "798e85c503f74a16be8ceeab9e2ff70a781fe089e03bd197b718648bc2fb9b83",
+      "M124_confidence_sha256": "af938dab91cc5e2bdb6993c9b5ef0ac256d3f346be30e057991905da7870385a",
+      "csv_line": 16
+    },
+    {
+      "sequence": "box_darkroom_noocc_4",
+      "frames": 1262,
+      "valid_GT_frames": 1225,
+      "CurrentC_GT_sha256": "0b13d7b93455bd6fc30c47221f4baa274e3bbbd195a58dffbc15e2a96a3987a2",
+      "M124_GT_sha256": "0b13d7b93455bd6fc30c47221f4baa274e3bbbd195a58dffbc15e2a96a3987a2",
+      "M124_bbox_sha256": "27356d480bd46d082ff3618cc8aa3afa48d99437d1b393ad3af46a5ae8d5020f",
+      "M124_confidence_sha256": "c5bc22f74d7326e2b7a78e7c7c2e483d80dd205b706b52a4f540a93b602eb82a",
+      "csv_line": 17
+    },
+    {
+      "sequence": "box_darkroom_noocc_5",
+      "frames": 2241,
+      "valid_GT_frames": 2190,
+      "CurrentC_GT_sha256": "d0fa88f56f9e8c0697a92d9171659f94600936f6370e5862ad5d7ff98ba04f8e",
+      "M124_GT_sha256": "d0fa88f56f9e8c0697a92d9171659f94600936f6370e5862ad5d7ff98ba04f8e",
+      "M124_bbox_sha256": "5fe8cbdecc03a24e53bdb79936b166b14c71a850f48cf885dfe8338e848a89b5",
+      "M124_confidence_sha256": "77c4606e46849e2c5f53d1768b086833d9d9bb6de9d735780040328e23685578",
+      "csv_line": 18
+    },
+    {
+      "sequence": "box_darkroom_noocc_6",
+      "frames": 1081,
+      "valid_GT_frames": 1081,
+      "CurrentC_GT_sha256": "9e1080a5c8a9ab94ba1cfe8dd5615a6c66e5e21ffb77b1f804e3081dc528fef9",
+      "M124_GT_sha256": "9e1080a5c8a9ab94ba1cfe8dd5615a6c66e5e21ffb77b1f804e3081dc528fef9",
+      "M124_bbox_sha256": "bd0ed2fccf5ca3a93a2ea74fadf2c6c1631a7d555d02433999638f584c5faff4",
+      "M124_confidence_sha256": "c4001a3d5bc411c9f95e9fe84621cee8b987bc15f3c7c40df84f8670db407d56",
+      "csv_line": 19
+    },
+    {
+      "sequence": "box_darkroom_noocc_7",
+      "frames": 702,
+      "valid_GT_frames": 702,
+      "CurrentC_GT_sha256": "7d128966d2cfac7efb00b8fc5b9dd8df989e517071d3073eb43c3c2af29005c8",
+      "M124_GT_sha256": "7d128966d2cfac7efb00b8fc5b9dd8df989e517071d3073eb43c3c2af29005c8",
+      "M124_bbox_sha256": "67dd96ee00d7e23cb737e94013847d2c217875e024cfa56abf6bc33e9bd229da",
+      "M124_confidence_sha256": "3bda909fcf77144dcb3fce1bb46a064249a011584d8ce82da28ffceac057291b",
+      "csv_line": 20
+    },
+    {
+      "sequence": "box_darkroom_noocc_8",
+      "frames": 863,
+      "valid_GT_frames": 858,
+      "CurrentC_GT_sha256": "d9ac529df500b84b998ec0b0fb11d3d4c42a407260a968e51a89130ba80397ec",
+      "M124_GT_sha256": "d9ac529df500b84b998ec0b0fb11d3d4c42a407260a968e51a89130ba80397ec",
+      "M124_bbox_sha256": "4a611c2fa8c39ebcab293093a05197e29e732bbfaf6e081ddc6fe452b99c1ba4",
+      "M124_confidence_sha256": "5d808506078891b037fbd1bd04a80cac5318db500d54f11a4a99cffead308047",
+      "csv_line": 21
+    },
+    {
+      "sequence": "box_darkroom_noocc_9",
+      "frames": 758,
+      "valid_GT_frames": 758,
+      "CurrentC_GT_sha256": "e75e928f769750c1d52aca2f5c975914ceedac163852406f18dc996fc950c82c",
+      "M124_GT_sha256": "e75e928f769750c1d52aca2f5c975914ceedac163852406f18dc996fc950c82c",
+      "M124_bbox_sha256": "cd1897457861e8fd2e85b85d7c44e8070734c4932009e934d2dcfafa13d40333",
+      "M124_confidence_sha256": "26ac0112d5bec3e888b17405a99cae9f6ca1e884b2a7b2fb338203b05fcc47d4",
+      "csv_line": 22
+    },
+    {
+      "sequence": "box_humans_room_occ_1",
+      "frames": 1098,
+      "valid_GT_frames": 1047,
+      "CurrentC_GT_sha256": "0708543218225d132e2dc4c529051a7a61c7ea669b2950e157fe536820349ce5",
+      "M124_GT_sha256": "0708543218225d132e2dc4c529051a7a61c7ea669b2950e157fe536820349ce5",
+      "M124_bbox_sha256": "f0ad2bee24bee16ccad6632ec2b9284ecbb779c5baa1d273b7dad9f1c472e06b",
+      "M124_confidence_sha256": "4bb18d9240433a9802adf0950f0f8a39df595839a5168f7620b61bab775bfc05",
+      "csv_line": 23
+    },
+    {
+      "sequence": "box_room_noocc_1",
+      "frames": 952,
+      "valid_GT_frames": 876,
+      "CurrentC_GT_sha256": "06681ba4cecb4a652dae20896e1e2612033bfd13b9b84062b6e9ad0a70c4fa6c",
+      "M124_GT_sha256": "06681ba4cecb4a652dae20896e1e2612033bfd13b9b84062b6e9ad0a70c4fa6c",
+      "M124_bbox_sha256": "f807c40ba9468b822646b9ed6d70dc36541a5239a52806160c20865746ae64f6",
+      "M124_confidence_sha256": "7ee5ba5db3dd9e42636da90e3c372dd63a318a1e3c1206093bf48e0726ea7658",
+      "csv_line": 24
+    },
+    {
+      "sequence": "box_room_noocc_2",
+      "frames": 406,
+      "valid_GT_frames": 406,
+      "CurrentC_GT_sha256": "8ab4a3eb9bd4f09f50d4d491f7090c3dddca7a5f3c304a5dc2a5a3c519543f0f",
+      "M124_GT_sha256": "8ab4a3eb9bd4f09f50d4d491f7090c3dddca7a5f3c304a5dc2a5a3c519543f0f",
+      "M124_bbox_sha256": "56641269e351ec96b806408582c65d88aaa7fc1f18c77672a1494839849660b4",
+      "M124_confidence_sha256": "3a10ada21efebd079515fbeb530e28f11ed037e272df4fc3093b12fd28873c59",
+      "csv_line": 25
+    },
+    {
+      "sequence": "box_room_noocc_3",
+      "frames": 1143,
+      "valid_GT_frames": 1143,
+      "CurrentC_GT_sha256": "a8c92ca2181c081be14941af7a8322fcab01aca0a15432b98af1c4f3dfecb92b",
+      "M124_GT_sha256": "a8c92ca2181c081be14941af7a8322fcab01aca0a15432b98af1c4f3dfecb92b",
+      "M124_bbox_sha256": "fe0a52281cc0f26010eee39acff8ec3c4805b52e743703a1b99f1c10d247ea2f",
+      "M124_confidence_sha256": "4fee552d9688af54d00f93cf899c58b93527b05cfdaabc2fd3704b9ec38d8dda",
+      "csv_line": 26
+    },
+    {
+      "sequence": "box_room_noocc_4",
+      "frames": 1266,
+      "valid_GT_frames": 1266,
+      "CurrentC_GT_sha256": "4122f21e3dd5d08bbc9e414788127e76c1648e0e9879be93fc85d0db23443694",
+      "M124_GT_sha256": "4122f21e3dd5d08bbc9e414788127e76c1648e0e9879be93fc85d0db23443694",
+      "M124_bbox_sha256": "c378fc3dea6945ac1162f3b18de7803d2457191c3ee44e1d7f35a13425ac93d8",
+      "M124_confidence_sha256": "05da72464934d31d2322866542421b47e18022f8f5686e9ce1bf1df8da028ad0",
+      "csv_line": 27
+    },
+    {
+      "sequence": "box_room_noocc_5",
+      "frames": 1319,
+      "valid_GT_frames": 1319,
+      "CurrentC_GT_sha256": "4edb1568b6c4441964759a98bbef046dcc0d6b9e1c8d009a6c0f228580cb34af",
+      "M124_GT_sha256": "4edb1568b6c4441964759a98bbef046dcc0d6b9e1c8d009a6c0f228580cb34af",
+      "M124_bbox_sha256": "a2c61f23de9de784b08706e093dc6ae4f00a09445b66d5d999a37f6ff1e14cf2",
+      "M124_confidence_sha256": "78db058187e0ffa82f2079ef53978ab7d91e06a4a63f4e11c0303466411e5f5f",
+      "csv_line": 28
+    },
+    {
+      "sequence": "box_room_noocc_6",
+      "frames": 1128,
+      "valid_GT_frames": 1128,
+      "CurrentC_GT_sha256": "cf039785859439f1f4586432ea43ed2dff9eecfb4b080389af1e0ceb3f7feeb8",
+      "M124_GT_sha256": "cf039785859439f1f4586432ea43ed2dff9eecfb4b080389af1e0ceb3f7feeb8",
+      "M124_bbox_sha256": "811da6857e76264a4690f1ca1607e48dfbeec19cd8c15d09fd27d32494cfeafe",
+      "M124_confidence_sha256": "5221ae2d84c9f15cc3addfd8b05369a143dd8432d3d2c0ce1ddb19c7a6bac044",
+      "csv_line": 29
+    },
+    {
+      "sequence": "box_room_noocc_7",
+      "frames": 1353,
+      "valid_GT_frames": 1353,
+      "CurrentC_GT_sha256": "13eef3af2538c0ed4c336fb457ddb12e4b425bb6bc9a671c2ae1d4e969324b80",
+      "M124_GT_sha256": "13eef3af2538c0ed4c336fb457ddb12e4b425bb6bc9a671c2ae1d4e969324b80",
+      "M124_bbox_sha256": "f9092d4f51eb534739f50da85c029d6982840063abcc138c0988ad2454058df3",
+      "M124_confidence_sha256": "7728ed4b88105a0a06d792c140a7d24bf5667daea47819eadaae40c9e9b88313",
+      "csv_line": 30
+    },
+    {
+      "sequence": "box_room_noocc_8",
+      "frames": 1058,
+      "valid_GT_frames": 1058,
+      "CurrentC_GT_sha256": "ecf1beb4376649075c8301bcd412966f020d3d79276bcd546f97ef0df8b5c6d0",
+      "M124_GT_sha256": "ecf1beb4376649075c8301bcd412966f020d3d79276bcd546f97ef0df8b5c6d0",
+      "M124_bbox_sha256": "9d85a802d3d8133014c84f99596092572bcfd41401f0a0476b93a4058dc8df6f",
+      "M124_confidence_sha256": "88e34847691527c722ccaa24cf2b279d32b05aeb4786037cfc8d89851150c398",
+      "csv_line": 31
+    },
+    {
+      "sequence": "box_room_noocc_9",
+      "frames": 1376,
+      "valid_GT_frames": 1288,
+      "CurrentC_GT_sha256": "85c0d20363a2e20d0289a6b0b4a4dd52a365df9d0bb2fa6b261377afe4b51a8a",
+      "M124_GT_sha256": "85c0d20363a2e20d0289a6b0b4a4dd52a365df9d0bb2fa6b261377afe4b51a8a",
+      "M124_bbox_sha256": "86abdd00c390b05fe8dc8b12c1e0250a25e44b27c413c6fa3362cf71bd00e8f7",
+      "M124_confidence_sha256": "dc3e6eece05f0b8760aea0e5e2c65618397ae0347aadda5e39c67320597e9084",
+      "csv_line": 32
+    },
+    {
+      "sequence": "box_room_occ_1",
+      "frames": 1857,
+      "valid_GT_frames": 1414,
+      "CurrentC_GT_sha256": "e09ea578adb5aed78c6114d7312b297cd8df82bc7ac2cc0a59ed5524a9627203",
+      "M124_GT_sha256": "e09ea578adb5aed78c6114d7312b297cd8df82bc7ac2cc0a59ed5524a9627203",
+      "M124_bbox_sha256": "67f34a8909f5b5f1a25d9cf35dca04bc9f4896ce04535b97ca960543b56eddc7",
+      "M124_confidence_sha256": "ee7a76c1a6a4f5adb8b1136a6eaa4f661aa556bd866dfb57c8c8aeec0ba1d38e",
+      "csv_line": 33
+    },
+    {
+      "sequence": "box_room_occ_2",
+      "frames": 1447,
+      "valid_GT_frames": 1188,
+      "CurrentC_GT_sha256": "25b58f440f2fdefc2503e407c2ac59cb1224d970da0d0aa61fa5300706d43c0f",
+      "M124_GT_sha256": "25b58f440f2fdefc2503e407c2ac59cb1224d970da0d0aa61fa5300706d43c0f",
+      "M124_bbox_sha256": "f5a0315929bab513ba977328b006ae6d8581b76f4b6b1d3dbc1d58ec7e6d4e02",
+      "M124_confidence_sha256": "81cc1dcf0a093e1f435b89e70fdf8254231c44c520c6728ec04c49ee67ee60c7",
+      "csv_line": 34
+    },
+    {
+      "sequence": "boxes_backpack_room_occ_1",
+      "frames": 1133,
+      "valid_GT_frames": 908,
+      "CurrentC_GT_sha256": "fa46da1c779d02946db8a1a2dc42a3f1700ab78b46b254f02600e85d02c2f465",
+      "M124_GT_sha256": "fa46da1c779d02946db8a1a2dc42a3f1700ab78b46b254f02600e85d02c2f465",
+      "M124_bbox_sha256": "e25b913d4153149b4c2e651a12f17b9858866a77b3eff7d9701384e621152013",
+      "M124_confidence_sha256": "d2eede67391a12ed4206fd6bac4738d2def5584d30a661c6ed68bb06a66c24e4",
+      "csv_line": 35
+    },
+    {
+      "sequence": "boxes_humans_room_occ_1",
+      "frames": 2311,
+      "valid_GT_frames": 1854,
+      "CurrentC_GT_sha256": "a831825aa7df0f3d46c6652a4b4ba6161e735a346769322654c516f31a70449c",
+      "M124_GT_sha256": "a831825aa7df0f3d46c6652a4b4ba6161e735a346769322654c516f31a70449c",
+      "M124_bbox_sha256": "358d4065298113b96f831a9a7e73166a412b1f96ece27f280b25e504ea787e1e",
+      "M124_confidence_sha256": "79ad95302671a8d16ffc7f3e8ed26ac667c4905b2f3dbadcb8fc80023e7cdc9c",
+      "csv_line": 36
+    },
+    {
+      "sequence": "boxes_office_occ_1",
+      "frames": 1266,
+      "valid_GT_frames": 1237,
+      "CurrentC_GT_sha256": "f1bf9361594adfbc8ab6daaa977b8ecac89be5b0b76f72f5475b9e1092b08481",
+      "M124_GT_sha256": "f1bf9361594adfbc8ab6daaa977b8ecac89be5b0b76f72f5475b9e1092b08481",
+      "M124_bbox_sha256": "3ac40914ca7bcb676703dbbde04c3197acd98c4efd9598e1bb42250d3ea9c717",
+      "M124_confidence_sha256": "54fbd5b3ba84f4278674238506c923a2de39a30367112f36b4efe0f1a25825e6",
+      "csv_line": 37
+    },
+    {
+      "sequence": "boxes_room_occ_1",
+      "frames": 1295,
+      "valid_GT_frames": 1237,
+      "CurrentC_GT_sha256": "1ed4cfc127fcfbcfa227f81ab05f8330bb2f803ad67680c56cf121b91cd8de4b",
+      "M124_GT_sha256": "1ed4cfc127fcfbcfa227f81ab05f8330bb2f803ad67680c56cf121b91cd8de4b",
+      "M124_bbox_sha256": "5b357b2fd42ad49f5b6f5aca5798f2ad1b9f7586d7f879c70d2bbf45282f596e",
+      "M124_confidence_sha256": "6f51b14a2282e498c46c8013fbcc2bbc9aa1061582440ca5187924868fc26159",
+      "csv_line": 38
+    },
+    {
+      "sequence": "cart_room_occ_1",
+      "frames": 999,
+      "valid_GT_frames": 914,
+      "CurrentC_GT_sha256": "8ce8c5f25d21933fd47813aa0938c7e66434206f395460bdca0c6174dff6522c",
+      "M124_GT_sha256": "8ce8c5f25d21933fd47813aa0938c7e66434206f395460bdca0c6174dff6522c",
+      "M124_bbox_sha256": "47114455c5ebb0744cfac67bd81d0b95c4d08bfc5829a258e721bae01ddce3cb",
+      "M124_confidence_sha256": "2f245f872f41908213714bf5af472312845f4c435c8cd93f2f11e3c77bd01294",
+      "csv_line": 39
+    },
+    {
+      "sequence": "cartman",
+      "frames": 899,
+      "valid_GT_frames": 773,
+      "CurrentC_GT_sha256": "091fe73b088302791b43fbe67b29d2af3ef590023ae531d28ee4e00c63024e64",
+      "M124_GT_sha256": "091fe73b088302791b43fbe67b29d2af3ef590023ae531d28ee4e00c63024e64",
+      "M124_bbox_sha256": "8a34f3593cca560085c8e9403050dca4707f271f9bd2427f8fa9d40fcf47eb9c",
+      "M124_confidence_sha256": "260320826f4e2f489c00b7477f6d5dcec53304ea7c1f500fd97fe1e83f1f7f43",
+      "csv_line": 40
+    },
+    {
+      "sequence": "cartman_robotarm_lab_noocc",
+      "frames": 2058,
+      "valid_GT_frames": 2058,
+      "CurrentC_GT_sha256": "95711179609e8d2ff579827896a3e53ba519f97fed19ff16949b1be6340398ca",
+      "M124_GT_sha256": "95711179609e8d2ff579827896a3e53ba519f97fed19ff16949b1be6340398ca",
+      "M124_bbox_sha256": "cb9d61118081f6100dca12e6c11cec2b85d8acff8d4b22724c5aa06b9fac79c2",
+      "M124_confidence_sha256": "b968f4ba555e1c3d9395ad369cb3d6ea1bf94861936eafffdd07586f533b3e92",
+      "csv_line": 41
+    },
+    {
+      "sequence": "case",
+      "frames": 960,
+      "valid_GT_frames": 848,
+      "CurrentC_GT_sha256": "798bfd9b80a7123bb5e026e4021acae89d313b684099d6e709e0f9fa91a10c8f",
+      "M124_GT_sha256": "798bfd9b80a7123bb5e026e4021acae89d313b684099d6e709e0f9fa91a10c8f",
+      "M124_bbox_sha256": "93947d37675b75bcae7d9067fe75d67998043b5818c7f450274405d78538610d",
+      "M124_confidence_sha256": "386430b53605218e38d7b14f992b6961d1a961b313687ed74430b4b26a16d556",
+      "csv_line": 42
+    },
+    {
+      "sequence": "container_room_noocc_1",
+      "frames": 1644,
+      "valid_GT_frames": 1644,
+      "CurrentC_GT_sha256": "fbd580fc596806a440e61abca997e85ae3f9dd4551a5dc60c25ba7512bea1d4f",
+      "M124_GT_sha256": "fbd580fc596806a440e61abca997e85ae3f9dd4551a5dc60c25ba7512bea1d4f",
+      "M124_bbox_sha256": "2baa89c650480294bbc79829aaf2f4553be0b7ed6690a374ddf45c317647461f",
+      "M124_confidence_sha256": "579dc67ca5c7e0b84ba857f7dce9f71da01ca69cca60624d449aaf437934344c",
+      "csv_line": 43
+    },
+    {
+      "sequence": "dog_outside",
+      "frames": 1055,
+      "valid_GT_frames": 875,
+      "CurrentC_GT_sha256": "5f4565d9d9b979a2a668fe0859c09fff9d513d0beb3ef151d587ad04d39e71e2",
+      "M124_GT_sha256": "5f4565d9d9b979a2a668fe0859c09fff9d513d0beb3ef151d587ad04d39e71e2",
+      "M124_bbox_sha256": "e178a6d3d3788001321119685e45b18cdedf94df587d23aef6e55447ab00eb0b",
+      "M124_confidence_sha256": "e87af93bdfb0114ef7c943e266a196c69cd161b05112e66bb5f3b637b0e803ee",
+      "csv_line": 44
+    },
+    {
+      "sequence": "human_entry_occ_1",
+      "frames": 532,
+      "valid_GT_frames": 440,
+      "CurrentC_GT_sha256": "84c8c0e1e4d13e576e612dc9a8d923b5b8e1e363720d297c5984613e183e985f",
+      "M124_GT_sha256": "84c8c0e1e4d13e576e612dc9a8d923b5b8e1e363720d297c5984613e183e985f",
+      "M124_bbox_sha256": "bbf38f6296ebc2fabec6544af5179b5fe4bea6b4beef8359b53c531e6ffe4758",
+      "M124_confidence_sha256": "86153ee7c905e6204399abb114be0a649212e7ac3a2ca17513b4fa35b73be933",
+      "csv_line": 45
+    },
+    {
+      "sequence": "human_entry_occ_2",
+      "frames": 661,
+      "valid_GT_frames": 448,
+      "CurrentC_GT_sha256": "bb7cec38cc622d15eee21e9e5fd65c1ba0760b4d6193975885462bc98096106f",
+      "M124_GT_sha256": "bb7cec38cc622d15eee21e9e5fd65c1ba0760b4d6193975885462bc98096106f",
+      "M124_bbox_sha256": "5410c01cb70e28cef7b9c391f21ac5fad2ed3eba6b1f73f6e0926d7a874cc456",
+      "M124_confidence_sha256": "3235c62dd0efb56392aa2c4d5df617326d8b8535cb12d5bd8c4e8e3906383f96",
+      "csv_line": 46
+    },
+    {
+      "sequence": "humans_corridor_occ_1",
+      "frames": 1193,
+      "valid_GT_frames": 638,
+      "CurrentC_GT_sha256": "e7de6845267114151205df2b8cb4e98f812c2f54dee280c797d98493890db861",
+      "M124_GT_sha256": "e7de6845267114151205df2b8cb4e98f812c2f54dee280c797d98493890db861",
+      "M124_bbox_sha256": "49a2cb418ab37d209c4bec2ceded0e88162207c52ebf025f7431e56fd2ac8acf",
+      "M124_confidence_sha256": "89adb6cf2b289f0afba7e8a23a05c743523327c9bb5e011c560799da7198aee1",
+      "csv_line": 47
+    },
+    {
+      "sequence": "humans_corridor_occ_2_A",
+      "frames": 1360,
+      "valid_GT_frames": 693,
+      "CurrentC_GT_sha256": "c395a3c5a21dabcd9d944e0a621ca7f2746fa575564313d2e4a2286c1884baae",
+      "M124_GT_sha256": "c395a3c5a21dabcd9d944e0a621ca7f2746fa575564313d2e4a2286c1884baae",
+      "M124_bbox_sha256": "0ef76c84de7c25e212f71a8cb58c3e2524e3c9a60d4fbb33d3dca116c2d6bff4",
+      "M124_confidence_sha256": "eeb5d2077fef6cbe9a8dc109b6517ed8aa82ef2b3e5534c32f5f54579d862b27",
+      "csv_line": 48
+    },
+    {
+      "sequence": "humans_corridor_occ_2_B",
+      "frames": 1360,
+      "valid_GT_frames": 874,
+      "CurrentC_GT_sha256": "45769087c030a753a41b3d3a795eea29f621c2c57408c816022dd73b8e832bb2",
+      "M124_GT_sha256": "45769087c030a753a41b3d3a795eea29f621c2c57408c816022dd73b8e832bb2",
+      "M124_bbox_sha256": "18d49d507f255628912c45028b3bbe87d6f4536fc57d4cc235f56810c45ba701",
+      "M124_confidence_sha256": "322276112160be9330ed4dd0d2a2e8b6a7f7492439fe1e5db460ce125378fcb5",
+      "csv_line": 49
+    },
+    {
+      "sequence": "humans_longcorridor_staricase_occ_1",
+      "frames": 1436,
+      "valid_GT_frames": 936,
+      "CurrentC_GT_sha256": "3fe3abd1963572c2354af3b093dd63c6b1e4beba6a0bd70a4c1f1c2fe0ab1f3e",
+      "M124_GT_sha256": "3fe3abd1963572c2354af3b093dd63c6b1e4beba6a0bd70a4c1f1c2fe0ab1f3e",
+      "M124_bbox_sha256": "39bc7b0d51abeb232a23af6f7c32d2eb27c808643df267e9fcd3958fd7cd6b32",
+      "M124_confidence_sha256": "798562a3bb335c2a8601d1554234925271bbc8096fa090699479e5882a3f9e8e",
+      "csv_line": 50
+    },
+    {
+      "sequence": "humans_shirts_room_occ_1_A",
+      "frames": 1533,
+      "valid_GT_frames": 1450,
+      "CurrentC_GT_sha256": "2fa20ed18b46fb1f2abcf3ffcae9ba6c55f980d9603c8068670fb2e35c170ec4",
+      "M124_GT_sha256": "2fa20ed18b46fb1f2abcf3ffcae9ba6c55f980d9603c8068670fb2e35c170ec4",
+      "M124_bbox_sha256": "2af5843b637b9f78213cb3b68bc90765268f4140d356c60517bb922da4af2d78",
+      "M124_confidence_sha256": "30adee90d3b3564d50687088ffa346db71360defea38ee623364ee2fbface1b8",
+      "csv_line": 51
+    },
+    {
+      "sequence": "humans_shirts_room_occ_1_B",
+      "frames": 1430,
+      "valid_GT_frames": 1111,
+      "CurrentC_GT_sha256": "ce750e6e02ed52a460b962ebdf6e50f0d3ea899b38aa4f2d98c47dd588a820f1",
+      "M124_GT_sha256": "ce750e6e02ed52a460b962ebdf6e50f0d3ea899b38aa4f2d98c47dd588a820f1",
+      "M124_bbox_sha256": "b2773cd347af3b4dedbe8f604b3e791354ea21d99759da96b8cee1107066eff8",
+      "M124_confidence_sha256": "aa3382c9944f26957ec6942ec2fbb7d49ae2f7a38356ef2f4b1022ed71cc8fe0",
+      "csv_line": 52
+    },
+    {
+      "sequence": "jug",
+      "frames": 874,
+      "valid_GT_frames": 796,
+      "CurrentC_GT_sha256": "9abcf47f5bc0bb5632cff4fe61cf6cc9128744f01e1a6de6505463b306ad6dff",
+      "M124_GT_sha256": "9abcf47f5bc0bb5632cff4fe61cf6cc9128744f01e1a6de6505463b306ad6dff",
+      "M124_bbox_sha256": "08ee3f1e1c1606dbe69c0200f9a86c39df384a57733ea1acc86c32fcc013abaf",
+      "M124_confidence_sha256": "9630a863dbe5d19f6dee6da9ca695aef7622a7ddc385d49548b7b21c4fc25008",
+      "csv_line": 53
+    },
+    {
+      "sequence": "mug_ankara",
+      "frames": 934,
+      "valid_GT_frames": 754,
+      "CurrentC_GT_sha256": "f7bf5122317cb8f1c581ad161c905e48ae37989fe4da6f12943fd48af3ef71e3",
+      "M124_GT_sha256": "f7bf5122317cb8f1c581ad161c905e48ae37989fe4da6f12943fd48af3ef71e3",
+      "M124_bbox_sha256": "d2e9f8a1638957889ebb678f8d0443faa22bd73dc4e6246c35b989303a001e11",
+      "M124_confidence_sha256": "6f8836176ce5088a85833796f0c78d48d5cb38a7853048aad9675f6e3977b239",
+      "csv_line": 54
+    },
+    {
+      "sequence": "mug_gs",
+      "frames": 1029,
+      "valid_GT_frames": 870,
+      "CurrentC_GT_sha256": "fd6ca6405d9511f4fcce06ff5e721036e55a216d4ae0a088541d91ef57aff846",
+      "M124_GT_sha256": "fd6ca6405d9511f4fcce06ff5e721036e55a216d4ae0a088541d91ef57aff846",
+      "M124_bbox_sha256": "44776f074c5a520a21ac18306922440f1cc567504ec397af3bcae4a637743377",
+      "M124_confidence_sha256": "6cc9c63109c03cdee9e90b4ee41d7e4233a71b7e18ad253b793a582c3d4653f3",
+      "csv_line": 55
+    },
+    {
+      "sequence": "paperpunch",
+      "frames": 859,
+      "valid_GT_frames": 747,
+      "CurrentC_GT_sha256": "37fa58453fcfabc0e7a482c878b0b19c818518b2ef66e5ed4bb00e73e015c5c9",
+      "M124_GT_sha256": "37fa58453fcfabc0e7a482c878b0b19c818518b2ef66e5ed4bb00e73e015c5c9",
+      "M124_bbox_sha256": "844600fb056e4fa85065a7b969c56f7ec4f66c8eefe758b12149561ee27854f2",
+      "M124_confidence_sha256": "09bc33c004736ca216eacd297223f83bcee14404f54c2c5cf01d36ed195bb886",
+      "csv_line": 56
+    },
+    {
+      "sequence": "person_outside",
+      "frames": 1728,
+      "valid_GT_frames": 1365,
+      "CurrentC_GT_sha256": "4196fcf045633e66f1cae9c8411ee53188851244578e4a96893c32562a8f7148",
+      "M124_GT_sha256": "4196fcf045633e66f1cae9c8411ee53188851244578e4a96893c32562a8f7148",
+      "M124_bbox_sha256": "31806f4957ff78843f2a80c9d1c78951e87cc599d462a7f75d43314d98f0ba72",
+      "M124_confidence_sha256": "455d28005959f025450cec0d0955f9e27d091dee1392e1a676a6cbb62ce5cde2",
+      "csv_line": 57
+    },
+    {
+      "sequence": "robot_corridor_noocc_1",
+      "frames": 799,
+      "valid_GT_frames": 632,
+      "CurrentC_GT_sha256": "2b5a82451b9b3eb6a51e18b30b47bde087f614ef553f1fdab253707eedad6143",
+      "M124_GT_sha256": "2b5a82451b9b3eb6a51e18b30b47bde087f614ef553f1fdab253707eedad6143",
+      "M124_bbox_sha256": "be80a77541f727fe50c4ec6d87e35a8f0a9af39b3eafa1ec8d8c9de17df744e0",
+      "M124_confidence_sha256": "00856b6472e990ae1a5f98c5090de48ed8a5d2ceed54021ba13c03e758f21e8f",
+      "csv_line": 58
+    },
+    {
+      "sequence": "robot_corridor_occ_1",
+      "frames": 1819,
+      "valid_GT_frames": 1521,
+      "CurrentC_GT_sha256": "ebf76a17b1925a4f5b4d86147c4a2f1c51b29106a43533a2744fe9b3a1266dfe",
+      "M124_GT_sha256": "ebf76a17b1925a4f5b4d86147c4a2f1c51b29106a43533a2744fe9b3a1266dfe",
+      "M124_bbox_sha256": "a90f030867af78570bf62e155fc4bc1847ad514150273ebda49db393b28b7cf5",
+      "M124_confidence_sha256": "61121230ed8e4117cf08b8c0467d1637533cdfed208419acdb65975d7eb942f6",
+      "csv_line": 59
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_1_A",
+      "frames": 902,
+      "valid_GT_frames": 902,
+      "CurrentC_GT_sha256": "fc79813a3a55f890e2c202205f6783565af6b6bb5831f52e498b4b210cc2755e",
+      "M124_GT_sha256": "fc79813a3a55f890e2c202205f6783565af6b6bb5831f52e498b4b210cc2755e",
+      "M124_bbox_sha256": "e28cab61708bb43a7d57f76e9758decebc8998ddc877f09b1c3d753fe526dd8f",
+      "M124_confidence_sha256": "589c350320a354948683a498cc0a5050c2d0a847de4007a07a3f02ef9d9b9634",
+      "csv_line": 60
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_1_B",
+      "frames": 902,
+      "valid_GT_frames": 902,
+      "CurrentC_GT_sha256": "95e66ee280afaab6451a1417559cf6c19c9ba5d944a938844632539bc5808da6",
+      "M124_GT_sha256": "95e66ee280afaab6451a1417559cf6c19c9ba5d944a938844632539bc5808da6",
+      "M124_bbox_sha256": "3d8b3cf803ca62ed4a0c20ae0331078b4fe6faae43b513295cd8a7ee49258662",
+      "M124_confidence_sha256": "ddc325957eb9a17a8ec49c61d698a442f3377ac6bf5c80b3095c41430507d1f8",
+      "csv_line": 61
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_2",
+      "frames": 1065,
+      "valid_GT_frames": 972,
+      "CurrentC_GT_sha256": "95bd9ccadaf4d5652df8afac4c13202a1301a9efeece6ca3aa3e1537b9fee573",
+      "M124_GT_sha256": "95bd9ccadaf4d5652df8afac4c13202a1301a9efeece6ca3aa3e1537b9fee573",
+      "M124_bbox_sha256": "094de06610b483fc0a59f13029f999f73ffef7ce638153c08528d748dc84f4bd",
+      "M124_confidence_sha256": "5d278fc40a932adf512400cd9980568a6fe1c9404093bab5733c31acbf1d507d",
+      "csv_line": 62
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_3_A",
+      "frames": 1679,
+      "valid_GT_frames": 1524,
+      "CurrentC_GT_sha256": "85a187f61a536b7283cbdc64c11834e616408b987185f516004e5290871d8f27",
+      "M124_GT_sha256": "85a187f61a536b7283cbdc64c11834e616408b987185f516004e5290871d8f27",
+      "M124_bbox_sha256": "545ca40cbb1862314144da69cc2fe84d2c0de72bddf2ae05df9809d28355b263",
+      "M124_confidence_sha256": "dc88488679cb7214ff5c44d1ec9487937593361089c02da8e21aecd15947d39b",
+      "csv_line": 63
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_3_B",
+      "frames": 1134,
+      "valid_GT_frames": 1027,
+      "CurrentC_GT_sha256": "dc6f2924f50f809d1258eac169a84c347c22236246ad6168f4fe8dc428b606a4",
+      "M124_GT_sha256": "dc6f2924f50f809d1258eac169a84c347c22236246ad6168f4fe8dc428b606a4",
+      "M124_bbox_sha256": "38b1dd88eef3638d28268317157b0511b6bbb25a6fb1cdb80692949aee1ae86f",
+      "M124_confidence_sha256": "261e7514af90216a2b102908c5eecde1fdeb8ebad417778063bd8aaaac2b31f7",
+      "csv_line": 64
+    },
+    {
+      "sequence": "robot_lab_occ",
+      "frames": 1643,
+      "valid_GT_frames": 1631,
+      "CurrentC_GT_sha256": "21d6b62b964ff143e12ea628e1677f533ff5167b47882fc5e335a024de98d7e3",
+      "M124_GT_sha256": "21d6b62b964ff143e12ea628e1677f533ff5167b47882fc5e335a024de98d7e3",
+      "M124_bbox_sha256": "96a4dd86823564d91e083aff437d16df879ec614321cb0fcb7bff80befcb3070",
+      "M124_confidence_sha256": "b230167f841eeb9d4fe14361c1c5d4acd6861c00097b203061af627b64d415ae",
+      "csv_line": 65
+    },
+    {
+      "sequence": "teapot",
+      "frames": 950,
+      "valid_GT_frames": 857,
+      "CurrentC_GT_sha256": "d3281582c3d2432e10486c62a8afddee529782ea308031cd643e574155b99c24",
+      "M124_GT_sha256": "d3281582c3d2432e10486c62a8afddee529782ea308031cd643e574155b99c24",
+      "M124_bbox_sha256": "af0107b38782a2b939095adb0364be4d3ca5d7a4dc1759aae41a4fc8eb5aa9ee",
+      "M124_confidence_sha256": "b015ca3ff7102aff375e4dbd881f1692447348d533bb5dbe8eca18c3e8eb44bf",
+      "csv_line": 66
+    },
+    {
+      "sequence": "tennis_ball",
+      "frames": 707,
+      "valid_GT_frames": 556,
+      "CurrentC_GT_sha256": "420da9367df92bea3811e987b2e8246e1d1a87df67179a5e9c83fb1b201630aa",
+      "M124_GT_sha256": "420da9367df92bea3811e987b2e8246e1d1a87df67179a5e9c83fb1b201630aa",
+      "M124_bbox_sha256": "8380796fbbf9382c53e69853faf8ed65b3e05532225f6f7f82df667ee4a765d4",
+      "M124_confidence_sha256": "0df7e06a59e1bc718d862193e83a62fad31209d875ddfb45237e584775d6e680",
+      "csv_line": 67
+    },
+    {
+      "sequence": "thermos_office_noocc_1",
+      "frames": 971,
+      "valid_GT_frames": 971,
+      "CurrentC_GT_sha256": "9b257708929f86c89a8da7950abe0f1a4f1d95d3dbcb019a2c8d80818e84cfe9",
+      "M124_GT_sha256": "9b257708929f86c89a8da7950abe0f1a4f1d95d3dbcb019a2c8d80818e84cfe9",
+      "M124_bbox_sha256": "ac8809722c0bb2d200d40f7dee1909e62971ffd13a699fa3643adbeb51bc7eaf",
+      "M124_confidence_sha256": "939e541e000255281e12ca530c7ce168c79bcae9a2715be21e93d3335db6303e",
+      "csv_line": 68
+    },
+    {
+      "sequence": "thermos_office_occ_1",
+      "frames": 1411,
+      "valid_GT_frames": 1314,
+      "CurrentC_GT_sha256": "92715f37443d4972219a6c5ae8b617119f9e0d90bec0b2fb94b4718c710f39a5",
+      "M124_GT_sha256": "92715f37443d4972219a6c5ae8b617119f9e0d90bec0b2fb94b4718c710f39a5",
+      "M124_bbox_sha256": "a6801158ed04cbed8c973fd914e4db74d7440740e278e9c2a91a5dfca89e7e93",
+      "M124_confidence_sha256": "580f3870d760bbe3f6eb24343bf6d75472639e03df7112feb6c1829813e13276",
+      "csv_line": 69
+    },
+    {
+      "sequence": "toy_office_noocc_1",
+      "frames": 986,
+      "valid_GT_frames": 986,
+      "CurrentC_GT_sha256": "4a94d75bbb8604f641ac13a4cd077c3e8789db31920303ed344854fede465992",
+      "M124_GT_sha256": "4a94d75bbb8604f641ac13a4cd077c3e8789db31920303ed344854fede465992",
+      "M124_bbox_sha256": "67c82a9a5e3ffa5665c3d21f7a041339e64f406c1e427caba21eaedc73634d02",
+      "M124_confidence_sha256": "3f927284a9d1e4be7d6b16e45230e5c84ddd6680d3f55785b3e74b0d900d0c3e",
+      "csv_line": 70
+    },
+    {
+      "sequence": "toy_office_occ_1",
+      "frames": 852,
+      "valid_GT_frames": 670,
+      "CurrentC_GT_sha256": "9c2ff5d905d6456f655381080e9e2f3e43a1415b2c92b2834e92151e933ac8aa",
+      "M124_GT_sha256": "9c2ff5d905d6456f655381080e9e2f3e43a1415b2c92b2834e92151e933ac8aa",
+      "M124_bbox_sha256": "4918ff411497c6b15f0d8d63963c2844cc41fbc4b507aa3f8cb47661b595232d",
+      "M124_confidence_sha256": "465410b9d4dae44ee4b97fbae8837a6f828d7acf362e39147012315268c7f506",
+      "csv_line": 71
+    },
+    {
+      "sequence": "trashcan_room_occ_1",
+      "frames": 1305,
+      "valid_GT_frames": 979,
+      "CurrentC_GT_sha256": "7c7721be9a12729e11dfcca78a1395e546422197604703446e9fa7ecaed2582e",
+      "M124_GT_sha256": "7c7721be9a12729e11dfcca78a1395e546422197604703446e9fa7ecaed2582e",
+      "M124_bbox_sha256": "5903637830a7d8c2ada889ea5a88708ad2a2b737f4323c07c4392fc6052405af",
+      "M124_confidence_sha256": "651e49e7b6e6683cc7ee633e560024b3da76808801468dca33a4836550c86ba5",
+      "csv_line": 72
+    },
+    {
+      "sequence": "trashcans_room_occ_1_A",
+      "frames": 847,
+      "valid_GT_frames": 679,
+      "CurrentC_GT_sha256": "10d4596a59244dc3f0a1d4750dd5140dd2459b6c89b99003a9634fa2795c26b0",
+      "M124_GT_sha256": "10d4596a59244dc3f0a1d4750dd5140dd2459b6c89b99003a9634fa2795c26b0",
+      "M124_bbox_sha256": "e07b4970b4bb103cd0a5fa09511f4b42786265499443945f6c9daa89f87b0d79",
+      "M124_confidence_sha256": "f0e2fc3b5f8276bbd3771b0b00890a005e6628ea4353503259ee908f13c5bb49",
+      "csv_line": 73
+    },
+    {
+      "sequence": "trashcans_room_occ_1_B",
+      "frames": 944,
+      "valid_GT_frames": 827,
+      "CurrentC_GT_sha256": "e226ec7f26acd1b8e9fd226d45a761955e19907dab8b31f1598e85c473f1487d",
+      "M124_GT_sha256": "e226ec7f26acd1b8e9fd226d45a761955e19907dab8b31f1598e85c473f1487d",
+      "M124_bbox_sha256": "e91ec8d5bd0cae789545ebd9791b7ac570e92bf38e63187a4c346be7231eda70",
+      "M124_confidence_sha256": "7e66b598ecb83e88a709f1f85ff62aac0668df3ebda42a7558cb1f06b2c3f1ec",
+      "csv_line": 74
+    },
+    {
+      "sequence": "trendNetBag_outside",
+      "frames": 2105,
+      "valid_GT_frames": 1614,
+      "CurrentC_GT_sha256": "456c5a9324f4632d45925a54291610324f601fbea3abc9cb33ed4ef72cd7b475",
+      "M124_GT_sha256": "456c5a9324f4632d45925a54291610324f601fbea3abc9cb33ed4ef72cd7b475",
+      "M124_bbox_sha256": "b475e9161b151d84d4d759afdffc99ebc6d9b33a8028f966f8f581ef1b6da93e",
+      "M124_confidence_sha256": "ce3924aa947de451e2759eb9231598e099d1693916784bc3754762a5c49e0b41",
+      "csv_line": 75
+    },
+    {
+      "sequence": "trendNet_outside",
+      "frames": 1818,
+      "valid_GT_frames": 1680,
+      "CurrentC_GT_sha256": "e113a256b50235696ad07e5f9c689970a41b09e7bd3af91304f54afaaeb53fcc",
+      "M124_GT_sha256": "e113a256b50235696ad07e5f9c689970a41b09e7bd3af91304f54afaaeb53fcc",
+      "M124_bbox_sha256": "fe64a4f754c281cc532d2de31106bd76131739f33017855dc7a5adba6d3e0e2c",
+      "M124_confidence_sha256": "b557c484d7dce8004db70d5255e1f72b3dfc6b3901e432957f42f8ccbd00239c",
+      "csv_line": 76
+    },
+    {
+      "sequence": "trophy_outside",
+      "frames": 2001,
+      "valid_GT_frames": 1926,
+      "CurrentC_GT_sha256": "5d7e6911ea73b64af3d969f0bf9ba2203e097a046295ffa3c4d3b672764db360",
+      "M124_GT_sha256": "5d7e6911ea73b64af3d969f0bf9ba2203e097a046295ffa3c4d3b672764db360",
+      "M124_bbox_sha256": "a9ec4369aae1c9fa5af7d83bb9b20361d21ef981283810eb488056da6294985e",
+      "M124_confidence_sha256": "0122950bc6866003a29a63de3f2ff6398009b10452123542bfcc685584ae42ff",
+      "csv_line": 77
+    },
+    {
+      "sequence": "trophy_room_noocc_1",
+      "frames": 1409,
+      "valid_GT_frames": 1406,
+      "CurrentC_GT_sha256": "c1fbc20e33419fcfd028dc94f602e429df634cb8617be3d339b6b9b5f4c6982e",
+      "M124_GT_sha256": "c1fbc20e33419fcfd028dc94f602e429df634cb8617be3d339b6b9b5f4c6982e",
+      "M124_bbox_sha256": "e718a147c2d1dce5df08aee71ee74dac8ce9417361455a660eed47b22f31c81a",
+      "M124_confidence_sha256": "3b4ac10436e557a2e906f5e571bd16bd130099a81835e7439929ef776a08d43a",
+      "csv_line": 78
+    },
+    {
+      "sequence": "trophy_room_occ_1",
+      "frames": 1745,
+      "valid_GT_frames": 1522,
+      "CurrentC_GT_sha256": "51a5104a9217d3ce93c7778646701169284cc0fc2d84c01e8a97525d074277ab",
+      "M124_GT_sha256": "51a5104a9217d3ce93c7778646701169284cc0fc2d84c01e8a97525d074277ab",
+      "M124_bbox_sha256": "1d6297fbc95596e1b8118225ecd2e0e3eec435f63908e9e9c572d681e8aead24",
+      "M124_confidence_sha256": "8d821704865e23c80c7d0fe4e082f551b6c7aed239c230cacbc85272af54ed70",
+      "csv_line": 79
+    },
+    {
+      "sequence": "two_mugs",
+      "frames": 1134,
+      "valid_GT_frames": 1015,
+      "CurrentC_GT_sha256": "b18d4f95c3f221f1989756ec055c4ac4cc1e5ff603b90c753fca2da6cde53f47",
+      "M124_GT_sha256": "b18d4f95c3f221f1989756ec055c4ac4cc1e5ff603b90c753fca2da6cde53f47",
+      "M124_bbox_sha256": "2c940d3309f787a8b771e105a318e2788e70733ff560fea713f335001189d264",
+      "M124_confidence_sha256": "214c5b26e5780fecac17cca5a339c64df3ffbb07802de862487d2972b0414c62",
+      "csv_line": 80
+    },
+    {
+      "sequence": "two_tennis_balls",
+      "frames": 722,
+      "valid_GT_frames": 655,
+      "CurrentC_GT_sha256": "b803eddcdd49832f1acd02822b4901e730f181f9cb27fe8aaaecca908d186927",
+      "M124_GT_sha256": "b803eddcdd49832f1acd02822b4901e730f181f9cb27fe8aaaecca908d186927",
+      "M124_bbox_sha256": "e3b5c71cb816674d6e5950a2853dbb0676daf884cf9c049b100c654a074a4b0b",
+      "M124_confidence_sha256": "f666400ae0b3c3aab965c56fd636a11d2dbff70831b723fe34922442db11965b",
+      "csv_line": 81
+    }
+  ],
+  "comparison_findings": {
+    "sequences": 80,
+    "frames": 101956,
+    "formal_R_delta_pp": 1.387604026673941,
+    "all_saved_boxes_R_delta_pp": 2.195781173511449,
+    "CurrentC_confidence_R_loss_pp": 0.6680397253574313,
+    "M124_epoch01_confidence_R_loss_pp": 1.4762168721949394,
+    "confidence_R_loss_change_pp": 0.8081771468375081,
+    "target_R_percent": 75.6,
+    "M124_epoch01_all_saved_boxes_R_gap_to_target_pp": 2.8499404392541834,
+    "improved_all_R_sequences": 41,
+    "worsened_all_R_sequences": 39,
+    "unchanged_all_R_sequences": 0,
+    "long_low_segments": 91,
+    "long_low_segment_frames": 8105,
+    "segment_onsets_center_inside": 54,
+    "segment_onsets_center_outside": 37,
+    "inside_onsets_later_outside": 25,
+    "valid_GT_reappearance_events": 159,
+    "valid_GT_reappearance_center_outside_events": 60
+  },
+  "interpretation": {
+    "P_delta_pp": -0.5475010224216419,
+    "R_delta_pp": 1.387604026673941,
+    "F_delta_pp": 0.47029508404590104,
+    "all_saved_boxes_R_delta_pp": 2.195781173511449,
+    "confidence_screening_loss_change_pp": 0.8081771468375081,
+    "all_saved_boxes_R_is_fixed_trajectory_bound": true,
+    "remaining_gap_to_comparator_target_pp": 2.8499404392541834
+  },
+  "execution_boundary": {
+    "reviewer_SSH_connections": 0,
+    "reviewer_NN_calls": 0,
+    "reviewer_GPU_queries": 0,
+    "reviewer_training_progress_queries": 0,
+    "reviewer_training_or_model_source_edits": 0,
+    "reviewer_target_launcher_executed": false,
+    "reviewer_intake_executed": false,
+    "reviewer_comparison_executed": false,
+    "reviewer_full_nine_completion_verified": false,
+    "reviewer_training_restart_status_queried": false,
+    "MEMORY_md_loaded": false
+  },
+  "claim_limits": [
+    "Only the captured epoch01 CDTB CPU diagnostic and saved-output arithmetic comparison were audited.",
+    "No fresh NN inference, NN replay, remote training progress, epoch02, M124 VOT, full-three or full-nine verification.",
+    "GT pair hash agreement is verified between captured records; raw GT/box/score bytes were not reopened by this reviewer.",
+    "No causal module/text mechanism conclusion or deployable confidence-recovery guarantee.",
+    "Native receipt/counter metadata are archived evidence and source declarations, not independently authenticated live telemetry."
+  ],
+  "output_paths": {
+    "markdown": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_review_R2_ACTUAL_CAPTURE_20261012.md",
+    "json": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch01_CDTB_CPU_diagnostic_review_R2_ACTUAL_CAPTURE_20261012.json"
+  }
+}
