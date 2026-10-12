@@ -28427,3 +28427,10 @@ R1源码审查发现实际阻塞：best字典被GT-best候选整数覆盖，最�
 18:32:20.203063实际一次检查：原控制器继续，第3轮50/152完整序列，本轮73399calls/2289次A+B及C优化，累计513003/15903；相对17:31新增22条/33783calls/1051优化。前两轮指标、best/history/state及历史回执字节未变化，第3轮无完成态指标，最佳仍第1轮，双下降计数0。GPU瞬时值与ETA仅为观察/估计，不是完整训练性能或达标证据。
 
 后续小时进度集中更新[当前状态](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/M124_CURRENT_STATUS.md)，完整新指标或阶段变化另追加正式记录，不重复已报告表格。本小时完整结构化证据保存在M124_EPOCH03_50_FULL_SEQUENCES_20261012；原66948/PID39128/functions107正常exit0、11joins并消费，新的唯一45653/PID28588/functions149等待至19:32:20.203063。本小时GPU/NN进度查询各1、额外NN forward0，不重启训练或修改策略；候选回放待全部suite完成且GPU释放。Goal ACTIVE_UNMET。
+
+
+### 5.511 最终完整验收产物清单准备（2026-10-12，本地源码只读）
+
+等待窗口内核对selection/suite/collector实际源码，保存M124_FINAL_ACCEPTANCE_CHECKLIST_20261012.md。清单列出Train152/自身历史/冻结/每轮两项完整OPE/连续双下降早停/等权F较早tie best所需实际证据，以及同一选定final的Test50、CDTB80、VOT127/1765预测、receipt、plan/bank/bundle、merge/analysis和退出链。formal_nine_metrics不等于联合达标；收集器保留independent_completed_audit=False，最终须检查真实产物后再下结论。Test/CDTB用于选择、人工多帧核验、E1继承前缀/RNG限制继续披露，不拼旧CurrentC或其他权重。
+
+本节仅准备检查清单，不是执行最终审核或宣称完成。最近服务器观察仍18:32、第3轮50/152；19:22:28本地CIM确认原28588/39032同birth存活，functions149原等待保留，下一服务器检查不早于19:32:20.203063。零新增GPU/NN/服务器进度查询，无训练或策略修改。Goal ACTIVE_UNMET。
