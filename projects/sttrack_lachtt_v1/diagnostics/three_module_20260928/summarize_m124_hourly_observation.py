@@ -25,7 +25,7 @@ def summarize(path):
         assert 1 <= epoch <= 20
         prefix = 'epochs/' + name + '/'
         log = files.get(prefix + 'fit/sequence_log.jsonl', '')
-        records = [json.loads(line) for line in log.splitlines()]
+        records = [json.loads(line) for line in log.splitlines() if line.strip()]
         current = [r for r in records if r['epoch'] == epoch]
         last = records[-1] if records else None
         train_exit = int(files[prefix + 'train.exit']) if prefix + 'train.exit' in files else None

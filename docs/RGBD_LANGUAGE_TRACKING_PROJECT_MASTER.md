@@ -28456,3 +28456,25 @@ R1源码审查发现实际阻塞：best字典被GT-best候选整数覆盖，最�
 原小时观察native69347/8886e1真实exit0；距22:08快照3646.408654秒，1次GPU/NN进度观察、0额外NN前向。快照SHA-256 d40a11c083392b81c193d90e3185dddee7210cf762b0be38933b1b4f30afa614。之前非E3捕获文件字节均未变。原等待55478/PID18468/functions215于23:08:50.328357到时真实exit0，8次本functions owner的native join已保存，早前e2b017单独记录。新的唯一27359/PID39380（parent26776、birth23:14:17.44603）/functions233保留300秒等待；下一检查不早于10月13日00:09:36.736564。
 
 阶段原始捕获、回执、预算、ledger和既存OPE耗时分析在M124_EPOCH03_TRAIN_COMPLETE_20261012；后续逐小时部分进度仍更新M124_CURRENT_STATUS.md。没有改运行源、损失、学习率、搜索、模板或手动重启；准确类别案例的候选NN回放继续等整个M124套件终态并释放GPU。Goal ACTIVE_UNMET。
+
+
+### 5.513 M124第3轮两项完整OPE完成、best保持E1并启动第4轮（2026-10-13 01:15）
+
+一次实际服务器检查01:15:18.593590，距前次3658.923275秒。第3轮DepthTrack Test tracking于00:54:00.227002、CDTB于01:14:00.025083正常exit0；两份metrics均complete，下表仅新增本轮正式P/R/F，不重复前两轮或旧CurrentC表。
+
+| 第3轮最终权重 | 完整序列/帧 | P（%） | R（%） | F（%） |
+|---|---:|---:|---:|---:|
+| DepthTrack Test | 50 / 76,373 | 66.149199 | 63.334546 | 64.711281 |
+| CDTB | 80 / 101,956 | 71.856294 | 72.256097 | 72.055641 |
+
+两项同final SHA-256 3b9e613b4af8c3a2f009200ae8ecb6facf94b56b2033647ef344f08be07175af、bundle e53ada72e25baad36e745d877fb0b7bc5edb1709d7bbba3d9204fef3e4aa68fd；完整声明与捕获文本在M124_EPOCH03_PAIRED_OPE_COMPLETE_20261013。本轮等权平均F68.38346083616585%，低于E1的68.5415903449273%；best仍E1，较早tie规则保持。相对E2，DepthTrack F下降0.28162429484034135pp、CDTB F上升0.601653045993416pp，双下降false/streak0，不早停。R回升仅是正式PR统计，未经本轮全框召回/候选干预不能写成几何改善或文字因果。六项OPE目标只有DepthTrack P通过，没有M124 VOT或九项达标结论。
+
+原控制器current_training_state记录epoch_completed3、early_stop false、next_resume E3/latest；第4轮train.launch于01:14:12.700763。快照中的第4轮sequence_log仅一个换行，没有已完成序列或优化数量，不能把GPU利用率当作具体进度。三轮完整训练预算见§5.512；Full152、A+B+C、自身历史、冻结STTrack/CLIP、人工核验类别/稳定属性、seed2027、最多20轮、逐轮Test/CDTB和最终best VOT协议不变。外部评测参与checkpoint选择、人工多帧辅助、E1继承37条前缀/RNG非exact限制继续披露。
+
+独立上下文experiment-audit原始R1总体WARN、限定捕获/源码范围阻塞0：历史6份指标文本哈希、P/R/F算术、best/早停、ledger/CSV及18份LF_EXACT一致。A/C/E WARN，B/D/F PASS；requested gpt-6-astra/max与actual UNATTESTED分列、same-family/provisional。原始预测receipt、plan/bundle、预测/GT/checkpoint及analyze回执尚未独立获取，因此不是原始指标重算、运行时因果审计或最终全九项验收。原MD/JSON字节保留，完整私有提示/报告/已知调用元数据及不可恢复envelope限制不提交。
+
+本地首次物化使用write_text发生Windows LF→CRLF，18份中16份仅换行不同，原观察SHA84b3c736107aa61f6bdeb06039fceaad11652d73d897e6405aa3a1d994e06a2f正确。保留原目录，另以write_bytes(captured_text.encode('utf-8'))产生LF_EXACT，18/18与捕获原文本字节一致；不把本地副本哈希错认成远端原文件SHA。新报告已区分两种版本。
+
+唯一代码修正为本地CPU汇总工具summarize_m124_hourly_observation.py：实际第4轮日志只有换行引起JSONDecodeError，现仅过滤空白行，非空坏JSON仍报错。真实上一快照旧/新/已存ledger一致，当前快照新ledger与已存结果一致，未知E4字段保持空。该工具不在锁定运行训练源码中；没有修改44项运行源、loss/学习率/优化/模板/搜索，也没有手动重启。父模型准确类别/单辆推车仍局部跳框的结论继续见§5.494/5.509，不直接当成本轮新权重的错误，也不归因于caption或C。候选回放等整套suite及选定best VOT终态、GPU释放后执行。
+
+观察native67329/c93367/972f83/e44aa0真实exit0，额外NN前向0；原等待69508/PID23476/functions259于01:14:19.674657真实exit0，12joins已消费。新的唯一native28385/PID40856(parent46124/birth01:30:24.376689)/functions299采用300秒等待，下一GPU/NN/进度观察不早于02:15:18.593590。按前轮约6.7小时训练及约2.3小时并行OPE，第4轮双指标粗估10:00—10:40，实际以完成回执为准，不预估性能。阶段资料同步桌面实验进度；Goal ACTIVE_UNMET。
