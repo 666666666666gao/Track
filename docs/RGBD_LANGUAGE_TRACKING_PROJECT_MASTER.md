@@ -28405,3 +28405,18 @@ P均提高而R均下降，不能仅凭P宣布整体改善。DepthTrack F64.99290
 原计时72854/PID38972于17:27:31.671626真实到时退出0，functions65终态已消费，9次同句柄300秒join。新唯一原timer66948/PID39128，parent40364、birth17:34:41.3271820、actual start17:34:41.401332，actualCIM186f1a确认，functions107只join同句柄；下次不早于18:31:03.584612。未查询功耗/温度、未人工重启训练、未改源/损失/搜索/模板。
 
 继续全Train152、人工核验类别和稳定属性、seed2027、最多20轮、逐轮完整两项OPE与连续两轮双F严格下降早停，最后同一best完整VOT。准确类别/无同类干扰的推车首次跳框，仍需整个M124套件终态与GPU释放后做选中权重自身状态的候选回放；当前不能唯一归因候选缺失、排序、quality或框修正。Goal ACTIVE_UNMET。
+
+
+### 5.509 区域语义证据与M124选定best候选回放源码准备（2026-10-12，零新增NN）
+
+针对用户“类别准确、没有干扰物，为何定位错”，继续保留§5.494已经确认的边界：旧CurrentC推车先在目标仍在crop内时跳框，175→176预测中心约404像素、GT约24像素；不能直接套给M124新权重，也不能指定caption错误、同类换跟或C为唯一原因。本节不重复指标，不产生新的服务器进度结论；最近实际观察仍17:31:03.584612、第3轮28/152，原66948/PID39128/functions107等待保留，下一进度观察不早于18:31:03.584612。
+
+**区域语义源码事实。** 当前使用CLIP Surgery 16×16稠密token，并非只看全图CLS；首帧框有4×4 ROI采样。当前语义分支对搜索网格与文字交互，没有直接用每个当前候选框的范围作为区域输入。已有focal负位置、回归、quality BCE、crop可观测性BCE及可靠候选保持，不能写成“没有背景负监督”。文本full-minus-Empty只调整联合响应，几何分支读视觉；低分状态仍argmax并提交位置，observation只记录、C主要控制模板写入。这是职责和证据的限制，不是首次错误的已测唯一根因。
+
+研究笔记核对RegionCLIP官方提交4b8513b56e24827e3d6468e1f2105869f35c2d0b、Alpha-CLIP官方提交ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff和对应论文正文。RegionCLIP通过image+box区域池化表示与文本概念对齐；Alpha-CLIP通过RGB+对齐alpha条件化编码，依赖专门训练的图像编码器。两者是区域语义证据的直接对照，不是跨帧同一实例验证器，也不会自动生成不存在的合格候选或修复历史状态。只有一辆推车时，仍可研究车区域相对人物/背景的证据，但尚无本项目NN结果、涨点或novelty结论。原文链接与逐项边界见research-notes/REGION_SEMANTIC_EVIDENCE_PRIMARY_SOURCES_20261012.md；既有DiMP/KeepTrack/LTMU状态动作研究继续参见§5.494。
+
+**新权重回放准备。** 新增replay_m124_selected_best_cdtb_onsets.py，不调用旧CurrentC状态作为M124结果。入口要求完整suite/collector终态和同一selected best的CDTB plan/final；保存参照绑定plan/final/bank/bundle与bbox/score字节。沿自身预测历史推进，抽样状态读出256个原生/精修候选、视觉/语义/质量响应与几何交换；替代读出不提交框、query或模板。预测与候选封存后才读取GT；GT-best候选为后验诊断，不是可部署答案。回放若不同于已保存prefix，须报告差异，不强制重置历史或声称完全一致。
+
+R1源码审查发现实际阻塞：best字典被GT-best候选整数覆盖，最终selected_epoch读取会TypeError。保留R1原源码/生成器/报告字节后仅将元数据改为selected_best，并补同权重/输入receipt绑定。R2源码PASS、0阻塞，总体WARN；28份Python通过3.8语法解析，stdlib fixture验证最终表达式可序列化/到达写调用及四字段错配拒绝。它没有运行torch/模型、读取真实图像/GT或产生实验result。actual model/effort UNATTESTED，same-family/provisional；R1/R2报告和原字节在M124_REGION_SEMANTIC_AND_SELECTED_REPLAY_20261012，私有调用trace不提交。
+
+尚需在整个M124训练、逐轮OPE及最终best VOT结束、GPU释放后核验真实终态/产物链/运行依赖，再决定是否运行。formal_nine_metrics只是指标可用，不表示联合通过；若全九项达标按用户要求停止。当前仅同步准备源码与研究文档，未执行回放，未修改44项锁定运行源码、损失、学习率、搜索、模板策略或训练进程。Goal ACTIVE_UNMET。

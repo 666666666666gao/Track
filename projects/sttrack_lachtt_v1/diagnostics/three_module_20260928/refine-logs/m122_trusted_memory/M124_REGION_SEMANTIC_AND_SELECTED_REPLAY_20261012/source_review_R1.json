@@ -1,0 +1,859 @@
+{
+  "audit_skill": "experiment-audit",
+  "review_round": "R1",
+  "review_scope": "SOURCE_ONLY",
+  "verdict": "FAIL",
+  "overall_verdict": "FAIL",
+  "integrity_status": "fail",
+  "reason_code": "selected_best_metadata_shadowed_by_candidate_index",
+  "summary": "One deterministic source blocker prevents result.json serialization. Source-only guards, causal GT timing and alternative-state isolation are supported; runtime identity/completion/admission remain unverified.",
+  "date": "2026-10-12",
+  "generated_at": "2026-10-12T10:03:21.892993+00:00",
+  "auditor": "fresh Codex reviewer; actual model/effort UNATTESTED",
+  "agent_id": "/root/m124_selected_best_replay_source_integrity_20261012",
+  "verdict_id": "/root/m124_selected_best_replay_source_integrity_20261012:R1",
+  "executor_model": "UNATTESTED",
+  "executor_family": "openai",
+  "requested_reviewer_model": "gpt-6-astra",
+  "requested_reviewer_reasoning_effort": "max",
+  "reviewer_model": "UNATTESTED",
+  "reviewer_reasoning": "UNATTESTED",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "fresh_context": true,
+  "executor_content_summaries_used": false,
+  "checks": {
+    "A_ground_truth_provenance": {
+      "status": "PASS",
+      "details": "Source-level real_gt provenance and causal timing pass. The replay only passes case.init_bbox at initialization; step(image) receives no current GT. Prediction/candidate/action JSON is written and hashed before groundtruth.txt is hashed and parsed. Both replay and saved trajectories are compared against dataset GT, not to each other as a substitute for GT. Train152 truth is independently hashed and loaded from groundtruth.txt; losses access its current frame only after tracker.step. Dataset files and actual run receipts were not supplied, so this is not a raw-data attestation. Human label binding discloses multiframe aids and does not establish strictly first-image-only human labeling.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:50-79",
+        "replay_m124_selected_best_cdtb_onsets.py:123-147",
+        "depthtrack_pr.py:13-22",
+        "depthtrack_pr.py:40-60",
+        "train_m124_joint_epoch.py:113-144",
+        "train_m122_full_causal.py:14-22",
+        "bind_m122_official_initializations.py:33-54"
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "details": "No benchmark metric is divided by the model's own maximum, minimum or mean. Diagnostic IoUs use VOT rectangle intersections; coverage counts and rank are raw values. response/quality removes one internal model factor for a fixed-state readout; odds_residual/native is model score construction, not reported performance normalization. The complete OPE helper uses conventional threshold curves, per-sequence precision/recall and macro-averaging, with percent scaling only. No new numeric metric or suspicious near-perfect result is claimed. Calibration is outside the evidence (W4).",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:93-111",
+        "replay_m124_selected_best_cdtb_onsets.py:146-178",
+        "dense_target_decoder.py:18-22",
+        "dense_target_decoder.py:97-115",
+        "depthtrack_pr.py:117-153"
+      ]
+    },
+    "C_result_file_existence_and_binding": {
+      "status": "WARN",
+      "details": "No actual new result, suite terminal result, raw-server completion or nine-metric success was asserted or audited. Source requires terminal suite metadata before model construction and verifies selected-final/base-bank/cases identities, then saved box/score hashes. The saved receipt identity fields and the complete manifest hash chain are not all independently revalidated here (W2). Any actual existence and identity conclusion must wait for the concrete artifacts; formal_nine_metrics means complete metric availability, not any_joint_pass.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:35-56",
+        "replay_m124_selected_best_cdtb_onsets.py:130-143",
+        "m124_epochwise_official_runtime.py:9-41",
+        "collect_m124_epochwise_results.py:39-48",
+        "run_m124_epochwise_suite.py:95-103"
+      ]
+    },
+    "D_called_metrics_and_reachable_output": {
+      "status": "FAIL",
+      "details": "B1 makes the new result.json construction fail deterministically after a successful nonempty replay. The intended IoU helpers are actually called, so there is no phantom computed IoU in source; however no diagnostic result can reach its final write until B1 is fixed. evaluate_depthtrack_results and _determine_thresholds are not invoked by the onset replay; the complete OPE runner invokes them separately. format_metrics and verify_author_reference are not called by this replay path and confer no extra metric or author-reference verification.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:136-178",
+        "replay_m124_selected_best_cdtb_onsets.py:182-200",
+        "run_m124_epochwise_official.py:58",
+        "depthtrack_pr.py:117",
+        "depthtrack_pr.py:157-158",
+        "dense_region_encoding.py:38-56"
+      ]
+    },
+    "E_scope_assessment": {
+      "status": "WARN",
+      "details": "Only a source-only, caller-specified one-sequence prefix diagnostic is reviewed. The dynamic panel is larger in allowed scope than the old three named sequences, but no sequence, frame or model has actually been evaluated in this review. Test50/CDTB80 selection bias, same-state-only alternatives, unknown saved-history parity and model/effort attribution must remain explicit. No whole-trajectory rescue, full benchmark pass, novelty or calibrated semantics can be inferred.",
+      "evidence": [
+        "replay_currentC_cdtb_onsets.py:21-24",
+        "replay_m124_selected_best_cdtb_onsets.py:29-32",
+        "replay_m124_selected_best_cdtb_onsets.py:53-80",
+        "replay_m124_selected_best_cdtb_onsets.py:180-198",
+        "run_m124_epochwise_suite.py:56-69"
+      ]
+    },
+    "F_evaluation_type": {
+      "status": "PASS",
+      "details": "The designed diagnostic is real_gt: post-seal dataset GT measures submitted and candidate IoU. The saved-prefix comparison is separately a replay-consistency check, not ground truth performance. Empty/no-quality/native-score comparisons are model-based fixed-state readouts with posthoc real_gt measurement, not executed alternative trajectories. The audit itself is static/source-only plus stdlib deterministic checks, not a completed real_gt experiment.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:123-178",
+        "replay_m124_selected_best_cdtb_onsets.py:192-198",
+        "depthtrack_pr.py:40-60"
+      ]
+    }
+  },
+  "source_checks": {
+    "exact_diff": {
+      "status": "PASS",
+      "details": "Saved exact new-versus-old unified diff. Executing only generator text-transformation/check AST statements before line 35 exactly reconstructs current new bytes. Changes are runtime import/name, removal of fixed FRAMES, explicit frame/suite args and guards, metadata fields and scope wording. Core tracking, candidate diagnostics and GT comparator are unchanged. The new metadata read introduces B1 because the old diagnostic already reused best as an integer.",
+      "evidence": [
+        "prepare_m124_selected_best_onset_replay_source_20261012.py:4-34",
+        "replay_currentC_cdtb_onsets.py:154",
+        "replay_m124_selected_best_cdtb_onsets.py:164",
+        "replay_m124_selected_best_cdtb_onsets.py:182"
+      ]
+    },
+    "python38_syntax": {
+      "status": "PASS",
+      "details": "25 source inputs parse using feature_version=(3,8); syntax only, no runtime imports or model execution.",
+      "evidence": [
+        "source_validation.json:python38_syntax"
+      ]
+    },
+    "terminal_guard_order": {
+      "status": "PASS",
+      "details": "All explicit suite/selected-final/cases/frame guards at lines 37-55 precede OfficialDenseTracker construction at line 56. Runtime checked_plan validates base and M124 artifacts using hash/JSON reads; constructors are inside the class method, not executed on import. The suite source emits its final status and controller.exit only after full VOT analysis/seal/collection returns. This remains a source-order conclusion, not terminal proof.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:35-56",
+        "m124_epochwise_official_runtime.py:9-45",
+        "run_m124_epochwise_suite.py:77-103"
+      ]
+    },
+    "selected_identity": {
+      "status": "WARN",
+      "details": "Selected final and selected plan path plus base bank/binding/cases/evaluator are bound. The hardcoded evaluator digest equals the reviewed snapshot. Saved-prefix receipt identity fields are a separate verification gap (W2).",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:40-50",
+        "replay_m124_selected_best_cdtb_onsets.py:130-143",
+        "m124_epochwise_official_runtime.py:9-41",
+        "m122_official_runtime.py:7-21"
+      ]
+    },
+    "own_history_no_forced_parity": {
+      "status": "PASS",
+      "details": "The only initialization is frame zero. The loop advances trusted.step(image) sequentially and appends its submitted action. Saved boxes/scores are opened only after all requested own-history steps and prediction sealing. Differences use 5.01e-7 bbox tolerance matching six-decimal OPE output; score maximum error is separate. No saved boxes, GT reset, parity retry or equality assertion controls tracking.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:68-79",
+        "replay_m124_selected_best_cdtb_onsets.py:123-151",
+        "replay_m124_selected_best_cdtb_onsets.py:192-198",
+        "run_m124_epochwise_official.py:32-35"
+      ]
+    },
+    "alternative_state_isolation": {
+      "status": "PASS",
+      "details": "Alternatives execute only after the full tracking action is committed. They call the decoder with a shallow copied data dictionary and a replacement semantic query. State/query/selected-feature/template tensor values are cloned and compared afterward. The decoder has no actor handle and performs read-only tensor operations; no in-place input mutation or actor-state submission was found. The shared action dictionary is freshly made each step and never modified after appending. Language does not enter the geometry branch. Parameter/buffer digests are checked at prefix end. These checks do not certify every possible hidden native object or raw server state.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:76-121",
+        "trusted_template_tracker.py:32-68",
+        "dense_target_decoder.py:51-123"
+      ]
+    },
+    "external_gradients_and_optimizer": {
+      "status": "PASS",
+      "details": "Replay main and trusted initialize/step are no_grad, inference A/B and C models are eval with requires_grad False, and frozen native/CLIP models are eval with requires_grad False. No optimizer or backward call is on the replay path; importing state_digest from the trainer does not call its main. Training code legitimately has Train152 AdamW/backward steps and must not be described as globally zero-gradient. Test50/CDTB80 only influence checkpoint selection and stop decisions here.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:18",
+        "replay_m124_selected_best_cdtb_onsets.py:26-27",
+        "m124_epochwise_official_runtime.py:61-70",
+        "full_dense_tracker.py:31-33",
+        "trusted_template_tracker.py:21-27",
+        "train_template_write_C.py:31-36",
+        "train_template_write_C.py:186-187",
+        "train_m124_joint_epoch.py:85-87",
+        "train_m124_joint_epoch.py:126-167"
+      ]
+    },
+    "spatial_mapping_and_dtypes": {
+      "status": "PASS",
+      "details": "Source uses 256 one-hot spatial cells on a 16x16 grid, row-major xy search positions, and the native size/offset head for per-cell boxes. It retains native pixel mapping in double, gives the decoder float32 boxes and half-to-float observation features, then submits native-double base plus the float32 learned delta cast to double. Native diagnostics explicitly report the float32 observation representation; refined diagnostics report the submitted geometry formula. ROI mapping normalizes coordinates against the same crop origin/side with align_corners=False. Exact remote native implementation and runtime parity are not attested.",
+      "evidence": [
+        "full_dense_tracker.py:35-71",
+        "dense_target_decoder.py:47-49",
+        "dense_target_decoder.py:102-123",
+        "trusted_template_tracker.py:36-46",
+        "dense_region_decoder.py:12-27",
+        "region_patch_evidence.py:8-11",
+        "replay_m124_selected_best_cdtb_onsets.py:95-114",
+        "replay_m124_selected_best_cdtb_onsets.py:197"
+      ]
+    },
+    "counter_semantics": {
+      "status": "PASS",
+      "details": "For a successful invocation, sorted unique frames are positive and bounded, so prefix_frames=max(frames)+1, tracker_calls=max(frames), candidate_states=extra_Empty_decoder_calls=len(frames), candidates_per_state=256. The counts do not equal all model forward calls. No such runtime counters were produced in this audit.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:31",
+        "replay_m124_selected_best_cdtb_onsets.py:53-89",
+        "replay_m124_selected_best_cdtb_onsets.py:180-187"
+      ]
+    }
+  },
+  "blockers": [
+    {
+      "id": "B1",
+      "status": "FAIL",
+      "severity": "blocking_source_defect",
+      "title": "Selected-best metadata is overwritten by a candidate index before result serialization",
+      "details": "Line 40 binds best to best.json metadata. Every accepted nonempty --frames request creates at least one snapshot (lines 31, 53-55, 68-80). The diagnostics loop overwrites best with int(refined_iou.argmax()) at line 164. The new selected_epoch=best['epoch'] expression at line 182 therefore raises TypeError: 'int' object is not subscriptable, after predictions have been sealed but before result.json can be written at line 200. Earlier failures do not make the result path valid. The exact two source AST expressions reproduce this error without importing torch, a dataset or a model.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:31",
+        "replay_m124_selected_best_cdtb_onsets.py:40",
+        "replay_m124_selected_best_cdtb_onsets.py:53-55",
+        "replay_m124_selected_best_cdtb_onsets.py:68-80",
+        "replay_m124_selected_best_cdtb_onsets.py:153-182",
+        "replay_m124_selected_best_cdtb_onsets.py:200",
+        "prepare_m124_selected_best_onset_replay_source_20261012.py:16",
+        "prepare_m124_selected_best_onset_replay_source_20261012.py:29"
+      ],
+      "minimal_correction": "Give the selected checkpoint metadata and the per-state oracle candidate index distinct names; make the matching generator substitution consistent. No fallback, retries, model change or training-source change is needed.",
+      "verification": "source_validation.json: best_shadowing_reproduction; exact_new_vs_old.diff"
+    }
+  ],
+  "warnings": [
+    {
+      "id": "W1",
+      "title": "Source guards are not actual terminal or GPU-release evidence",
+      "details": "The terminal status/formal_nine_metrics/zero-retry/controller.exit and selected-final checks precede model construction. This audit has no suite files, controller runtime receipt, process-exit proof, raw server bytes, GPU-release proof or new replay result. It cannot certify that any gate has passed. This report is not launch authorization.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:35-56",
+        "run_m124_epochwise_suite.py:77-103"
+      ]
+    },
+    {
+      "id": "W2",
+      "title": "Saved-prefix identity is only partially revalidated by this entry point",
+      "details": "The replay final, selected plan pathname, base bank/binding and evaluator path are bound by source checks. For the saved prefix, lines 139-143 only read receipt.sequences and verify the two file hashes. They do not recheck receipt status, plan_sha256, final_sha256, bank_sha256 or bundle_sha256, although the OPE writer supplies them and the OPE analyzer checks the key identities. The replay also does not revalidate all_results row result_sha256 values or selection_sha256. This is a local verification gap, not evidence that an artifact is actually mismatched. Before a selected-best saved-prefix claim, verify the concrete receipt/manifest chain; direct equality checks in the replay are also a small scoped correction.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:40-49",
+        "replay_m124_selected_best_cdtb_onsets.py:137-143",
+        "m124_epochwise_official_runtime.py:9-41",
+        "run_m124_epochwise_official.py:40-61",
+        "collect_m124_epochwise_results.py:13-35",
+        "collect_m124_epochwise_results.py:46-48"
+      ]
+    },
+    {
+      "id": "W3",
+      "title": "The checkpoint is selected using Test50 and CDTB80 metrics",
+      "details": "Training gradients come from Train152, but epoch selection uses the equal mean of DepthTrack Test and CDTB F and the dual-decline stop rule. The source explicitly labels this external metric checkpoint selection. Do not call these datasets untouched holdouts or interpret selected-best OPE as an unbiased held-out estimate. This is distinct from external gradient training, which is absent from the replay path.",
+      "evidence": [
+        "run_m124_epochwise_suite.py:48-75",
+        "m124_epochwise_selection.py:4-10",
+        "train_m124_joint_epoch.py:113-167",
+        "train_m124_joint_epoch.py:233-234"
+      ]
+    },
+    {
+      "id": "W4",
+      "title": "Readout scores and oracle candidates are not calibrated semantic truth",
+      "details": "quality_probability is a sigmoid head value, phrase_cosine is a cosine readout, and semantic_delta is a learned full-minus-Empty branch score. No reliability/calibration test is run. C is a linear current-IoU regressor thresholded at 0.5, not a calibrated future-memory-utility probability. The GT-best candidate is an after-the-fact diagnostic oracle. A same-state ranking improvement cannot establish trajectory recovery, identity correctness, phrase visibility, text truth or model novelty.",
+      "evidence": [
+        "dense_target_decoder.py:74-123",
+        "template_write_C.py:13-24",
+        "train_m124_joint_epoch.py:140-144",
+        "train_m124_joint_epoch.py:232",
+        "replay_m124_selected_best_cdtb_onsets.py:153-178",
+        "replay_m124_selected_best_cdtb_onsets.py:196-198"
+      ]
+    },
+    {
+      "id": "W5",
+      "title": "Onset scope and counters have a limited meaning",
+      "details": "Each invocation replays one caller-selected sequence from initialization through max(frames); it samples len(frames) states and 256 candidates per sampled state. These are posthoc panels, not all CDTB80 or the final nine metrics. tracker_calls=max(frames) counts tracking steps, not total NN forward calls: initialization also observes native/CLIP, every step runs native/CLIP/decoder, C is conditionally evaluated, and sampled states add an Empty decoder call. seed_scan=False describes this script, not unknown caller behavior. No actual calls were executed by this audit.",
+      "evidence": [
+        "replay_m124_selected_best_cdtb_onsets.py:29-32",
+        "replay_m124_selected_best_cdtb_onsets.py:53-80",
+        "replay_m124_selected_best_cdtb_onsets.py:89",
+        "replay_m124_selected_best_cdtb_onsets.py:180-198",
+        "full_dense_tracker.py:53-85",
+        "trusted_template_tracker.py:32-67"
+      ]
+    },
+    {
+      "id": "W6",
+      "title": "Compatibility and full state reproduction remain runtime questions",
+      "details": "All 25 inspected Python inputs parse with Python 3.8 grammar via CPython 3.12.12 ast.parse(feature_version=(3,8)). This does not attest an installed Python 3.8 environment, torch/NumPy/VOT versions, remote native cal_bbox implementation, or exact NN behavior. Native candidate observations are float32; submitted/refined geometry uses a retained float64 native base with a float32 learned delta. The comparator reports drift and never forces saved boxes. It does not compare the original hidden recurrent/template state. Per-prefix/candidate overlaps use the last loaded image dimensions, as the existing code does; actual sequence dimensions were not examined.",
+      "evidence": [
+        "full_dense_tracker.py:35-71",
+        "trusted_template_tracker.py:32-46",
+        "replay_m124_selected_best_cdtb_onsets.py:95-109",
+        "replay_m124_selected_best_cdtb_onsets.py:144-159",
+        "replay_m124_selected_best_cdtb_onsets.py:192-198"
+      ]
+    },
+    {
+      "id": "W7",
+      "title": "Requested reviewer model and effort are not host-attested",
+      "details": "Requested gpt-6-astra / max. Actual model and reasoning effort: UNATTESTED. This is a fresh-context Codex review in the same family, acceptance_status provisional. No cross-family acceptance or unavailable model/effort attestation is claimed.",
+      "evidence": []
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Current source is ready to produce a selected-best replay result",
+      "impact": "unsupported",
+      "reason": "B1 deterministically prevents final result serialization."
+    },
+    {
+      "claim": "Source guards require terminal suite metadata before construction",
+      "impact": "supported_source_only",
+      "reason": "Guard ordering is directly checked; actual terminal receipts absent."
+    },
+    {
+      "claim": "Alternative readouts do not alter the submitted trajectory",
+      "impact": "supported_source_only",
+      "reason": "Inspected decoder path is read-only; no actual NN replay was executed."
+    },
+    {
+      "claim": "A selected-best replay matches the saved prefix",
+      "impact": "unavailable",
+      "reason": "No runtime replay, box/score values or receipt chain were audited."
+    },
+    {
+      "claim": "No external gradient or optimizer is used by this replay",
+      "impact": "supported_source_only",
+      "reason": "No-grad/frozen inference path; external metric checkpoint selection remains disclosed."
+    },
+    {
+      "claim": "Final nine-metric success, raw-server completion, GPU admission, calibrated semantics or model novelty",
+      "impact": "not_certified",
+      "reason": "Outside this source-only review."
+    }
+  ],
+  "evaluation_type": "real_gt_by_source_design",
+  "audit_execution_type": "source_and_stdlib_deterministic_checks_only",
+  "runtime_result_claimed": false,
+  "runtime_completion_certified": false,
+  "raw_server_certified": false,
+  "final_nine_metric_success_certified": false,
+  "calibrated_probabilities_certified": false,
+  "novelty_certified": false,
+  "launch_authorization": false,
+  "later_requirements": [
+    "Correct B1 and re-review the changed source",
+    "Actual selected-best/full-suite terminal and artifact identity proof",
+    "Separate GPU-release and NN admission requirements"
+  ],
+  "prohibited_actions_performed": {
+    "SSH": 0,
+    "network": 0,
+    "GPU_queries": 0,
+    "training_progress_queries": 0,
+    "model_constructions": 0,
+    "NN_calls": 0,
+    "optimizer_steps": 0,
+    "installs": 0,
+    "training_source_edits": 0,
+    "git_operations": 0,
+    "recursive_delegations": 0
+  },
+  "validation": {
+    "generated_at": "2026-10-12T09:57:44.507468+00:00",
+    "actual_python": "3.12.12 (main, Feb  3 2026, 22:54:57) [MSC v.1944 64 bit (AMD64)]",
+    "python38_syntax": {
+      "status": "PASS",
+      "count": 25,
+      "method": "local AST feature_version=(3, 8); not a Python 3.8 environment/runtime dependency test",
+      "files": [
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/replay_m124_selected_best_cdtb_onsets.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/replay_currentC_cdtb_onsets.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m124_epochwise_results.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m123_joint_full_tracker.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_m124_selected_best_onset_replay_source_20261012.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_selection.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        },
+        {
+          "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+          "status": "PASS",
+          "check": "ast.parse(feature_version=(3, 8))"
+        }
+      ]
+    },
+    "original_primary_sources": 13,
+    "supplemental_sources": 12,
+    "policies": 5,
+    "generator_reproduces_current_bytes": true,
+    "exact_diff_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/exact_new_vs_old.diff",
+    "terminal_guard_lines": [
+      37,
+      38,
+      39,
+      41,
+      43,
+      44,
+      45,
+      47,
+      48,
+      49,
+      50,
+      54,
+      55
+    ],
+    "first_model_construction_line": 56,
+    "best_shadowing_reproduction": {
+      "status": "REPRODUCED",
+      "exception_type": "TypeError",
+      "message": "'int' object is not subscriptable",
+      "overwrite_line": 164,
+      "failing_read_line": 182,
+      "mechanism": "Execute only the two original AST expressions with a scalar argmax fixture; no tensor/model/dataset import"
+    },
+    "executed_NN_calls": 0,
+    "GPU_queries": 0,
+    "server_queries": 0,
+    "optimizer_steps": 0,
+    "source_imports_executed": false,
+    "training_sources_modified": false,
+    "inputs": [
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/replay_m124_selected_best_cdtb_onsets.py",
+        "sha256": "4915b45543e904f02d4ecd0801c43863a01481f3771739cd95587bb58a420fbb",
+        "bytes": 13335,
+        "line_count": 206,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__replay_m124_selected_best_cdtb_onsets.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/replay_currentC_cdtb_onsets.py",
+        "sha256": "49e314232de10edac76812a56a60886571c1e7cf1734b7bf0175812c2c4033dd",
+        "bytes": 12334,
+        "line_count": 193,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__replay_currentC_cdtb_onsets.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py",
+        "sha256": "60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+        "bytes": 4419,
+        "line_count": 77,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__m124_epochwise_official_runtime.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py",
+        "sha256": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+        "bytes": 2986,
+        "line_count": 44,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__m122_official_runtime.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+        "sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+        "bytes": 7693,
+        "line_count": 120,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__full_dense_tracker.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+        "sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+        "bytes": 7739,
+        "line_count": 123,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__dense_target_decoder.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+        "sha256": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+        "bytes": 4173,
+        "line_count": 73,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__trusted_template_tracker.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m124_epochwise_results.py",
+        "sha256": "7a48b9af70c96ffc462ce00c32a38ef9cc053aeb0eba2598e1f8a0a2b202374f",
+        "bytes": 5405,
+        "line_count": 61,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__collect_m124_epochwise_results.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py",
+        "sha256": "63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc",
+        "bytes": 6989,
+        "line_count": 107,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__run_m124_epochwise_suite.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m123_joint_full_tracker.py",
+        "sha256": "53b1e0ae9f054b62cf4f7c13d77400453d616f8b62e62b406014f7075ef529a7",
+        "bytes": 5028,
+        "line_count": 84,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__m123_joint_full_tracker.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py",
+        "sha256": "6bc43f9f113c3a648e9a674ad3f7f18d1114e4f84880edf18fa61d40e804081c",
+        "bytes": 15536,
+        "line_count": 243,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__three_module_20260928__train_m124_joint_epoch.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py",
+        "sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+        "bytes": 7143,
+        "line_count": 158,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__source_snapshots__depthtrack_pr.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_m124_selected_best_onset_replay_source_20261012.py",
+        "sha256": "98a285a0d82c0fd10e24b8814781c18aa12cd60d510445b6043eb7307fbd94ca",
+        "bytes": 3694,
+        "line_count": 38,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/primary_source__m122_full_causal_20261007__prepare_m124_selected_best_onset_replay_source_20261012.py",
+        "role": "primary_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py",
+        "sha256": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+        "bytes": 3945,
+        "line_count": 60,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__bind_m122_official_initializations.py",
+        "role": "support_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+        "sha256": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+        "bytes": 2028,
+        "line_count": 40,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__template_write_features.py",
+        "role": "support_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py",
+        "sha256": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+        "bytes": 966,
+        "line_count": 24,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__template_write_C.py",
+        "role": "support_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+        "sha256": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+        "bytes": 3120,
+        "line_count": 56,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__dense_region_encoding.py",
+        "role": "support_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_selection.py",
+        "sha256": "24d73496437a60dea724bca14b51c8e8f0742657fb242ef4c793ea37ee9c4a24",
+        "bytes": 560,
+        "line_count": 10,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__m124_epochwise_selection.py",
+        "role": "support_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py",
+        "sha256": "e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+        "bytes": 6281,
+        "line_count": 84,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__run_m124_epochwise_official.py",
+        "role": "support_source",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+        "sha256": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+        "bytes": 11018,
+        "line_count": 187,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__train_template_write_C.py",
+        "role": "support_source",
+        "semantic_read_scope": "lines 1-39 and 182-187; import/function index"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+        "sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+        "bytes": 11546,
+        "line_count": 144,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__train_m122_full_causal.py",
+        "role": "support_source",
+        "semantic_read_scope": "lines 1-34; import/function index"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+        "sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+        "bytes": 2237,
+        "line_count": 50,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__region_patch_evidence.py",
+        "role": "support_source",
+        "semantic_read_scope": "lines 1-39"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+        "sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+        "bytes": 7272,
+        "line_count": 116,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__dense_region_decoder.py",
+        "role": "support_source",
+        "semantic_read_scope": "lines 1-30"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+        "sha256": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+        "bytes": 7951,
+        "line_count": 126,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__instance_ab_prototype.py",
+        "role": "support_source",
+        "semantic_read_scope": "lines 1-26"
+      },
+      {
+        "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+        "sha256": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+        "bytes": 4469,
+        "line_count": 92,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/support_source__three_module_20260928__analyze_train_states.py",
+        "role": "support_source",
+        "semantic_read_scope": "lines 1-65; import/function index"
+      },
+      {
+        "path": "C:/Users/gb/.codex/skills/experiment-audit/SKILL.md",
+        "sha256": "0ab77f219f554cbe42f22b79d780528e61c5e58169af4c2f56acf59596ab8db7",
+        "bytes": 10983,
+        "line_count": 292,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/policy__experiment-audit__SKILL.md",
+        "role": "policy",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex/skills/shared-references/local-codex-policy.md",
+        "sha256": "b0249bfccd48ff79a5976afa7a54c64a3cfb65a5496a2105c5bb21069d197783",
+        "bytes": 2948,
+        "line_count": 48,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/policy__shared-references__local-codex-policy.md",
+        "role": "policy",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex/skills/shared-references/reviewer-independence.md",
+        "sha256": "1aa1756a99dc47009072f0ee7bf570d797bf7e2cc84439401e2a9312d73659b0",
+        "bytes": 1843,
+        "line_count": 68,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/policy__shared-references__reviewer-independence.md",
+        "role": "policy",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex/skills/shared-references/review-tracing.md",
+        "sha256": "7f556fb9ef8922cfd0d047e5a2d857b0c7f9408492b8c8dcec00207e76405395",
+        "bytes": 4433,
+        "line_count": 144,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/policy__shared-references__review-tracing.md",
+        "role": "policy",
+        "semantic_read_scope": "full"
+      },
+      {
+        "path": "C:/Users/gb/.codex/skills/shared-references/experiment-integrity.md",
+        "sha256": "22150fbdc5867e7790c88f968bccb367079c2db4c190ddce980709aea7e76f60",
+        "bytes": 2355,
+        "line_count": 49,
+        "snapshot_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/input_sources/policy__shared-references__experiment-integrity.md",
+        "role": "policy",
+        "semantic_read_scope": "full"
+      }
+    ]
+  },
+  "audited_input_hashes": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/replay_m124_selected_best_cdtb_onsets.py": "sha256:4915b45543e904f02d4ecd0801c43863a01481f3771739cd95587bb58a420fbb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/replay_currentC_cdtb_onsets.py": "sha256:49e314232de10edac76812a56a60886571c1e7cf1734b7bf0175812c2c4033dd",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py": "sha256:60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py": "sha256:25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py": "sha256:0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py": "sha256:055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py": "sha256:1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m124_epochwise_results.py": "sha256:7a48b9af70c96ffc462ce00c32a38ef9cc053aeb0eba2598e1f8a0a2b202374f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py": "sha256:63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m123_joint_full_tracker.py": "sha256:53b1e0ae9f054b62cf4f7c13d77400453d616f8b62e62b406014f7075ef529a7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py": "sha256:6bc43f9f113c3a648e9a674ad3f7f18d1114e4f84880edf18fa61d40e804081c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py": "sha256:05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_m124_selected_best_onset_replay_source_20261012.py": "sha256:98a285a0d82c0fd10e24b8814781c18aa12cd60d510445b6043eb7307fbd94ca",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py": "sha256:4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py": "sha256:a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py": "sha256:4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py": "sha256:71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_selection.py": "sha256:24d73496437a60dea724bca14b51c8e8f0742657fb242ef4c793ea37ee9c4a24",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py": "sha256:e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py": "sha256:7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py": "sha256:ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py": "sha256:85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py": "sha256:66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py": "sha256:4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py": "sha256:2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "C:/Users/gb/.codex/skills/experiment-audit/SKILL.md": "sha256:0ab77f219f554cbe42f22b79d780528e61c5e58169af4c2f56acf59596ab8db7",
+    "C:/Users/gb/.codex/skills/shared-references/local-codex-policy.md": "sha256:b0249bfccd48ff79a5976afa7a54c64a3cfb65a5496a2105c5bb21069d197783",
+    "C:/Users/gb/.codex/skills/shared-references/reviewer-independence.md": "sha256:1aa1756a99dc47009072f0ee7bf570d797bf7e2cc84439401e2a9312d73659b0",
+    "C:/Users/gb/.codex/skills/shared-references/review-tracing.md": "sha256:7f556fb9ef8922cfd0d047e5a2d857b0c7f9408492b8c8dcec00207e76405395",
+    "C:/Users/gb/.codex/skills/shared-references/experiment-integrity.md": "sha256:22150fbdc5867e7790c88f968bccb367079c2db4c190ddce980709aea7e76f60"
+  },
+  "input_read_scopes": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/replay_m124_selected_best_cdtb_onsets.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/replay_currentC_cdtb_onsets.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/collect_m124_epochwise_results.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m123_joint_full_tracker.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/prepare_m124_selected_best_onset_replay_source_20261012.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_selection.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py": "full",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py": "lines 1-39 and 182-187; import/function index",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py": "lines 1-34; import/function index",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py": "lines 1-39",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py": "lines 1-30",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py": "lines 1-26",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py": "lines 1-65; import/function index",
+    "C:/Users/gb/.codex/skills/experiment-audit/SKILL.md": "full",
+    "C:/Users/gb/.codex/skills/shared-references/local-codex-policy.md": "full",
+    "C:/Users/gb/.codex/skills/shared-references/reviewer-independence.md": "full",
+    "C:/Users/gb/.codex/skills/shared-references/review-tracing.md": "full",
+    "C:/Users/gb/.codex/skills/shared-references/experiment-integrity.md": "full"
+  },
+  "all_input_bytes_unchanged_at_report_write": true,
+  "trace_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01",
+  "exact_diff_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-12_run01/exact_new_vs_old.diff"
+}
