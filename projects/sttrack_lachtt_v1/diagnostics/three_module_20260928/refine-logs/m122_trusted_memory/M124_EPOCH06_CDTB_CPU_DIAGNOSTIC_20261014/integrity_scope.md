@@ -1,0 +1,5 @@
+新鲜独立上下文核查给出WARN，限定的捕获CPU比较0个阻断，独立原始数据/runtime更强认证保留2组阻断。实际模型及推理强度UNATTESTED，review_independence=same-family，acceptance=provisional；requested gpt-6-astra与max分别记录。
+
+6864项确定性检查通过（5161项算术/源码/绑定及1703项归档检查），不是6864次独立实验。全部80×28 CSV单元格一致，原18份输入未改；E5本地325份归档SHA全部一致。E6有163/325份可匹配本地原输入，尚缺160份bbox/score文件及其plan、prediction receipt共162份，本轮未独立重算E6逐帧VOT重叠或完整PR搜索。原始runtime、依赖及checkpoint张量执行也未独立认证。
+
+支持捕获统计、宏平均损益和固定轨迹全框R上界；不支持具体模块/文字因果贡献、物理缺失、隐藏状态逐位回放、无接触测试泛化、完整VOT或联合九项达标。原报告与工具失败保留；报告trace中一处描述性request读取标签写44行，数值元数据和完整正文实际43行，审核者已声明这一措辞勘误，不改写原件。
