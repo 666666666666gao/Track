@@ -1,0 +1,9 @@
+独立上下文只读审核总体WARN，已限定的捕获报告主张阻塞0；A/C/D/E/F为WARN、B为PASS。审核为same-family、provisional；请求gpt-6-astra/max，实际运行模型与effort仍UNATTESTED，不以请求参数冒充运行时身份。原MD/JSON及110份输入hash库存按原字节私有保留。
+
+72份捕获字符串、五轮metric/history/ledger算术、阶段回执、续训元数据及selector一致；第5轮是已训练轮次中的best，不是受保护warm起点的最佳替代。其两F均值仍低于被排除的warm参照0.5654144882个百分点。首轮37条继承记录与原始RNG缺失、外部Test/CDTB参与选模、多帧辅助人工标签的边界继续披露；不声称独立多seed、单独词义增量、三个模块独立因果贡献或未来记忆价值已验证。
+
+审查读取了真实源码定义的GT评分路径和实际捕获结果，未本地持有全部原始GT、预测/分数、plan/cases、prediction receipt、bank、bundle或checkpoint张量。因此未独立重算本轮全部PRF、核验真实张量与优化器更新或完整运行导入链；metrics中的receipt hash也不能冒充已捕获的进程receipt。使用项目固定PR实现及VOT区域重叠库，不升级为已独立证明所有上游官方代码等价。
+
+历史协议011的migration pin为93316a…且标注prepared/not deployed；实际准备请求、ZIP成员与本地migration源码对应9e7969…。准备包级对应已核对，仍保留历史协议字段与最终payload不同的warning，不改写旧文件或称其全部pin均对应部署。旧M82 spec中的fit/dev、学习率和自动文字说明不是本轮有效配置；本轮源码读取全152条并使用人工bank和独立优化器设置，不抹去warm训练来源。
+
+第6轮仅21条已保存序列，不是完整训练或实时完整进度证明。未捕获整个suite终态或所选best完整VOT，联合九项目标仍未完成；本审核不能扩展为运行态全链路验收或方法因果证明。
