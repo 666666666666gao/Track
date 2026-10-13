@@ -1,0 +1,1376 @@
+{
+  "audit_skill": "experiment-audit",
+  "report_id": "M124_EPOCH04_CAPTURED_OPE_AUDIT_R1_20261013",
+  "date": "2026-10-13",
+  "generated_at": "2026-10-13T02:32:56.869542+00:00",
+  "auditor": "gpt-6-astra max, fresh local read-only reviewer",
+  "agent_id": "/root/m124_epoch04_captured_ope_integrity_20261013",
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_reasoning": "max",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "fork_turns": "none",
+  "overall_verdict": "WARN",
+  "verdict": "WARN",
+  "integrity_status": "warn",
+  "reason_code": "capture_consistent_raw_runtime_unattested_protocol_and_completion_limits",
+  "summary": "Captured bytes, numerical records, selector and inspected source path are consistent. Raw GT/predictions/checkpoints/runtime are not independently attested; external selection, human-text and legacy handoff qualifiers apply; M124 remains incomplete in this capture.",
+  "trace_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-13_m124_epoch04_captured_ope",
+  "route_attribution_source": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-13_m124_epoch04_captured_ope/001-captured-epoch04-OPE-review.request.json",
+  "trace_prompt_text_verification": "UNAVAILABLE: request prompt is opaque; routing fields verified; received task preserved verbatim separately.",
+  "received_task_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-13_m124_epoch04_captured_ope/received_task.txt",
+  "scope": "LOCAL read-only plus CPU stdlib verification; no SSH/server/GPU/model/torch/checkpoint-deserialization/training/source edits/reviewer retries; reports and received-task trace only.",
+  "snapshot_observed_at": "2026-10-13T02:11:23.216142+00:00",
+  "manifest_payload_count": 18,
+  "manifest_payload_bytes": 379594,
+  "observation_embedded_payload_count": 59,
+  "checks": {
+    "A": {
+      "name": "Ground truth provenance",
+      "status": "WARN",
+      "static_source_result": "PASS",
+      "raw_attestation": "UNAVAILABLE",
+      "details": "OPE reads dataset groundtruth.txt after prediction sealing. M124 losses use Train152 GT after tracker action. Native response margins and current/past features are regularization/inputs, not benchmark truth. Historical teacher labels use GT IoU after rollouts; teacher MSE is separate. Raw dataset origin, GT bytes, cases/bank and runtime metric package are not attested; project wrapper conformance to official evaluation is not independently established.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py",
+          "lines": [
+            12,
+            23,
+            45,
+            55,
+            58
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py",
+          "lines": [
+            95,
+            97,
+            111
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+          "lines": [
+            14,
+            25
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py",
+          "lines": [
+            113,
+            126,
+            132,
+            141
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py",
+          "lines": [
+            39,
+            59
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "lines": [
+            139,
+            150
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+          "lines": [
+            149,
+            164
+          ]
+        }
+      ]
+    },
+    "B": {
+      "name": "Score normalization",
+      "status": "PASS",
+      "scope": "Source and captured arithmetic only",
+      "details": "No self-maximum/minimum/mean performance normalization. Confidence thresholds define a PR sweep; precision is mean overlap on selected frames, recall uses GT-visible count, curves are macro-averaged and harmonic F is maximized. Percent values multiply by 100. All eight captured P/R/F and fraction/percentage conversions agree. Feature normalization, model confidence probability/native and teacher preservation loss margins are distinct from reported metric normalization. Raw trajectories and official package conformance remain unverified.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py",
+          "lines": [
+            25,
+            117,
+            124,
+            128,
+            129,
+            133,
+            139,
+            147
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+          "lines": [
+            56,
+            75,
+            85,
+            111,
+            114
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py",
+          "lines": [
+            55,
+            59,
+            61
+          ]
+        }
+      ]
+    },
+    "C": {
+      "name": "Result existence, binding, coverage and stage status",
+      "status": "WARN",
+      "capture_consistency": "PASS",
+      "raw_runtime_attestation": "UNAVAILABLE",
+      "details": "All 18 payload hashes and observer bytes match; metrics/history/state/ledger agree. Both epoch-04 datasets declare the same final and bundle. Local trainer/joint tracker/metric source hashes match saved declarations. 608 cumulative records and 152 epoch-04 log rows reconcile. Raw checkpoints, predictions, GT, prediction receipts, plans/bundle/gate, bank and analyze-stage records are absent. Captured frozen/roundtrip flags are not tensor attestations. Tracker line 195 predates this observer. E5 has only one sequence; no M124 VOT/full-suite completion.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/captured_manifest.json",
+          "lines": [
+            2,
+            19
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/depthtrack_test/predictions/metrics.json",
+          "lines": [
+            2,
+            4,
+            11,
+            14,
+            18
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/cdtb/predictions/metrics.json",
+          "lines": [
+            2,
+            4,
+            11,
+            14,
+            18
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/result.json",
+          "lines": [
+            2,
+            46,
+            51,
+            58,
+            79,
+            7390,
+            9806
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/sequence_log.jsonl",
+          "lines": [
+            1,
+            152
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/current_training_state.json",
+          "lines": [
+            2,
+            16,
+            18,
+            19
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py",
+          "lines": [
+            78,
+            203
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md",
+          "lines": [
+            193,
+            195
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_thirtyfirst_hourly_original_observation_stdout_20261013.json",
+          "lines": [
+            1
+          ]
+        }
+      ]
+    },
+    "D": {
+      "name": "Metric call path",
+      "status": "WARN",
+      "static_call_path": "PASS",
+      "executed_call_attestation": "UNAVAILABLE",
+      "details": "Suite waits for both ope_track subprocesses, invokes ope_analyze with gate.metric_python, dispatches to the pinned dynamic import and evaluate_depthtrack_results, then writes matching metric keys. Shared runner records exit and forbids automatic retry. format_metrics is only an unused serializer. VOT is deferred. Analyze invocation/raw receipt/dependency runtime evidence is not captured; supplemental local VOT code is not bound to the executed process.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py",
+          "lines": [
+            41,
+            46,
+            49,
+            52,
+            77
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m123_joint_full_suite.py",
+          "lines": [
+            14,
+            17,
+            26,
+            28,
+            31
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py",
+          "lines": [
+            45,
+            56,
+            57,
+            58,
+            60,
+            81
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py",
+          "lines": [
+            63,
+            97,
+            111,
+            117,
+            157
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/source_snapshot/vot/region/__init__.py",
+          "lines": [
+            145
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/source_snapshot/vot/region/raster.py",
+          "lines": [
+            394,
+            416
+          ]
+        }
+      ]
+    },
+    "E": {
+      "name": "Scope, seeds, text, external selection and legacy handoff",
+      "status": "WARN",
+      "details": "Single seed 2027, sequential warm-started full152 A+B+C training with frozen native/CLIP backbones. Test50/CDTB F drives checkpoint selection and stopping, so these are selection datasets, not untouched tests. All four selector decisions independently match; E1 best-to-date is below the excluded starting baseline mean. Text is confirmed category plus first four stable attributes with disclosed multiframe/video human aids; not automatic or strictly first-frame-only knowledge. Original M123 RNG is missing and legacy_handoff_RNG_exact=false; 37 complete prefix sequences are carried. No multi-seed, exact-uninterrupted, unique-module, VOT/full-nine or final success claims follow.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/result.json",
+          "lines": [
+            3,
+            15,
+            58,
+            64,
+            71,
+            87,
+            89
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+          "lines": [
+            31,
+            33
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py",
+          "lines": [
+            61,
+            79,
+            93,
+            186
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py",
+          "lines": [
+            24,
+            25,
+            47,
+            58,
+            62,
+            70
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_selection.py",
+          "lines": [
+            4,
+            6,
+            8,
+            10
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epoch_history.json",
+          "lines": [
+            37,
+            184,
+            192,
+            195
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/best.json",
+          "lines": [
+            2,
+            3,
+            11
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_external_human_labels.py",
+          "lines": [
+            24,
+            31,
+            34,
+            45,
+            46
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py",
+          "lines": [
+            28,
+            34,
+            49,
+            54
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py",
+          "lines": [
+            52,
+            72
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/actual_launch.json",
+          "lines": [
+            17,
+            22,
+            29,
+            31
+          ]
+        }
+      ]
+    },
+    "F": {
+      "name": "Evaluation classification",
+      "status": "WARN",
+      "evaluation_type": "real_gt",
+      "classification_basis": "Source-backed design, raw realization unverified",
+      "details": "DepthTrack/CDTB OPE is real_gt with human-assisted text and external checkpoint selection. No model-derived benchmark reference was found. Human input is not human_eval. Historical fixed-teacher MSE is an auxiliary GT-derived-label diagnostic, not OPE. M124 VOT is pending.",
+      "evidence": [
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py",
+          "lines": [
+            97,
+            111,
+            117
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+          "lines": [
+            149,
+            164,
+            180
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+          "lines": [
+            139,
+            150,
+            171
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_external_human_labels.py",
+          "lines": [
+            43,
+            46
+          ]
+        },
+        {
+          "file": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py",
+          "lines": [
+            77,
+            103
+          ]
+        }
+      ]
+    }
+  },
+  "selection_recomputation": [
+    {
+      "epoch": 1,
+      "previous_F_percent": [
+        66.09145399091419,
+        72.1632445464765
+      ],
+      "F_percent": [
+        64.44964105933218,
+        72.6335396305224
+      ],
+      "delta_F_percent": [
+        -1.6418129315820096,
+        0.47029508404590104
+      ],
+      "score": 68.5415903449273,
+      "dual_decline": false,
+      "consecutive_dual_declines": 0,
+      "stop": false,
+      "replace_best": true,
+      "best_epoch": 1
+    },
+    {
+      "epoch": 2,
+      "previous_F_percent": [
+        64.44964105933218,
+        72.6335396305224
+      ],
+      "F_percent": [
+        64.9929050798145,
+        71.45398784136414
+      ],
+      "delta_F_percent": [
+        0.5432640204823258,
+        -1.1795517891582676
+      ],
+      "score": 68.22344646058932,
+      "dual_decline": false,
+      "consecutive_dual_declines": 0,
+      "stop": false,
+      "replace_best": false,
+      "best_epoch": 1
+    },
+    {
+      "epoch": 3,
+      "previous_F_percent": [
+        64.9929050798145,
+        71.45398784136414
+      ],
+      "F_percent": [
+        64.71128078497416,
+        72.05564088735755
+      ],
+      "delta_F_percent": [
+        -0.28162429484034135,
+        0.601653045993416
+      ],
+      "score": 68.38346083616585,
+      "dual_decline": false,
+      "consecutive_dual_declines": 0,
+      "stop": false,
+      "replace_best": false,
+      "best_epoch": 1
+    },
+    {
+      "epoch": 4,
+      "previous_F_percent": [
+        64.71128078497416,
+        72.05564088735755
+      ],
+      "F_percent": [
+        65.16341105027666,
+        71.69284394183371
+      ],
+      "delta_F_percent": [
+        0.45213026530250033,
+        -0.36279694552384
+      ],
+      "score": 68.4281274960552,
+      "dual_decline": false,
+      "consecutive_dual_declines": 0,
+      "stop": false,
+      "replace_best": false,
+      "best_epoch": 1
+    }
+  ],
+  "best_saved": {
+    "epoch": 1,
+    "score": 68.5415903449273,
+    "F_percent": [
+      64.44964105933218,
+      72.6335396305224
+    ],
+    "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+    "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit",
+    "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation",
+    "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+    "external_metric_checkpoint_selection": true
+  },
+  "current_training_state_saved": {
+    "epoch_completed": 4,
+    "best": {
+      "epoch": 1,
+      "score": 68.5415903449273,
+      "F_percent": [
+        64.44964105933218,
+        72.6335396305224
+      ],
+      "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+      "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit",
+      "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation",
+      "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+      "external_metric_checkpoint_selection": true
+    },
+    "early_stop": false,
+    "maximum_epochs": 20,
+    "next_resume_path": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/fit/latest.pt",
+    "consecutive_dual_declines": 0,
+    "completed_at": "2026-10-13T02:04:37.901370+00:00"
+  },
+  "baseline_mean_F_percent": 69.12734926869535,
+  "best_minus_baseline_mean_F_pp": -0.5857589237680543,
+  "epoch_ledger_recomputation": [
+    {
+      "epoch": 1,
+      "unique_sequences": 152,
+      "sequence_index_first": 0,
+      "sequence_index_last": 151,
+      "log_rows": 115,
+      "track_calls": 219802,
+      "supervised_frames": 203376,
+      "C_supervised_frames": 203224,
+      "template_writes": 1147,
+      "AB_optimizer_steps_this_epoch": 6807,
+      "C_optimizer_steps_this_epoch": 6807,
+      "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db"
+    },
+    {
+      "epoch": 2,
+      "unique_sequences": 152,
+      "sequence_index_first": 0,
+      "sequence_index_last": 151,
+      "log_rows": 152,
+      "track_calls": 219802,
+      "supervised_frames": 203376,
+      "C_supervised_frames": 203224,
+      "template_writes": 1128,
+      "AB_optimizer_steps_this_epoch": 6807,
+      "C_optimizer_steps_this_epoch": 6807,
+      "final_sha256": "1d44ec68e788d31ebeddd528edc8de2afdf960cb67aa2392a952e4cb9048ab41"
+    },
+    {
+      "epoch": 3,
+      "unique_sequences": 152,
+      "sequence_index_first": 0,
+      "sequence_index_last": 151,
+      "log_rows": 152,
+      "track_calls": 219802,
+      "supervised_frames": 203376,
+      "C_supervised_frames": 203224,
+      "template_writes": 1102,
+      "AB_optimizer_steps_this_epoch": 6807,
+      "C_optimizer_steps_this_epoch": 6807,
+      "final_sha256": "3b9e613b4af8c3a2f009200ae8ecb6facf94b56b2033647ef344f08be07175af"
+    },
+    {
+      "epoch": 4,
+      "unique_sequences": 152,
+      "sequence_index_first": 0,
+      "sequence_index_last": 151,
+      "log_rows": 152,
+      "track_calls": 219802,
+      "supervised_frames": 203376,
+      "C_supervised_frames": 203224,
+      "template_writes": 1166,
+      "AB_optimizer_steps_this_epoch": 6807,
+      "C_optimizer_steps_this_epoch": 6807,
+      "final_sha256": "8f26f42d663091171b27870d7a77e845c10daeb27fde995c2e4490fe6e6af470"
+    }
+  ],
+  "epoch04_metrics": {
+    "depthtrack_test": {
+      "status": "complete",
+      "metrics": {
+        "precision": 0.6719184183838088,
+        "recall": 0.632538625290578,
+        "f_score": 0.6516341105027667,
+        "precision_percent": 67.19184183838088,
+        "recall_percent": 63.253862529057805,
+        "f_score_percent": 65.16341105027666,
+        "threshold": 0.037617,
+        "sequences": 50,
+        "frames": 76373
+      },
+      "final_sha256": "8f26f42d663091171b27870d7a77e845c10daeb27fde995c2e4490fe6e6af470",
+      "bundle_sha256": "d41bad6159ed4d12d87faeeb3b921fe6be3e78ef3b67e626f295af025a9e0f78",
+      "plan_sha256": "8f46b38dcbbcf4e012eeb5ac5a52a24587543bde845643bf60200416dacc51c1",
+      "receipt_sha256": "6401b517ff57962519d6289093af65164daf6975ccd411aada0c46f55c6fd9c7",
+      "metric_source_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+    },
+    "cdtb": {
+      "status": "complete",
+      "metrics": {
+        "precision": 0.7441647219762146,
+        "recall": 0.6916154498901869,
+        "f_score": 0.7169284394183372,
+        "precision_percent": 74.41647219762146,
+        "recall_percent": 69.16154498901868,
+        "f_score_percent": 71.69284394183371,
+        "threshold": 0.337623,
+        "sequences": 80,
+        "frames": 101956
+      },
+      "final_sha256": "8f26f42d663091171b27870d7a77e845c10daeb27fde995c2e4490fe6e6af470",
+      "bundle_sha256": "d41bad6159ed4d12d87faeeb3b921fe6be3e78ef3b67e626f295af025a9e0f78",
+      "plan_sha256": "f0831302e564604073dc4f9b26cb647814cfcc65001e150c8ae6cb3f8f84c547",
+      "receipt_sha256": "596e120b54052137f26dde8dad338fb6986282775d6a77c3216c5a28f13c8bdf",
+      "metric_source_sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc"
+    }
+  },
+  "epoch05_capture": {
+    "launch": {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/fit/latest.pt",
+        "--epoch",
+        "5"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T02:04:37.902228+00:00"
+    },
+    "sequence_log": [
+      {
+        "epoch": 5,
+        "sequence": "cube04_indoor",
+        "sequence_index": 0,
+        "sequences_per_epoch": 152,
+        "track_calls": 2575,
+        "supervised_frames": 2513,
+        "C_supervised_frames": 2512,
+        "template_writes": 6,
+        "total_track_calls": 881783,
+        "total_optimizer_steps": 27309,
+        "total_C_optimizer_steps": 27309,
+        "elapsed_seconds": 249.2375922203064,
+        "AB_loss_mean": 0.8198103809968628,
+        "C_MSE_mean": 0.01150119644223439
+      }
+    ],
+    "completion_attested": false
+  },
+  "raw_runtime_attestation": "UNAVAILABLE",
+  "bounded_capture_reporting_blocking_count": 0,
+  "demonstrated_integrity_contradiction_count": 0,
+  "stronger_acceptance_blockers": [
+    {
+      "id": "R1",
+      "status": "UNAVAILABLE",
+      "blocks": "Independently reproduced OPE scores and raw coverage",
+      "action": "Preserve/provide existing bbox/confidence files, prediction receipts, GT/cases/provenance hashes and image sizes; recount and recompute with the pinned metric/dependency environment. CPU verification needs no NN rerun."
+    },
+    {
+      "id": "R2",
+      "status": "UNAVAILABLE",
+      "blocks": "Actual checkpoint/source/bank/runtime and tensor attestation",
+      "action": "Provide existing plans, bundle, gate, bank/binding/reviews, final/latest/best bytes or independent attestations, plus analyze launch/exit/log/environment evidence. Match actual byte/tensor chain."
+    },
+    {
+      "id": "R3",
+      "status": "QUALIFIER_REQUIRED",
+      "blocks": "Untouched-test, automatic/first-frame-only-text, multi-seed, exact-resume and unique-module claims",
+      "action": "Disclose seed 2027, warm start, full152 joint adapter scope, Test50/CDTB selection, multiframe human aids, and legacy RNG limitation."
+    },
+    {
+      "id": "R4",
+      "status": "PENDING_IN_CAPTURE",
+      "blocks": "Completed M124 VOT/full-suite/full-nine/goal claims",
+      "action": "Report four completed train/OPE epochs, best-to-date E1, one E5 sequence and pending VOT/full-suite. No launch, retry or restart requested."
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Saved scores, declared identical final/bundle and internal coverage",
+      "impact": "supported_as_capture_statement_only"
+    },
+    {
+      "claim": "Every saved selector decision and E1 best-to-date",
+      "impact": "supported_by_independent_arithmetic"
+    },
+    {
+      "claim": "Independently authenticated model execution and raw OPE performance",
+      "impact": "unverified"
+    },
+    {
+      "claim": "Untouched tests, automatic/first-frame-only language, multiple seeds, unique A/B/C gains, completed VOT/full nine metrics or goal",
+      "impact": "unsupported_by_capture"
+    }
+  ],
+  "audited_inputs": [
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/captured_manifest.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/captured_manifest.json",
+      "bytes": 2016,
+      "line_count": 20,
+      "sha256": "f3e9042c8789322a1b22dfe5d8b45f732b85b1a5e4e15062653e1b0c7cc1b472",
+      "kind": "capture_manifest",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/actual_launch.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/actual_launch.json",
+      "bytes": 2636,
+      "line_count": 39,
+      "sha256": "8088bbd8cf955924328aca662b179506ed961dad872d114d5128260650b74ed7",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "8088bbd8cf955924328aca662b179506ed961dad872d114d5128260650b74ed7",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/controller.supervisor.launch.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/controller.supervisor.launch.json",
+      "bytes": 377,
+      "line_count": 13,
+      "sha256": "13d3ae397b662acb4eabb0b786d4ad12b46c6ef7fe71d17f4687594093f7352c",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "13d3ae397b662acb4eabb0b786d4ad12b46c6ef7fe71d17f4687594093f7352c",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/current_training_state.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/current_training_state.json",
+      "bytes": 806,
+      "line_count": 21,
+      "sha256": "0dbc7cace9f292f701506035dd436704e559be39dd36d866039d400e1b60752e",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "0dbc7cace9f292f701506035dd436704e559be39dd36d866039d400e1b60752e",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/best.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/best.json",
+      "bytes": 505,
+      "line_count": 13,
+      "sha256": "f61469e0addcdff3f83c7776a81935bb2fbd11da349aefcb5e21ca17e1a884c3",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "f61469e0addcdff3f83c7776a81935bb2fbd11da349aefcb5e21ca17e1a884c3",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epoch_history.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epoch_history.json",
+      "bytes": 6796,
+      "line_count": 198,
+      "sha256": "74a9fe69bba19ed273e8c16294eda6b93957696ecda2505cbe38bb23892278da",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "74a9fe69bba19ed273e8c16294eda6b93957696ecda2505cbe38bb23892278da",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.launch.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.launch.json",
+      "bytes": 1220,
+      "line_count": 33,
+      "sha256": "a61b716d5c0d481a3c35e29a0283e034ac7aa4e2a5fbd97d51f2a476bc61e367",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "a61b716d5c0d481a3c35e29a0283e034ac7aa4e2a5fbd97d51f2a476bc61e367",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.exit",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.exit",
+      "bytes": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.receipt.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.receipt.json",
+      "bytes": 1291,
+      "line_count": 35,
+      "sha256": "4156358a380ea716bf71e05609a51a0d2b92192760f26a37119bf4af40e09bf6",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "4156358a380ea716bf71e05609a51a0d2b92192760f26a37119bf4af40e09bf6",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/result.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/result.json",
+      "bytes": 303115,
+      "line_count": 9822,
+      "sha256": "2ad990415d57b9a35e58010b2ca3d7c406adf6453477a5475ecdd493b33e19b7",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "2ad990415d57b9a35e58010b2ca3d7c406adf6453477a5475ecdd493b33e19b7",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/sequence_log.jsonl",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/sequence_log.jsonl",
+      "bytes": 60269,
+      "line_count": 152,
+      "sha256": "30a1027380b2949c61d02b27984f1d74da5b034f4c41fe6d7d57347e22e72084",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "30a1027380b2949c61d02b27984f1d74da5b034f4c41fe6d7d57347e22e72084",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/depthtrack_test_track.exit",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/depthtrack_test_track.exit",
+      "bytes": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/depthtrack_test_track.receipt.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/depthtrack_test_track.receipt.json",
+      "bytes": 507,
+      "line_count": 17,
+      "sha256": "4a74c6b3e53b0739c1bf38b59b443cf7bd830e96f312eff3dbe3d1a371be8d93",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "4a74c6b3e53b0739c1bf38b59b443cf7bd830e96f312eff3dbe3d1a371be8d93",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/cdtb_track.exit",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/cdtb_track.exit",
+      "bytes": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/cdtb_track.receipt.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/cdtb_track.receipt.json",
+      "bytes": 485,
+      "line_count": 17,
+      "sha256": "461ad7b804540b2d7f520897adfbaf06b0db006ff051772fb5fba1c9f83e901d",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "461ad7b804540b2d7f520897adfbaf06b0db006ff051772fb5fba1c9f83e901d",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/depthtrack_test/predictions/bbox_file_count",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/depthtrack_test/predictions/bbox_file_count",
+      "bytes": 2,
+      "line_count": 1,
+      "sha256": "1a6562590ef19d1045d06c4055742d38288e9e6dcd71ccde5cee80f1d5a774eb",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "1a6562590ef19d1045d06c4055742d38288e9e6dcd71ccde5cee80f1d5a774eb",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/depthtrack_test/predictions/metrics.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/depthtrack_test/predictions/metrics.json",
+      "bytes": 788,
+      "line_count": 19,
+      "sha256": "bc617128bbe82ae54df361ddf836f959bd2c0c657f9e700d9692310a65645803",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "bc617128bbe82ae54df361ddf836f959bd2c0c657f9e700d9692310a65645803",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/cdtb/predictions/bbox_file_count",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/cdtb/predictions/bbox_file_count",
+      "bytes": 2,
+      "line_count": 1,
+      "sha256": "48449a14a4ff7d79bb7a1b6f3d488eba397c36ef25634c111b49baf362511afc",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "48449a14a4ff7d79bb7a1b6f3d488eba397c36ef25634c111b49baf362511afc",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/cdtb/predictions/metrics.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/cdtb/predictions/metrics.json",
+      "bytes": 789,
+      "line_count": 19,
+      "sha256": "1b270134e1a1840cc61eb85517d88ddbcee97a30b3320d4b1752d5b26c16c4ef",
+      "kind": "captured_payload",
+      "read_scope": "complete file",
+      "expected_sha256": "1b270134e1a1840cc61eb85517d88ddbcee97a30b3320d4b1752d5b26c16c4ef",
+      "manifest_hash_match": true,
+      "byte_exact_to_observer": true
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_thirtyfirst_hourly_original_observation_stdout_20261013.json",
+      "relative_path": ".aris/m122_full_causal_20261007/M124_thirtyfirst_hourly_original_observation_stdout_20261013.json",
+      "bytes": 1118489,
+      "line_count": 1,
+      "sha256": "00abb8809852e884ebfede96b1cb0f0788e6e328d64167ec627ef9404c5cb9ce",
+      "kind": "original_observation",
+      "read_scope": "complete JSON and all 59 embedded values parsed; all result/log records checked"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py",
+      "bytes": 6281,
+      "line_count": 84,
+      "sha256": "e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py",
+      "bytes": 4419,
+      "line_count": 77,
+      "sha256": "60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py",
+      "bytes": 2986,
+      "line_count": 44,
+      "sha256": "25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py",
+      "bytes": 3945,
+      "line_count": 60,
+      "sha256": "4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m124_epochwise_evaluation.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m124_epochwise_evaluation.py",
+      "bytes": 7981,
+      "line_count": 129,
+      "sha256": "ad05b5029b6e27e5c163c8ffa190d1db83312f011331f5d8dd426e89192ee8cb",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py",
+      "bytes": 6989,
+      "line_count": 107,
+      "sha256": "63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_selection.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_selection.py",
+      "bytes": 560,
+      "line_count": 10,
+      "sha256": "24d73496437a60dea724bca14b51c8e8f0742657fb242ef4c793ea37ee9c4a24",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py",
+      "bytes": 15536,
+      "line_count": 243,
+      "sha256": "6bc43f9f113c3a648e9a674ad3f7f18d1114e4f84880edf18fa61d40e804081c",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py",
+      "bytes": 7693,
+      "line_count": 120,
+      "sha256": "0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py",
+      "bytes": 7739,
+      "line_count": 123,
+      "sha256": "055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py",
+      "bytes": 4173,
+      "line_count": 73,
+      "sha256": "1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py",
+      "bytes": 966,
+      "line_count": 24,
+      "sha256": "4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py",
+      "bytes": 11018,
+      "line_count": 187,
+      "sha256": "7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md",
+      "bytes": 39769,
+      "line_count": 195,
+      "sha256": "1c842dcf6f7e64a2d7a2b7fa27d40488a8905b10105ba64772215d2f49165151",
+      "kind": "required_source_or_tracker",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py",
+      "bytes": 7143,
+      "line_count": 158,
+      "sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+      "kind": "required_metric_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/m82_m84_development_pr/depthtrack_pr.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/m82_m84_development_pr/depthtrack_pr.py",
+      "bytes": 7143,
+      "line_count": 158,
+      "sha256": "05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+      "kind": "required_metric_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m123_joint_full_tracker.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m123_joint_full_tracker.py",
+      "bytes": 5028,
+      "line_count": 84,
+      "sha256": "53b1e0ae9f054b62cf4f7c13d77400453d616f8b62e62b406014f7075ef529a7",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py",
+      "bytes": 2028,
+      "line_count": 40,
+      "sha256": "a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m123_joint_full_suite.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m123_joint_full_suite.py",
+      "bytes": 4821,
+      "line_count": 85,
+      "sha256": "47639fc6802a6c245835196188380d450d65471f647f62236afc18662e4d571c",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py",
+      "bytes": 11546,
+      "line_count": 144,
+      "sha256": "ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py",
+      "bytes": 13099,
+      "line_count": 202,
+      "sha256": "40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py",
+      "bytes": 10987,
+      "line_count": 128,
+      "sha256": "1428b3488d37cbbb71ae66eeca896b553c14d4156c9ab65657c59f741d321cea",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py",
+      "bytes": 7272,
+      "line_count": 116,
+      "sha256": "66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py",
+      "bytes": 3120,
+      "line_count": 56,
+      "sha256": "71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py",
+      "bytes": 2237,
+      "line_count": 50,
+      "sha256": "85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py",
+      "bytes": 7951,
+      "line_count": 126,
+      "sha256": "4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m121_dense_inputs.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m121_dense_inputs.py",
+      "bytes": 7918,
+      "line_count": 108,
+      "sha256": "89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_external_human_labels.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_external_human_labels.py",
+      "bytes": 4021,
+      "line_count": 55,
+      "sha256": "0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py",
+      "bytes": 2617,
+      "line_count": 37,
+      "sha256": "6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py",
+      "bytes": 11581,
+      "line_count": 194,
+      "sha256": "0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py",
+      "bytes": 4469,
+      "line_count": 92,
+      "sha256": "2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+      "kind": "resolved_import_or_provenance_source",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/source_snapshot/vot/region/__init__.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/source_snapshot/vot/region/__init__.py",
+      "bytes": 3728,
+      "line_count": 146,
+      "sha256": "111e19a38ceae96ed523d927badf0227e68634a18e682d2fdac94f179428f403",
+      "kind": "supplemental_VOT_snapshot",
+      "read_scope": "complete file"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/source_snapshot/vot/region/raster.py",
+      "relative_path": "projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/source_snapshot/vot/region/raster.py",
+      "bytes": 15220,
+      "line_count": 416,
+      "sha256": "ba6797ae9013cf31700eb4671d73e50480fcda62a65adb529fff3c4d777a23b9",
+      "kind": "supplemental_VOT_snapshot",
+      "read_scope": "lines 281-416 inspected; complete bytes hashed; not bound to captured runtime"
+    },
+    {
+      "path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-13_m124_epoch04_captured_ope/001-captured-epoch04-OPE-review.request.json",
+      "relative_path": ".aris/traces/experiment-audit/2026-10-13_m124_epoch04_captured_ope/001-captured-epoch04-OPE-review.request.json",
+      "bytes": 12336,
+      "line_count": 21,
+      "sha256": "5ac0cb5c6a2d2b3d919ef666b3d90710877d6e81f379c6447e9525e41a3a93e8",
+      "kind": "review_routing_record",
+      "read_scope": "routing fields read; prompt opaque",
+      "earlier_observed_version": {
+        "sha256": "d6e29472b032ea2f3a7bc77557eb9069beac55ee64e793ddb1993c050d6c7232",
+        "bytes": 6087
+      }
+    }
+  ],
+  "audited_input_hashes": {
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/captured_manifest.json": "sha256:f3e9042c8789322a1b22dfe5d8b45f732b85b1a5e4e15062653e1b0c7cc1b472",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/actual_launch.json": "sha256:8088bbd8cf955924328aca662b179506ed961dad872d114d5128260650b74ed7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/controller.supervisor.launch.json": "sha256:13d3ae397b662acb4eabb0b786d4ad12b46c6ef7fe71d17f4687594093f7352c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/current_training_state.json": "sha256:0dbc7cace9f292f701506035dd436704e559be39dd36d866039d400e1b60752e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/best.json": "sha256:f61469e0addcdff3f83c7776a81935bb2fbd11da349aefcb5e21ca17e1a884c3",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epoch_history.json": "sha256:74a9fe69bba19ed273e8c16294eda6b93957696ecda2505cbe38bb23892278da",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.launch.json": "sha256:a61b716d5c0d481a3c35e29a0283e034ac7aa4e2a5fbd97d51f2a476bc61e367",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/train.receipt.json": "sha256:4156358a380ea716bf71e05609a51a0d2b92192760f26a37119bf4af40e09bf6",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/result.json": "sha256:2ad990415d57b9a35e58010b2ca3d7c406adf6453477a5475ecdd493b33e19b7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/fit/sequence_log.jsonl": "sha256:30a1027380b2949c61d02b27984f1d74da5b034f4c41fe6d7d57347e22e72084",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/depthtrack_test_track.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/depthtrack_test_track.receipt.json": "sha256:4a74c6b3e53b0739c1bf38b59b443cf7bd830e96f312eff3dbe3d1a371be8d93",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/cdtb_track.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/cdtb_track.receipt.json": "sha256:461ad7b804540b2d7f520897adfbaf06b0db006ff051772fb5fba1c9f83e901d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/depthtrack_test/predictions/bbox_file_count": "sha256:1a6562590ef19d1045d06c4055742d38288e9e6dcd71ccde5cee80f1d5a774eb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/depthtrack_test/predictions/metrics.json": "sha256:bc617128bbe82ae54df361ddf836f959bd2c0c657f9e700d9692310a65645803",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/cdtb/predictions/bbox_file_count": "sha256:48449a14a4ff7d79bb7a1b6f3d488eba397c36ef25634c111b49baf362511afc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_epoch04_captured_OPE_20261013/epochs/epoch-04/evaluation/cdtb/predictions/metrics.json": "sha256:1b270134e1a1840cc61eb85517d88ddbcee97a30b3320d4b1752d5b26c16c4ef",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_thirtyfirst_hourly_original_observation_stdout_20261013.json": "sha256:00abb8809852e884ebfede96b1cb0f0788e6e328d64167ec627ef9404c5cb9ce",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_official.py": "sha256:e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_official_runtime.py": "sha256:60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m122_official_runtime.py": "sha256:25aa67000cf581c454b160c524c8dcf8f55ec30d227b387990cc03ed18be3157",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/bind_m122_official_initializations.py": "sha256:4023d263cde4e10436f2f2dc78247d2b8875df5316352935ea85b2a1ad71f69a",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m124_epochwise_evaluation.py": "sha256:ad05b5029b6e27e5c163c8ffa190d1db83312f011331f5d8dd426e89192ee8cb",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m124_epochwise_suite.py": "sha256:63924cc9f7f5e38ab605cb8f40dddf083321bee12248e71a7e8516f5a2d17dfc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m124_epochwise_selection.py": "sha256:24d73496437a60dea724bca14b51c8e8f0742657fb242ef4c793ea37ee9c4a24",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m124_joint_epoch.py": "sha256:6bc43f9f113c3a648e9a674ad3f7f18d1114e4f84880edf18fa61d40e804081c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/full_dense_tracker.py": "sha256:0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_target_decoder.py": "sha256:055d9ddffe4e332fa9a04fca93a6ec301d031a35b198f93a26809d7baa7104f2",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/trusted_template_tracker.py": "sha256:1dd4873192b05f6921cdf729a525ed684ed96a18bfdfc48673cda14d50352e0d",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_C.py": "sha256:4bf01cd83d6a7ea2a2e8ced6668cecde38f476af61c4af4eeae0db628afb9fc1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_template_write_C.py": "sha256:7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m122_trusted_memory/EXPERIMENT_TRACKER.md": "sha256:1c842dcf6f7e64a2d7a2b7fa27d40488a8905b10105ba64772215d2f49165151",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_ope/source_snapshots/depthtrack_pr.py": "sha256:05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/m82_m84_development_pr/depthtrack_pr.py": "sha256:05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m123_joint_full_tracker.py": "sha256:53b1e0ae9f054b62cf4f7c13d77400453d616f8b62e62b406014f7075ef529a7",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/template_write_features.py": "sha256:a40ef7c814c1e6b2d6eea779afa62478714c4d5aab6c0c0274f8c72657f2105b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_m123_joint_full_suite.py": "sha256:47639fc6802a6c245835196188380d450d65471f647f62236afc18662e4d571c",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m122_full_causal.py": "sha256:ffa40a08d167d9a7f185cf83ecf0851e9c5ed548c2b1280bb969d6b8c689f891",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/train_m121_dense_target.py": "sha256:40d00f84c9f2220deb6f557a0e516f4385922c86d276da1b5d3b17f8891502ee",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_evaluation_suite.py": "sha256:1428b3488d37cbbb71ae66eeca896b553c14d4156c9ab65657c59f741d321cea",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_decoder.py": "sha256:66b9317529f741aba818aa9e9feba7fcebdb54c285f0bd9184f98f4b1f202e7b",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/dense_region_encoding.py": "sha256:71715a497147eb917e6a93ba6916ebbe01bc4a859cb275401289df2706627f33",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/region_patch_evidence.py": "sha256:85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/instance_ab_prototype.py": "sha256:4485a7ca29a90fa13cc868c32e4e4083c351cfba7b318d341c0165c32a886e4f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/m121_dense_inputs.py": "sha256:89651f43d40f1b13e16ab586d6c0aaa19e3edfcf91f59d3286f74cf093ef2d85",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/prepare_m122_external_human_labels.py": "sha256:0c1bab71df8c5c8f7dff225a4ccfe6b6138ab0033c695bc224e6b9fb9e354bf4",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/encode_m122_official_human_text.py": "sha256:6f50da069c5a4a7e902a05dc1d3227032bb67a9952f9687ca4a95279fab3348f",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/run_template_write_teacher.py": "sha256:0db429a83a0f7627a9d486b2658fe07d8ce1571932347a777df0c672633ef169",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/analyze_train_states.py": "sha256:2439a8d0cdb7a7d6c35bbf68aaacd28850bfb8db2211f07eb9e9e7dac66b6def",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/source_snapshot/vot/region/__init__.py": "sha256:111e19a38ceae96ed523d927badf0227e68634a18e682d2fdac94f179428f403",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/projects/sttrack_lachtt_v1/diagnostics/native_vot_full127/source_snapshot/vot/region/raster.py": "sha256:ba6797ae9013cf31700eb4671d73e50480fcda62a65adb529fff3c4d777a23b9",
+    "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/traces/experiment-audit/2026-10-13_m124_epoch04_captured_ope/001-captured-epoch04-OPE-review.request.json": "sha256:5ac0cb5c6a2d2b3d919ef666b3d90710877d6e81f379c6447e9525e41a3a93e8"
+  },
+  "deterministic_verification": {
+    "all18_hashes_match": true,
+    "all18_byte_exact_to_observer": true,
+    "all59_values_parsed": true,
+    "all608_records_checked": true,
+    "epoch04_all152_log_rows_match": true,
+    "all8_metric_hashes_match_history": true,
+    "all8_P_R_F_arithmetic_consistent": true,
+    "selection_history_best_state_match": true,
+    "trainer_and_joint_tracker_saved_bytes_match_declared_hashes": true,
+    "both_metric_sources_exact_to_declared_hash": true,
+    "raw_metric_recomputed": false,
+    "raw_checkpoint_tensors_verified": false,
+    "raw_GT_provenance_verified": false
+  },
+  "report_markdown_path": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M124_EPOCH04_CAPTURED_OPE_AUDIT_R1_20261013.md",
+  "report_markdown_sha256": "cb8a01af76823aa7195b47b44bceb2dfef7e7a3f3f04e44b1b3794b02c09e0f9",
+  "trace_metadata_change_during_report": "Parent expanded request trace with native submitted arguments; routing model/effort/fork unchanged; prompt remains opaque. Earlier hash retained in input record. Scientific inputs unchanged.",
+  "received_task_sha256": "9a7d691d9de56a42c421304bbaf834122b98e4f576c3bcf910a7f30719a34ee4"
+}
