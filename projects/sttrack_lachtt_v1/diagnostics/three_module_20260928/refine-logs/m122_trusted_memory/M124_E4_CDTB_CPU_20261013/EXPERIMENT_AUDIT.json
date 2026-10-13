@@ -1,0 +1,1202 @@
+{
+  "audit_skill": "experiment-audit",
+  "audit_id": "M124_EPOCH04_CDTB_CPU_AUDIT_R1_20261013",
+  "date": "2026-10-13",
+  "generated_at": "2026-10-13T02:44:41.180Z",
+  "verdict": "WARN",
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "reason_code": "runtime_and_raw_artifact_attestation_outside_local_capture_scope",
+  "summary": "Zero bounded-audit blockers. All 80 rows and aggregate/segment arithmetic are consistent. Historical runtime, raw prediction/GT/image arrays and checkpoint bytes are not independently attested.",
+  "blocker_count": 0,
+  "blockers": [],
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_reasoning_effort": "max",
+  "reviewer_reasoning": "max",
+  "reviewer_family": "openai",
+  "fork_turns": "none",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "agent_id": "/root/m124_epoch04_cdtb_cpu_integrity_20261013",
+  "verdict_id": "/root/m124_epoch04_cdtb_cpu_integrity_20261013:R1",
+  "reviewer_attribution_source": "Actual delegation metadata provided in received task; no invented platform UUID.",
+  "executor": "codex",
+  "executor_model": null,
+  "trace_owner": "parent /root",
+  "trace_path": null,
+  "trace_status": "Parent saves actual request/follow-up/full final response; readable received task preserved by child.",
+  "received_task_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\received_task.txt",
+  "upstream_rpc_envelope_available_to_child": false,
+  "audit_actions": {
+    "local_only": true,
+    "SSH_calls": 0,
+    "remote_calls": 0,
+    "NN_calls": 0,
+    "GPU_queries": 0,
+    "training_queries": 0,
+    "tracking_replays": 0,
+    "new_reviewers": 0,
+    "external_review_calls": 0,
+    "source_or_data_writes": 0
+  },
+  "scope": {
+    "dataset": "CDTB",
+    "epochs": [
+      "03",
+      "04"
+    ],
+    "sequences_per_epoch": 80,
+    "frames_per_epoch": 101956,
+    "valid_GT_frames_per_epoch": 91300,
+    "seed_independence": "Not established; successive own-history epochs, not independent runs."
+  },
+  "evaluation_type": "real_gt",
+  "runtime_attestation": "UNATTESTED",
+  "raw_prediction_bytes_locally_re_read": false,
+  "raw_GT_bytes_locally_re_read": false,
+  "raw_image_bytes_locally_re_read": false,
+  "checkpoint_bytes_locally_re_read": false,
+  "declared_checkpoint_sha256": {
+    "epoch03": "3b9e613b4af8c3a2f009200ae8ecb6facf94b56b2033647ef344f08be07175af",
+    "epoch04": "8f26f42d663091171b27870d7a77e845c10daeb27fde995c2e4490fe6e6af470"
+  },
+  "missing_initial_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\depthtrack_pr.py",
+  "corrected_metric_paths": [
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\m82_m84_development_pr\\depthtrack_pr.py"
+  ],
+  "checks": {
+    "A": {
+      "status": "PASS",
+      "name": "Ground-truth provenance",
+      "assurance": "source/capture level",
+      "details": "Both diagnoses load dataset_root/sequence/groundtruth.txt separately from saved prediction and confidence files. The pinned metric constructs dataset GT regions from finite positive-size rectangles, and Special(0) for invalid annotation rows. No model-generated target is substituted. All 80 paired GT digest declarations agree. Raw dataset bytes and benchmark distribution authenticity were not independently re-read. VOT rectangle overlap is used; this is not certification of an installed official toolkit/version. Invalid annotation does not prove physical absence.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 48
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 50
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 52
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 57
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch03_cdtb_saved_trajectory.py",
+          "line": 48
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 50
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 97
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_original_stdout_20261013.json",
+          "line": 1,
+          "selector": "per_sequence[*].GT_sha256, inputs_sha256"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch03_CDTB_CPU_diagnostic_original_stdout_20261013.json",
+          "line": 1,
+          "selector": "per_sequence[*].GT_sha256, inputs_sha256"
+        }
+      ]
+    },
+    "B": {
+      "status": "PASS",
+      "name": "Score normalization",
+      "details": "R divides selected overlap sum by dataset-valid GT count. P averages overlap over confidence-selected frames. Macro averages and harmonic F are conventional metric operations, with no model-output max/min/mean rescaling. Prediction scores supply threshold candidates; GT-based dataset-wide best-F selection chooses the report operating point. The E3/E4 thresholds differ, so filtering-loss change is not a controlled same-threshold comparison. All-box R retains the dataset GT denominator and is only an upper bound for confidence filtering of a fixed nonnegative-overlap trajectory.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 44
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 59
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 61
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 73
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 25
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 117
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 124
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 128
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 133
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 139
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 9
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 19
+        }
+      ]
+    },
+    "C": {
+      "status": "WARN",
+      "name": "Result existence, scope, hashes, checkpoint declarations and metrics",
+      "details": "All corrected listed artifacts exist. Both captures contain 80 unique rows and 101956 frames; all CSV fields, aggregate values, ranked rows, segment counts and source fingerprints agree. E4 metrics.json P/R/F/threshold/scope match. The initially supplied metric path is absent; both actual alternate sources hash to the captured metric digest. Checkpoint identity is a consistent declaration, not a locally hashed checkpoint. Each 325-entry remote-input map is internally bound, not evidence that the 320 raw prediction/confidence/GT/image files were opened locally. The scoped capture lacks raw arrays, plan/cases/prediction receipt/checkpoint bytes and independently authenticated original tool events. The native receipt records exit 0 and session/chunk IDs, while historical runtime remains UNATTESTED here.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_preparation_20261013.json",
+          "line": 2
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_preparation_20261013.json",
+          "line": 3
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_native_20261013.py",
+          "line": 3
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_native_receipts_20261013.json",
+          "line": 2
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_native_receipts_20261013.json",
+          "line": 7
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_native_receipts_20261013.json",
+          "line": 8
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 23
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 34
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 35
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 36
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 50
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 74
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_captured_OPE_20261013\\epochs\\epoch-04\\evaluation\\cdtb\\predictions\\metrics.json",
+          "line": 2
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_captured_OPE_20261013\\epochs\\epoch-04\\evaluation\\cdtb\\predictions\\metrics.json",
+          "line": 7
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_captured_OPE_20261013\\epochs\\epoch-04\\evaluation\\cdtb\\predictions\\metrics.json",
+          "line": 10
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_captured_OPE_20261013\\epochs\\epoch-04\\evaluation\\cdtb\\predictions\\metrics.json",
+          "line": 14
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_captured_OPE_20261013\\epochs\\epoch-04\\evaluation\\cdtb\\predictions\\metrics.json",
+          "line": 16
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_original_stdout_20261013.json",
+          "line": 1,
+          "selector": "aggregate, analysis_source_sha256, inputs_sha256"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch03_CDTB_CPU_diagnostic_original_stdout_20261013.json",
+          "line": 1,
+          "selector": "aggregate, analysis_source_sha256, inputs_sha256"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\all80_sequence_diagnostics.csv",
+          "line": 2
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\all80_sequence_diagnostics.csv",
+          "line": 81
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 25
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 516
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 524
+        }
+      ]
+    },
+    "D": {
+      "status": "PASS",
+      "name": "Active metric path",
+      "assurance": "static call path and captured-result consistency",
+      "details": "The analyzer imports the pinned metric, calls _load_rows and _vot_overlaps within its 80-case loop, computes metrics, asserts saved P/R/F agreement and emits the captured schema from main. The launcher decoded as data contains the exact 7016-byte local analyzer and runpy.run_path(..., run_name=\"__main__\"). The inspected OPE runner explicitly calls evaluate_depthtrack_results and writes its returned values to metrics.json, with CLI dispatch to ope_analyze. _determine_thresholds and _vot_overlaps are called inside that evaluator. format_metrics is an unused serialization convenience in this path, not an unexecuted claimed metric. Static routing does not attest the historical process.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 24
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 52
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 57
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 73
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 74
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 77
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 80
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_native_20261013.py",
+          "line": 3
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 111
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 117
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 139
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 157
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py",
+          "line": 56
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py",
+          "line": 58
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py",
+          "line": 60
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py",
+          "line": 84
+        }
+      ]
+    },
+    "E": {
+      "status": "PASS",
+      "name": "Bounded scope and interpretation",
+      "details": "The defensible scope is two successive own-history CDTB trajectories, each with 80 sequences, 101956 frames and 91300 valid annotation frames. No independent seeds, same-state intervention, module/text attribution, recovery validation, bitwise hidden-state replay, VOT completion or full-nine acceptance is established. These limits are explicit in the source and comparison output. Factor4 geometry matches inspected source, but the reconstruction uses serialized previous boxes and a point-center test. Low-IoU frame occupancy, long-segment onset and first causal divergence remain distinct.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 28
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 65
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 70
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 77
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\compare_m124_cdtb_epoch03_epoch04_saved_trajectory.py",
+          "line": 67
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 3
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 519
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 534
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+          "line": 54
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+          "line": 89
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py",
+          "line": 101
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\region_patch_evidence.py",
+          "line": 8
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\lib\\train\\data\\processing_utils.py",
+          "line": 30
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\lib\\train\\data\\processing_utils.py",
+          "line": 35
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py",
+          "line": 33
+        }
+      ]
+    },
+    "F": {
+      "status": "PASS",
+      "name": "Evaluation type",
+      "classification": "real_gt",
+      "assurance": "classification of inspected source and recorded provenance; raw GT UNATTESTED",
+      "details": "Dataset annotation rectangles are separately loaded and used for overlap and current-center diagnostics, so real_gt is the correct classification. This label does not independently authenticate raw GT bytes, benchmark implementation equivalence, actual runtime or causal performance gains.",
+      "evidence": [
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 49
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 52
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 67
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py",
+          "line": 77
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py",
+          "line": 97
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_original_stdout_20261013.json",
+          "line": 1,
+          "selector": "evaluation_type"
+        },
+        {
+          "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json",
+          "line": 529
+        }
+      ]
+    }
+  },
+  "recomputed_from_captured_per_sequence_values": {
+    "03": {
+      "P": 71.85629404846995,
+      "R": 72.25609687654311,
+      "F": 72.05564088735754,
+      "threshold": 0.013903,
+      "all_saved_boxes_R": 73.08945848064465,
+      "confidence_R_loss_pp": 0.8333616041015404,
+      "frames": 101956,
+      "valid_GT_frames": 91300,
+      "sequences": 80,
+      "serious_low_IoU_frames": 7674,
+      "low_crop_inside_frames": 1969,
+      "low_crop_outside_frames": 5705,
+      "long_segment_count": 80,
+      "long_segment_frames": 7280,
+      "long_segment_outside_frames": 5541,
+      "onsets_inside": 43,
+      "onsets_outside": 37,
+      "post_onset_outside_frames": 5504,
+      "inside_onsets_later_outside": 19,
+      "reappearance_count": 159,
+      "reappearance_outside_count": 57
+    },
+    "04": {
+      "P": 74.41647219762146,
+      "R": 69.16154498901871,
+      "F": 71.69284394183371,
+      "threshold": 0.337623,
+      "all_saved_boxes_R": 70.61266872520045,
+      "confidence_R_loss_pp": 1.4511237361817422,
+      "frames": 101956,
+      "valid_GT_frames": 91300,
+      "sequences": 80,
+      "serious_low_IoU_frames": 9889,
+      "low_crop_inside_frames": 1858,
+      "low_crop_outside_frames": 8031,
+      "long_segment_count": 92,
+      "long_segment_frames": 9516,
+      "long_segment_outside_frames": 7861,
+      "onsets_inside": 43,
+      "onsets_outside": 49,
+      "post_onset_outside_frames": 7812,
+      "inside_onsets_later_outside": 20,
+      "reappearance_count": 159,
+      "reappearance_outside_count": 66
+    }
+  },
+  "recomputed_comparison": {
+    "formal_R_delta_pp": -3.0945518875244034,
+    "all_saved_boxes_R_delta_pp": -2.4767897554442015,
+    "confidence_R_loss_change_pp": 0.6177621320802018,
+    "macro_csv_contribution_sum_pp": -2.4767897554441993,
+    "improved_all_R_sequences": 32,
+    "worsened_all_R_sequences": 48,
+    "unchanged_all_R_sequences": 0,
+    "declared_comparison_target_R_percent": 75.6,
+    "epoch04_all_saved_boxes_R_gap_to_declared_target_pp": 4.987331274799544
+  },
+  "deterministic_verification": {
+    "status": "PASS within capture scope",
+    "implementation": "Independent inline Python stdlib verification; no execution of the authored analyzer/native launcher/comparison writer.",
+    "assertion_checks": 6828,
+    "mismatches": 0,
+    "float_tolerance": 1e-10,
+    "maximum_metric_vs_capture_absolute_difference_pp": 2.842170943040401e-14,
+    "csv_rows_checked": 80,
+    "csv_fields_per_row": 28,
+    "csv_cells_checked": 2240,
+    "csv_numeric_cell_max_difference": 0,
+    "nested_long_segments_checked": 172,
+    "nested_reappearance_events_checked": 318,
+    "largest8_loss_and_gain_dictionaries_exact": true,
+    "native_embedded_source_bytes": 7016,
+    "native_embedded_source_equals_local_analyzer": true,
+    "recorded_input_entries_per_epoch": 325,
+    "recorded_input_categories": {
+      "plan": 1,
+      "cases": 1,
+      "metrics": 1,
+      "prediction_receipt": 1,
+      "metric_source": 1,
+      "bbox": 80,
+      "confidence": 80,
+      "GT": 80,
+      "first_image": 80
+    },
+    "shared_recorded_hashes_equal": 162,
+    "shared_recorded_hash_categories": {
+      "GT": 80,
+      "first_image": 80,
+      "cases": 1,
+      "metric_source": 1
+    },
+    "raw_arrays_opened_by_this_auditor": 0,
+    "successful_tool_chunks": [
+      "8b04e5",
+      "ac14b9"
+    ],
+    "verifier_attempt_history": [
+      "Supplementary hash-binding verifier stopped at ast.literal_eval(ROOT=Path(...)); chunk 083d25, exit 1.",
+      "Restricted AST extraction to FINAL/SAVED/METRIC string assignments; chunk ac14b9, exit 0. No scientific source/data changed and no experiment reran.",
+      "Initial report-write command exceeded Windows command-line length and failed before process creation (os error 206); no report files or scientific artifacts were mutated by that failed invocation."
+    ]
+  },
+  "all80_row_validation": [
+    {
+      "sequence": "XMG_outside",
+      "csv_line": 2,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.0021536623602294467,
+      "status": "PASS"
+    },
+    {
+      "sequence": "backpack_blue",
+      "csv_line": 3,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.005880980510398537,
+      "status": "PASS"
+    },
+    {
+      "sequence": "backpack_robotarm_lab_occ",
+      "csv_line": 4,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.00963482899923811,
+      "status": "PASS"
+    },
+    {
+      "sequence": "backpack_room_noocc_1",
+      "csv_line": 5,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.0037180630878324906,
+      "status": "PASS"
+    },
+    {
+      "sequence": "bag_outside",
+      "csv_line": 6,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.1944659932655405,
+      "status": "PASS"
+    },
+    {
+      "sequence": "bicycle2_outside",
+      "csv_line": 7,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0054855844954524,
+      "status": "PASS"
+    },
+    {
+      "sequence": "bicycle_outside",
+      "csv_line": 8,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.0032566779488814035,
+      "status": "PASS"
+    },
+    {
+      "sequence": "bottle_box",
+      "csv_line": 9,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.05461936201390838,
+      "status": "PASS"
+    },
+    {
+      "sequence": "bottle_room_noocc_1",
+      "csv_line": 10,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.026909518661689093,
+      "status": "PASS"
+    },
+    {
+      "sequence": "bottle_room_occ_1",
+      "csv_line": 11,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.010320171977280346,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box1_outside",
+      "csv_line": 12,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.01073521019104966,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_1",
+      "csv_line": 13,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.00428338396889103,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_10",
+      "csv_line": 14,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.007674722303586812,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_2",
+      "csv_line": 15,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.002683943669494937,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_3",
+      "csv_line": 16,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0005753505807401637,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_4",
+      "csv_line": 17,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.0001706194503086067,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_5",
+      "csv_line": 18,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0021723968276663895,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_6",
+      "csv_line": 19,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0023421491144521413,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_7",
+      "csv_line": 20,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.014941631958472179,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_8",
+      "csv_line": 21,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.006688640291076986,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_darkroom_noocc_9",
+      "csv_line": 22,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.005500542745786241,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_humans_room_occ_1",
+      "csv_line": 23,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.001536053488336364,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_1",
+      "csv_line": 24,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.017205789213701018,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_2",
+      "csv_line": 25,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0012522327262743716,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_3",
+      "csv_line": 26,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.005865859186751798,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_4",
+      "csv_line": 27,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0015999840646200524,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_5",
+      "csv_line": 28,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.001825703492125541,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_6",
+      "csv_line": 29,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.002447646579782692,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_7",
+      "csv_line": 30,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.00023694290504039373,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_8",
+      "csv_line": 31,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.001944520321821308,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_noocc_9",
+      "csv_line": 32,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.09189885141757106,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_occ_1",
+      "csv_line": 33,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.0012646546531045466,
+      "status": "PASS"
+    },
+    {
+      "sequence": "box_room_occ_2",
+      "csv_line": 34,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.28151820301082536,
+      "status": "PASS"
+    },
+    {
+      "sequence": "boxes_backpack_room_occ_1",
+      "csv_line": 35,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.1421997096496817,
+      "status": "PASS"
+    },
+    {
+      "sequence": "boxes_humans_room_occ_1",
+      "csv_line": 36,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.38121249266351337,
+      "status": "PASS"
+    },
+    {
+      "sequence": "boxes_office_occ_1",
+      "csv_line": 37,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0001313548167499512,
+      "status": "PASS"
+    },
+    {
+      "sequence": "boxes_room_occ_1",
+      "csv_line": 38,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.011895392041916253,
+      "status": "PASS"
+    },
+    {
+      "sequence": "cart_room_occ_1",
+      "csv_line": 39,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.1419033091031297,
+      "status": "PASS"
+    },
+    {
+      "sequence": "cartman",
+      "csv_line": 40,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.001589437885756606,
+      "status": "PASS"
+    },
+    {
+      "sequence": "cartman_robotarm_lab_noocc",
+      "csv_line": 41,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.00981348737271297,
+      "status": "PASS"
+    },
+    {
+      "sequence": "case",
+      "csv_line": 42,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.002058653802594712,
+      "status": "PASS"
+    },
+    {
+      "sequence": "container_room_noocc_1",
+      "csv_line": 43,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.000602337190441915,
+      "status": "PASS"
+    },
+    {
+      "sequence": "dog_outside",
+      "csv_line": 44,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.010183997298681646,
+      "status": "PASS"
+    },
+    {
+      "sequence": "human_entry_occ_1",
+      "csv_line": 45,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0030469714672022976,
+      "status": "PASS"
+    },
+    {
+      "sequence": "human_entry_occ_2",
+      "csv_line": 46,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.07586881533467729,
+      "status": "PASS"
+    },
+    {
+      "sequence": "humans_corridor_occ_1",
+      "csv_line": 47,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.0006683107592628801,
+      "status": "PASS"
+    },
+    {
+      "sequence": "humans_corridor_occ_2_A",
+      "csv_line": 48,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0039438165839042584,
+      "status": "PASS"
+    },
+    {
+      "sequence": "humans_corridor_occ_2_B",
+      "csv_line": 49,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.013652555288987145,
+      "status": "PASS"
+    },
+    {
+      "sequence": "humans_longcorridor_staricase_occ_1",
+      "csv_line": 50,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.062845265462078,
+      "status": "PASS"
+    },
+    {
+      "sequence": "humans_shirts_room_occ_1_A",
+      "csv_line": 51,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.009730324575413719,
+      "status": "PASS"
+    },
+    {
+      "sequence": "humans_shirts_room_occ_1_B",
+      "csv_line": 52,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.009322505901076283,
+      "status": "PASS"
+    },
+    {
+      "sequence": "jug",
+      "csv_line": 53,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.6851876311275273,
+      "status": "PASS"
+    },
+    {
+      "sequence": "mug_ankara",
+      "csv_line": 54,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.4622751354362091,
+      "status": "PASS"
+    },
+    {
+      "sequence": "mug_gs",
+      "csv_line": 55,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.15052901843676728,
+      "status": "PASS"
+    },
+    {
+      "sequence": "paperpunch",
+      "csv_line": 56,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.1998787693701815,
+      "status": "PASS"
+    },
+    {
+      "sequence": "person_outside",
+      "csv_line": 57,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.3136107687790787,
+      "status": "PASS"
+    },
+    {
+      "sequence": "robot_corridor_noocc_1",
+      "csv_line": 58,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.00553624076225141,
+      "status": "PASS"
+    },
+    {
+      "sequence": "robot_corridor_occ_1",
+      "csv_line": 59,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.6632650749167188,
+      "status": "PASS"
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_1_A",
+      "csv_line": 60,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.04957709428113164,
+      "status": "PASS"
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_1_B",
+      "csv_line": 61,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.004344496319541058,
+      "status": "PASS"
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_2",
+      "csv_line": 62,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.006228854067036593,
+      "status": "PASS"
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_3_A",
+      "csv_line": 63,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.014418678662950412,
+      "status": "PASS"
+    },
+    {
+      "sequence": "robot_human_corridor_noocc_3_B",
+      "csv_line": 64,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.010842003228881047,
+      "status": "PASS"
+    },
+    {
+      "sequence": "robot_lab_occ",
+      "csv_line": 65,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.0014563644893522466,
+      "status": "PASS"
+    },
+    {
+      "sequence": "teapot",
+      "csv_line": 66,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.01565292194987187,
+      "status": "PASS"
+    },
+    {
+      "sequence": "tennis_ball",
+      "csv_line": 67,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.016389640894706313,
+      "status": "PASS"
+    },
+    {
+      "sequence": "thermos_office_noocc_1",
+      "csv_line": 68,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.036643602586021194,
+      "status": "PASS"
+    },
+    {
+      "sequence": "thermos_office_occ_1",
+      "csv_line": 69,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.03837087269649046,
+      "status": "PASS"
+    },
+    {
+      "sequence": "toy_office_noocc_1",
+      "csv_line": 70,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.06027501615103024,
+      "status": "PASS"
+    },
+    {
+      "sequence": "toy_office_occ_1",
+      "csv_line": 71,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.07295701442019134,
+      "status": "PASS"
+    },
+    {
+      "sequence": "trashcan_room_occ_1",
+      "csv_line": 72,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.20273477187541672,
+      "status": "PASS"
+    },
+    {
+      "sequence": "trashcans_room_occ_1_A",
+      "csv_line": 73,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.4111318886323986,
+      "status": "PASS"
+    },
+    {
+      "sequence": "trashcans_room_occ_1_B",
+      "csv_line": 74,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.7026527720235218,
+      "status": "PASS"
+    },
+    {
+      "sequence": "trendNetBag_outside",
+      "csv_line": 75,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.00182554530072494,
+      "status": "PASS"
+    },
+    {
+      "sequence": "trendNet_outside",
+      "csv_line": 76,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0001390295707995648,
+      "status": "PASS"
+    },
+    {
+      "sequence": "trophy_outside",
+      "csv_line": 77,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.0016199589945493642,
+      "status": "PASS"
+    },
+    {
+      "sequence": "trophy_room_noocc_1",
+      "csv_line": 78,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.0027055320583308172,
+      "status": "PASS"
+    },
+    {
+      "sequence": "trophy_room_occ_1",
+      "csv_line": 79,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": 0.009176947852678908,
+      "status": "PASS"
+    },
+    {
+      "sequence": "two_mugs",
+      "csv_line": 80,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.11141245777846694,
+      "status": "PASS"
+    },
+    {
+      "sequence": "two_tennis_balls",
+      "csv_line": 81,
+      "checked_fields": 28,
+      "macro_all_R_delta_contribution_pp": -0.00863206023646974,
+      "status": "PASS"
+    }
+  ],
+  "source_binding_limits": [
+    "E4 analyzer and both metric copies are byte-hash bound to capture declarations.",
+    "E3/E4 stdout bytes match comparison input pins; E3 analyzer matches its capture.",
+    "Supplemental local OPE runner, crop helper and tracker sources were inspected and hashed; historical execution identity was not independently attested.",
+    "Remote plan/cases/prediction-receipt references are consistent recorded digests, not locally rehashed original files.",
+    "E3 saved metrics hash is captured only; only E4 metrics.json was directly read and rehashed."
+  ],
+  "scientific_claim_boundaries": [
+    {
+      "claim": "All 80 captured rows, source hash bindings and aggregate/segment arithmetic are consistent.",
+      "impact": "supported within local source/capture scope"
+    },
+    {
+      "claim": "Formal R decline equals all-box R decline minus filtering-loss increase.",
+      "impact": "supported as arithmetic only"
+    },
+    {
+      "claim": "Confidence-only filtering of these E4 saved boxes can reach the declared 75.6 R target.",
+      "impact": "unsupported; fixed-trajectory all-box R is 4.987331274800 pp below target"
+    },
+    {
+      "claim": "8031 crop-outside low-IoU frames identify 8031 independent initial failures or first divergences.",
+      "impact": "unsupported"
+    },
+    {
+      "claim": "All-box R demonstrates deployable P/F improvement or recovery.",
+      "impact": "unsupported"
+    },
+    {
+      "claim": "Successive own-history comparisons identify same-state module/text causality.",
+      "impact": "unsupported"
+    },
+    {
+      "claim": "All recorded remote-input hashes were re-read locally, or original runtime/checkpoint bytes are authenticated.",
+      "impact": "unsupported"
+    },
+    {
+      "claim": "This audit completes M124 VOT or full-nine validation.",
+      "impact": "unsupported"
+    }
+  ],
+  "actions_required_for_bounded_report": [],
+  "stronger_claim_requirements": [
+    "Retain explicit source/capture-only qualifiers and real_gt assurance level.",
+    "Authenticate historical execution and corresponding raw arrays/checkpoint before claiming independent runtime/raw-data attestation.",
+    "Use controlled interventions and appropriate evaluation before causal, recovery, deployable P/F, or VOT/full-nine claims."
+  ],
+  "audited_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\analyze_m124_epoch04_cdtb_saved_trajectory.py": "sha256:ef42ff7c56ed274378074eb6e480db6e0f61431a3a0d0b4cf81e111229fb4ace",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\compare_m124_cdtb_epoch03_epoch04_saved_trajectory.py": "sha256:26ff713a067dcf8aefd7099120119a54f5ddf6fd9f4ce1929abb83c5e82fc90e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_preparation_20261013.json": "sha256:47265f94d40431868a0111c219f977526edef64e12eabc64e851d1be65000ab6",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_native_20261013.py": "sha256:e2c0efe6d66ac48985b98e463f46a365d4d17c1c85beeff9d7b351ceab14d816",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_native_receipts_20261013.json": "sha256:53da8af66542cd3b1ec582cfae0d38546ddeddc30d8dd0f2077b3fc203f3ce4a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_CPU_diagnostic_original_stdout_20261013.json": "sha256:83aed7df11a31ce977703d09a8babe5cc64153e5eec851e6de70161c935b667e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch03_CDTB_CPU_diagnostic_original_stdout_20261013.json": "sha256:04fc5990f7fe6955d464a16e5a2243c2823c8e04095c7aa379b10085d35a79f9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\summary.json": "sha256:112079903384454f773478edefa64f47315e1a9d9c9ed7f303d6f808a3f888fd",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_CDTB_saved_comparison_20261013\\all80_sequence_diagnostics.csv": "sha256:a66202d097527f4ade3f3366136409287bc92570a03f130d97ff242fbe85e14f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_captured_OPE_20261013\\epochs\\epoch-04\\evaluation\\cdtb\\predictions\\metrics.json": "sha256:1b270134e1a1840cc61eb85517d88ddbcee97a30b3320d4b1752d5b26c16c4ef",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\analyze_m124_epoch03_cdtb_saved_trajectory.py": "sha256:8f6c08fc5aa4d9f0119774622e3968108c978dd7d7a5f99d7541b71c7796ef6a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\native_ope\\source_snapshots\\depthtrack_pr.py": "sha256:05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\m82_m84_development_pr\\depthtrack_pr.py": "sha256:05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "sha256:0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\region_patch_evidence.py": "sha256:85b7f245dc79dd5ed8c04b075854cbd8b0863bf5428a01c49b4e4951f44af7e1",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\lib\\train\\data\\processing_utils.py": "sha256:3f1b7a11b5559f7766e589501597bb96493f63f6a2a836557638922144c73dfe",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\run_m124_epochwise_official.py": "sha256:e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_epoch04_captured_OPE_20261013\\epochs\\epoch-04\\cdtb_track.receipt.json": "sha256:461ad7b804540b2d7f520897adfbaf06b0db006ff051772fb5fba1c9f83e901d"
+  },
+  "reference_documents": [
+    "C:\\Users\\gb\\.codex\\skills\\experiment-audit\\SKILL.md",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\local-codex-policy.md",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\reviewer-independence.md",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\experiment-integrity.md",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\review-tracing.md",
+    "C:\\Users\\gb\\.codex\\skills\\shared-references\\integration-contract.md"
+  ],
+  "received_task_sha256": "624166cf501c04645207f053cc831452f51b26452d1e603f11a56ccf7227a18c",
+  "output_validation": {
+    "reports_parse": true,
+    "evidence_line_references_in_range": true,
+    "all18_audited_input_hashes_unchanged": true,
+    "only_final_reports_and_received_task_written": true
+  }
+}
