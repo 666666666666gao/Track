@@ -1,0 +1,51 @@
+{
+  "status": "actual_M124_epoch06_training_saved72_of152",
+  "observed_at": "2026-10-13T13:50:51.162940+00:00",
+  "original_stdout_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M124_fortysecond_hourly_original_observation_stdout_20261013.json",
+  "original_stdout_sha256": "84b5bfe798eb49b4153c5408dbe8b35df42f815a74080bbcd1d628fff983116f",
+  "gap_since_previous_NN_observation_seconds": 3662.992608,
+  "completed_train_epochs": 5,
+  "completed_paired_OPE_epochs": 5,
+  "epoch06_saved_complete_sequences": 72,
+  "epoch06_last_sequence": "duck06_wild",
+  "epoch06_track_calls_saved": 98583,
+  "epoch06_AB_optimizer_steps_saved": 3070,
+  "epoch06_C_optimizer_steps_saved": 3070,
+  "total_track_calls_saved": 1197593,
+  "total_AB_optimizer_steps_saved": 37105,
+  "total_C_optimizer_steps_saved": 37105,
+  "epoch06_training_terminal_observed": false,
+  "epoch06_metrics_observed": false,
+  "suite_terminal_observed": false,
+  "VOT_M124_result_observed": false,
+  "best": {
+    "epoch": 5,
+    "score": 68.56193478053677,
+    "F_percent": [
+      64.63853285367355,
+      72.48533670739998
+    ],
+    "final_sha256": "6e8204826d8da0be054a74e4b80262c952d3ef845061a536a64f265bf68de87c",
+    "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/fit",
+    "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/evaluation",
+    "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+    "external_metric_checkpoint_selection": true
+  },
+  "consecutive_dual_declines": 0,
+  "early_stop": false,
+  "captured_files": 72,
+  "changed_capture_paths": [
+    "epochs/epoch-06/fit/sequence_log.jsonl"
+  ],
+  "published_metric_capture_strings_unchanged": true,
+  "GPU_snapshot": "0, 1890, 6\n1, 4118, 44\n",
+  "GPU_snapshot_scope": "instantaneous only",
+  "GPU_queries": 1,
+  "NN_progress_queries": 1,
+  "NN_forward_calls": 0,
+  "actual_controller_cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/m124_epochwise_process_supervisor.py /root/autodl-tmp/m124_ABC_joint_epoch20_20261011 ",
+  "next_NN_observation_not_before": "2026-10-13T14:50:51.162940+00:00",
+  "forecast_epoch06_full_paired_OPE_BJT": "2026-10-14 approximately03:30-04:30, estimate; no terminal guarantee",
+  "training_restarted": false,
+  "scope": "One admitted hourly observation at saved sequence boundary; no new formal metric, NN replay or causal claim."
+}
