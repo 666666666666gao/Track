@@ -1,0 +1,85 @@
+{
+  "status": "actual_M124_epoch05_complete_training_paired_OPE_running",
+  "observed_at": "2026-10-13T10:43:11.606399+00:00",
+  "original_stdout_sha256": "545fb00e3fc2b62ef8634ab1145ca8393feb8c283220d09e58581cf81245da28",
+  "gap_since_previous_NN_observation_seconds": 3760.233972,
+  "completed_train_epochs": 5,
+  "completed_paired_OPE_epochs": 4,
+  "epoch": 5,
+  "training_exit_code": 0,
+  "train_finished_at": "2026-10-13T08:31:00.325626+00:00",
+  "epoch_track_calls": 219802,
+  "epoch_AB_optimizer_steps": 6807,
+  "epoch_C_optimizer_steps": 6807,
+  "total_track_calls": 1099010,
+  "total_AB_optimizer_steps": 34035,
+  "total_C_optimizer_steps": 34035,
+  "training_sequences": 152,
+  "final_sha256": "6e8204826d8da0be054a74e4b80262c952d3ef845061a536a64f265bf68de87c",
+  "OPE_saved_bbox_files": {
+    "depthtrack_test": 50,
+    "cdtb": 77
+  },
+  "best": {
+    "epoch": 1,
+    "score": 68.5415903449273,
+    "F_percent": [
+      64.44964105933218,
+      72.6335396305224
+    ],
+    "final_sha256": "75aee7ac912b799f9160baadf95ccc6ff406b6b338760a239da6249bfce505db",
+    "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit",
+    "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation",
+    "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+    "external_metric_checkpoint_selection": true
+  },
+  "epoch05_metrics_observed": false,
+  "suite_terminal_observed": false,
+  "VOT_M124_result_observed": false,
+  "GPU_snapshot": "0, 1, 0\n1, 4122, 69\n",
+  "GPU_queries": 1,
+  "NN_progress_queries": 1,
+  "NN_forward_calls": 0,
+  "next_NN_observation_not_before": "2026-10-13T11:43:11.606399+00:00",
+  "forecast_paired_OPE_complete_BJT": "2026-10-13 approximately19:00-20:00, estimate",
+  "training_restarted": false,
+  "scope": "Captured receipt and metadata only, not independent checkpoint-tensor audit.",
+  "previous_OPE_saved_bbox_files": {
+    "depthtrack_test": 23,
+    "cdtb": 38
+  },
+  "embedded_files": 66,
+  "embedded_files_added": 2,
+  "embedded_files_changed": [
+    "epochs/epoch-05/evaluation/cdtb/predictions/bbox_file_count",
+    "epochs/epoch-05/evaluation/depthtrack_test/predictions/bbox_file_count"
+  ],
+  "other_62_embedded_files_exactly_unchanged": true,
+  "previous_goal_turn_classification": "VERIFIED_WAIT_ORIGINAL57429_FUNCTIONS87",
+  "actual_controller_cmdline": "/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/m124_epochwise_process_supervisor.py /root/autodl-tmp/m124_ABC_joint_epoch20_20261011 ",
+  "original_collector_status_label": "actual_M124_thirtyninth_hourly_readonly_observation",
+  "collector_label_scope": "Unique current observation label and actual timestamp; no legacy status relabeling.",
+  "embedded_files_added_names": [
+    "epochs/epoch-05/depthtrack_test_track.exit",
+    "epochs/epoch-05/depthtrack_test_track.receipt.json"
+  ],
+  "depthtrack_test_track_complete_observed": true,
+  "depthtrack_test_track_receipt": {
+    "stage": "depthtrack_test_track",
+    "command": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-B",
+      "-u",
+      "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+      "--mode",
+      "ope_track",
+      "--plan",
+      "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/evaluation/depthtrack_test/plan.json"
+    ],
+    "gpu": 0,
+    "started_at": "2026-10-13T08:31:07.785229+00:00",
+    "exit_code": 0,
+    "finished_at": "2026-10-13T10:28:24.815926+00:00"
+  },
+  "cdtb_track_terminal_observed": false
+}
