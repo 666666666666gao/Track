@@ -1,13 +1,11 @@
 # M124 当前实验状态
 
-北京时间2026-10-14 21:49实际观察：第8轮完整Train152与DepthTrack Test50/CDTB80均完成，训练和四项评价回执均为0。两F相对第7轮再次同时严格下降，连续双下降计数2，21:22按原协议正常早停；完整8轮训练/8轮双OPE，best仍第6轮。正式第8轮指标见主文档§5.533，第6轮best见§5.527，不重复成绩表。best的CDTB R/F仍未达标，整体目标未完成。
+最新实际观察：北京时间2026-10-15 06:30:43。完整8轮全Train152和8轮双OPE已正常早停，仍选择E6；已有OPE与选模限制见master§5.527/5.533，当前CDTB R/F未达标，目标ACTIVE_UNMET。
 
-同一第6轮best的完整RGBD/VOT127条、1765个anchor验证已于21:22:47启动。21:55确认best.pt与fit/final.pt实际SHA均为4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb，使用与既有OPE相同bundle/bank/binding。四分片两波使用GPU0/1；第一波原PID650915/650916实际存活，约32分钟各26/441份输出三件套代理，第二波尚未启动，最终EAO/ACC/ROB未生成。
+原E6完整VOT127/1765继续。第一波分片0为391/441份非空输出代理，原PID650915命令仍在；分片1为441/441，日志100%并评价成功、cmdline为空，但原退出回执未写。原驱动先wait分片0，再收分片1，之后才启动第二波；不能把输出代理或成功日志替代正式exit/merge。分片2/3尚未启动，官方分析/最终EAO、ACC、ROB尚未生成。
 
-已核对实际4份tracker配置、wrapper、driver/runtime及原模型进程657613/657771：M124入口严格加载第6轮A_B/C状态。manifest的旧M39/no-text文字是继承描述，原封存文件与运行源码保持；实际架构依据冻结配置/代码，详见§5.533。没有侵入式live tensor审查或最终VOT认证，没有新增NN、GPU/温度/功率查询或训练重启。
+原54312本地计时器06:30:00正常到点并已消费。本次唯一原观察exit0，raw SHA6a42bc4de981f7cb1ab1d9078b19d3d11df2292fd1fada56a5e279d9c42cf06c；无新NN/GPU/温度/功率查询、重启或源码改动。后继唯一Hidden本地计时器39132,parent29416,birth06:31:49.3364410；08:00到点后只执行一次M124_best_VOT_second_wave_compact_observer_20261015.py，无native wrapper/functions wait cell，期间不轮询进度或句柄。
 
-完整VOT粗估10月15日14:00—18:00结束，属于估计。下一次观察不早于10月15日06:30北京时间。原timer26960于21:45到点已消费；唯一新Hidden本地timer54312、parent34464、birth22:16:03.7893240，启动时身份已核验。只有独立本地计时器，无native wrapper/functions wait cell，不执行SSH/NN。到点读取原timer终态，再执行M124_best_VOT_wave_compact_observer_20261015.py一次；期间不查询NN/GPU或反复确认等待句柄。
+第一波预计07:40—08:00、整套预计18:00—20:00，均只是估计。先收原suite官方VOT与同权重九项，再新NN诊断；不以启动/输出存在或计划当目标完成。
 
-原完整Train152/no-dev、人工文字、seed2027、A+B+C联合冻结底座、相邻双F严格下降连续两轮早停、两F等权best/较早tie及最终同best VOT127/1765协议保持。外部Test/CDTB参与选择、首轮37条/RNG交接与监督边界保留。先完成全部VOT/收集和同权重九項核验，未达标则等suite终态/GPU释放后开展既有同状态诊断及必要模型优化。Goal ACTIVE_UNMET。
-
-2026-10-15 新路线已记录于master§5.534及m125_region_state/EXPERIMENT_PLAN.md：保留现有结构，先区域实例核验、再状态观察，可选第三项必须有独立收益。预定新全Train152×6固定final，不再用外部集选权重；目前只有本地源码/官方来源核对，无新模型或新运行状态。原E6 VOT继续，唯一06:30观察节点不变。
+用户确认的区域实例语义→状态观察→可选记忆价值路线、固定6pass/final6与完整匹配对照见master§5.534及../m125_region_state/EXPERIMENT_PLAN.md。当前只有源码/来源核对与计划，新模型和训练尚未实现。第三项须有独立完整收益，不重新命名凑贡献。
