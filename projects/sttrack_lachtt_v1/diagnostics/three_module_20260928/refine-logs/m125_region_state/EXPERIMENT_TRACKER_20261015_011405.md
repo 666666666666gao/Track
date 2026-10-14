@@ -1,0 +1,20 @@
+# 区域实例语义与状态观察执行表
+
+日期：2026-10-15T01:14:05.461700+08:00。详细协议见[EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md)。本表的新编号统一M125前缀，不覆盖旧FutureC/R0—R5历史。
+
+| Run ID | 目的 | 数据与预算 | 决定性指标 | 优先级 | 实际状态 |
+|---|---|---|---|---|---|
+| M124-E6-VOT | 封存现有同权重九项 | 原full127/1765 | EAO/ACC/ROB与正式收集 | MUST | RUNNING_AT_LAST_OBSERVATION：10月14日22:01；未提前查询新进度 |
+| M125-I | 源码与文献接口核对 | 本地8源码/3官方来源 | state/query/C/ROI/监督边界 | MUST | COMPLETE_SOURCE_INSPECTION_ONLY：无NN检查或新模型 |
+| M125-D | 候选与失锁短前置 | 原suite终态后独立回放 | 覆盖/排序/精修/可达性 | MUST | NOT_RUN |
+| M125-M0 | 最小真实接口检查 | 新代码冻结后 | 梯度/冻结/重载/坐标/256候选/无GT动作 | MUST | NOT_IMPLEMENTED |
+| M125-R0 | 匹配固定预算基线 | 全Train152×6/同final完整三集 | 九项主表/运行成本 | MUST | NOT_IMPLEMENTED_NOT_RUN |
+| M125-ROI | 普通ROI必要性 | 同R0初始化/6pass/三集 | 相对R0完整净收益 | MUST | NOT_IMPLEMENTED_NOT_RUN |
+| M125-R1 | 条件区域核验 | 同共同起点/6pass/三集 | 相对ROI/R0的净收益 | MUST | NOT_IMPLEMENTED_NOT_RUN |
+| M125-V | 同容量视觉控制 | 同共同起点/6pass/三集 | 文本内容独立增量 | MUST | NOT_IMPLEMENTED_NOT_RUN |
+| M125-R2 | 下一状态/观察决策 | 同共同起点/6pass/三集 | 九项/恢复/接受拒绝/成本 | CONDITIONAL_MUST | NOT_IMPLEMENTED：动作接口先锁定 |
+| M125-L | 最终文本完整干预 | 同冻结final五条件/完整三集 | 正确/泛化/冲突/同义/Empty | MUST | NOT_RUN |
+| M125-S | 同预算简单搜索控制 | 最终同权重/完整三集 | 机制相对增加观察的增量 | MUST_FOR_C2 | NOT_IMPLEMENTED |
+| M125-M | 新事件记忆价值 | 尚无新锁定协议 | 必须独立完整收益 | OPTIONAL | NOT_PLANNED_FOR_LAUNCH：保留旧FutureC负证据 |
+
+固定seed2027；所有“待运行”不是启动证明。历史外部选模和人审输入边界保留，下一原VOT观察仍为北京时间10月15日06:30。

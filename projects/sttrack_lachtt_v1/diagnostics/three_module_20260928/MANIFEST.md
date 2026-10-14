@@ -451,3 +451,9 @@ M120/M121全部原始结束记录见m120_completed、m121_completed及各ARTIFAC
 2026-10-10 R3_DEPLOYMENT_SOURCE_AUDIT/R3_CONCRETE_SOURCE_ADMISSION/R3_PAIRED_ACTUAL_LAUNCH/R3_FIRST_HOURLY_ORIGINAL_WAIT_OWNER_20261010：源审与实际新队列启动/被动小时等待分别保存，不作性能证书，详见§5.452。
 
 2026-10-10 R3_FIRST_HOUR_ACTUAL_PROGRESS/ORIGINAL_OBSERVER_STDOUT/NATIVE_RECEIPTS、FIRST_ORIGINAL_TIMER_TERMINAL、SECOND_HOURLY_ORIGINAL_WAIT_OWNER_20261010：真实首小时预检/双拟合已完成，自身历史32dev未完；原等待终态及新唯一小时等待分别保存，见§5.453。
+
+| 2026-10-15T01:14:05.461700+08:00 | /experiment-plan | refine-logs/m125_region_state/EXPERIMENT_PLAN_20261015_011405.md | implementation | 区域实例/状态观察固定预算方案；新增实验未执行 |
+| 2026-10-15T01:14:05.461700+08:00 | /experiment-plan | refine-logs/m125_region_state/EXPERIMENT_PLAN.md | implementation | 区域实例/状态观察固定预算方案；新增实验未执行 |
+| 2026-10-15T01:14:05.461700+08:00 | /experiment-plan | refine-logs/m125_region_state/EXPERIMENT_TRACKER_20261015_011405.md | implementation | 区域实例/状态观察固定预算方案；新增实验未执行 |
+| 2026-10-15T01:14:05.461700+08:00 | /experiment-plan | refine-logs/m125_region_state/EXPERIMENT_TRACKER.md | implementation | 区域实例/状态观察固定预算方案；新增实验未执行 |
+| 2026-10-15T01:14:05.461700+08:00 | /experiment-plan | refine-logs/m125_region_state/SOURCE_INTERFACE_EVIDENCE_20261015.json | implementation | 本地源码接口证据；无NN认证 |

@@ -9,3 +9,5 @@
 完整VOT粗估10月15日14:00—18:00结束，属于估计。下一次观察不早于10月15日06:30北京时间。原timer26960于21:45到点已消费；唯一新Hidden本地timer54312、parent34464、birth22:16:03.7893240，启动时身份已核验。只有独立本地计时器，无native wrapper/functions wait cell，不执行SSH/NN。到点读取原timer终态，再执行M124_best_VOT_wave_compact_observer_20261015.py一次；期间不查询NN/GPU或反复确认等待句柄。
 
 原完整Train152/no-dev、人工文字、seed2027、A+B+C联合冻结底座、相邻双F严格下降连续两轮早停、两F等权best/较早tie及最终同best VOT127/1765协议保持。外部Test/CDTB参与选择、首轮37条/RNG交接与监督边界保留。先完成全部VOT/收集和同权重九項核验，未达标则等suite终态/GPU释放后开展既有同状态诊断及必要模型优化。Goal ACTIVE_UNMET。
+
+2026-10-15 新路线已记录于master§5.534及m125_region_state/EXPERIMENT_PLAN.md：保留现有结构，先区域实例核验、再状态观察，可选第三项必须有独立收益。预定新全Train152×6固定final，不再用外部集选权重；目前只有本地源码/官方来源核对，无新模型或新运行状态。原E6 VOT继续，唯一06:30观察节点不变。

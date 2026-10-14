@@ -28873,3 +28873,13 @@ manifest的native_source保留旧“Exact M39 default wrapper and checkpoint; no
 按首波输出代理和已有两卡OPE耗时粗估，完整VOT可能于10月15日14:00—18:00结束，锚点长度与缓存差异会影响耗时，属于估计。下一观察不早于10月15日06:30，接近首波预计结束后核对原分片退出/第二波启动并更新ETA。旧timer26960已于21:45到点，唯一新独立Hidden本地timer54312（parent34464、birth22:16:03.7893240）启动时身份核验；无native wrapper/functions wait cell，无SSH/NN。到点读取原timer终态，执行已准备的M124_best_VOT_wave_compact_observer_20261015.py一次，期间不查询NN/GPU或重复确认等待句柄。
 
 下一步先完成同best全127/1765的原官方分析与三数据集收集，按原始精度比较全部目标，并审核最终权重/输入/预测链。若未达标，待整套suite终态及GPU释放，再执行既有同状态候选诊断，区分生成、语义评分、精修和错误历史推进；据实际证据决定最小模型修改后重新完整Train152与三数据集验证。完整目标持续，不将本次早停或启动VOT作为目标完成。
+
+## 5.534 区域实例语义与状态观察主线：用户确认后的源码核对与固定预算计划（2026-10-15）
+
+用户明确保留现有A+B+C，核心贡献由区域实例语义、状态与观察决策及有独立证据的记忆价值组成；优先两项，第三项不因重新命名自动成立。新计划见[EXPERIMENT_PLAN.md](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m125_region_state/EXPERIMENT_PLAN.md)，[执行表](../projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m125_region_state/EXPERIMENT_TRACKER.md)。
+
+本次只读核对8份本地版本化源码及RegionCLIP/Alpha-CLIP/LTMU官方实现，确认：C晚于框和Mamba query提交；ROI旧采样器写死768维；padding有效性不等于Depth可靠性；现有GT框不自动给出干扰实例身份监督。下一状态隔离须处理框与query配对，不能只冻结框中心。相关SHA和边界见新计划目录SOURCE_INTERFACE_EVIDENCE_20261015.json。
+
+新臂预定全Train152、seed2027、固定6pass后取最后final，不在训练中按Test/CDTB选择checkpoint。共同CurrentC warm起点、相同旧参数、重新初始化优化器，避免继承旧首轮37条/RNG不全断点；仍披露历史测试参与工程选择和人工文字来源。先R0/普通ROI/条件区域及同容量视觉控制，后R2状态观察；全部同权重完整三集九项。五臂及最终内容干预粗估702—822 GPU小时，未计R2额外搜索/结构重训，非实际运行耗时。新模型、接口和训练均尚未实现/执行，不认定创新或指标已成立。
+
+本次没有新NN/GPU/原VOT进度查询，原suite和冻结源码未改；最新真实VOT状态仍取§5.533，不把01时的计划记录当新运行观察。唯一计时器54312及10月15日06:30观察节点保持，先完成原E6 fullVOT及正式分析收集，再进入新NN诊断/实现。整体目标继续ACTIVE_UNMET。
