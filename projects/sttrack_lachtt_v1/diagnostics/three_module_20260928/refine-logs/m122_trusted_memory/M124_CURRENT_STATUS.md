@@ -1,11 +1,13 @@
 # M124 当前实验状态
 
-北京时间2026-10-14 10:46:08.625188实际只读观察：第7轮完整Train152已于10:27:40.067755结束，train.exit和训练回执均为0。本轮219802次跟踪调用、A+B/C各6807次优化；七轮累计1064次序列运行、1538614次调用及各47649次优化。final SHA-256为942de8d3404e354df76dc6d59bbf3f20810a895162b48d76e2779c0f46ffb274。
+北京时间2026-10-14 13:17:25.183813实际只读观察：第7轮完整Train152及DepthTrack Test50/CDTB80双OPE均已完成，训练及四项track/analyze退出回执为0。正式第7轮指标见主文档§5.532：两F均较第6轮下降，连续双下降计数1、未早停，训练后best仍第6轮。第7轮DepthTrack R、CDTB R/F未达标；同best全VOT尚未开始，整套suite未终态。
 
-原控制器继续运行，原双卡DepthTrack Test50/CDTB80完整OPE已有6/50和9/80个bbox文件。文件数不等于完整序列数，第7轮完整指标尚未生成。已完成7轮训练、6轮完整双OPE，训练后best仍第6轮、双下降计数0；正式指标表见主文档§5.527，本次进展见§5.531，不重复成绩。CDTB R/F仍未达标，所选best全VOT未开始，整套suite未终态。
+第8轮实际于12:45:01.438119启动，已完整保存9/152条序列，最后toydog_indoor。本轮16157次调用、A+B/C各507次更新；累计1554771次调用及各48156次更新。第8轮final/完整指标未产生。两个F若相对第7轮再度同时严格下降将触发第二次双下降早停；任一不降则清零。best按两F等权均值和较早tie选择，保持原协议。
 
-原生观察f9ca31退出0，410388字节压缩解码2816342字节，JSON SHA-256 ed6bc75141a9e1325c3c4847bbbb12ccca278a832c3d7effc25c49b5cfefb80a。90份捕获中旧85项只有第7轮sequence_log改变；新添训练终态和bbox文件计数5项。训练报告初始A+B/C状态元数据匹配第6轮末状态，固定人工输入和源码SHA不变，冻结/保存重读一致为报告声明，没有独立checkpoint张量复核。
+第7轮两个metric/plan/prediction receipt的final、bundle、评估bank、binding、50/80条和76373/101956帧相互匹配，训练完成报告和日志SHA匹配10:46原快照。训练bank和评估bank分别按既有角色核验。该结果是实际元数据及算术核查，没有独立原始PR/IoU/权重张量重放或最终VOT认证。
 
-预计约13:00得到本轮完整两项指标，较慢时可能延至14:30，均为估计。下一观察不早于2026-10-14 13:00北京时间。旧timer42808于10:45到点已消费；唯一新Hidden本地timer29756、parent26928、birth10:50:10.7481510，启动时实际身份已核验。独立本地计时器不执行SSH/NN，无native wrapper或functions wait cell。13:00到点后读取原timer终态，再执行M124_E7_OPE_observer_20261014.py一次；期间不查询NN/GPU、重复检查等待句柄、复制计时器或重启训练。
+13:00完整快照首次读取退出255，第二次传输在360448字节处截断；原失败及部分包保留。改用仅含当前指标/决策/轮次进度的小型快照后，native59160/cfc26f退出0，22985字节压缩解码81919字节，SHA-256 66f21bcf6d10c6e5a7cdec731ff3b808ea68b3d503ad62a0a5b05cf95182e122。没有变更SSH代理、重启训练或新增NN。GPU查询0。
 
-第6轮CDTB原始输入已归档并逐行核查，见§5.530及“实验诊断/M124E6_CDTB原始输入_20261014”；该核查没有产生新的指标。完整Train152/no-dev、人工文本、seed2027、A+B+C联合与STTrack/CLIP冻结、max20、逐轮双OPE、相邻双F严格下降连续两轮早停、等权F best/较早tie及最终同best完整VOT127/1765保持。外部指标选权重、首轮37条/RNG、detach/no-BPTT和C当前IoU边界保留。全suite及best全VOT终态/GPU释放后再执行必要同状态候选诊断，Goal ACTIVE_UNMET。
+第8轮完整结果预计21:30—22:30，属于估计。下一观察不早于2026-10-14 21:45北京时间；原timer29756于13:00到点已消费，唯一新Hidden本地timer26960、parent37832、birth13:31:18.3232490，启动时身份已核验。独立本地计时器无SSH/NN，无native wrapper/functions wait cell。到点后读取原timer终态并执行M124_E8_paired_compact_observer_20261014.py一次；期间不查询NN/GPU或重复确认等待句柄。
+
+完整Train152/no-dev、人工类别/属性、seed2027、A+B+C联合与冻结底座、max20、逐轮双OPE、相邻双F严格下降连续两轮早停、等权F best/较早tie及最终同best VOT127/1765保持。外部Test/CDTB参与选择、首轮37条/RNG交接、detach/no-BPTT和C当前IoU边界保留。整套suite及同best全VOT终态/GPU释放后再执行必要候选诊断，完整目标ACTIVE_UNMET。
