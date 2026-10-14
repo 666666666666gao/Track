@@ -1,0 +1,140 @@
+{
+  "status": "actual_selected_E6_VOT_scope_and_runtime_binding",
+  "observed_scope_at": "2026-10-14T13:55:08.515334+00:00",
+  "observed_runtime_at": "2026-10-14T14:01:30.501411+00:00",
+  "actual_weight_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+  "sequences": 127,
+  "anchors": 1765,
+  "total_estimated_frames": 1327004,
+  "shards": [
+    {
+      "index": 0,
+      "gpu": 0,
+      "anchor_count": 441,
+      "nonempty_output_triplet_proxy": 26,
+      "launch": {
+        "index": 0,
+        "gpu": 0,
+        "pid": 650915,
+        "started": 1791984167.2559216,
+        "args": [
+          "/root/miniconda3/envs/mplt/bin/python",
+          "-m",
+          "vot",
+          "evaluate",
+          "--workspace",
+          ".",
+          "sttrack_m124_epochwise_joint"
+        ]
+      },
+      "elapsed_seconds": 1941.2339911460876,
+      "cmdline": "/root/miniconda3/envs/mplt/bin/python -m vot evaluate --workspace . sttrack_m124_epochwise_joint ",
+      "actual_CUDA_VISIBLE_DEVICES": [
+        "CUDA_VISIBLE_DEVICES=0"
+      ]
+    },
+    {
+      "index": 1,
+      "gpu": 1,
+      "anchor_count": 441,
+      "nonempty_output_triplet_proxy": 26,
+      "launch": {
+        "index": 1,
+        "gpu": 1,
+        "pid": 650916,
+        "started": 1791984167.257665,
+        "args": [
+          "/root/miniconda3/envs/mplt/bin/python",
+          "-m",
+          "vot",
+          "evaluate",
+          "--workspace",
+          ".",
+          "sttrack_m124_epochwise_joint"
+        ]
+      },
+      "elapsed_seconds": 1941.241714000702,
+      "cmdline": "/root/miniconda3/envs/mplt/bin/python -m vot evaluate --workspace . sttrack_m124_epochwise_joint ",
+      "actual_CUDA_VISIBLE_DEVICES": [
+        "CUDA_VISIBLE_DEVICES=1"
+      ]
+    },
+    {
+      "index": 2,
+      "gpu": 0,
+      "anchor_count": 441,
+      "nonempty_output_triplet_proxy": 0
+    },
+    {
+      "index": 3,
+      "gpu": 1,
+      "anchor_count": 442,
+      "nonempty_output_triplet_proxy": 0
+    }
+  ],
+  "owned_model_processes": [
+    {
+      "pid": 650915,
+      "ppid": 650914,
+      "command": "/root/miniconda3/envs/mplt/bin/python -m vot evaluate --workspace . sttrack_m124_epochwise_joint"
+    },
+    {
+      "pid": 650916,
+      "ppid": 650914,
+      "command": "/root/miniconda3/envs/mplt/bin/python -m vot evaluate --workspace . sttrack_m124_epochwise_joint"
+    },
+    {
+      "pid": 657613,
+      "ppid": 650915,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -m selected_m124_epochwise_vot"
+    },
+    {
+      "pid": 657771,
+      "ppid": 650916,
+      "command": "/root/autodl-tmp/envs/sttrack/bin/python -m selected_m124_epochwise_vot"
+    }
+  ],
+  "frozen_runtime_files": {
+    "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/selected_m124_epochwise_vot.py": {
+      "sha256": "d7b5a1efc9b7869ee7654e70394d94e00b023c850e5e24767ccb2b3607a240cb",
+      "bytes": 319,
+      "text": "import sys\nsys.path[:0]=['/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code','/home/SUTrack_RGBD_L/projects/sttrack_lachtt_v1/diagnostics/three_module_20260928']\nfrom run_m124_epochwise_official import vot_track\nvot_track('/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/plan.json')\n"
+    },
+    "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/run/shard-00/trackers.ini": {
+      "sha256": "abe8e54e76a58b1f868bae73ad581b24392a7855febefe56cbe15fc82661748c",
+      "bytes": 514,
+      "text": "[sttrack_m124_epochwise_joint]\nlabel = M124 A+B+C full Train152, selected by two OPE metrics\nprotocol = traxpython\ncommand = selected_m124_epochwise_vot\npaths = /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot\npython = /root/autodl-tmp/envs/sttrack/bin/python\nenv_CUDA_VISIBLE_DEVICES = 0\nenv_PYTHONPATH = /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot\nenv_TOKENIZERS_PARALLELISM = false\nenv_PYTHONDONTWRITEBYTECODE = 1\ntimeout = 600\nrestart = false\n"
+    },
+    "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/run/shard-01/trackers.ini": {
+      "sha256": "069197fc678bfed8d680da75ef53e82d6abf665fa71e6c1df68b9f4d370a969d",
+      "bytes": 514,
+      "text": "[sttrack_m124_epochwise_joint]\nlabel = M124 A+B+C full Train152, selected by two OPE metrics\nprotocol = traxpython\ncommand = selected_m124_epochwise_vot\npaths = /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot\npython = /root/autodl-tmp/envs/sttrack/bin/python\nenv_CUDA_VISIBLE_DEVICES = 1\nenv_PYTHONPATH = /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot\nenv_TOKENIZERS_PARALLELISM = false\nenv_PYTHONDONTWRITEBYTECODE = 1\ntimeout = 600\nrestart = false\n"
+    },
+    "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/run/shard-02/trackers.ini": {
+      "sha256": "abe8e54e76a58b1f868bae73ad581b24392a7855febefe56cbe15fc82661748c",
+      "bytes": 514,
+      "text": "[sttrack_m124_epochwise_joint]\nlabel = M124 A+B+C full Train152, selected by two OPE metrics\nprotocol = traxpython\ncommand = selected_m124_epochwise_vot\npaths = /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot\npython = /root/autodl-tmp/envs/sttrack/bin/python\nenv_CUDA_VISIBLE_DEVICES = 0\nenv_PYTHONPATH = /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot\nenv_TOKENIZERS_PARALLELISM = false\nenv_PYTHONDONTWRITEBYTECODE = 1\ntimeout = 600\nrestart = false\n"
+    },
+    "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/run/shard-03/trackers.ini": {
+      "sha256": "069197fc678bfed8d680da75ef53e82d6abf665fa71e6c1df68b9f4d370a969d",
+      "bytes": 514,
+      "text": "[sttrack_m124_epochwise_joint]\nlabel = M124 A+B+C full Train152, selected by two OPE metrics\nprotocol = traxpython\ncommand = selected_m124_epochwise_vot\npaths = /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot\npython = /root/autodl-tmp/envs/sttrack/bin/python\nenv_CUDA_VISIBLE_DEVICES = 1\nenv_PYTHONPATH = /root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot\nenv_TOKENIZERS_PARALLELISM = false\nenv_PYTHONDONTWRITEBYTECODE = 1\ntimeout = 600\nrestart = false\n"
+    },
+    "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py": {
+      "sha256": "e8ef46a5c1f1e1debecfe1c0b315ba7c766f49907982c4cc20360a0bcedf916a",
+      "bytes": 6281,
+      "text": "\"\"\"Complete OPE predictions/locked metrics and TraX multi-start entry with no inference GT.\"\"\"\nimport argparse,importlib.util,json,time\nfrom pathlib import Path\nimport numpy as np\nfrom m124_epochwise_official_runtime import checked_plan,OfficialDenseTracker\nfrom bind_m122_official_initializations import sha\n\n\ndef write(path,value):Path(path).write_text(json.dumps(value,indent=2,allow_nan=False)+'\\n')\n\n\ndef ope_track(path):\n    plan,bundle=checked_plan(path);assert plan['dataset'] in ['depthtrack_test','cdtb']\n    assert sha(plan['cases_path'])==plan['cases_sha256'];cases=json.loads(Path(plan['cases_path']).read_text())\n    assert len(cases)=={'depthtrack_test':50,'cdtb':80}[plan['dataset']]\n    assert sum(c['frames'] for c in cases)=={'depthtrack_test':76373,'cdtb':101956}[plan['dataset']]\n    actor=OfficialDenseTracker(plan,bundle);frozen=actor.actor.frozen_digest()\n    from train_template_write_C import state_digest\n    C_before=state_digest(actor.trusted.writer); AB_before=state_digest(actor.actor.decoder)\n    from lib.train.dataset.depth_utils import get_rgbd_frame\n    output=Path(plan['output']);output.mkdir(exist_ok=False);started=time.time();receipts=[]\n    for case in cases:\n        folder=Path(plan['dataset_root'])/case['sequence'];boxes=[case['init_bbox']];scores=[1.]\n        for frame in range(case['frames']):\n            stem='%08d'%(frame+1);rgb=folder/'color'/(stem+'.jpg');depth=folder/'depth'/(stem+'.png')\n            image=get_rgbd_frame(str(rgb),str(depth),dtype='rgbcolormap',depth_clip=True)\n            if frame==0:actor.initialize(image,case['init_bbox'],rgb)\n            else:\n                prediction=actor.track(image);boxes.append(prediction['target_bbox']);scores.append(prediction['best_score'])\n        boxes=np.asarray(boxes);scores=np.asarray(scores)\n        assert boxes.shape==(case['frames'],4) and np.isfinite(boxes).all() and np.isfinite(scores).all() and (boxes[:,2:]>0).all()\n        box_file=output/(case['sequence']+'.txt');score_file=output/(case['sequence']+'_all_scores.txt')\n        np.savetxt(box_file,boxes,fmt='%.6f',delimiter=',');np.savetxt(score_file,scores,fmt='%.6f')\n        assert np.abs(np.loadtxt(box_file,delimiter=',').reshape(-1,4)-boxes).max()<=5.01e-7\n        assert np.abs(np.loadtxt(score_file).reshape(-1)-scores).max()<=5.01e-7\n        record=dict(sequence=case['sequence'],frames=case['frames'],bbox_sha256=sha(box_file),confidence_sha256=sha(score_file),elapsed_seconds=time.time()-started)\n        receipts.append(record);print(json.dumps(record),flush=True)\n    assert actor.actor.frozen_digest()==frozen and state_digest(actor.trusted.writer)==C_before\n    assert state_digest(actor.actor.decoder)==AB_before;checked_plan(path)\n    write(output/'receipt.json',dict(status='complete_M122_official_OPE_predictions',plan_sha256=sha(path),final_sha256=bundle['final_sha256'],\n        bank_sha256=plan['bank_sha256'],bundle_sha256=plan['bundle_sha256'],sequences=receipts,frames=sum(r['frames'] for r in receipts),\n        subsequent_GT_opened=False,optimizer_steps=0,text_updated_online=False,frozen_before_after_exact=True,elapsed_seconds=time.time()-started))\n\n\ndef ope_analyze(path):\n    plan,bundle=checked_plan(path);output=Path(plan['output']);receipt=json.loads((output/'receipt.json').read_text())\n    assert receipt['status']=='complete_M122_official_OPE_predictions' and receipt['plan_sha256']==sha(path)\n    assert receipt['final_sha256']==bundle['final_sha256'] and receipt['bank_sha256']==plan['bank_sha256']\n    assert sha(plan['cases_path'])==plan['cases_sha256'];cases=json.loads(Path(plan['cases_path']).read_text())\n    assert [r['sequence'] for r in receipt['sequences']]==[r['sequence'] for r in cases]\n    for case,row in zip(cases,receipt['sequences']):\n        assert case['frames']==row['frames']\n        assert sha(output/(case['sequence']+'.txt'))==row['bbox_sha256'] and sha(output/(case['sequence']+'_all_scores.txt'))==row['confidence_sha256']\n        # Current/future evaluation annotations are opened only after all predictions are sealed.\n        assert sha(Path(plan['dataset_root'])/case['sequence']/'groundtruth.txt')==case['gt_sha256']\n    assert sha(plan['metric_source'])==plan['metric_source_sha256']=='05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc'\n    spec=importlib.util.spec_from_file_location('locked_M122_OPE_metric',plan['metric_source']);metric=importlib.util.module_from_spec(spec);spec.loader.exec_module(metric)\n    values=metric.evaluate_depthtrack_results(plan['dataset_root'],output,resolution=100,sequence_names=[c['sequence'] for c in cases])\n    assert values['sequences']==len(cases) and values['frames']==receipt['frames']\n    write(output/'metrics.json',dict(status='complete',metrics=values,final_sha256=bundle['final_sha256'],bundle_sha256=plan['bundle_sha256'],\n        plan_sha256=sha(path),receipt_sha256=sha(output/'receipt.json'),metric_source_sha256=plan['metric_source_sha256']))\n    print(json.dumps(values,indent=2),flush=True)\n\n\ndef vot_track(path):\n    plan,bundle=checked_plan(path);actor=OfficialDenseTracker(plan,bundle)\n    bridge_spec=importlib.util.spec_from_file_location('M122_locked_vot_bridge',bundle['vot_bridge_path'])\n    vot=importlib.util.module_from_spec(bridge_spec);bridge_spec.loader.exec_module(vot)\n    from lib.train.dataset.depth_utils import get_rgbd_frame\n    handle=vot.VOT('rectangle',channels='rgbd');bbox=list(handle.region());files=handle.frame()\n    assert isinstance(files,list) and len(files)==2\n    image=get_rgbd_frame(files[0],files[1],dtype='rgbcolormap',depth_clip=True);actor.initialize(image,bbox,files[0])\n    while True:\n        files=handle.frame()\n        if files is None:break\n        assert isinstance(files,list) and len(files)==2\n        image=get_rgbd_frame(files[0],files[1],dtype='rgbcolormap',depth_clip=True);out=actor.track(image)\n        handle.report(vot.Rectangle(*out['target_bbox']),out['best_score'])\n\n\nif __name__=='__main__':\n    parser=argparse.ArgumentParser();parser.add_argument('--plan',type=Path,required=True)\n    parser.add_argument('--mode',choices=['ope_track','ope_analyze','vot_track'],required=True);args=parser.parse_args()\n    {'ope_track':ope_track,'ope_analyze':ope_analyze,'vot_track':vot_track}[args.mode](args.plan)\n"
+    },
+    "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/m124_epochwise_official_runtime.py": {
+      "sha256": "60de3f27538c76bcba1178d5b24f9064c587bda9ba564a60aae179cbcc023e48",
+      "bytes": 4419,
+      "text": "\"\"\"One joint-trained A+B+C final for all official datasets.\"\"\"\nimport json\nfrom pathlib import Path\n\nfrom bind_m122_official_initializations import sha, initialization_key\nfrom m122_official_runtime import checked_plan as checked_base_plan\n\n\ndef checked_plan(path):\n    plan = json.loads(Path(path).read_text())\n    base_plan, base = checked_base_plan(plan['base_plan_path'])\n    assert sha(plan['base_plan_path']) == plan['base_plan_sha256']\n    assert plan['dataset'] == base_plan['dataset']\n    assert sha(plan['bundle_path']) == plan['bundle_sha256']\n    bundle = json.loads(Path(plan['bundle_path']).read_text())\n    assert bundle['schema'] == 'M124_epochwise_Train152_official_v1'\n    assert bundle['base_final_sha256'] == base['final_sha256']\n    for name, digest in bundle['source_sha256'].items():\n        assert sha(name) == digest, name\n    assert sha(bundle['final_path']) == bundle['final_sha256']\n    assert sha(bundle['training_result_path']) == bundle['training_result_sha256']\n    trained = json.loads(Path(bundle['training_result_path']).read_text())\n    assert trained['status'] == 'complete_M124_joint_Train152_epoch'\n    assert trained['seed'] == 2027 and 1 <= trained['epochs'] <= 20\n    assert trained['training_sequences'] == 152 and trained['sequence_runs'] == trained['epochs'] * 152\n    assert trained['track_calls'] == trained['epochs'] * 219802 and trained['parameters'] == 450888\n    assert trained['optimizer_steps'] > 0 and trained['C_optimizer_steps'] > 0\n    assert trained['no_development_split'] and trained['no_cached_feature_fit']\n    assert trained['frozen_before_after_exact'] and trained['final_state_roundtrip_exact']\n    assert trained['final_sha256'] == bundle['final_sha256']\n    assert trained['external_metric_checkpoint_selection']\n    assert trained['no_external_test_cdtb_vot_gradient_training']\n    assert trained['Test50_CDTB80_used_for_checkpoint_selection']\n    assert bundle['C_arm'] == 'current' and bundle['C_threshold'] == .5\n    for key in ['bank_path', 'bank_sha256', 'binding_path', 'binding_sha256']:\n        assert plan[key] == base_plan[key], key\n    if plan['dataset'] != 'vot':\n        for key in ['cases_path', 'cases_sha256', 'dataset_root', 'metric_source', 'metric_source_sha256']:\n            assert plan[key] == base_plan[key], key\n    bundle['base_bundle'] = base\n    return plan, bundle\n\n\nclass OfficialDenseTracker:\n    def __init__(self, plan, bundle):\n        import torch\n        from dense_target_decoder import DenseTargetDecoder\n        from full_dense_tracker import FullDenseTracker\n        from template_write_C import TemplateWriteC\n        from trusted_template_tracker import TrustedTemplateTracker\n        base = bundle['base_bundle']\n        bank = torch.load(plan['bank_path'], map_location='cpu')\n        assert bank['format'] == 'M122_human_official_initialization_v1' and bank['human_confirmed']\n        assert bank['binding_sha256'] == plan['binding_sha256'] and bank['encoder_sha256'] == base['clip_weight_sha256']\n        assert len(bank['keys']) == len(set(bank['keys'])) == 1895\n        assert bank['tokens'].shape == (1895, 5, 768) and bank['mask'].shape == (1895, 5)\n        assert bank['mask'].dtype == torch.bool and bool(bank['mask'][:, 0].all())\n        assert bool(torch.isfinite(bank['tokens']).all()) and bool(torch.isfinite(bank['empty']).all())\n        self.dataset = plan['dataset']\n        self.indices = {key: index for index, key in enumerate(bank['keys'])}\n        weights = torch.load(bundle['final_path'], map_location='cpu')\n        model = DenseTargetDecoder().cuda().eval().requires_grad_(False)\n        model.load_state_dict(weights['A_B'], strict=True)\n        writer = TemplateWriteC().cuda().eval().requires_grad_(False)\n        writer.load_state_dict(weights['C'], strict=True)\n        for parameter in writer.parameters():\n            parameter.requires_grad_(False)\n        self.actor = FullDenseTracker(Path(base['repository']), Path(base['native_checkpoint_path']),\n                                      Path(base['clip_weight_path']), bank, model)\n        self.trusted = TrustedTemplateTracker(self.actor, writer, 'current')\n\n    def initialize(self, image, bbox, rgb_path):\n        key = self.dataset + ':' + initialization_key(sha(rgb_path), bbox)\n        self.trusted.initialize(image, list(bbox), self.indices[key])\n\n    def track(self, image):\n        return self.trusted.track(image)\n"
+    }
+  },
+  "manifest_native_source": "Exact M39 default wrapper and checkpoint; no experimental head or text",
+  "description_inherited": true,
+  "live_source_changed": false,
+  "final_VOT_metrics_available": false,
+  "NN_calls": 0,
+  "GPU_queries": 0
+}

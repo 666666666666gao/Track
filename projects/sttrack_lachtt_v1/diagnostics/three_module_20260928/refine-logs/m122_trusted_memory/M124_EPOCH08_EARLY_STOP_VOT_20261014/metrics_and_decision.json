@@ -1,0 +1,60 @@
+{
+  "status": "actual_E8_full_paired_and_early_stop_decision_checked",
+  "observed_at": "2026-10-14T13:49:19.640002+00:00",
+  "final_sha256": "914cb2c229b68f57421c93532ae203cd5747c599c8d4de653dd2d08369de4bac",
+  "metrics": {
+    "depthtrack_test": {
+      "precision": 0.665300918377949,
+      "recall": 0.6162451508055021,
+      "f_score": 0.6398341419564982,
+      "precision_percent": 66.5300918377949,
+      "recall_percent": 61.62451508055021,
+      "f_score_percent": 63.98341419564982,
+      "threshold": 0.011094,
+      "sequences": 50,
+      "frames": 76373
+    },
+    "cdtb": {
+      "precision": 0.7481946248499982,
+      "recall": 0.6680956809081878,
+      "f_score": 0.7058801367328593,
+      "precision_percent": 74.81946248499982,
+      "recall_percent": 66.80956809081879,
+      "f_score_percent": 70.58801367328593,
+      "threshold": 0.227551,
+      "sequences": 80,
+      "frames": 101956
+    }
+  },
+  "decision": {
+    "dual_decline": true,
+    "consecutive_dual_declines": 2,
+    "stop": true,
+    "score": 67.28571393446788,
+    "replace_best": false
+  },
+  "best": {
+    "epoch": 6,
+    "score": 69.92320836681976,
+    "F_percent": [
+      67.81154649726012,
+      72.0348702363794
+    ],
+    "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+    "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/fit",
+    "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation",
+    "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+    "external_metric_checkpoint_selection": true
+  },
+  "complete_train_epochs": 8,
+  "complete_paired_OPE_epochs": 8,
+  "cumulative_track_calls": 1758416,
+  "cumulative_AB_C_updates": 54456,
+  "train_finished_at": "2026-10-14T11:07:15.106815+00:00",
+  "early_stop_at": "2026-10-14T13:22:41.096057+00:00",
+  "VOT_started_at": "2026-10-14T13:22:47.050895+00:00",
+  "selected_VOT_final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+  "NN_calls": 0,
+  "GPU_queries": 0,
+  "independent_raw_replay": false
+}
