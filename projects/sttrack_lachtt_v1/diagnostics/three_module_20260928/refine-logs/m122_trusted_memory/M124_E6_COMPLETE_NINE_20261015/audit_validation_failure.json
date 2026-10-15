@@ -1,0 +1,31 @@
+{
+  "stage": "first final artifact validation",
+  "exit_code": 1,
+  "error": "AssertionError: trace response bytes did not equal report bytes",
+  "report_sha256": "41107bf47784e0aa3633c98d4b6e17ba19fa82c6f9183c6534b021b21550501a",
+  "trace_sha256": "6886825fe11f9f297cd0d5cfa2504cbaa2fcfeb7d08aeb8a141197a52c7edd81",
+  "report_crlf": 0,
+  "trace_crlf": 101,
+  "text_equal_after_universal_newlines": true,
+  "cause": "Windows text-mode newline translation in the auditor trace writer",
+  "correction": "Write the response trace as an exact byte copy of the report",
+  "experiment_inputs_modified": false,
+  "original_output_hashes": {
+    "generated_at": "2026-10-15T10:50:59.633425+00:00",
+    "hashes": {
+      "EXPERIMENT_AUDIT.md": "sha256:41107bf47784e0aa3633c98d4b6e17ba19fa82c6f9183c6534b021b21550501a",
+      "deterministic_checks.json": "sha256:5b5d69b4e26f698a52952ca0dde00121729335b3e6eb01c0e60f112185674370",
+      "audited_input_hashes.json": "sha256:eb02c8577a60968c624e9e22d5feb824bf6badef9610a832da5fe85e352b3b15",
+      "captured_file_line_counts.json": "sha256:ccf69d518fd3e538ff1a37f6aa6cb9007eb975d8c7af8dcaf7e4903b596910e7",
+      "verify_captured_evidence.py": "sha256:d7e69353be14eb43a9476adbc0af8590d66384a059711cd9dcb7f23d159bb6ad",
+      "write_audit_record.py": "sha256:a8f1e0a0fc047d18939b412e328e35f2cca14599e1a4c0a3412a46541203cc66",
+      "trace/001-experiment-audit.meta.json": "sha256:962c84c9f1f3c54103e49abe87fca33c3fc6678264493b2d8ce0f80df75f8605",
+      "trace/001-experiment-audit.request.json": "sha256:c0bcd025583134442bd31fa874f7eb60132159e450588f20b00b79ecacb16941",
+      "trace/001-experiment-audit.response.md": "sha256:6886825fe11f9f297cd0d5cfa2504cbaa2fcfeb7d08aeb8a141197a52c7edd81",
+      "trace/events.jsonl": "sha256:3031b754761e30d8f997f2a34fca5b0950dbf99ac6a7f8a04369d37374326b84",
+      "trace/run.meta.json": "sha256:8949a37797389c5cfe2740e4031d1d929f7206fe109c8fb8a7acd5df88202d49",
+      "EXPERIMENT_AUDIT.json": "sha256:304cbe5a9c876c2725661bd4af9d0a0a6e9e14278e9439427369f4f51684ea8a"
+    },
+    "scope": "Final reports, supporting audit evidence and local forensic trace. This manifest does not hash itself."
+  }
+}

@@ -1,0 +1,1109 @@
+{
+  "status": "complete_M124_epochwise_training_best_and_full_VOT",
+  "epochs_completed": 8,
+  "maximum_epochs": 20,
+  "early_stopped": true,
+  "best": {
+    "epoch": 6,
+    "score": 69.92320836681976,
+    "F_percent": [
+      67.81154649726012,
+      72.0348702363794
+    ],
+    "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+    "fit": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/fit",
+    "evaluation": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation",
+    "criterion": "equal mean of DepthTrack Test and CDTB F; earliest epoch on ties",
+    "external_metric_checkpoint_selection": true
+  },
+  "stages": [
+    {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/handoff/resume.pt",
+        "--epoch",
+        "1"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-11T16:15:53.605730+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T21:08:08.490026+00:00"
+    },
+    {
+      "stage": "prepare_ope",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-11T21:08:08.491306+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T21:08:16.402545+00:00"
+    },
+    {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-11T21:08:16.403685+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T23:03:48.861274+00:00"
+    },
+    {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-11T21:08:16.404247+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T23:22:30.991207+00:00"
+    },
+    {
+      "stage": "depthtrack_test_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-11T23:22:30.993114+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T23:22:35.694468+00:00"
+    },
+    {
+      "stage": "cdtb_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/evaluation/cdtb/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-11T23:22:35.696747+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T23:22:43.288845+00:00"
+    },
+    {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-02/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-01/fit/latest.pt",
+        "--epoch",
+        "2"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-11T23:22:43.303123+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T05:58:41.861472+00:00"
+    },
+    {
+      "stage": "prepare_ope",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-02/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-02/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T05:58:41.868438+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T05:58:50.614522+00:00"
+    },
+    {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-02/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-12T05:58:50.616810+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T07:56:20.115849+00:00"
+    },
+    {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-02/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-12T05:58:50.617492+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T08:16:16.164252+00:00"
+    },
+    {
+      "stage": "depthtrack_test_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-02/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T08:16:16.165381+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T08:16:20.929954+00:00"
+    },
+    {
+      "stage": "cdtb_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-02/evaluation/cdtb/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T08:16:20.931989+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T08:16:28.322362+00:00"
+    },
+    {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-03/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-02/fit/latest.pt",
+        "--epoch",
+        "3"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T08:16:28.326154+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T14:57:21.345767+00:00"
+    },
+    {
+      "stage": "prepare_ope",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-03/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-03/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T14:57:21.355175+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T14:57:28.959788+00:00"
+    },
+    {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-03/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-12T14:57:28.962067+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T16:54:00.227002+00:00"
+    },
+    {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-03/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-12T14:57:28.962853+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T17:14:00.025083+00:00"
+    },
+    {
+      "stage": "depthtrack_test_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-03/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T17:14:00.026286+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T17:14:05.033585+00:00"
+    },
+    {
+      "stage": "cdtb_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-03/evaluation/cdtb/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T17:14:05.035643+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T17:14:12.696347+00:00"
+    },
+    {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-03/fit/latest.pt",
+        "--epoch",
+        "4"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T17:14:12.700763+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T23:48:25.352931+00:00"
+    },
+    {
+      "stage": "prepare_ope",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-12T23:48:25.364630+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-12T23:48:32.722434+00:00"
+    },
+    {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-12T23:48:32.724594+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T01:44:08.157944+00:00"
+    },
+    {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-12T23:48:32.725396+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T02:04:25.864013+00:00"
+    },
+    {
+      "stage": "depthtrack_test_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T02:04:25.865598+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T02:04:30.582397+00:00"
+    },
+    {
+      "stage": "cdtb_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/evaluation/cdtb/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T02:04:30.584476+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T02:04:37.897919+00:00"
+    },
+    {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-04/fit/latest.pt",
+        "--epoch",
+        "5"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T02:04:37.902228+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T08:31:00.325626+00:00"
+    },
+    {
+      "stage": "prepare_ope",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T08:31:00.340213+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T08:31:07.783025+00:00"
+    },
+    {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-13T08:31:07.785229+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T10:28:24.815926+00:00"
+    },
+    {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-13T08:31:07.786053+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T10:46:32.946971+00:00"
+    },
+    {
+      "stage": "depthtrack_test_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T10:46:32.948203+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T10:46:37.627128+00:00"
+    },
+    {
+      "stage": "cdtb_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/evaluation/cdtb/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T10:46:37.629235+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T10:46:45.050629+00:00"
+    },
+    {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-05/fit/latest.pt",
+        "--epoch",
+        "6"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T10:46:45.066681+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T17:33:09.752948+00:00"
+    },
+    {
+      "stage": "prepare_ope",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T17:33:09.762095+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T17:33:17.837698+00:00"
+    },
+    {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-13T17:33:17.839151+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T19:32:09.191964+00:00"
+    },
+    {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-13T17:33:17.839733+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T19:52:47.058971+00:00"
+    },
+    {
+      "stage": "depthtrack_test_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T19:52:47.060047+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T19:52:51.815709+00:00"
+    },
+    {
+      "stage": "cdtb_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/cdtb/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T19:52:51.817818+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-13T19:52:59.248930+00:00"
+    },
+    {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-07/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/fit/latest.pt",
+        "--epoch",
+        "7"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-13T19:52:59.258036+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T02:27:40.067755+00:00"
+    },
+    {
+      "stage": "prepare_ope",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-07/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-07/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T02:27:40.086747+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T02:27:47.736388+00:00"
+    },
+    {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-07/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-14T02:27:47.737158+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T04:24:27.127285+00:00"
+    },
+    {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-07/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-14T02:27:47.737429+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T04:44:49.596958+00:00"
+    },
+    {
+      "stage": "depthtrack_test_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-07/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T04:44:49.598116+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T04:44:54.227633+00:00"
+    },
+    {
+      "stage": "cdtb_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-07/evaluation/cdtb/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T04:44:54.229690+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T04:45:01.433167+00:00"
+    },
+    {
+      "stage": "train",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/train_m124_joint_epoch.py",
+        "--spec",
+        "/root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json",
+        "--repository",
+        "/root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1",
+        "--checkpoint",
+        "/root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar",
+        "--clip-weight",
+        "/root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt",
+        "--bank",
+        "/root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt",
+        "--labels",
+        "/home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json",
+        "--warm-final",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt",
+        "--warm-result",
+        "/root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-08/fit",
+        "--resume",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-07/fit/latest.pt",
+        "--epoch",
+        "8"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T04:45:01.438119+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T11:07:15.106815+00:00"
+    },
+    {
+      "stage": "prepare_ope",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-08/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-08/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T11:07:15.129805+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T11:07:22.585693+00:00"
+    },
+    {
+      "stage": "depthtrack_test_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-08/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": 0,
+      "started_at": "2026-10-14T11:07:22.587952+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T13:04:30.212349+00:00"
+    },
+    {
+      "stage": "cdtb_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_track",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-08/evaluation/cdtb/plan.json"
+      ],
+      "gpu": 1,
+      "started_at": "2026-10-14T11:07:22.588750+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T13:22:29.073855+00:00"
+    },
+    {
+      "stage": "depthtrack_test_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-08/evaluation/depthtrack_test/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T13:22:29.075079+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T13:22:33.736591+00:00"
+    },
+    {
+      "stage": "cdtb_analyze",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m124_epochwise_official.py",
+        "--mode",
+        "ope_analyze",
+        "--plan",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-08/evaluation/cdtb/plan.json"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T13:22:33.738664+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T13:22:41.091684+00:00"
+    },
+    {
+      "stage": "prepare_best_vot",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/prepare_m124_epochwise_evaluation.py",
+        "--training",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/fit",
+        "--base-evaluation",
+        "/root/autodl-tmp/sttrack_m122_official_evaluation_20261007/precision1",
+        "--source-gate",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/gate.json",
+        "--output",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation",
+        "--vot-only"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T13:22:41.104847+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-14T13:22:47.049469+00:00"
+    },
+    {
+      "stage": "best_vot_track",
+      "command": [
+        "/root/autodl-tmp/envs/sttrack/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/run_m123_joint_vot_shards.py",
+        "--root",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/run"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-14T13:22:47.050895+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-15T10:12:54.172154+00:00"
+    },
+    {
+      "stage": "best_vot_official_analysis",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "-m",
+        "vot",
+        "analysis",
+        "--workspace",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/run/master",
+        "--format",
+        "json",
+        "--name",
+        "ABC_joint_epoch06_full127",
+        "sttrack_m124_epochwise_joint"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-15T10:12:54.175585+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-15T10:14:36.067539+00:00"
+    },
+    {
+      "stage": "best_vot_seal",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/analyze_m124_epochwise_vot.py",
+        "--root",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-15T10:14:36.069057+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-15T10:15:22.245943+00:00"
+    },
+    {
+      "stage": "collect_best",
+      "command": [
+        "/root/miniconda3/envs/mplt/bin/python",
+        "-B",
+        "-u",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code/collect_m124_epochwise_results.py",
+        "--root",
+        "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation"
+      ],
+      "gpu": null,
+      "started_at": "2026-10-15T10:15:22.247431+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-10-15T10:15:22.550404+00:00"
+    }
+  ],
+  "any_joint_pass": false,
+  "automatic_retries": 0,
+  "formal_nine_metrics": true,
+  "external_metric_checkpoint_selection": true,
+  "Test50_CDTB80_used_for_checkpoint_selection": true,
+  "external_optimizer_steps": 0,
+  "finished_at": "2026-10-15T10:15:22.552078+00:00"
+}

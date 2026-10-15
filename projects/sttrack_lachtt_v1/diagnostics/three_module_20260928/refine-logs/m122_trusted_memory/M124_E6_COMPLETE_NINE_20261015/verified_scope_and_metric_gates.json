@@ -1,0 +1,74 @@
+{
+  "status": "actual_E6_original_complete_suite",
+  "metrics_percent": {
+    "depthtrack_test": {
+      "precision": 69.64638997092695,
+      "recall": 66.0708997913496,
+      "f_score": 67.81154649726012
+    },
+    "cdtb": {
+      "precision": 74.23727483342095,
+      "recall": 69.95937841671237,
+      "f_score": 72.0348702363794
+    },
+    "vot": {
+      "EAO": 75.75624436259986,
+      "ACC": 82.15138524668019,
+      "ROB": 92.12783857800407
+    }
+  },
+  "gate": {
+    "model": "ABC_joint_epoch06",
+    "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+    "metrics_percent": {
+      "depthtrack_test": {
+        "precision": 69.64638997092695,
+        "recall": 66.0708997913496,
+        "f_score": 67.81154649726012
+      },
+      "cdtb": {
+        "precision": 74.23727483342095,
+        "recall": 69.95937841671237,
+        "f_score": 72.0348702363794
+      },
+      "vot": {
+        "EAO": 75.75624436259986,
+        "ACC": 82.15138524668019,
+        "ROB": 92.12783857800407
+      }
+    },
+    "passed": {
+      "depthtrack_P": true,
+      "depthtrack_R": true,
+      "depthtrack_F": true,
+      "cdtb_P": true,
+      "cdtb_R": false,
+      "cdtb_F": false,
+      "vot_EAO": false,
+      "vot_ACC": true,
+      "vot_ROB": false
+    },
+    "joint_pass": false
+  },
+  "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+  "bundle_sha256": "64587cf1169266815bc3e609d1b1be48f6b2d563cb135ca9ee6fdeb9595f692f",
+  "official_VOT_sequences": 127,
+  "official_VOT_anchors": 1765,
+  "official_VOT_result_files": 5295,
+  "confirmed_VOT_failures": 231,
+  "original_exit_codes": {
+    "controller.supervised.exit": "0",
+    "prepare_best_vot.exit": "0",
+    "best_vot_track.exit": "0",
+    "best_vot_official_analysis.exit": "0",
+    "best_vot_seal.exit": "0",
+    "collect_best.exit": "0"
+  },
+  "original_suite_finished_at": "2026-10-15T10:15:22.552078+00:00",
+  "latest_capture_at": "2026-10-15T10:20:18.209999+00:00",
+  "original_VOT_model_processes_after_terminal": [],
+  "GPU_compute_apps_after_terminal": "",
+  "original_artifacts_unchanged": true,
+  "new_region_state_model_implemented": false,
+  "goal_complete": false
+}

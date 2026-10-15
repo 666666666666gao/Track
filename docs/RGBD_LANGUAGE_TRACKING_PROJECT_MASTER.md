@@ -28910,3 +28910,23 @@ manifest的native_source保留旧“Exact M39 default wrapper and checkpoint; no
 原始压缩41,686字节，解码153,207字节，SHA `817fe4a2bcb9ddfa2a125af0cca2391f1ab3680c1e9dc56848eaaac4f7bdbd9c`，摘要见`M124_VOT_SECOND_WAVE_PROGRESS_20261015.json`。没有换权重、推理配置、训练/评测重启或新增NN/GPU/温度/功率查询；最终官方分析和同权重九项仍待原队列完成。
 
 按相近计划帧量和第一波实际速度，完整VOT粗估18:00—19:00收尾，非承诺。原39132计时器08:00到点并已消费；唯一后继Hidden计时器44484,parent50232,birth08:01:02.7891350，启动时实际身份已核对，无native wrapper/functions wait cell。下一次不早于18:00北京时间，一次final_completion compact观察；此前不轮询日志/进程/GPU/等待句柄，不启动新NN诊断。用户确认的M125路线和固定预算计划保持未实现/未执行，Goal ACTIVE_UNMET。
+
+## 5.537 M124-E6完整三数据集九项终态：VOT未达EAO/ROB目标（2026-10-15）
+
+原suite于18:15:22.552078正常结束，supervisor 18:15:22.578496记录exit0；18:20:18.209999一次观察确认所有四VOT分片exit0，各441/441/441/442，共127序列、1765 anchors，5295结果文件合并，官方分析、seal和collect_best均0。confirmed_failures为231。最终同一E6 SHA `4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb`、bundle `64587cf1169266815bc3e609d1b1be48f6b2d563cb135ca9ee6fdeb9595f692f`；不借旧权重数字。
+
+| 数据集与指标 | E6同一final | 项目门槛 | 通过 |
+|---|---|---|---|
+| DepthTrack P/R/F | 69.646390/66.070900/67.811546 | >=65.2/64.9/65.1 | 3/3 |
+| CDTB P/R/F | 74.237275/69.959378/72.034870 | >=72.9/75.6/74.2 | 1/3 |
+| VOT EAO/ACC/ROB | 75.756244/82.151385/92.127839 | >77.9/82.1/93.7 | 1/3 |
+
+合计5/9，整体未达标。相对既有项目记录的原生STTrack VOT77.321654/82.471190/93.669109，当前EAO/ACC/ROB约下降1.565410/0.319805/1.541270个百分点；该历史baseline原始结果不在本轮新鲜审核输入中，不声称本轮已重新认证它。DepthTrack改善没有自动转成持续跟踪收益；CDTB召回和VOT EAO/ROB仍是主要缺口，不能宣布严格SOTA或把全部变化归因于文字。
+
+原始终态、九项收集、VOT结果/官方analysis、分片launch、采集回执和新鲜审核另存`M124_E6_COMPLETE_NINE_20261015/`。18:23:45.972514原始证据包采集exit0：7288份文件文本、完整GT路径/SHA元数据与固定首中末GT样本，解码27,355,653字节SHA `ba7fedad376a09cd136302adfe6448d5e047a3bbc778b727c8ec50cc9e52916b`。原选中模型进程为空；GPU0/1计算进程查询为空，只读pid/进程名/显存字段，没有温度或功率查询。该包不等于独立重算每个原始轨迹或live张量认证。
+
+新鲜实验审核为WARN、0个已确认阻断，35,167项确定性核对通过；新拆分回放源码审核为SOURCE PASS/0阻断，实际执行仍未验证。两者均同族Codex、provisional，实际模型路由UNATTESTED，不当跨族认证。EAO从保存官方曲线、ROB从保存anchor进度重新聚合；未重算全部原始预测重叠，ACC按保存官方标量核对。具体结论以归档EXPERIMENT_AUDIT/SOURCE_REVIEW为准。Test/CDTB参与best及早停、人工多帧辅助文字、首轮37条/RNG交接边界全部保留；原all_results中的independent_completed_audit=False不改字节，本次审查另存。审核者自身一次换行复制验证失败已纠正，原失败记录保留于audit_validation_failure.json，无实验输入改动。
+
+下一步先运行25个E6诊断状态：瓶子560—580、水壶280—327、推车600—624及机器人454/909/1363正例，四段合计2894基本track调用、25额外Empty读出，每状态保留256候选。该后验面板不选权重/阈值、不修改轨迹、不主张完整性能。原CurrentC的旧帧号与计划不套给E6。现有账本证明sttrack环境缺少vot计分依赖，因此新代码将NN预测封存与mplt CPU-GT计分拆开；未安装依赖、增加fallback或改旧冻结程序。新源代码及SOURCE_REVIEW已归档，本节发布时诊断尚未启动。
+
+原所有计时器已到点消费，目前无运行的本地观察计时进程。新完整训练仍按§5.534的区域实例→状态观察主线、共同起点、固定6pass/final6、seed2027和同权重完整三集；第三记忆贡献须独立实证。当前目标继续ACTIVE_UNMET，后续诊断不替代主实验。

@@ -1,0 +1,109 @@
+{
+  "status": "three_M124_selected_epoch_full_evaluations_complete",
+  "selection_sha256": "839f59a0319fb8ed020eddea01e93fcb373d663aae9f4806f1a4c90b2b9bd4e4",
+  "models": [
+    {
+      "name": "ABC_joint_epoch06",
+      "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+      "bundle_sha256": "64587cf1169266815bc3e609d1b1be48f6b2d563cb135ca9ee6fdeb9595f692f",
+      "plans": {
+        "depthtrack_test": {
+          "path": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/depthtrack_test/plan.json",
+          "sha256": "07842e613f8c2e702908fd915534d891d7c3983fa6dfa0e0ff82a0c067bd6caf"
+        },
+        "cdtb": {
+          "path": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/cdtb/plan.json",
+          "sha256": "1f2e93c5aa23179410047096966af1b410cd7a9fcc0ee54a1d98813c2cac0617"
+        },
+        "vot": {
+          "path": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/plan.json",
+          "sha256": "7990b5ce6bd62671bd1f5888578f5ef195d1e1e96ca57b7eb2dd20c19586b42c",
+          "run": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/run"
+        }
+      }
+    }
+  ],
+  "results": [
+    {
+      "model": "ABC_joint_epoch06",
+      "dataset": "depthtrack_test",
+      "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+      "bundle_sha256": "64587cf1169266815bc3e609d1b1be48f6b2d563cb135ca9ee6fdeb9595f692f",
+      "result_path": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/depthtrack_test/predictions/metrics.json",
+      "result_sha256": "9c79798f67e31080c5f817f24e29d59f88e40199a4dc863d31654caf8d9b84d8",
+      "metrics_percent": {
+        "precision": 69.64638997092695,
+        "recall": 66.0708997913496,
+        "f_score": 67.81154649726012
+      }
+    },
+    {
+      "model": "ABC_joint_epoch06",
+      "dataset": "cdtb",
+      "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+      "bundle_sha256": "64587cf1169266815bc3e609d1b1be48f6b2d563cb135ca9ee6fdeb9595f692f",
+      "result_path": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/cdtb/predictions/metrics.json",
+      "result_sha256": "dc5d6fd0a0ff931923c4bfdb43bee75a3d8f85195f849938f4e6d2340aa85ada",
+      "metrics_percent": {
+        "precision": 74.23727483342095,
+        "recall": 69.95937841671237,
+        "f_score": 72.0348702363794
+      }
+    },
+    {
+      "model": "ABC_joint_epoch06",
+      "dataset": "vot",
+      "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+      "bundle_sha256": "64587cf1169266815bc3e609d1b1be48f6b2d563cb135ca9ee6fdeb9595f692f",
+      "result_path": "/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation/vot/result.json",
+      "result_sha256": "ee38b6186e6ef3d142c3f070a508042f0d9367ca5e068e03f67e796d7cf4a3ac",
+      "metrics_percent": {
+        "EAO": 75.75624436259986,
+        "ACC": 82.15138524668019,
+        "ROB": 92.12783857800407
+      },
+      "confirmed_failures": 231
+    }
+  ],
+  "gates": [
+    {
+      "model": "ABC_joint_epoch06",
+      "final_sha256": "4d5c7e411a047fa996835647d1efa3bb94f4184fdc3a592380523be8c04156eb",
+      "metrics_percent": {
+        "depthtrack_test": {
+          "precision": 69.64638997092695,
+          "recall": 66.0708997913496,
+          "f_score": 67.81154649726012
+        },
+        "cdtb": {
+          "precision": 74.23727483342095,
+          "recall": 69.95937841671237,
+          "f_score": 72.0348702363794
+        },
+        "vot": {
+          "EAO": 75.75624436259986,
+          "ACC": 82.15138524668019,
+          "ROB": 92.12783857800407
+        }
+      },
+      "passed": {
+        "depthtrack_P": true,
+        "depthtrack_R": true,
+        "depthtrack_F": true,
+        "cdtb_P": true,
+        "cdtb_R": false,
+        "cdtb_F": false,
+        "vot_EAO": false,
+        "vot_ACC": true,
+        "vot_ROB": false
+      },
+      "joint_pass": false
+    }
+  ],
+  "any_joint_pass": false,
+  "external_metric_checkpoint_selection": true,
+  "Test50_CDTB80_used_for_checkpoint_selection": true,
+  "human_review_used_multiframe_aids": true,
+  "external_optimizer_steps": 0,
+  "independent_completed_audit": false
+}
