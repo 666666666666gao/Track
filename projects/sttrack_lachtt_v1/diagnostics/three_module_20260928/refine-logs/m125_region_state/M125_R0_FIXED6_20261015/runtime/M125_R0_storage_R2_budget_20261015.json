@@ -1,0 +1,48 @@
+{
+  "status": "measured_R0_storage_admission_correction_only",
+  "original_candidate_sha256": "a3d019bbf534d816c993c70987e4f3fefacfc10d636b5dbc06b6083149ac5ef2",
+  "corrected_candidate_sha256": "421ee981fa44c1b38e47a81f67ed8785e8a963575353a5f8e6d2b4f73b9ced43",
+  "only_changed_field": "required_free_disk_bytes",
+  "old_bytes": 21474836480,
+  "new_bytes": 2147483648,
+  "source_scientific_changes": 0,
+  "sequence_order_seed_optimizer_budget_final_rule_changes": 0,
+  "actual_measurement": {
+    "status": "actual_R0_storage_admission_readonly_diagnosis",
+    "at": "2026-10-15T13:10:01.903540+00:00",
+    "mounts": {
+      "/root/autodl-tmp/m125_R0_fixed6_20261015": {
+        "total": 199715979264,
+        "used": 187915055104,
+        "free": 11800924160
+      },
+      "/home": {
+        "total": 32212254720,
+        "used": 32033886208,
+        "free": 178368512
+      },
+      "/tmp": {
+        "total": 32212254720,
+        "used": 32033886208,
+        "free": 178368512
+      }
+    },
+    "actual_existing_output_sizes": "8409076\t/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/fit\n170452733\t/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/epochs/epoch-06/evaluation\n7076333\t/root/autodl-tmp/m125_selected_E6_split_replay_R2_20261015\n",
+    "unstarted_artifacts": {
+      "real64.actual_launch.json": false,
+      "real64.exit": false,
+      "real64": false,
+      "gate.json": false,
+      "source_review.json": false,
+      "actual_launch.json": false,
+      "passes": false
+    },
+    "NN_calls": 0,
+    "GPU_queries": 0,
+    "filesystem_mutations": 0
+  },
+  "measured_six_fit_plus_one_evaluation_bytes": 220907189,
+  "budget_reason": "Six measured fit directories plus one full evaluation total 220907189 bytes; 2 GiB allows additional real64, controller logs and output overhead without changing science.",
+  "original_preflight_failed_before_GPU_or_NN": true,
+  "original_experiment_deletion_or_move": false
+}

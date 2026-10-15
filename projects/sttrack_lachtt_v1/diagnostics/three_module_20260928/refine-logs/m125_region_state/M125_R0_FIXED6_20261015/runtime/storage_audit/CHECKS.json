@@ -1,0 +1,405 @@
+{
+  "generated_at": "2026-10-15T13:23:17.671908+00:00",
+  "kind": "bounded_storage_revision_static_and_hash_checks",
+  "prior_341_fixtures_rerun": false,
+  "total": 56,
+  "passed": 56,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "prior_json_byte_exact",
+      "passed": true,
+      "evidence": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R0_FIXED_SOURCE_AUDIT_20261015\\EXPERIMENT_AUDIT.json"
+    },
+    {
+      "name": "prior_md_byte_exact",
+      "passed": true,
+      "evidence": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R0_FIXED_SOURCE_AUDIT_20261015\\EXPERIMENT_AUDIT.md"
+    },
+    {
+      "name": "prior_source_pass_zero_blockers",
+      "passed": true,
+      "evidence": "source_pass_runtime_unexecuted_and_review_route_unattested"
+    },
+    {
+      "name": "old_candidate_bound_to_prior",
+      "passed": true,
+      "evidence": "a3d019bbf534d816c993c70987e4f3fefacfc10d636b5dbc06b6083149ac5ef2"
+    },
+    {
+      "name": "new_candidate_bound_to_budget",
+      "passed": true,
+      "evidence": "421ee981fa44c1b38e47a81f67ed8785e8a963575353a5f8e6d2b4f73b9ced43"
+    },
+    {
+      "name": "candidate_exact_single_field_delta",
+      "passed": true,
+      "evidence": {
+        "required_free_disk_bytes": {
+          "old": 21474836480,
+          "new": 2147483648
+        }
+      }
+    },
+    {
+      "name": "fixed6_final6_seed_unchanged",
+      "passed": true,
+      "evidence": {
+        "fixed_budget_passes": 6,
+        "fixed_final_pass": 6,
+        "seed": 2027
+      }
+    },
+    {
+      "name": "raw_input_and_all_source_bindings_identical",
+      "passed": true,
+      "evidence": {
+        "input_bindings": 7,
+        "source_bindings": 151
+      }
+    },
+    {
+      "name": "new_nine_and_frozen44_counts",
+      "passed": true,
+      "evidence": {
+        "new": 9,
+        "frozen": 44
+      }
+    },
+    {
+      "name": "all53_local_sources_byte_exact",
+      "passed": true,
+      "evidence": "unchanged_source_bindings.json: all 53 actual local file hashes compared to prior audit and actual R2 receipt"
+    },
+    {
+      "name": "actual53_staged_maps_identical",
+      "passed": true,
+      "evidence": "original staging, R2 staging, prior audit maps"
+    },
+    {
+      "name": "frozen_manifest_unchanged",
+      "passed": true,
+      "evidence": "e5ff0220d143102e195063fbbcb5fd0af2aa6de14414a378efec89ab5d5cda4f"
+    },
+    {
+      "name": "original_enriched_gate_reproduced",
+      "passed": true,
+      "evidence": "18580735b4234ecbadbab8508f9344640a29695d10a52a995e9d686ac6424d16"
+    },
+    {
+      "name": "new_enriched_gate_reproduced_from_single_delta",
+      "passed": true,
+      "evidence": "c4883a458077aa061fc6e4b1b77224701ca59a7a2e6b92bb681a06aac312d19b"
+    },
+    {
+      "name": "new_gate_metadata_retained",
+      "passed": true,
+      "evidence": "Every original enriched key/value retained except disk threshold"
+    },
+    {
+      "name": "actual_gate_reference_and_threshold",
+      "passed": true,
+      "evidence": "/root/autodl-tmp/m125_R0_fixed6_20261015/candidate_gate_storage_R2.json"
+    },
+    {
+      "name": "inherited_import_receipt_serialization_reproduced",
+      "passed": true,
+      "evidence": "fe1ed35f905387decb680c02d2f885b2b684b6fd1604d27dfcae840ac22dea50"
+    },
+    {
+      "name": "CPU_imports_explicitly_inherited",
+      "passed": true,
+      "evidence": {
+        "CPU_imports_reexecuted": false,
+        "rows": 9
+      }
+    },
+    {
+      "name": "original_nine_imports_exit0",
+      "passed": true,
+      "evidence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "R2_receipt_no_NN_GPU_training",
+      "passed": true,
+      "evidence": {
+        "status": "actual_R0_storage_only_candidate_metadata_R2",
+        "NN_calls": 0,
+        "GPU_queries": 0,
+        "training_launched": false
+      }
+    },
+    {
+      "name": "static_R2_stderr_empty",
+      "passed": true,
+      "evidence": "local static-staging stderr"
+    },
+    {
+      "name": "budget_embeds_actual_diagnosis_exactly",
+      "passed": true,
+      "evidence": "2026-10-15T13:10:01.903540+00:00"
+    },
+    {
+      "name": "storage_estimate_arithmetic",
+      "passed": true,
+      "evidence": {
+        "measured_one_fit": 8409076,
+        "measured_one_evaluation": 170452733,
+        "six_fit_extrapolation_plus_evaluation": 220907189
+      }
+    },
+    {
+      "name": "2GiB_exceeds_estimated_output",
+      "passed": true,
+      "evidence": {
+        "threshold_bytes": 2147483648,
+        "estimate_bytes": 220907189,
+        "ratio": 9.721203088596633
+      }
+    },
+    {
+      "name": "actual_free_failed20GiB_but_exceeds2GiB",
+      "passed": true,
+      "evidence": {
+        "free": 11800924160,
+        "old_required": 21474836480,
+        "new_required": 2147483648
+      }
+    },
+    {
+      "name": "static_stage_actual_free_exceeds2GiB",
+      "passed": true,
+      "evidence": 11800887296
+    },
+    {
+      "name": "prelaunch_diagnosis_all_unstarted",
+      "passed": true,
+      "evidence": {
+        "real64.actual_launch.json": false,
+        "real64.exit": false,
+        "real64": false,
+        "gate.json": false,
+        "source_review.json": false,
+        "actual_launch.json": false,
+        "passes": false
+      }
+    },
+    {
+      "name": "readonly_diagnosis_no_NN_GPU_mutation",
+      "passed": true,
+      "evidence": {
+        "NN_calls": 0,
+        "GPU_queries": 0,
+        "filesystem_mutations": 0
+      }
+    },
+    {
+      "name": "launcher_replacement_count_M125_R0_FIXED_SOURCE_AUDIT_20261015",
+      "passed": true,
+      "evidence": {
+        "expected_occurrences": 1,
+        "actual_occurrences": 1
+      }
+    },
+    {
+      "name": "launcher_replacement_count_M125_R0_FIXED_SOURCE_20261015/CANDIDATE.json",
+      "passed": true,
+      "evidence": {
+        "expected_occurrences": 1,
+        "actual_occurrences": 1
+      }
+    },
+    {
+      "name": "launcher_replacement_count_M125_R0_candidate_staging_20261015_stdout.json",
+      "passed": true,
+      "evidence": {
+        "expected_occurrences": 1,
+        "actual_occurrences": 1
+      }
+    },
+    {
+      "name": "launcher_replacement_count_candidate_gate.json",
+      "passed": true,
+      "evidence": {
+        "expected_occurrences": 2,
+        "actual_occurrences": 2
+      }
+    },
+    {
+      "name": "launcher_replacement_count_M125_R0_real64_actual_launch_20261015_stdout.json",
+      "passed": true,
+      "evidence": {
+        "expected_occurrences": 1,
+        "actual_occurrences": 1
+      }
+    },
+    {
+      "name": "launcher_replacement_count_M125_R0_real64_actual_launch_20261015_stderr.log",
+      "passed": true,
+      "evidence": {
+        "expected_occurrences": 1,
+        "actual_occurrences": 1
+      }
+    },
+    {
+      "name": "launcher_only_explicit_path_substitutions",
+      "passed": true,
+      "evidence": [
+        [
+          "M125_R0_FIXED_SOURCE_AUDIT_20261015",
+          "M125_R0_STORAGE_ADMISSION_AUDIT_R2_20261015",
+          1
+        ],
+        [
+          "M125_R0_FIXED_SOURCE_20261015/CANDIDATE.json",
+          "M125_R0_FIXED_SOURCE_20261015/CANDIDATE_STORAGE_R2.json",
+          1
+        ],
+        [
+          "M125_R0_candidate_staging_20261015_stdout.json",
+          "M125_R0_storage_R2_staging_20261015_stdout.json",
+          1
+        ],
+        [
+          "candidate_gate.json",
+          "candidate_gate_storage_R2.json",
+          2
+        ],
+        [
+          "M125_R0_real64_actual_launch_20261015_stdout.json",
+          "M125_R0_real64_actual_launch_R2_20261015_stdout.json",
+          1
+        ],
+        [
+          "M125_R0_real64_actual_launch_20261015_stderr.log",
+          "M125_R0_real64_actual_launch_R2_20261015_stderr.log",
+          1
+        ]
+      ]
+    },
+    {
+      "name": "original_real64_and_formal_operators_unchanged",
+      "passed": true,
+      "evidence": {
+        "launch_M125_R0_real64_20261015.py": "2a0313b6ec30071fb479b7dc5ac7dcf1229ec29debe72155cc7f68e3c8041088",
+        "launch_M125_R0_fixed_full_suite_20261015.py": "33f332d5ebf335f36e7cb90c819ebe49328f8068839085e2496e658ac0bde86a"
+      }
+    },
+    {
+      "name": "original_stager_unchanged",
+      "passed": true,
+      "evidence": "a6ee97fb987743a3c8b4243947b749fa566502bbe3853aeda280d96ddbf2a055"
+    },
+    {
+      "name": "AST_parse_new_launcher",
+      "passed": true,
+      "evidence": "Parsed only; never executed/imported"
+    },
+    {
+      "name": "AST_parse_new_launcher_remote",
+      "passed": true,
+      "evidence": "Parsed only; never executed/imported"
+    },
+    {
+      "name": "AST_parse_new_stager",
+      "passed": true,
+      "evidence": "Parsed only; never executed/imported"
+    },
+    {
+      "name": "AST_parse_new_stager_remote",
+      "passed": true,
+      "evidence": "Parsed only; never executed/imported"
+    },
+    {
+      "name": "AST_parse_new_observer",
+      "passed": true,
+      "evidence": "Parsed only; never executed/imported"
+    },
+    {
+      "name": "AST_parse_new_observer_remote",
+      "passed": true,
+      "evidence": "Parsed only; never executed/imported"
+    },
+    {
+      "name": "AST_parse_unchanged_formal_remote",
+      "passed": true,
+      "evidence": "Parsed only; never executed/imported"
+    },
+    {
+      "name": "original_failure_exact_disk_assertion",
+      "passed": true,
+      "evidence": {
+        "stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 17, in <module>\nAssertionError\n",
+        "remote_line17": "assert shutil.disk_usage(root).free>=gate['required_free_disk_bytes']"
+      }
+    },
+    {
+      "name": "failed_admission_produced_no_stdout",
+      "passed": true,
+      "evidence": "Original failed stdout remains empty and preserved"
+    },
+    {
+      "name": "disk_admission_precedes_GPU_writes_NN",
+      "passed": true,
+      "evidence": "Original exact line 17 precedes GPU query and all launch/gate writes"
+    },
+    {
+      "name": "R2_verdict_candidate_sources_admission_preserved",
+      "passed": true,
+      "evidence": "Exact operator delta also establishes inherited predicates/waiting supervisor unchanged"
+    },
+    {
+      "name": "formal_still_uses_bound_gate_disk_and_real64",
+      "passed": true,
+      "evidence": "Unchanged original formal source hash plus direct admission interface"
+    },
+    {
+      "name": "stager_exact_one_policy_mutation",
+      "passed": true,
+      "evidence": "Original enriched metadata retained through shallow dict copy; all values otherwise unchanged"
+    },
+    {
+      "name": "stager_only_new_metadata_writes",
+      "passed": true,
+      "evidence": "No experiment imports, NN invocation, deletion, source copying or data movement in remote stager"
+    },
+    {
+      "name": "stager_truthfully_inherits_CPU_imports",
+      "passed": true,
+      "evidence": "Original CPU rows retained; no reexecution"
+    },
+    {
+      "name": "observer_180_second_local_and_remote_gate",
+      "passed": true,
+      "evidence": "At least 180 seconds from actual R2 launch; one observation, not a completion guarantee"
+    },
+    {
+      "name": "observer_remote_readonly_no_NN_GPU",
+      "passed": true,
+      "evidence": "Reads existing witness/gate/receipts and bounded log tail"
+    },
+    {
+      "name": "new_operators_no_retry_or_fallback",
+      "passed": true,
+      "evidence": "No try/fallback or retry loop; explicit R2 action is a separately named operator"
+    },
+    {
+      "name": "all_amendment_inputs_unchanged_during_check",
+      "passed": true,
+      "evidence": {
+        "paths": 71,
+        "prior_MD_JSON_included": true
+      }
+    }
+  ]
+}

@@ -32,3 +32,5 @@
 2026-10-15 M125-D R2 COMPLETE（仅诊断）：全部4NN+4CPU0，2894track/25Empty/25states，四条完整bbox/score前缀六位小数一致；原suite不变。14valid/11invalid、13valid无>=0.5精修框仅为后验面板；覆盖与候选数组新鲜审核3798核对通过/WARN，官方IoU未复算。M125-R0入口和真实64检查已实现，53源码已隔离部署、九CPU导入0，尚无NN训练；R0完整训练和新增区域模型不能标COMPLETE。
 
 M125-R0：SOURCE_READY（非RUNNING/COMPLETE），九份新入口+44冻结依赖已实际隔离部署、九CPU导入0，fresh source PASS_SOURCE_ONLY/0阻断。固定6完整pass/final6、seed2027、共同CurrentC/fresh optimizer+RNG、无逐轮外部选模。下一步唯一真实64接口检查，通过后全Train152×6+完整三集。新增区域模型未实现，未有新增正式指标。
+
+M125-R0 RUNNING：真实64接口检查原exit0后，2026-10-15T21:31:23.509631+08:00从共同warm/freshAdam+seed单次启动原supervisor895667，固定6完整pass/final6后全三集。存储准入修订仅20GiB->2GiB，旧失败与审查保留；无科学代码/协议改动。唯一首次观察2026-10-15T21:41:23.509631+08:00，尚无新正式性能。
