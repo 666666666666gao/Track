@@ -1,0 +1,245 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "exact_overlap_dependency_boundary_and_posthoc_scope",
+  "summary": "Bounded evidence is numerically consistent; qualified diagnostic use only. Exact raster IoU remains independently unverified.",
+  "date": "2026-10-15",
+  "generated_at": "2026-10-15T12:14:31.008942+00:00",
+  "agent_id": "/root/audit_m125_e6_replay_result",
+  "verdict_id": "M125_R2_RESULT_AUDIT_20261015",
+  "reviewer_backend": "native_codex_agent",
+  "reviewer_model": "UNATTESTED",
+  "reviewer_model_requested": "gpt-6-astra",
+  "reviewer_model_actual": "UNATTESTED",
+  "reviewer_reasoning": "UNATTESTED",
+  "reviewer_reasoning_requested": "max",
+  "reviewer_reasoning_actual": "UNATTESTED",
+  "reviewer_family": "openai",
+  "executor_model": "UNATTESTED",
+  "executor_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "checks": {
+    "gt_provenance": {
+      "status": "PASS",
+      "details": "The scoring stage reads the archived CDTB dataset groundtruth.txt after sealed predictions, with matching dataset-case/result/archive SHA; initialization equals dataset row zero. No model-generated reference is used. Current-frame GT does not enter the supplied replay loop; imported runtime internals are outside the bounded inputs.",
+      "evidence": [
+        "047_analyze_m125_selected_E6_observation.py:32",
+        "047_analyze_m125_selected_E6_observation.py:44",
+        "046_replay_m125_selected_E6_observation.py:61",
+        "046_replay_m125_selected_E6_observation.py:74",
+        "locked_depthtrack_pr.py:49"
+      ]
+    },
+    "score_normalization": {
+      "status": "PASS",
+      "details": "Dataset-grounded overlap and continuous GT-box coverage are not normalized by prediction statistics. full_response/quality_probability is an explicitly stored same-state ranking counterfactual, not a performance normalization. Raw response/quality/geometry arrays remain available.",
+      "evidence": [
+        "046_replay_m125_selected_E6_observation.py:91",
+        "047_analyze_m125_selected_E6_observation.py:71",
+        "summarize_m125_selected_E6_observation.py:70"
+      ]
+    },
+    "result_existence": {
+      "status": "PASS",
+      "details": "49 extracted artifacts match declared hashes; 48 archived payloads match their raw bytes, lengths and extracted counterparts. 4 NN and 4 CPU child return-code records are zero, controller completion sentinel is zero. 2894 step actions, 2898 prefix rows, 25 sampled states and 6400 candidates per geometry independently count correctly. Every box component and confidence reproduces saved six-decimal formatting.",
+      "evidence": [
+        "005_driver.py:25",
+        "005_driver.py:33",
+        "005_driver.py:39",
+        "004_result.json:2",
+        "deterministic_checks.json",
+        "input_inventory.json"
+      ]
+    },
+    "dead_code": {
+      "status": "WARN",
+      "details": "Supplied CPU stage calls the locked _vot_overlaps for original/replayed prefixes and both candidate geometries; terminal logs and output arrays support execution. Exact local independent overlap recomputation is blocked: cv2 and vot are missing in the supplied interpreters. Full evaluate_depthtrack_results and threshold/F-score functions are not invoked by this diagnostic and no new benchmark PR/F score is established.",
+      "evidence": [
+        "047_analyze_m125_selected_E6_observation.py:59",
+        "047_analyze_m125_selected_E6_observation.py:71",
+        "locked_depthtrack_pr.py:8",
+        "locked_depthtrack_pr.py:63",
+        "dependency_probes.json"
+      ]
+    },
+    "scope": {
+      "status": "WARN",
+      "details": "Four posthoc CDTB prefixes at one E6 checkpoint, one replay per sequence, 25 selected states (14 GT-valid/11 excluded); no seed-replicated evaluation. E6 metadata explicitly says DepthTrack Test and CDTB were used for checkpoint selection and human review used multiframe aids. Qualified state-level diagnosis only: no benchmark rates, first-error causality, original hidden-state identity, full-trajectory intervention gain or semantic identity truth.",
+      "evidence": [
+        "PLAN.json:57",
+        "006_prediction_stage.json:209",
+        "006_prediction_stage.json:218",
+        "006_prediction_stage.json:319",
+        "047_analyze_m125_selected_E6_observation.py:111"
+      ]
+    },
+    "eval_type": {
+      "status": "PASS",
+      "classification": "real_gt",
+      "details": "Dataset GT evaluates frozen model-derived candidates and continuous box coverage. Same-state counterfactual scores are diagnostic interventions; comparison with saved predictions establishes numerical consistency only. GT validity is not pixel visibility or occlusion evidence.",
+      "evidence": [
+        "locked_depthtrack_pr.py:49",
+        "summarize_m125_selected_E6_observation.py:87"
+      ]
+    }
+  },
+  "classification": "real_gt",
+  "audited_input_hashes": {
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\000_config.json": "sha256:1fee062c6eecda435d168227af9ae6ea7d808362dcaba82ed1f62bfa34aeb243",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\001_actual_launch.json": "sha256:0865c9c184484595068b2d84adf1a7429ac49b48375c2c36688c4b8cf0cb2784",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\002_launches.json": "sha256:596b413df29f071d92a262265c96c76d37090397e8814bb761f1884c5fd7d9e5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\003_controller.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\004_result.json": "sha256:11d0005ebf5c34311a8c1ef38dce6f3f6f9e42efb9386d2851ae0587616e564c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\005_driver.py": "sha256:d6dfb0ed2b8301720c62c4afc8f3e5896de5ec0efe43318533ecc8beb5e473cb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\006_prediction_stage.json": "sha256:54e4ff466f83bef1bc650f8ebc0ede75a598bf25842608c76411fd4eb2e6d0b4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\007_replayed_predictions.json": "sha256:6d1a9ca3e40523c4e1b3049545c19641fe43a1cb114d8a2459926011b006577f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\008_result.json": "sha256:b80830bc9b7baadbc4e3eceaa27035d9b426df9a9452490a46abad7269bcc93f",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\009_cart_room_occ_1.NN.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\010_cart_room_occ_1.CPU.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\011_cart_room_occ_1.NN.log": "sha256:e9c73cd96ec7a77a0573d5e659d52dfce46e16cec21f47c37b334f66ccac2ccb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\012_cart_room_occ_1.CPU.log": "sha256:639e5c3f3155aa20cc67f9cf2ddeb2641f46f1ffef7cfb89a15bf6e269c23fbb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\013_groundtruth.txt": "sha256:8ce8c5f25d21933fd47813aa0938c7e66434206f395460bdca0c6174dff6522c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\014_cart_room_occ_1.txt": "sha256:eb2a6f19ade5d9beab916f1a7843de23f4a1ec10582c58fb65897736e22797c9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\015_cart_room_occ_1_all_scores.txt": "sha256:7287c21cd29bdf847c7298e190c7115c53dc10f0b4a673b1cf7db188e5698f72",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\016_prediction_stage.json": "sha256:c651884f2750cd4af7469a01bab160931efa43cf3a5c0142926ced7409d521da",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\017_replayed_predictions.json": "sha256:991cb7ef8e4b91dffaff53decb0e0e3cf8da4d9e4f32aa049b4c84f0e324b929",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\018_result.json": "sha256:b36a81aefe0d7e71b134786fd3f75b89ab225fdb545e6882afb8d3353956c250",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\019_bottle_room_occ_1.NN.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\020_bottle_room_occ_1.CPU.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\021_bottle_room_occ_1.NN.log": "sha256:7d13ca32d708ecb0284cf33f35d54d2be8661c67d83ef1871a735a35e697d7da",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\022_bottle_room_occ_1.CPU.log": "sha256:e16f7b3240897cfe4887507999fe43aa1a44eeee4ea9fedbc5b3b4d619849c05",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\023_groundtruth.txt": "sha256:3abe3267f338a92460a6050af3f6850e9b79361de9e6082f02aa5c7d0adce302",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\024_bottle_room_occ_1.txt": "sha256:01ded794d741b99433d1f4972e2d627593ffe667f6fc41c2ee9313451b257164",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\025_bottle_room_occ_1_all_scores.txt": "sha256:3d72bc199fa71936d44bc1175472d366075968be6dca5b39bf1ed48061811463",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\026_prediction_stage.json": "sha256:bc985ddeec7f7deb5689a042f98ba5b903113952711f0d3d98bdfc3473d99594",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\027_replayed_predictions.json": "sha256:376f2a01d05b28e3a997d828654d56bbef61d67219ddb46609a6a9392e1066e3",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\028_result.json": "sha256:d6d9dfa4e6cbd8da9160d6e1e9948b85775fb463b229247bf6fa9be4176cfad9",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\029_jug.NN.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\030_jug.CPU.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\031_jug.NN.log": "sha256:9f859e1575c7aa7568fae77cbc46c7f3ba23768ad823bf02aae7d7eed9d10f95",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\032_jug.CPU.log": "sha256:cfb7579117495e2876c250837f11c1be9c52537c45fff8c6962c2da847bc3037",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\033_groundtruth.txt": "sha256:9abcf47f5bc0bb5632cff4fe61cf6cc9128744f01e1a6de6505463b306ad6dff",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\034_jug.txt": "sha256:1b5cc05c331f4ed83ef6dfbb85d010c7dd71b5c81f34c9313ac2222ab9629aee",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\035_jug_all_scores.txt": "sha256:ceb41feed9dab5c4770e3ef6576250a3f5205afbba0072d8a71fc3861ead3cdc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\036_prediction_stage.json": "sha256:6b33393779b650584b42b8f30983caee74ccd7dd64df344af1aa8ad7e00e9679",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\037_replayed_predictions.json": "sha256:1b67b0d50be4a6d7290acf50e4c08948f067136a46bea0838474d2efb0ca765c",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\038_result.json": "sha256:cedae95b44277e7cb875fc45ee82340d3bd00b869f72aa252f1f757dc991a7e4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\039_robot_corridor_occ_1.NN.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\040_robot_corridor_occ_1.CPU.exit": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\041_robot_corridor_occ_1.NN.log": "sha256:241ce1457ed13e55937c5df4138f8f6178fdb6314a2d80bf7dc313564b74e9bb",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\042_robot_corridor_occ_1.CPU.log": "sha256:31fcf6af37b9393c134db5b2a449098db04612a873db11ab3f7042a30602c14e",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\043_groundtruth.txt": "sha256:ebf76a17b1925a4f5b4d86147c4a2f1c51b29106a43533a2744fe9b3a1266dfe",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\044_robot_corridor_occ_1.txt": "sha256:aa68d0a0489252788b3540d3a17a17793e1decb32c0ecba0fe2c8f4fdae44c76",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\045_robot_corridor_occ_1_all_scores.txt": "sha256:21e0d1436f7821229780ae2122d8ece83b2d3d96c42a6a29a320946e9da17fc4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\046_replay_m125_selected_E6_observation.py": "sha256:be2239091b279bebc614a4b77d31887ba4c0f6bd125862e194c502fb1a067cac",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\047_analyze_m125_selected_E6_observation.py": "sha256:81081356adb1af5e5429883aa22a3fcba519204133f70001c013b7e195f5bfe4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\locked_depthtrack_pr.py": "sha256:05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\INPUTS.json": "sha256:6ee6e1f672df1cd5ba95e66ac3459b2f82957ce8cfd6cf09f4688bb126bbc9e4",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_complete_replay_primary_inputs_retry1_20261015.json": "sha256:ed0181d13e42282cf0469093d10143c02bdc178710602a7a2a8580c4dc0cdd6b",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_complete_box_coverage_summary_20261015.json": "sha256:0799996a24e80655d6005a5f31953c4533cfd9680e4798c9071519a1099a72f0",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\summarize_m125_selected_E6_observation.py": "sha256:b461083ea4acfc292ea356ca331c5111855f2c5731ce0edaee7d0c2b956053e5",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\projects\\sttrack_lachtt_v1\\diagnostics\\three_module_20260928\\full_dense_tracker.py": "sha256:0aee7de2932d7294976e2ed512218cd58d281e24bf3fb34b6267167470aa1778",
+    "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_SPLIT_REPLAY_SOURCE_20261015\\PLAN.json": "sha256:c195814e0223003c00f8d7eadd9e7a11d5185e4cd37da38d56f2fe47c047e318"
+  },
+  "trace_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_AUDIT_20261015\\.aris\\traces\\experiment-audit\\2026-10-15_run01",
+  "deterministic": {
+    "status": "PASS",
+    "check_count": 3798,
+    "failed": 0,
+    "input_count": 55,
+    "review_independence": "deterministic",
+    "acceptance_status": "accepted",
+    "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_AUDIT_20261015\\deterministic_checks.json"
+  },
+  "integrity_blockers": [],
+  "verification_blockers": [
+    {
+      "id": "V1",
+      "scope": "Exact independent official raster overlap recomputation",
+      "reason": "Both supplied interpreters lack cv2 and vot; actual locked-metric import and direct vot.region import return exit 1 with ModuleNotFoundError. No installation, substitute metric, continuous-IoU approximation, or remote execution was performed.",
+      "permits": "Coverage, raw-byte, candidate-array, arithmetic and prefix consistency findings; archived IoU values must retain their verification qualifier."
+    },
+    {
+      "id": "V2",
+      "scope": "Independent attestation of transitive runtime, checkpoint/image bytes, original hidden state, and full-suite prerequisites",
+      "reason": "The bounded inputs contain source/weight/image hashes and stage assertions, but not the imported OfficialDenseTracker/trusted/decoder code, raw images, weight tensors, full-suite result/best/all_results/receipt bytes or original hidden-state snapshots. These references cannot be rehashed or reexecuted from this package.",
+      "permits": "Consistency of supplied hashes, source-visible ordering and recorded assertions; no claim of transitive end-to-end state attestation."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "The four R2 own-history prefixes reproduce saved six-decimal bboxes and confidences.",
+      "impact": "supported",
+      "boundary": "Numeric outputs only, not original hidden-state identity."
+    },
+    {
+      "id": "C2",
+      "claim": "The selected panel has 25 states, 14 GT-valid and 11 GT-invalid; seven valid boxes are fully covered and seven have zero continuous crop coverage.",
+      "impact": "supported",
+      "boundary": "Finite posthoc panel; continuous rectangular coverage, not visibility/occlusion."
+    },
+    {
+      "id": "C3",
+      "claim": "13 of 14 valid sampled states have no refined candidate with official IoU >= 0.5.",
+      "impact": "needs_qualifier",
+      "boundary": "Arithmetic agrees with archived candidate-IoU vectors; exact VOT raster overlap was not independently recomputed."
+    },
+    {
+      "id": "C4",
+      "claim": "Empty and quality-score alternatives never affect the submitted trajectory in the supplied replay loop.",
+      "impact": "needs_qualifier",
+      "boundary": "Source ordering, recorded equality assertions and continuous action history support this; transitive runtime and all hidden-state fields were not independently attested."
+    },
+    {
+      "id": "C5",
+      "claim": "This panel determines whole-benchmark failure frequency or the cause of the first tracking error.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C6",
+      "claim": "An alternative improves the complete trajectory, proves semantic identity, or isolates a full trained-module ablation.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C7",
+      "claim": "The panel is an untouched test evaluation with independently selected checkpoint/text.",
+      "impact": "unsupported",
+      "boundary": "The supplied metadata declares test-metric checkpoint selection and multiframe human aids."
+    }
+  ],
+  "counts": {
+    "sequences": 4,
+    "tracker_step_calls": 2894,
+    "initialized_prefix_rows": 2898,
+    "candidate_states": 25,
+    "candidate_boxes_each_geometry": 6400,
+    "initializations": 4,
+    "extra_Empty_decoder_calls": 25,
+    "GT_valid_states": 14,
+    "GT_invalid_states": 11,
+    "valid_states_full_continuous_coverage": 7,
+    "valid_states_zero_continuous_coverage": 7,
+    "valid_states_without_refined_candidate_ge_05_from_recorded_IoUs": 13
+  },
+  "official_overlap_recomputed": false,
+  "all_original_inputs_unchanged": true,
+  "execution_constraints": {
+    "SSH_calls": 0,
+    "new_NN_calls": 0,
+    "optimizer_steps": 0,
+    "package_installations": 0,
+    "notifications": 0,
+    "original_input_content_mutations": 0
+  },
+  "reviewer_generated_byproduct": {
+    "transient_input_directory_bytecode_files": 1,
+    "corrected": true,
+    "relocation_receipt": "reviewer_cache_relocation.json",
+    "final_bytecode_location": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_AUDIT_20261015\\reviewer_import_cache",
+    "subsequent_probes_use_python_B": true
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "command": [
+      "C:\\Users\\gb\\AppData\\Local\\uv\\cache\\archive-v0\\7oLWbeZ6v0oUodecKf4d1\\Scripts\\python.exe",
+      "-c",
+      "import sys,importlib.util,json; print(json.dumps({'python':sys.version,'executable':sys.executable,'modules':{m: (None if importlib.util.find_spec(m) is None else importlib.util.find_spec(m).origin) for m in ['numpy','cv2','vot','numba']}}))"
+    ],
+    "returncode": 0,
+    "stdout": "{\"python\": \"3.12.12 (main, Feb  3 2026, 22:54:57) [MSC v.1944 64 bit (AMD64)]\", \"executable\": \"C:\\\\Users\\\\gb\\\\AppData\\\\Local\\\\uv\\\\cache\\\\archive-v0\\\\7oLWbeZ6v0oUodecKf4d1\\\\Scripts\\\\python.exe\", \"modules\": {\"numpy\": \"C:\\\\Users\\\\gb\\\\AppData\\\\Local\\\\uv\\\\cache\\\\archive-v0\\\\7oLWbeZ6v0oUodecKf4d1\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\", \"cv2\": null, \"vot\": null, \"numba\": null}}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\gb\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\python.exe",
+      "-c",
+      "import sys,importlib.util,json; print(json.dumps({'python':sys.version,'executable':sys.executable,'modules':{m: (None if importlib.util.find_spec(m) is None else importlib.util.find_spec(m).origin) for m in ['numpy','cv2','vot','numba']}}))"
+    ],
+    "returncode": 0,
+    "stdout": "{\"python\": \"3.13.12 (main, Feb  3 2026, 22:53:26) [MSC v.1944 64 bit (AMD64)]\", \"executable\": \"C:\\\\Users\\\\gb\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13-windows-x86_64-none\\\\python.exe\", \"modules\": {\"numpy\": null, \"cv2\": null, \"vot\": null, \"numba\": null}}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\gb\\AppData\\Local\\uv\\cache\\archive-v0\\7oLWbeZ6v0oUodecKf4d1\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.util; s=importlib.util.spec_from_file_location('audit_locked_metric','C:\\\\Users\\\\gb\\\\.codex_track_publish_m29_20260902\\\\.aris\\\\m122_full_causal_20261007\\\\M125_R2_RESULT_INPUTS_20261015\\\\locked_depthtrack_pr.py'); m=importlib.util.module_from_spec(s); s.loader.exec_module(m)"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R2_RESULT_INPUTS_20261015\\locked_depthtrack_pr.py\", line 8, in <module>\n    import cv2\nModuleNotFoundError: No module named 'cv2'\n"
+  },
+  {
+    "command": [
+      "C:\\Users\\gb\\AppData\\Local\\uv\\cache\\archive-v0\\7oLWbeZ6v0oUodecKf4d1\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "from vot.region import Rectangle,RegionType,Special,calculate_overlaps"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'vot'\n"
+  }
+]

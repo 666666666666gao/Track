@@ -28,3 +28,5 @@
 2026-10-15 19:05:09.588342 M125-D实际controller877266已启动，固定E6四段计划2894track/25Empty/25状态×256，2卡2波，NN预测与CPU计分拆分。首次唯一完成节点19:20:09.588342，未提前查询。状态RUNNING_CONTROLLER_LAUNCHED/完成数待实际结果；R0/ROI/R1/R2/V完整主实验尚未启动。
 
 2026-10-15 M125-D第一次部署FAIL：两个子项19:05:10 import缺train_template_write_C/exit1、main未进入；不是完成2894调用。19:24两入口CPU import实际pass0；只补原M124 code路径。R2新目录controller879928于19:26:13单次启动、待19:41:13唯一节点；源码和正式E6九项不改，原失败回执保留。
+
+2026-10-15 M125-D R2 COMPLETE（仅诊断）：全部4NN+4CPU0，2894track/25Empty/25states，四条完整bbox/score前缀六位小数一致；原suite不变。14valid/11invalid、13valid无>=0.5精修框仅为后验面板；覆盖与候选数组新鲜审核3798核对通过/WARN，官方IoU未复算。M125-R0入口和真实64检查已实现，53源码已隔离部署、九CPU导入0，尚无NN训练；R0完整训练和新增区域模型不能标COMPLETE。
