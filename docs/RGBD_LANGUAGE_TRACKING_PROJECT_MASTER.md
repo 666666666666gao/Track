@@ -28940,3 +28940,13 @@ manifest的native_source保留旧“Exact M39 default wrapper and checkpoint; no
 actual_launch的config SHA `4a3aba90dd305d9594321860ded67b83033db07abe079c8c14e6cd4b34c191ce`，driver SHA `848128143e258ef4021ece27faf6f24c71bc7a6c7f1b22dd0fcbd2746d9570b8`，源码审核JSON SHA `a45498972477c124af9cf637b6f94beff31c7378ec3cc56c4912927c7d0e1e3c`。原launch/driver/唯一预计节点存于新计划目录`M125_SPLIT_REPLAY_20261015/actual_launch/`。
 
 预计15分钟；唯一下一节点为19:20:09.588342北京时间，采用一次可被新消息中断的clock等待，没有额外本地计时进程、native wrapper或重复观察。此前不查日志/进程/GPU/等待句柄。M125区域主模型及R0/ROI/R1/R2/V完整训练尚未启动，Goal ACTIVE_UNMET。
+
+## 5.539 M125-D首次部署失败及R2模块路径修正、实际导入预检和新队列（2026-10-15 19:26）
+
+19:21:31.652194首次预计节点取回原队列结果：推车和瓶子NN子进程均于19:05:10以exit1结束，在第16行导入`train_template_write_C`时ModuleNotFoundError，尚未进入main/模型推理；没有CPU计分和第二波。coordinator留下失败trace，未写完成文件；其OS退出码没有被父wait保存，不伪造为1。原失败目录、launch、两个子退出文件和日志完整保留，没有把计划2894调用当实际执行。该错误是执行器漏配原封存模块路径，不是模型或SOURCE审查被替换成成功。
+
+最小修正是给NN/CPU两个命令的PYTHONPATH加上已经存在的`/root/autodl-tmp/m124_ABC_joint_epoch20_20261011/code`。两份已审科研源码be223909/81081356均未改，也没有安装依赖、添加fallback或改原suite。19:24:49.409748实际CPU-only runpy导入两入口均exit0；缺失模块实际来自上述封存目录，SHA `7089754fc017f45c9e80d53ced96d98e624b63a15b5acb808fc5de9f35a9f88e`与原证据包吻合。这个预检没有执行模型main或GT计分，不当作NN成功。
+
+19:26:13.691191在全新`/root/autodl-tmp/m125_selected_E6_split_replay_R2_20261015`单次启动修正队列，原PID879928。启动前GPU0/1各1MiB，未读温度/功率；原driver只调整两处模块路径并绑定预检摘要，新driver SHA `d6dfb0ed2b8301720c62c4afc8f3e5896de5ec0efe43318533ecc8beb5e473cb`，config SHA `1fee062c6eecda435d168227af9ae6ea7d808362dcaba82ed1f62bfa34aeb243`。这是明确诊断后在新目录的一次重跑，不能称首次运行成功；无自动重试，原M124不重启。
+
+原首次19:20节点已消费，当前唯一R2预计完成节点为19:41:13.691191北京时间，通过一次interruptible clock等待，无本地额外timer/native wrapper/functions等待句柄；到点运行R2 first observer一次，期间不查NN/GPU/日志/进程。实际新回放结果仍待完成，计划仍为2894基本track/25Empty/25状态×256。全部失败、预检、R2 launch/driver/下一节点见`M125_SPLIT_REPLAY_20261015/deployment_R2/`。正式E6九项仍是§5.537、5/9，Goal ACTIVE_UNMET。
