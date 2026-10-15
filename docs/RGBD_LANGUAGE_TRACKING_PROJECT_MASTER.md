@@ -28930,3 +28930,13 @@ manifest的native_source保留旧“Exact M39 default wrapper and checkpoint; no
 下一步先运行25个E6诊断状态：瓶子560—580、水壶280—327、推车600—624及机器人454/909/1363正例，四段合计2894基本track调用、25额外Empty读出，每状态保留256候选。该后验面板不选权重/阈值、不修改轨迹、不主张完整性能。原CurrentC的旧帧号与计划不套给E6。现有账本证明sttrack环境缺少vot计分依赖，因此新代码将NN预测封存与mplt CPU-GT计分拆开；未安装依赖、增加fallback或改旧冻结程序。新源代码及SOURCE_REVIEW已归档，本节发布时诊断尚未启动。
 
 原所有计时器已到点消费，目前无运行的本地观察计时进程。新完整训练仍按§5.534的区域实例→状态观察主线、共同起点、固定6pass/final6、seed2027和同权重完整三集；第三记忆贡献须独立实证。当前目标继续ACTIVE_UNMET，后续诊断不替代主实验。
+
+## 5.538 M125-D：E6四段只读回放实际启动，预测/CPU计分分开（2026-10-15 19:05）
+
+在§5.537的原suite全部exit0及释放证据、两份新鲜审查和Git提交577d57b1完成后，19:05:09.588342实际单次SSH部署/启动只读队列，原coordinator PID877266，根目录`/root/autodl-tmp/m125_selected_E6_split_replay_20261015`。启动前GPU0/1各仅用1MiB/24576MiB；只读index/memory.used/memory.total，没有温度或功率查询。没有环境安装、训练重启或权重更新。
+
+固定E6、原CDTB plan和已审源码SHA，四段2894基本track调用/25 Empty读出/25状态×256候选仍是计划数，启动不表示已完成这些次数。两波依次为GPU0推车/GPU1瓶子、GPU0水壶/GPU1机器人；NN在sttrack环境先封存预测，CPU在mplt环境后读GT计分。真实driver提供已有diagnostics模块路径，明确固定CLI面板；每段原退出文件和结果由队列保存，不自动重试。回放的框、query、模板及模型摘要均有原程序检查，保存前缀是否相符须由真实输出判断，不能据SOURCE PASS推断。
+
+actual_launch的config SHA `4a3aba90dd305d9594321860ded67b83033db07abe079c8c14e6cd4b34c191ce`，driver SHA `848128143e258ef4021ece27faf6f24c71bc7a6c7f1b22dd0fcbd2746d9570b8`，源码审核JSON SHA `a45498972477c124af9cf637b6f94beff31c7378ec3cc56c4912927c7d0e1e3c`。原launch/driver/唯一预计节点存于新计划目录`M125_SPLIT_REPLAY_20261015/actual_launch/`。
+
+预计15分钟；唯一下一节点为19:20:09.588342北京时间，采用一次可被新消息中断的clock等待，没有额外本地计时进程、native wrapper或重复观察。此前不查日志/进程/GPU/等待句柄。M125区域主模型及R0/ROI/R1/R2/V完整训练尚未启动，Goal ACTIVE_UNMET。
