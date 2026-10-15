@@ -40,3 +40,5 @@ R0 VERIFIED_RUNNING 2026-10-15 22:07BJT：原supervisor895667 exactcmdline live�
 M125 ROI/R1/V SOURCE_IMPLEMENTED_CPU_CHECKED_REVIEW_PENDING 2026-10-15：11源码，10组CPU合成断言/15次decoder前向，11入口实际导入exit0；真实track=0，无新性能。候选配置与冻结计划已封存，部署准入/真实64尚待实现；必须等原R0整个三集suite终态再运行新GPU工作。原R0下一NN观察2026-10-17 12:45+08，不变。
 
 M125 ROI/R1/V SOURCE_REVIEW_PASS_EXECUTION_PENDING：新鲜源码审查325检查、75输入未改、0源码阻断，overall WARN/same-family/provisional/route UNATTESTED；部署操作另行草稿，尚未准入/实际真实64/全量训练。科研11源码保持原SHA，不把审查当性能。
+
+DEPLOYMENT_R2_SOURCE_REVIEW_PASS_ACTUAL_ADMISSION_PENDING：原稿两处源码问题和FAIL_SOURCE_ONLY保留，R2按原审查SHA格式精确比较并在SSH前独占尝试记录；SOURCE_ONLY通过，不等同部署成功。唯一原R0 Oct17 12:45BJT观察由隐藏单次sleep owner 49616 持有，未发生未来观察；新区域GPU仍等待原R0整套终态。
