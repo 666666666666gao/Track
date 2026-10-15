@@ -28972,3 +28972,13 @@ actual_launch的config SHA `4a3aba90dd305d9594321860ded67b83033db07abe079c8c14e6
 新鲜同族Codex审查为WARN/provisional，实际模型路由UNATTESTED；3798项确定性检查通过，0个已确认的限定报告阻断。完整框/分数前缀、GT来源/SHA、有效状态排除和连续框覆盖已独立核对；本地缺cv2/vot，审核没有重算官方栅格IoU，候选IoU仅核对锁定计分输出及其数组内部一致性，不用连续IoU冒充官方复算。审查者自身两个解析/形状假设已纠正、失败留档，实验输入未改。E6原Test/CDTB选模与人工文字边界仍须披露。
 
 R0固定六pass入口、独立官方三集入口及真实64帧检查源码已实现，隔离部署53份源码并完成九个CPU导入exit0；这不代表已运行NN、训练或取得新指标。源码审查和真实接口检查通过后，才启动全Train152×6并只评价final6。区域/状态新主模型尚未实现，25状态诊断已结束，不再在该面板上反复调分数。当前E6九项仍取§5.537、5/9，Goal ACTIVE_UNMET。
+
+## 5.541 M125-R0固定六pass协议实现、隔离部署与新鲜源码审查（2026-10-15）
+
+新增九份科研入口保留M124的实际A+B+C、密集256候选、每帧损失及更新方式，只改变下一轮预定协议：共同CurrentC SHA cc71e0b4起步，旧参数逐项一致，重新建立空AdamW，并在模型构造后设定fresh seed2027。第2—6个pass仅载入前一完整pass的模型、Adam与全部Python/NumPy/CPU/CUDA RNG状态，不继承旧首轮37条或缺RNG断点。全部使用Train152，自身状态推进；固定6×219802=1,318,812基本track调用、912序列运行，取pass6 final；训练中不跑Test/CDTB、不选best或早停。接口检查的64帧权重不用于正式起点。
+
+六pass后才生成完整DT Test50、CDTB80及VOT127/1765 anchor计划，同一final输出九项，仍沿用锁定官方协议/计分。新bundle/结果明确标外部集选权重False、fixed_final6，并披露此前工程测试暴露与人工多帧辅助文字。新生成的VOT manifest描述已纠正为冻结STTrack/CLIP加训练A+B和当前质量C；历史原manifest保持原字节。官方模型、数据、文本bank及冻结依赖不替换。
+
+隔离目录`/root/autodl-tmp/m125_R0_fixed6_20261015/code`实际复制44份原封存依赖及九份新入口，共53份SHA，九个CPU runpy导入均exit0。新鲜源码审核结论为PASS_SOURCE_ONLY、blocking_findings为空；同族Codex/provisional，实际模型/推理路由UNATTESTED。训练循环/六pass先后顺序、完整Adam/RNG恢复、返回码、wrapper/manifest等只在源码和确定性夹具范围通过，不等于NN、梯度或三集指标成功。报告、清单、真实CPU导入、原生审核请求和操作脚本均另存`M125_R0_FIXED6_20261015/`。
+
+审查指出启动操作必须绑定审查结论与实际对象，现已检查PASS_SOURCE_ONLY、零阻断、原candidate SHA及实际53源码SHA；不能仅凭存在报告就写reviewed。正式启动还需实际64帧检查exit0、两次A+B/C更新、冻结摘要一致、模型/Adam保存重载一致和共同warm未改，并重新核对空闲显存/磁盘。尚未把这些未执行条件标为已通过。本节发布记录的是源码阶段，新增区域主模型及R0正式全量训练尚未启动，Goal ACTIVE_UNMET。

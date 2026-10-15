@@ -1,0 +1,31 @@
+from pathlib import Path
+from datetime import datetime,timezone
+import base64,hashlib,json,os,shutil,subprocess,sys,zlib
+p=json.loads(zlib.decompress(base64.b64decode('PAYLOAD')))
+gate=p['candidate'];root=Path(gate['root']);assert not root.exists()
+def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+for path,digest in gate['source_sha256'].items():
+    if path not in gate['new_source_local_paths']:assert sha(path)==digest,path
+for path,digest in gate['input_sha256'].items():assert sha(path)==digest,path
+for row in p['frozen_dependencies']:assert sha(row['remote'])==row['sha256'],row['remote']
+root.mkdir();code=root/'code';code.mkdir()
+copied={}
+for row in p['frozen_dependencies']:
+    target=code/Path(row['remote']).name
+    assert not target.exists();shutil.copy2(row['remote'],target)
+    assert sha(target)==row['sha256'];copied[str(target)]=sha(target)
+for name,row in p['sources'].items():
+    target=code/name;assert not target.exists();target.write_bytes(row['text'].encode())
+    assert sha(target)==row['sha256'];copied[str(target)]=sha(target)
+gate.pop('new_source_local_paths');gate['source_sha256'].update(copied)
+(root/'candidate_gate.json').write_text(json.dumps(gate,indent=2)+'\n')
+environment=dict(os.environ,CUDA_VISIBLE_DEVICES='',PYTHONPATH=os.pathsep.join([str(code),gate['base_code_root'],'/home/SUTrack_RGBD_L']),PYTHONDONTWRITEBYTECODE='1',PYTHONOPTIMIZE='0',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1')
+rows=[]
+for name in p['sources']:
+    command=[gate['python'],'-B','-c','import runpy;runpy.run_path('+repr(str(code/name))+',run_name="M125_CPU_import_preflight")']
+    completed=subprocess.run(command,cwd=code,env=environment,capture_output=True)
+    row=dict(source=name,command=command,exit_code=completed.returncode,stdout=completed.stdout.decode(),stderr=completed.stderr.decode());rows.append(row)
+    (root/(name+'.CPU_import.json')).write_text(json.dumps(row,indent=2)+'\n')
+    assert completed.returncode==0,row
+value=dict(status='actual_M125_R0_candidate_staged_and_CPU_imported_only',at=datetime.now(timezone.utc).isoformat(),root=str(root),source_sha256=copied,candidate_gate_sha256=sha(root/'candidate_gate.json'),CPU_imports=rows,NN_calls=0,training_launched=False,GPU_queries=0)
+(root/'staging.json').write_text(json.dumps(value,indent=2)+'\n');print(json.dumps(value))

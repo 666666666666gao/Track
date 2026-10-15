@@ -1,0 +1,613 @@
+{
+  "scope": "SYNTHETIC control-flow/AST/arithmetic only; no torch import, NN, gradient, serialization, optimizer mathematics, network, SSH, or real metric execution",
+  "checks": [
+    {
+      "name": "M124_frame_prediction_loss_gradient_update_loop_AST_identical",
+      "status": "PASS",
+      "actual": "d437b44ea2a9232989fdd53c5f4339a6e56db3d46dd5d2597631c9eabe0ad5ea",
+      "expected": "d437b44ea2a9232989fdd53c5f4339a6e56db3d46dd5d2597631c9eabe0ad5ea",
+      "details": null
+    },
+    {
+      "name": "symbolic_parameter_count:DenseTargetDecoder",
+      "status": "PASS",
+      "actual": 380167,
+      "expected": 380167,
+      "details": "Linear/LayerNorm/Conv2d/MHA arithmetic from actual constructor AST; no NN created."
+    },
+    {
+      "name": "symbolic_parameter_count:TemplateWriteC",
+      "status": "PASS",
+      "actual": 70721,
+      "expected": 70721,
+      "details": "Linear/LayerNorm/Conv2d/MHA arithmetic from actual constructor AST; no NN created."
+    },
+    {
+      "name": "symbolic_total_trainable_parameters",
+      "status": "PASS",
+      "actual": 450888,
+      "expected": 450888,
+      "details": null
+    },
+    {
+      "name": "controller_six_training_stages",
+      "status": "PASS",
+      "actual": 6,
+      "expected": 6,
+      "details": null
+    },
+    {
+      "name": "controller_all_six_precede_evaluation",
+      "status": "PASS",
+      "actual": [
+        "train_fixed_pass",
+        "train_fixed_pass",
+        "train_fixed_pass",
+        "train_fixed_pass",
+        "train_fixed_pass",
+        "train_fixed_pass"
+      ],
+      "expected": [
+        "train_fixed_pass",
+        "train_fixed_pass",
+        "train_fixed_pass",
+        "train_fixed_pass",
+        "train_fixed_pass",
+        "train_fixed_pass"
+      ],
+      "details": null
+    },
+    {
+      "name": "controller_fixed_epoch_arguments",
+      "status": "PASS",
+      "actual": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "details": null
+    },
+    {
+      "name": "controller_pass1_has_no_resume",
+      "status": "PASS",
+      "actual": true,
+      "expected": true,
+      "details": null
+    },
+    {
+      "name": "controller_later_resume_exact_previous_latest",
+      "status": "PASS",
+      "actual": true,
+      "expected": true,
+      "details": null
+    },
+    {
+      "name": "controller_prepares_only_pass6",
+      "status": "PASS",
+      "actual": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R0_FIXED_SOURCE_AUDIT_20261015\\SYNTHETIC_CONTROL_FLOW_NO_NN\\controller_success\\passes\\pass-06\\fit",
+      "expected": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_R0_FIXED_SOURCE_AUDIT_20261015\\SYNTHETIC_CONTROL_FLOW_NO_NN\\controller_success\\passes\\pass-06\\fit",
+      "details": null
+    },
+    {
+      "name": "controller_no_real64_or_interpass_eval",
+      "status": "PASS",
+      "actual": 15,
+      "expected": 15,
+      "details": null
+    },
+    {
+      "name": "controller_expected_final_evaluation_stages",
+      "status": "PASS",
+      "actual": [
+        "cdtb_analyze",
+        "cdtb_track",
+        "collect",
+        "depthtrack_test_analyze",
+        "depthtrack_test_track",
+        "prepare",
+        "vot_official_analysis",
+        "vot_seal",
+        "vot_track"
+      ],
+      "expected": [
+        "cdtb_analyze",
+        "cdtb_track",
+        "collect",
+        "depthtrack_test_analyze",
+        "depthtrack_test_track",
+        "prepare",
+        "vot_official_analysis",
+        "vot_seal",
+        "vot_track"
+      ],
+      "details": null
+    },
+    {
+      "name": "controller_vot_analysis_name_matches_analyzer",
+      "status": "PASS",
+      "actual": "R0_fixed6_Train152_full127",
+      "expected": "R0_fixed6_Train152_full127",
+      "details": null
+    },
+    {
+      "name": "controller_success_zero_exit_file",
+      "status": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "details": null
+    },
+    {
+      "name": "controller_failure_original_exception_preserved",
+      "status": "PASS",
+      "actual": "INTENTIONAL_STUB_FAILURE; no actual child process",
+      "expected": "INTENTIONAL_STUB_FAILURE; no actual child process",
+      "details": null
+    },
+    {
+      "name": "controller_failure_no_retry_or_later_stage",
+      "status": "PASS",
+      "actual": 3,
+      "expected": 3,
+      "details": null
+    },
+    {
+      "name": "controller_failure_no_false_success_exit",
+      "status": "PASS",
+      "actual": true,
+      "expected": true,
+      "details": null
+    },
+    {
+      "name": "actual_run_function_failure_receipt_retains_7",
+      "status": "PASS",
+      "actual": 7,
+      "expected": 7,
+      "details": null
+    },
+    {
+      "name": "actual_run_function_failure_exit_file_retains_7",
+      "status": "PASS",
+      "actual": "7",
+      "expected": "7",
+      "details": null
+    },
+    {
+      "name": "actual_run_function_failure_invokes_child_once",
+      "status": "PASS",
+      "actual": 1,
+      "expected": 1,
+      "details": null
+    },
+    {
+      "name": "actual_run_function_failure_raises_no_retry",
+      "status": "PASS",
+      "actual": "Read this original stage failure; no automatic retry.",
+      "expected": "Read this original stage failure; no automatic retry.",
+      "details": null
+    },
+    {
+      "name": "actual_supervisor_returns_real_nonzero",
+      "status": "PASS",
+      "actual": 7,
+      "expected": 7,
+      "details": null
+    },
+    {
+      "name": "actual_supervisor_receipt_retains_real_nonzero",
+      "status": "PASS",
+      "actual": 7,
+      "expected": 7,
+      "details": null
+    },
+    {
+      "name": "actual_supervisor_exit_file_retains_real_nonzero",
+      "status": "PASS",
+      "actual": "7",
+      "expected": "7",
+      "details": null
+    },
+    {
+      "name": "first_pass_weights_from_common_warm",
+      "status": "PASS",
+      "actual": {
+        "A_B": "380167:common_AB",
+        "C": "70721:common_C"
+      },
+      "expected": {
+        "A_B": "380167:common_AB",
+        "C": "70721:common_C"
+      },
+      "details": null
+    },
+    {
+      "name": "first_pass_Adam_state_empty",
+      "status": "PASS",
+      "actual": {},
+      "expected": {},
+      "details": null
+    },
+    {
+      "name": "first_pass_formal_history_zero",
+      "status": "PASS",
+      "actual": {
+        "track_calls": 0,
+        "optimizer_steps": 0,
+        "C_optimizer_steps": 0,
+        "supervised_frames": 0,
+        "C_supervised_frames": 0,
+        "sequence_records": []
+      },
+      "expected": {
+        "track_calls": 0,
+        "optimizer_steps": 0,
+        "C_optimizer_steps": 0,
+        "supervised_frames": 0,
+        "C_supervised_frames": 0,
+        "sequence_records": []
+      },
+      "details": null
+    },
+    {
+      "name": "first_pass_final_rng_reseed_after_module_construction",
+      "status": "PASS",
+      "actual": [
+        [
+          "python_seed",
+          2027
+        ],
+        [
+          "numpy_seed",
+          2027
+        ],
+        [
+          "torch_cpu_seed",
+          2027
+        ],
+        [
+          "torch_cuda_seed",
+          2027
+        ]
+      ],
+      "expected": [
+        [
+          "python_seed",
+          2027
+        ],
+        [
+          "numpy_seed",
+          2027
+        ],
+        [
+          "torch_cpu_seed",
+          2027
+        ],
+        [
+          "torch_cuda_seed",
+          2027
+        ]
+      ],
+      "details": null
+    },
+    {
+      "name": "first_pass_no_optimizer_restore",
+      "status": "PASS",
+      "actual": true,
+      "expected": true,
+      "details": null
+    },
+    {
+      "name": "later_pass_weights_from_complete_resume",
+      "status": "PASS",
+      "actual": {
+        "A_B": "380167:resumed_AB",
+        "C": "70721:resumed_C"
+      },
+      "expected": {
+        "A_B": "380167:resumed_AB",
+        "C": "70721:resumed_C"
+      },
+      "details": null
+    },
+    {
+      "name": "later_pass_Adam_state_restore_call",
+      "status": "PASS",
+      "actual": {
+        "sentinel": "all_previous_Adam_states"
+      },
+      "expected": {
+        "sentinel": "all_previous_Adam_states"
+      },
+      "details": null
+    },
+    {
+      "name": "later_pass_all_rng_restored_after_construction",
+      "status": "PASS",
+      "actual": [
+        [
+          "python_restore",
+          "python_previous"
+        ],
+        [
+          "numpy_restore",
+          "numpy_previous"
+        ],
+        [
+          "torch_cpu_restore",
+          "cpu_previous"
+        ],
+        [
+          "torch_cuda_restore",
+          [
+            "gpu0_previous",
+            "gpu1_previous"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "python_restore",
+          "python_previous"
+        ],
+        [
+          "numpy_restore",
+          "numpy_previous"
+        ],
+        [
+          "torch_cpu_restore",
+          "cpu_previous"
+        ],
+        [
+          "torch_cuda_restore",
+          [
+            "gpu0_previous",
+            "gpu1_previous"
+          ]
+        ]
+      ],
+      "details": null
+    },
+    {
+      "name": "reject_partial_boundary",
+      "status": "PASS",
+      "actual": true,
+      "expected": true,
+      "details": null
+    },
+    {
+      "name": "reject_legacy_M124_checkpoint",
+      "status": "PASS",
+      "actual": true,
+      "expected": true,
+      "details": null
+    },
+    {
+      "name": "reject_first_pass_resume",
+      "status": "PASS",
+      "actual": true,
+      "expected": true,
+      "details": null
+    },
+    {
+      "name": "reject_later_pass_without_resume",
+      "status": "PASS",
+      "actual": true,
+      "expected": true,
+      "details": null
+    }
+  ],
+  "symbolic_parameter_groups": {
+    "DenseTargetDecoder": {
+      "native": 148032,
+      "semantic_projection": 49280,
+      "position": 128,
+      "search_fusion": 16576,
+      "reference_read": 16640,
+      "visual_fusion": 8384,
+      "phrase_bind": 16640,
+      "phrase_calibrate": 16640,
+      "phrase_read": 16640,
+      "visual_support": 65,
+      "semantic_support": 8704,
+      "geometry": 73792,
+      "box_delta": 260,
+      "quality": 65,
+      "observation": 8321
+    },
+    "TemplateWriteC": {
+      "network": 70721
+    }
+  },
+  "initialization_events": {
+    "first_pass": [
+      [
+        "torch_load",
+        "bank",
+        "cpu"
+      ],
+      [
+        "threads",
+        1
+      ],
+      [
+        "python_seed",
+        2027
+      ],
+      [
+        "numpy_seed",
+        2027
+      ],
+      [
+        "torch_cpu_seed",
+        2027
+      ],
+      [
+        "torch_cuda_seed",
+        2027
+      ],
+      [
+        "torch_load",
+        "warm_final",
+        "cpu"
+      ],
+      [
+        "model_cuda",
+        380167
+      ],
+      [
+        "model_load",
+        380167,
+        true
+      ],
+      [
+        "model_cuda",
+        70721
+      ],
+      [
+        "model_load",
+        70721,
+        true
+      ],
+      [
+        "AdamW_construct",
+        [
+          [
+            380167
+          ],
+          [
+            70721
+          ]
+        ],
+        {
+          "lr": 3e-05,
+          "weight_decay": 0.01
+        }
+      ],
+      [
+        "python_seed",
+        2027
+      ],
+      [
+        "numpy_seed",
+        2027
+      ],
+      [
+        "torch_cpu_seed",
+        2027
+      ],
+      [
+        "torch_cuda_seed",
+        2027
+      ]
+    ],
+    "later_pass": [
+      [
+        "torch_load",
+        "bank",
+        "cpu"
+      ],
+      [
+        "threads",
+        1
+      ],
+      [
+        "python_seed",
+        2027
+      ],
+      [
+        "numpy_seed",
+        2027
+      ],
+      [
+        "torch_cpu_seed",
+        2027
+      ],
+      [
+        "torch_cuda_seed",
+        2027
+      ],
+      [
+        "torch_load",
+        "warm_final",
+        "cpu"
+      ],
+      [
+        "torch_load",
+        "resume",
+        "cpu"
+      ],
+      [
+        "model_cuda",
+        380167
+      ],
+      [
+        "model_load",
+        380167,
+        true
+      ],
+      [
+        "model_cuda",
+        70721
+      ],
+      [
+        "model_load",
+        70721,
+        true
+      ],
+      [
+        "AdamW_construct",
+        [
+          [
+            380167
+          ],
+          [
+            70721
+          ]
+        ],
+        {
+          "lr": 3e-05,
+          "weight_decay": 0.01
+        }
+      ],
+      [
+        "AdamW_restore",
+        {
+          "sentinel": "all_previous_Adam_states"
+        }
+      ],
+      [
+        "python_restore",
+        "python_previous"
+      ],
+      [
+        "numpy_restore",
+        "numpy_previous"
+      ],
+      [
+        "torch_cpu_restore",
+        "cpu_previous"
+      ],
+      [
+        "torch_cuda_restore",
+        [
+          "gpu0_previous",
+          "gpu1_previous"
+        ]
+      ]
+    ]
+  },
+  "count": 36,
+  "failed": 0,
+  "fixture_only": true,
+  "NN_calls": 0
+}

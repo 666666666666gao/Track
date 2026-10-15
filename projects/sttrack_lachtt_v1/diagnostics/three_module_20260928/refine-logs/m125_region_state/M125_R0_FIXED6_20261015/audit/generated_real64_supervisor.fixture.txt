@@ -1,0 +1,11 @@
+import subprocess,json,sys
+from pathlib import Path
+from datetime import datetime,timezone
+root=Path('\\SYNTHETIC_NO_NN')
+command=['NEVER_RUN']
+row=dict(command=command,started_at=datetime.now(timezone.utc).isoformat())
+completed=subprocess.run(command,cwd='/SYNTHETIC_CODE')
+row.update(exit_code=completed.returncode,finished_at=datetime.now(timezone.utc).isoformat())
+(root/"real64.exit").write_text(str(completed.returncode)+chr(10))
+(root/"real64.receipt.json").write_text(json.dumps(row,indent=2)+chr(10))
+sys.exit(completed.returncode)
