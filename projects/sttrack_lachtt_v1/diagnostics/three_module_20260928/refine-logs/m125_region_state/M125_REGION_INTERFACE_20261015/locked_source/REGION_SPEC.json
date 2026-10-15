@@ -1,0 +1,133 @@
+{
+  "status": "implemented_region_and_fixed6_sources_CPU_interface_only",
+  "scope": "Prospective ROI/R1/V arms; no actual RGB-D tracking, GPU witness, training or benchmark result for these arms.",
+  "arms": {
+    "ROI": {
+      "model_arm": "roi",
+      "regional_semantics": false,
+      "specific_text_in_inherited_branch": true
+    },
+    "R1": {
+      "model_arm": "language",
+      "regional_semantics": true,
+      "specific_text_in_inherited_branch": true
+    },
+    "V": {
+      "model_arm": "visual",
+      "regional_semantics": true,
+      "specific_text_in_inherited_branch": false,
+      "phrase_query": "first-frame CLIP visual mean, repeated five slots",
+      "phrase_mask": "five fixed true slots"
+    }
+  },
+  "dimensions": {
+    "candidates": 256,
+    "search_grid": [
+      16,
+      16
+    ],
+    "modalities": [
+      "rgb",
+      "depth",
+      "fused",
+      "clip"
+    ],
+    "projected_channels": 64,
+    "inside_points": 16,
+    "outer_ring_points": 12,
+    "region_feature_channels": 512,
+    "current_C_feature_channels": 128,
+    "C_reference_channels": 256,
+    "C_total_channels": 519
+  },
+  "parameters": {
+    "inherited_AB": 380167,
+    "new_region": 33350,
+    "AB": 413517,
+    "C": 70721,
+    "total": 484238
+  },
+  "visual_path": "Ordinary masked ROI+outer-ring mean from four projected search grids -> shared512/64 encoder -> additional visual geometry4, refined-IoU quality1 and support1.",
+  "language_path": "Within each inherited refined candidate box, use masked exp(first-reference cosine + sampled CLIP phrase cosine), mean across valid phrase slots, and ordinary ring context; shared support(full)-support(Empty).",
+  "confidence_limits": [
+    "Padding masks are not depth-measurement reliability or attribute visibility.",
+    "Candidate IoU is localization supervision, not other-instance identity truth.",
+    "Conditional reads do not perform additional region-level CLIP pretraining.",
+    "The visual control inherits historical text-trained common weights; it is not text-free pretraining.",
+    "ROI and R1 share parameter counts, sampling resolution and backbone calls; R1 and V perform additional conditional scalar reads and MLP calls, which must be included in actual cost reporting."
+  ],
+  "training": {
+    "seed": 2027,
+    "complete_Train152_passes": 6,
+    "fixed_final_pass": 6,
+    "gradient_accumulation": 32,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "geometry_preservation_weight": 1,
+    "common_warm_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+    "new_optimizer": true,
+    "fresh_training_RNG_after_construction": true,
+    "no_development_split": true,
+    "sequence_runs": 912,
+    "track_calls": 1318812,
+    "inter_pass_external_evaluation": false,
+    "historical_external_engineering_exposure": true,
+    "common_extra_parameter_initialization_same_across_three_arms": true
+  },
+  "evaluation": {
+    "final_only": true,
+    "datasets": {
+      "depthtrack_test": [
+        50,
+        76373
+      ],
+      "cdtb": [
+        80,
+        101956
+      ],
+      "vot": [
+        127,
+        1765
+      ]
+    },
+    "final_format": "M125_region_fixed_final_v1",
+    "arm_bound_in_checkpoint_result_bundle": true,
+    "current_quality_C_unchanged": true,
+    "additional_observation_crops": 0
+  },
+  "CPU_validation": {
+    "check_groups": 10,
+    "decoder_forwards": 15,
+    "real_tracking_calls": 0,
+    "images": 0,
+    "STTrack_CLIP_instances": 0,
+    "GPU_queries": 0,
+    "all11_import_exit_codes": 0,
+    "zero_residual_scope": "ROI/R1 equal inherited human-input decoder outputs; V equals inherited visual-query/all-true-mask outputs. Synthetic CPU tensors only.",
+    "real_GPU_or_own_history_coverage": false,
+    "formal_training_state_promoted_from_unit": false
+  },
+  "next_steps": [
+    "Fresh bounded source/interface review.",
+    "Complete and seal the original R0 six-pass/three-dataset suite before any new real RGB-D GPU work.",
+    "Implement/check explicit deployment admission and current-arm real64 on released GPUs.",
+    "Run each arm from common warm for six complete passes and evaluate its same final on all three datasets."
+  ],
+  "original_R0_NN_observation_not_before": "2026-10-17T12:45:00+08:00",
+  "source_sha256": {
+    "analyze_m125_region_fixed_vot.py": "34c511359d125dad69e2ecbe7a7b5931117925330c9e7f5195716601b5367747",
+    "check_m125_region_real64.py": "21850f182eb008731a49724212d2981ef581588b43366fb75508cd1be5ecfb3a",
+    "check_region_decoder_cpu.py": "9a0a49beee880fba70739e40d74096173fddc9fc60b004e410f8a5fb6ed6cd9a",
+    "collect_m125_region_fixed_results.py": "396287d4f3c69fdeb733dbfb9f18aca320e6221e55178f43672d48da3fc01628",
+    "m125_region_fixed_official_runtime.py": "8f92743316751054c2196109d7dad173c8bf2071c719118b1c9d30a609c8227d",
+    "m125_region_fixed_process_supervisor.py": "94e31c9afc75d9a94941a012d1cce3d9aefe9c6019705af1506445c4a886bd93",
+    "prepare_m125_region_fixed_evaluation.py": "7558b6ce96305236c4bf16c6da841a8c6c103b164b1a176dd554656b6bcc5078",
+    "region_conditioned_target_decoder.py": "1814d68f660d9c13ac41555d63b9aadbd972bb755f14b48e99b509f8bb07c1c6",
+    "run_m125_region_fixed_official.py": "4b7a78a53567953be889677acb7efe159a864665e31b9ee74a3ff89e1bfb6d96",
+    "run_m125_region_fixed_suite.py": "18cd4d5fbf3adab5c23d162ff1a361dc44418cc9ab4130d2026fda393bd1006b",
+    "train_m125_region_fixed_pass.py": "aaa2e91f57917903ed7a18a78a36722097d98852ddf876aa268c44343d245cfe"
+  },
+  "prior_CPU_receipt_sha256": "b2059b402a6b914142a74bd695ef5f1315fa985c5a07be500aade41237e226ac",
+  "CPU_import_receipt_sha256": "c7845702e30836766117603096479c10982b132ff95c986ecc217037b92504ad",
+  "deployment_admission_operator_implemented": false
+}

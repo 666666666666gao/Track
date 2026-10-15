@@ -1,0 +1,103 @@
+{
+  "status": "complete_synthetic_CPU_region_decoder_interface_checks",
+  "seed": 2027,
+  "evaluation_type": "synthetic_interface_only",
+  "checks": [
+    "global-pixel sampler exactly matches inherited768 interface, including outside-crop candidate",
+    "known affine64-compatible coordinates and inherited outer ring",
+    "all three arms inherit exact warm tensors, equal33350 new parameters and zero-tail full-output parity",
+    "unchanged256-value C initial reference for every arm",
+    "unchanged actual one-instance519 C input interface",
+    "nonzero region heads: language changes support while all256 geometry/quality stay query-invariant",
+    "visual control ignores supplied phrase content and phrase-count mask",
+    "plain ROI adds no regional language increment; Empty full-null difference exactly zero",
+    "inherited precision loss gives finite nonzero gradients to every new parameter group",
+    "strict complete-state save/reload preserves every synthetic output"
+  ],
+  "check_count": 10,
+  "inherited_AB_parameters": 380167,
+  "additional_region_parameters": 33350,
+  "AB_parameters": 413517,
+  "unchanged_C_parameters": 70721,
+  "combined_trainable_parameters": 484238,
+  "new_group_gradient_norms": {
+    "region_encoder.": 345.7466125488281,
+    "region_support.": 871.8399047851562,
+    "region_box_delta.": 42.419281005859375,
+    "region_quality.": 1.3955984264612198
+  },
+  "decoder_forward_calls": 15,
+  "forward_log": [
+    {
+      "model": "DenseTargetDecoder",
+      "arm": "inherited"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "roi"
+    },
+    {
+      "model": "DenseTargetDecoder",
+      "arm": "inherited"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "language"
+    },
+    {
+      "model": "DenseTargetDecoder",
+      "arm": "inherited"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "visual"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "language"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "language"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "visual"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "visual"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "roi"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "language"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "language"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "language"
+    },
+    {
+      "model": "RegionConditionedTargetDecoder",
+      "arm": "language"
+    }
+  ],
+  "real_tracking_calls": 0,
+  "dataset_images_opened": 0,
+  "STTrack_CLIP_models_instantiated": 0,
+  "GPU_queries": 0,
+  "CUDA_VISIBLE_DEVICES": "",
+  "formal_training_result": false,
+  "synthetic_state_used_for_any_formal_initialization": false,
+  "warm_sha256": "cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0",
+  "source_sha256": "1814d68f660d9c13ac41555d63b9aadbd972bb755f14b48e99b509f8bb07c1c6",
+  "test_source_sha256": "9a0a49beee880fba70739e40d74096173fddc9fc60b004e410f8a5fb6ed6cd9a",
+  "synthetic_state_sha256": "ad1b813202d8cffaf4639c6d9c871ef7afaffeab3268b285c4af30cb260571fe"
+}

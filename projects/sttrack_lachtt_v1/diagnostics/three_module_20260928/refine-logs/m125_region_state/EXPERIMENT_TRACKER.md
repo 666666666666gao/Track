@@ -36,3 +36,5 @@ M125-R0：SOURCE_READY（非RUNNING/COMPLETE），九份新入口+44冻结依赖
 M125-R0 RUNNING：真实64接口检查原exit0后，2026-10-15T21:31:23.509631+08:00从共同warm/freshAdam+seed单次启动原supervisor895667，固定6完整pass/final6后全三集。存储准入修订仅20GiB->2GiB，旧失败与审查保留；无科学代码/协议改动。唯一首次观察2026-10-15T21:41:23.509631+08:00，尚无新正式性能。
 
 R0 VERIFIED_RUNNING 2026-10-15 22:07BJT：原supervisor895667 exactcmdline live，pass1完整10/152序列、18,516track、580AB/580C步，checkpoint5,498,004B；0pass完整完成，无新final/九项。唯一下一NN节点2026-10-17 12:45+08，估计训练39.55h；不做分钟轮询/中途外部选模。
+
+M125 ROI/R1/V SOURCE_IMPLEMENTED_CPU_CHECKED_REVIEW_PENDING 2026-10-15：11源码，10组CPU合成断言/15次decoder前向，11入口实际导入exit0；真实track=0，无新性能。候选配置与冻结计划已封存，部署准入/真实64尚待实现；必须等原R0整个三集suite终态再运行新GPU工作。原R0下一NN观察2026-10-17 12:45+08，不变。
