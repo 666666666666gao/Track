@@ -28900,3 +28900,13 @@ manifest的native_source保留旧“Exact M39 default wrapper and checkpoint; no
 原始压缩41,444字节，解码151,343字节，SHA `6a42bc4de981f7cb1ab1d9078b19d3d11df2292fd1fada56a5e279d9c42cf06c`；摘要见`M124_VOT_FIRST_WAVE_PROGRESS_20261015.json`。无新NN、GPU/温度/功率查询、训练重启或冻结源码改动。
 
 第一波粗估07:40—08:00完成，整套粗估18:00—20:00，均非完成承诺。唯一后继Hidden本地计时器39132，parent29416，birth06:31:49.3364410，启动时实际身份已核对；无native wrapper/functions wait cell。下一次不早于08:00北京时间，使用准备好的second_wave compact observer一次，期间不查询进度或等待句柄。仍须完成原suite全部终态、官方收集及资源释放后才执行新NN诊断。Goal ACTIVE_UNMET。
+
+## 5.536 E6原VOT第一波exit0、第二波实际自动启动（2026-10-15 08:00）
+
+08:00:18.720906实际单次紧凑观察exit0。原分片0/1均有正式退出文件0，launch均记录exit0和completed_anchors441；第一波已完成882个anchor。原驱动收回两进程于07:47:29.639310/07:47:29.663692，第一波墙时10小时24分42秒；这是父控制器记录的收回时刻，不是分片1此前计算真正结束时刻。
+
+原控制器随后于07:47:29.686634/07:47:29.688506自动启动第二波分片2/3，原PID760856/760857、CUDA环境对应GPU0/1，08:00命令均仍对应原VOT evaluate入口。当前非空三件套代理分别10/441和12/442，尚无第二波退出文件、合并或最终EAO/ACC/ROB。第一波可认证882个anchor，第二波22份只是存在代理，不混写成已认证904个anchor。
+
+原始压缩41,686字节，解码153,207字节，SHA `817fe4a2bcb9ddfa2a125af0cca2391f1ab3680c1e9dc56848eaaac4f7bdbd9c`，摘要见`M124_VOT_SECOND_WAVE_PROGRESS_20261015.json`。没有换权重、推理配置、训练/评测重启或新增NN/GPU/温度/功率查询；最终官方分析和同权重九项仍待原队列完成。
+
+按相近计划帧量和第一波实际速度，完整VOT粗估18:00—19:00收尾，非承诺。原39132计时器08:00到点并已消费；唯一后继Hidden计时器44484,parent50232,birth08:01:02.7891350，启动时实际身份已核对，无native wrapper/functions wait cell。下一次不早于18:00北京时间，一次final_completion compact观察；此前不轮询日志/进程/GPU/等待句柄，不启动新NN诊断。用户确认的M125路线和固定预算计划保持未实现/未执行，Goal ACTIVE_UNMET。
