@@ -42,3 +42,5 @@ M125 ROI/R1/V SOURCE_IMPLEMENTED_CPU_CHECKED_REVIEW_PENDING 2026-10-15：11源�
 M125 ROI/R1/V SOURCE_REVIEW_PASS_EXECUTION_PENDING：新鲜源码审查325检查、75输入未改、0源码阻断，overall WARN/same-family/provisional/route UNATTESTED；部署操作另行草稿，尚未准入/实际真实64/全量训练。科研11源码保持原SHA，不把审查当性能。
 
 DEPLOYMENT_R2_SOURCE_REVIEW_PASS_ACTUAL_ADMISSION_PENDING：原稿两处源码问题和FAIL_SOURCE_ONLY保留，R2按原审查SHA格式精确比较并在SSH前独占尝试记录；SOURCE_ONLY通过，不等同部署成功。唯一原R0 Oct17 12:45BJT观察由隐藏单次sleep owner 49616 持有，未发生未来观察；新区域GPU仍等待原R0整套终态。
+
+STATIC_PACKAGE_CPU_LAYOUT_VERIFIED：22部署材料+64code实际暂存于独立m125_region_reviewed_admission_inputs_20261015，三臂真实审查绑定与11同目录CPU导入exit0。无原R0进度/资源读取，无新NN/track。新增本地phase入口仅做传输，真实real64/full未调用；原R0整套终态/资源/对应arm真实64仍是启动条件。
