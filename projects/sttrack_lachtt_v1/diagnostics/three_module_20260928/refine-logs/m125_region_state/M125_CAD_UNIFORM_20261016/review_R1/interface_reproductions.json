@@ -1,0 +1,28 @@
+{
+  "prepare_missing_training": {
+    "reproduced": true,
+    "error_type": "AttributeError",
+    "error": "'Namespace' object has no attribute 'training'",
+    "source": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFIED_SOURCE_20261016\\prepare_m125_CAD_evaluation.py",
+    "line": 80,
+    "actual_cli_attributes": [
+      "output",
+      "profile",
+      "reference_evaluation",
+      "source_gate"
+    ],
+    "scope": "Exact supplied CLI AST and exact unresolved attribute AST; no preparation main, transport, or neural call."
+  },
+  "collector_model_name_shadowing": {
+    "reproduced": true,
+    "error_type": "FileNotFoundError",
+    "error": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFORM_SOURCE_AUDIT_20261016\\fixtures\\collector\\vot\\run\\master\\analysis\\00000000000000000000000000000000000000000000000000000000000006e4.json_full127.json",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFORM_SOURCE_AUDIT_20261016\\verify_sources_and_interfaces.py\", line 207, in <module>\n    collector_scope['main'](fixture_root)\n  File \"C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFIED_SOURCE_20261016\\collect_m125_CAD_results.py\", line 46, in main\n    assert vot['analysis_sha256']==sha(target/'vot/run/master/analysis'/(name+'_full127.json'))\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFORM_SOURCE_AUDIT_20261016\\verify_sources_and_interfaces.py\", line 201, in fixture_sha\n    raise FileNotFoundError(str(path))\nFileNotFoundError: C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFORM_SOURCE_AUDIT_20261016\\fixtures\\collector\\vot\\run\\master\\analysis\\00000000000000000000000000000000000000000000000000000000000006e4.json_full127.json\n",
+    "expected_analysis_path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFORM_SOURCE_AUDIT_20261016\\fixtures\\collector\\vot\\run\\master\\analysis\\CAD_U1_same_R0_fixed6_full127.json",
+    "requested_analysis_paths": [
+      "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFORM_SOURCE_AUDIT_20261016\\fixtures\\collector\\vot\\run\\master\\analysis\\00000000000000000000000000000000000000000000000000000000000006e4.json_full127.json"
+    ],
+    "event_file_count": 1765,
+    "scope": "Complete unchanged collector main AST over in-memory synthetic receipts; no real results or metrics."
+  }
+}

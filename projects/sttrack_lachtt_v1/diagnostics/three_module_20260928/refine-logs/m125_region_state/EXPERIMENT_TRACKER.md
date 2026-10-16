@@ -46,3 +46,5 @@ DEPLOYMENT_R2_SOURCE_REVIEW_PASS_ACTUAL_ADMISSION_PENDING：原稿两处源码�
 STATIC_PACKAGE_CPU_LAYOUT_VERIFIED：22部署材料+64code实际暂存于独立m125_region_reviewed_admission_inputs_20261015，三臂真实审查绑定与11同目录CPU导入exit0。无原R0进度/资源读取，无新NN/track。新增本地phase入口仅做传输，真实real64/full未调用；原R0整套终态/资源/对应arm真实64仍是启动条件。
 
 2026-10-16 UNIFIED_PROTOCOL_OVERRIDE：只DT Train152训练，每候选统一结构/训练预算/checkpoint/主profile，完整DT50/CDTB80/VOT127九项；不按数据集挑权重、seed、层数或profile拼行。小差距允许有限统一训练/推理调参，每个新训练候选完整重训三集。当前R0不热改；后继先R0整套→同R0 final CAD U0/U1/U2→再有限统一调参/区域/状态，旧region直接启动顺序被覆盖。CAD12源码/CPU证据不是正式运行：审查已发现两处问题，独立R2修正中，真实CAD track=0，无新指标。原R0唯一下一观察仍Oct17 12:45BJT，不提前查询。详见UNIFIED_MODEL_PROTOCOL_20261016.md，Goal ACTIVE_UNMET。
+
+2026-10-16 CAD_UNIFORM_SOURCE_AND_ADMISSION_REVIEW_PASS_ONLY：原科研两处main错误/R1 FAIL和首次启动CRLF字节错误/R2操作FAIL已保留；科研R2+操作R2在独立R3审查均PASS_SOURCE_ONLY/0阻断，same-family/provisional/route UNATTESTED。66布局12CPU导入实测通过，完整prepare/collect仅隔离模拟夹具。尚无实际准入、CAD真实64或完整指标。原R0整套→同R0 final统一U0/U1/U2，原Oct17 12:45BJT唯一等待不改。见M125_CAD_UNIFORM_20261016/README.md，Goal ACTIVE_UNMET。

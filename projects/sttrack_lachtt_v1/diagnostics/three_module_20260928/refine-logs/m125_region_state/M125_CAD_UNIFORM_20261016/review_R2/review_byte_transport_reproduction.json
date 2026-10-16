@@ -1,0 +1,33 @@
+{
+  "status": "reproduced_original_review_byte_transport_mismatch",
+  "evaluation_type": "simulation_only",
+  "fixture": true,
+  "actual_SSH_calls": 0,
+  "actual_remote_execution": false,
+  "exact_embedded_remote_assertion": "assert hashlib.sha256(p['source_review_json'].encode()).hexdigest() == p['source_review_sha256']",
+  "assertion_result": "AssertionError",
+  "files": [
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFORM_SOURCE_AUDIT_20261016\\EXPERIMENT_AUDIT.json",
+      "raw_bytes": 97123,
+      "transported_bytes": 96376,
+      "raw_sha256": "50597279fe4d1094b0b3c5e35ee6cf5c9484819e8c741f2445ed6e35529ca313",
+      "transported_sha256": "3df6e5327f540987d83404aa1bece317f9896bdfe50ff332db7d30f7a98fa4a1",
+      "byte_exact": false,
+      "CRLF_count": 747,
+      "LF_count": 747
+    },
+    {
+      "path": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_UNIFORM_SOURCE_AUDIT_20261016\\EXPERIMENT_AUDIT.md",
+      "raw_bytes": 54303,
+      "transported_bytes": 54102,
+      "raw_sha256": "ca4d375d66248e3a1f0aecbebc8f2a446ec24f1a21a417b587df544a1183448c",
+      "transported_sha256": "e5a326ae66da44f551971b8fa97dd9c6c7c26410fe7831a0628fcbacab6a5e31",
+      "byte_exact": false,
+      "CRLF_count": 201,
+      "LF_count": 201
+    }
+  ],
+  "source_sha256": "7808eb0b1adf50e0314fd9ea080f9d8bc0fca5e0c52d92694eea3fa87dd4d41c",
+  "pipeline": "actual local read_text/encode semantics -> json.dumps -> zlib.compress -> base64 -> inverse -> exact remote assertion AST"
+}

@@ -1,0 +1,22 @@
+--- original/collect_m125_CAD_results.py
++++ R2/collect_m125_CAD_results.py
+@@ -40,7 +40,7 @@
+         assert vot['anchors']==1765 and vot['sequences']==127 and vot['external_optimizer_steps']==0
+         assert vot['inference_profile_id']==bundle['inference_profile_id'] and vot['inference_profile']==bundle['inference_profile']
+         assert len(vot['profile_event_files_sha256'])==1765
+-        for name,digest in vot['profile_event_files_sha256'].items():assert sha(target/'vot/profile_events'/name)==digest
++        for event_name,digest in vot['profile_event_files_sha256'].items():assert sha(target/'vot/profile_events'/event_name)==digest
+         merge=read(target/'vot/run/merge_result.json');assert vot['merge_sha256']==sha(target/'vot/run/merge_result.json')
+         for rel,digest in merge['result_sha256'].items():assert sha(target/'vot/run/master'/rel)==digest
+         assert vot['analysis_sha256']==sha(target/'vot/run/master/analysis'/(name+'_full127.json'))
+--- original/prepare_m125_CAD_evaluation.py
++++ R2/prepare_m125_CAD_evaluation.py
+@@ -77,7 +77,7 @@
+     plans['vot']['run'] = str(run)
+     write(args.output / 'selection.json', dict(status='M125_CAD_uniform_profile_before_metrics',
+           final_sha256=bundle['final_sha256'], bundle_sha256=sha(args.output / 'bundle.json'),
+-          training_result_sha256=sha(args.training / 'result.json'), plans=plans,
++          training_result_sha256=sha(bundle['training_result_path']), plans=plans,
+           bank_sha256=plan['bank_sha256'], binding_sha256=plan['binding_sha256'],
+           models=[dict(name='CAD_'+args.profile+'_same_R0_fixed6', final_sha256=bundle['final_sha256'],
+                        bundle_sha256=sha(args.output / 'bundle.json'), plans=plans)],

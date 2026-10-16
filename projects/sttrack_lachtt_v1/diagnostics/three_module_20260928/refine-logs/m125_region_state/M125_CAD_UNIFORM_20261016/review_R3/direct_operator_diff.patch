@@ -1,0 +1,22 @@
+--- C:\Users\gb\.codex_track_publish_m29_20260902\.aris\m122_full_causal_20261007\M125_CAD_DEPLOYMENT_SOURCE_20261016\invoke_M125_CAD_reviewed_suite.py
++++ C:\Users\gb\.codex_track_publish_m29_20260902\.aris\m122_full_causal_20261007\M125_CAD_DEPLOYMENT_SOURCE_R2_20261016\invoke_M125_CAD_reviewed_suite.py
+@@ -18,7 +18,7 @@
+     assert datetime.now(timezone.utc) >= datetime.fromisoformat('2026-10-17T12:45:00+08:00')
+     A = Path(__file__).resolve().parent.parent
+     source = A / 'M125_CAD_UNIFIED_SOURCE_R2_20261016'
+-    audit = A / 'M125_CAD_UNIFORM_SOURCE_AUDIT_R2_20261016'
++    audit = A / 'M125_CAD_UNIFORM_SOURCE_AUDIT_R3_20261016'
+     review = json.loads((audit / 'EXPERIMENT_AUDIT.json').read_bytes())
+     candidate = json.loads((source / 'CANDIDATE.json').read_bytes())
+     layout = json.loads((A / 'M125_CAD_R2_final66_actual_CPU_layout_20261016.json').read_bytes())
+@@ -40,8 +40,8 @@
+     assert future == {PurePosixPath(path).name: digest for path, digest in layout['source_sha256'].items()}
+     request = dict(staging_root=layout['root'], code_sha256=layout['source_sha256'],
+                    locked_inputs_sha256=layout['locked_inputs_sha256'],
+-                   source_review_json=(audit / 'EXPERIMENT_AUDIT.json').read_text(encoding='utf-8'),
+-                   source_review_md=(audit / 'EXPERIMENT_AUDIT.md').read_text(encoding='utf-8'),
++                   source_review_json=(audit / 'EXPERIMENT_AUDIT.json').read_bytes().decode('utf-8'),
++                   source_review_md=(audit / 'EXPERIMENT_AUDIT.md').read_bytes().decode('utf-8'),
+                    source_review_sha256=sha(audit / 'EXPERIMENT_AUDIT.json'),
+                    candidate_sha256=sha(source / 'CANDIDATE.json'), invocation_source_sha256=sha(__file__))
+     stem = 'M125_CAD_uniform_suite_actual_invocation_20261016'

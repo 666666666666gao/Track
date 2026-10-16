@@ -1,0 +1,58 @@
+{
+  "status": "CAD_uniform_inference_scientific_sources_implemented_no_real_GPU",
+  "generated_at": "2026-10-16T04:03:31.768435+00:00",
+  "reference_model": "completed original R0 fixed-six-pass final",
+  "training_data": "DepthTrack Train152 only",
+  "training_changed": false,
+  "parameters": 450888,
+  "profiles": [
+    "U0",
+    "U1",
+    "U2"
+  ],
+  "optional_unqueued_profiles": [
+    "U3",
+    "U4"
+  ],
+  "per_dataset_profile_selection": false,
+  "source_sha256": {
+    "analyze_m125_CAD_vot.py": "65b1b1a69f459e3e428df76a63177e5d08c1e9a05b6991601dc15d98eeb82f2e",
+    "cad_template_profiles.py": "eec63e23bb70d11cbb0a40e19ace8c881f47469524d4d57a4c7d921f15324b5a",
+    "check_cad_template_profiles.py": "945ce66c83cf66d8a7c7cb5abf4724f2587cd3916b43d3123aee824b5967c499",
+    "check_m125_CAD_CPU_tracker.py": "44e953c4e7f37b0f502c002ec8e3d1fa5885c7134290a1fab3a759b5a8ab326b",
+    "check_m125_CAD_real64.py": "44d6bc359494a7b24bdfac7b039710c636f0a0db7f6a60ba3223e8eb26d81b47",
+    "collect_m125_CAD_results.py": "4d1da5cfe3b601b8904b9fd5dda2b8027b6f45f5f067b9777b58e9db064e5390",
+    "m125_CAD_official_runtime.py": "6c330dda1c38f0a021a0e9e7ad926f9b01f0c7f01ccd6c097b189cb714503e7e",
+    "m125_CAD_process_supervisor.py": "aa173815834f0c82132d983ede69d53c540a30833cf0a4c4509c0ae19a6eaf65",
+    "prepare_m125_CAD_evaluation.py": "908f91b36a77c75f7e5e0ff5e48ce451afbd91bc5e2e0435ee90e13894f1133c",
+    "profiled_template_tracker.py": "a89ec3df6344e8764aeedf0dc9918a67c506af4560fa5cafab57e3414b59ad20",
+    "run_m125_CAD_official.py": "347ba267822d86669e53ae52f2e83370dbf190252cd1fbc0e369a02d65a7243a",
+    "run_m125_CAD_uniform_suite.py": "68a91230c981853fa1977e7fb5caf512e5b9c3bc3cd5cb69e5fc012c821c15f8"
+  },
+  "frozen_R2_operator_sha256": "e86c3fe5c8eb34fdffc621ec0f6d0aa5ef0c21905b49ab81c8a1944c77673beb",
+  "prospective_code_files": 66,
+  "actual_policy_checks": 5416,
+  "actual_mock_interface_checks": 2700,
+  "actual_synthetic_steps": 600,
+  "real_tracking_calls": 0,
+  "formal_dataset_metrics": false,
+  "source_review_complete": false,
+  "original_R0_observation_not_before": "2026-10-17T12:45:00+08:00",
+  "original_R0_modified": false,
+  "default_U0_full_reference": "original completed R0 suite, not new U0 full inference",
+  "next_steps": [
+    "R2 final66-source actual CPU layout imports",
+    "R2 source and admission-operator audit",
+    "original R0 entire suite completion",
+    "actual one-time admission and 3x64 prefix checks",
+    "complete uniform U1/U2 three-dataset inference"
+  ],
+  "source_revision": "R2",
+  "source_revision_evidence": "C:\\Users\\gb\\.codex_track_publish_m29_20260902\\.aris\\m122_full_causal_20261007\\M125_CAD_R2_initial_source_revision_20261016.json",
+  "minimal_source_changes": [
+    "prepare selection hashes the bound R0 training_result_path",
+    "collector preserves model name while verifying event filenames"
+  ],
+  "inherited_baseline_plan_checks_rehash_assets_per_invocation": true,
+  "asset_hashing_scope": "Coordinator hashes its input assets once; inherited original plan checks still rehash baseline final/native/CLIP assets per call. No end-to-end hashing-cost reduction claimed."
+}

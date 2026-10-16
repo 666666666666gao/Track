@@ -1,0 +1,53 @@
+{
+  "status": "complete_pure_python_template_profile_boundaries",
+  "checks": 5416,
+  "scope": "policy logic only; U0 equality over 5400 synthetic scalar cases, plus strict boundaries",
+  "profiles": {
+    "U0": {
+      "name": "U0",
+      "interval": 50,
+      "response_threshold": 0.75,
+      "response_source": "native_selected",
+      "use_C": true,
+      "C_threshold": 0.5
+    },
+    "U1": {
+      "name": "U1",
+      "interval": 5,
+      "response_threshold": 0.75,
+      "response_source": "native_selected",
+      "use_C": true,
+      "C_threshold": 0.5
+    },
+    "U2": {
+      "name": "U2",
+      "interval": 5,
+      "response_threshold": 0.65,
+      "response_source": "native_selected",
+      "use_C": true,
+      "C_threshold": 0.5
+    },
+    "U3": {
+      "name": "U3",
+      "interval": 5,
+      "response_threshold": 0.65,
+      "response_source": "final_selected",
+      "use_C": true,
+      "C_threshold": 0.5
+    },
+    "U4": {
+      "name": "U4",
+      "interval": 5,
+      "response_threshold": 0.65,
+      "response_source": "final_selected",
+      "use_C": false,
+      "C_threshold": 0.5
+    }
+  },
+  "real_tracking_calls": 0,
+  "model_instances": 0,
+  "NN_calls": 0,
+  "GPU_queries": 0,
+  "original_R0_progress_queries": 0,
+  "evaluation_type": "synthetic_policy_only"
+}

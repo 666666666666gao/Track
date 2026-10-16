@@ -1,0 +1,740 @@
+--- m125_R0_fixed_official_runtime.py
++++ m125_CAD_official_runtime.py
+@@ -1,80 +1,68 @@
+-"""One joint-trained A+B+C final for all official datasets."""
++"""The same R0 final and one sealed template profile for all three datasets."""
++from datetime import datetime, timezone
++from pathlib import Path
+ import json
+-from pathlib import Path
+ 
+ from bind_m122_official_initializations import sha, initialization_key
+-from m122_official_runtime import checked_plan as checked_base_plan
++from m125_R0_fixed_official_runtime import checked_plan as checked_R0_plan, OfficialDenseTracker
++from deploy_m125_region_fixed import verify_predecessor
++from cad_template_profiles import profile_dict
++
++
++SCHEMA = 'M125_CAD_same_R0_final_uniform_profile_v1'
++
++
++def make_bundle(reference_bundle_path, source_gate_path, profile_id):
++    assert datetime.now(timezone.utc) >= datetime.fromisoformat('2026-10-17T12:45:00+08:00')
++    reference_bundle_path = Path(reference_bundle_path)
++    source_gate_path = Path(source_gate_path)
++    reference = json.loads(reference_bundle_path.read_bytes())
++    gate = json.loads(source_gate_path.read_bytes())
++    assert gate['status'] == 'reviewed_M125_CAD_uniform_inference_source_gate'
++    assert gate['profiles'] == ['U0', 'U1', 'U2']
++    assert profile_id in gate['profiles']
++    assert gate['per_dataset_profile_selection'] is False
++    for path, digest in gate['source_sha256'].items():assert sha(path) == digest, path
++    predecessor = verify_predecessor(gate)
++    assert reference_bundle_path == Path(predecessor['root']) / 'evaluation/bundle.json'
++    assert reference['schema'] == 'M125_R0_fixed6_Train152_official_v1'
++    assert reference['final_sha256'] == predecessor['final_sha256']
++    return dict(reference, schema=SCHEMA, source_sha256=gate['source_sha256'],
++        source_gate_path=str(source_gate_path), source_gate_sha256=sha(source_gate_path),
++        reference_R0_bundle_path=str(reference_bundle_path), reference_R0_bundle_sha256=sha(reference_bundle_path),
++        R0_completed_suite=predecessor, inference_profile_id=profile_id,
++        inference_profile=profile_dict(profile_id), one_profile_for_all_datasets=True,
++        per_dataset_profile_selection=False, new_training_or_weight_selection=False,
++        inference_strategy_engineering_comparison=True)
+ 
+ 
+ def checked_plan(path):
+-    plan = json.loads(Path(path).read_text())
+-    base_plan, base = checked_base_plan(plan['base_plan_path'])
+-    assert sha(plan['base_plan_path']) == plan['base_plan_sha256']
+-    assert plan['dataset'] == base_plan['dataset']
++    path = Path(path)
++    plan = json.loads(path.read_bytes())
++    reference_path = Path(plan['reference_R0_plan_path'])
++    assert sha(reference_path) == plan['reference_R0_plan_sha256']
++    reference_plan, reference_bundle = checked_R0_plan(reference_path)
+     assert sha(plan['bundle_path']) == plan['bundle_sha256']
+-    bundle = json.loads(Path(plan['bundle_path']).read_text())
+-    assert bundle['schema'] == 'M125_R0_fixed6_Train152_official_v1'
+-    assert bundle['base_final_sha256'] == base['final_sha256']
+-    for name, digest in bundle['source_sha256'].items():
+-        assert sha(name) == digest, name
+-    assert sha(bundle['final_path']) == bundle['final_sha256']
+-    assert sha(bundle['training_result_path']) == bundle['training_result_sha256']
+-    trained = json.loads(Path(bundle['training_result_path']).read_text())
+-    assert trained['status'] == 'complete_M125_R0_fixed_Train152_pass'
+-    assert trained['seed'] == 2027 and trained['epochs'] == trained['fixed_budget_passes'] == trained['fixed_final_pass'] == 6
+-    assert trained['training_sequences'] == 152 and trained['sequence_runs'] == trained['epochs'] * 152
+-    assert trained['track_calls'] == trained['epochs'] * 219802 and trained['parameters'] == 450888
+-    assert trained['optimizer_steps'] > 0 and trained['C_optimizer_steps'] > 0
+-    assert trained['no_development_split'] and trained['no_cached_feature_fit']
+-    assert trained['frozen_before_after_exact'] and trained['final_state_roundtrip_exact']
+-    assert trained['final_sha256'] == bundle['final_sha256']
+-    assert not trained['external_metric_checkpoint_selection']
+-    assert trained['fixed_final_after_complete_budget'] and trained['fresh_common_warm_start']
+-    assert trained['first_pass_optimizer_fresh'] and trained['exact_seeded_training_start']
+-    assert trained['no_external_test_cdtb_vot_gradient_training']
+-    assert not trained['Test50_CDTB80_used_for_checkpoint_selection']
+-    assert bundle['fixed_final_pass'] == 6 and not bundle['external_metric_checkpoint_selection']
+-    assert bundle['C_arm'] == 'current' and bundle['C_threshold'] == .5
+-    for key in ['bank_path', 'bank_sha256', 'binding_path', 'binding_sha256']:
+-        assert plan[key] == base_plan[key], key
+-    if plan['dataset'] != 'vot':
+-        for key in ['cases_path', 'cases_sha256', 'dataset_root', 'metric_source', 'metric_source_sha256']:
+-            assert plan[key] == base_plan[key], key
+-    bundle['base_bundle'] = base
++    bundle = json.loads(Path(plan['bundle_path']).read_bytes())
++    expected_bundle = make_bundle(reference_plan['bundle_path'], bundle['source_gate_path'], bundle['inference_profile_id'])
++    assert bundle == expected_bundle
++    assert bundle['final_sha256'] == reference_bundle['final_sha256']
++    expected_plan = dict(reference_plan, reference_R0_plan_path=str(reference_path),
++        reference_R0_plan_sha256=sha(reference_path), bundle_path=plan['bundle_path'], bundle_sha256=plan['bundle_sha256'],
++        inference_profile_id=bundle['inference_profile_id'], profile_events_root=str(path.parent/'profile_events'))
++    if reference_plan['dataset'] != 'vot':expected_plan['output'] = str(path.parent/'predictions')
++    assert plan == expected_plan
++    bundle['base_bundle'] = reference_bundle['base_bundle']
+     return plan, bundle
+ 
+ 
+-class OfficialDenseTracker:
++class OfficialProfileTracker(OfficialDenseTracker):
+     def __init__(self, plan, bundle):
+-        import torch
+-        from dense_target_decoder import DenseTargetDecoder
+-        from full_dense_tracker import FullDenseTracker
+-        from template_write_C import TemplateWriteC
+-        from trusted_template_tracker import TrustedTemplateTracker
+-        base = bundle['base_bundle']
+-        bank = torch.load(plan['bank_path'], map_location='cpu')
+-        assert bank['format'] == 'M122_human_official_initialization_v1' and bank['human_confirmed']
+-        assert bank['binding_sha256'] == plan['binding_sha256'] and bank['encoder_sha256'] == base['clip_weight_sha256']
+-        assert len(bank['keys']) == len(set(bank['keys'])) == 1895
+-        assert bank['tokens'].shape == (1895, 5, 768) and bank['mask'].shape == (1895, 5)
+-        assert bank['mask'].dtype == torch.bool and bool(bank['mask'][:, 0].all())
+-        assert bool(torch.isfinite(bank['tokens']).all()) and bool(torch.isfinite(bank['empty']).all())
+-        self.dataset = plan['dataset']
+-        self.indices = {key: index for index, key in enumerate(bank['keys'])}
+-        weights = torch.load(bundle['final_path'], map_location='cpu')
+-        model = DenseTargetDecoder().cuda().eval().requires_grad_(False)
+-        model.load_state_dict(weights['A_B'], strict=True)
+-        writer = TemplateWriteC().cuda().eval().requires_grad_(False)
+-        writer.load_state_dict(weights['C'], strict=True)
+-        for parameter in writer.parameters():
+-            parameter.requires_grad_(False)
+-        self.actor = FullDenseTracker(Path(base['repository']), Path(base['native_checkpoint_path']),
+-                                      Path(base['clip_weight_path']), bank, model)
+-        self.trusted = TrustedTemplateTracker(self.actor, writer, 'current')
++        from profiled_template_tracker import ProfiledTemplateTracker
++        super().__init__(plan, bundle)
++        self.trusted = ProfiledTemplateTracker(self.actor, self.trusted.writer, bundle['inference_profile_id'])
++        self.profile_id = bundle['inference_profile_id']
+ 
+     def initialize(self, image, bbox, rgb_path):
+-        key = self.dataset + ':' + initialization_key(sha(rgb_path), bbox)
+-        self.trusted.initialize(image, list(bbox), self.indices[key])
+-
+-    def track(self, image):
+-        return self.trusted.track(image)
++        self.initialization_key = self.dataset + ':' + initialization_key(sha(rgb_path), bbox)
++        super().initialize(image, bbox, rgb_path)
+--- prepare_m125_R0_fixed_evaluation.py
++++ prepare_m125_CAD_evaluation.py
+@@ -1,49 +1,31 @@
+-"""Reuse the sealed P1 datasets/text/protocol; bind a new single composite final."""
++"""Bind one immutable R0 final and one profile to three independent full runs."""
+ import argparse
+ import json
+ import shutil
+ from pathlib import Path
+-
+ from bind_m122_official_initializations import sha
+-from m122_official_runtime import checked_plan as checked_base_plan
+-from m125_R0_fixed_official_runtime import checked_plan
+-from prepare_m122_evaluation_suite import read, write
++from m125_R0_fixed_official_runtime import checked_plan as checked_R0_plan
++from m125_CAD_official_runtime import checked_plan,make_bundle
++from cad_template_profiles import PRIMARY_PROFILES
++from prepare_m122_evaluation_suite import read,write
+ 
+ 
+ def main(args):
+-    gate = read(args.source_gate)
+-    assert gate['status'] == 'reviewed_M125_R0_fixed6_source_gate'
+-    for name, digest in gate['source_sha256'].items():
+-        assert sha(name) == digest, name
+-    trained = read(args.training / 'result.json')
+-    assert trained['status'] == 'complete_M125_R0_fixed_Train152_pass'
+-    assert trained['epochs'] == trained['fixed_budget_passes'] == trained['fixed_final_pass'] == 6 and trained['training_sequences'] == 152
+-    assert trained['sequence_runs'] == 912 and trained['track_calls'] == 1318812
+-    assert trained['no_development_split'] and trained['no_cached_feature_fit']
+-    assert trained['final_sha256'] == sha(args.training / 'final.pt')
+-    base_path = args.base_evaluation / 'depthtrack_test/plan.json'
+-    _, base = checked_base_plan(base_path)
+-    assert base['precision_weight'] == 1
++    gate=read(args.source_gate)
++    reference_plan,base=checked_R0_plan(args.reference_evaluation/'depthtrack_test/plan.json')
++    bundle=make_bundle(reference_plan['bundle_path'],args.source_gate,args.profile)
+     args.output.mkdir()
+-    bundle = dict(base, schema='M125_R0_fixed6_Train152_official_v1',
+-        base_final_sha256=base['final_sha256'], final_path=str(args.training / 'final.pt'),
+-        final_sha256=trained['final_sha256'], training_result_path=str(args.training / 'result.json'),
+-        training_result_sha256=sha(args.training / 'result.json'), source_sha256=gate['source_sha256'],
+-        C_arm='current', C_threshold=.5, complete_Train152_joint_training=True,
+-        no_development_split=True, C_target='current selected-frame real GT IoU',
+-        source_gate_path=str(args.source_gate), source_gate_sha256=sha(args.source_gate))
+-    bundle.update(fixed_budget_passes=6, fixed_final_pass=6, external_metric_checkpoint_selection=False,
+-                  Test50_CDTB80_used_for_checkpoint_selection=False, historical_Test_CDTB_engineering_exposure=True,
+-                  human_review_used_multiframe_aids=True)
+-    write(args.output / 'bundle.json', bundle)
++    write(args.output/'bundle.json',bundle)
+     plans = {}
+     for dataset in ['depthtrack_test', 'cdtb', 'vot']:
+-        path = args.base_evaluation / dataset / 'plan.json'
+-        old, old_bundle = checked_base_plan(path)
++        path = args.reference_evaluation / dataset / 'plan.json'
++        old, old_bundle = checked_R0_plan(path)
+         assert old_bundle == base
+         folder = args.output / dataset; folder.mkdir()
+-        plan = dict(old, base_plan_path=str(path), base_plan_sha256=sha(path),
+-                    bundle_path=str(args.output / 'bundle.json'), bundle_sha256=sha(args.output / 'bundle.json'))
++        plan = dict(old, reference_R0_plan_path=str(path), reference_R0_plan_sha256=sha(path),
++                    bundle_path=str(args.output / 'bundle.json'), bundle_sha256=sha(args.output / 'bundle.json'),
++                    inference_profile_id=args.profile,profile_events_root=str(folder/'profile_events'))
++        (folder/'profile_events').mkdir()
+         if dataset != 'vot':
+             plan['output'] = str(folder / 'predictions')
+         write(folder / 'plan.json', plan)
+@@ -51,23 +33,23 @@
+         plans[dataset] = dict(path=str(folder / 'plan.json'), sha256=sha(folder / 'plan.json'))
+     source = Path(__file__).parent
+     vot = args.output / 'vot'; run = vot / 'run'; run.mkdir()
+-    original = args.base_evaluation / 'vot/run'
++    original = args.reference_evaluation / 'vot/run'
+     manifest = read(original / 'shard_manifest.json')
+     assert manifest['schema'] == 'M122_full127_frozen_shards_v1'
+     assert len(manifest['sequences']) == 127 and manifest['total_anchor_count'] == 1765
+-    tracker = 'sttrack_m125_R0_fixed6'
+-    wrapper = vot / 'selected_m125_R0_fixed_vot.py'
++    tracker = 'sttrack_m125_CAD_'+args.profile
++    wrapper = vot / 'selected_m125_CAD_vot.py'
+     wrapper.write_text('import sys\nsys.path[:0]=[' + repr(str(source)) + ',' + repr(gate['base_code_root']) + ']\n'
+-                       'from run_m125_R0_fixed_official import vot_track\nvot_track('
++                       'from run_m125_CAD_official import vot_track\nvot_track('
+                        + repr(str(vot / 'plan.json')) + ')\n')
+     shards = []; sealed = [args.output / 'bundle.json', vot / 'plan.json', wrapper]
+-    old_execution = read(args.base_evaluation / 'vot/execution.json')
++    old_execution = read(args.reference_evaluation / 'vot/execution.json')
+     for row in manifest['shards']:
+         old = Path(row['root']); target = run / ('shard-%02d' % row['index']); gpu = row['index'] % 2
+         shutil.copytree(old / 'sequences', target / 'sequences', symlinks=True)
+         shutil.copy2(old / 'config.yaml', target / 'config.yaml')
+-        ini = (f'[{tracker}]\nlabel = M125 R0 A+B+C fixed six Train152 passes, final pass six\nprotocol = traxpython\n'
+-               f'command = selected_m125_R0_fixed_vot\npaths = {vot}\n'
++        ini = (f'[{tracker}]\nlabel = M125 CAD uniform {args.profile}, same R0 fixed-six final\nprotocol = traxpython\n'
++               f'command = selected_m125_CAD_vot\npaths = {vot}\n'
+                f'python = /root/autodl-tmp/envs/sttrack/bin/python\nenv_CUDA_VISIBLE_DEVICES = {gpu}\n'
+                f'env_PYTHONPATH = {vot}\nenv_TOKENIZERS_PARALLELISM = false\n'
+                'env_PYTHONDONTWRITEBYTECODE = 1\ntimeout = 600\nrestart = false\n')
+@@ -84,28 +66,31 @@
+         path = Path(info['root']) / 'anchor.value'
+         assert sha(path) == info['anchor_sha256']; sealed.append(path)
+     write(run / 'shard_manifest.json', dict(manifest, tracker=tracker, shards=shards,
+-          native_source='Frozen STTrack and CLIP with trained dense A+B and current-quality C; fixed six-pass R0 final',
++          native_source='Same frozen R0 final with one sealed CAD-inspired template profile for all datasets',
+           source_manifest_path=str(original / 'shard_manifest.json'), source_manifest_sha256=sha(original / 'shard_manifest.json')))
+     sealed.append(run / 'shard_manifest.json')
+     write(vot / 'execution.json', dict(status='frozen_before_M122_VOT_tracking',
+           source_sha256={str(path): sha(path) for path in sealed}, anchors=1765, sequences=127,
+           result_files=5295, workers=2, reused_prediction_anchors=0,
+           original_manifest_sha256=sha(original / 'shard_manifest.json'),
+-          metadata_source_execution_sha256=sha(args.base_evaluation / 'vot/execution.json')))
++          metadata_source_execution_sha256=sha(args.reference_evaluation / 'vot/execution.json')))
+     plans['vot']['run'] = str(run)
+-    write(args.output / 'selection.json', dict(status='M125_R0_fixed6_final_before_metrics',
++    write(args.output / 'selection.json', dict(status='M125_CAD_uniform_profile_before_metrics',
+           final_sha256=bundle['final_sha256'], bundle_sha256=sha(args.output / 'bundle.json'),
+           training_result_sha256=sha(args.training / 'result.json'), plans=plans,
+           bank_sha256=plan['bank_sha256'], binding_sha256=plan['binding_sha256'],
+-          models=[dict(name='R0_fixed6_Train152', final_sha256=bundle['final_sha256'],
++          models=[dict(name='CAD_'+args.profile+'_same_R0_fixed6', final_sha256=bundle['final_sha256'],
+                        bundle_sha256=sha(args.output / 'bundle.json'), plans=plans)],
+           external_metric_checkpoint_selection=False, Test50_CDTB80_used_for_checkpoint_selection=False,
+-          fixed_final_pass=6, external_optimizer_steps=0))
+-    print(json.dumps(dict(status='prepared_M125_R0_fixed6_three_official_plans', plans=plans)), flush=True)
++          fixed_final_pass=6, external_optimizer_steps=0,inference_profile_id=args.profile,inference_profile=bundle['inference_profile'],
++          one_profile_for_all_datasets=True,per_dataset_profile_selection=False,new_training_or_weight_selection=False,
++          inference_strategy_engineering_comparison=True))
++    print(json.dumps(dict(status='prepared_M125_CAD_uniform_profile_three_official_plans', plans=plans)), flush=True)
+ 
+ 
+-if __name__ == '__main__':
+-    parser = argparse.ArgumentParser()
+-    for name in ['training', 'base-evaluation', 'source-gate', 'output']:
+-        parser.add_argument('--' + name, type=Path, required=True)
++if __name__=='__main__':
++    parser=argparse.ArgumentParser()
++    for name in ['reference-evaluation','source-gate','output']:
++        parser.add_argument('--'+name,type=Path,required=True)
++    parser.add_argument('--profile',choices=PRIMARY_PROFILES,required=True)
+     main(parser.parse_args())
+--- run_m125_R0_fixed_official.py
++++ run_m125_CAD_official.py
+@@ -1,8 +1,8 @@
+ """Complete OPE predictions/locked metrics and TraX multi-start entry with no inference GT."""
+-import argparse,importlib.util,json,time
++import argparse,hashlib,importlib.util,json,time
+ from pathlib import Path
+ import numpy as np
+-from m125_R0_fixed_official_runtime import checked_plan,OfficialDenseTracker
++from m125_CAD_official_runtime import checked_plan,OfficialProfileTracker
+ from bind_m122_official_initializations import sha
+ 
+ 
+@@ -14,7 +14,7 @@
+     assert sha(plan['cases_path'])==plan['cases_sha256'];cases=json.loads(Path(plan['cases_path']).read_text())
+     assert len(cases)=={'depthtrack_test':50,'cdtb':80}[plan['dataset']]
+     assert sum(c['frames'] for c in cases)=={'depthtrack_test':76373,'cdtb':101956}[plan['dataset']]
+-    actor=OfficialDenseTracker(plan,bundle);frozen=actor.actor.frozen_digest()
++    actor=OfficialProfileTracker(plan,bundle);frozen=actor.actor.frozen_digest()
+     from train_template_write_C import state_digest
+     C_before=state_digest(actor.trusted.writer); AB_before=state_digest(actor.actor.decoder)
+     from lib.train.dataset.depth_utils import get_rgbd_frame
+@@ -33,13 +33,14 @@
+         np.savetxt(box_file,boxes,fmt='%.6f',delimiter=',');np.savetxt(score_file,scores,fmt='%.6f')
+         assert np.abs(np.loadtxt(box_file,delimiter=',').reshape(-1,4)-boxes).max()<=5.01e-7
+         assert np.abs(np.loadtxt(score_file).reshape(-1)-scores).max()<=5.01e-7
+-        record=dict(sequence=case['sequence'],frames=case['frames'],bbox_sha256=sha(box_file),confidence_sha256=sha(score_file),elapsed_seconds=time.time()-started)
++        record=dict(sequence=case['sequence'],frames=case['frames'],bbox_sha256=sha(box_file),confidence_sha256=sha(score_file),elapsed_seconds=time.time()-started,inference_profile_id=bundle['inference_profile_id'],template_counts=dict(actor.trusted.counts))
+         receipts.append(record);print(json.dumps(record),flush=True)
+     assert actor.actor.frozen_digest()==frozen and state_digest(actor.trusted.writer)==C_before
+     assert state_digest(actor.actor.decoder)==AB_before;checked_plan(path)
+     write(output/'receipt.json',dict(status='complete_M122_official_OPE_predictions',plan_sha256=sha(path),final_sha256=bundle['final_sha256'],
+         bank_sha256=plan['bank_sha256'],bundle_sha256=plan['bundle_sha256'],sequences=receipts,frames=sum(r['frames'] for r in receipts),
+-        subsequent_GT_opened=False,optimizer_steps=0,text_updated_online=False,frozen_before_after_exact=True,elapsed_seconds=time.time()-started))
++        subsequent_GT_opened=False,optimizer_steps=0,text_updated_online=False,frozen_before_after_exact=True,elapsed_seconds=time.time()-started,
++        inference_profile_id=bundle['inference_profile_id'],inference_profile=bundle['inference_profile'],one_profile_for_all_datasets=True))
+ 
+ 
+ def ope_analyze(path):
+@@ -58,12 +59,13 @@
+     values=metric.evaluate_depthtrack_results(plan['dataset_root'],output,resolution=100,sequence_names=[c['sequence'] for c in cases])
+     assert values['sequences']==len(cases) and values['frames']==receipt['frames']
+     write(output/'metrics.json',dict(status='complete',metrics=values,final_sha256=bundle['final_sha256'],bundle_sha256=plan['bundle_sha256'],
++        inference_profile_id=bundle['inference_profile_id'],inference_profile=bundle['inference_profile'],
+         plan_sha256=sha(path),receipt_sha256=sha(output/'receipt.json'),metric_source_sha256=plan['metric_source_sha256']))
+     print(json.dumps(values,indent=2),flush=True)
+ 
+ 
+ def vot_track(path):
+-    plan,bundle=checked_plan(path);actor=OfficialDenseTracker(plan,bundle)
++    plan,bundle=checked_plan(path);actor=OfficialProfileTracker(plan,bundle)
+     bridge_spec=importlib.util.spec_from_file_location('M122_locked_vot_bridge',bundle['vot_bridge_path'])
+     vot=importlib.util.module_from_spec(bridge_spec);bridge_spec.loader.exec_module(vot)
+     from lib.train.dataset.depth_utils import get_rgbd_frame
+@@ -76,6 +78,11 @@
+         assert isinstance(files,list) and len(files)==2
+         image=get_rgbd_frame(files[0],files[1],dtype='rgbcolormap',depth_clip=True);out=actor.track(image)
+         handle.report(vot.Rectangle(*out['target_bbox']),out['best_score'])
++    event=dict(status='complete_one_vot_anchor_profile_counts',initialization_key=actor.initialization_key,
++        inference_profile_id=bundle['inference_profile_id'],inference_profile=bundle['inference_profile'],
++        final_sha256=bundle['final_sha256'],bundle_sha256=plan['bundle_sha256'],template_counts=dict(actor.trusted.counts))
++    event_path=Path(plan['profile_events_root'])/(hashlib.sha256(actor.initialization_key.encode()).hexdigest()+'.json')
++    with event_path.open('x') as stream:stream.write(json.dumps(event,indent=2)+chr(10))
+ 
+ 
+ if __name__=='__main__':
+--- analyze_m125_R0_fixed_vot.py
++++ analyze_m125_CAD_vot.py
+@@ -7,7 +7,7 @@
+ 
+ def main(root):
+     selection=read(root/'selection.json')
+-    assert selection['status']=='M125_R0_fixed6_final_before_metrics' and len(selection['models'])==1
++    assert selection['status']=='M125_CAD_uniform_profile_before_metrics' and len(selection['models'])==1
+     for row in selection['models']:
+         target=root;bundle=read(target/'bundle.json');vot=target/'vot';run=vot/'run'
+         assert sha(target/'bundle.json')==row['bundle_sha256'] and sha(bundle['final_path'])==row['final_sha256']
+@@ -29,10 +29,25 @@
+         audit=importlib.util.module_from_spec(spec);spec.loader.exec_module(audit)
+         outcomes,failures,per,settings=audit.collect_confirmed_failure_outcomes(run/'master',merge['tracker'],expected_anchors=1765)
+         assert len(outcomes)==1765 and len(per)==127
++        events={}
++        counts=dict(tracking_calls=0,qualified=0,C_evaluations=0,template_writes=0)
++        keys=set()
++        for path in sorted((vot/'profile_events').glob('*.json')):
++            event=read(path)
++            assert event['status']=='complete_one_vot_anchor_profile_counts'
++            assert event['inference_profile_id']==bundle['inference_profile_id']
++            assert event['inference_profile']==bundle['inference_profile']
++            assert event['final_sha256']==row['final_sha256'] and event['bundle_sha256']==row['bundle_sha256']
++            assert event['initialization_key'] not in keys
++            keys.add(event['initialization_key']);events[path.name]=sha(path)
++            for key in counts:counts[key]+=event['template_counts'][key]
++        assert len(events)==len(keys)==1765
+         write(vot/'result.json',dict(status='complete_full127',model=row['name'],final_sha256=row['final_sha256'],bundle_sha256=row['bundle_sha256'],
+             bank_sha256=selection['bank_sha256'],binding_sha256=selection['binding_sha256'],metrics_percent=metrics,anchors=1765,sequences=127,
+             confirmed_failures=failures,per_sequence_failures=per,failure_outcomes=outcomes,failure_settings=settings,
+-            merge_sha256=sha(run/'merge_result.json'),analysis_sha256=sha(analysis_path),external_optimizer_steps=0))
++            merge_sha256=sha(run/'merge_result.json'),analysis_sha256=sha(analysis_path),external_optimizer_steps=0,
++            inference_profile_id=bundle['inference_profile_id'],inference_profile=bundle['inference_profile'],
++            template_counts=counts,profile_event_files_sha256=events))
+         print(json.dumps(dict(model=row['name'],metrics=metrics)),flush=True)
+ 
+ 
+--- collect_m125_R0_fixed_results.py
++++ collect_m125_CAD_results.py
+@@ -7,19 +7,27 @@
+ 
+ def main(root):
+     selection=read(root/'selection.json');rows=[];gates=[]
+-    assert selection['status']=='M125_R0_fixed6_final_before_metrics' and len(selection['models'])==1
++    assert selection['status']=='M125_CAD_uniform_profile_before_metrics' and len(selection['models'])==1
+     for model in selection['models']:
+         name=model['name'];target=root;bundle=read(target/'bundle.json');metrics={}
++        assert selection['inference_profile_id']==bundle['inference_profile_id']
++        assert selection['inference_profile']==bundle['inference_profile']
++        assert selection['one_profile_for_all_datasets'] and not selection['per_dataset_profile_selection']
+         assert sha(target/'bundle.json')==model['bundle_sha256'] and sha(bundle['final_path'])==model['final_sha256']
+         for path,digest in bundle['source_sha256'].items():assert sha(path)==digest,path
+         for dataset,count,frames in [('depthtrack_test',50,76373),('cdtb',80,101956)]:
+             plan=model['plans'][dataset];folder=target/dataset/'predictions'
+             result=read(folder/'metrics.json');receipt=read(folder/'receipt.json')
+             assert result['status']=='complete' and result['final_sha256']==model['final_sha256'] and result['bundle_sha256']==model['bundle_sha256']
++            assert result['inference_profile_id']==receipt['inference_profile_id']==bundle['inference_profile_id']
++            assert result['inference_profile']==receipt['inference_profile']==bundle['inference_profile']
++            assert receipt['one_profile_for_all_datasets']
+             assert result['plan_sha256']==sha(plan['path'])==plan['sha256'] and result['receipt_sha256']==sha(folder/'receipt.json')
+             assert receipt['bank_sha256']==selection['bank_sha256'] and len(receipt['sequences'])==count and receipt['frames']==frames
+             assert receipt['frozen_before_after_exact'] and receipt['optimizer_steps']==0 and not receipt['subsequent_GT_opened']
+             for r in receipt['sequences']:
++                assert r['inference_profile_id']==bundle['inference_profile_id']
++                assert r['template_counts']['tracking_calls']==r['frames']-1
+                 assert sha(folder/(r['sequence']+'.txt'))==r['bbox_sha256']
+                 assert sha(folder/(r['sequence']+'_all_scores.txt'))==r['confidence_sha256']
+             values=result['metrics'];assert values['sequences']==count and values['frames']==frames
+@@ -30,6 +38,9 @@
+         assert vot['status']=='complete_full127' and vot['final_sha256']==model['final_sha256'] and vot['bundle_sha256']==model['bundle_sha256']
+         assert vot['bank_sha256']==selection['bank_sha256'] and vot['binding_sha256']==selection['binding_sha256']
+         assert vot['anchors']==1765 and vot['sequences']==127 and vot['external_optimizer_steps']==0
++        assert vot['inference_profile_id']==bundle['inference_profile_id'] and vot['inference_profile']==bundle['inference_profile']
++        assert len(vot['profile_event_files_sha256'])==1765
++        for name,digest in vot['profile_event_files_sha256'].items():assert sha(target/'vot/profile_events'/name)==digest
+         merge=read(target/'vot/run/merge_result.json');assert vot['merge_sha256']==sha(target/'vot/run/merge_result.json')
+         for rel,digest in merge['result_sha256'].items():assert sha(target/'vot/run/master'/rel)==digest
+         assert vot['analysis_sha256']==sha(target/'vot/run/master/analysis'/(name+'_full127.json'))
+@@ -41,17 +52,19 @@
+         passed=dict(depthtrack_P=dt['precision']>=65.2,depthtrack_R=dt['recall']>=64.9,depthtrack_F=dt['f_score']>=65.1,
+             cdtb_P=cd['precision']>=72.9,cdtb_R=cd['recall']>=75.6,cdtb_F=cd['f_score']>=74.2,
+             vot_EAO=v['EAO']>77.9,vot_ACC=v['ACC']>82.1,vot_ROB=v['ROB']>93.7)
+-        gates.append(dict(model=name,final_sha256=model['final_sha256'],metrics_percent=metrics,passed=passed,joint_pass=all(passed.values())))
++        gates.append(dict(model=name,final_sha256=model['final_sha256'],inference_profile_id=bundle['inference_profile_id'],inference_profile=bundle['inference_profile'],metrics_percent=metrics,passed=passed,joint_pass=all(passed.values())))
+     assert len(rows)==3
+-    write(root/'all_results.json',dict(status='three_M125_R0_fixed6_full_evaluations_complete',selection_sha256=sha(root/'selection.json'),models=selection['models'],
++    write(root/'all_results.json',dict(status='three_M125_CAD_uniform_profile_full_evaluations_complete',selection_sha256=sha(root/'selection.json'),models=selection['models'],
+         results=rows,gates=gates,any_joint_pass=any(g['joint_pass'] for g in gates),external_metric_checkpoint_selection=False,Test50_CDTB80_used_for_checkpoint_selection=False,
+         fixed_final_pass=6,historical_Test_CDTB_engineering_exposure=True,
+-        human_review_used_multiframe_aids=True,external_optimizer_steps=0,independent_completed_audit=False))
++        human_review_used_multiframe_aids=True,external_optimizer_steps=0,independent_completed_audit=False,
++        inference_profile_id=bundle['inference_profile_id'],inference_profile=bundle['inference_profile'],one_profile_for_all_datasets=True,
++        per_dataset_profile_selection=False,new_training_or_weight_selection=False,inference_strategy_engineering_comparison=True))
+     with (root/'metrics.csv').open('w',newline='') as f:
+-        fields=['model','final_sha256','DepthTrack_P','DepthTrack_R','DepthTrack_F','CDTB_P','CDTB_R','CDTB_F','VOT_EAO','VOT_ACC','VOT_ROB','joint_pass']
++        fields=['model','inference_profile_id','final_sha256','DepthTrack_P','DepthTrack_R','DepthTrack_F','CDTB_P','CDTB_R','CDTB_F','VOT_EAO','VOT_ACC','VOT_ROB','joint_pass']
+         writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader()
+         for g in gates:
+-            m=g['metrics_percent'];writer.writerow(dict(model=g['model'],final_sha256=g['final_sha256'],joint_pass=g['joint_pass'],
++            m=g['metrics_percent'];writer.writerow(dict(model=g['model'],inference_profile_id=g['inference_profile_id'],final_sha256=g['final_sha256'],joint_pass=g['joint_pass'],
+                 DepthTrack_P=m['depthtrack_test']['precision'],DepthTrack_R=m['depthtrack_test']['recall'],DepthTrack_F=m['depthtrack_test']['f_score'],
+                 CDTB_P=m['cdtb']['precision'],CDTB_R=m['cdtb']['recall'],CDTB_F=m['cdtb']['f_score'],
+                 VOT_EAO=m['vot']['EAO'],VOT_ACC=m['vot']['ACC'],VOT_ROB=m['vot']['ROB']))
+--- run_m125_R0_fixed_suite.py
++++ run_m125_CAD_uniform_suite.py
+@@ -1,105 +1,121 @@
+-"""Six full Train152 passes without intervening tests, then one fixed-final complete suite."""
++"""U0 original complete R0 reference, then complete uniform U1 and U2 inference."""
+ from concurrent.futures import ThreadPoolExecutor
+-from datetime import datetime, timezone
++from datetime import datetime,timezone
+ from pathlib import Path
++import csv
+ import json
+ import os
+ import subprocess
+ import sys
+ 
+ from bind_m122_official_initializations import sha
+-from prepare_m122_evaluation_suite import read, write
++from cad_template_profiles import profile_dict
++from deploy_m125_region_fixed import verify_predecessor,resource_admission
+ 
+ 
+-def run(root, gate, name, python, arguments, gpu=None):
+-    environment = dict(os.environ, PYTHONPATH=os.pathsep.join([gate['code_root'], gate['base_code_root'], '/home/SUTrack_RGBD_L']),
+-                       OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1',
+-                       PYTHONOPTIMIZE='0', PYTHONDONTWRITEBYTECODE='1')
+-    if gpu is not None:
+-        environment['CUDA_VISIBLE_DEVICES'] = str(gpu)
+-    else:
+-        environment['CUDA_VISIBLE_DEVICES'] = '0,1'
+-    command = [python, '-B', '-u'] + arguments
+-    row = dict(stage=name, command=command, gpu=gpu, started_at=datetime.now(timezone.utc).isoformat())
+-    write(root / (name + '.launch.json'), row)
+-    with (root / (name + '.log')).open('xb') as stream:
+-        completed = subprocess.run(command, cwd=gate['code_root'], env=environment,
+-                                   stdout=stream, stderr=subprocess.STDOUT)
+-    row.update(exit_code=completed.returncode, finished_at=datetime.now(timezone.utc).isoformat())
+-    (root / (name + '.exit')).write_text(str(completed.returncode) + '\n')
+-    write(root / (name + '.receipt.json'), row)
+-    assert completed.returncode == 0, 'Read this original stage failure; no automatic retry.'
++def read(path):return json.loads(Path(path).read_bytes())
++
++
++def write(path,value):
++    with Path(path).open('x') as stream:stream.write(json.dumps(value,indent=2,allow_nan=False)+'\n')
++
++
++def run(root,gate,name,python,arguments,gpu=None):
++    environment=dict(os.environ,PYTHONPATH=os.pathsep.join([gate['code_root'],gate['base_code_root'],'/home/SUTrack_RGBD_L']),
++        CUDA_VISIBLE_DEVICES='0,1' if gpu is None else str(gpu),PYTHONDONTWRITEBYTECODE='1',PYTHONOPTIMIZE='0',
++        OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1')
++    command=[python,'-B','-u']+arguments
++    row=dict(stage=name,command=command,gpu=gpu,started_at=datetime.now(timezone.utc).isoformat())
++    write(root/(name+'.launch.json'),row)
++    with (root/(name+'.log')).open('xb') as stream:
++        completed=subprocess.run(command,cwd=gate['code_root'],env=environment,stdout=stream,stderr=subprocess.STDOUT)
++    row.update(exit_code=completed.returncode,finished_at=datetime.now(timezone.utc).isoformat())
++    (root/(name+'.exit')).write_text(str(completed.returncode)+'\n')
++    write(root/(name+'.receipt.json'),row)
++    assert completed.returncode==0,'Read the original failure; no automatic retry.'
+     return row
+ 
+ 
+ def main():
+-    assert sys.flags.optimize == 0
+-    root = Path(sys.argv[1]); gate = read(root / 'gate.json')
+-    assert gate['status'] == 'reviewed_M125_R0_fixed6_source_gate'
+-    for name, digest in gate['source_sha256'].items():
+-        assert sha(name) == digest, name
+-    for name, digest in gate['input_sha256'].items():
+-        assert sha(name) == digest, name
+-    code = Path(gate['code_root']); st = gate['python']; metric = gate['metric_python']
+-    assert gate['fixed_budget_passes'] == gate['fixed_final_pass'] == 6
+-    assert not gate['external_metric_checkpoint_selection']
+-    assert not gate['Test50_CDTB80_used_for_checkpoint_selection']
+-    stages = []
+-    passes = root / 'passes'
+-    passes.mkdir()
+-    for epoch in range(1, 7):
+-        folder = passes / ('pass-%02d' % epoch)
+-        folder.mkdir()
+-        fit = folder / 'fit'
+-        arguments = [str(code / 'train_m125_R0_fixed_pass.py')]
+-        for name in ['spec', 'repository', 'checkpoint', 'clip_weight', 'bank', 'labels', 'warm_final', 'warm_result']:
+-            arguments += ['--' + name.replace('_', '-'), gate[name]]
+-        arguments += ['--output', str(fit), '--epoch', str(epoch)]
+-        if epoch > 1:
+-            arguments += ['--resume', str(passes / ('pass-%02d' % (epoch - 1)) / 'fit/latest.pt')]
+-        stages.append(run(folder, gate, 'train_fixed_pass', st, arguments))
+-        trained = read(fit / 'result.json')
+-        assert trained['epochs'] == epoch and trained['track_calls'] == epoch * 219802
+-        assert trained['sequence_runs'] == epoch * 152 and not trained['external_metric_checkpoint_selection']
+-        write(root / 'current_training_state.json', dict(pass_completed=epoch, fixed_budget_passes=6,
+-              final_pass=6, final_weight_chosen_by='predeclared pass six; no external score selection',
+-              pass_result_sha256=sha(fit / 'result.json'), completed_at=datetime.now(timezone.utc).isoformat()))
+-    assert trained['fixed_final_after_complete_budget'] and trained['epochs'] == 6
+-    evaluation = root / 'evaluation'
+-    stages.append(run(root, gate, 'prepare', st, [str(code / 'prepare_m125_R0_fixed_evaluation.py'),
+-        '--training', str(fit), '--base-evaluation', gate['base_evaluation'],
+-        '--source-gate', str(root / 'gate.json'), '--output', str(evaluation)]))
+-    with ThreadPoolExecutor(max_workers=2) as pool:
+-        jobs = [pool.submit(run, root, gate, dataset + '_track', st,
+-                [str(code / 'run_m125_R0_fixed_official.py'), '--mode', 'ope_track',
+-                 '--plan', str(evaluation / dataset / 'plan.json')], gpu)
+-                for gpu, dataset in enumerate(['depthtrack_test', 'cdtb'])]
+-        stages.extend(job.result() for job in jobs)
+-    for dataset in ['depthtrack_test', 'cdtb']:
+-        stages.append(run(root, gate, dataset + '_analyze', metric,
+-                      [str(code / 'run_m125_R0_fixed_official.py'), '--mode', 'ope_analyze',
+-                       '--plan', str(evaluation / dataset / 'plan.json')]))
+-    vot = evaluation / 'vot'
+-    stages.append(run(root, gate, 'vot_track', st,
+-                      [str(code / 'run_m123_joint_vot_shards.py'), '--root', str(vot / 'run')]))
+-    (evaluation / 'vot.exit').write_text('0\n')
+-    manifest = read(vot / 'run/shard_manifest.json')
+-    stages.append(run(root, gate, 'vot_official_analysis', metric,
+-                  ['-m', 'vot', 'analysis', '--workspace', str(vot / 'run/master'), '--format', 'json',
+-                   '--name', 'R0_fixed6_Train152_full127', manifest['tracker']]))
+-    stages.append(run(root, gate, 'vot_seal', metric,
+-                  [str(code / 'analyze_m125_R0_fixed_vot.py'), '--root', str(evaluation)]))
+-    stages.append(run(root, gate, 'collect', metric,
+-                  [str(code / 'collect_m125_R0_fixed_results.py'), '--root', str(evaluation)]))
+-    result = read(evaluation / 'all_results.json')
+-    assert result['status'] == 'three_M125_R0_fixed6_full_evaluations_complete'
+-    write(root / 'result.json', dict(status='complete_M125_R0_fixed6_and_three_official_datasets',
+-          stages=stages, any_joint_pass=result['any_joint_pass'], automatic_retries=0, progress_queries=0,
+-          formal_nine_metrics=True, fresh_result_audit_complete=False, fixed_budget_passes=6, fixed_final_pass=6,
+-          external_metric_checkpoint_selection=False, Test50_CDTB80_used_for_checkpoint_selection=False,
+-          finished_at=datetime.now(timezone.utc).isoformat()))
+-    (root / 'controller.exit').write_text('0\n')
++    assert sys.flags.optimize==0
++    assert datetime.now(timezone.utc)>=datetime.fromisoformat('2026-10-17T12:45:00+08:00')
++    root=Path(sys.argv[1]);gate=read(root/'gate.json')
++    assert gate['status']=='reviewed_M125_CAD_uniform_inference_source_gate'
++    assert gate['profiles']==['U0','U1','U2'] and not gate['per_dataset_profile_selection']
++    for path,digest in gate['source_sha256'].items():assert sha(path)==digest,path
++    for path,digest in gate['input_sha256'].items():assert sha(path)==digest,path
++    predecessor=verify_predecessor(gate)
++    assert Path(gate['reference_evaluation'])==Path(predecessor['root'])/'evaluation'
++    resource_rows=resource_admission(gate)
++    write(root/'actual_resource_admission.json',dict(rows=resource_rows,fields='index,memory.used,memory.total',completed_predecessor=predecessor))
++    code=Path(gate['code_root']);st=gate['python'];metric=gate['metric_python']
++    reference=read(Path(gate['reference_evaluation'])/'all_results.json')
++    assert reference['status']=='three_M125_R0_fixed6_full_evaluations_complete' and len(reference['gates'])==1
++    assert reference['gates'][0]['final_sha256']==predecessor['final_sha256']
++    stages=[];profiles=root/'profiles';profiles.mkdir();qualification=root/'qualification';qualification.mkdir()
++    for name in gate['profiles']:
++        evaluation=profiles/name
++        stages.append(run(root,gate,'prepare_'+name,st,[str(code/'prepare_m125_CAD_evaluation.py'),
++            '--reference-evaluation',gate['reference_evaluation'],'--source-gate',str(root/'gate.json'),
++            '--profile',name,'--output',str(evaluation)]))
++        stages.append(run(root,gate,'qualify_'+name,st,[str(code/'check_m125_CAD_real64.py'),
++            '--plan',str(evaluation/'depthtrack_test/plan.json'),'--output',str(qualification/name)],0))
++        witness=read(qualification/name/'result.json')
++        assert witness['status']=='complete_M125_CAD_real64_inference_interface_witness'
++        assert witness['inference_profile_id']==name and witness['inference_profile']==profile_dict(name)
++        assert witness['track_calls']==64 and witness['final_sha256']==predecessor['final_sha256']
++        assert witness['frozen_before_after_exact'] and witness['A_B_C_states_unchanged']
++        assert witness['optimizer_steps']==0 and not witness['subsequent_GT_opened'] and not witness['new_checkpoint_created']
++        if name=='U0':assert witness['U0_original_prefix_parity']['all65_box_and_score_rows_match_original_six_decimal_files']
++    rows=[dict(inference_profile_id='U0',inference_profile=profile_dict('U0'),
++        execution_origin='original complete fixed6 R0 suite; not a new full U0 runtime run',
++        source_result_path=str(Path(gate['reference_evaluation'])/'all_results.json'),
++        source_result_sha256=sha(Path(gate['reference_evaluation'])/'all_results.json'),
++        nine_metric_gate=reference['gates'][0],new_runtime_real64_prefix_result_sha256=sha(qualification/'U0/result.json'))]
++    for name in ['U1','U2']:
++        resource_admission(gate)
++        evaluation=profiles/name
++        with ThreadPoolExecutor(max_workers=2) as pool:
++            jobs=[pool.submit(run,root,gate,name+'_'+dataset+'_track',st,
++                [str(code/'run_m125_CAD_official.py'),'--mode','ope_track','--plan',str(evaluation/dataset/'plan.json')],gpu)
++                for gpu,dataset in enumerate(['depthtrack_test','cdtb'])]
++            stages.extend(job.result() for job in jobs)
++        for dataset in ['depthtrack_test','cdtb']:
++            stages.append(run(root,gate,name+'_'+dataset+'_analyze',metric,
++                [str(code/'run_m125_CAD_official.py'),'--mode','ope_analyze','--plan',str(evaluation/dataset/'plan.json')]))
++        vot=evaluation/'vot';manifest=read(vot/'run/shard_manifest.json')
++        stages.append(run(root,gate,name+'_vot_track',st,[str(code/'run_m123_joint_vot_shards.py'),'--root',str(vot/'run')]))
++        (evaluation/'vot.exit').write_text('0\n')
++        model_name=read(evaluation/'selection.json')['models'][0]['name']
++        stages.append(run(root,gate,name+'_vot_official_analysis',metric,
++            ['-m','vot','analysis','--workspace',str(vot/'run/master'),'--format','json','--name',model_name+'_full127',manifest['tracker']]))
++        stages.append(run(root,gate,name+'_vot_seal',metric,[str(code/'analyze_m125_CAD_vot.py'),'--root',str(evaluation)]))
++        stages.append(run(root,gate,name+'_collect',metric,[str(code/'collect_m125_CAD_results.py'),'--root',str(evaluation)]))
++        result=read(evaluation/'all_results.json')
++        assert result['status']=='three_M125_CAD_uniform_profile_full_evaluations_complete'
++        assert result['inference_profile_id']==name and result['inference_profile']==profile_dict(name)
++        assert result['one_profile_for_all_datasets'] and not result['per_dataset_profile_selection']
++        assert len(result['gates'])==1 and result['gates'][0]['final_sha256']==predecessor['final_sha256']
++        rows.append(dict(inference_profile_id=name,inference_profile=profile_dict(name),execution_origin='new complete three-dataset inference',
++            source_result_path=str(evaluation/'all_results.json'),source_result_sha256=sha(evaluation/'all_results.json'),
++            nine_metric_gate=result['gates'][0],new_runtime_real64_prefix_result_sha256=sha(qualification/name/'result.json')))
++    assert len(rows)==3 and {row['nine_metric_gate']['final_sha256'] for row in rows}=={predecessor['final_sha256']}
++    result=dict(status='complete_M125_CAD_same_weight_uniform_profile_comparison',final_sha256=predecessor['final_sha256'],
++        rows=rows,stages=stages,source_gate_sha256=sha(root/'gate.json'),automatic_retries=0,
++        new_training=False,per_dataset_profile_selection=False,one_profile_per_complete_nine_metric_row=True,
++        inference_strategy_engineering_comparison=True,independent_completed_result_audit=False,
++        any_joint_pass=any(row['nine_metric_gate']['joint_pass'] for row in rows),finished_at=datetime.now(timezone.utc).isoformat())
++    write(root/'result.json',result)
++    with (root/'comparison_metrics.csv').open('x',newline='') as stream:
++        fields=['profile','final_sha256','DepthTrack_P','DepthTrack_R','DepthTrack_F','CDTB_P','CDTB_R','CDTB_F','VOT_EAO','VOT_ACC','VOT_ROB','joint_pass']
++        writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader()
++        for row in rows:
++            gate_row=row['nine_metric_gate'];m=gate_row['metrics_percent']
++            writer.writerow(dict(profile=row['inference_profile_id'],final_sha256=gate_row['final_sha256'],
++                DepthTrack_P=m['depthtrack_test']['precision'],DepthTrack_R=m['depthtrack_test']['recall'],DepthTrack_F=m['depthtrack_test']['f_score'],
++                CDTB_P=m['cdtb']['precision'],CDTB_R=m['cdtb']['recall'],CDTB_F=m['cdtb']['f_score'],
++                VOT_EAO=m['vot']['EAO'],VOT_ACC=m['vot']['ACC'],VOT_ROB=m['vot']['ROB'],joint_pass=gate_row['joint_pass']))
++    (root/'controller.exit').write_text('0\n')
+ 
+ 
+-if __name__ == '__main__':
+-    main()
++if __name__=='__main__':main()
+--- trusted_template_tracker.py
++++ profiled_template_tracker.py
+@@ -1,27 +1,24 @@
+-"""Frozen A+B observation/selection, C decision before the template crop.
+-
+-The submitted frame box, query, selected feature and reported score follow the
+-bound FullDenseTracker.step path. Only its dynamic-template write is gated.
+-"""
++"""Frozen ABC predictions with an explicit, uniform template-update profile."""
+ import torch
+ from dense_target_decoder import clip_boxes
+ from template_write_features import initial_reference, write_features
+-from template_write_C import accepts_write
++from cad_template_profiles import get_profile
+ 
+ 
+-class TrustedTemplateTracker:
+-    def __init__(self, actor, writer, arm):
+-        assert arm in ['current', 'future']
++class ProfiledTemplateTracker:
++    def __init__(self, actor, writer, profile_id='U0'):
+         assert not actor.decoder.training and not actor.native.network.training and not actor.clip.training
+         assert not writer.training and not any(p.requires_grad for p in writer.parameters())
+         self.actor = actor
+         self.writer = writer
+-        self.arm = arm
++        self.arm = 'current'
++        self.profile = get_profile(profile_id)
+ 
+     @torch.no_grad()
+     def initialize(self, image, box, bank_index):
+         self.actor.initialize(image, box, bank_index)
+         self.reference = initial_reference(self.actor)
++        self.counts = dict(tracking_calls=0, qualified=0, C_evaluations=0, template_writes=0)
+ 
+     @torch.no_grad()
+     def step(self, image):
+@@ -45,26 +42,34 @@
+         actor.native.track_query_before = [x.detach() for x in native['track_query_before']]
+         actor.selected_feature = out['selected_feature'].detach()
+         confidence = float(data['native_response'][0, selected[0]])
+-        qualified = actor.native.frame_id % actor.native.update_intervals == 0 and confidence > actor.native.update_threshold
++        final_confidence = float(out['selected_score'][0].detach())
++        qualified = self.profile.qualifies(actor.native.frame_id, confidence, final_confidence)
++        native_qualified = actor.native.frame_id % actor.native.update_intervals == 0 and confidence > actor.native.update_threshold
++        self.counts['tracking_calls'] += 1
++        self.counts['qualified'] += int(qualified)
+         record = dict(frame=actor.native.frame_id, previous_bbox=prior, bbox=list(actor.native.state),
+-            selected=int(selected[0]), best_score=float(out['selected_score'][0].detach()),
++            selected=int(selected[0]), best_score=final_confidence,
+             selected_quality=float(out['selected_quality'][0].detach()), native_same_position_response=confidence,
+             observation_intersection_probability=float(out['observation_logits'][0].detach().sigmoid()),
+             template_write=False, resize_factor=float(resize), crop_origin=data['origin'][0].tolist(),
+-            native_rule_write_qualified=bool(qualified), C_arm=self.arm, C_prediction=None)
++            native_rule_write_qualified=bool(native_qualified), C_arm=self.arm, C_prediction=None,
++            inference_profile_id=self.profile.name, profile_write_qualified=bool(qualified))
+         if qualified:
+             assert actor.native.update_intervals == 50 and actor.native.update_threshold == .75
+             assert previous_feature is not None
+-            features = write_features(actor.selected_feature, previous_feature, self.reference, record)
+-            prediction = self.writer(features)
+-            record['C_prediction'] = float(prediction[0])
+-            record['template_write'] = accepts_write(prediction, self.arm)
++            if self.profile.use_C:
++                features = write_features(actor.selected_feature, previous_feature, self.reference, record)
++                prediction = self.writer(features)
++                record['C_prediction'] = float(prediction[0])
++                self.counts['C_evaluations'] += 1
++            record['template_write'] = self.profile.accepts(record['C_prediction'])
+             if record['template_write']:
+                 patch, _, _ = actor.sample_target(image, actor.native.state, 2., output_sz=128)
+                 actor.native.z_patch_arr = patch
+                 template = actor.native.preprocessor.process(patch)
+                 actor.native.z_dict.append(template)
+                 actor.native.z_dict.pop(1)
++                self.counts['template_writes'] += 1
+         return out, data, record
+ 
+     @torch.no_grad()
