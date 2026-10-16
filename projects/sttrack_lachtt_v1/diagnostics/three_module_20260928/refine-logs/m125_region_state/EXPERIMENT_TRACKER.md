@@ -44,3 +44,5 @@ M125 ROI/R1/V SOURCE_REVIEW_PASS_EXECUTION_PENDING：新鲜源码审查325检查
 DEPLOYMENT_R2_SOURCE_REVIEW_PASS_ACTUAL_ADMISSION_PENDING：原稿两处源码问题和FAIL_SOURCE_ONLY保留，R2按原审查SHA格式精确比较并在SSH前独占尝试记录；SOURCE_ONLY通过，不等同部署成功。唯一原R0 Oct17 12:45BJT观察由隐藏单次sleep owner 49616 持有，未发生未来观察；新区域GPU仍等待原R0整套终态。
 
 STATIC_PACKAGE_CPU_LAYOUT_VERIFIED：22部署材料+64code实际暂存于独立m125_region_reviewed_admission_inputs_20261015，三臂真实审查绑定与11同目录CPU导入exit0。无原R0进度/资源读取，无新NN/track。新增本地phase入口仅做传输，真实real64/full未调用；原R0整套终态/资源/对应arm真实64仍是启动条件。
+
+2026-10-16 UNIFIED_PROTOCOL_OVERRIDE：只DT Train152训练，每候选统一结构/训练预算/checkpoint/主profile，完整DT50/CDTB80/VOT127九项；不按数据集挑权重、seed、层数或profile拼行。小差距允许有限统一训练/推理调参，每个新训练候选完整重训三集。当前R0不热改；后继先R0整套→同R0 final CAD U0/U1/U2→再有限统一调参/区域/状态，旧region直接启动顺序被覆盖。CAD12源码/CPU证据不是正式运行：审查已发现两处问题，独立R2修正中，真实CAD track=0，无新指标。原R0唯一下一观察仍Oct17 12:45BJT，不提前查询。详见UNIFIED_MODEL_PROTOCOL_20261016.md，Goal ACTIVE_UNMET。

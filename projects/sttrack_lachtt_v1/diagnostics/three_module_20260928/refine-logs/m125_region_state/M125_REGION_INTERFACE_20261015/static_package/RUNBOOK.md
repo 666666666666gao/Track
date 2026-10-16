@@ -1,3 +1,5 @@
+> **2026-10-16执行顺序修正：** 当前有效协议为[统一模型协议](../../UNIFIED_MODEL_PROTOCOL_20261016.md)。先完成原R0整套，再同R0 final统一比较CAD U0/U1/U2；本页下面的区域命令仅保留为后续操作记录，不得在CAD比较之前直接执行。每候选同一权重、同一主推理profile完整三集九项，原R0预算和唯一观察节点不变。
+
 # M125区域后继执行：当前仅已暂存
 
 静态root：`/root/autodl-tmp/m125_region_reviewed_admission_inputs_20261015`。`inputs/`含17冻结文件和原区域审查MD/JSON；`operator/`含已审R2部署操作及其审查；`code/`为实际核对的完整64源码布局。当前没有区域正式arm root、GPU real64或完整训练。
