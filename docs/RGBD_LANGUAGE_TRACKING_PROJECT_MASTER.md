@@ -29139,3 +29139,9 @@ CAD12份隔离源码已有5416纯策略检查、600模拟步/2700断言，以及
 这是统一模型协议下的完成基线，不是最终目标达成，也不将各历史权重的最好单项拼成一行。VOT包含127条序列、1,765 anchors和5,295 trajectory文件。指标文件本体已只读取回，并与all_results登记的result_sha256逐项一致。
 
 独立完整结果审查记录于`M125_R0_FULL_RESULT_AUDIT_20261018`归档；same-family/provisional，实际模型路由UNATTESTED。原先M124的测试知情选模、人审多帧文本及固定预算受历史影响的边界继续披露。R0完成后，下一步才是同一R0 final的统一CAD U0/U1/U2推理对照；不按数据集改权重或直接启动ROI。
+
+## 5.552 统一CAD U0/U1/U2已按同一R0 final实际启动（2026-10-18）
+
+原R0 fixed6完整结果及独立完整性审查完成后，执行已审R2/R3统一CAD准入入口。远端准入验证R0完整六pass、DT/CDTB/VOT三套评测15个stage全exit0、同一final SHA `cf88e9c345c393caf09ad42fbe21b1bcd3b6c6bacd13bfc5124b12e511bc2a2f`；随后启动统一CAD U0/U1/U2推理监督器PID 240031，根目录`/root/autodl-tmp/m125_CAD_same_R0_uniform_profiles_20261016`，入口远端exit0、无自动重试。
+
+本次不训练、不创建新checkpoint。准入资源只读GPU index/memory.used/memory.total，GPU0/1均1MiB/24576MiB；没有温度/功率查询。启动时尚无real64或正式CAD指标。U0引用原R0完整三集结果并做64步合法前缀检查，U1/U2各自完整推理三集，三行保持同一权重和一个全局profile。下一进度节点固定为北京时间10月19日13:30，期间不轮询、不重启、不直接启动ROI。详细启动回执见`M125_CAD_UNIFORM_20261018_LAUNCH/`。
