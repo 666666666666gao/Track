@@ -29125,3 +29125,17 @@ CAD12份隔离源码已有5416纯策略检查、600模拟步/2700断言，以及
 第6轮完整前缀约9.224calls/s，余16505calls粗估约30分钟，训练预计13:17左右结束。结合历史E6实际OPE receipt与VOT/分析/收集耗时，原全suite粗估10月18日12:30左右；只作为日历安排，不当完成证据。唯一后继读取固定10月18日12:15BJT（UTC04:15），由当前根会话可中断等待后执行一次已登记只读入口，不重建Windows后台helper；之前不读原NN/log/process/GPU或等待句柄。
 
 新入口沿用时间守卫与SSH前独占attempt，额外读取既知阶段回执和VOT四分片非空三件套代理，仍不把代理当正式完成。原R0预算/6pass final6/seed和运行代码均不热改，保留自动完成全三集；之后再同R0 final统一CAD对照，当前不启动CAD或ROI。原始观察、核对摘要和下个节点/入口见M125_R0_FIXED6_20261015/end_node_20261017/。E6仍5/9，Goal ACTIVE_UNMET。
+
+## 5.551 M125-R0 fixed-six完整结果：同一权重三集九项（2026-10-18）
+
+原R0已按预先固定的Train152×6/final6规则完成训练及三套正式评测。六个训练阶段、prepare、DepthTrack Test50、CDTB80、VOT127、官方分析、封存和收集共15个stage均exit0，无自动重试；三集结果绑定同一个final SHA `cf88e9c345c393caf09ad42fbe21b1bcd3b6c6bacd13bfc5124b12e511bc2a2f`，训练track调用1,318,812，A+B/C各40,842更新。
+
+| 模型 | DepthTrack P/R/F | CDTB P/R/F | VOT EAO/ACC/ROB | VOT失败anchor |
+|---|---|---|---|---:|
+| M125-R0 fixed6 | 70.209667 / 61.503696 / 65.568958 | 75.459618 / 66.175778 / 70.513432 | 75.786243 / 82.318545 / 91.359821 | 249 |
+
+按当前目标，9项中4项通过：DepthTrack P、F；CDTB P；VOT ACC。DT召回、CDTB召回/F以及VOT EAO/ROB仍未达标。相对M124-E6，R0的OPE指标回落，VOT EAO小幅上升但ROB下降；因此不能把“完整训练”表述为整体无条件改善。
+
+这是统一模型协议下的完成基线，不是最终目标达成，也不将各历史权重的最好单项拼成一行。VOT包含127条序列、1,765 anchors和5,295 trajectory文件。指标文件本体已只读取回，并与all_results登记的result_sha256逐项一致。
+
+独立完整结果审查记录于`M125_R0_FULL_RESULT_AUDIT_20261018`归档；same-family/provisional，实际模型路由UNATTESTED。原先M124的测试知情选模、人审多帧文本及固定预算受历史影响的边界继续披露。R0完成后，下一步才是同一R0 final的统一CAD U0/U1/U2推理对照；不按数据集改权重或直接启动ROI。

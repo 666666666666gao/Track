@@ -1,0 +1,104 @@
+{
+  "status": "M125_R0_fixed6_final_whole_suite_result",
+  "generated_at": "2026-10-18T05:21:30.707497+00:00",
+  "model": "R0_fixed6_Train152",
+  "final_sha256": "cf88e9c345c393caf09ad42fbe21b1bcd3b6c6bacd13bfc5124b12e511bc2a2f",
+  "bundle_sha256": "7178b52586c7ab85630d99cf24187fdf5a2d6d5202bd02b35877094e20172dff",
+  "selection_sha256": "60edfa93918e4cbe0ca0d3d685d38801cfc5295756b74ce5a0e738ebb57b5ecc",
+  "training_data": "DepthTrack Train152 only",
+  "fixed_budget_passes": 6,
+  "fixed_final_pass": 6,
+  "sequence_runs": 912,
+  "training_track_calls": 1318812,
+  "A_B_optimizer_steps": 40842,
+  "C_optimizer_steps": 40842,
+  "same_final_for_all_three": true,
+  "external_metric_checkpoint_selection": false,
+  "Test50_CDTB80_used_for_checkpoint_selection": false,
+  "official_stage_count": 15,
+  "official_stage_exit_codes_all_zero": true,
+  "VOT_anchor_count": 1765,
+  "VOT_result_file_count": 5295,
+  "VOT_confirmed_failures": 249,
+  "rows": [
+    {
+      "dataset": "depthtrack_test",
+      "model": "R0_fixed6_Train152",
+      "final_sha256": "cf88e9c345c393caf09ad42fbe21b1bcd3b6c6bacd13bfc5124b12e511bc2a2f",
+      "bundle_sha256": "7178b52586c7ab85630d99cf24187fdf5a2d6d5202bd02b35877094e20172dff",
+      "result_sha256": "7bd74ed74ea361d68b55e9b346926303cbeb4dffd56c65195a12d92b5a7ea8f5",
+      "metrics_percent": {
+        "precision": 70.20966734349989,
+        "recall": 61.50369567358845,
+        "f_score": 65.56895845227588
+      },
+      "thresholds": {
+        "precision": 65.2,
+        "recall": 64.9,
+        "f_score": 65.1
+      },
+      "target_pass": {
+        "precision": true,
+        "recall": false,
+        "f_score": true
+      },
+      "confirmed_failures": null
+    },
+    {
+      "dataset": "cdtb",
+      "model": "R0_fixed6_Train152",
+      "final_sha256": "cf88e9c345c393caf09ad42fbe21b1bcd3b6c6bacd13bfc5124b12e511bc2a2f",
+      "bundle_sha256": "7178b52586c7ab85630d99cf24187fdf5a2d6d5202bd02b35877094e20172dff",
+      "result_sha256": "c2fdc440f2a1827ac68e9afa6ca035713a41b53d2ebe7b1656ec02a718edb9bb",
+      "metrics_percent": {
+        "precision": 75.45961789325742,
+        "recall": 66.17577807419,
+        "f_score": 70.51343194486606
+      },
+      "thresholds": {
+        "precision": 72.9,
+        "recall": 75.6,
+        "f_score": 74.2
+      },
+      "target_pass": {
+        "precision": true,
+        "recall": false,
+        "f_score": false
+      },
+      "confirmed_failures": null
+    },
+    {
+      "dataset": "vot",
+      "model": "R0_fixed6_Train152",
+      "final_sha256": "cf88e9c345c393caf09ad42fbe21b1bcd3b6c6bacd13bfc5124b12e511bc2a2f",
+      "bundle_sha256": "7178b52586c7ab85630d99cf24187fdf5a2d6d5202bd02b35877094e20172dff",
+      "result_sha256": "5a14a1f6caf574df340b8e2a73e24d8c4619bf389284170808389fe142cd130b",
+      "metrics_percent": {
+        "EAO": 75.78624268877728,
+        "ACC": 82.31854450835942,
+        "ROB": 91.35982054000516
+      },
+      "thresholds": {
+        "EAO": 77.9,
+        "ACC": 82.1,
+        "ROB": 93.7
+      },
+      "target_pass": {
+        "EAO": false,
+        "ACC": true,
+        "ROB": false
+      },
+      "confirmed_failures": 249
+    }
+  ],
+  "any_joint_pass": false,
+  "result_audit_verdict": "RESULT_INTEGRITY_PASS_WITH_WARNINGS",
+  "result_audit_overall": "WARN",
+  "result_audit_source": "C:/Users/gb/.codex_track_publish_m29_20260902/.aris/m122_full_causal_20261007/M125_R0_FULL_RESULT_AUDIT_20261018/EXPERIMENT_AUDIT.json",
+  "limitations": [
+    "One fixed seed and one final checkpoint.",
+    "The fixed six-pass budget and final rule were predeclared but informed by prior project history.",
+    "Historical M124 external Test/CDTB checkpoint selection is disclosed separately.",
+    "R0 is a completed engineering baseline; it does not meet all project targets."
+  ]
+}
