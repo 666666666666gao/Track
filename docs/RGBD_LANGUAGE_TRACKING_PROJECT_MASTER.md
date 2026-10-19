@@ -29228,3 +29228,102 @@ M125-R0 fixed6 的完整九项仍以 §5.551 为准：DepthTrack `70.209667/61.5
 U1 的 DepthTrack 和 CDTB 中间结果仍只作为非完整九项记录：DepthTrack P/R/F=`68.543235/60.191502/64.096457`，CDTB P/R/F=`75.656000/67.149405/71.149343`。最终表必须等待 U1 VOT、U2 全部三集和统一收集完成后再填写。实验协议仍保持：同一 R0 checkpoint、每个 profile 统一应用于 DepthTrack Test/CDTB/VOT，不按数据集拼接权重或参数。
 
 下一观察点安排在第二波接近 441/441 前；期间保持现有队列，继续不启动区域训练、不修改代码、不改变 CAD profile。
+## 5.555 VOT持续低于原生STTrack的原因分析与原生锚定选择（2026-10-20）
+
+### 5.555.1 本轮入口与边界
+
+本节在§5.554（远端同步版本的最后一节）之后续写，本地新路径为`C:\Users\gb\Desktop\document\RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`。本轮用户提供的新入口`connect.nmb2.seetacloud.<主机后缀缺失>:35786`主机名不完整，未连接；`43811`在本轮初次只读盘点后，后续SSH调用被本机自动权限策略拦截，因此**本节未读取远端最新主文档、未读取CAD U1 VOT/U2进度、未启动任何GPU任务**。远端主文档需在恢复SSH后把本节追加到`/home/SUTrack_RGBD_L/docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`。
+
+本轮初次只读盘点（北京时间10月20日约00:45）：两张3090中GPU0约4.1GB/81%，GPU1空闲；`/`系统盘100%（剩111MB），`/root/autodl-tmp`为95%（剩11GB）；CAD监督器240031、队列240032仍存活，正在执行`sttrack_m125_CAD_U2`的VOT评测（即U1 VOT已结束并进入U2）。系统盘满会使写`/root`、`/tmp`或conda缓存的新任务失败，启动新实验前需先清理（删除前须用户确认）。
+
+### 5.555.2 当前实验模型架构（与§5.553.2一致，仅列与VOT相关的决策路径）
+
+| 环节 | 实现位置 | 对VOT的作用 |
+|---|---|---|
+| 冻结STTrack `STTrack_Vot22.pth.tar` | `full_dense_tracker.py: observe` | 产生256位置原生score_map、Hann响应、size/offset框；与原生baseline同一权重、同一factor4/256搜索与factor2/128模板 |
+| A：首帧实例+文字双向交互 | `dense_target_decoder.py: observe/branch` | 产生visual_delta与semantic_delta（full−Empty） |
+| B：支撑/几何/质量 | `dense_target_decoder.py: forward` | `response = native_response·(odds_residual(p,Δv+Δl)/p)·σ(q)`，**对全部256位置取argmax**，并对所选框施加几何delta |
+| C：模板写入门 | `trusted_template_tracker.py`/`profiled_template_tracker.py` | 只在原生规则资格成立时否决写入 |
+| 下一帧搜索 | `actor.native.state = selected_box` | 所选框直接成为下一帧crop中心，错误跳转无法撤回 |
+
+已排除的“非模型”解释：baseline与本模型使用**同一** `STTrack_Vot22.pth.tar`（M39记录SHA `cacbd799…`）；测试配置SEARCH/TEMPLATE factor与size一致；VOT短时协议不使用置信度，`best_score`的差异不影响EAO/ACC/ROB。
+
+### 5.555.3 为什么VOT持续低于原生：证据链
+
+VOT-RGBD2022的序列来自CDTB，但协议是**锚点多起点、短时、任一时刻重叠为0即记失败**；DepthTrack/CDTB的OPE则允许暂时丢失后再找回，并通过置信度阈值计算P/R/F。两者对同一类行为的奖惩方向相反。
+
+| 对比（R0 fixed6 相对原生STTrack） | 数值，pp | 含义 |
+|---|---:|---|
+| DepthTrack P | +7.794331 | 主要来自分数校准（不确定帧降分） |
+| DepthTrack R | −1.178308 | 框轨迹本身没有优于原生 |
+| CDTB P | +5.526505 | 同上 |
+| CDTB R | −1.891966 | 同上 |
+| VOT EAO | −1.535411 | |
+| VOT ACC | −0.152645 | 跟住时框质量与原生基本持平 |
+| VOT ROB | −2.309288 | 主要退化项 |
+| VOT失败anchor | +66（183→249） | 退化来自失败次数，而非框精度 |
+
+| VOT目标差距 | EAO | ACC | ROB |
+|---|---:|---:|---:|
+| 原生STTrack相对目标(77.9/82.1/93.7) | −0.578346 | +0.371190 | −0.030891 |
+| R0相对目标 | −2.113757 | +0.218545 | −2.340179 |
+
+结论（按证据强度排序）：
+
+1. **退化是“失败次数”问题，不是“框精度”问题。**ACC与原生仅差0.15pp，而失败anchor增加36%。历史所有学习式干预都呈同一模式：M67/M82/P1/CurrentC/E6的失败anchor为230—283，均高于原生183；M78配对统计“救回5、新增21”，no-update“救回4、新增35”。
+2. **失败来自学习分支对选择位置的非局部改写。**B对256位置统一取argmax，visual/semantic delta可以把选择从原生峰值移到远处候选；VOT中任何一次远跳到干扰物都会在当帧变成0重叠失败，而OPE中这种跳错若随后被找回只损失少量帧，甚至因降分而提高P。早期候选关联实验中egg在关联头首次参与决策的第2帧即被改选（IoU 0.874→0.033），是该机制的直接实例。
+3. **OPE增益不能迁移到VOT的结构原因：**R0的DT/CDTB F增益以P为主、R低于原生，说明当前收益大头是“什么时候不报告”，而VOT只评价框；E6虽然R高于原生，但它的长期“找回”能力在VOT锚点内不起作用，跳错代价却完全计入。
+4. **原生本身就未达到EAO/ROB目标。**目标EAO>77.9要求比原生多0.58pp，即必须在不新增失败的前提下**额外救回**原生失败的anchor；单纯“退回原生”最多接近93.67的ROB，仍差EAO。
+
+### 5.555.4 本轮代码优化：原生锚定选择（训练免、三集统一）
+
+新增两份源码（不修改已封存的R0/CAD审查源码与SHA）：
+
+- `three_module_20260928/native_anchored_selection.py`：`NativeAnchoredDecoder`包装A+B解码器。若学习argmax距原生Hann峰值超过`radius`格（Chebyshev距离，默认1），且其最终响应未超过原生峰值位置响应的`(1+margin)`倍，则回退到原生峰值索引；框、分数、质量与特征仍由同一索引取得，保持现有一致性断言成立。局部（≤1格）精修与强证据远跳保留。
+- `three_module_20260928/anchored_profile_tracker.py`：`OfficialAnchoredTracker`在CAD `OfficialProfileTracker`上套用该解码器，并在`template_counts`中增加`anchored_overrides`计数，供逐anchor事件统计回退次数。
+
+CPU逻辑检查（本机torch 1.13.1 CPU）：相邻格改选保留（17）、弱远跳回退（200→0，override=True）、强远跳保留（200）；所选框/分数/特征索引一致。**尚无GPU真实track或正式指标。**
+
+使用方式：在CAD bundle中加入`anchor_margin`、`anchor_radius`两个全局字段，以`OfficialAnchoredTracker`替换`run_m125_CAD_official.py`中的`OfficialProfileTracker`。margin/radius必须只在DepthTrack Train（自身递归）上确定，再固定为一个profile完整跑三集；不得按VOT结果挑margin。
+
+### 5.555.5 实验计划（更新后的执行顺序）
+
+1. **收完CAD U1/U2**（同R0 final，不改队列）。U1的DT/CDTB中间值已在§5.553记录，不重复。
+2. **A0诊断（CPU，免重跑）**：恢复SSH后，对R0及CAD已保存的VOT轨迹配对原生轨迹，统计每个新增失败anchor在失败前10帧内是否发生“非局部改选”（需要逐帧selected/native索引；VOT入口目前不落盘逐帧记录，若无则只能用框中心跳变>1格搜索步长作代理）。该比例是本节结论2的定量检验。
+3. **A1原生锚定profile完整三集**：R0 final + U0模板规则 + 锚定选择；margin先取Train上使远跳回退后DT-Train自身递归IoU不降的最小值，radius=1。预期：VOT失败数回到原生附近（ROB≈93.6—93.7），DT/CDTB P基本保留、R不低于原生。
+4. **A2“在原生失败处救回”**：只有当A1确认失败数不再高于原生后，才训练/启用能在原生峰值失效（原生峰值低、或峰值处质量低）时允许远跳的分支——即把远跳授权与“原生不可信”绑定，而不是全局放开。这是满足EAO>77.9的必要部分。
+5. 区域分支ROI/R1/V与状态—观察分离R2按§5.553.4原顺序进行，统一固定A1选中的选择规则，避免把选择规则差异算成结构收益。
+
+### 5.555.6 下一步优化方向（按与VOT缺口的相关性）
+
+| 优先级 | 方向 | 针对的问题 | 可借鉴开源实现 |
+|---|---|---|---|
+| 1 | 选择信任域（本节A1）+ 有条件远跳授权（A2） | 非局部改选导致新增失败 | LTMU（局部跟踪与验证/重检测分工）`github.com/Daikenan/LTMU` |
+| 2 | 训练目标加入“远跳惩罚/失败代价” | 单帧IoU/BCE监督不惩罚跳错的递归代价 | — |
+| 3 | 小目标分辨率感知采样 | cart类目标在crop内仅4—7像素宽 | ZoomTrack非均匀重采样 `github.com/Kou-99/ZoomTrack` |
+| 4 | 模板更新节奏 | U1/U2结果待定 | CADTrack `github.com/IdolLab/CADTrack` |
+| 5 | 区域—短语对应监督 | 位置语义≠区域实例证据 | RegionCLIP `github.com/microsoft/RegionCLIP` |
+
+本节未产生新的完整九项指标；Goal仍为`ACTIVE_UNMET`。
+
+## 5.556 CAD U1完整九项、U2进度与磁盘状态（2026-10-20）
+
+U1（同R0 final，更新间隔5、原生同位置Hann>0.75、C>0.5）已完成VOT跟踪、官方分析、封存与收集，全部exit0。DT/CDTB值已在§5.553记录，此处只补VOT并给出完整行判定：
+
+| 模型 | VOT EAO | VOT ACC | VOT ROB | joint_pass |
+|---|---:|---:|---:|---|
+| CAD-U1 same R0 fixed6 | 76.985024 | 82.062147 | 93.011658 | False |
+
+| U1相对 | ΔEAO | ΔACC | ΔROB |
+|---|---:|---:|---:|
+| R0（U0原规则） | +1.198781 | −0.256398 | +1.651837 |
+| 原生STTrack | −0.336630 | −0.409043 | −0.657451 |
+| 目标77.9/82.1/93.7 | −0.914976 | −0.037853 | −0.688342 |
+
+解读：仅把模板检查频率从50提高到5，VOT ROB增加1.65pp，是迄今所有学习式版本中最接近原生的VOT；这支持§5.555的判断——VOT退化主要是持续性失锁/失败次数问题，外观及时更新能直接减少失败。但ACC降到82.06，首次低于82.1目标；DT R与F也低于R0（−1.31/−1.47pp），所以U1不是全面更优的统一profile。U1九项中通过：DT P、CDTB P，共2/9（DT F 64.10<目标、VOT三项均未过）。
+
+U2（间隔5、阈值0.65）DT P/R/F=68.921414/61.861776/65.201056，CDTB P/R/F=75.124097/67.549836/71.135916；VOT于10月19日15:16启动，10月20日01:21已完成868/1765 anchor事件，第一波shard-01于00:24结束、shard-00约96%。按U1 VOT总耗时约21h估计，U2 VOT第二波约在10月20日11:30—12:30结束，随后分析/收集数分钟；之后CAD队列无后续GPU任务。
+
+下一步：U2完成后，在同R0 final上运行“U1/U2模板节奏＋原生锚定选择（§5.555.4）”的统一profile，检验两者叠加能否同时恢复ACC并把ROB推过93.7。
+
+磁盘：系统盘`/`为100%（主要占用`/home`下已关闭的RGBD1K抽取副本约8.4GB、`/home/qwen25_env` 5.4GB、`/usr` 8.2GB）。已确认无运行进程使用RGBD1K副本；计划删除`/home/rgbd1k_{selective_validation,instance_retrieval_pool,instance_retrieval_rejected_overlap,instance_retrieval_smoke,transfer_stage,instance_retrieval_reserves}_v1`，保留acquisition/dedup脚本和清单以便重抽。本轮删除命令被本机权限策略拦截，尚未执行。
