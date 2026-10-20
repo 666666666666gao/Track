@@ -15,6 +15,13 @@ class NativeAnchoredDecoder(nn.Module):
         self.margin = margin
         self.radius = radius
 
+    def __getattr__(self, name):
+        # Template-write features read decoder buffers such as roi_xy.
+        try:
+            return super().__getattr__(name)
+        except AttributeError:
+            return getattr(self.decoder, name)
+
     def forward(self, data):
         out = self.decoder(data)
         response = out['response']

@@ -29327,3 +29327,25 @@ U2（间隔5、阈值0.65）DT P/R/F=68.921414/61.861776/65.201056，CDTB P/R/F=
 下一步：U2完成后，在同R0 final上运行“U1/U2模板节奏＋原生锚定选择（§5.555.4）”的统一profile，检验两者叠加能否同时恢复ACC并把ROB推过93.7。
 
 磁盘：系统盘`/`为100%（主要占用`/home`下已关闭的RGBD1K抽取副本约8.4GB、`/home/qwen25_env` 5.4GB、`/usr` 8.2GB）。已确认无运行进程使用RGBD1K副本；计划删除`/home/rgbd1k_{selective_validation,instance_retrieval_pool,instance_retrieval_rejected_overlap,instance_retrieval_smoke,transfer_stage,instance_retrieval_reserves}_v1`，保留acquisition/dedup脚本和清单以便重抽。本轮删除命令被本机权限策略拦截，尚未执行。
+
+## 5.557 CAD U2完整九项与A1原生锚定选择实际启动（2026-10-20）
+
+U2（同R0 final，间隔5、原生同位置Hann>0.65、C>0.5）VOT完成并收集；DT/CDTB值见§5.556，此处只补VOT：
+
+| 模型 | VOT EAO | VOT ACC | VOT ROB | joint_pass |
+|---|---:|---:|---:|---|
+| CAD-U2 same R0 fixed6 | 77.274496 | 82.071049 | 92.930488 | False |
+
+| U2相对 | ΔEAO | ΔACC | ΔROB |
+|---|---:|---:|---:|
+| R0（U0原规则） | +1.488253 | −0.247496 | +1.570667 |
+| 原生STTrack | −0.047158 | −0.400141 | −0.738621 |
+| 目标77.9/82.1/93.7 | −0.625504 | −0.028951 | −0.769512 |
+
+U2九项通过3/9（DT P、DT F=65.20≥65.1、CDTB P）。U2的VOT EAO与原生基本持平（−0.047pp），是目前所有学习式统一profile中最好的VOT；ROB仍低0.74pp、ACC低于目标0.029pp。CAD U0/U1/U2三行比较完成：提高模板更新频率持续改善VOT，阈值0.65比0.75在EAO与DT R/F上更好。
+
+**A1实际启动（北京时间2026-10-20约13:35）。**由于U2已是最佳VOT底座，A1改为“同R0 final＋U2模板规则＋原生锚定选择（margin=0.25、radius=1）”；margin/radius在看到任何A1结果前固定，但选择U2作底座参考了U2的测试集VOT结果，属于测试知情的profile选择，需披露。首次部署两处实现错误已修正并留档：①构造函数过早访问`counts`（ProfiledTemplateTracker在initialize才创建）；②包装解码器未透传`roi_xy`等属性（`template_write_features.initial_reference`读取）。修正版目录`/root/autodl-tmp/m125_A1_anchored_U2_m025_20261020_r2`；失败目录`..._20261020`与`m125_A1_anchored_U1_m025_20261020`保留未删。
+
+运行方式：VOT四分片同时运行（shard0/2在GPU0、shard1/3在GPU1），DT Test50在GPU0、CDTB80在GPU1并行；两卡各约12.3GB。启动8分钟后已有5个anchor完成，单anchor事件中出现`anchored_overrides`计数字段。只读用U1/U2的封存plan与分片清单，不修改原CAD目录。完成后VOT自动合并并运行官方`vot analysis`，OPE写`metrics.json`。
+
+本轮系统盘清理（删除`/home`下已关闭RGBD1K抽取副本）仍被本机权限策略拦截，未执行。

@@ -8,7 +8,6 @@ class OfficialAnchoredTracker(OfficialProfileTracker):
         super().__init__(plan, bundle)
         decoder = NativeAnchoredDecoder(self.actor.decoder, bundle['anchor_margin'], bundle['anchor_radius']).eval()
         self.actor.decoder = decoder
-        self.trusted.counts['anchored_overrides'] = 0
         step = self.trusted.step
 
         def counted_step(image):
