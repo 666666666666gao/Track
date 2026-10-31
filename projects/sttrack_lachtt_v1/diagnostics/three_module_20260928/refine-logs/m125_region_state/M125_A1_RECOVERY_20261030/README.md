@@ -11,6 +11,8 @@ The original evidence archive SHA256 is
 - `m125_A1_anchored_U2_m025_20261020_r2/`: original analysis, OPE metrics, executed A1 scorer/wrappers, and saved logs.
 - `m125_region_roi_fixed6/`: reviewed source/input gate, real64 witness, and actual six-pass launch receipts. This is a running experiment, not a completed result.
 - `m125_A1_recovery_20261030/ROI_launch_observation.json`: process/GPU evidence and the first two completed training sequences.
+- `m125_A1_recovery_20261030/fresh_vot_analysis.log`: original successful official-analysis log, recovered in a later SSH copy; its bytes are preserved.
+- `roi_health_20261031T015115Z.json`: two observations 240 seconds apart confirming the same supervisor and continued training, with 19/152 sequences completed in pass one.
 
 A1 passes four of nine gates: DT P/F, CDTB P, VOT ACC. Its EAO/ACC/ROB
 are 77.22474503871115/82.11693020864159/92.88857127537614 percent.
