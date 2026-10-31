@@ -1,0 +1,44 @@
+{
+  "observed_at_utc": "2026-10-31T01:05:57.798879+00:00",
+  "root": "/root/autodl-tmp/m125_region_roi_fixed6",
+  "host": "autodl-container-109c46a6c2-1c03521b",
+  "processes": "   PID   PPID ELAPSED COMMAND\n  2688      1     691 /root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m125_region_roi_fixed6/code/m125_region_fixed_process_supervisor.py /root/autodl-tmp/m125_region_roi_fixed6\n  2689   2688     691 /root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m125_region_roi_fixed6/code/run_m125_region_fixed_suite.py /root/autodl-tmp/m125_region_roi_fixed6\n  2690   2689     690 /root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/m125_region_roi_fixed6/code/train_m125_region_fixed_pass.py --spec /root/autodl-tmp/sttrack_full152_paired_20260925/M82/training_spec.json --repository /root/autodl-tmp/rgbd_baselines/STTrack_lachtt_v1 --checkpoint /root/autodl-tmp/sttrack_checkpoints/STTrack_Vot22.pth.tar --clip-weight /root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt --bank /root/autodl-tmp/sttrack_m113_human_initialization_20261006/human_text.pt --labels /home/SUTrack_RGBD_L/.aris/m113_human_initialization_20261006/human_train_labels.json --warm-final /root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/final.pt --warm-result /root/autodl-tmp/m122_current_quality_C_full152_20261010/fit/result.json --output /root/autodl-tmp/m125_region_roi_fixed6/passes/pass-01/fit --epoch 1 --arm roi\n",
+  "gpu": "0, 1902 MiB, 9 %\n1, 4118 MiB, 54 %\n",
+  "completed_sequences": [
+    {
+      "epoch": 1,
+      "sequence": "cube04_indoor",
+      "sequence_index": 0,
+      "sequences_per_epoch": 152,
+      "track_calls": 2575,
+      "supervised_frames": 2513,
+      "C_supervised_frames": 2512,
+      "template_writes": 9,
+      "total_track_calls": 2575,
+      "total_optimizer_steps": 81,
+      "total_C_optimizer_steps": 81,
+      "elapsed_seconds": 320.70339012145996,
+      "AB_loss_mean": 0.9854199394637069,
+      "C_MSE_mean": 0.027165509101630587
+    },
+    {
+      "epoch": 1,
+      "sequence": "bag04_indoor",
+      "sequence_index": 1,
+      "sequences_per_epoch": 152,
+      "track_calls": 1668,
+      "supervised_frames": 1599,
+      "C_supervised_frames": 1598,
+      "template_writes": 10,
+      "total_track_calls": 4243,
+      "total_optimizer_steps": 134,
+      "total_C_optimizer_steps": 134,
+      "elapsed_seconds": 528.5929408073425,
+      "AB_loss_mean": 0.9780321991603456,
+      "C_MSE_mean": 0.029875012983358845
+    }
+  ],
+  "controller_exit_present": false,
+  "next_progress_check_utc": "2026-10-31T07:00:00+00:00",
+  "status": "running_pass_01_not_final"
+}

@@ -29386,3 +29386,62 @@ VOT：10月21日00:08已完成708/1765 anchor（13:35启动），按当前约67 
 
 训练和评价边界保持不变：仅DepthTrack Train训练；每个候选一个固定checkpoint、一套统一推理规则完成DepthTrack Test/CDTB/VOT。收集A1完整结果后，再按实际失败/救回证据决定后续选择机制、ROI/R1/V完整训练以及必要的状态—观察分离；不在A1结果未知时重复启动A1或直接挑选新的阈值。VOT验收仍须同一行同时满足EAO>77.9、ACC>82.1、ROB>93.7，并保留另两套数据集的完整结果。Goal为`ACTIVE_UNMET`。
 
+## 5.560 SSH恢复、A1完整复核与ROI固定六遍训练启动（2026-10-30纽约时间）
+
+本次使用用户提供的43811入口重新认证，确认容器为`autodl-container-109c46a6c2-1c03521b`、双RTX3090，项目及历史实验目录仍在。服务器UTC日期已到2026-10-31，不能把这个时差解释为本地已到10月31日。密码不写入交接文件或Git。远端权威文档`/home/SUTrack_RGBD_L/docs/RGBD_LANGUAGE_TRACKING_PROJECT_MASTER.md`停于§5.554；恢复前副本2918527字节、SHA256为`5ccef9d4006afab4ffcce53ab79c4e76ef9ec4b87a6ab9f59675cb6f864a2f71`，已下载保留并确认是本地§5.559版的逐字节前缀。本次补齐缺失章节并追加本节，不覆盖未知分叉。
+
+### 5.560.1 A1完整九指标与证据边界
+
+A1实际目录为`/root/autodl-tmp/m125_A1_anchored_U2_m025_20261020_r2`。它仍使用R0的pass-06 final，SHA256为`cf88e9c345c393caf09ad42fbe21b1bcd3b6c6bacd13bfc5124b12e511bc2a2f`；统一推理profile为U2加margin=0.25、radius=1锚定选择。架构及启动经过沿用§5.557，不重复。
+
+| 模型／同一权重与profile | DT P | DT R | DT F | CDTB P | CDTB R | CDTB F | VOT EAO | VOT ACC | VOT ROB |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| A1，R0 final + U2 + anchored m0.25/r1 | 69.213684 | 61.921446 | 65.364810 | 75.813122 | 69.117958 | 72.310897 | 77.224745 | 82.116930 | 92.888571 |
+
+A1仅通过4/9项：DT P、DT F、CDTB P、VOT ACC。DT R和CDTB R/F未达标，不能沿用“DT/CDTB已整体达标”的笼统判断。VOT EAO距严格门槛77.9尚差0.675255pp、ROB距93.7尚差0.811429pp；ACC超过82.1约0.016930pp。目标仍未完成。
+
+本次新增CPU收集器`collect_m125_A1_recovery.py`，完成下列实物检查，没有重新运行神经网络或优化器：
+
+- DT Test50与CDTB80的全部预测/置信度形状、首帧框、GT摘要及计划绑定通过；使用原计分源码完整重算OPE，与保存的metrics结构完全相等。
+- 4份VOT shard日志均为exit0，锚点数441/441/441/442。127序列共1765个唯一初始化事件与官方binding一致；master中5295份轨迹/置信度/时间文件均非空，与原分片逐个SHA相等，且无多余结果文件。
+- 使用已安装VOT失败判定源码重新计算211次失败，重建ROB精确一致。另建独立分析workspace，不沿用原analysis缓存，重新执行官方`vot analysis`，exit0；原始与fresh输出的`results`结构完全相等，因此EAO/ACC亦已独立重算复核。
+- 原官方分析SHA为`73e0b6c15713735240d5d50acd51a95593155f2e3471a9f3d13d38249f5df2e6`；fresh分析SHA为`e9772ebc723f634f76950ef22e475479d96e74d15fac26d23dadbb32fc9da81d`。两个完整JSON的元数据不同，不能声称整个文件逐字节相等。
+
+历史执行绑定仍有局限：A1原OPE的metrics没有final/bundle哈希；当前源码、计划、权重及结果摘要提供的是事后绑定，不能补写成原运行时已经具备的证明。收集器结果中EAO/ACC来源说明指原始分析；其后补做的fresh官方复算证据在`fresh_analysis_check.json`。A1没有逐帧native/learned选点轨迹，失败配对不构成远跳机制的因果证明。
+
+### 5.560.2 A1配对结果：没有VOT净收益
+
+| 相同锚点的参考 | 参考失败次数 | A1失败次数 | A1新增失败 | A1救回 | A1的ROB差值/pp |
+|---|---:|---:|---:|---:|---:|
+| U2，同一R0 final | 206 | 211 | 11 | 6 | -0.0419162321351 |
+| 原生STTrack | 183 | 211 | 61 | 33 | -0.780538092306 |
+
+A1对U2的ROB负贡献合计-0.287729348899pp，正贡献+0.245813116764pp；最大负贡献序列`bag01_indoor_2`为-0.170992174280pp。VOT汇总tracking_calls=1325239、qualified/C_evaluations=147316、template_writes=142833、anchored_overrides=449。OPE小幅改善没有转化为VOT净收益，因此关闭本轮A1比较，不根据这些测试集结果进一步扫margin/radius。
+
+另更正本轮口头归因：历史Train-only native onset面板269例中，188例中心在外；81例中心在内的样本中，26例top10含好候选、5例仅full256含好候选、50例full256也没有好候选。不能把81例全部称为“选择错误”，也不能把该旧native面板冒充R0/A1或全Train152的因果分析。
+
+恢复证据归档于仓库`projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m125_region_state/M125_A1_RECOVERY_20261030/`，保留收集结果、逐锚点CSV、两组ROB配对、原/fresh官方分析、A1原计分源码/日志/metrics以及下述ROI准入与启动凭据。远端CPU恢复根为`/root/autodl-tmp/m125_A1_recovery_20261030`。跨机证据压缩包SHA256为`df2447e0fc89fa94ba758cd39aa48187daf96845fbf35fdc3c047654f44fbcad`，下载后已验证。
+
+### 5.560.3 既定ROI arm已真实启动，尚无正式指标
+
+继续10月15日已实现并审阅的M125 ROI/R1/V候选族，先运行最简单的普通ROI arm；本次没有新增模型家族。候选源码/输入/已完成R0前驱绑定均通过原operator检查。ROI的区域读出/残差结构沿用此前设计；新增区域参数33350，A/B共413517、C为70721，总计484238个可训练参数，STTrack与CLIP保持冻结。R1与V尚未启动。
+
+| 阶段 | 实际状态／约束 |
+|---|---|
+| 真实64帧接口见证 | exit0；NN循环16.069996秒；A/B与C各2次Adam更新；冻结参数/缓冲区逐项不变，保存及优化器重载精确一致 |
+| 梯度见证 | 第二批时所有新增参数族均有正梯度；区域encoder首批为0对应零初始化残差末层，不据此改初始化 |
+| 正式启动 | UTC 2026-10-31 00:54:26.940614，纽约2026-10-30 20:54:26；supervisor PID2688、controller PID2689、首遍训练PID2690 |
+| 实验根 | `/root/autodl-tmp/m125_region_roi_fixed6` |
+| 训练预算 | 仅DepthTrack Train152；seed2027；完整6遍，912个序列运行，1318812次基础track calls；固定pass-06 final |
+| 初始化／优化器 | 共用CurrentC warm SHA `cc71e0b4f42c2e489325627d0a16dcdfc4fa6bcb941908c30bc20c8c3c5828c0`；全新AdamW，lr=3e-5、wd=0.01、accumulation=32；新RNG，无继承优化器 |
+| 评价协议 | 不进行遍间Test/CDTB评价或checkpoint挑选；第6遍后同一final、同一R0推理规则完成DT Test50/CDTB80/VOT127全部1765锚点 |
+| 推理对照 | 固定R0 cadence50、native同位置response>0.75、C>0.5；不沿用A1锚定选择或切换U2 profile |
+
+64帧sanity权重不作为正式resume。gate SHA为`f2240d527ea5d46e8894ec067bef96a433b60c0e533af589bf38986d9c6a1364`；source review SHA为`193c5c0489c7b4692b49be8e54be45a7bf5106bb64b806be4f705c855475de9b`；deployment operator SHA为`e86c3fe5c8eb34fdffc621ec0f6d0aa5ef0c21905b49ab81c8a1944c77673beb`。启动凭据为`actual_launch.json`；supervisor已脱离SSH、PPID=1，关闭本地SSH不影响任务。未创建第二个重复训练实例。
+
+首次观察到pass-01第一序列`cube04_indoor`完成：2575次track calls、A/B和C各81次累计优化更新、elapsed_seconds=320.703390；序列记录持续写入，双卡均有实际显存/计算占用。这只证明正式训练已前进，不是整遍或最终完成。控制器顺序为六遍训练、双卡并行OPE、CPU计分、VOT分片、官方分析、总收集；遇原始阶段失败即退出，不自动重试。
+
+UTC 2026-10-31 01:05:57的归档观察`ROI_launch_observation.json`进一步确认已完成首遍前2/152序列，累计4243次track calls、A/B和C各134次优化更新，第二序列`bag04_indoor`结束时累计528.592941秒。下一次建议查询时间为UTC 07:00左右（纽约10月31日03:00），这只是交接中的检查建议，未创建定时自动化。
+
+初步总时长仍为约55至70小时，单个首序列不足以准确外推全部训练。下一次有意义的进度检查宜在启动约6至8小时后，用多个完成序列估计首遍/全程耗时；后续将查询放在预计阶段结束前，必要的长任务轮询间隔180至300秒，避免分钟级重复查询。系统盘仍满，数据盘约余11GB；本次没有清理历史目录或修改环境。后续依据训练进度、实际剩余空间和完整三数据集结果决定匹配的R1/V比较，不用中途测试分数挑权重或继续调A1。Goal保持`ACTIVE_UNMET`。
+
