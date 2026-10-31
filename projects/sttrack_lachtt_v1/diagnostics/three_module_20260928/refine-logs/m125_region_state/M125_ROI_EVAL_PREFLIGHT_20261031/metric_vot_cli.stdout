@@ -1,0 +1,22 @@
+usage: vot [-h] [--debug] [--registry REGISTRY]
+           {test,configure,initialize,evaluate,run,analysis,analyse,analyze,report,document,pack}
+           ...
+
+VOT Toolkit Command Line Interface
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --debug, -d           Backup backend
+  --registry REGISTRY   Tracker registry paths
+
+Commands:
+  {test,configure,initialize,evaluate,run,analysis,analyse,analyze,report,document,pack}
+                        commands
+    test                Test a tracker integration on a synthetic sequence
+    configure (initialize)
+                        Setup a new workspace and download data
+    evaluate (run)      Evaluate one or more trackers in a given workspace
+    analysis (analyse, analyze)
+                        Run analysis of results
+    report (document)   Generate report document
+    pack                Package results for submission

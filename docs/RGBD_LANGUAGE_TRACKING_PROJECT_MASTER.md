@@ -29499,3 +29499,19 @@ UTC 2026-10-31 01:05:57的归档观察`ROI_launch_observation.json`进一步确�
 
 后续继续原控制器的六遍训练→固定pass-06 final→DT Test50/CDTB80→VOT127全部1765锚点→官方分析和九指标收集；仍不在遍间读取测试分数挑checkpoint，不继续扫A1阈值。R1/V等架构比较待本轮完整证据后按已有计划推进。系统盘可用111521792字节、数据盘可用10904596480字节为UTC约02:37的实际观察；本轮未删除历史实验、修改环境或创建重复训练。现有任务由PPID=1的supervisor承载，不依赖交互SSH。本轮没有设置额外轮询器或定时自动化；需要等待长阶段时按预计结束前的检查节点执行，必须短期复查时遵守180至300秒间隔。Goal仍为`ACTIVE_UNMET`，最终达标需要同一固定final与统一profile的全部正式评价证据。
 
+## 5.563 ROI后续评测的CPU入口预检（2026-10-30纽约时间）
+
+上一轮已发布实际训练进度与证据，属于PROGRESS。当前距离首遍预计完成时间尚早，本轮没有查询训练进程、日志或资源，也没有计算中途测试分数；继续保留§5.562的UTC 07:40检查建议。针对A1曾因计分环境缺少`vot`依赖而中断的实证问题，新增独立`preflight_m125_region_evaluation.py`，在现有环境做后续入口与原始协议元数据预检，未改动已锁定的训练或评测源码。
+
+UTC 2026-10-31 02:47:55.434063，原gate摘要及其全部源码摘要一致；原OPE计划的50/80条唯一序列和76373/101956帧总数、cases摘要、130份GT摘要及各序列首尾RGB/Depth文件存在性通过；原VOT清单127序列、1765个唯一预期轨迹名一致。这里没有逐帧解码全部图像、运行TraX或进行指标计算，不能把元数据通过写成完整评测已通过。
+
+| 实际子进程预检 | 环境 | 结果 |
+|---|---|---|
+| prepare、OPE、VOT shard三入口的`--help`导入 | 原sttrack | 3/3 exit0 |
+| OPE计分、VOT CLI、VOT seal、九指标collector的`--help`导入 | 原mplt | 4/4 exit0 |
+| 锁定`depthtrack_pr.py`模块及计分函数导入，未调用函数 | 原mplt | 1/1 exit0 |
+
+八次子进程均显式设置空`CUDA_VISIBLE_DEVICES`、单CPU数值线程及禁止bytecode，stderr均为空；没有NN/优化器执行、环境安装或重复正式任务。证据位于`projects/sttrack_lachtt_v1/diagnostics/three_module_20260928/refine-logs/m125_region_state/M125_ROI_EVAL_PREFLIGHT_20261031/`，25份文件包括实际脚本、summary、八次原始stdout/stderr及命令收据、原gate、两套plan/cases和VOT manifest。传输包SHA256为`6304ee83e7bed6e19dea8c67893cfc3cd5cb6c102aedd93509793903b368a5f1`；本机验证包摘要、原gate、16份stdout/stderr摘要、两套cases/帧数、VOT清单摘要一致，新增脚本Python3.8 AST检查通过。
+
+这些是确定性预检证据，不是独立实验完整性审计。已读取`experiment-audit`规范，但当前可调用客户端目录没有原生Codex reviewer接口；未创建替代任务或改用其他模型，summary如实记录`REVIEW_UNAVAILABLE`，没有独立PASS结论。正式结果尚未产生，后续仍需固定final的真实三数据集跟踪、官方计分、完整输出核验及结果审阅；预检不提升本轮模型的性能结论。Goal保持`ACTIVE_UNMET`。
+

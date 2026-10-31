@@ -1,0 +1,108 @@
+[
+  {
+    "name": "tracking_prepare",
+    "command": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-B",
+      "/root/autodl-tmp/m125_region_roi_fixed6/code/prepare_m125_region_fixed_evaluation.py",
+      "--help"
+    ],
+    "started_at_utc": "2026-10-31T02:47:54.080506+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "bcffac647ef639675b787be353cc965bc19d0b8b67dbb258896b7e31c8931cec",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "tracking_ope",
+    "command": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-B",
+      "/root/autodl-tmp/m125_region_roi_fixed6/code/run_m125_region_fixed_official.py",
+      "--help"
+    ],
+    "started_at_utc": "2026-10-31T02:47:54.126760+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "45da4abee10c081a4d437d70d358bc8aa0cb8ffa29dfdf7662278c5713f18641",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "tracking_vot_shards",
+    "command": [
+      "/root/autodl-tmp/envs/sttrack/bin/python",
+      "-B",
+      "/root/autodl-tmp/m125_region_roi_fixed6/code/run_m123_joint_vot_shards.py",
+      "--help"
+    ],
+    "started_at_utc": "2026-10-31T02:47:54.225600+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "1c144c4884dadb3cb3f1018607127dd67320fe34dff58fb98837d41a908f50fa",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "metric_ope",
+    "command": [
+      "/root/miniconda3/envs/mplt/bin/python",
+      "-B",
+      "/root/autodl-tmp/m125_region_roi_fixed6/code/run_m125_region_fixed_official.py",
+      "--help"
+    ],
+    "started_at_utc": "2026-10-31T02:47:54.275868+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "45da4abee10c081a4d437d70d358bc8aa0cb8ffa29dfdf7662278c5713f18641",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "metric_vot_cli",
+    "command": [
+      "/root/miniconda3/envs/mplt/bin/python",
+      "-B",
+      "-m",
+      "vot",
+      "--help"
+    ],
+    "started_at_utc": "2026-10-31T02:47:54.444804+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "31f5e03ca2275be852245dbc4df89dfe2c7dd9cb7365f5730284995367d6d1f1",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "metric_vot_seal",
+    "command": [
+      "/root/miniconda3/envs/mplt/bin/python",
+      "-B",
+      "/root/autodl-tmp/m125_region_roi_fixed6/code/analyze_m125_region_fixed_vot.py",
+      "--help"
+    ],
+    "started_at_utc": "2026-10-31T02:47:54.608083+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "ce63fb11ebfa8d324f0ebbf5f0bb0d464f50e5d4191e1442d4cca14b7536d94b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "metric_collect",
+    "command": [
+      "/root/miniconda3/envs/mplt/bin/python",
+      "-B",
+      "/root/autodl-tmp/m125_region_roi_fixed6/code/collect_m125_region_fixed_results.py",
+      "--help"
+    ],
+    "started_at_utc": "2026-10-31T02:47:54.654964+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "1191ce4488189b731207cb8372617b1be21436d2eb1022e666358e2836718f0f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "metric_source_import",
+    "command": [
+      "/root/miniconda3/envs/mplt/bin/python",
+      "-B",
+      "-c",
+      "import importlib.util,sys; s=importlib.util.spec_from_file_location(\"preflight_locked_metric\",sys.argv[1]); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); print(m.evaluate_depthtrack_results.__name__)",
+      "/home/SRTrack_RGBD_L/lib/test/analysis/depthtrack_pr.py"
+    ],
+    "started_at_utc": "2026-10-31T02:47:54.702782+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "e02bade855b7271737944f5a1a3151de794576aa974c258ffff0cd37c5d17ed3",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
