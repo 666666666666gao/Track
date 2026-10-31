@@ -1,0 +1,48 @@
+{
+  "status": "actual_M125_region_full_launched",
+  "root": "/root/autodl-tmp/m125_region_roi_fixed6",
+  "region_arm": "roi",
+  "started_at": "2026-10-31T00:54:26.940614+00:00",
+  "supervisor_pid": 2688,
+  "command": [
+    "/root/autodl-tmp/envs/sttrack/bin/python",
+    "-B",
+    "-u",
+    "/root/autodl-tmp/m125_region_roi_fixed6/code/m125_region_fixed_process_supervisor.py",
+    "/root/autodl-tmp/m125_region_roi_fixed6"
+  ],
+  "process_command": [
+    "/root/autodl-tmp/envs/sttrack/bin/python",
+    "-B",
+    "-u",
+    "/root/autodl-tmp/m125_region_roi_fixed6/code/m125_region_fixed_process_supervisor.py",
+    "/root/autodl-tmp/m125_region_roi_fixed6"
+  ],
+  "gate_sha256": "f2240d527ea5d46e8894ec067bef96a433b60c0e533af589bf38986d9c6a1364",
+  "source_review_sha256": "193c5c0489c7b4692b49be8e54be45a7bf5106bb64b806be4f705c855475de9b",
+  "deployment_operator_sha256": "e86c3fe5c8eb34fdffc621ec0f6d0aa5ef0c21905b49ab81c8a1944c77673beb",
+  "completed_predecessor": {
+    "root": "/root/autodl-tmp/m125_R0_fixed6_20261015",
+    "result_sha256": "b1e11f796e78c5b54bd63f7415edc56b16690be2cf009c247921872a7f058d5f",
+    "all_results_sha256": "1af2711daf3fd1d11fcdd5f1992433eb55b67171b059a8b444aa966afda0c74b",
+    "supervisor_terminal_sha256": "3784372772d90a20573f64c22969f1e57322c139714ca9aec3f3bc25489ebad2",
+    "final_sha256": "cf88e9c345c393caf09ad42fbe21b1bcd3b6c6bacd13bfc5124b12e511bc2a2f"
+  },
+  "GPU_memory_admission": [
+    [
+      0,
+      1,
+      24576
+    ],
+    [
+      1,
+      1,
+      24576
+    ]
+  ],
+  "GPU_query_fields": "index,memory.used,memory.total",
+  "automatic_retries": 0,
+  "formal_training_launched": true,
+  "fixed_budget_passes": 6,
+  "fixed_final_pass": 6
+}
