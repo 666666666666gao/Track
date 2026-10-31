@@ -29515,3 +29515,5 @@ UTC 2026-10-31 02:47:55.434063，原gate摘要及其全部源码摘要一致；�
 
 这些是确定性预检证据，不是独立实验完整性审计。已读取`experiment-audit`规范，但当前可调用客户端目录没有原生Codex reviewer接口；未创建替代任务或改用其他模型，summary如实记录`REVIEW_UNAVAILABLE`，没有独立PASS结论。正式结果尚未产生，后续仍需固定final的真实三数据集跟踪、官方计分、完整输出核验及结果审阅；预检不提升本轮模型的性能结论。Goal保持`ACTIVE_UNMET`。
 
+UTC 2026-10-31约04:10补充更正：此前“没有原生接口”仅反映当时未检索到接口，不能作为工具不可用的证明。本轮经工具发现实际找到`multi_agent_v1.spawn_agent`，按已安装审阅策略指定`gpt-6-astra`与独立参数`reasoning_effort=max`、空历史上下文启动，但工具原始返回为：`Reasoning effort max is not supported for model gpt-6-astra. Supported reasoning efforts: low, medium, high, xhigh`。没有创建agent或获得审阅意见，未降低强度或切换模型。最新未完成原因应为实际模型/强度组合不受支持，状态仍为`REVIEW_UNAVAILABLE`，不是审阅FAIL或PASS。新凭据见同证据目录`review_attempt.json`；原25份预检输出和原summary保留不改，完整请求/错误记录存于本地未发布的`.aris/traces/experiment-audit/2026-10-31_run01/`。本轮未提前查询训练、修改运行源码或新增实验；继续原固定六遍与三数据集评测。
+
