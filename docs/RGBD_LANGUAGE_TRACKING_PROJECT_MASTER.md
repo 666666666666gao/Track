@@ -29517,3 +29517,39 @@ UTC 2026-10-31 02:47:55.434063，原gate摘要及其全部源码摘要一致；�
 
 UTC 2026-10-31约04:10补充更正：此前“没有原生接口”仅反映当时未检索到接口，不能作为工具不可用的证明。本轮经工具发现实际找到`multi_agent_v1.spawn_agent`，按已安装审阅策略指定`gpt-6-astra`与独立参数`reasoning_effort=max`、空历史上下文启动，但工具原始返回为：`Reasoning effort max is not supported for model gpt-6-astra. Supported reasoning efforts: low, medium, high, xhigh`。没有创建agent或获得审阅意见，未降低强度或切换模型。最新未完成原因应为实际模型/强度组合不受支持，状态仍为`REVIEW_UNAVAILABLE`，不是审阅FAIL或PASS。新凭据见同证据目录`review_attempt.json`；原25份预检输出和原summary保留不改，完整请求/错误记录存于本地未发布的`.aris/traces/experiment-audit/2026-10-31_run01/`。本轮未提前查询训练、修改运行源码或新增实验；继续原固定六遍与三数据集评测。
 
+## 5.564 CADTrack DepthTrack 微调与全测试集评测准备（2026-11-01 UTC）
+
+本节承接 5.563。追加前核对了 AutoDL 上的交接文档、Desktop 主文档和 Track 仓库副本，三者字节数均为 2,956,157，SHA-256 均为 `3cb1a7d1cccf7d8f9ea2ff914a75a15691e8d0cd56f5f0f422c42ae116ab0971`；以下内容在三处续写，已有实验指标不重复抄录。
+
+### 架构与训练协议
+
+| 项目 | 本次设置 |
+|---|---|
+| 初始化 | CADTrack epoch 20 权重，SHA-256 `d20c8641e4263df3ceadf9e430d0ac96c181c13ad482bca28c2dddef592a8bb8`；模型权重严格加载 |
+| 模型/输入 | CADTrack ViT-B/16；RGB 与 JET 伪彩深度拼接为六通道。该设置是 RGB-T 预训练到 RGB-D 的模态迁移，不等同于原生 RGB-D 预训练 |
+| 训练数据 | DepthTrack Train 全 152 序列；`toy07_indoor_320` 仅使用具有 RGB-D 图像的 1367 个配对帧 |
+| 优化 | 35 epochs，LR `1e-5`（原始 `1e-4` 的十分之一），MultiStepLR milestones `[10, 30]`、gamma `0.1`，batch 8，每 epoch 20,000 samples |
+| 选优 | epoch 31–35 均在完整 DepthTrack Test50（50 序列、76,373 帧）评估，按完整集 F-score 保留最佳 checkpoint |
+
+不进行固定测试子集划分。Test50 同时用于最后五轮选优，因此其分数是测试集选优分数，报告时不得称为无偏验证结果。
+
+### 当前进度与指标
+
+| 实验 | 数据集/指标 | 当前观测 |
+|---|---|---|
+| CADTrack epoch20 初始化微调 | DepthTrack Train152 | 2026-11-01 01:40 UTC 核实作业存活；epoch 1 为 900/2500 step，训练正常输出。该值是训练日志，不是评测指标 |
+| 微调 checkpoint | DepthTrack Test50 P/R/F | 尚无评测结果 |
+| 微调 checkpoint | CDTB80 OPE P/R/F | 尚无评测结果 |
+| 微调 checkpoint | VOT-RGBD2022 EAO/ACC/ROB | 尚无评测结果 |
+
+既有 M125/A1 指标见前文相应实验章节，不在本节重复。训练完成后必须用同一最佳权重 SHA 评估完整 DepthTrack、CDTB 和 VOT-RGBD2022，禁止跨 checkpoint 拼接指标。
+
+### 评测工具与下一步
+
+已在本地 Track 仓库归档本实验训练配置、训练入口、OPE runner、VOT runner 和 VOT workspace 准备脚本。OPE runner 强制完整集计数：DepthTrack 50/76,373，CDTB 80/101,956，并在预测收据与评分结果中绑定 checkpoint SHA。VOT 准备脚本保留完整 127 序列、1765 anchors、5295 trajectory outputs 的冻结清单，支持显式 checkpoint 和独立 run name。上述 OPE/VOT 脚本已同步至 AutoDL 隔离实验目录并通过本地、远端 Python 语法编译；尚未启动任何完整评测。
+
+训练中不做额外验证作业，避免与现有 GPU 作业争抢资源。完成 epoch 31–35 全量评估并选出最佳权重后，先对该权重跑完整 DepthTrack 和 CDTB OPE，再跑完整官方 VOT；核对三份指标的 checkpoint SHA 和全量序列/anchor 覆盖。若 RGBD 指标仍低于 EAO 77.9、ACC 82.1、ROB 93.7，先分析逐序列失败与输入质量，再基于开源 RGB-D 模块设计单变量对照；目前唯一明确的结构差异是 RGB-T 初始化权重与 JET 深度输入之间的模态差异，尚无证据证明其导致指标下降。
+
+项目远端交接文档已通过 AutoDL `43811` 同步。本轮另行指定的 `35786` 端口当前 TCP 不通，SSH 在认证前断开；尚未读取该端点的独立项目状态，不能把它当作已核实或已同步。
+
+目标保持 `ACTIVE_UNMET`；当前没有新的 DepthTrack、CDTB 或 VOT 评测指标。
