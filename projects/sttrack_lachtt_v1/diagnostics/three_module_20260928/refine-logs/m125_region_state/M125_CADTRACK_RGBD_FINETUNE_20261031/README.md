@@ -41,4 +41,6 @@ The OPE runner checks full-set sequence/frame counts and seals prediction files 
 
 At 2026-11-01 01:54 UTC, the AutoDL run was live at epoch 1, batch 1,300/2,500 (it was at 900/2,500 at 01:40 UTC). This is training progress only, not an evaluation result. Keep the existing job running. After epochs 31-35, retain the best full-Test50 F-score checkpoint, then evaluate that exact checkpoint on full DepthTrack OPE, full CDTB OPE, and full VOT-RGBD2022; record its SHA-256 with all results.
 
+At 2026-11-01 02:17:29 UTC, one 300-second observation window verified the same process tree was still live and advanced to epoch 1, batch 1,900/2,500. The 300-second interval contained 350 additional logged steps, with finite training losses. No checkpoint or test metrics existed at this observation. The user explicitly confirmed full-test-set evaluation with no fixed subset; retain the complete Test50 selection and full final coverage above.
+
 The known modality gap is RGB-T pretraining followed by JET-mapped depth. Do not attribute any metric change to this gap without evidence. If the complete-set results remain low, inspect per-sequence failures first, then plan a controlled depth-input/representation comparison and review relevant open-source RGB-D modules before changing the architecture.

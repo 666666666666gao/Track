@@ -29553,3 +29553,20 @@ UTC 2026-10-31约04:10补充更正：此前“没有原生接口”仅反映当�
 项目远端交接文档已通过 AutoDL `43811` 同步。本轮另行指定的 `35786` 端口当前 TCP 不通，SSH 在认证前断开；尚未读取该端点的独立项目状态，不能把它当作已核实或已同步。
 
 目标保持 `ACTIVE_UNMET`；当前没有新的 DepthTrack、CDTB 或 VOT 评测指标。
+
+## 5.565 全量测试集确认及训练状态（2026-11-01 UTC）
+
+用户明确要求不使用固定测试子集；DepthTrack、CDTB、VOT-RGBD2022 均按完整测试集评测并报告全量指标。当前训练阶段，DepthTrack Test50 的 50 个序列、76,373 帧用于 epoch 31-35 权重选优；所选分数必须标注为 test-set-selected score，不作为无偏 validation result。使用同一选定权重完成 DepthTrack OPE、CDTB OPE 和 VOT-RGBD2022 全量评测。
+
+UTC 2026-11-01 02:17:29，在 AutoDL `43811` 上对 CADTrack fine-tune 完成一次 300 秒间隔的 SSH 观察：trainer 55501 与 workers 55518/55582 仍存活，训练由 epoch 1 的 1,550/2,500 step 前进至 1,900/2,500 step；训练 loss 有限。当前尚无 checkpoint，也没有任何测试集指标。训练任务未修改或停止，VOT 未启动。
+
+| 项目 | 2026-11-01 02:17:29 UTC 状态 |
+|---|---|
+| CADTrack fine-tune | epoch 1，1,900/2,500 step，运行中 |
+| DepthTrack 完整 Test50 | 50 sequences / 76,373 frames，待评测 |
+| CDTB OPE | 80 sequences / 101,956 frames，待选定权重 |
+| VOT-RGBD2022 | 127 sequences / 1,765 anchors / 5,295 outputs，待选定权重 |
+
+本轮重新尝试的 SSH `35786` 未连通：默认 SOCKS5 代理路径在 SSH 握手前关闭连接，直连 TCP 也无法到达该端口；因此未认证，也未核实该实例状态。不能把 `43811` 上的训练实例视为 `35786` 的替代，且未在 `35786` 启动任何测试。当前训练的 `43811` run README 包含全量测试协议。
+
+目标保持 `ACTIVE_UNMET`；训练、全量测试集评测及 RGBD 指标尚未完成。
