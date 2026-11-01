@@ -29537,7 +29537,7 @@ UTC 2026-10-31约04:10补充更正：此前“没有原生接口”仅反映当�
 
 | 实验 | 数据集/指标 | 当前观测 |
 |---|---|---|
-| CADTrack epoch20 初始化微调 | DepthTrack Train152 | 2026-11-01 01:40 UTC 核实作业存活；epoch 1 为 900/2500 step，训练正常输出。该值是训练日志，不是评测指标 |
+| CADTrack epoch20 初始化微调 | DepthTrack Train152 | 2026-11-01 01:54 UTC 核实作业存活；epoch 1 达到 1,300/2500 step（01:40 时为 900/2500）。这是训练日志，不是评测指标 |
 | 微调 checkpoint | DepthTrack Test50 P/R/F | 尚无评测结果 |
 | 微调 checkpoint | CDTB80 OPE P/R/F | 尚无评测结果 |
 | 微调 checkpoint | VOT-RGBD2022 EAO/ACC/ROB | 尚无评测结果 |
@@ -29546,7 +29546,7 @@ UTC 2026-10-31约04:10补充更正：此前“没有原生接口”仅反映当�
 
 ### 评测工具与下一步
 
-已在本地 Track 仓库归档本实验训练配置、训练入口、OPE runner、VOT runner 和 VOT workspace 准备脚本。OPE runner 强制完整集计数：DepthTrack 50/76,373，CDTB 80/101,956，并在预测收据与评分结果中绑定 checkpoint SHA。VOT 准备脚本保留完整 127 序列、1765 anchors、5295 trajectory outputs 的冻结清单，支持显式 checkpoint 和独立 run name。上述 OPE/VOT 脚本已同步至 AutoDL 隔离实验目录并通过本地、远端 Python 语法编译；尚未启动任何完整评测。
+已在本地 Track 仓库归档本实验训练配置、训练入口、OPE runner、VOT runner、VOT workspace 准备脚本，以及 DepthTrack/CDTB/VOT 全量 case/anchor 清单与训练启动凭据。DepthTrack cases SHA 为 `158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44`，CDTB cases SHA 为 `b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887`，VOT manifest SHA 为 `99eec1fec6fa3b93fc1d179aecd636130703cf2df69ee99a779b50fb0d2d964e`；解析计数分别为 50/76,373、80/101,956、127/1,765（4 shards）。OPE runner 强制完整集计数，并在预测收据与评分结果中绑定 checkpoint SHA。VOT 准备脚本保留完整 5295 trajectory outputs 的冻结清单，支持显式 checkpoint 和独立 run name。上述 OPE/VOT 脚本已同步至 AutoDL 隔离实验目录并通过本地、远端 Python 语法编译；尚未启动任何完整评测。
 
 训练中不做额外验证作业，避免与现有 GPU 作业争抢资源。完成 epoch 31–35 全量评估并选出最佳权重后，先对该权重跑完整 DepthTrack 和 CDTB OPE，再跑完整官方 VOT；核对三份指标的 checkpoint SHA 和全量序列/anchor 覆盖。若 RGBD 指标仍低于 EAO 77.9、ACC 82.1、ROB 93.7，先分析逐序列失败与输入质量，再基于开源 RGB-D 模块设计单变量对照；目前唯一明确的结构差异是 RGB-T 初始化权重与 JET 深度输入之间的模态差异，尚无证据证明其导致指标下降。
 

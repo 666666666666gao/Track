@@ -30,8 +30,15 @@ The selection score is computed on the complete DepthTrack Test50 set (50 sequen
 
 The OPE runner checks full-set sequence/frame counts and seals prediction files with per-sequence ground-truth and output hashes. Scoring verifies the checkpoint hash against the prediction receipt. The VOT preparation tool binds an explicitly supplied checkpoint and run name while retaining the frozen full 127-sequence/1,765-anchor manifest.
 
+| Archived input | SHA-256 |
+|---|---|
+| DepthTrack Test50 cases | `158fe61d7726af5e2c1f30c76175a97a4cba56e30e2f599ec7762be034417b44` |
+| CDTB80 cases | `b3170466a090fa1a8949e0297566c9e3ab744e789ca0c7f1bcc71633ccfae887` |
+| VOT-RGBD2022 shard/anchor manifest | `99eec1fec6fa3b93fc1d179aecd636130703cf2df69ee99a779b50fb0d2d964e` |
+| Training launch record | `3b035a6caa61fd23fd6c350a6e87e43c81426698d1088bc8d7ce903b41a06a6b` |
+
 ## Current run and next steps
 
-At 2026-11-01 01:40 UTC, the AutoDL run was live at epoch 1, batch 900/2,500. This is training progress only, not an evaluation result. Keep the existing job running. After epochs 31-35, retain the best full-Test50 F-score checkpoint, then evaluate that exact checkpoint on full DepthTrack OPE, full CDTB OPE, and full VOT-RGBD2022; record its SHA-256 with all results.
+At 2026-11-01 01:54 UTC, the AutoDL run was live at epoch 1, batch 1,300/2,500 (it was at 900/2,500 at 01:40 UTC). This is training progress only, not an evaluation result. Keep the existing job running. After epochs 31-35, retain the best full-Test50 F-score checkpoint, then evaluate that exact checkpoint on full DepthTrack OPE, full CDTB OPE, and full VOT-RGBD2022; record its SHA-256 with all results.
 
 The known modality gap is RGB-T pretraining followed by JET-mapped depth. Do not attribute any metric change to this gap without evidence. If the complete-set results remain low, inspect per-sequence failures first, then plan a controlled depth-input/representation comparison and review relevant open-source RGB-D modules before changing the architecture.
