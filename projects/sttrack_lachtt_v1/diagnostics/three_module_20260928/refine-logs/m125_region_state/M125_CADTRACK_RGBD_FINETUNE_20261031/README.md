@@ -43,4 +43,6 @@ At 2026-11-01 01:54 UTC, the AutoDL run was live at epoch 1, batch 1,300/2,500 (
 
 At 2026-11-01 02:17:29 UTC, one 300-second observation window verified the same process tree was still live and advanced to epoch 1, batch 1,900/2,500. The 300-second interval contained 350 additional logged steps, with finite training losses. No checkpoint or test metrics existed at this observation. The user explicitly confirmed full-test-set evaluation with no fixed subset; retain the complete Test50 selection and full final coverage above.
 
+At 2026-11-01 02:42:42 UTC, the log reached epoch 1 batch 2,500/2,500 and epoch 2 batch 50/2,500. Trainer PID 55501 and workers 59649/59713 were live; checkpoint directory remained empty, with no evaluation metrics or VOT job.
+
 The known modality gap is RGB-T pretraining followed by JET-mapped depth. Do not attribute any metric change to this gap without evidence. If the complete-set results remain low, inspect per-sequence failures first, then plan a controlled depth-input/representation comparison and review relevant open-source RGB-D modules before changing the architecture.
