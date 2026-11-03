@@ -213,6 +213,32 @@ def score_predictions(epoch, candidate):
     return json.loads((output / "metrics.json").read_text(encoding="utf-8"))
 
 
+def save_training_state(trainer, best):
+    model = trainer.actor.net.module if hasattr(trainer.actor.net, "module") else trainer.actor.net
+    state = {
+        "epoch": trainer.epoch,
+        "phase": "training_complete_before_evaluation_and_scheduler",
+        "evaluation_pending": trainer.epoch >= 31,
+        "scheduler_step_pending": True,
+        "net_type": type(model).__name__,
+        "net": model.state_dict(),
+        "optimizer": trainer.optimizer.state_dict(),
+        "lr_scheduler": trainer.lr_scheduler.state_dict(),
+        "stats": trainer.stats,
+        "best": dict(best),
+        "python_rng": random.getstate(),
+        "numpy_rng": np.random.get_state(),
+        "torch_rng": torch.get_rng_state(),
+        "cuda_rng": torch.cuda.get_rng_state_all(),
+        "config_sha256": sha256(CONFIG),
+        "runtime_archive_sha256": sha256(RUNTIME_ARCHIVE),
+    }
+    path = RUN_ROOT / "latest_training_state.pth.tar"
+    temporary = path.with_suffix(".tmp")
+    torch.save(state, temporary)
+    os.replace(temporary, path)
+
+
 def run_evaluation(model, epoch, candidate):
     import lib.test.tracker.cadtrack as tracker_module
     import evaluate_ope
@@ -278,6 +304,8 @@ def run_training():
                 "test_frame_count": sum(item["frames"] for item in cases),
                 "metric_source_sha256": sha256(METRIC),
                 "metric_python": str(METRIC_PYTHON),
+                "training_state_path": str(RUN_ROOT / "latest_training_state.pth.tar"),
+                "training_state_phase": "training_complete_before_evaluation_and_scheduler",
                 "epochs": 35,
                 "base_learning_rate": 0.00001,
                 "original_learning_rate": 0.0001,
@@ -307,6 +335,7 @@ def run_training():
 
     def train_epoch_with_test_selection(trainer):
         original_train_epoch(trainer)
+        save_training_state(trainer, best)
         if trainer.epoch < 31:
             return
         model = trainer.actor.net.module if hasattr(trainer.actor.net, "module") else trainer.actor.net

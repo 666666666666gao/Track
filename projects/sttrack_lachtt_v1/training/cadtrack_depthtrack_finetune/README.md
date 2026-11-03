@@ -1,4 +1,4 @@
-# CADTrack DepthTrack fine-tune: metric environment fix
+# CADTrack DepthTrack fine-tune: scoring and state preservation
 
 This successor source repairs the observed epoch31 scoring failure in the
 2026-10-31 run. It is staged for a future training entry; it is not a resumed
@@ -21,12 +21,31 @@ The original LR1e-5, milestones[10,30], gamma0.1 and epochs31-35 full-Test50
 selection recipe are unchanged. Such selection must be labeled
 `test-set-selected`.
 
-This patch does not implement resume or repair the missing optimizer,
+This entry does not implement resume or repair the missing optimizer,
 scheduler, RNG and data-loader state of the old epoch31 candidate. The existing
 nonempty run-directory guard is retained. Do not point this entry at the old
 run to repeat epochs1-31 or overwrite its artifacts. A future run or
 warm-start continuation needs a separately declared directory and protocol.
 No new training may run alongside the active two-GPU ROI VOT suite.
+
+The YAML disables native checkpoint saving (`SAVE_EPOCH_INTERVAL: 1000`,
+`SAVE_LAST_N_EPOCH: 0`). The successor therefore saves one rolling
+`latest_training_state.pth.tar` after every complete training epoch, before
+the optional full-Test50 evaluation and the native scheduler step. The snapshot
+contains the network, optimizer, scheduler, training statistics, preceding
+best-selection state, Python/NumPy/Torch CPU/CUDA RNG states and config/runtime
+hashes. It is written through a temporary file and then replaces the preceding
+snapshot; no old-run artifact is removed.
+
+Its phase is explicitly `training_complete_before_evaluation_and_scheduler`.
+For epochs31-35, evaluation is pending; a scheduler step is pending for every
+epoch. It is not a ready-to-start-next-epoch checkpoint. Recovery must account
+for any evaluation artifacts already written, complete best selection and
+advance the scheduler exactly once before training the next epoch. No recovery
+command or automatic retry is added here, and exact restart equivalence has
+not been established. This recipe has AMP disabled; the snapshot is scoped to
+that unchanged recipe. Before a future launch, budget space for the rolling
+snapshot plus its temporary replacement, candidate and best weights.
 
 Validation must distinguish the CPU scoring path from training. A successful
 score-only regression cannot establish that epochs32-35 completed or that
@@ -49,3 +68,11 @@ path, without importing or executing the full GPU training entry.
 The first local validation harness attempt used an unavailable Python3.7 AST
 helper and stopped before SSH; the corrected harness used AST top-level line
 ranges. The product code required no compatibility branch.
+
+The actual state-saving helper was separately exercised on a local CPU model
+with AdamW moments and MultiStepLR after the milestone10 step. Saved network,
+optimizer moments, scheduler state and Python/NumPy/Torch RNG replay matched.
+The epoch31 evaluation-pending marker and an epoch30 rolling replacement were
+checked, with no temporary file left behind. CUDA RNG collection returned an
+empty list on this CPU-only host; GPU-state restoration, data-loader replay and
+end-to-end training continuation have not been verified.
