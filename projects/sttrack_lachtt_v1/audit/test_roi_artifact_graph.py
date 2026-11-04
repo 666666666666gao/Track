@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 from roi_artifact_graph import (BUNDLE, FINAL, check_ope_binding, check_shard_partition, check_stage_names,
-                                require, sequence_history, sha, strict_meta_load)
+                                require, sequence_history, sha, strict_cpu_load)
 
 
 class HistoryTests(unittest.TestCase):

@@ -40,7 +40,7 @@ def state_digest(state):
     return digest.hexdigest()
 
 
-def strict_meta_load(module, state):
+def strict_cpu_load(module, state):
     expected = module.state_dict()
     require(set(expected) == set(state), "checkpoint state keys")
     for key, tensor in state.items():
@@ -182,11 +182,10 @@ def audit(root, coverage_path):
     weights = torch.load(bundle["final_path"], map_location="cpu")
     require(weights["format"] == "M125_region_fixed_final_v1"
             and weights["region_arm"] == "roi", "checkpoint format")
-    with torch.device("meta"):
-        decoder = RegionConditionedTargetDecoder("roi")
-        writer = TemplateWriteC()
-    strict_meta_load(decoder, weights["A_B"])
-    strict_meta_load(writer, weights["C"])
+    decoder = RegionConditionedTargetDecoder("roi")
+    writer = TemplateWriteC()
+    strict_cpu_load(decoder, weights["A_B"])
+    strict_cpu_load(writer, weights["C"])
     for key in ("A_B", "C"):
         require(state_digest(weights[key]) == trained["final_state_sha256"][key],
                 "checkpoint state digest: " + key)
@@ -262,7 +261,7 @@ def audit(root, coverage_path):
     return dict(status="current_ROI_artifact_graph_verified", final_sha256=FINAL,
                 bundle_sha256=BUNDLE, plan_sha256=plan_digests, bound_sources=215,
                 full_passes=6, sequence_runs=len(history), calls=trained["track_calls"],
-                strict_checkpoint_load=True, strict_meta_state_load=True,
+                strict_checkpoint_load=True, strict_cpu_state_load=True,
                 checkpoint_state_digests_exact=True,
                 original_stages=15, original_shard_runtime_bindings=4,
                 coverage_report_sha256=COVERAGE, current_artifact_graph_checked=True,
