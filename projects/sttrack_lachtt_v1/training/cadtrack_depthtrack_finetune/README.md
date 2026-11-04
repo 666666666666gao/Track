@@ -89,3 +89,65 @@ The epoch31 evaluation-pending marker and an epoch30 rolling replacement were
 checked, with no temporary file left behind. CUDA RNG collection returned an
 empty list on this CPU-only host; GPU-state restoration, data-loader replay and
 end-to-end training continuation have not been verified.
+
+## Fixed final and complete evaluation
+
+`prepare_evaluation.py` binds `best.json`, all five epoch31-35 network
+checkpoints, their five Test50 metric receipts, the selected checkpoint SHA,
+the native CADTrack inference configuration, full OPE case inventories and the
+archived full-127 VOT manifest. It creates a new evaluation root and four new
+VOT workspaces; it does not reuse prediction files. Selection remains
+`test-set-selected` by Test50 F-score, so the selected checkpoint's Test50
+score and the three-dataset report must disclose selection bias.
+
+The evaluator uses the original CADTrack `tracker_for` and RGB+JET-depth input
+path. All three datasets bind one selected checkpoint and one inference profile:
+template factor/size2.0/128, search factor/size4.0/256, update interval5 and
+confidence threshold0.65. Prediction stages do not open subsequent-frame GT;
+metric scoring happens only after the dataset's prediction receipt is complete.
+
+Before any VOT tracking, all four archived workspaces must match the pinned
+toolkit0.7.1 MultiStart experiment and analysis parameters. VOT runs the
+127-sequence/1765-anchor four-shard protocol in two GPU waves, merges and
+rehashes all5295 output files, reads official EAO/ACC/ROB from the official
+analysis, runs the identity checker and verifies per-anchor trajectory lengths
+with the existing read-only coverage auditor. These audits explicitly leave
+checkpoint/source binding and `independent_completed_audit` false.
+
+After a successful pure-baseline training run and a fresh resource check, copy
+the evaluation tools and official baseline plans to the host, then prepare a
+new output directory:
+
+```text
+python prepare_evaluation.py \
+  --training-root /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104 \
+  --base-evaluation /root/autodl-tmp/m125_region_roi_fixed6/evaluation \
+  --checkpoint /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104/final_five/epoch_NN.pth.tar \
+  --evaluation-source /path/to/cadtrack_depthtrack_finetune/evaluation.py \
+  --evaluation-runner /path/to/cadtrack_depthtrack_finetune/evaluation.py \
+  --vot-identity-tool /path/to/vot_analysis_identity.py \
+  --vot-coverage-tool /path/to/vot_trajectory_coverage.py \
+  --vot-reference /root/autodl-tmp/m125_A1_anchored_U2_m025_20261020_r2/vot/master/analysis/A1_anchored_U2_full127.json \
+  --output /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104/official-evaluation
+```
+
+Both `--evaluation-source` and `--evaluation-runner` intentionally use this
+directory's `evaluation.py`: it implements both worker modes and the controller.
+Preparation copies the same source to `evaluation.py` and `run_evaluation.py`
+in the isolated output directory. The latter is the controller entry, not a
+missing source file to obtain from the A/B/C evaluator.
+
+The prepared runner CLI is `run_evaluation.py --evaluation-root ... --tracker-python
+/root/autodl-tmp/envs/sttrack/bin/python --metric-python
+/root/miniconda3/envs/mplt/bin/python`. Do not start it until the training
+terminal receipts are successful, the selected epoch and all five retained
+checkpoint hashes validate, the active A/B/C job has ended, and disk/GPU
+resources have been freshly checked. CPU tests do not establish model metrics
+or authorize a remote run.
+
+Run these tools with assertions enabled (no `-O` or `-OO`). Child environments
+pin `PYTHONOPTIMIZE=0`. Preparation seals plan hashes in `selection.json`;
+full controller checks verify the native source manifest, selected checkpoint,
+all retained weights, evaluator and execution ledger. Anchor workers check the
+pinned manifest/ledger digests without rehashing all retained weights on each
+startup. This is an execution binding check, not a completed independent audit.
