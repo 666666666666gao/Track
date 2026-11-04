@@ -30,7 +30,7 @@ CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 \
   --merge /root/autodl-tmp/m125_region_roi_fixed6/evaluation/vot/run/merge_result.json \
   --execution /root/autodl-tmp/m125_region_roi_fixed6/evaluation/vot/execution.json \
   --execution-sha256 51a3041dadbefb842622ccebd9253f79ea2bd507bc80796b0ac3b1f6244b06b1 \
-  --analysis /root/autodl-tmp/m125_region_roi_fixed6/evaluation/vot/run/master/analysis/sttrack_m125_region_roi_fixed6_full127.json \
+  --analysis /root/autodl-tmp/m125_region_roi_fixed6/evaluation/vot/run/master/analysis/region_roi_fixed6_Train152_full127.json \
   --output /path/to/new/roi_vot_trajectory_coverage.json
 ```
 

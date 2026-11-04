@@ -1,11 +1,27 @@
 """CPU tests for anchor identity and directional trajectory coverage."""
 from copy import deepcopy
+from io import StringIO
+from types import SimpleNamespace
 import unittest
 
-from vot_trajectory_coverage import checked_length, declared_anchors
+from vot_trajectory_coverage import checked_length, declared_anchors, read_properties
 
 
 class CoverageTests(unittest.TestCase):
+    def test_official_property_names_and_raw_stream_lengths(self):
+        streams = {"seq_00000020_confidence.value": "\n0.8\n",
+                   "seq_00000020_time.value": "0.01\n0.02\n"}
+        results = SimpleNamespace(read=lambda name: StringIO(streams[name]))
+        trajectory = SimpleNamespace(properties=lambda: ("confidence", "time"))
+        properties = read_properties(results, "seq_00000020", trajectory)
+        self.assertEqual({key: len(value) for key, value in properties.items()},
+                         {"confidence": 2, "time": 2})
+        row = dict(index=20, direction="forward", estimated_frames=2, name="seq_00000020")
+        self.assertEqual(checked_length(row, 22, 2, properties), 2)
+        streams["seq_00000020_time.value"] = "0.01\n"
+        with self.assertRaises(AssertionError):
+            checked_length(row, 22, 2, read_properties(results, row["name"], trajectory))
+
     def manifest(self):
         names = ["seq%03d" % i for i in range(127)]
         shards, offset = [], 0

@@ -53,6 +53,16 @@ def checked_length(row, frame_count, length, properties):
     return expected
 
 
+def read_properties(results, name, trajectory):
+    names = trajectory.properties()
+    assert set(names) == {"confidence", "time"}, name
+    properties = {}
+    for key in names:
+        with results.read(name + "_" + key + ".value") as stream:
+            properties[key] = stream.readlines()
+    return properties
+
+
 def audit(args):
     import vot
     from vot.dataset.proxy import FrameMapSequence
@@ -114,7 +124,8 @@ def audit(args):
             proxy = FrameMapSequence(sequence, frame_map)
             assert Trajectory.exists(results, row["name"])
             trajectory = Trajectory.read(results, row["name"])
-            length = checked_length(row, len(sequence), len(trajectory), trajectory.properties())
+            properties = read_properties(results, row["name"], trajectory)
+            length = checked_length(row, len(sequence), len(trajectory), properties)
             assert length == len(proxy)
             folder = Path("results") / tracker_id / "baseline" / sequence.name
             for suffix in (".bin", "_confidence.value", "_time.value"):
