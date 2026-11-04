@@ -21,12 +21,23 @@ The original LR1e-5, milestones[10,30], gamma0.1 and epochs31-35 full-Test50
 selection recipe are unchanged. Such selection must be labeled
 `test-set-selected`.
 
+The successor uses the separate run root
+`/root/autodl-tmp/cadtrack_depthtrack_finetune_20261104`. Every completed
+epoch31-35 network checkpoint is atomically retained under `final_five/`;
+`best.json` points to the retained checkpoint selected by full DepthTrack
+Test50 F-score. This is test-set selection and the selected Test50 score is
+not an unbiased validation result. The selected checkpoint is intended to be
+evaluated with the same inference profile on full DepthTrack Test50, CDTB80
+and VOT-RGBD127; the pure-baseline three-dataset evaluation entry must be
+prepared separately and is not supplied by the A/B/C evaluator.
+
 This entry does not implement resume or repair the missing optimizer,
 scheduler, RNG and data-loader state of the old epoch31 candidate. The existing
 nonempty run-directory guard is retained. Do not point this entry at the old
 run to repeat epochs1-31 or overwrite its artifacts. A future run or
 warm-start continuation needs a separately declared directory and protocol.
-No new training may run alongside the active two-GPU ROI VOT suite.
+Do not start this baseline training while the separate CADTrack A/B/C run is
+active.
 
 The YAML disables native checkpoint saving (`SAVE_EPOCH_INTERVAL: 1000`,
 `SAVE_LAST_N_EPOCH: 0`). The successor therefore saves one rolling
@@ -46,6 +57,8 @@ command or automatic retry is added here, and exact restart equivalence has
 not been established. This recipe has AMP disabled; the snapshot is scoped to
 that unchanged recipe. Before a future launch, budget space for the rolling
 snapshot plus its temporary replacement, candidate and best weights.
+The final-five set requires additional storage for five network-only
+checkpoints; verify free space before launch.
 
 Validation must distinguish the CPU scoring path from training. A successful
 score-only regression cannot establish that epochs32-35 completed or that

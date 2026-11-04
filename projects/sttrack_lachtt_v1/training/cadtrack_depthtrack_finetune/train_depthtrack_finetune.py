@@ -16,7 +16,7 @@ import pandas as pd
 import torch
 
 
-RUN_ROOT = Path("/root/autodl-tmp/external_baselines/cadtrack_rgbd_probe/finetune_depthtrack_20261031")
+RUN_ROOT = Path("/root/autodl-tmp/cadtrack_depthtrack_finetune_20261104")
 PROBE = Path("/root/autodl-tmp/external_baselines/cadtrack_rgbd_probe")
 SOURCE = Path("/root/autodl-tmp/external_baselines/cadtrack_rgbd_probe/source")
 WEIGHT = Path("/root/autodl-tmp/external_baselines/cadtrack_rgbd_probe/CADTrack_ep0020.pth.tar")
@@ -239,6 +239,16 @@ def save_training_state(trainer, best):
     os.replace(temporary, path)
 
 
+def save_final_five_checkpoint(epoch, checkpoint):
+    directory = RUN_ROOT / "final_five"
+    directory.mkdir(exist_ok=True)
+    path = directory / ("epoch_%02d.pth.tar" % epoch)
+    temporary = path.with_suffix(".tmp")
+    torch.save(checkpoint, temporary)
+    os.replace(temporary, path)
+    return path
+
+
 def run_evaluation(model, epoch, candidate):
     import lib.test.tracker.cadtrack as tracker_module
     import evaluate_ope
@@ -314,6 +324,8 @@ def run_training():
                 "batch_size": 8,
                 "samples_per_epoch": 20000,
                 "best_checkpoint_selection": "DepthTrack Test50 F-score among epochs 31-35",
+                "final_five_checkpoint_directory": str(RUN_ROOT / "final_five"),
+                "candidate_retention": "retain every completed epoch 31-35 checkpoint",
                 "vot_evaluation": False,
                 "cuda_visible_devices": "0",
             },
@@ -329,8 +341,7 @@ def run_training():
     original_train_epoch = LTRTrainer.train_epoch
     original_train = LTRTrainer.train
     best = {"f_score": -1.0, "epoch": None}
-    candidate = RUN_ROOT / "candidate.pth.tar"
-    best_checkpoint = RUN_ROOT / "best_depthtrack_test_fscore.pth.tar"
+    final_five = RUN_ROOT / "final_five"
     metrics_path = RUN_ROOT / "epoch_metrics.jsonl"
 
     def train_epoch_with_test_selection(trainer):
@@ -346,9 +357,7 @@ def run_training():
             "net_type": type(model).__name__,
             "net": {key: value.detach().cpu() for key, value in model.state_dict().items()},
         }
-        temporary = candidate.with_suffix(".tmp")
-        torch.save(checkpoint, temporary)
-        os.replace(temporary, candidate)
+        candidate = save_final_five_checkpoint(trainer.epoch, checkpoint)
         result = run_evaluation(model, trainer.epoch, candidate)
         metrics = result["metrics"]
         row = {
@@ -360,8 +369,14 @@ def run_training():
             stream.write(json.dumps(row, allow_nan=False) + "\n")
         score = float(metrics["f_score"])
         if score > best["f_score"]:
-            os.replace(candidate, best_checkpoint)
-            best.update({"f_score": score, "epoch": trainer.epoch})
+            best.update(
+                {
+                    "f_score": score,
+                    "epoch": trainer.epoch,
+                    "checkpoint_path": str(candidate),
+                    "checkpoint_sha256": result["checkpoint_sha256"],
+                }
+            )
             (RUN_ROOT / "best.json").write_text(
                 json.dumps(
                     {
@@ -375,8 +390,6 @@ def run_training():
                 + "\n",
                 encoding="utf-8",
             )
-        else:
-            candidate.unlink()
         print(json.dumps({"epoch": trainer.epoch, "best": best}, allow_nan=False), flush=True)
 
     def train_without_resume(trainer, max_epochs, **kwargs):
@@ -409,15 +422,16 @@ def run_training():
         encoding="utf-8",
     )
     run(settings)
+    retained = [final_five / ("epoch_%02d.pth.tar" % epoch) for epoch in range(31, 36)]
+    if not all(path.is_file() for path in retained):
+        raise RuntimeError("The complete final-five checkpoint set is missing.")
+    if not best.get("checkpoint_path") or not Path(best["checkpoint_path"]).is_file():
+        raise RuntimeError("No complete Test50 evaluation selected a best checkpoint.")
     launch["status"] = "complete"
     launch_path.write_text(
         json.dumps(launch, indent=2, allow_nan=False) + "\n",
         encoding="utf-8",
     )
-    if candidate.exists():
-        candidate.unlink()
-    if not best_checkpoint.exists():
-        raise RuntimeError("No complete Test50 evaluation selected a best checkpoint.")
     print((RUN_ROOT / "best.json").read_text(encoding="utf-8"), flush=True)
 
 
