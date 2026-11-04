@@ -65,6 +65,29 @@ def check_shard_partition(shards):
             "shard anchor partition")
 
 
+def check_ope_binding(plan_path, plan, prediction, metrics, receipt_path):
+    metric = metrics["metrics"]
+    require(prediction["plan_sha256"] == sha(plan_path), "prediction plan binding")
+    require(prediction["status"] == "complete_M122_official_OPE_predictions"
+            and prediction["frames"] == metric["frames"]
+            and metric["sequences"] == len(read(plan["cases_path"])), "OPE prediction scope")
+    require(metrics["plan_sha256"] == sha(plan_path)
+            and metrics["receipt_sha256"] == sha(receipt_path)
+            and metrics["metric_source_sha256"] == plan["metric_source_sha256"],
+            "OPE metric receipt binding")
+    require(prediction["final_sha256"] == metrics["final_sha256"] == FINAL,
+            "OPE final binding")
+    require(prediction["bundle_sha256"] == metrics["bundle_sha256"] == BUNDLE,
+            "OPE bundle binding")
+
+
+def check_stage_names(stages):
+    expected = (["train_fixed_pass"] * 6 + ["prepare", "depthtrack_test_track",
+                "cdtb_track", "depthtrack_test_analyze", "cdtb_analyze",
+                "vot_track", "vot_official_analysis", "vot_seal", "collect"])
+    require([row["stage"] for row in stages] == expected, "original stage identities")
+
+
 def audit(root, coverage_path):
     require(os.environ.get("CUDA_VISIBLE_DEVICES") == "", "CUDA must be hidden")
     require(sys.flags.optimize == 0 and __debug__, "original runtime requires assertions")
@@ -176,21 +199,9 @@ def audit(root, coverage_path):
                 "common inherited baseline")
         if dataset != "vot":
             output = Path(plan["output"])
-            prediction = read(output / "receipt.json")
-            metrics = read(output / "metrics.json")
-            require(prediction["plan_sha256"] == sha(path), "prediction plan binding")
-            require(prediction["status"] == "complete_M122_official_OPE_predictions"
-                    and prediction["sequences"] == len(read(plan["cases_path"]))
-                    and prediction["frames"] == metrics["metrics"]["frames"],
-                    "OPE prediction scope")
-            require(metrics["plan_sha256"] == sha(path)
-                    and metrics["receipt_sha256"] == sha(output / "receipt.json")
-                    and metrics["metric_source_sha256"] == plan["metric_source_sha256"],
-                    "OPE metric receipt binding")
-            require(prediction["final_sha256"] == metrics["final_sha256"] == FINAL,
-                    "OPE final binding")
-            require(prediction["bundle_sha256"] == metrics["bundle_sha256"] == BUNDLE,
-                    "OPE bundle binding")
+            receipt_path = output / "receipt.json"
+            check_ope_binding(path, plan, read(receipt_path), read(output / "metrics.json"),
+                              receipt_path)
     execution_path = evaluation / "vot/execution.json"
     require(sha(execution_path) == EXECUTION, "externally pinned VOT execution")
     execution = read(execution_path)
@@ -227,11 +238,8 @@ def audit(root, coverage_path):
         require(sealed[key] == selection[key], "VOT sealed binding: " + key)
     complete = read(root / "result.json")
     require(complete["stages"][:6] == pass_receipts, "original training stage receipts")
-    expected_stages = (["train_fixed_pass"] * 6 + ["prepare", "depthtrack_test_track",
-                        "cdtb_track", "depthtrack_test_analyze", "cdtb_analyze",
-                        "vot_track", "vot_official_analysis", "vot_seal", "collect"])
-    require([row["stage"] for row in complete["stages"]] == expected_stages
-            and all(row["exit_code"] == 0 for row in complete["stages"]), "all original stages")
+    check_stage_names(complete["stages"])
+    require(all(row["exit_code"] == 0 for row in complete["stages"]), "all original stages")
     for row in complete["stages"][6:]:
         require(read(root / (row["stage"] + ".receipt.json")) == row, "original stage receipt")
         require((root / (row["stage"] + ".exit")).read_text().strip() == "0",
