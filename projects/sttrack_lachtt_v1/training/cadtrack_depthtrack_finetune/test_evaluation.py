@@ -307,6 +307,27 @@ class EvaluationTests(unittest.TestCase):
             (folder / (name + "_time.value")).unlink()
             self.assertEqual(evaluation.complete_anchors(shard, "tracker"), 0)
 
+    def test_acceptance_gates_use_dataset_specific_boundaries(self):
+        metrics = dict(
+            depthtrack_test=dict(P=65.2, R=64.9, F=65.1),
+            cdtb=dict(P=72.9, R=75.6, F=74.2),
+            vot=dict(EAO=77.9, ACC=82.1001, ROB=93.7),
+        )
+        outcomes = evaluation.gate_outcomes(metrics)
+        self.assertTrue(all(
+            item["passed"]
+            for name in ("depthtrack_test", "cdtb")
+            for item in outcomes[name].values()
+        ))
+        self.assertTrue(outcomes["vot"]["ACC"]["passed"])
+        self.assertFalse(outcomes["vot"]["EAO"]["passed"])
+        self.assertFalse(outcomes["vot"]["ROB"]["passed"])
+        metrics["vot"]["ACC"] = 82.1
+        self.assertFalse(evaluation.gate_outcomes(metrics)["vot"]["ACC"]["passed"])
+        metrics["depthtrack_test"]["P"] = float("nan")
+        with self.assertRaises(AssertionError):
+            evaluation.gate_outcomes(metrics)
+
     def test_prepared_plans_validate_and_reject_changed_source(self):
         import sys
 

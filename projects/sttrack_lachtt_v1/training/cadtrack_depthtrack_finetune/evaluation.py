@@ -97,6 +97,27 @@ def checked_plan(path, verify_artifacts=True):
     return plan
 
 
+def gate_outcomes(metrics):
+    targets = {
+        "depthtrack_test": {"P": 65.2, "R": 64.9, "F": 65.1},
+        "cdtb": {"P": 72.9, "R": 75.6, "F": 74.2},
+        "vot": {"EAO": 77.9, "ACC": 82.1, "ROB": 93.7},
+    }
+    outcomes = {}
+    for dataset, thresholds in targets.items():
+        outcomes[dataset] = {}
+        for name, threshold in thresholds.items():
+            value = float(metrics[dataset][name])
+            assert math.isfinite(value) and 0 <= value <= 100
+            passed = value > threshold if dataset == "vot" else value >= threshold
+            outcomes[dataset][name] = {
+                "value": value,
+                "threshold": threshold,
+                "passed": passed,
+            }
+    return outcomes
+
+
 def runtime_environment(plan, gpu=None):
     env = dict(
         os.environ,
@@ -601,9 +622,18 @@ def main():
         for dataset in ("depthtrack_test", "cdtb")
     }
     metrics["vot"] = vot_metrics
+    gates = gate_outcomes(metrics)
+    all_pass = all(
+        item["passed"]
+        for dataset in gates.values()
+        for item in dataset.values()
+    )
     result = dict(
         status="complete_CADTrack_pure_finetune_three_datasets",
         datasets=metrics,
+        gates=gates,
+        any_joint_pass=all_pass,
+        project_status="ACTIVE_MET" if all_pass else "ACTIVE_UNMET",
         checkpoint_sha256=selection["checkpoint_sha256"],
         selected_epoch=selection["selected_epoch"],
         selection="test-set-selected",

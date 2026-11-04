@@ -151,3 +151,8 @@ full controller checks verify the native source manifest, selected checkpoint,
 all retained weights, evaluator and execution ledger. Anchor workers check the
 pinned manifest/ledger digests without rehashing all retained weights on each
 startup. This is an execution binding check, not a completed independent audit.
+
+The terminal `all_results.json` reports each of the nine fixed acceptance gates
+and sets `project_status` to `ACTIVE_MET` only when every gate passes. DT/CDTB
+use inclusive thresholds; VOT EAO/ACC/ROB use strict greater-than thresholds.
+Non-finite or out-of-range metrics are rejected.
