@@ -8,7 +8,7 @@ report; all input result files remain unchanged.
 It checks all1765 forward/backward anchors derived from actual dataset metadata
 against the four441/441/441/442 manifest partitions, real127 sequence identities
 and frame counts, every decoded binary trajectory length, both confidence/time
-stream lengths, all5295 merged hashes and original shard hashes, original
+stream lengths read from the raw property files, all5295 merged hashes and original shard hashes, original
 shard exits, and current files against the supplied execution-source ledger.
 The supplied expected execution digest identifies the ledger being checked.
 Current ledger agreement alone does not establish historic checkpoint or full
@@ -35,6 +35,15 @@ CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 \
 ```
 
 The CPU unit tests exercise direction-dependent lengths, auxiliary-stream
-truncation, complete partition cardinality and duplicate/wrong identities.
+truncation, the official tuple-of-property-names interface, complete partition
+cardinality and duplicate/wrong identities.
 They do not decode real VOT outputs; that requires running this tool on the
 actual sealed workspace.
+
+The documented interpreter must run with assertions enabled: no `-O`/`-OO` or
+`PYTHONOPTIMIZE`. This is a bounded read of one externally pinned execution
+ledger, not verification that an arbitrary caller-supplied ledger is complete
+or historically bound. Direction-dependent coverage means expected length
+from official forward/backward anchors; it does not prove that predictions
+were generated from the correct image order. Original shard hashes bind the
+read bytes, not their neural generation history.
