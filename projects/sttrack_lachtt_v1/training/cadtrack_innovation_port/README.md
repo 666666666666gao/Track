@@ -91,9 +91,13 @@ only to a separate smoke directory. Neither check produces official metrics.
 
 The production `--mode train` entry exists for the declared protocol, but
 full training must not start until these checks and deployment review finish.
-Independent code review is `REVIEW_UNAVAILABLE`: the current client catalog
-provides no subagent/reviewer operation. Self-checks must not be described as
-independent acceptance. The last resource read showed two idle RTX3090 GPUs,
+The original client catalog supplied no subagent operation; a subsequent fresh,
+ephemeral Codex CLI review of99dfd9f using model gpt-6-astra / max reasoning
+found no blocking issues. This is same-family static review with provisional
+acceptance, not independent runtime or full-result auditing. Exact report and
+provenance are in DEPLOYMENT_REVIEW.md and deployment_review.json. The only
+post-review core change updates the review-status metadata. The resource read
+showed two idle RTX3090 GPUs,
 93MB free on system overlay and8.3GB on the data mount. No cleanup or package
 installation is authorized. Small smoke artifacts fit on the data mount;
 full-run disk/log budget and resource admission still need a launch-time check.
@@ -109,3 +113,27 @@ including language and regional branches. Frozen CADTrack/CLIP state and
 module serialization checks passed. Exact code and receipt SHA256 values
 are in `validation.json`; no new formal metric or performance claim follows.
 Formal six-pass training has not started.
+
+## Supervised Full Training
+
+`supervise.py RUN_ROOT` runs the single argv command in RUN_ROOT/launch.json,
+using its declared cwd and environment. It creates train.log exclusively,
+records the actual child/supervisor PIDs, waits for that child and preserves
+train.exit plus terminal.json. It never retries or starts evaluation. Its CPU
+test checks actual child success and failure7, stdout and matching receipts.
+
+Before launch, copy this port and the unchanged legacy sources into the new
+run's code directories. Point --legacy-code at that snapshot, and place the
+new --output, logs and TMPDIR on the data mount. Use start_new_session=True
+when starting the supervisor so an SSH disconnect cannot terminate training.
+The first full Train152 inventory check found152 sequences,219954 matching
+RGB/depth frames and219802 calls/pass, with all GT hashes and initial boxes
+matching the bound spec. Six passes must total912 sequence runs/1318812 calls.
+
+Measured smoke sizes: latest5916444 bytes, final1968308 bytes; rolling plus
+temporary replacement and final peak13801196 bytes. A256MiB training-output
+budget covers these small module states,912 sequence records, source snapshots
+and bounded console logs. The observed free data space was8888422400 bytes.
+The completed ROI evaluation occupied170436983 bytes as a sizing reference,
+not a guarantee of new evaluation size. Do not clear the93MiB system overlay;
+disable bytecode writes and direct temporary/output files to the data mount.

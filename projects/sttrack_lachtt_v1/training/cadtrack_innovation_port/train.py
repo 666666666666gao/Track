@@ -87,7 +87,7 @@ def main():
         C_target='selected-frame current GT IoU; not future utility',
         learning_rate=3e-5, weight_decay=.01, gradient_accumulation=32, passes=6,
         final_selection='fixed pass06 after all152 sequences; no external test selection',
-        mode=args.mode, independent_code_review='REVIEW_UNAVAILABLE: no agent tool in client catalog',
+        mode=args.mode, independent_code_review='same-family static review at99dfd9f: no blockers; provisional',
         inputs={name: sha(getattr(args, name)) for name in
             ['checkpoint', 'config', 'clip_weight', 'bank', 'labels', 'spec']},
         source={p.name: sha(p) for p in Path(__file__).parent.glob('*.py')},
