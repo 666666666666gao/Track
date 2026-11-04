@@ -100,7 +100,8 @@ post-review core change updates the review-status metadata. The resource read
 showed two idle RTX3090 GPUs,
 93MB free on system overlay and8.3GB on the data mount. No cleanup or package
 installation is authorized. Small smoke artifacts fit on the data mount;
-full-run disk/log budget and resource admission still need a launch-time check.
+At that review stage, the full-run disk/log budget and resource admission
+still needed a launch-time check; the completed check is recorded below.
 
 ## Observed Validation
 
@@ -112,7 +113,8 @@ first-moment norms in all20 module-prefix groups across71 parameter entries,
 including language and regional branches. Frozen CADTrack/CLIP state and
 module serialization checks passed. Exact code and receipt SHA256 values
 are in `validation.json`; no new formal metric or performance claim follows.
-Formal six-pass training has not started.
+At that validation stage formal six-pass training had not started; see the
+subsequent formal launch record below.
 
 ## Supervised Full Training
 
@@ -137,3 +139,16 @@ and bounded console logs. The observed free data space was8888422400 bytes.
 The completed ROI evaluation occupied170436983 bytes as a sizing reference,
 not a guarantee of new evaluation size. Do not clear the93MiB system overlay;
 disable bytecode writes and direct temporary/output files to the data mount.
+
+Formal training launched2026-11-04T01:28:38Z in the separate data-mount root
+`/root/autodl-tmp/cadtrack_abc_train152_fixed6_20261104`, using frozen code from
+90e4863 and byte-exact native/legacy source snapshots. The initial actual
+process check confirmed supervisor280132 detached with PPID1 and child280133
+running the full-training argv. No terminal receipt or final result existed.
+FORMAL_LAUNCH.json records this observation; it is not a completion receipt.
+Do not change this running snapshot or launch another copy. No new formal
+metrics are available; the existing ROI audit limitations remain unchanged.
+At2026-11-04T01:36:00Z the same original process chain was live, and the
+first complete sequence cube04_indoor recorded2575 calls,81 A/B steps and
+81 C steps in262.616683 training-loop seconds. latest.pt was present. This
+single-sequence timing does not establish a stable full-training ETA.
