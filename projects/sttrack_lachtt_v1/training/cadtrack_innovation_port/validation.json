@@ -1,0 +1,46 @@
+{
+  "tested_source_commit": "15c5a9c",
+  "remote_root": "/root/autodl-tmp/cadtrack_innovation_port_20261104",
+  "interpreter": "/root/autodl-tmp/envs/sttrack/bin/python",
+  "torch": "1.13.1+cu116",
+  "source_sha256": {
+    "runtime.py": "8791088c568627fd5fad57b245bf9d8650d20b8a4b2b8d040bad08eae7389576",
+    "train.py": "7d381047525ea0d7c2ba3ecedacef9e82679bccc1c83dbe4534c9849fbf2c8db",
+    "verify_native.py": "5ef531892763f6ab0e03464b0483ba3a14398c09b0ed87328dd0a49c783dc91f"
+  },
+  "sequence": "cube04_indoor",
+  "split": "DepthTrack Train152",
+  "native_parity": {
+    "exit": 0,
+    "frames": 64,
+    "hooked_native_outputs_exact": true,
+    "zero_residual_boxes_exact": true,
+    "native_confidence_exact": true,
+    "template_history_exact": true,
+    "native_writes": 1,
+    "C_bypassed_for_native_control_only": true,
+    "receipt_sha256": "9ec43c3ec4ccf7aefc58de63a3ec2b0d69d9cdf3ee688308fd804076ead0e1f70"
+  },
+  "training_smoke": {
+    "exit": 0,
+    "calls": 64,
+    "steps": 2,
+    "C_steps": 2,
+    "gradient_norms": [
+      {"A_B": 15.336770057678223, "C": 3.345092535018921},
+      {"A_B": 12.03661823272705, "C": 1.3204724788665771}
+    ],
+    "positive_optimizer_moment_groups": 20,
+    "optimizer_state_entries_checked": 71,
+    "frozen_before_after_exact": true,
+    "module_roundtrip_exact": true,
+    "final_sha256": "af43997465918562904743c9c0bbf9a400dc5445eee101f1ee3132ce5554b0633",
+    "receipt_sha256": "8a98d8e26e1d7e0bb97255ecae04014d2794c00babe4a6335b9428af6cf2138b3",
+    "protocol_sha256": "1419a50ce86dc51822803979525a02256f349994e9335a05154fc013f9d64d072"
+  },
+  "full_training_started": false,
+  "formal_metrics": false,
+  "performance_gain_established": false,
+  "independent_code_review": "REVIEW_UNAVAILABLE: no reviewer/subagent operation exposed in client tool catalog",
+  "completed_original_ROI_independent_audit": false
+}

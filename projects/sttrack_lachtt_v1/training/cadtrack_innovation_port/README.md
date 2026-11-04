@@ -97,3 +97,15 @@ independent acceptance. The last resource read showed two idle RTX3090 GPUs,
 93MB free on system overlay and8.3GB on the data mount. No cleanup or package
 installation is authorized. Small smoke artifacts fit on the data mount;
 full-run disk/log budget and resource admission still need a launch-time check.
+
+## Observed Validation
+
+Both remote commands passed on the bound Train152 `cube04_indoor` sequence.
+The native64-frame control included one actual template write. The separate
+C-enabled smoke made two A/B and two C steps; both gradient norms were finite
+and positive. A subsequent read of the saved AdamW state found positive
+first-moment norms in all20 module-prefix groups across71 parameter entries,
+including language and regional branches. Frozen CADTrack/CLIP state and
+module serialization checks passed. Exact code and receipt SHA256 values
+are in `validation.json`; no new formal metric or performance claim follows.
+Formal six-pass training has not started.
