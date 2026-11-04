@@ -69,7 +69,7 @@ class EvaluationTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            result, retained, metrics = preparation.verify_final_five(root, path)
+            result, retained, metrics = preparation.verify_final_five(root, path, 35)
             self.assertEqual(result["epoch"], 35)
             self.assertEqual([row["epoch"] for row in retained], list(range(31, 36)))
             self.assertEqual(len(metrics), 5)
@@ -116,7 +116,7 @@ class EvaluationTests(unittest.TestCase):
                 encoding="utf-8",
             )
             with self.assertRaises(AssertionError):
-                preparation.verify_final_five(root, best_path)
+                preparation.verify_final_five(root, best_path, 35)
 
     def test_vot_protocol_requires_exact_workspace_stack(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -412,7 +412,9 @@ class EvaluationTests(unittest.TestCase):
             output = root / "evaluation"
             arguments = ["prepare_evaluation.py"]
             for key, value in dict(
-                training_root=training, base_evaluation=base, checkpoint=checkpoint,
+                training_root=training, base_evaluation=base,
+                checkpoint=training / "final_five/epoch_33.pth.tar",
+                selected_epoch=33,
                 evaluation_source=HERE / "evaluation.py",
                 evaluation_runner=HERE / "evaluation.py", vot_identity_tool=identity,
                 vot_coverage_tool=coverage, vot_reference=reference, output=output
@@ -422,7 +424,7 @@ class EvaluationTests(unittest.TestCase):
                 TEMPLATE_FACTOR=2.0, TEMPLATE_SIZE=128, SEARCH_FACTOR=4.0,
                 SEARCH_SIZE=256, UPDATE_INTERVALS=5, UPDATE_THRESHOLD=0.65))
             fake_torch = SimpleNamespace(load=lambda *a, **k: dict(
-                epoch=35, net_type="mock", net={}))
+                epoch=33, net_type="mock", net={}))
             fake_yaml = SimpleNamespace(safe_load=lambda text: config_data)
             with mock.patch.object(sys, "argv", arguments), \
                     mock.patch.object(preparation, "PROBE_ROOT", probe), \
@@ -432,8 +434,21 @@ class EvaluationTests(unittest.TestCase):
                 preparation.main()
             for name in ("depthtrack_test", "cdtb", "vot"):
                 plan = evaluation.checked_plan(output / name / "plan.json")
-                self.assertEqual(plan["selected_epoch"], 35)
+                self.assertEqual(plan["selected_epoch"], 33)
             selection = preparation.read(output / "selection.json")
+            self.assertEqual(selection["selected_epoch"], 33)
+            self.assertEqual(selection["selected_by"], "user")
+            self.assertEqual(
+                selection["checkpoint_selection_sha256"],
+                preparation.sha(output / "checkpoint_selection.json"),
+            )
+            checkpoint_selection = preparation.read(
+                output / "checkpoint_selection.json"
+            )
+            self.assertEqual(checkpoint_selection["selected_epoch"], 33)
+            self.assertEqual(
+                checkpoint_selection["automatic_test50_max_epoch"], 35
+            )
             self.assertEqual(selection["runner_sha256"], preparation.sha(output / "run_evaluation.py"))
             self.assertEqual(selection["vot_plan_sha256"], preparation.sha(output / "vot/plan.json"))
             config.write_text("changed-config", encoding="utf-8")

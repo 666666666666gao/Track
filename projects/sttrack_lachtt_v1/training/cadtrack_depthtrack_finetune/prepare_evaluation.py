@@ -29,17 +29,18 @@ def write(path, value):
     )
 
 
-def verify_final_five(training_root, checkpoint_path):
+def verify_final_five(training_root, checkpoint_path, selected_epoch):
     training = Path(training_root)
     checkpoint = Path(checkpoint_path).resolve()
+    assert selected_epoch in range(31, 36)
     launch = read(training / "launch.json")
     assert launch["status"] == "complete"
     rows_path = training / "epoch_metrics.jsonl"
     rows = [json.loads(line) for line in rows_path.read_text().splitlines()]
     assert [row["epoch"] for row in rows] == [31, 32, 33, 34, 35]
-    selected = read(training / "best.json")
-    assert selected["selection"] == "DepthTrack Test50 F-score, epochs 31-35"
-    assert selected["epoch"] in range(31, 36)
+    best = read(training / "best.json")
+    assert best["selection"] == "DepthTrack Test50 F-score, epochs 31-35"
+    assert best["epoch"] in range(31, 36)
 
     retained = []
     metric_rows = []
@@ -57,14 +58,25 @@ def verify_final_five(training_root, checkpoint_path):
         retained.append(dict(epoch=epoch, path=str(path), sha256=digest))
         metric_rows.append(dict(epoch=epoch, metrics=metrics["metrics"]))
 
-    selected_row = rows[selected["epoch"] - 31]
-    assert selected["checkpoint_sha256"] == selected_row["checkpoint_sha256"]
-    assert selected["f_score"] == selected_row["metrics"]["f_score"]
-    assert checkpoint == Path(selected["checkpoint_path"]).resolve()
-    assert sha(checkpoint) == selected["checkpoint_sha256"]
-    assert selected["epoch"] == max(
+    best_row = rows[best["epoch"] - 31]
+    best_path = training / "final_five" / ("epoch_%02d.pth.tar" % best["epoch"])
+    assert best["checkpoint_sha256"] == best_row["checkpoint_sha256"]
+    assert best["f_score"] == best_row["metrics"]["f_score"]
+    assert best_path.resolve() == Path(best["checkpoint_path"]).resolve()
+    assert best["epoch"] == max(
         metric_rows, key=lambda item: item["metrics"]["f_score"]
     )["epoch"]
+
+    selected_row = rows[selected_epoch - 31]
+    selected_path = training / "final_five" / ("epoch_%02d.pth.tar" % selected_epoch)
+    assert checkpoint == selected_path.resolve()
+    assert sha(checkpoint) == selected_row["checkpoint_sha256"]
+    selected = dict(
+        epoch=selected_epoch,
+        checkpoint_path=str(selected_path),
+        checkpoint_sha256=selected_row["checkpoint_sha256"],
+        metrics=selected_row["metrics"],
+    )
     return selected, retained, metric_rows
 
 
@@ -74,6 +86,7 @@ def main():
         "training-root",
         "base-evaluation",
         "checkpoint",
+        "selected-epoch",
         "evaluation-source",
         "evaluation-runner",
         "vot-identity-tool",
@@ -81,7 +94,11 @@ def main():
         "vot-reference",
         "output",
     ):
-        parser.add_argument("--" + name, type=Path, required=True)
+        parser.add_argument(
+            "--" + name,
+            type=int if name == "selected-epoch" else Path,
+            required=True,
+        )
     args = parser.parse_args()
 
     training = args.training_root.resolve()
@@ -95,7 +112,9 @@ def main():
     output = args.output.resolve()
     assert not output.exists()
 
-    selected, retained, metric_rows = verify_final_five(training, checkpoint)
+    selected, retained, metric_rows = verify_final_five(
+        training, checkpoint, args.selected_epoch
+    )
 
     case_plans = {
         name: read(base / name / "plan.json")
@@ -163,6 +182,27 @@ def main():
     assert set(checkpoint_obj) == {"epoch", "net_type", "net"}
 
     output.mkdir(parents=True)
+    checkpoint_selection_path = output / "checkpoint_selection.json"
+    write(
+        checkpoint_selection_path,
+        dict(
+            schema="CADTrack_pure_finetune_checkpoint_selection_v1",
+            selected_epoch=selected["epoch"],
+            checkpoint_path=str(checkpoint),
+            checkpoint_sha256=sha(checkpoint),
+            selected_by="user",
+            selection="test-set-selected",
+            selection_metric="DepthTrack Test50 F-score",
+            selection_method=(
+                "User-specified epoch after reviewing all Test50 scores "
+                "for epochs 31-35."
+            ),
+            selection_bias_disclosed=True,
+            selected_metrics=selected["metrics"],
+            candidate_metrics=metric_rows,
+            automatic_test50_max_epoch=read(training / "best.json")["epoch"],
+        ),
+    )
     source_copy = output / "evaluation.py"
     runner_copy = output / "run_evaluation.py"
     evaluator_copy = output / "evaluate_ope.py"
@@ -201,8 +241,8 @@ def main():
         selection="test-set-selected",
         selection_metric="DepthTrack Test50 F-score",
         selection_rows=metric_rows,
-        selection_path=str(training / "best.json"),
-        selection_file_sha256=sha(training / "best.json"),
+        selection_path=str(checkpoint_selection_path),
+        selection_file_sha256=sha(checkpoint_selection_path),
         retained_checkpoints=retained,
         inference_profile=inference_profile,
         probe_root=str(probe_root),
@@ -265,6 +305,7 @@ def main():
         evaluator_copy, source_manifest_path,
         checkpoint, config_path,
         training / "epoch_metrics.jsonl", training / "best.json",
+        checkpoint_selection_path,
     ]
     for old in manifest["shards"]:
         target = run_root / ("shard-%02d" % old["index"])
@@ -352,7 +393,7 @@ def main():
         inference_profile=inference_profile,
         selection="test-set-selected",
         retained_checkpoints=retained,
-        selection_file_sha256=sha(training / "best.json"),
+        selection_file_sha256=sha(checkpoint_selection_path),
         selection_metrics_file_sha256=sha(training / "epoch_metrics.jsonl"),
         evaluation_source_sha256=sha(source_copy),
         evaluation_runner_sha256=sha(runner_copy),
@@ -391,6 +432,8 @@ def main():
         selected_epoch=selected["epoch"],
         selection="test-set-selected",
         selection_metric="DepthTrack Test50 F-score",
+        selected_by="user",
+        checkpoint_selection_sha256=sha(checkpoint_selection_path),
         selection_bias_disclosed=True,
         optimizer_steps_after_training=0,
         runner_sha256=sha(runner_copy),
@@ -410,6 +453,7 @@ def main():
                 selected_epoch=selected["epoch"],
                 checkpoint_sha256=sha(checkpoint),
                 selection="test-set-selected",
+                selected_by="user",
                 plans=selection_output["plans"],
                 vot_plan=selection_output["vot_plan"],
             ),

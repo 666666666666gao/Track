@@ -490,6 +490,17 @@ def main():
     assert selection["status"] == "CADTrack_pure_finetune_final_fixed"
     assert selection["optimizer_steps_after_training"] == 0
     assert selection["selection"] == "test-set-selected"
+    assert selection["selected_by"] == "user"
+    checkpoint_selection = read(root / "checkpoint_selection.json")
+    assert sha(root / "checkpoint_selection.json") == selection[
+        "checkpoint_selection_sha256"
+    ]
+    assert checkpoint_selection["selected_by"] == "user"
+    assert checkpoint_selection["selection_bias_disclosed"] is True
+    assert checkpoint_selection["selected_epoch"] == selection["selected_epoch"]
+    assert checkpoint_selection["checkpoint_sha256"] == selection[
+        "checkpoint_sha256"
+    ]
     assert sha(Path(__file__).resolve()) == selection["runner_sha256"]
     plans = {
         name: root / name / "plan.json"

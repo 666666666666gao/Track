@@ -109,13 +109,17 @@ end-to-end training continuation have not been verified.
 
 ## Fixed final and complete evaluation
 
-`prepare_evaluation.py` binds `best.json`, all five epoch31-35 network
-checkpoints, their five Test50 metric receipts, the selected checkpoint SHA,
-the native CADTrack inference configuration, full OPE case inventories and the
-archived full-127 VOT manifest. It creates a new evaluation root and four new
-VOT workspaces; it does not reuse prediction files. Selection remains
-`test-set-selected` by Test50 F-score, so the selected checkpoint's Test50
-score and the three-dataset report must disclose selection bias.
+`prepare_evaluation.py` binds all five epoch31-35 network checkpoints, their
+five Test50 metric receipts, `best.json`, the user-selected checkpoint SHA,
+the native CADTrack inference configuration, full OPE case inventories and
+the archived full-127 VOT manifest. Pass `--selected-epoch 31` through
+`--selected-epoch 35` and point `--checkpoint` to that exact retained weight.
+The automatic Test50 maximum in `best.json` is recorded for comparison but
+does not choose the evaluation checkpoint. The user must review all five
+candidate scores and choose explicitly. This remains `test-set-selected`;
+the choice and resulting three-dataset report must disclose selection bias.
+Preparation creates a new evaluation root and four new VOT workspaces; it
+does not reuse prediction files.
 
 The evaluator uses the original CADTrack `tracker_for` and RGB+JET-depth input
 path. All three datasets bind one selected checkpoint and one inference profile:
@@ -140,6 +144,7 @@ python prepare_evaluation.py \
   --training-root /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104 \
   --base-evaluation /root/autodl-tmp/m125_region_roi_fixed6/evaluation \
   --checkpoint /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104/final_five/epoch_NN.pth.tar \
+  --selected-epoch NN \
   --evaluation-source /path/to/cadtrack_depthtrack_finetune/evaluation.py \
   --evaluation-runner /path/to/cadtrack_depthtrack_finetune/evaluation.py \
   --vot-identity-tool /path/to/vot_analysis_identity.py \
