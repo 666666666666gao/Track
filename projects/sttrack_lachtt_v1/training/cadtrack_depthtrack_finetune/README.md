@@ -60,6 +60,23 @@ snapshot plus its temporary replacement, candidate and best weights.
 The final-five set requires additional storage for five network-only
 checkpoints; verify free space before launch.
 
+Run `train_depthtrack_finetune.py --preflight` before training. The training
+output directory must be absent or empty. For a detached run, keep supervisor
+receipts and logs in a separate control directory so they do not trip that
+empty-directory guard:
+
+```text
+python supervise.py \
+  --run-root /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104 \
+  --control-root /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104_control \
+  -- /root/autodl-tmp/envs/sttrack/bin/python -B -u \
+  /path/to/cadtrack_depthtrack_finetune/train_depthtrack_finetune.py
+```
+
+The wrapper binds GPU0, uses the existing training interpreter, writes the
+child log and exit/terminal receipts under the control directory, and refuses
+to reuse a nonempty run directory or existing control directory.
+
 Validation must distinguish the CPU scoring path from training. A successful
 score-only regression cannot establish that epochs32-35 completed or that
 the missing original state was recovered.
