@@ -2,7 +2,7 @@
 from copy import deepcopy
 import unittest
 
-from roi_artifact_graph import require, sequence_history
+from roi_artifact_graph import check_shard_partition, require, sequence_history
 
 
 class HistoryTests(unittest.TestCase):
@@ -42,6 +42,14 @@ class HistoryTests(unittest.TestCase):
     def test_explicit_checks_survive_optimization(self):
         with self.assertRaises(ValueError):
             require(False, "must reject")
+
+    def test_shard_partition_identity_and_cardinality(self):
+        shards = [dict(index=i, gpu=(0, 1, 0, 1)[i],
+                       anchor_count=(441, 441, 441, 442)[i]) for i in range(4)]
+        check_shard_partition(shards)
+        for changed in (shards[:3], [shards[0], shards[1], shards[1], shards[3]]):
+            with self.assertRaises(ValueError):
+                check_shard_partition(changed)
 
 
 if __name__ == "__main__":

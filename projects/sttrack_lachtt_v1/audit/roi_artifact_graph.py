@@ -58,6 +58,13 @@ def sequence_history(trained):
     return rows
 
 
+def check_shard_partition(shards):
+    require([shard["index"] for shard in shards] == [0, 1, 2, 3], "shard indexes")
+    require([shard["gpu"] for shard in shards] == [0, 1, 0, 1], "shard GPUs")
+    require([shard["anchor_count"] for shard in shards] == [441, 441, 441, 442],
+            "shard anchor partition")
+
+
 def audit(root, coverage_path):
     require(os.environ.get("CUDA_VISIBLE_DEVICES") == "", "CUDA must be hidden")
     require(sys.flags.optimize == 0 and __debug__, "original runtime requires assertions")
@@ -172,6 +179,14 @@ def audit(root, coverage_path):
             prediction = read(output / "receipt.json")
             metrics = read(output / "metrics.json")
             require(prediction["plan_sha256"] == sha(path), "prediction plan binding")
+            require(prediction["status"] == "complete_M122_official_OPE_predictions"
+                    and prediction["sequences"] == len(read(plan["cases_path"]))
+                    and prediction["frames"] == metrics["metrics"]["frames"],
+                    "OPE prediction scope")
+            require(metrics["plan_sha256"] == sha(path)
+                    and metrics["receipt_sha256"] == sha(output / "receipt.json")
+                    and metrics["metric_source_sha256"] == plan["metric_source_sha256"],
+                    "OPE metric receipt binding")
             require(prediction["final_sha256"] == metrics["final_sha256"] == FINAL,
                     "OPE final binding")
             require(prediction["bundle_sha256"] == metrics["bundle_sha256"] == BUNDLE,
@@ -179,6 +194,9 @@ def audit(root, coverage_path):
     execution_path = evaluation / "vot/execution.json"
     require(sha(execution_path) == EXECUTION, "externally pinned VOT execution")
     execution = read(execution_path)
+    require(selection["bank_sha256"] == vot_plan["bank_sha256"]
+            and selection["binding_sha256"] == vot_plan["binding_sha256"],
+            "selection initialization binding")
     wrapper = evaluation / "vot/selected_m125_region_fixed_vot.py"
     wrapper_tree = ast.parse(wrapper.read_text())
     calls = [node.value for node in wrapper_tree.body
@@ -190,6 +208,7 @@ def audit(root, coverage_path):
     for path in (bundle_path, evaluation / "vot/plan.json", wrapper):
         require(execution["source_sha256"][str(path)] == sha(path), "execution graph edge")
     manifest = read(evaluation / "vot/run/shard_manifest.json")
+    check_shard_partition(manifest["shards"])
     for shard in manifest["shards"]:
         ini = Path(shard["root"]) / "trackers.ini"
         require(sha(ini) == shard["trackers_sha256"]
@@ -208,7 +227,10 @@ def audit(root, coverage_path):
         require(sealed[key] == selection[key], "VOT sealed binding: " + key)
     complete = read(root / "result.json")
     require(complete["stages"][:6] == pass_receipts, "original training stage receipts")
-    require(len(complete["stages"]) == 15
+    expected_stages = (["train_fixed_pass"] * 6 + ["prepare", "depthtrack_test_track",
+                        "cdtb_track", "depthtrack_test_analyze", "cdtb_analyze",
+                        "vot_track", "vot_official_analysis", "vot_seal", "collect"])
+    require([row["stage"] for row in complete["stages"]] == expected_stages
             and all(row["exit_code"] == 0 for row in complete["stages"]), "all original stages")
     for row in complete["stages"][6:]:
         require(read(root / (row["stage"] + ".receipt.json")) == row, "original stage receipt")
