@@ -152,3 +152,65 @@ At2026-11-04T01:36:00Z the same original process chain was live, and the
 first complete sequence cube04_indoor recorded2575 calls,81 A/B steps and
 81 C steps in262.616683 training-loop seconds. latest.pt was present. This
 single-sequence timing does not establish a stable full-training ETA.
+
+## Official Evaluation After Pass06
+
+The preparation step requires the supervisor and child terminal receipts to
+report exit0, exactly1318812 training calls, the fixed pass06 final hash,
+strict final reload, frozen-state equality, and unchanged baseline/config/CLIP
+bindings. It verifies the1895 human-confirmed RGB/bbox initialization keys,
+all50/76373 and80/101956 OPE cases, locked PR source hash
+`05879f2e732aed982fbcbebd9756ce063ed0fa945c1f6b0c04092c3e487466cc`, the
+1765 VOT anchor keys, and the archived official VOT identity reference hash.
+It writes one isolated evaluation directory; it does not run inference.
+
+The copied plans and execution sources bind one final, one human phrase bank,
+all166 training-bound snapshot sources, the VOT bridge, and the official
+analysis reference. Prediction processes never open subsequent GT. OPE
+analysis opens GT only after all prediction receipts exist and prediction
+hashes match. VOT launches shards00/01 and then02/03, checks each shard's
+expected trajectories, merges and re-hashes all5295 result files, runs official
+analysis, then checks all1765 anchor trajectory lengths with the existing locked
+failure auditor and runs the read-only analysis-identity tool. Before any GPU
+prediction, the metric interpreter checks all four installed workspace stacks
+against the pinned toolkit0.7.1 reference, including every MultiStart and analysis
+parameter. The selected execution-ledger digest is enforced before OPE and VOT. No automatic
+retry or test-driven checkpoint/threshold choice is made. The nine gate
+comparisons are written from official percentage metrics; VOT EAO, ACC and ROB
+are all strict `>` thresholds.
+
+Run only after the formal training supervisor exits successfully. Stage the
+three evaluation scripts from this published source into a separate
+evaluation-tools directory; do not edit the frozen training snapshot. Example:
+
+```text
+/root/autodl-tmp/envs/sttrack/bin/python -B /root/autodl-tmp/cadtrack_eval_tools_20261104/prepare_evaluation.py \
+  --training-root /root/autodl-tmp/cadtrack_abc_train152_fixed6_20261104 \
+  --base-evaluation /root/autodl-tmp/m125_region_roi_fixed6/evaluation \
+  --checkpoint /root/autodl-tmp/external_baselines/cadtrack_rgbd_probe/CADTrack_ep0020.pth.tar \
+  --config /root/autodl-tmp/cadtrack_abc_train152_fixed6_20261104/native-source/experiments/cadtrack/cadtrack.yaml \
+  --clip-weight /root/autodl-tmp/sutrack_assets/weights/ViT-L-14.pt \
+  --evaluation-source /root/autodl-tmp/cadtrack_eval_tools_20261104/evaluation.py \
+  --evaluation-runner /root/autodl-tmp/cadtrack_eval_tools_20261104/run_evaluation.py \
+  --vot-identity-tool /root/autodl-tmp/cadtrack_eval_tools_20261104/vot_analysis_identity.py \
+  --vot-reference /root/autodl-tmp/m125_A1_anchored_U2_m025_20261020_r2/vot/master/analysis/A1_anchored_U2_full127.json \
+  --output /root/autodl-tmp/cadtrack_abc_train152_fixed6_20261104/official-evaluation
+
+/root/autodl-tmp/envs/sttrack/bin/python -B -u /root/autodl-tmp/cadtrack_abc_train152_fixed6_20261104/official-evaluation/run_evaluation.py \
+  --evaluation-root /root/autodl-tmp/cadtrack_abc_train152_fixed6_20261104/official-evaluation \
+  --tracker-python /root/autodl-tmp/envs/sttrack/bin/python \
+  --metric-python /root/miniconda3/envs/mplt/bin/python
+```
+
+The output path must be new. Any failing stage retains its logs and receipts;
+investigate rather than rerunning into the same directory. Formal metrics
+remain unavailable until the full six-pass training and subsequent complete
+official evaluations actually finish.
+
+Local CPU verification: `python -B -m unittest -v test_evaluation` passes11
+control-plane tests, including a complete152/912-row preparation fixture,
+50/76373-frame mock OPE output, mock TraX handshake/reporting, modified-source
+and final rejection, execution-ledger tampering, protocol mismatch and exact
+nine-gate comparisons. Neural tracker and serialized tensors are explicitly
+mocked where required. These are not new benchmark results, neural validation
+or a completed independent experiment audit.
