@@ -178,3 +178,36 @@ The terminal `all_results.json` reports each of the nine fixed acceptance gates
 and sets `project_status` to `ACTIVE_MET` only when every gate passes. DT/CDTB
 use inclusive thresholds; VOT EAO/ACC/ROB use strict greater-than thresholds.
 Non-finite or out-of-range metrics are rejected.
+
+## Compare All Five On CDTB And DepthTrack
+
+`cdtb_final_five.py` handles the separate user request to compare all five
+retained weights before choosing a final baseline. It verifies and reuses
+the five completed DepthTrack Test50 results, then evaluates full CDTB80
+for each weight with the existing `evaluate_ope.py`. GPU0 processes epochs
+31/33/35 and GPU1 processes32/34, one tracking child per GPU. Scoring uses
+the existing CPU metric interpreter. This entry does not run VOT or select
+a final checkpoint. Comparing these test results for selection must be
+disclosed as test-set selection.
+
+Use a new output directory and the existing supervisor with a separate,
+empty run directory and control directory:
+
+```text
+python cdtb_final_five.py \
+  --training-root /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104 \
+  --training-control /root/autodl-tmp/cadtrack_depthtrack_finetune_20261104_control \
+  --probe-root /root/autodl-tmp/external_baselines/cadtrack_rgbd_probe \
+  --base-cdtb-plan /root/autodl-tmp/m125_region_roi_fixed6/evaluation/cdtb/plan.json \
+  --output /path/to/new-cdtb-final-five-output \
+  --tracker-python /root/autodl-tmp/envs/sttrack/bin/python \
+  --metric-python /root/miniconda3/envs/mplt/bin/python
+```
+
+The entry checks the successful training terminal, all five checkpoint
+hashes, native inference profile, case identities and locked metric. It
+records source hashes, child commands/PIDs/exits, validates every saved
+trajectory/confidence length and hash, and writes `all_results.json` only
+after all five CDTB scores pass these checks. Original completed DepthTrack
+results are read without being overwritten or rescored. Failed stages are
+retained without automatic retry.
