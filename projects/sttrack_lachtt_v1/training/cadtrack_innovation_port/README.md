@@ -1,9 +1,13 @@
 # CADTrack pretrained baseline with the existing innovations
 
-This separate port starts from official `CADTrack_ep0020.pth.tar`, SHA256
-`d20c8641e4263df3ceadf9e430d0ac96c181c13ad482bca28c2dddef592a8bb8`.
-It does not use or resume the failed epoch31 fine-tune. CADTrack's native
-tracker loads all250 state entries strictly before any module is attached.
+This separate run initializes from the user's selected pure CADTrack
+DepthTrack-fine-tuned epoch32 checkpoint, SHA256
+`609f118fb999d292a92ab9646acd072c820f205a9b0d44e0f5114ab9edd2fe7f`.
+Epoch32 was selected after comparing Test50 and CDTB80 results, so this
+initializer choice is test-set-informed and must be disclosed as selection
+bias. It is not the official epoch20 checkpoint and does not resume the
+interrupted earlier A/B/C run. CADTrack's native tracker loads all250 state
+entries strictly before any module is attached.
 The archived STTrack ROI experiment and both old CADTrack runs are untouched.
 
 ## Architecture
@@ -89,8 +93,10 @@ sequence, with C enabled, checks finite nonzero A/B and C gradient norms,
 frozen-state equality, new-module changes and exact save/reload. It writes
 only to a separate smoke directory. Neither check produces official metrics.
 
-The production `--mode train` entry exists for the declared protocol, but
-full training must not start until these checks and deployment review finish.
+The production `--mode train` entry exists for the declared six-pass protocol.
+For this epoch32 initialization, rerun the native strict-load and smoke checks
+before full training; the earlier checks used epoch20 and do not validate this
+new initializer.
 The original client catalog supplied no subagent operation; a subsequent fresh,
 ephemeral Codex CLI review of99dfd9f using model gpt-6-astra / max reasoning
 found no blocking issues. This is same-family static review with provisional

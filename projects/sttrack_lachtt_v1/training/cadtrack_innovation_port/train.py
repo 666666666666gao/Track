@@ -12,7 +12,7 @@ import torch
 from torch.nn import functional as F
 
 
-BASELINE_SHA = 'd20c8641e4263df3ceadf9e430d0ac96c181c13ad482bca28c2dddef592a8bb8'
+BASELINE_SHA = '609f118fb999d292a92ab9646acd072c820f205a9b0d44e0f5114ab9edd2fe7f'
 
 
 def sha(path):
@@ -79,8 +79,9 @@ def main():
     optimizer = torch.optim.AdamW(list(decoder.parameters()) + list(writer.parameters()),
         lr=3e-5, weight_decay=.01)
     args.output.mkdir(parents=True)
-    protocol = dict(format='CADTrack_M125_port_v1', seed=2027,
-        baseline_sha256=BASELINE_SHA, initializer='official_epoch20_not_old_epoch31',
+    protocol = dict(format='CADTrack_M125_epoch32_port_v1', seed=2027,
+        baseline_sha256=BASELINE_SHA, initializer='pure_depthtrack_finetune_epoch32',
+        initializer_selection='user_selected_after_test-set comparison; selection bias disclosed',
         backbone_frozen=True, clip_frozen=True, new_modules='fresh_seed2027',
         region_arm='roi', regional_semantics=False, inherited_full_null_language=True,
         native_template_interval=5, native_template_threshold=.65, C_threshold=.5,
